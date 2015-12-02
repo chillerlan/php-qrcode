@@ -103,7 +103,7 @@ class Util{
 	/**
 	 * @param int $typeNumber
 	 *
-	 * @return int
+	 * @return array
 	 */
 	public function getPatternPosition($typeNumber){
 		return $this->QR_PATTERN_POSITION_TABLE[$typeNumber - 1];

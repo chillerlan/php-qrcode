@@ -23,13 +23,9 @@ use codemasher\QRCode\QRConst;
 class Kanji extends QRDataBase implements QRDataInterface{
 
 	/**
-	 * Kanji constructor.
-	 *
-	 * @param $data
+	 * @var
 	 */
-	public function __construct($data){
-		parent::__construct($data, QRConst::MODE_KANJI);
-	}
+	protected $mode = QRConst::MODE_KANJI;
 
 	/**
 	 * @param $buffer
@@ -40,7 +36,8 @@ class Kanji extends QRDataBase implements QRDataInterface{
 		$data = $this->getData();
 
 		$i = 0;
-		while($i + 1 < strlen($data)){
+		$len = strlen($data);
+		while($i + 1 < $len){
 			$c = ((0xff&ord($data[$i])) << 8)|(0xff&ord($data[$i + 1]));
 
 			if(0x8140 <= $c && $c <= 0x9FFC){

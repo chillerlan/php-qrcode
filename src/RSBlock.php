@@ -101,16 +101,7 @@ class RSBlock{
 
 	];
 
-
-	public function __construct($totalCount = null, $dataCount = null){
-		if(isset($totalCount, $dataCount)){
-			$this->setCount($totalCount, $dataCount);
-		}
-	}
-
 	/**
-	 * RSBlock constructor.
-	 *
 	 * @param int $totalCount
 	 * @param int $dataCount
 	 */
@@ -150,7 +141,7 @@ class RSBlock{
 			$dataCount = $rsBlock[$i * 3 + 2];
 
 			for($j = 0; $j < $count; $j++){
-				$list[] = new RSBlock($totalCount, $dataCount);
+				$list[] = [$totalCount, $dataCount];
 			}
 		}
 

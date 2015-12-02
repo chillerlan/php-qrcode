@@ -54,7 +54,7 @@ class Polynomial{
 	 *
 	 * @return mixed
 	 */
-	public function get($index){
+	public function getNum($index){
 		return $this->num[$index];
 	}
 
@@ -83,7 +83,7 @@ class Polynomial{
 			if($i > 0){
 				$buffer .= ',';
 			}
-			$buffer .= $this->get($i);
+			$buffer .= $this->getNum($i);
 		}
 
 		return $buffer;
@@ -99,7 +99,7 @@ class Polynomial{
 			if($i > 0){
 				$buffer .= ',';
 			}
-			$buffer .= $this->math->glog($this->get($i));
+			$buffer .= $this->math->glog($this->getNum($i));
 		}
 
 		return $buffer;
@@ -115,7 +115,7 @@ class Polynomial{
 
 		for($i = 0; $i < $this->getLength(); $i++){
 			for($j = 0; $j < $e->getLength(); $j++){
-				$num[$i + $j] ^= $this->math->gexp($this->math->glog($this->get($i)) + $this->math->glog($e->get($j)));
+				$num[$i + $j] ^= $this->math->gexp($this->math->glog($this->getNum($i)) + $this->math->glog($e->getNum($j)));
 			}
 		}
 
@@ -133,15 +133,15 @@ class Polynomial{
 			return $this;
 		}
 
-		$ratio = $this->math->glog($this->get(0)) - $this->math->glog($e->get(0));
+		$ratio = $this->math->glog($this->getNum(0)) - $this->math->glog($e->getNum(0));
 
 		$num = $this->math->createNumArray($this->getLength());
 		for($i = 0; $i < $this->getLength(); $i++){
-			$num[$i] = $this->get($i);
+			$num[$i] = $this->getNum($i);
 		}
 
 		for($i = 0; $i < $e->getLength(); $i++){
-			$num[$i] ^= $this->math->gexp($this->math->glog($e->get($i)) + $ratio);
+			$num[$i] ^= $this->math->gexp($this->math->glog($e->getNum($i)) + $ratio);
 		}
 
 		return (new Polynomial($num))->mod($e);

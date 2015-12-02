@@ -30,7 +30,7 @@ $qrcode->addData('QRコード');
 $qrcode->make();
 
 // HTML出力
-$qrcode->printHTML();
+echo $qrcode->printHTML();
 
 //---------------------------------------------------------
 print('<h4>型番自動</h4>');
@@ -39,4 +39,4 @@ print('<h4>型番自動</h4>');
 $qr = $qrcode->getMinimumQRCode('QRコード', QRConst::ERROR_CORRECT_LEVEL_L);
 
 // HTML出力
-$qr->printHTML();
+echo $qr->printHTML();

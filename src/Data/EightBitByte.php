@@ -23,13 +23,9 @@ use codemasher\QRCode\Data\QRDataInterface;
 class EightBitByte extends QRDataBase implements QRDataInterface{
 
 	/**
-	 * EightBitByte constructor.
-	 *
-	 * @param $data
+	 * @var
 	 */
-	public function __construct($data){
-		parent::__construct($data, QRConst::MODE_8BIT_BYTE);
-	}
+	protected $mode = QRConst::MODE_8BIT_BYTE;
 
 	/**
 	 * @param $buffer
@@ -37,7 +33,8 @@ class EightBitByte extends QRDataBase implements QRDataInterface{
 	public function write(BitBuffer &$buffer){
 		$data = $this->getData();
 
-		for($i = 0; $i < strlen($data); $i++){
+		$len = strlen($data);
+		for($i = 0; $i < $len; $i++){
 			$buffer->put(ord($data[$i]), 8);
 		}
 	}
@@ -48,4 +45,5 @@ class EightBitByte extends QRDataBase implements QRDataInterface{
 	public function getLength(){
 		return strlen($this->getData());
 	}
+
 }

@@ -23,18 +23,14 @@ use codemasher\QRCode\QRConst;
 class Number extends QRDataBase implements QRDataInterface{
 
 	/**
+	 * @var
+	 */
+	protected $mode = QRConst::MODE_NUMBER;
+
+	/**
 	 * @var \codemasher\QRCode\Util
 	 */
 	protected $util;
-
-	/**
-	 * Number constructor.
-	 *
-	 * @param $data
-	 */
-	public function __construct($data){
-		parent::__construct($data, QRConst::MODE_NUMBER);
-	}
 
 	/**
 	 * @param $buffer
@@ -43,19 +39,20 @@ class Number extends QRDataBase implements QRDataInterface{
 		$data = $this->getData();
 
 		$i = 0;
-		while($i + 2 < strlen($data)){
+		$len = strlen($data);
+		while($i + 2 < $len){
 			$num = $this->parseInt(substr($data, $i, 3));
 			$buffer->put($num, 10);
 			$i += 3;
 		}
 
-		if($i < strlen($data)){
+		if($i < $len){
 
-			if(strlen($data) - $i == 1){
+			if($len - $i === 1){
 				$num = $this->parseInt(substr($data, $i, $i + 1));
 				$buffer->put($num, 4);
 			}
-			else if(strlen($data) - $i == 2){
+			else if($len - $i === 2){
 				$num = $this->parseInt(substr($data, $i, $i + 2));
 				$buffer->put($num, 7);
 			}

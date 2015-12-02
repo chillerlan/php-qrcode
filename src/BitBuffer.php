@@ -27,6 +27,14 @@ class BitBuffer{
 	protected $length = 0;
 
 	/**
+	 *
+	 */
+	public function reset(){
+		$this->buffer = [];
+		$this->length = 0;
+	}
+
+	/**
 	 * @return array
 	 */
 	public function getBuffer(){
@@ -46,7 +54,8 @@ class BitBuffer{
 	public function __toString(){
 		$buffer = '';
 
-		for($i = 0; $i < $this->getLengthInBits(); $i++){
+		$count = $this->getLengthInBits();
+		for($i = 0; $i < $count; $i++){
 			$buffer .= $this->get($i) ? '1' : '0';
 		}
 
