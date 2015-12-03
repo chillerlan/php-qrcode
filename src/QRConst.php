@@ -17,8 +17,8 @@ namespace codemasher\QRCode;
 class QRConst{
 
 	const MODE_NUMBER = 1 << 0;
-	const MODE_ALPHA_NUM = 1 << 1;
-	const MODE_8BIT_BYTE = 1 << 2;
+	const MODE_ALPHANUM = 1 << 1;
+	const MODE_BYTE = 1 << 2;
 	const MODE_KANJI = 1 << 3;
 
 	const MASK_PATTERN000 = 0;

@@ -19,12 +19,12 @@ class BitBuffer{
 	/**
 	 * @var array
 	 */
-	protected $buffer = [];
+	public $buffer = [];
 
 	/**
 	 * @var int
 	 */
-	protected $length = 0;
+	public $length = 0;
 
 	/**
 	 *
@@ -35,40 +35,16 @@ class BitBuffer{
 	}
 
 	/**
-	 * @return array
-	 */
-	public function getBuffer(){
-		return $this->buffer;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getLengthInBits(){
-		return $this->length;
-	}
-
-	/**
 	 * @return string
 	 */
 	public function __toString(){
 		$buffer = '';
 
-		$count = $this->getLengthInBits();
-		for($i = 0; $i < $count; $i++){
-			$buffer .= $this->get($i) ? '1' : '0';
+		for($i = 0; $i < $this->length; $i++){
+			$buffer .= (string)(int)(($this->buffer[(int)floor($i / 8)] >> (7 - $i % 8))&1) === 1;
 		}
 
 		return $buffer;
-	}
-
-	/**
-	 * @param $index
-	 *
-	 * @return bool
-	 */
-	public function get($index){
-		return (($this->buffer[(int)floor($index / 8)] >> (7 - $index % 8))&1) === 1;
 	}
 
 	/**

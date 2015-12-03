@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * @filesource   EightBitByte.php
+ * @filesource   Byte.php
  * @created      25.11.2015
  * @package      codemasher\QRCode
  * @author       Smiley <smiley@chillerlan.net>
@@ -18,32 +18,23 @@ use codemasher\QRCode\Data\QRDataInterface;
 
 
 /**
- * Class EightBitByte
+ * Class Byte
  */
-class EightBitByte extends QRDataBase implements QRDataInterface{
+class Byte extends QRDataBase implements QRDataInterface{
 
 	/**
 	 * @var
 	 */
-	protected $mode = QRConst::MODE_8BIT_BYTE;
+	public $mode = QRConst::MODE_BYTE;
 
 	/**
 	 * @param $buffer
 	 */
 	public function write(BitBuffer &$buffer){
-		$data = $this->getData();
-
-		$len = strlen($data);
+		$len = strlen($this->data);
 		for($i = 0; $i < $len; $i++){
-			$buffer->put(ord($data[$i]), 8);
+			$buffer->put(ord($this->data[$i]), 8);
 		}
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getLength(){
-		return strlen($this->getData());
 	}
 
 }

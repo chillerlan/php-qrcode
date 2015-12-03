@@ -23,25 +23,21 @@ use codemasher\QRCode\QRConst;
 class Number extends QRDataBase implements QRDataInterface{
 
 	/**
-	 * @var
+	 * @var int
 	 */
-	protected $mode = QRConst::MODE_NUMBER;
-
-	/**
-	 * @var \codemasher\QRCode\Util
-	 */
-	protected $util;
+	public $mode = QRConst::MODE_NUMBER;
 
 	/**
 	 * @param $buffer
+	 *
+	 * @return $this
 	 */
 	public function write(BitBuffer &$buffer){
-		$data = $this->getData();
 
 		$i = 0;
-		$len = strlen($data);
+		$len = strlen($this->data);
 		while($i + 2 < $len){
-			$num = $this->parseInt(substr($data, $i, 3));
+			$num = $this->parseInt(substr($this->data, $i, 3));
 			$buffer->put($num, 10);
 			$i += 3;
 		}
@@ -49,50 +45,44 @@ class Number extends QRDataBase implements QRDataInterface{
 		if($i < $len){
 
 			if($len - $i === 1){
-				$num = $this->parseInt(substr($data, $i, $i + 1));
+				$num = $this->parseInt(substr($this->data, $i, $i + 1));
 				$buffer->put($num, 4);
 			}
 			else if($len - $i === 2){
-				$num = $this->parseInt(substr($data, $i, $i + 2));
+				$num = $this->parseInt(substr($this->data, $i, $i + 2));
 				$buffer->put($num, 7);
 			}
+
 		}
+
+		return $this;
 	}
 
 	/**
-	 * @return int
-	 */
-	public function getLength(){
-		return strlen($this->getData());
-	}
-
-	/**
-	 * @param $s
+	 * @param string $string
 	 *
 	 * @return int
+	 * @throws \codemasher\QRCode\QRCodeException
 	 */
-	protected function parseInt($s){
+	protected function parseInt($string){
 		$num = 0;
 
-		for($i = 0; $i < strlen($s); $i++){
-			$num = $num * 10 + $this->parseIntAt(ord($s[$i]));
+		$len = strlen($string);
+		for($i = 0; $i < $len; $i++){
+			$c = ord($string[$i]);
+
+			$ord0 = ord('0');
+			if(ord('0') <= $c && $c <= ord('9')){
+				$c = $c - $ord0;
+			}
+			else{
+				throw new QRCodeException('illegal char: '.$c);
+			}
+
+			$num = $num * 10 + $c;
 		}
 
 		return $num;
-	}
-
-	/**
-	 * @param $c
-	 *
-	 * @return mixed
-	 * @throws \codemasher\QRCode\QRCodeException
-	 */
-	protected function parseIntAt($c){
-		if($this->util->toCharCode('0') <= $c && $c <= $this->util->toCharCode('9')){
-			return $c - $this->util->toCharCode('0');
-		}
-
-		throw new QRCodeException('illegal char: '.$c);
 	}
 
 }

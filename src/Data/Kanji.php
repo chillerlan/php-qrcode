@@ -25,7 +25,7 @@ class Kanji extends QRDataBase implements QRDataInterface{
 	/**
 	 * @var
 	 */
-	protected $mode = QRConst::MODE_KANJI;
+	public $mode = QRConst::MODE_KANJI;
 
 	/**
 	 * @param $buffer
@@ -33,12 +33,11 @@ class Kanji extends QRDataBase implements QRDataInterface{
 	 * @throws \codemasher\QRCode\QRCodeException
 	 */
 	public function write(BitBuffer &$buffer){
-		$data = $this->getData();
 
 		$i = 0;
-		$len = strlen($data);
+		$len = strlen($this->data);
 		while($i + 1 < $len){
-			$c = ((0xff&ord($data[$i])) << 8)|(0xff&ord($data[$i + 1]));
+			$c = ((0xff&ord($this->data[$i])) << 8)|(0xff&ord($this->data[$i + 1]));
 
 			if(0x8140 <= $c && $c <= 0x9FFC){
 				$c -= 0x8140;
@@ -55,7 +54,7 @@ class Kanji extends QRDataBase implements QRDataInterface{
 			$i += 2;
 		}
 
-		if($i < strlen($data)){
+		if($i < $len){
 			throw new QRCodeException('illegal char at '.($i + 1));
 		}
 	}
@@ -64,6 +63,7 @@ class Kanji extends QRDataBase implements QRDataInterface{
 	 * @return float
 	 */
 	public function getLength(){
-		return floor(strlen($this->getData()) / 2);
+		return floor(strlen($this->data) / 2);
 	}
+
 }

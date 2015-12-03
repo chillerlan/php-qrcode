@@ -22,12 +22,12 @@ class RSBlock{
 	/**
 	 * @var int
 	 */
-	protected $totalCount;
+	public $totalCount;
 
 	/**
 	 * @var int
 	 */
-	protected $dataCount;
+	public $dataCount;
 
 	/**
 	 * @var array
@@ -102,39 +102,27 @@ class RSBlock{
 	];
 
 	/**
-	 * @param int $totalCount
-	 * @param int $dataCount
-	 */
-	public function setCount($totalCount, $dataCount){
-		$this->totalCount = $totalCount;
-		$this->dataCount = $dataCount;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getDataCount(){
-		return $this->dataCount;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getTotalCount(){
-		return $this->totalCount;
-	}
-
-	/**
 	 * @param $typeNumber
 	 * @param $errorCorrectLevel
 	 *
 	 * @return array
+	 * @throws \codemasher\QRCode\QRCodeException
 	 */
 	public function getRSBlocks($typeNumber, $errorCorrectLevel){
-		$rsBlock = $this->getRsBlockTable($typeNumber, $errorCorrectLevel);
-		$length = count($rsBlock) / 3;
-		$list = [];
 
+		switch($errorCorrectLevel){
+			case QRConst::ERROR_CORRECT_LEVEL_L: $rsBlock = 0; break;
+			case QRConst::ERROR_CORRECT_LEVEL_M: $rsBlock = 1; break;
+			case QRConst::ERROR_CORRECT_LEVEL_Q: $rsBlock = 2; break;
+			case QRConst::ERROR_CORRECT_LEVEL_H: $rsBlock = 3; break;
+			default:
+				throw new QRCodeException('tn:'.$typeNumber.'/ecl:'.$errorCorrectLevel);
+		}
+
+		$rsBlock = $this->QR_RS_BLOCK_TABLE[($typeNumber - 1) * 4 + $rsBlock];
+
+		$list = [];
+		$length = count($rsBlock) / 3;
 		for($i = 0; $i < $length; $i++){
 			$count = $rsBlock[$i * 3 + 0];
 			$totalCount = $rsBlock[$i * 3 + 1];
@@ -148,24 +136,5 @@ class RSBlock{
 		return $list;
 	}
 
-	/**
-	 * @param $typeNumber
-	 * @param $errorCorrectLevel
-	 *
-	 * @return mixed
-	 * @throws \codemasher\QRCode\QRCodeException
-	 */
-	public function getRsBlockTable($typeNumber, $errorCorrectLevel){
-
-		switch($errorCorrectLevel){
-			case QRConst::ERROR_CORRECT_LEVEL_L: return $this->QR_RS_BLOCK_TABLE[($typeNumber - 1) * 4 + 0];
-			case QRConst::ERROR_CORRECT_LEVEL_M: return $this->QR_RS_BLOCK_TABLE[($typeNumber - 1) * 4 + 1];
-			case QRConst::ERROR_CORRECT_LEVEL_Q: return $this->QR_RS_BLOCK_TABLE[($typeNumber - 1) * 4 + 2];
-			case QRConst::ERROR_CORRECT_LEVEL_H: return $this->QR_RS_BLOCK_TABLE[($typeNumber - 1) * 4 + 3];
-			default:
-				throw new QRCodeException('tn:'.$typeNumber.'/ecl:'.$errorCorrectLevel);
-		}
-
-	}
 
 }

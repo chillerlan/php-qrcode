@@ -28,20 +28,11 @@ interface QRDataInterface{
 	public function getLength();
 
 	/**
-	 * @return mixed
-	 */
-	public function getData();
-
-	/**
-	 * @return mixed
-	 */
-	public function getMode();
-
-	/**
 	 * @param $type
 	 *
 	 * @return int
 	 * @throws \codemasher\QRCode\QRCodeException
 	 */
 	public function getLengthInBits($type);
+
 }

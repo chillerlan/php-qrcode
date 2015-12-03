@@ -11,22 +11,25 @@
 
 namespace codemasher\QRCode;
 
-use codemasher\QRCode\Math;
-
 /**
  * Class Polynomial
  */
 class Polynomial{
 
 	/**
-	 * @var
+	 * @var array
 	 */
-	protected $num;
+	public $num = [];
 
 	/**
-	 * @var \codemasher\QRCode\Math
+	 * @var array
 	 */
-	protected $math;
+	protected $EXP_TABLE = [];
+
+	/**
+	 * @var array
+	 */
+	protected $LOG_TABLE = [];
 
 	/**
 	 * Polynomial constructor.
@@ -34,56 +37,74 @@ class Polynomial{
 	 * @param array $num
 	 * @param int   $shift
 	 */
-	public function __construct(array $num, $shift = 0){
-		$this->math = new Math;
+	public function __construct(array $num = [1], $shift = 0){
+		$this->setNum($num, $shift)
+		     ->setTables();
+	}
 
+	/**
+	 * @param array $num
+	 * @param int   $shift
+	 *
+	 * @return $this
+	 */
+	public function setNum(array $num, $shift = 0){
 		$offset = 0;
-		while($offset < count($num) && $num[$offset] === 0){
+		$numCount = count($num);
+
+		while($offset < $numCount && $num[$offset] === 0){
 			$offset++;
 		}
 
-		$this->num = $this->math->createNumArray(count($num) - $offset + $shift);
-		for($i = 0; $i < count($num) - $offset; $i++){
+		$this->num = [];
+		for($i = 0; $i < $numCount - $offset + $shift; $i++){
+			$this->num[] = 0;
+		}
+
+		for($i = 0; $i < $numCount - $offset; $i++){
 			$this->num[$i] = $num[$i + $offset];
 		}
+
+		return $this;
 	}
 
 	/**
-	 * @param $index
-	 * @todo rename!
-	 *
-	 * @return mixed
+	 * @return $this
 	 */
-	public function getNum($index){
-		return $this->num[$index];
+	protected function setTables(){
+		$numArr = [];
+		for($i = 0; $i < 256; $i++){
+			$numArr[] = 0;
+		}
+
+		$this->EXP_TABLE = $this->LOG_TABLE = $numArr;
+
+		for($i = 0; $i < 8; $i++){
+			$this->EXP_TABLE[$i] = 1 << $i;
+		}
+
+		for($i = 8; $i < 256; $i++){
+			$this->EXP_TABLE[$i] = $this->EXP_TABLE[$i - 4] ^ $this->EXP_TABLE[$i - 5] ^ $this->EXP_TABLE[$i - 6] ^ $this->EXP_TABLE[$i - 8];
+		}
+
+		for($i = 0; $i < 255; $i++){
+			$this->LOG_TABLE[$this->EXP_TABLE[$i]] = $i;
+		}
+
+		return $this;
 	}
 
 	/**
-	 * @return int
-	 */
-	public function getLength(){
-		return count($this->num);
-	}
-
-	/**
-	 * PHP5
 	 * @return string
 	 */
 	public function __toString(){
-		return $this->toString();
-	}
-
-	/**
-	 * @return string
-	 */
-	public function toString(){
 		$buffer = '';
 
-		for($i = 0; $i < $this->getLength(); $i++){
+		foreach($this->num as $i => $value){
 			if($i > 0){
 				$buffer .= ',';
 			}
-			$buffer .= $this->getNum($i);
+			$buffer .= $value;
 		}
 
 		return $buffer;
@@ -95,56 +116,101 @@ class Polynomial{
 	public function toLogString(){
 		$buffer = '';
 
-		for($i = 0; $i < $this->getLength(); $i++){
+		foreach($this->num as $i => $value){
 			if($i > 0){
 				$buffer .= ',';
 			}
-			$buffer .= $this->math->glog($this->getNum($i));
+			$buffer .= $this->glog($value);
 		}
 
 		return $buffer;
 	}
 
 	/**
-	 * @param \codemasher\QRCode\Polynomial $e
+	 * @param array $e
 	 *
-	 * @return \codemasher\QRCode\Polynomial
+	 * @return $this
 	 */
-	public function multiply($e){
-		$num = $this->math->createNumArray($this->getLength() + $e->getLength() - 1);
+	public function multiply(array $e){
 
-		for($i = 0; $i < $this->getLength(); $i++){
-			for($j = 0; $j < $e->getLength(); $j++){
-				$num[$i + $j] ^= $this->math->gexp($this->math->glog($this->getNum($i)) + $this->math->glog($e->getNum($j)));
+		$num = [];
+		$len = count($this->num) + count($e) - 1;
+		for($i = 0; $i < $len; $i++){
+			$num[] = 0;
+		}
+
+		foreach($this->num as $i => $vi){
+			foreach($e as $j => $vj){
+				$num[$i + $j] ^= $this->gexp($this->glog($vi) + $this->glog($vj));
 			}
 		}
 
-		return new Polynomial($num);
+		$this->setNum($num);
+
+		return $this;
 	}
 
 	/**
-	 * @param \codemasher\QRCode\Polynomial $e
+	 * @param array $e
 	 *
-	 * @return $this|\codemasher\QRCode\Polynomial
+	 * @return $this
 	 */
 	public function mod($e){
+#		$starttime = microtime(true);
 
-		if($this->getLength() - $e->getLength() < 0){
+		if(count($this->num) - count($e) < 0){
 			return $this;
 		}
 
-		$ratio = $this->math->glog($this->getNum(0)) - $this->math->glog($e->getNum(0));
+		$ratio = $this->glog($this->num[0]) - $this->glog($e[0]);
 
-		$num = $this->math->createNumArray($this->getLength());
-		for($i = 0; $i < $this->getLength(); $i++){
-			$num[$i] = $this->getNum($i);
+		$num = [];
+		foreach($this->num as $i => $value){
+			$num[$i] = $value;
 		}
 
-		for($i = 0; $i < $e->getLength(); $i++){
-			$num[$i] ^= $this->math->gexp($this->math->glog($e->getNum($i)) + $ratio);
+		foreach($e as $i => $value){
+			$num[$i] ^= $this->gexp($this->glog($e[$i]) + $ratio);
 		}
 
-		return (new Polynomial($num))->mod($e);
+		$this->setNum($num)->mod($e);
+
+#		echo 'Polynomial::mod '.round((microtime(true)-$starttime), 5).PHP_EOL;
+
+		return $num;
+	}
+
+	/**
+	 * @param int $n
+	 *
+	 * @return mixed
+	 * @throws \codemasher\QRCode\QRCodeException
+	 */
+	public function glog($n){
+
+		if($n < 1){
+			throw new QRCodeException('log('.$n.')');
+		}
+
+		return $this->LOG_TABLE[$n];
+	}
+
+	/**
+	 * @param int $n
+	 *
+	 * @return mixed
+	 */
+	public function gexp($n){
+
+		while($n < 0){
+			$n += 255;
+		}
+
+		while($n >= 256){
+			$n -= 255;
+		}
+
+		return $this->EXP_TABLE[$n];
 	}
 
 }

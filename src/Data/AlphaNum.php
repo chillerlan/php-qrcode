@@ -26,31 +26,23 @@ class AlphaNum extends QRDataBase implements QRDataInterface{
 	/**
 	 * @var
 	 */
-	protected $mode = QRConst::MODE_ALPHA_NUM;
+	public $mode = QRConst::MODE_ALPHANUM;
 
 	/**
 	 * @param $buffer
 	 */
 	public function write(BitBuffer &$buffer){
-		$data = $this->getData();
 
 		$i = 0;
-		$len = strlen($data);
+		$len = strlen($this->data);
 		while($i + 1 < $len){
-			$buffer->put($this->getCode(ord($data[$i])) * 45 + $this->getCode(ord($data[$i + 1])), 11);
+			$buffer->put($this->getCode(ord($this->data[$i])) * 45 + $this->getCode(ord($this->data[$i + 1])), 11);
 			$i += 2;
 		}
 
 		if($i < $len){
-			$buffer->put($this->getCode(ord($data[$i])), 6);
+			$buffer->put($this->getCode(ord($this->data[$i])), 6);
 		}
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getLength(){
-		return strlen($this->getData());
 	}
 
 	/**
@@ -61,23 +53,23 @@ class AlphaNum extends QRDataBase implements QRDataInterface{
 	 */
 	protected function getCode($c){
 
-		if($this->util->toCharCode('0') <= $c && $c <= $this->util->toCharCode('9')){
-			return $c - $this->util->toCharCode('0');
+		if(ord('0') <= $c && $c <= ord('9')){
+			return $c - ord('0');
 		}
-		else if($this->util->toCharCode('A') <= $c && $c <= $this->util->toCharCode('Z')){
-			return $c - $this->util->toCharCode('A') + 10;
+		else if(ord('A') <= $c && $c <= ord('Z')){
+			return $c - ord('A') + 10;
 		}
 		else{
 			switch($c){
-				case $this->util->toCharCode(' '): return 36;
-				case $this->util->toCharCode('$'): return 37;
-				case $this->util->toCharCode('%'): return 38;
-				case $this->util->toCharCode('*'): return 39;
-				case $this->util->toCharCode('+'): return 40;
-				case $this->util->toCharCode('-'): return 41;
-				case $this->util->toCharCode('.'): return 42;
-				case $this->util->toCharCode('/'): return 43;
-				case $this->util->toCharCode(':'): return 44;
+				case ord(' '): return 36;
+				case ord('$'): return 37;
+				case ord('%'): return 38;
+				case ord('*'): return 39;
+				case ord('+'): return 40;
+				case ord('-'): return 41;
+				case ord('.'): return 42;
+				case ord('/'): return 43;
+				case ord(':'): return 44;
 				default :
 					throw new QRCodeException('illegal char: '.$c);
 			}
