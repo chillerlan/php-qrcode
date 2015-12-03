@@ -1,5 +1,6 @@
 <?php
 /**
+ * Class Byte
  *
  * @filesource   Byte.php
  * @created      25.11.2015
@@ -18,7 +19,7 @@ use codemasher\QRCode\Data\QRDataInterface;
 
 
 /**
- * Class Byte
+ *
  */
 class Byte extends QRDataBase implements QRDataInterface{
 
@@ -28,11 +29,15 @@ class Byte extends QRDataBase implements QRDataInterface{
 	public $mode = QRConst::MODE_BYTE;
 
 	/**
+	 * @var array
+	 */
+	protected $lengthBits = [8, 16, 16];
+
+	/**
 	 * @param $buffer
 	 */
 	public function write(BitBuffer &$buffer){
-		$len = strlen($this->data);
-		for($i = 0; $i < $len; $i++){
+		for($i = 0; $i < $this->dataLength; $i++){
 			$buffer->put(ord($this->data[$i]), 8);
 		}
 	}

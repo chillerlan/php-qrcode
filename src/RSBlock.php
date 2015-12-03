@@ -32,7 +32,7 @@ class RSBlock{
 	/**
 	 * @var array
 	 */
-	protected $QR_RS_BLOCK_TABLE = [
+	protected $BLOCK_TABLE = [
 
 		// L
 		// M
@@ -116,10 +116,10 @@ class RSBlock{
 			case QRConst::ERROR_CORRECT_LEVEL_Q: $rsBlock = 2; break;
 			case QRConst::ERROR_CORRECT_LEVEL_H: $rsBlock = 3; break;
 			default:
-				throw new QRCodeException('tn:'.$typeNumber.'/ecl:'.$errorCorrectLevel);
+				throw new QRCodeException('$typeNumber:'.$typeNumber.'/$errorCorrectLevel:'.$errorCorrectLevel);
 		}
 
-		$rsBlock = $this->QR_RS_BLOCK_TABLE[($typeNumber - 1) * 4 + $rsBlock];
+		$rsBlock = $this->BLOCK_TABLE[($typeNumber - 1) * 4 + $rsBlock];
 
 		$list = [];
 		$length = count($rsBlock) / 3;

@@ -27,14 +27,6 @@ class BitBuffer{
 	public $length = 0;
 
 	/**
-	 *
-	 */
-	public function reset(){
-		$this->buffer = [];
-		$this->length = 0;
-	}
-
-	/**
 	 * @return string
 	 */
 	public function __toString(){

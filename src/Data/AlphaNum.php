@@ -1,5 +1,6 @@
 <?php
 /**
+ * Class AlphaNum
  *
  * @filesource   AlphaNum.php
  * @created      25.11.2015
@@ -12,14 +13,13 @@
 namespace codemasher\QRCode\Data;
 
 use codemasher\QRCode\BitBuffer;
-use codemasher\QRCode\Data;
 use codemasher\QRCode\Data\QRDataBase;
 use codemasher\QRCode\Data\QRDataInterface;
 use codemasher\QRCode\QRCodeException;
 use codemasher\QRCode\QRConst;
 
 /**
- * Class AlphaNum
+ *
  */
 class AlphaNum extends QRDataBase implements QRDataInterface{
 
@@ -29,20 +29,25 @@ class AlphaNum extends QRDataBase implements QRDataInterface{
 	public $mode = QRConst::MODE_ALPHANUM;
 
 	/**
+	 * @var array
+	 */
+	protected $lengthBits = [9, 11, 13];
+
+	/**
 	 * @param $buffer
 	 */
 	public function write(BitBuffer &$buffer){
 
 		$i = 0;
-		$len = strlen($this->data);
-		while($i + 1 < $len){
+		while($i + 1 < $this->dataLength){
 			$buffer->put($this->getCode(ord($this->data[$i])) * 45 + $this->getCode(ord($this->data[$i + 1])), 11);
 			$i += 2;
 		}
 
-		if($i < $len){
+		if($i < $this->dataLength){
 			$buffer->put($this->getCode(ord($this->data[$i])), 6);
 		}
+
 	}
 
 	/**

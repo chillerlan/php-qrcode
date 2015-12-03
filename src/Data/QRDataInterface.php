@@ -1,5 +1,6 @@
 <?php
 /**
+ * Interface QRDataInterface
  *
  * @filesource   QRDataInterface.php
  * @created      01.12.2015
@@ -13,7 +14,7 @@ namespace codemasher\QRCode\Data;
 use codemasher\QRCode\BitBuffer;
 
 /**
- * Interface QRDataInterface
+ *
  */
 interface QRDataInterface{
 
@@ -21,11 +22,6 @@ interface QRDataInterface{
 	 * @param \codemasher\QRCode\BitBuffer $buffer
 	 */
 	public function write(BitBuffer &$buffer);
-
-	/**
-	 * @return int
-	 */
-	public function getLength();
 
 	/**
 	 * @param $type

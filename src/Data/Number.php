@@ -1,5 +1,6 @@
 <?php
 /**
+ * Class Number
  *
  * @filesource   Number.php
  * @created      26.11.2015
@@ -18,7 +19,7 @@ use codemasher\QRCode\QRCodeException;
 use codemasher\QRCode\QRConst;
 
 /**
- * Class Number
+ *
  */
 class Number extends QRDataBase implements QRDataInterface{
 
@@ -28,6 +29,11 @@ class Number extends QRDataBase implements QRDataInterface{
 	public $mode = QRConst::MODE_NUMBER;
 
 	/**
+	 * @var array
+	 */
+	protected $lengthBits = [10, 12, 14];
+
+	/**
 	 * @param $buffer
 	 *
 	 * @return $this
@@ -35,20 +41,19 @@ class Number extends QRDataBase implements QRDataInterface{
 	public function write(BitBuffer &$buffer){
 
 		$i = 0;
-		$len = strlen($this->data);
-		while($i + 2 < $len){
+		while($i + 2 < $this->dataLength){
 			$num = $this->parseInt(substr($this->data, $i, 3));
 			$buffer->put($num, 10);
 			$i += 3;
 		}
 
-		if($i < $len){
+		if($i < $this->dataLength){
 
-			if($len - $i === 1){
+			if($this->dataLength - $i === 1){
 				$num = $this->parseInt(substr($this->data, $i, $i + 1));
 				$buffer->put($num, 4);
 			}
-			else if($len - $i === 2){
+			else if($this->dataLength - $i === 2){
 				$num = $this->parseInt(substr($this->data, $i, $i + 2));
 				$buffer->put($num, 7);
 			}
@@ -65,8 +70,8 @@ class Number extends QRDataBase implements QRDataInterface{
 	 * @throws \codemasher\QRCode\QRCodeException
 	 */
 	protected function parseInt($string){
-		$num = 0;
 
+		$num = 0;
 		$len = strlen($string);
 		for($i = 0; $i < $len; $i++){
 			$c = ord($string[$i]);
