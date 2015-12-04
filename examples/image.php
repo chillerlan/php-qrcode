@@ -6,7 +6,7 @@ use codemasher\QRCode\QRCode;
 use codemasher\QRCode\QRConst;
 
 // google authenticator
-$qr = (new QRCode)->getMinimumQRCode('otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net', QRConst::ERROR_CORRECT_LEVEL_L);
+$qr = new QRCode('otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net', QRConst::ERROR_CORRECT_LEVEL_L);
 
 header('Content-type: image/png');
 

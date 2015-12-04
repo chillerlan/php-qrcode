@@ -102,6 +102,16 @@ class RSBlock{
 	];
 
 	/**
+	 * @var array
+	 */
+	protected $RSBLOCK = [
+		QRConst::ERROR_CORRECT_LEVEL_L => 0,
+		QRConst::ERROR_CORRECT_LEVEL_M => 1,
+		QRConst::ERROR_CORRECT_LEVEL_Q => 2,
+		QRConst::ERROR_CORRECT_LEVEL_H => 3,
+	];
+
+	/**
 	 * @param $typeNumber
 	 * @param $errorCorrectLevel
 	 *
@@ -110,16 +120,11 @@ class RSBlock{
 	 */
 	public function getRSBlocks($typeNumber, $errorCorrectLevel){
 
-		switch($errorCorrectLevel){
-			case QRConst::ERROR_CORRECT_LEVEL_L: $rsBlock = 0; break;
-			case QRConst::ERROR_CORRECT_LEVEL_M: $rsBlock = 1; break;
-			case QRConst::ERROR_CORRECT_LEVEL_Q: $rsBlock = 2; break;
-			case QRConst::ERROR_CORRECT_LEVEL_H: $rsBlock = 3; break;
-			default:
-				throw new QRCodeException('$typeNumber:'.$typeNumber.'/$errorCorrectLevel:'.$errorCorrectLevel);
+		if(!isset($this->RSBLOCK[$errorCorrectLevel])){
+			throw new QRCodeException('$typeNumber: '.$typeNumber.' / $errorCorrectLevel: '.$errorCorrectLevel.PHP_EOL.print_r($this->RSBLOCK, true));
 		}
 
-		$rsBlock = $this->BLOCK_TABLE[($typeNumber - 1) * 4 + $rsBlock];
+		$rsBlock = $this->BLOCK_TABLE[($typeNumber - 1) * 4 + $this->RSBLOCK[$errorCorrectLevel]];
 
 		$list = [];
 		$length = count($rsBlock) / 3;
@@ -135,6 +140,5 @@ class RSBlock{
 
 		return $list;
 	}
-
 
 }

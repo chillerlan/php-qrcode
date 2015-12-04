@@ -11,11 +11,6 @@
 
 namespace codemasher\QRCode;
 
-use codemasher\QRCode\Polynomial;
-use codemasher\QRCode\QRCode;
-use codemasher\QRCode\QRConst;
-use codemasher\QRCode\QRCodeException;
-
 /**
  * Class Util
  */
@@ -88,37 +83,45 @@ class Util{
 	];
 
 	/**
+	 * @var array
+	 */
+	protected $ERROR_CORRECT_LEVEL = [
+		QRConst::ERROR_CORRECT_LEVEL_L => 0,
+		QRConst::ERROR_CORRECT_LEVEL_M => 1,
+		QRConst::ERROR_CORRECT_LEVEL_Q => 2,
+		QRConst::ERROR_CORRECT_LEVEL_H => 3,
+	];
+
+	/**
+	 * @var array
+	 */
+	protected $MODE = [
+		QRConst::MODE_NUMBER => 0,
+		QRConst::MODE_ALPHANUM => 1,
+		QRConst::MODE_BYTE => 2,
+		QRConst::MODE_KANJI => 3,
+	];
+
+	/**
 	 * @param int $typeNumber
 	 * @param int $mode
-	 * @param int $errorCorrectLevel
+	 * @param int $ecLevel
 	 *
 	 * @return mixed
 	 * @throws \codemasher\QRCode\QRCodeException
 	 */
-	public function getMaxLength($typeNumber, $mode, $errorCorrectLevel){
-		$_type = $typeNumber - 1;
+	public function getMaxLength($typeNumber, $mode, $ecLevel){
 
-		switch($errorCorrectLevel){
-			case QRConst::ERROR_CORRECT_LEVEL_L: $_err = 0; break;
-			case QRConst::ERROR_CORRECT_LEVEL_M: $_err = 1; break;
-			case QRConst::ERROR_CORRECT_LEVEL_Q: $_err = 2; break;
-			case QRConst::ERROR_CORRECT_LEVEL_H: $_err = 3; break;
-			default:
-				throw new QRCodeException('$_err: '.$errorCorrectLevel);
+		if(!isset($this->ERROR_CORRECT_LEVEL[$ecLevel])){
+			throw new QRCodeException('$_err: '.$ecLevel);
 		}
 
-		switch($mode){
-			case QRConst::MODE_NUMBER   : $_mode = 0; break;
-			case QRConst::MODE_ALPHANUM: $_mode = 1; break;
-			case QRConst::MODE_BYTE: $_mode = 2; break;
-			case QRConst::MODE_KANJI    : $_mode = 3; break;
-			default :
-				throw new QRCodeException('$_mode: '.$mode);
+		if(!isset($this->MODE[$mode])){
+			throw new QRCodeException('$_mode: '.$mode);
 		}
 
-		return $this->MAX_LENGTH[$_type][$_err][$_mode];
+		return $this->MAX_LENGTH[$typeNumber - 1][$this->ERROR_CORRECT_LEVEL[$ecLevel]][$this->MODE[$mode]];
 	}
-
 
 	/**
 	 * @param $s
@@ -127,17 +130,11 @@ class Util{
 	 */
 	public function getMode($s){
 
-		if($this->isAlphaNum($s)){
-			if($this->isNumber($s)){
-				return QRConst::MODE_NUMBER;
-			}
-			return QRConst::MODE_ALPHANUM;
-		}
-		else if($this->isKanji($s)){
-			return QRConst::MODE_KANJI;
-		}
-		else{
-			return QRConst::MODE_BYTE;
+		switch(true){
+			case $this->isAlphaNum($s): return $this->isNumber($s) ? QRConst::MODE_NUMBER : QRConst::MODE_ALPHANUM;
+			case $this->isKanji($s)   : return QRConst::MODE_KANJI;
+			default:
+				return QRConst::MODE_BYTE;
 		}
 
 	}
@@ -262,9 +259,9 @@ class Util{
 	 */
 	public function hex2rgb($hex = 0x0){
 		return [
-				'r' => floor($hex / 65536),
-				'g' => floor($hex / 256) % 256,
-				'b' => $hex % 256,
+			'r' => floor($hex / 65536),
+			'g' => floor($hex / 256) % 256,
+			'b' => $hex % 256,
 		];
 	}
 

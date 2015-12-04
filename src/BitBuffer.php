@@ -29,7 +29,7 @@ class BitBuffer{
 	/**
 	 * @return string
 	 */
-	public function __toString(){
+/*	public function __toString(){
 		$buffer = '';
 
 		for($i = 0; $i < $this->length; $i++){
@@ -38,19 +38,26 @@ class BitBuffer{
 
 		return $buffer;
 	}
-
+*/
 	/**
 	 * @param $num
 	 * @param $length
+	 *
+	 * @return $this
 	 */
 	public function put($num, $length){
+
 		for($i = 0; $i < $length; $i++){
 			$this->putBit((($num >> ($length - $i - 1))&1) === 1);
 		}
+
+		return $this;
 	}
 
 	/**
 	 * @param $bit
+	 *
+	 * @return $this
 	 */
 	public function putBit($bit){
 		$bufIndex = floor($this->length / 8);
@@ -64,6 +71,8 @@ class BitBuffer{
 		}
 
 		$this->length++;
+
+		return $this;
 	}
 
 }

@@ -4,7 +4,7 @@
  *
  * @filesource   Byte.php
  * @created      25.11.2015
- * @package      codemasher\QRCode
+ * @package      codemasher\QRCode\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
@@ -14,9 +14,6 @@ namespace codemasher\QRCode\Data;
 
 use codemasher\QRCode\BitBuffer;
 use codemasher\QRCode\QRConst;
-use codemasher\QRCode\Data\QRDataBase;
-use codemasher\QRCode\Data\QRDataInterface;
-
 
 /**
  *

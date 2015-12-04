@@ -31,5 +31,5 @@ echo '<style>
 </style>';
 
 // google authenticator
-$qr = (new QRCode)->getMinimumQRCode('otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net', QRConst::ERROR_CORRECT_LEVEL_M);
+$qr = new QRCode('otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net', QRConst::ERROR_CORRECT_LEVEL_M);
 echo $qr->printHTML();

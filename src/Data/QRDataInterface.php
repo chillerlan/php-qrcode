@@ -4,6 +4,7 @@
  *
  * @filesource   QRDataInterface.php
  * @created      01.12.2015
+ * @package      codemasher\QRCode\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT

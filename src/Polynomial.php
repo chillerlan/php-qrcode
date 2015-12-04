@@ -38,8 +38,7 @@ class Polynomial{
 	 * @param int   $shift
 	 */
 	public function __construct(array $num = [1], $shift = 0){
-		$this->setNum($num, $shift)
-		     ->setTables();
+		$this->setNum($num, $shift)->setTables();
 	}
 
 	/**
@@ -56,10 +55,7 @@ class Polynomial{
 			$offset++;
 		}
 
-		$this->num = [];
-		for($i = 0; $i < $numCount - $offset + $shift; $i++){
-			$this->num[] = 0;
-		}
+		$this->num = array_fill(0, $numCount - $offset + $shift, 0);
 
 		for($i = 0; $i < $numCount - $offset; $i++){
 			$this->num[$i] = $num[$i + $offset];
@@ -72,12 +68,8 @@ class Polynomial{
 	 * @return $this
 	 */
 	protected function setTables(){
-		$numArr = [];
-		for($i = 0; $i < 256; $i++){
-			$numArr[] = 0;
-		}
 
-		$this->EXP_TABLE = $this->LOG_TABLE = $numArr;
+		$this->EXP_TABLE = $this->LOG_TABLE = array_fill(0, 256, 0);
 
 		for($i = 0; $i < 8; $i++){
 			$this->EXP_TABLE[$i] = 1 << $i;
@@ -97,7 +89,7 @@ class Polynomial{
 	/**
 	 * @return string
 	 */
-	public function __toString(){
+/*	public function __toString(){
 		$buffer = '';
 
 		foreach($this->num as $i => $value){
@@ -109,11 +101,11 @@ class Polynomial{
 
 		return $buffer;
 	}
-
+*/
 	/**
 	 * @return string
 	 */
-	public function toLogString(){
+/*	public function toLogString(){
 		$buffer = '';
 
 		foreach($this->num as $i => $value){
@@ -125,7 +117,7 @@ class Polynomial{
 
 		return $buffer;
 	}
-
+*/
 	/**
 	 * @param array $e
 	 *
@@ -133,12 +125,7 @@ class Polynomial{
 	 */
 	public function multiply(array $e){
 
-		$num = [];
-		$len = count($this->num) + count($e) - 1;
-		for($i = 0; $i < $len; $i++){
-			$num[] = 0;
-		}
-
+		$num = array_fill(0, count($this->num) + count($e) - 1, 0);
 		foreach($this->num as $i => $vi){
 			foreach($e as $j => $vj){
 				$num[$i + $j] ^= $this->gexp($this->glog($vi) + $this->glog($vj));
@@ -156,28 +143,19 @@ class Polynomial{
 	 * @return $this
 	 */
 	public function mod($e){
-#		$starttime = microtime(true);
 
 		if(count($this->num) - count($e) < 0){
 			return $this;
 		}
 
 		$ratio = $this->glog($this->num[0]) - $this->glog($e[0]);
-
-		$num = [];
-		foreach($this->num as $i => $value){
-			$num[$i] = $value;
-		}
-
 		foreach($e as $i => $value){
-			$num[$i] ^= $this->gexp($this->glog($e[$i]) + $ratio);
+			$this->num[$i] ^= $this->gexp($this->glog($e[$i]) + $ratio);
 		}
 
-		$this->setNum($num)->mod($e);
+		$this->setNum($this->num)->mod($e);
 
-#		echo 'Polynomial::mod '.round((microtime(true)-$starttime), 5).PHP_EOL;
-
-		return $num;
+		return $this->num;
 	}
 
 	/**
@@ -202,12 +180,9 @@ class Polynomial{
 	 */
 	public function gexp($n){
 
-		while($n < 0){
-			$n += 255;
-		}
-
-		while($n >= 256){
-			$n -= 255;
+		switch(true){
+			case $n < 0   : $n += 255; break;
+			case $n >= 256: $n -= 255; break;
 		}
 
 		return $this->EXP_TABLE[$n];
