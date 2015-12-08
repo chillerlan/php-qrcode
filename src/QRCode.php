@@ -12,8 +12,6 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\QRCode\Data\QRDataInterface;
-
 /**
  * @link https://github.com/kazuhikoarase/qrcode-generator/tree/master/php
  */
@@ -22,17 +20,12 @@ class QRCode{
 	/**
 	 * @var int
 	 */
-	public $pixelCount;
+	public $pixelCount = 0;
 
 	/**
 	 * @var array
 	 */
-	public $matrix;
-
-	/**
-	 * @var int
-	 */
-	protected $mode;
+	public $matrix = [];
 
 	/**
 	 * @var int
@@ -57,80 +50,64 @@ class QRCode{
 	/**
 	 * QRCode constructor.
 	 *
-	 * @param string $data
-	 * @param int    $errorCorrectLevel
-	 * @param int    $typeNumber
+	 * @param string                       $data
+	 * @param \chillerlan\QRCode\QROptions $options
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function __construct($data = '', $errorCorrectLevel = QRConst::ERROR_CORRECT_LEVEL_M, $typeNumber = null){
+	public function __construct($data = null, QROptions $options = null){
 		$this->bitBuffer = new BitBuffer;
 
-		if(!empty($data)){
-			$this->getQRCode($data, $errorCorrectLevel, $typeNumber);
+		if($data){
+
+			if(!$options instanceof QROptions){
+				$options = new QROptions;
+			}
+
+			$this->setOptions($options, $data);
 		}
 
 	}
 
 	/**
-	 * @param string $data
+	 * @param \chillerlan\QRCode\QROptions $options
+	 * @param string                       $data
 	 *
 	 * @return $this
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function setData($data){
-		$data = trim((string)$data);
+	public function setOptions(QROptions $options, $data){
+		$data = trim($data);
 
 		if(empty($data)){
 			throw new QRCodeException('No data given.');
 		}
 
-		$this->mode = Util::getMode($data);
+		if(!array_key_exists($options->errorCorrectLevel, QRConst::RSBLOCK)){
+			throw new QRCodeException('Invalid error correct level: '.$options->errorCorrectLevel);
+		}
+
+		$mode = Util::getMode($data);
 
 		$qrDataInterface = __NAMESPACE__.'\\Data\\'.[
 			QRConst::MODE_ALPHANUM => 'AlphaNum',
 			QRConst::MODE_BYTE     => 'Byte',
 			QRConst::MODE_KANJI    => 'Kanji',
 			QRConst::MODE_NUMBER   => 'Number',
-		][$this->mode];
+		][$mode];
 
+		$this->errorCorrectLevel = $options->errorCorrectLevel;
+		$this->typeNumber = intval($options->typeNumber);
 		$this->qrDataInterface = new $qrDataInterface($data);
 
-		return $this;
-	}
-
-	/**
-	 * @param int $errorCorrectLevel
-	 *
-	 * @return $this
-	 * @throws \chillerlan\QRCode\QRCodeException
-	 */
-	public function setErrorCorrectLevel($errorCorrectLevel){
-
-		if(!array_key_exists($errorCorrectLevel, QRConst::RSBLOCK)){
-			throw new QRCodeException('Invalid error correct level: '.$errorCorrectLevel);
-		}
-
-		$this->errorCorrectLevel = $errorCorrectLevel;
-
-		return $this;
-	}
-
-	/**
-	 * @param int $typeNumber
-	 *
-	 * @return $this
-	 * @throws \chillerlan\QRCode\QRCodeException
-	 */
-	public function setQRType($typeNumber){
-		$this->typeNumber = intval($typeNumber);
-
 		if($this->typeNumber < 1 || $this->typeNumber > 10){
-
-			$length = $this->qrDataInterface->mode === QRConst::MODE_KANJI ? floor($this->qrDataInterface->dataLength / 2) : $this->qrDataInterface->dataLength;
+			/** @noinspection PhpUndefinedFieldInspection */
+			$length = $this->qrDataInterface->mode === QRConst::MODE_KANJI
+				? floor($this->qrDataInterface->dataLength / 2)
+				: $this->qrDataInterface->dataLength;
 
 			for($type = 1; $type <= 10; $type++){
-				if($length <= Util::getMaxLength($type, $this->mode, $this->errorCorrectLevel)){
+				if($length <= Util::getMaxLength($type, $mode, $this->errorCorrectLevel)){
 					$this->typeNumber = $type;
 
 					return $this;
@@ -143,31 +120,9 @@ class QRCode{
 	}
 
 	/**
-	 * @param string $data
-	 * @param int    $errorCorrectLevel
-	 * @param int    $typeNumber
-	 *
-	 * @return $this
-	 * @throws \chillerlan\QRCode\QRCodeException
-	 */
-	public function getQRCode($data, $errorCorrectLevel = QRConst::ERROR_CORRECT_LEVEL_M, $typeNumber = null){
-
-		$this
-		     ->setData($data)
-		     ->setErrorCorrectLevel($errorCorrectLevel)
-		     ->setQRType($typeNumber)
-		     ->getRawData()
-		;
-
-		return $this;
-	}
-
-	/**
 	 * @return $this
 	 */
 	public function getRawData(){
-
-		// getLostPoint
 		$minLostPoint = 0;
 		$pattern = 0;
 
@@ -504,7 +459,9 @@ class QRCode{
 		$MAX_BITS = QRConst::MAX_BITS; // php5 compat
 		$MAX_BITS = $MAX_BITS[$this->typeNumber][$this->errorCorrectLevel];
 
+		/** @noinspection PhpUndefinedFieldInspection */
 		$this->bitBuffer->put($this->qrDataInterface->mode, 4);
+		/** @noinspection PhpUndefinedFieldInspection */
 		$this->bitBuffer->put(
 			$this->qrDataInterface->mode === QRConst::MODE_KANJI ? floor($this->qrDataInterface->dataLength / 2) : $this->qrDataInterface->dataLength,
 			$this->qrDataInterface->getLengthInBits($this->typeNumber)
