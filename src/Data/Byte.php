@@ -4,16 +4,16 @@
  *
  * @filesource   Byte.php
  * @created      25.11.2015
- * @package      codemasher\QRCode\Data
+ * @package      chillerlan\QRCode\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace codemasher\QRCode\Data;
+namespace chillerlan\QRCode\Data;
 
-use codemasher\QRCode\BitBuffer;
-use codemasher\QRCode\QRConst;
+use chillerlan\QRCode\BitBuffer;
+use chillerlan\QRCode\QRConst;
 
 /**
  *
@@ -21,7 +21,7 @@ use codemasher\QRCode\QRConst;
 class Byte extends QRDataBase implements QRDataInterface{
 
 	/**
-	 * @var
+	 * @var int
 	 */
 	public $mode = QRConst::MODE_BYTE;
 
@@ -31,7 +31,7 @@ class Byte extends QRDataBase implements QRDataInterface{
 	protected $lengthBits = [8, 16, 16];
 
 	/**
-	 * @param $buffer
+	 * @param \chillerlan\QRCode\BitBuffer $buffer
 	 */
 	public function write(BitBuffer &$buffer){
 		for($i = 0; $i < $this->dataLength; $i++){

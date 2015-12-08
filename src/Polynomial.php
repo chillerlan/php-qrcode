@@ -1,18 +1,19 @@
 <?php
 /**
+ * Class Polynomial
  *
  * @filesource   Polynomial.php
  * @created      25.11.2015
- * @package      codemasher\QRCode
+ * @package      chillerlan\QRCode
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace codemasher\QRCode;
+namespace chillerlan\QRCode;
 
 /**
- * Class Polynomial
+ *
  */
 class Polynomial{
 
@@ -65,10 +66,9 @@ class Polynomial{
 	}
 
 	/**
-	 * @return $this
+	 *
 	 */
 	protected function setTables(){
-
 		$this->EXP_TABLE = $this->LOG_TABLE = array_fill(0, 256, 0);
 
 		for($i = 0; $i < 8; $i++){
@@ -83,86 +83,46 @@ class Polynomial{
 			$this->LOG_TABLE[$this->EXP_TABLE[$i]] = $i;
 		}
 
-		return $this;
 	}
 
-	/**
-	 * @return string
-	 */
-/*	public function __toString(){
-		$buffer = '';
-
-		foreach($this->num as $i => $value){
-			if($i > 0){
-				$buffer .= ',';
-			}
-			$buffer .= $value;
-		}
-
-		return $buffer;
-	}
-*/
-	/**
-	 * @return string
-	 */
-/*	public function toLogString(){
-		$buffer = '';
-
-		foreach($this->num as $i => $value){
-			if($i > 0){
-				$buffer .= ',';
-			}
-			$buffer .= $this->glog($value);
-		}
-
-		return $buffer;
-	}
-*/
 	/**
 	 * @param array $e
-	 *
-	 * @return $this
 	 */
 	public function multiply(array $e){
+		$n = array_fill(0, count($this->num) + count($e) - 1, 0);
 
-		$num = array_fill(0, count($this->num) + count($e) - 1, 0);
-		foreach($this->num as $i => $vi){
-			foreach($e as $j => $vj){
-				$num[$i + $j] ^= $this->gexp($this->glog($vi) + $this->glog($vj));
+		foreach($this->num as $i => &$vi){
+			foreach($e as $j => &$vj){
+				$n[$i + $j] ^= $this->gexp($this->glog($vi) + $this->glog($vj));
 			}
 		}
 
-		$this->setNum($num);
-
-		return $this;
+		$this->setNum($n);
 	}
 
 	/**
 	 * @param array $e
-	 *
-	 * @return $this
 	 */
-	public function mod($e){
+	public function mod(array $e){
+		$n = $this->num;
 
-		if(count($this->num) - count($e) < 0){
-			return $this;
+		if(count($n) - count($e) < 0){
+			return;
 		}
 
-		$ratio = $this->glog($this->num[0]) - $this->glog($e[0]);
-		foreach($e as $i => $value){
-			$this->num[$i] ^= $this->gexp($this->glog($e[$i]) + $ratio);
+		$ratio = $this->glog($n[0]) - $this->glog($e[0]);
+		foreach($e as $i => &$v){
+			$n[$i] ^= $this->gexp($this->glog($v) + $ratio);
 		}
 
-		$this->setNum($this->num)->mod($e);
-
-		return $this->num;
+		$this->setNum($n)->mod($e);
 	}
 
 	/**
 	 * @param int $n
 	 *
-	 * @return mixed
-	 * @throws \codemasher\QRCode\QRCodeException
+	 * @return int
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public function glog($n){
 
@@ -176,7 +136,7 @@ class Polynomial{
 	/**
 	 * @param int $n
 	 *
-	 * @return mixed
+	 * @return int
 	 */
 	public function gexp($n){
 

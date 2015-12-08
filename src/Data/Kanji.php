@@ -4,17 +4,17 @@
  *
  * @filesource   Kanji.php
  * @created      25.11.2015
- * @package      codemasher\QRCode\Data
+ * @package      chillerlan\QRCode\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace codemasher\QRCode\Data;
+namespace chillerlan\QRCode\Data;
 
-use codemasher\QRCode\BitBuffer;
-use codemasher\QRCode\QRCodeException;
-use codemasher\QRCode\QRConst;
+use chillerlan\QRCode\BitBuffer;
+use chillerlan\QRCode\QRCodeException;
+use chillerlan\QRCode\QRConst;
 
 /**
  *
@@ -22,7 +22,7 @@ use codemasher\QRCode\QRConst;
 class Kanji extends QRDataBase implements QRDataInterface{
 
 	/**
-	 * @var
+	 * @var int
 	 */
 	public $mode = QRConst::MODE_KANJI;
 
@@ -32,9 +32,9 @@ class Kanji extends QRDataBase implements QRDataInterface{
 	protected $lengthBits = [8, 10, 12];
 
 	/**
-	 * @param $buffer
+	 * @param \chillerlan\QRCode\BitBuffer $buffer
 	 *
-	 * @throws \codemasher\QRCode\QRCodeException
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public function write(BitBuffer &$buffer){
 
@@ -52,8 +52,7 @@ class Kanji extends QRDataBase implements QRDataInterface{
 				throw new QRCodeException('illegal char at '.($i + 1).' ('.$c.')');
 			}
 
-			$c = (($c >> 8)&0xff) * 0xC0 + ($c&0xff);
-			$buffer->put($c, 13);
+			$buffer->put((($c >> 8)&0xff) * 0xC0 + ($c&0xff), 13);
 			$i += 2;
 		}
 

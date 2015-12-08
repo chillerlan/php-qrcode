@@ -1,18 +1,19 @@
 <?php
 /**
+ * Class BitBuffer
  *
  * @filesource   BitBuffer.php
  * @created      25.11.2015
- * @package      codemasher\QRCode
+ * @package      chillerlan\QRCode
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace codemasher\QRCode;
+namespace chillerlan\QRCode;
 
 /**
- * Class BitBuffer
+ *
  */
 class BitBuffer{
 
@@ -27,35 +28,29 @@ class BitBuffer{
 	public $length = 0;
 
 	/**
-	 * @return string
+	 *
 	 */
-/*	public function __toString(){
-		$buffer = '';
-
-		for($i = 0; $i < $this->length; $i++){
-			$buffer .= (string)(int)(($this->buffer[(int)floor($i / 8)] >> (7 - $i % 8))&1) === 1;
-		}
-
-		return $buffer;
+	public function clear(){
+		$this->buffer = [];
+		$this->length = 0;
 	}
-*/
+
 	/**
-	 * @param $num
-	 * @param $length
+	 * @param int $num
+	 * @param int $length
 	 *
 	 * @return $this
 	 */
 	public function put($num, $length){
 
 		for($i = 0; $i < $length; $i++){
-			$this->putBit((($num >> ($length - $i - 1))&1) === 1);
+			$this->putBit(($num >> ($length - $i - 1))&1 === 1);
 		}
 
-		return $this;
 	}
 
 	/**
-	 * @param $bit
+	 * @param bool $bit
 	 *
 	 * @return $this
 	 */
@@ -71,8 +66,6 @@ class BitBuffer{
 		}
 
 		$this->length++;
-
-		return $this;
 	}
 
 }

@@ -4,26 +4,20 @@
  *
  * @filesource   QRDataBase.php
  * @created      25.11.2015
- * @package      codemasher\QRCode\Data
+ * @package      chillerlan\QRCode\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace codemasher\QRCode\Data;
+namespace chillerlan\QRCode\Data;
 
-use codemasher\QRCode\BitBuffer;
-use codemasher\QRCode\QRCodeException;
+use chillerlan\QRCode\QRCodeException;
 
 /**
  *
  */
-class QRDataBase implements QRDataInterface{
-
-	/**
-	 * @var
-	 */
-	public $mode;
+class QRDataBase{
 
 	/**
 	 * @var string
@@ -43,7 +37,7 @@ class QRDataBase implements QRDataInterface{
 	/**
 	 * QRDataBase constructor.
 	 *
-	 * @param $data
+	 * @param string $data
 	 */
 	public function __construct($data){
 		$this->data = $data;
@@ -51,32 +45,21 @@ class QRDataBase implements QRDataInterface{
 	}
 
 	/**
-	 * @param $type
+	 * @param int $type
 	 *
 	 * @return int
-	 * @throws \codemasher\QRCode\QRCodeException
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public function getLengthInBits($type){
 
 		switch(true){
-			case $type >= 1 && $type <= 9: return $this->lengthBits[0]; // 1 - 9
-			case $type <= 26             : return $this->lengthBits[1]; // 10 - 26
-			case $type <= 40             : return $this->lengthBits[2]; // 27 - 40
+			case $type >=  1 && $type <= 9: return $this->lengthBits[0]; //  1 -  9
+			case $type <= 26              : return $this->lengthBits[1]; // 10 - 26
+			case $type <= 40              : return $this->lengthBits[2]; // 27 - 40
 			default:
 				throw new QRCodeException('$type: '.$type);
 		}
 
-	}
-
-	/**
-	 * @todo  Implement write() method.
-	 *
-	 * @param \codemasher\QRCode\BitBuffer $buffer
-	 *
-	 * @throws \codemasher\QRCode\QRCodeException
-	 */
-	public function write(BitBuffer &$buffer){
-		throw new QRCodeException('Method should be implemented in child classes');
 	}
 
 }

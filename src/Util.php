@@ -1,138 +1,85 @@
 <?php
 /**
+ * Class Util
  *
  * @filesource   Util.php
  * @created      25.11.2015
- * @package      codemasher\QRCode
+ * @package      chillerlan\QRCode
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace codemasher\QRCode;
+namespace chillerlan\QRCode;
 
 /**
- * Class Util
+ *
  */
 class Util{
 
-	const QR_G15 = (1 << 10)|(1 << 8)|(1 << 5)|(1 << 4)|(1 << 2)|(1 << 1)|(1 << 0);
-	const QR_G18 = (1 << 12)|(1 << 11)|(1 << 10)|(1 << 9)|(1 << 8)|(1 << 5)|(1 << 2)|(1 << 0);
-	const QR_G15_MASK = (1 << 14)|(1 << 12)|(1 << 10)|(1 << 4)|(1 << 1);
-
 	/**
-	 * @var array
+	 * @param int $typeNumber
+	 * @param int $errorCorrectLevel
+	 *
+	 * @return array
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public $MAX_LENGTH = [
-		[[41, 25, 17, 10], [34, 20, 14, 8], [27, 16, 11, 7], [17, 10, 7, 4]],
-		[[77, 47, 32, 20], [63, 38, 26, 16], [48, 29, 20, 12], [34, 20, 14, 8]],
-		[[127, 77, 53, 32], [101, 61, 42, 26], [77, 47, 32, 20], [58, 35, 24, 15]],
-		[[187, 114, 78, 48], [149, 90, 62, 38], [111, 67, 46, 28], [82, 50, 34, 21]],
-		[[255, 154, 106, 65], [202, 122, 84, 52], [144, 87, 60, 37], [106, 64, 44, 27]],
-		[[322, 195, 134, 82], [255, 154, 106, 65], [178, 108, 74, 45], [139, 84, 58, 36]],
-		[[370, 224, 154, 95], [293, 178, 122, 75], [207, 125, 86, 53], [154, 93, 64, 39]],
-		[[461, 279, 192, 118], [365, 221, 152, 93], [259, 157, 108, 66], [202, 122, 84, 52]],
-		[[552, 335, 230, 141], [432, 262, 180, 111], [312, 189, 130, 80], [235, 143, 98, 60]],
-		[[652, 395, 271, 167], [513, 311, 213, 131], [364, 221, 151, 93], [288, 174, 119, 74]],
-	];
+	public static function getRSBlocks($typeNumber, $errorCorrectLevel){
+		// PHP5 compat
+		$RSBLOCK = QRConst::RSBLOCK;
+		$BLOCK_TABLE = QRConst::BLOCK_TABLE;
 
-	/**
-	 * @var array
-	 */
-	public $PATTERN_POSITION = [
-		[],
-		[6, 18],
-		[6, 22],
-		[6, 26],
-		[6, 30],
-		[6, 34],
-		[6, 22, 38],
-		[6, 24, 42],
-		[6, 26, 46],
-		[6, 28, 50],
-		[6, 30, 54],
-		[6, 32, 58],
-		[6, 34, 62],
-		[6, 26, 46, 66],
-		[6, 26, 48, 70],
-		[6, 26, 50, 74],
-		[6, 30, 54, 78],
-		[6, 30, 56, 82],
-		[6, 30, 58, 86],
-		[6, 34, 62, 90],
-		[6, 28, 50, 72, 94],
-		[6, 26, 50, 74, 98],
-		[6, 30, 54, 78, 102],
-		[6, 28, 54, 80, 106],
-		[6, 32, 58, 84, 110],
-		[6, 30, 58, 86, 114],
-		[6, 34, 62, 90, 118],
-		[6, 26, 50, 74, 98, 122],
-		[6, 30, 54, 78, 102, 126],
-		[6, 26, 52, 78, 104, 130],
-		[6, 30, 56, 82, 108, 134],
-		[6, 34, 60, 86, 112, 138],
-		[6, 30, 58, 86, 114, 142],
-		[6, 34, 62, 90, 118, 146],
-		[6, 30, 54, 78, 102, 126, 150],
-		[6, 24, 50, 76, 102, 128, 154],
-		[6, 28, 54, 80, 106, 132, 158],
-		[6, 32, 58, 84, 110, 136, 162],
-		[6, 26, 54, 82, 110, 138, 166],
-		[6, 30, 58, 86, 114, 142, 170],
-	];
+		if(!isset($RSBLOCK[$errorCorrectLevel])){
+			throw new QRCodeException('$typeNumber: '.$typeNumber.' / $errorCorrectLevel: '.$errorCorrectLevel.PHP_EOL.print_r($RSBLOCK, true));
+		}
 
-	/**
-	 * @var array
-	 */
-	protected $ERROR_CORRECT_LEVEL = [
-		QRConst::ERROR_CORRECT_LEVEL_L => 0,
-		QRConst::ERROR_CORRECT_LEVEL_M => 1,
-		QRConst::ERROR_CORRECT_LEVEL_Q => 2,
-		QRConst::ERROR_CORRECT_LEVEL_H => 3,
-	];
+		$rsBlock = $BLOCK_TABLE[($typeNumber - 1) * 4 + $RSBLOCK[$errorCorrectLevel]];
 
-	/**
-	 * @var array
-	 */
-	protected $MODE = [
-		QRConst::MODE_NUMBER => 0,
-		QRConst::MODE_ALPHANUM => 1,
-		QRConst::MODE_BYTE => 2,
-		QRConst::MODE_KANJI => 3,
-	];
+		$list = [];
+		$length = count($rsBlock) / 3;
+		for($i = 0; $i < $length; $i++){
+			for($j = 0; $j < $rsBlock[$i * 3 + 0]; $j++){
+				$list[] = [$rsBlock[$i * 3 + 1], $rsBlock[$i * 3 + 2]];
+			}
+		}
+
+		return $list;
+	}
 
 	/**
 	 * @param int $typeNumber
 	 * @param int $mode
 	 * @param int $ecLevel
 	 *
-	 * @return mixed
-	 * @throws \codemasher\QRCode\QRCodeException
+	 * @return int
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function getMaxLength($typeNumber, $mode, $ecLevel){
+	public static function getMaxLength($typeNumber, $mode, $ecLevel){
+		$RSBLOCK = QRConst::RSBLOCK;
+		$MAX_LENGTH = QRConst::MAX_LENGTH;
+		$MODE = QRConst::MODE;
 
-		if(!isset($this->ERROR_CORRECT_LEVEL[$ecLevel])){
+		if(!isset($RSBLOCK[$ecLevel])){
 			throw new QRCodeException('$_err: '.$ecLevel);
 		}
 
-		if(!isset($this->MODE[$mode])){
+		if(!isset($MODE[$mode])){
 			throw new QRCodeException('$_mode: '.$mode);
 		}
 
-		return $this->MAX_LENGTH[$typeNumber - 1][$this->ERROR_CORRECT_LEVEL[$ecLevel]][$this->MODE[$mode]];
+		return $MAX_LENGTH[$typeNumber - 1][$RSBLOCK[$ecLevel]][$MODE[$mode]];
 	}
 
 	/**
-	 * @param $s
+	 * @param string $s
 	 *
 	 * @return int
 	 */
-	public function getMode($s){
+	public static function getMode($s){
 
 		switch(true){
-			case $this->isAlphaNum($s): return $this->isNumber($s) ? QRConst::MODE_NUMBER : QRConst::MODE_ALPHANUM;
-			case $this->isKanji($s)   : return QRConst::MODE_KANJI;
+			case self::isAlphaNum($s): return self::isNumber($s) ? QRConst::MODE_NUMBER : QRConst::MODE_ALPHANUM;
+			case self::isKanji($s)   : return QRConst::MODE_KANJI;
 			default:
 				return QRConst::MODE_BYTE;
 		}
@@ -140,11 +87,11 @@ class Util{
 	}
 
 	/**
-	 * @param $s
+	 * @param string $s
 	 *
 	 * @return bool
 	 */
-	protected function isNumber($s){
+	protected static function isNumber($s){
 
 		$len = strlen($s);
 		for($i = 0; $i < $len; $i++){
@@ -159,11 +106,11 @@ class Util{
 	}
 
 	/**
-	 * @param $s
+	 * @param string $s
 	 *
 	 * @return bool
 	 */
-	protected function isAlphaNum($s){
+	protected static function isAlphaNum($s){
 
 		$len = strlen($s);
 		for($i = 0; $i < $len; $i++){
@@ -178,11 +125,11 @@ class Util{
 	}
 
 	/**
-	 * @param $s
+	 * @param string $s
 	 *
 	 * @return bool
 	 */
-	protected function isKanji($s){
+	protected static function isKanji($s){
 
 		$i = 0;
 		$len = strlen($s);
@@ -204,41 +151,41 @@ class Util{
 	}
 
 	/**
-	 * @param $data
+	 * @param int $data
 	 *
 	 * @return int
 	 */
-	public function getBCHTypeInfo($data){
+	public static function getBCHTypeInfo($data){
 		$d = $data << 10;
 
-		while($this->getBCHDigit($d) - $this->getBCHDigit(self::QR_G15) >= 0){
-			$d ^= (self::QR_G15 << ($this->getBCHDigit($d) - $this->getBCHDigit(self::QR_G15)));
+		while(self::getBCHDigit($d) - self::getBCHDigit(QRConst::G15) >= 0){
+			$d ^= (QRConst::G15 << (self::getBCHDigit($d) - self::getBCHDigit(QRConst::G15)));
 		}
 
-		return (($data << 10)|$d)^self::QR_G15_MASK;
+		return (($data << 10)|$d)^QRConst::G15_MASK;
 	}
 
 	/**
-	 * @param $data
+	 * @param int $data
 	 *
 	 * @return int
 	 */
-	public function getBCHTypeNumber($data){
+	public static function getBCHTypeNumber($data){
 		$d = $data << 12;
 
-		while($this->getBCHDigit($d) - $this->getBCHDigit(self::QR_G18) >= 0){
-			$d ^= (self::QR_G18 << ($this->getBCHDigit($d) - $this->getBCHDigit(self::QR_G18)));
+		while(self::getBCHDigit($d) - self::getBCHDigit(QRConst::G18) >= 0){
+			$d ^= (QRConst::G18 << (self::getBCHDigit($d) - self::getBCHDigit(QRConst::G18)));
 		}
 
 		return ($data << 12)|$d;
 	}
 
 	/**
-	 * @param $data
+	 * @param int $data
 	 *
 	 * @return int
 	 */
-	public function getBCHDigit($data){
+	public static function getBCHDigit($data){
 		$digit = 0;
 
 		while($data !== 0){
@@ -249,7 +196,6 @@ class Util{
 		return $digit;
 	}
 
-
 	/**
 	 * used for converting fg/bg colors (e.g. #0000ff = 0x0000FF) - added 2015.07.27 ~ DoktorJ
 	 *
@@ -257,12 +203,62 @@ class Util{
 	 *
 	 * @return array
 	 */
-	public function hex2rgb($hex = 0x0){
+	public static function hex2rgb($hex = 0x0){
 		return [
-			'r' => floor($hex / 65536),
-			'g' => floor($hex / 256) % 256,
-			'b' => $hex % 256,
+			'r' => (int)floor($hex / 65536),
+			'g' => (int)floor($hex / 256) % 256,
+			'b' => (int)$hex % 256,
 		];
+	}
+
+	/**
+	 * @param string $c
+	 *
+	 * @return int
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	public static function getCharCode($c){
+		$c = ord($c);
+
+		switch(true){
+			case ord('0') <= $c && $c <= ord('9'): return $c - ord('0');
+			case ord('A') <= $c && $c <= ord('Z'): return $c - ord('A') + 10;
+			default:
+				foreach(QRConst::CHAR_MAP as $i => $char){
+					if(ord($char) === $c){
+						return $i;
+					}
+				}
+		}
+
+		throw new QRCodeException('illegal char: '.$c);
+	}
+
+	/**
+	 * @param string $string
+	 *
+	 * @return int
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	public static function parseInt($string){
+		$num = 0;
+
+		$len = strlen($string);
+		for($i = 0; $i < $len; $i++){
+			$c = ord($string[$i]);
+			$ord0 = ord('0');
+
+			if($ord0 <= $c && $c <= ord('9')){
+				$c = $c - $ord0;
+			}
+			else{
+				throw new QRCodeException('illegal char: '.$c);
+			}
+
+			$num = $num * 10 + $c;
+		}
+
+		return $num;
 	}
 
 }

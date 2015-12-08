@@ -4,15 +4,15 @@
  *
  * @filesource   QRDataInterface.php
  * @created      01.12.2015
- * @package      codemasher\QRCode\Data
+ * @package      chillerlan\QRCode\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace codemasher\QRCode\Data;
+namespace chillerlan\QRCode\Data;
 
-use codemasher\QRCode\BitBuffer;
+use chillerlan\QRCode\BitBuffer;
 
 /**
  *
@@ -20,7 +20,7 @@ use codemasher\QRCode\BitBuffer;
 interface QRDataInterface{
 
 	/**
-	 * @param \codemasher\QRCode\BitBuffer $buffer
+	 * @param \chillerlan\QRCode\BitBuffer $buffer
 	 */
 	public function write(BitBuffer &$buffer);
 
@@ -28,7 +28,7 @@ interface QRDataInterface{
 	 * @param $type
 	 *
 	 * @return int
-	 * @throws \codemasher\QRCode\QRCodeException
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public function getLengthInBits($type);
 
