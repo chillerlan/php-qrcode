@@ -57,10 +57,13 @@ class QRString extends QROutputBase implements QROutputInterface{
 	public function toText(){
 		$text = '';
 
-		for($row = 0; $row < $this->pixelCount ; $row++){
-			for($col = 0; $col < $this->pixelCount; $col++){
-				$text .= $this->matrix[$row][$col] ? $this->options->textDark : $this->options->textLight;
+		foreach($this->matrix as &$row){
+			foreach($row as &$col){
+				$text .= $col
+					? $this->options->textDark
+					: $this->options->textLight;
 			}
+
 			$text .= $this->options->textNewline;
 		}
 
@@ -80,18 +83,20 @@ class QRString extends QROutputBase implements QROutputInterface{
 	public function toHTML(){
 		$html = '';
 
-		for($row = 0; $row < $this->pixelCount; $row++){
+		foreach($this->matrix as &$row){
+			// in order to not bloat the output too much, we use the shortest possible valid HTML tags
 			$html .= '<p>';
-
-			for($col = 0; $col < $this->pixelCount; $col++){
-				$tag = $this->matrix[$row][$col]
+			foreach($row as &$col){
+				$tag = $col
 					? 'b'  // dark
 					: 'i'; // light
 
 				$html .= '<'.$tag.'></'.$tag.'>';
 			}
 
-			$html .= '</p>'.PHP_EOL;
+			// the closing <p> tag may be omitted
+#			$html .= '</p>';
+			$html .= PHP_EOL;
 		}
 
 		return $html;
