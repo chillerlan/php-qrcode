@@ -2,14 +2,18 @@
 
 require_once '../vendor/autoload.php';
 
-use codemasher\QRCode\QRCode;
-use codemasher\QRCode\QRConst;
+use chillerlan\QRCode\Output\QRImage;
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QRConst;
+use chillerlan\QRCode\QROptions;
 
-// google authenticator
-$qr = new QRCode('otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net', QRConst::ERROR_CORRECT_LEVEL_L);
+$qrOptions = new QROptions;
+$qrOptions->output = new QRImage();
+
+$qr =  new QRCode('https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s', $qrOptions);
 
 header('Content-type: image/png');
 
-$im = $qr->createImage(5, 5);
+$im = $qr->output();
 imagepng($im);
 imagedestroy($im);
