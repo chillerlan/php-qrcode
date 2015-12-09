@@ -28,7 +28,7 @@ interface QRDataInterface{
 	 * @param $type
 	 *
 	 * @return int
-	 * @throws \chillerlan\QRCode\QRCodeException
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function getLengthInBits($type);
 

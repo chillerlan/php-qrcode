@@ -12,8 +12,6 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\QRCodeException;
-
 /**
  *
  */
@@ -48,7 +46,7 @@ class QRDataBase{
 	 * @param int $type
 	 *
 	 * @return int
-	 * @throws \chillerlan\QRCode\QRCodeException
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function getLengthInBits($type){
 
@@ -57,7 +55,7 @@ class QRDataBase{
 			case $type <= 26              : return $this->lengthBits[1]; // 10 - 26
 			case $type <= 40              : return $this->lengthBits[2]; // 27 - 40
 			default:
-				throw new QRCodeException('$type: '.$type);
+				throw new QRCodeDataException('$type: '.$type);
 		}
 
 	}
