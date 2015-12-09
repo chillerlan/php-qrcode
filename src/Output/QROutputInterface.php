@@ -4,17 +4,31 @@
  *
  * @filesource   QROutputInterface.php
  * @created      02.12.2015
- * @package      codemasher\QRCode\Output
+ * @package      chillerlan\QRCode\Output
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace codemasher\QRCode\Output;
+namespace chillerlan\QRCode\Output;
 
 /**
  *
  */
 interface QROutputInterface{
+
+	/**
+	 * @return mixed
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
+	public function dump();
+
+	/**
+	 * @param array $matrix
+	 *
+	 * @return $this
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
+	public function setMatrix(array $matrix);
 
 }

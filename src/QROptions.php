@@ -18,6 +18,13 @@ namespace chillerlan\QRCode;
 class QROptions{
 
 	/**
+	 * mandatory
+	 *
+	 * @var \chillerlan\QRCode\Output\QROutputInterface
+	 */
+	public $output = null ;
+
+	/**
 	 * @var int
 	 */
 	public $errorCorrectLevel = QRConst::ERROR_CORRECT_LEVEL_M;
@@ -26,15 +33,5 @@ class QROptions{
 	 * @var int
 	 */
 	public $typeNumber = null;
-
-	/**
-	 * @var \chillerlan\QRCode\Output\QROutputInterface
-	 */
-	public $output = null ;
-
-	/**
-	 * @var \chillerlan\QRCode\Output\QROutputOptionsInterface
-	 */
-	public $outputOptions = null;
 
 }

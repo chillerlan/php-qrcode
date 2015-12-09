@@ -12,20 +12,22 @@
 
 namespace chillerlan\QRCode;
 
+use chillerlan\QRCode\Output\QROutputInterface;
+
 /**
  * @link https://github.com/kazuhikoarase/qrcode-generator/tree/master/php
  */
 class QRCode{
 
 	/**
-	 * @var int
-	 */
-	public $pixelCount = 0;
-
-	/**
 	 * @var array
 	 */
-	public $matrix = [];
+	protected $matrix = [];
+
+	/**
+	 * @var int
+	 */
+	protected $pixelCount = 0;
 
 	/**
 	 * @var int
@@ -38,14 +40,19 @@ class QRCode{
 	protected $errorCorrectLevel;
 
 	/**
+	 * @var \chillerlan\QRCode\BitBuffer
+	 */
+	protected $bitBuffer;
+
+	/**
 	 * @var \chillerlan\QRCode\Data\QRDataInterface
 	 */
 	protected $qrDataInterface;
 
 	/**
-	 * @var \chillerlan\QRCode\BitBuffer
+	 * @var \chillerlan\QRCode\Output\QROutputInterface
 	 */
-	protected $bitBuffer;
+	protected $qrOutputInterface;
 
 	/**
 	 * QRCode constructor.
@@ -55,28 +62,19 @@ class QRCode{
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function __construct($data = null, QROptions $options = null){
+	public function __construct($data, QROptions $options){
 		$this->bitBuffer = new BitBuffer;
-
-		if($data){
-
-			if(!$options instanceof QROptions){
-				$options = new QROptions;
-			}
-
-			$this->setOptions($options, $data);
-		}
-
+		$this->setData($data, $options);
 	}
 
 	/**
-	 * @param \chillerlan\QRCode\QROptions $options
 	 * @param string                       $data
+	 * @param \chillerlan\QRCode\QROptions $options
 	 *
 	 * @return $this
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function setOptions(QROptions $options, $data){
+	public function setData($data, QROptions $options){
 		$data = trim($data);
 
 		if(empty($data)){
@@ -86,6 +84,12 @@ class QRCode{
 		if(!array_key_exists($options->errorCorrectLevel, QRConst::RSBLOCK)){
 			throw new QRCodeException('Invalid error correct level: '.$options->errorCorrectLevel);
 		}
+
+		if(!$options->output instanceof QROutputInterface){
+			throw new QRCodeException('$options->output is no instance of QROutputInterface');
+		}
+
+		$this->qrOutputInterface = $options->output;
 
 		$mode = Util::getMode($data);
 
@@ -116,11 +120,20 @@ class QRCode{
 
 		}
 
+
 		return $this;
 	}
 
 	/**
-	 * @return $this
+	 * @return mixed
+	 */
+	public function output(){
+		$this->qrOutputInterface->setMatrix($this->getRawData());
+		return $this->qrOutputInterface->dump();
+	}
+
+	/**
+	 * @return array
 	 */
 	public function getRawData(){
 		$minLostPoint = 0;
@@ -239,7 +252,7 @@ class QRCode{
 
 		$this->getMatrix(false, $pattern);
 
-		return $this;
+		return $this->matrix;
 	}
 
 	/**
