@@ -197,21 +197,6 @@ class Util{
 	}
 
 	/**
-	 * used for converting fg/bg colors (e.g. #0000ff = 0x0000FF) - added 2015.07.27 ~ DoktorJ
-	 *
-	 * @param int $hex
-	 *
-	 * @return array
-	 */
-	public static function hex2rgb($hex = 0x0){
-		return [
-			'r' => (int)floor($hex / 65536),
-			'g' => (int)floor($hex / 256) % 256,
-			'b' => (int)$hex % 256,
-		];
-	}
-
-	/**
 	 * @param string $c
 	 *
 	 * @return int
