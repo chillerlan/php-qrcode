@@ -5,7 +5,6 @@ require_once '../vendor/autoload.php';
 use chillerlan\QRCode\Output\QRString;
 use chillerlan\QRCode\Output\QRStringOptions;
 use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QRConst;
 use chillerlan\QRCode\QROptions;
 
 //---------------------------------------------------------
@@ -44,13 +43,12 @@ echo '<style>
 </style>';
 
 $qrStringOptions = new QRStringOptions;
-$qrStringOptions->type = QRConst::OUTPUT_STRING_HTML;
+$qrStringOptions->type = QRCode::OUTPUT_STRING_HTML;
 
 $qrOptions = new QROptions;
-$qrOptions->typeNumber = QRConst::TYPE_05;
-$qrOptions->errorCorrectLevel = QRConst::ERROR_CORRECT_LEVEL_M;
-$qrOptions->output = new QRString($qrStringOptions);
+$qrOptions->typeNumber = QRCode::TYPE_05;
+$qrOptions->errorCorrectLevel = QRCode::ERROR_CORRECT_LEVEL_M;
 
-$qr = new QRCode('skype://callto:echo123', $qrOptions);
+$qr = new QRCode('skype://callto:echo123', new QRString($qrStringOptions), $qrOptions);
 
 echo '<div class="qrcode">'.$qr->output().'</div>';

@@ -17,45 +17,24 @@ namespace chillerlan\QRCode;
  */
 class QRConst{
 
-	const OUTPUT_STRING_TEXT = 0;
-	const OUTPUT_STRING_JSON = 1;
-	const OUTPUT_STRING_HTML = 2;
-
-	const ERROR_CORRECT_LEVEL_L = 1; // 7%.
-	const ERROR_CORRECT_LEVEL_M = 0; // 15%.
-	const ERROR_CORRECT_LEVEL_Q = 3; // 25%.
-	const ERROR_CORRECT_LEVEL_H = 2; // 30%.
-
 	const RSBLOCK = [
-		self::ERROR_CORRECT_LEVEL_L => 0,
-		self::ERROR_CORRECT_LEVEL_M => 1,
-		self::ERROR_CORRECT_LEVEL_Q => 2,
-		self::ERROR_CORRECT_LEVEL_H => 3,
+		QRCode::ERROR_CORRECT_LEVEL_L => 0,
+		QRCode::ERROR_CORRECT_LEVEL_M => 1,
+		QRCode::ERROR_CORRECT_LEVEL_Q => 2,
+		QRCode::ERROR_CORRECT_LEVEL_H => 3,
 	];
 
-	// max bits @ ec level L:07 M:15 Q:25 H:30 %
-	const TYPE_01 =  1; //  152  128  104   72
-	const TYPE_02 =  2; //  272  224  176  128
-	const TYPE_03 =  3; //  440  352  272  208
-	const TYPE_04 =  4; //  640  512  384  288
-	const TYPE_05 =  5; //  864  688  496  368
-	const TYPE_06 =  6; // 1088  864  608  480
-	const TYPE_07 =  7; // 1248  992  704  528
-	const TYPE_08 =  8; // 1552 1232  880  688
-	const TYPE_09 =  9; // 1856 1456 1056  800
-	const TYPE_10 = 10; // 2192 1728 1232  976
-
 	const MAX_BITS = [
-		self::TYPE_01 => [ 128,  152,   72,  104],
-		self::TYPE_02 => [ 224,  272,  128,  176],
-		self::TYPE_03 => [ 352,  440,  208,  272],
-		self::TYPE_04 => [ 512,  640,  288,  384],
-		self::TYPE_05 => [ 688,  864,  368,  496],
-		self::TYPE_06 => [ 864, 1088,  480,  608],
-		self::TYPE_07 => [ 992, 1248,  528,  704],
-		self::TYPE_08 => [1232, 1552,  688,  880],
-		self::TYPE_09 => [1456, 1856,  800, 1056],
-		self::TYPE_10 => [1728, 2192,  976, 1232],
+		QRCode::TYPE_01 => [ 128,  152,   72,  104],
+		QRCode::TYPE_02 => [ 224,  272,  128,  176],
+		QRCode::TYPE_03 => [ 352,  440,  208,  272],
+		QRCode::TYPE_04 => [ 512,  640,  288,  384],
+		QRCode::TYPE_05 => [ 688,  864,  368,  496],
+		QRCode::TYPE_06 => [ 864, 1088,  480,  608],
+		QRCode::TYPE_07 => [ 992, 1248,  528,  704],
+		QRCode::TYPE_08 => [1232, 1552,  688,  880],
+		QRCode::TYPE_09 => [1456, 1856,  800, 1056],
+		QRCode::TYPE_10 => [1728, 2192,  976, 1232],
 	];
 
 	const MODE_NUMBER   = 1 << 0;

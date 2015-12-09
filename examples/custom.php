@@ -3,7 +3,6 @@
 require_once '../vendor/autoload.php';
 
 use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QRConst;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Output\QRString;
 use chillerlan\QRCode\Output\QRStringOptions;
@@ -11,11 +10,11 @@ use chillerlan\QRCode\Output\QRStringOptions;
 $starttime = microtime(true);
 
 $qrOptions = new QROptions;
-$qrOptions->typeNumber = QRConst::TYPE_05;
-$qrOptions->errorCorrectLevel = QRConst::ERROR_CORRECT_LEVEL_M;
+$qrOptions->typeNumber = QRCode::TYPE_05;
+$qrOptions->errorCorrectLevel = QRCode::ERROR_CORRECT_LEVEL_M;
 
 $qrStringOptions = new QRStringOptions;
-$qrStringOptions->type = QRConst::OUTPUT_STRING_TEXT;
+$qrStringOptions->type = QRCode::OUTPUT_STRING_TEXT;
 $qrStringOptions->textDark  = '+';
 $qrStringOptions->textLight = '-';
 

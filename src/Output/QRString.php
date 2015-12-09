@@ -11,7 +11,7 @@
  */
 
 namespace chillerlan\QRCode\Output;
-use chillerlan\QRCode\QRConst;
+use chillerlan\QRCode\QRCode;
 
 /**
  *
@@ -42,9 +42,9 @@ class QRString extends QROutputBase implements QROutputInterface{
 	public function dump(){
 
 		switch($this->options->type){
-			case QRConst::OUTPUT_STRING_TEXT: return $this->toText();
-			case QRConst::OUTPUT_STRING_JSON: return $this->toJSON();
-			case QRConst::OUTPUT_STRING_HTML: return $this->toHTML();
+			case QRCode::OUTPUT_STRING_TEXT: return $this->toText();
+			case QRCode::OUTPUT_STRING_JSON: return $this->toJSON();
+			case QRCode::OUTPUT_STRING_HTML: return $this->toHTML();
 			default:
 				throw new QRCodeOutputException('Invalid string output type!');
 		}

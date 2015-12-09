@@ -20,6 +20,34 @@ use chillerlan\QRCode\Output\QROutputInterface;
 class QRCode{
 
 	/**
+	 * API constants
+	 */
+	const OUTPUT_STRING_TEXT = 0;
+	const OUTPUT_STRING_JSON = 1;
+	const OUTPUT_STRING_HTML = 2;
+
+	const OUTPUT_IMAGE_PNG = 0;
+	const OUTPUT_IMAGE_JPG = 1;
+	const OUTPUT_IMAGE_GIF = 2;
+
+	const ERROR_CORRECT_LEVEL_L = 1; // 7%.
+	const ERROR_CORRECT_LEVEL_M = 0; // 15%.
+	const ERROR_CORRECT_LEVEL_Q = 3; // 25%.
+	const ERROR_CORRECT_LEVEL_H = 2; // 30%.
+
+	// max bits @ ec level L:07 M:15 Q:25 H:30 %
+	const TYPE_01 =  1; //  152  128  104   72
+	const TYPE_02 =  2; //  272  224  176  128
+	const TYPE_03 =  3; //  440  352  272  208
+	const TYPE_04 =  4; //  640  512  384  288
+	const TYPE_05 =  5; //  864  688  496  368
+	const TYPE_06 =  6; // 1088  864  608  480
+	const TYPE_07 =  7; // 1248  992  704  528
+	const TYPE_08 =  8; // 1552 1232  880  688
+	const TYPE_09 =  9; // 1856 1456 1056  800
+	const TYPE_10 = 10; // 2192 1728 1232  976
+
+	/**
 	 * @var array
 	 */
 	protected $matrix = [];

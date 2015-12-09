@@ -11,14 +11,14 @@
  */
 
 namespace chillerlan\QRCode\Output;
-use chillerlan\QRCode\QRConst;
+use chillerlan\QRCode\QRCode;
 
 /**
  *
  */
 class QRStringOptions{
 
-	public $type = QRConst::OUTPUT_STRING_TEXT;
+	public $type = QRCode::OUTPUT_STRING_TEXT;
 
 	public $textDark = '#';
 

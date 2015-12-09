@@ -20,7 +20,7 @@ class QROptions{
 	/**
 	 * @var int
 	 */
-	public $errorCorrectLevel = QRConst::ERROR_CORRECT_LEVEL_M;
+	public $errorCorrectLevel = QRCode::ERROR_CORRECT_LEVEL_M;
 
 	/**
 	 * @var int
