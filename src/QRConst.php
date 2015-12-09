@@ -17,6 +17,10 @@ namespace chillerlan\QRCode;
  */
 class QRConst{
 
+	const OUTPUT_STRING_TEXT = 0;
+	const OUTPUT_STRING_JSON = 1;
+	const OUTPUT_STRING_HTML = 2;
+
 	const ERROR_CORRECT_LEVEL_L = 1; // 7%.
 	const ERROR_CORRECT_LEVEL_M = 0; // 15%.
 	const ERROR_CORRECT_LEVEL_Q = 3; // 25%.
