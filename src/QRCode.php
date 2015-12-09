@@ -57,13 +57,18 @@ class QRCode{
 	/**
 	 * QRCode constructor.
 	 *
-	 * @param string                       $data
-	 * @param \chillerlan\QRCode\QROptions $options
-	 *
-	 * @throws \chillerlan\QRCode\QRCodeException
+	 * @param string                                      $data
+	 * @param \chillerlan\QRCode\Output\QROutputInterface $output
+	 * @param \chillerlan\QRCode\QROptions                $options
 	 */
-	public function __construct($data, QROptions $options){
+	public function __construct($data, QROutputInterface $output, QROptions $options = null){
+		$this->qrOutputInterface = $output;
 		$this->bitBuffer = new BitBuffer;
+
+		if(!$options instanceof QROptions){
+			$options = new QROptions;
+		}
+
 		$this->setData($data, $options);
 	}
 
@@ -84,12 +89,6 @@ class QRCode{
 		if(!array_key_exists($options->errorCorrectLevel, QRConst::RSBLOCK)){
 			throw new QRCodeException('Invalid error correct level: '.$options->errorCorrectLevel);
 		}
-
-		if(!$options->output instanceof QROutputInterface){
-			throw new QRCodeException('$options->output is no instance of QROutputInterface');
-		}
-
-		$this->qrOutputInterface = $options->output;
 
 		$mode = Util::getMode($data);
 
