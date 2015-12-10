@@ -11,10 +11,10 @@
  */
 
 namespace chillerlan\QRCode\Output;
-use chillerlan\QRCode\Util;
+use chillerlan\QRCode\QRCode;
 
 /**
- * toBase64()
+ *
  */
 class QRImage extends QROutputBase implements QROutputInterface{
 
@@ -33,95 +33,78 @@ class QRImage extends QROutputBase implements QROutputInterface{
 			$this->options = new QRImageOptions;
 		}
 
+		// clamp input values
+		// todo: determine sane values
+
+		$this->options->pixelSize = max(1, min(25, (int)$this->options->pixelSize));
+		$this->options->marginSize = max(0, min(25, (int)$this->options->marginSize));
+
+		foreach(['fgRed', 'fgGreen', 'fgBlue', 'bgRed', 'bgGreen', 'bgBlue',] as $val){
+			$this->options->{$val} = max(0, min(255, (int)$this->options->{$val}));
+		}
+
+		if(!in_array($this->options->type, [QRCode::OUTPUT_IMAGE_PNG, QRCode::OUTPUT_IMAGE_JPG, QRCode::OUTPUT_IMAGE_GIF])){
+			$this->options->type = QRCode::OUTPUT_IMAGE_PNG;
+		}
+
+		$this->options->transparent = (bool)$this->options->transparent && $this->options->type !== QRCode::OUTPUT_IMAGE_JPG;
+
+		if(!in_array($this->options->pngCompression, range(-1, 9), true)){
+			$this->options->pngCompression = -1;
+		}
+
+		if(!in_array($this->options->jpegQuality, range(0, 100), true)){
+			$this->options->jpegQuality = 85;
+		}
+
 	}
 
-
-
 	/**
-	 * added $fg (foreground), $bg (background), and $bgtrans (use transparent bg) parameters
-	 * also added some simple error checking on parameters
-	 * updated 2015.07.27 ~ DoktorJ
-	 *
-	 * @param int        $size
-	 * @param int        $margin
-	 * @param int        $fg
-	 * @param int        $bg
-	 * @param bool|false $bgtrans
-	 *
-	 * @return resource
+	 * @return mixed
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	public function toImage($size = 2, $margin = 2, $fg = 0x000000, $bg = 0xFFFFFF, $bgtrans = false){
+	public function dump(){
+		$length = $this->pixelCount * $this->options->pixelSize + $this->options->marginSize * 2;
+		$image = imagecreatetruecolor($length, $length);
+		$foreground = imagecolorallocate($image, $this->options->fgRed, $this->options->fgGreen, $this->options->fgBlue);
+		$background = imagecolorallocate($image, $this->options->bgRed, $this->options->bgGreen, $this->options->bgBlue);
 
-		// size/margin EC
-		if(!is_numeric($size)){
-			$size = 2;
-		}
-		if(!is_numeric($margin)){
-			$margin = 2;
-		}
-		if($size < 1){
-			$size = 1;
-		}
-		if($margin < 0){
-			$margin = 0;
+		if($this->options->transparent){
+			imagecolortransparent($image, $background);
 		}
 
-		$image_size = $this->pixelCount * $size + $margin * 2;
-
-		$image = imagecreatetruecolor($image_size, $image_size);
-
-		// fg/bg EC
-		if($fg < 0 || $fg > 0xFFFFFF){
-			$fg = 0x0;
-		}
-		if($bg < 0 || $bg > 0xFFFFFF){
-			$bg = 0xFFFFFF;
-		}
-
-		// convert hexadecimal RGB to arrays for imagecolorallocate
-		$fgrgb = Util::hex2rgb($fg);
-		$bgrgb = Util::hex2rgb($bg);
-
-		// replace $black and $white with $fgc and $bgc
-		$fgc = imagecolorallocate($image, $fgrgb['r'], $fgrgb['g'], $fgrgb['b']);
-		$bgc = imagecolorallocate($image, $bgrgb['r'], $bgrgb['g'], $bgrgb['b']);
-		if($bgtrans){
-			imagecolortransparent($image, $bgc);
-		}
-
-		// update $white to $bgc
-		imagefilledrectangle($image, 0, 0, $image_size, $image_size, $bgc);
+		imagefilledrectangle($image, 0, 0, $length, $length, $background);
 
 		for($r = 0; $r < $this->pixelCount; $r++){
 			for($c = 0; $c < $this->pixelCount; $c++){
 				if($this->matrix[$r][$c]){
-
-					// update $black to $fgc
 					imagefilledrectangle($image,
-						$margin + $c * $size,
-						$margin + $r * $size,
-						$margin + ($c + 1) * $size - 1,
-						$margin + ($r + 1) * $size - 1,
-						$fgc);
+						$this->options->marginSize +  $c      * $this->options->pixelSize,
+						$this->options->marginSize +  $r      * $this->options->pixelSize,
+						$this->options->marginSize + ($c + 1) * $this->options->pixelSize - 1,
+						$this->options->marginSize + ($r + 1) * $this->options->pixelSize - 1,
+						$foreground);
 				}
 			}
 		}
 
-		return $image;
+		ob_start();
+
+		switch($this->options->type){
+			case QRCode::OUTPUT_IMAGE_PNG: imagepng ($image, $this->options->cachefile, (int)$this->options->pngCompression); break;
+			case QRCode::OUTPUT_IMAGE_JPG: imagejpeg($image, $this->options->cachefile, (int)$this->options->jpegQuality); break;
+			case QRCode::OUTPUT_IMAGE_GIF: imagegif ($image, $this->options->cachefile); break; /** Actually, it's pronounced "DJIFF". *hides* */
+		}
+
+		$imageData = ob_get_contents();
+		imagedestroy($image);
+		ob_end_clean();
+
+		if((bool)$this->options->base64){
+			$imageData = 'data:image/'.$this->options->type.';base64,'.base64_encode($imageData);
+		}
+
+		return $imageData;
 	}
 
-	public function dump(){
-		return $this->toImage();
-	}
-
-	protected function toPNG(){
-
-	}
-
-	/**
-	 * Actually, it's pronounced "DJIFF". *hides*
-	 */
-	protected function toGIF(){
-
-	}
 }

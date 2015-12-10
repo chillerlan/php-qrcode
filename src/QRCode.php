@@ -26,9 +26,9 @@ class QRCode{
 	const OUTPUT_STRING_JSON = 1;
 	const OUTPUT_STRING_HTML = 2;
 
-	const OUTPUT_IMAGE_PNG = 0;
-	const OUTPUT_IMAGE_JPG = 1;
-	const OUTPUT_IMAGE_GIF = 2;
+	const OUTPUT_IMAGE_PNG = 'png';
+	const OUTPUT_IMAGE_JPG = 'jpg';
+	const OUTPUT_IMAGE_GIF = 'gif';
 
 	const ERROR_CORRECT_LEVEL_L = 1; // 7%.
 	const ERROR_CORRECT_LEVEL_M = 0; // 15%.
