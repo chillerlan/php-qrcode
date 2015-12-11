@@ -54,6 +54,12 @@ Quick and simple:
 echo '<img src="'.(new QRCode($data, new QRImage))->output().'" />';
 ```
 
+<p align="center">
+  <a href="https://www.turnon2fa.com">
+    <img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/codemasher/php-qrcode/master/examples/example_image.png">
+  </a>
+</p>
+
 Wait, what was that? Please again, slower!
 
 
