@@ -18,12 +18,16 @@ use chillerlan\QRCode\QRCode;
  */
 class QRStringOptions{
 
-	public $type = QRCode::OUTPUT_STRING_TEXT;
+	public $type = QRCode::OUTPUT_STRING_HTML;
 
 	public $textDark = '#';
 
 	public $textLight = ' ';
 
 	public $textNewline = PHP_EOL;
+
+	public $htmlRowTag = 'p';
+
+	public $htmlOmitEndTag = true;
 
 }
