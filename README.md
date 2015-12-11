@@ -56,6 +56,9 @@ echo '<img src="'.(new QRCode($data, new QRImage))->output().'" />';
 
 Wait, what was that? Please again, slower!
 
+
+### Advanced usage
+
 Ok, step by step. You'll need a `QRCode` instance which needs to be invoked with the data and a `Output\QROutputInterface` as parameters.
 ```php
 // the built-in QROutputInterface classes
@@ -90,8 +93,6 @@ $qrOptions->errorCorrectLevel = QRCode::ERROR_CORRECT_LEVEL_L;
 $qrcode = new QRCode($data, $outputInterface, $qrOptions);
 ```
 
-### Advanced usage
-
 You can reuse the `QRCode` object once created in case you don't need to change the output, and use the `QRCode::setData()` method instead.
 ```php
 $qrcode->setData($data);
@@ -117,7 +118,7 @@ foreach($matrix as $row){
 
 ```
 
-#### Custom output modules
+### Custom output modules
 But then again, instead of bloating your own code, you can simply create your own output module by extending `QROutputBase` and implementing `QROutputInterface`.
 ```php
 $qrcode = new QRCode($data, new MyCustomOutput($myCustomOutputOptions), $qrOptions)
@@ -158,7 +159,7 @@ class MyCustomOutput extends QROutputBase implements QROutputInterface{
 }
 ```
 
-####  `QRCode` public methods
+###  `QRCode` public methods
 method | return 
 ------ | ------
 `__construct($data, QROutputInterface $output, QROptions $options = null)` | -
@@ -167,15 +168,15 @@ method | return
 `getRawData()` | array `QRCode::$matrix` 
 
 
-####  Properties of `QROptions`
+###  Properties of `QROptions`
 
 property | type | default | allowed | description
 -------- | ---- | ------- | ------- | -----------
-`$errorCorrectLevel` | int | M | QRCode::ERROR_CORRECT_LEVEL_X | X = L, M, Q, H<br>error correct level: 7%, 15%, 25%, 30%
-`$typeNumber` | int | null | QRCode::TYPE_XX | XX = 01 ... 10, null = auto, type number
+`$errorCorrectLevel` | int | M | QRCode::ERROR_CORRECT_LEVEL_X | X = L, M, Q, H<br>7%, 15%, 25%, 30%
+`$typeNumber` | int | null | QRCode::TYPE_XX | XX = 01 ... 10, null = auto
 
 
-####  Properties of `QRStringOptions`
+###  Properties of `QRStringOptions`
 
 property | type | default | allowed | description
 -------- | ---- | ------- | ------- | -----------
@@ -187,11 +188,11 @@ property | type | default | allowed | description
 `$htmlOmitEndTag` | bool | true | - | the closing tag may be omitted (moar bloat!)
 
 
-####  Properties of `QRImageOptions`
+###  Properties of `QRImageOptions`
 
 property | type | default | allowed | description
 -------- | ---- | ------- | ------- | -----------
-`$type` | string | PNG | QRCode::OUTPUT_IMAGE_XXX | XXX = PNG, JPG, GIF, output image type
+`$type` | string | PNG | QRCode::OUTPUT_IMAGE_XXX | XXX = PNG, JPG, GIF
 `$base64` | bool | true | - | wether to return the image data as base64 or raw like from `file_get_contents()`
 `$cachefile` | string | null | * | optional cache file path, null returns the image data
 `$pixelSize` | int | 5 | 1 ... 25 | size of a QR code pixel (25 is HUGE!)
