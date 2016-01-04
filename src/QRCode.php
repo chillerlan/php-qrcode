@@ -105,12 +105,12 @@ class QRCode{
 	public function setData($data, QROptions $options = null){
 		$data = trim($data);
 
-		if(!$options instanceof QROptions){
-			$options = new QROptions;
-		}
-
 		if(empty($data)){
 			throw new QRCodeException('No data given.');
+		}
+
+		if(!$options instanceof QROptions){
+			$options = new QROptions;
 		}
 
 		if(!array_key_exists($options->errorCorrectLevel, QRConst::RSBLOCK)){
