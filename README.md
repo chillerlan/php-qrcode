@@ -7,9 +7,9 @@
 [![Issues][issue-badge]][issues]
 [![SensioLabsInsight][sensio-badge]][sensio]
 
-[packagist-badge]: https://img.shields.io/packagist/v/codemasher/php-qrcode.svg?style=flat-square
-[packagist]: https://packagist.org/packages/codemasher/php-qrcode
-[license-badge]: https://img.shields.io/packagist/l/codemasher/php-qrcode.svg?style=flat-square
+[packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?style=flat-square
+[packagist]: https://packagist.org/packages/chillerlan/php-qrcode
+[license-badge]: https://img.shields.io/packagist/l/chillerlan/php-qrcode.svg?style=flat-square
 [license]: https://github.com/codemasher/php-qrcode/blob/master/LICENSE
 [travis-badge]: https://img.shields.io/travis/codemasher/php-qrcode.svg?style=flat-square
 [travis]: https://travis-ci.org/codemasher/php-qrcode
@@ -36,7 +36,7 @@ namespaced, cleaned up, made extensible and PHP7 ready (among other stuff). The 
 
 *Terminal*
 ```sh
-composer require codemasher/php-qrcode:dev-master
+composer require chillerlan/php-qrcode:dev-master
 ```
 
 *composer.json*
@@ -44,7 +44,7 @@ composer require codemasher/php-qrcode:dev-master
 {
 	"require": {
 		"php": ">=5.6.0",
-		"codemasher/php-qrcode": "dev-master"
+		"chillerlan/php-qrcode": "dev-master"
 	}
 }
 ```
