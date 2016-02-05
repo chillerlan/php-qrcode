@@ -92,11 +92,6 @@ class QRCode{
 	public function __construct($data, QROutputInterface $output, QROptions $options = null){
 		$this->qrOutputInterface = $output;
 		$this->bitBuffer = new BitBuffer;
-
-		if(!$options instanceof QROptions){
-			$options = new QROptions;
-		}
-
 		$this->setData($data, $options);
 	}
 
@@ -107,11 +102,15 @@ class QRCode{
 	 * @return $this
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function setData($data, QROptions $options){
+	public function setData($data, QROptions $options = null){
 		$data = trim($data);
 
 		if(empty($data)){
 			throw new QRCodeException('No data given.');
+		}
+
+		if(!$options instanceof QROptions){
+			$options = new QROptions;
 		}
 
 		if(!array_key_exists($options->errorCorrectLevel, QRConst::RSBLOCK)){

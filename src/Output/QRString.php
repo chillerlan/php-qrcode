@@ -85,17 +85,19 @@ class QRString extends QROutputBase implements QROutputInterface{
 
 		foreach($this->matrix as &$row){
 			// in order to not bloat the output too much, we use the shortest possible valid HTML tags
-			$html .= '<p>';
+			$html .= '<'.$this->options->htmlRowTag.'>';
 			foreach($row as &$col){
 				$tag = $col
 					? 'b'  // dark
 					: 'i'; // light
 
-				$html .= '<'.$tag.'></'.$tag.'>';
+					$html .= '<'.$tag.'></'.$tag.'>';
 			}
 
-			// the closing <p> tag may be omitted
-#			$html .= '</p>';
+			if(!(bool)$this->options->htmlOmitEndTag){
+				$html .= '</'.$this->options->htmlRowTag.'>';
+			}
+
 			$html .= PHP_EOL;
 		}
 

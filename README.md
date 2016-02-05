@@ -21,6 +21,11 @@
 [sensio]: https://insight.sensiolabs.com/projects/bc7725fb-04af-4e15-9c76-115c20beb976
 
 
+## Info
+
+This library is based on the [QR code implementation](https://github.com/kazuhikoarase/qrcode-generator) by [Kazuhiko Arase](https://github.com/kazuhikoarase), 
+namespaced, cleaned up, made extensible and PHP7 ready (among other stuff). The main intend is to use it along with a [Google authenticator implementation](https://github.com/codemasher/php-googleauth).
+
 ## Requirements
 - PHP 5.6+, PHP 7
 
@@ -54,7 +59,12 @@ Profit!
 ### Usage
 We want to encode this data into a QRcode image:
 ```php
+// 10 reasons why QR codes are awesome
 $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
+
+// no, for serious, we want to display a QR code for a mobile authenticator
+// https://github.com/codemasher/php-googleauth
+$data = 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net';
 ```
 
 Quick and simple:
@@ -62,65 +72,161 @@ Quick and simple:
 echo '<img src="'.(new QRCode($data, new QRImage))->output().'" />';
 ```
 
+<p align="center">
+  <a href="https://www.turnon2fa.com">
+    <img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/codemasher/php-qrcode/master/examples/example_image.png">
+  </a>
+</p>
+
 Wait, what was that? Please again, slower!
 
+
+### Advanced usage
+
 Ok, step by step. You'll need a `QRCode` instance which needs to be invoked with the data and a `Output\QROutputInterface` as parameters.
-The `QRCode` and `QROutputInterface` classes can be optionally invoked with a `QROptions` or a `Output\QR*Options` Object.
 ```php
-$qrOptions = new QROptions;
-$qrOptions->errorCorrectLevel = QRCode::ERROR_CORRECT_LEVEL_L;
+// the built-in QROutputInterface classes
+$outputInterface = new QRImage;
+$outputInterface = new QRString;
 
-// image...
-$outputOptions = new QRImageOptions;
-$outputOptions->type = QRCode::OUTPUT_IMAGE_GIF;
-$outputInterface = new QRImage($outputOptions);
+// invoke a fresh QRCode instance
+$qrcode = new QRCode($data, $outputInterface);
 
-// ...or string
-$outputOptions = new QRStringOptions;
-$outputOptions->type = QRCode::OUTPUT_STRING_HTML;
-$outputInterface = new QRString($outputOptions);
-
-$qrcode = new QRCode($data, $outputInterface, $qrOptions);
+// and dump the output
+$qrcode->output();
 ```
 
 Have a look [in this folder](https://github.com/codemasher/php-qrcode/tree/master/examples) for some usage examples.
 
-### Docs
-Here you'll find a list of the possible values for `QROptions` and `Output\QR*Options` along with their defaults.
-
+The `QRCode` and built-in `QROutputInterface` classes can be optionally invoked with a `QROptions` or a `Output\QR...Options` Object respectively.
 ```php
-// error correct level: L (7%),  M (15%), Q (25%), H (30%)
-QROptions::$errorCorrectLevel = QRCode::ERROR_CORRECT_LEVEL_M;
-// type number, null = auto, QRCode::TYPE_01 -> QRCode::TYPE_10
-QROptions::$typeNumber        = null; QRCode::TYPE_01;
+// image -> QRImageOptions
+$outputOptions = new QRImageOptions;
+$outputOptions->type = QRCode::OUTPUT_IMAGE_GIF;
+$outputInterface = new QRImage($outputOptions);
 
-// output sting type: QRCode::OUTPUT_STRING_TEXT/JSON/HTML
-QRStringOptions::$type        = QRCode::OUTPUT_STRING_TEXT;
-// string substitutes for dark & light
-QRStringOptions::$textDark    = '#';
-QRStringOptions::$textLight   = ' ';
-// newline string
-QRStringOptions::$textNewline = PHP_EOL;
+// string -> QRStringOptions
+$outputOptions = new QRStringOptions;
+$outputOptions->type = QRCode::OUTPUT_STRING_HTML;
+$outputInterface = new QRString($outputOptions);
 
-// output image type: QRCode::OUTPUT_IMAGE_PNG/JPG/GIF
-QRImageOptions::$type           = QRCode::OUTPUT_IMAGE_PNG;
-// return as base64
-QRImageOptions::$base64         = true;
-// optional cache file path, null returns the image data
-QRImageOptions::$cachefile      = null;
-// size settings
-QRImageOptions::$pixelSize      = 5;
-QRImageOptions::$marginSize     = 5;
-//color settings
-QRImageOptions::$transparent    = true;
-QRImageOptions::$fgRed          = 0;
-QRImageOptions::$fgGreen        = 0;
-QRImageOptions::$fgBlue         = 0;
-QRImageOptions::$bgRed          = 255;
-QRImageOptions::$bgGreen        = 255;
-QRImageOptions::$bgBlue         = 255;
-// imagepng()/imagegif() quality settings
-QRImageOptions::$pngCompression = -1;
-QRImageOptions::$jpegQuality    = 85;
+// QROptions
+$qrOptions = new QROptions;
+$qrOptions->errorCorrectLevel = QRCode::ERROR_CORRECT_LEVEL_L;
+
+$qrcode = new QRCode($data, $outputInterface, $qrOptions);
+```
+
+You can reuse the `QRCode` object once created in case you don't need to change the output, and use the `QRCode::setData()` method instead.
+```php
+$qrcode->setData($data);
+$qrcode->setData($data, $qrOptions);
+
+$qrcode->output();
+```
+
+In case you only want the raw array which represents the QR code matrix, just call `QRCode::getRawData()` - this method is also called internally from `QRCode::output()`.
+```php
+$matrix = $qrcode->getRawData();
+
+foreach($matrix as $row){
+	foreach($row as $dark){
+		if($dark){
+			// do stuff
+		}
+		else{
+			// do other stuff
+		}
+	}
+}
 
 ```
+
+### Custom output modules
+But then again, instead of bloating your own code, you can simply create your own output module by extending `QROutputBase` and implementing `QROutputInterface`.
+```php
+$qrcode = new QRCode($data, new MyCustomOutput($myCustomOutputOptions), $qrOptions)
+```
+
+```php
+class MyCustomOutput extends QROutputBase implements QROutputInterface{
+	
+	// inherited from QROutputBase
+	protected $matrix; // array
+	protected $pixelCount; // int
+	protected $options; // MyCustomOutputOptions (if present)
+	
+	// optional constructor
+	public function __construct(MyCustomOutputOptions $outputOptions = null){
+		$this->options = $outputOptions;
+
+		if(!$this->options){
+			// MyCustomOutputOptions should supply default values
+			$this->options = new MyCustomOutputOptions;
+		}
+
+	}
+
+	public function dump(){
+	
+		$output = '';
+
+		for($row = 0; $row < $this->pixelCount; $row++){
+			for($col = 0; $col < $this->pixelCount; $col++){
+				$output .= (string)(int)$this->matrix[$row][$col];
+			}
+		}
+
+		return $output;
+	}
+
+}
+```
+
+###  `QRCode` public methods
+method | return 
+------ | ------
+`__construct($data, QROutputInterface $output, QROptions $options = null)` | -
+`setData($data, QROptions $options = null)` | `$this` 
+`output()` | mixed `QROutputInterface::dump()` 
+`getRawData()` | array `QRCode::$matrix` 
+
+
+###  Properties of `QROptions`
+
+property | type | default | allowed | description
+-------- | ---- | ------- | ------- | -----------
+`$errorCorrectLevel` | int | M | QRCode::ERROR_CORRECT_LEVEL_X | X = L, M, Q, H<br>7%, 15%, 25%, 30%
+`$typeNumber` | int | null | QRCode::TYPE_XX | XX = 01 ... 10, null = auto
+
+
+###  Properties of `QRStringOptions`
+
+property | type | default | allowed | description
+-------- | ---- | ------- | ------- | -----------
+`$type` | int | HTML | QRCode::OUTPUT_STRING_XXXX | XXXX = TEXT, JSON, HTML
+`$textDark` | string | '#' | * | string substitute for dark
+`$textLight` | string | ' ' | * | string substitute for light
+`$textNewline` | string | `PHP_EOL` | * | newline string
+`$htmlRowTag` | string | 'p' | * | the shortest available semanically correct row (block) tag to not bloat the output
+`$htmlOmitEndTag` | bool | true | - | the closing tag may be omitted (moar bloat!)
+
+
+###  Properties of `QRImageOptions`
+
+property | type | default | allowed | description
+-------- | ---- | ------- | ------- | -----------
+`$type` | string | PNG | QRCode::OUTPUT_IMAGE_XXX | XXX = PNG, JPG, GIF
+`$base64` | bool | true | - | wether to return the image data as base64 or raw like from `file_get_contents()`
+`$cachefile` | string | null | * | optional cache file path, null returns the image data
+`$pixelSize` | int | 5 | 1 ... 25 | size of a QR code pixel (25 is HUGE!)
+`$marginSize` | int | 5 | 0 ... 25 | margin around the QR code 
+`$transparent` | bool | true | - | toggle transparency (no jpeg support)
+`$fgRed` | int | 0 | 0 ... 255 | foreground red
+`$fgGreen` | int | 0 | 0 ... 255 | foreground green
+`$fgBlue` | int | 0 | 0 ... 255 | foreground blue
+`$bgRed` | int | 255 | 0 ... 255 | background red
+`$bgGreen` | int | 255 | 0 ... 255 | background green
+`$bgBlue` | int | 255 | 0 ... 255 | background blue
+`$pngCompression` | int | -1 | -1 ... 9 | `imagepng()` compression level, -1 = auto
+`$jpegQuality` | int | 85 | 0 - 100 | `imagejpeg()` quality
