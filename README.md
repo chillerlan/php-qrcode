@@ -1,7 +1,25 @@
 # codemasher/php-qrcode
 
-[![Packagist](https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?style=flat-square)](https://packagist.org/packages/chillerlan/php-qrcode)
-[![License](https://img.shields.io/packagist/l/chillerlan/php-qrcode.svg?style=flat-square)](LICENSE)
+[![version][packagist-badge]][packagist]
+[![license][license-badge]][license]
+[![Travis][travis-badge]][travis]
+[![Coverage][coverage-badge]][coverage]
+[![Issues][issue-badge]][issues]
+[![SensioLabsInsight][sensio-badge]][sensio]
+
+[packagist-badge]: https://img.shields.io/packagist/v/codemasher/php-qrcode.svg?style=flat-square
+[packagist]: https://packagist.org/packages/codemasher/php-qrcode
+[license-badge]: https://img.shields.io/packagist/l/codemasher/php-qrcode.svg?style=flat-square
+[license]: https://github.com/codemasher/php-qrcode/blob/master/LICENSE
+[travis-badge]: https://img.shields.io/travis/codemasher/php-qrcode.svg?style=flat-square
+[travis]: https://travis-ci.org/codemasher/php-qrcode
+[coverage-badge]: https://img.shields.io/codecov/c/github/codemasher/php-qrcode.svg?style=flat-square
+[coverage]: https://codecov.io/github/codemasher/php-qrcode
+[issue-badge]: https://img.shields.io/github/issues/codemasher/php-qrcode.svg?style=flat-square
+[issues]: https://github.com/codemasher/php-qrcode/issues
+[sensio-badge]: https://img.shields.io/sensiolabs/i/bc7725fb-04af-4e15-9c76-115c20beb976.svg?style=flat-square
+[sensio]: https://insight.sensiolabs.com/projects/bc7725fb-04af-4e15-9c76-115c20beb976
+
 
 ## Requirements
 - PHP 5.6+, PHP 7
@@ -13,7 +31,7 @@
 
 *Terminal*
 ```sh
-composer require chillerlan/php-qrcode:dev-master
+composer require codemasher/php-qrcode:dev-master
 ```
 
 *composer.json*
@@ -21,7 +39,7 @@ composer require chillerlan/php-qrcode:dev-master
 {
 	"require": {
 		"php": ">=5.6.0",
-		"chillerlan/php-qrcode": "dev-master"
+		"codemasher/php-qrcode": "dev-master"
 	}
 }
 ```
