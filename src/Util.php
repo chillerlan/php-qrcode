@@ -62,12 +62,16 @@ class Util{
 	 */
 	public static function isKanji($s){
 
+		if(empty($s)){
+			return false;
+		}
+
 		$i = 0;
 		$len = strlen($s);
 		while($i + 1 < $len){
 			$c = ((0xff&ord($s[$i])) << 8)|(0xff&ord($s[$i + 1]));
 
-			if(!(0x8140 <= $c && $c <= 0x9FFC) && !(0xE040 <= $c && $c <= 0xEBBF)){
+			if(!($c >= 0x8140 && $c <= 0x9FFC) && !($c >= 0xE040 && $c <= 0xEBBF)){
 				return false;
 			}
 
