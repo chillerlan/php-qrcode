@@ -8,20 +8,23 @@
  */
 
 use chillerlan\QRCode\Util;
-use chillerlan\QRCode\QRConst;
 
 class UtilTest extends PHPUnit_Framework_TestCase{
 
 	public function testIsNumber(){
-		$this->assertEquals(true, Util::isNumber('1234567890'));
+		$this->assertEquals(true,  Util::isNumber('1234567890'));
+		$this->assertEquals(false, Util::isNumber('abc'));
 	}
 
 	public function testIsAlphaNum(){
-		$this->assertEquals(true, Util::isAlphaNum('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:'));
+		$this->assertEquals(true,  Util::isAlphaNum('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:'));
+		$this->assertEquals(false, Util::isAlphaNum('#'));
 	}
 
 	public function testIsKanji(){
-		$this->assertEquals(true, Util::isKanji('茗荷'));
+		$this->assertEquals(true,  Util::isKanji('茗荷'));
+		$this->assertEquals(false, Util::isKanji('茗'));
+		$this->assertEquals(false, Util::isKanji('#'));
 	}
 
 }
