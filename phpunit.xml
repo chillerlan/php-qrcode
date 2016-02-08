@@ -17,8 +17,7 @@
     </filter>
     <testsuites>
         <testsuite name="php-qrcode test suite">
-			<file>tests/BitBufferTest.php</file>
-			<file>tests/UtilTest.php</file>
+            <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>
 </phpunit>

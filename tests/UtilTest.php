@@ -7,9 +7,11 @@
  * @license      MIT
  */
 
+namespace chillerlan\QRCodeTest;
+
 use chillerlan\QRCode\Util;
 
-class UtilTest extends PHPUnit_Framework_TestCase{
+class UtilTest extends \PHPUnit_Framework_TestCase{
 
 	public function testIsNumber(){
 		$this->assertEquals(true, Util::isNumber('1234567890'));
@@ -21,6 +23,7 @@ class UtilTest extends PHPUnit_Framework_TestCase{
 		$this->assertEquals(false, Util::isAlphaNum('#'));
 	}
 
+	// http://stackoverflow.com/a/24755772
 	public function testIsKanji(){
 		$this->assertEquals(true,  Util::isKanji('茗荷'));
 		$this->assertEquals(false, Util::isKanji(''));
