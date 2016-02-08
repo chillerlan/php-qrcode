@@ -18,6 +18,7 @@
     <testsuites>
         <testsuite name="php-qrcode test suite">
 			<file>tests/BitBufferTest.php</file>
+			<file>tests/UtilTest.php</file>
         </testsuite>
     </testsuites>
 </phpunit>
