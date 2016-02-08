@@ -31,9 +31,11 @@ class DataTest extends \PHPUnit_Framework_TestCase{
 
 	public function bitProvider(){
 		return [
+			[QRConst::MODE_NUMBER, Number::class, '123456789'],
 			[QRConst::MODE_NUMBER, Number::class, '1234567890'],
+			[QRConst::MODE_NUMBER, Number::class, '12345678901'],
 			[QRConst::MODE_ALPHANUM, AlphaNum::class, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:'],
-			[QRConst::MODE_BYTE, Byte::class, '#'],
+			[QRConst::MODE_BYTE, Byte::class, '#\\'],
 			[QRConst::MODE_KANJI, Kanji::class, '茗荷'],
 		];
 	}
@@ -46,17 +48,58 @@ class DataTest extends \PHPUnit_Framework_TestCase{
 	 * @dataProvider bitProvider
 	 */
 	public function testMode($mode, $class, $data){
-		$module = new $class($data);
-		$this->assertEquals($mode, $module->mode);
+		$this->module = new $class($data);
+		$this->assertEquals($mode, $this->module->mode);
 	}
 
 	/**
 	 * @dataProvider bitProvider
 	 */
 	public function testWrite($mode, $class, $data){
-		$module = new $class($data);
-		$module->write($this->bitBuffer);
-		// todo...
+		$this->bitBuffer->clear();
+		$this->module = new $class($data);
+		$this->module->write($this->bitBuffer);
 	}
+
+	/**
+	 * @expectedException \chillerlan\QRCode\Data\QRCodeDataException
+	 * @expectedExceptionMessage illegal char: 92
+	 */
+	public function testAlphaNumCharException(){
+		$this->bitBuffer->clear();
+		$this->module = new AlphaNum('\\');
+		$this->module->write($this->bitBuffer);
+	}
+
+	/**
+	 * @expectedException \chillerlan\QRCode\Data\QRCodeDataException
+	 * @expectedExceptionMessage illegal char at 7 (50051)
+	 */
+	public function testKanjiCharExceptionA(){
+		$this->bitBuffer->clear();
+		$this->module = new Kanji('茗荷Ã');
+		$this->module->write($this->bitBuffer);
+	}
+
+	/**
+	 * @expectedException \chillerlan\QRCode\Data\QRCodeDataException
+	 * @expectedExceptionMessage illegal char at 7
+	 */
+	public function testKanjiCharExceptionB(){
+		$this->bitBuffer->clear();
+		$this->module = new Kanji('茗荷\\');
+		$this->module->write($this->bitBuffer);
+	}
+
+	/**
+	 * @expectedException \chillerlan\QRCode\Data\QRCodeDataException
+	 * @expectedExceptionMessage illegal char: 92
+	 */
+	public function testNumberCharException(){
+		$this->bitBuffer->clear();
+		$this->module = new Number('\\');
+		$this->module->write($this->bitBuffer);
+	}
+
 
 }
