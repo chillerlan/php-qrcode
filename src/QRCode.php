@@ -16,6 +16,7 @@ use chillerlan\QRCode\Output\QROutputInterface;
 
 /**
  * @link https://github.com/kazuhikoarase/qrcode-generator/tree/master/php
+ * @link http://www.thonky.com/qr-code-tutorial/
  */
 class QRCode{
 
@@ -117,7 +118,18 @@ class QRCode{
 			throw new QRCodeException('Invalid error correct level: '.$options->errorCorrectLevel);
 		}
 
-		$mode = Util::getMode($data);
+		switch(true){
+			case Util::isAlphaNum($data):
+				$mode = Util::isNumber($data) ? QRConst::MODE_NUMBER : QRConst::MODE_ALPHANUM;
+				break;
+			case Util::isKanji($data)   :
+				$mode = QRConst::MODE_KANJI;
+				break;
+			default:
+				$mode = QRConst::MODE_BYTE;
+				break;
+		}
+
 
 		$qrDataInterface = __NAMESPACE__.'\\Data\\'.[
 			QRConst::MODE_ALPHANUM => 'AlphaNum',
@@ -137,7 +149,7 @@ class QRCode{
 				: $this->qrDataInterface->dataLength;
 
 			for($type = 1; $type <= 10; $type++){
-				if($length <= Util::getMaxLength($type, $mode, $this->errorCorrectLevel)){
+				if($length <= $this->getMaxLength($type, $mode, $this->errorCorrectLevel)){
 					$this->typeNumber = $type;
 
 					return $this;
@@ -282,12 +294,82 @@ class QRCode{
 	}
 
 	/**
+	 * @param int $typeNumber
+	 * @param int $mode
+	 * @param int $ecLevel
+	 *
+	 * @return int
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	protected static function getMaxLength($typeNumber, $mode, $ecLevel){
+		$RSBLOCK = QRConst::RSBLOCK;
+		$MAX_LENGTH = QRConst::MAX_LENGTH;
+		$MODE = QRConst::MODE;
+
+		if(!isset($RSBLOCK[$ecLevel])){
+			throw new QRCodeException('$_err: '.$ecLevel);
+		}
+
+		if(!isset($MODE[$mode])){
+			throw new QRCodeException('$_mode: '.$mode);
+		}
+
+		return $MAX_LENGTH[$typeNumber - 1][$RSBLOCK[$ecLevel]][$MODE[$mode]];
+	}
+
+	/**
+	 * @param int $data
+	 *
+	 * @return int
+	 */
+	protected static function getBCHTypeInfo($data){
+		$d = $data << 10;
+
+		while(self::getBCHDigit($d) - self::getBCHDigit(QRConst::G15) >= 0){
+			$d ^= (QRConst::G15 << (self::getBCHDigit($d) - self::getBCHDigit(QRConst::G15)));
+		}
+
+		return (($data << 10)|$d)^QRConst::G15_MASK;
+	}
+
+	/**
+	 * @param int $data
+	 *
+	 * @return int
+	 */
+	protected static function getBCHTypeNumber($data){
+		$d = $data << 12;
+
+		while(self::getBCHDigit($d) - self::getBCHDigit(QRConst::G18) >= 0){
+			$d ^= (QRConst::G18 << (self::getBCHDigit($d) - self::getBCHDigit(QRConst::G18)));
+		}
+
+		return ($data << 12)|$d;
+	}
+
+	/**
+	 * @param int $data
+	 *
+	 * @return int
+	 */
+	protected static function getBCHDigit($data){
+		$digit = 0;
+
+		while($data !== 0){
+			$digit++;
+			$data >>= 1;
+		}
+
+		return $digit;
+	}
+
+	/**
 	 * @param bool $test
 	 * @param int  $pattern
 	 */
 	protected function setTypeInfo($test, $pattern){
 		$this->setPattern();
-		$bits = Util::getBCHTypeInfo(($this->errorCorrectLevel << 3) | $pattern);
+		$bits = self::getBCHTypeInfo(($this->errorCorrectLevel << 3) | $pattern);
 
 		for($i = 0; $i < 15; $i++){
 			$mod = !$test && (($bits >> $i) & 1) === 1;
@@ -376,7 +458,7 @@ class QRCode{
 	 * @return $this
 	 */
 	protected function setTypeNumber($test){
-		$bits = Util::getBCHTypeNumber($this->typeNumber);
+		$bits = self::getBCHTypeNumber($this->typeNumber);
 
 		for($i = 0; $i < 18; $i++){
 			$a = (int)floor($i / 3);
@@ -541,12 +623,41 @@ class QRCode{
 	}
 
 	/**
+	 * @param int $typeNumber
+	 * @param int $errorCorrectLevel
+	 *
+	 * @return array
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	protected static function getRSBlocks($typeNumber, $errorCorrectLevel){
+		// PHP5 compat
+		$RSBLOCK = QRConst::RSBLOCK;
+		$BLOCK_TABLE = QRConst::BLOCK_TABLE;
+
+		if(!isset($RSBLOCK[$errorCorrectLevel])){
+			throw new QRCodeException('$typeNumber: '.$typeNumber.' / $errorCorrectLevel: '.$errorCorrectLevel.PHP_EOL.print_r($RSBLOCK, true));
+		}
+
+		$rsBlock = $BLOCK_TABLE[($typeNumber - 1) * 4 + $RSBLOCK[$errorCorrectLevel]];
+
+		$list = [];
+		$length = count($rsBlock) / 3;
+		for($i = 0; $i < $length; $i++){
+			for($j = 0; $j < $rsBlock[$i * 3 + 0]; $j++){
+				$list[] = [$rsBlock[$i * 3 + 1], $rsBlock[$i * 3 + 2]];
+			}
+		}
+
+		return $list;
+	}
+
+	/**
 	 * @return array
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function createBytes(){
 		$totalCodeCount = $maxDcCount = $maxEcCount = $offset = $index = 0;
-		$rsBlocks = Util::getRSBlocks($this->typeNumber, $this->errorCorrectLevel);
+		$rsBlocks = $this->getRSBlocks($this->typeNumber, $this->errorCorrectLevel);
 		$rsBlockCount = count($rsBlocks);
 		$dcdata = $ecdata = array_fill(0, $rsBlockCount, null);
 

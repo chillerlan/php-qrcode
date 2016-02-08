@@ -13,13 +13,25 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\BitBuffer;
+use chillerlan\QRCode\QRCodeException;
 use chillerlan\QRCode\QRConst;
-use chillerlan\QRCode\Util;
 
 /**
  *
  */
 class AlphaNum extends QRDataBase implements QRDataInterface{
+
+	const CHAR_MAP = [
+		36 => ' ',
+		37 => '$',
+		38 => '%',
+		39 => '*',
+		40 => '+',
+		41 => '-',
+		42 => '.',
+		43 => '/',
+		44 => ':',
+	];
 
 	/**
 	 * @var int
@@ -38,14 +50,37 @@ class AlphaNum extends QRDataBase implements QRDataInterface{
 		$i = 0;
 
 		while($i + 1 < $this->dataLength){
-			$buffer->put(Util::getCharCode($this->data[$i]) * 45 + Util::getCharCode($this->data[$i + 1]), 11);
+			$buffer->put($this->getCharCode($this->data[$i]) * 45 + $this->getCharCode($this->data[$i + 1]), 11);
 			$i += 2;
 		}
 
 		if($i < $this->dataLength){
-			$buffer->put(Util::getCharCode($this->data[$i]), 6);
+			$buffer->put($this->getCharCode($this->data[$i]), 6);
 		}
 
+	}
+
+	/**
+	 * @param string $c
+	 *
+	 * @return int
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	private static function getCharCode($c){
+		$c = ord($c);
+
+		switch(true){
+			case ord('0') <= $c && $c <= ord('9'): return $c - ord('0');
+			case ord('A') <= $c && $c <= ord('Z'): return $c - ord('A') + 10;
+			default:
+				foreach(self::CHAR_MAP as $i => $char){
+					if(ord($char) === $c){
+						return $i;
+					}
+				}
+		}
+
+		throw new QRCodeException('illegal char: '.$c);
 	}
 
 }
