@@ -13,7 +13,6 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\BitBuffer;
-use chillerlan\QRCode\QRCodeException;
 use chillerlan\QRCode\QRConst;
 
 /**
@@ -44,11 +43,13 @@ class Number extends QRDataBase implements QRDataInterface{
 
 		if($i < $this->dataLength){
 
-			if($this->dataLength - $i === 1){
-				$buffer->put($this->parseInt(substr($this->data, $i, $i + 1)), 4);
-			}
-			else if($this->dataLength - $i === 2){
-				$buffer->put($this->parseInt(substr($this->data, $i, $i + 2)), 7);
+			switch(true){
+				case $this->dataLength - $i === 1:
+					$buffer->put($this->parseInt(substr($this->data, $i, $i + 1)), 4);
+					break;
+				case $this->dataLength - $i === 2:
+					$buffer->put($this->parseInt(substr($this->data, $i, $i + 2)), 7);
+					break;
 			}
 
 		}
@@ -59,7 +60,7 @@ class Number extends QRDataBase implements QRDataInterface{
 	 * @param string $string
 	 *
 	 * @return int
-	 * @throws \chillerlan\QRCode\QRCodeException
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	private static function parseInt($string){
 		$num = 0;
@@ -73,7 +74,7 @@ class Number extends QRDataBase implements QRDataInterface{
 				$c = $c - $ord0;
 			}
 			else{
-				throw new QRCodeException('illegal char: '.$c);
+				throw new QRCodeDataException('illegal char: '.$c);
 			}
 
 			$num = $num * 10 + $c;

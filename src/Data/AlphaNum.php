@@ -13,7 +13,6 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\BitBuffer;
-use chillerlan\QRCode\QRCodeException;
 use chillerlan\QRCode\QRConst;
 
 /**
@@ -64,7 +63,7 @@ class AlphaNum extends QRDataBase implements QRDataInterface{
 	 * @param string $c
 	 *
 	 * @return int
-	 * @throws \chillerlan\QRCode\QRCodeException
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	private static function getCharCode($c){
 		$c = ord($c);
@@ -80,7 +79,7 @@ class AlphaNum extends QRDataBase implements QRDataInterface{
 				}
 		}
 
-		throw new QRCodeException('illegal char: '.$c);
+		throw new QRCodeDataException('illegal char: '.$c);
 	}
 
 }
