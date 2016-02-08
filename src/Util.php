@@ -91,7 +91,7 @@ class Util{
 	 *
 	 * @return bool
 	 */
-	protected static function isNumber($s){
+	public static function isNumber($s){
 
 		$len = strlen($s);
 		for($i = 0; $i < $len; $i++){
@@ -110,7 +110,7 @@ class Util{
 	 *
 	 * @return bool
 	 */
-	protected static function isAlphaNum($s){
+	public static function isAlphaNum($s){
 
 		$len = strlen($s);
 		for($i = 0; $i < $len; $i++){
@@ -129,7 +129,7 @@ class Util{
 	 *
 	 * @return bool
 	 */
-	protected static function isKanji($s){
+	public static function isKanji($s){
 
 		$i = 0;
 		$len = strlen($s);
