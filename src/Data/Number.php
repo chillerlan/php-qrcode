@@ -43,13 +43,11 @@ class Number extends QRDataBase implements QRDataInterface{
 
 		if($i < $this->dataLength){
 
-			switch(true){
-				case $this->dataLength - $i === 1:
-					$buffer->put($this->parseInt(substr($this->data, $i, $i + 1)), 4);
-					break;
-				case $this->dataLength - $i === 2:
-					$buffer->put($this->parseInt(substr($this->data, $i, $i + 2)), 7);
-					break;
+			if($this->dataLength - $i === 1){
+				$buffer->put($this->parseInt(substr($this->data, $i, $i + 1)), 4);
+			}
+			elseif($this->dataLength - $i === 2){
+				$buffer->put($this->parseInt(substr($this->data, $i, $i + 2)), 7);
 			}
 
 		}
