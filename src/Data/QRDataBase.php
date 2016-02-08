@@ -47,6 +47,7 @@ class QRDataBase{
 	 *
 	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
+	 * @codeCoverageIgnore not used in the code but may be useful to others
 	 */
 	public function getLengthInBits($type){
 
