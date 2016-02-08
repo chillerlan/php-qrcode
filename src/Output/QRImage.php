@@ -11,6 +11,7 @@
  */
 
 namespace chillerlan\QRCode\Output;
+
 use chillerlan\QRCode\QRCode;
 
 /**
@@ -33,9 +34,7 @@ class QRImage extends QROutputBase implements QROutputInterface{
 			$this->options = new QRImageOptions;
 		}
 
-		// clamp input values
-		// todo: determine sane values
-
+		// clamp input (determine sane values!)
 		$this->options->pixelSize = max(1, min(25, (int)$this->options->pixelSize));
 		$this->options->marginSize = max(0, min(25, (int)$this->options->marginSize));
 

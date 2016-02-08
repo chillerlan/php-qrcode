@@ -41,7 +41,7 @@ class QROutputBase{
 	public function setMatrix(array $matrix){
 		$this->pixelCount = count($matrix);
 
-		// todo: specify valid range
+		// specify valid range?
 		if($this->pixelCount < 2
 			|| !isset($matrix[$this->pixelCount - 1])
 			|| $this->pixelCount !== count($matrix[$this->pixelCount - 1])
