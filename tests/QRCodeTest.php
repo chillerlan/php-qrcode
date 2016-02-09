@@ -12,6 +12,7 @@
 namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QRConst;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Output\QRImage;
 use chillerlan\QRCode\Output\QRImageOptions;
@@ -55,6 +56,19 @@ class QRCodeTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testDataCoverage($data){
 		(new QRCode($data, new QRString))->getRawData();
+	}
+
+	/**
+	 * @dataProvider stringDataProvider
+	 */
+	public function testTypeAndErrorcorrectlevelCoverage($data){
+		foreach(QRConst::MAX_BITS as $type => $x){
+			foreach(QRConst::RSBLOCK as $eclevel => $y){
+				$this->options->typeNumber = $type;
+				$this->options->errorCorrectLevel = $eclevel;
+				$this->assertInstanceOf(QRCode::class, new QRCode($data, new QRString, $this->options));
+			}
+		}
 	}
 
 	public function testTypeAutoOverride(){
