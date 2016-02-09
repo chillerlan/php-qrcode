@@ -42,9 +42,14 @@ class StringTest extends \PHPUnit_Framework_TestCase{
 	/**
 	 * @dataProvider stringDataProvider
 	 */
-	public function testImageOutput($data, $type, $expected){
+	public function testStringOutput($data, $type, $expected){
 		$this->options->type = $type;
 		$this->assertEquals($expected, (new QRCode($data, new QRString($this->options)))->output());
+	}
+
+	public function testOutputTypeException(){
+		$this->options->type = 'foo';
+		new QRString($this->options);
 	}
 
 	/**

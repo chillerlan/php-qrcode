@@ -25,12 +25,17 @@ class QRString extends QROutputBase implements QROutputInterface{
 
 	/**
 	 * @var \chillerlan\QRCode\Output\QRStringOptions $outputOptions
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function __construct(QRStringOptions $outputOptions = null){
 		$this->options = $outputOptions;
 
 		if(!$this->options instanceof QRStringOptions){
 			$this->options = new QRStringOptions;
+		}
+
+		if(!in_array($this->options->type ,[QRCode::OUTPUT_STRING_TEXT, QRCode::OUTPUT_STRING_JSON, QRCode::OUTPUT_STRING_HTML])){
+			throw new QRCodeOutputException('Invalid string output type!');
 		}
 
 	}
@@ -40,15 +45,11 @@ class QRString extends QROutputBase implements QROutputInterface{
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function dump(){
-
-		switch($this->options->type){
-			case QRCode::OUTPUT_STRING_TEXT: return $this->toText();
-			case QRCode::OUTPUT_STRING_JSON: return $this->toJSON();
-			case QRCode::OUTPUT_STRING_HTML: return $this->toHTML();
-			default:
-				throw new QRCodeOutputException('Invalid string output type!');
-		}
-
+		return call_user_func([$this, [
+			QRCode::OUTPUT_STRING_TEXT => 'toText',
+			QRCode::OUTPUT_STRING_JSON => 'toJSON',
+			QRCode::OUTPUT_STRING_HTML => 'toHTML',
+		][$this->options->type]]);
 	}
 
 	/**
