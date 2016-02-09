@@ -85,4 +85,104 @@ class Util{
 		return true;
 	}
 
+	/**
+	 * @param int $data
+	 *
+	 * @return int
+	 */
+	public static function getBCHTypeInfo($data){
+		$d = $data << 10;
+
+		while(self::getBCHDigit($d) - self::getBCHDigit(QRConst::G15) >= 0){
+			$d ^= (QRConst::G15 << (self::getBCHDigit($d) - self::getBCHDigit(QRConst::G15)));
+		}
+
+		return (($data << 10)|$d)^QRConst::G15_MASK;
+	}
+
+	/**
+	 * @param int $data
+	 *
+	 * @return int
+	 */
+	public static function getBCHTypeNumber($data){
+		$d = $data << 12;
+
+		while(self::getBCHDigit($d) - self::getBCHDigit(QRConst::G18) >= 0){
+			$d ^= (QRConst::G18 << (self::getBCHDigit($d) - self::getBCHDigit(QRConst::G18)));
+		}
+
+		return ($data << 12)|$d;
+	}
+
+	/**
+	 * @param int $data
+	 *
+	 * @return int
+	 */
+	public static function getBCHDigit($data){
+		$digit = 0;
+
+		while($data !== 0){
+			$digit++;
+			$data >>= 1;
+		}
+
+		return $digit;
+	}
+
+	/**
+	 * @param int $typeNumber
+	 * @param int $errorCorrectLevel
+	 *
+	 * @return array
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	public static function getRSBlocks($typeNumber, $errorCorrectLevel){
+		// PHP5 compat
+		$RSBLOCK = QRConst::RSBLOCK;
+		$BLOCK_TABLE = QRConst::BLOCK_TABLE;
+
+		if(!isset($RSBLOCK[$errorCorrectLevel])){
+			throw new QRCodeException('$typeNumber: '.$typeNumber.' / $errorCorrectLevel: '.$errorCorrectLevel.PHP_EOL.print_r($RSBLOCK, true));
+		}
+
+		$rsBlock = $BLOCK_TABLE[($typeNumber - 1) * 4 + $RSBLOCK[$errorCorrectLevel]];
+
+		$list = [];
+		$length = count($rsBlock) / 3;
+		for($i = 0; $i < $length; $i++){
+			for($j = 0; $j < $rsBlock[$i * 3 + 0]; $j++){
+				$list[] = [$rsBlock[$i * 3 + 1], $rsBlock[$i * 3 + 2]];
+			}
+		}
+
+		return $list;
+	}
+
+	/**
+	 * @param int $typeNumber
+	 * @param int $mode
+	 * @param int $ecLevel
+	 *
+	 * @return int
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	public static function getMaxLength($typeNumber, $mode, $ecLevel){
+		$RSBLOCK = QRConst::RSBLOCK;
+		$MAX_LENGTH = QRConst::MAX_LENGTH;
+		$MODE = QRConst::MODE;
+
+		if(!isset($RSBLOCK[$ecLevel])){
+			throw new QRCodeException('$_err: '.$ecLevel);
+		}
+
+		if(!isset($MODE[$mode])){
+			throw new QRCodeException('$_mode: '.$mode);
+		}
+
+		return $MAX_LENGTH[$typeNumber - 1][$RSBLOCK[$ecLevel]][$MODE[$mode]];
+	}
+
+
 }

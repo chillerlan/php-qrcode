@@ -149,7 +149,7 @@ class QRCode{
 				: $this->qrDataInterface->dataLength;
 
 			for($type = 1; $type <= 10; $type++){
-				if($length <= $this->getMaxLength($type, $mode, $this->errorCorrectLevel)){
+				if($length <= Util::getMaxLength($type, $mode, $this->errorCorrectLevel)){
 					$this->typeNumber = $type;
 
 					return $this;
@@ -157,7 +157,6 @@ class QRCode{
 			}
 
 		}
-
 
 		return $this;
 	}
@@ -294,73 +293,18 @@ class QRCode{
 	}
 
 	/**
-	 * @param int $typeNumber
-	 * @param int $mode
-	 * @param int $ecLevel
-	 *
-	 * @return int
-	 * @throws \chillerlan\QRCode\QRCodeException
+	 * @param bool $test
 	 */
-	protected static function getMaxLength($typeNumber, $mode, $ecLevel){
-		$RSBLOCK = QRConst::RSBLOCK;
-		$MAX_LENGTH = QRConst::MAX_LENGTH;
-		$MODE = QRConst::MODE;
+	protected function setTypeNumber($test){
+		$bits = Util::getBCHTypeNumber($this->typeNumber);
 
-		if(!isset($RSBLOCK[$ecLevel])){
-			throw new QRCodeException('$_err: '.$ecLevel);
+		for($i = 0; $i < 18; $i++){
+			$a = (int)floor($i / 3);
+			$b = $i % 3 + $this->pixelCount - 8 - 3;
+
+			$this->matrix[$a][$b] = $this->matrix[$b][$a] = !$test && (($bits >> $i) & 1) === 1;
 		}
 
-		if(!isset($MODE[$mode])){
-			throw new QRCodeException('$_mode: '.$mode);
-		}
-
-		return $MAX_LENGTH[$typeNumber - 1][$RSBLOCK[$ecLevel]][$MODE[$mode]];
-	}
-
-	/**
-	 * @param int $data
-	 *
-	 * @return int
-	 */
-	protected static function getBCHTypeInfo($data){
-		$d = $data << 10;
-
-		while(self::getBCHDigit($d) - self::getBCHDigit(QRConst::G15) >= 0){
-			$d ^= (QRConst::G15 << (self::getBCHDigit($d) - self::getBCHDigit(QRConst::G15)));
-		}
-
-		return (($data << 10)|$d)^QRConst::G15_MASK;
-	}
-
-	/**
-	 * @param int $data
-	 *
-	 * @return int
-	 */
-	protected static function getBCHTypeNumber($data){
-		$d = $data << 12;
-
-		while(self::getBCHDigit($d) - self::getBCHDigit(QRConst::G18) >= 0){
-			$d ^= (QRConst::G18 << (self::getBCHDigit($d) - self::getBCHDigit(QRConst::G18)));
-		}
-
-		return ($data << 12)|$d;
-	}
-
-	/**
-	 * @param int $data
-	 *
-	 * @return int
-	 */
-	protected static function getBCHDigit($data){
-		$digit = 0;
-
-		while($data !== 0){
-			$digit++;
-			$data >>= 1;
-		}
-
-		return $digit;
 	}
 
 	/**
@@ -369,7 +313,7 @@ class QRCode{
 	 */
 	protected function setTypeInfo($test, $pattern){
 		$this->setPattern();
-		$bits = self::getBCHTypeInfo(($this->errorCorrectLevel << 3) | $pattern);
+		$bits = Util::getBCHTypeInfo(($this->errorCorrectLevel << 3) | $pattern);
 
 		for($i = 0; $i < 15; $i++){
 			$mod = !$test && (($bits >> $i) & 1) === 1;
@@ -394,179 +338,6 @@ class QRCode{
 	}
 
 	/**
-	 * @throws \chillerlan\QRCode\QRCodeException
-	 */
-	protected function setPattern(){
-
-		// setupPositionProbePattern
-		foreach([[0, 0], [$this->pixelCount - 7, 0], [0, $this->pixelCount - 7]] as $grid){
-			$row = $grid[0];
-			$col = $grid[1];
-
-			for($r = -1; $r <= 7; $r++){
-				for($c = -1; $c <= 7; $c++){
-
-					if($row + $r <= -1 || $this->pixelCount <= $row + $r || $col + $c <= -1 || $this->pixelCount <= $col + $c){
-						continue;
-					}
-
-					$this->matrix[$row + $r][$col + $c] =
-						   (0 <= $r && $r <= 6 && ($c === 0 || $c === 6))
-						|| (0 <= $c && $c <= 6 && ($r === 0 || $r === 6))
-						|| (2 <= $c && $c <= 4 && 2 <= $r && $r <= 4);
-				}
-			}
-		}
-
-		// setupPositionAdjustPattern
-		$PATTERN_POSITION = QRConst::PATTERN_POSITION; // PHP5 compat
-		$pos = $PATTERN_POSITION[$this->typeNumber - 1];
-		foreach($pos as $i => $posI){
-			foreach($pos as $j => $posJ){
-
-				if($this->matrix[$posI][$posJ] !== null){
-					continue;
-				}
-
-				for($row = -2; $row <= 2; $row++){
-					for($col = -2; $col <= 2; $col++){
-						$this->matrix[$posI + $row][$posJ + $col] =
-							   $row === -2 || $row === 2
-							|| $col === -2 || $col === 2
-							||($row ===  0 && $col === 0);
-					}
-				}
-
-			}
-		}
-
-		// setupTimingPattern
-		for($i = 8; $i < $this->pixelCount - 8; $i++){
-
-			if($this->matrix[$i][6] !== null){
-				continue;
-			}
-
-			$this->matrix[$i][6] = $this->matrix[6][$i] = $i % 2 === 0;
-		}
-
-	}
-
-	/**
-	 * @param bool $test
-	 *
-	 * @return $this
-	 */
-	protected function setTypeNumber($test){
-		$bits = self::getBCHTypeNumber($this->typeNumber);
-
-		for($i = 0; $i < 18; $i++){
-			$a = (int)floor($i / 3);
-			$b = $i % 3 + $this->pixelCount - 8 - 3;
-
-			$this->matrix[$a][$b] = $this->matrix[$b][$a] = !$test && (($bits >> $i) & 1) === 1;
-		}
-
-	}
-
-	/**
-	 * @param bool $test
-	 * @param int  $pattern
-	 *
-	 * @throws \chillerlan\QRCode\QRCodeException
-	 */
-	protected function getMatrix($test, $pattern){
-		if($this->typeNumber < 1 || $this->typeNumber > 10){
-			throw new QRCodeException('Invalid type number '.$this->typeNumber);
-		}
-
-		$this->pixelCount = $this->typeNumber * 4 + 17;
-		$this->matrix = array_fill(0, $this->pixelCount, array_fill(0, $this->pixelCount, null));
-		$this->setTypeInfo($test, $pattern);
-
-		if($this->typeNumber >= 7){
-			$this->setTypeNumber($test);
-		}
-
-		$this->mapData($pattern);
-	}
-
-	/**
-	 * @param int $pattern
-	 *
-	 * @throws \chillerlan\QRCode\QRCodeException
-	 */
-	protected function mapData($pattern){
-		$this->createData();
-		$data = $this->createBytes();
-		$inc = -1;
-		$row = $this->pixelCount - 1;
-		$bitIndex = 7;
-		$byteIndex = 0;
-		$dataCount = count($data);
-
-		for($col = $this->pixelCount - 1; $col > 0; $col -= 2){
-
-			if($col === 6){
-				$col--;
-			}
-
-			while(true){
-				for($c = 0; $c < 2; $c++){
-					$_col = $col - $c;
-
-					if($this->matrix[$row][$_col] === null){
-						$dark = false;
-
-						if($byteIndex < $dataCount){
-							$dark = (($data[$byteIndex] >> $bitIndex) & 1) === 1;
-						}
-
-						$a = $row + $_col;
-						$m = $row * $_col;
-
-						$MASK_PATTERN = [
-							QRConst::MASK_PATTERN000 => $a % 2,
-							QRConst::MASK_PATTERN001 => $row % 2,
-							QRConst::MASK_PATTERN010 => $_col % 3,
-							QRConst::MASK_PATTERN011 => $a % 3,
-							QRConst::MASK_PATTERN100 => (floor($row / 2) + floor($_col / 3)) % 2,
-							QRConst::MASK_PATTERN101 => $m % 2 + $m % 3,
-							QRConst::MASK_PATTERN110 => ($m % 2 + $m % 3) % 2,
-							QRConst::MASK_PATTERN111 => ($m % 3 + $a % 2) % 2,
-						][$pattern];
-
-						if($MASK_PATTERN === 0){
-							$dark = !$dark;
-						}
-
-						$this->matrix[$row][$_col] = $dark;
-
-						$bitIndex--;
-						if($bitIndex === -1){
-							$byteIndex++;
-							$bitIndex = 7;
-						}
-
-					}
-				}
-
-				$row += $inc;
-
-				if($row < 0 || $this->pixelCount <= $row){
-					$row -= $inc;
-					$inc = -$inc;
-					break;
-				}
-
-			}
-
-		}
-
-	}
-
-	/**
-	 * @return $this
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function createData(){
@@ -623,41 +394,12 @@ class QRCode{
 	}
 
 	/**
-	 * @param int $typeNumber
-	 * @param int $errorCorrectLevel
-	 *
-	 * @return array
-	 * @throws \chillerlan\QRCode\QRCodeException
-	 */
-	protected static function getRSBlocks($typeNumber, $errorCorrectLevel){
-		// PHP5 compat
-		$RSBLOCK = QRConst::RSBLOCK;
-		$BLOCK_TABLE = QRConst::BLOCK_TABLE;
-
-		if(!isset($RSBLOCK[$errorCorrectLevel])){
-			throw new QRCodeException('$typeNumber: '.$typeNumber.' / $errorCorrectLevel: '.$errorCorrectLevel.PHP_EOL.print_r($RSBLOCK, true));
-		}
-
-		$rsBlock = $BLOCK_TABLE[($typeNumber - 1) * 4 + $RSBLOCK[$errorCorrectLevel]];
-
-		$list = [];
-		$length = count($rsBlock) / 3;
-		for($i = 0; $i < $length; $i++){
-			for($j = 0; $j < $rsBlock[$i * 3 + 0]; $j++){
-				$list[] = [$rsBlock[$i * 3 + 1], $rsBlock[$i * 3 + 2]];
-			}
-		}
-
-		return $list;
-	}
-
-	/**
 	 * @return array
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function createBytes(){
 		$totalCodeCount = $maxDcCount = $maxEcCount = $offset = $index = 0;
-		$rsBlocks = $this->getRSBlocks($this->typeNumber, $this->errorCorrectLevel);
+		$rsBlocks = Util::getRSBlocks($this->typeNumber, $this->errorCorrectLevel);
 		$rsBlockCount = count($rsBlocks);
 		$dcdata = $ecdata = array_fill(0, $rsBlockCount, null);
 
@@ -717,6 +459,161 @@ class QRCode{
 		}
 
 		return $data;
+	}
+
+	/**
+	 * @param int $pattern
+	 *
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	protected function mapData($pattern){
+		$this->createData();
+		$data = $this->createBytes();
+		$inc = -1;
+		$row = $this->pixelCount - 1;
+		$bitIndex = 7;
+		$byteIndex = 0;
+		$dataCount = count($data);
+
+		for($col = $this->pixelCount - 1; $col > 0; $col -= 2){
+
+			if($col === 6){
+				$col--;
+			}
+
+			while(true){
+				for($c = 0; $c < 2; $c++){
+					$_col = $col - $c;
+
+					if($this->matrix[$row][$_col] === null){
+						$dark = false;
+
+						if($byteIndex < $dataCount){
+							$dark = (($data[$byteIndex] >> $bitIndex) & 1) === 1;
+						}
+
+						$a = $row + $_col;
+						$m = $row * $_col;
+
+						$MASK_PATTERN = [
+							                QRConst::MASK_PATTERN000 => $a % 2,
+							                QRConst::MASK_PATTERN001 => $row % 2,
+							                QRConst::MASK_PATTERN010 => $_col % 3,
+							                QRConst::MASK_PATTERN011 => $a % 3,
+							                QRConst::MASK_PATTERN100 => (floor($row / 2) + floor($_col / 3)) % 2,
+							                QRConst::MASK_PATTERN101 => $m % 2 + $m % 3,
+							                QRConst::MASK_PATTERN110 => ($m % 2 + $m % 3) % 2,
+							                QRConst::MASK_PATTERN111 => ($m % 3 + $a % 2) % 2,
+						                ][$pattern];
+
+						if($MASK_PATTERN === 0){
+							$dark = !$dark;
+						}
+
+						$this->matrix[$row][$_col] = $dark;
+
+						$bitIndex--;
+						if($bitIndex === -1){
+							$byteIndex++;
+							$bitIndex = 7;
+						}
+
+					}
+				}
+
+				$row += $inc;
+
+				if($row < 0 || $this->pixelCount <= $row){
+					$row -= $inc;
+					$inc = -$inc;
+					break;
+				}
+
+			}
+
+		}
+
+	}
+
+	/**
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	protected function setPattern(){
+
+		// setupPositionProbePattern
+		foreach([[0, 0], [$this->pixelCount - 7, 0], [0, $this->pixelCount - 7]] as $grid){
+			$row = $grid[0];
+			$col = $grid[1];
+
+			for($r = -1; $r <= 7; $r++){
+				for($c = -1; $c <= 7; $c++){
+
+					if($row + $r <= -1 || $this->pixelCount <= $row + $r || $col + $c <= -1 || $this->pixelCount <= $col + $c){
+						continue;
+					}
+
+					$this->matrix[$row + $r][$col + $c] =
+						(0 <= $r && $r <= 6 && ($c === 0 || $c === 6))
+						|| (0 <= $c && $c <= 6 && ($r === 0 || $r === 6))
+						|| (2 <= $c && $c <= 4 && 2 <= $r && $r <= 4);
+				}
+			}
+		}
+
+		// setupPositionAdjustPattern
+		$PATTERN_POSITION = QRConst::PATTERN_POSITION; // PHP5 compat
+		$pos = $PATTERN_POSITION[$this->typeNumber - 1];
+		foreach($pos as $i => $posI){
+			foreach($pos as $j => $posJ){
+
+				if($this->matrix[$posI][$posJ] !== null){
+					continue;
+				}
+
+				for($row = -2; $row <= 2; $row++){
+					for($col = -2; $col <= 2; $col++){
+						$this->matrix[$posI + $row][$posJ + $col] =
+							$row === -2 || $row === 2
+							|| $col === -2 || $col === 2
+							||($row ===  0 && $col === 0);
+					}
+				}
+
+			}
+		}
+
+		// setupTimingPattern
+		for($i = 8; $i < $this->pixelCount - 8; $i++){
+
+			if($this->matrix[$i][6] !== null){
+				continue;
+			}
+
+			$this->matrix[$i][6] = $this->matrix[6][$i] = $i % 2 === 0;
+		}
+
+	}
+
+	/**
+	 * @param bool $test
+	 * @param int  $pattern
+	 *
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	protected function getMatrix($test, $pattern){
+		if($this->typeNumber < 1 || $this->typeNumber > 10){
+			throw new QRCodeException('Invalid type number '.$this->typeNumber);
+		}
+
+		$this->pixelCount = $this->typeNumber * 4 + 17;
+		$this->matrix = array_fill(0, $this->pixelCount, array_fill(0, $this->pixelCount, null));
+		$this->setTypeInfo($test, $pattern);
+
+		if($this->typeNumber >= 7){
+			$this->setTypeNumber($test);
+		}
+
+		$this->mapData($pattern);
 	}
 
 }
