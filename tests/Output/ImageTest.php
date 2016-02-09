@@ -37,6 +37,10 @@ class ImageTest extends \PHPUnit_Framework_TestCase{
 		$this->assertEquals(QRCode::OUTPUT_IMAGE_PNG, $this->options->type);
 		$this->assertEquals(true, $this->options->base64);
 	}
+	
+	public function testImageInstance(){
+		$this->assertInstanceOf(QRImage::class, new QRImage);
+	}
 
 	public function testImageInstanceWithOptionsOverride(){
 		$this->options->type = 'foobar';
