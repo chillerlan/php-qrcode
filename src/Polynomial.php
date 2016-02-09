@@ -140,9 +140,11 @@ class Polynomial{
 	 */
 	public function gexp($n){
 
-		switch(true){
-			case $n < 0   : $n += 255; break;
-			case $n >= 256: $n -= 255; break;
+		if($n < 0){
+			$n += 255;
+		}
+		elseif($n >= 256){
+			$n -= 255;
 		}
 
 		return $this->EXP_TABLE[$n];
