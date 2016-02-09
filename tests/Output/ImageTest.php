@@ -66,6 +66,10 @@ class ImageTest extends \PHPUnit_Framework_TestCase{
 		$this->assertEquals($expected, (new QRCode($data, new QRImage($this->options)))->output());
 	}
 
+	/**
+	 * @expectedException \chillerlan\QRCode\Output\QRCodeOutputException
+	 * @expectedExceptionMessage Invalid matrix!
+	 */
 	public function testSetMatrixException(){
 		(new QRImage)->setMatrix([]);
 	}

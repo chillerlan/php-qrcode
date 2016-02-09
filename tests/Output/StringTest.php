@@ -47,6 +47,10 @@ class StringTest extends \PHPUnit_Framework_TestCase{
 		$this->assertEquals($expected, (new QRCode($data, new QRString($this->options)))->output());
 	}
 
+	/**
+	 * @expectedException \chillerlan\QRCode\Output\QRCodeOutputException
+	 * @expectedExceptionMessage Invalid matrix!
+	 */
 	public function testSetMatrixException(){
 		(new QRString)->setMatrix([]);
 	}
