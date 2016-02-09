@@ -167,7 +167,7 @@ class QRCode{
 			}
 		}
 
-		throw new QRCodeException('Unable to determine type number.');
+		throw new QRCodeException('Unable to determine type number.'); // @codeCoverageIgnore
 	}
 
 	/**
@@ -595,7 +595,7 @@ class QRCode{
 		for($i = 8; $i < $this->pixelCount - 8; $i++){
 
 			if($this->matrix[$i][6] !== null){
-				continue;
+				continue; // @codeCoverageIgnore
 			}
 
 			$this->matrix[$i][6] = $this->matrix[6][$i] = $i % 2 === 0;
