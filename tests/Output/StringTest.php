@@ -49,6 +49,10 @@ class StringTest extends \PHPUnit_Framework_TestCase{
 		$this->assertEquals($expected, (new QRCode($data, new QRString($this->options)))->output());
 	}
 
+	/**
+	 * @expectedException \chillerlan\QRCode\Output\QRCodeOutputException
+	 * @expectedExceptionMessage Invalid string output type!
+	 */
 	public function testOutputTypeException(){
 		$this->options->type = 'foo';
 		new QRString($this->options);

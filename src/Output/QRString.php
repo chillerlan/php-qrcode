@@ -34,7 +34,7 @@ class QRString extends QROutputBase implements QROutputInterface{
 			$this->options = new QRStringOptions;
 		}
 
-		if(!in_array($this->options->type ,[QRCode::OUTPUT_STRING_TEXT, QRCode::OUTPUT_STRING_JSON, QRCode::OUTPUT_STRING_HTML])){
+		if(!in_array($this->options->type, [QRCode::OUTPUT_STRING_TEXT, QRCode::OUTPUT_STRING_JSON, QRCode::OUTPUT_STRING_HTML], true)){
 			throw new QRCodeOutputException('Invalid string output type!');
 		}
 
