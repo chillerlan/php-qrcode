@@ -20,13 +20,62 @@ use chillerlan\QRCode\Output\QRStringOptions;
 
 class QRCodeTest extends \PHPUnit_Framework_TestCase{
 
-	public function testInstance(){
-		$output =  new QRString;
-		$options = new QROptions;
+	/**
+	 * @var \chillerlan\QRCode\QROptions
+	 */
+	protected $options;
 
-		$this->assertInstanceOf(QRString::class, $output);
-		$this->assertInstanceOf(QROptions::class, $options);
-		$this->assertInstanceOf(QRCode::class, new QRCode('data', $output, $options));
+	/**
+	 * @var \chillerlan\QRCode\Output\QROutputInterface
+	 */
+	protected $output;
+
+	protected function setUp(){
+		$this->options = new QROptions;
+		$this->output = new QRString;
+	}
+
+	public function testInstance(){
+		$this->assertInstanceOf(QRString::class, $this->output);
+		$this->assertInstanceOf(QROptions::class, $this->options);
+		$this->assertInstanceOf(QRCode::class, new QRCode('foobar', $this->output, $this->options));
+	}
+
+	public function stringDataProvider(){
+		return [
+			['1234567890'],
+			['ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:'],
+			['#\\'],
+			['茗荷'],
+		];
+	}
+
+	/**
+	 * @dataProvider stringDataProvider
+	 */
+	public function testDataCoverage($data){
+		(new QRCode($data, new QRString))->getRawData();
+	}
+
+	public function testTypeAutoOverride(){
+		$this->options->typeNumber = QRCode::TYPE_05;
+		new QRCode('foobar', new QRString, $this->options);
+	}
+	/**
+	 * @expectedException \chillerlan\QRCode\QRCodeException
+	 * @expectedExceptionMessage No data given.
+	 */
+	public function testNoDataException(){
+		new QRCode('', new QRString);
+	}
+
+	/**
+	 * @expectedException \chillerlan\QRCode\QRCodeException
+	 * @expectedExceptionMessage Invalid error correct level: 42
+	 */
+	public function testErrorCorrectLevelException(){
+		$this->options->errorCorrectLevel = 42;
+		new QRCode('foobar', new QRString, $this->options);
 	}
 
 }
