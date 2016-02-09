@@ -71,10 +71,14 @@ class QRCodeTest extends \PHPUnit_Framework_TestCase{
 		}
 	}
 
-	public function testTypeAutoOverride(){
+	/**
+	 * @dataProvider stringDataProvider
+	 */
+	public function testTypeAutoOverride($data){
 		$this->options->typeNumber = QRCode::TYPE_05;
-		new QRCode('foobar', new QRString, $this->options);
+		new QRCode($data, new QRString, $this->options);
 	}
+
 	/**
 	 * @expectedException \chillerlan\QRCode\QRCodeException
 	 * @expectedExceptionMessage No data given.
@@ -90,6 +94,16 @@ class QRCodeTest extends \PHPUnit_Framework_TestCase{
 	public function testErrorCorrectLevelException(){
 		$this->options->errorCorrectLevel = 42;
 		new QRCode('foobar', new QRString, $this->options);
+	}
+
+	/**
+	 * @expectedException \chillerlan\QRCode\QRCodeException
+	 * @expectedExceptionMessage code length overflow. (261 > 72bit)
+	 */
+	public function testCodeLengthOverflowException(){
+		$this->options->typeNumber = QRCode::TYPE_01;
+		$this->options->errorCorrectLevel = QRCode::ERROR_CORRECT_LEVEL_H;
+		(new QRCode('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:', new QRString, $this->options))->getRawData();
 	}
 
 }
