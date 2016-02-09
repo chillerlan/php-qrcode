@@ -11,13 +11,11 @@
 
 namespace chillerlan\QRCodeTest;
 
+use chillerlan\QRCode\Output\QRString;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QRConst;
 use chillerlan\QRCode\QROptions;
-use chillerlan\QRCode\Output\QRImage;
-use chillerlan\QRCode\Output\QRImageOptions;
-use chillerlan\QRCode\Output\QRString;
-use chillerlan\QRCode\Output\QRStringOptions;
+use ReflectionClass;
 
 class QRCodeTest extends \PHPUnit_Framework_TestCase{
 
@@ -31,15 +29,21 @@ class QRCodeTest extends \PHPUnit_Framework_TestCase{
 	 */
 	protected $output;
 
+	/**
+	 * @var \ReflectionClass
+	 */
+	protected $reflectionClass;
+
 	protected function setUp(){
 		$this->options = new QROptions;
 		$this->output = new QRString;
+		$this->reflectionClass = new ReflectionClass(QRCode::class);
 	}
 
 	public function testInstance(){
 		$this->assertInstanceOf(QRString::class, $this->output);
 		$this->assertInstanceOf(QROptions::class, $this->options);
-		$this->assertInstanceOf(QRCode::class, new QRCode('foobar', $this->output, $this->options));
+		$this->assertInstanceOf(QRCode::class, $this->reflectionClass->newInstanceArgs(['foobar', $this->output, $this->options]));
 	}
 
 	public function stringDataProvider(){
@@ -55,7 +59,7 @@ class QRCodeTest extends \PHPUnit_Framework_TestCase{
 	 * @dataProvider stringDataProvider
 	 */
 	public function testDataCoverage($data){
-		(new QRCode($data, new QRString))->getRawData();
+		(new QRCode($data, $this->output))->getRawData();
 	}
 
 	/**
@@ -66,7 +70,7 @@ class QRCodeTest extends \PHPUnit_Framework_TestCase{
 			foreach(QRConst::RSBLOCK as $eclevel => $y){
 				$this->options->typeNumber = $type;
 				$this->options->errorCorrectLevel = $eclevel;
-				$this->assertInstanceOf(QRCode::class, new QRCode($data, new QRString, $this->options));
+				$this->assertInstanceOf(QRCode::class, new QRCode($data, $this->output, $this->options));
 			}
 		}
 	}
@@ -76,7 +80,42 @@ class QRCodeTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testTypeAutoOverride($data){
 		$this->options->typeNumber = QRCode::TYPE_05;
-		new QRCode($data, new QRString, $this->options);
+		new QRCode($data, $this->output, $this->options);
+	}
+
+
+	public function getTypeNumberDataProvider(){
+		return [
+			[true,  QRCode::TYPE_05, 'foobar'],
+			[false, QRCode::TYPE_05, 'foobar'],
+			[true,  QRCode::TYPE_10, 'foobar'],
+			[false, QRCode::TYPE_10, 'foobar'],
+			[true,  QRCode::TYPE_05, '1234567890'],
+			[false, QRCode::TYPE_05, '1234567890'],
+			[true,  QRCode::TYPE_10, '1234567890'],
+			[false, QRCode::TYPE_10, '1234567890'],
+			[true,  QRCode::TYPE_05, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:'],
+			[false, QRCode::TYPE_05, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:'],
+			[true,  QRCode::TYPE_10, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:'],
+			[false, QRCode::TYPE_10, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:'],
+			[true,  QRCode::TYPE_05, '茗荷'],
+			[false, QRCode::TYPE_05, '茗荷'],
+			[true,  QRCode::TYPE_10, '茗荷'],
+			[false, QRCode::TYPE_10, '茗荷'],
+		];
+	}
+
+	/**
+	 * @dataProvider getTypeNumberDataProvider
+	 */
+	public function testInternalGetTypeNumber($test, $type, $data){
+		$method = $this->reflectionClass->getMethod('getMatrix');
+		$method->setAccessible(true);
+		$this->options->typeNumber = $type;
+
+		for($i = 0; $i <= 7; $i++){
+			$method->invokeArgs($this->reflectionClass->newInstanceArgs([$data, $this->output, $this->options]), [$test, $i]);
+		}
 	}
 
 	/**
@@ -84,7 +123,7 @@ class QRCodeTest extends \PHPUnit_Framework_TestCase{
 	 * @expectedExceptionMessage No data given.
 	 */
 	public function testNoDataException(){
-		new QRCode('', new QRString);
+		$this->reflectionClass->newInstanceArgs(['', $this->output]);
 	}
 
 	/**
@@ -93,7 +132,7 @@ class QRCodeTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testErrorCorrectLevelException(){
 		$this->options->errorCorrectLevel = 42;
-		new QRCode('foobar', new QRString, $this->options);
+		$this->reflectionClass->newInstanceArgs(['foobar', $this->output, $this->options]);
 	}
 
 	/**
@@ -103,7 +142,9 @@ class QRCodeTest extends \PHPUnit_Framework_TestCase{
 	public function testCodeLengthOverflowException(){
 		$this->options->typeNumber = QRCode::TYPE_01;
 		$this->options->errorCorrectLevel = QRCode::ERROR_CORRECT_LEVEL_H;
-		(new QRCode('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:', new QRString, $this->options))->getRawData();
+
+		$method = $this->reflectionClass->getMethod('getRawData');
+		$method->invoke($this->reflectionClass->newInstanceArgs(['ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:', $this->output, $this->options]));
 	}
 
 }

@@ -12,6 +12,10 @@
 
 namespace chillerlan\QRCode;
 
+use chillerlan\QRCode\Data\AlphaNum;
+use chillerlan\QRCode\Data\Byte;
+use chillerlan\QRCode\Data\Kanji;
+use chillerlan\QRCode\Data\Number;
 use chillerlan\QRCode\Output\QROutputInterface;
 
 /**
@@ -114,9 +118,11 @@ class QRCode{
 			$options = new QROptions;
 		}
 
-		if(!array_key_exists($options->errorCorrectLevel, QRConst::RSBLOCK)){
+		if(!in_array($options->errorCorrectLevel, QRConst::RSBLOCK, true)){
 			throw new QRCodeException('Invalid error correct level: '.$options->errorCorrectLevel);
 		}
+
+		$this->errorCorrectLevel = $options->errorCorrectLevel;
 
 		switch(true){
 			case Util::isAlphaNum($data):
@@ -130,17 +136,16 @@ class QRCode{
 				break;
 		}
 
-
-		$qrDataInterface = __NAMESPACE__.'\\Data\\'.[
-			QRConst::MODE_ALPHANUM => 'AlphaNum',
-			QRConst::MODE_BYTE     => 'Byte',
-			QRConst::MODE_KANJI    => 'Kanji',
-			QRConst::MODE_NUMBER   => 'Number',
+		$qrDataInterface = [
+			QRConst::MODE_ALPHANUM => AlphaNum::class,
+			QRConst::MODE_BYTE     => Byte::class,
+			QRConst::MODE_KANJI    => Kanji::class,
+			QRConst::MODE_NUMBER   => Number::class,
 		][$mode];
 
-		$this->errorCorrectLevel = $options->errorCorrectLevel;
-		$this->typeNumber = intval($options->typeNumber);
 		$this->qrDataInterface = new $qrDataInterface($data);
+
+		$this->typeNumber = intval($options->typeNumber);
 
 		if($this->typeNumber < 1 || $this->typeNumber > 10){
 			$this->typeNumber = $this->getTypeNumber($mode);
@@ -183,10 +188,10 @@ class QRCode{
 	 */
 	public function getRawData(){
 		$minLostPoint = 0;
-		$pattern = 0;
+		$maskPattern = 0;
 
-		for($i = 0; $i < 8; $i++){
-			$this->getMatrix(true, $i);
+		for($pattern = 0; $pattern <= 7; $pattern++){
+			$this->getMatrix(true, $pattern);
 			$lostPoint = 0;
 
 			// LEVEL1
@@ -289,14 +294,14 @@ class QRCode{
 			$ratio = abs(100 * $darkCount / $this->pixelCount / $this->pixelCount - 50) / 5;
 			$lostPoint += $ratio * 10;
 
-			if($i === 0 || $minLostPoint > $lostPoint){
+			if($pattern === 0 || $minLostPoint > $lostPoint){
 				$minLostPoint = $lostPoint;
-				$pattern = $i;
+				$maskPattern = $pattern;
 			}
 
 		}
 
-		$this->getMatrix(false, $pattern);
+		$this->getMatrix(false, $maskPattern);
 
 		return $this->matrix;
 	}
@@ -350,11 +355,6 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function createData(){
-
-		if(!isset($this->errorCorrectLevel)){
-			throw new QRCodeException('Invalid error correct level '.$this->errorCorrectLevel);
-		}
-
 		$this->bitBuffer->clear();
 
 		$MAX_BITS = QRConst::MAX_BITS; // php5 compat
@@ -605,20 +605,20 @@ class QRCode{
 
 	/**
 	 * @param bool $test
-	 * @param int  $pattern
+	 * @param int  $maskPattern
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	protected function getMatrix($test, $pattern){
+	protected function getMatrix($test, $maskPattern){
 		$this->pixelCount = $this->typeNumber * 4 + 17;
 		$this->matrix = array_fill(0, $this->pixelCount, array_fill(0, $this->pixelCount, null));
-		$this->setTypeInfo($test, $pattern);
+		$this->setTypeInfo($test, $maskPattern);
 
 		if($this->typeNumber >= 7){
 			$this->setTypeNumber($test);
 		}
 
-		$this->mapData($pattern);
+		$this->mapData($maskPattern);
 	}
 
 }
