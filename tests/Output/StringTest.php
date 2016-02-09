@@ -44,6 +44,7 @@ class StringTest extends \PHPUnit_Framework_TestCase{
 	 */
 	public function testStringOutput($data, $type, $expected){
 		$this->options->type = $type;
+		$this->options->htmlOmitEndTag = false;
 		$this->assertEquals($expected, (new QRCode($data, new QRString($this->options)))->output());
 	}
 
