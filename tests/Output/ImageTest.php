@@ -37,7 +37,7 @@ class ImageTest extends \PHPUnit_Framework_TestCase{
 		$this->assertEquals(QRCode::OUTPUT_IMAGE_PNG, $this->options->type);
 		$this->assertEquals(true, $this->options->base64);
 	}
-	
+
 	public function testImageInstance(){
 		$this->assertInstanceOf(QRImage::class, new QRImage);
 	}
@@ -64,6 +64,10 @@ class ImageTest extends \PHPUnit_Framework_TestCase{
 	public function testImageOutput($data, $type, $expected){
 		$this->options->type = $type;
 		$this->assertEquals($expected, (new QRCode($data, new QRImage($this->options)))->output());
+	}
+
+	public function testSetMatrixException(){
+		(new QRImage)->setMatrix([]);
 	}
 
 }
