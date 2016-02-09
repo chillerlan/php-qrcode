@@ -505,15 +505,15 @@ class QRCode{
 						$m = $row * $_col;
 
 						$MASK_PATTERN = [
-							                QRConst::MASK_PATTERN000 => $a % 2,
-							                QRConst::MASK_PATTERN001 => $row % 2,
-							                QRConst::MASK_PATTERN010 => $_col % 3,
-							                QRConst::MASK_PATTERN011 => $a % 3,
-							                QRConst::MASK_PATTERN100 => (floor($row / 2) + floor($_col / 3)) % 2,
-							                QRConst::MASK_PATTERN101 => $m % 2 + $m % 3,
-							                QRConst::MASK_PATTERN110 => ($m % 2 + $m % 3) % 2,
-							                QRConst::MASK_PATTERN111 => ($m % 3 + $a % 2) % 2,
-						                ][$pattern];
+							QRConst::MASK_PATTERN000 => $a % 2,
+							QRConst::MASK_PATTERN001 => $row % 2,
+							QRConst::MASK_PATTERN010 => $_col % 3,
+							QRConst::MASK_PATTERN011 => $a % 3,
+							QRConst::MASK_PATTERN100 => (floor($row / 2) + floor($_col / 3)) % 2,
+							QRConst::MASK_PATTERN101 => $m % 2 + $m % 3,
+							QRConst::MASK_PATTERN110 => ($m % 2 + $m % 3) % 2,
+							QRConst::MASK_PATTERN111 => ($m % 3 + $a % 2) % 2,
+						][$pattern];
 
 						if($MASK_PATTERN === 0){
 							$dark = !$dark;
@@ -610,10 +610,6 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function getMatrix($test, $pattern){
-		if($this->typeNumber < 1 || $this->typeNumber > 10){
-			throw new QRCodeException('Invalid type number '.$this->typeNumber);
-		}
-
 		$this->pixelCount = $this->typeNumber * 4 + 17;
 		$this->matrix = array_fill(0, $this->pixelCount, array_fill(0, $this->pixelCount, null));
 		$this->setTypeInfo($test, $pattern);
