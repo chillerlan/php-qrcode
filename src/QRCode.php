@@ -143,22 +143,31 @@ class QRCode{
 		$this->qrDataInterface = new $qrDataInterface($data);
 
 		if($this->typeNumber < 1 || $this->typeNumber > 10){
-			/** @noinspection PhpUndefinedFieldInspection */
-			$length = $this->qrDataInterface->mode === QRConst::MODE_KANJI
-				? floor($this->qrDataInterface->dataLength / 2)
-				: $this->qrDataInterface->dataLength;
-
-			for($type = 1; $type <= 10; $type++){
-				if($length <= Util::getMaxLength($type, $mode, $this->errorCorrectLevel)){
-					$this->typeNumber = $type;
-
-					return $this;
-				}
-			}
-
+			$this->typeNumber = $this->getTypeNumber($mode);
 		}
 
 		return $this;
+	}
+
+	/**
+	 * @param $mode
+	 *
+	 * @return int
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	protected function getTypeNumber($mode){
+		/** @noinspection PhpUndefinedFieldInspection */
+		$length = $this->qrDataInterface->mode === QRConst::MODE_KANJI
+			? floor($this->qrDataInterface->dataLength / 2)
+			: $this->qrDataInterface->dataLength;
+
+		for($type = 1; $type <= 10; $type++){
+			if($length <= Util::getMaxLength($type, $mode, $this->errorCorrectLevel)){
+				return $type;
+			}
+		}
+
+		throw new QRCodeException('Unable to determine type number.');
 	}
 
 	/**
