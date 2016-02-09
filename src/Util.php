@@ -144,7 +144,7 @@ class Util{
 		$BLOCK_TABLE = QRConst::BLOCK_TABLE;
 
 		if(!isset($RSBLOCK[$errorCorrectLevel])){
-			throw new QRCodeException('$typeNumber: '.$typeNumber.' / $errorCorrectLevel: '.$errorCorrectLevel.PHP_EOL.print_r($RSBLOCK, true));
+			throw new QRCodeException('$typeNumber: '.$typeNumber.' / $errorCorrectLevel: '.$errorCorrectLevel);
 		}
 
 		$rsBlock = $BLOCK_TABLE[($typeNumber - 1) * 4 + $RSBLOCK[$errorCorrectLevel]];
@@ -174,11 +174,11 @@ class Util{
 		$MODE = QRConst::MODE;
 
 		if(!isset($RSBLOCK[$ecLevel])){
-			throw new QRCodeException('$_err: '.$ecLevel);
+			throw new QRCodeException('Invalid error correct level: '.$ecLevel);
 		}
 
 		if(!isset($MODE[$mode])){
-			throw new QRCodeException('$_mode: '.$mode);
+			throw new QRCodeException('Invalid mode: '.$mode);
 		}
 
 		return $MAX_LENGTH[$typeNumber - 1][$RSBLOCK[$ecLevel]][$MODE[$mode]];
