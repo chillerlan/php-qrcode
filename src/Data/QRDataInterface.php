@@ -15,7 +15,8 @@ namespace chillerlan\QRCode\Data;
 use chillerlan\QRCode\BitBuffer;
 
 /**
- *
+ * @property string data
+ * @property int    dataLength
  */
 interface QRDataInterface{
 

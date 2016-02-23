@@ -92,7 +92,7 @@ class QRCode{
 	 *
 	 * @param string                                      $data
 	 * @param \chillerlan\QRCode\Output\QROutputInterface $output
-	 * @param \chillerlan\QRCode\QROptions                $options
+	 * @param \chillerlan\QRCode\QROptions|null           $options
 	 */
 	public function __construct($data, QROutputInterface $output, QROptions $options = null){
 		$this->qrOutputInterface = $output;
@@ -101,8 +101,8 @@ class QRCode{
 	}
 
 	/**
-	 * @param string                       $data
-	 * @param \chillerlan\QRCode\QROptions $options
+	 * @param string                            $data
+	 * @param \chillerlan\QRCode\QROptions|null $options
 	 *
 	 * @return $this
 	 * @throws \chillerlan\QRCode\QRCodeException
@@ -128,7 +128,7 @@ class QRCode{
 			case Util::isAlphaNum($data):
 				$mode = Util::isNumber($data) ? QRConst::MODE_NUMBER : QRConst::MODE_ALPHANUM;
 				break;
-			case Util::isKanji($data)   :
+			case Util::isKanji($data):
 				$mode = QRConst::MODE_KANJI;
 				break;
 			default:
