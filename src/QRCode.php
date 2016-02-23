@@ -162,23 +162,18 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function getTypeNumber($mode){
+		/** @noinspection PhpUndefinedFieldInspection */
+		$length = $this->qrDataInterface->mode === QRConst::MODE_KANJI
+			? floor($this->qrDataInterface->dataLength / 2)
+			: $this->qrDataInterface->dataLength;
 
-		if($this->qrDataInterface instanceof QRDataInterface){
-			/** @noinspection PhpUndefinedFieldInspection */
-			$length = $this->qrDataInterface->mode === QRConst::MODE_KANJI
-				? floor($this->qrDataInterface->dataLength / 2)
-				: $this->qrDataInterface->dataLength;
-
-			foreach(range(1, 10) as $type){
-				if($length <= Util::getMaxLength($type, $mode, $this->errorCorrectLevel)){
-					return $type;
-				}
+		foreach(range(1, 10) as $type){
+			if($length <= Util::getMaxLength($type, $mode, $this->errorCorrectLevel)){
+				return $type;
 			}
-
-			throw new QRCodeException('Unable to determine type number.'); // @codeCoverageIgnore
 		}
 
-		throw new QRCodeException('$this->qrDataInterface does not implement QRDataInterface'); // @codeCoverageIgnore
+		throw new QRCodeException('Unable to determine type number.'); // @codeCoverageIgnore
 	}
 
 	/**
