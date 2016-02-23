@@ -16,7 +16,6 @@ use chillerlan\QRCode\Data\AlphaNum;
 use chillerlan\QRCode\Data\Byte;
 use chillerlan\QRCode\Data\Kanji;
 use chillerlan\QRCode\Data\Number;
-use chillerlan\QRCode\Data\QRDataInterface;
 use chillerlan\QRCode\Output\QROutputInterface;
 
 /**
@@ -162,10 +161,11 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function getTypeNumber($mode){
-		/** @noinspection PhpUndefinedFieldInspection */
-		$length = $this->qrDataInterface->mode === QRConst::MODE_KANJI
-			? floor($this->qrDataInterface->dataLength / 2)
-			: $this->qrDataInterface->dataLength;
+		$length = $this->qrDataInterface->dataLength;
+
+		if($this->qrDataInterface->mode === QRConst::MODE_KANJI){
+			$length = floor($this->qrDataInterface->dataLength / 2);
+		}
 
 		foreach(range(1, 10) as $type){
 			if($length <= Util::getMaxLength($type, $mode, $this->errorCorrectLevel)){

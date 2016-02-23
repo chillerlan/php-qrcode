@@ -17,6 +17,7 @@ use chillerlan\QRCode\BitBuffer;
 /**
  * @property string data
  * @property int    dataLength
+ * @property int    mode
  */
 interface QRDataInterface{
 
