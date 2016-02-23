@@ -16,6 +16,7 @@ use chillerlan\QRCode\Data\AlphaNum;
 use chillerlan\QRCode\Data\Byte;
 use chillerlan\QRCode\Data\Kanji;
 use chillerlan\QRCode\Data\Number;
+use chillerlan\QRCode\Data\QRDataInterface;
 use chillerlan\QRCode\Output\QROutputInterface;
 
 /**
@@ -161,18 +162,23 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function getTypeNumber($mode){
-		/** @noinspection PhpUndefinedFieldInspection */
-		$length = $this->qrDataInterface->mode === QRConst::MODE_KANJI
-			? floor($this->qrDataInterface->dataLength / 2)
-			: $this->qrDataInterface->dataLength;
 
-		for($type = 1; $type <= 10; $type++){
-			if($length <= Util::getMaxLength($type, $mode, $this->errorCorrectLevel)){
-				return $type;
+		if($this->qrDataInterface instanceof QRDataInterface){
+			/** @noinspection PhpUndefinedFieldInspection */
+			$length = $this->qrDataInterface->mode === QRConst::MODE_KANJI
+				? floor($this->qrDataInterface->dataLength / 2)
+				: $this->qrDataInterface->dataLength;
+
+			foreach(range(1, 10) as $type){
+				if($length <= Util::getMaxLength($type, $mode, $this->errorCorrectLevel)){
+					return $type;
+				}
 			}
+
+			throw new QRCodeException('Unable to determine type number.'); // @codeCoverageIgnore
 		}
 
-		throw new QRCodeException('Unable to determine type number.'); // @codeCoverageIgnore
+		throw new QRCodeException('$this->qrDataInterface does not implement QRDataInterface'); // @codeCoverageIgnore
 	}
 
 	/**
@@ -193,43 +199,44 @@ class QRCode{
 		for($pattern = 0; $pattern <= 7; $pattern++){
 			$this->getMatrix(true, $pattern);
 			$lostPoint = 0;
+			$darkCount = 0;
+
+			$range1 = range(0, $this->pixelCount-1);
+			$range2 = range(0, $this->pixelCount-2);
+			$range3 = range(0, $this->pixelCount-7);
+			$range4 = range(-1, 1);
 
 			// LEVEL1
-			for($row = 0; $row < $this->pixelCount; $row++){
-				for($col = 0; $col < $this->pixelCount; $col++){
+			foreach($range1 as $row){
+				foreach($range1 as $col){
 					$sameCount = 0;
-					$dark = $this->matrix[$row][$col];
 
-					for($r = -1; $r <= 1; $r++){
-
-						if($row + $r < 0 || $this->pixelCount <= $row + $r){
+					foreach($range4 as $rr){
+						if($row + $rr < 0 || $this->pixelCount <= $row + $rr){
 							continue;
 						}
 
-						for($c = -1; $c <= 1; $c++){
+						foreach($range4 as $cr){
 
-							if(($r === 0 && $c === 0) || ($col + $c < 0 || $this->pixelCount <= $col + $c)){
+							if(($rr === 0 && $cr === 0) || ($col + $cr < 0 || $this->pixelCount <= $col + $cr)){
 								continue;
 							}
 
-							if($this->matrix[$row + $r][$col + $c] === $dark){
+							if($this->matrix[$row + $rr][$col + $cr] === $this->matrix[$row][$col]){
 								$sameCount++;
 							}
-
 						}
-
 					}
 
 					if($sameCount > 5){
 						$lostPoint += (3 + $sameCount - 5);
 					}
-
 				}
 			}
 
 			// LEVEL2
-			for($row = 0; $row < $this->pixelCount - 1; $row++){
-				for($col = 0; $col < $this->pixelCount - 1; $col++){
+			foreach($range2 as $row){
+				foreach($range2 as $col){
 					$count = 0;
 
 					if(
@@ -244,13 +251,12 @@ class QRCode{
 					if($count === 0 || $count === 4){
 						$lostPoint += 3;
 					}
-
 				}
 			}
 
 			// LEVEL3
-			for($row = 0; $row < $this->pixelCount; $row++){
-				for($col = 0; $col < $this->pixelCount - 6; $col++){
+			foreach($range1 as $row){
+				foreach($range3 as $col){
 					if(
 						    $this->matrix[$row][$col    ]
 						&& !$this->matrix[$row][$col + 1]
@@ -265,8 +271,8 @@ class QRCode{
 				}
 			}
 
-			for($col = 0; $col < $this->pixelCount; $col++){
-				for($row = 0; $row < $this->pixelCount - 6; $row++){
+			foreach($range1 as $col){
+				foreach($range3 as $row){
 					if(
 						    $this->matrix[$row    ][$col]
 						&& !$this->matrix[$row + 1][$col]
@@ -282,17 +288,15 @@ class QRCode{
 			}
 
 			// LEVEL4
-			$darkCount = 0;
-			for($col = 0; $col < $this->pixelCount; $col++){
-				for($row = 0; $row < $this->pixelCount; $row++){
+			foreach($range1 as $col){
+				foreach($range1 as $row){
 					if($this->matrix[$row][$col]){
 						$darkCount++;
 					}
 				}
 			}
 
-			$ratio = abs(100 * $darkCount / $this->pixelCount / $this->pixelCount - 50) / 5;
-			$lostPoint += $ratio * 10;
+			$lostPoint += (abs(100 * $darkCount / $this->pixelCount / $this->pixelCount - 50) / 5) * 10;
 
 			if($pattern === 0 || $minLostPoint > $lostPoint){
 				$minLostPoint = $lostPoint;
@@ -333,15 +337,15 @@ class QRCode{
 			$mod = !$test && (($bits >> $i) & 1) === 1;
 
 			switch(true){
-				case $i < 6:$this->matrix[$i    ][8] = $mod; break;
-				case $i < 8:$this->matrix[$i + 1][8] = $mod; break;
+				case $i < 6: $this->matrix[$i    ][8] = $mod; break;
+				case $i < 8: $this->matrix[$i + 1][8] = $mod; break;
 				default:
 					$this->matrix[$this->pixelCount - 15 + $i][8] = $mod;
 			}
 
 			switch(true){
-				case $i < 8:$this->matrix[8][$this->pixelCount - $i - 1] = $mod; break;
-				case $i < 9:$this->matrix[8][           15 + 1 - $i - 1] = $mod; break;
+				case $i < 8: $this->matrix[8][$this->pixelCount - $i - 1] = $mod; break;
+				case $i < 9: $this->matrix[8][           15 + 1 - $i - 1] = $mod; break;
 				default:
 					$this->matrix[8][15 - $i - 1] = $mod;
 			}
@@ -431,7 +435,7 @@ class QRCode{
 			$rsPoly = new Polynomial;
 			$modPoly = new Polynomial;
 
-			for($i = 0; $i < $rsBlockTotal - $rsBlockDataCount; $i++){
+			foreach(range(0, $rsBlockTotal - $rsBlockDataCount - 1) as $i){
 				$modPoly->setNum([1, $modPoly->gexp($i)]);
 				$rsPoly->multiply($modPoly->num);
 			}
@@ -450,17 +454,18 @@ class QRCode{
 		}
 
 		$data = array_fill(0, $totalCodeCount, null);
+		$rsrange = range(0, $rsBlockCount - 1);
 
-		for($i = 0; $i < $maxDcCount; $i++){
-			for($key = 0; $key < $rsBlockCount; $key++){
+		foreach(range(0, $maxDcCount - 1) as $i){
+			foreach($rsrange as $key){
 				if($i < count($dcdata[$key])){
 					$data[$index++] = $dcdata[$key][$i];
 				}
 			}
 		}
 
-		for($i = 0; $i < $maxEcCount; $i++){
-			for($key = 0; $key < $rsBlockCount; $key++){
+		foreach(range(0, $maxEcCount - 1) as $i){
+			foreach($rsrange as $key){
 				if($i < count($ecdata[$key])){
 					$data[$index++] = $ecdata[$key][$i];
 				}
@@ -485,13 +490,12 @@ class QRCode{
 		$dataCount = count($data);
 
 		for($col = $this->pixelCount - 1; $col > 0; $col -= 2){
-
 			if($col === 6){
 				$col--;
 			}
 
 			while(true){
-				for($c = 0; $c < 2; $c++){
+				foreach([0, 1] as $c){
 					$_col = $col - $c;
 
 					if($this->matrix[$row][$_col] === null){
@@ -503,7 +507,6 @@ class QRCode{
 
 						$a = $row + $_col;
 						$m = $row * $_col;
-
 						$MASK_PATTERN = [
 							QRConst::MASK_PATTERN000 => $a % 2,
 							QRConst::MASK_PATTERN001 => $row % 2,
@@ -526,20 +529,16 @@ class QRCode{
 							$byteIndex++;
 							$bitIndex = 7;
 						}
-
 					}
 				}
 
 				$row += $inc;
-
 				if($row < 0 || $this->pixelCount <= $row){
 					$row -= $inc;
 					$inc = -$inc;
 					break;
 				}
-
 			}
-
 		}
 
 	}
@@ -550,12 +549,13 @@ class QRCode{
 	protected function setPattern(){
 
 		// setupPositionProbePattern
+		$range = range(-1, 7);
 		foreach([[0, 0], [$this->pixelCount - 7, 0], [0, $this->pixelCount - 7]] as $grid){
 			$row = $grid[0];
 			$col = $grid[1];
 
-			for($r = -1; $r <= 7; $r++){
-				for($c = -1; $c <= 7; $c++){
+			foreach($range as $r){
+				foreach($range as $c){
 
 					if($row + $r <= -1 || $this->pixelCount <= $row + $r || $col + $c <= -1 || $this->pixelCount <= $col + $c){
 						continue;
@@ -572,28 +572,26 @@ class QRCode{
 		// setupPositionAdjustPattern
 		$PATTERN_POSITION = QRConst::PATTERN_POSITION; // PHP5 compat
 		$pos = $PATTERN_POSITION[$this->typeNumber - 1];
+		$range = range(-2, 2);
 		foreach($pos as $i => $posI){
 			foreach($pos as $j => $posJ){
-
 				if($this->matrix[$posI][$posJ] !== null){
 					continue;
 				}
 
-				for($row = -2; $row <= 2; $row++){
-					for($col = -2; $col <= 2; $col++){
+				foreach($range as $row){
+					foreach($range as $col){
 						$this->matrix[$posI + $row][$posJ + $col] =
-							$row === -2 || $row === 2
+							   $row === -2 || $row === 2
 							|| $col === -2 || $col === 2
 							||($row ===  0 && $col === 0);
 					}
 				}
-
 			}
 		}
 
 		// setupTimingPattern
-		for($i = 8; $i < $this->pixelCount - 8; $i++){
-
+		foreach(range(8, $this->pixelCount - 8) as $i){
 			if($this->matrix[$i][6] !== null){
 				continue; // @codeCoverageIgnore
 			}
