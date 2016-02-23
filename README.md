@@ -6,6 +6,7 @@
 [![Coverage][coverage-badge]][coverage]
 [![Issues][issue-badge]][issues]
 [![SensioLabsInsight][sensio-badge]][sensio]
+[![Scrunitizer][scrutinizer-badge]][scrutinizer]
 
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?style=flat-square
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
@@ -19,7 +20,8 @@
 [issues]: https://github.com/codemasher/php-qrcode/issues
 [sensio-badge]: https://img.shields.io/sensiolabs/i/bc7725fb-04af-4e15-9c76-115c20beb976.svg?style=flat-square
 [sensio]: https://insight.sensiolabs.com/projects/bc7725fb-04af-4e15-9c76-115c20beb976
-
+[scrutinizer-badge]: https://scrutinizer-ci.com/g/codemasher/php-qrcode/badges/quality-score.png?b=master
+[scrutinizer]: https://scrutinizer-ci.com/g/codemasher/php-qrcode
 
 ## Info
 
