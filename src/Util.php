@@ -78,11 +78,7 @@ class Util{
 			$i += 2;
 		}
 
-		if($i < $len){
-			return false;
-		}
-
-		return true;
+		return !($i < $len);
 	}
 
 	/**

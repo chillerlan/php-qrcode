@@ -38,8 +38,6 @@ class BitBuffer{
 	/**
 	 * @param int $num
 	 * @param int $length
-	 *
-	 * @return $this
 	 */
 	public function put($num, $length){
 
@@ -51,8 +49,6 @@ class BitBuffer{
 
 	/**
 	 * @param bool $bit
-	 *
-	 * @return $this
 	 */
 	public function putBit($bit){
 		$bufIndex = floor($this->length / 8);

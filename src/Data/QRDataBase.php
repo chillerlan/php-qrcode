@@ -52,9 +52,12 @@ class QRDataBase{
 	public function getLengthInBits($type){
 
 		switch(true){
-			case $type >=  1 && $type <= 9: return $this->lengthBits[0]; //  1 -  9
-			case $type <= 26              : return $this->lengthBits[1]; // 10 - 26
-			case $type <= 40              : return $this->lengthBits[2]; // 27 - 40
+			case $type >= 1 && $type <= 9:
+				return $this->lengthBits[0]; //  1 -  9
+			case $type <= 26:
+				return $this->lengthBits[1]; // 10 - 26
+			case $type <= 40:
+				return $this->lengthBits[2]; // 27 - 40
 			default:
 				throw new QRCodeDataException('$type: '.$type);
 		}

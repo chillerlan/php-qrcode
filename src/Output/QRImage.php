@@ -59,7 +59,7 @@ class QRImage extends QROutputBase implements QROutputInterface{
 	}
 
 	/**
-	 * @return mixed
+	 * @return string
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function dump(){

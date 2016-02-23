@@ -22,6 +22,7 @@ interface QRDataInterface{
 
 	/**
 	 * @param \chillerlan\QRCode\BitBuffer $buffer
+	 * @return void
 	 */
 	public function write(BitBuffer &$buffer);
 
