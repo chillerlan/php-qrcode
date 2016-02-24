@@ -308,12 +308,13 @@ class QRCode{
 	 */
 	protected function setTypeNumber($test){
 		$bits = Util::getBCHTypeNumber($this->typeNumber);
-
-		foreach(range(0, 17) as $i){
+		$i = 0;
+		while($i < 18){
 			$a = (int)floor($i / 3);
 			$b = $i % 3 + $this->pixelCount - 8 - 3;
 
 			$this->matrix[$a][$b] = $this->matrix[$b][$a] = !$test && (($bits >> $i) & 1) === 1;
+			$i++;
 		}
 
 	}
@@ -325,8 +326,8 @@ class QRCode{
 	protected function setTypeInfo($test, $pattern){
 		$this->setPattern();
 		$bits = Util::getBCHTypeInfo(($this->errorCorrectLevel << 3) | $pattern);
-
-		foreach(range(0, 14) as $i){
+		$i = 0;
+		while($i < 15){
 			$mod = !$test && (($bits >> $i) & 1) === 1;
 
 			switch(true){
@@ -342,7 +343,7 @@ class QRCode{
 				default:
 					$this->matrix[8][15 - $i - 1] = $mod;
 			}
-
+			$i++;
 		}
 
 		$this->matrix[$this->pixelCount - 8][8] = !$test;
@@ -548,7 +549,6 @@ class QRCode{
 	protected function setPattern(){
 		$range1 = range(-1, 7);
 		$range2 = QRConst::PATTERN_POSITION[$this->typeNumber - 1];
-		$range3 = range(8, $this->pixelCount - 8);
 
 		// setupPositionProbePattern
 		foreach([[0, 0], [$this->pixelCount - 7, 0], [0, $this->pixelCount - 7]] as $grid){
@@ -564,9 +564,9 @@ class QRCode{
 					}
 
 					$this->matrix[$row + $r][$col + $c] =
-						(0 <= $r && $r <= 6 && ($c === 0 || $c === 6))
+						   (0 <= $r && $r <= 6 && ($c === 0 || $c === 6))
 						|| (0 <= $c && $c <= 6 && ($r === 0 || $r === 6))
-						|| (2 <= $c && $c <= 4 && 2 <= $r && $r <= 4);
+						|| (2 <= $c && $c <= 4 &&  2 <= $r && $r <= 4);
 				}
 				$r++;
 			}
@@ -580,11 +580,13 @@ class QRCode{
 				}
 
 				$row = $col = -2;
-				while($row < 2){
-					while($col < 2){
+				while($row < 3){
+					while($col < 3){
 						$this->matrix[$posI + $row][$posJ + $col] =
-							   $row === -2 || $row === 2
-							|| $col === -2 || $col === 2
+							   $row === -2
+							|| $row ===  2
+							|| $col === -2
+							|| $col ===  2
 							||($row ===  0 && $col === 0);
 						$col++;
 					}
@@ -594,7 +596,7 @@ class QRCode{
 		}
 
 		// setupTimingPattern
-		foreach($range3 as $i){
+		for($i = 8; $i < $this->pixelCount - 8; $i++){
 			if($this->matrix[$i][6] !== null){
 				continue; // @codeCoverageIgnore
 			}
