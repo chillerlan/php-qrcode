@@ -11,6 +11,7 @@
  */
 
 namespace chillerlan\QRCode\Data;
+use chillerlan\QRCode\QRCode;
 
 /**
  *
@@ -47,7 +48,8 @@ class QRDataBase{
 	 *
 	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
-	 * @codeCoverageIgnore not used in the code but may be useful to others
+	 * @see QRCode::createData()
+	 * @codeCoverageIgnore
 	 */
 	public function getLengthInBits($type){
 

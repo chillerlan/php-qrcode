@@ -19,7 +19,6 @@ interface QROutputInterface{
 
 	/**
 	 * @return mixed
-	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function dump();
 

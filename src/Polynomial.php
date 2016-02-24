@@ -58,8 +58,10 @@ class Polynomial{
 
 		$this->num = array_fill(0, $numCount - $offset + $shift, 0);
 
-		for($i = 0; $i < $numCount - $offset; $i++){
+		$i = 0;
+		while($i < $numCount - $offset){
 			$this->num[$i] = $num[$i + $offset];
+			$i++;
 		}
 
 		return $this;
@@ -71,16 +73,22 @@ class Polynomial{
 	protected function setTables(){
 		$this->EXP_TABLE = $this->LOG_TABLE = array_fill(0, 256, 0);
 
-		for($i = 0; $i < 8; $i++){
+		$i = 0;
+		while($i < 8){
 			$this->EXP_TABLE[$i] = 1 << $i;
+			$i++;
 		}
 
-		for($i = 8; $i < 256; $i++){
+		$i = 8;
+		while($i < 256){
 			$this->EXP_TABLE[$i] = $this->EXP_TABLE[$i - 4] ^ $this->EXP_TABLE[$i - 5] ^ $this->EXP_TABLE[$i - 6] ^ $this->EXP_TABLE[$i - 8];
+			$i++;
 		}
 
-		for($i = 0; $i < 255; $i++){
+		$i = 0;
+		while($i < 255){
 			$this->LOG_TABLE[$this->EXP_TABLE[$i]] = $i;
+			$i++;
 		}
 
 	}

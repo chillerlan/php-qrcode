@@ -144,7 +144,6 @@ class QRCode{
 		][$mode];
 
 		$this->qrDataInterface = new $qrDataInterface($data);
-
 		$this->typeNumber = intval($options->typeNumber);
 
 		if($this->typeNumber < 1 || $this->typeNumber > 10){
@@ -191,7 +190,7 @@ class QRCode{
 		$minLostPoint = 0;
 		$maskPattern = 0;
 
-		for($pattern = 0; $pattern <= 7; $pattern++){
+		foreach(range(0, 7) as $pattern){
 			$this->getMatrix(true, $pattern);
 			$lostPoint = 0;
 			$darkCount = 0;
@@ -199,19 +198,18 @@ class QRCode{
 			$range1 = range(0, $this->pixelCount-1);
 			$range2 = range(0, $this->pixelCount-2);
 			$range3 = range(0, $this->pixelCount-7);
-			$range4 = range(-1, 1);
 
 			// LEVEL1
 			foreach($range1 as $row){
 				foreach($range1 as $col){
 					$sameCount = 0;
 
-					foreach($range4 as $rr){
+					foreach([-1, 0, 1] as $rr){
 						if($row + $rr < 0 || $this->pixelCount <= $row + $rr){
 							continue;
 						}
 
-						foreach($range4 as $cr){
+						foreach([-1, 0, 1] as $cr){
 
 							if(($rr === 0 && $cr === 0) || ($col + $cr < 0 || $this->pixelCount <= $col + $cr)){
 								continue;
@@ -311,7 +309,7 @@ class QRCode{
 	protected function setTypeNumber($test){
 		$bits = Util::getBCHTypeNumber($this->typeNumber);
 
-		for($i = 0; $i < 18; $i++){
+		foreach(range(0, 17) as $i){
 			$a = (int)floor($i / 3);
 			$b = $i % 3 + $this->pixelCount - 8 - 3;
 
@@ -328,7 +326,7 @@ class QRCode{
 		$this->setPattern();
 		$bits = Util::getBCHTypeInfo(($this->errorCorrectLevel << 3) | $pattern);
 
-		for($i = 0; $i < 15; $i++){
+		foreach(range(0, 14) as $i){
 			$mod = !$test && (($bits >> $i) & 1) === 1;
 
 			switch(true){
@@ -355,19 +353,17 @@ class QRCode{
 	 */
 	protected function createData(){
 		$this->bitBuffer->clear();
-
-		$MAX_BITS = QRConst::MAX_BITS; // php5 compat
-		$MAX_BITS = $MAX_BITS[$this->typeNumber][$this->errorCorrectLevel];
-
-		/** @noinspection PhpUndefinedFieldInspection */
 		$this->bitBuffer->put($this->qrDataInterface->mode, 4);
-		/** @noinspection PhpUndefinedFieldInspection */
 		$this->bitBuffer->put(
-			$this->qrDataInterface->mode === QRConst::MODE_KANJI ? floor($this->qrDataInterface->dataLength / 2) : $this->qrDataInterface->dataLength,
+			$this->qrDataInterface->mode === QRConst::MODE_KANJI
+				? floor($this->qrDataInterface->dataLength / 2)
+				: $this->qrDataInterface->dataLength,
 			$this->qrDataInterface->getLengthInBits($this->typeNumber)
 		);
 
 		$this->qrDataInterface->write($this->bitBuffer);
+
+		$MAX_BITS = QRConst::MAX_BITS[$this->typeNumber][$this->errorCorrectLevel];
 
 		if($this->bitBuffer->length > $MAX_BITS){
 			throw new QRCodeException('code length overflow. ('.$this->bitBuffer->length.' > '.$MAX_BITS.'bit)');
@@ -430,9 +426,11 @@ class QRCode{
 			$rsPoly = new Polynomial;
 			$modPoly = new Polynomial;
 
-			foreach(range(0, $rsBlockTotal - $rsBlockDataCount - 1) as $i){
+			$i = 0;
+			while($i < $rsBlockTotal - $rsBlockDataCount){
 				$modPoly->setNum([1, $modPoly->gexp($i)]);
 				$rsPoly->multiply($modPoly->num);
+				$i++;
 			}
 
 			$rsPolyCount = count($rsPoly->num);
@@ -451,20 +449,24 @@ class QRCode{
 		$data = array_fill(0, $totalCodeCount, null);
 		$rsrange = range(0, $rsBlockCount - 1);
 
-		foreach(range(0, $maxDcCount - 1) as $i){
+		$i = 0;
+		while($i < $maxDcCount){
 			foreach($rsrange as $key){
 				if($i < count($dcdata[$key])){
 					$data[$index++] = $dcdata[$key][$i];
 				}
 			}
+			$i++;
 		}
 
-		foreach(range(0, $maxEcCount - 1) as $i){
+		$i = 0;
+		while($i < $maxEcCount){
 			foreach($rsrange as $key){
 				if($i < count($ecdata[$key])){
 					$data[$index++] = $ecdata[$key][$i];
 				}
 			}
+			$i++;
 		}
 
 		return $data;
@@ -490,7 +492,8 @@ class QRCode{
 			}
 
 			while(true){
-				foreach([0, 1] as $c){
+				$c = 0;
+				while($c < 2){
 					$_col = $col - $c;
 
 					if($this->matrix[$row][$_col] === null){
@@ -525,6 +528,7 @@ class QRCode{
 							$bitIndex = 7;
 						}
 					}
+					$c++;
 				}
 
 				$row += $inc;
@@ -542,15 +546,18 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function setPattern(){
+		$range1 = range(-1, 7);
+		$range2 = QRConst::PATTERN_POSITION[$this->typeNumber - 1];
+		$range3 = range(8, $this->pixelCount - 8);
 
 		// setupPositionProbePattern
-		$range = range(-1, 7);
 		foreach([[0, 0], [$this->pixelCount - 7, 0], [0, $this->pixelCount - 7]] as $grid){
 			$row = $grid[0];
 			$col = $grid[1];
 
-			foreach($range as $r){
-				foreach($range as $c){
+			$r = -1;
+			while($r < 8){
+				foreach($range1 as $c){
 
 					if($row + $r <= -1 || $this->pixelCount <= $row + $r || $col + $c <= -1 || $this->pixelCount <= $col + $c){
 						continue;
@@ -561,32 +568,33 @@ class QRCode{
 						|| (0 <= $c && $c <= 6 && ($r === 0 || $r === 6))
 						|| (2 <= $c && $c <= 4 && 2 <= $r && $r <= 4);
 				}
+				$r++;
 			}
 		}
 
 		// setupPositionAdjustPattern
-		$PATTERN_POSITION = QRConst::PATTERN_POSITION; // PHP5 compat
-		$pos = $PATTERN_POSITION[$this->typeNumber - 1];
-		$range = range(-2, 2);
-		foreach($pos as $i => $posI){
-			foreach($pos as $j => $posJ){
+		foreach($range2 as $i => $posI){
+			foreach($range2 as $j => $posJ){
 				if($this->matrix[$posI][$posJ] !== null){
 					continue;
 				}
 
-				foreach($range as $row){
-					foreach($range as $col){
+				$row = $col = -2;
+				while($row < 2){
+					while($col < 2){
 						$this->matrix[$posI + $row][$posJ + $col] =
 							   $row === -2 || $row === 2
 							|| $col === -2 || $col === 2
 							||($row ===  0 && $col === 0);
+						$col++;
 					}
+					$row++;
 				}
 			}
 		}
 
 		// setupTimingPattern
-		foreach(range(8, $this->pixelCount - 8) as $i){
+		foreach($range3 as $i){
 			if($this->matrix[$i][6] !== null){
 				continue; // @codeCoverageIgnore
 			}

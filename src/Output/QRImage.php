@@ -38,7 +38,7 @@ class QRImage extends QROutputBase implements QROutputInterface{
 		$this->options->pixelSize = max(1, min(25, (int)$this->options->pixelSize));
 		$this->options->marginSize = max(0, min(25, (int)$this->options->marginSize));
 
-		foreach(['fgRed', 'fgGreen', 'fgBlue', 'bgRed', 'bgGreen', 'bgBlue',] as $val){
+		foreach(['fgRed', 'fgGreen', 'fgBlue', 'bgRed', 'bgGreen', 'bgBlue'] as $val){
 			$this->options->{$val} = max(0, min(255, (int)$this->options->{$val}));
 		}
 
@@ -60,7 +60,6 @@ class QRImage extends QROutputBase implements QROutputInterface{
 
 	/**
 	 * @return string
-	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function dump(){
 		$length = $this->pixelCount * $this->options->pixelSize + $this->options->marginSize * 2;
@@ -74,9 +73,9 @@ class QRImage extends QROutputBase implements QROutputInterface{
 
 		imagefilledrectangle($image, 0, 0, $length, $length, $background);
 
-		for($r = 0; $r < $this->pixelCount; $r++){
-			for($c = 0; $c < $this->pixelCount; $c++){
-				if($this->matrix[$r][$c]){
+		foreach($this->matrix as $r => $row){
+			foreach($row as $c => $pixel){
+				if($pixel){
 					imagefilledrectangle($image,
 						$this->options->marginSize +  $c      * $this->options->pixelSize,
 						$this->options->marginSize +  $r      * $this->options->pixelSize,

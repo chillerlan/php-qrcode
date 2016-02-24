@@ -41,8 +41,9 @@ class BitBuffer{
 	 */
 	public function put($num, $length){
 
-		for($i = 0; $i < $length; $i++){
-			$this->putBit(($num >> ($length - $i - 1))&1 === 1);
+		$i = 0;
+		while($i < $length){
+			$this->putBit(($num >> ($length - $i - 1))&1 === 1); $i++;
 		}
 
 	}

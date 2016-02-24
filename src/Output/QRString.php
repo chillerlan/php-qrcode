@@ -11,6 +11,7 @@
  */
 
 namespace chillerlan\QRCode\Output;
+use chillerlan\QRCode\Data\QRCodeDataException;
 use chillerlan\QRCode\QRCode;
 
 /**
@@ -42,67 +43,53 @@ class QRString extends QROutputBase implements QROutputInterface{
 
 	/**
 	 * @return string
-	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function dump(){
-		return call_user_func([$this, [
-			QRCode::OUTPUT_STRING_TEXT => 'toText',
-			QRCode::OUTPUT_STRING_JSON => 'toJSON',
-			QRCode::OUTPUT_STRING_HTML => 'toHTML',
-		][$this->options->type]]);
-	}
 
-	/**
-	 * @return string
-	 */
-	public function toText(){
-		$text = '';
-
-		foreach($this->matrix as &$row){
-			foreach($row as &$col){
-				$text .= $col
-					? $this->options->textDark
-					: $this->options->textLight;
-			}
-
-			$text .= $this->options->textNewline;
+		if($this->options->type === QRCode::OUTPUT_STRING_JSON){
+			return json_encode($this->matrix);
 		}
 
-		return $text;
-	}
+		else if($this->options->type === QRCode::OUTPUT_STRING_TEXT){
+			$text = '';
 
-	/**
-	 * @return string
-	 */
-	public function toJSON(){
-		return json_encode($this->matrix);
-	}
+			foreach($this->matrix as $row){
+				foreach($row as $col){
+					$text .= $col
+						? $this->options->textDark
+						: $this->options->textLight;
+				}
 
-	/**
-	 * @return string
-	 */
-	public function toHTML(){
-		$html = '';
+				$text .= $this->options->textNewline;
+			}
 
-		foreach($this->matrix as &$row){
-			// in order to not bloat the output too much, we use the shortest possible valid HTML tags
-			$html .= '<'.$this->options->htmlRowTag.'>';
-			foreach($row as &$col){
-				$tag = $col
-					? 'b'  // dark
-					: 'i'; // light
+			return $text;
+		}
+
+		else if($this->options->type === QRCode::OUTPUT_STRING_HTML){
+			$html = '';
+
+			foreach($this->matrix as $row){
+				// in order to not bloat the output too much, we use the shortest possible valid HTML tags
+				$html .= '<'.$this->options->htmlRowTag.'>';
+				foreach($row as $col){
+					$tag = $col
+						? 'b'  // dark
+						: 'i'; // light
 
 					$html .= '<'.$tag.'></'.$tag.'>';
+				}
+
+				if(!(bool)$this->options->htmlOmitEndTag){
+					$html .= '</'.$this->options->htmlRowTag.'>';
+				}
+
+				$html .= PHP_EOL;
 			}
 
-			if(!(bool)$this->options->htmlOmitEndTag){
-				$html .= '</'.$this->options->htmlRowTag.'>';
-			}
-
-			$html .= PHP_EOL;
+			return $html;
 		}
 
-		return $html;
 	}
 
 }

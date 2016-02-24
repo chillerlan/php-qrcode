@@ -34,8 +34,10 @@ class Byte extends QRDataBase implements QRDataInterface{
 	 * @param \chillerlan\QRCode\BitBuffer $buffer
 	 */
 	public function write(BitBuffer &$buffer){
-		for($i = 0; $i < $this->dataLength; $i++){
+		$i = 0;
+		while($i < $this->dataLength){
 			$buffer->put(ord($this->data[$i]), 8);
+			$i++;
 		}
 	}
 
