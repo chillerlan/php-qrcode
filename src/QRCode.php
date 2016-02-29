@@ -544,27 +544,25 @@ class QRCode{
 	}
 
 	/**
-	 * @throws \chillerlan\QRCode\QRCodeException
+	 *
 	 */
-	protected function setPattern(){
-		$range1 = range(-1, 7);
-		$range2 = QRConst::PATTERN_POSITION[$this->typeNumber - 1];
+	protected function setupPositionProbePattern(){
+		$range = range(-1, 7);
 
-		// setupPositionProbePattern
 		foreach([[0, 0], [$this->pixelCount - 7, 0], [0, $this->pixelCount - 7]] as $grid){
 			$row = $grid[0];
 			$col = $grid[1];
 
 			$r = -1;
 			while($r < 8){
-				foreach($range1 as $c){
+				foreach($range as $c){
 
 					if($row + $r <= -1 || $this->pixelCount <= $row + $r || $col + $c <= -1 || $this->pixelCount <= $col + $c){
 						continue;
 					}
 
 					$this->matrix[$row + $r][$col + $c] =
-						   (0 <= $r && $r <= 6 && ($c === 0 || $c === 6))
+						(0 <= $r && $r <= 6 && ($c === 0 || $c === 6))
 						|| (0 <= $c && $c <= 6 && ($r === 0 || $r === 6))
 						|| (2 <= $c && $c <= 4 &&  2 <= $r && $r <= 4);
 				}
@@ -572,9 +570,16 @@ class QRCode{
 			}
 		}
 
-		// setupPositionAdjustPattern
-		foreach($range2 as $i => $posI){
-			foreach($range2 as $j => $posJ){
+	}
+
+	/**
+	 *
+	 */
+	protected function setupPositionAdjustPattern(){
+		$range = QRConst::PATTERN_POSITION[$this->typeNumber - 1];
+
+		foreach($range as $i => $posI){
+			foreach($range as $j => $posJ){
 				if($this->matrix[$posI][$posJ] !== null){
 					continue;
 				}
@@ -583,17 +588,22 @@ class QRCode{
 				while($row < 3){
 					while($col < 3){
 						$this->matrix[$posI + $row][$posJ + $col] =
-							   $row === -2
-							|| $row ===  2
-							|| $col === -2
-							|| $col ===  2
-							||($row ===  0 && $col === 0);
+							$row === -2 || $row ===  2 || $col === -2 || $col ===  2 ||($row ===  0 && $col === 0);
 						$col++;
 					}
 					$row++;
 				}
 			}
 		}
+
+	}
+
+	/**
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	protected function setPattern(){
+		$this->setupPositionProbePattern();
+		$this->setupPositionAdjustPattern();
 
 		// setupTimingPattern
 		for($i = 8; $i < $this->pixelCount - 8; $i++){
