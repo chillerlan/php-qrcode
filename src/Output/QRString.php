@@ -11,7 +11,7 @@
  */
 
 namespace chillerlan\QRCode\Output;
-use chillerlan\QRCode\Data\QRCodeDataException;
+
 use chillerlan\QRCode\QRCode;
 
 /**

@@ -83,7 +83,7 @@ class QRCode{
 	protected $darkCount;
 
 	/**
-	 * @var int
+	 * @var float
 	 */
 	protected $minLostPoint;
 
@@ -156,6 +156,7 @@ class QRCode{
 				break;
 		}
 
+		// see, Scrunitizer, it is concrete! :P
 		$qrDataInterface = [
 			QRConst::MODE_ALPHANUM => AlphaNum::class,
 			QRConst::MODE_BYTE     => Byte::class,
@@ -348,14 +349,12 @@ class QRCode{
 		$this->lostPoint = 0;
 		$this->darkCount = 0;
 
-		$range1 = range(0, $this->pixelCount-1);
-		$range2 = range(0, $this->pixelCount-2);
-		$range3 = range(0, $this->pixelCount-7);
+		$range = range(0, $this->pixelCount-1);
 
-		$this->testLevel1($range1);
-		$this->testLevel2($range2);
-		$this->testLevel3($range1, $range3);
-		$this->testLevel4($range1);
+		$this->testLevel1($range);
+		$this->testLevel2(range(0, $this->pixelCount-2));
+		$this->testLevel3($range, range(0, $this->pixelCount-7));
+		$this->testLevel4($range);
 
 		$this->lostPoint += (abs(100 * $this->darkCount / $this->pixelCount / $this->pixelCount - 50) / 5) * 10;
 
