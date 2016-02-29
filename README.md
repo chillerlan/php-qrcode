@@ -8,17 +8,17 @@
 [![SensioLabsInsight][sensio-badge]][sensio]
 [![Scrunitizer][scrutinizer-badge]][scrutinizer]
 
-[packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?style=flat-square
+[packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
-[license-badge]: https://img.shields.io/packagist/l/chillerlan/php-qrcode.svg?style=flat-square
+[license-badge]: https://img.shields.io/packagist/l/chillerlan/php-qrcode.svg
 [license]: https://github.com/codemasher/php-qrcode/blob/master/LICENSE
-[travis-badge]: https://img.shields.io/travis/codemasher/php-qrcode.svg?style=flat-square
+[travis-badge]: https://travis-ci.org/codemasher/php-qrcode.svg?branch=master
 [travis]: https://travis-ci.org/codemasher/php-qrcode
-[coverage-badge]: https://img.shields.io/codecov/c/github/codemasher/php-qrcode.svg?style=flat-square
+[coverage-badge]: https://codecov.io/github/codemasher/php-qrcode/coverage.svg?branch=master
 [coverage]: https://codecov.io/github/codemasher/php-qrcode
-[issue-badge]: https://img.shields.io/github/issues/codemasher/php-qrcode.svg?style=flat-square
+[issue-badge]: https://img.shields.io/github/issues/codemasher/php-qrcode.svg
 [issues]: https://github.com/codemasher/php-qrcode/issues
-[sensio-badge]: https://img.shields.io/sensiolabs/i/bc7725fb-04af-4e15-9c76-115c20beb976.svg?style=flat-square
+[sensio-badge]: https://img.shields.io/sensiolabs/i/bc7725fb-04af-4e15-9c76-115c20beb976.svg
 [sensio]: https://insight.sensiolabs.com/projects/bc7725fb-04af-4e15-9c76-115c20beb976
 [scrutinizer-badge]: https://scrutinizer-ci.com/g/codemasher/php-qrcode/badges/quality-score.png?b=master
 [scrutinizer]: https://scrutinizer-ci.com/g/codemasher/php-qrcode
