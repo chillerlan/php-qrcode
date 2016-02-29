@@ -73,6 +73,26 @@ class QRCode{
 	protected $errorCorrectLevel;
 
 	/**
+	 * @var int
+	 */
+	protected $lostPoint;
+
+	/**
+	 * @var int
+	 */
+	protected $darkCount;
+
+	/**
+	 * @var int
+	 */
+	protected $minLostPoint;
+
+	/**
+	 * @var int
+	 */
+	protected $maskPattern;
+
+	/**
 	 * @var \chillerlan\QRCode\BitBuffer
 	 */
 	protected $bitBuffer;
@@ -187,120 +207,163 @@ class QRCode{
 	 * @return array
 	 */
 	public function getRawData(){
-		$minLostPoint = 0;
-		$maskPattern = 0;
+		$this->minLostPoint = 0;
+		$this->maskPattern = 0;
 
 		foreach(range(0, 7) as $pattern){
-			$this->getMatrix(true, $pattern);
-			$lostPoint = 0;
-			$darkCount = 0;
+			$this->testPattern($pattern);
+		}
 
-			$range1 = range(0, $this->pixelCount-1);
-			$range2 = range(0, $this->pixelCount-2);
-			$range3 = range(0, $this->pixelCount-7);
+		$this->getMatrix(false, $this->maskPattern);
 
-			// LEVEL1
-			foreach($range1 as $row){
-				foreach($range1 as $col){
-					$sameCount = 0;
+		return $this->matrix;
+	}
 
-					foreach([-1, 0, 1] as $rr){
-						if($row + $rr < 0 || $this->pixelCount <= $row + $rr){
+	/**
+	 * @param array $range
+	 */
+	protected function testLevel1(array $range){
+
+		foreach($range as $row){
+			foreach($range as $col){
+				$sameCount = 0;
+
+				foreach([-1, 0, 1] as $rr){
+					if($row + $rr < 0 || $this->pixelCount <= $row + $rr){
+						continue;
+					}
+
+					foreach([-1, 0, 1] as $cr){
+
+						if(($rr === 0 && $cr === 0) || ($col + $cr < 0 || $this->pixelCount <= $col + $cr)){
 							continue;
 						}
 
-						foreach([-1, 0, 1] as $cr){
-
-							if(($rr === 0 && $cr === 0) || ($col + $cr < 0 || $this->pixelCount <= $col + $cr)){
-								continue;
-							}
-
-							if($this->matrix[$row + $rr][$col + $cr] === $this->matrix[$row][$col]){
-								$sameCount++;
-							}
+						if($this->matrix[$row + $rr][$col + $cr] === $this->matrix[$row][$col]){
+							$sameCount++;
 						}
 					}
-
-					if($sameCount > 5){
-						$lostPoint += (3 + $sameCount - 5);
-					}
 				}
-			}
 
-			// LEVEL2
-			foreach($range2 as $row){
-				foreach($range2 as $col){
-					$count = 0;
-
-					if(
-						   $this->matrix[$row    ][$col    ]
-						|| $this->matrix[$row    ][$col + 1]
-						|| $this->matrix[$row + 1][$col    ]
-						|| $this->matrix[$row + 1][$col + 1]
-					){
-						$count++;
-					}
-
-					if($count === 0 || $count === 4){
-						$lostPoint += 3;
-					}
+				if($sameCount > 5){
+					$this->lostPoint += (3 + $sameCount - 5);
 				}
+
 			}
-
-			// LEVEL3
-			foreach($range1 as $row){
-				foreach($range3 as $col){
-					if(
-						    $this->matrix[$row][$col    ]
-						&& !$this->matrix[$row][$col + 1]
-						&&  $this->matrix[$row][$col + 2]
-						&&  $this->matrix[$row][$col + 3]
-						&&  $this->matrix[$row][$col + 4]
-						&& !$this->matrix[$row][$col + 5]
-						&&  $this->matrix[$row][$col + 6]
-					){
-						$lostPoint += 40;
-					}
-				}
-			}
-
-			foreach($range1 as $col){
-				foreach($range3 as $row){
-					if(
-						    $this->matrix[$row    ][$col]
-						&& !$this->matrix[$row + 1][$col]
-						&&  $this->matrix[$row + 2][$col]
-						&&  $this->matrix[$row + 3][$col]
-						&&  $this->matrix[$row + 4][$col]
-						&& !$this->matrix[$row + 5][$col]
-						&&  $this->matrix[$row + 6][$col]
-					){
-						$lostPoint += 40;
-					}
-				}
-			}
-
-			// LEVEL4
-			foreach($range1 as $col){
-				foreach($range1 as $row){
-					if($this->matrix[$row][$col]){
-						$darkCount++;
-					}
-				}
-			}
-
-			$lostPoint += (abs(100 * $darkCount / $this->pixelCount / $this->pixelCount - 50) / 5) * 10;
-
-			if($pattern === 0 || $minLostPoint > $lostPoint){
-				$minLostPoint = $lostPoint;
-				$maskPattern = $pattern;
-			}
-
 		}
 
-		$this->getMatrix(false, $maskPattern);
+	}
 
-		return $this->matrix;
+	/**
+	 * @param array $range
+	 */
+	protected function testLevel2(array $range){
+
+		foreach($range as $row){
+			foreach($range as $col){
+				$count = 0;
+
+				if(
+					   $this->matrix[$row    ][$col    ]
+					|| $this->matrix[$row    ][$col + 1]
+					|| $this->matrix[$row + 1][$col    ]
+					|| $this->matrix[$row + 1][$col + 1]
+				){
+					$count++;
+				}
+
+				if($count === 0 || $count === 4){
+					$this->lostPoint += 3;
+				}
+
+			}
+		}
+
+	}
+
+	/**
+	 * @param array $range1
+	 * @param array $range2
+	 */
+	protected function testLevel3(array $range1, array $range2){
+
+		foreach($range1 as $row){
+			foreach($range2 as $col){
+
+				if(
+					    $this->matrix[$row][$col    ]
+					&& !$this->matrix[$row][$col + 1]
+					&&  $this->matrix[$row][$col + 2]
+					&&  $this->matrix[$row][$col + 3]
+					&&  $this->matrix[$row][$col + 4]
+					&& !$this->matrix[$row][$col + 5]
+					&&  $this->matrix[$row][$col + 6]
+				){
+					$this->lostPoint += 40;
+				}
+
+			}
+		}
+
+		foreach($range1 as $col){
+			foreach($range2 as $row){
+
+				if(
+					    $this->matrix[$row    ][$col]
+					&& !$this->matrix[$row + 1][$col]
+					&&  $this->matrix[$row + 2][$col]
+					&&  $this->matrix[$row + 3][$col]
+					&&  $this->matrix[$row + 4][$col]
+					&& !$this->matrix[$row + 5][$col]
+					&&  $this->matrix[$row + 6][$col]
+				){
+					$this->lostPoint += 40;
+				}
+
+			}
+		}
+
+	}
+
+	/**
+	 * @param array $range
+	 */
+	protected function testLevel4(array $range){
+
+		foreach($range as $col){
+			foreach($range as $row){
+				if($this->matrix[$row][$col]){
+					$this->darkCount++;
+				}
+			}
+		}
+
+	}
+
+	/**
+	 * @param int $pattern
+	 */
+	protected function testPattern($pattern){
+		$this->getMatrix(true, $pattern);
+		$this->lostPoint = 0;
+		$this->darkCount = 0;
+
+		$range1 = range(0, $this->pixelCount-1);
+		$range2 = range(0, $this->pixelCount-2);
+		$range3 = range(0, $this->pixelCount-7);
+
+		$this->testLevel1($range1);
+		$this->testLevel2($range2);
+		$this->testLevel3($range1, $range3);
+		$this->testLevel4($range1);
+
+		$this->lostPoint += (abs(100 * $this->darkCount / $this->pixelCount / $this->pixelCount - 50) / 5) * 10;
+
+		if($pattern === 0 || $this->minLostPoint > $this->lostPoint){
+			$this->minLostPoint = $this->lostPoint;
+			$this->maskPattern = $pattern;
+		}
+
 	}
 
 	/**
