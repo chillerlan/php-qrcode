@@ -184,7 +184,7 @@ class QRCode{
 		$length = $this->qrDataInterface->dataLength;
 
 		if($this->qrDataInterface->mode === QRConst::MODE_KANJI){
-			$length = floor($this->qrDataInterface->dataLength / 2);
+			$length = floor($length / 2);
 		}
 
 		foreach(range(1, 10) as $type){
@@ -646,14 +646,13 @@ class QRCode{
 					continue;
 				}
 
-				$row = $col = -2;
-				while($row < 3){
-					while($col < 3){
+				for($row = -2; $row <= 2; $row++){
+					for($col = -2; $col <= 2; $col++){
 						$this->matrix[$posI + $row][$posJ + $col] =
-							$row === -2 || $row ===  2 || $col === -2 || $col ===  2 ||($row ===  0 && $col === 0);
-						$col++;
+							    $row === -2 || $row === 2
+							||  $col === -2 || $col === 2
+							|| ($row ===  0 && $col === 0);
 					}
-					$row++;
 				}
 			}
 		}
