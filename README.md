@@ -145,15 +145,15 @@ foreach($matrix as $row){
 ```
 
 ### Custom output modules
-But then again, instead of bloating your own code, you can simply create your own output module by extending `QROutputBase` and implementing `QROutputInterface`.
+But then again, instead of bloating your own code, you can simply create your own output module by extending `QROutputAbstract`.
 ```php
 $qrcode = new QRCode($data, new MyCustomOutput($myCustomOutputOptions), $qrOptions)
 ```
 
 ```php
-class MyCustomOutput extends QROutputBase implements QROutputInterface{
+class MyCustomOutput extends QROutputAbstract{
 	
-	// inherited from QROutputBase
+	// inherited from QROutputAbstract
 	protected $matrix; // array
 	protected $pixelCount; // int
 	protected $options; // MyCustomOutputOptions (if present)
