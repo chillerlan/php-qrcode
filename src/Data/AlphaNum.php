@@ -18,7 +18,7 @@ use chillerlan\QRCode\QRConst;
 /**
  *
  */
-class AlphaNum extends QRDataBase implements QRDataInterface{
+class AlphaNum extends QRDataAbstract{
 
 	const CHAR_MAP = [
 		36 => ' ',

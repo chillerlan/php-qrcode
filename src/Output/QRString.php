@@ -17,7 +17,7 @@ use chillerlan\QRCode\QRCode;
 /**
  *
  */
-class QRString extends QROutputBase implements QROutputInterface{
+class QRString extends QROutputAbstract{
 
 	/**
 	 * @var \chillerlan\QRCode\Output\QRStringOptions
@@ -46,50 +46,61 @@ class QRString extends QROutputBase implements QROutputInterface{
 	 */
 	public function dump(){
 
-		if($this->options->type === QRCode::OUTPUT_STRING_JSON){
-			return json_encode($this->matrix);
+		switch($this->options->type){
+			case QRCode::OUTPUT_STRING_JSON: return json_encode($this->matrix);
+			case QRCode::OUTPUT_STRING_TEXT: return $this->toString();
+			case QRCode::OUTPUT_STRING_HTML:
+			default:
+				return $this->toHTML();
 		}
 
-		else if($this->options->type === QRCode::OUTPUT_STRING_TEXT){
-			$text = '';
+	}
 
-			foreach($this->matrix as $row){
-				foreach($row as $col){
-					$text .= $col
-						? $this->options->textDark
-						: $this->options->textLight;
-				}
+	/**
+	 * @return string
+	 */
+	protected function toString(){
+		$str = '';
 
-				$text .= $this->options->textNewline;
+		foreach($this->matrix as $row){
+			foreach($row as $col){
+				$str .= $col
+					? $this->options->textDark
+					: $this->options->textLight;
 			}
 
-			return $text;
+			$str .= $this->options->textNewline;
 		}
 
-		else if($this->options->type === QRCode::OUTPUT_STRING_HTML){
-			$html = '';
+		return $str;
+	}
 
-			foreach($this->matrix as $row){
-				// in order to not bloat the output too much, we use the shortest possible valid HTML tags
-				$html .= '<'.$this->options->htmlRowTag.'>';
-				foreach($row as $col){
-					$tag = $col
-						? 'b'  // dark
-						: 'i'; // light
+	/**
+	 * @return string
+	 */
+	protected function toHTML(){
+		$html = '';
 
-					$html .= '<'.$tag.'></'.$tag.'>';
-				}
+		foreach($this->matrix as $row){
+			// in order to not bloat the output too much, we use the shortest possible valid HTML tags
+			$html .= '<'.$this->options->htmlRowTag.'>';
 
-				if(!(bool)$this->options->htmlOmitEndTag){
-					$html .= '</'.$this->options->htmlRowTag.'>';
-				}
+			foreach($row as $col){
+				$tag = $col
+					? 'b'  // dark
+					: 'i'; // light
 
-				$html .= PHP_EOL;
+				$html .= '<'.$tag.'></'.$tag.'>';
 			}
 
-			return $html;
+			if(!(bool)$this->options->htmlOmitEndTag){
+				$html .= '</'.$this->options->htmlRowTag.'>';
+			}
+
+			$html .= PHP_EOL;
 		}
 
+		return $html;
 	}
 
 }

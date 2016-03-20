@@ -1,8 +1,8 @@
 <?php
 /**
- * Class QROutputBase
+ * Class QROutputAbstract
  *
- * @filesource   QROutputBase.php
+ * @filesource   QROutputAbstract.php
  * @created      09.12.2015
  * @package      chillerlan\QRCode\Output
  * @author       Smiley <smiley@chillerlan.net>
@@ -15,7 +15,7 @@ namespace chillerlan\QRCode\Output;
 /**
  *
  */
-class QROutputBase{
+abstract class QROutputAbstract implements QROutputInterface{
 
 	/**
 	 * @var array

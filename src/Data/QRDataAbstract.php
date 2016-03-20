@@ -1,8 +1,8 @@
 <?php
 /**
- * Class QRDataBase
+ * Class QRDataAbstract
  *
- * @filesource   QRDataBase.php
+ * @filesource   QRDataAbstract.php
  * @created      25.11.2015
  * @package      chillerlan\QRCode\Data
  * @author       Smiley <smiley@chillerlan.net>
@@ -11,12 +11,11 @@
  */
 
 namespace chillerlan\QRCode\Data;
-use chillerlan\QRCode\QRCode;
 
 /**
  *
  */
-class QRDataBase{
+abstract class QRDataAbstract implements QRDataInterface{
 
 	/**
 	 * @var string
@@ -34,7 +33,7 @@ class QRDataBase{
 	protected $lengthBits = [0, 0, 0];
 
 	/**
-	 * QRDataBase constructor.
+	 * QRDataAbstract constructor.
 	 *
 	 * @param string $data
 	 */

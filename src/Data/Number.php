@@ -18,7 +18,7 @@ use chillerlan\QRCode\QRConst;
 /**
  *
  */
-class Number extends QRDataBase implements QRDataInterface{
+class Number extends QRDataAbstract{
 
 	/**
 	 * @var int

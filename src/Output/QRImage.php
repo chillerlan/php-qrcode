@@ -17,7 +17,7 @@ use chillerlan\QRCode\QRCode;
 /**
  *
  */
-class QRImage extends QROutputBase implements QROutputInterface{
+class QRImage extends QROutputAbstract{
 
 	/**
 	 * @var \chillerlan\QRCode\Output\QRImageOptions $outputOptions
@@ -42,32 +42,18 @@ class QRImage extends QROutputBase implements QROutputInterface{
 			$this->options->{$val} = max(0, min(255, (int)$this->options->{$val}));
 		}
 
-		if(!in_array($this->options->type, [QRCode::OUTPUT_IMAGE_PNG, QRCode::OUTPUT_IMAGE_JPG, QRCode::OUTPUT_IMAGE_GIF])){
-			$this->options->type = QRCode::OUTPUT_IMAGE_PNG;
-		}
-
-		$this->options->transparent = (bool)$this->options->transparent && $this->options->type !== QRCode::OUTPUT_IMAGE_JPG;
-
-		if(!in_array($this->options->pngCompression, range(-1, 9), true)){
-			$this->options->pngCompression = -1;
-		}
-
-		if(!in_array($this->options->jpegQuality, range(0, 100), true)){
-			$this->options->jpegQuality = 85;
-		}
-
 	}
 
 	/**
 	 * @return string
 	 */
 	public function dump(){
-		$length = $this->pixelCount * $this->options->pixelSize + $this->options->marginSize * 2;
-		$image = imagecreatetruecolor($length, $length);
+		$length     = $this->pixelCount * $this->options->pixelSize + $this->options->marginSize * 2;
+		$image      = imagecreatetruecolor($length, $length);
 		$foreground = imagecolorallocate($image, $this->options->fgRed, $this->options->fgGreen, $this->options->fgBlue);
 		$background = imagecolorallocate($image, $this->options->bgRed, $this->options->bgGreen, $this->options->bgBlue);
 
-		if($this->options->transparent){
+		if((bool)$this->options->transparent && $this->options->type !== QRCode::OUTPUT_IMAGE_JPG){
 			imagecolortransparent($image, $background);
 		}
 
@@ -89,9 +75,30 @@ class QRImage extends QROutputBase implements QROutputInterface{
 		ob_start();
 
 		switch($this->options->type){
-			case QRCode::OUTPUT_IMAGE_PNG: imagepng ($image, $this->options->cachefile, (int)$this->options->pngCompression); break;
-			case QRCode::OUTPUT_IMAGE_JPG: imagejpeg($image, $this->options->cachefile, (int)$this->options->jpegQuality); break;
-			case QRCode::OUTPUT_IMAGE_GIF: imagegif ($image, $this->options->cachefile); break; /** Actually, it's pronounced "DJIFF". *hides* */
+			case QRCode::OUTPUT_IMAGE_JPG:
+				imagejpeg(
+					$image,
+					$this->options->cachefile,
+					in_array($this->options->jpegQuality, range(0, 100), true)
+						? $this->options->jpegQuality
+						: 85
+				);
+				break;
+			case QRCode::OUTPUT_IMAGE_GIF: /** Actually, it's pronounced "DJIFF". *hides* */
+				imagegif(
+					$image,
+					$this->options->cachefile
+				);
+				break;
+			case QRCode::OUTPUT_IMAGE_PNG:
+			default:
+				imagepng(
+					$image,
+					$this->options->cachefile,
+					in_array($this->options->pngCompression, range(-1, 9), true)
+						? $this->options->pngCompression
+						: -1
+				);
 		}
 
 		$imageData = ob_get_contents();

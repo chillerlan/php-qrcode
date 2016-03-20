@@ -18,7 +18,7 @@ use chillerlan\QRCode\QRConst;
 /**
  *
  */
-class Kanji extends QRDataBase implements QRDataInterface{
+class Kanji extends QRDataAbstract{
 
 	/**
 	 * @var int
