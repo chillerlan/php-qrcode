@@ -1,16 +1,14 @@
 engines:
-  duplication:
-    enabled: true
-    config:
-      languages:
-        - php
   fixme:
     enabled: true
   phpcodesniffer:
     enabled: true
   phpmd:
     enabled: true
-  markdownlint:
+    config:
+      file_extensions: "php"
+      rulesets: "phpmd.xml"
+I  markdownlint:
     enabled: true
 ratings:
   paths:
