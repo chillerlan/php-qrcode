@@ -10,9 +10,7 @@
 require_once '../vendor/autoload.php';
 
 use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Output\QRImage;
-use chillerlan\QRCode\Output\QRImageOptions;
 use chillerlan\QRCode\Output\QRString;
 use chillerlan\QRCode\Output\QRStringOptions;
 

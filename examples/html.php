@@ -44,6 +44,7 @@ echo '<style>
 
 $qrStringOptions = new QRStringOptions;
 $qrStringOptions->type = QRCode::OUTPUT_STRING_HTML;
+$qrStringOptions->eol = '';
 
 $qrOptions = new QROptions;
 $qrOptions->typeNumber = QRCode::TYPE_05;

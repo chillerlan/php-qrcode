@@ -3,15 +3,13 @@
 require_once '../vendor/autoload.php';
 
 use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
-use chillerlan\QRCode\Output\QROutputBase;
-use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\QROutputAbstract;
 
 
 /**
  * Class MyCustomOutput
  */
-class MyCustomOutput extends QROutputBase implements QROutputInterface{
+class MyCustomOutput extends QROutputAbstract{
 
 	/**
 	 * @return mixed
