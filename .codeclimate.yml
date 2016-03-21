@@ -3,12 +3,15 @@ engines:
     enabled: true
   phpcodesniffer:
     enabled: true
+    config:
+      standard: "PSR1,PSR2"
+      ignore_warnings: true
   phpmd:
     enabled: true
     config:
       file_extensions: "php"
       rulesets: "phpmd.xml"
-I  markdownlint:
+  markdownlint:
     enabled: true
 ratings:
   paths:
