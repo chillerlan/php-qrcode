@@ -1,0 +1,21 @@
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+        - php
+  fixme:
+    enabled: true
+  phpcodesniffer:
+    enabled: true
+  phpmd:
+    enabled: true
+  markdownlint:
+    enabled: true
+ratings:
+  paths:
+  - "**.php"
+exclude_paths:
+  - examples/**/*
+  - tests/**/*
+  - "**/vendor/**/*"
