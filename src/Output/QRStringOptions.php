@@ -24,7 +24,7 @@ class QRStringOptions{
 
 	public $textLight = ' ';
 
-	public $textNewline = PHP_EOL;
+	public $eol = PHP_EOL;
 
 	public $htmlRowTag = 'p';
 

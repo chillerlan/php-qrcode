@@ -69,7 +69,7 @@ class QRString extends QROutputAbstract{
 					: $this->options->textLight;
 			}
 
-			$str .= $this->options->textNewline;
+			$str .= $this->options->eol;
 		}
 
 		return $str;
@@ -97,7 +97,7 @@ class QRString extends QROutputAbstract{
 				$html .= '</'.$this->options->htmlRowTag.'>';
 			}
 
-			$html .= PHP_EOL;
+			$html .= $this->options->eol;
 		}
 
 		return $html;
