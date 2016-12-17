@@ -5,8 +5,8 @@
 [![Travis][travis-badge]][travis]
 [![Coverage][coverage-badge]][coverage]
 [![Issues][issue-badge]][issues]
-[![SensioLabsInsight][sensio-badge]][sensio]
 [![Scrunitizer][scrutinizer-badge]][scrutinizer]
+[![Code Climate][codeclimate-badge]][codeclimate]
 
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
@@ -18,10 +18,10 @@
 [coverage]: https://codecov.io/github/codemasher/php-qrcode
 [issue-badge]: https://img.shields.io/github/issues/codemasher/php-qrcode.svg
 [issues]: https://github.com/codemasher/php-qrcode/issues
-[sensio-badge]: https://img.shields.io/sensiolabs/i/bc7725fb-04af-4e15-9c76-115c20beb976.svg
-[sensio]: https://insight.sensiolabs.com/projects/bc7725fb-04af-4e15-9c76-115c20beb976
 [scrutinizer-badge]: https://scrutinizer-ci.com/g/codemasher/php-qrcode/badges/quality-score.png?b=master
 [scrutinizer]: https://scrutinizer-ci.com/g/codemasher/php-qrcode
+[codeclimate-badge]: https://codeclimate.com/github/codemasher/php-qrcode/badges/gpa.svg
+[codeclimate]: https://codeclimate.com/github/codemasher/php-qrcode
 
 ## Info
 
