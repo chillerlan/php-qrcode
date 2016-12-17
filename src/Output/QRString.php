@@ -19,27 +19,12 @@ use chillerlan\QRCode\QRCode;
  */
 class QRString extends QROutputAbstract{
 
-	/**
-	 * @var \chillerlan\QRCode\Output\QRStringOptions
-	 */
-	protected $options;
+	protected $optionsInterface = QRStringOptions::class;
 
-	/**
-	 * @var \chillerlan\QRCode\Output\QRStringOptions $outputOptions
-	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
-	 */
-	public function __construct(QRStringOptions $outputOptions = null){
-		$this->options = $outputOptions;
-
-		if(!$this->options instanceof QRStringOptions){
-			$this->options = new QRStringOptions;
-		}
-
-		if(!in_array($this->options->type, [QRCode::OUTPUT_STRING_TEXT, QRCode::OUTPUT_STRING_JSON, QRCode::OUTPUT_STRING_HTML], true)){
-			throw new QRCodeOutputException('Invalid string output type!');
-		}
-
-	}
+	protected $types = [
+		QRCode::OUTPUT_STRING_TEXT,
+		QRCode::OUTPUT_STRING_JSON,
+	];
 
 	/**
 	 * @return string
@@ -47,11 +32,10 @@ class QRString extends QROutputAbstract{
 	public function dump(){
 
 		switch($this->options->type){
-			case QRCode::OUTPUT_STRING_JSON: return json_encode($this->matrix);
 			case QRCode::OUTPUT_STRING_TEXT: return $this->toString();
-			case QRCode::OUTPUT_STRING_HTML:
+			case QRCode::OUTPUT_STRING_JSON:
 			default:
-				return $this->toHTML();
+				return json_encode($this->matrix);
 		}
 
 	}
@@ -73,34 +57,6 @@ class QRString extends QROutputAbstract{
 		}
 
 		return $str;
-	}
-
-	/**
-	 * @return string
-	 */
-	protected function toHTML(){
-		$html = '';
-
-		foreach($this->matrix as $row){
-			// in order to not bloat the output too much, we use the shortest possible valid HTML tags
-			$html .= '<'.$this->options->htmlRowTag.'>';
-
-			foreach($row as $col){
-				$tag = $col
-					? 'b'  // dark
-					: 'i'; // light
-
-				$html .= '<'.$tag.'></'.$tag.'>';
-			}
-
-			if(!(bool)$this->options->htmlOmitEndTag){
-				$html .= '</'.$this->options->htmlRowTag.'>';
-			}
-
-			$html .= $this->options->eol;
-		}
-
-		return $html;
 	}
 
 }

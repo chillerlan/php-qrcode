@@ -27,14 +27,16 @@ class QRCode{
 	/**
 	 * API constants
 	 */
-	const OUTPUT_STRING_TEXT = 0;
-	const OUTPUT_STRING_JSON = 1;
-	const OUTPUT_STRING_HTML = 2;
+	const OUTPUT_STRING_TEXT = 'txt';
+	const OUTPUT_STRING_JSON = 'json';
+
+	const OUTPUT_MARKUP_HTML = 'html';
+	const OUTPUT_MARKUP_SVG  = 'svg';
+#	const OUTPUT_MARKUP_XML  = 'xml'; // anyone?
 
 	const OUTPUT_IMAGE_PNG = 'png';
 	const OUTPUT_IMAGE_JPG = 'jpg';
 	const OUTPUT_IMAGE_GIF = 'gif';
-	const OUTPUT_IMAGE_SVG = 'svg';
 
 	const ERROR_CORRECT_LEVEL_L = 1; // 7%.
 	const ERROR_CORRECT_LEVEL_M = 0; // 15%.

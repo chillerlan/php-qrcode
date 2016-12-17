@@ -1,5 +1,6 @@
 <?php
 /**
+ * Class QRImageOptions
  *
  * @filesource   QRImageOptions.php
  * @created      08.12.2015
@@ -10,18 +11,17 @@
  */
 
 namespace chillerlan\QRCode\Output;
+
 use chillerlan\QRCode\QRCode;
 
 /**
- * Class QRImageOptions
+ *
  */
-class QRImageOptions{
+class QRImageOptions extends QROutputOptionsAbstract{
 
 	public $type = QRCode::OUTPUT_IMAGE_PNG;
 
 	public $base64 = true;
-
-	public $cachefile = null;
 
 	public $pixelSize = 5;
 	public $marginSize = 5;

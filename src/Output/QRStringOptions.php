@@ -11,23 +11,18 @@
  */
 
 namespace chillerlan\QRCode\Output;
+
 use chillerlan\QRCode\QRCode;
 
 /**
  *
  */
-class QRStringOptions{
+class QRStringOptions extends QROutputOptionsAbstract{
 
-	public $type = QRCode::OUTPUT_STRING_HTML;
+	public $type = QRCode::OUTPUT_STRING_JSON;
 
 	public $textDark = '#';
 
 	public $textLight = ' ';
-
-	public $eol = PHP_EOL;
-
-	public $htmlRowTag = 'p';
-
-	public $htmlOmitEndTag = true;
 
 }
