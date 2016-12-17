@@ -166,7 +166,9 @@ class QRImage extends QROutputAbstract{
 
 		// if saving to file, append the correct headers
 		if($this->options->cachefile){
-			@file_put_contents($this->options->cachefile, '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">' . "\n" . $imageData);
+			if(false === @file_put_contents($this->options->cachefile, '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">' . "\n" . $imageData)){
+				throw new QRCodeOutputException('Could not write to cache file.');
+			}
 		}
 
 		if((bool)$this->options->base64){
