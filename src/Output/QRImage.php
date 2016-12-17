@@ -48,6 +48,11 @@ class QRImage extends QROutputAbstract{
 	 * @return string
 	 */
 	public function dump(){
+		// svg doesn't need all this GD business
+		if($this->options->type === QRCode::OUTPUT_IMAGE_SVG){
+			return $this->toSVG();
+		}
+
 		$length     = $this->pixelCount * $this->options->pixelSize + $this->options->marginSize * 2;
 		$image      = imagecreatetruecolor($length, $length);
 		$foreground = imagecolorallocate($image, $this->options->fgRed, $this->options->fgGreen, $this->options->fgBlue);
@@ -107,6 +112,67 @@ class QRImage extends QROutputAbstract{
 
 		if((bool)$this->options->base64){
 			$imageData = 'data:image/'.$this->options->type.';base64,'.base64_encode($imageData);
+		}
+
+		return $imageData;
+	}
+
+	/**
+	 * @return string
+	 */
+	protected function toSVG(){
+		$length     = $this->pixelCount * $this->options->pixelSize + $this->options->marginSize * 2;
+		$class      = 'f' . hash('crc32', microtime(true));
+		$foreground = 'rgb(' . $this->options->fgRed . ',' . $this->options->fgGreen . ',' . $this->options->fgBlue . ')';
+		$background = (bool)$this->options->transparent
+			? 'transparent'
+			: 'rgb(' . $this->options->bgRed . ',' . $this->options->bgGreen . ',' . $this->options->bgBlue . ')';
+
+		ob_start();
+
+		// svg header
+		echo '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="' . $length . '" height="' . $length . '" viewBox="0 0 ' . $length . ' ' . $length . '" style="background-color:' . $background . '"><defs><style>.' . $class . '{fill:' . $foreground . '} rect{shape-rendering:crispEdges}</style></defs>';
+
+		// svg body
+		foreach($this->matrix AS $r=>$row){
+			//we'll combine active blocks within a single row as a lightweight compression technique
+			$from = -1;
+			$count = 0;
+
+			foreach($row AS $c=>$pixel){
+				if($pixel){
+					$count++;
+					if($from < 0)
+						$from = $c;
+				}
+				else if($from >= 0){
+					echo '<rect x="' . ($from * $this->options->pixelSize + $this->options->marginSize) . '" y="' . ($r * $this->options->pixelSize + $this->options->marginSize) . '" width="' . ($this->options->pixelSize * $count) . '" height="' . $this->options->pixelSize . '" class="' . $class . '" />';
+
+					// reset count
+					$from = -1;
+					$count = 0;
+				}
+			}
+
+			// close off the row, if applicable
+			if($from >= 0){
+				echo '<rect x="' . ($from * $this->options->pixelSize + $this->options->marginSize) . '" y="' . ($r * $this->options->pixelSize + $this->options->marginSize) . '" width="' . ($this->options->pixelSize * $count) . '" height="' . $this->options->pixelSize . '" class="' . $class . '" />';
+			}
+		}
+
+		// close svg
+		echo '</svg>';
+		$imageData = ob_get_clean();
+
+		// if saving to file, append the correct headers
+		if($this->options->cachefile){
+			if(false === @file_put_contents($this->options->cachefile, '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">' . "\n" . $imageData)){
+				throw new QRCodeOutputException('Could not write to cache file.');
+			}
+		}
+
+		if((bool)$this->options->base64){
+			$imageData = 'data:image/svg+xml;base64,'.base64_encode($imageData);
 		}
 
 		return $imageData;
