@@ -9,6 +9,8 @@
 
 require_once '../vendor/autoload.php';
 
+use chillerlan\QRCode\Output\QRMarkup;
+use chillerlan\QRCode\Output\QRMarkupOptions;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\Output\QRImage;
 use chillerlan\QRCode\Output\QRString;
@@ -62,13 +64,26 @@ $data = 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net';
 <body>
 <?php
 
-echo '<img class="qrcode" alt="qrcode" src="'.(new QRCode($data, new QRImage))->output().'" />';
-echo '<div class="qrcode">'.(new QRCode($data, new QRString))->output().'</div>';
+// image
+echo '<img alt="qrcode" src="'.(new QRCode($data, new QRImage))->output().'" />';
 
-$qrStringOptions = new QRStringOptions;
-$qrStringOptions->type = QRCode::OUTPUT_STRING_TEXT;
+// markup - svg
+echo '<div>'.(new QRCode($data, new QRMarkup))->output().'</div>';
 
-echo '<pre class="qrcode">'.(new QRCode($data, new QRString($qrStringOptions)))->output().'</pre>';
+// markup - html
+$outputOptions = new QRMarkupOptions;
+$outputOptions->type = QRCode::OUTPUT_MARKUP_HTML;
+
+echo '<div class="qrcode">'.(new QRCode($data, new QRMarkup($outputOptions)))->output().'</div>';
+
+// string - json
+echo '<pre>'.(new QRCode($data, new QRString))->output().'<pre>';
+
+// string - text
+$outputOptions = new QRStringOptions;
+$outputOptions->type = QRCode::OUTPUT_STRING_TEXT;
+
+echo '<pre>'.(new QRCode($data, new QRString($outputOptions)))->output().'</pre>';
 
 ?>
 </body>

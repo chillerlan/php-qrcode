@@ -8,8 +8,8 @@ use chillerlan\QRCode\QRCode;
 
 $qrImageOptions = new QRImageOptions;
 $qrImageOptions->pixelSize = 10;
-#$qrImageOptions->cachefile = 'example_image.png';
+$qrImageOptions->cachefile = 'example_image.png';
 
-$im = (new QRCode('https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s', new QRImage($qrImageOptions)))->output();
+(new QRCode('https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s', new QRImage($qrImageOptions)))->output();
 
-echo '<img src="'.$im.'" />';
+echo '<img src="'.$qrImageOptions->cachefile.'" />';
