@@ -218,7 +218,7 @@ property | type | default | allowed | description
 
 property | type | default | allowed | description
 -------- | ---- | ------- | ------- | -----------
-`$type` | string | PNG | QRCode::OUTPUT_IMAGE_XXX | XXX = PNG, JPG, GIF
+`$type` | string | PNG | QRCode::OUTPUT_IMAGE_XXX | XXX = PNG, JPG, GIF, SVG
 `$base64` | bool | true | - | wether to return the image data as base64 or raw like from `file_get_contents()`
 `$cachefile` | string | null | * | optional cache file path, null returns the image data
 `$pixelSize` | int | 5 | 1 ... 25 | size of a QR code pixel (25 is HUGE!)

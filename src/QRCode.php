@@ -34,6 +34,7 @@ class QRCode{
 	const OUTPUT_IMAGE_PNG = 'png';
 	const OUTPUT_IMAGE_JPG = 'jpg';
 	const OUTPUT_IMAGE_GIF = 'gif';
+	const OUTPUT_IMAGE_SVG = 'svg';
 
 	const ERROR_CORRECT_LEVEL_L = 1; // 7%.
 	const ERROR_CORRECT_LEVEL_M = 0; // 15%.
