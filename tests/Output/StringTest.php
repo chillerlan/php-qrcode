@@ -15,59 +15,30 @@ use chillerlan\QRCode\Output\QRString;
 use chillerlan\QRCode\Output\QRStringOptions;
 use chillerlan\QRCode\QRCode;
 
-class StringTest extends \PHPUnit_Framework_TestCase{
+class StringTest extends OutputTestAbstract{
 
-	/**
-	 * @var \chillerlan\QRCode\Output\QRStringOptions
-	 */
-	protected $options;
+	protected $outputInterfaceClass = QRString::class;
+	protected $outputOptionsClass   = QRStringOptions::class;
 
-	protected function setUp(){
-		$this->options = new QRStringOptions;
-	}
-
-	public function testOptionsInstance(){
-		$this->assertInstanceOf(QRStringOptions::class, $this->options);
-		$this->assertEquals(QRCode::OUTPUT_STRING_HTML, $this->options->type);
+	public function testOptions(){
+		$this->assertEquals(QRCode::OUTPUT_STRING_JSON, $this->options->type);
 	}
 
 	public function stringDataProvider(){
 		return [
-			[QRCode::OUTPUT_STRING_HTML, true,  'foobar', 'str1.html'],
-			[QRCode::OUTPUT_STRING_HTML, false, 'foobar', 'str2.html'],
-			[QRCode::OUTPUT_STRING_HTML, true,  'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net', 'str3.html'],
-			[QRCode::OUTPUT_STRING_HTML, false, 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net', 'str4.html'],
-			[QRCode::OUTPUT_STRING_JSON, false, 'foobar', 'str1.json'],
-			[QRCode::OUTPUT_STRING_JSON, false, 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net', 'str2.json'],
-			[QRCode::OUTPUT_STRING_TEXT, false, 'foobar', 'str1.txt'],
-			[QRCode::OUTPUT_STRING_TEXT, false, 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net', 'str2.txt'],
+			[QRCode::OUTPUT_STRING_JSON, 'foobar', 'str1.json'],
+			[QRCode::OUTPUT_STRING_JSON, 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net', 'str2.json'],
+			[QRCode::OUTPUT_STRING_TEXT, 'foobar', 'str1.txt'],
+			[QRCode::OUTPUT_STRING_TEXT, 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net', 'str2.txt'],
 		];
 	}
 
 	/**
 	 * @dataProvider stringDataProvider
 	 */
-	public function testStringOutput($type, $omitEndTag, $data, $expected){
+	public function testStringOutput($type, $data, $expected){
 		$this->options->type = $type;
-		$this->options->htmlOmitEndTag = $omitEndTag;
-		$this->assertEquals(file_get_contents(__DIR__.'/string/'.$expected), (new QRCode($data, new QRString($this->options)))->output());
-	}
-
-	/**
-	 * @expectedException \chillerlan\QRCode\Output\QRCodeOutputException
-	 * @expectedExceptionMessage Invalid string output type!
-	 */
-	public function testOutputTypeException(){
-		$this->options->type = 'foo';
-		new QRString($this->options);
-	}
-
-	/**
-	 * @expectedException \chillerlan\QRCode\Output\QRCodeOutputException
-	 * @expectedExceptionMessage Invalid matrix!
-	 */
-	public function testSetMatrixException(){
-		(new QRString)->setMatrix([]);
+		$this->assertEquals(file_get_contents(__DIR__.'/string/'.$expected), (new QRCode($data, new $this->outputInterfaceClass($this->options)))->output());
 	}
 
 }
