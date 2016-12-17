@@ -89,6 +89,7 @@ Ok, step by step. You'll need a `QRCode` instance which needs to be invoked with
 ```php
 // the built-in QROutputInterface classes
 $outputInterface = new QRImage;
+$outputInterface = new QRMarkup;
 $outputInterface = new QRString;
 
 // invoke a fresh QRCode instance
@@ -100,7 +101,7 @@ $qrcode->output();
 
 Have a look [in this folder](https://github.com/codemasher/php-qrcode/tree/master/examples) for some usage examples.
 
-The `QRCode` and built-in `QROutputInterface` classes can be optionally invoked with a `QROptions` or a `Output\QR...Options` Object respectively.
+The `QRCode` and built-in `QROutputInterface` classes can be optionally invoked with a `QROptions` or a `Output\QROutputOptionsInterface` Object respectively.
 ```php
 // image -> QRImageOptions
 $outputOptions = new QRImageOptions;
@@ -109,7 +110,7 @@ $outputInterface = new QRImage($outputOptions);
 
 // string -> QRStringOptions
 $outputOptions = new QRStringOptions;
-$outputOptions->type = QRCode::OUTPUT_STRING_HTML;
+$outputOptions->type = QRCode::OUTPUT_STRING_TEXT;
 $outputInterface = new QRString($outputOptions);
 
 // QROptions
@@ -159,7 +160,7 @@ class MyCustomOutput extends QROutputAbstract{
 	protected $options; // MyCustomOutputOptions (if present)
 	
 	// optional constructor
-	public function __construct(MyCustomOutputOptions $outputOptions = null){
+	public function __construct(QROutputOptionsInterface $outputOptions = null){
 		$this->options = $outputOptions;
 
 		if(!$this->options){
@@ -206,12 +207,20 @@ property | type | default | allowed | description
 
 property | type | default | allowed | description
 -------- | ---- | ------- | ------- | -----------
-`$type` | int | HTML | QRCode::OUTPUT_STRING_XXXX | XXXX = TEXT, JSON, HTML
+`$type` | int | JSON | QRCode::OUTPUT_STRING_XXXX | XXXX = TEXT, JSON
 `$textDark` | string | '#' | * | string substitute for dark
 `$textLight` | string | ' ' | * | string substitute for light
 `$textNewline` | string | `PHP_EOL` | * | newline string
+
+###  Properties of `QRMarkupOptions`
+
+property | type | default | allowed | description
+-------- | ---- | ------- | ------- | -----------
+`$type` | int | HTML | QRCode::OUTPUT_MARKUP_XXXX | XXXX = HTML, SVG
 `$htmlRowTag` | string | 'p' | * | the shortest available semanically correct row (block) tag to not bloat the output
 `$htmlOmitEndTag` | bool | true | - | the closing tag may be omitted (moar bloat!)
+`$fgColor` | string | '#000' | * | foreground color
+`$fgGreen` | string | '#fff' | * | background color
 
 
 ###  Properties of `QRImageOptions`
