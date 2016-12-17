@@ -1,11 +1,6 @@
-engines:
+eengines:
   fixme:
     enabled: true
-  phpcodesniffer:
-    enabled: true
-    config:
-      standard: "PSR1,PSR2"
-      ignore_warnings: true
   phpmd:
     enabled: true
     config:
@@ -15,7 +10,7 @@ engines:
     enabled: true
 ratings:
   paths:
-  - "**.php"
+    - "**.php"
 exclude_paths:
   - examples/**/*
   - tests/**/*
