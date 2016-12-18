@@ -1,4 +1,4 @@
-eengines:
+engines:
   fixme:
     enabled: true
   phpmd:
