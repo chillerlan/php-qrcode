@@ -30,6 +30,8 @@ class StringTest extends OutputTestAbstract{
 			[QRCode::OUTPUT_STRING_JSON, 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net', 'str2.json'],
 			[QRCode::OUTPUT_STRING_TEXT, 'foobar', 'str1.txt'],
 			[QRCode::OUTPUT_STRING_TEXT, 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net', 'str2.txt'],
+			// https://github.com/codemasher/php-qrcode/issues/4
+			[QRCode::OUTPUT_STRING_TEXT, 'eyJjdCI6IjVPSExXNzZQZUg1NitEUUdtcFwvY2FBPT0iLCJpdiI6ImY0ZTI4MGMyYjc2NDExZmJjMmUzMjc5NzA0MTc3YmI4IiwicyI6ImZjZTZlMTY3YjNjMTQwMDUifQ%3D%3D', 'str3.txt'],
 		];
 	}
 
