@@ -29,7 +29,7 @@ This library is based on the [QR code implementation](https://github.com/kazuhik
 namespaced, cleaned up, made extensible and PHP7 ready (among other stuff). The main intend is to use it along with a [Google authenticator implementation](https://github.com/codemasher/php-googleauth).
 
 ## Requirements
-- PHP 5.6+, PHP 7
+- PHP 7+
 
 ## Documentation
 
@@ -45,7 +45,7 @@ composer require chillerlan/php-qrcode:dev-master
 ```json
 {
 	"require": {
-		"php": ">=5.6.0",
+		"php": ">=7.0.3",
 		"chillerlan/php-qrcode": "dev-master"
 	}
 }
@@ -210,7 +210,7 @@ property | type | default | allowed | description
 `$type` | int | JSON | QRCode::OUTPUT_STRING_XXXX | XXXX = TEXT, JSON
 `$textDark` | string | '#' | * | string substitute for dark
 `$textLight` | string | ' ' | * | string substitute for light
-`$textNewline` | string | `PHP_EOL` | * | newline string
+`$eol` | string | `PHP_EOL` | * | newline string
 
 ###  Properties of `QRMarkupOptions`
 
@@ -220,8 +220,11 @@ property | type | default | allowed | description
 `$htmlRowTag` | string | 'p' | * | the shortest available semanically correct row (block) tag to not bloat the output
 `$htmlOmitEndTag` | bool | true | - | the closing tag may be omitted (moar bloat!)
 `$fgColor` | string | '#000' | * | foreground color
-`$fgGreen` | string | '#fff' | * | background color
-
+`$bgColor` | string | '#fff' | * | background color
+`$cssClass` | string | '' | * | a common css class
+`$pixelSize` | int | 5 | * | size of a QR code pixel
+`$marginSize` | int | 5 | * | margin around the QR code 
+`$eol` | string | `PHP_EOL` | * | newline string
 
 ###  Properties of `QRImageOptions`
 
