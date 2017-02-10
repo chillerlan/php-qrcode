@@ -36,7 +36,7 @@ class QRImage extends QROutputAbstract{
 	/**
 	 * @return string
 	 */
-	public function dump(){
+	public function dump():string {
 		// clamp input (@todo: determine sane values!)
 		$this->options->pixelSize = max(1, min(25, (int)$this->options->pixelSize));
 		$this->options->marginSize = max(0, min(25, (int)$this->options->marginSize));

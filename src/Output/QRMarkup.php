@@ -35,7 +35,7 @@ class QRMarkup extends QROutputAbstract{
 	/**
 	 * @return string
 	 */
-	public function dump(){
+	public function dump():string {
 		switch($this->options->type){
 			case QRCode::OUTPUT_MARKUP_SVG : return $this->toSVG();
 			case QRCode::OUTPUT_MARKUP_HTML:
@@ -47,7 +47,7 @@ class QRMarkup extends QROutputAbstract{
 	/**
 	 * @return string
 	 */
-	protected function toHTML(){
+	protected function toHTML():string {
 		$html = '';
 
 		foreach($this->matrix as $row){
@@ -73,10 +73,12 @@ class QRMarkup extends QROutputAbstract{
 	}
 
 	/**
+	 * @link https://github.com/codemasher/php-qrcode/pull/5
+	 *
 	 * @return string
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function toSVG(){
+	protected function toSVG():string {
 		$length = $this->pixelCount * $this->options->pixelSize + $this->options->marginSize * 2;
 		$class  = !empty($this->options->cssClass) ? $this->options->cssClass : hash('crc32', microtime(true));
 

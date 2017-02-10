@@ -25,12 +25,12 @@ class Polynomial{
 	/**
 	 * @var array
 	 */
-	protected $EXP_TABLE = [];
+	protected $expTable = [];
 
 	/**
 	 * @var array
 	 */
-	protected $LOG_TABLE = [];
+	protected $logTable = [];
 
 	/**
 	 * Polynomial constructor.
@@ -38,7 +38,7 @@ class Polynomial{
 	 * @param array $num
 	 * @param int   $shift
 	 */
-	public function __construct(array $num = [1], $shift = 0){
+	public function __construct(array $num = [1], int $shift = 0){
 		$this->setNum($num, $shift)->setTables();
 	}
 
@@ -46,9 +46,9 @@ class Polynomial{
 	 * @param array $num
 	 * @param int   $shift
 	 *
-	 * @return $this
+	 * @return \chillerlan\QRCode\Polynomial
 	 */
-	public function setNum(array $num, $shift = 0){
+	public function setNum(array $num, int $shift = 0):Polynomial {
 		$offset = 0;
 		$numCount = count($num);
 
@@ -58,43 +58,37 @@ class Polynomial{
 
 		$this->num = array_fill(0, $numCount - $offset + $shift, 0);
 
-		$i = 0;
-		while($i < $numCount - $offset){
+		for($i = 0; $i < $numCount - $offset; $i++){
 			$this->num[$i] = $num[$i + $offset];
-			$i++;
 		}
 
 		return $this;
 	}
 
 	/**
-	 *
+	 * @return void
 	 */
 	protected function setTables(){
-		$this->EXP_TABLE = $this->LOG_TABLE = array_fill(0, 256, 0);
+		$this->expTable = $this->logTable = array_fill(0, 256, 0);
 
-		$i = 0;
-		while($i < 8){
-			$this->EXP_TABLE[$i] = 1 << $i;
-			$i++;
+		for($i = 0; $i < 8; $i++){
+			$this->expTable[$i] = 1 << $i;
 		}
 
-		$i = 8;
-		while($i < 256){
-			$this->EXP_TABLE[$i] = $this->EXP_TABLE[$i - 4] ^ $this->EXP_TABLE[$i - 5] ^ $this->EXP_TABLE[$i - 6] ^ $this->EXP_TABLE[$i - 8];
-			$i++;
+		for($i = 8; $i < 256; $i++){
+			$this->expTable[$i] = $this->expTable[$i - 4]^$this->expTable[$i - 5]^$this->expTable[$i - 6]^$this->expTable[$i - 8];
 		}
 
-		$i = 0;
-		while($i < 255){
-			$this->LOG_TABLE[$this->EXP_TABLE[$i]] = $i;
-			$i++;
+		for($i = 0; $i < 255; $i++){
+			$this->logTable[$this->expTable[$i]] = $i;
 		}
 
 	}
 
 	/**
 	 * @param array $e
+	 *
+	 * @return void
 	 */
 	public function multiply(array $e){
 		$n = array_fill(0, count($this->num) + count($e) - 1, 0);
@@ -110,6 +104,8 @@ class Polynomial{
 
 	/**
 	 * @param array $e
+	 *
+	 * @return void
 	 */
 	public function mod(array $e){
 		$n = $this->num;
@@ -119,6 +115,7 @@ class Polynomial{
 		}
 
 		$ratio = $this->glog($n[0]) - $this->glog($e[0]);
+
 		foreach($e as $i => &$v){
 			$n[$i] ^= $this->gexp($this->glog($v) + $ratio);
 		}
@@ -132,13 +129,13 @@ class Polynomial{
 	 * @return int
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function glog($n){
+	public function glog(int $n):int {
 
 		if($n < 1){
 			throw new QRCodeException('log('.$n.')');
 		}
 
-		return $this->LOG_TABLE[$n];
+		return $this->logTable[$n];
 	}
 
 	/**
@@ -146,7 +143,7 @@ class Polynomial{
 	 *
 	 * @return int
 	 */
-	public function gexp($n){
+	public function gexp(int $n):int {
 
 		if($n < 0){
 			$n += 255;
@@ -155,7 +152,7 @@ class Polynomial{
 			$n -= 255;
 		}
 
-		return $this->EXP_TABLE[$n];
+		return $this->expTable[$n];
 	}
 
 }

@@ -12,8 +12,7 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\BitBuffer;
-use chillerlan\QRCode\QRConst;
+use chillerlan\QRCode\{BitBuffer, QRConst};
 
 /**
  *
@@ -33,6 +32,7 @@ class Kanji extends QRDataAbstract{
 	/**
 	 * @param \chillerlan\QRCode\BitBuffer $buffer
 	 *
+	 * @return void
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function write(BitBuffer &$buffer){

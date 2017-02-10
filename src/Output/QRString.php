@@ -29,7 +29,7 @@ class QRString extends QROutputAbstract{
 	/**
 	 * @return string
 	 */
-	public function dump(){
+	public function dump():string {
 
 		switch($this->options->type){
 			case QRCode::OUTPUT_STRING_TEXT: return $this->toString();
@@ -43,7 +43,7 @@ class QRString extends QROutputAbstract{
 	/**
 	 * @return string
 	 */
-	protected function toString(){
+	protected function toString():string {
 		$str = '';
 
 		foreach($this->matrix as $row){

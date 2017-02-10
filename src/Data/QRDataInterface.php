@@ -33,6 +33,6 @@ interface QRDataInterface{
 	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function getLengthInBits($type);
+	public function getLengthInBits(int $type):int;
 
 }

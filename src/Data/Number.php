@@ -12,8 +12,7 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\BitBuffer;
-use chillerlan\QRCode\QRConst;
+use chillerlan\QRCode\{BitBuffer, QRConst};
 
 /**
  *
@@ -32,6 +31,8 @@ class Number extends QRDataAbstract{
 
 	/**
 	 * @param \chillerlan\QRCode\BitBuffer $buffer
+	 *
+	 * @return void
 	 */
 	public function write(BitBuffer &$buffer){
 		$i = 0;
@@ -60,7 +61,7 @@ class Number extends QRDataAbstract{
 	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	private static function parseInt($string){
+	private static function parseInt(string $string):int {
 		$num = 0;
 
 		$len = strlen($string);

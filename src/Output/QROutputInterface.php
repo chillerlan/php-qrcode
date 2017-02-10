@@ -25,9 +25,9 @@ interface QROutputInterface{
 	/**
 	 * @param array $matrix
 	 *
-	 * @return $this
+	 * @return \chillerlan\QRCode\Output\QROutputInterface
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	public function setMatrix(array $matrix);
+	public function setMatrix(array $matrix):QROutputInterface;
 
 }

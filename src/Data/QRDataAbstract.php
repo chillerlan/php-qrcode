@@ -37,20 +37,21 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 *
 	 * @param string $data
 	 */
-	public function __construct($data){
+	public function __construct(string $data){
 		$this->data = $data;
 		$this->dataLength = strlen($data);
 	}
 
 	/**
+	 * @see QRCode::createData()
+	 *
 	 * @param int $type
 	 *
 	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
-	 * @see QRCode::createData()
 	 * @codeCoverageIgnore
 	 */
-	public function getLengthInBits($type){
+	public function getLengthInBits(int $type):int {
 
 		switch(true){
 			case $type >= 1 && $type <= 9:

@@ -38,20 +38,23 @@ class BitBuffer{
 	/**
 	 * @param int $num
 	 * @param int $length
+	 *
+	 * @return void
 	 */
-	public function put($num, $length){
+	public function put(int $num, int $length){
 
-		$i = 0;
-		while($i < $length){
-			$this->putBit(($num >> ($length - $i - 1))&1 === 1); $i++;
+		for($i = 0; $i < $length; $i++){
+			$this->putBit(($num >> ($length - $i - 1))&1 === 1);
 		}
 
 	}
 
 	/**
 	 * @param bool $bit
+	 *
+	 * @return void
 	 */
-	public function putBit($bit){
+	public function putBit(bool $bit){
 		$bufIndex = floor($this->length / 8);
 
 		if(count($this->buffer) <= $bufIndex){

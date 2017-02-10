@@ -12,10 +12,7 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\QRCode\Data\AlphaNum;
-use chillerlan\QRCode\Data\Byte;
-use chillerlan\QRCode\Data\Kanji;
-use chillerlan\QRCode\Data\Number;
+use chillerlan\QRCode\Data\{AlphaNum, Byte, Kanji, Number};
 use chillerlan\QRCode\Output\QROutputInterface;
 
 /**
@@ -127,10 +124,10 @@ class QRCode{
 	 * @param string                            $data
 	 * @param \chillerlan\QRCode\QROptions|null $options
 	 *
-	 * @return $this
+	 * @return \chillerlan\QRCode\QRCode
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function setData($data, QROptions $options = null){
+	public function setData(string $data, QROptions $options = null):QRCode {
 		$data = trim($data);
 
 		if(empty($data)){
@@ -178,12 +175,12 @@ class QRCode{
 	}
 
 	/**
-	 * @param $mode
+	 * @param int $mode
 	 *
 	 * @return int
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	protected function getTypeNumber($mode){
+	protected function getTypeNumber(int $mode):int {
 		$length = $this->qrDataInterface->dataLength;
 
 		if($this->qrDataInterface->mode === QRConst::MODE_KANJI){
@@ -204,17 +201,18 @@ class QRCode{
 	 */
 	public function output(){
 		$this->qrOutputInterface->setMatrix($this->getRawData());
+
 		return $this->qrOutputInterface->dump();
 	}
 
 	/**
 	 * @return array
 	 */
-	public function getRawData(){
+	public function getRawData():array {
 		$this->minLostPoint = 0;
 		$this->maskPattern = 0;
 
-		foreach(range(0, 7) as $pattern){
+		for($pattern = 0; $pattern <= 7; $pattern++){
 			$this->testPattern($pattern);
 		}
 
@@ -225,6 +223,8 @@ class QRCode{
 
 	/**
 	 * @param array $range
+	 *
+	 * @return void
 	 */
 	protected function testLevel1(array $range){
 
@@ -260,6 +260,8 @@ class QRCode{
 
 	/**
 	 * @param array $range
+	 *
+	 * @return void
 	 */
 	protected function testLevel2(array $range){
 
@@ -288,6 +290,8 @@ class QRCode{
 	/**
 	 * @param array $range1
 	 * @param array $range2
+	 *
+	 * @return void
 	 */
 	protected function testLevel3(array $range1, array $range2){
 
@@ -331,6 +335,8 @@ class QRCode{
 
 	/**
 	 * @param array $range
+	 *
+	 * @return void
 	 */
 	protected function testLevel4(array $range){
 
@@ -346,8 +352,10 @@ class QRCode{
 
 	/**
 	 * @param int $pattern
+	 *
+	 * @return void
 	 */
-	protected function testPattern($pattern){
+	protected function testPattern(int $pattern){
 		$this->getMatrix(true, $pattern);
 		$this->lostPoint = 0;
 		$this->darkCount = 0;
@@ -370,16 +378,17 @@ class QRCode{
 
 	/**
 	 * @param bool $test
+	 *
+	 * @return void
 	 */
-	protected function setTypeNumber($test){
+	protected function setTypeNumber(bool $test){
 		$bits = Util::getBCHTypeNumber($this->typeNumber);
-		$i = 0;
-		while($i < 18){
+
+		for($i = 0; $i < 18; $i++){
 			$a = (int)floor($i / 3);
 			$b = $i % 3 + $this->pixelCount - 8 - 3;
 
 			$this->matrix[$a][$b] = $this->matrix[$b][$a] = !$test && (($bits >> $i) & 1) === 1;
-			$i++;
 		}
 
 	}
@@ -387,12 +396,14 @@ class QRCode{
 	/**
 	 * @param bool $test
 	 * @param int  $pattern
+	 *
+	 * @return void
 	 */
-	protected function setTypeInfo($test, $pattern){
+	protected function setTypeInfo(bool $test, int $pattern){
 		$this->setPattern();
 		$bits = Util::getBCHTypeInfo(($this->errorCorrectLevel << 3) | $pattern);
-		$i = 0;
-		while($i < 15){
+
+		for($i = 0; $i < 15; $i++){
 			$mod = !$test && (($bits >> $i) & 1) === 1;
 
 			switch(true){
@@ -408,13 +419,14 @@ class QRCode{
 				default:
 					$this->matrix[8][15 - $i - 1] = $mod;
 			}
-			$i++;
+
 		}
 
 		$this->matrix[$this->pixelCount - 8][8] = !$test;
 	}
 
 	/**
+	 * @return void
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function createData(){
@@ -467,7 +479,7 @@ class QRCode{
 	 * @return array
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	protected function createBytes(){
+	protected function createBytes():array {
 		$totalCodeCount = $maxDcCount = $maxEcCount = $offset = $index = 0;
 		$rsBlocks = Util::getRSBlocks($this->typeNumber, $this->errorCorrectLevel);
 		$rsBlockCount = count($rsBlocks);
@@ -492,11 +504,9 @@ class QRCode{
 			$rsPoly = new Polynomial;
 			$modPoly = new Polynomial;
 
-			$i = 0;
-			while($i < $rsBlockTotal - $rsBlockDataCount){
+			foreach(range(0, $rsBlockTotal - $rsBlockDataCount - 1) as $i){
 				$modPoly->setNum([1, $modPoly->gexp($i)]);
 				$rsPoly->multiply($modPoly->num);
-				$i++;
 			}
 
 			$rsPolyCount = count($rsPoly->num);
@@ -515,24 +525,20 @@ class QRCode{
 		$data = array_fill(0, $totalCodeCount, null);
 		$rsrange = range(0, $rsBlockCount - 1);
 
-		$i = 0;
-		while($i < $maxDcCount){
+		foreach(range(0, $maxDcCount - 1) as $i){
 			foreach($rsrange as $key){
 				if($i < count($dcdata[$key])){
 					$data[$index++] = $dcdata[$key][$i];
 				}
 			}
-			$i++;
 		}
 
-		$i = 0;
-		while($i < $maxEcCount){
+		foreach(range(0, $maxEcCount - 1) as $i){
 			foreach($rsrange as $key){
 				if($i < count($ecdata[$key])){
 					$data[$index++] = $ecdata[$key][$i];
 				}
 			}
-			$i++;
 		}
 
 		return $data;
@@ -541,9 +547,10 @@ class QRCode{
 	/**
 	 * @param int $pattern
 	 *
+	 * @return void
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	protected function mapData($pattern){
+	protected function mapData(int $pattern){
 		$this->createData();
 		$data = $this->createBytes();
 		$inc = -1;
@@ -558,8 +565,7 @@ class QRCode{
 			}
 
 			while(true){
-				$c = 0;
-				while($c < 2){
+				foreach([0, 1] as $c){
 					$_col = $col - $c;
 
 					if($this->matrix[$row][$_col] === null){
@@ -594,7 +600,6 @@ class QRCode{
 							$bitIndex = 7;
 						}
 					}
-					$c++;
 				}
 
 				$row += $inc;
@@ -609,7 +614,7 @@ class QRCode{
 	}
 
 	/**
-	 *
+	 * @return void
 	 */
 	protected function setupPositionProbePattern(){
 		$range = range(-1, 7);
@@ -618,8 +623,7 @@ class QRCode{
 			$row = $grid[0];
 			$col = $grid[1];
 
-			$r = -1;
-			while($r < 8){
+			foreach($range as $r){
 				foreach($range as $c){
 
 					if($row + $r <= -1 || $this->pixelCount <= $row + $r || $col + $c <= -1 || $this->pixelCount <= $col + $c){
@@ -631,14 +635,13 @@ class QRCode{
 						|| (0 <= $c && $c <= 6 && ($r === 0 || $r === 6))
 						|| (2 <= $c && $c <= 4 &&  2 <= $r && $r <= 4);
 				}
-				$r++;
 			}
 		}
 
 	}
 
 	/**
-	 *
+	 * @return void
 	 */
 	protected function setupPositionAdjustPattern(){
 		$range = QRConst::PATTERN_POSITION[$this->typeNumber - 1];
@@ -663,6 +666,7 @@ class QRCode{
 	}
 
 	/**
+	 * @return void
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function setPattern(){
@@ -686,7 +690,7 @@ class QRCode{
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	protected function getMatrix($test, $maskPattern){
+	protected function getMatrix(bool $test, int $maskPattern){
 		$this->pixelCount = $this->typeNumber * 4 + 17;
 		$this->matrix = array_fill(0, $this->pixelCount, array_fill(0, $this->pixelCount, null));
 		$this->setTypeInfo($test, $maskPattern);
