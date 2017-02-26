@@ -165,9 +165,9 @@ class QRCode{
 		][$mode];
 
 		$this->qrDataInterface = new $qrDataInterface($data);
-		$this->typeNumber = intval($options->typeNumber);
+		$this->typeNumber = $options->typeNumber;
 
-		if($this->typeNumber < 1 || $this->typeNumber > 10){
+		if(!is_int($this->typeNumber) || $this->typeNumber < 1 || $this->typeNumber > 10){
 			$this->typeNumber = $this->getTypeNumber($mode);
 		}
 
