@@ -11,8 +11,9 @@ namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCode\BitBuffer;
 use chillerlan\QRCode\QRConst;
+use PHPUnit\Framework\TestCase;
 
-class BitBufferTest extends \PHPUnit_Framework_TestCase{
+class BitBufferTest extends TestCase{
 
 	/**
 	 * @var \chillerlan\QRCode\BitBuffer

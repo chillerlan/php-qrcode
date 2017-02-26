@@ -12,8 +12,9 @@
 namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCode\Polynomial;
+use PHPUnit\Framework\TestCase;
 
-class PolynomialTest extends \PHPUnit_Framework_TestCase{
+class PolynomialTest extends TestCase{
 
 	/**
 	 * @var \chillerlan\QRCode\Polynomial

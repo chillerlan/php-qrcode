@@ -43,7 +43,10 @@ class ImageTest extends OutputTestAbstract{
 		$this->options->type = $type;
 		$output = (new QRCode($data, new $this->outputInterfaceClass($this->options)))->output();
 		// jpeg test is causing trouble
-		if($type !== QRCode::OUTPUT_IMAGE_JPG){
+		if($type === QRCode::OUTPUT_IMAGE_JPG){
+			$this->markTestSkipped('jpeg test skipped');
+		}
+		else{
 			$this->assertEquals(file_get_contents(__DIR__.'/image/'.$expected), $output);
 		}
 	}

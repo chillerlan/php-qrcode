@@ -12,8 +12,9 @@ namespace chillerlan\QRCodeTest;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QRConst;
 use chillerlan\QRCode\Util;
+use PHPUnit\Framework\TestCase;
 
-class UtilTest extends \PHPUnit_Framework_TestCase{
+class UtilTest extends TestCase{
 
 	public function testIsNumber(){
 		$this->assertEquals(true, Util::isNumber('1234567890'));

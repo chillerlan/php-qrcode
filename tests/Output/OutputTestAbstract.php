@@ -11,10 +11,12 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Class OutputTestAbstract
  */
-abstract class OutputTestAbstract extends \PHPUnit_Framework_TestCase{
+abstract class OutputTestAbstract extends TestCase{
 
 	protected $outputInterfaceClass;
 	protected $outputOptionsClass;
