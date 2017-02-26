@@ -73,6 +73,7 @@ class QRImage extends QROutputAbstract{
 
 		switch($this->options->type){
 			case QRCode::OUTPUT_IMAGE_JPG:
+				// @codeCoverageIgnoreStart
 				imagejpeg(
 					$image,
 					$this->options->cachefile,
@@ -81,6 +82,7 @@ class QRImage extends QROutputAbstract{
 						: 85
 				);
 				break;
+				// @codeCoverageIgnoreEnd
 			case QRCode::OUTPUT_IMAGE_GIF: /** Actually, it's pronounced "DJIFF". *hides* */
 				imagegif(
 					$image,
