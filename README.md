@@ -7,21 +7,24 @@
 [![Issues][issue-badge]][issues]
 [![Scrunitizer][scrutinizer-badge]][scrutinizer]
 [![Code Climate][codeclimate-badge]][codeclimate]
+[![packagist][downloads-badge]][downloads]
 
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
 [license-badge]: https://img.shields.io/packagist/l/chillerlan/php-qrcode.svg
 [license]: https://github.com/codemasher/php-qrcode/blob/master/LICENSE
-[travis-badge]: https://travis-ci.org/codemasher/php-qrcode.svg?branch=master
+[travis-badge]: https://img.shields.io/travis/codemasher/php-qrcode.svg
 [travis]: https://travis-ci.org/codemasher/php-qrcode
-[coverage-badge]: https://codecov.io/github/codemasher/php-qrcode/coverage.svg?branch=master
+[coverage-badge]: https://img.shields.io/codecov/c/github/codemasher/php-qrcode.svg
 [coverage]: https://codecov.io/github/codemasher/php-qrcode
 [issue-badge]: https://img.shields.io/github/issues/codemasher/php-qrcode.svg
 [issues]: https://github.com/codemasher/php-qrcode/issues
-[scrutinizer-badge]: https://scrutinizer-ci.com/g/codemasher/php-qrcode/badges/quality-score.png?b=master
+[scrutinizer-badge]: https://img.shields.io/scrutinizer/g/codemasher/php-qrcode.svg
 [scrutinizer]: https://scrutinizer-ci.com/g/codemasher/php-qrcode
-[codeclimate-badge]: https://codeclimate.com/github/codemasher/php-qrcode/badges/gpa.svg
+[codeclimate-badge]: https://img.shields.io/codeclimate/github/codemasher/php-qrcode.svg
 [codeclimate]: https://codeclimate.com/github/codemasher/php-qrcode
+[downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg
+[downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 
 ## Info
 
@@ -160,7 +163,7 @@ class MyCustomOutput extends QROutputAbstract{
 	protected $options; // MyCustomOutputOptions (if present)
 	
 	// optional constructor
-	public function __construct(QROutputOptionsInterface $outputOptions = null){
+	public function __construct(QROutputOptionsAbstract $outputOptions = null){
 		$this->options = $outputOptions;
 
 		if(!$this->options){
