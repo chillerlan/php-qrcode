@@ -79,7 +79,7 @@ class MarkupTest extends OutputTestAbstract{
 	 */
 	public function testSaveToFileException(string $type){
 		$this->options->type = $type;
-		$this->options->cachefile = '\\foo';
+		$this->options->cachefile = __DIR__.'/foo/bar';
 
 		(new QRCode('foo', new $this->outputInterfaceClass($this->options)))->output();
 	}
