@@ -48,7 +48,7 @@ class ImageTest extends OutputTestAbstract{
 			$this->markTestSkipped('jpeg test skipped');
 		}
 		// skip png for PHP 7.2 https://travis-ci.org/codemasher/php-qrcode/jobs/292110988
-		else if($type === QRCode::OUTPUT_IMAGE_PNG && PHP_VERSION_ID > 70200){
+		else if($type === QRCode::OUTPUT_IMAGE_PNG && PHP_VERSION_ID >= 70200){
 			$this->markTestSkipped('png test skipped, PHP version: '.PHP_VERSION);
 		}
 		else{
