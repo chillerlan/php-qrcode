@@ -78,60 +78,6 @@ class QRCodeTest extends TestCase{
 	}
 
 	/**
-	 * @dataProvider stringDataProvider
-	 */
-	public function testTypeAutoOverride($data, $type){
-
-		$property = $this->reflectionClass->getProperty('typeNumber');
-		$property->setAccessible(true);
-
-		$this->options->typeNumber = 'foo';
-		$this->assertSame($type, $property->getValue($this->reflectionClass->newInstanceArgs([$data, $this->output, $this->options])));
-
-		$this->options->typeNumber = 42;
-		$this->assertSame($type, $property->getValue($this->reflectionClass->newInstanceArgs([$data, $this->output, $this->options])));
-
-		$this->options->typeNumber = QRCode::TYPE_05;
-		$this->assertSame(QRCode::TYPE_05, $property->getValue($this->reflectionClass->newInstanceArgs([$data, $this->output, $this->options])));
-	}
-
-
-	public function getMatrixDataProvider(){
-		return [
-			[QRCode::TYPE_01, 'foobar', 21],
-			[QRCode::TYPE_05, 'foobar', 37],
-			[QRCode::TYPE_10, 'foobar', 57],
-			[QRCode::TYPE_05, '1234567890', 37],
-			[QRCode::TYPE_10, '1234567890', 57],
-			[QRCode::TYPE_03, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:', 29],
-			[QRCode::TYPE_05, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:', 37],
-			[QRCode::TYPE_10, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:', 57],
-			[QRCode::TYPE_05, '茗荷', 37],
-			[QRCode::TYPE_10, '茗荷', 57],
-		];
-	}
-
-	/**
-	 * @dataProvider getMatrixDataProvider
-	 */
-	public function testInternalGetMatrix($type, $data, $pixelCount){
-		$method = $this->reflectionClass->getMethod('getMatrix');
-		$method->setAccessible(true);
-
-		$property = $this->reflectionClass->getProperty('pixelCount');
-		$property->setAccessible(true);
-
-		$this->options->typeNumber = $type;
-
-		for($i = 0; $i <= 7; $i++){
-			$qrcode = $this->reflectionClass->newInstanceArgs([$data, $this->output, $this->options]);
-			$method->invokeArgs($qrcode, [false, $i]);
-
-			$this->assertSame($pixelCount, $property->getValue($qrcode));
-		}
-	}
-
-	/**
 	 * @expectedException \chillerlan\QRCode\QRCodeException
 	 * @expectedExceptionMessage No data given.
 	 */
