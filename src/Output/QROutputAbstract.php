@@ -81,4 +81,21 @@ abstract class QROutputAbstract implements QROutputInterface{
 		return $this;
 	}
 
+	/**
+	 * @param string $data
+	 *
+	 * @return bool
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
+	protected function saveToFile(string $data):bool {
+
+		try{
+			return (bool)file_put_contents($this->options->cachefile, $data);
+		}
+		catch(\Exception $e){
+			throw new QRCodeOutputException('Could not write to cache file: '.$e->getMessage());
+		}
+
+	}
+
 }

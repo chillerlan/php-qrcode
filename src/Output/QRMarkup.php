@@ -35,7 +35,7 @@ class QRMarkup extends QROutputAbstract{
 	/**
 	 * @return string
 	 */
-	public function dump():string {
+	public function dump() {
 		switch($this->options->type){
 			case QRCode::OUTPUT_MARKUP_SVG : return $this->toSVG();
 			case QRCode::OUTPUT_MARKUP_HTML:
@@ -45,9 +45,9 @@ class QRMarkup extends QROutputAbstract{
 	}
 
 	/**
-	 * @return string
+	 * @return string|bool
 	 */
-	protected function toHTML():string {
+	protected function toHTML(){
 		$html = '';
 
 		foreach($this->matrix as $row){
@@ -69,16 +69,21 @@ class QRMarkup extends QROutputAbstract{
 			$html .= $this->options->eol;
 		}
 
+		if($this->options->cachefile){
+			$html = '<!DOCTYPE html><head><meta charset="UTF-8"></head><body>'.$this->options->eol.$html.'</body>';
+
+			return $this->saveToFile($html);
+		}
+
 		return $html;
 	}
 
 	/**
 	 * @link https://github.com/codemasher/php-qrcode/pull/5
 	 *
-	 * @return string
-	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 * @return string|bool
 	 */
-	protected function toSVG():string {
+	protected function toSVG(){
 		$length = $this->pixelCount * $this->options->pixelSize + $this->options->marginSize * 2;
 		$class  = !empty($this->options->cssClass) ? $this->options->cssClass : hash('crc32', microtime(true));
 
@@ -124,9 +129,7 @@ class QRMarkup extends QROutputAbstract{
 		if($this->options->cachefile){
 			$svg = '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'.$this->options->eol.$svg;
 
-			if(@file_put_contents($this->options->cachefile, $svg) === false){
-				throw new QRCodeOutputException('Could not write to cache file.'); // @codeCoverageIgnore
-			}
+			return $this->saveToFile($svg);
 		}
 
 		return $svg;

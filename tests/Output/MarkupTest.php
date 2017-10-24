@@ -48,4 +48,40 @@ class MarkupTest extends OutputTestAbstract{
 		$this->assertEquals(file_get_contents(__DIR__.'/markup/'.$expected), (new QRCode($data, new $this->outputInterfaceClass($this->options)))->output());
 	}
 
+	public function markupTestDataProvider(){
+		return [
+			[QRCode::OUTPUT_MARKUP_SVG],
+			[QRCode::OUTPUT_MARKUP_HTML],
+		];
+	}
+
+	/**
+	 * @dataProvider markupTestDataProvider
+	 */
+	public function testSaveToFile(string $type){
+		$this->options->type     = $type;
+		$this->options->cssClass = 'foo';
+
+		$data = (new QRCode('foo', new $this->outputInterfaceClass($this->options)))->output();
+
+		$this->options->cachefile = __DIR__.'/markup/save_test.'.$type;
+
+		$this->assertTrue((new QRCode('foo', new $this->outputInterfaceClass($this->options)))->output());
+
+		$this->assertContains($data, file_get_contents($this->options->cachefile));
+	}
+
+	/**
+	 * @dataProvider markupTestDataProvider
+	 *
+	 * @expectedException \chillerlan\QRCode\Output\QRCodeOutputException
+	 * @expectedExceptionMessage Could not write to cache file
+	 */
+	public function testSaveToFileException(string $type){
+		$this->options->type = $type;
+		$this->options->cachefile = '\\foo';
+
+		(new QRCode('foo', new $this->outputInterfaceClass($this->options)))->output();
+	}
+
 }
