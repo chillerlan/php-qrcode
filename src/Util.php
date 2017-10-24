@@ -90,7 +90,7 @@ class Util{
 	 *
 	 * @return bool
 	 */
-	public static function isNumber(string $string):bool {
+	public function isNumber(string $string):bool {
 		$len = strlen($string);
 
 		for($i = 0; $i < $len; $i++){
@@ -109,7 +109,7 @@ class Util{
 	 *
 	 * @return bool
 	 */
-	public static function isAlphaNum(string $string):bool {
+	public function isAlphaNum(string $string):bool {
 		$len = strlen($string);
 
 		for($i = 0; $i < $len; $i++){
@@ -132,7 +132,7 @@ class Util{
 	 *
 	 * @return bool
 	 */
-	public static function isKanji(string $string):bool {
+	public function isKanji(string $string):bool {
 
 		if(empty($string)){
 			return false;
@@ -159,11 +159,11 @@ class Util{
 	 *
 	 * @return int
 	 */
-	public static function getBCHTypeInfo(int $data):int {
+	public function getBCHTypeInfo(int $data):int {
 		$G15_MASK = (1 << 14)|(1 << 12)|(1 << 10)|(1 << 4)|(1 << 1);
 		$G15      = (1 << 10)|(1 << 8)|(1 << 5)|(1 << 4)|(1 << 2)|(1 << 1)|(1 << 0);
 
-		return (($data << 10)|self::getBCHT($data, 10, $G15))^$G15_MASK;
+		return (($data << 10)|$this->getBCHT($data, 10, $G15))^$G15_MASK;
 	}
 
 	/**
@@ -171,10 +171,10 @@ class Util{
 	 *
 	 * @return int
 	 */
-	public static function getBCHTypeNumber(int $data):int{
+	public function getBCHTypeNumber(int $data):int{
 		$G18 = (1 << 12)|(1 << 11)|(1 << 10)|(1 << 9)|(1 << 8)|(1 << 5)|(1 << 2)|(1 << 0);
 
-		return ($data << 12)|self::getBCHT($data, 12, $G18);
+		return ($data << 12)|$this->getBCHT($data, 12, $G18);
 	}
 
 	/**
@@ -184,11 +184,11 @@ class Util{
 	 *
 	 * @return int
 	 */
-	protected static function getBCHT(int $data, int $bits, int $mask):int {
+	protected function getBCHT(int $data, int $bits, int $mask):int {
 		$digit = $data << $bits;
 
-		while(self::getBCHDigit($digit) - self::getBCHDigit($mask) >= 0){
-			$digit ^= ($mask << (self::getBCHDigit($digit) - self::getBCHDigit($mask)));
+		while($this->getBCHDigit($digit) - $this->getBCHDigit($mask) >= 0){
+			$digit ^= ($mask << ($this->getBCHDigit($digit) - $this->getBCHDigit($mask)));
 		}
 
 		return $digit;
@@ -199,7 +199,7 @@ class Util{
 	 *
 	 * @return int
 	 */
-	public static function getBCHDigit(int $data):int {
+	public function getBCHDigit(int $data):int {
 		$digit = 0;
 
 		while($data !== 0){
@@ -217,7 +217,7 @@ class Util{
 	 * @return array
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public static function getRSBlocks(int $typeNumber, int $errorCorrectLevel):array {
+	public function getRSBlocks(int $typeNumber, int $errorCorrectLevel):array {
 
 		if(!array_key_exists($errorCorrectLevel, QRCode::RSBLOCK)){
 			throw new QRCodeException('$typeNumber: '.$typeNumber.' / $errorCorrectLevel: '.$errorCorrectLevel);
@@ -244,7 +244,7 @@ class Util{
 	 * @return int
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public static function getMaxLength(int $typeNumber, int $mode, int $errorCorrectLevel):int {
+	public function getMaxLength(int $typeNumber, int $mode, int $errorCorrectLevel):int {
 
 		if(!array_key_exists($errorCorrectLevel, QRCode::RSBLOCK)){
 			throw new QRCodeException('Invalid error correct level: '.$errorCorrectLevel);

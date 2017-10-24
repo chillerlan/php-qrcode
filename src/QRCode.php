@@ -176,6 +176,11 @@ class QRCode{
 	protected $qrOutputInterface;
 
 	/**
+	 * @var \chillerlan\QRCode\Util
+	 */
+	protected $util;
+
+	/**
 	 * QRCode constructor.
 	 *
 	 * @param string                                      $data
@@ -185,6 +190,8 @@ class QRCode{
 	public function __construct($data, QROutputInterface $output, QROptions $options = null){
 		$this->qrOutputInterface = $output;
 		$this->bitBuffer = new BitBuffer;
+		$this->util = new Util;
+
 		$this->setData($data, $options);
 	}
 
@@ -213,10 +220,10 @@ class QRCode{
 		$this->errorCorrectLevel = $options->errorCorrectLevel;
 
 		switch(true){
-			case Util::isAlphaNum($data):
-				$mode = Util::isNumber($data) ? QRDataInterface::MODE_NUMBER : QRDataInterface::MODE_ALPHANUM;
+			case $this->util->isAlphaNum($data):
+				$mode = $this->util->isNumber($data) ? QRDataInterface::MODE_NUMBER : QRDataInterface::MODE_ALPHANUM;
 				break;
-			case Util::isKanji($data):
+			case $this->util->isKanji($data):
 				$mode = QRDataInterface::MODE_KANJI;
 				break;
 			default:
@@ -255,7 +262,7 @@ class QRCode{
 		}
 
 		foreach(range(1, 10) as $type){
-			if($length <= Util::getMaxLength($type, $mode, $this->errorCorrectLevel)){
+			if($length <= $this->util->getMaxLength($type, $mode, $this->errorCorrectLevel)){
 				return $type;
 			}
 		}
@@ -449,7 +456,7 @@ class QRCode{
 	 * @return void
 	 */
 	protected function setTypeNumber(bool $test){
-		$bits = Util::getBCHTypeNumber($this->typeNumber);
+		$bits = $this->util->getBCHTypeNumber($this->typeNumber);
 
 		for($i = 0; $i < 18; $i++){
 			$a = (int)floor($i / 3);
@@ -468,7 +475,7 @@ class QRCode{
 	 */
 	protected function setTypeInfo(bool $test, int $pattern){
 		$this->setPattern();
-		$bits = Util::getBCHTypeInfo(($this->errorCorrectLevel << 3) | $pattern);
+		$bits = $this->util->getBCHTypeInfo(($this->errorCorrectLevel << 3) | $pattern);
 
 		for($i = 0; $i < 15; $i++){
 			$mod = !$test && (($bits >> $i) & 1) === 1;
@@ -550,7 +557,7 @@ class QRCode{
 	 */
 	protected function createBytes():array {
 		$totalCodeCount = $maxDcCount = $maxEcCount = $offset = $index = 0;
-		$rsBlocks = Util::getRSBlocks($this->typeNumber, $this->errorCorrectLevel);
+		$rsBlocks = $this->util->getRSBlocks($this->typeNumber, $this->errorCorrectLevel);
 		$rsBlockCount = count($rsBlocks);
 		$dcdata = $ecdata = array_fill(0, $rsBlockCount, null);
 
