@@ -11,11 +11,11 @@
 namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\BitBuffer;
-use chillerlan\QRCode\QRConst;
 use chillerlan\QRCode\Data\AlphaNum;
 use chillerlan\QRCode\Data\Byte;
 use chillerlan\QRCode\Data\Kanji;
 use chillerlan\QRCode\Data\Number;
+use chillerlan\QRCode\Data\QRDataInterface;
 use PHPUnit\Framework\TestCase;
 
 class DataTest extends TestCase{
@@ -32,12 +32,12 @@ class DataTest extends TestCase{
 
 	public function bitProviderMode(){
 		return [
-			[QRConst::MODE_NUMBER, Number::class, '123456789'],
-			[QRConst::MODE_NUMBER, Number::class, '1234567890'],
-			[QRConst::MODE_NUMBER, Number::class, '12345678901'],
-			[QRConst::MODE_ALPHANUM, AlphaNum::class, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:'],
-			[QRConst::MODE_BYTE, Byte::class, '#\\'],
-			[QRConst::MODE_KANJI, Kanji::class, '茗荷'],
+			[QRDataInterface::MODE_NUMBER, Number::class, '123456789'],
+			[QRDataInterface::MODE_NUMBER, Number::class, '1234567890'],
+			[QRDataInterface::MODE_NUMBER, Number::class, '12345678901'],
+			[QRDataInterface::MODE_ALPHANUM, AlphaNum::class, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:'],
+			[QRDataInterface::MODE_BYTE, Byte::class, '#\\'],
+			[QRDataInterface::MODE_KANJI, Kanji::class, '茗荷'],
 		];
 	}
 

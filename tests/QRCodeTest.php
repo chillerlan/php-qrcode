@@ -13,7 +13,6 @@ namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCode\Output\QRString;
 use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QRConst;
 use chillerlan\QRCode\QROptions;
 use ReflectionClass;
 use PHPUnit\Framework\TestCase;
@@ -68,8 +67,9 @@ class QRCodeTest extends TestCase{
 	 * @dataProvider stringDataProvider
 	 */
 	public function testTypeAndErrorcorrectlevelCoverage($data){
-		foreach(QRConst::MAX_BITS as $type => $x){
-			foreach(QRConst::RSBLOCK as $eclevel => $y){
+
+		foreach(range(1, 10) as $type){
+			foreach(range(0, 3) as $eclevel){
 				$this->options->typeNumber = $type;
 				$this->options->errorCorrectLevel = $eclevel;
 				$this->assertInstanceOf(QRCode::class, new QRCode($data, $this->output, $this->options));

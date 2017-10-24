@@ -10,7 +10,7 @@
 namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QRConst;
+use chillerlan\QRCode\Data\QRDataInterface;
 use chillerlan\QRCode\Util;
 use PHPUnit\Framework\TestCase;
 
@@ -52,7 +52,7 @@ class UtilTest extends TestCase{
 	 * @expectedExceptionMessage Invalid error correct level: 42
 	 */
 	public static function testGetMaxLengthECLevelException(){
-		Util::getMaxLength(QRCode::TYPE_01, QRConst::MODE_BYTE, 42);
+		Util::getMaxLength(QRCode::TYPE_01, QRDataInterface::MODE_BYTE, 42);
 	}
 
 	/**

@@ -12,12 +12,16 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\QRCode\Data\{AlphaNum, Byte, Kanji, Number};
+use chillerlan\QRCode\Data\{
+	AlphaNum, Byte, Kanji, Number, QRDataInterface
+};
 use chillerlan\QRCode\Output\QROutputInterface;
 
 /**
  * @link https://github.com/kazuhikoarase/qrcode-generator/tree/master/php
  * @link http://www.thonky.com/qr-code-tutorial/
+ *
+ * const ALL THE THINGS! ~John Carmack
  */
 class QRCode{
 
@@ -51,6 +55,70 @@ class QRCode{
 	const TYPE_08 =  8; // 1552 1232  880  688
 	const TYPE_09 =  9; // 1856 1456 1056  800
 	const TYPE_10 = 10; // 2192 1728 1232  976
+
+
+	const MAX_BITS = [
+		self::TYPE_01 => [ 128,  152,   72,  104],
+		self::TYPE_02 => [ 224,  272,  128,  176],
+		self::TYPE_03 => [ 352,  440,  208,  272],
+		self::TYPE_04 => [ 512,  640,  288,  384],
+		self::TYPE_05 => [ 688,  864,  368,  496],
+		self::TYPE_06 => [ 864, 1088,  480,  608],
+		self::TYPE_07 => [ 992, 1248,  528,  704],
+		self::TYPE_08 => [1232, 1552,  688,  880],
+		self::TYPE_09 => [1456, 1856,  800, 1056],
+		self::TYPE_10 => [1728, 2192,  976, 1232],
+	];
+
+	const RSBLOCK = [
+		self::ERROR_CORRECT_LEVEL_L => 0,
+		self::ERROR_CORRECT_LEVEL_M => 1,
+		self::ERROR_CORRECT_LEVEL_Q => 2,
+		self::ERROR_CORRECT_LEVEL_H => 3,
+	];
+
+	const PATTERN_POSITION = [
+		[],
+		[6, 18],
+		[6, 22],
+		[6, 26],
+		[6, 30],
+		[6, 34],
+		[6, 22, 38],
+		[6, 24, 42],
+		[6, 26, 46],
+		[6, 28, 50],
+		[6, 30, 54],
+		[6, 32, 58],
+		[6, 34, 62],
+		[6, 26, 46, 66],
+		[6, 26, 48, 70],
+		[6, 26, 50, 74],
+		[6, 30, 54, 78],
+		[6, 30, 56, 82],
+		[6, 30, 58, 86],
+		[6, 34, 62, 90],
+		[6, 28, 50, 72, 94],
+		[6, 26, 50, 74, 98],
+		[6, 30, 54, 78, 102],
+		[6, 28, 54, 80, 106],
+		[6, 32, 58, 84, 110],
+		[6, 30, 58, 86, 114],
+		[6, 34, 62, 90, 118],
+		[6, 26, 50, 74, 98, 122],
+		[6, 30, 54, 78, 102, 126],
+		[6, 26, 52, 78, 104, 130],
+		[6, 30, 56, 82, 108, 134],
+		[6, 34, 60, 86, 112, 138],
+		[6, 30, 58, 86, 114, 142],
+		[6, 34, 62, 90, 118, 146],
+		[6, 30, 54, 78, 102, 126, 150],
+		[6, 24, 50, 76, 102, 128, 154],
+		[6, 28, 54, 80, 106, 132, 158],
+		[6, 32, 58, 84, 110, 136, 162],
+		[6, 26, 54, 82, 110, 138, 166],
+		[6, 30, 58, 86, 114, 142, 170],
+	];
 
 	/**
 	 * @var array
@@ -138,7 +206,7 @@ class QRCode{
 			$options = new QROptions;
 		}
 
-		if(!in_array($options->errorCorrectLevel, QRConst::RSBLOCK, true)){
+		if(!in_array($options->errorCorrectLevel, self::RSBLOCK, true)){
 			throw new QRCodeException('Invalid error correct level: '.$options->errorCorrectLevel);
 		}
 
@@ -146,22 +214,21 @@ class QRCode{
 
 		switch(true){
 			case Util::isAlphaNum($data):
-				$mode = Util::isNumber($data) ? QRConst::MODE_NUMBER : QRConst::MODE_ALPHANUM;
+				$mode = Util::isNumber($data) ? QRDataInterface::MODE_NUMBER : QRDataInterface::MODE_ALPHANUM;
 				break;
 			case Util::isKanji($data):
-				$mode = QRConst::MODE_KANJI;
+				$mode = QRDataInterface::MODE_KANJI;
 				break;
 			default:
-				$mode = QRConst::MODE_BYTE;
+				$mode = QRDataInterface::MODE_BYTE;
 				break;
 		}
 
-		// see, Scrunitizer, it is concrete! :P
 		$qrDataInterface = [
-			QRConst::MODE_ALPHANUM => AlphaNum::class,
-			QRConst::MODE_BYTE     => Byte::class,
-			QRConst::MODE_KANJI    => Kanji::class,
-			QRConst::MODE_NUMBER   => Number::class,
+			QRDataInterface::MODE_ALPHANUM => AlphaNum::class,
+			QRDataInterface::MODE_BYTE     => Byte::class,
+			QRDataInterface::MODE_KANJI    => Kanji::class,
+			QRDataInterface::MODE_NUMBER   => Number::class,
 		][$mode];
 
 		$this->qrDataInterface = new $qrDataInterface($data);
@@ -183,7 +250,7 @@ class QRCode{
 	protected function getTypeNumber(int $mode):int {
 		$length = $this->qrDataInterface->dataLength;
 
-		if($this->qrDataInterface->mode === QRConst::MODE_KANJI){
+		if($this->qrDataInterface->mode === QRDataInterface::MODE_KANJI){
 			$length = floor($length / 2);
 		}
 
@@ -433,7 +500,7 @@ class QRCode{
 		$this->bitBuffer->clear();
 		$this->bitBuffer->put($this->qrDataInterface->mode, 4);
 		$this->bitBuffer->put(
-			$this->qrDataInterface->mode === QRConst::MODE_KANJI
+			$this->qrDataInterface->mode === QRDataInterface::MODE_KANJI
 				? floor($this->qrDataInterface->dataLength / 2)
 				: $this->qrDataInterface->dataLength,
 			$this->qrDataInterface->getLengthInBits($this->typeNumber)
@@ -441,7 +508,7 @@ class QRCode{
 
 		$this->qrDataInterface->write($this->bitBuffer);
 
-		$MAX_BITS = QRConst::MAX_BITS[$this->typeNumber][$this->errorCorrectLevel];
+		$MAX_BITS = self::MAX_BITS[$this->typeNumber][$this->errorCorrectLevel];
 
 		if($this->bitBuffer->length > $MAX_BITS){
 			throw new QRCodeException('code length overflow. ('.$this->bitBuffer->length.' > '.$MAX_BITS.'bit)');
@@ -458,19 +525,21 @@ class QRCode{
 		}
 
 		// padding
+		$PAD0 = 0xEC;
+		$PAD1 = 0x11;
 		while(true){
 
 			if($this->bitBuffer->length >= $MAX_BITS){
 				break;
 			}
 
-			$this->bitBuffer->put(QRConst::PAD0, 8);
+			$this->bitBuffer->put($PAD0, 8);
 
 			if($this->bitBuffer->length >= $MAX_BITS){
 				break;
 			}
 
-			$this->bitBuffer->put(QRConst::PAD1, 8);
+			$this->bitBuffer->put($PAD1, 8);
 		}
 
 	}
@@ -578,14 +647,14 @@ class QRCode{
 						$a = $row + $_col;
 						$m = $row * $_col;
 						$MASK_PATTERN = [
-							QRConst::MASK_PATTERN000 => $a % 2,
-							QRConst::MASK_PATTERN001 => $row % 2,
-							QRConst::MASK_PATTERN010 => $_col % 3,
-							QRConst::MASK_PATTERN011 => $a % 3,
-							QRConst::MASK_PATTERN100 => (floor($row / 2) + floor($_col / 3)) % 2,
-							QRConst::MASK_PATTERN101 => $m % 2 + $m % 3,
-							QRConst::MASK_PATTERN110 => ($m % 2 + $m % 3) % 2,
-							QRConst::MASK_PATTERN111 => ($m % 3 + $a % 2) % 2,
+							0 => $a % 2,
+							1 => $row % 2,
+							2 => $_col % 3,
+							3 => $a % 3,
+							4 => (floor($row / 2) + floor($_col / 3)) % 2,
+							5 => $m % 2 + $m % 3,
+							6 => ($m % 2 + $m % 3) % 2,
+							7 => ($m % 3 + $a % 2) % 2,
 						][$pattern];
 
 						if($MASK_PATTERN === 0){
@@ -644,7 +713,7 @@ class QRCode{
 	 * @return void
 	 */
 	protected function setupPositionAdjustPattern(){
-		$range = QRConst::PATTERN_POSITION[$this->typeNumber - 1];
+		$range = self::PATTERN_POSITION[$this->typeNumber - 1];
 
 		foreach($range as $i => $posI){
 			foreach($range as $j => $posJ){

@@ -10,7 +10,7 @@
 namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCode\BitBuffer;
-use chillerlan\QRCode\QRConst;
+use chillerlan\QRCode\Data\QRDataInterface;
 use PHPUnit\Framework\TestCase;
 
 class BitBufferTest extends TestCase{
@@ -26,10 +26,10 @@ class BitBufferTest extends TestCase{
 
 	public function bitProvider(){
 		return [
-			[QRConst::MODE_NUMBER,    16],
-			[QRConst::MODE_ALPHANUM,  32],
-			[QRConst::MODE_BYTE,      64],
-			[QRConst::MODE_KANJI,    128],
+			[QRDataInterface::MODE_NUMBER,    16],
+			[QRDataInterface::MODE_ALPHANUM,  32],
+			[QRDataInterface::MODE_BYTE,      64],
+			[QRDataInterface::MODE_KANJI,    128],
 		];
 	}
 

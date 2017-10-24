@@ -21,6 +21,18 @@ use chillerlan\QRCode\BitBuffer;
  */
 interface QRDataInterface{
 
+	const MODE_NUMBER   = 1 << 0;
+	const MODE_ALPHANUM = 1 << 1;
+	const MODE_BYTE     = 1 << 2;
+	const MODE_KANJI    = 1 << 3;
+
+	const MODE = [
+		self::MODE_NUMBER   => 0,
+		self::MODE_ALPHANUM => 1,
+		self::MODE_BYTE     => 2,
+		self::MODE_KANJI    => 3,
+	];
+
 	/**
 	 * @param \chillerlan\QRCode\BitBuffer $buffer
 	 * @return void

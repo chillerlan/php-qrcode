@@ -12,7 +12,7 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\{BitBuffer, QRConst};
+use chillerlan\QRCode\BitBuffer;
 
 /**
  *
@@ -22,7 +22,7 @@ class Kanji extends QRDataAbstract{
 	/**
 	 * @var int
 	 */
-	public $mode = QRConst::MODE_KANJI;
+	public $mode = self::MODE_KANJI;
 
 	/**
 	 * @var array

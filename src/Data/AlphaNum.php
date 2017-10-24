@@ -12,7 +12,7 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\{BitBuffer, QRConst};
+use chillerlan\QRCode\BitBuffer;
 
 /**
  *
@@ -34,7 +34,7 @@ class AlphaNum extends QRDataAbstract{
 	/**
 	 * @var int
 	 */
-	public $mode = QRConst::MODE_ALPHANUM;
+	public $mode = self::MODE_ALPHANUM;
 
 	/**
 	 * @var array
