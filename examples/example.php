@@ -9,16 +9,16 @@
 
 require_once '../vendor/autoload.php';
 
-use chillerlan\QRCode\Output\QRMarkup;
-use chillerlan\QRCode\Output\QRMarkupOptions;
+use chillerlan\GoogleAuth\Authenticator;
+use chillerlan\QRCode\Output\{QRMarkup, QRMarkupOptions, QRImage, QRString,QRStringOptions};
 use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\Output\QRImage;
-use chillerlan\QRCode\Output\QRString;
-use chillerlan\QRCode\Output\QRStringOptions;
 
-$data = 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net';
 #$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 #$data = 'skype://echo123';
+$authenticator = new Authenticator;
+
+# otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net
+$data   = $authenticator->getUri($authenticator->createSecret(), 'test', 'chillerlan.net');
 
 ?>
 <!DOCTYPE html>
@@ -82,6 +82,8 @@ echo '<pre>'.(new QRCode($data, new QRString))->output().'<pre>';
 // string - text
 $outputOptions = new QRStringOptions;
 $outputOptions->type = QRCode::OUTPUT_STRING_TEXT;
+$outputOptions->textDark = '🔴';
+$outputOptions->textLight = '⭕';
 
 echo '<pre>'.(new QRCode($data, new QRString($outputOptions)))->output().'</pre>';
 

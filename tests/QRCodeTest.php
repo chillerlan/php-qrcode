@@ -11,9 +11,9 @@
 
 namespace chillerlan\QRCodeTest;
 
-use chillerlan\QRCode\Output\QRString;
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
+use chillerlan\GoogleAuth\Authenticator;
+use chillerlan\QRCode\Output\{QRImage, QRImageOptions, QRString};
+use chillerlan\QRCode\{QRCode, QROptions};
 use ReflectionClass;
 use PHPUnit\Framework\TestCase;
 
@@ -104,6 +104,15 @@ class QRCodeTest extends TestCase{
 
 		$method = $this->reflectionClass->getMethod('getRawData');
 		$method->invoke($this->reflectionClass->newInstanceArgs(['ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:', $this->output, $this->options]));
+	}
+
+	public function testAuthenticatorExample(){
+		$authenticator = new Authenticator;
+
+		$data   = $authenticator->getUri($authenticator->createSecret(), 'test', 'chillerlan.net');
+		$qrcode = $this->reflectionClass->newInstanceArgs([$data, new QRImage(new QRImageOptions(['type' => QRCode::OUTPUT_IMAGE_GIF]))]);
+
+		$this->markTestSkipped(print_r($qrcode->output(), true));
 	}
 
 }

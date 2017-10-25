@@ -29,7 +29,7 @@
 ## Info
 
 This library is based on the [QR code implementation](https://github.com/kazuhikoarase/qrcode-generator) by [Kazuhiko Arase](https://github.com/kazuhikoarase), 
-namespaced, cleaned up, made extensible and PHP7 ready (among other stuff). The main intend is to use it along with a [Google authenticator implementation](https://github.com/codemasher/php-googleauth).
+namespaced, cleaned up, made extensible and PHP7 ready (among other stuff).
 
 ## Requirements
 - PHP 7+
@@ -148,6 +148,18 @@ foreach($matrix as $row){
 
 ```
 
+### Authenticator example
+
+[codemasher/php-googleauth](https://github.com/codemasher/php-googleauth) features creation of `otpauth://` URIs for use with most mobile authenticators:
+```php
+use chillerlan\GoogleAuth\Authenticator;
+
+$authenticator = new Authenticator;
+
+$data   = $authenticator->getUri($authenticator->createSecret(), 'test', 'chillerlan.net');
+$qrcode = new QRCode($data, new QRImage);
+```
+
 ### Custom output modules
 But then again, instead of bloating your own code, you can simply create your own output module by extending `QROutputAbstract`.
 ```php
@@ -163,8 +175,8 @@ class MyCustomOutput extends QROutputAbstract{
 	protected $options; // MyCustomOutputOptions (if present)
 	
 	// optional constructor
-	public function __construct(QROutputOptionsAbstract $outputOptions = null){
-		$this->options = $outputOptions;
+	public function __construct(MyCustomOutputOptions $options = null){
+		$this->options = $options;
 
 		if(!$this->options){
 			// MyCustomOutputOptions should supply default values
@@ -193,9 +205,9 @@ class MyCustomOutput extends QROutputAbstract{
 method | return 
 ------ | ------
 `__construct($data, QROutputInterface $output, QROptions $options = null)` | -
-`setData($data, QROptions $options = null)` | `$this` 
+`setData($data, QROptions $options = null)` | `QRCode` 
 `output()` | mixed `QROutputInterface::dump()` 
-`getRawData()` | array `QRCode::$matrix` 
+`getRawData()` | array `QRDataGenerator::$matrix` 
 
 
 ###  Properties of `QROptions`
@@ -211,8 +223,8 @@ property | type | default | allowed | description
 property | type | default | allowed | description
 -------- | ---- | ------- | ------- | -----------
 `$type` | int | JSON | QRCode::OUTPUT_STRING_XXXX | XXXX = TEXT, JSON
-`$textDark` | string | '#' | * | string substitute for dark
-`$textLight` | string | ' ' | * | string substitute for light
+`$textDark` | string | '🔴' | * | string substitute for dark
+`$textLight` | string | '⭕' | * | string substitute for light
 `$eol` | string | `PHP_EOL` | * | newline string
 
 ###  Properties of `QRMarkupOptions`
@@ -224,7 +236,7 @@ property | type | default | allowed | description
 `$htmlOmitEndTag` | bool | true | - | the closing tag may be omitted (moar bloat!)
 `$fgColor` | string | '#000' | * | foreground color
 `$bgColor` | string | '#fff' | * | background color
-`$cssClass` | string | '' | * | a common css class
+`$cssClass` | string | null | * | a common css class
 `$pixelSize` | int | 5 | * | size of a QR code pixel
 `$marginSize` | int | 5 | * | margin around the QR code 
 `$eol` | string | `PHP_EOL` | * | newline string

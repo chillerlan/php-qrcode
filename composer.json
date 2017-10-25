@@ -21,6 +21,7 @@
 		"php": ">=7.0.3"
 	},
 	"require-dev": {
+		"chillerlan/php-googleauth": "1.1.*",
 		"phpunit/phpunit": "6.4.*"
 	},
 	"suggest": {
