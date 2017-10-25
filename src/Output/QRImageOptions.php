@@ -19,25 +19,25 @@ use chillerlan\QRCode\QRCode;
  */
 class QRImageOptions extends QROutputOptionsAbstract{
 
-	public $type = QRCode::OUTPUT_IMAGE_PNG;
+	protected $type = QRCode::OUTPUT_IMAGE_PNG;
 
-	public $base64 = true;
+	protected $base64 = true;
 
-	public $pixelSize = 5;
-	public $marginSize = 5;
+	protected $pixelSize = 5;
+	protected $marginSize = 5;
 
 	// not supported by jpg
-	public $transparent = true;
+	protected $transparent = true;
 
-	public $fgRed   = 0;
-	public $fgGreen = 0;
-	public $fgBlue  = 0;
+	protected $fgRed   = 0;
+	protected $fgGreen = 0;
+	protected $fgBlue  = 0;
 
-	public $bgRed   = 255;
-	public $bgGreen = 255;
-	public $bgBlue  = 255;
+	protected $bgRed   = 255;
+	protected $bgGreen = 255;
+	protected $bgBlue  = 255;
 
-	public $pngCompression = -1;
-	public $jpegQuality = 85;
+	protected $pngCompression = -1;
+	protected $jpegQuality = 85;
 
 }

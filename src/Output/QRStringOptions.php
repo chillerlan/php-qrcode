@@ -19,10 +19,10 @@ use chillerlan\QRCode\QRCode;
  */
 class QRStringOptions extends QROutputOptionsAbstract{
 
-	public $type = QRCode::OUTPUT_STRING_JSON;
+	protected $type = QRCode::OUTPUT_STRING_JSON;
 
-	public $textDark = '#';
+	protected $textDark = '#';
 
-	public $textLight = ' ';
+	protected $textLight = ' ';
 
 }

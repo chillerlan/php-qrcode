@@ -19,20 +19,20 @@ use chillerlan\QRCode\QRCode;
  */
 class QRMarkupOptions extends QROutputOptionsAbstract{
 
-	public $type = QRCode::OUTPUT_MARKUP_SVG;
+	protected $type = QRCode::OUTPUT_MARKUP_SVG;
 
-	public $htmlRowTag = 'p';
+	protected $htmlRowTag = 'p';
 
-	public $htmlOmitEndTag = true;
+	protected $htmlOmitEndTag = true;
 
-	public $fgColor = '#000';
+	protected $fgColor = '#000';
 
-	public $bgColor = '#fff';
+	protected $bgColor = '#fff';
 
-	public $pixelSize = 5;
+	protected $pixelSize = 5;
 
-	public $marginSize = 5;
+	protected $marginSize = 5;
 
-	public $cssClass = '';
+	protected $cssClass = '';
 
 }

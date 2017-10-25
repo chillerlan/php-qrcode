@@ -21,11 +21,11 @@ class QROptions{
 	/**
 	 * @var int
 	 */
-	public $errorCorrectLevel = QRCode::ERROR_CORRECT_LEVEL_M;
+	protected $errorCorrectLevel = QRCode::ERROR_CORRECT_LEVEL_M;
 
 	/**
 	 * @var int
 	 */
-	public $typeNumber = null;
+	protected $typeNumber = null;
 
 }

@@ -20,10 +20,10 @@ use chillerlan\QRCode\Container;
 abstract class QROutputOptionsAbstract{
 	use Container;
 
-	public $type;
+	protected $type;
 
-	public $eol = PHP_EOL;
+	protected $eol = PHP_EOL;
 
-	public $cachefile = null;
+	protected $cachefile = null;
 
 }
