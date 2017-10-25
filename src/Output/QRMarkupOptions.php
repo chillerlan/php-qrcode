@@ -15,6 +15,7 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\QRCode;
 
 /**
+ * @property string $type
  * @property string $htmlRowTag
  * @property bool   $htmlOmitEndTag
  * @property string $fgColor

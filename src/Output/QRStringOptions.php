@@ -15,6 +15,7 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\QRCode;
 
 /**
+ * @property string $type
  * @property string $textDark
  * @property string $textLight
  */

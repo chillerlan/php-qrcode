@@ -15,6 +15,7 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\QRCode;
 
 /**
+ * @property string $type
  * @property bool $base64
  * @property int  $pixelSize
  * @property int  $marginSize
