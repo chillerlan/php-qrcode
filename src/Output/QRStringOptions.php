@@ -15,14 +15,30 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\QRCode;
 
 /**
- *
+ * @property string $textDark
+ * @property string $textLight
  */
 class QRStringOptions extends QROutputOptionsAbstract{
 
+	/**
+	 * QRCode::OUTPUT_STRING_XXXX where XXXX = TEXT, JSON
+	 *
+	 * @var string
+	 */
 	protected $type = QRCode::OUTPUT_STRING_JSON;
 
-	protected $textDark = '#';
+	/**
+	 * string substitute for dark
+	 *
+	 * @var string
+	 */
+	protected $textDark = '🔴';
 
-	protected $textLight = ' ';
+	/**
+	 * string substitute for light
+	 *
+	 * @var string
+	 */
+	protected $textLight = '⭕';
 
 }

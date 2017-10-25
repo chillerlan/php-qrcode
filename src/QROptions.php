@@ -13,17 +13,28 @@
 namespace chillerlan\QRCode;
 
 /**
- *
+ * @property int $errorCorrectLevel
+ * @property int $typeNumber
  */
 class QROptions{
 	use Container;
 
 	/**
+	 * Error correct level
+	 *
+	 *   QRCode::ERROR_CORRECT_LEVEL_X where X is
+	 *    L,   M,   Q,   H
+	 *   7%, 15%, 25%, 30%
+	 *
 	 * @var int
 	 */
 	protected $errorCorrectLevel = QRCode::ERROR_CORRECT_LEVEL_M;
 
 	/**
+	 * Type number
+	 *
+	 *   QRCode::TYPE_XX where XX is 01 ... 10, null = auto
+	 *
 	 * @var int
 	 */
 	protected $typeNumber = null;
