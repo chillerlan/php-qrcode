@@ -85,7 +85,7 @@ class QRMarkup extends QROutputAbstract{
 	 */
 	protected function toSVG(){
 		$length = $this->pixelCount * $this->options->pixelSize + $this->options->marginSize * 2;
-		$class  = !empty($this->options->cssClass) ? $this->options->cssClass : hash('crc32', microtime(true));
+		$class  = $this->options->cssClass ?: hash('crc32', microtime(true));
 
 		// svg header
 		$svg = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="'.$length.'" height="'.$length.'" viewBox="0 0 '.$length.' '.$length.'" style="background-color:'.$this->options->bgColor.'">'.$this->options->eol.
