@@ -16,6 +16,7 @@ namespace chillerlan\QRCode;
  *
  */
 class QROptions{
+	use Container;
 
 	/**
 	 * @var int

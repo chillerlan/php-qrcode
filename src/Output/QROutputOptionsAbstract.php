@@ -12,10 +12,13 @@
 
 namespace chillerlan\QRCode\Output;
 
+use chillerlan\QRCode\Container;
+
 /**
  *
  */
 abstract class QROutputOptionsAbstract{
+	use Container;
 
 	public $type;
 
