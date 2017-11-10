@@ -1,5 +1,8 @@
 # codemasher/php-qrcode
 
+A PHP7 QR Code library based on the [QR code implementation](https://github.com/kazuhikoarase/qrcode-generator) by [Kazuhiko Arase](https://github.com/kazuhikoarase), 
+namespaced, cleaned up and made extensible.
+
 [![version][packagist-badge]][packagist]
 [![license][license-badge]][license]
 [![Travis][travis-badge]][travis]
@@ -26,23 +29,10 @@
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 
-## Info
-
-This library is based on the [QR code implementation](https://github.com/kazuhikoarase/qrcode-generator) by [Kazuhiko Arase](https://github.com/kazuhikoarase), 
-namespaced, cleaned up, made extensible and PHP7 ready (among other stuff).
-
-## Requirements
-- PHP 7+
-
 ## Documentation
 
 ### Installation
-#### Using [composer](https://getcomposer.org)
-
-*Terminal*
-```sh
-composer require chillerlan/php-qrcode:dev-master
-```
+**requires [composer](https://getcomposer.org)**
 
 *composer.json*
 ```json
@@ -56,8 +46,9 @@ composer require chillerlan/php-qrcode:dev-master
 
 #### Manual installation
 Download the desired version of the package from [master](https://github.com/codemasher/php-qrcode/archive/master.zip) or 
-[release](https://github.com/codemasher/php-qrcode/releases) and extract the contents to your project folder. 
-Point the namespace `chillerlan\QRCode` to the folder `src` of the package.
+[release](https://github.com/codemasher/php-qrcode/releases) and extract the contents to your project folder.  After that:
+- run `composer install` to install the required dependencies and generate `/vendor/autoload.php`.
+- if you use a custom autoloader, point the namespace `chillerlan\QRCode` to the folder `src` of the package 
 
 Profit!
 
