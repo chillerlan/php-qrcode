@@ -9,16 +9,12 @@
 
 require_once '../vendor/autoload.php';
 
-use chillerlan\GoogleAuth\Authenticator;
-use chillerlan\QRCode\Output\{QRMarkup, QRMarkupOptions, QRImage, QRString,QRStringOptions};
+use chillerlan\QRCode\Output\{
+	QRMarkup, QRMarkupOptions, QRImage, QRString, QRStringOptions
+};
 use chillerlan\QRCode\QRCode;
 
-#$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
-#$data = 'skype://echo123';
-$authenticator = new Authenticator;
-
-# otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net
-$data   = $authenticator->getUri($authenticator->createSecret(), 'test', 'chillerlan.net');
+$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 
 ?>
 <!DOCTYPE html>
