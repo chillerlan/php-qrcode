@@ -148,18 +148,6 @@ foreach($matrix as $row){
 
 ```
 
-### Authenticator example
-
-[codemasher/php-googleauth](https://github.com/codemasher/php-googleauth) features creation of `otpauth://` URIs for use with most mobile authenticators:
-```php
-use chillerlan\GoogleAuth\Authenticator;
-
-$authenticator = new Authenticator;
-
-$data   = $authenticator->getUri($authenticator->createSecret(), 'test', 'chillerlan.net');
-$qrcode = new QRCode($data, new QRImage);
-```
-
 ### Custom output modules
 But then again, instead of bloating your own code, you can simply create your own output module by extending `QROutputAbstract`.
 ```php
@@ -199,6 +187,20 @@ class MyCustomOutput extends QROutputAbstract{
 	}
 
 }
+```
+
+### Authenticator example
+
+[codemasher/php-googleauth](https://github.com/codemasher/php-googleauth) features creation of `otpauth://` URIs for use with most mobile authenticators:
+```php
+use chillerlan\GoogleAuth\Authenticator;
+
+$authenticator = new Authenticator;
+
+$secret = $authenticator->createSecret(); // -> userdata
+$data   = $authenticator->getUri($secret, 'test', 'chillerlan.net');
+
+$qrcode->setData($data)->output();
 ```
 
 ###  `QRCode` public methods
