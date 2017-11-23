@@ -18,7 +18,8 @@
 		}
 	],
 	"require": {
-		"php": ">=7.0.3"
+		"php": ">=7.0.3",
+		"chillerlan/php-traits": "1.0.*"
 	},
 	"require-dev": {
 		"chillerlan/php-googleauth": "1.1.*",
@@ -34,6 +35,7 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
+			"chillerlan\\QRCodePublic\\": "public/",
 			"chillerlan\\QRCodeTest\\": "tests/"
 		}
 	}

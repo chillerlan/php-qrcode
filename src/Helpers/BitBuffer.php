@@ -4,21 +4,22 @@
  *
  * @filesource   BitBuffer.php
  * @created      25.11.2015
- * @package      chillerlan\QRCode
+ * @package      chillerlan\QRCode\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace chillerlan\QRCode;
+namespace chillerlan\QRCode\Helpers;
 
 /**
- *
+ * @property int[] $buffer
+ * @property int   $length
  */
 class BitBuffer{
 
 	/**
-	 * @var array
+	 * @var  int[]
 	 */
 	public $buffer = [];
 
@@ -28,7 +29,7 @@ class BitBuffer{
 	public $length = 0;
 
 	/**
-	 * @return \chillerlan\QRCode\BitBuffer
+	 * @return \chillerlan\QRCode\Helpers\BitBuffer
 	 */
 	public function clear():BitBuffer{
 		$this->buffer = [];
@@ -41,7 +42,7 @@ class BitBuffer{
 	 * @param int $num
 	 * @param int $length
 	 *
-	 * @return \chillerlan\QRCode\BitBuffer
+	 * @return \chillerlan\QRCode\Helpers\BitBuffer
 	 */
 	public function put(int $num, int $length):BitBuffer{
 
@@ -55,7 +56,7 @@ class BitBuffer{
 	/**
 	 * @param bool $bit
 	 *
-	 * @return \chillerlan\QRCode\BitBuffer
+	 * @return \chillerlan\QRCode\Helpers\BitBuffer
 	 */
 	public function putBit(bool $bit):BitBuffer{
 		$bufIndex = floor($this->length / 8);
@@ -64,7 +65,7 @@ class BitBuffer{
 			$this->buffer[] = 0;
 		}
 
-		if($bit){
+		if($bit === true){
 			$this->buffer[(int)$bufIndex] |= (0x80 >> ($this->length % 8));
 		}
 

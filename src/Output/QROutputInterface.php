@@ -22,12 +22,4 @@ interface QROutputInterface{
 	 */
 	public function dump();
 
-	/**
-	 * @param array $matrix
-	 *
-	 * @return \chillerlan\QRCode\Output\QROutputInterface
-	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
-	 */
-	public function setMatrix(array $matrix):QROutputInterface;
-
 }

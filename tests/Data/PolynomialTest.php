@@ -1,32 +1,33 @@
 <?php
 /**
+ * Class PolynomialTest
  *
  * @filesource   PolynomialTest.php
  * @created      09.02.2016
- * @package      chillerlan\QRCodeTest
+ * @package      chillerlan\QRCodeTest\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace chillerlan\QRCodeTest;
+namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\Polynomial;
-use PHPUnit\Framework\TestCase;
+use chillerlan\QRCode\Helpers\Polynomial;
+use chillerlan\QRCodeTest\QRTestAbstract;
 
-class PolynomialTest extends TestCase{
+class PolynomialTest extends QRTestAbstract{
 
 	/**
-	 * @var \chillerlan\QRCode\Polynomial
+	 * @var \chillerlan\QRCode\Helpers\Polynomial
 	 */
 	protected $polynomial;
 
 	protected function setUp(){
-		$this->polynomial = new Polynomial;
+		$this->polynomial = new \chillerlan\QRCode\Helpers\Polynomial;
 	}
 
 	public function testGexp(){
-		$this->assertEquals(142, $this->polynomial->gexp( -1));
+		$this->assertEquals(142, $this->polynomial->gexp(-1));
 		$this->assertEquals(133, $this->polynomial->gexp(128));
 		$this->assertEquals(2,   $this->polynomial->gexp(256));
 	}

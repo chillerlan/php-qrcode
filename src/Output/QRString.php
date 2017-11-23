@@ -19,19 +19,12 @@ use chillerlan\QRCode\QRCode;
  */
 class QRString extends QROutputAbstract{
 
-	protected $optionsInterface = QRStringOptions::class;
-
-	protected $types = [
-		QRCode::OUTPUT_STRING_TEXT,
-		QRCode::OUTPUT_STRING_JSON,
-	];
-
 	/**
 	 * @return string
 	 */
 	public function dump():string {
 
-		switch($this->options->type){
+		switch($this->options->outputType){
 			case QRCode::OUTPUT_STRING_TEXT: return $this->toString();
 			case QRCode::OUTPUT_STRING_JSON:
 			default:
@@ -46,7 +39,7 @@ class QRString extends QROutputAbstract{
 	protected function toString():string {
 		$str = '';
 
-		foreach($this->matrix as $row){
+		foreach($this->matrix->matrix() as $row){
 			foreach($row as $col){
 				$str .= $col
 					? $this->options->textDark

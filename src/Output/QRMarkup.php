@@ -20,23 +20,10 @@ use chillerlan\QRCode\QRCode;
 class QRMarkup extends QROutputAbstract{
 
 	/**
-	 * @var string
-	 */
-	protected $optionsInterface = QRMarkupOptions::class;
-
-	/**
-	 * @var array
-	 */
-	protected $types = [
-		QRCode::OUTPUT_MARKUP_HTML,
-		QRCode::OUTPUT_MARKUP_SVG,
-	];
-
-	/**
 	 * @return string
 	 */
 	public function dump() {
-		switch($this->options->type){
+		switch($this->options->outputType){
 			case QRCode::OUTPUT_MARKUP_SVG : return $this->toSVG();
 			case QRCode::OUTPUT_MARKUP_HTML:
 			default:
@@ -50,22 +37,14 @@ class QRMarkup extends QROutputAbstract{
 	protected function toHTML(){
 		$html = '';
 
-		foreach($this->matrix as $row){
-			// in order to not bloat the output too much, we use the shortest possible valid HTML tags
+		foreach($this->matrix->matrix() as $row){
 			$html .= '<'.$this->options->htmlRowTag.'>';
 
-			foreach($row as $col){
-				$tag = $col
-					? 'b'  // dark
-					: 'i'; // light
-
-				$html .= '<'.$tag.'></'.$tag.'>';
+			foreach($row as $pixel){
+				$html .= '<b style="background: '.($this->options->moduleValues[$pixel] ?? 'lightgrey').';"></b>';
 			}
 
-			if(!(bool)$this->options->htmlOmitEndTag){
-				$html .= '</'.$this->options->htmlRowTag.'>';
-			}
-
+			$html .= (bool)$this->options->htmlOmitEndTag ? '</'.$this->options->htmlRowTag.'>' : '';
 			$html .= $this->options->eol;
 		}
 
@@ -84,41 +63,44 @@ class QRMarkup extends QROutputAbstract{
 	 * @return string|bool
 	 */
 	protected function toSVG(){
-		$length = $this->pixelCount * $this->options->pixelSize + $this->options->marginSize * 2;
-		$class  = $this->options->cssClass ?: hash('crc32', microtime(true));
+		$length = ($this->moduleCount + ($this->options->addQuietzone ? 8 : 0)) * $this->options->scale;
 
 		// svg header
-		$svg = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="'.$length.'" height="'.$length.'" viewBox="0 0 '.$length.' '.$length.'" style="background-color:'.$this->options->bgColor.'">'.$this->options->eol.
-		       '<defs><style>.'.$class.'{fill:'.$this->options->fgColor.'} rect{shape-rendering:crispEdges}</style></defs>'.$this->options->eol;
+		$svg = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="'.$length.'" height="'.$length.'" viewBox="0 0 '.$length.' '.$length.'">'.$this->options->eol.
+		       '<defs><style>rect{shape-rendering:crispEdges}</style></defs>'.$this->options->eol;
 
-		// svg body
-		foreach($this->matrix as $r => $row){
-			//we'll combine active blocks within a single row as a lightweight compression technique
-			$from  = -1;
-			$count = 0;
+		// @todo: optimize -> see https://github.com/alexeyten/qr-image/blob/master/lib/vector.js
+		foreach($this->options->moduleValues as $key => $value){
 
-			foreach($row as $c => $pixel){
-				if($pixel){
-					$count++;
+			// svg body
+			foreach($this->matrix->matrix() as $y => $row){
+				//we'll combine active blocks within a single row as a lightweight compression technique
+				$from  = -1;
+				$count = 0;
 
-					if($from < 0){
-						$from = $c;
+				foreach($row as $x => $pixel){
+					if($pixel === $key){
+						$count++;
+
+						if($from < 0){
+							$from = $x;
+						}
+					}
+					elseif($from >= 0){
+						$svg .= '<rect x="'.($from * $this->options->scale).'" y="'.($y * $this->options->scale)
+						        .'" width="'.($this->options->scale * $count).'" height="'.$this->options->scale.'" class="'.$this->options->cssClass.'" fill="'.$value.'"/>'.$this->options->eol;
+
+						// reset count
+						$from  = -1;
+						$count = 0;
 					}
 				}
-				elseif($from >= 0){
-					$svg .= '<rect x="'.($from * $this->options->pixelSize + $this->options->marginSize).'" y="'.($r * $this->options->pixelSize + $this->options->marginSize)
-					        .'" width="'.($this->options->pixelSize * $count).'" height="'.$this->options->pixelSize.'" class="'.$class.'" />'.$this->options->eol;
 
-					// reset count
-					$from  = -1;
-					$count = 0;
+				// close off the row, if applicable
+				if($from >= 0){
+					$svg .= '<rect x="'.($from * $this->options->scale).'" y="'.($y * $this->options->scale)
+					        .'" width="'.($this->options->scale * $count).'" height="'.$this->options->scale.'" class="'.$this->options->cssClass.'" fill="'.$value.'" />'.$this->options->eol;
 				}
-			}
-
-			// close off the row, if applicable
-			if($from >= 0){
-				$svg .= '<rect x="'.($from * $this->options->pixelSize + $this->options->marginSize).'" y="'.($r * $this->options->pixelSize + $this->options->marginSize)
-				        .'" width="'.($this->options->pixelSize * $count).'" height="'.$this->options->pixelSize.'" class="'.$class.'" />'.$this->options->eol;
 			}
 		}
 

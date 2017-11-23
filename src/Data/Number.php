@@ -12,17 +12,17 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\BitBuffer;
+use chillerlan\QRCode\QRCode;
 
 /**
- *
+ * Numeric mode: decimal digits 0 through 9
  */
 class Number extends QRDataAbstract{
 
 	/**
 	 * @var int
 	 */
-	public $mode = self::MODE_NUMBER;
+	protected $datamode = QRCode::DATA_NUMBER;
 
 	/**
 	 * @var array
@@ -30,25 +30,23 @@ class Number extends QRDataAbstract{
 	protected $lengthBits = [10, 12, 14];
 
 	/**
-	 * @param \chillerlan\QRCode\BitBuffer $buffer
-	 *
-	 * @return void
+	 * @inheritdoc
 	 */
-	public function write(BitBuffer &$buffer){
+	protected function write(string $data){
 		$i = 0;
 
-		while($i + 2 < $this->dataLength){
-			$buffer->put($this->parseInt(substr($this->data, $i, 3)), 10);
+		while($i + 2 < $this->strlen){
+			$this->bitBuffer->put($this->parseInt(substr($data, $i, 3)), 10);
 			$i += 3;
 		}
 
-		if($i < $this->dataLength){
+		if($i < $this->strlen){
 
-			if($this->dataLength - $i === 1){
-				$buffer->put($this->parseInt(substr($this->data, $i, $i + 1)), 4);
+			if($this->strlen - $i === 1){
+				$this->bitBuffer->put($this->parseInt(substr($data, $i, $i + 1)), 4);
 			}
-			elseif($this->dataLength - $i === 2){
-				$buffer->put($this->parseInt(substr($this->data, $i, $i + 2)), 7);
+			elseif($this->strlen - $i === 2){
+				$this->bitBuffer->put($this->parseInt(substr($data, $i, $i + 2)), 7);
 			}
 
 		}
@@ -61,7 +59,7 @@ class Number extends QRDataAbstract{
 	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	private static function parseInt(string $string):int {
+	protected function parseInt(string $string):int {
 		$num = 0;
 
 		$len = strlen($string);

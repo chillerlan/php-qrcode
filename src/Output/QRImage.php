@@ -20,95 +20,77 @@ use chillerlan\QRCode\QRCode;
 class QRImage extends QROutputAbstract{
 
 	/**
-	 * @var string
-	 */
-	protected $optionsInterface = QRImageOptions::class;
-
-	/**
-	 * @var array
-	 */
-	protected $types = [
-		QRCode::OUTPUT_IMAGE_GIF,
-		QRCode::OUTPUT_IMAGE_JPG,
-		QRCode::OUTPUT_IMAGE_PNG,
-	];
-
-	/**
+	 * @todo
 	 * @return string
 	 */
 	public function dump():string {
-		// clamp input (@todo: determine sane values!)
-		$this->options->pixelSize = max(1, min(25, (int)$this->options->pixelSize));
-		$this->options->marginSize = max(0, min(25, (int)$this->options->marginSize));
-
-		foreach(['fgRed', 'fgGreen', 'fgBlue', 'bgRed', 'bgGreen', 'bgBlue'] as $val){
-			$this->options->{$val} = max(0, min(255, (int)$this->options->{$val}));
-		}
-
-		$length     = $this->pixelCount * $this->options->pixelSize + $this->options->marginSize * 2;
+		$length     = ($this->moduleCount + ($this->options->addQuietzone ? 8 : 0)) * $this->options->scale;
 		$image      = imagecreatetruecolor($length, $length);
-		$foreground = imagecolorallocate($image, $this->options->fgRed, $this->options->fgGreen, $this->options->fgBlue);
-		$background = imagecolorallocate($image, $this->options->bgRed, $this->options->bgGreen, $this->options->bgBlue);
+		$background = imagecolorallocate($image, 255, 255, 255);
 
-		if((bool)$this->options->transparent && $this->options->type !== QRCode::OUTPUT_IMAGE_JPG){
+		if((bool)$this->options->imageTransparent && $this->options->outputType !== QRCode::OUTPUT_IMAGE_JPG){
 			imagecolortransparent($image, $background);
 		}
 
 		imagefilledrectangle($image, 0, 0, $length, $length, $background);
 
-		foreach($this->matrix as $r => $row){
+		foreach($this->matrix->matrix() as $r => $row){
 			foreach($row as $c => $pixel){
-				if($pixel){
-					imagefilledrectangle($image,
-						$this->options->marginSize +  $c      * $this->options->pixelSize,
-						$this->options->marginSize +  $r      * $this->options->pixelSize,
-						$this->options->marginSize + ($c + 1) * $this->options->pixelSize - 1,
-						$this->options->marginSize + ($r + 1) * $this->options->pixelSize - 1,
-						$foreground);
-				}
+				list($red, $green, $blue) = $this->options->moduleValues[$pixel];
+
+				imagefilledrectangle(
+					$image,
+					 $c      * $this->options->scale,
+					 $r      * $this->options->scale,
+					($c + 1) * $this->options->scale - 1,
+					($r + 1) * $this->options->scale - 1,
+					imagecolorallocate($image, $red, $green, $blue)
+				);
+
 			}
 		}
 
 		ob_start();
 
-		switch($this->options->type){
-			case QRCode::OUTPUT_IMAGE_JPG:
-				// @codeCoverageIgnoreStart
-				imagejpeg(
-					$image,
-					$this->options->cachefile,
-					in_array($this->options->jpegQuality, range(0, 100), true)
-						? $this->options->jpegQuality
-						: 85
-				);
-				break;
-				// @codeCoverageIgnoreEnd
-			case QRCode::OUTPUT_IMAGE_GIF: /** Actually, it's pronounced "DJIFF". *hides* */
-				imagegif(
-					$image,
-					$this->options->cachefile
-				);
-				break;
-			case QRCode::OUTPUT_IMAGE_PNG:
-			default:
-				imagepng(
-					$image,
-					$this->options->cachefile,
-					in_array($this->options->pngCompression, range(-1, 9), true)
-						? $this->options->pngCompression
-						: -1
-				);
-		}
-
+		$this->{$this->options->outputType ?? 'png'}($image);
 		$imageData = ob_get_contents();
 		imagedestroy($image);
+
 		ob_end_clean();
 
-		if((bool)$this->options->base64){
-			$imageData = 'data:image/'.$this->options->type.';base64,'.base64_encode($imageData);
+		if((bool)$this->options->imageBase64){
+			$imageData = 'data:image/'.$this->options->outputType.';base64,'.base64_encode($imageData);
 		}
 
 		return $imageData;
+	}
+
+	protected function png(&$image){
+		imagepng(
+			$image,
+			$this->options->cachefile,
+			in_array($this->options->pngCompression, range(-1, 9), true)
+				? $this->options->pngCompression
+				: -1
+		);
+
+	}
+
+	/**
+	 * Jiff - like... JitHub!
+	 */
+	protected function gif(&$image){
+		imagegif($image, $this->options->cachefile);
+	}
+
+	protected function jpg(&$image){
+		imagejpeg(
+			$image,
+			$this->options->cachefile,
+			in_array($this->options->jpegQuality, range(0, 100), true)
+				? $this->options->jpegQuality
+				: 85
+		);
 	}
 
 }

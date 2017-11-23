@@ -12,30 +12,24 @@
 
 namespace chillerlan\QRCode\Output;
 
+use chillerlan\QRCode\{
+	Data\QRMatrix, QROptions
+};
+
 /**
  *
  */
 abstract class QROutputAbstract implements QROutputInterface{
 
 	/**
-	 * @var string
-	 */
-	protected $optionsInterface;
-
-	/**
-	 * @var array
-	 */
-	protected $types;
-
-	/**
-	 * @var array
+	 * @param \chillerlan\QRCode\Data\QRMatrix $matrix
 	 */
 	protected $matrix;
 
 	/**
 	 * @var int
 	 */
-	protected $pixelCount;
+	protected $moduleCount;
 
 	/**
 	 * @var object
@@ -43,42 +37,21 @@ abstract class QROutputAbstract implements QROutputInterface{
 	protected $options;
 
 	/**
-	 * @var \chillerlan\QRCode\Output\QROutputOptionsAbstract $outputOptions
-	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
-	 */
-	public function __construct(QROutputOptionsAbstract $outputOptions = null){
-		$this->options = $outputOptions;
-
-		if($this->optionsInterface && !$this->options instanceof $this->optionsInterface){
-			$this->options = new $this->optionsInterface;
-		}
-
-		if(is_array($this->types) && !in_array($this->options->type, $this->types , true)){
-			throw new QRCodeOutputException('Invalid output type!');
-		}
-
-	}
-
-	/**
-	 * @param array $matrix
+	 * @param \chillerlan\QRCode\QROptions      $options
+	 * @param \chillerlan\QRCode\Data\QRMatrix  $matrix
 	 *
-	 * @return \chillerlan\QRCode\Output\QROutputInterface
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	public function setMatrix(array $matrix):QROutputInterface {
-		$this->pixelCount = count($matrix);
+	public function __construct(QROptions $options, QRMatrix $matrix){
+		$this->options = $options;
 
-		// specify valid range?
-		if($this->pixelCount < 2
-			|| !isset($matrix[$this->pixelCount - 1])
-			|| $this->pixelCount !== count($matrix[$this->pixelCount - 1])
-		){
+		$this->moduleCount = $matrix->size();
+
+		if($this->moduleCount < 21){  // minimum QR modules @todo: quet zone
 			throw new QRCodeOutputException('Invalid matrix!');
 		}
 
 		$this->matrix = $matrix;
-
-		return $this;
 	}
 
 	/**
@@ -93,7 +66,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 			return (bool)file_put_contents($this->options->cachefile, $data);
 		}
 		catch(\Exception $e){
-			throw new QRCodeOutputException('Could not write to cache file: '.$e->getMessage());
+			throw new QRCodeOutputException('Could not write data to cache file: '.$e->getMessage());
 		}
 
 	}

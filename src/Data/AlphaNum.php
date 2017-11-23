@@ -12,29 +12,26 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\BitBuffer;
+use chillerlan\QRCode\QRCode;
 
 /**
- *
+ * Alphanumeric mode: 0 to 9, A to Z, space, $ % * + - . / :
  */
 class AlphaNum extends QRDataAbstract{
 
 	const CHAR_MAP = [
-		36 => ' ',
-		37 => '$',
-		38 => '%',
-		39 => '*',
-		40 => '+',
-		41 => '-',
-		42 => '.',
-		43 => '/',
-		44 => ':',
+		'0', '1', '2', '3', '4', '5', '6', '7',
+		'8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+		'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+		'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+		'W', 'X', 'Y', 'Z', ' ', '$', '%', '*',
+		'+', '-', '.', '/', ':',
 	];
 
 	/**
 	 * @var int
 	 */
-	public $mode = self::MODE_ALPHANUM;
+	protected $datamode = QRCode::DATA_ALPHANUM;
 
 	/**
 	 * @var array
@@ -42,20 +39,16 @@ class AlphaNum extends QRDataAbstract{
 	protected $lengthBits = [9, 11, 13];
 
 	/**
-	 * @param \chillerlan\QRCode\BitBuffer $buffer
-	 *
-	 * @return void
+	 * @inheritdoc
 	 */
-	public function write(BitBuffer &$buffer){
-		$i = 0;
+	protected function write(string $data){
 
-		while($i + 1 < $this->dataLength){
-			$buffer->put($this->getCharCode($this->data[$i]) * 45 + $this->getCharCode($this->data[$i + 1]), 11);
-			$i += 2;
+		for($i = 0; $i + 1 < $this->strlen; $i += 2){
+			$this->bitBuffer->put($this->getCharCode($data[$i]) * 45 + $this->getCharCode($data[$i + 1]), 11);
 		}
 
-		if($i < $this->dataLength){
-			$buffer->put($this->getCharCode($this->data[$i]), 6);
+		if($i < $this->strlen){
+			$this->bitBuffer->put($this->getCharCode($data[$i]), 6);
 		}
 
 	}
@@ -66,21 +59,14 @@ class AlphaNum extends QRDataAbstract{
 	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	private static function getCharCode(string $chr):int {
-		$chr = ord($chr);
+	protected function getCharCode(string $chr):int {
+		$i = array_search($chr, self::CHAR_MAP);
 
-		switch(true){
-			case ord('0') <= $chr && $chr <= ord('9'): return $chr - ord('0');
-			case ord('A') <= $chr && $chr <= ord('Z'): return $chr - ord('A') + 10;
-			default:
-				foreach(self::CHAR_MAP as $i => $c){
-					if(ord($c) === $chr){
-						return $i;
-					}
-				}
+		if($i !== false){
+			return $i;
 		}
 
-		throw new QRCodeDataException('illegal char: '.$chr);
+		throw new QRCodeDataException('illegal char: "'.$chr.'" ['.ord($chr).']');
 	}
 
 }

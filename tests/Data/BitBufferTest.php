@@ -1,22 +1,25 @@
 <?php
 /**
+ * Class BitBufferTest
+ *
  * @filesource   BitBufferTest.php
  * @created      08.02.2016
+ * @package      chillerlan\QRCodeTest\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace chillerlan\QRCodeTest;
+namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\BitBuffer;
-use chillerlan\QRCode\Data\QRDataInterface;
-use PHPUnit\Framework\TestCase;
+use chillerlan\QRCode\Helpers\BitBuffer;
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCodeTest\QRTestAbstract;
 
-class BitBufferTest extends TestCase{
+class BitBufferTest extends QRTestAbstract{
 
 	/**
-	 * @var \chillerlan\QRCode\BitBuffer
+	 * @var \chillerlan\QRCode\Helpers\BitBuffer
 	 */
 	protected $bitBuffer;
 
@@ -26,10 +29,10 @@ class BitBufferTest extends TestCase{
 
 	public function bitProvider(){
 		return [
-			[QRDataInterface::MODE_NUMBER,    16],
-			[QRDataInterface::MODE_ALPHANUM,  32],
-			[QRDataInterface::MODE_BYTE,      64],
-			[QRDataInterface::MODE_KANJI,    128],
+			[QRCode::DATA_NUMBER, 16],
+			[QRCode::DATA_ALPHANUM, 32],
+			[QRCode::DATA_BYTE, 64],
+			[QRCode::DATA_KANJI, 128],
 		];
 	}
 

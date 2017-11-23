@@ -12,17 +12,17 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\BitBuffer;
+use chillerlan\QRCode\QRCode;
 
 /**
- *
+ * Byte mode, ISO-8859-1 or UTF-8
  */
 class Byte extends QRDataAbstract{
 
 	/**
 	 * @var int
 	 */
-	public $mode = self::MODE_BYTE;
+	protected $datamode = QRCode::DATA_BYTE;
 
 	/**
 	 * @var array
@@ -30,16 +30,16 @@ class Byte extends QRDataAbstract{
 	protected $lengthBits = [8, 16, 16];
 
 	/**
-	 * @param \chillerlan\QRCode\BitBuffer $buffer
-	 *
-	 * @return void
+	 * @inheritdoc
 	 */
-	public function write(BitBuffer &$buffer){
+	protected function write(string $data){
 		$i = 0;
-		while($i < $this->dataLength){
-			$buffer->put(ord($this->data[$i]), 8);
+
+		while($i < $this->strlen){
+			$this->bitBuffer->put(ord($data[$i]), 8);
 			$i++;
 		}
+
 	}
 
 }
