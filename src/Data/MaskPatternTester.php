@@ -13,6 +13,8 @@
 namespace chillerlan\QRCode\Data;
 
 /**
+ * The sole purpose of this class is to receive a QRMatrix object and run the pattern tests on it.
+ *
  * @link http://www.thonky.com/qr-code-tutorial/data-masking
  */
 class MaskPatternTester{
@@ -28,16 +30,24 @@ class MaskPatternTester{
 	protected $moduleCount;
 
 	/**
+	 * Receives the matrix an sets the module count
+	 *
+	 * @see \chillerlan\QRCode\QROptions::$maskPattern
+	 * @see \chillerlan\QRCode\Data\QRMatrix::$maskPattern
+	 * @see \chillerlan\QRCode\QRCode::getBestMaskPattern()
+	 *
 	 * @param \chillerlan\QRCode\Data\QRMatrix $matrix
 	 */
 	public function setMatrix(QRMatrix $matrix){
-		$this->matrix = $matrix;
+		$this->matrix      = $matrix;
 		$this->moduleCount = $this->matrix->size();
 	}
 
 	/**
 	 * Returns the penalty for the given mask pattern
 	 *
+	 * @see \chillerlan\QRCode\QROptions::$maskPattern
+	 * @see \chillerlan\QRCode\Data\QRMatrix::$maskPattern
 	 * @see \chillerlan\QRCode\QRCode::getBestMaskPattern()
 	 *
 	 * @return float
@@ -152,38 +162,32 @@ class MaskPatternTester{
 		foreach($this->matrix->matrix() as $y => $row){
 			foreach($row as $x => $val){
 
-				if($x > $this->moduleCount - 7){
-					break;
+				if($x <= $this->moduleCount - 7){
+					if(
+						    $this->matrix->check($x    , $y)
+						&& !$this->matrix->check($x + 1, $y)
+						&&  $this->matrix->check($x + 2, $y)
+						&&  $this->matrix->check($x + 3, $y)
+						&&  $this->matrix->check($x + 4, $y)
+						&& !$this->matrix->check($x + 5, $y)
+						&&  $this->matrix->check($x + 6, $y)
+					){
+						$penalty += 40;
+					}
 				}
 
-				if(
-					$val >> 8 > 0
-					&& !$this->matrix->check($x + 1, $y)
-					&&  $this->matrix->check($x + 2, $y)
-					&&  $this->matrix->check($x + 3, $y)
-					&&  $this->matrix->check($x + 4, $y)
-					&& !$this->matrix->check($x + 5, $y)
-					&&  $this->matrix->check($x + 6, $y)
-				){
-					$penalty += 40;
-				}
-
-			}
-		}
-
-		for ($x = 0; $x < $this->moduleCount; $x++) {
-			for ($y = 0; $y < $this->moduleCount - 6; $y++) {
-
-				if(
-					$this->matrix->check($x, $y    )
-					&& !$this->matrix->check($x, $y + 1)
-					&&  $this->matrix->check($x, $y + 2)
-					&&  $this->matrix->check($x, $y + 3)
-					&&  $this->matrix->check($x, $y + 4)
-					&& !$this->matrix->check($x, $y + 5)
-					&&  $this->matrix->check($x, $y + 6)
-				){
-					$penalty += 40;
+				if($y <= $this->moduleCount - 7){
+					if(
+						    $this->matrix->check($x, $y)
+						&& !$this->matrix->check($x, $y + 1)
+						&&  $this->matrix->check($x, $y + 2)
+						&&  $this->matrix->check($x, $y + 3)
+						&&  $this->matrix->check($x, $y + 4)
+						&& !$this->matrix->check($x, $y + 5)
+						&&  $this->matrix->check($x, $y + 6)
+					){
+						$penalty += 40;
+					}
 				}
 
 			}
@@ -210,6 +214,5 @@ class MaskPatternTester{
 
 		return (abs(100 * $count / $this->moduleCount / $this->moduleCount - 50) / 5) * 10;
 	}
-
 
 }

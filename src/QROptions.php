@@ -31,16 +31,13 @@ use chillerlan\Traits\Container;
  * @property int    $scale
  *
  * @property string $cssClass
- * @property string $htmlRowTag
- * @property bool   $htmlOmitEndTag
- * @property string $svgFgColor
- * @property string $svgBgColor
  *
  * @property string $textDark
  * @property string $textLight
  *
  * @property bool   $imageBase64
  * @property bool   $imageTransparent
+ * @property array  $imageTransparencyBG
  * @property int    $pngCompression
  * @property int    $jpegQuality
  *
@@ -126,8 +123,6 @@ class QROptions{
 	 */
 	protected $cachefile;
 
-
-
 	/**
 	 * newline string [HTML, SVG, TEXT]
 	 *
@@ -143,45 +138,12 @@ class QROptions{
 	 */
 	protected $scale = 5;
 
-
-
-
 	/**
 	 * a common css class
 	 *
 	 * @var string
 	 */
 	protected $cssClass;
-
-	/**
-	 * the shortest available semanically correct row (block) tag to not bloat the output
-	 *
-	 * @var string
-	 */
-	protected $htmlRowTag = 'p';
-
-	/**
-	 * the closing tag may be omitted (moar bloat!)
-	 *
-	 * @var bool
-	 */
-	protected $htmlOmitEndTag = true;
-
-	/**
-	 * SVG foreground color
-	 *
-	 * @var string
-	 */
-	protected $svgFgColor = '#000';
-
-	/**
-	 * SVG background color
-	 *
-	 * @var string
-	 */
-	protected $svgBgColor = '#fff';
-
-
 
 	/**
 	 * string substitute for dark
@@ -197,26 +159,37 @@ class QROptions{
 	 */
 	protected $textLight = '⭕';
 
-
-
 	/**
+	 * toggle base64 or raw image data
+	 *
 	 * @var bool
 	 */
 	protected $imageBase64 = true;
 
 	/**
-	 * not supported by jpg
+	 * toggle transparency, not supported by jpg
 	 *
 	 * @var bool
 	 */
 	protected $imageTransparent = true;
 
 	/**
+	 * @see imagecolortransparent()
+	 *
+	 * @var array [R, G, B]
+	 */
+	protected $imageTransparencyBG = [255, 255, 255];
+
+	/**
+	 * @see imagepng()
+	 *
 	 * @var int
 	 */
 	protected $pngCompression = -1;
 
 	/**
+	 * @see imagejpeg()
+	 *
 	 * @var int
 	 */
 	protected $jpegQuality = 85;

@@ -10,10 +10,9 @@
 		input:focus, textarea:focus, select:focus{ border: 1px solid #ccc; }
 		label{ cursor: pointer; }
 		#qrcode-settings, div#qrcode-output{ text-align: center; }
-		div#qrcode-output > p {margin: 0;padding: 0;height: 3px;}
-		div#qrcode-output > p > b, div#qrcode-output > p > i {display: inline-block;width: 3px;height: 3px;}
-		div#qrcode-output > p > b {background-color: lightseagreen;}
-		div#qrcode-output > p > i {background-color: #fff;}
+		div#qrcode-output > div {margin: 0;padding: 0;height: 3px;}
+		div#qrcode-output > div > span {display: inline-block;width: 3px;height: 3px;}
+		div#qrcode-output > div > span {background-color: lightgrey;}
 	</style >
 </head >
 <body >
@@ -63,50 +62,50 @@
 
 	<div>Finder</div>
 	<label for="m_finder_light" >
-		<input type="text" readonly="readonly" id="m_finder_light" name="m_finder_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_finder_light" name="m_finder_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 	<label for="m_finder_dark" >
-		<input type="text" readonly="readonly" id="m_finder_dark" name="m_finder_dark" class="jscolor options" value="000000" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_finder_dark" name="m_finder_dark" class="jscolor options" value="000000" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 
 	<div>Alignment</div>
 	<label for="m_alignment_light" >
-		<input type="text" readonly="readonly" id="m_alignment_light" name="m_alignment_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_alignment_light" name="m_alignment_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 	<label for="m_alignment_dark" >
-		<input type="text" readonly="readonly" id="m_alignment_dark" name="m_alignment_dark" class="jscolor options" value="000000" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_alignment_dark" name="m_alignment_dark" class="jscolor options" value="000000" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 
 	<div>Timing</div>
 	<label for="m_timing_light" >
-		<input type="text" readonly="readonly" id="m_timing_light" name="m_timing_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_timing_light" name="m_timing_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 	<label for="m_timing_dark" >
-		<input type="text" readonly="readonly" id="m_timing_dark" name="m_timing_dark" class="jscolor options" value="000000" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_timing_dark" name="m_timing_dark" class="jscolor options" value="000000" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 
 	<div>Format</div>
 	<label for="m_format_light" >
-		<input type="text" readonly="readonly" id="m_format_light" name="m_format_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_format_light" name="m_format_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 	<label for="m_format_dark" >
-		<input type="text" readonly="readonly" id="m_format_dark" name="m_format_dark" class="jscolor options" value="000000" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_format_dark" name="m_format_dark" class="jscolor options" value="000000" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 
 	<div>Version</div>
 	<label for="m_version_light" >
-		<input type="text" readonly="readonly" id="m_version_light" name="m_version_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_version_light" name="m_version_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 	<label for="m_version_dark" >
-		<input type="text" readonly="readonly" id="m_version_dark" name="m_version_dark" class="jscolor options" value="000000" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_version_dark" name="m_version_dark" class="jscolor options" value="000000" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 
 	<div>Data</div>
 	<label for="m_data_light" >
-		<input type="text" readonly="readonly" id="m_data_light" name="m_data_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_data_light" name="m_data_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 	<label for="m_data_dark" >
-		<input type="text" readonly="readonly" id="m_data_dark" name="m_data_dark" class="jscolor options" value="000000" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_data_dark" name="m_data_dark" class="jscolor options" value="000000" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 
 	<div>Dark Module</div>
@@ -114,12 +113,12 @@
 		<input disabled="disabled" type="text" id="m_darkmodule_light" class="options" value="" autocomplete="off" spellcheck="false" />
 	</label >
 	<label for="m_darkmodule_dark" >
-		<input type="text" readonly="readonly" id="m_darkmodule_dark" name="m_darkmodule_dark" class="jscolor options" value="000000" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_darkmodule_dark" name="m_darkmodule_dark" class="jscolor options" value="000000" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 
 	<div>Separator</div>
 	<label for="m_separator_light" >
-		<input type="text" readonly="readonly" id="m_separator_light" name="m_separator_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_separator_light" name="m_separator_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 	<label for="m_separator_dark" >
 		<input disabled="disabled" type="text" id="m_separator_dark" class="options" value="" autocomplete="off" spellcheck="false" />
@@ -127,7 +126,7 @@
 
 	<div>Quiet Zone</div>
 	<label for="m_quietzone_light" >
-		<input type="text" readonly="readonly" id="m_quietzone_light" name="m_quietzone_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" />
+		<input type="text" id="m_quietzone_light" name="m_quietzone_light" class="jscolor options" value="ffffff" autocomplete="off" spellcheck="false" minlength="6" maxlength="6" />
 	</label >
 	<label for="m_quietzone_dark" >
 		<input disabled="disabled" type="text" id="m_quietzone_dark" class="options" value="" autocomplete="off" spellcheck="false" />

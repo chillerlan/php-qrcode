@@ -146,8 +146,6 @@ class QRMatrix{
 	}
 
 	/**
-	 * Returns the data array
-	 *
 	 * @return array
 	 */
 	public function matrix():array {

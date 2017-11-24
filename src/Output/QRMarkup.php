@@ -15,19 +15,20 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\QRCode;
 
 /**
- *
+ * Converts the matrix into markup types: HTML, SVG, ...
  */
 class QRMarkup extends QROutputAbstract{
 
 	/**
 	 * @return string
 	 */
-	public function dump() {
+	public function dump(){
 		switch($this->options->outputType){
-			case QRCode::OUTPUT_MARKUP_SVG : return $this->toSVG();
 			case QRCode::OUTPUT_MARKUP_HTML:
-			default:
 				return $this->toHTML();
+			case QRCode::OUTPUT_MARKUP_SVG :
+			default:
+				return $this->toSVG();
 		}
 	}
 
@@ -38,13 +39,13 @@ class QRMarkup extends QROutputAbstract{
 		$html = '';
 
 		foreach($this->matrix->matrix() as $row){
-			$html .= '<'.$this->options->htmlRowTag.'>';
+			$html .= '<div>';
 
 			foreach($row as $pixel){
-				$html .= '<b style="background: '.($this->options->moduleValues[$pixel] ?? 'lightgrey').';"></b>';
+				$html .= '<span style="background: '.($this->options->moduleValues[$pixel] ?? 'lightgrey').';"></span>';
 			}
 
-			$html .= (bool)$this->options->htmlOmitEndTag ? '</'.$this->options->htmlRowTag.'>' : '';
+			$html .= '</div>';
 			$html .= $this->options->eol;
 		}
 

@@ -29,12 +29,12 @@ class AlphaNum extends QRDataAbstract{
 	];
 
 	/**
-	 * @var int
+	 * @inheritdoc
 	 */
 	protected $datamode = QRCode::DATA_ALPHANUM;
 
 	/**
-	 * @var array
+	 * @inheritdoc
 	 */
 	protected $lengthBits = [9, 11, 13];
 

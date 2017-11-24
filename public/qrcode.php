@@ -44,16 +44,12 @@ try{
 	];
 
 	$moduleValues = array_map(function($v){
-		#var_dump(array_map('hexdec', unpack('a2r/a2g/a2b','ff00ff')));
-
 		if(preg_match('/[a-f\d]{6}/i', $v) === 1){
-			return '#'.$v;
+			return in_array($_POST['output_type'], ['png', 'jpg', 'gif'])
+				? array_map('hexdec', str_split($v, 2))
+				: '#'.$v ;
 		}
-
-		return strpos($v, '_dark') !== false
-			? '#111111'
-			: '#eeeeee';
-
+		return null;
 	}, $moduleValues);
 
 
@@ -61,16 +57,27 @@ try{
 
 	$qro = new QROptions;
 
-	$qro->version       = (int)$_POST['version'];
-	$qro->eccLevel      = constant('chillerlan\\QRCode\\QRCode::ECC_'.$ecc);
-	$qro->moduleValues  = $moduleValues;
-	$qro->outputType    = $_POST['output_type'];
-	$qro->maskPattern   = (int)$_POST['maskpattern'];
-	$qro->addQuietzone  = isset($_POST['quietzone']);
-	$qro->quietzoneSize = (int)$_POST['quietzonesize'];
-	$qro->scale         = (int)$_POST['scale'];
+	$qro->version          = (int)$_POST['version'];
+	$qro->eccLevel         = constant('chillerlan\\QRCode\\QRCode::ECC_'.$ecc);
+	$qro->maskPattern      = (int)$_POST['maskpattern'];
+	$qro->addQuietzone     = isset($_POST['quietzone']);
+	$qro->quietzoneSize    = (int)$_POST['quietzonesize'];
+	$qro->moduleValues     = $moduleValues;
+	$qro->outputType       = $_POST['output_type'];
+	$qro->scale            = (int)$_POST['scale'];
+	$qro->imageTransparent = false;
 
 	$qrcode = (new QRCode($qro))->render($_POST['inputstring']);
+
+	if(in_array($_POST['output_type'], ['png', 'jpg', 'gif'])){
+		$qrcode = '<img src="'.$qrcode.'" />';
+	}
+	elseif($_POST['output_type'] === 'text'){
+		$qrcode = '<pre style="font-size: 75%; line-height: 1;">'.$qrcode.'</pre>';
+	}
+	elseif($_POST['output_type'] === 'json'){
+		$qrcode = '<pre style="font-size: 75%; overflow-x: auto;">'.$qrcode.'</pre>';
+	}
 
 	send_response(['qrcode' => $qrcode]);
 }

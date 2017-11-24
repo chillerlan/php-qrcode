@@ -15,44 +15,37 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\QRCode;
 
 /**
- *
+ * Converts the matrix into images, raw or base64 output
  */
 class QRImage extends QROutputAbstract{
 
 	/**
-	 * @todo
 	 * @return string
 	 */
-	public function dump():string {
-		$length     = ($this->moduleCount + ($this->options->addQuietzone ? 8 : 0)) * $this->options->scale;
+	public function dump():string{
+		$scale      = $this->options->scale;
+		$length     = $this->moduleCount * $scale;
 		$image      = imagecreatetruecolor($length, $length);
-		$background = imagecolorallocate($image, 255, 255, 255);
+		$background = imagecolorallocate($image, ...$this->options->imageTransparencyBG);
 
-		if((bool)$this->options->imageTransparent && $this->options->outputType !== QRCode::OUTPUT_IMAGE_JPG){
+		if((bool)$this->options->imageTransparent && in_array($this->options->outputType, [QRCode::OUTPUT_IMAGE_PNG, QRCode::OUTPUT_IMAGE_GIF,], true)){
 			imagecolortransparent($image, $background);
 		}
 
 		imagefilledrectangle($image, 0, 0, $length, $length, $background);
 
-		foreach($this->matrix->matrix() as $r => $row){
-			foreach($row as $c => $pixel){
-				list($red, $green, $blue) = $this->options->moduleValues[$pixel];
+		foreach($this->matrix->matrix() as $y => $row){
+			foreach($row as $x => $pixel){
+				$color = imagecolorallocate($image, ...$this->options->moduleValues[$pixel]);
 
-				imagefilledrectangle(
-					$image,
-					 $c      * $this->options->scale,
-					 $r      * $this->options->scale,
-					($c + 1) * $this->options->scale - 1,
-					($r + 1) * $this->options->scale - 1,
-					imagecolorallocate($image, $red, $green, $blue)
-				);
-
+				imagefilledrectangle($image, $x * $scale, $y * $scale, ($x + 1) * $scale - 1, ($y + 1) * $scale - 1, $color);
 			}
 		}
 
 		ob_start();
 
-		$this->{$this->options->outputType ?? 'png'}($image);
+		call_user_func_array([$this, $this->options->outputType ?? QRCode::OUTPUT_IMAGE_PNG], [&$image]);
+
 		$imageData = ob_get_contents();
 		imagedestroy($image);
 
@@ -65,6 +58,9 @@ class QRImage extends QROutputAbstract{
 		return $imageData;
 	}
 
+	/**
+	 * @param $image
+	 */
 	protected function png(&$image){
 		imagepng(
 			$image,
@@ -78,11 +74,16 @@ class QRImage extends QROutputAbstract{
 
 	/**
 	 * Jiff - like... JitHub!
+	 *
+	 * @param $image
 	 */
 	protected function gif(&$image){
 		imagegif($image, $this->options->cachefile);
 	}
 
+	/**
+	 * @param $image
+	 */
 	protected function jpg(&$image){
 		imagejpeg(
 			$image,

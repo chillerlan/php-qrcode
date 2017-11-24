@@ -22,23 +22,25 @@ use chillerlan\QRCode\{
 abstract class QROutputAbstract implements QROutputInterface{
 
 	/**
-	 * @param \chillerlan\QRCode\Data\QRMatrix $matrix
-	 */
-	protected $matrix;
-
-	/**
 	 * @var int
 	 */
 	protected $moduleCount;
 
 	/**
-	 * @var object
+	 * @param \chillerlan\QRCode\Data\QRMatrix $matrix
+	 */
+	protected $matrix;
+
+	/**
+	 * @var \chillerlan\QRCode\QROptions
 	 */
 	protected $options;
 
 	/**
-	 * @param \chillerlan\QRCode\QROptions      $options
-	 * @param \chillerlan\QRCode\Data\QRMatrix  $matrix
+	 * QROutputAbstract constructor.
+	 *
+	 * @param \chillerlan\QRCode\QROptions     $options
+	 * @param \chillerlan\QRCode\Data\QRMatrix $matrix
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */

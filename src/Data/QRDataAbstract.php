@@ -21,45 +21,59 @@ use chillerlan\QRCode\Helpers\{
 use chillerlan\Traits\ClassLoader;
 
 /**
- *
+ * Processes the binary data and maps it on a matrix which is then being returned
  */
 abstract class QRDataAbstract implements QRDataInterface{
 	use ClassLoader;
 
 	/**
+	 * the string byte count
+	 *
 	 * @var int
 	 */
 	protected $strlen;
 
 	/**
+	 * the current data mode: Num, Alphanum, Kanji, Byte
+	 *
 	 * @var int
 	 */
 	protected $datamode;
 
 	/**
+	 * mode length bits for the version breakpoints 1-9, 10-26 and 27-40
+	 *
 	 * @var array
 	 */
 	protected $lengthBits = [0, 0, 0];
 
 	/**
+	 * current QR Code version
+	 *
 	 * @var int
 	 */
 	protected $version;
 
 	/**
+	 * the raw data that's being passed to QRMatrix::mapData()
+	 *
+	 * @var array
+	 */
+	protected $matrixdata;
+
+	/**
+	 * ECC temp data
+	 *
 	 * @var array
 	 */
 	protected $ecdata;
 
 	/**
+	 * ECC temp data
+	 *
 	 * @var array
 	 */
 	protected $dcdata;
-
-	/**
-	 * @var array
-	 */
-	protected $matrixdata;
 
 	/**
 	 * @var \chillerlan\QRCode\QROptions
@@ -86,6 +100,8 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
+	 * Sets the data string (internally called by the constructor)
+	 *
 	 * @param string $data
 	 *
 	 * @return \chillerlan\QRCode\Data\QRDataInterface
@@ -110,6 +126,8 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
+	 * returns a fresh matrix object with the data written for the given $maskPattern
+	 *
 	 * @param int  $maskPattern
 	 * @param bool $test
 	 *
@@ -132,25 +150,25 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
-	 * @param int $version
+	 * returns the length bits for the version breakpoints 1-9, 10-26 and 27-40
 	 *
 	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 * @codeCoverageIgnore
 	 */
-	protected function getLengthBits(int $version):int {
+	protected function getLengthBits():int {
 
 		 foreach([9, 26, 40] as $key => $breakpoint){
-			 if($version <= $breakpoint){
+			 if($this->version <= $breakpoint){
 				 return $this->lengthBits[$key];
 			 }
 		 }
 
-		throw new QRCodeDataException('invalid version number: '.$version);
+		throw new QRCodeDataException('invalid version number: '.$this->version);
 	}
 
 	/**
-	 * returns the byte count of the string
+	 * returns the byte count of the $data string
 	 *
 	 * @param string $data
 	 *
@@ -161,6 +179,8 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
+	 * returns the minimum version number for the given string
+	 *
 	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
@@ -179,7 +199,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
-	 * writes the $data bits to $this->bitBuffer
+	 * @see \chillerlan\QRCode\Data\QRDataAbstract::writeBitBuffer()
 	 *
 	 * @param string $data
 	 *
@@ -188,6 +208,8 @@ abstract class QRDataAbstract implements QRDataInterface{
 	abstract protected function write(string $data);
 
 	/**
+	 * writes the string data to the BitBuffer
+	 *
 	 * @param string $data
 	 *
 	 * @return \chillerlan\QRCode\Data\QRDataAbstract
@@ -202,7 +224,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 		$this->bitBuffer
 			->clear()
 			->put($this->datamode, 4)
-			->put($this->strlen, $this->getLengthBits($this->version))
+			->put($this->strlen, $this->getLengthBits())
 		;
 
 		$this->write($data);
@@ -241,6 +263,10 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
+	 * ECC masking
+	 *
+	 * @see \chillerlan\QRCode\Data\QRDataAbstract::writeBitBuffer()
+	 *
 	 * @link http://www.thonky.com/qr-code-tutorial/error-correction-coding
 	 *
 	 * @return array

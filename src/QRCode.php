@@ -21,6 +21,8 @@ use chillerlan\QRCode\Output\{
 use chillerlan\Traits\ClassLoader;
 
 /**
+ * Turns a text string into a Model 2 QR Code
+ *
  * @link https://github.com/kazuhikoarase/qrcode-generator/tree/master/php
  * @link http://www.qrcode.com/en/codes/model12.html
  * @link http://www.thonky.com/qr-code-tutorial/
@@ -40,7 +42,7 @@ class QRCode{
 	const OUTPUT_IMAGE_GIF    = 'gif';
 
 	const OUTPUT_STRING_JSON  = 'json';
-	const OUTPUT_STRING_TEXT  = 'txt';
+	const OUTPUT_STRING_TEXT  = 'text';
 
 	const VERSION_AUTO        = -1;
 	const MASK_PATTERN_AUTO   = -1;
@@ -107,6 +109,8 @@ class QRCode{
 	}
 
 	/**
+	 * Sets the options, called internally by the constructor
+	 *
 	 * @param \chillerlan\QRCode\QROptions $options
 	 *
 	 * @return \chillerlan\QRCode\QRCode
@@ -116,6 +120,10 @@ class QRCode{
 
 		if(!array_key_exists(QRCode::ECC_MODES[$options->eccLevel], QRCode::ECC_MODES)){
 			throw new QRCodeException('Invalid error correct level: '.$options->eccLevel);
+		}
+
+		if(!is_array($options->imageTransparencyBG || count($options->imageTransparencyBG) < 3)){
+			$options->imageTransparencyBG = [255, 255, 255];
 		}
 
 		$options->version = (int)$options->version;
@@ -130,6 +138,8 @@ class QRCode{
 	}
 
 	/**
+	 * Renders a QR Code for the given $data and QROptions
+	 *
 	 * @param string $data
 	 *
 	 * @return mixed
@@ -139,6 +149,8 @@ class QRCode{
 	}
 
 	/**
+	 * Returns a QRMatrix object for the given $data and current QROptions
+	 *
 	 * @param string $data
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
@@ -170,6 +182,10 @@ class QRCode{
 	}
 
 	/**
+	 * shoves a QRMatrix through the MaskPatternTester to find the lowest penalty mask pattern
+	 *
+	 * @see \chillerlan\QRCode\Data\MaskPatternTester
+	 *
 	 * @return int
 	 */
 	protected function getBestMaskPattern():int{
@@ -191,12 +207,14 @@ class QRCode{
 	}
 
 	/**
+	 * returns a fresh QRDataInterface for the given $data
+	 *
 	 * @param string                       $data
 	 *
 	 * @return \chillerlan\QRCode\Data\QRDataInterface
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	protected function initDataInterface(string $data):QRDataInterface{
+	public function initDataInterface(string $data):QRDataInterface{
 
 		$DATA_MODES = [
 			Number::class   => 'Number',
@@ -217,6 +235,8 @@ class QRCode{
 	}
 
 	/**
+	 * returns a fresh (built-in) QROutputInterface
+	 *
 	 * @param string $data
 	 *
 	 * @return \chillerlan\QRCode\Output\QROutputInterface
@@ -236,17 +256,18 @@ class QRCode{
 	}
 
 	/**
+	 * checks of a string qualifies as numeric
+	 *
 	 * @param string $string
 	 *
 	 * @return bool
 	 */
 	public function isNumber(string $string):bool {
 		$len = strlen($string);
+		$map = str_split('0123456789');
 
 		for($i = 0; $i < $len; $i++){
-			$c = ord($string[$i]);
-
-			if(!(ord('0') <= $c && $c <= ord('9'))){
+			if(!in_array($string[$i], $map, true)){
 				return false;
 			}
 		}
@@ -255,6 +276,8 @@ class QRCode{
 	}
 
 	/**
+	 * checks of a string qualifies as alphanumeric
+	 *
 	 * @param string $string
 	 *
 	 * @return bool
@@ -263,13 +286,7 @@ class QRCode{
 		$len = strlen($string);
 
 		for($i = 0; $i < $len; $i++){
-			$c = ord($string[$i]);
-
-			if(
-				   !(ord('0') <= $c && $c <= ord('9'))
-				&& !(ord('A') <= $c && $c <= ord('Z'))
-				&& strpos(' $%*+-./:', $string[$i]) === false
-			){
+			if(!in_array($string[$i], AlphaNum::CHAR_MAP, true)){
 				return false;
 			}
 		}
@@ -278,6 +295,8 @@ class QRCode{
 	}
 
 	/**
+	 * checks of a string qualifies as Kanji
+	 *
 	 * @param string $string
 	 *
 	 * @return bool

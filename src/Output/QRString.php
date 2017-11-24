@@ -15,20 +15,21 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\QRCode;
 
 /**
- *
+ * Converts the matrix data into string types
  */
 class QRString extends QROutputAbstract{
 
 	/**
 	 * @return string
 	 */
-	public function dump():string {
+	public function dump():string{
 
 		switch($this->options->outputType){
-			case QRCode::OUTPUT_STRING_TEXT: return $this->toString();
+			case QRCode::OUTPUT_STRING_TEXT:
+				return $this->toString();
 			case QRCode::OUTPUT_STRING_JSON:
 			default:
-				return json_encode($this->matrix);
+				return json_encode($this->matrix->matrix());
 		}
 
 	}
@@ -36,12 +37,12 @@ class QRString extends QROutputAbstract{
 	/**
 	 * @return string
 	 */
-	protected function toString():string {
+	protected function toString():string{
 		$str = '';
 
 		foreach($this->matrix->matrix() as $row){
 			foreach($row as $col){
-				$str .= $col
+				$str .= $col >> 8 > 0
 					? $this->options->textDark
 					: $this->options->textLight;
 			}
