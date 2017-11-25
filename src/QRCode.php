@@ -58,10 +58,10 @@ class QRCode{
 	const DATA_KANJI    = 0b1000;
 
 	const ECC_MODES = [
-		QRCode::ECC_L => 0,
-		QRCode::ECC_M => 1,
-		QRCode::ECC_Q => 2,
-		QRCode::ECC_H => 3,
+		self::ECC_L => 0,
+		self::ECC_M => 1,
+		self::ECC_Q => 2,
+		self::ECC_H => 3,
 	];
 
 	const DATA_MODES = [
@@ -118,7 +118,7 @@ class QRCode{
 	 */
 	public function setOptions(QROptions $options):QRCode{
 
-		if(!array_key_exists(QRCode::ECC_MODES[$options->eccLevel], QRCode::ECC_MODES)){
+		if(!array_key_exists($options->eccLevel, self::ECC_MODES)){
 			throw new QRCodeException('Invalid error correct level: '.$options->eccLevel);
 		}
 
@@ -231,7 +231,7 @@ class QRCode{
 
 		}
 
-		throw new QRCodeDataException('invalid data type');
+		throw new QRCodeDataException('invalid data type'); // @codeCoverageIgnore
 	}
 
 	/**
@@ -295,7 +295,7 @@ class QRCode{
 	}
 
 	/**
-	 * checks of a string qualifies as Kanji
+	 * checks of a string qualifies as alphanumeric
 	 *
 	 * @param string $string
 	 *
@@ -320,6 +320,8 @@ class QRCode{
 
 	/**
 	 * a dummy
+	 *
+	 * @codeCoverageIgnore
 	 *
 	 * @param $data
 	 *

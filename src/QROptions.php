@@ -105,7 +105,7 @@ class QROptions{
 	 *
 	 * @var int
 	 */
-	protected $quietzoneSize;
+	protected $quietzoneSize = 4;
 
 	/**
 	 * QRCode::OUTPUT_MARKUP_XXXX where XXXX = HTML, SVG
@@ -114,7 +114,7 @@ class QROptions{
 	 *
 	 * @var string
 	 */
-	protected $outputType;
+	protected $outputType = QRCode::OUTPUT_IMAGE_PNG;
 
 	/**
 	 * /path/to/cache.file

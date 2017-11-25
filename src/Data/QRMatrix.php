@@ -531,6 +531,7 @@ class QRMatrix{
 	/**
 	 * @see \chillerlan\QRCode\QRMatrix::mapData()
 	 *
+	 * @codeCoverageIgnore
 	 * @internal
 	 *
 	 * @param int $x

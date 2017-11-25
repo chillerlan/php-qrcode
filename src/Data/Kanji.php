@@ -55,7 +55,7 @@ class Kanji extends QRDataAbstract{
 				$c -= 0xC140;
 			}
 			else{
-				throw new QRCodeDataException('illegal char at '.($i + 1).' ('.$c.')');
+				throw new QRCodeDataException('illegal char at '.($i + 1).' ['.$c.']');
 			}
 
 			$this->bitBuffer->put((($c >> 8) & 0xff) * 0xC0 + ($c & 0xff), 13);

@@ -12,6 +12,7 @@
 
 namespace chillerlan\QRCode\Output;
 
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\QRCode;
 
 /**
@@ -19,14 +20,39 @@ use chillerlan\QRCode\QRCode;
  */
 class QRImage extends QROutputAbstract{
 
+	protected $moduleValues = [
+		// light
+		QRMatrix::M_DATA            => [255, 255, 255],
+		QRMatrix::M_FINDER          => [255, 255, 255],
+		QRMatrix::M_SEPARATOR       => [255, 255, 255],
+		QRMatrix::M_ALIGNMENT       => [255, 255, 255],
+		QRMatrix::M_TIMING          => [255, 255, 255],
+		QRMatrix::M_FORMAT          => [255, 255, 255],
+		QRMatrix::M_VERSION         => [255, 255, 255],
+		QRMatrix::M_QUIETZONE       => [255, 255, 255],
+		QRMatrix::M_TEST            => [255, 255, 255],
+		// dark
+		QRMatrix::M_DARKMODULE << 8 => [0, 0, 0],
+		QRMatrix::M_DATA << 8       => [0, 0, 0],
+		QRMatrix::M_FINDER << 8     => [0, 0, 0],
+		QRMatrix::M_ALIGNMENT << 8  => [0, 0, 0],
+		QRMatrix::M_TIMING << 8     => [0, 0, 0],
+		QRMatrix::M_FORMAT << 8     => [0, 0, 0],
+		QRMatrix::M_VERSION << 8    => [0, 0, 0],
+		QRMatrix::M_TEST << 8       => [0, 0, 0],
+	];
+
 	/**
 	 * @return string
 	 */
 	public function dump():string{
-		$scale      = $this->options->scale;
-		$length     = $this->moduleCount * $scale;
-		$image      = imagecreatetruecolor($length, $length);
-		$background = imagecolorallocate($image, ...$this->options->imageTransparencyBG);
+		$scale        = $this->options->scale;
+		$length       = $this->moduleCount * $scale;
+		$image        = imagecreatetruecolor($length, $length);
+		$background   = imagecolorallocate($image, ...$this->options->imageTransparencyBG);
+		$moduleValues = is_array($this->options->moduleValues[QRMatrix::M_DATA])
+			? $this->options->moduleValues // @codeCoverageIgnore
+			: $this->moduleValues;
 
 		if((bool)$this->options->imageTransparent && in_array($this->options->outputType, [QRCode::OUTPUT_IMAGE_PNG, QRCode::OUTPUT_IMAGE_GIF,], true)){
 			imagecolortransparent($image, $background);
@@ -36,7 +62,7 @@ class QRImage extends QROutputAbstract{
 
 		foreach($this->matrix->matrix() as $y => $row){
 			foreach($row as $x => $pixel){
-				$color = imagecolorallocate($image, ...$this->options->moduleValues[$pixel]);
+				$color = imagecolorallocate($image, ...$moduleValues[$pixel]);
 
 				imagefilledrectangle($image, $x * $scale, $y * $scale, ($x + 1) * $scale - 1, ($y + 1) * $scale - 1, $color);
 			}

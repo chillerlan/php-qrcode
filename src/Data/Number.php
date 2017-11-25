@@ -45,9 +45,11 @@ class Number extends QRDataAbstract{
 			if($this->strlen - $i === 1){
 				$this->bitBuffer->put($this->parseInt(substr($data, $i, $i + 1)), 4);
 			}
+			// @codeCoverageIgnoreStart
 			elseif($this->strlen - $i === 2){
 				$this->bitBuffer->put($this->parseInt(substr($data, $i, $i + 2)), 7);
 			}
+			// @codeCoverageIgnoreEnd
 
 		}
 
@@ -61,18 +63,17 @@ class Number extends QRDataAbstract{
 	 */
 	protected function parseInt(string $string):int {
 		$num = 0;
+		$map = str_split('0123456789');
 
 		$len = strlen($string);
 		for($i = 0; $i < $len; $i++){
 			$c = ord($string[$i]);
-			$ord0 = ord('0');
 
-			if($ord0 <= $c && $c <= ord('9')){
-				$c = $c - $ord0;
+			if(!in_array($string[$i], $map, true)){
+				throw new QRCodeDataException('illegal char: "'.$string[$i].'" ['.$c.']');
 			}
-			else{
-				throw new QRCodeDataException('illegal char: '.$c);
-			}
+
+			$c = $c - ord('0');
 
 			$num = $num * 10 + $c;
 		}

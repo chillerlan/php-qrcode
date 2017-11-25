@@ -4,13 +4,13 @@
  *
  * @filesource   PolynomialTest.php
  * @created      09.02.2016
- * @package      chillerlan\QRCodeTest\Data
+ * @package      chillerlan\QRCodeTest\Helpers
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace chillerlan\QRCodeTest\Data;
+namespace chillerlan\QRCodeTest\Helpers;
 
 use chillerlan\QRCode\Helpers\Polynomial;
 use chillerlan\QRCodeTest\QRTestAbstract;
@@ -23,7 +23,7 @@ class PolynomialTest extends QRTestAbstract{
 	protected $polynomial;
 
 	protected function setUp(){
-		$this->polynomial = new \chillerlan\QRCode\Helpers\Polynomial;
+		$this->polynomial = new Polynomial;
 	}
 
 	public function testGexp(){
