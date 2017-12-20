@@ -94,7 +94,9 @@ class QRMarkup extends QROutputAbstract{
 					}
 					elseif($from >= 0){
 						$svg .= '<rect x="'.($from * $this->options->scale).'" y="'.($y * $this->options->scale)
-						        .'" width="'.($this->options->scale * $count).'" height="'.$this->options->scale.'" class="'.$this->options->cssClass.'" fill="'.$value.'"/>'.$this->options->eol;
+						        .'" width="'.($this->options->scale * $count).'" height="'.$this->options->scale.'" fill="'.$value.'"'
+						        .(trim($this->options->cssClass) !== '' ? ' class="'.$this->options->cssClass.'"' :'').' />'
+						        .$this->options->eol;
 
 						// reset count
 						$from  = -1;
