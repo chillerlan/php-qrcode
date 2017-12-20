@@ -42,7 +42,7 @@ class QRMarkup extends QROutputAbstract{
 			$html .= '<div>';
 
 			foreach($row as $pixel){
-				$html .= '<span style="background: '.($this->options->moduleValues[$pixel] ?? 'lightgrey').';"></span>';
+				$html .= '<span style="background: '.($this->options->moduleValues[$pixel] ?: 'lightgrey').';"></span>';
 			}
 
 			$html .= '</div>';
@@ -72,6 +72,11 @@ class QRMarkup extends QROutputAbstract{
 
 		// @todo: optimize -> see https://github.com/alexeyten/qr-image/blob/master/lib/vector.js
 		foreach($this->options->moduleValues as $key => $value){
+
+			// fallback
+			if(is_bool($value)){
+				$value = $value ? '#000' : '#fff';
+			}
 
 			// svg body
 			foreach($this->matrix->matrix() as $y => $row){
