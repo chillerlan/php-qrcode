@@ -1,15 +1,13 @@
 # codemasher/php-qrcode
 
-A PHP7 QR Code library based on the [QR code implementation](https://github.com/kazuhikoarase/qrcode-generator) by [Kazuhiko Arase](https://github.com/kazuhikoarase), 
-namespaced, cleaned up and made extensible.
+A PHP7 QR Code library based on the [implementation](https://github.com/kazuhikoarase/qrcode-generator) by [Kazuhiko Arase](https://github.com/kazuhikoarase), 
+namespaced, cleaned up, improved and other stuff.
 
 [![version][packagist-badge]][packagist]
 [![license][license-badge]][license]
 [![Travis][travis-badge]][travis]
 [![Coverage][coverage-badge]][coverage]
-[![Issues][issue-badge]][issues]
 [![Scrunitizer][scrutinizer-badge]][scrutinizer]
-[![Code Climate][codeclimate-badge]][codeclimate]
 [![packagist][downloads-badge]][downloads]
 
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg
@@ -20,12 +18,8 @@ namespaced, cleaned up and made extensible.
 [travis]: https://travis-ci.org/codemasher/php-qrcode
 [coverage-badge]: https://img.shields.io/codecov/c/github/codemasher/php-qrcode.svg
 [coverage]: https://codecov.io/github/codemasher/php-qrcode
-[issue-badge]: https://img.shields.io/github/issues/codemasher/php-qrcode.svg
-[issues]: https://github.com/codemasher/php-qrcode/issues
 [scrutinizer-badge]: https://img.shields.io/scrutinizer/g/codemasher/php-qrcode.svg
 [scrutinizer]: https://scrutinizer-ci.com/g/codemasher/php-qrcode
-[codeclimate-badge]: https://img.shields.io/codeclimate/github/codemasher/php-qrcode.svg
-[codeclimate]: https://codeclimate.com/github/codemasher/php-qrcode
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 
@@ -34,7 +28,7 @@ namespaced, cleaned up and made extensible.
 ### Installation
 **requires [composer](https://getcomposer.org)**
 
-*composer.json*
+*composer.json* (note: replace `dev-master` with a version boundary)
 ```json
 {
 	"require": {
@@ -58,119 +52,190 @@ We want to encode this data into a QRcode image:
 // 10 reasons why QR codes are awesome
 $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 
-// no, for serious, we want to display a QR code for a mobile authenticator
-// https://github.com/codemasher/php-googleauth
+// no, for serious, we want to display a QR code for a mobile authenticator 
 $data = 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net';
 ```
 
 Quick and simple:
 ```php
-echo '<img src="'.(new QRCode($data, new QRImage))->output().'" />';
+echo '<img src="'.(new QRCode)->render($data).'" />';
 ```
 
 <p align="center">
-  <a href="https://www.turnon2fa.com">
-    <img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/codemasher/php-qrcode/master/examples/example_image.png">
-  </a>
+	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/codemasher/php-qrcode/master/examples/example_image.png">
 </p>
 
 Wait, what was that? Please again, slower!
 
-
 ### Advanced usage
 
-Ok, step by step. You'll need a `QRCode` instance which needs to be invoked with the data and a `Output\QROutputInterface` as parameters.
+Ok, step by step. First you'll need a `QRCode` instance, which can be optionally invoked with a `QROptions` object as the only parameter.
+
 ```php
-// the built-in QROutputInterface classes
-$outputInterface = new QRImage;
-$outputInterface = new QRMarkup;
-$outputInterface = new QRString;
+$options = new QROptions([
+	'version'    => 5,
+	'outputType' => QRCode::OUTPUT_MARKUP_SVG,
+	'eccLevel'   => QRCode::ECC_L,
+]);
 
 // invoke a fresh QRCode instance
-$qrcode = new QRCode($data, $outputInterface);
+$qrcode = new QRCode($options);
 
 // and dump the output
-$qrcode->output();
+$qrcode->render($data);
 ```
 
-Have a look [in this folder](https://github.com/codemasher/php-qrcode/tree/master/examples) for some usage examples.
+Once created, you can reuse the `QRCode` object any time:
 
-The `QRCode` and built-in `QROutputInterface` classes can be optionally invoked with a `QROptions` or a `Output\QROutputOptionsInterface` Object respectively.
 ```php
-// image -> QRImageOptions
-$outputOptions = new QRImageOptions;
-$outputOptions->type = QRCode::OUTPUT_IMAGE_GIF;
-$outputInterface = new QRImage($outputOptions);
+// set new options if needed
+$qrcode->setOptions($newOptions);
 
-// string -> QRStringOptions
-$outputOptions = new QRStringOptions;
-$outputOptions->type = QRCode::OUTPUT_STRING_TEXT;
-$outputInterface = new QRString($outputOptions);
-
-// QROptions
-$qrOptions = new QROptions;
-$qrOptions->errorCorrectLevel = QRCode::ERROR_CORRECT_LEVEL_L;
-
-$qrcode = new QRCode($data, $outputInterface, $qrOptions);
+// render again
+$qrcode->render($newData);
 ```
 
-You can reuse the `QRCode` object once created in case you don't need to change the output, and use the `QRCode::setData()` method instead.
+In case you just want the raw QR code matrix, call `QRCode::getMatrix()` - this method is also called internally from `QRCode::render()`. See also [Custom output modules](#custom-output-modules).
+
 ```php
-$qrcode->setData($data);
-$qrcode->setData($data, $qrOptions);
+$matrix = $qrcode->getMatrix($data);
 
-$qrcode->output();
-```
+foreach($matrix->matrix() as $y => $row){
+	foreach($row as $x => $module){
+	
+		// get a module's value
+		$value = $module;
+		$value = $matrix->get($x, $y);
 
-In case you only want the raw array which represents the QR code matrix, just call `QRCode::getRawData()` - this method is also called internally from `QRCode::output()`.
-```php
-$matrix = $qrcode->getRawData();
-
-foreach($matrix as $row){
-	foreach($row as $dark){
-		if($dark){
-			// do stuff
+		// boolean check a module
+		if($matrix->check($x, $y)){ // if($module >> 8 > 0)
+			// do stuff, the module is dark
 		}
 		else{
-			// do other stuff
+			// do other stuff, the module is light
 		}
+
 	}
 }
-
 ```
 
-### Custom output modules
-But then again, instead of bloating your own code, you can simply create your own output module by extending `QROutputAbstract`.
+#### Authenticator example
+[codemasher/php-googleauth](https://github.com/codemasher/php-googleauth) features creation of `otpauth://` URIs for use with most mobile authenticators:
 ```php
-$qrcode = new QRCode($data, new MyCustomOutput($myCustomOutputOptions), $qrOptions)
+use chillerlan\GoogleAuth\Authenticator;
+
+$authenticator = new Authenticator;
+
+$secret = $authenticator->createSecret(); // -> save this with the userdata
+$data   = $authenticator->getUri($secret, 'test', 'smiley.codes');
+
+$qr = $qrcode->render($data);
+
+// do stuff
 ```
+
+Have a look [in this folder](https://github.com/codemasher/php-qrcode/tree/master/examples) for some more usage examples.
+
+#### Custom module values
+Previous versions of `QRCode` held only boolean matrix values that only allowed to determine whether a module was dark or not. Now you can distinguish between different parts of the matrix, namely the several required patterns from the QR Code specification, and use them in different ways.
+
+The dark value is the module (light) value shifted by 8 bits to the left: `$value = $M_TYPE << ($bool ? 8 : 0);`, where `$M_TYPE` is one of the `QRMatrix::M_*` constants. 
+You can check the value for a type explicitly like...
+```php
+// for true (dark)
+$value >> 8 === $M_TYPE;
+
+//for false (light)
+$value === $M_TYPE;
+```
+...or you can perform a loose check, ignoring the module value
+```php
+// for true
+$value >> 8 > 0;
+
+// for false
+$value >> 8 === 0
+```
+
+See also `QRMatrix::set()`, `QRMatrix::check()` and [`QRMatrix` constants](#qrmatrix-constants).
+
+To map the values and properly render the modules for the given `QROutputInterface`, it's necessary to overwrite the default values:
+```php
+$options = new QROptions;
+
+// for HTML and SVG
+$options->moduleValues = [
+	// finder
+	1536 => '#A71111', // dark (true)
+	6    => '#FFBFBF', // light (false)
+	// alignment
+	2560 => '#A70364',
+	10   => '#FFC9C9',
+	// timing
+	3072 => '#98005D',
+	12   => '#FFB8E9',
+	// format
+	3584 => '#003804',
+	14   => '#00FB12',
+	// version
+	4096 => '#650098',
+	16   => '#E0B8FF',
+	// data
+	1024 => '#4A6000',
+	4    => '#ECF9BE',
+	// darkmodule
+	512  => '#080063',
+	// separator
+	8    => '#AFBFBF',
+	// quietzone
+	18   => '#FFFFFF',
+];
+
+// for the image output types
+$options->moduleValues = [
+	512  => [0, 0, 0],
+	// ...
+];
+
+// for string/text output
+$options->moduleValues = [
+	512  => '#',
+	// ...
+];
+```
+
+Combined with a custom output interface and your imagination you can create some cool effects that way!
+
+
+#### Custom `QROutputInterface`
+Instead of bloating your code you can simply create your own output interface by extending `QROutputAbstract`. Have a look at the [built-in output modules](https://github.com/codemasher/php-qrcode/tree/master/src/Output).
 
 ```php
 class MyCustomOutput extends QROutputAbstract{
 	
 	// inherited from QROutputAbstract
-	protected $matrix; // array
-	protected $pixelCount; // int
-	protected $options; // MyCustomOutputOptions (if present)
+	protected $matrix;  // QRMatrix
+	protected $options; // MyCustomOptions or QROptions
 	
 	// optional constructor
-	public function __construct(MyCustomOutputOptions $options = null){
+	public function __construct(MyCustomOptions $options = null){
 		$this->options = $options;
 
-		if(!$this->options){
-			// MyCustomOutputOptions should supply default values
-			$this->options = new MyCustomOutputOptions;
+		if(!$this->options instanceof MyCustomOptions){
+			// MyCustomOptions should supply default values
+			$this->options = new MyCustomOptions;
 		}
 
 	}
 
+	// QROutputInterface::dump()
 	public function dump(){
-	
 		$output = '';
+		$size   = $this->matrix->size();
 
-		for($row = 0; $row < $this->pixelCount; $row++){
-			for($col = 0; $col < $this->pixelCount; $col++){
-				$output .= (string)(int)$this->matrix[$row][$col];
+		for($row = 0; $row < $size; $row++){
+			for($col = 0; $col < $size; $col++){
+				$output .= (string)(int)$this->matrix->check($col, $row);
 			}
 		}
 
@@ -180,75 +245,105 @@ class MyCustomOutput extends QROutputAbstract{
 }
 ```
 
-### Authenticator example
-
-[codemasher/php-googleauth](https://github.com/codemasher/php-googleauth) features creation of `otpauth://` URIs for use with most mobile authenticators:
+In case you need additional settings for your output module, just extend `QROptions`.
 ```php
-use chillerlan\GoogleAuth\Authenticator;
-
-$authenticator = new Authenticator;
-
-$secret = $authenticator->createSecret(); // -> userdata
-$data   = $authenticator->getUri($secret, 'test', 'chillerlan.net');
-
-$qrcode->setData($data)->output();
+class MyCustomOptions extends QROptions{
+	protected $myParam = 'defaultValue';
+}
 ```
 
-###  `QRCode` public methods
-method | return 
------- | ------
-`__construct($data, QROutputInterface $output, QROptions $options = null)` | -
-`setData($data, QROptions $options = null)` | `QRCode` 
-`output()` | mixed `QROutputInterface::dump()` 
-`getRawData()` | array `QRDataGenerator::$matrix` 
+Invoke a fresh custom `QROutputInterface`, see also `QRCode::initOutputInterface()`.
+```php
+$qrOutputInterface = new MyCustomOutput($myCustomOptions, (new QRCode($myCustomOptions))->getMatrix($data));
+```
 
+...and dump the output, which is equivalent to `QRCode::render()`
+```php
+$qrOutputInterface->dump();
+```
 
-###  Properties of `QROptions`
+### API
 
+####  `QRCode` methods
+method | return | description 
+------ | ------ | -----------
+`__construct(QROptions $options = null)` | - | -
+`setOptions(QROptions $options)` | `QRCode` | sets the options, called internally by the constructor
+`render(string $data)` | mixed, `QROutputInterface::dump()` | renders a QR Code for the given `$data` and `QROptions`
+`getMatrix(string $data)` | `QRMatrix` | returns a `QRMatrix` object for the given `$data` and current `QROptions`
+`initDataInterface(string $data)` | `QRDataInterface` | returns a fresh `QRDataInterface` for the given `$data`
+`isNumber(string $string)` | bool | checks if a string qualifies for `Number`
+`isAlphaNum(string $string)` | bool | checks if a string qualifies for `AlphaNum`
+`isKanji(string $string)` | bool | checks if a string qualifies for `Kanji`
+
+####  `QRCode` constants
+name | description 
+---- | -----------
+`VERSION_AUTO` | `QROptions::$version`
+`MASK_PATTERN_AUTO` | `QROptions::$maskPattern`
+`OUTPUT_MARKUP_SVG`, `OUTPUT_MARKUP_HTML` | `QROptions::$outputType` markup
+`OUTPUT_IMAGE_PNG`, `OUTPUT_IMAGE_JPG`, `OUTPUT_IMAGE_GIF` | `QROptions::$outputType` image
+`OUTPUT_STRING_JSON`, `OUTPUT_STRING_TEXT` | `QROptions::$outputType` string
+`ECC_L`, `ECC_M`, `ECC_Q`, `ECC_H`, | ECC-Level: 7%, 15%, 25%, 30%  in `QROptions::$eccLevel`
+`DATA_NUMBER`, `DATA_ALPHANUM`, `DATA_BYTE`, `DATA_KANJI` | `QRDataInterface::$datamode`
+
+#### `QRMatrix` methods
+method | return | description 
+------ | ------ | -----------
+`__construct(int $version, int $eclevel)` | - | -
+`matrix()` | array | the internal matrix representation as a 2 dimensional array
+`version()` | int | the current QR Code version
+`eccLevel()` | int | current ECC level
+`maskPattern()` | int | the used mask pattern
+`size()` | int | the absoulute size of the matrix, including quiet zone (if set). `$version * 4 + 17 + 2 * $quietzone`
+`get(int $x, int $y)` | int | returns the value of the module
+`set(int $x, int $y, bool $value, int $M_TYPE)` | `QRMatrix` | sets the `$M_TYPE` value for the module
+`check(int $x, int $y)` | bool | checks whether a module is true (dark) or false (light)
+
+#### `QRMatrix` constants
+name | light (false) | dark (true) | description
+---- | ------------- | ----------- | -----------
+`M_NULL` | 0 | - | module not set (should never appear. if so, there's an error)
+`M_DARKMODULE` | - (2) | 512 | once per matrix at `$xy = [8, 4 * $version + 9]`
+`M_DATA` | 4 | 1024 | the actual encoded data
+`M_FINDER` | 6 | 1536 | the 7x7 finder patterns
+`M_SEPARATOR` | 8 | - | separator lines around the finder patterns
+`M_ALIGNMENT` | 10 | 2560 | the 5x5 alignment patterns
+`M_TIMING` | 12 | 3072 | the timing pattern lines
+`M_FORMAT` | 14 | 3584 | format information pattern
+`M_VERSION` | 16 | 4096 | version information pattern
+`M_QUIETZONE` | 18 | - | margin around the QR Code
+`M_LOGO` | 20 | - | space for a logo image (not used yet)
+`M_TEST` | 255 | 65280 | test value
+
+#### `QROptions` properties
 property | type | default | allowed | description
 -------- | ---- | ------- | ------- | -----------
-`$errorCorrectLevel` | int | M | QRCode::ERROR_CORRECT_LEVEL_X | X = L, M, Q, H<br>7%, 15%, 25%, 30%
-`$typeNumber` | int | null | QRCode::TYPE_XX | XX = 01 ... 10, null = auto
-
-
-###  Properties of `QRStringOptions`
-
-property | type | default | allowed | description
--------- | ---- | ------- | ------- | -----------
-`$type` | int | JSON | QRCode::OUTPUT_STRING_XXXX | XXXX = TEXT, JSON
+`$version` | int | `QRCode::VERSION_AUTO` | 1...40 | the [QR Code version number](http://www.qrcode.com/en/about/version.html)
+`$versionMin` | int | 1 | 1...40 | Minimum QR version (if `$version = QRCode::VERSION_AUTO`)
+`$versionMax` | int | 40 | 1...40 | Maximum QR version (if `$version = QRCode::VERSION_AUTO`)
+`$eccLevel` | int | `QRCode::ECC_L` | `QRCode::ECC_X` | Error correct level, where X = L (7%), M (15%), Q (25%), H (30%)
+`$maskPattern` | int | `QRCode::MASK_PATTERN_AUTO` | 0...7 | Mask Pattern to use
+`$addQuietzone` | bool | true | - | Add a "quiet zone" (margin) according to the QR code spec
+`$quietzoneSize` | int | 4 | clamped to 0 ... `$matrixSize / 2` | Size of the quiet zone
+`$outputType` | string | `QRCode::OUTPUT_IMAGE_PNG` | `QRCode::OUTPUT_*` | built-in output type
+`$cachefile` | string | null | * | optional cache file path
+`$eol` | string | `PHP_EOL` | * | newline string (HTML, SVG, TEXT)
+`$scale` | int | 5 | * | size of a QR code pixel (SVG, IMAGE_*), HTML -> via CSS
+`$cssClass` | string | null | * | a common css class
 `$textDark` | string | '🔴' | * | string substitute for dark
 `$textLight` | string | '⭕' | * | string substitute for light
-`$eol` | string | `PHP_EOL` | * | newline string
-
-###  Properties of `QRMarkupOptions`
-
-property | type | default | allowed | description
--------- | ---- | ------- | ------- | -----------
-`$type` | int | HTML | QRCode::OUTPUT_MARKUP_XXXX | XXXX = HTML, SVG
-`$htmlRowTag` | string | 'p' | * | the shortest available semanically correct row (block) tag to not bloat the output
-`$htmlOmitEndTag` | bool | true | - | the closing tag may be omitted (moar bloat!)
-`$fgColor` | string | '#000' | * | foreground color
-`$bgColor` | string | '#fff' | * | background color
-`$cssClass` | string | null | * | a common css class
-`$pixelSize` | int | 5 | * | size of a QR code pixel
-`$marginSize` | int | 5 | * | margin around the QR code 
-`$eol` | string | `PHP_EOL` | * | newline string
-
-###  Properties of `QRImageOptions`
-
-property | type | default | allowed | description
--------- | ---- | ------- | ------- | -----------
-`$type` | string | PNG | QRCode::OUTPUT_IMAGE_XXX | XXX = PNG, JPG, GIF, SVG
-`$base64` | bool | true | - | wether to return the image data as base64 or raw like from `file_get_contents()`
-`$cachefile` | string | null | * | optional cache file path, null returns the image data
-`$pixelSize` | int | 5 | 1 ... 25 | size of a QR code pixel (25 is HUGE!)
-`$marginSize` | int | 5 | 0 ... 25 | margin around the QR code 
-`$transparent` | bool | true | - | toggle transparency (no jpeg support)
-`$fgRed` | int | 0 | 0 ... 255 | foreground red
-`$fgGreen` | int | 0 | 0 ... 255 | foreground green
-`$fgBlue` | int | 0 | 0 ... 255 | foreground blue
-`$bgRed` | int | 255 | 0 ... 255 | background red
-`$bgGreen` | int | 255 | 0 ... 255 | background green
-`$bgBlue` | int | 255 | 0 ... 255 | background blue
+`$imageBase64` | bool | true | - | whether to return the image data as base64 or raw like from `file_get_contents()`
+`$imageTransparent` | bool | true | - | toggle transparency (no jpeg support)
+`$imageTransparencyBG` | array | `[255, 255, 255]` | `[R, G, B]` | the RGB values for the transparent color, see [`imagecolortransparent()`](http://php.net/manual/function.imagecolortransparent.php)
 `$pngCompression` | int | -1 | -1 ... 9 | `imagepng()` compression level, -1 = auto
 `$jpegQuality` | int | 85 | 0 - 100 | `imagejpeg()` quality
+`$moduleValues` | array | array | array | Module values map, see [Custom output modules](#custom-output-modules)
+
+### Notes
+The QR encoder, especially the subroutines for mask pattern testing, can cause high CPU load on increased matrix size.
+You can avoid a part of this load by choosing a fast output module, like `OUTPUT_IMAGE_*` and setting the mask pattern manually (which may result in unreadable QR Codes).
+Oh hey and don't forget to sanitize any user input!
+
+### Disclaimer!
+I don't take responsibility for molten CPUs, misled applications, failed log-ins etc.. Use at your own risk!
