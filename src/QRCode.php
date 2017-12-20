@@ -256,7 +256,7 @@ class QRCode{
 	}
 
 	/**
-	 * checks of a string qualifies as numeric
+	 * checks if a string qualifies as numeric
 	 *
 	 * @param string $string
 	 *
@@ -276,7 +276,7 @@ class QRCode{
 	}
 
 	/**
-	 * checks of a string qualifies as alphanumeric
+	 * checks if a string qualifies as alphanumeric
 	 *
 	 * @param string $string
 	 *
@@ -295,7 +295,7 @@ class QRCode{
 	}
 
 	/**
-	 * checks of a string qualifies as alphanumeric
+	 * checks if a string qualifies as Kanji
 	 *
 	 * @param string $string
 	 *
