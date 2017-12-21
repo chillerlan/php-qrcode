@@ -42,9 +42,15 @@ class QRString extends QROutputAbstract{
 
 		foreach($this->matrix->matrix() as $row){
 			foreach($row as $col){
-				$str .= $col >> 8 > 0
-					? $this->options->textDark
-					: $this->options->textLight;
+				$col = $this->options->moduleValues[$col];
+				
+				// fallback
+				if(is_bool($col) || !is_string($col)){
+					$col = $col ? $this->options->textDark : $this->options->textLight;
+				}
+
+
+				$str .= $col;
 			}
 
 			$str .= $this->options->eol;
