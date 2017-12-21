@@ -19,11 +19,11 @@
 	],
 	"require": {
 		"php": ">=7.0.3",
-		"chillerlan/php-traits": "1.0.*"
+		"chillerlan/php-traits": "1.1.*"
 	},
 	"require-dev": {
 		"chillerlan/php-googleauth": "1.1.*",
-		"phpunit/phpunit": "6.4.*"
+		"phpunit/phpunit": "6.5.*"
 	},
 	"suggest": {
 		"chillerlan/php-googleauth": "*"
