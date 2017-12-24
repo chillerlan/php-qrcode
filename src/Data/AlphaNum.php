@@ -60,7 +60,7 @@ class AlphaNum extends QRDataAbstract{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	protected function getCharCode(string $chr):int {
-		$i = array_search($chr, self::CHAR_MAP);
+		$i = array_search($chr, $this::CHAR_MAP);
 
 		if($i !== false){
 			return $i;

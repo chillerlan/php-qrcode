@@ -142,7 +142,7 @@ class QRMatrix{
 		$this->version     = $version;
 		$this->eclevel     = $eclevel;
 		$this->moduleCount = $this->version * 4 + 17;
-		$this->matrix      = array_fill(0, $this->moduleCount, array_fill(0, $this->moduleCount, self::M_NULL));
+		$this->matrix      = array_fill(0, $this->moduleCount, array_fill(0, $this->moduleCount, $this::M_NULL));
 	}
 
 	/**
@@ -240,7 +240,7 @@ class QRMatrix{
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function setDarkModule():QRMatrix{
-		$this->set(8, 4 * $this->version + 9, true, self::M_DARKMODULE);
+		$this->set(8, 4 * $this->version + 9, true, $this::M_DARKMODULE);
 
 		return $this;
 	}
@@ -265,7 +265,7 @@ class QRMatrix{
 						$c[0] + $y,
 						$c[1] + $x,
 						!(($x > 0 && $x < 6 && ($y === 1 || $y === 5)) || ($y > 0 && $y < 6 && ($x === 1 || $x === 5))),
-						self::M_FINDER
+						$this::M_FINDER
 					);
 				}
 			}
@@ -293,7 +293,7 @@ class QRMatrix{
 			[7, $this->moduleCount - 8],
 		];
 
-		$t = self::M_SEPARATOR;
+		$t = $this::M_SEPARATOR;
 
 		for($c = 0; $c < 3; $c++){
 			for($i = 0; $i < 8; $i++){
@@ -312,13 +312,13 @@ class QRMatrix{
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function setAlignmentPattern():QRMatrix{
-		$pattern = self::alignmentPattern[$this->version];
+		$pattern = $this::alignmentPattern[$this->version];
 
 		foreach($pattern as $y){
 			foreach($pattern as $x){
 
 				// skip existing patterns
-				if($this->matrix[$y][$x] !== self::M_NULL){
+				if($this->matrix[$y][$x] !== $this::M_NULL){
 					continue;
 				}
 
@@ -326,7 +326,7 @@ class QRMatrix{
 					for($rx = -2; $rx <= 2; $rx++){
 						$v = ($ry === 0 && $rx === 0) || $ry === 2 || $ry === -2 || $rx === 2 || $rx === -2;
 
-						$this->set($x + $rx, $y + $ry, $v, self::M_ALIGNMENT);
+						$this->set($x + $rx, $y + $ry, $v, $this::M_ALIGNMENT);
 					}
 				}
 
@@ -346,12 +346,12 @@ class QRMatrix{
 
 		foreach(range(8, $this->moduleCount - 8 - 1) as $i){
 
-			if($this->matrix[6][$i] !== self::M_NULL || $this->matrix[$i][6] !== self::M_NULL){
+			if($this->matrix[6][$i] !== $this::M_NULL || $this->matrix[$i][6] !== $this::M_NULL){
 				continue;
 			}
 
 			$v = $i % 2 === 0;
-			$t = self::M_TIMING;
+			$t = $this::M_TIMING;
 
 			$this->set($i, 6, $v, $t); // h
 			$this->set(6, $i, $v, $t); // v
@@ -370,7 +370,7 @@ class QRMatrix{
 	public function setVersionNumber(bool $test = null):QRMatrix{
 		$test = $test !== null ? $test : false;
 
-		$bits = self::versionPattern[$this->version] ?? false;
+		$bits = $this::versionPattern[$this->version] ?? false;
 
 		if($bits !== false){
 
@@ -378,7 +378,7 @@ class QRMatrix{
 				$a = (int)floor($i / 3);
 				$b = $i % 3 + $this->moduleCount - 8 - 3;
 				$v = !$test && (($bits >> $i) & 1) === 1;
-				$t = self::M_VERSION;
+				$t = $this::M_VERSION;
 
 				$this->set($b, $a, $v, $t); // ne
 				$this->set($a, $b, $v, $t); // sw
@@ -399,8 +399,8 @@ class QRMatrix{
 	 */
 	public function setFormatInfo(int $maskPattern, bool $test = null):QRMatrix{
 		$test = $test !== null ? $test : false;
-		$bits = self::formatPattern[QRCode::ECC_MODES[$this->eclevel]][$maskPattern] ?? 0;
-		$t    = self::M_FORMAT;
+		$bits = $this::formatPattern[QRCode::ECC_MODES[$this->eclevel]][$maskPattern] ?? 0;
+		$t    = $this::M_FORMAT;
 
 		for($i = 0; $i < 15; $i++){
 			$v = !$test && (($bits >> $i) & 1) === 1;
@@ -441,12 +441,12 @@ class QRMatrix{
 	 */
 	public function setQuietZone(int $size = null):QRMatrix{
 
-		if($this->matrix[$this->moduleCount - 1][$this->moduleCount - 1] === self::M_NULL){
+		if($this->matrix[$this->moduleCount - 1][$this->moduleCount - 1] === $this::M_NULL){
 			throw new QRCodeDataException('use only after writing data');
 		}
 
 		$size = $size !== null ? max(0, min($size, floor($this->moduleCount / 2))) : 4;
-		$t    = self::M_QUIETZONE;
+		$t    = $this::M_QUIETZONE;
 
 		for($y = 0; $y < $this->moduleCount; $y++){
 			for($i = 0; $i < $size; $i++){
@@ -491,7 +491,7 @@ class QRMatrix{
 				for($c = 0; $c < 2; $c++){
 					$x = $i - $c;
 
-					if($this->matrix[$y][$x] === self::M_NULL){
+					if($this->matrix[$y][$x] === $this::M_NULL){
 						$v = false;
 
 						if($byteIndex < $byteCount){
@@ -502,7 +502,7 @@ class QRMatrix{
 							$v = !$v;
 						}
 
-						$this->matrix[$y][$x] = self::M_DATA << ($v ? 8 : 0);
+						$this->matrix[$y][$x] = $this::M_DATA << ($v ? 8 : 0);
 						$bitIndex--;
 
 						if($bitIndex === -1){

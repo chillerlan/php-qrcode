@@ -118,7 +118,7 @@ class QRCode{
 	 */
 	public function setOptions(QROptions $options):QRCode{
 
-		if(!array_key_exists($options->eccLevel, self::ECC_MODES)){
+		if(!array_key_exists($options->eccLevel, $this::ECC_MODES)){
 			throw new QRCodeException('Invalid error correct level: '.$options->eccLevel);
 		}
 
@@ -165,7 +165,7 @@ class QRCode{
 
 		$this->dataInterface = $this->initDataInterface($data);
 
-		$maskPattern = $this->options->maskPattern === self::MASK_PATTERN_AUTO
+		$maskPattern = $this->options->maskPattern === $this::MASK_PATTERN_AUTO
 			? $this->getBestMaskPattern()
 			: max(7, min(0, (int)$this->options->maskPattern));
 
@@ -244,7 +244,7 @@ class QRCode{
 	 */
 	protected function initOutputInterface(string $data):QROutputInterface{
 
-		foreach(self::OUTPUT_MODES as $outputInterface => $modes){
+		foreach($this::OUTPUT_MODES as $outputInterface => $modes){
 
 			if(in_array($this->options->outputType, $modes, true)){
 				return $this->loadClass($outputInterface, QROutputInterface::class, $this->options, $this->getMatrix($data));

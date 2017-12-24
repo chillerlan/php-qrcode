@@ -188,7 +188,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 		// guess the version number within the given range
 		foreach(range(max(1, $this->options->versionMin), min($this->options->versionMax, 40)) as $version){
-			$maxlength = self::MAX_LENGTH[$version][QRCode::DATA_MODES[$this->datamode]][QRCode::ECC_MODES[$this->options->eccLevel]];
+			$maxlength = $this::MAX_LENGTH[$version][QRCode::DATA_MODES[$this->datamode]][QRCode::ECC_MODES[$this->options->eccLevel]];
 
 			if($this->strlen <= $maxlength){
 				return $version;
@@ -219,7 +219,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 		$this->bitBuffer = new BitBuffer;
 
 		// @todo: fixme, get real length
-		$MAX_BITS = self::MAX_BITS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
+		$MAX_BITS = $this::MAX_BITS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
 
 		$this->bitBuffer
 			->clear()
@@ -273,7 +273,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 * @return array
 	 */
 	protected function maskECC():array {
-		list($l1, $l2, $b1, $b2) = self::RSBLOCKS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
+		list($l1, $l2, $b1, $b2) = $this::RSBLOCKS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
 
 		$rsBlocks       = array_fill(0, $l1, [$b1, $b2]);
 		$rsCount        = $l1 + $l2;
