@@ -128,8 +128,8 @@ abstract class QRDataAbstract implements QRDataInterface{
 	/**
 	 * returns a fresh matrix object with the data written for the given $maskPattern
 	 *
-	 * @param int  $maskPattern
-	 * @param bool $test
+	 * @param int       $maskPattern
+	 * @param bool|null $test
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
