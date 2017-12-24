@@ -98,7 +98,7 @@ $qrcode->setOptions($newOptions);
 $qrcode->render($newData);
 ```
 
-In case you just want the raw QR code matrix, call `QRCode::getMatrix()` - this method is also called internally from `QRCode::render()`. See also [Custom output modules](#custom-output-modules).
+In case you just want the raw QR code matrix, call `QRCode::getMatrix()` - this method is also called internally from `QRCode::render()`. See also [Custom output modules](#custom-qroutputinterface).
 
 ```php
 $matrix = $qrcode->getMatrix($data);
@@ -321,7 +321,7 @@ property | type | default | allowed | description
 `$imageTransparencyBG` | array | `[255, 255, 255]` | `[R, G, B]` | the RGB values for the transparent color, see [`imagecolortransparent()`](http://php.net/manual/function.imagecolortransparent.php)
 `$pngCompression` | int | -1 | -1 ... 9 | `imagepng()` compression level, -1 = auto
 `$jpegQuality` | int | 85 | 0 - 100 | `imagejpeg()` quality
-`$moduleValues` | array | array | array | Module values map, see [Custom output modules](#custom-output-modules)
+`$moduleValues` | array | array | array | Module values map, see [Custom output modules](#custom-qroutputinterface)
 
 #### `QRAuthenticator` trait methods
 method | return | description 
