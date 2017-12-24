@@ -9,19 +9,22 @@ namespaced, cleaned up, improved and other stuff.
 [![Coverage][coverage-badge]][coverage]
 [![Scrunitizer][scrutinizer-badge]][scrutinizer]
 [![packagist][downloads-badge]][downloads]
+[![paypal][donate-badge]][donate]
 
-[packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg
+[packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?style=flat-square
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
-[license-badge]: https://img.shields.io/packagist/l/chillerlan/php-qrcode.svg
+[license-badge]: https://img.shields.io/packagist/l/chillerlan/php-qrcode.svg?style=flat-square
 [license]: https://github.com/codemasher/php-qrcode/blob/master/LICENSE
-[travis-badge]: https://img.shields.io/travis/codemasher/php-qrcode.svg
+[travis-badge]: https://img.shields.io/travis/codemasher/php-qrcode.svg?style=flat-square
 [travis]: https://travis-ci.org/codemasher/php-qrcode
-[coverage-badge]: https://img.shields.io/codecov/c/github/codemasher/php-qrcode.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/codemasher/php-qrcode.svg?style=flat-square
 [coverage]: https://codecov.io/github/codemasher/php-qrcode
-[scrutinizer-badge]: https://img.shields.io/scrutinizer/g/codemasher/php-qrcode.svg
+[scrutinizer-badge]: https://img.shields.io/scrutinizer/g/codemasher/php-qrcode.svg?style=flat-square
 [scrutinizer]: https://scrutinizer-ci.com/g/codemasher/php-qrcode
-[downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg
+[downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?style=flat-square
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
+[donate-badge]: https://img.shields.io/badge/donate-paypal-ff33aa.svg?style=flat-square
+[donate]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WLYUNAT9ZTJZ4
 
 ## Documentation
 
@@ -119,19 +122,28 @@ foreach($matrix->matrix() as $y => $row){
 }
 ```
 
-#### Authenticator example
-[codemasher/php-googleauth](https://github.com/codemasher/php-googleauth) features creation of `otpauth://` URIs for use with most mobile authenticators:
+#### Authenticator trait
+This library includes [codemasher/php-authenticator](https://github.com/codemasher/php-authenticator) to create `otpauth://` QR Codes for use with mobile authenticators, all in a single trait:
 ```php
-use chillerlan\GoogleAuth\Authenticator;
+use chillerlan\QRCode\{QRCode, QROptions, Traits\QRAuthenticator};
 
-$authenticator = new Authenticator;
+class MyAuthenticatorClass{
+	use QRAuthenticator;
 
-$secret = $authenticator->createSecret(); // -> save this with the userdata
-$data   = $authenticator->getUri($secret, 'test', 'smiley.codes');
+	public function getQRCode(){
+	
+		// data fetched from wherever
+		$this->authenticatorSecret = 'SECRETTEST234567';
+		$label = 'my label';
+		$issuer = 'example.com';
+		
+		// set QROptions options if needed
+		$this->qrOptions = new QROptions(['outputType' => QRCode::OUTPUT_MARKUP_SVG]);
 
-$qr = $qrcode->render($data);
+		return $this->getURIQRCode($label, $issuer);
+	}
 
-// do stuff
+}
 ```
 
 Have a look [in this folder](https://github.com/codemasher/php-qrcode/tree/master/examples) for some more usage examples.
@@ -214,8 +226,9 @@ Instead of bloating your code you can simply create your own output interface by
 class MyCustomOutput extends QROutputAbstract{
 	
 	// inherited from QROutputAbstract
-	protected $matrix;  // QRMatrix
-	protected $options; // MyCustomOptions or QROptions
+	protected $matrix;      // QRMatrix
+	protected $moduleCount; // length/width of the matrix
+	protected $options;     // MyCustomOptions or QROptions
 	
 	// optional constructor
 	public function __construct(MyCustomOptions $options = null){
@@ -231,11 +244,10 @@ class MyCustomOutput extends QROutputAbstract{
 	// QROutputInterface::dump()
 	public function dump(){
 		$output = '';
-		$size   = $this->matrix->size();
 
-		for($row = 0; $row < $size; $row++){
-			for($col = 0; $col < $size; $col++){
-				$output .= (string)(int)$this->matrix->check($col, $row);
+		for($row = 0; $row < $this->moduleCount; $row++){
+			for($col = 0; $col < $this->moduleCount; $col++){
+				$output .= (int)$this->matrix->check($col, $row);
 			}
 		}
 
@@ -287,6 +299,47 @@ name | description
 `ECC_L`, `ECC_M`, `ECC_Q`, `ECC_H`, | ECC-Level: 7%, 15%, 25%, 30%  in `QROptions::$eccLevel`
 `DATA_NUMBER`, `DATA_ALPHANUM`, `DATA_BYTE`, `DATA_KANJI` | `QRDataInterface::$datamode`
 
+#### `QROptions` properties
+property | type | default | allowed | description
+-------- | ---- | ------- | ------- | -----------
+`$version` | int | `QRCode::VERSION_AUTO` | 1...40 | the [QR Code version number](http://www.qrcode.com/en/about/version.html)
+`$versionMin` | int | 1 | 1...40 | Minimum QR version (if `$version = QRCode::VERSION_AUTO`)
+`$versionMax` | int | 40 | 1...40 | Maximum QR version (if `$version = QRCode::VERSION_AUTO`)
+`$eccLevel` | int | `QRCode::ECC_L` | `QRCode::ECC_X` | Error correct level, where X = L (7%), M (15%), Q (25%), H (30%)
+`$maskPattern` | int | `QRCode::MASK_PATTERN_AUTO` | 0...7 | Mask Pattern to use
+`$addQuietzone` | bool | true | - | Add a "quiet zone" (margin) according to the QR code spec
+`$quietzoneSize` | int | 4 | clamped to 0 ... `$matrixSize / 2` | Size of the quiet zone
+`$outputType` | string | `QRCode::OUTPUT_IMAGE_PNG` | `QRCode::OUTPUT_*` | built-in output type
+`$cachefile` | string | null | * | optional cache file path
+`$eol` | string | `PHP_EOL` | * | newline string (HTML, SVG, TEXT)
+`$scale` | int | 5 | * | size of a QR code pixel (SVG, IMAGE_*), HTML -> via CSS
+`$cssClass` | string | null | * | a common css class
+`$textDark` | string | '🔴' | * | string substitute for dark
+`$textLight` | string | '⭕' | * | string substitute for light
+`$imageBase64` | bool | true | - | whether to return the image data as base64 or raw like from `file_get_contents()`
+`$imageTransparent` | bool | true | - | toggle transparency (no jpeg support)
+`$imageTransparencyBG` | array | `[255, 255, 255]` | `[R, G, B]` | the RGB values for the transparent color, see [`imagecolortransparent()`](http://php.net/manual/function.imagecolortransparent.php)
+`$pngCompression` | int | -1 | -1 ... 9 | `imagepng()` compression level, -1 = auto
+`$jpegQuality` | int | 85 | 0 - 100 | `imagejpeg()` quality
+`$moduleValues` | array | array | array | Module values map, see [Custom output modules](#custom-output-modules)
+
+#### `QRAuthenticator` trait methods
+method | return | description 
+------ | ------ | -----------
+`getURIQRCode(string $label, string $issuer)` | `QRCode::render()` | protected
+`getAuthenticator()` | `Authenticator` | protected, returns an `Authenticator` object with the given settings
+
+#### `QRAuthenticator` trait properties
+
+property | type | default | allowed | description
+-------- | ---- | ------- | ------- | -----------
+`$qrOptions` | `QROptions` | - | - | a `QROptions` object for internal use
+`$authenticatorSecret` | string | - | * | the secret phrase to use for the QR Code
+`$authenticatorDigits` | int | 6 | 6...8 | 
+`$authenticatorPeriod` | int | 30 | 10...60 | 
+`$authenticatorMode` | string | `totp` | `totp`, `hotp` | 
+`$authenticatorAlgo` | string | `SHA1` | `SHA1`, `SHA256`, `SHA512` | 
+
 #### `QRMatrix` methods
 method | return | description 
 ------ | ------ | -----------
@@ -316,29 +369,6 @@ name | light (false) | dark (true) | description
 `M_LOGO` | 20 | - | space for a logo image (not used yet)
 `M_TEST` | 255 | 65280 | test value
 
-#### `QROptions` properties
-property | type | default | allowed | description
--------- | ---- | ------- | ------- | -----------
-`$version` | int | `QRCode::VERSION_AUTO` | 1...40 | the [QR Code version number](http://www.qrcode.com/en/about/version.html)
-`$versionMin` | int | 1 | 1...40 | Minimum QR version (if `$version = QRCode::VERSION_AUTO`)
-`$versionMax` | int | 40 | 1...40 | Maximum QR version (if `$version = QRCode::VERSION_AUTO`)
-`$eccLevel` | int | `QRCode::ECC_L` | `QRCode::ECC_X` | Error correct level, where X = L (7%), M (15%), Q (25%), H (30%)
-`$maskPattern` | int | `QRCode::MASK_PATTERN_AUTO` | 0...7 | Mask Pattern to use
-`$addQuietzone` | bool | true | - | Add a "quiet zone" (margin) according to the QR code spec
-`$quietzoneSize` | int | 4 | clamped to 0 ... `$matrixSize / 2` | Size of the quiet zone
-`$outputType` | string | `QRCode::OUTPUT_IMAGE_PNG` | `QRCode::OUTPUT_*` | built-in output type
-`$cachefile` | string | null | * | optional cache file path
-`$eol` | string | `PHP_EOL` | * | newline string (HTML, SVG, TEXT)
-`$scale` | int | 5 | * | size of a QR code pixel (SVG, IMAGE_*), HTML -> via CSS
-`$cssClass` | string | null | * | a common css class
-`$textDark` | string | '🔴' | * | string substitute for dark
-`$textLight` | string | '⭕' | * | string substitute for light
-`$imageBase64` | bool | true | - | whether to return the image data as base64 or raw like from `file_get_contents()`
-`$imageTransparent` | bool | true | - | toggle transparency (no jpeg support)
-`$imageTransparencyBG` | array | `[255, 255, 255]` | `[R, G, B]` | the RGB values for the transparent color, see [`imagecolortransparent()`](http://php.net/manual/function.imagecolortransparent.php)
-`$pngCompression` | int | -1 | -1 ... 9 | `imagepng()` compression level, -1 = auto
-`$jpegQuality` | int | 85 | 0 - 100 | `imagejpeg()` quality
-`$moduleValues` | array | array | array | Module values map, see [Custom output modules](#custom-output-modules)
 
 ### Notes
 The QR encoder, especially the subroutines for mask pattern testing, can cause high CPU load on increased matrix size.
