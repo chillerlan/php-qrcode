@@ -122,7 +122,7 @@ class QRCode{
 			throw new QRCodeException('Invalid error correct level: '.$options->eccLevel);
 		}
 
-		if(!is_array($options->imageTransparencyBG || count($options->imageTransparencyBG) < 3)){
+		if(!is_array($options->imageTransparencyBG) || count($options->imageTransparencyBG) < 3){
 			$options->imageTransparencyBG = [255, 255, 255];
 		}
 
