@@ -321,8 +321,6 @@ class QRCode{
 	/**
 	 * a dummy
 	 *
-	 * @codeCoverageIgnore
-	 *
 	 * @param $data
 	 *
 	 * @return bool

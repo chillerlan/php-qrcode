@@ -12,13 +12,17 @@
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\{QRCode, Data\QRMatrix};
 
 /**
  * Converts the matrix into images, raw or base64 output
  */
 class QRImage extends QROutputAbstract{
+
+	const transparencyTypes = [
+		QRCode::OUTPUT_IMAGE_PNG,
+		QRCode::OUTPUT_IMAGE_GIF,
+	];
 
 	protected $moduleValues = [
 		// light
@@ -43,39 +47,50 @@ class QRImage extends QROutputAbstract{
 	];
 
 	/**
+	 * @see imagecreatetruecolor()
+	 * @var resource
+	 */
+	protected $image;
+
+	/**
+	 * @var int
+	 */
+	protected $scale;
+
+	/**
+	 * @var int
+	 */
+	protected $length;
+
+	/**
+	 * @see imagecolorallocate()
+	 * @var int
+	 */
+	protected $background;
+
+	/**
 	 * @return string
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function dump():string{
-		$scale        = $this->options->scale;
-		$length       = $this->moduleCount * $scale;
-		$image        = imagecreatetruecolor($length, $length);
-		$background   = imagecolorallocate($image, ...$this->options->imageTransparencyBG);
-		$moduleValues = is_array($this->options->moduleValues[QRMatrix::M_DATA])
+
+		if($this->options->cachefile !== null && !is_writable(dirname($this->options->cachefile))){
+			throw new QRCodeOutputException('Could not write data to cache file: '.$this->options->cachefile);
+		}
+
+		$this->setImage();
+
+		$moduleValues = is_array($this->options->moduleValues[$this->matrix::M_DATA])
 			? $this->options->moduleValues // @codeCoverageIgnore
 			: $this->moduleValues;
 
-		if((bool)$this->options->imageTransparent && in_array($this->options->outputType, [QRCode::OUTPUT_IMAGE_PNG, QRCode::OUTPUT_IMAGE_GIF,], true)){
-			imagecolortransparent($image, $background);
-		}
-
-		imagefilledrectangle($image, 0, 0, $length, $length, $background);
-
 		foreach($this->matrix->matrix() as $y => $row){
 			foreach($row as $x => $pixel){
-				$color = imagecolorallocate($image, ...$moduleValues[$pixel]);
-
-				imagefilledrectangle($image, $x * $scale, $y * $scale, ($x + 1) * $scale - 1, ($y + 1) * $scale - 1, $color);
+				$this->setPixel($x, $y, imagecolorallocate($this->image, ...$moduleValues[$pixel]));
 			}
 		}
 
-		ob_start();
-
-		call_user_func_array([$this, $this->options->outputType ?? QRCode::OUTPUT_IMAGE_PNG], [&$image]);
-
-		$imageData = ob_get_contents();
-		imagedestroy($image);
-
-		ob_end_clean();
+		$imageData = $this->dumpImage();
 
 		if((bool)$this->options->imageBase64){
 			$imageData = 'data:image/'.$this->options->outputType.';base64,'.base64_encode($imageData);
@@ -85,34 +100,90 @@ class QRImage extends QROutputAbstract{
 	}
 
 	/**
-	 * @param $image
+	 * @return void
 	 */
-	protected function png(&$image){
+	protected function setImage(){
+		$this->scale        = $this->options->scale;
+		$this->length       = $this->moduleCount * $this->scale;
+		$this->image        = imagecreatetruecolor($this->length, $this->length);
+		$this->background   = imagecolorallocate($this->image, ...$this->options->imageTransparencyBG);
+
+		if((bool)$this->options->imageTransparent && in_array($this->options->outputType, $this::transparencyTypes, true)){
+			imagecolortransparent($this->image, $this->background);
+		}
+
+		imagefilledrectangle($this->image, 0, 0, $this->length, $this->length, $this->background);
+	}
+
+	/**
+	 * @param $x
+	 * @param $y
+	 * @param $color
+	 * @return void
+	 */
+	protected function setPixel($x, $y, $color){
+		imagefilledrectangle(
+			$this->image,
+			$x * $this->scale,
+			$y * $this->scale,
+			($x + 1) * $this->scale - 1,
+			($y + 1) * $this->scale - 1,
+			$color
+		);
+	}
+
+	/**
+	 * @return string
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
+	protected function dumpImage():string {
+		ob_start();
+
+		try{
+			call_user_func([$this, $this->options->outputType ?? QRCode::OUTPUT_IMAGE_PNG]);
+		}
+		// not going to cover edge cases
+		// @codeCoverageIgnoreStart
+		catch(\Exception $e){
+			throw new QRCodeOutputException($e->getMessage());
+		}
+		// @codeCoverageIgnoreEnd
+
+		$imageData = ob_get_contents();
+		imagedestroy($this->image);
+
+		ob_end_clean();
+
+		return $imageData;
+	}
+
+	/**
+	 * @return void
+	 */
+	protected function png(){
 		imagepng(
-			$image,
+			$this->image,
 			$this->options->cachefile,
 			in_array($this->options->pngCompression, range(-1, 9), true)
 				? $this->options->pngCompression
 				: -1
 		);
-
 	}
 
 	/**
 	 * Jiff - like... JitHub!
-	 *
-	 * @param $image
+	 * @return void
 	 */
-	protected function gif(&$image){
-		imagegif($image, $this->options->cachefile);
+	protected function gif(){
+		imagegif($this->image, $this->options->cachefile);
 	}
 
 	/**
-	 * @param $image
+	 * @return void
 	 */
-	protected function jpg(&$image){
+	protected function jpg(){
 		imagejpeg(
-			$image,
+			$this->image,
 			$this->options->cachefile,
 			in_array($this->options->jpegQuality, range(0, 100), true)
 				? $this->options->jpegQuality

@@ -30,21 +30,6 @@ class QRCodeTest extends QRTestAbstract{
 		$this->qrcode = $this->reflection->newInstance();
 	}
 
-	/*
-	public function optionsDataProvider(){
-		return [
-			[QROptions::class],
-#			[],
-		];
-	}
-
-	public function testInstance($options){
-		$q = $this->reflection->newInstanceArgs([new $options]);
-		$this->assertInstanceOf($this->FQCN, $q);
-#		print_r($q->render('test'));
-	}
-	*/
-
 	public function testIsNumber(){
 		$this->assertTrue($this->qrcode->isNumber('0123456789'));
 		$this->assertFalse($this->qrcode->isNumber('ABC'));
@@ -100,7 +85,12 @@ class QRCodeTest extends QRTestAbstract{
 		$this->qrcode->setOptions(new QROptions(['outputType' => 'foo']))->render('test');
 	}
 
-
-
+	/**
+	 * @expectedException \chillerlan\QRCode\Data\QRCodeDataException
+	 * @expectedExceptionMessage QRCode::getMatrix() No data given.
+	 */
+	public function testGetMatrixException(){
+		$this->qrcode->getMatrix('');
+	}
 
 }

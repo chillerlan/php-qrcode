@@ -23,13 +23,20 @@ class QRMarkup extends QROutputAbstract{
 	 * @return string
 	 */
 	public function dump(){
-		switch($this->options->outputType){
-			case QRCode::OUTPUT_MARKUP_HTML:
-				return $this->toHTML();
-			case QRCode::OUTPUT_MARKUP_SVG :
-			default:
-				return $this->toSVG();
+
+		if($this->options->cachefile !== null && !is_writable(dirname($this->options->cachefile))){
+			throw new QRCodeOutputException('Could not write data to cache file: '.$this->options->cachefile);
 		}
+
+		$data = $this->options->outputType === QRCode::OUTPUT_MARKUP_HTML
+			? $this->toHTML()
+			: $this->toSVG();
+
+		if($this->options->cachefile !== null){
+			$this->saveToFile($data);
+		}
+
+		return $data;
 	}
 
 	/**
@@ -45,14 +52,11 @@ class QRMarkup extends QROutputAbstract{
 				$html .= '<span style="background: '.($this->options->moduleValues[$pixel] ?: 'lightgrey').';"></span>';
 			}
 
-			$html .= '</div>';
-			$html .= $this->options->eol;
+			$html .= '</div>'.$this->options->eol;
 		}
 
 		if($this->options->cachefile){
-			$html = '<!DOCTYPE html><head><meta charset="UTF-8"></head><body>'.$this->options->eol.$html.'</body>';
-
-			return $this->saveToFile($html);
+			return '<!DOCTYPE html><head><meta charset="UTF-8"></head><body>'.$this->options->eol.$html.'</body>';
 		}
 
 		return $html;
@@ -117,9 +121,7 @@ class QRMarkup extends QROutputAbstract{
 
 		// if saving to file, append the correct headers
 		if($this->options->cachefile){
-			$svg = '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'.$this->options->eol.$svg;
-
-			return $this->saveToFile($svg);
+			return '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'.$this->options->eol.$svg;
 		}
 
 		return $svg;

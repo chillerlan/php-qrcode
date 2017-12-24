@@ -24,39 +24,48 @@ class QRString extends QROutputAbstract{
 	 */
 	public function dump():string{
 
-		switch($this->options->outputType){
-			case QRCode::OUTPUT_STRING_TEXT:
-				return $this->toString();
-			case QRCode::OUTPUT_STRING_JSON:
-			default:
-				return json_encode($this->matrix->matrix());
+		$data = $this->options->outputType === QRCode::OUTPUT_STRING_JSON
+			? json_encode($this->matrix->matrix())
+			: $this->toString();
+
+		if($this->options->cachefile !== null){
+
+			if(!is_writable(dirname($this->options->cachefile))){
+				throw new QRCodeOutputException('Could not write data to cache file: '.$this->options->cachefile);
+			}
+
+			$this->saveToFile($data);
 		}
 
+		return $data;
 	}
 
 	/**
 	 * @return string
 	 */
 	protected function toString():string{
-		$str = '';
+		$str = [];
 
 		foreach($this->matrix->matrix() as $row){
+			$r = [];
+
 			foreach($row as $col){
 				$col = $this->options->moduleValues[$col];
-				
+
 				// fallback
 				if(is_bool($col) || !is_string($col)){
-					$col = $col ? $this->options->textDark : $this->options->textLight;
+					$col = $col
+						? $this->options->textDark
+						: $this->options->textLight;
 				}
 
-
-				$str .= $col;
+				$r[] = $col;
 			}
 
-			$str .= $this->options->eol;
+			$str[] = implode('', $r);
 		}
 
-		return $str;
+		return implode($this->options->eol, $str);
 	}
 
 }

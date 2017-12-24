@@ -12,9 +12,7 @@
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\{
-	Data\QRMatrix, QROptions
-};
+use chillerlan\QRCode\{Data\QRMatrix, QROptions};
 
 /**
  *
@@ -41,36 +39,22 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 *
 	 * @param \chillerlan\QRCode\QROptions     $options
 	 * @param \chillerlan\QRCode\Data\QRMatrix $matrix
-	 *
-	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function __construct(QROptions $options, QRMatrix $matrix){
-		$this->options = $options;
-
-		$this->moduleCount = $matrix->size();
-
-		if($this->moduleCount < 21){  // minimum QR modules @todo: quet zone
-			throw new QRCodeOutputException('Invalid matrix!');
-		}
-
-		$this->matrix = $matrix;
+		$this->options     = $options;
+		$this->matrix      = $matrix;
+		$this->moduleCount = $this->matrix->size();
 	}
 
 	/**
-	 * @param string $data
+	 * @see file_put_contents()
 	 *
-	 * @return bool
-	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 * @param string $data
+
+	 * @return bool|int
 	 */
-	protected function saveToFile(string $data):bool {
-
-		try{
-			return (bool)file_put_contents($this->options->cachefile, $data);
-		}
-		catch(\Exception $e){
-			throw new QRCodeOutputException('Could not write data to cache file: '.$e->getMessage());
-		}
-
+	protected function saveToFile(string $data) {
+		return file_put_contents($this->options->cachefile, $data);
 	}
 
 }
