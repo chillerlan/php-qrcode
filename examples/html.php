@@ -34,15 +34,14 @@ header('Content-Type: text/html; charset=utf-8');
 			padding: 0;
 		}
 
-		/* row element */
+		/* rows */
 		div.qrcode > div {
 			margin: 0;
 			padding: 0;
 			height: 10px;
 		}
 
-		/* column element(s) */
-		div.qrcode > div > span,
+		/* modules */
 		div.qrcode > div > span {
 			display: inline-block;
 			width: 10px;
@@ -52,11 +51,6 @@ header('Content-Type: text/html; charset=utf-8');
 		div.qrcode > div > span {
 			background-color: #ccc;
 		}
-
-		div.qrcode > div > span {
-			background-color: #fff;
-		}
-
 	</style>
 </head>
 <body>
