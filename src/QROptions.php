@@ -25,6 +25,7 @@ use chillerlan\Traits\Container;
  * @property bool   $quietzoneSize
  *
  * @property string $outputType
+ * @property string $outputInterface
  * @property string $cachefile
  *
  * @property string $eol
@@ -111,10 +112,18 @@ class QROptions{
 	 * QRCode::OUTPUT_MARKUP_XXXX where XXXX = HTML, SVG
 	 * QRCode::OUTPUT_IMAGE_XXX where XXX = PNG, GIF, JPG
 	 * QRCode::OUTPUT_STRING_XXXX where XXXX = TEXT, JSON
+	 * QRCode::OUTPUT_CUSTOM
 	 *
 	 * @var string
 	 */
 	protected $outputType = QRCode::OUTPUT_IMAGE_PNG;
+
+	/**
+	 * the FQCN of the custom QROutputInterface if $outputType is set to QRCode::OUTPUT_CUSTOM
+	 *
+	 * @var string
+	 */
+	protected $outputInterface;
 
 	/**
 	 * /path/to/cache.file

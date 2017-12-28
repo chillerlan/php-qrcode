@@ -264,13 +264,25 @@ class MyCustomOptions extends QROptions{
 }
 ```
 
-Invoke a fresh custom `QROutputInterface`, see also `QRCode::initOutputInterface()`.
+You can then call `QRCode` with the custom modules...
 ```php
-$qrOutputInterface = new MyCustomOutput($myCustomOptions, (new QRCode($myCustomOptions))->getMatrix($data));
+$myCustomOptions = new MyCustomOptions([
+	'version'         => 5,
+	'eccLevel'        => QRCode::ECC_L,
+	'outputType'      => QRCode::OUTPUT_CUSTOM,
+	'outputInterface' => MyCustomOutput::class,
+	// custom settings
+	'myParam'         => 'whatever value',
+]);
+
+(new QRCode($myCustomOptions))->render($data);
 ```
 
-...and dump the output, which is equivalent to `QRCode::render()`
+...or you can invoke the `QROutputInterface` manually.
 ```php
+$qrOutputInterface = new MyCustomOutput($myCustomOptions, (new QRCode($myCustomOptions))->getMatrix($data));
+
+//dump the output, which is equivalent to QRCode::render()
 $qrOutputInterface->dump();
 ```
 
@@ -296,6 +308,7 @@ name | description
 `OUTPUT_MARKUP_SVG`, `OUTPUT_MARKUP_HTML` | `QROptions::$outputType` markup
 `OUTPUT_IMAGE_PNG`, `OUTPUT_IMAGE_JPG`, `OUTPUT_IMAGE_GIF` | `QROptions::$outputType` image
 `OUTPUT_STRING_JSON`, `OUTPUT_STRING_TEXT` | `QROptions::$outputType` string
+`OUTPUT_CUSTOM` | `QROptions::$outputType`, requires `QROptions::$outputInterface`
 `ECC_L`, `ECC_M`, `ECC_Q`, `ECC_H`, | ECC-Level: 7%, 15%, 25%, 30%  in `QROptions::$eccLevel`
 `DATA_NUMBER`, `DATA_ALPHANUM`, `DATA_BYTE`, `DATA_KANJI` | `QRDataInterface::$datamode`
 
@@ -310,6 +323,7 @@ property | type | default | allowed | description
 `$addQuietzone` | bool | true | - | Add a "quiet zone" (margin) according to the QR code spec
 `$quietzoneSize` | int | 4 | clamped to 0 ... `$matrixSize / 2` | Size of the quiet zone
 `$outputType` | string | `QRCode::OUTPUT_IMAGE_PNG` | `QRCode::OUTPUT_*` | built-in output type
+`$outputInterface` | string | null | * | FQCN of the custom `QROutputInterface` if `QROptions::$outputType` is set to `QRCode::OUTPUT_CUSTOM`
 `$cachefile` | string | null | * | optional cache file path
 `$eol` | string | `PHP_EOL` | * | newline string (HTML, SVG, TEXT)
 `$scale` | int | 5 | * | size of a QR code pixel (SVG, IMAGE_*), HTML -> via CSS

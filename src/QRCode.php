@@ -44,6 +44,8 @@ class QRCode{
 	const OUTPUT_STRING_JSON  = 'json';
 	const OUTPUT_STRING_TEXT  = 'text';
 
+	const OUTPUT_CUSTOM       = 'custom';
+
 	const VERSION_AUTO        = -1;
 	const MASK_PATTERN_AUTO   = -1;
 
@@ -243,6 +245,10 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function initOutputInterface(string $data):QROutputInterface{
+
+		if($this->options->outputType === $this::OUTPUT_CUSTOM && $this->options->outputInterface !== null){
+			return $this->loadClass($this->options->outputInterface, QROutputInterface::class, $this->options, $this->getMatrix($data));
+		}
 
 		foreach($this::OUTPUT_MODES as $outputInterface => $modes){
 
