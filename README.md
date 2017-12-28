@@ -122,30 +122,6 @@ foreach($matrix->matrix() as $y => $row){
 }
 ```
 
-#### Authenticator trait
-This library includes [codemasher/php-authenticator](https://github.com/codemasher/php-authenticator) to create `otpauth://` QR Codes for use with mobile authenticators, all in a single trait:
-```php
-use chillerlan\QRCode\{QRCode, QROptions, Traits\QRAuthenticator};
-
-class MyAuthenticatorClass{
-	use QRAuthenticator;
-
-	public function getQRCode(){
-	
-		// data fetched from wherever
-		$this->authenticatorSecret = 'SECRETTEST234567';
-		$label = 'my label';
-		$issuer = 'example.com';
-		
-		// set QROptions options if needed
-		$this->qrOptions = new QROptions(['outputType' => QRCode::OUTPUT_MARKUP_SVG]);
-
-		return $this->getURIQRCode($label, $issuer);
-	}
-
-}
-```
-
 Have a look [in this folder](https://github.com/codemasher/php-qrcode/tree/master/examples) for some more usage examples.
 
 #### Custom module values
@@ -218,7 +194,6 @@ $options->moduleValues = [
 
 Combined with a custom output interface and your imagination you can create some cool effects that way!
 
-
 #### Custom `QROutputInterface`
 Instead of bloating your code you can simply create your own output interface by extending `QROutputAbstract`. Have a look at the [built-in output modules](https://github.com/codemasher/php-qrcode/tree/master/src/Output).
 
@@ -284,6 +259,30 @@ $qrOutputInterface = new MyCustomOutput($myCustomOptions, (new QRCode($myCustomO
 
 //dump the output, which is equivalent to QRCode::render()
 $qrOutputInterface->dump();
+```
+
+#### Authenticator trait
+This library includes [codemasher/php-authenticator](https://github.com/codemasher/php-authenticator) to create `otpauth://` QR Codes for use with mobile authenticators, all in a single trait:
+```php
+use chillerlan\QRCode\{QRCode, QROptions, Traits\QRAuthenticator};
+
+class MyAuthenticatorClass{
+	use QRAuthenticator;
+
+	public function getQRCode(){
+	
+		// data fetched from wherever
+		$this->authenticatorSecret = 'SECRETTEST234567';
+		$label = 'my label';
+		$issuer = 'example.com';
+		
+		// set QROptions options if needed
+		$this->qrOptions = new QROptions(['outputType' => QRCode::OUTPUT_MARKUP_SVG]);
+
+		return $this->getURIQRCode($label, $issuer);
+	}
+
+}
 ```
 
 ### API
