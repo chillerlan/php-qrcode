@@ -32,6 +32,8 @@ use chillerlan\Traits\Container;
  * @property int    $scale
  *
  * @property string $cssClass
+ * @property string $svgOpacity
+ * @property string $svgDefs
  *
  * @property string $textDark
  * @property string $textLight
@@ -153,6 +155,22 @@ class QROptions{
 	 * @var string
 	 */
 	protected $cssClass;
+
+	/**
+	 * SVG opacity
+	 *
+	 * @var float
+	 */
+	protected $svgOpacity = 1.0;
+
+	/**
+	 * anything between <defs>
+	 *
+	 * @see https://developer.mozilla.org/docs/Web/SVG/Element/defs
+	 *
+	 * @var string
+	 */
+	protected $svgDefs = '<style>rect{shape-rendering:crispEdges}</style>';
 
 	/**
 	 * string substitute for dark

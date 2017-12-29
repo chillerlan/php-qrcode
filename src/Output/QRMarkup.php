@@ -21,6 +21,7 @@ class QRMarkup extends QROutputAbstract{
 
 	/**
 	 * @return string
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function dump(){
 
@@ -68,52 +69,60 @@ class QRMarkup extends QROutputAbstract{
 	 * @return string|bool
 	 */
 	protected function toSVG(){
-		$length = ($this->moduleCount + ($this->options->addQuietzone ? 8 : 0)) * $this->options->scale;
+		$scale  = $this->options->scale;
+		$length = $this->moduleCount * $scale;
+		$matrix = $this->matrix->matrix();
 
-		// svg header
-		$svg = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="'.$length.'" height="'.$length.'" viewBox="0 0 '.$length.' '.$length.'">'.$this->options->eol.
-		       '<defs><style>rect{shape-rendering:crispEdges}</style></defs>'.$this->options->eol;
+		$svg = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="'.$length.'px" height="'.$length.'px">'
+		       .$this->options->eol
+		       .'<defs>'.$this->options->svgDefs.'</defs>'
+		       .$this->options->eol;
 
-		// @todo: optimize -> see https://github.com/alexeyten/qr-image/blob/master/lib/vector.js
-		foreach($this->options->moduleValues as $key => $value){
+		foreach($this->options->moduleValues as $M_TYPE => $value){
 
 			// fallback
 			if(is_bool($value)){
 				$value = $value ? '#000' : '#fff';
 			}
 
-			// svg body
-			foreach($this->matrix->matrix() as $y => $row){
+			$path = '';
+
+			foreach($matrix as $y => $row){
 				//we'll combine active blocks within a single row as a lightweight compression technique
-				$from  = -1;
+				$start = null;
 				$count = 0;
 
-				foreach($row as $x => $pixel){
-					if($pixel === $key){
+				foreach($row as $x => $module){
+
+					if($module === $M_TYPE){
 						$count++;
 
-						if($from < 0){
-							$from = $x;
+						if($start === null){
+							$start = $x * $scale;
+						}
+
+						if($row[$x + 1] ?? false){
+							continue;
 						}
 					}
-					elseif($from >= 0){
-						$svg .= '<rect x="'.($from * $this->options->scale).'" y="'.($y * $this->options->scale)
-						        .'" width="'.($this->options->scale * $count).'" height="'.$this->options->scale.'" fill="'.$value.'"'
-						        .(trim($this->options->cssClass) !== '' ? ' class="'.$this->options->cssClass.'"' :'').' />'
-						        .$this->options->eol;
+
+					if($count > 0){
+						$len = $count * $scale;
+						$path .= 'M' .$start. ' ' .($y * $scale). ' h'.$len.' v'.$scale.' h-'.$len.'Z ';
 
 						// reset count
-						$from  = -1;
 						$count = 0;
+						$start = null;
 					}
+
 				}
 
-				// close off the row, if applicable
-				if($from >= 0){
-					$svg .= '<rect x="'.($from * $this->options->scale).'" y="'.($y * $this->options->scale)
-					        .'" width="'.($this->options->scale * $count).'" height="'.$this->options->scale.'" class="'.$this->options->cssClass.'" fill="'.$value.'" />'.$this->options->eol;
-				}
 			}
+
+			if(!empty($path)){
+				$svg .= '<path class="qr-'.$M_TYPE.' '.$this->options->cssClass.'" stroke="transparent" fill="'.$value.'" fill-opacity="'.$this->options->svgOpacity.'" d="'.$path.'" />';
+			}
+
 		}
 
 		// close svg
