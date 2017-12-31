@@ -3,13 +3,14 @@
 A PHP7 QR Code library based on the [implementation](https://github.com/kazuhikoarase/qrcode-generator) by [Kazuhiko Arase](https://github.com/kazuhikoarase), 
 namespaced, cleaned up, improved and other stuff.
 
-[![version][packagist-badge]][packagist]
-[![license][license-badge]][license]
-[![Travis][travis-badge]][travis]
-[![Coverage][coverage-badge]][coverage]
-[![Scrunitizer][scrutinizer-badge]][scrutinizer]
-[![packagist][downloads-badge]][downloads]
-[![paypal][donate-badge]][donate]
+[![Packagist version][packagist-badge]][packagist]
+[![License][license-badge]][license]
+[![Travis CI][travis-badge]][travis]
+[![CodeCov][coverage-badge]][coverage]
+[![Scrunitizer CI][scrutinizer-badge]][scrutinizer]
+[![Gemnasium][gemnasium-badge]][gemnasium]
+[![Packagist downloads][downloads-badge]][downloads]
+[![PayPal donate][donate-badge]][donate]
 
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?style=flat-square
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
@@ -21,6 +22,8 @@ namespaced, cleaned up, improved and other stuff.
 [coverage]: https://codecov.io/github/codemasher/php-qrcode
 [scrutinizer-badge]: https://img.shields.io/scrutinizer/g/codemasher/php-qrcode.svg?style=flat-square
 [scrutinizer]: https://scrutinizer-ci.com/g/codemasher/php-qrcode
+[gemnasium-badge]: https://img.shields.io/gemnasium/codemasher/php-qrcode.svg?style=flat-square
+[gemnasium]: https://gemnasium.com/github.com/codemasher/php-qrcode
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?style=flat-square
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 [donate-badge]: https://img.shields.io/badge/donate-paypal-ff33aa.svg?style=flat-square
