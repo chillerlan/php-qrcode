@@ -52,6 +52,10 @@ Download the desired version of the package from [master](https://github.com/cod
 
 Profit!
 
+#### Framework Integration
+- Drupal
+  - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
+
 ### Usage
 We want to encode this data into a QRcode image:
 ```php
