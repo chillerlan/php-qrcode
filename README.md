@@ -55,6 +55,8 @@ Profit!
 #### Framework Integration
 - Drupal
   - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
+- WordPress
+  - [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)  
 
 ### Usage
 We want to encode this data into a QRcode image:
