@@ -69,7 +69,7 @@ trait Container{
 	 * @return bool
 	 */
 	public function __isset($property){
-		return (property_exists($this, $property) && !$this->__isPrivate($property)) || ($this->env instanceof DotEnv && $this->env->get($property));
+		return (property_exists($this, $property) && !$this->__isPrivate($property));
 	}
 
 	/**
