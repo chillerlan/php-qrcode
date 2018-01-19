@@ -58,7 +58,6 @@ class BitBuffer{
 	 * @return \chillerlan\QRCode\Helpers\BitBuffer
 	 */
 	public function putBit($bit){
-		var_dump(func_get_args());
 		$bufIndex = floor($this->length / 8);
 
 		if(count($this->buffer) <= $bufIndex){
