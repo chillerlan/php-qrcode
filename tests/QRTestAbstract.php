@@ -38,7 +38,7 @@ abstract class QRTestAbstract extends TestCase{
 	 *
 	 * @return \ReflectionMethod
 	 */
-	protected function getMethod(string $method):ReflectionMethod {
+	protected function getMethod($method) {
 		$method = $this->reflection->getMethod($method);
 		$method->setAccessible(true);
 
@@ -50,7 +50,7 @@ abstract class QRTestAbstract extends TestCase{
 	 *
 	 * @return \ReflectionProperty
 	 */
-	protected function getProperty(string $property):ReflectionProperty{
+	protected function getProperty($property){
 		$property = $this->reflection->getProperty($property);
 		$property->setAccessible(true);
 
@@ -64,7 +64,7 @@ abstract class QRTestAbstract extends TestCase{
 	 *
 	 * @return void
 	 */
-	protected function setProperty($object, string $property, $value){
+	protected function setProperty($object, $property, $value){
 		$property = $this->getProperty($property);
 		$property->setAccessible(true);
 		$property->setValue($object, $value);

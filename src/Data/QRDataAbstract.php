@@ -12,13 +12,12 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\{
-	QRCode, QRCodeException, QROptions
-};
-use chillerlan\QRCode\Helpers\{
-	BitBuffer, Polynomial
-};
-use chillerlan\Traits\ClassLoader;
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QRCodeException;
+use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Helpers\BitBuffer;
+use chillerlan\QRCode\Helpers\Polynomial;
+use chillerlan\QRCode\Traits\ClassLoader;
 
 /**
  * Processes the binary data and maps it on a matrix which is then being returned
@@ -91,7 +90,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 * @param \chillerlan\QRCode\QROptions $options
 	 * @param string|null                  $data
 	 */
-	public function __construct(QROptions $options, string $data = null){
+	public function __construct(QROptions $options, $data = null){
 		$this->options = $options;
 
 		if($data !== null){
@@ -106,7 +105,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 *
 	 * @return \chillerlan\QRCode\Data\QRDataInterface
 	 */
-	public function setData(string $data):QRDataInterface{
+	public function setData($data){
 
 		if($this->datamode === QRCode::DATA_KANJI){
 			$data = mb_convert_encoding($data, 'SJIS', mb_detect_encoding($data));
@@ -133,7 +132,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
-	public function initMatrix(int $maskPattern, bool $test = null):QRMatrix{
+	public function initMatrix($maskPattern, $test = null){
 		/** @var \chillerlan\QRCode\Data\QRMatrix $matrix */
 		$matrix = $this->loadClass(QRMatrix::class, null, $this->version, $this->options->eccLevel);
 
@@ -156,7 +155,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 * @codeCoverageIgnore
 	 */
-	protected function getLengthBits():int {
+	protected function getLengthBits() {
 
 		 foreach([9, 26, 40] as $key => $breakpoint){
 			 if($this->version <= $breakpoint){
@@ -174,7 +173,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 *
 	 * @return int
 	 */
-	protected function getLength(string $data):int{
+	protected function getLength($data){
 		return strlen($data);
 	}
 
@@ -184,11 +183,11 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	protected function getMinimumVersion():int{
+	protected function getMinimumVersion(){
 
 		// guess the version number within the given range
 		foreach(range(max(1, $this->options->versionMin), min($this->options->versionMax, 40)) as $version){
-			$maxlength = $this::MAX_LENGTH[$version][QRCode::DATA_MODES[$this->datamode]][QRCode::ECC_MODES[$this->options->eccLevel]];
+			$maxlength = self::MAX_LENGTH[$version][QRCode::DATA_MODES[$this->datamode]][QRCode::ECC_MODES[$this->options->eccLevel]];
 
 			if($this->strlen <= $maxlength){
 				return $version;
@@ -205,7 +204,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 *
 	 * @return void
 	 */
-	abstract protected function write(string $data);
+	abstract protected function write($data);
 
 	/**
 	 * writes the string data to the BitBuffer
@@ -215,11 +214,11 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 * @return \chillerlan\QRCode\Data\QRDataAbstract
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	protected function writeBitBuffer(string $data):QRDataInterface {
+	protected function writeBitBuffer($data) {
 		$this->bitBuffer = new BitBuffer;
 
 		// @todo: fixme, get real length
-		$MAX_BITS = $this::MAX_BITS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
+		$MAX_BITS = self::MAX_BITS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
 
 		$this->bitBuffer
 			->clear()
@@ -272,8 +271,8 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 *
 	 * @return array
 	 */
-	protected function maskECC():array {
-		list($l1, $l2, $b1, $b2) = $this::RSBLOCKS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
+	protected function maskECC() {
+		list($l1, $l2, $b1, $b2) = self::RSBLOCKS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
 
 		$rsBlocks       = array_fill(0, $l1, [$b1, $b2]);
 		$rsCount        = $l1 + $l2;
@@ -338,7 +337,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 *
 	 * @return int[]
 	 */
-	protected function poly(int $key, int $count):array{
+	protected function poly($key, $count){
 		$rsPoly  = new Polynomial;
 		$modPoly = new Polynomial;
 

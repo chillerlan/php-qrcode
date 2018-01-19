@@ -12,7 +12,8 @@
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\{QRCode, Data\QRMatrix};
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Data\QRMatrix;
 
 /**
  * Converts the matrix into images, raw or base64 output
@@ -72,7 +73,7 @@ class QRImage extends QROutputAbstract{
 	 * @return string
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	public function dump():string{
+	public function dump(){
 
 		if($this->options->cachefile !== null && !is_writable(dirname($this->options->cachefile))){
 			throw new QRCodeOutputException('Could not write data to cache file: '.$this->options->cachefile);
@@ -80,7 +81,7 @@ class QRImage extends QROutputAbstract{
 
 		$this->setImage();
 
-		$moduleValues = is_array($this->options->moduleValues[$this->matrix::M_DATA])
+		$moduleValues = is_array($this->options->moduleValues[QRMatrix::M_DATA])
 			? $this->options->moduleValues // @codeCoverageIgnore
 			: $this->moduleValues;
 
@@ -136,11 +137,11 @@ class QRImage extends QROutputAbstract{
 	 * @return string
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function dumpImage():string {
+	protected function dumpImage() {
 		ob_start();
 
 		try{
-			call_user_func([$this, $this->options->outputType ?? QRCode::OUTPUT_IMAGE_PNG]);
+			call_user_func([$this, $this->options->outputType !== null ? $this->options->outputType : QRCode::OUTPUT_IMAGE_PNG]);
 		}
 		// not going to cover edge cases
 		// @codeCoverageIgnoreStart

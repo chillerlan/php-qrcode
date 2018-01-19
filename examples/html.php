@@ -10,7 +10,8 @@
 
 namespace chillerlan\QRCodeExamples;
 
-use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QROptions;
 
 require_once '../vendor/autoload.php';
 

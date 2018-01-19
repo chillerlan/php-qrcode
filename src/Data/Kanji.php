@@ -32,7 +32,7 @@ class Kanji extends QRDataAbstract{
 	/**
 	 * @inheritdoc
 	 */
-	protected function getLength(string $data):int{
+	protected function getLength($data){
 		return mb_strlen($data, 'SJIS');
 	}
 
@@ -42,7 +42,7 @@ class Kanji extends QRDataAbstract{
 	 * @return void
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	protected function write(string $data){
+	protected function write($data){
 		$len = strlen($data);
 
 		for($i = 0; $i + 1 < $len; $i += 2){

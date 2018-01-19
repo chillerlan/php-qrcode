@@ -32,7 +32,7 @@ class Number extends QRDataAbstract{
 	/**
 	 * @inheritdoc
 	 */
-	protected function write(string $data){
+	protected function write($data){
 		$i = 0;
 
 		while($i + 2 < $this->strlen){
@@ -61,7 +61,7 @@ class Number extends QRDataAbstract{
 	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	protected function parseInt(string $string):int {
+	protected function parseInt($string) {
 		$num = 0;
 		$map = str_split('0123456789');
 

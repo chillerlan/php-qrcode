@@ -21,8 +21,9 @@ class QRString extends QROutputAbstract{
 
 	/**
 	 * @return string
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	public function dump():string{
+	public function dump(){
 
 		$data = $this->options->outputType === QRCode::OUTPUT_STRING_JSON
 			? json_encode($this->matrix->matrix())
@@ -43,7 +44,7 @@ class QRString extends QROutputAbstract{
 	/**
 	 * @return string
 	 */
-	protected function toString():string{
+	protected function toString(){
 		$str = [];
 
 		foreach($this->matrix->matrix() as $row){

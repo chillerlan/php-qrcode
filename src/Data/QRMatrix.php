@@ -129,7 +129,7 @@ class QRMatrix{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function __construct(int $version, int $eclevel){
+	public function __construct($version, $eclevel){
 
 		if(!in_array($version, range(1, 40), true)){
 			throw new QRCodeDataException('invalid QR Code version');
@@ -148,28 +148,28 @@ class QRMatrix{
 	/**
 	 * @return array
 	 */
-	public function matrix():array {
+	public function matrix() {
 		return $this->matrix;
 	}
 
 	/**
 	 * @return int
 	 */
-	public function version():int {
+	public function version() {
 		return $this->version;
 	}
 
 	/**
 	 * @return int
 	 */
-	public function eccLevel():int {
+	public function eccLevel() {
 		return $this->eclevel;
 	}
 
 	/**
 	 * @return int
 	 */
-	public function maskPattern():int {
+	public function maskPattern() {
 		return $this->maskPattern;
 	}
 
@@ -180,7 +180,7 @@ class QRMatrix{
 	 *
 	 * @return int
 	 */
-	public function size():int{
+	public function size(){
 		return $this->moduleCount;
 	}
 
@@ -192,7 +192,7 @@ class QRMatrix{
 	 *
 	 * @return int
 	 */
-	public function get(int $x, int $y):int{
+	public function get($x, $y){
 		return $this->matrix[$y][$x];
 	}
 
@@ -209,7 +209,7 @@ class QRMatrix{
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
-	public function set(int $x, int $y, bool $value, int $M_TYPE):QRMatrix{
+	public function set($x, $y, $value, $M_TYPE){
 		$this->matrix[$y][$x] = $M_TYPE << ($value ? 8 : 0);
 
 		return $this;
@@ -229,7 +229,7 @@ class QRMatrix{
 	 *
 	 * @return bool
 	 */
-	public function check(int $x, int $y):bool{
+	public function check($x, $y){
 		return $this->matrix[$y][$x] >> 8 > 0;
 	}
 
@@ -239,7 +239,7 @@ class QRMatrix{
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
-	public function setDarkModule():QRMatrix{
+	public function setDarkModule(){
 		$this->set(8, 4 * $this->version + 9, true, $this::M_DARKMODULE);
 
 		return $this;
@@ -250,7 +250,7 @@ class QRMatrix{
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
-	public function setFinderPattern():QRMatrix{
+	public function setFinderPattern(){
 
 		$pos = [
 			[0, 0], // top left
@@ -279,7 +279,7 @@ class QRMatrix{
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
-	public function setSeparators():QRMatrix{
+	public function setSeparators(){
 
 		$h = [
 			[7, 0],
@@ -311,7 +311,7 @@ class QRMatrix{
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
-	public function setAlignmentPattern():QRMatrix{
+	public function setAlignmentPattern(){
 		$pattern = $this::alignmentPattern[$this->version];
 
 		foreach($pattern as $y){
@@ -342,7 +342,7 @@ class QRMatrix{
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
-	public function setTimingPattern():QRMatrix{
+	public function setTimingPattern(){
 
 		foreach(range(8, $this->moduleCount - 8 - 1) as $i){
 
@@ -367,10 +367,10 @@ class QRMatrix{
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
-	public function setVersionNumber(bool $test = null):QRMatrix{
+	public function setVersionNumber($test = null){
 		$test = $test !== null ? $test : false;
 
-		$bits = $this::versionPattern[$this->version] ?? false;
+		$bits = array_key_exists($this->version, self::versionPattern) ? self::versionPattern[$this->version] : false;
 
 		if($bits !== false){
 
@@ -397,9 +397,11 @@ class QRMatrix{
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
-	public function setFormatInfo(int $maskPattern, bool $test = null):QRMatrix{
+	public function setFormatInfo($maskPattern, $test = null){
 		$test = $test !== null ? $test : false;
-		$bits = $this::formatPattern[QRCode::ECC_MODES[$this->eclevel]][$maskPattern] ?? 0;
+		$bits = array_key_exists($this->eclevel, QRCode::ECC_MODES) && array_key_exists($maskPattern, self::formatPattern[QRCode::ECC_MODES[$this->eclevel]])
+			? self::formatPattern[QRCode::ECC_MODES[$this->eclevel]][$maskPattern] : 0;
+
 		$t    = $this::M_FORMAT;
 
 		for($i = 0; $i < 15; $i++){
@@ -438,8 +440,9 @@ class QRMatrix{
 	 * @param int|null $size
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function setQuietZone(int $size = null):QRMatrix{
+	public function setQuietZone($size = null){
 
 		if($this->matrix[$this->moduleCount - 1][$this->moduleCount - 1] === $this::M_NULL){
 			throw new QRCodeDataException('use only after writing data');
@@ -476,7 +479,7 @@ class QRMatrix{
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
-	public function mapData(array $data, int $maskPattern):QRMatrix{
+	public function mapData(array $data, $maskPattern){
 		$this->maskPattern = $maskPattern;
 		$byteCount = count($data);
 		$size      = $this->moduleCount - 1;
@@ -539,8 +542,9 @@ class QRMatrix{
 	 * @param int $maskPattern
 	 *
 	 * @return int
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	protected function getMask(int $x, int $y, int $maskPattern):int {
+	protected function getMask($x, $y, $maskPattern) {
 		$a = $y + $x;
 		$m = $y * $x;
 

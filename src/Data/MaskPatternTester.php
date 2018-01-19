@@ -40,7 +40,7 @@ class MaskPatternTester{
 	 *
 	 * @return \chillerlan\QRCode\Data\MaskPatternTester
 	 */
-	public function setMatrix(QRMatrix $matrix):MaskPatternTester{
+	public function setMatrix(QRMatrix $matrix){
 		$this->matrix      = $matrix;
 		$this->moduleCount = $this->matrix->size();
 
@@ -56,7 +56,7 @@ class MaskPatternTester{
 	 *
 	 * @return int
 	 */
-	public function testPattern():int{
+	public function testPattern(){
 		$penalty  = 0;
 
 		for($level = 1; $level <= 4; $level++){
@@ -71,7 +71,7 @@ class MaskPatternTester{
 	 *
 	 * @return float
 	 */
-	protected function testLevel1():float{
+	protected function testLevel1(){
 		$penalty = 0;
 
 		foreach($this->matrix->matrix() as $y => $row){
@@ -112,7 +112,7 @@ class MaskPatternTester{
 	 *
 	 * @return float
 	 */
-	protected function testLevel2():float{
+	protected function testLevel2(){
 		$penalty = 0;
 
 		foreach($this->matrix->matrix() as $y => $row){
@@ -160,7 +160,7 @@ class MaskPatternTester{
 	 *
 	 * @return float
 	 */
-	protected function testLevel3():float{
+	protected function testLevel3(){
 		$penalty = 0;
 
 		foreach($this->matrix->matrix() as $y => $row){
@@ -205,7 +205,7 @@ class MaskPatternTester{
 	 *
 	 * @return float
 	 */
-	protected function testLevel4():float {
+	protected function testLevel4() {
 		$count = 0;
 
 		foreach($this->matrix->matrix() as $y => $row){

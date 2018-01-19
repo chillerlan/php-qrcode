@@ -85,7 +85,7 @@ class QRMarkup extends QROutputAbstract{
 				$value = $value ? '#000' : '#fff';
 			}
 
-			$path = '';
+			$path = $this->options->eol;
 
 			foreach($matrix as $y => $row){
 				//we'll combine active blocks within a single row as a lightweight compression technique
@@ -101,14 +101,14 @@ class QRMarkup extends QROutputAbstract{
 							$start = $x * $scale;
 						}
 
-						if($row[$x + 1] ?? false){
+						if(isset($row[$x + 1]) && $row[$x + 1] === $M_TYPE){
 							continue;
 						}
 					}
 
 					if($count > 0){
 						$len = $count * $scale;
-						$path .= 'M' .$start. ' ' .($y * $scale). ' h'.$len.' v'.$scale.' h-'.$len.'Z ';
+						$path .= 'M' .$start. ' ' .($y * $scale). ' h'.$len.' v'.$scale.' h-'.$len.'Z '.$this->options->eol;
 
 						// reset count
 						$count = 0;
@@ -123,6 +123,7 @@ class QRMarkup extends QROutputAbstract{
 				$svg .= '<path class="qr-'.$M_TYPE.' '.$this->options->cssClass.'" stroke="transparent" fill="'.$value.'" fill-opacity="'.$this->options->svgOpacity.'" d="'.$path.'" />';
 			}
 
+			break;
 		}
 
 		// close svg

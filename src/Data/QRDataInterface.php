@@ -159,7 +159,7 @@ interface QRDataInterface{
 	 *
 	 * @return \chillerlan\QRCode\Data\QRDataInterface
 	 */
-	public function setData(string $data);
+	public function setData($data);
 
 	/**
 	 * @param int  $maskPattern
@@ -167,6 +167,6 @@ interface QRDataInterface{
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
-	public function initMatrix(int $maskPattern, bool $test = null):QRMatrix;
+	public function initMatrix($maskPattern, $test = null);
 
 }

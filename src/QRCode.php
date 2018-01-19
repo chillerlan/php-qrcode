@@ -12,13 +12,19 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\QRCode\Data\{
-	AlphaNum, Byte, Kanji, MaskPatternTester, Number, QRCodeDataException, QRDataInterface, QRMatrix
-};
-use chillerlan\QRCode\Output\{
-	QRCodeOutputException, QRImage, QRMarkup, QROutputInterface, QRString
-};
-use chillerlan\Traits\ClassLoader;
+use chillerlan\QRCode\Data\AlphaNum;
+use chillerlan\QRCode\Data\Byte;
+use chillerlan\QRCode\Data\Kanji;
+use chillerlan\QRCode\Data\MaskPatternTester;
+use chillerlan\QRCode\Data\Number;
+use chillerlan\QRCode\Data\QRCodeDataException;
+use chillerlan\QRCode\Data\QRDataInterface;
+use chillerlan\QRCode\Output\QRCodeOutputException;
+use chillerlan\QRCode\Output\QRImage;
+use chillerlan\QRCode\Output\QRMarkup;
+use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\QRString;
+use chillerlan\QRCode\Traits\ClassLoader;
 
 /**
  * Turns a text string into a Model 2 QR Code
@@ -107,7 +113,7 @@ class QRCode{
 	public function __construct(QROptions $options = null){
 		mb_internal_encoding('UTF-8');
 
-		$this->setOptions($options ?? new QROptions);
+		$this->setOptions($options instanceof QROptions ? $options : new QROptions);
 	}
 
 	/**
@@ -118,7 +124,7 @@ class QRCode{
 	 * @return \chillerlan\QRCode\QRCode
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function setOptions(QROptions $options):QRCode{
+	public function setOptions(QROptions $options){
 
 		if(!array_key_exists($options->eccLevel, $this::ECC_MODES)){
 			throw new QRCodeException('Invalid error correct level: '.$options->eccLevel);
@@ -146,7 +152,7 @@ class QRCode{
 	 *
 	 * @return mixed
 	 */
-	public function render(string $data){
+	public function render($data){
 		return $this->initOutputInterface($data)->dump();
 	}
 
@@ -158,7 +164,7 @@ class QRCode{
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function getMatrix(string $data):QRMatrix {
+	public function getMatrix($data) {
 		$data = trim($data);
 
 		if(empty($data)){
@@ -190,7 +196,7 @@ class QRCode{
 	 *
 	 * @return int
 	 */
-	protected function getBestMaskPattern():int{
+	protected function getBestMaskPattern(){
 		$penalties = [];
 
 		$tester = new MaskPatternTester;
@@ -216,7 +222,7 @@ class QRCode{
 	 * @return \chillerlan\QRCode\Data\QRDataInterface
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function initDataInterface(string $data):QRDataInterface{
+	public function initDataInterface($data){
 
 		$DATA_MODES = [
 			Number::class   => 'Number',
@@ -244,7 +250,7 @@ class QRCode{
 	 * @return \chillerlan\QRCode\Output\QROutputInterface
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function initOutputInterface(string $data):QROutputInterface{
+	protected function initOutputInterface($data){
 
 		if($this->options->outputType === $this::OUTPUT_CUSTOM && $this->options->outputInterface !== null){
 			return $this->loadClass($this->options->outputInterface, QROutputInterface::class, $this->options, $this->getMatrix($data));
@@ -268,7 +274,7 @@ class QRCode{
 	 *
 	 * @return bool
 	 */
-	public function isNumber(string $string):bool {
+	public function isNumber($string) {
 		$len = strlen($string);
 		$map = str_split('0123456789');
 
@@ -288,7 +294,7 @@ class QRCode{
 	 *
 	 * @return bool
 	 */
-	public function isAlphaNum(string $string):bool {
+	public function isAlphaNum($string) {
 		$len = strlen($string);
 
 		for($i = 0; $i < $len; $i++){
@@ -307,7 +313,7 @@ class QRCode{
 	 *
 	 * @return bool
 	 */
-	public function isKanji(string $string):bool {
+	public function isKanji($string) {
 		$i   = 0;
 		$len = strlen($string);
 
@@ -331,7 +337,7 @@ class QRCode{
 	 *
 	 * @return bool
 	 */
-	protected function isByte(string $data):bool{
+	protected function isByte($data){
 		return !empty($data);
 	}
 

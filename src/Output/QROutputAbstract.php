@@ -12,7 +12,8 @@
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\{Data\QRMatrix, QROptions};
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\QROptions;
 
 /**
  *
@@ -53,7 +54,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 
 	 * @return bool|int
 	 */
-	protected function saveToFile(string $data) {
+	protected function saveToFile($data) {
 		return file_put_contents($this->options->cachefile, $data);
 	}
 

@@ -13,7 +13,7 @@
 namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\Traits\Container;
+use chillerlan\QRCode\Traits\Container;
 
 /**
  * @property int    $version

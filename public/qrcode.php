@@ -45,9 +45,16 @@ try{
 
 	$moduleValues = array_map(function($v){
 		if(preg_match('/[a-f\d]{6}/i', $v) === 1){
-			return in_array($_POST['output_type'], ['png', 'jpg', 'gif'])
-				? array_map('hexdec', str_split($v, 2))
-				: '#'.$v ;
+
+			if(in_array($_POST['output_type'], ['png', 'jpg', 'gif'])){
+				return array_map('hexdec', str_split($v, 2));
+			}
+			elseif(in_array($_POST['output_type'], ['html', 'svg'])){
+				return'#'.$v ;
+			}
+			elseif($_POST['output_type'] === 'text'){
+				return $v ; // @todo
+			}
 		}
 		return null;
 	}, $moduleValues);

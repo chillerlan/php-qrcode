@@ -68,14 +68,14 @@ class Polynomial{
 	 * @param array $num
 	 * @param int   $shift
 	 */
-	public function __construct(array $num = [1], int $shift = 0){
+	public function __construct(array $num = [1], $shift = 0){
 		$this->setNum($num, $shift);
 	}
 
 	/**
 	 * @return array
 	 */
-	public function getNum():array {
+	public function getNum() {
 		return $this->num;
 	}
 
@@ -85,7 +85,7 @@ class Polynomial{
 	 *
 	 * @return \chillerlan\QRCode\Helpers\Polynomial
 	 */
-	public function setNum(array $num, int $shift = 0):Polynomial {
+	public function setNum(array $num, $shift = 0) {
 		$offset = 0;
 		$numCount = count($num);
 
@@ -107,7 +107,7 @@ class Polynomial{
 	 *
 	 * @return \chillerlan\QRCode\Helpers\Polynomial
 	 */
-	public function multiply(array $e):Polynomial {
+	public function multiply(array $e) {
 		$n = array_fill(0, count($this->num) + count($e) - 1, 0);
 
 		foreach($this->num as $i => $vi){
@@ -129,7 +129,7 @@ class Polynomial{
 	 *
 	 * @return \chillerlan\QRCode\Helpers\Polynomial
 	 */
-	public function mod(array $e):Polynomial{
+	public function mod(array $e){
 		$n = $this->num;
 
 		if(count($n) - count($e) < 0){
@@ -153,7 +153,7 @@ class Polynomial{
 	 * @return int
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function glog(int $n):int {
+	public function glog($n) {
 
 		if($n < 1){
 			throw new QRCodeException('log('.$n.')');
@@ -167,7 +167,7 @@ class Polynomial{
 	 *
 	 * @return int
 	 */
-	public function gexp(int $n):int {
+	public function gexp($n) {
 
 		if($n < 0){
 			$n += 255;

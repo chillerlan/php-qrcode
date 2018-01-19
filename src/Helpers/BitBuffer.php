@@ -31,7 +31,7 @@ class BitBuffer{
 	/**
 	 * @return \chillerlan\QRCode\Helpers\BitBuffer
 	 */
-	public function clear():BitBuffer{
+	public function clear(){
 		$this->buffer = [];
 		$this->length = 0;
 
@@ -44,12 +44,11 @@ class BitBuffer{
 	 *
 	 * @return \chillerlan\QRCode\Helpers\BitBuffer
 	 */
-	public function put(int $num, int $length):BitBuffer{
+	public function put($num, $length){
 
 		for($i = 0; $i < $length; $i++){
 			$this->putBit(($num >> ($length - $i - 1))&1 === 1);
 		}
-
 		return $this;
 	}
 
@@ -58,14 +57,15 @@ class BitBuffer{
 	 *
 	 * @return \chillerlan\QRCode\Helpers\BitBuffer
 	 */
-	public function putBit(bool $bit):BitBuffer{
+	public function putBit($bit){
+		var_dump(func_get_args());
 		$bufIndex = floor($this->length / 8);
 
 		if(count($this->buffer) <= $bufIndex){
 			$this->buffer[] = 0;
 		}
 
-		if($bit === true){
+		if($bit){
 			$this->buffer[(int)$bufIndex] |= (0x80 >> ($this->length % 8));
 		}
 
