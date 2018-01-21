@@ -21,17 +21,10 @@ class QRMarkup extends QROutputAbstract{
 
 	/**
 	 * @return string
-	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function dump(){
 
-		if($this->options->cachefile !== null && !is_writable(dirname($this->options->cachefile))){
-			throw new QRCodeOutputException('Could not write data to cache file: '.$this->options->cachefile);
-		}
-
-		$data = $this->options->outputType === QRCode::OUTPUT_MARKUP_HTML
-			? $this->toHTML()
-			: $this->toSVG();
+		$data = call_user_func([$this, $this->outputMode ?? QRCode::OUTPUT_MARKUP_SVG]);
 
 		if($this->options->cachefile !== null){
 			$this->saveToFile($data);
@@ -43,7 +36,7 @@ class QRMarkup extends QROutputAbstract{
 	/**
 	 * @return string|bool
 	 */
-	protected function toHTML(){
+	protected function html(){
 		$html = '';
 
 		foreach($this->matrix->matrix() as $row){
@@ -68,7 +61,7 @@ class QRMarkup extends QROutputAbstract{
 	 *
 	 * @return string|bool
 	 */
-	protected function toSVG(){
+	protected function svg(){
 		$scale  = $this->options->scale;
 		$length = $this->moduleCount * $scale;
 		$matrix = $this->matrix->matrix();

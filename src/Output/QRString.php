@@ -23,17 +23,9 @@ class QRString extends QROutputAbstract{
 	 * @return string
 	 */
 	public function dump():string{
-
-		$data = $this->options->outputType === QRCode::OUTPUT_STRING_JSON
-			? json_encode($this->matrix->matrix())
-			: $this->toString();
+		$data = call_user_func([$this, $this->outputMode ?? QRCode::OUTPUT_STRING_TEXT]);
 
 		if($this->options->cachefile !== null){
-
-			if(!is_writable(dirname($this->options->cachefile))){
-				throw new QRCodeOutputException('Could not write data to cache file: '.$this->options->cachefile);
-			}
-
 			$this->saveToFile($data);
 		}
 
@@ -43,7 +35,7 @@ class QRString extends QROutputAbstract{
 	/**
 	 * @return string
 	 */
-	protected function toString():string{
+	protected function text():string{
 		$str = [];
 
 		foreach($this->matrix->matrix() as $row){
@@ -66,6 +58,10 @@ class QRString extends QROutputAbstract{
 		}
 
 		return implode($this->options->eol, $str);
+	}
+
+	protected function json(){
+		return json_encode($this->matrix->matrix());
 	}
 
 }

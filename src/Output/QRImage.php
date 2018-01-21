@@ -140,7 +140,7 @@ class QRImage extends QROutputAbstract{
 		ob_start();
 
 		try{
-			call_user_func([$this, $this->options->outputType ?? QRCode::OUTPUT_IMAGE_PNG]);
+			call_user_func([$this, $this->outputMode ?? QRCode::OUTPUT_IMAGE_PNG]);
 		}
 		// not going to cover edge cases
 		// @codeCoverageIgnoreStart
