@@ -19,11 +19,11 @@
 	],
 	"require": {
 		"php": ">=7.0.3",
-		"chillerlan/php-traits": "^1.1",
-		"chillerlan/php-authenticator": "^2.0"
+		"chillerlan/php-traits": "^1.1"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "6.4.*"
+		"phpunit/phpunit": "6.4.*",
+		"chillerlan/php-authenticator": "^2.0"
 	},
 	"suggest": {
 	},
