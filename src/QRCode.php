@@ -35,6 +35,7 @@ class QRCode{
 	 */
 	const OUTPUT_MARKUP_HTML  = 'html';
 	const OUTPUT_MARKUP_SVG   = 'svg';
+	const OUTPUT_MARKUP_EPS   = 'eps';
 #	const OUTPUT_MARKUP_XML   = 'xml'; // anyone?
 
 	const OUTPUT_IMAGE_PNG    = 'png';
@@ -77,6 +78,7 @@ class QRCode{
 		QRMarkup::class => [
 			self::OUTPUT_MARKUP_SVG,
 			self::OUTPUT_MARKUP_HTML,
+			self::OUTPUT_MARKUP_EPS,
 		],
 		QRImage::class => [
 			self::OUTPUT_IMAGE_PNG,
