@@ -15,6 +15,7 @@ use chillerlan\QRCode\{QRCode, QROptions};
 require_once __DIR__.'/../vendor/autoload.php';
 
 $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
+$gzip = true;
 
 $options = new QROptions([
 	'version'      => 20,
@@ -22,8 +23,9 @@ $options = new QROptions([
 	'eccLevel'     => QRCode::ECC_L,
 	'scale'        => 5,
 	'addQuietzone' => true,
-	'svgOpacity' => 0.8,
-	'svgDefs' => '
+	'cssClass'     => 'my-css-class',
+	'svgOpacity'   => 0.8,
+	'svgDefs'      => '
 		<linearGradient id="g2">
 			<stop offset="0%" stop-color="#39F" />
 			<stop offset="100%" stop-color="#F3F" />
@@ -61,9 +63,15 @@ $options = new QROptions([
 	],
 ]);
 
-#header('Content-type: image/svg+xml');
+$qrcode = (new QRCode($options))->render($data);
 
-echo (new QRCode($options))->render($data);
+header('Content-type: image/svg+xml');
 
+if($gzip === true){
+	header('Vary: Accept-Encoding');
+	header('Content-Encoding: gzip');
+	$qrcode = gzencode($qrcode ,9);
+}
+echo $qrcode;
 
 
