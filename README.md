@@ -79,6 +79,7 @@ echo '<img src="'.(new QRCode)->render($data).'" />';
 
 <p align="center">
 	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/codemasher/php-qrcode/master/examples/example_image.png">
+	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/codemasher/php-qrcode/master/examples/example_svg.png">
 </p>
 
 Wait, what was that? Please again, slower!
