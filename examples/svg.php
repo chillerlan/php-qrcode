@@ -18,13 +18,13 @@ $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 $gzip = true;
 
 $options = new QROptions([
-	'version'      => 20,
+	'version'      => 7,
 	'outputType'   => QRCode::OUTPUT_MARKUP_SVG,
 	'eccLevel'     => QRCode::ECC_L,
 	'scale'        => 5,
 	'addQuietzone' => true,
 	'cssClass'     => 'my-css-class',
-	'svgOpacity'   => 0.8,
+	'svgOpacity'   => 1.0,
 	'svgDefs'      => '
 		<linearGradient id="g2">
 			<stop offset="0%" stop-color="#39F" />
@@ -38,28 +38,28 @@ $options = new QROptions([
 	'moduleValues' => [
 		// finder
 		1536 => 'url(#g1)', // dark (true)
-		6    => '#eee', // light (false)
+		6    => '#fff', // light (false)
 		// alignment
 		2560 => 'url(#g1)',
-		10   => '#eee',
+		10   => '#fff',
 		// timing
 		3072 => 'url(#g1)',
-		12   => '#eee',
+		12   => '#fff',
 		// format
 		3584 => 'url(#g1)',
-		14   => '#eee',
+		14   => '#fff',
 		// version
 		4096 => 'url(#g1)',
-		16   => '#eee',
+		16   => '#fff',
 		// data
 		1024 => 'url(#g2)',
-		4    => '#eee',
+		4    => '#fff',
 		// darkmodule
 		512  => 'url(#g1)',
 		// separator
-		8    => '#eee',
+		8    => '#fff',
 		// quietzone
-		18   => '#eee',
+		18   => '#fff',
 	],
 ]);
 
