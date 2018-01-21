@@ -57,6 +57,10 @@ Profit!
   - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
 - WordPress
   - [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)  
+  
+#### PHP 5
+I've dropped PHP 5 support in early 2017 already. PHP 5.6 and 7.0 will be retired in the end of 2018, so there's no reason to stay on these versions and you really should upgrade your server.
+However, if upgrading is not an option for you, you can use the unsupported PHP 5.6 backport of the 2.0 branch. It's available as [`1.0.8` on Packagist](https://packagist.org/packages/chillerlan/php-qrcode#1.0.8). Please let PHP 5 die.
 
 ### Usage
 We want to encode this data into a QRcode image:
@@ -271,7 +275,8 @@ $qrOutputInterface->dump();
 ```
 
 #### Authenticator trait
-This library includes [codemasher/php-authenticator](https://github.com/codemasher/php-authenticator) to create `otpauth://` QR Codes for use with mobile authenticators, all in a single trait:
+This library includes a trait for [codemasher/php-authenticator](https://github.com/codemasher/php-authenticator) that allows 
+to create `otpauth://` QR Codes for use with mobile authenticators - just add `"chillerlan/php-authenticator": "^2.0"` to the `require` section of your *composer.json*
 ```php
 use chillerlan\QRCode\{QRCode, QROptions, Traits\QRAuthenticator};
 
