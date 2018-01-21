@@ -116,12 +116,12 @@ class QRImage extends QROutputAbstract{
 	}
 
 	/**
-	 * @param $x
-	 * @param $y
-	 * @param $color
+	 * @param int $x
+	 * @param int $y
+	 * @param int $color
 	 * @return void
 	 */
-	protected function setPixel($x, $y, $color){
+	protected function setPixel(int $x, int $y, int $color){
 		imagefilledrectangle(
 			$this->image,
 			$x * $this->scale,
