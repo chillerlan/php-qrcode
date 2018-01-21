@@ -14,7 +14,7 @@ namespaced, cleaned up, improved and other stuff.
 
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?style=flat-square
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
-[license-badge]: https://img.shields.io/packagist/l/chillerlan/php-qrcode.svg?style=flat-square
+[license-badge]: https://img.shields.io/github/license/codemasher/php-qrcode.svg?style=flat-square
 [license]: https://github.com/codemasher/php-qrcode/blob/master/LICENSE
 [travis-badge]: https://img.shields.io/travis/codemasher/php-qrcode.svg?style=flat-square
 [travis]: https://travis-ci.org/codemasher/php-qrcode
