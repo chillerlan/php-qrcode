@@ -13,7 +13,9 @@
 namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\Traits\Container;
+use chillerlan\Traits\{
+	Container, ContainerInterface
+};
 
 /**
  * @property int    $version
@@ -46,7 +48,7 @@ use chillerlan\Traits\Container;
  *
  * @property array  $moduleValues
  */
-class QROptions{
+class QROptions implements ContainerInterface{
 	use Container;
 
 	/**
