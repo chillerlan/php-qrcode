@@ -24,6 +24,8 @@ class QRImage extends QROutputAbstract{
 		QRCode::OUTPUT_IMAGE_GIF,
 	];
 
+	protected $defaultMode  = QRCode::OUTPUT_IMAGE_PNG;
+
 	protected $moduleValues = [
 		// light
 		QRMatrix::M_DATA            => [255, 255, 255],
@@ -140,7 +142,7 @@ class QRImage extends QROutputAbstract{
 		ob_start();
 
 		try{
-			call_user_func([$this, $this->outputMode ?? QRCode::OUTPUT_IMAGE_PNG]);
+			call_user_func([$this, $this->outputMode ?? $this->defaultMode]);
 		}
 		// not going to cover edge cases
 		// @codeCoverageIgnoreStart

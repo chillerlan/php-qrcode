@@ -65,8 +65,8 @@ class Polynomial{
 	/**
 	 * Polynomial constructor.
 	 *
-	 * @param array $num
-	 * @param int   $shift
+	 * @param array|null $num
+	 * @param int|null   $shift
 	 */
 	public function __construct(array $num = null, int $shift = null){
 		$this->setNum($num ?? [1], $shift);
@@ -80,8 +80,8 @@ class Polynomial{
 	}
 
 	/**
-	 * @param array $num
-	 * @param int   $shift
+	 * @param array    $num
+	 * @param int|null $shift
 	 *
 	 * @return \chillerlan\QRCode\Helpers\Polynomial
 	 */

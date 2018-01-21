@@ -42,6 +42,11 @@ abstract class QROutputAbstract implements QROutputInterface{
 	protected $outputMode;
 
 	/**
+	 * @var string;
+	 */
+	protected $defaultMode;
+
+	/**
 	 * QROutputAbstract constructor.
 	 *
 	 * @param \chillerlan\QRCode\QROptions     $options
@@ -75,6 +80,19 @@ abstract class QROutputAbstract implements QROutputInterface{
 		}
 
 		return file_put_contents($this->options->cachefile, $data);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function dump(){
+		$data = call_user_func([$this, $this->outputMode ?? $this->defaultMode]);
+
+		if($this->options->cachefile !== null){
+			$this->saveToFile($data);
+		}
+
+		return $data;
 	}
 
 }

@@ -19,19 +19,7 @@ use chillerlan\QRCode\QRCode;
  */
 class QRMarkup extends QROutputAbstract{
 
-	/**
-	 * @return string
-	 */
-	public function dump(){
-
-		$data = call_user_func([$this, $this->outputMode ?? QRCode::OUTPUT_MARKUP_SVG]);
-
-		if($this->options->cachefile !== null){
-			$this->saveToFile($data);
-		}
-
-		return $data;
-	}
+	protected $defaultMode = QRCode::OUTPUT_MARKUP_SVG;
 
 	/**
 	 * @return string|bool

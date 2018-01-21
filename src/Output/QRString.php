@@ -19,18 +19,7 @@ use chillerlan\QRCode\QRCode;
  */
 class QRString extends QROutputAbstract{
 
-	/**
-	 * @return string
-	 */
-	public function dump():string{
-		$data = call_user_func([$this, $this->outputMode ?? QRCode::OUTPUT_STRING_TEXT]);
-
-		if($this->options->cachefile !== null){
-			$this->saveToFile($data);
-		}
-
-		return $data;
-	}
+	protected $defaultMode = QRCode::OUTPUT_STRING_TEXT;
 
 	/**
 	 * @return string
@@ -60,7 +49,10 @@ class QRString extends QROutputAbstract{
 		return implode($this->options->eol, $str);
 	}
 
-	protected function json(){
+	/**
+	 * @return string
+	 */
+	protected function json():string{
 		return json_encode($this->matrix->matrix());
 	}
 
