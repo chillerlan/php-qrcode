@@ -68,8 +68,8 @@ class Polynomial{
 	 * @param array $num
 	 * @param int   $shift
 	 */
-	public function __construct(array $num = [1], int $shift = 0){
-		$this->setNum($num, $shift);
+	public function __construct(array $num = null, int $shift = null){
+		$this->setNum($num ?? [1], $shift);
 	}
 
 	/**
@@ -85,7 +85,7 @@ class Polynomial{
 	 *
 	 * @return \chillerlan\QRCode\Helpers\Polynomial
 	 */
-	public function setNum(array $num, int $shift = 0):Polynomial {
+	public function setNum(array $num, int $shift = null):Polynomial {
 		$offset = 0;
 		$numCount = count($num);
 
@@ -93,7 +93,7 @@ class Polynomial{
 			$offset++;
 		}
 
-		$this->num = array_fill(0, $numCount - $offset + $shift, 0);
+		$this->num = array_fill(0, $numCount - $offset + ($shift ?? 0), 0);
 
 		for($i = 0; $i < $numCount - $offset; $i++){
 			$this->num[$i] = $num[$i + $offset];
