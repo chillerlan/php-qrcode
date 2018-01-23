@@ -1,8 +1,9 @@
 {
 	"name": "chillerlan/php-qrcode",
 	"description": "A QR code generator. PHP 7+",
-	"homepage": "https://github.com/codemasher/php-qrcode",
+	"homepage": "https://github.com/chillerlan/php-qrcode",
 	"license": "MIT",
+	"minimum-stability": "stable",
 	"type": "library",
 	"keywords": [
 		"QR code"
@@ -14,7 +15,8 @@
 		},
 		{
 			"name": "Smiley",
-			"email": "smiley@chillerlan.net"
+			"email": "smiley@chillerlan.net",
+			"homepage": "https://github.com/codemasher"
 		}
 	],
 	"require": {
@@ -22,7 +24,7 @@
 		"chillerlan/php-traits": "^1.1"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "6.5.*",
+		"phpunit/phpunit": "^6.5",
 		"chillerlan/php-authenticator": "^2.0"
 	},
 	"suggest": {
