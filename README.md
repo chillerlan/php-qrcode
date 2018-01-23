@@ -1,4 +1,4 @@
-# codemasher/php-qrcode
+# chillerlan/php-qrcode
 
 A PHP7 QR Code library based on the [implementation](https://github.com/kazuhikoarase/qrcode-generator) by [Kazuhiko Arase](https://github.com/kazuhikoarase), 
 namespaced, cleaned up, improved and other stuff.
@@ -14,16 +14,16 @@ namespaced, cleaned up, improved and other stuff.
 
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?style=flat-square
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
-[license-badge]: https://img.shields.io/github/license/codemasher/php-qrcode.svg?style=flat-square
-[license]: https://github.com/codemasher/php-qrcode/blob/master/LICENSE
-[travis-badge]: https://img.shields.io/travis/codemasher/php-qrcode.svg?style=flat-square
-[travis]: https://travis-ci.org/codemasher/php-qrcode
-[coverage-badge]: https://img.shields.io/codecov/c/github/codemasher/php-qrcode.svg?style=flat-square
-[coverage]: https://codecov.io/github/codemasher/php-qrcode
-[scrutinizer-badge]: https://img.shields.io/scrutinizer/g/codemasher/php-qrcode.svg?style=flat-square
-[scrutinizer]: https://scrutinizer-ci.com/g/codemasher/php-qrcode
-[gemnasium-badge]: https://img.shields.io/gemnasium/codemasher/php-qrcode.svg?style=flat-square
-[gemnasium]: https://gemnasium.com/github.com/codemasher/php-qrcode
+[license-badge]: https://img.shields.io/github/license/chillerlan/php-qrcode.svg?style=flat-square
+[license]: https://github.com/chillerlan/php-qrcode/blob/master/LICENSE
+[travis-badge]: https://img.shields.io/travis/chillerlan/php-qrcode.svg?style=flat-square
+[travis]: https://travis-ci.org/chillerlan/php-qrcode
+[coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode.svg?style=flat-square
+[coverage]: https://codecov.io/github/chillerlan/php-qrcode
+[scrutinizer-badge]: https://img.shields.io/scrutinizer/g/chillerlan/php-qrcode.svg?style=flat-square
+[scrutinizer]: https://scrutinizer-ci.com/g/chillerlan/php-qrcode
+[gemnasium-badge]: https://img.shields.io/gemnasium/chillerlan/php-qrcode.svg?style=flat-square
+[gemnasium]: https://gemnasium.com/github.com/chillerlan/php-qrcode
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?style=flat-square
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 [donate-badge]: https://img.shields.io/badge/donate-paypal-ff33aa.svg?style=flat-square
@@ -45,8 +45,8 @@ namespaced, cleaned up, improved and other stuff.
 ```
 
 #### Manual installation
-Download the desired version of the package from [master](https://github.com/codemasher/php-qrcode/archive/master.zip) or 
-[release](https://github.com/codemasher/php-qrcode/releases) and extract the contents to your project folder.  After that:
+Download the desired version of the package from [master](https://github.com/chillerlan/php-qrcode/archive/master.zip) or 
+[release](https://github.com/chillerlan/php-qrcode/releases) and extract the contents to your project folder.  After that:
 - run `composer install` to install the required dependencies and generate `/vendor/autoload.php`.
 - if you use a custom autoloader, point the namespace `chillerlan\QRCode` to the folder `src` of the package 
 
@@ -78,8 +78,8 @@ echo '<img src="'.(new QRCode)->render($data).'" />';
 ```
 
 <p align="center">
-	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/codemasher/php-qrcode/master/examples/example_image.png">
-	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/codemasher/php-qrcode/master/examples/example_svg.png">
+	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/master/examples/example_image.png">
+	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/master/examples/example_svg.png">
 </p>
 
 Wait, what was that? Please again, slower!
@@ -136,7 +136,7 @@ foreach($matrix->matrix() as $y => $row){
 }
 ```
 
-Have a look [in this folder](https://github.com/codemasher/php-qrcode/tree/master/examples) for some more usage examples.
+Have a look [in this folder](https://github.com/chillerlan/php-qrcode/tree/master/examples) for some more usage examples.
 
 #### Custom module values
 Previous versions of `QRCode` held only boolean matrix values that only allowed to determine whether a module was dark or not. Now you can distinguish between different parts of the matrix, namely the several required patterns from the QR Code specification, and use them in different ways.
@@ -209,7 +209,7 @@ $options->moduleValues = [
 Combined with a custom output interface and your imagination you can create some cool effects that way!
 
 #### Custom `QROutputInterface`
-Instead of bloating your code you can simply create your own output interface by extending `QROutputAbstract`. Have a look at the [built-in output modules](https://github.com/codemasher/php-qrcode/tree/master/src/Output).
+Instead of bloating your code you can simply create your own output interface by extending `QROutputAbstract`. Have a look at the [built-in output modules](https://github.com/chillerlan/php-qrcode/tree/master/src/Output).
 
 ```php
 class MyCustomOutput extends QROutputAbstract{
@@ -276,7 +276,7 @@ $qrOutputInterface->dump();
 ```
 
 #### Authenticator trait
-This library includes a trait for [codemasher/php-authenticator](https://github.com/codemasher/php-authenticator) that allows 
+This library includes a trait for [chillerlan/php-authenticator](https://github.com/chillerlan/php-authenticator) that allows 
 to create `otpauth://` QR Codes for use with mobile authenticators - just add `"chillerlan/php-authenticator": "^2.0"` to the `require` section of your *composer.json*
 ```php
 use chillerlan\QRCode\{QRCode, QROptions, Traits\QRAuthenticator};
