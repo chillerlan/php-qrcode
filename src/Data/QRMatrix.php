@@ -109,7 +109,7 @@ class QRMatrix{
 	/**
 	 * @var int
 	 */
-	protected $maskPattern = -1;
+	protected $maskPattern = QRCode::MASK_PATTERN_AUTO;
 
 	/**
 	 * @var int
@@ -293,12 +293,10 @@ class QRMatrix{
 			[7, $this->moduleCount - 8],
 		];
 
-		$t = $this::M_SEPARATOR;
-
 		for($c = 0; $c < 3; $c++){
 			for($i = 0; $i < 8; $i++){
-				$this->set($h[$c][0]     , $h[$c][1] + $i, false, $t);
-				$this->set($v[$c][0] - $i, $v[$c][1]     , false, $t);
+				$this->set($h[$c][0]     , $h[$c][1] + $i, false, $this::M_SEPARATOR);
+				$this->set($v[$c][0] - $i, $v[$c][1]     , false, $this::M_SEPARATOR);
 			}
 		}
 
@@ -351,10 +349,9 @@ class QRMatrix{
 			}
 
 			$v = $i % 2 === 0;
-			$t = $this::M_TIMING;
 
-			$this->set($i, 6, $v, $t); // h
-			$this->set(6, $i, $v, $t); // v
+			$this->set($i, 6, $v, $this::M_TIMING); // h
+			$this->set(6, $i, $v, $this::M_TIMING); // v
 		}
 
 		return $this;
@@ -368,8 +365,7 @@ class QRMatrix{
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function setVersionNumber(bool $test = null):QRMatrix{
-		$test = $test !== null ? $test : false;
-
+		$test = $test ?? false;
 		$bits = $this::versionPattern[$this->version] ?? false;
 
 		if($bits !== false){
@@ -378,10 +374,9 @@ class QRMatrix{
 				$a = (int)floor($i / 3);
 				$b = $i % 3 + $this->moduleCount - 8 - 3;
 				$v = !$test && (($bits >> $i) & 1) === 1;
-				$t = $this::M_VERSION;
 
-				$this->set($b, $a, $v, $t); // ne
-				$this->set($a, $b, $v, $t); // sw
+				$this->set($b, $a, $v, $this::M_VERSION); // ne
+				$this->set($a, $b, $v, $this::M_VERSION); // sw
 			}
 
 		}
@@ -398,7 +393,7 @@ class QRMatrix{
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function setFormatInfo(int $maskPattern, bool $test = null):QRMatrix{
-		$test = $test !== null ? $test : false;
+		$test = $test ?? false;
 		$bits = $this::formatPattern[QRCode::ECC_MODES[$this->eclevel]][$maskPattern] ?? 0;
 		$t    = $this::M_FORMAT;
 
@@ -438,6 +433,7 @@ class QRMatrix{
 	 * @param int|null $size
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function setQuietZone(int $size = null):QRMatrix{
 
@@ -478,8 +474,8 @@ class QRMatrix{
 	 */
 	public function mapData(array $data, int $maskPattern):QRMatrix{
 		$this->maskPattern = $maskPattern;
-		$byteCount = count($data);
-		$size      = $this->moduleCount - 1;
+		$byteCount         = count($data);
+		$size              = $this->moduleCount - 1;
 
 		for($i = $size, $y = $size, $inc = -1, $byteIndex = 0, $bitIndex  = 7; $i > 0; $i -= 2){
 
@@ -531,7 +527,6 @@ class QRMatrix{
 	/**
 	 * @see \chillerlan\QRCode\QRMatrix::mapData()
 	 *
-	 * @codeCoverageIgnore
 	 * @internal
 	 *
 	 * @param int $x
@@ -539,24 +534,27 @@ class QRMatrix{
 	 * @param int $maskPattern
 	 *
 	 * @return int
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	protected function getMask(int $x, int $y, int $maskPattern):int {
 		$a = $y + $x;
 		$m = $y * $x;
 
-		// i hate it so much
-		switch($maskPattern){
-			case 0: return $a % 2;
-			case 1: return $y % 2;
-			case 2: return $x % 3;
-			case 3: return $a % 3;
-			case 4: return (floor($y / 2) + floor($x / 3)) % 2;
-			case 5: return $m % 2 + $m % 3;
-			case 6: return ($m % 2 + $m % 3) % 2;
-			case 7: return ($m % 3 + $a % 2) % 2;
+		if($maskPattern >= 0 && $maskPattern < 8){
+			// this is literally the same as the stupid switch...
+			return [
+				$a % 2,
+				$y % 2,
+				$x % 3,
+				$a % 3,
+				(floor($y / 2) + floor($x / 3)) % 2,
+				$m % 2 + $m % 3,
+				($m % 2 + $m % 3) % 2,
+				($m % 3 + $a % 2) % 2
+			][$maskPattern];
 		}
 
-		throw new QRCodeDataException('invalid mask pattern');
+		throw new QRCodeDataException('invalid mask pattern'); // @codeCoverageIgnore
 	}
 
 }
