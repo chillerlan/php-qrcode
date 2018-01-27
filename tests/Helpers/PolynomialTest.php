@@ -27,9 +27,9 @@ class PolynomialTest extends QRTestAbstract{
 	}
 
 	public function testGexp(){
-		$this->assertEquals(142, $this->polynomial->gexp(-1));
-		$this->assertEquals(133, $this->polynomial->gexp(128));
-		$this->assertEquals(2,   $this->polynomial->gexp(256));
+		$this->assertSame(142, $this->polynomial->gexp(-1));
+		$this->assertSame(133, $this->polynomial->gexp(128));
+		$this->assertSame(2,   $this->polynomial->gexp(256));
 	}
 
 	/**
