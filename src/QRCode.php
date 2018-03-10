@@ -323,7 +323,7 @@ class QRCode{
 			$i += 2;
 		}
 
-		return !($i < $len);
+		return $i >= $len;
 	}
 
 	/**
