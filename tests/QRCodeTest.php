@@ -94,12 +94,12 @@ class QRCodeTest extends QRTestAbstract{
 		$this->qrcode->getMatrix('');
 	}
 
-    public function testTrim() {
-        $m1 = $this->qrcode->getMatrix('hello');
-        $m2 = $this->qrcode->getMatrix('hello '); // added space
+	public function testTrim() {
+		$m1 = $this->qrcode->getMatrix('hello');
+		$m2 = $this->qrcode->getMatrix('hello '); // added space
 
-        $this->assertNotEquals($m1, $m2);
-    }
+		$this->assertNotEquals($m1, $m2);
+	}
 
 	public function testImageTransparencyBGDefault(){
 		$this->qrcode = $this->reflection->newInstanceArgs([new QROptions(['imageTransparencyBG' => 'foo'])]);
