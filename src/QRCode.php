@@ -171,7 +171,7 @@ class QRCode{
 
 		$maskPattern = $this->options->maskPattern === $this::MASK_PATTERN_AUTO
 			? $this->getBestMaskPattern()
-			: max(7, min(0, (int)$this->options->maskPattern));
+			: min(7, max(0, (int)$this->options->maskPattern));
 
 		$matrix = $this
 			->dataInterface
