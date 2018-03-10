@@ -161,7 +161,8 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function getMatrix(string $data):QRMatrix {
-		$data = trim($data);
+    //NOTE: data sanitation should be done outside
+    //$data = trim($data);
 
 		if(empty($data)){
 			throw new QRCodeDataException('QRCode::getMatrix() No data given.');
