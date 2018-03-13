@@ -19,6 +19,7 @@ use chillerlan\QRCode\Helpers\{
 	BitBuffer, Polynomial
 };
 use chillerlan\Traits\ClassLoader;
+use chillerlan\Traits\ContainerInterface;
 
 /**
  * Processes the binary data and maps it on a matrix which is then being returned
@@ -88,10 +89,10 @@ abstract class QRDataAbstract implements QRDataInterface{
 	/**
 	 * QRDataInterface constructor.
 	 *
-	 * @param \chillerlan\QRCode\QROptions $options
-	 * @param string|null                  $data
+	 * @param \chillerlan\Traits\ContainerInterface $options
+	 * @param string|null                           $data
 	 */
-	public function __construct(QROptions $options, string $data = null){
+	public function __construct(ContainerInterface $options, string $data = null){
 		$this->options = $options;
 
 		if($data !== null){

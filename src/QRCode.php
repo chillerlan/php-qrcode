@@ -18,7 +18,9 @@ use chillerlan\QRCode\Data\{
 use chillerlan\QRCode\Output\{
 	QRCodeOutputException, QRImage, QRMarkup, QROutputInterface, QRString
 };
-use chillerlan\Traits\ClassLoader;
+use chillerlan\Traits\{
+	ClassLoader, ContainerInterface
+};
 
 /**
  * Turns a text string into a Model 2 QR Code
@@ -104,9 +106,9 @@ class QRCode{
 	/**
 	 * QRCode constructor.
 	 *
-	 * @param \chillerlan\QRCode\QROptions|null $options
+	 * @param \chillerlan\Traits\ContainerInterface|null $options
 	 */
-	public function __construct(QROptions $options = null){
+	public function __construct(ContainerInterface $options = null){
 		mb_internal_encoding('UTF-8');
 
 		$this->setOptions($options ?? new QROptions);
@@ -115,12 +117,12 @@ class QRCode{
 	/**
 	 * Sets the options, called internally by the constructor
 	 *
-	 * @param \chillerlan\QRCode\QROptions $options
+	 * @param \chillerlan\Traits\ContainerInterface $options
 	 *
 	 * @return \chillerlan\QRCode\QRCode
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function setOptions(QROptions $options):QRCode{
+	public function setOptions(ContainerInterface $options):QRCode{
 
 		if(!array_key_exists($options->eccLevel, $this::ECC_MODES)){
 			throw new QRCodeException('Invalid error correct level: '.$options->eccLevel);
