@@ -161,9 +161,10 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function getMatrix(string $data):QRMatrix {
-		//NOTE: input sanitization should be done outside
-		//$data = trim($data);
-		
+		// https://github.com/chillerlan/php-qrcode/pull/15
+		// NOTE: input sanitization should be done outside
+		// $data = trim($data);
+
 		if(empty($data)){
 			throw new QRCodeDataException('QRCode::getMatrix() No data given.');
 		}
