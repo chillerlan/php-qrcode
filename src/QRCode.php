@@ -197,16 +197,12 @@ class QRCode{
 	protected function getBestMaskPattern():int{
 		$penalties = [];
 
-		$tester = new MaskPatternTester;
-
 		for($testPattern = 0; $testPattern < 8; $testPattern++){
 			$matrix = $this
 				->dataInterface
 				->initMatrix($testPattern, true);
 
-			$tester->setMatrix($matrix);
-
-			$penalties[$testPattern] = $tester->testPattern();
+			$penalties[$testPattern] = (new MaskPatternTester($matrix))->testPattern();
 		}
 
 		return array_search(min($penalties), $penalties, true);

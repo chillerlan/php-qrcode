@@ -37,14 +37,10 @@ class MaskPatternTester{
 	 * @see \chillerlan\QRCode\QRCode::getBestMaskPattern()
 	 *
 	 * @param \chillerlan\QRCode\Data\QRMatrix $matrix
-	 *
-	 * @return \chillerlan\QRCode\Data\MaskPatternTester
 	 */
-	public function setMatrix(QRMatrix $matrix):MaskPatternTester{
+	public function __construct(QRMatrix $matrix){
 		$this->matrix      = $matrix;
 		$this->moduleCount = $this->matrix->size();
-
-		return $this;
 	}
 
 	/**
