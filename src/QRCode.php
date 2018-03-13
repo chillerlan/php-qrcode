@@ -273,16 +273,7 @@ class QRCode{
 	 * @return bool
 	 */
 	public function isNumber(string $string):bool {
-		$len = strlen($string);
-		$map = str_split('0123456789');
-
-		for($i = 0; $i < $len; $i++){
-			if(!in_array($string[$i], $map, true)){
-				return false;
-			}
-		}
-
-		return true;
+		return $this->checkString($string, Number::CHAR_MAP);
 	}
 
 	/**
@@ -293,10 +284,22 @@ class QRCode{
 	 * @return bool
 	 */
 	public function isAlphaNum(string $string):bool {
+		return $this->checkString($string, AlphaNum::CHAR_MAP);
+	}
+
+	/**
+	 * checks is a given $string matches the characters of a given $charmap, returns false on the first invalid occurence.
+	 *
+	 * @param string $string
+	 * @param array  $charmap
+	 *
+	 * @return bool
+	 */
+	protected function checkString(string $string, array $charmap):bool{
 		$len = strlen($string);
 
 		for($i = 0; $i < $len; $i++){
-			if(!in_array($string[$i], AlphaNum::CHAR_MAP, true)){
+			if(!in_array($string[$i], $charmap, true)){
 				return false;
 			}
 		}

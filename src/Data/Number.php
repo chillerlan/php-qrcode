@@ -19,6 +19,8 @@ use chillerlan\QRCode\QRCode;
  */
 class Number extends QRDataAbstract{
 
+	const CHAR_MAP = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
 	/**
 	 * @inheritdoc
 	 */
@@ -63,13 +65,12 @@ class Number extends QRDataAbstract{
 	 */
 	protected function parseInt(string $string):int {
 		$num = 0;
-		$map = str_split('0123456789');
 
 		$len = strlen($string);
 		for($i = 0; $i < $len; $i++){
 			$c = ord($string[$i]);
 
-			if(!in_array($string[$i], $map, true)){
+			if(!in_array($string[$i], $this::CHAR_MAP, true)){
 				throw new QRCodeDataException('illegal char: "'.$string[$i].'" ['.$c.']');
 			}
 
