@@ -1,6 +1,6 @@
 # chillerlan/php-qrcode
 
-A PHP7 QR Code library based on the [implementation](https://github.com/kazuhikoarase/qrcode-generator) by [Kazuhiko Arase](https://github.com/kazuhikoarase), 
+A PHP7 QR Code library based on the [implementation](https://github.com/kazuhikoarase/qrcode-generator) by [Kazuhiko Arase](https://github.com/kazuhikoarase),
 namespaced, cleaned up, improved and other stuff.
 
 [![Packagist version][packagist-badge]][packagist]
@@ -45,10 +45,10 @@ namespaced, cleaned up, improved and other stuff.
 ```
 
 #### Manual installation
-Download the desired version of the package from [master](https://github.com/chillerlan/php-qrcode/archive/master.zip) or 
+Download the desired version of the package from [master](https://github.com/chillerlan/php-qrcode/archive/master.zip) or
 [release](https://github.com/chillerlan/php-qrcode/releases) and extract the contents to your project folder.  After that:
 - run `composer install` to install the required dependencies and generate `/vendor/autoload.php`.
-- if you use a custom autoloader, point the namespace `chillerlan\QRCode` to the folder `src` of the package 
+- if you use a custom autoloader, point the namespace `chillerlan\QRCode` to the folder `src` of the package
 
 Profit!
 
@@ -56,8 +56,8 @@ Profit!
 - Drupal
   - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
 - WordPress
-  - [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)  
-  
+  - [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
+
 #### PHP 5
 I've dropped PHP 5 support in early 2017 already. PHP 5.6 and 7.0 will be retired in the end of 2018, so there's no reason to stay on these versions and you really should upgrade your server.
 However, if upgrading is not an option for you, you can use the unsupported PHP 5.6 backport of the 2.0 branch. It's available as [`1.0.8` on Packagist](https://packagist.org/packages/chillerlan/php-qrcode#1.0.8). Please let PHP 5 die.
@@ -68,7 +68,7 @@ We want to encode this data into a QRcode image:
 // 10 reasons why QR codes are awesome
 $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 
-// no, for serious, we want to display a QR code for a mobile authenticator 
+// no, for serious, we want to display a QR code for a mobile authenticator
 $data = 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net';
 ```
 
@@ -86,7 +86,7 @@ Wait, what was that? Please again, slower!
 
 ### Advanced usage
 
-Ok, step by step. First you'll need a `QRCode` instance, which can be optionally invoked with a `QROptions` object as the only parameter.
+Ok, step by step. First you'll need a `QRCode` instance, which can be optionally invoked with a `QROptions` (or a [`ContainerInterface`](https://github.com/chillerlan/php-traits/blob/master/src/ContainerInterface.php), respectively) object as the only parameter.
 
 ```php
 $options = new QROptions([
@@ -119,7 +119,7 @@ $matrix = $qrcode->getMatrix($data);
 
 foreach($matrix->matrix() as $y => $row){
 	foreach($row as $x => $module){
-	
+
 		// get a module's value
 		$value = $module;
 		$value = $matrix->get($x, $y);
@@ -141,7 +141,7 @@ Have a look [in this folder](https://github.com/chillerlan/php-qrcode/tree/maste
 #### Custom module values
 Previous versions of `QRCode` held only boolean matrix values that only allowed to determine whether a module was dark or not. Now you can distinguish between different parts of the matrix, namely the several required patterns from the QR Code specification, and use them in different ways.
 
-The dark value is the module (light) value shifted by 8 bits to the left: `$value = $M_TYPE << ($bool ? 8 : 0);`, where `$M_TYPE` is one of the `QRMatrix::M_*` constants. 
+The dark value is the module (light) value shifted by 8 bits to the left: `$value = $M_TYPE << ($bool ? 8 : 0);`, where `$M_TYPE` is one of the `QRMatrix::M_*` constants.
 You can check the value for a type explicitly like...
 ```php
 // for true (dark)
@@ -213,12 +213,12 @@ Instead of bloating your code you can simply create your own output interface by
 
 ```php
 class MyCustomOutput extends QROutputAbstract{
-	
+
 	// inherited from QROutputAbstract
 	protected $matrix;      // QRMatrix
 	protected $moduleCount; // length/width of the matrix
 	protected $options;     // MyCustomOptions or QROptions
-	
+
 	// optional constructor
 	public function __construct(MyCustomOptions $options = null){
 		$this->options = $options;
@@ -246,28 +246,49 @@ class MyCustomOutput extends QROutputAbstract{
 }
 ```
 
-In case you need additional settings for your output module, just extend `QROptions`.
-```php
+In case you need additional settings for your output module, just extend `QROptions`...
+```
 class MyCustomOptions extends QROptions{
 	protected $myParam = 'defaultValue';
+
+	// ...
 }
 ```
+...or use the [`ContainerInterface`](https://github.com/chillerlan/php-traits/blob/master/src/ContainerInterface.php), which is the more flexible approach.
 
-You can then call `QRCode` with the custom modules...
 ```php
-$myCustomOptions = new MyCustomOptions([
+trait MyCustomOptionsTrait{
+	protected $myParam = 'defaultValue';
+
+	// ...
+}
+```
+set the options:
+```php
+$myOptions = [
 	'version'         => 5,
 	'eccLevel'        => QRCode::ECC_L,
 	'outputType'      => QRCode::OUTPUT_CUSTOM,
 	'outputInterface' => MyCustomOutput::class,
-	// custom settings
+	// your custom settings
 	'myParam'         => 'whatever value',
-]);
+ ];
 
-(new QRCode($myCustomOptions))->render($data);
+// extends QROptions
+$myCustomOptions = new MyCustomOptions($myOptions);
+
+// using the ContainerInterface
+$myCustomOptions = new class($myOptions) extends ContainerAbstract{
+	use QROptions, MyCustomOptionsTrait;
+};
+
 ```
 
-...or you can invoke the `QROutputInterface` manually.
+You can then call `QRCode` with the custom modules...
+```php
+(new QRCode($myCustomOptions))->render($data);
+```
+...or invoke the `QROutputInterface` manually.
 ```php
 $qrOutputInterface = new MyCustomOutput($myCustomOptions, (new QRCode($myCustomOptions))->getMatrix($data));
 
@@ -276,7 +297,7 @@ $qrOutputInterface->dump();
 ```
 
 #### Authenticator trait
-This library includes a trait for [chillerlan/php-authenticator](https://github.com/chillerlan/php-authenticator) that allows 
+This library includes a trait for [chillerlan/php-authenticator](https://github.com/chillerlan/php-authenticator) that allows
 to create `otpauth://` QR Codes for use with mobile authenticators - just add `"chillerlan/php-authenticator": "^2.0"` to the `require` section of your *composer.json*
 ```php
 use chillerlan\QRCode\{QRCode, QROptions, Traits\QRAuthenticator};
@@ -285,12 +306,12 @@ class MyAuthenticatorClass{
 	use QRAuthenticator;
 
 	public function getQRCode(){
-	
+
 		// data fetched from wherever
 		$this->authenticatorSecret = 'SECRETTEST234567';
 		$label = 'my label';
 		$issuer = 'example.com';
-		
+
 		// set QROptions options if needed
 		$this->qrOptions = new QROptions(['outputType' => QRCode::OUTPUT_MARKUP_SVG]);
 
@@ -303,9 +324,9 @@ class MyAuthenticatorClass{
 ### API
 
 ####  `QRCode` methods
-method | return | description 
+method | return | description
 ------ | ------ | -----------
-`__construct(QROptions $options = null)` | - | -
+`__construct(QROptions $options = null)` | - | see [`ContainerInterface`](https://github.com/chillerlan/php-traits/blob/master/src/ContainerInterface.php)
 `setOptions(QROptions $options)` | `QRCode` | sets the options, called internally by the constructor
 `render(string $data)` | mixed, `QROutputInterface::dump()` | renders a QR Code for the given `$data` and `QROptions`
 `getMatrix(string $data)` | `QRMatrix` | returns a `QRMatrix` object for the given `$data` and current `QROptions`
@@ -315,7 +336,7 @@ method | return | description
 `isKanji(string $string)` | bool | checks if a string qualifies for `Kanji`
 
 ####  `QRCode` constants
-name | description 
+name | description
 ---- | -----------
 `VERSION_AUTO` | `QROptions::$version`
 `MASK_PATTERN_AUTO` | `QROptions::$maskPattern`
@@ -352,24 +373,23 @@ property | type | default | allowed | description
 `$moduleValues` | array | array | array | Module values map, see [Custom output modules](#custom-qroutputinterface)
 
 #### `QRAuthenticator` trait methods
-method | return | description 
+method | return | description
 ------ | ------ | -----------
 `getURIQRCode(string $label, string $issuer)` | `QRCode::render()` | protected
 `getAuthenticator()` | `Authenticator` | protected, returns an `Authenticator` object with the given settings
 
 #### `QRAuthenticator` trait properties
-
 property | type | default | allowed | description
 -------- | ---- | ------- | ------- | -----------
 `$qrOptions` | `QROptions` | - | - | a `QROptions` object for internal use
 `$authenticatorSecret` | string | - | * | the secret phrase to use for the QR Code
-`$authenticatorDigits` | int | 6 | 6...8 | 
-`$authenticatorPeriod` | int | 30 | 10...60 | 
-`$authenticatorMode` | string | `totp` | `totp`, `hotp` | 
-`$authenticatorAlgo` | string | `SHA1` | `SHA1`, `SHA256`, `SHA512` | 
+`$authenticatorDigits` | int | 6 | 6...8 |
+`$authenticatorPeriod` | int | 30 | 10...60 |
+`$authenticatorMode` | string | `totp` | `totp`, `hotp` |
+`$authenticatorAlgo` | string | `SHA1` | `SHA1`, `SHA256`, `SHA512` |
 
 #### `QRMatrix` methods
-method | return | description 
+method | return | description
 ------ | ------ | -----------
 `__construct(int $version, int $eclevel)` | - | -
 `matrix()` | array | the internal matrix representation as a 2 dimensional array
