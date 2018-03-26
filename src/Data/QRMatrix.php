@@ -82,7 +82,10 @@ class QRMatrix{
 	/**
 	 * @link http://www.thonky.com/qr-code-tutorial/format-version-tables
 	 */
-	const versionPattern = [ // no version pattern for QR Codes < 7
+	const versionPattern = [
+		// 1-based version index
+		null,
+		// no version pattern for QR Codes < 7
 		null   , null   , null   , null   , null   , null   , 0x07c94, 0x085bc, 0x09a99, 0x0a4d3,
 		0x0bbf6, 0x0c762, 0x0d847, 0x0e60d, 0x0f928, 0x10b78, 0x1145d, 0x12a17, 0x13532, 0x149a6,
 		0x15683, 0x168c9, 0x177ec, 0x18ec4, 0x191e1, 0x1afab, 0x1b08e, 0x1cc1a, 0x1d33f, 0x1ed75,
