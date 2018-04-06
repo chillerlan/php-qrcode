@@ -56,6 +56,7 @@ Profit!
 - Drupal
   - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
 - WordPress
+  - [`wp-two-factor-auth`](https://github.com/sjinks/wp-two-factor-auth)
   - [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
 
 #### PHP 5
