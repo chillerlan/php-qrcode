@@ -429,6 +429,6 @@ I don't take responsibility for molten CPUs, misled applications, failed log-ins
 
 #### Trademark Notice
 
-The word "QR Code" is registered trademark of *DENSO WAVE INCORPORATED*
+The word "QR Code" is registered trademark of *DENSO WAVE INCORPORATED*<br>
 http://www.denso-wave.com/qrcode/faqpatent-e.html
   
