@@ -426,3 +426,9 @@ Oh hey and don't forget to sanitize any user input!
 
 ### Disclaimer!
 I don't take responsibility for molten CPUs, misled applications, failed log-ins etc.. Use at your own risk!
+
+#### Trademark Notice
+
+The word "QR Code" is registered trademark of *DENSO WAVE INCORPORATED*
+http://www.denso-wave.com/qrcode/faqpatent-e.html
+  
