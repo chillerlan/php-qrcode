@@ -35,7 +35,7 @@ namespaced, cleaned up, improved and other stuff.
 ```json
 {
 	"require": {
-		"php": ">=7.0.3",
+		"php": ">=7.2.0",
 		"chillerlan/php-qrcode": "dev-master"
 	}
 }
@@ -57,8 +57,9 @@ Profit!
   - [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
 
 #### PHP 5
-I've dropped PHP 5 support in early 2017 already. PHP 5.6 and 7.0 will be retired in the end of 2018, so there's no reason to stay on these versions and you really should upgrade your server.
-However, if upgrading is not an option for you, you can use the unsupported PHP 5.6 backport of the 2.0 branch. It's available as [`1.0.8` on Packagist](https://packagist.org/packages/chillerlan/php-qrcode#1.0.8). Please let PHP 5 die.
+I've dropped PHP < 7.2 support as of August 2018 and PHP 5 support in early 2017 already. PHP 5.6 - 7.1 will be retired in the end of 2018, so there's no reason to stay on these versions and you really should upgrade your server.
+However, if upgrading is not an option for you, you can use the unsupported PHP 5.6 backport of the 2.0 branch. It's available as [`1.0.8` on Packagist](https://packagist.org/packages/chillerlan/php-qrcode#1.0.8). 
+*Please let PHP 5 die.*
 
 ### Usage
 We want to encode this data into a QRcode image:
@@ -252,7 +253,7 @@ class MyCustomOptions extends QROptions{
 	// ...
 }
 ```
-...or use the [`ContainerInterface`](https://github.com/chillerlan/php-traits/blob/master/src/ContainerInterface.php), which is the more flexible approach.
+...or use the [`ImmutableSettingsInterface`](https://github.com/chillerlan/php-traits/blob/master/src/ImmutableSettingsInterface.php), which is the more flexible approach.
 
 ```php
 trait MyCustomOptionsTrait{
@@ -294,37 +295,12 @@ $qrOutputInterface = new MyCustomOutput($myCustomOptions, (new QRCode($myCustomO
 $qrOutputInterface->dump();
 ```
 
-#### Authenticator trait
-This library includes a trait for [chillerlan/php-authenticator](https://github.com/chillerlan/php-authenticator) that allows
-to create `otpauth://` QR Codes for use with mobile authenticators - just add `"chillerlan/php-authenticator": "^2.0"` to the `require` section of your *composer.json*
-```php
-use chillerlan\QRCode\{QRCode, QROptions, Traits\QRAuthenticator};
-
-class MyAuthenticatorClass{
-	use QRAuthenticator;
-
-	public function getQRCode(){
-
-		// data fetched from wherever
-		$this->authenticatorSecret = 'SECRETTEST234567';
-		$label = 'my label';
-		$issuer = 'example.com';
-
-		// set QROptions options if needed
-		$this->qrOptions = new QROptions(['outputType' => QRCode::OUTPUT_MARKUP_SVG]);
-
-		return $this->getURIQRCode($label, $issuer);
-	}
-
-}
-```
-
 ### API
 
 ####  `QRCode` methods
 method | return | description
 ------ | ------ | -----------
-`__construct(QROptions $options = null)` | - | see [`ContainerInterface`](https://github.com/chillerlan/php-traits/blob/master/src/ContainerInterface.php)
+`__construct(QROptions $options = null)` | - | see [`ImmutableSettingsInterface`](https://github.com/chillerlan/php-traits/blob/master/src/ImmutableSettingsInterface.php)
 `setOptions(QROptions $options)` | `QRCode` | sets the options, called internally by the constructor
 `render(string $data)` | mixed, `QROutputInterface::dump()` | renders a QR Code for the given `$data` and `QROptions`
 `getMatrix(string $data)` | `QRMatrix` | returns a `QRMatrix` object for the given `$data` and current `QROptions`
