@@ -18,8 +18,9 @@ use chillerlan\QRCode\{
 use chillerlan\QRCode\Helpers\{
 	BitBuffer, Polynomial
 };
-use chillerlan\Traits\ClassLoader;
-use chillerlan\Traits\ContainerInterface;
+use chillerlan\Traits\{
+	ClassLoader, ImmutableSettingsInterface
+};
 
 /**
  * Processes the binary data and maps it on a matrix which is then being returned
@@ -89,10 +90,10 @@ abstract class QRDataAbstract implements QRDataInterface{
 	/**
 	 * QRDataInterface constructor.
 	 *
-	 * @param \chillerlan\Traits\ContainerInterface $options
+	 * @param \chillerlan\Traits\ImmutableSettingsInterface $options
 	 * @param string|null                           $data
 	 */
-	public function __construct(ContainerInterface $options, string $data = null){
+	public function __construct(ImmutableSettingsInterface $options, string $data = null){
 		$this->options = $options;
 
 		if($data !== null){
@@ -186,6 +187,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	protected function getMinimumVersion():int{
+		$maxlength = 0;
 
 		// guess the version number within the given range
 		foreach(range(max(1, $this->options->versionMin), min($this->options->versionMax, 40)) as $version){

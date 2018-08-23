@@ -12,7 +12,7 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\Traits\ContainerAbstract;
+use chillerlan\Traits\ImmutableSettingsAbstract;
 
 /**
  * @property int    $version
@@ -45,6 +45,6 @@ use chillerlan\Traits\ContainerAbstract;
  *
  * @property array  $moduleValues
  */
-class QROptions extends ContainerAbstract{
+class QROptions extends ImmutableSettingsAbstract{
 	use QROptionsTrait;
 }

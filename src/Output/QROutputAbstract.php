@@ -15,7 +15,7 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\{
 	Data\QRMatrix, QRCode
 };
-use chillerlan\Traits\ContainerInterface;
+use chillerlan\Traits\ImmutableSettingsInterface;
 
 /**
  *
@@ -50,10 +50,10 @@ abstract class QROutputAbstract implements QROutputInterface{
 	/**
 	 * QROutputAbstract constructor.
 	 *
-	 * @param \chillerlan\Traits\ContainerInterface $options
+	 * @param \chillerlan\Traits\ImmutableSettingsInterface $options
 	 * @param \chillerlan\QRCode\Data\QRMatrix      $matrix
 	 */
-	public function __construct(ContainerInterface $options, QRMatrix $matrix){
+	public function __construct(ImmutableSettingsInterface $options, QRMatrix $matrix){
 		$this->options     = $options;
 		$this->matrix      = $matrix;
 		$this->moduleCount = $this->matrix->size();

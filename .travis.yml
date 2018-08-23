@@ -1,9 +1,11 @@
 language: php
 
-php:
-  - 7.0
-  - 7.1
-  - 7.2
+matrix:
+  include:
+    - php: 7.2
+    - php: nightly
+  allow_failures:
+    - php: nightly
 
 install: travis_retry composer install --no-interaction --prefer-source
 
