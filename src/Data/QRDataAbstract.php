@@ -12,15 +12,9 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\{
-	QRCode, QRCodeException, QROptions
-};
-use chillerlan\QRCode\Helpers\{
-	BitBuffer, Polynomial
-};
-use chillerlan\Traits\{
-	ImmutableSettingsInterface
-};
+use chillerlan\QRCode\{QRCode, QRCodeException};
+use chillerlan\QRCode\Helpers\{BitBuffer, Polynomial};
+use chillerlan\Settings\SettingsContainerInterface;
 
 /**
  * Processes the binary data and maps it on a matrix which is then being returned
@@ -89,10 +83,10 @@ abstract class QRDataAbstract implements QRDataInterface{
 	/**
 	 * QRDataInterface constructor.
 	 *
-	 * @param \chillerlan\Traits\ImmutableSettingsInterface $options
+	 * @param \chillerlan\Settings\SettingsContainerInterface $options
 	 * @param string|null                           $data
 	 */
-	public function __construct(ImmutableSettingsInterface $options, string $data = null){
+	public function __construct(SettingsContainerInterface $options, string $data = null){
 		$this->options = $options;
 
 		if($data !== null){
