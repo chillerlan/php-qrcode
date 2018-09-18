@@ -19,14 +19,13 @@ use chillerlan\QRCode\Helpers\{
 	BitBuffer, Polynomial
 };
 use chillerlan\Traits\{
-	ClassLoader, ImmutableSettingsInterface
+	ImmutableSettingsInterface
 };
 
 /**
  * Processes the binary data and maps it on a matrix which is then being returned
  */
 abstract class QRDataAbstract implements QRDataInterface{
-	use ClassLoader;
 
 	/**
 	 * the string byte count
@@ -136,8 +135,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function initMatrix(int $maskPattern, bool $test = null):QRMatrix{
-		/** @var \chillerlan\QRCode\Data\QRMatrix $matrix */
-		$matrix = $this->loadClass(QRMatrix::class, null, $this->version, $this->options->eccLevel);
+		$matrix = new QRMatrix($this->version, $this->options->eccLevel);
 
 		return $matrix
 			->setFinderPattern()

@@ -19,7 +19,7 @@ use chillerlan\QRCode\Output\{
 	QRCodeOutputException, QRImage, QRMarkup, QROutputInterface, QRString
 };
 use chillerlan\Traits\{
-	ClassLoader, ImmutableSettingsInterface
+	ImmutableSettingsInterface
 };
 
 /**
@@ -30,7 +30,6 @@ use chillerlan\Traits\{
  * @link http://www.thonky.com/qr-code-tutorial/
  */
 class QRCode{
-	use ClassLoader;
 
 	/**
 	 * API constants
@@ -229,8 +228,8 @@ class QRCode{
 
 		foreach($DATA_MODES as $dataInterface => $mode){
 
-			if(call_user_func_array([$this, 'is'.$mode], [$data]) === true){
-				return $this->loadClass($dataInterface, QRDataInterface::class, $this->options, $data);
+			if(call_user_func_array([$this, 'is'.$mode], [$data]) === true && class_exists($dataInterface)){
+				return new $dataInterface($this->options, $data);
 			}
 
 		}
@@ -248,14 +247,14 @@ class QRCode{
 	 */
 	protected function initOutputInterface(string $data):QROutputInterface{
 
-		if($this->options->outputType === $this::OUTPUT_CUSTOM && $this->options->outputInterface !== null){
-			return $this->loadClass($this->options->outputInterface, QROutputInterface::class, $this->options, $this->getMatrix($data));
+		if($this->options->outputType === $this::OUTPUT_CUSTOM && class_exists($this->options->outputInterface)){
+			return new $this->options->outputInterface($this->options, $this->getMatrix($data));
 		}
 
 		foreach($this::OUTPUT_MODES as $outputInterface => $modes){
 
-			if(in_array($this->options->outputType, $modes, true)){
-				return $this->loadClass($outputInterface, QROutputInterface::class, $this->options, $this->getMatrix($data));
+			if(in_array($this->options->outputType, $modes, true) && class_exists($outputInterface)){
+				return new $outputInterface($this->options, $this->getMatrix($data));
 			}
 
 		}
