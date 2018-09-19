@@ -114,12 +114,13 @@ class QRCode{
 	/**
 	 * Renders a QR Code for the given $data and QROptions
 	 *
-	 * @param string $data
+	 * @param string      $data
+	 * @param string|null $file
 	 *
 	 * @return mixed
 	 */
-	public function render(string $data){
-		return $this->initOutputInterface($data)->dump();
+	public function render(string $data, string $file = null){
+		return $this->initOutputInterface($data)->dump($file);
 	}
 
 	/**

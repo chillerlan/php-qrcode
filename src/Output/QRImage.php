@@ -71,10 +71,12 @@ class QRImage extends QROutputAbstract{
 	protected $background;
 
 	/**
+	 * @param string|null $file
+	 *
 	 * @return string
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	public function dump():string{
+	public function dump(string $file = null):string{
 
 		if($this->options->cachefile !== null && !is_writable(dirname($this->options->cachefile))){
 			throw new QRCodeOutputException('Could not write data to cache file: '.$this->options->cachefile);
@@ -92,7 +94,7 @@ class QRImage extends QROutputAbstract{
 			}
 		}
 
-		$imageData = $this->dumpImage();
+		$imageData = $this->dumpImage($file);
 
 		if((bool)$this->options->imageBase64){
 			$imageData = 'data:image/'.$this->options->outputType.';base64,'.base64_encode($imageData);
@@ -135,10 +137,15 @@ class QRImage extends QROutputAbstract{
 	}
 
 	/**
+	 * @param string|null $file
+	 *
 	 * @return string
+
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function dumpImage():string {
+	protected function dumpImage(string $file = null):string{
+		$file = $file ?? $this->options->cachefile;
+
 		ob_start();
 
 		try{
@@ -156,16 +163,20 @@ class QRImage extends QROutputAbstract{
 
 		ob_end_clean();
 
+		if($file !== null){
+			$this->saveToFile($imageData, $file);
+		}
+
 		return $imageData;
 	}
 
 	/**
 	 * @return void
 	 */
-	protected function png(){
+	protected function png():void{
 		imagepng(
 			$this->image,
-			$this->options->cachefile,
+			null,
 			in_array($this->options->pngCompression, range(-1, 9), true)
 				? $this->options->pngCompression
 				: -1
@@ -176,17 +187,17 @@ class QRImage extends QROutputAbstract{
 	 * Jiff - like... JitHub!
 	 * @return void
 	 */
-	protected function gif(){
-		imagegif($this->image, $this->options->cachefile);
+	protected function gif():void{
+		imagegif($this->image);
 	}
 
 	/**
 	 * @return void
 	 */
-	protected function jpg(){
+	protected function jpg():void{
 		imagejpeg(
 			$this->image,
-			$this->options->cachefile,
+			null,
 			in_array($this->options->jpegQuality, range(0, 100), true)
 				? $this->options->jpegQuality
 				: 85

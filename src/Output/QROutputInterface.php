@@ -18,8 +18,10 @@ namespace chillerlan\QRCode\Output;
 interface QROutputInterface{
 
 	/**
+	 * @param string|null $file
+	 *
 	 * @return mixed
 	 */
-	public function dump();
+	public function dump(string $file = null);
 
 }
