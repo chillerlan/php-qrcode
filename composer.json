@@ -20,7 +20,7 @@
 		}
 	],
 	"require": {
-		"php": ">=7.2.0",
+		"php": "^7.2",
 		"chillerlan/php-settings-container": "^1.0"
 	},
 	"require-dev": {
