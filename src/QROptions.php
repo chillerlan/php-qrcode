@@ -46,6 +46,9 @@ use chillerlan\Settings\SettingsContainerAbstract;
  * @property int    $pngCompression
  * @property int    $jpegQuality
  *
+ * @property string $imagickFormat
+ * @property string $imagickBG
+ *
  * @property array  $moduleValues
  */
 class QROptions extends SettingsContainerAbstract{

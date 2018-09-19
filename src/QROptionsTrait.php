@@ -201,9 +201,27 @@ trait QROptionsTrait{
 	protected $jpegQuality = 85;
 
 	/**
+	 * Imagick output format
+	 *
+	 * @see Imagick::setType()
+	 *
+	 * @var string
+	 */
+	protected $imagickFormat = 'png';
+
+	/**
+	 * Imagick background color (defaults to "transparent")
+	 *
+	 * @see \ImagickPixel::__construct()
+	 *
+	 * @var string
+	 */
+	protected $imagickBG;
+
+	/**
 	 * Module values map
 	 *
-	 *   HTML : #ABCDEF, cssname, rgb(), rgba()...
+	 *   HTML, IMAGICK: #ABCDEF, cssname, rgb(), rgba()...
 	 *   IMAGE: [63, 127, 255] // R, G, B
 	 *
 	 * @var array
