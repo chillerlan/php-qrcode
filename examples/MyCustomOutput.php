@@ -18,7 +18,7 @@ use chillerlan\QRCode\Output\QROutputAbstract;
  */
 class MyCustomOutput extends QROutputAbstract{
 
-	public function dump(){
+	public function dump(string $file = null){
 
 		$output = '';
 
