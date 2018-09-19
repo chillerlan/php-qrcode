@@ -12,8 +12,7 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\Output\QRMarkup;
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\{QRCode, Output\QRMarkup};
 
 class QRMarkupTest extends QROutputTestAbstract{
 

@@ -95,22 +95,22 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 * @param string $data
 	 * @param string $file
 	 *
-	 * @return bool|int
+	 * @return bool
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function saveToFile(string $data, string $file) {
+	protected function saveToFile(string $data, string $file):bool{
 
 		if(!is_writable(dirname($file))){
 			throw new QRCodeOutputException('Could not write data to cache file: '.$file);
 		}
 
-		return file_put_contents($file, $data);
+		return (bool)file_put_contents($file, $data);
 	}
 
 	/**
 	 * @param string|null $file
 	 *
-	 * @return string
+	 * @return string|mixed
 	 */
 	public function dump(string $file = null){
 		$data = call_user_func([$this, $this->outputMode ?? $this->defaultMode]);

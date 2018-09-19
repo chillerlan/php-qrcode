@@ -14,8 +14,6 @@ namespace chillerlan\QRCodeExamples;
 
 use chillerlan\QRCode\Output\QROutputAbstract;
 
-/**
- */
 class MyCustomOutput extends QROutputAbstract{
 
 	protected function setModuleValues():void{

@@ -13,9 +13,7 @@
 namespace chillerlan\QRCodeTest;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
-use ReflectionMethod;
-use ReflectionProperty;
+use ReflectionClass, ReflectionMethod, ReflectionProperty;
 
 abstract class QRTestAbstract extends TestCase{
 

@@ -19,7 +19,7 @@ use chillerlan\QRCode\QRCode;
  */
 class Number extends QRDataAbstract{
 
-	const CHAR_MAP = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+	public const CHAR_MAP = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
 	/**
 	 * @inheritdoc
@@ -34,7 +34,7 @@ class Number extends QRDataAbstract{
 	/**
 	 * @inheritdoc
 	 */
-	protected function write(string $data){
+	protected function write(string $data):void{
 		$i = 0;
 
 		while($i + 2 < $this->strlen){
@@ -63,7 +63,7 @@ class Number extends QRDataAbstract{
 	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	protected function parseInt(string $string):int {
+	protected function parseInt(string $string):int{
 		$num = 0;
 
 		$len = strlen($string);

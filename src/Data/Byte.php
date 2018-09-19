@@ -32,7 +32,7 @@ class Byte extends QRDataAbstract{
 	/**
 	 * @inheritdoc
 	 */
-	protected function write(string $data){
+	protected function write(string $data):void{
 		$i = 0;
 
 		while($i < $this->strlen){

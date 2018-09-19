@@ -19,24 +19,25 @@ use chillerlan\QRCode\QRCode;
  */
 class QRMatrix{
 
-	const M_NULL       = 0x00;
-	const M_DARKMODULE = 0x02;
-	const M_DATA       = 0x04;
-	const M_FINDER     = 0x06;
-	const M_SEPARATOR  = 0x08;
-	const M_ALIGNMENT  = 0x0a;
-	const M_TIMING     = 0x0c;
-	const M_FORMAT     = 0x0e;
-	const M_VERSION    = 0x10;
-	const M_QUIETZONE  = 0x12;
-	const M_LOGO       = 0x14; // @todo
+	public const M_NULL       = 0x00;
+	public const M_DARKMODULE = 0x02;
+	public const M_DATA       = 0x04;
+	public const M_FINDER     = 0x06;
+	public const M_SEPARATOR  = 0x08;
+	public const M_ALIGNMENT  = 0x0a;
+	public const M_TIMING     = 0x0c;
+	public const M_FORMAT     = 0x0e;
+	public const M_VERSION    = 0x10;
+	public const M_QUIETZONE  = 0x12;
+	public const M_LOGO       = 0x14; // @todo
 
-	const M_TEST       = 0xff;
+	public const M_TEST       = 0xff;
 
 	/**
 	 * @link http://www.thonky.com/qr-code-tutorial/alignment-pattern-locations
 	 */
-	const alignmentPattern = [ null, // start at 1
+	protected const alignmentPattern = [
+		null, // start at 1
 		[],
 		[6, 18],
 		[6, 22],
@@ -82,7 +83,7 @@ class QRMatrix{
 	/**
 	 * @link http://www.thonky.com/qr-code-tutorial/format-version-tables
 	 */
-	const versionPattern = [
+	protected const versionPattern = [
 		// 1-based version index
 		null,
 		// no version pattern for QR Codes < 7
@@ -92,7 +93,7 @@ class QRMatrix{
 		0x1f250, 0x209d5, 0x216f0, 0x228ba, 0x2379f, 0x24b0b, 0x2542e, 0x26a64, 0x27541, 0x28c69,
 	];
 
-	const formatPattern = [
+	protected const formatPattern = [
 		[0x77c4, 0x72f3, 0x7daa, 0x789d, 0x662f, 0x6318, 0x6c41, 0x6976], // L
 		[0x5412, 0x5125, 0x5e7c, 0x5b4b, 0x45f9, 0x40ce, 0x4f97, 0x4aa0], // M
 		[0x355f, 0x3068, 0x3f31, 0x3a06, 0x24b4, 0x2183, 0x2eda, 0x2bed], // Q
@@ -151,28 +152,28 @@ class QRMatrix{
 	/**
 	 * @return array
 	 */
-	public function matrix():array {
+	public function matrix():array{
 		return $this->matrix;
 	}
 
 	/**
 	 * @return int
 	 */
-	public function version():int {
+	public function version():int{
 		return $this->version;
 	}
 
 	/**
 	 * @return int
 	 */
-	public function eccLevel():int {
+	public function eccLevel():int{
 		return $this->eclevel;
 	}
 
 	/**
 	 * @return int
 	 */
-	public function maskPattern():int {
+	public function maskPattern():int{
 		return $this->maskPattern;
 	}
 
@@ -539,7 +540,7 @@ class QRMatrix{
 	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	protected function getMask(int $x, int $y, int $maskPattern):int {
+	protected function getMask(int $x, int $y, int $maskPattern):int{
 		$a = $y + $x;
 		$m = $y * $x;
 

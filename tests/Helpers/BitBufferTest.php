@@ -12,8 +12,7 @@
 
 namespace chillerlan\QRCodeTest\Helpers;
 
-use chillerlan\QRCode\Helpers\BitBuffer;
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\{QRCode, Helpers\BitBuffer};
 use chillerlan\QRCodeTest\QRTestAbstract;
 
 class BitBufferTest extends QRTestAbstract{

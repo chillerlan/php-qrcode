@@ -12,11 +12,6 @@
 
 namespace chillerlan\QRCode\Data;
 
-use Exception;
+use chillerlan\QRCode\QRCodeException;
 
-/**
- * Placeholder
- */
-class QRCodeDataException extends Exception{
-
-}
+class QRCodeDataException extends QRCodeException{}

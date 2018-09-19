@@ -150,7 +150,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 * @codeCoverageIgnore
 	 */
-	protected function getLengthBits():int {
+	protected function getLengthBits():int{
 
 		 foreach([9, 26, 40] as $key => $breakpoint){
 			 if($this->version <= $breakpoint){
@@ -200,7 +200,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 *
 	 * @return void
 	 */
-	abstract protected function write(string $data);
+	abstract protected function write(string $data):void;
 
 	/**
 	 * writes the string data to the BitBuffer
@@ -210,7 +210,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 * @return \chillerlan\QRCode\Data\QRDataAbstract
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	protected function writeBitBuffer(string $data):QRDataInterface {
+	protected function writeBitBuffer(string $data):QRDataInterface{
 		$this->bitBuffer = new BitBuffer;
 
 		// @todo: fixme, get real length
@@ -267,13 +267,13 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 *
 	 * @return array
 	 */
-	protected function maskECC():array {
-		list($l1, $l2, $b1, $b2) = $this::RSBLOCKS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
+	protected function maskECC():array{
+		[$l1, $l2, $b1, $b2] = $this::RSBLOCKS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
 
-		$rsBlocks       = array_fill(0, $l1, [$b1, $b2]);
-		$rsCount        = $l1 + $l2;
-		$this->ecdata   = array_fill(0, $rsCount, null);
-		$this->dcdata   = $this->ecdata;
+		$rsBlocks     = array_fill(0, $l1, [$b1, $b2]);
+		$rsCount      = $l1 + $l2;
+		$this->ecdata = array_fill(0, $rsCount, null);
+		$this->dcdata = $this->ecdata;
 
 		if($l2 > 0){
 			$rsBlocks = array_merge($rsBlocks, array_fill(0, $l2, [$b1 + 1, $b2 + 1]));
@@ -285,7 +285,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 		$offset         = 0;
 
 		foreach($rsBlocks as $key => $block){
-			list($rsBlockTotal, $dcCount) = $block;
+			[$rsBlockTotal, $dcCount] = $block;
 
 			$ecCount            = $rsBlockTotal - $dcCount;
 			$maxDcCount         = max($maxDcCount, $dcCount);
@@ -296,7 +296,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 				$this->dcdata[$key][$a] = 0xff & $this->bitBuffer->buffer[$a + $offset];
 			}
 
-			list($num, $add) = $this->poly($key, $ecCount);
+			[$num, $add] = $this->poly($key, $ecCount);
 
 			foreach($this->ecdata[$key] as $c => $_z){
 				$modIndex               = $c + $add;

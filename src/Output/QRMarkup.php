@@ -19,6 +19,9 @@ use chillerlan\QRCode\QRCode;
  */
 class QRMarkup extends QROutputAbstract{
 
+	/**
+	 * @var string
+	 */
 	protected $defaultMode = QRCode::OUTPUT_MARKUP_SVG;
 
 	/**
@@ -43,9 +46,9 @@ class QRMarkup extends QROutputAbstract{
 	}
 
 	/**
-	 * @return string|bool
+	 * @return string
 	 */
-	protected function html(){
+	protected function html():string{
 		$html = '';
 
 		foreach($this->matrix->matrix() as $row){
@@ -68,9 +71,9 @@ class QRMarkup extends QROutputAbstract{
 	/**
 	 * @link https://github.com/codemasher/php-qrcode/pull/5
 	 *
-	 * @return string|bool
+	 * @return string
 	 */
-	protected function svg(){
+	protected function svg():string{
 		$scale  = $this->options->scale;
 		$length = $this->moduleCount * $scale;
 		$matrix = $this->matrix->matrix();

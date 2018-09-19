@@ -4,7 +4,7 @@
  *
  * @filesource   QRCodeOutputException.php
  * @created      09.12.2015
- * @package      chillerlan\QRCode
+ * @package      chillerlan\QRCode\Output
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
@@ -12,11 +12,6 @@
 
 namespace chillerlan\QRCode\Output;
 
-use Exception;
+use chillerlan\QRCode\QRCodeException;
 
-/**
- * Placeholder
- */
-class QRCodeOutputException extends Exception{
-
-}
+class QRCodeOutputException extends QRCodeException{}

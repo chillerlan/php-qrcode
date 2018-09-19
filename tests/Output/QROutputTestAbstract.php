@@ -12,9 +12,7 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\Data\Byte;
-use chillerlan\QRCode\Output\QROutputInterface;
-use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\{QROptions, Data\Byte, Output\QROutputInterface};
 use chillerlan\QRCodeTest\QRTestAbstract;
 
 /**

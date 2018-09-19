@@ -15,15 +15,20 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\QRCode;
 
 /**
- * Converts the matrix into images, raw or base64 output
+ * Converts the matrix into GD images, raw or base64 output
+ * requires ext-gd
+ * @link http://php.net/manual/book.image.php
  */
 class QRImage extends QROutputAbstract{
 
-	const TRANSPARENCY_TYPES = [
+	protected const TRANSPARENCY_TYPES = [
 		QRCode::OUTPUT_IMAGE_PNG,
 		QRCode::OUTPUT_IMAGE_GIF,
 	];
 
+	/**
+	 * @var string
+	 */
 	protected $defaultMode  = QRCode::OUTPUT_IMAGE_PNG;
 
 	/**

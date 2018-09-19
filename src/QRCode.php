@@ -32,54 +32,47 @@ class QRCode{
 	/**
 	 * API constants
 	 */
-	const OUTPUT_MARKUP_HTML  = 'html';
-	const OUTPUT_MARKUP_SVG   = 'svg';
-#	const OUTPUT_MARKUP_EPS   = 'eps';
-#	const OUTPUT_MARKUP_XML   = 'xml'; // anyone?
+	public const OUTPUT_MARKUP_HTML = 'html';
+	public const OUTPUT_MARKUP_SVG  = 'svg';
+	public const OUTPUT_IMAGE_PNG   = 'png';
+	public const OUTPUT_IMAGE_JPG   = 'jpg';
+	public const OUTPUT_IMAGE_GIF   = 'gif';
+	public const OUTPUT_STRING_JSON = 'json';
+	public const OUTPUT_STRING_TEXT = 'text';
+	public const OUTPUT_IMAGICK     = 'imagick';
+	public const OUTPUT_CUSTOM      = 'custom';
 
-	const OUTPUT_IMAGE_PNG    = 'png';
-	const OUTPUT_IMAGE_JPG    = 'jpg';
-	const OUTPUT_IMAGE_GIF    = 'gif';
+	public const VERSION_AUTO       = -1;
+	public const MASK_PATTERN_AUTO  = -1;
 
-	const OUTPUT_STRING_JSON  = 'json';
-	const OUTPUT_STRING_TEXT  = 'text';
+	public const ECC_L         = 0b01; // 7%.
+	public const ECC_M         = 0b00; // 15%.
+	public const ECC_Q         = 0b11; // 25%.
+	public const ECC_H         = 0b10; // 30%.
 
-	const OUTPUT_IMAGICK      = 'imagick';
+	public const DATA_NUMBER   = 0b0001;
+	public const DATA_ALPHANUM = 0b0010;
+	public const DATA_BYTE     = 0b0100;
+	public const DATA_KANJI    = 0b1000;
 
-	const OUTPUT_CUSTOM       = 'custom';
-
-	const VERSION_AUTO        = -1;
-	const MASK_PATTERN_AUTO   = -1;
-
-	const ECC_L         = 0b01; // 7%.
-	const ECC_M         = 0b00; // 15%.
-	const ECC_Q         = 0b11; // 25%.
-	const ECC_H         = 0b10; // 30%.
-
-	const DATA_NUMBER   = 0b0001;
-	const DATA_ALPHANUM = 0b0010;
-	const DATA_BYTE     = 0b0100;
-	const DATA_KANJI    = 0b1000;
-
-	const ECC_MODES = [
+	public const ECC_MODES = [
 		self::ECC_L => 0,
 		self::ECC_M => 1,
 		self::ECC_Q => 2,
 		self::ECC_H => 3,
 	];
 
-	const DATA_MODES = [
+	public const DATA_MODES = [
 		self::DATA_NUMBER   => 0,
 		self::DATA_ALPHANUM => 1,
 		self::DATA_BYTE     => 2,
 		self::DATA_KANJI    => 3,
 	];
 
-	const OUTPUT_MODES = [
+	public const OUTPUT_MODES = [
 		QRMarkup::class => [
 			self::OUTPUT_MARKUP_SVG,
 			self::OUTPUT_MARKUP_HTML,
-#			self::OUTPUT_MARKUP_EPS,
 		],
 		QRImage::class => [
 			self::OUTPUT_IMAGE_PNG,
@@ -136,10 +129,7 @@ class QRCode{
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function getMatrix(string $data):QRMatrix {
-		// https://github.com/chillerlan/php-qrcode/pull/15
-		// NOTE: input sanitization should be done outside
-		// $data = trim($data);
+	public function getMatrix(string $data):QRMatrix{
 
 		if(empty($data)){
 			throw new QRCodeDataException('QRCode::getMatrix() No data given.');
@@ -151,10 +141,7 @@ class QRCode{
 			? $this->getBestMaskPattern()
 			: min(7, max(0, (int)$this->options->maskPattern));
 
-		$matrix = $this
-			->dataInterface
-			->initMatrix($maskPattern)
-		;
+		$matrix = $this->dataInterface->initMatrix($maskPattern);
 
 		if((bool)$this->options->addQuietzone){
 			$matrix->setQuietZone($this->options->quietzoneSize);
@@ -174,9 +161,7 @@ class QRCode{
 		$penalties = [];
 
 		for($testPattern = 0; $testPattern < 8; $testPattern++){
-			$matrix = $this
-				->dataInterface
-				->initMatrix($testPattern, true);
+			$matrix = $this->dataInterface->initMatrix($testPattern, true);
 
 			$penalties[$testPattern] = (new MaskPatternTester($matrix))->testPattern();
 		}
@@ -244,7 +229,7 @@ class QRCode{
 	 *
 	 * @return bool
 	 */
-	public function isNumber(string $string):bool {
+	public function isNumber(string $string):bool{
 		return $this->checkString($string, Number::CHAR_MAP);
 	}
 
@@ -255,7 +240,7 @@ class QRCode{
 	 *
 	 * @return bool
 	 */
-	public function isAlphaNum(string $string):bool {
+	public function isAlphaNum(string $string):bool{
 		return $this->checkString($string, AlphaNum::CHAR_MAP);
 	}
 
@@ -286,7 +271,7 @@ class QRCode{
 	 *
 	 * @return bool
 	 */
-	public function isKanji(string $string):bool {
+	public function isKanji(string $string):bool{
 		$i   = 0;
 		$len = strlen($string);
 

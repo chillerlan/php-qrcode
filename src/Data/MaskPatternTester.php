@@ -201,7 +201,7 @@ class MaskPatternTester{
 	 *
 	 * @return float
 	 */
-	protected function testLevel4():float {
+	protected function testLevel4():float{
 		$count = 0;
 
 		foreach($this->matrix->matrix() as $y => $row){

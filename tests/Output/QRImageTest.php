@@ -12,8 +12,7 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\Output\QRImage;
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\{QRCode, Output\QRImage};
 
 class QRImageTest extends QROutputTestAbstract{
 
@@ -21,9 +20,9 @@ class QRImageTest extends QROutputTestAbstract{
 
 	public function types(){
 		return [
-			[QRCode::OUTPUT_IMAGE_PNG],
-			[QRCode::OUTPUT_IMAGE_GIF],
-			[QRCode::OUTPUT_IMAGE_JPG],
+			'png' => [QRCode::OUTPUT_IMAGE_PNG],
+			'gif' => [QRCode::OUTPUT_IMAGE_GIF],
+			'jpg' => [QRCode::OUTPUT_IMAGE_JPG],
 		];
 	}
 
@@ -32,8 +31,9 @@ class QRImageTest extends QROutputTestAbstract{
 	 * @param $type
 	 */
 	public function testImageOutput($type){
-		$this->options->outputType = $type;
-		$this->options->cachefile  = $this::cachefile.$type;
+		$this->options->outputType  = $type;
+		$this->options->imageBase64 = false;
+
 		$this->setOutputInterface();
 		$this->outputInterface->dump($this::cachefile.$type);
 		$img = $this->outputInterface->dump();

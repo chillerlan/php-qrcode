@@ -45,7 +45,6 @@ class QRImagick extends QROutputAbstract{
 	 * @param string|null $file
 	 *
 	 * @return string
-	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function dump(string $file = null):string{
 		$file    = $file ?? $this->options->cachefile;

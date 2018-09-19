@@ -12,9 +12,7 @@
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\Data\Byte;
-use chillerlan\QRCode\Data\MaskPatternTester;
-use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\{QROptions, Data\Byte, Data\MaskPatternTester};
 use chillerlan\QRCodeTest\QRTestAbstract;
 
 class MaskPatternTesterTest extends QRTestAbstract{
