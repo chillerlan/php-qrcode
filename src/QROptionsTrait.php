@@ -218,4 +218,29 @@ trait QROptionsTrait{
 		QRMatrix::M_TEST << 8       => true,  // 65280
 	];
 
+	/**
+	 * Sets the options, called internally by the constructor
+	 *
+	 * @return void
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	public function QROptionsTrait():void{
+
+		if(!array_key_exists($this->eccLevel, QRCode::ECC_MODES)){
+			throw new QRCodeException('Invalid error correct level: '.$this->eccLevel);
+		}
+
+		if(!is_array($this->imageTransparencyBG) || count($this->imageTransparencyBG) < 3){
+			$this->imageTransparencyBG = [255, 255, 255];
+		}
+
+		$this->version = (int)$this->version;
+
+		// clamp min/max version number
+		$max = $this->versionMax;
+		$min = $this->versionMin;
+		$this->versionMin = (int)min($min, $max);
+		$this->versionMax = (int)max($min, $max);
+	}
+
 }

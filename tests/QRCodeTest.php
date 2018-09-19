@@ -75,7 +75,7 @@ class QRCodeTest extends QRTestAbstract{
 	 * @expectedExceptionMessage Invalid error correct level: 42
 	 */
 	public function testSetOptionsException(){
-		$this->qrcode->setOptions(new QROptions(['eccLevel' => 42]));
+		new QROptions(['eccLevel' => 42]);
 	}
 
 	/**
@@ -83,7 +83,7 @@ class QRCodeTest extends QRTestAbstract{
 	 * @expectedExceptionMessage invalid output type
 	 */
 	public function testInitDataInterfaceException(){
-		$this->qrcode->setOptions(new QROptions(['outputType' => 'foo']))->render('test');
+		(new QRCode(new QROptions(['outputType' => 'foo'])))->render('test');
 	}
 
 	/**

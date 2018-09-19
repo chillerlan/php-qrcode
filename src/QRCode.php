@@ -108,36 +108,7 @@ class QRCode{
 	public function __construct(SettingsContainerInterface $options = null){
 		mb_internal_encoding('UTF-8');
 
-		$this->setOptions($options ?? new QROptions);
-	}
-
-	/**
-	 * Sets the options, called internally by the constructor
-	 *
-	 * @param \chillerlan\Settings\SettingsContainerInterface $options
-	 *
-	 * @return \chillerlan\QRCode\QRCode
-	 * @throws \chillerlan\QRCode\QRCodeException
-	 */
-	public function setOptions(SettingsContainerInterface $options):QRCode{
-
-		if(!array_key_exists($options->eccLevel, $this::ECC_MODES)){
-			throw new QRCodeException('Invalid error correct level: '.$options->eccLevel);
-		}
-
-		if(!is_array($options->imageTransparencyBG) || count($options->imageTransparencyBG) < 3){
-			$options->imageTransparencyBG = [255, 255, 255];
-		}
-
-		$options->version = (int)$options->version;
-
-		// clamp min/max version number
-		$options->versionMin = (int)min($options->versionMin, $options->versionMax);
-		$options->versionMax = (int)max($options->versionMin, $options->versionMax);
-
-		$this->options = $options;
-
-		return $this;
+		$this->options = $options ?? new QROptions;
 	}
 
 	/**
