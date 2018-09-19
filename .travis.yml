@@ -1,3 +1,8 @@
+addons:
+  apt:
+    packages:
+      - imagemagick
+
 language: php
 
 matrix:
@@ -7,8 +12,7 @@ matrix:
   allow_failures:
     - php: nightly
 
+before_install: printf "\n" | pecl install imagick
 install: travis_retry composer install --no-interaction --prefer-source
-
 script: vendor/bin/phpunit --configuration phpunit.xml --coverage-clover clover.xml
-
 after_script: bash <(curl -s https://codecov.io/bash)
