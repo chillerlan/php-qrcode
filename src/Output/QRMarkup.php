@@ -22,6 +22,27 @@ class QRMarkup extends QROutputAbstract{
 	protected $defaultMode = QRCode::OUTPUT_MARKUP_SVG;
 
 	/**
+	 * @return void
+	 */
+	protected function setModuleValues():void{
+
+		foreach($this::DEFAULT_MODULE_VALUES as $M_TYPE => $defaultValue){
+			$v = $this->options->moduleValues[$M_TYPE] ?? null;
+
+			if(!is_string($v)){
+				$this->moduleValues[$M_TYPE] = $defaultValue
+					? $this->options->markupDark
+					: $this->options->markupLight;
+			}
+			else{
+				$this->moduleValues[$M_TYPE] = trim(strip_tags($v), '\'"');
+			}
+
+		}
+
+	}
+
+	/**
 	 * @return string|bool
 	 */
 	protected function html(){
@@ -30,8 +51,8 @@ class QRMarkup extends QROutputAbstract{
 		foreach($this->matrix->matrix() as $row){
 			$html .= '<div>';
 
-			foreach($row as $pixel){
-				$html .= '<span style="background: '.($this->options->moduleValues[$pixel] ?: 'lightgrey').';"></span>';
+			foreach($row as $M_TYPE){
+				$html .= '<span style="background: '.$this->moduleValues[$M_TYPE].';"></span>';
 			}
 
 			$html .= '</div>'.$this->options->eol;
@@ -59,13 +80,7 @@ class QRMarkup extends QROutputAbstract{
 		       .'<defs>'.$this->options->svgDefs.'</defs>'
 		       .$this->options->eol;
 
-		foreach($this->options->moduleValues as $M_TYPE => $value){
-
-			// fallback
-			if(is_bool($value)){
-				$value = $value ? '#000' : '#fff';
-			}
-
+		foreach($this->moduleValues as $M_TYPE => $value){
 			$path = '';
 
 			foreach($matrix as $y => $row){

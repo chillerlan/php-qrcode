@@ -37,6 +37,9 @@ use chillerlan\Settings\SettingsContainerAbstract;
  * @property string $textDark
  * @property string $textLight
  *
+ * @property string $markupDark
+ * @property string $markupLight
+ *
  * @property bool   $imageBase64
  * @property bool   $imageTransparent
  * @property array  $imageTransparencyBG

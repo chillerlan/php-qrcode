@@ -12,41 +12,19 @@
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\{QRCode, Data\QRMatrix};
+use chillerlan\QRCode\QRCode;
 
 /**
  * Converts the matrix into images, raw or base64 output
  */
 class QRImage extends QROutputAbstract{
 
-	const transparencyTypes = [
+	const TRANSPARENCY_TYPES = [
 		QRCode::OUTPUT_IMAGE_PNG,
 		QRCode::OUTPUT_IMAGE_GIF,
 	];
 
 	protected $defaultMode  = QRCode::OUTPUT_IMAGE_PNG;
-
-	protected $moduleValues = [
-		// light
-		QRMatrix::M_DATA            => [255, 255, 255],
-		QRMatrix::M_FINDER          => [255, 255, 255],
-		QRMatrix::M_SEPARATOR       => [255, 255, 255],
-		QRMatrix::M_ALIGNMENT       => [255, 255, 255],
-		QRMatrix::M_TIMING          => [255, 255, 255],
-		QRMatrix::M_FORMAT          => [255, 255, 255],
-		QRMatrix::M_VERSION         => [255, 255, 255],
-		QRMatrix::M_QUIETZONE       => [255, 255, 255],
-		QRMatrix::M_TEST            => [255, 255, 255],
-		// dark
-		QRMatrix::M_DARKMODULE << 8 => [0, 0, 0],
-		QRMatrix::M_DATA << 8       => [0, 0, 0],
-		QRMatrix::M_FINDER << 8     => [0, 0, 0],
-		QRMatrix::M_ALIGNMENT << 8  => [0, 0, 0],
-		QRMatrix::M_TIMING << 8     => [0, 0, 0],
-		QRMatrix::M_FORMAT << 8     => [0, 0, 0],
-		QRMatrix::M_VERSION << 8    => [0, 0, 0],
-		QRMatrix::M_TEST << 8       => [0, 0, 0],
-	];
 
 	/**
 	 * @see imagecreatetruecolor()
@@ -55,42 +33,50 @@ class QRImage extends QROutputAbstract{
 	protected $image;
 
 	/**
-	 * @var int
-	 */
-	protected $scale;
-
-	/**
-	 * @var int
-	 */
-	protected $length;
-
-	/**
 	 * @see imagecolorallocate()
 	 * @var int
 	 */
 	protected $background;
 
 	/**
+	 * @return void
+	 */
+	protected function setModuleValues():void{
+
+		foreach($this::DEFAULT_MODULE_VALUES as $M_TYPE => $defaultValue){
+			$v = $this->options->moduleValues[$M_TYPE] ?? null;
+
+			if(!is_array($v) || count($v) < 3){
+				$this->moduleValues[$M_TYPE] = $defaultValue
+					? [0, 0, 0]
+					: [255, 255, 255];
+			}
+			else{
+				$this->moduleValues[$M_TYPE] = array_values($v);
+			}
+
+		}
+
+	}
+
+	/**
 	 * @param string|null $file
 	 *
 	 * @return string
-	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function dump(string $file = null):string{
+		$this->image      = imagecreatetruecolor($this->length, $this->length);
+		$this->background = imagecolorallocate($this->image, ...array_values($this->options->imageTransparencyBG));
 
-		if($this->options->cachefile !== null && !is_writable(dirname($this->options->cachefile))){
-			throw new QRCodeOutputException('Could not write data to cache file: '.$this->options->cachefile);
+		if((bool)$this->options->imageTransparent && in_array($this->options->outputType, $this::TRANSPARENCY_TYPES, true)){
+			imagecolortransparent($this->image, $this->background);
 		}
 
-		$this->setImage();
-
-		$moduleValues = is_array($this->options->moduleValues[$this->matrix::M_DATA])
-			? $this->options->moduleValues // @codeCoverageIgnore
-			: $this->moduleValues;
+		imagefilledrectangle($this->image, 0, 0, $this->length, $this->length, $this->background);
 
 		foreach($this->matrix->matrix() as $y => $row){
-			foreach($row as $x => $pixel){
-				$this->setPixel($x, $y, imagecolorallocate($this->image, ...$moduleValues[$pixel]));
+			foreach($row as $x => $M_TYPE){
+				$this->setPixel($x, $y, $this->moduleValues[$M_TYPE]);
 			}
 		}
 
@@ -104,35 +90,20 @@ class QRImage extends QROutputAbstract{
 	}
 
 	/**
+	 * @param int   $x
+	 * @param int   $y
+	 * @param array $rgb
+	 *
 	 * @return void
 	 */
-	protected function setImage(){
-		$this->scale        = $this->options->scale;
-		$this->length       = $this->moduleCount * $this->scale;
-		$this->image        = imagecreatetruecolor($this->length, $this->length);
-		$this->background   = imagecolorallocate($this->image, ...$this->options->imageTransparencyBG);
-
-		if((bool)$this->options->imageTransparent && in_array($this->options->outputType, $this::transparencyTypes, true)){
-			imagecolortransparent($this->image, $this->background);
-		}
-
-		imagefilledrectangle($this->image, 0, 0, $this->length, $this->length, $this->background);
-	}
-
-	/**
-	 * @param int $x
-	 * @param int $y
-	 * @param int $color
-	 * @return void
-	 */
-	protected function setPixel(int $x, int $y, int $color){
+	protected function setPixel(int $x, int $y, array $rgb):void{
 		imagefilledrectangle(
 			$this->image,
 			$x * $this->scale,
 			$y * $this->scale,
-			($x + 1) * $this->scale - 1,
-			($y + 1) * $this->scale - 1,
-			$color
+			($x + 1) * $this->scale,
+			($y + 1) * $this->scale,
+			imagecolorallocate($this->image, ...$rgb)
 		);
 	}
 

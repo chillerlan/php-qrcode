@@ -16,7 +16,7 @@ use chillerlan\QRCode\{Data\QRMatrix, QRCode};
 use chillerlan\Settings\SettingsContainerInterface;
 
 /**
- *
+ * common output abstract
  */
 abstract class QROutputAbstract implements QROutputInterface{
 
@@ -46,6 +46,21 @@ abstract class QROutputAbstract implements QROutputInterface{
 	protected $defaultMode;
 
 	/**
+	 * @var int
+	 */
+	protected $scale;
+
+	/**
+	 * @var int
+	 */
+	protected $length;
+
+	/**
+	 * @var array
+	 */
+	protected $moduleValues;
+
+	/**
 	 * QROutputAbstract constructor.
 	 *
 	 * @param \chillerlan\Settings\SettingsContainerInterface $options
@@ -55,6 +70,8 @@ abstract class QROutputAbstract implements QROutputInterface{
 		$this->options     = $options;
 		$this->matrix      = $matrix;
 		$this->moduleCount = $this->matrix->size();
+		$this->scale       = $this->options->scale;
+		$this->length      = $this->moduleCount * $this->scale;
 
 		$class = get_called_class();
 
@@ -62,7 +79,15 @@ abstract class QROutputAbstract implements QROutputInterface{
 			$this->outputMode = $this->options->outputType;
 		}
 
+		$this->setModuleValues();
 	}
+
+	/**
+	 * Sets the initial module values (clean-up & defaults)
+	 *
+	 * @return void
+	 */
+	abstract protected function setModuleValues():void;
 
 	/**
 	 * @see file_put_contents()

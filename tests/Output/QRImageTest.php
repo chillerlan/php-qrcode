@@ -35,11 +35,7 @@ class QRImageTest extends QROutputTestAbstract{
 		$this->options->outputType = $type;
 		$this->options->cachefile  = $this::cachefile.$type;
 		$this->setOutputInterface();
-		$this->outputInterface->dump();
-
-		$this->options->cachefile = null;
-		$this->options->imageBase64 = false;
-		$this->setOutputInterface();
+		$this->outputInterface->dump($this::cachefile.$type);
 		$img = $this->outputInterface->dump();
 
 		if($type === QRCode::OUTPUT_IMAGE_JPG){ // jpeg encoding may cause different results
