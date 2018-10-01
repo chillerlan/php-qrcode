@@ -230,7 +230,7 @@ class QRCode{
 	 * @return bool
 	 */
 	public function isNumber(string $string):bool{
-		return $this->checkString($string, Number::CHAR_MAP);
+		return $this->checkString($string, QRDataInterface::NUMBER_CHAR_MAP);
 	}
 
 	/**
@@ -241,7 +241,7 @@ class QRCode{
 	 * @return bool
 	 */
 	public function isAlphaNum(string $string):bool{
-		return $this->checkString($string, AlphaNum::CHAR_MAP);
+		return $this->checkString($string, QRDataInterface::ALPHANUM_CHAR_MAP);
 	}
 
 	/**

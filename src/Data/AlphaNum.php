@@ -19,15 +19,6 @@ use chillerlan\QRCode\QRCode;
  */
 class AlphaNum extends QRDataAbstract{
 
-	public const CHAR_MAP = [
-		'0', '1', '2', '3', '4', '5', '6', '7',
-		'8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
-		'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-		'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
-		'W', 'X', 'Y', 'Z', ' ', '$', '%', '*',
-		'+', '-', '.', '/', ':',
-	];
-
 	/**
 	 * @inheritdoc
 	 */
@@ -60,7 +51,7 @@ class AlphaNum extends QRDataAbstract{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	protected function getCharCode(string $chr):int{
-		$i = array_search($chr, $this::CHAR_MAP);
+		$i = array_search($chr, $this::ALPHANUM_CHAR_MAP);
 
 		if($i !== false){
 			return $i;
