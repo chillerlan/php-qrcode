@@ -36,7 +36,7 @@ namespaced, cleaned up, improved and other stuff.
 {
 	"require": {
 		"php": "^7.2",
-		"chillerlan/php-qrcode": "dev-master"
+		"chillerlan/php-qrcode": "~3.0"
 	}
 }
 ```
