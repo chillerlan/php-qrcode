@@ -88,7 +88,7 @@ Wait, what was that? Please again, slower!
 
 ### Advanced usage
 
-Ok, step by step. First you'll need a `QRCode` instance, which can be optionally invoked with a `QROptions` (or a [`ContainerInterface`](https://github.com/chillerlan/php-traits/blob/master/src/ContainerInterface.php), respectively) object as the only parameter.
+Ok, step by step. First you'll need a `QRCode` instance, which can be optionally invoked with a `QROptions` (or a [`SettingsContainerInterface`](https://github.com/chillerlan/php-settings-container/blob/master/src/SettingsContainerInterface.php), respectively) object as the only parameter.
 
 ```php
 $options = new QROptions([
