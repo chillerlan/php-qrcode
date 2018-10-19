@@ -104,17 +104,7 @@ $qrcode = new QRCode($options);
 $qrcode->render($data);
 
 // ...with additional cache file
-$qrcode->render($data, '/path/to/file.png');
-```
-
-Once created, you can reuse the `QRCode` object any time:
-
-```php
-// set new options if needed
-$qrcode->setOptions($newOptions);
-
-// render again
-$qrcode->render($newData);
+$qrcode->render($data, '/path/to/file.svg');
 ```
 
 In case you just want the raw QR code matrix, call `QRCode::getMatrix()` - this method is also called internally from `QRCode::render()`. See also [Custom output modules](#custom-qroutputinterface).
