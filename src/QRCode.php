@@ -99,14 +99,31 @@ class QRCode{
 	protected $dataInterface;
 
 	/**
+	 * @see http://php.net/manual/function.mb-internal-encoding.php
+	 * @var string
+	 */
+	protected $mbCurrentEncoding;
+
+	/**
 	 * QRCode constructor.
 	 *
 	 * @param \chillerlan\Settings\SettingsContainerInterface|null $options
 	 */
 	public function __construct(SettingsContainerInterface $options = null){
+		// save the current mb encoding (in case it differs from UTF-8)
+		$this->mbCurrentEncoding = mb_internal_encoding();
+		// use UTF-8 from here on
 		mb_internal_encoding('UTF-8');
 
 		$this->options = $options ?? new QROptions;
+	}
+
+	/**
+	 * @return void
+	 */
+	public function __destruct(){
+		// restore the previous mb_internal_encoding, so that we don't mess up the rest of the script
+		mb_internal_encoding($this->mbCurrentEncoding);
 	}
 
 	/**
