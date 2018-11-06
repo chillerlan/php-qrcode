@@ -177,10 +177,10 @@ class QRCode{
 	protected function getBestMaskPattern():int{
 		$penalties = [];
 
-		for($testPattern = 0; $testPattern < 8; $testPattern++){
-			$matrix = $this->dataInterface->initMatrix($testPattern, true);
+		for($pattern = 0; $pattern < 8; $pattern++){
+			$tester = new MaskPatternTester($this->dataInterface->initMatrix($pattern, true));
 
-			$penalties[$testPattern] = (new MaskPatternTester($matrix))->testPattern();
+			$penalties[$pattern] = $tester->testPattern();
 		}
 
 		return array_search(min($penalties), $penalties, true);
@@ -196,16 +196,10 @@ class QRCode{
 	 */
 	public function initDataInterface(string $data):QRDataInterface{
 
-		$DATA_MODES = [
-			Number::class   => 'Number',
-			AlphaNum::class => 'AlphaNum',
-			Kanji::class    => 'Kanji',
-			Byte::class     => 'Byte',
-		];
+		foreach(['Number', 'AlphaNum', 'Kanji', 'Byte'] as $mode){
+			$dataInterface = __NAMESPACE__.'\\Data\\'.$mode;
 
-		foreach($DATA_MODES as $dataInterface => $mode){
-
-			if(call_user_func_array([$this, 'is'.$mode], [$data]) === true && class_exists($dataInterface)){
+			if(call_user_func_array([$this, 'is'.$mode], [$data]) && class_exists($dataInterface)){
 				return new $dataInterface($this->options, $data);
 			}
 
