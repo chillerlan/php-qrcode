@@ -251,6 +251,10 @@ trait QROptionsTrait{
 		$min = $this->versionMin;
 		$this->versionMin = (int)min($min, $max);
 		$this->versionMax = (int)max($min, $max);
+
+		if($this->maskPattern !== QRCode::MASK_PATTERN_AUTO){
+			$this->maskPattern = min(7, max(0, (int)$this->maskPattern));
+		}
 	}
 
 }
