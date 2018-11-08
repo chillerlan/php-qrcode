@@ -244,17 +244,17 @@ trait QROptionsTrait{
 			$this->imageTransparencyBG = [255, 255, 255];
 		}
 
-		$this->version = max(1, min((int)$this->version, 40));
+		$this->version = max(1, min(40, (int)$this->version));
 
 		// clamp min/max version number
-		$min = min(max(1, (int)$this->versionMin), 40);
-		$max = max(1, min((int)$this->versionMax, 40));
+		$min = max(1, min(40, (int)$this->versionMin));
+		$max = max(1, min(40, (int)$this->versionMax));
 
 		$this->versionMin = min($min, $max);
 		$this->versionMax = max($min, $max);
 
 		if($this->maskPattern !== QRCode::MASK_PATTERN_AUTO){
-			$this->maskPattern = min(7, max(0, (int)$this->maskPattern));
+			$this->maskPattern = max(0, min(7, (int)$this->maskPattern));
 		}
 	}
 
