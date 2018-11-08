@@ -244,7 +244,7 @@ trait QROptionsTrait{
 			$this->imageTransparencyBG = [255, 255, 255];
 		}
 
-		$this->version = (int)$this->version;
+		$this->version = max(1, min((int)$this->version, 40));
 
 		// clamp min/max version number
 		$min = min(max(1, (int)$this->versionMin), 40);
