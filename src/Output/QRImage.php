@@ -71,7 +71,7 @@ class QRImage extends QROutputAbstract{
 	 */
 	public function dump(string $file = null):string{
 		$this->image      = imagecreatetruecolor($this->length, $this->length);
-		$this->background = imagecolorallocate($this->image, ...array_values($this->options->imageTransparencyBG));
+		$this->background = imagecolorallocate($this->image, ...$this->options->imageTransparencyBG);
 
 		if((bool)$this->options->imageTransparent && in_array($this->options->outputType, $this::TRANSPARENCY_TYPES, true)){
 			imagecolortransparent($this->image, $this->background);

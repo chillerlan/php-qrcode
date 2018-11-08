@@ -12,6 +12,8 @@
 
 namespace chillerlan\QRCode;
 
+use chillerlan\QRCode\Output\QRImage;
+
 trait QROptionsTrait{
 
 	/**
@@ -240,8 +242,8 @@ trait QROptionsTrait{
 			throw new QRCodeException('Invalid error correct level: '.$this->eccLevel);
 		}
 
-		if(!is_array($this->imageTransparencyBG) || count($this->imageTransparencyBG) < 3){
-			$this->imageTransparencyBG = [255, 255, 255];
+		if(in_array($this->outputType, QRCode::OUTPUT_MODES[QRImage::class], true)){
+			$this->clampRGBValues();
 		}
 
 		$this->version = max(1, min(40, (int)$this->version));
@@ -258,4 +260,29 @@ trait QROptionsTrait{
 		}
 	}
 
+	/**
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	protected function clampRGBValues():void{
+
+		if(!is_array($this->imageTransparencyBG) || count($this->imageTransparencyBG) < 3){
+			$this->imageTransparencyBG = [255, 255, 255];
+		}
+		else{
+
+			foreach($this->imageTransparencyBG as $k => $v){
+
+				if(!is_numeric($v)){
+					throw new QRCodeException('Invalid RGB value.');
+				}
+
+				// clamp the values
+				$this->imageTransparencyBG[$k] = max(0, min(255, (int)$v));
+			}
+
+			// use the array values to not run into errors with the spread operator (...$arr)
+			$this->imageTransparencyBG = array_values($this->imageTransparencyBG);
+		}
+
+	}
 }
