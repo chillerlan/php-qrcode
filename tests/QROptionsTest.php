@@ -67,4 +67,20 @@ class QROptionsTest extends TestCase{
 	public function testInvalidEccLevelException(){
 		new QROptions(['eccLevel' => 42]);
 	}
+
+	public function testClampRGBValues(){
+		$o = new QROptions(['imageTransparencyBG' => [-1, 0, 999]]);
+
+		$this->assertSame(0, $o->imageTransparencyBG[0]);
+		$this->assertSame(0, $o->imageTransparencyBG[1]);
+		$this->assertSame(255, $o->imageTransparencyBG[2]);
+	}
+
+	/**
+	 * @expectedException \chillerlan\QRCode\QRCodeException
+	 * @expectedExceptionMessage Invalid RGB value.
+	 */
+	public function testInvalidRGBValueException(){
+		new QROptions(['imageTransparencyBG' => ['r', 'g', 'b']]);
+	}
 }
