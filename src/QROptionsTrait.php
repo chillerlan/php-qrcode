@@ -246,7 +246,9 @@ trait QROptionsTrait{
 			$this->clampRGBValues();
 		}
 
-		$this->version = max(1, min(40, (int)$this->version));
+		if($this->version !== QRCode::VERSION_AUTO){
+			$this->version = max(1, min(40, (int)$this->version));
+		}
 
 		// clamp min/max version number
 		$min = max(1, min(40, (int)$this->versionMin));

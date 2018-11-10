@@ -26,6 +26,7 @@ class QROptionsTest extends TestCase{
 		$this->assertSame(40, (new QROptions(['version' => 42]))->version);
 		$this->assertSame(1, (new QROptions(['version' => -42]))->version);
 		$this->assertSame(21, (new QROptions(['version' => 21]))->version);
+		$this->assertSame(QRCode::VERSION_AUTO, (new QROptions(['version' => QRCode::VERSION_AUTO]))->version); // -1
 	}
 
 	public function testVersionMinMaxClamp(){
