@@ -20,8 +20,8 @@ class QRStringTest extends QROutputTestAbstract{
 
 	public function types(){
 		return [
-			[QRCode::OUTPUT_STRING_JSON],
-			[QRCode::OUTPUT_STRING_TEXT],
+			'json' => [QRCode::OUTPUT_STRING_JSON],
+			'text' => [QRCode::OUTPUT_STRING_TEXT],
 		];
 	}
 

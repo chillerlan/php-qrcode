@@ -20,8 +20,8 @@ class QRMarkupTest extends QROutputTestAbstract{
 
 	public function types(){
 		return [
-			[QRCode::OUTPUT_MARKUP_HTML],
-			[QRCode::OUTPUT_MARKUP_SVG],
+			'html' => [QRCode::OUTPUT_MARKUP_HTML],
+			'svg'  => [QRCode::OUTPUT_MARKUP_SVG],
 		];
 	}
 

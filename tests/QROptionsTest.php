@@ -26,7 +26,7 @@ class QROptionsTest extends TestCase{
 		$this->assertSame(40, (new QROptions(['version' => 42]))->version);
 		$this->assertSame(1, (new QROptions(['version' => -42]))->version);
 		$this->assertSame(21, (new QROptions(['version' => 21]))->version);
-		$this->assertSame(QRCode::VERSION_AUTO, (new QROptions(['version' => QRCode::VERSION_AUTO]))->version); // -1
+		$this->assertSame(QRCode::VERSION_AUTO, (new QROptions)->version); // QRCode::VERSION_AUTO = -1, default
 	}
 
 	public function testVersionMinMaxClamp(){
@@ -34,6 +34,7 @@ class QROptionsTest extends TestCase{
 		$o = new QROptions(['versionMin' => 5, 'versionMax' => 10]);
 		$this->assertSame(5, $o->versionMin);
 		$this->assertSame(10, $o->versionMax);
+
 		// exceeding values
 		$o = new QROptions(['versionMin' => -42, 'versionMax' => 42]);
 		$this->assertSame(1, $o->versionMin);
@@ -50,14 +51,9 @@ class QROptionsTest extends TestCase{
 	}
 
 	public function testMaskPatternClamp(){
-		$o = new QROptions(['maskPattern' => 42]);
-		$this->assertSame(7, $o->maskPattern);
-
-		$o = new QROptions(['maskPattern' => -42]);
-		$this->assertSame(0, $o->maskPattern);
-
-		$o = new QROptions(['maskPattern' => QRCode::MASK_PATTERN_AUTO]); // -1
-		$this->assertSame(QRCode::MASK_PATTERN_AUTO, $o->maskPattern);
+		$this->assertSame(7, (new QROptions(['maskPattern' => 42]))->maskPattern);
+		$this->assertSame(0, (new QROptions(['maskPattern' => -42]))->maskPattern);
+		$this->assertSame(QRCode::MASK_PATTERN_AUTO, (new QROptions)->maskPattern); // QRCode::MASK_PATTERN_AUTO = -1, default
 	}
 
 	/**

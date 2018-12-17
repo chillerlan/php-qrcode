@@ -71,14 +71,6 @@ class QRCodeTest extends QRTestAbstract{
 	}
 
 	/**
-	 * @expectedException \chillerlan\QRCode\QRCodeException
-	 * @expectedExceptionMessage Invalid error correct level: 42
-	 */
-	public function testSetOptionsException(){
-		new QROptions(['eccLevel' => 42]);
-	}
-
-	/**
 	 * @expectedException \chillerlan\QRCode\Output\QRCodeOutputException
 	 * @expectedExceptionMessage invalid output type
 	 */
