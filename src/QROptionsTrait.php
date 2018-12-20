@@ -231,60 +231,118 @@ trait QROptionsTrait{
 	protected $moduleValues;
 
 	/**
-	 * Sets the options, called internally by the constructor
+	 * set/clamp some special values, call the parent setter otherwise
+	 *
+	 * @param string $property
+	 * @param mixed  $value
+	 *
+	 * @return void
+	 */
+	public function __set(string $property, $value):void{
+
+		if(in_array($property, ['eccLevel', 'maskPattern', 'imageTransparencyBG', 'version'], true)){
+			$this->{'set_'.$property}($value);
+
+			return;
+		}
+		elseif($property === 'versionMin'){
+			$this->setMinMaxVersion($value, $this->versionMax);
+
+			return;
+		}
+		elseif($property === 'versionMax'){
+			$this->setMinMaxVersion($this->versionMin, $value);
+
+			return;
+		}
+
+		parent::__set($property, $value);
+	}
+
+	/**
+	 * clamp min/max version number
+	 *
+	 * @param int $versionMin
+	 * @param int $versionMax
+	 *
+	 * @return void
+	 */
+	protected function setMinMaxVersion(int $versionMin, int $versionMax):void{
+		$min = max(1, min(40, $versionMin));
+		$max = max(1, min(40, $versionMax));
+
+		$this->versionMin = min($min, $max);
+		$this->versionMax = max($min, $max);
+	}
+
+	/**
+	 * @param int $eccLevel
 	 *
 	 * @return void
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function QROptionsTrait():void{
+	protected function set_eccLevel(int $eccLevel):void{
 
-		if(!array_key_exists($this->eccLevel, QRCode::ECC_MODES)){
-			throw new QRCodeException('Invalid error correct level: '.$this->eccLevel);
+		if(!isset(QRCode::ECC_MODES[$eccLevel])){
+			throw new QRCodeException('Invalid error correct level: '.$eccLevel);
 		}
 
-		if(in_array($this->outputType, QRCode::OUTPUT_MODES[QRImage::class], true)){
-			$this->clampRGBValues();
-		}
-
-		if($this->version !== QRCode::VERSION_AUTO){
-			$this->version = max(1, min(40, (int)$this->version));
-		}
-
-		// clamp min/max version number
-		$min = max(1, min(40, (int)$this->versionMin));
-		$max = max(1, min(40, (int)$this->versionMax));
-
-		$this->versionMin = min($min, $max);
-		$this->versionMax = max($min, $max);
-
-		if($this->maskPattern !== QRCode::MASK_PATTERN_AUTO){
-			$this->maskPattern = max(0, min(7, (int)$this->maskPattern));
-		}
+		$this->eccLevel = $eccLevel;
 	}
 
 	/**
-	 * @throws \chillerlan\QRCode\QRCodeException
+	 * @param int $maskPattern
+	 *
+	 * @return void
 	 */
-	protected function clampRGBValues():void{
+	protected function set_maskPattern(int $maskPattern):void{
 
-		if(!is_array($this->imageTransparencyBG) || count($this->imageTransparencyBG) < 3){
-			$this->imageTransparencyBG = [255, 255, 255];
-		}
-		else{
-
-			foreach($this->imageTransparencyBG as $k => $v){
-
-				if(!is_numeric($v)){
-					throw new QRCodeException('Invalid RGB value.');
-				}
-
-				// clamp the values
-				$this->imageTransparencyBG[$k] = max(0, min(255, (int)$v));
-			}
-
-			// use the array values to not run into errors with the spread operator (...$arr)
-			$this->imageTransparencyBG = array_values($this->imageTransparencyBG);
+		if($maskPattern !== QRCode::MASK_PATTERN_AUTO){
+			$this->maskPattern = max(0, min(7, $maskPattern));
 		}
 
 	}
+
+	/**
+	 * @param mixed $imageTransparencyBG
+	 *
+	 * @return void
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	protected function set_imageTransparencyBG($imageTransparencyBG):void{
+
+		// invalid value - set to white as default
+		if(!is_array($imageTransparencyBG) || count($imageTransparencyBG) < 3){
+			$this->imageTransparencyBG = [255, 255, 255];
+
+			return;
+		}
+
+		foreach($imageTransparencyBG as $k => $v){
+
+			if(!is_numeric($v)){
+				throw new QRCodeException('Invalid RGB value.');
+			}
+
+			// clamp the values
+			$this->imageTransparencyBG[$k] = max(0, min(255, (int)$v));
+		}
+
+		// use the array values to not run into errors with the spread operator (...$arr)
+		$this->imageTransparencyBG = array_values($this->imageTransparencyBG);
+	}
+
+	/**
+	 * @param int $version
+	 *
+	 * @return void
+	 */
+	protected function set_version(int $version):void{
+
+		if($version !== QRCode::VERSION_AUTO){
+			$this->version = max(1, min(40, $version));
+		}
+
+	}
+
 }
