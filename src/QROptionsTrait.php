@@ -12,8 +12,6 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\QRCode\Output\QRImage;
-
 trait QROptionsTrait{
 
 	/**
