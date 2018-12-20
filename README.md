@@ -58,11 +58,6 @@ Profit!
 - other
   - [Wirecard payment SDK](https://github.com/wirecard/paymentSDK-php)
   - [gaara 嘎啦](https://github.com/xutengx/gaara)
-  
-#### PHP 5
-I've dropped PHP < 7.2 support as of August 2018 and PHP 5 support in early 2017 already. PHP 5.6 - 7.1 will be retired in the end of 2018, so there's no reason to stay on these versions and you really should upgrade your server.
-However, if upgrading is not an option for you, you can use the unsupported PHP 5.6 backport of the 2.0 branch. It's available as [`1.0.8` on Packagist](https://packagist.org/packages/chillerlan/php-qrcode#1.0.8). 
-*Please let PHP 5 die.*
 
 ### Usage
 We want to encode this data into a QRcode image:
@@ -384,4 +379,4 @@ I don't take responsibility for molten CPUs, misled applications, failed log-ins
 
 The word "QR Code" is registered trademark of *DENSO WAVE INCORPORATED*<br>
 http://www.denso-wave.com/qrcode/faqpatent-e.html
-  
+
