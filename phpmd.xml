@@ -13,7 +13,7 @@
 	<rule ref="rulesets/codesize.xml/CyclomaticComplexity">
 		<priority>1</priority>
 		<properties>
-			<property name="maximum" value="150" />
+			<property name="maximum" value="200" />
 		</properties>
 	</rule>
 	<rule ref="rulesets/controversial.xml">
