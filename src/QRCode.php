@@ -13,7 +13,7 @@
 namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Data\{
-	AlphaNum, Byte, Kanji, MaskPatternTester, Number, QRCodeDataException, QRDataInterface, QRMatrix
+	MaskPatternTester, QRCodeDataException, QRDataInterface, QRMatrix
 };
 use chillerlan\QRCode\Output\{
 	QRCodeOutputException, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString
