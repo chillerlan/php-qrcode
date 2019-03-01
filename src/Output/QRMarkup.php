@@ -59,7 +59,7 @@ class QRMarkup extends QROutputAbstract{
 		$html = '';
 
 		foreach($this->matrix->matrix() as $row){
-			$html .= '<div class="'.$this->options->cssClass.'">';
+			$html .= '<div'.($this->options->cssClass ? 'class="'.$this->options->cssClass.'"' : '').'>';
 
 			foreach($row as $M_TYPE){
 				$html .= '<span style="background: '.$this->moduleValues[$M_TYPE].';"></span>';
