@@ -56,10 +56,10 @@ class QRMarkup extends QROutputAbstract{
 	 * @return string
 	 */
 	protected function html():string{
-		$html = '';
+		$html = '<div class="'.$this->options->cssClass.'">'.$this->options->eol;
 
 		foreach($this->matrix->matrix() as $row){
-			$html .= '<div'.($this->options->cssClass ? 'class="'.$this->options->cssClass.'"' : '').'>';
+			$html .= '<div>';
 
 			foreach($row as $M_TYPE){
 				$html .= '<span style="background: '.$this->moduleValues[$M_TYPE].';"></span>';
@@ -67,6 +67,8 @@ class QRMarkup extends QROutputAbstract{
 
 			$html .= '</div>'.$this->options->eol;
 		}
+
+		$html .= '</div>'.$this->options->eol;
 
 		if($this->options->cachefile){
 			return '<!DOCTYPE html><head><meta charset="UTF-8"></head><body>'.$this->options->eol.$html.'</body>';
