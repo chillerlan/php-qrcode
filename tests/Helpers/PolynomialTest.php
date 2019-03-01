@@ -13,6 +13,7 @@
 namespace chillerlan\QRCodeTest\Helpers;
 
 use chillerlan\QRCode\Helpers\Polynomial;
+use chillerlan\QRCode\QRCodeException;
 use chillerlan\QRCodeTest\QRTestAbstract;
 
 class PolynomialTest extends QRTestAbstract{
@@ -22,7 +23,7 @@ class PolynomialTest extends QRTestAbstract{
 	 */
 	protected $polynomial;
 
-	protected function setUp(){
+	protected function setUp():void{
 		$this->polynomial = new Polynomial;
 	}
 
@@ -32,11 +33,10 @@ class PolynomialTest extends QRTestAbstract{
 		$this->assertSame(2,   $this->polynomial->gexp(256));
 	}
 
-	/**
-	 * @expectedException \chillerlan\QRCode\QRCodeException
-	 * @expectedExceptionMessage log(0)
-	 */
 	public function testGlogException(){
+		$this->expectException(QRCodeException::class);
+		$this->expectExceptionMessage('log(0)');
+
 		$this->polynomial->glog(0);
 	}
 }

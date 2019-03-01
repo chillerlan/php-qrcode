@@ -12,8 +12,9 @@
 
 namespace chillerlan\QRCodeTest;
 
-use chillerlan\QRCode\QROptions;
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\{QROptions, QRCode};
+use chillerlan\QRCode\Data\QRCodeDataException;
+use chillerlan\QRCode\Output\QRCodeOutputException;
 use chillerlan\QRCodeExamples\MyCustomOutput;
 
 class QRCodeTest extends QRTestAbstract{
@@ -25,7 +26,7 @@ class QRCodeTest extends QRTestAbstract{
 	 */
 	protected $qrcode;
 
-	protected function setUp(){
+	protected function setUp():void{
 		parent::setUp();
 
 		$this->qrcode = $this->reflection->newInstance();
@@ -67,22 +68,20 @@ class QRCodeTest extends QRTestAbstract{
 	public function testRenderImage($type, $expected){
 		$this->qrcode = $this->reflection->newInstanceArgs([new QROptions(['outputType' => $type])]);
 
-		$this->assertContains($expected, $this->qrcode->render('test'));
+		$this->assertStringContainsString($expected, $this->qrcode->render('test'));
 	}
 
-	/**
-	 * @expectedException \chillerlan\QRCode\Output\QRCodeOutputException
-	 * @expectedExceptionMessage invalid output type
-	 */
 	public function testInitDataInterfaceException(){
+		$this->expectException(QRCodeOutputException::class);
+		$this->expectExceptionMessage('invalid output type');
+
 		(new QRCode(new QROptions(['outputType' => 'foo'])))->render('test');
 	}
 
-	/**
-	 * @expectedException \chillerlan\QRCode\Data\QRCodeDataException
-	 * @expectedExceptionMessage QRCode::getMatrix() No data given.
-	 */
 	public function testGetMatrixException(){
+		$this->expectException(QRCodeDataException::class);
+		$this->expectExceptionMessage('QRCode::getMatrix() No data given.');
+
 		$this->qrcode->getMatrix('');
 	}
 

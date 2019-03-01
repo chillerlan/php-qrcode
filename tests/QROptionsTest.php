@@ -12,7 +12,7 @@
 
 namespace chillerlan\QRCodeTest;
 
-use chillerlan\QRCode\{QRCode,QROptions};
+use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
 use PHPUnit\Framework\TestCase;
 
 class QROptionsTest extends TestCase{
@@ -56,11 +56,10 @@ class QROptionsTest extends TestCase{
 		$this->assertSame(QRCode::MASK_PATTERN_AUTO, (new QROptions)->maskPattern); // QRCode::MASK_PATTERN_AUTO = -1, default
 	}
 
-	/**
-	 * @expectedException \chillerlan\QRCode\QRCodeException
-	 * @expectedExceptionMessage Invalid error correct level: 42
-	 */
 	public function testInvalidEccLevelException(){
+		$this->expectException(QRCodeException::class);
+		$this->expectExceptionMessage('Invalid error correct level: 42');
+
 		new QROptions(['eccLevel' => 42]);
 	}
 
@@ -72,11 +71,10 @@ class QROptionsTest extends TestCase{
 		$this->assertSame(255, $o->imageTransparencyBG[2]);
 	}
 
-	/**
-	 * @expectedException \chillerlan\QRCode\QRCodeException
-	 * @expectedExceptionMessage Invalid RGB value.
-	 */
 	public function testInvalidRGBValueException(){
+		$this->expectException(QRCodeException::class);
+		$this->expectExceptionMessage('Invalid RGB value.');
+
 		new QROptions(['imageTransparencyBG' => ['r', 'g', 'b']]);
 	}
 }

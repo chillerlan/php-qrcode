@@ -12,7 +12,7 @@
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\Data\AlphaNum;
+use chillerlan\QRCode\Data\{AlphaNum, QRCodeDataException};
 
 class AlphaNumTest extends DatainterfaceTestAbstract{
 
@@ -34,11 +34,10 @@ class AlphaNumTest extends DatainterfaceTestAbstract{
 		92, 112, 20, 198, 27
 	];
 
-	/**
-	 * @expectedException \chillerlan\QRCode\Data\QRCodeDataException
-	 * @expectedExceptionMessage illegal char: "#" [35]
-	 */
 	public function testGetCharCodeException(){
+		$this->expectException(QRCodeDataException::class);
+		$this->expectExceptionMessage('illegal char: "#" [35]');
+
 		$this->dataInterface->setData('#');
 	}
 

@@ -12,7 +12,8 @@
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\{QROptions, Data\QRDataInterface, Data\QRMatrix};
+use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Data\{QRCodeDataException, QRDataInterface, QRMatrix};
 use chillerlan\QRCodeTest\QRTestAbstract;
 
 abstract class DatainterfaceTestAbstract extends QRTestAbstract{
@@ -25,7 +26,7 @@ abstract class DatainterfaceTestAbstract extends QRTestAbstract{
 	protected $testdata;
 	protected $expected;
 
-	protected function setUp(){
+	protected function setUp():void{
 		parent::setUp();
 
 		$this->dataInterface = $this->reflection->newInstanceArgs([new QROptions(['version' => 4])]);
@@ -53,11 +54,10 @@ abstract class DatainterfaceTestAbstract extends QRTestAbstract{
 		$this->assertSame(1, $this->getMethod('getMinimumVersion')->invoke($this->dataInterface));
 	}
 
-	/**
-	 * @expectedException \chillerlan\QRCode\Data\QRCodeDataException
-	 * @expectedExceptionMessage data exceeds
-	 */
 	public function testGetMinimumVersionException(){
+		$this->expectException(QRCodeDataException::class);
+		$this->expectExceptionMessage('data exceeds');
+
 		$this->getProperty('strlen')->setValue($this->dataInterface, 13370);
 		$this->getMethod('getMinimumVersion')->invoke($this->dataInterface);
 	}

@@ -22,7 +22,7 @@ class BitBufferTest extends QRTestAbstract{
 	 */
 	protected $bitBuffer;
 
-	protected function setUp(){
+	protected function setUp():void{
 		$this->bitBuffer = new BitBuffer;
 	}
 

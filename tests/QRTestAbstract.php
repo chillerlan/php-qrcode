@@ -27,7 +27,7 @@ abstract class QRTestAbstract extends TestCase{
 	 */
 	protected $FQCN;
 
-	protected function setUp(){
+	protected function setUp():void{
 		$this->reflection = new ReflectionClass($this->FQCN);
 	}
 

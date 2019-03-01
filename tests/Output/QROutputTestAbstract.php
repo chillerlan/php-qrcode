@@ -12,7 +12,9 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\{QROptions, Data\Byte, Output\QROutputInterface};
+use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Data\Byte;
+use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use chillerlan\QRCodeTest\QRTestAbstract;
 
 /**
@@ -36,7 +38,7 @@ abstract class QROutputTestAbstract extends QRTestAbstract{
 	 */
 	protected $matrix;
 
-	protected function setUp(){
+	protected function setUp():void{
 		parent::setUp();
 
 		$this->options         = new QROptions;
@@ -52,11 +54,10 @@ abstract class QROutputTestAbstract extends QRTestAbstract{
 		$this->assertInstanceOf(QROutputInterface::class, $this->outputInterface);
 	}
 
-	/**
-	 * @expectedException \chillerlan\QRCode\Output\QRCodeOutputException
-	 * @expectedExceptionMessage Could not write data to cache file: /foo
-	 */
 	public function testSaveException(){
+		$this->expectException(QRCodeOutputException::class);
+		$this->expectExceptionMessage('Could not write data to cache file: /foo');
+
 		$this->options->cachefile = '/foo';
 		$this->setOutputInterface();
 		$this->outputInterface->dump();

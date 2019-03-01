@@ -12,7 +12,8 @@
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\{QRCode, Data\QRMatrix};
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
 use chillerlan\QRCodeTest\QRTestAbstract;
 use ReflectionClass;
 
@@ -67,25 +68,23 @@ class QRMatrixTest extends QRTestAbstract{
 	 */
 	protected $matrix;
 
-	protected function setUp(){
+	protected function setUp():void{
 		parent::setUp();
 
 		$this->matrix = $this->reflection->newInstanceArgs([$this->version, QRCode::ECC_L]);
 	}
 
-	/**
-	 * @expectedException \chillerlan\QRCode\Data\QRCodeDataException
-	 * @expectedExceptionMessage invalid QR Code version
-	 */
 	public function testInvalidVersionException(){
+		$this->expectException(QRCodeDataException::class);
+		$this->expectExceptionMessage('invalid QR Code version');
+
 		$this->reflection->newInstanceArgs([42, 0]);
 	}
 
-	/**
-	 * @expectedException \chillerlan\QRCode\Data\QRCodeDataException
-	 * @expectedExceptionMessage invalid ecc level
-	 */
 	public function testInvalidEccException(){
+		$this->expectException(QRCodeDataException::class);
+		$this->expectExceptionMessage('invalid ecc level');
+
 		$this->reflection->newInstanceArgs([1, 42]);
 	}
 
@@ -234,11 +233,10 @@ class QRMatrixTest extends QRTestAbstract{
 		$this->assertSame(QRMatrix::M_TEST << 8, $this->matrix->get($size - 1 - $q, $size - 1 - $q));
 	}
 
-	/**
-	 * @expectedException \chillerlan\QRCode\Data\QRCodeDataException
-	 * @expectedExceptionMessage use only after writing data
-	 */
 	public function testSetQuietZoneException(){
+		$this->expectException(QRCodeDataException::class);
+		$this->expectExceptionMessage('use only after writing data');
+
 		$this->matrix->setQuietZone();
 	}
 
