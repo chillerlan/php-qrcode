@@ -29,7 +29,7 @@ class QRMarkup extends QROutputAbstract{
 	 *
 	 * @var string
 	 */
-	protected $svgHeader = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="qr-svg" style="width: 100%%; height: auto;" viewBox="0 0 %1$d %1$d">';
+	protected $svgHeader = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="qr-svg %1$s" style="width: 100%%; height: auto;" viewBox="0 0 %2$d %2$d">';
 
 	/**
 	 * @return void
@@ -83,7 +83,7 @@ class QRMarkup extends QROutputAbstract{
 	protected function svg():string{
 		$matrix = $this->matrix->matrix();
 
-		$svg = sprintf($this->svgHeader, $this->options->svgViewBoxSize ?? $this->moduleCount)
+		$svg = sprintf($this->svgHeader, $this->options->cssClass, $this->options->svgViewBoxSize ?? $this->moduleCount)
 		       .$this->options->eol
 		       .'<defs>'.$this->options->svgDefs.'</defs>'
 		       .$this->options->eol;
