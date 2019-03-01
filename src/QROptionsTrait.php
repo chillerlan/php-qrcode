@@ -138,6 +138,17 @@ trait QROptionsTrait{
 	protected $svgDefs = '<style>rect{shape-rendering:crispEdges}</style>';
 
 	/**
+	 * SVG viewBox size. a single integer number which defines width/height of the viewBox attribute.
+	 *
+	 * viewBox="0 0 x x"
+	 *
+	 * @see https://css-tricks.com/scale-svg/#article-header-id-3
+	 *
+	 * @var int
+	 */
+	protected $svgViewBoxSize;
+
+	/**
 	 * string substitute for dark
 	 *
 	 * @var string
