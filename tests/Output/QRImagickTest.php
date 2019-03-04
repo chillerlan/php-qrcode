@@ -19,9 +19,13 @@ class QRImagickTest extends QROutputTestAbstract{
 	protected $FQCN = QRImagick::class;
 
 	public function setUp():void{
+
 		if(!extension_loaded('imagick')){
 			$this->markTestSkipped('ext-imagick not loaded');
+			return;
 		}
+
+		parent::setUp();
 	}
 
 	public function testImageOutput(){
