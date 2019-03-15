@@ -58,17 +58,17 @@ class QRString extends QROutputAbstract{
 				$r[] = $this->moduleValues[$M_TYPE];
 			}
 
-			$str[] = implode('', $r);
+			$str[] = \implode('', $r);
 		}
 
-		return implode($this->options->eol, $str);
+		return \implode($this->options->eol, $str);
 	}
 
 	/**
 	 * @return string
 	 */
 	protected function json():string{
-		return json_encode($this->matrix->matrix());
+		return \json_encode($this->matrix->matrix());
 	}
 
 }

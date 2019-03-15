@@ -87,13 +87,13 @@ class Polynomial{
 	 */
 	public function setNum(array $num, int $shift = null):Polynomial{
 		$offset = 0;
-		$numCount = count($num);
+		$numCount = \count($num);
 
 		while($offset < $numCount && $num[$offset] === 0){
 			$offset++;
 		}
 
-		$this->num = array_fill(0, $numCount - $offset + ($shift ?? 0), 0);
+		$this->num = \array_fill(0, $numCount - $offset + ($shift ?? 0), 0);
 
 		for($i = 0; $i < $numCount - $offset; $i++){
 			$this->num[$i] = $num[$i + $offset];
@@ -108,7 +108,7 @@ class Polynomial{
 	 * @return \chillerlan\QRCode\Helpers\Polynomial
 	 */
 	public function multiply(array $e):Polynomial{
-		$n = array_fill(0, count($this->num) + count($e) - 1, 0);
+		$n = \array_fill(0, \count($this->num) + \count($e) - 1, 0);
 
 		foreach($this->num as $i => $vi){
 			$vi = $this->glog($vi);
@@ -132,7 +132,7 @@ class Polynomial{
 	public function mod(array $e):Polynomial{
 		$n = $this->num;
 
-		if(count($n) - count($e) < 0){
+		if(\count($n) - \count($e) < 0){
 			return $this;
 		}
 

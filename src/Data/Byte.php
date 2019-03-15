@@ -36,7 +36,7 @@ class Byte extends QRDataAbstract{
 		$i = 0;
 
 		while($i < $this->strlen){
-			$this->bitBuffer->put(ord($data[$i]), 8);
+			$this->bitBuffer->put(\ord($data[$i]), 8);
 			$i++;
 		}
 

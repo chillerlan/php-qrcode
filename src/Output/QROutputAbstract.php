@@ -73,9 +73,9 @@ abstract class QROutputAbstract implements QROutputInterface{
 		$this->scale       = $this->options->scale;
 		$this->length      = $this->moduleCount * $this->scale;
 
-		$class = get_called_class();
+		$class = \get_called_class();
 
-		if(array_key_exists($class, QRCode::OUTPUT_MODES) && in_array($this->options->outputType, QRCode::OUTPUT_MODES[$class])){
+		if(\array_key_exists($class, QRCode::OUTPUT_MODES) && \in_array($this->options->outputType, QRCode::OUTPUT_MODES[$class])){
 			$this->outputMode = $this->options->outputType;
 		}
 
@@ -100,11 +100,11 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 */
 	protected function saveToFile(string $data, string $file):bool{
 
-		if(!is_writable(dirname($file))){
+		if(!\is_writable(\dirname($file))){
 			throw new QRCodeOutputException('Could not write data to cache file: '.$file);
 		}
 
-		return (bool)file_put_contents($file, $data);
+		return (bool)\file_put_contents($file, $data);
 	}
 
 	/**
@@ -113,7 +113,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 * @return string|mixed
 	 */
 	public function dump(string $file = null){
-		$data = call_user_func([$this, $this->outputMode ?? $this->defaultMode]);
+		$data = \call_user_func([$this, $this->outputMode ?? $this->defaultMode]);
 		$file = $file ?? $this->options->cachefile;
 
 		if($file !== null){

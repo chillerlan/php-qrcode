@@ -135,18 +135,18 @@ class QRMatrix{
 	 */
 	public function __construct(int $version, int $eclevel){
 
-		if(!in_array($version, range(1, 40), true)){
+		if(!\in_array($version, \range(1, 40), true)){
 			throw new QRCodeDataException('invalid QR Code version');
 		}
 
-		if(!array_key_exists($eclevel, QRCode::ECC_MODES)){
+		if(!\array_key_exists($eclevel, QRCode::ECC_MODES)){
 			throw new QRCodeDataException('invalid ecc level');
 		}
 
 		$this->version     = $version;
 		$this->eclevel     = $eclevel;
 		$this->moduleCount = $this->version * 4 + 17;
-		$this->matrix      = array_fill(0, $this->moduleCount, array_fill(0, $this->moduleCount, $this::M_NULL));
+		$this->matrix      = \array_fill(0, $this->moduleCount, \array_fill(0, $this->moduleCount, $this::M_NULL));
 	}
 
 	/**
@@ -346,7 +346,7 @@ class QRMatrix{
 	 */
 	public function setTimingPattern():QRMatrix{
 
-		foreach(range(8, $this->moduleCount - 8 - 1) as $i){
+		foreach(\range(8, $this->moduleCount - 8 - 1) as $i){
 
 			if($this->matrix[6][$i] !== $this::M_NULL || $this->matrix[$i][6] !== $this::M_NULL){
 				continue;
@@ -375,7 +375,7 @@ class QRMatrix{
 		if($bits !== false){
 
 			for($i = 0; $i < 18; $i++){
-				$a = (int)floor($i / 3);
+				$a = (int)\floor($i / 3);
 				$b = $i % 3 + $this->moduleCount - 8 - 3;
 				$v = !$test && (($bits >> $i) & 1) === 1;
 
@@ -445,22 +445,22 @@ class QRMatrix{
 			throw new QRCodeDataException('use only after writing data');
 		}
 
-		$size = $size !== null ? max(0, min($size, floor($this->moduleCount / 2))) : 4;
+		$size = $size !== null ? \max(0, \min($size, \floor($this->moduleCount / 2))) : 4;
 		$t    = $this::M_QUIETZONE;
 
 		for($y = 0; $y < $this->moduleCount; $y++){
 			for($i = 0; $i < $size; $i++){
-				array_unshift($this->matrix[$y], $t);
-				array_push($this->matrix[$y], $t);
+				\array_unshift($this->matrix[$y], $t);
+				\array_push($this->matrix[$y], $t);
 			}
 		}
 
 		$this->moduleCount += ($size * 2);
-		$r                 = array_fill(0, $this->moduleCount, $t);
+		$r                 = \array_fill(0, $this->moduleCount, $t);
 
 		for($i = 0; $i < $size; $i++){
-			array_unshift($this->matrix, $r);
-			array_push($this->matrix, $r);
+			\array_unshift($this->matrix, $r);
+			\array_push($this->matrix, $r);
 		}
 
 		return $this;
@@ -478,7 +478,7 @@ class QRMatrix{
 	 */
 	public function mapData(array $data, int $maskPattern):QRMatrix{
 		$this->maskPattern = $maskPattern;
-		$byteCount         = count($data);
+		$byteCount         = \count($data);
 		$size              = $this->moduleCount - 1;
 
 		for($i = $size, $y = $size, $inc = -1, $byteIndex = 0, $bitIndex  = 7; $i > 0; $i -= 2){
@@ -551,7 +551,7 @@ class QRMatrix{
 				$y % 2,
 				$x % 3,
 				$a % 3,
-				(floor($y / 2) + floor($x / 3)) % 2,
+				(\floor($y / 2) + \floor($x / 3)) % 2,
 				$m % 2 + $m % 3,
 				($m % 2 + $m % 3) % 2,
 				($m % 3 + $a % 2) % 2
