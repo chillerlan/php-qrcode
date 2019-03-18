@@ -6,7 +6,7 @@
 	"minimum-stability": "stable",
 	"type": "library",
 	"keywords": [
-		"QR code"
+		"QR code", "qrcode", "qr", "qrcode-generator", "phpqrcode"
 	],
 	"authors": [
 		{
@@ -17,10 +17,16 @@
 			"name": "Smiley",
 			"email": "smiley@chillerlan.net",
 			"homepage": "https://github.com/codemasher"
+		},
+		{
+			"name": "Contributors",
+			"homepage":"https://github.com/chillerlan/php-qrcode/graphs/contributors"
 		}
 	],
 	"require": {
 		"php": "^7.2",
+		"ext-json": "*",
+		"ext-mbstring": "*",
 		"chillerlan/php-settings-container": "^1.0"
 	},
 	"require-dev": {
