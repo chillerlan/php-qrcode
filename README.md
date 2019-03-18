@@ -55,6 +55,8 @@ Profit!
 - WordPress
   - [`wp-two-factor-auth`](https://github.com/sjinks/wp-two-factor-auth)
   - [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
+- WoltLab Suite
+  - [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)  
 - other
   - [Wirecard payment SDK](https://github.com/wirecard/paymentSDK-php)
   - [gaara 嘎啦](https://github.com/xutengx/gaara)
