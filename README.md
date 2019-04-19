@@ -58,7 +58,6 @@ Profit!
 - WoltLab Suite
   - [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)  
 - other
-  - [Wirecard payment SDK](https://github.com/wirecard/paymentSDK-php)
   - [gaara 嘎啦](https://github.com/xutengx/gaara)
 
 ### Usage
