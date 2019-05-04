@@ -32,6 +32,9 @@
 	"require-dev": {
 		"phpunit/phpunit": "^8.0"
 	},
+	"suggest": {
+		"chillerlan/php-authenticator": "^3.0"
+	},
 	"autoload": {
 		"psr-4": {
 			"chillerlan\\QRCode\\": "src/"
