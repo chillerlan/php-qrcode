@@ -169,7 +169,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 * @return int
 	 */
 	protected function getLength(string $data):int{
-		return \strlen($data);
+		return \mb_strlen($data,'8bit');
 	}
 
 	/**
