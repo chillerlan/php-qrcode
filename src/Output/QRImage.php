@@ -29,19 +29,13 @@ class QRImage extends QROutputAbstract{
 	/**
 	 * @var string
 	 */
-	protected $defaultMode  = QRCode::OUTPUT_IMAGE_PNG;
+	protected $defaultMode = QRCode::OUTPUT_IMAGE_PNG;
 
 	/**
 	 * @see imagecreatetruecolor()
 	 * @var resource
 	 */
 	protected $image;
-
-	/**
-	 * @see imagecolorallocate()
-	 * @var int
-	 */
-	protected $background;
 
 	/**
 	 * @return void
@@ -70,14 +64,14 @@ class QRImage extends QROutputAbstract{
 	 * @return string
 	 */
 	public function dump(string $file = null):string{
-		$this->image      = \imagecreatetruecolor($this->length, $this->length);
-		$this->background = \imagecolorallocate($this->image, ...$this->options->imageTransparencyBG);
+		$this->image = \imagecreatetruecolor($this->length, $this->length);
+		$background  = \imagecolorallocate($this->image, ...$this->options->imageTransparencyBG);
 
 		if((bool)$this->options->imageTransparent && \in_array($this->options->outputType, $this::TRANSPARENCY_TYPES, true)){
-			\imagecolortransparent($this->image, $this->background);
+			\imagecolortransparent($this->image, $background);
 		}
 
-		\imagefilledrectangle($this->image, 0, 0, $this->length, $this->length, $this->background);
+		\imagefilledrectangle($this->image, 0, 0, $this->length, $this->length, $background);
 
 		foreach($this->matrix->matrix() as $y => $row){
 			foreach($row as $x => $M_TYPE){
