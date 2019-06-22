@@ -249,12 +249,7 @@ trait QROptionsTrait{
 	 */
 	public function __set(string $property, $value):void{
 
-		if(\in_array($property, ['eccLevel', 'maskPattern', 'imageTransparencyBG', 'version'], true)){
-			$this->{'set_'.$property}($value);
-
-			return;
-		}
-		elseif($property === 'versionMin'){
+		if($property === 'versionMin'){
 			$this->setMinMaxVersion($value, $this->versionMax);
 
 			return;
