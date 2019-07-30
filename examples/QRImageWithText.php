@@ -88,10 +88,10 @@ class QRImageWithText extends QRImage{
 
 		$fontColor = \imagecolorallocate($this->image, ...$textColor);
 		$w         = \imagefontwidth($textSize);
-		$x         =  round(($bgWidth - strlen($text) * $w) / 2);
+		$x         =  \round(($bgWidth - \strlen($text) * $w) / 2);
 
 		// loop through the string and draw the letters
-		foreach(str_split($text) as $i => $chr){
+		foreach(\str_split($text) as $i => $chr){
 			\imagechar($this->image, $textSize, $i * $w + $x, $this->length, $chr, $fontColor);
 		}
 	}

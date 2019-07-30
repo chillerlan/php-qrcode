@@ -65,7 +65,11 @@ class QRImage extends QROutputAbstract{
 	 */
 	public function dump(string $file = null):string{
 		$this->image = \imagecreatetruecolor($this->length, $this->length);
-		$background  = \imagecolorallocate($this->image, ...$this->options->imageTransparencyBG);
+
+		// avoid: Indirect modification of overloaded property $imageTransparencyBG has no effect
+		// https://stackoverflow.com/a/10455217
+		$tbg = $this->options->imageTransparencyBG;
+		$background  = \imagecolorallocate($this->image, ...$tbg);
 
 		if((bool)$this->options->imageTransparent && \in_array($this->options->outputType, $this::TRANSPARENCY_TYPES, true)){
 			\imagecolortransparent($this->image, $background);
