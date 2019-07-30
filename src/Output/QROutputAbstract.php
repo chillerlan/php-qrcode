@@ -90,7 +90,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 */
 	public function dump(string $file = null){
 		$data = \call_user_func([$this, $this->outputMode ?? $this->defaultMode]);
-		$file = $file ?? $this->options->cachefile;
+		$file ??= $this->options->cachefile;
 
 		if($file !== null){
 			$this->saveToFile($data, $file);

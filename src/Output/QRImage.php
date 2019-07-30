@@ -115,7 +115,7 @@ class QRImage extends QROutputAbstract{
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function dumpImage(string $file = null):string{
-		$file = $file ?? $this->options->cachefile;
+		$file ??= $this->options->cachefile;
 
 		\ob_start();
 
