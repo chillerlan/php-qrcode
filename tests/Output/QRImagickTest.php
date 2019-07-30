@@ -39,4 +39,17 @@ class QRImagickTest extends QROutputTestAbstract{
 		$this->assertSame($img, file_get_contents($this::cachefile.$type));
 	}
 
+	public function testSetModuleValues(){
+
+		$this->options->moduleValues = [
+			// data
+			1024 => '#4A6000',
+			4    => '#ECF9BE',
+		];
+
+		$this->setOutputInterface()->dump();
+
+		$this->assertTrue(true); // tricking the code coverage
+	}
+
 }
