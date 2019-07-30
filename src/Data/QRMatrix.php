@@ -381,10 +381,9 @@ class QRMatrix{
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function setAlignmentPattern():QRMatrix{
-		$pattern = $this::alignmentPattern[$this->version];
 
-		foreach($pattern as $y){
-			foreach($pattern as $x){
+		foreach($this::alignmentPattern[$this->version] as $y){
+			foreach($this::alignmentPattern[$this->version] as $x){
 
 				// skip existing patterns
 				if($this->matrix[$y][$x] !== $this::M_NULL){
@@ -436,7 +435,6 @@ class QRMatrix{
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function setVersionNumber(bool $test = null):QRMatrix{
-		$test = $test ?? false;
 		$bits = $this::versionPattern[$this->version] ?? false;
 
 		if($bits !== false){
@@ -464,36 +462,34 @@ class QRMatrix{
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function setFormatInfo(int $maskPattern, bool $test = null):QRMatrix{
-		$test = $test ?? false;
 		$bits = $this::formatPattern[QRCode::ECC_MODES[$this->eclevel]][$maskPattern] ?? 0;
-		$t    = $this::M_FORMAT;
 
 		for($i = 0; $i < 15; $i++){
 			$v = !$test && (($bits >> $i) & 1) === 1;
 
 			if($i < 6){
-				$this->set(8, $i, $v, $t);
+				$this->set(8, $i, $v, $this::M_FORMAT);
 			}
 			elseif($i < 8){
-				$this->set(8, $i + 1, $v, $t);
+				$this->set(8, $i + 1, $v, $this::M_FORMAT);
 			}
 			else{
-				$this->set(8, $this->moduleCount - 15 + $i, $v, $t);
+				$this->set(8, $this->moduleCount - 15 + $i, $v, $this::M_FORMAT);
 			}
 
 			if($i < 8){
-				$this->set($this->moduleCount - $i - 1, 8, $v, $t);
+				$this->set($this->moduleCount - $i - 1, 8, $v, $this::M_FORMAT);
 			}
 			elseif($i < 9){
-				$this->set(15 - $i, 8, $v, $t);
+				$this->set(15 - $i, 8, $v, $this::M_FORMAT);
 			}
 			else{
-				$this->set(15 - $i - 1, 8, $v, $t);
+				$this->set(15 - $i - 1, 8, $v, $this::M_FORMAT);
 			}
 
 		}
 
-		$this->set(8, $this->moduleCount - 8, !$test, $t);
+		$this->set(8, $this->moduleCount - 8, !$test, $this::M_FORMAT);
 
 		return $this;
 	}
@@ -512,18 +508,20 @@ class QRMatrix{
 			throw new QRCodeDataException('use only after writing data');
 		}
 
-		$size = $size !== null ? \max(0, \min($size, \floor($this->moduleCount / 2))) : 4;
-		$t    = $this::M_QUIETZONE;
+		$size = $size !== null
+			? \max(0, \min($size, \floor($this->moduleCount / 2)))
+			: 4;
 
 		for($y = 0; $y < $this->moduleCount; $y++){
 			for($i = 0; $i < $size; $i++){
-				\array_unshift($this->matrix[$y], $t);
-				\array_push($this->matrix[$y], $t);
+				\array_unshift($this->matrix[$y], $this::M_QUIETZONE);
+				\array_push($this->matrix[$y], $this::M_QUIETZONE);
 			}
 		}
 
 		$this->moduleCount += ($size * 2);
-		$r                 = \array_fill(0, $this->moduleCount, $t);
+
+		$r = \array_fill(0, $this->moduleCount, $this::M_QUIETZONE);
 
 		for($i = 0; $i < $size; $i++){
 			\array_unshift($this->matrix, $r);
