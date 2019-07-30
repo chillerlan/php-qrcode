@@ -19,15 +19,9 @@ use chillerlan\QRCode\QRCode;
  */
 class AlphaNum extends QRDataAbstract{
 
-	/**
-	 * @inheritdoc
-	 */
-	protected $datamode = QRCode::DATA_ALPHANUM;
+	protected int $datamode = QRCode::DATA_ALPHANUM;
 
-	/**
-	 * @inheritdoc
-	 */
-	protected $lengthBits = [9, 11, 13];
+	protected array $lengthBits = [9, 11, 13];
 
 	/**
 	 * @inheritdoc

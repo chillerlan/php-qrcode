@@ -16,7 +16,7 @@ use chillerlan\QRCode\{QRCode, Output\QRMarkup};
 
 class QRMarkupTest extends QROutputTestAbstract{
 
-	protected $FQCN = QRMarkup::class;
+	protected string $FQCN = QRMarkup::class;
 
 	public function types(){
 		return [

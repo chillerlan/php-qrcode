@@ -19,14 +19,11 @@ use ReflectionClass;
 
 class QRMatrixTest extends QRTestAbstract{
 
-	protected $FQCN = QRMatrix::class;
+	protected string $FQCN = QRMatrix::class;
 
-	protected $version = 7;
+	protected int $version = 7;
 
-	/**
-	 * @var \chillerlan\QRCode\Data\QRMatrix
-	 */
-	protected $matrix;
+	protected QRMatrix $matrix;
 
 	protected function setUp():void{
 		parent::setUp();

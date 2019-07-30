@@ -16,9 +16,11 @@ use chillerlan\QRCode\Data\{AlphaNum, QRCodeDataException};
 
 class AlphaNumTest extends DatainterfaceTestAbstract{
 
-	protected $FQCN = AlphaNum::class;
-	protected $testdata  = '0 $%*+-./:';
-	protected $expected  = [
+	protected string $FQCN = AlphaNum::class;
+
+	protected string $testdata  = '0 $%*+-./:';
+
+	protected array  $expected  = [
 		32, 80, 36, 212, 252, 15, 175, 251,
 		176, 236, 17, 236, 17, 236, 17, 236,
 		17, 236, 17, 236, 17, 236, 17, 236,

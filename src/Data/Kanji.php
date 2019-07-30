@@ -19,15 +19,9 @@ use chillerlan\QRCode\QRCode;
  */
 class Kanji extends QRDataAbstract{
 
-	/**
-	 * @inheritdoc
-	 */
-	protected $datamode = QRCode::DATA_KANJI;
+	protected int $datamode = QRCode::DATA_KANJI;
 
-	/**
-	 * @inheritdoc
-	 */
-	protected $lengthBits = [8, 10, 12];
+	protected array $lengthBits = [8, 10, 12];
 
 	/**
 	 * @inheritdoc

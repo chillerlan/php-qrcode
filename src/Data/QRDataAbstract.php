@@ -23,62 +23,43 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 	/**
 	 * the string byte count
-	 *
-	 * @var int
 	 */
-	protected $strlen;
+	protected ?int $strlen = null;
 
 	/**
 	 * the current data mode: Num, Alphanum, Kanji, Byte
-	 *
-	 * @var int
 	 */
-	protected $datamode;
+	protected int $datamode;
 
 	/**
 	 * mode length bits for the version breakpoints 1-9, 10-26 and 27-40
-	 *
-	 * @var array
 	 */
-	protected $lengthBits = [0, 0, 0];
+	protected array $lengthBits = [0, 0, 0];
 
 	/**
 	 * current QR Code version
-	 *
-	 * @var int
 	 */
-	protected $version;
+	protected int $version;
 
 	/**
 	 * the raw data that's being passed to QRMatrix::mapData()
-	 *
-	 * @var array
 	 */
-	protected $matrixdata;
+	protected array $matrixdata;
 
 	/**
 	 * ECC temp data
-	 *
-	 * @var array
 	 */
-	protected $ecdata;
+	protected array $ecdata;
 
 	/**
 	 * ECC temp data
-	 *
-	 * @var array
 	 */
-	protected $dcdata;
+	protected array $dcdata;
 
-	/**
-	 * @var \chillerlan\QRCode\QROptions
-	 */
-	protected $options;
+	/** @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions */
+	protected SettingsContainerInterface $options;
 
-	/**
-	 * @var \chillerlan\QRCode\Helpers\BitBuffer
-	 */
-	protected $bitBuffer;
+	protected BitBuffer $bitBuffer;
 
 	/**
 	 * QRDataInterface constructor.

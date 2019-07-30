@@ -19,15 +19,9 @@ namespace chillerlan\QRCode\Data;
  */
 class MaskPatternTester{
 
-	/**
-	 * @var \chillerlan\QRCode\Data\QRMatrix
-	 */
-	protected $matrix;
+	protected QRMatrix $matrix;
 
-	/**
-	 * @var int
-	 */
-	protected $moduleCount;
+	protected int $moduleCount;
 
 	/**
 	 * Receives the matrix an sets the module count

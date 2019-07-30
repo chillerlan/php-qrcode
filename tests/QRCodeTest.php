@@ -19,7 +19,7 @@ use chillerlan\QRCodeExamples\MyCustomOutput;
 
 class QRCodeTest extends QRTestAbstract{
 
-	protected $FQCN = QRCode::class;
+	protected string $FQCN = QRCode::class;
 
 	/**
 	 * @var \chillerlan\QRCode\QRCode

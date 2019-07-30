@@ -19,10 +19,7 @@ use chillerlan\QRCode\QRCode;
  */
 class QRString extends QROutputAbstract{
 
-	/**
-	 * @var string
-	 */
-	protected $defaultMode = QRCode::OUTPUT_STRING_TEXT;
+	protected string $defaultMode = QRCode::OUTPUT_STRING_TEXT;
 
 	/**
 	 * @return void

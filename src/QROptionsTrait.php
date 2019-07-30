@@ -17,25 +17,19 @@ trait QROptionsTrait{
 	/**
 	 * QR Code version number
 	 *
-	 *   [1 ... 40] or QRCode::VERSION_AUTO
-	 *
-	 * @var int
+	 * [1 ... 40] or QRCode::VERSION_AUTO
 	 */
-	protected $version = QRCode::VERSION_AUTO;
+	protected int $version = QRCode::VERSION_AUTO;
 
 	/**
 	 * Minimum QR version (if $version = QRCode::VERSION_AUTO)
-	 *
-	 * @var int
 	 */
-	protected $versionMin = 1;
+	protected int $versionMin = 1;
 
 	/**
 	 * Maximum QR version
-	 *
-	 * @var int
 	 */
-	protected $versionMax = 40;
+	protected int $versionMax = 40;
 
 	/**
 	 * Error correct level
@@ -45,97 +39,73 @@ trait QROptionsTrait{
 	 *    M => 15%
 	 *    Q => 25%
 	 *    H => 30%
-	 *
-	 * @var int
 	 */
-	protected $eccLevel = QRCode::ECC_L;
+	protected int $eccLevel = QRCode::ECC_L;
 
 	/**
 	 * Mask Pattern to use
 	 *
 	 *  [0...7] or QRCode::MASK_PATTERN_AUTO
-	 *
-	 * @var int
 	 */
-	protected $maskPattern = QRCode::MASK_PATTERN_AUTO;
+	protected int $maskPattern = QRCode::MASK_PATTERN_AUTO;
 
 	/**
 	 * Add a "quiet zone" (margin) according to the QR code spec
-	 *
-	 * @var bool
 	 */
-	protected $addQuietzone = true;
+	protected bool $addQuietzone = true;
 
 	/**
 	 *  Size of the quiet zone
 	 *
 	 *   internally clamped to [0 ... $moduleCount / 2], defaults to 4 modules
-	 *
-	 * @var int
 	 */
-	protected $quietzoneSize = 4;
+	protected int $quietzoneSize = 4;
 
 	/**
 	 * QRCode::OUTPUT_MARKUP_XXXX where XXXX = HTML, SVG
 	 * QRCode::OUTPUT_IMAGE_XXX where XXX = PNG, GIF, JPG
 	 * QRCode::OUTPUT_STRING_XXXX where XXXX = TEXT, JSON
 	 * QRCode::OUTPUT_CUSTOM
-	 *
-	 * @var string
 	 */
-	protected $outputType = QRCode::OUTPUT_IMAGE_PNG;
+	protected string $outputType = QRCode::OUTPUT_IMAGE_PNG;
 
 	/**
 	 * the FQCN of the custom QROutputInterface if $outputType is set to QRCode::OUTPUT_CUSTOM
-	 *
-	 * @var string
 	 */
-	protected $outputInterface;
+	protected string $outputInterface;
 
 	/**
 	 * /path/to/cache.file
-	 *
-	 * @var string
 	 */
-	protected $cachefile;
+	protected string $cachefile;
 
 	/**
 	 * newline string [HTML, SVG, TEXT]
-	 *
-	 * @var string
 	 */
-	protected $eol = PHP_EOL;
+	protected string $eol = PHP_EOL;
 
 	/**
 	 * size of a QR code pixel [SVG, IMAGE_*]
 	 * HTML -> via CSS
-	 *
-	 * @var int
 	 */
-	protected $scale = 5;
+	protected int $scale = 5;
 
 	/**
 	 * a common css class
-	 *
-	 * @var string
 	 */
-	protected $cssClass;
+	protected string $cssClass;
 
 	/**
 	 * SVG opacity
-	 *
-	 * @var float
 	 */
-	protected $svgOpacity = 1.0;
+	protected float $svgOpacity = 1.0;
 
 	/**
 	 * anything between <defs>
 	 *
 	 * @see https://developer.mozilla.org/docs/Web/SVG/Element/defs
-	 *
-	 * @var string
 	 */
-	protected $svgDefs = '<style>rect{shape-rendering:crispEdges}</style>';
+	protected string $svgDefs = '<style>rect{shape-rendering:crispEdges}</style>';
 
 	/**
 	 * SVG viewBox size. a single integer number which defines width/height of the viewBox attribute.
@@ -143,101 +113,77 @@ trait QROptionsTrait{
 	 * viewBox="0 0 x x"
 	 *
 	 * @see https://css-tricks.com/scale-svg/#article-header-id-3
-	 *
-	 * @var int
 	 */
-	protected $svgViewBoxSize;
+	protected int $svgViewBoxSize;
 
 	/**
 	 * string substitute for dark
-	 *
-	 * @var string
 	 */
-	protected $textDark = '🔴';
+	protected string $textDark = '🔴';
 
 	/**
 	 * string substitute for light
-	 *
-	 * @var string
 	 */
-	protected $textLight = '⭕';
+	protected string $textLight = '⭕';
 
 	/**
 	 * markup substitute for dark (CSS value)
-	 *
-	 * @var string
 	 */
-	protected $markupDark = '#000';
+	protected string $markupDark = '#000';
 
 	/**
 	 * markup substitute for light (CSS value)
-	 *
-	 * @var string
 	 */
-	protected $markupLight = '#fff';
+	protected string $markupLight = '#fff';
 
 	/**
 	 * toggle base64 or raw image data
-	 *
-	 * @var bool
 	 */
-	protected $imageBase64 = true;
+	protected bool $imageBase64 = true;
 
 	/**
 	 * toggle transparency, not supported by jpg
-	 *
-	 * @var bool
 	 */
-	protected $imageTransparent = true;
+	protected bool $imageTransparent = true;
 
 	/**
 	 * @see imagecolortransparent()
 	 *
-	 * @var array [R, G, B]
+	 * [R, G, B]
 	 */
-	protected $imageTransparencyBG = [255, 255, 255];
+	protected array $imageTransparencyBG = [255, 255, 255];
 
 	/**
 	 * @see imagepng()
-	 *
-	 * @var int
 	 */
-	protected $pngCompression = -1;
+	protected int $pngCompression = -1;
 
 	/**
 	 * @see imagejpeg()
-	 *
-	 * @var int
 	 */
-	protected $jpegQuality = 85;
+	protected int $jpegQuality = 85;
 
 	/**
 	 * Imagick output format
 	 *
 	 * @see Imagick::setType()
-	 *
-	 * @var string
 	 */
-	protected $imagickFormat = 'png';
+	protected string $imagickFormat = 'png';
 
 	/**
 	 * Imagick background color (defaults to "transparent")
 	 *
 	 * @see \ImagickPixel::__construct()
-	 *
-	 * @var string
 	 */
-	protected $imagickBG;
+	protected string $imagickBG;
 
 	/**
 	 * Module values map
 	 *
 	 *   HTML, IMAGICK: #ABCDEF, cssname, rgb(), rgba()...
 	 *   IMAGE: [63, 127, 255] // R, G, B
-	 *
-	 * @var array
 	 */
-	protected $moduleValues;
+	protected array $moduleValues;
 
 	/**
 	 * set/clamp some special values, call the parent setter otherwise

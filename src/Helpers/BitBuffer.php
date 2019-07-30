@@ -14,15 +14,10 @@ namespace chillerlan\QRCode\Helpers;
 
 class BitBuffer{
 
-	/**
-	 * @var  int[]
-	 */
-	public $buffer = [];
+	/** @var int[] */
+	public array $buffer = [];
 
-	/**
-	 * @var int
-	 */
-	public $length = 0;
+	public int $length = 0;
 
 	/**
 	 * @return \chillerlan\QRCode\Helpers\BitBuffer

@@ -17,7 +17,7 @@ use chillerlan\QRCodeTest\QRTestAbstract;
 
 class MaskPatternTesterTest extends QRTestAbstract{
 
-	protected $FQCN = MaskPatternTester::class;
+	protected string $FQCN = MaskPatternTester::class;
 
 	// coverage
 	public function testMaskpattern(){

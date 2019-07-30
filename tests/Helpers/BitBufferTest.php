@@ -17,10 +17,7 @@ use chillerlan\QRCodeTest\QRTestAbstract;
 
 class BitBufferTest extends QRTestAbstract{
 
-	/**
-	 * @var \chillerlan\QRCode\Helpers\BitBuffer
-	 */
-	protected $bitBuffer;
+	protected BitBuffer $bitBuffer;
 
 	protected function setUp():void{
 		$this->bitBuffer = new BitBuffer;

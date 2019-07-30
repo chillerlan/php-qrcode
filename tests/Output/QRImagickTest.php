@@ -16,7 +16,7 @@ use chillerlan\QRCode\{QRCode, Output\QRImagick};
 
 class QRImagickTest extends QROutputTestAbstract{
 
-	protected $FQCN = QRImagick::class;
+	protected string $FQCN = QRImagick::class;
 
 	public function setUp():void{
 

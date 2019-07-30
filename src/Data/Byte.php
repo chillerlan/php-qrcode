@@ -19,15 +19,9 @@ use chillerlan\QRCode\QRCode;
  */
 class Byte extends QRDataAbstract{
 
-	/**
-	 * @inheritdoc
-	 */
-	protected $datamode = QRCode::DATA_BYTE;
+	protected int $datamode = QRCode::DATA_BYTE;
 
-	/**
-	 * @inheritdoc
-	 */
-	protected $lengthBits = [8, 16, 16];
+	protected array $lengthBits = [8, 16, 16];
 
 	/**
 	 * @inheritdoc

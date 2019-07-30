@@ -18,10 +18,7 @@ use chillerlan\QRCodeTest\QRTestAbstract;
 
 class PolynomialTest extends QRTestAbstract{
 
-	/**
-	 * @var \chillerlan\QRCode\Helpers\Polynomial
-	 */
-	protected $polynomial;
+	protected Polynomial $polynomial;
 
 	protected function setUp():void{
 		$this->polynomial = new Polynomial;

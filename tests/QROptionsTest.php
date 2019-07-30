@@ -12,15 +12,14 @@
 
 namespace chillerlan\QRCodeTest;
 
+use chillerlan\Settings\SettingsContainerInterface;
 use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
 use PHPUnit\Framework\TestCase;
 
 class QROptionsTest extends TestCase{
 
-	/**
-	 * @var \chillerlan\QRCode\QROptions
-	 */
-	protected $options;
+	/** @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions */
+	protected SettingsContainerInterface $options;
 
 	public function testVersionClamp(){
 		$this->assertSame(40, (new QROptions(['version' => 42]))->version);

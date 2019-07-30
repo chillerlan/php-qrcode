@@ -20,45 +20,21 @@ use chillerlan\Settings\SettingsContainerInterface;
  */
 abstract class QROutputAbstract implements QROutputInterface{
 
-	/**
-	 * @var int
-	 */
-	protected $moduleCount;
+	protected int $moduleCount;
 
-	/**
-	 * @param \chillerlan\QRCode\Data\QRMatrix $matrix
-	 */
-	protected $matrix;
+	protected QRMatrix $matrix;
+	/** @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions */
+	protected SettingsContainerInterface $options;
 
-	/**
-	 * @var \chillerlan\QRCode\QROptions
-	 */
-	protected $options;
+	protected string $outputMode;
 
-	/**
-	 * @var string
-	 */
-	protected $outputMode;
+	protected string $defaultMode;
 
-	/**
-	 * @var string;
-	 */
-	protected $defaultMode;
+	protected int $scale;
 
-	/**
-	 * @var int
-	 */
-	protected $scale;
+	protected int $length;
 
-	/**
-	 * @var int
-	 */
-	protected $length;
-
-	/**
-	 * @var array
-	 */
-	protected $moduleValues;
+	protected array $moduleValues;
 
 	/**
 	 * QROutputAbstract constructor.

@@ -16,7 +16,7 @@ use chillerlan\QRCode\{QRCode, Output\QRImage};
 
 class QRImageTest extends QROutputTestAbstract{
 
-	protected $FQCN = QRImage::class;
+	protected string $FQCN = QRImage::class;
 
 	public function types(){
 		return [

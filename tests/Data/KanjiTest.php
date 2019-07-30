@@ -16,9 +16,11 @@ use chillerlan\QRCode\Data\{Kanji, QRCodeDataException};
 
 class KanjiTest extends DatainterfaceTestAbstract{
 
-	protected $FQCN = Kanji::class;
-	protected $testdata = '茗荷茗荷茗荷茗荷茗荷';
-	protected $expected = [
+	protected string $FQCN = Kanji::class;
+
+	protected string $testdata = '茗荷茗荷茗荷茗荷茗荷';
+
+	protected array  $expected = [
 		128, 173, 85, 26, 95, 85, 70, 151,
 		213, 81, 165, 245, 84, 105, 125, 85,
 		26, 92, 0, 236, 17, 236, 17, 236,

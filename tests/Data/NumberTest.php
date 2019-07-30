@@ -16,9 +16,11 @@ use chillerlan\QRCode\Data\{Number, QRCodeDataException};
 
 class NumberTest extends DatainterfaceTestAbstract{
 
-	protected $FQCN = Number::class;
-	protected $testdata  = '0123456789';
-	protected $expected = [
+	protected string $FQCN = Number::class;
+
+	protected string $testdata  = '0123456789';
+
+	protected array $expected = [
 		16, 40, 12, 86, 106, 105, 0, 236,
 		17, 236, 17, 236, 17, 236, 17, 236,
 		17, 236, 17, 236, 17, 236, 17, 236,

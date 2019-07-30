@@ -26,10 +26,7 @@ class QRImage extends QROutputAbstract{
 		QRCode::OUTPUT_IMAGE_GIF,
 	];
 
-	/**
-	 * @var string
-	 */
-	protected $defaultMode = QRCode::OUTPUT_IMAGE_PNG;
+	protected string $defaultMode = QRCode::OUTPUT_IMAGE_PNG;
 
 	/**
 	 * @see imagecreatetruecolor()

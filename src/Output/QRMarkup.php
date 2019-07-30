@@ -19,10 +19,7 @@ use chillerlan\QRCode\QRCode;
  */
 class QRMarkup extends QROutputAbstract{
 
-	/**
-	 * @var string
-	 */
-	protected $defaultMode = QRCode::OUTPUT_MARKUP_SVG;
+	protected string $defaultMode = QRCode::OUTPUT_MARKUP_SVG;
 
 	/**
 	 * @see \sprintf()

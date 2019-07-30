@@ -57,10 +57,7 @@ class Polynomial{
 		[ 27, 116], [ 54, 214], [108, 244], [216, 234], [173, 168], [ 71,  80], [142,  88], [  1, 175],
 	];
 
-	/**
-	 * @var array
-	 */
-	protected $num = [];
+	protected array $num = [];
 
 	/**
 	 * Polynomial constructor.

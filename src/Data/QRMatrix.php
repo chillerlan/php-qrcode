@@ -167,30 +167,15 @@ class QRMatrix{
 		],
 	];
 
-	/**
-	 * @var int
-	 */
-	protected $version;
+	protected int $version;
 
-	/**
-	 * @var int
-	 */
-	protected $eclevel;
+	protected int $eclevel;
 
-	/**
-	 * @var int
-	 */
-	protected $maskPattern = QRCode::MASK_PATTERN_AUTO;
+	protected int $maskPattern = QRCode::MASK_PATTERN_AUTO;
 
-	/**
-	 * @var int
-	 */
-	protected $moduleCount;
-
-	/**
-	 * @var mixed[]
-	 */
-	protected $matrix;
+	protected int $moduleCount;
+	/** @var mixed[] */
+	protected array $matrix;
 
 	/**
 	 * QRMatrix constructor.

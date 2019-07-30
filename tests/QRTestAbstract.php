@@ -17,15 +17,9 @@ use ReflectionClass, ReflectionMethod, ReflectionProperty;
 
 abstract class QRTestAbstract extends TestCase{
 
-	/**
-	 * @var \ReflectionClass
-	 */
-	protected $reflection;
+	protected ReflectionClass $reflection;
 
-	/**
-	 * @var string
-	 */
-	protected $FQCN;
+	protected string $FQCN;
 
 	protected function setUp():void{
 		$this->reflection = new ReflectionClass($this->FQCN);

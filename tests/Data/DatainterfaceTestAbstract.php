@@ -18,13 +18,11 @@ use chillerlan\QRCodeTest\QRTestAbstract;
 
 abstract class DatainterfaceTestAbstract extends QRTestAbstract{
 
-	/**
-	 * @var \chillerlan\QRCode\Data\QRDataAbstract
-	 */
-	protected $dataInterface;
+	protected QRDataInterface $dataInterface;
 
-	protected $testdata;
-	protected $expected;
+	protected string $testdata;
+
+	protected array  $expected;
 
 	protected function setUp():void{
 		parent::setUp();

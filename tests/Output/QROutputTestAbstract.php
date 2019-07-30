@@ -13,30 +13,22 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\QROptions;
-use chillerlan\QRCode\Data\Byte;
+use chillerlan\QRCode\Data\{Byte, QRMatrix};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use chillerlan\QRCodeTest\QRTestAbstract;
+use chillerlan\Settings\SettingsContainerInterface;
 
 /**
  */
 abstract class QROutputTestAbstract extends QRTestAbstract{
 
-	const cachefile = __DIR__.'/output_test.';
+	protected const cachefile = __DIR__.'/output_test.';
 
-	/**
-	 * @var \chillerlan\QRCode\Output\QROutputInterface
-	 */
-	protected $outputInterface;
+	protected QROutputInterface $outputInterface;
+	/** @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions */
+	protected SettingsContainerInterface $options;
 
-	/**
-	 * @var \chillerlan\QRCode\QROptions
-	 */
-	protected $options;
-
-	/**
-	 * @var \chillerlan\QRCode\Data\QRMatrix
-	 */
-	protected $matrix;
+	protected QRMatrix $matrix;
 
 	protected function setUp():void{
 		parent::setUp();
