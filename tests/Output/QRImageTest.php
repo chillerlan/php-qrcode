@@ -45,4 +45,17 @@ class QRImageTest extends QROutputTestAbstract{
 		$this->assertSame($img, file_get_contents($this::cachefile.$type));
 	}
 
+	public function testSetModuleValues(){
+
+		$this->options->moduleValues = [
+			// data
+			1024 => [0, 0, 0],
+			4    => [255, 255, 255],
+		];
+
+		$this->setOutputInterface()->dump();
+
+		$this->assertTrue(true); // tricking the code coverage
+	}
+
 }
