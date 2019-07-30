@@ -38,4 +38,19 @@ class QRStringTest extends QROutputTestAbstract{
 		$this->assertSame($data, file_get_contents($this->options->cachefile));
 	}
 
+	public function testSetModuleValues(){
+
+		$this->options->moduleValues = [
+			// data
+			1024 => 'A',
+			4    => 'B',
+		];
+
+		$this->setOutputInterface();
+		$data = $this->outputInterface->dump();
+
+		$this->assertStringContainsString('A', $data);
+		$this->assertStringContainsString('B', $data);
+	}
+
 }

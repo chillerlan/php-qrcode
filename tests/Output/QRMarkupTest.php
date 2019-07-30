@@ -60,4 +60,18 @@ class QRMarkupTest extends QROutputTestAbstract{
 		$this->assertSame(trim($expected), trim($this->outputInterface->dump()));
 	}
 
+	public function testSetModuleValues(){
+
+		$this->options->moduleValues = [
+			// data
+			1024 => '#4A6000',
+			4    => '#ECF9BE',
+		];
+
+		$this->setOutputInterface();
+		$data = $this->outputInterface->dump();
+		$this->assertStringContainsString('#4A6000', $data);
+		$this->assertStringContainsString('#ECF9BE', $data);
+	}
+
 }

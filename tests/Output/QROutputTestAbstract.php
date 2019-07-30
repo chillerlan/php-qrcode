@@ -41,7 +41,7 @@ abstract class QROutputTestAbstract extends QRTestAbstract{
 	protected function setUp():void{
 		parent::setUp();
 
-		$this->options         = new QROptions;
+		$this->options = new QROptions;
 		$this->setOutputInterface();
 	}
 
