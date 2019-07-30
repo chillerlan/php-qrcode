@@ -50,15 +50,13 @@ Download the desired version of the package from [master](https://github.com/chi
 Profit!
 
 #### Framework Integration
-- Drupal
-  - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
-- WordPress
-  - [`wp-two-factor-auth`](https://github.com/sjinks/wp-two-factor-auth)
-  - [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
-- WoltLab Suite
-  - [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)  
-- other
-  - [gaara 嘎啦](https://github.com/xutengx/gaara)
+- Drupal [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
+- WordPress [`wp-two-factor-auth`](https://github.com/sjinks/wp-two-factor-auth)
+- WordPress [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
+- WoltLab Suite [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)  
+- [Cachet](https://github.com/CachetHQ/Cachet)
+- [slack-qrcode](https://github.com/sameyasu/slack-qrcode)
+- [gaara 嘎啦](https://github.com/xutengx/gaara)
 
 ### Usage
 We want to encode this data into a QRcode image:
