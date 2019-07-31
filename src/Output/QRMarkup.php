@@ -23,13 +23,11 @@ class QRMarkup extends QROutputAbstract{
 
 	/**
 	 * @see \sprintf()
-	 *
-	 * @var string
 	 */
-	protected $svgHeader = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="qr-svg %1$s" style="width: 100%%; height: auto;" viewBox="0 0 %2$d %2$d">';
+	protected string $svgHeader = '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="qr-svg %1$s" style="width: 100%%; height: auto;" viewBox="0 0 %2$d %2$d">';
 
 	/**
-	 * @return void
+	 *
 	 */
 	protected function setModuleValues():void{
 
@@ -50,7 +48,7 @@ class QRMarkup extends QROutputAbstract{
 	}
 
 	/**
-	 * @return string
+	 *
 	 */
 	protected function html():string{
 		$html = '<div class="'.$this->options->cssClass.'">'.$this->options->eol;
@@ -76,8 +74,6 @@ class QRMarkup extends QROutputAbstract{
 
 	/**
 	 * @link https://github.com/codemasher/php-qrcode/pull/5
-	 *
-	 * @return string
 	 */
 	protected function svg():string{
 		$matrix = $this->matrix->matrix();

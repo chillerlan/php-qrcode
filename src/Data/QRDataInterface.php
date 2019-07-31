@@ -166,17 +166,12 @@ interface QRDataInterface{
 	];
 
 	/**
-	 * @param string $data
 	 *
-	 * @return \chillerlan\QRCode\Data\QRDataInterface
 	 */
 	public function setData(string $data):QRDataInterface;
 
 	/**
-	 * @param int  $maskPattern
-	 * @param bool $test
 	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function initMatrix(int $maskPattern, bool $test = null):QRMatrix;
 

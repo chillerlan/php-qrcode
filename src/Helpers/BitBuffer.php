@@ -20,7 +20,7 @@ class BitBuffer{
 	public int $length = 0;
 
 	/**
-	 * @return \chillerlan\QRCode\Helpers\BitBuffer
+	 *
 	 */
 	public function clear():BitBuffer{
 		$this->buffer = [];
@@ -30,10 +30,7 @@ class BitBuffer{
 	}
 
 	/**
-	 * @param int $num
-	 * @param int $length
 	 *
-	 * @return \chillerlan\QRCode\Helpers\BitBuffer
 	 */
 	public function put(int $num, int $length):BitBuffer{
 
@@ -45,9 +42,7 @@ class BitBuffer{
 	}
 
 	/**
-	 * @param bool $bit
 	 *
-	 * @return \chillerlan\QRCode\Helpers\BitBuffer
 	 */
 	public function putBit(bool $bit):BitBuffer{
 		$bufIndex = \floor($this->length / 8);

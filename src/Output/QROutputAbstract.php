@@ -38,9 +38,6 @@ abstract class QROutputAbstract implements QROutputInterface{
 
 	/**
 	 * QROutputAbstract constructor.
-	 *
-	 * @param \chillerlan\Settings\SettingsContainerInterface $options
-	 * @param \chillerlan\QRCode\Data\QRMatrix      $matrix
 	 */
 	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
 		$this->options     = $options;
@@ -60,18 +57,12 @@ abstract class QROutputAbstract implements QROutputInterface{
 
 	/**
 	 * Sets the initial module values (clean-up & defaults)
-	 *
-	 * @return void
 	 */
 	abstract protected function setModuleValues():void;
 
 	/**
 	 * @see file_put_contents()
 	 *
-	 * @param string $data
-	 * @param string $file
-	 *
-	 * @return bool
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function saveToFile(string $data, string $file):bool{
@@ -84,9 +75,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	}
 
 	/**
-	 * @param string|null $file
 	 *
-	 * @return string|mixed
 	 */
 	public function dump(string $file = null){
 		$data = \call_user_func([$this, $this->outputMode ?? $this->defaultMode]);

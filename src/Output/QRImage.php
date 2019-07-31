@@ -35,7 +35,7 @@ class QRImage extends QROutputAbstract{
 	protected $image;
 
 	/**
-	 * @return void
+	 *
 	 */
 	protected function setModuleValues():void{
 
@@ -56,9 +56,7 @@ class QRImage extends QROutputAbstract{
 	}
 
 	/**
-	 * @param string|null $file
 	 *
-	 * @return string
 	 */
 	public function dump(string $file = null):string{
 		$this->image = \imagecreatetruecolor($this->length, $this->length);
@@ -90,11 +88,7 @@ class QRImage extends QROutputAbstract{
 	}
 
 	/**
-	 * @param int   $x
-	 * @param int   $y
-	 * @param array $rgb
 	 *
-	 * @return void
 	 */
 	protected function setPixel(int $x, int $y, array $rgb):void{
 		\imagefilledrectangle(

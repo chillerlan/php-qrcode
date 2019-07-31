@@ -187,11 +187,6 @@ trait QROptionsTrait{
 
 	/**
 	 * set/clamp some special values, call the parent setter otherwise
-	 *
-	 * @param string $property
-	 * @param mixed  $value
-	 *
-	 * @return void
 	 */
 	public function __set(string $property, $value):void{
 
@@ -211,11 +206,6 @@ trait QROptionsTrait{
 
 	/**
 	 * clamp min/max version number
-	 *
-	 * @param int $versionMin
-	 * @param int $versionMax
-	 *
-	 * @return void
 	 */
 	protected function setMinMaxVersion(int $versionMin, int $versionMax):void{
 		$min = \max(1, \min(40, $versionMin));
@@ -226,9 +216,6 @@ trait QROptionsTrait{
 	}
 
 	/**
-	 * @param int $eccLevel
-	 *
-	 * @return void
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function set_eccLevel(int $eccLevel):void{
@@ -241,9 +228,7 @@ trait QROptionsTrait{
 	}
 
 	/**
-	 * @param int $maskPattern
 	 *
-	 * @return void
 	 */
 	protected function set_maskPattern(int $maskPattern):void{
 
@@ -254,9 +239,6 @@ trait QROptionsTrait{
 	}
 
 	/**
-	 * @param mixed $imageTransparencyBG
-	 *
-	 * @return void
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function set_imageTransparencyBG($imageTransparencyBG):void{
@@ -283,9 +265,7 @@ trait QROptionsTrait{
 	}
 
 	/**
-	 * @param int $version
 	 *
-	 * @return void
 	 */
 	protected function set_version(int $version):void{
 

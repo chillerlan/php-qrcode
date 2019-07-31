@@ -22,7 +22,7 @@ class QRString extends QROutputAbstract{
 	protected string $defaultMode = QRCode::OUTPUT_STRING_TEXT;
 
 	/**
-	 * @return void
+	 *
 	 */
 	protected function setModuleValues():void{
 
@@ -43,7 +43,7 @@ class QRString extends QROutputAbstract{
 	}
 
 	/**
-	 * @return string
+	 *
 	 */
 	protected function text():string{
 		$str = [];
@@ -62,7 +62,7 @@ class QRString extends QROutputAbstract{
 	}
 
 	/**
-	 * @return string
+	 *
 	 */
 	protected function json():string{
 		return \json_encode($this->matrix->matrix());

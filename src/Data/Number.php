@@ -50,9 +50,6 @@ class Number extends QRDataAbstract{
 	}
 
 	/**
-	 * @param string $string
-	 *
-	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	protected function parseInt(string $string):int{

@@ -63,9 +63,6 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 	/**
 	 * QRDataInterface constructor.
-	 *
-	 * @param \chillerlan\Settings\SettingsContainerInterface $options
-	 * @param string|null                           $data
 	 */
 	public function __construct(SettingsContainerInterface $options, string $data = null){
 		$this->options = $options;
@@ -77,10 +74,6 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 	/**
 	 * Sets the data string (internally called by the constructor)
-	 *
-	 * @param string $data
-	 *
-	 * @return \chillerlan\QRCode\Data\QRDataInterface
 	 */
 	public function setData(string $data):QRDataInterface{
 
@@ -103,11 +96,6 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 	/**
 	 * returns a fresh matrix object with the data written for the given $maskPattern
-	 *
-	 * @param int       $maskPattern
-	 * @param bool|null $test
-	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function initMatrix(int $maskPattern, bool $test = null):QRMatrix{
 		$matrix = new QRMatrix($this->version, $this->options->eccLevel);
@@ -127,7 +115,6 @@ abstract class QRDataAbstract implements QRDataInterface{
 	/**
 	 * returns the length bits for the version breakpoints 1-9, 10-26 and 27-40
 	 *
-	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 * @codeCoverageIgnore
 	 */
@@ -144,10 +131,6 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 	/**
 	 * returns the byte count of the $data string
-	 *
-	 * @param string $data
-	 *
-	 * @return int
 	 */
 	protected function getLength(string $data):int{
 		return \strlen($data);
@@ -156,7 +139,6 @@ abstract class QRDataAbstract implements QRDataInterface{
 	/**
 	 * returns the minimum version number for the given string
 	 *
-	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	protected function getMinimumVersion():int{
@@ -176,19 +158,12 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 	/**
 	 * @see \chillerlan\QRCode\Data\QRDataAbstract::writeBitBuffer()
-	 *
-	 * @param string $data
-	 *
-	 * @return void
 	 */
 	abstract protected function write(string $data):void;
 
 	/**
 	 * writes the string data to the BitBuffer
 	 *
-	 * @param string $data
-	 *
-	 * @return \chillerlan\QRCode\Data\QRDataAbstract
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function writeBitBuffer(string $data):QRDataInterface{
@@ -245,8 +220,6 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 * @see \chillerlan\QRCode\Data\QRDataAbstract::writeBitBuffer()
 	 *
 	 * @link http://www.thonky.com/qr-code-tutorial/error-correction-coding
-	 *
-	 * @return array
 	 */
 	protected function maskECC():array{
 		[$l1, $l2, $b1, $b2] = $this::RSBLOCKS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
@@ -309,9 +282,6 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
-	 * @param int $key
-	 * @param int $count
-	 *
 	 * @return int[]
 	 */
 	protected function poly(int $key, int $count):array{

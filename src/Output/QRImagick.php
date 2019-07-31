@@ -23,7 +23,7 @@ use Imagick, ImagickDraw, ImagickPixel;
 class QRImagick extends QROutputAbstract{
 
 	/**
-	 * @return void
+	 *
 	 */
 	protected function setModuleValues():void{
 
@@ -42,9 +42,7 @@ class QRImagick extends QROutputAbstract{
 	}
 
 	/**
-	 * @param string|null $file
 	 *
-	 * @return string
 	 */
 	public function dump(string $file = null):string{
 		$file ??= $this->options->cachefile;
@@ -67,9 +65,7 @@ class QRImagick extends QROutputAbstract{
 	}
 
 	/**
-	 * @param \Imagick $imagick
 	 *
-	 * @return string
 	 */
 	protected function drawImage(Imagick $imagick):string{
 		$draw = new ImagickDraw;

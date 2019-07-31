@@ -106,8 +106,6 @@ class QRCode{
 
 	/**
 	 * QRCode constructor.
-	 *
-	 * @param \chillerlan\Settings\SettingsContainerInterface|null $options
 	 */
 	public function __construct(SettingsContainerInterface $options = null){
 		// save the current mb encoding (in case it differs from UTF-8)
@@ -129,9 +127,6 @@ class QRCode{
 	/**
 	 * Renders a QR Code for the given $data and QROptions
 	 *
-	 * @param string      $data
-	 * @param string|null $file
-	 *
 	 * @return mixed
 	 */
 	public function render(string $data, string $file = null){
@@ -141,9 +136,6 @@ class QRCode{
 	/**
 	 * Returns a QRMatrix object for the given $data and current QROptions
 	 *
-	 * @param string $data
-	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function getMatrix(string $data):QRMatrix{
@@ -171,8 +163,6 @@ class QRCode{
 	 * shoves a QRMatrix through the MaskPatternTester to find the lowest penalty mask pattern
 	 *
 	 * @see \chillerlan\QRCode\Data\MaskPatternTester
-	 *
-	 * @return int
 	 */
 	protected function getBestMaskPattern():int{
 		$penalties = [];
@@ -189,9 +179,6 @@ class QRCode{
 	/**
 	 * returns a fresh QRDataInterface for the given $data
 	 *
-	 * @param string                       $data
-	 *
-	 * @return \chillerlan\QRCode\Data\QRDataInterface
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function initDataInterface(string $data):QRDataInterface{
@@ -211,9 +198,6 @@ class QRCode{
 	/**
 	 * returns a fresh (built-in) QROutputInterface
 	 *
-	 * @param string $data
-	 *
-	 * @return \chillerlan\QRCode\Output\QROutputInterface
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function initOutputInterface(string $data):QROutputInterface{
@@ -235,10 +219,6 @@ class QRCode{
 
 	/**
 	 * checks if a string qualifies as numeric
-	 *
-	 * @param string $string
-	 *
-	 * @return bool
 	 */
 	public function isNumber(string $string):bool{
 		return $this->checkString($string, QRDataInterface::NUMBER_CHAR_MAP);
@@ -246,22 +226,13 @@ class QRCode{
 
 	/**
 	 * checks if a string qualifies as alphanumeric
-	 *
-	 * @param string $string
-	 *
-	 * @return bool
 	 */
 	public function isAlphaNum(string $string):bool{
 		return $this->checkString($string, QRDataInterface::ALPHANUM_CHAR_MAP);
 	}
 
 	/**
-	 * checks is a given $string matches the characters of a given $charmap, returns false on the first invalid occurence.
-	 *
-	 * @param string $string
-	 * @param array  $charmap
-	 *
-	 * @return bool
+	 * checks is a given $string matches the characters of a given charmap, returns false on the first invalid occurence.
 	 */
 	protected function checkString(string $string, array $charmap):bool{
 		$len = \strlen($string);
@@ -277,10 +248,6 @@ class QRCode{
 
 	/**
 	 * checks if a string qualifies as Kanji
-	 *
-	 * @param string $string
-	 *
-	 * @return bool
 	 */
 	public function isKanji(string $string):bool{
 		$i   = 0;
@@ -301,10 +268,6 @@ class QRCode{
 
 	/**
 	 * a dummy
-	 *
-	 * @param $data
-	 *
-	 * @return bool
 	 */
 	protected function isByte(string $data):bool{
 		return !empty($data);

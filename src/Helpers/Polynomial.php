@@ -61,26 +61,20 @@ class Polynomial{
 
 	/**
 	 * Polynomial constructor.
-	 *
-	 * @param array|null $num
-	 * @param int|null   $shift
 	 */
 	public function __construct(array $num = null, int $shift = null){
 		$this->setNum($num ?? [1], $shift);
 	}
 
 	/**
-	 * @return array
+	 *
 	 */
 	public function getNum():array{
 		return $this->num;
 	}
 
 	/**
-	 * @param array    $num
-	 * @param int|null $shift
 	 *
-	 * @return \chillerlan\QRCode\Helpers\Polynomial
 	 */
 	public function setNum(array $num, int $shift = null):Polynomial{
 		$offset = 0;
@@ -100,9 +94,7 @@ class Polynomial{
 	}
 
 	/**
-	 * @param array $e
 	 *
-	 * @return \chillerlan\QRCode\Helpers\Polynomial
 	 */
 	public function multiply(array $e):Polynomial{
 		$n = \array_fill(0, \count($this->num) + \count($e) - 1, 0);
@@ -122,9 +114,7 @@ class Polynomial{
 	}
 
 	/**
-	 * @param array $e
 	 *
-	 * @return \chillerlan\QRCode\Helpers\Polynomial
 	 */
 	public function mod(array $e):Polynomial{
 		$n = $this->num;
@@ -145,9 +135,6 @@ class Polynomial{
 	}
 
 	/**
-	 * @param int $n
-	 *
-	 * @return int
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public function glog(int $n):int{
@@ -160,9 +147,7 @@ class Polynomial{
 	}
 
 	/**
-	 * @param int $n
 	 *
-	 * @return int
 	 */
 	public function gexp(int $n):int{
 

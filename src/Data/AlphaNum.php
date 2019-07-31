@@ -39,9 +39,6 @@ class AlphaNum extends QRDataAbstract{
 	}
 
 	/**
-	 * @param string $chr
-	 *
-	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	protected function getCharCode(string $chr):int{

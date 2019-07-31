@@ -180,9 +180,6 @@ class QRMatrix{
 	/**
 	 * QRMatrix constructor.
 	 *
-	 * @param int $version
-	 * @param int $eclevel
-	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function __construct(int $version, int $eclevel){
@@ -202,28 +199,28 @@ class QRMatrix{
 	}
 
 	/**
-	 * @return array
+	 *
 	 */
 	public function matrix():array{
 		return $this->matrix;
 	}
 
 	/**
-	 * @return int
+	 *
 	 */
 	public function version():int{
 		return $this->version;
 	}
 
 	/**
-	 * @return int
+	 *
 	 */
 	public function eccLevel():int{
 		return $this->eclevel;
 	}
 
 	/**
-	 * @return int
+	 *
 	 */
 	public function maskPattern():int{
 		return $this->maskPattern;
@@ -233,8 +230,6 @@ class QRMatrix{
 	 * Returns the absoulute size of the matrix, including quiet zone (after setting it).
 	 *
 	 * size = version * 4 + 17 [ + 2 * quietzone size]
-	 *
-	 * @return int
 	 */
 	public function size():int{
 		return $this->moduleCount;
@@ -242,11 +237,6 @@ class QRMatrix{
 
 	/**
 	 * Returns the value of the module at position [$x, $y]
-	 *
-	 * @param int $x
-	 * @param int $y
-	 *
-	 * @return int
 	 */
 	public function get(int $x, int $y):int{
 		return $this->matrix[$y][$x];
@@ -257,13 +247,6 @@ class QRMatrix{
 	 *
 	 *   true  => $M_TYPE << 8
 	 *   false => $M_TYPE
-	 *
-	 * @param int  $x
-	 * @param int  $y
-	 * @param int  $M_TYPE
-	 * @param bool $value
-	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function set(int $x, int $y, bool $value, int $M_TYPE):QRMatrix{
 		$this->matrix[$y][$x] = $M_TYPE << ($value ? 8 : 0);
@@ -279,11 +262,6 @@ class QRMatrix{
 	 *
 	 *   false => $value === $M_TYPE
 	 *            $value >> 8 === 0
-	 *
-	 * @param int $x
-	 * @param int $y
-	 *
-	 * @return bool
 	 */
 	public function check(int $x, int $y):bool{
 		return $this->matrix[$y][$x] >> 8 > 0;
@@ -292,8 +270,6 @@ class QRMatrix{
 
 	/**
 	 * Sets the "dark module", that is always on the same position 1x1px away from the bottom left finder
-	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function setDarkModule():QRMatrix{
 		$this->set(8, 4 * $this->version + 9, true, $this::M_DARKMODULE);
@@ -303,8 +279,6 @@ class QRMatrix{
 
 	/**
 	 * Draws the 7x7 finder patterns in the corners top left/right and bottom left
-	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function setFinderPattern():QRMatrix{
 
@@ -332,8 +306,6 @@ class QRMatrix{
 
 	/**
 	 * Draws the separator lines around the finder patterns
-	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function setSeparators():QRMatrix{
 
@@ -362,8 +334,6 @@ class QRMatrix{
 
 	/**
 	 * Draws the 5x5 alignment patterns
-	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function setAlignmentPattern():QRMatrix{
 
@@ -392,8 +362,6 @@ class QRMatrix{
 
 	/**
 	 * Draws the timing pattern (h/v checkered line between the finder patterns)
-	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function setTimingPattern():QRMatrix{
 
@@ -414,10 +382,6 @@ class QRMatrix{
 
 	/**
 	 * Draws the version information, 2x 3x6 pixel
-	 *
-	 * @param bool|null  $test
-	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function setVersionNumber(bool $test = null):QRMatrix{
 		$bits = $this::versionPattern[$this->version] ?? false;
@@ -440,11 +404,6 @@ class QRMatrix{
 
 	/**
 	 * Draws the format info along the finder patterns
-	 *
-	 * @param int        $maskPattern
-	 * @param bool|null  $test
-	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function setFormatInfo(int $maskPattern, bool $test = null):QRMatrix{
 		$bits = $this::formatPattern[QRCode::ECC_MODES[$this->eclevel]][$maskPattern] ?? 0;
@@ -482,9 +441,6 @@ class QRMatrix{
 	/**
 	 * Draws the "quiet zone" of $size around the matrix
 	 *
-	 * @param int|null $size
-	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function setQuietZone(int $size = null):QRMatrix{
@@ -523,8 +479,6 @@ class QRMatrix{
 	 *
 	 * @param int[] $data
 	 * @param int   $maskPattern
-	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
 	public function mapData(array $data, int $maskPattern):QRMatrix{
 		$this->maskPattern = $maskPattern;
@@ -583,11 +537,6 @@ class QRMatrix{
 	 *
 	 * @internal
 	 *
-	 * @param int $x
-	 * @param int $y
-	 * @param int $maskPattern
-	 *
-	 * @return int
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	protected function getMask(int $x, int $y, int $maskPattern):int{

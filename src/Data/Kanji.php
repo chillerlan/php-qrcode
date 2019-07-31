@@ -31,9 +31,6 @@ class Kanji extends QRDataAbstract{
 	}
 
 	/**
-	 * @param string $data
-	 *
-	 * @return void
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	protected function write(string $data):void{

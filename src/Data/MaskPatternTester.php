@@ -29,8 +29,6 @@ class MaskPatternTester{
 	 * @see \chillerlan\QRCode\QROptions::$maskPattern
 	 * @see \chillerlan\QRCode\Data\QRMatrix::$maskPattern
 	 * @see \chillerlan\QRCode\QRCode::getBestMaskPattern()
-	 *
-	 * @param \chillerlan\QRCode\Data\QRMatrix $matrix
 	 */
 	public function __construct(QRMatrix $matrix){
 		$this->matrix      = $matrix;
@@ -43,8 +41,6 @@ class MaskPatternTester{
 	 * @see \chillerlan\QRCode\QROptions::$maskPattern
 	 * @see \chillerlan\QRCode\Data\QRMatrix::$maskPattern
 	 * @see \chillerlan\QRCode\QRCode::getBestMaskPattern()
-	 *
-	 * @return int
 	 */
 	public function testPattern():int{
 		$penalty  = 0;
@@ -58,8 +54,6 @@ class MaskPatternTester{
 
 	/**
 	 * Checks for each group of five or more same-colored modules in a row (or column)
-	 *
-	 * @return float
 	 */
 	protected function testLevel1():float{
 		$penalty = 0;
@@ -99,8 +93,6 @@ class MaskPatternTester{
 
 	/**
 	 * Checks for each 2x2 area of same-colored modules in the matrix
-	 *
-	 * @return float
 	 */
 	protected function testLevel2():float{
 		$penalty = 0;
@@ -147,8 +139,6 @@ class MaskPatternTester{
 
 	/**
 	 * Checks if there are patterns that look similar to the finder patterns
-	 *
-	 * @return float
 	 */
 	protected function testLevel3():float{
 		$penalty = 0;
@@ -192,8 +182,6 @@ class MaskPatternTester{
 
 	/**
 	 * Checks if more than half of the modules are dark or light, with a larger penalty for a larger difference
-	 *
-	 * @return float
 	 */
 	protected function testLevel4():float{
 		$count = 0;
