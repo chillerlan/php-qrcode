@@ -264,7 +264,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 		$data  = \array_fill(0, $totalCodeCount, null);
 		$index = 0;
 
-		$mask = function($arr, $count) use (&$data, &$index, $rsCount){
+		$mask = function(array $arr, int $count) use (&$data, &$index, $rsCount){
 			for($x = 0; $x < $count; $x++){
 				for($y = 0; $y < $rsCount; $y++){
 					if($x < \count($arr[$y])){
