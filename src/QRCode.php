@@ -88,19 +88,12 @@ class QRCode{
 		],
 	];
 
-	/**
-	 * @var \chillerlan\QRCode\QROptions
-	 */
 	protected QROptions $options;
 
-	/**
-	 * @var \chillerlan\QRCode\Data\QRDataInterface
-	 */
 	protected QRDataInterface $dataInterface;
 
 	/**
 	 * @see http://php.net/manual/function.mb-internal-encoding.php
-	 * @var string
 	 */
 	protected string $mbCurrentEncoding;
 
