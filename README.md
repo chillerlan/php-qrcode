@@ -26,6 +26,12 @@ namespaced, cleaned up, improved and other stuff.
 [donate-badge]: https://img.shields.io/badge/donate-paypal-ff33aa.svg?style=flat-square
 [donate]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WLYUNAT9ZTJZ4
 
+Hi, please check out my other projects that are way cooler than qrcodes!
+
+- [php-oauth-core](https://github.com/chillerlan/php-oauth-core) - an OAuth 1/2 client library along with a bunch of [providers](https://github.com/chillerlan/php-oauth-providers)
+- [php-httpinterface](https://github.com/chillerlan/php-httpinterface) - a PSR-7/15/17/18 implemetation
+- [php-database](https://github.com/chillerlan/php-database) - a database client & querybuilder for MySQL, Postgres, SQLite, MSSQL, Firebird
+
 ## Documentation
 
 ### Installation
