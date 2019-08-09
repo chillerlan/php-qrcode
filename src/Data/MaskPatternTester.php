@@ -12,6 +12,8 @@
 
 namespace chillerlan\QRCode\Data;
 
+use function abs, call_user_func;
+
 /**
  * The sole purpose of this class is to receive a QRMatrix object and run the pattern tests on it.
  *
@@ -56,7 +58,7 @@ class MaskPatternTester{
 		$penalty  = 0;
 
 		for($level = 1; $level <= 4; $level++){
-			$penalty += \call_user_func([$this, 'testLevel'.$level]);
+			$penalty += call_user_func([$this, 'testLevel'.$level]);
 		}
 
 		return (int)$penalty;
@@ -212,7 +214,7 @@ class MaskPatternTester{
 			}
 		}
 
-		return (\abs(100 * $count / $this->moduleCount / $this->moduleCount - 50) / 5) * 10;
+		return (abs(100 * $count / $this->moduleCount / $this->moduleCount - 50) / 5) * 10;
 	}
 
 }

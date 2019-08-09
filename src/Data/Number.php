@@ -14,6 +14,8 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\QRCode;
 
+use function substr;
+
 /**
  * Numeric mode: decimal digits 0 through 9
  */
@@ -36,18 +38,18 @@ class Number extends QRDataAbstract{
 		$i = 0;
 
 		while($i + 2 < $this->strlen){
-			$this->bitBuffer->put($this->parseInt(\substr($data, $i, 3)), 10);
+			$this->bitBuffer->put($this->parseInt(substr($data, $i, 3)), 10);
 			$i += 3;
 		}
 
 		if($i < $this->strlen){
 
 			if($this->strlen - $i === 1){
-				$this->bitBuffer->put($this->parseInt(\substr($data, $i, $i + 1)), 4);
+				$this->bitBuffer->put($this->parseInt(substr($data, $i, $i + 1)), 4);
 			}
 			// @codeCoverageIgnoreStart
 			elseif($this->strlen - $i === 2){
-				$this->bitBuffer->put($this->parseInt(\substr($data, $i, $i + 2)), 7);
+				$this->bitBuffer->put($this->parseInt(substr($data, $i, $i + 2)), 7);
 			}
 			// @codeCoverageIgnoreEnd
 

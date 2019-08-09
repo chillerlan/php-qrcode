@@ -14,6 +14,8 @@ namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\QRCode;
 
+use function is_string, sprintf, strip_tags, trim;
+
 /**
  * Converts the matrix into markup types: HTML, SVG, ...
  */
@@ -39,13 +41,13 @@ class QRMarkup extends QROutputAbstract{
 		foreach($this::DEFAULT_MODULE_VALUES as $M_TYPE => $defaultValue){
 			$v = $this->options->moduleValues[$M_TYPE] ?? null;
 
-			if(!\is_string($v)){
+			if(!is_string($v)){
 				$this->moduleValues[$M_TYPE] = $defaultValue
 					? $this->options->markupDark
 					: $this->options->markupLight;
 			}
 			else{
-				$this->moduleValues[$M_TYPE] = \trim(\strip_tags($v), '\'"');
+				$this->moduleValues[$M_TYPE] = trim(strip_tags($v), '\'"');
 			}
 
 		}
@@ -85,7 +87,7 @@ class QRMarkup extends QROutputAbstract{
 	protected function svg():string{
 		$matrix = $this->matrix->matrix();
 
-		$svg = \sprintf($this->svgHeader, $this->options->cssClass, $this->options->svgViewBoxSize ?? $this->moduleCount)
+		$svg = sprintf($this->svgHeader, $this->options->cssClass, $this->options->svgViewBoxSize ?? $this->moduleCount)
 		       .$this->options->eol
 		       .'<defs>'.$this->options->svgDefs.'</defs>'
 		       .$this->options->eol;
