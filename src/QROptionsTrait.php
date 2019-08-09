@@ -240,30 +240,6 @@ trait QROptionsTrait{
 	protected $moduleValues;
 
 	/**
-	 * set/clamp some special values, call the parent setter otherwise
-	 *
-	 * @param string $property
-	 * @param mixed  $value
-	 *
-	 * @return void
-	 */
-	public function __set(string $property, $value):void{
-
-		if($property === 'versionMin'){
-			$this->setMinMaxVersion($value, $this->versionMax);
-
-			return;
-		}
-		elseif($property === 'versionMax'){
-			$this->setMinMaxVersion($this->versionMin, $value);
-
-			return;
-		}
-
-		parent::__set($property, $value);
-	}
-
-	/**
 	 * clamp min/max version number
 	 *
 	 * @param int $versionMin
@@ -277,6 +253,24 @@ trait QROptionsTrait{
 
 		$this->versionMin = \min($min, $max);
 		$this->versionMax = \max($min, $max);
+	}
+
+	/**
+	 * @param int $version
+	 *
+	 * @return void
+	 */
+	protected function set_versionMin(int $version):void{
+		$this->setMinMaxVersion($version, $this->versionMax);
+	}
+
+	/**
+	 * @param int $version
+	 *
+	 * @return void
+	 */
+	protected function set_versionMax(int $version):void{
+		$this->setMinMaxVersion($this->versionMin, $version);
 	}
 
 	/**
