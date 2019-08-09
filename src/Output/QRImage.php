@@ -13,6 +13,11 @@
 namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\QRCode;
+use Exception;
+
+use function array_values, base64_encode, call_user_func, count, imagecolorallocate, imagecolortransparent,
+	imagecreatetruecolor, imagedestroy, imagefilledrectangle, imagegif, imagejpeg, imagepng, in_array,
+	is_array, ob_end_clean, ob_get_contents, ob_start, range, sprintf;
 
 /**
  * Converts the matrix into GD images, raw or base64 output
@@ -42,13 +47,13 @@ class QRImage extends QROutputAbstract{
 		foreach($this::DEFAULT_MODULE_VALUES as $M_TYPE => $defaultValue){
 			$v = $this->options->moduleValues[$M_TYPE] ?? null;
 
-			if(!\is_array($v) || \count($v) < 3){
+			if(!is_array($v) || count($v) < 3){
 				$this->moduleValues[$M_TYPE] = $defaultValue
 					? [0, 0, 0]
 					: [255, 255, 255];
 			}
 			else{
-				$this->moduleValues[$M_TYPE] = \array_values($v);
+				$this->moduleValues[$M_TYPE] = array_values($v);
 			}
 
 		}
@@ -59,18 +64,18 @@ class QRImage extends QROutputAbstract{
 	 *
 	 */
 	public function dump(string $file = null):string{
-		$this->image = \imagecreatetruecolor($this->length, $this->length);
+		$this->image = imagecreatetruecolor($this->length, $this->length);
 
 		// avoid: Indirect modification of overloaded property $imageTransparencyBG has no effect
 		// https://stackoverflow.com/a/10455217
 		$tbg = $this->options->imageTransparencyBG;
-		$background  = \imagecolorallocate($this->image, ...$tbg);
+		$background  = imagecolorallocate($this->image, ...$tbg);
 
-		if((bool)$this->options->imageTransparent && \in_array($this->options->outputType, $this::TRANSPARENCY_TYPES, true)){
-			\imagecolortransparent($this->image, $background);
+		if((bool)$this->options->imageTransparent && in_array($this->options->outputType, $this::TRANSPARENCY_TYPES, true)){
+			imagecolortransparent($this->image, $background);
 		}
 
-		\imagefilledrectangle($this->image, 0, 0, $this->length, $this->length, $background);
+		imagefilledrectangle($this->image, 0, 0, $this->length, $this->length, $background);
 
 		foreach($this->matrix->matrix() as $y => $row){
 			foreach($row as $x => $M_TYPE){
@@ -81,7 +86,7 @@ class QRImage extends QROutputAbstract{
 		$imageData = $this->dumpImage($file);
 
 		if((bool)$this->options->imageBase64){
-			$imageData = 'data:image/'.$this->options->outputType.';base64,'.\base64_encode($imageData);
+			$imageData = sprintf('data:image/%s;base64,%s', $this->options->outputType, base64_encode($imageData));
 		}
 
 		return $imageData;
@@ -91,13 +96,13 @@ class QRImage extends QROutputAbstract{
 	 *
 	 */
 	protected function setPixel(int $x, int $y, array $rgb):void{
-		\imagefilledrectangle(
+		imagefilledrectangle(
 			$this->image,
 			$x * $this->scale,
 			$y * $this->scale,
 			($x + 1) * $this->scale,
 			($y + 1) * $this->scale,
-			\imagecolorallocate($this->image, ...$rgb)
+			imagecolorallocate($this->image, ...$rgb)
 		);
 	}
 
@@ -111,22 +116,22 @@ class QRImage extends QROutputAbstract{
 	protected function dumpImage(string $file = null):string{
 		$file ??= $this->options->cachefile;
 
-		\ob_start();
+		ob_start();
 
 		try{
-			\call_user_func([$this, $this->outputMode ?? $this->defaultMode]);
+			call_user_func([$this, $this->outputMode ?? $this->defaultMode]);
 		}
 		// not going to cover edge cases
 		// @codeCoverageIgnoreStart
-		catch(\Exception $e){
+		catch(Exception $e){
 			throw new QRCodeOutputException($e->getMessage());
 		}
 		// @codeCoverageIgnoreEnd
 
-		$imageData = \ob_get_contents();
-		\imagedestroy($this->image);
+		$imageData = ob_get_contents();
+		imagedestroy($this->image);
 
-		\ob_end_clean();
+		ob_end_clean();
 
 		if($file !== null){
 			$this->saveToFile($imageData, $file);
@@ -139,10 +144,10 @@ class QRImage extends QROutputAbstract{
 	 * @return void
 	 */
 	protected function png():void{
-		\imagepng(
+		imagepng(
 			$this->image,
 			null,
-			\in_array($this->options->pngCompression, \range(-1, 9), true)
+			in_array($this->options->pngCompression, range(-1, 9), true)
 				? $this->options->pngCompression
 				: -1
 		);
@@ -153,17 +158,17 @@ class QRImage extends QROutputAbstract{
 	 * @return void
 	 */
 	protected function gif():void{
-		\imagegif($this->image);
+		imagegif($this->image);
 	}
 
 	/**
 	 * @return void
 	 */
 	protected function jpg():void{
-		\imagejpeg(
+		imagejpeg(
 			$this->image,
 			null,
-			\in_array($this->options->jpegQuality, \range(0, 100), true)
+			in_array($this->options->jpegQuality, range(0, 100), true)
 				? $this->options->jpegQuality
 				: 85
 		);

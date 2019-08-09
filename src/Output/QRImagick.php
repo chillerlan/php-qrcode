@@ -14,6 +14,8 @@ namespace chillerlan\QRCode\Output;
 
 use Imagick, ImagickDraw, ImagickPixel;
 
+use function is_string;
+
 /**
  * ImageMagick output module
  * requires ext-imagick

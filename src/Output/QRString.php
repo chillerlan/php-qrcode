@@ -14,6 +14,8 @@ namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\QRCode;
 
+use function implode, is_string, json_encode;
+
 /**
  * Converts the matrix data into string types
  */
@@ -55,17 +57,17 @@ class QRString extends QROutputAbstract{
 				$r[] = $this->moduleValues[$M_TYPE];
 			}
 
-			$str[] = \implode('', $r);
+			$str[] = implode('', $r);
 		}
 
-		return \implode($this->options->eol, $str);
+		return implode($this->options->eol, $str);
 	}
 
 	/**
 	 *
 	 */
 	protected function json():string{
-		return \json_encode($this->matrix->matrix());
+		return json_encode($this->matrix->matrix());
 	}
 
 }

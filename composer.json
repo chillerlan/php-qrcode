@@ -25,12 +25,13 @@
 	],
 	"require": {
 		"php": "^7.4",
+		"ext-gd": "*",
 		"ext-json": "*",
 		"ext-mbstring": "*",
 		"chillerlan/php-settings-container": "^1.1"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^8.2"
+		"phpunit/phpunit": "^8.3"
 	},
 	"suggest": {
 		"chillerlan/php-authenticator": "^3.0"

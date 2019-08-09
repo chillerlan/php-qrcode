@@ -14,6 +14,8 @@ namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\QRCode;
 
+use function is_string, sprintf, strip_tags, trim;
+
 /**
  * Converts the matrix into markup types: HTML, SVG, ...
  */
@@ -34,13 +36,13 @@ class QRMarkup extends QROutputAbstract{
 		foreach($this::DEFAULT_MODULE_VALUES as $M_TYPE => $defaultValue){
 			$v = $this->options->moduleValues[$M_TYPE] ?? null;
 
-			if(!\is_string($v)){
+			if(!is_string($v)){
 				$this->moduleValues[$M_TYPE] = $defaultValue
 					? $this->options->markupDark
 					: $this->options->markupLight;
 			}
 			else{
-				$this->moduleValues[$M_TYPE] = \trim(\strip_tags($v), '\'"');
+				$this->moduleValues[$M_TYPE] = trim(strip_tags($v), '\'"');
 			}
 
 		}
@@ -78,7 +80,7 @@ class QRMarkup extends QROutputAbstract{
 	protected function svg():string{
 		$matrix = $this->matrix->matrix();
 
-		$svg = \sprintf($this->svgHeader, $this->options->cssClass, $this->options->svgViewBoxSize ?? $this->moduleCount)
+		$svg = sprintf($this->svgHeader, $this->options->cssClass, $this->options->svgViewBoxSize ?? $this->moduleCount)
 		       .$this->options->eol
 		       .'<defs>'.$this->options->svgDefs.'</defs>'
 		       .$this->options->eol;
@@ -100,14 +102,14 @@ class QRMarkup extends QROutputAbstract{
 							$start = $x;
 						}
 
-						if($row[$x + 1] ?? false){
+						if(isset($row[$x + 1])){
 							continue;
 						}
 					}
 
 					if($count > 0){
 						$len = $count;
-						$path .= 'M' .$start. ' ' .$y. ' h'.$len.' v1 h-'.$len.'Z ';
+						$path .= sprintf('M%s %s h%s v1 h-%sZ ', $start, $y, $len, $len);
 
 						// reset count
 						$count = 0;
@@ -119,7 +121,7 @@ class QRMarkup extends QROutputAbstract{
 			}
 
 			if(!empty($path)){
-				$svg .= '<path class="qr-'.$M_TYPE.' '.$this->options->cssClass.'" stroke="transparent" fill="'.$value.'" fill-opacity="'.$this->options->svgOpacity.'" d="'.$path.'" />';
+				$svg .= sprintf('<path class="qr-%s %s" stroke="transparent" fill="%s" fill-opacity="%s" d="%s" />', $M_TYPE, $this->options->cssClass, $value, $this->options->svgOpacity, $path);
 			}
 
 		}

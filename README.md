@@ -65,18 +65,12 @@ Profit!
 - [gaara 嘎啦](https://github.com/xutengx/gaara)
 
 ### Usage
-We want to encode this data into a QRcode image:
+We want to encode this URI for a mobile authenticator into a QRcode image:
 ```php
-// 10 reasons why QR codes are awesome
-$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
-
-// no, for serious, we want to display a QR code for a mobile authenticator
 $data = 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net';
-```
 
-Quick and simple:
-```php
-echo '<img src="'.(new QRCode)->render($data).'" />';
+//quick and simple:
+echo '<img src="'.(new QRCode)->render($data).'" alt="QR Code" />';
 ```
 
 <p align="center">
@@ -160,7 +154,7 @@ To map the values and properly render the modules for the given `QROutputInterfa
 ```php
 $options = new QROptions;
 
-// for HTML and SVG
+// for HTML, SVG and ImageMagick
 $options->moduleValues = [
 	// finder
 	1536 => '#A71111', // dark (true)
@@ -200,8 +194,6 @@ $options->moduleValues = [
 	// ...
 ];
 ```
-
-Combined with a custom output interface and your imagination you can create some cool effects that way!
 
 #### Custom `QROutputInterface`
 Instead of bloating your code you can simply create your own output interface by extending `QROutputAbstract`. Have a look at the [built-in output modules](https://github.com/chillerlan/php-qrcode/tree/master/src/Output).
@@ -270,7 +262,7 @@ $myCustomOptions = new MyCustomOptions($myOptions);
 
 // using the SettingsContainerInterface
 $myCustomOptions = new class($myOptions) extends SettingsContainerAbstract{
-	use QROptions, MyCustomOptionsTrait;
+	use QROptionsTrait, MyCustomOptionsTrait;
 };
 
 ```
@@ -329,6 +321,9 @@ property | type | default | allowed | description
 `$eol` | string | `PHP_EOL` | * | newline string (HTML, SVG, TEXT)
 `$scale` | int | 5 | * | size of a QR code pixel (SVG, IMAGE_*), HTML -> via CSS
 `$cssClass` | string | `null` | * | a common css class
+`$svgOpacity` | float | 1.0 | 0...1 | 
+`$svgDefs` | string | * | * | anything between [`<defs>`](https://developer.mozilla.org/docs/Web/SVG/Element/defs)
+`$svgViewBoxSize` | int | `null` | * | a positive integer which defines width/height of the [viewBox attribute](https://css-tricks.com/scale-svg/#article-header-id-3)
 `$textDark` | string | '🔴' | * | string substitute for dark
 `$textLight` | string | '⭕' | * | string substitute for light
 `$markupDark` | string | '#000' | * | markup substitute for dark (CSS value)
@@ -359,7 +354,7 @@ method | return | description
 name | light (false) | dark (true) | description
 ---- | ------------- | ----------- | -----------
 `M_NULL` | 0 | - | module not set (should never appear. if so, there's an error)
-`M_DARKMODULE` | - (2) | 512 | once per matrix at `$xy = [8, 4 * $version + 9]`
+`M_DARKMODULE` | - | 512 | once per matrix at `$xy = [8, 4 * $version + 9]`
 `M_DATA` | 4 | 1024 | the actual encoded data
 `M_FINDER` | 6 | 1536 | the 7x7 finder patterns
 `M_SEPARATOR` | 8 | - | separator lines around the finder patterns

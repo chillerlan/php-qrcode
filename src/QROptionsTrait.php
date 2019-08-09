@@ -12,6 +12,8 @@
 
 namespace chillerlan\QRCode;
 
+use function array_values, count, is_array, is_numeric, max, min, sprintf;
+
 trait QROptionsTrait{
 
 	/**
@@ -186,33 +188,28 @@ trait QROptionsTrait{
 	protected array $moduleValues;
 
 	/**
-	 * set/clamp some special values, call the parent setter otherwise
-	 */
-	public function __set(string $property, $value):void{
-
-		if($property === 'versionMin'){
-			$this->setMinMaxVersion($value, $this->versionMax);
-
-			return;
-		}
-		elseif($property === 'versionMax'){
-			$this->setMinMaxVersion($this->versionMin, $value);
-
-			return;
-		}
-
-		parent::__set($property, $value);
-	}
-
-	/**
 	 * clamp min/max version number
 	 */
 	protected function setMinMaxVersion(int $versionMin, int $versionMax):void{
-		$min = \max(1, \min(40, $versionMin));
-		$max = \max(1, \min(40, $versionMax));
+		$min = max(1, min(40, $versionMin));
+		$max = max(1, min(40, $versionMax));
 
-		$this->versionMin = \min($min, $max);
-		$this->versionMax = \max($min, $max);
+		$this->versionMin = min($min, $max);
+		$this->versionMax = max($min, $max);
+	}
+
+	/**
+	 *
+	 */
+	protected function set_versionMin(int $version):void{
+		$this->setMinMaxVersion($version, $this->versionMax);
+	}
+
+	/**
+	 *
+	 */
+	protected function set_versionMax(int $version):void{
+		$this->setMinMaxVersion($this->versionMin, $version);
 	}
 
 	/**
@@ -221,7 +218,7 @@ trait QROptionsTrait{
 	protected function set_eccLevel(int $eccLevel):void{
 
 		if(!isset(QRCode::ECC_MODES[$eccLevel])){
-			throw new QRCodeException('Invalid error correct level: '.$eccLevel);
+			throw new QRCodeException(sprintf('Invalid error correct level: %s', $eccLevel));
 		}
 
 		$this->eccLevel = $eccLevel;
@@ -233,7 +230,7 @@ trait QROptionsTrait{
 	protected function set_maskPattern(int $maskPattern):void{
 
 		if($maskPattern !== QRCode::MASK_PATTERN_AUTO){
-			$this->maskPattern = \max(0, \min(7, $maskPattern));
+			$this->maskPattern = max(0, min(7, $maskPattern));
 		}
 
 	}
@@ -244,7 +241,7 @@ trait QROptionsTrait{
 	protected function set_imageTransparencyBG($imageTransparencyBG):void{
 
 		// invalid value - set to white as default
-		if(!\is_array($imageTransparencyBG) || \count($imageTransparencyBG) < 3){
+		if(!is_array($imageTransparencyBG) || count($imageTransparencyBG) < 3){
 			$this->imageTransparencyBG = [255, 255, 255];
 
 			return;
@@ -252,16 +249,16 @@ trait QROptionsTrait{
 
 		foreach($imageTransparencyBG as $k => $v){
 
-			if(!\is_numeric($v)){
+			if(!is_numeric($v)){
 				throw new QRCodeException('Invalid RGB value.');
 			}
 
 			// clamp the values
-			$this->imageTransparencyBG[$k] = \max(0, \min(255, (int)$v));
+			$this->imageTransparencyBG[$k] = max(0, min(255, (int)$v));
 		}
 
 		// use the array values to not run into errors with the spread operator (...$arr)
-		$this->imageTransparencyBG = \array_values($this->imageTransparencyBG);
+		$this->imageTransparencyBG = array_values($this->imageTransparencyBG);
 	}
 
 	/**
@@ -270,7 +267,7 @@ trait QROptionsTrait{
 	protected function set_version(int $version):void{
 
 		if($version !== QRCode::VERSION_AUTO){
-			$this->version = \max(1, \min(40, $version));
+			$this->version = max(1, min(40, $version));
 		}
 
 	}

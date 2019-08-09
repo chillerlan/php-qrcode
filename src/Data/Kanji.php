@@ -14,6 +14,8 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\QRCode;
 
+use function mb_strlen, ord, sprintf, strlen;
+
 /**
  * Kanji mode: double-byte characters from the Shift JIS character set
  */
@@ -27,17 +29,17 @@ class Kanji extends QRDataAbstract{
 	 * @inheritdoc
 	 */
 	protected function getLength(string $data):int{
-		return \mb_strlen($data, 'SJIS');
+		return mb_strlen($data, 'SJIS');
 	}
 
 	/**
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	protected function write(string $data):void{
-		$len = \strlen($data);
+		$len = strlen($data);
 
 		for($i = 0; $i + 1 < $len; $i += 2){
-			$c = ((0xff & \ord($data[$i])) << 8) | (0xff & \ord($data[$i + 1]));
+			$c = ((0xff & ord($data[$i])) << 8) | (0xff & ord($data[$i + 1]));
 
 			if(0x8140 <= $c && $c <= 0x9FFC){
 				$c -= 0x8140;
@@ -46,7 +48,7 @@ class Kanji extends QRDataAbstract{
 				$c -= 0xC140;
 			}
 			else{
-				throw new QRCodeDataException('illegal char at '.($i + 1).' ['.$c.']');
+				throw new QRCodeDataException(sprintf('illegal char at %d [%d]', $i + 1, $c));
 			}
 
 			$this->bitBuffer->put((($c >> 8) & 0xff) * 0xC0 + ($c & 0xff), 13);
@@ -54,7 +56,7 @@ class Kanji extends QRDataAbstract{
 		}
 
 		if($i < $len){
-			throw new QRCodeDataException('illegal char at '.($i + 1));
+			throw new QRCodeDataException(sprintf('illegal char at %d', $i + 1));
 		}
 
 	}

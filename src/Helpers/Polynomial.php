@@ -14,6 +14,8 @@ namespace chillerlan\QRCode\Helpers;
 
 use chillerlan\QRCode\QRCodeException;
 
+use function array_fill, count, sprintf;
+
 /**
  * @link http://www.thonky.com/qr-code-tutorial/error-correction-coding
  */
@@ -78,13 +80,13 @@ class Polynomial{
 	 */
 	public function setNum(array $num, int $shift = null):Polynomial{
 		$offset = 0;
-		$numCount = \count($num);
+		$numCount = count($num);
 
 		while($offset < $numCount && $num[$offset] === 0){
 			$offset++;
 		}
 
-		$this->num = \array_fill(0, $numCount - $offset + ($shift ?? 0), 0);
+		$this->num = array_fill(0, $numCount - $offset + ($shift ?? 0), 0);
 
 		for($i = 0; $i < $numCount - $offset; $i++){
 			$this->num[$i] = $num[$i + $offset];
@@ -97,7 +99,7 @@ class Polynomial{
 	 *
 	 */
 	public function multiply(array $e):Polynomial{
-		$n = \array_fill(0, \count($this->num) + \count($e) - 1, 0);
+		$n = array_fill(0, count($this->num) + count($e) - 1, 0);
 
 		foreach($this->num as $i => $vi){
 			$vi = $this->glog($vi);
@@ -119,7 +121,7 @@ class Polynomial{
 	public function mod(array $e):Polynomial{
 		$n = $this->num;
 
-		if(\count($n) - \count($e) < 0){
+		if(count($n) - count($e) < 0){
 			return $this;
 		}
 
@@ -140,7 +142,7 @@ class Polynomial{
 	public function glog(int $n):int{
 
 		if($n < 1){
-			throw new QRCodeException('log('.$n.')');
+			throw new QRCodeException(sprintf('log(%s)', $n));
 		}
 
 		return Polynomial::table[$n][1];
