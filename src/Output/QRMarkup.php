@@ -109,7 +109,7 @@ class QRMarkup extends QROutputAbstract{
 							$start = $x;
 						}
 
-						if($row[$x + 1] ?? false){
+						if(isset($row[$x + 1])){
 							continue;
 						}
 					}
