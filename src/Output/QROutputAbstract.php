@@ -77,7 +77,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 
 		$class = get_called_class();
 
-		if(\array_key_exists($class, QRCode::OUTPUT_MODES) && \in_array($this->options->outputType, QRCode::OUTPUT_MODES[$class])){
+		if(isset(QRCode::OUTPUT_MODES[$class]) && in_array($this->options->outputType, QRCode::OUTPUT_MODES[$class])){
 			$this->outputMode = $this->options->outputType;
 		}
 
