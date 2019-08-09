@@ -15,7 +15,7 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\{Data\QRMatrix, QRCode};
 use chillerlan\Settings\SettingsContainerInterface;
 
-use function call_user_func, dirname, file_put_contents, get_called_class, in_array, is_writable;
+use function call_user_func, dirname, file_put_contents, get_called_class, in_array, is_writable, sprintf;
 
 /**
  * common output abstract
@@ -103,7 +103,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	protected function saveToFile(string $data, string $file):bool{
 
 		if(!is_writable(dirname($file))){
-			throw new QRCodeOutputException('Could not write data to cache file: '.$file);
+			throw new QRCodeOutputException(sprintf('Could not write data to cache file: %s', $file));
 		}
 
 		return (bool)file_put_contents($file, $data);

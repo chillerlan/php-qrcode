@@ -116,7 +116,7 @@ class QRMarkup extends QROutputAbstract{
 
 					if($count > 0){
 						$len = $count;
-						$path .= 'M' .$start. ' ' .$y. ' h'.$len.' v1 h-'.$len.'Z ';
+						$path .= sprintf('M%s %s h%s v1 h-%sZ ', $start, $y, $len, $len);
 
 						// reset count
 						$count = 0;
@@ -128,7 +128,7 @@ class QRMarkup extends QROutputAbstract{
 			}
 
 			if(!empty($path)){
-				$svg .= '<path class="qr-'.$M_TYPE.' '.$this->options->cssClass.'" stroke="transparent" fill="'.$value.'" fill-opacity="'.$this->options->svgOpacity.'" d="'.$path.'" />';
+				$svg .= sprintf('<path class="qr-%s %s" stroke="transparent" fill="%s" fill-opacity="%s" d="%s" />', $M_TYPE, $this->options->cssClass, $value, $this->options->svgOpacity, $path);
 			}
 
 		}

@@ -14,7 +14,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\QRCode;
 
-use function substr;
+use function ord, sprintf, substr;
 
 /**
  * Numeric mode: decimal digits 0 through 9
@@ -68,14 +68,13 @@ class Number extends QRDataAbstract{
 
 		$len = strlen($string);
 		for($i = 0; $i < $len; $i++){
-			$c = \ord($string[$i]);
+			$c = ord($string[$i]);
 
 			if(!in_array($string[$i], $this::NUMBER_CHAR_MAP, true)){
-				throw new QRCodeDataException('illegal char: "'.$string[$i].'" ['.$c.']');
+				throw new QRCodeDataException(sprintf('illegal char: "%s" [%d]', $string[$i], $c));
 			}
 
-			$c = $c - \ord('0');
-
+			$c   = $c - 48; // ord('0')
 			$num = $num * 10 + $c;
 		}
 

@@ -14,7 +14,7 @@ namespace chillerlan\QRCode\Helpers;
 
 use chillerlan\QRCode\QRCodeException;
 
-use function array_fill, count;
+use function array_fill, count, sprintf;
 
 /**
  * @link http://www.thonky.com/qr-code-tutorial/error-correction-coding
@@ -158,7 +158,7 @@ class Polynomial{
 	public function glog(int $n):int{
 
 		if($n < 1){
-			throw new QRCodeException('log('.$n.')');
+			throw new QRCodeException(sprintf('log(%s)', $n));
 		}
 
 		return Polynomial::table[$n][1];

@@ -12,7 +12,7 @@
 
 namespace chillerlan\QRCode;
 
-use function array_values, count, is_array, is_numeric, max, min;
+use function array_values, count, is_array, is_numeric, max, min, sprintf;
 
 trait QROptionsTrait{
 
@@ -284,7 +284,7 @@ trait QROptionsTrait{
 	protected function set_eccLevel(int $eccLevel):void{
 
 		if(!isset(QRCode::ECC_MODES[$eccLevel])){
-			throw new QRCodeException('Invalid error correct level: '.$eccLevel);
+			throw new QRCodeException(sprintf('Invalid error correct level: %s', $eccLevel));
 		}
 
 		$this->eccLevel = $eccLevel;

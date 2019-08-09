@@ -17,7 +17,7 @@ use Exception;
 
 use function array_values, base64_encode, call_user_func, count, imagecolorallocate, imagecolortransparent,
 	imagecreatetruecolor, imagedestroy, imagefilledrectangle, imagegif, imagejpeg, imagepng, in_array,
-	is_array, ob_end_clean, ob_get_contents, ob_start, range;
+	is_array, ob_end_clean, ob_get_contents, ob_start, range, sprintf;
 
 /**
  * Converts the matrix into GD images, raw or base64 output
@@ -91,7 +91,7 @@ class QRImage extends QROutputAbstract{
 		$imageData = $this->dumpImage($file);
 
 		if((bool)$this->options->imageBase64){
-			$imageData = 'data:image/'.$this->options->outputType.';base64,'.base64_encode($imageData);
+			$imageData = sprintf('data:image/%s;base64,%s', $this->options->outputType, base64_encode($imageData));
 		}
 
 		return $imageData;

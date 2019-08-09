@@ -14,7 +14,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\QRCode;
 
-use function mb_strlen, ord, strlen;
+use function mb_strlen, ord, sprintf, strlen;
 
 /**
  * Kanji mode: double-byte characters from the Shift JIS character set
@@ -57,7 +57,7 @@ class Kanji extends QRDataAbstract{
 				$c -= 0xC140;
 			}
 			else{
-				throw new QRCodeDataException('illegal char at '.($i + 1).' ['.$c.']');
+				throw new QRCodeDataException(sprintf('illegal char at %d [%d]', $i + 1, $c));
 			}
 
 			$this->bitBuffer->put((($c >> 8) & 0xff) * 0xC0 + ($c & 0xff), 13);
@@ -65,7 +65,7 @@ class Kanji extends QRDataAbstract{
 		}
 
 		if($i < $len){
-			throw new QRCodeDataException('illegal char at '.($i + 1));
+			throw new QRCodeDataException(sprintf('illegal char at %d', $i + 1));
 		}
 
 	}

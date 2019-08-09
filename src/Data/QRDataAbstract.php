@@ -16,7 +16,7 @@ use chillerlan\QRCode\{QRCode, QRCodeException};
 use chillerlan\QRCode\Helpers\{BitBuffer, Polynomial};
 use chillerlan\Settings\SettingsContainerInterface;
 
-use function array_fill, array_merge, count, max, range, strlen;
+use function array_fill, array_merge, count, max, mb_convert_encoding, mb_detect_encoding, range, sprintf, strlen;
 
 /**
  * Processes the binary data and maps it on a matrix which is then being returned
@@ -106,7 +106,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	public function setData(string $data):QRDataInterface{
 
 		if($this->datamode === QRCode::DATA_KANJI){
-			$data = \mb_convert_encoding($data, 'SJIS', \mb_detect_encoding($data));
+			$data = mb_convert_encoding($data, 'SJIS', mb_detect_encoding($data));
 		}
 
 		$this->strlen  = $this->getLength($data);
@@ -160,7 +160,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 			 }
 		 }
 
-		throw new QRCodeDataException('invalid version number: '.$this->version);
+		throw new QRCodeDataException(sprintf('invalid version number: %d', $this->version));
 	}
 
 	/**
@@ -192,7 +192,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 			}
 		}
 
-		throw new QRCodeDataException('data exceeds '.$maxlength.' characters');
+		throw new QRCodeDataException(sprintf('data exceeds %d characters', $maxlength));
 	}
 
 	/**
@@ -227,7 +227,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 		// there was an error writing the BitBuffer data, which is... unlikely.
 		if($this->bitBuffer->length > $MAX_BITS){
-			throw new QRCodeException('code length overflow. ('.$this->bitBuffer->length.' > '.$MAX_BITS.'bit)'); // @codeCoverageIgnore
+			throw new QRCodeException(sprintf('code length overflow. (%d > %d bit)', $this->bitBuffer->length, $MAX_BITS)); // @codeCoverageIgnore
 		}
 
 		// end code.
