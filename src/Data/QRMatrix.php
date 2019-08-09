@@ -31,7 +31,7 @@ class QRMatrix{
 	public const M_FORMAT     = 0x0e;
 	public const M_VERSION    = 0x10;
 	public const M_QUIETZONE  = 0x12;
-	public const M_LOGO       = 0x14; // @todo
+#	public const M_LOGO       = 0x14; // @todo
 
 	public const M_TEST       = 0xff;
 
