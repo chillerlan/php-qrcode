@@ -25,6 +25,7 @@
 	],
 	"require": {
 		"php": "^7.2",
+		"ext-gd": "*",
 		"ext-json": "*",
 		"ext-mbstring": "*",
 		"chillerlan/php-settings-container": "^1.1"
