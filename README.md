@@ -34,6 +34,11 @@ Hi, please check out my other projects that are way cooler than qrcodes!
 
 ## Documentation
 
+### Requirements
+- PHP 7.2+
+  - `ext-gd`, `ext-json`, `ext-mbstring`
+  - optional `ext-imagick`
+
 ### Installation
 **requires [composer](https://getcomposer.org)**
 

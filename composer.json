@@ -34,7 +34,7 @@
 		"phpunit/phpunit": "^8.3"
 	},
 	"suggest": {
-		"chillerlan/php-authenticator": "^3.0"
+		"chillerlan/php-authenticator": "Yet another Google authenticator! Also creates URIs for mobile apps."
 	},
 	"autoload": {
 		"psr-4": {
