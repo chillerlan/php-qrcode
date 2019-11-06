@@ -47,10 +47,10 @@ class QRCode{
 	public const VERSION_AUTO       = -1;
 	public const MASK_PATTERN_AUTO  = -1;
 
-	public const ECC_L         = 0b01; // 7%.
-	public const ECC_M         = 0b00; // 15%.
-	public const ECC_Q         = 0b11; // 25%.
-	public const ECC_H         = 0b10; // 30%.
+	public const ECC_L         = 0b00; // 7%.
+	public const ECC_M         = 0b01; // 15%.
+	public const ECC_Q         = 0b10; // 25%.
+	public const ECC_H         = 0b11; // 30%.
 
 	public const DATA_NUMBER   = 0b0001;
 	public const DATA_ALPHANUM = 0b0010;
