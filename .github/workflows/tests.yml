@@ -1,0 +1,40 @@
+# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+    tags:
+      - "**"
+
+name: "PHPUnit tests"
+
+jobs:
+
+  tests:
+    name: "Tests"
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-binary:
+          - php7.2
+          - php7.3
+#          - php7.4
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v1.1.0
+
+      - name: "Install dependencies with composer"
+        run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --prefer-source --no-progress --no-suggest
+
+      - name: "Run unit tests with phpunit/phpunit"
+        run: ${{ matrix.php-binary }} vendor/bin/phpunit --configuration phpunit.xml --coverage-clover clover.xml
+
+#      - name: "Send code coverage report to Codecov.io"
+#        env:
+#          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+#        run: bash <(curl -s https://codecov.io/bash)
