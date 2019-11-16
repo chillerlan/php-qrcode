@@ -1,4 +1,6 @@
 # https://help.github.com/en/categories/automating-your-workflow-with-github-actions
+# https://github.com/localheinz/php-library-template/blob/master/.github/workflows/continuous-integration.yml
+# https://github.com/sebastianbergmann/phpunit/blob/master/.github/workflows/ci.yml
 
 on:
   pull_request:
@@ -8,13 +10,12 @@ on:
     tags:
       - "**"
 
-name: "PHPUnit tests"
+name: "Continuous Integration"
 
 jobs:
 
   tests:
-    name: "Tests"
-
+    name: "Unit Tests"
     runs-on: ubuntu-latest
 
     strategy:
@@ -24,17 +25,26 @@ jobs:
           - php7.3
 #          - php7.4
 
+        dependencies:
+          - lowest
+#          - locked
+          - highest
+
     steps:
       - name: "Checkout"
         uses: actions/checkout@v1.1.0
 
-      - name: "Install dependencies with composer"
-        run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --prefer-source --no-progress --no-suggest
+      - name: "Install lowest dependencies with composer"
+        if: matrix.dependencies == 'lowest'
+        run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --no-progress --no-suggest --prefer-lowest
 
-      - name: "Run unit tests with phpunit/phpunit"
-        run: ${{ matrix.php-binary }} vendor/bin/phpunit --configuration phpunit.xml --coverage-clover clover.xml
+#      - name: "Install locked dependencies with composer"
+#        if: matrix.dependencies == 'locked'
+#        run: ${{ matrix.php-binary }} $(which composer) install --no-interaction --no-progress --no-suggest
 
-#      - name: "Send code coverage report to Codecov.io"
-#        env:
-#          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-#        run: bash <(curl -s https://codecov.io/bash)
+      - name: "Install highest dependencies with composer"
+        if: matrix.dependencies == 'highest'
+        run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --no-progress --no-suggest
+
+      - name: "Run unit tests with phpunit"
+        run: ${{ matrix.php-binary }} vendor/bin/phpunit --configuration=phpunit.xml
