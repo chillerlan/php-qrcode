@@ -18,11 +18,11 @@ use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use chillerlan\QRCodeTest\QRTestAbstract;
 use chillerlan\Settings\SettingsContainerInterface;
 
-/**
- */
+use function dirname, file_exists, mkdir;
+
 abstract class QROutputTestAbstract extends QRTestAbstract{
 
-	protected const cachefile = __DIR__.'/output_test.';
+	protected const cachefile = __DIR__.'/../../.build/output_test/test.';
 
 	protected QROutputInterface $outputInterface;
 	/** @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions */
@@ -32,6 +32,11 @@ abstract class QROutputTestAbstract extends QRTestAbstract{
 
 	protected function setUp():void{
 		parent::setUp();
+
+		$buildDir = dirname($this::cachefile);
+		if(!file_exists($buildDir)){
+			mkdir($buildDir, 0777, true);
+		}
 
 		$this->options = new QROptions;
 		$this->setOutputInterface();

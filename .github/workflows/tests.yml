@@ -1,0 +1,68 @@
+# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
+# https://github.com/localheinz/php-library-template/blob/master/.github/workflows/continuous-integration.yml
+# https://github.com/sebastianbergmann/phpunit/blob/master/.github/workflows/ci.yml
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+    tags:
+      - "**"
+
+name: "Continuous Integration"
+
+jobs:
+
+  tests:
+    name: "Unit Tests"
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-binary:
+          - php7.2
+          - php7.3
+#          - php7.4
+
+        dependencies:
+          - lowest
+          - highest
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v1.1.0
+
+      - name: "Install lowest dependencies with composer"
+        if: matrix.dependencies == 'lowest'
+        run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --no-progress --no-suggest --prefer-lowest
+
+      - name: "Install highest dependencies with composer"
+        if: matrix.dependencies == 'highest'
+        run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --no-progress --no-suggest
+
+      - name: "Run unit tests with phpunit"
+        run: ${{ matrix.php-binary }} vendor/bin/phpunit --configuration=phpunit.xml --no-coverage
+
+
+  code-coverage:
+    name: "Code Coverage"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v1.1.0
+
+      - name: "Install locked dependencies with composer"
+        run: php7.3 $(which composer) install --no-interaction --no-progress --no-suggest
+
+      - name: "Dump Xdebug filter with phpunit/phpunit"
+        run: php7.3 vendor/bin/phpunit --configuration=phpunit.xml --dump-xdebug-filter=.build/phpunit/xdebug-filter.php
+
+      - name: "Collect code coverage with Xdebug and phpunit/phpunit"
+        run: php7.3 vendor/bin/phpunit --configuration=phpunit.xml --prepend=.build/phpunit/xdebug-filter.php
+
+      - name: "Send code coverage report to Codecov.io"
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: bash <(curl -s https://codecov.io/bash)
