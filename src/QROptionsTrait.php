@@ -78,6 +78,16 @@ trait QROptionsTrait{
 	protected $quietzoneSize = 4;
 
 	/**
+	 * Use this to circumvent the data mode detection and force the usage of the given mode.
+	 * valid modes are: Number, AlphaNum, Kanji, Byte
+	 *
+	 * @see https://github.com/chillerlan/php-qrcode/issues/39
+	 *
+	 * @var string|null
+	 */
+	protected $dataMode = null;
+
+	/**
 	 * QRCode::OUTPUT_MARKUP_XXXX where XXXX = HTML, SVG
 	 * QRCode::OUTPUT_IMAGE_XXX where XXX = PNG, GIF, JPG
 	 * QRCode::OUTPUT_STRING_XXXX where XXXX = TEXT, JSON
@@ -90,16 +100,16 @@ trait QROptionsTrait{
 	/**
 	 * the FQCN of the custom QROutputInterface if $outputType is set to QRCode::OUTPUT_CUSTOM
 	 *
-	 * @var string
+	 * @var string|null
 	 */
-	protected $outputInterface;
+	protected $outputInterface = null;
 
 	/**
 	 * /path/to/cache.file
 	 *
-	 * @var string
+	 * @var string|null
 	 */
-	protected $cachefile;
+	protected $cachefile = null;
 
 	/**
 	 * newline string [HTML, SVG, TEXT]
@@ -121,7 +131,7 @@ trait QROptionsTrait{
 	 *
 	 * @var string
 	 */
-	protected $cssClass;
+	protected $cssClass = '';
 
 	/**
 	 * SVG opacity
@@ -146,9 +156,9 @@ trait QROptionsTrait{
 	 *
 	 * @see https://css-tricks.com/scale-svg/#article-header-id-3
 	 *
-	 * @var int
+	 * @var int|null
 	 */
-	protected $svgViewBoxSize;
+	protected $svgViewBoxSize = null;
 
 	/**
 	 * string substitute for dark
@@ -227,9 +237,9 @@ trait QROptionsTrait{
 	 *
 	 * @see \ImagickPixel::__construct()
 	 *
-	 * @var string
+	 * @var string|null
 	 */
-	protected $imagickBG;
+	protected $imagickBG = null;
 
 	/**
 	 * Module values map
@@ -237,9 +247,9 @@ trait QROptionsTrait{
 	 *   HTML, IMAGICK: #ABCDEF, cssname, rgb(), rgba()...
 	 *   IMAGE: [63, 127, 255] // R, G, B
 	 *
-	 * @var array
+	 * @var array|null
 	 */
-	protected $moduleValues;
+	protected $moduleValues = null;
 
 	/**
 	 * clamp min/max version number

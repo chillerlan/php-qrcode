@@ -197,9 +197,19 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function initDataInterface(string $data):QRDataInterface{
+		$dataModes     = ['Number', 'AlphaNum', 'Kanji', 'Byte'];
+		$dataNamespace = __NAMESPACE__.'\\Data\\';
 
-		foreach(['Number', 'AlphaNum', 'Kanji', 'Byte'] as $mode){
-			$dataInterface = __NAMESPACE__.'\\Data\\'.$mode;
+		// allow forcing the data mode
+		// see https://github.com/chillerlan/php-qrcode/issues/39
+		if(in_array($this->options->dataMode, $dataModes, true)){
+			$dataInterface = $dataNamespace.$this->options->dataMode;
+
+			return new $dataInterface($this->options, $data);
+		}
+
+		foreach($dataModes as $mode){
+			$dataInterface = $dataNamespace.$mode;
 
 			if(call_user_func_array([$this, 'is'.$mode], [$data]) && class_exists($dataInterface)){
 				return new $dataInterface($this->options, $data);
