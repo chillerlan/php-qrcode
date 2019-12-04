@@ -11,6 +11,8 @@ namespaced, cleaned up, improved and other stuff.
 [![Packagist downloads][downloads-badge]][downloads]
 [![PayPal donate][donate-badge]][donate]
 
+[![Continuous Integration][gh-action-badge]][gh-action]
+
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?style=flat-square
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
 [license-badge]: https://img.shields.io/github/license/chillerlan/php-qrcode.svg?style=flat-square
@@ -25,6 +27,8 @@ namespaced, cleaned up, improved and other stuff.
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 [donate-badge]: https://img.shields.io/badge/donate-paypal-ff33aa.svg?style=flat-square
 [donate]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WLYUNAT9ZTJZ4
+[gh-action-badge]: https://github.com/chillerlan/php-qrcode/workflows/Continuous%20Integration/badge.svg
+[gh-action]: https://github.com/chillerlan/php-qrcode/actions
 
 Hi, please check out my other projects that are way cooler than qrcodes!
 
