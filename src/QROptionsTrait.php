@@ -74,12 +74,12 @@ trait QROptionsTrait{
 	/**
 	 * the FQCN of the custom QROutputInterface if $outputType is set to QRCode::OUTPUT_CUSTOM
 	 */
-	protected string $outputInterface;
+	protected ?string $outputInterface = null;
 
 	/**
 	 * /path/to/cache.file
 	 */
-	protected string $cachefile;
+	protected ?string $cachefile = null;
 
 	/**
 	 * newline string [HTML, SVG, TEXT]
@@ -95,7 +95,7 @@ trait QROptionsTrait{
 	/**
 	 * a common css class
 	 */
-	protected string $cssClass;
+	protected string $cssClass = '';
 
 	/**
 	 * SVG opacity
@@ -116,7 +116,7 @@ trait QROptionsTrait{
 	 *
 	 * @see https://css-tricks.com/scale-svg/#article-header-id-3
 	 */
-	protected int $svgViewBoxSize;
+	protected ?int $svgViewBoxSize = null;
 
 	/**
 	 * string substitute for dark
@@ -177,7 +177,7 @@ trait QROptionsTrait{
 	 *
 	 * @see \ImagickPixel::__construct()
 	 */
-	protected string $imagickBG;
+	protected ?string $imagickBG = null;
 
 	/**
 	 * Module values map
@@ -185,7 +185,7 @@ trait QROptionsTrait{
 	 *   HTML, IMAGICK: #ABCDEF, cssname, rgb(), rgba()...
 	 *   IMAGE: [63, 127, 255] // R, G, B
 	 */
-	protected array $moduleValues;
+	protected ?array $moduleValues = null;
 
 	/**
 	 * clamp min/max version number
