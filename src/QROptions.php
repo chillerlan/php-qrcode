@@ -23,6 +23,7 @@ use chillerlan\Settings\SettingsContainerAbstract;
  * @property bool   $addQuietzone
  * @property bool   $quietzoneSize
  *
+ * @property string $dataMode
  * @property string $outputType
  * @property string $outputInterface
  * @property string $cachefile

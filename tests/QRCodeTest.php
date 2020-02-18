@@ -13,9 +13,11 @@
 namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCode\{QROptions, QRCode};
-use chillerlan\QRCode\Data\QRCodeDataException;
+use chillerlan\QRCode\Data\{AlphaNum, Byte, Number, QRCodeDataException};
 use chillerlan\QRCode\Output\QRCodeOutputException;
 use chillerlan\QRCodeExamples\MyCustomOutput;
+
+use function random_bytes;
 
 class QRCodeTest extends QRTestAbstract{
 
@@ -111,4 +113,28 @@ class QRCodeTest extends QRTestAbstract{
 
 		$this->assertSame($expected, $this->reflection->newInstanceArgs([$options])->render('test'));
 	}
+
+	public function testDataModeOverride(){
+		$this->qrcode = $this->reflection->newInstance();
+
+		$this->assertInstanceOf(Number::class, $this->qrcode->initDataInterface('123'));
+		$this->assertInstanceOf(AlphaNum::class, $this->qrcode->initDataInterface('ABC123'));
+		$this->assertInstanceOf(Byte::class, $this->qrcode->initDataInterface(random_bytes(32)));
+
+		$this->qrcode = $this->reflection->newInstanceArgs([new QROptions(['dataMode' => 'Byte'])]);
+
+		$this->assertInstanceOf(Byte::class, $this->qrcode->initDataInterface('123'));
+		$this->assertInstanceOf(Byte::class, $this->qrcode->initDataInterface('ABC123'));
+		$this->assertInstanceOf(Byte::class, $this->qrcode->initDataInterface(random_bytes(32)));
+	}
+
+	public function testDataModeOverrideError(){
+		$this->expectException(QRCodeDataException::class);
+		$this->expectExceptionMessage('illegal char:');
+
+		$this->qrcode = $this->reflection->newInstanceArgs([new QROptions(['dataMode' => 'AlphaNum'])]);
+
+		$this->qrcode->initDataInterface(random_bytes(32));
+	}
+
 }
