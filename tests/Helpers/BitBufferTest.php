@@ -37,14 +37,14 @@ class BitBufferTest extends QRTestAbstract{
 	 */
 	public function testPut($data, $value){
 		$this->bitBuffer->put($data, 4);
-		$this->assertSame($value, $this->bitBuffer->buffer[0]);
-		$this->assertSame(4, $this->bitBuffer->length);
+		$this::assertSame($value, $this->bitBuffer->buffer[0]);
+		$this::assertSame(4, $this->bitBuffer->length);
 	}
 
 	public function testClear(){
 		$this->bitBuffer->clear();
-		$this->assertSame([], $this->bitBuffer->buffer);
-		$this->assertSame(0, $this->bitBuffer->length);
+		$this::assertSame([], $this->bitBuffer->buffer);
+		$this::assertSame(0, $this->bitBuffer->length);
 	}
 
 }

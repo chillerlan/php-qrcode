@@ -48,7 +48,7 @@ abstract class QROutputTestAbstract extends QRTestAbstract{
 	}
 
 	public function testInstance(){
-		$this->assertInstanceOf(QROutputInterface::class, $this->outputInterface);
+		$this::assertInstanceOf(QROutputInterface::class, $this->outputInterface);
 	}
 
 	public function testSaveException(){

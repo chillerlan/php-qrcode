@@ -42,7 +42,7 @@ class QRImageTest extends QROutputTestAbstract{
 			$this->markAsRisky();
 		}
 
-		$this->assertSame($img, file_get_contents($this::cachefile.$type));
+		$this::assertSame($img, file_get_contents($this::cachefile.$type));
 	}
 
 	public function testSetModuleValues(){
@@ -55,7 +55,7 @@ class QRImageTest extends QROutputTestAbstract{
 
 		$this->setOutputInterface()->dump();
 
-		$this->assertTrue(true); // tricking the code coverage
+		$this::assertTrue(true); // tricking the code coverage
 	}
 
 }

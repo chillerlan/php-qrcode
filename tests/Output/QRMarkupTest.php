@@ -35,7 +35,7 @@ class QRMarkupTest extends QROutputTestAbstract{
 		$this->setOutputInterface();
 		$data = $this->outputInterface->dump();
 
-		$this->assertSame($data, file_get_contents($this->options->cachefile));
+		$this::assertSame($data, file_get_contents($this->options->cachefile));
 	}
 
 	/**
@@ -57,7 +57,7 @@ class QRMarkupTest extends QROutputTestAbstract{
 
 		$expected = implode($this->options->eol, $expected);
 
-		$this->assertSame(trim($expected), trim($this->outputInterface->dump()));
+		$this::assertSame(trim($expected), trim($this->outputInterface->dump()));
 	}
 
 	public function testSetModuleValues(){
@@ -70,8 +70,8 @@ class QRMarkupTest extends QROutputTestAbstract{
 
 		$this->setOutputInterface();
 		$data = $this->outputInterface->dump();
-		$this->assertStringContainsString('#4A6000', $data);
-		$this->assertStringContainsString('#ECF9BE', $data);
+		$this::assertStringContainsString('#4A6000', $data);
+		$this::assertStringContainsString('#ECF9BE', $data);
 	}
 
 }

@@ -33,23 +33,23 @@ abstract class DatainterfaceTestAbstract extends QRTestAbstract{
 	public function testInstance(){
 		$this->dataInterface = $this->reflection->newInstanceArgs([new QROptions, $this->testdata]);
 
-		$this->assertInstanceOf(QRDataInterface::class, $this->dataInterface);
+		$this::assertInstanceOf(QRDataInterface::class, $this->dataInterface);
 	}
 
 	public function testSetData(){
 		$this->dataInterface->setData($this->testdata);
 
-		$this->assertSame($this->expected, $this->getProperty('matrixdata')->getValue($this->dataInterface));
+		$this::assertSame($this->expected, $this->getProperty('matrixdata')->getValue($this->dataInterface));
 	}
 
 	public function testInitMatrix(){
 		$m = $this->dataInterface->setData($this->testdata)->initMatrix(0);
 
-		$this->assertInstanceOf(QRMatrix::class, $m);
+		$this::assertInstanceOf(QRMatrix::class, $m);
 	}
 
 	public function testGetMinimumVersion(){
-		$this->assertSame(1, $this->getMethod('getMinimumVersion')->invoke($this->dataInterface));
+		$this::assertSame(1, $this->getMethod('getMinimumVersion')->invoke($this->dataInterface));
 	}
 
 	public function testGetMinimumVersionException(){
