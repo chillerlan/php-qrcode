@@ -95,7 +95,7 @@ class QRCodeTest extends QRTestAbstract{
 	}
 
 	public function testImageTransparencyBGDefault(){
-		$this->qrcode = $this->reflection->newInstanceArgs([new QROptions(['imageTransparencyBG' => 'foo'])]);
+		$this->qrcode = $this->reflection->newInstanceArgs([new QROptions(['imageTransparencyBG' => ['foo']])]);
 
 		$this->assertSame([255,255,255], $this->getProperty('options')->getValue($this->qrcode)->imageTransparencyBG);
 	}
