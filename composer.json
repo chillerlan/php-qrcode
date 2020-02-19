@@ -31,7 +31,7 @@
 		"chillerlan/php-settings-container": "^1.2"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^8.5"
+		"phpunit/phpunit": "^9.0"
 	},
 	"suggest": {
 		"chillerlan/php-authenticator": "Yet another Google authenticator! Also creates URIs for mobile apps."
