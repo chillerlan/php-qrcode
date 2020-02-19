@@ -58,9 +58,14 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 */
 	protected array $dcdata;
 
-	/** @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions */
+	/**
+	 * @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions
+	 */
 	protected SettingsContainerInterface $options;
 
+	/**
+	 * a BitBuffer instance
+	 */
 	protected BitBuffer $bitBuffer;
 
 	/**

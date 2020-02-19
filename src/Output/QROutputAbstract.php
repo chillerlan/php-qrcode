@@ -22,21 +22,51 @@ use function call_user_func, dirname, file_put_contents, get_called_class, in_ar
  */
 abstract class QROutputAbstract implements QROutputInterface{
 
+	/**
+	 * the current size of the QR matrix
+	 *
+	 * @see \chillerlan\QRCode\Data\QRMatrix::size()
+	 */
 	protected int $moduleCount;
 
-	protected QRMatrix $matrix;
-	/** @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions */
-	protected SettingsContainerInterface $options;
-
+	/**
+	 * the current output mode
+	 *
+	 * @see \chillerlan\QRCode\QROptions::$outputType
+	 */
 	protected string $outputMode;
 
+	/**
+	 * the default output mode of the current output module
+	 */
 	protected string $defaultMode;
 
+	/**
+	 * the current scaling for a QR pixel
+	 *
+	 * @see \chillerlan\QRCode\QROptions::$scale
+	 */
 	protected int $scale;
 
+	/**
+	 * the side length of the QR image (modules * scale)
+	 */
 	protected int $length;
 
+	/**
+	 * an (optional) array of color values for the several QR matrix parts
+	 */
 	protected array $moduleValues;
+
+	/**
+	 * the (filled) data matrix object
+	 */
+	protected QRMatrix $matrix;
+
+	/**
+	 * @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions
+	 */
+	protected SettingsContainerInterface $options;
 
 	/**
 	 * QROutputAbstract constructor.
