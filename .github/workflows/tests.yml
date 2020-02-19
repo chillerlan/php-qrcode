@@ -23,7 +23,7 @@ jobs:
         php-binary:
           - php7.2
           - php7.3
-#          - php7.4
+          - php7.4
 
         dependencies:
           - lowest
@@ -54,13 +54,13 @@ jobs:
         uses: actions/checkout@v1.1.0
 
       - name: "Install locked dependencies with composer"
-        run: php7.3 $(which composer) install --no-interaction --no-progress --no-suggest
+        run: php7.4 $(which composer) install --no-interaction --no-progress --no-suggest
 
       - name: "Dump Xdebug filter with phpunit/phpunit"
-        run: php7.3 vendor/bin/phpunit --configuration=phpunit.xml --dump-xdebug-filter=.build/phpunit/xdebug-filter.php
+        run: php7.4 vendor/bin/phpunit --configuration=phpunit.xml --dump-xdebug-filter=.build/phpunit/xdebug-filter.php
 
       - name: "Collect code coverage with Xdebug and phpunit/phpunit"
-        run: php7.3 vendor/bin/phpunit --configuration=phpunit.xml --prepend=.build/phpunit/xdebug-filter.php
+        run: php7.4 vendor/bin/phpunit --configuration=phpunit.xml --prepend=.build/phpunit/xdebug-filter.php
 
       - name: "Send code coverage report to Codecov.io"
         env:
