@@ -41,11 +41,9 @@ class Number extends QRDataAbstract{
 			if($this->strlen - $i === 1){
 				$this->bitBuffer->put($this->parseInt(substr($data, $i, $i + 1)), 4);
 			}
-			// @codeCoverageIgnoreStart
 			elseif($this->strlen - $i === 2){
 				$this->bitBuffer->put($this->parseInt(substr($data, $i, $i + 2)), 7);
 			}
-			// @codeCoverageIgnoreEnd
 
 		}
 

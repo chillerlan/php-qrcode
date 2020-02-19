@@ -19,7 +19,7 @@ trait QROptionsTrait{
 	/**
 	 * QR Code version number
 	 *
-	 * [1 ... 40] or QRCode::VERSION_AUTO
+	 *   [1 ... 40] or QRCode::VERSION_AUTO
 	 */
 	protected int $version = QRCode::VERSION_AUTO;
 
@@ -47,7 +47,7 @@ trait QROptionsTrait{
 	/**
 	 * Mask Pattern to use
 	 *
-	 *  [0...7] or QRCode::MASK_PATTERN_AUTO
+	 *   [0...7] or QRCode::MASK_PATTERN_AUTO
 	 */
 	protected int $maskPattern = QRCode::MASK_PATTERN_AUTO;
 
@@ -57,7 +57,7 @@ trait QROptionsTrait{
 	protected bool $addQuietzone = true;
 
 	/**
-	 *  Size of the quiet zone
+	 * Size of the quiet zone
 	 *
 	 *   internally clamped to [0 ... $moduleCount / 2], defaults to 4 modules
 	 */
@@ -207,20 +207,22 @@ trait QROptionsTrait{
 	}
 
 	/**
-	 *
+	 * sets the minimum version number
 	 */
 	protected function set_versionMin(int $version):void{
 		$this->setMinMaxVersion($version, $this->versionMax);
 	}
 
 	/**
-	 *
+	 * sets the maximum version number
 	 */
 	protected function set_versionMax(int $version):void{
 		$this->setMinMaxVersion($this->versionMin, $version);
 	}
 
 	/**
+	 * sets the error correction level
+	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function set_eccLevel(int $eccLevel):void{
@@ -233,7 +235,7 @@ trait QROptionsTrait{
 	}
 
 	/**
-	 *
+	 * sets/clamps the mask pattern
 	 */
 	protected function set_maskPattern(int $maskPattern):void{
 
@@ -244,6 +246,8 @@ trait QROptionsTrait{
 	}
 
 	/**
+	 * sets the transparency background color
+	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function set_imageTransparencyBG($imageTransparencyBG):void{
@@ -270,7 +274,7 @@ trait QROptionsTrait{
 	}
 
 	/**
-	 *
+	 * sets/clamps the version number
 	 */
 	protected function set_version(int $version):void{
 

@@ -33,7 +33,7 @@ class Kanji extends QRDataAbstract{
 	}
 
 	/**
-	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
+	 * @inheritdoc
 	 */
 	protected function write(string $data):void{
 		$len = strlen($data);

@@ -25,7 +25,7 @@ use function is_string;
 class QRImagick extends QROutputAbstract{
 
 	/**
-	 *
+	 * @inheritDoc
 	 */
 	protected function setModuleValues():void{
 
@@ -44,7 +44,7 @@ class QRImagick extends QROutputAbstract{
 	}
 
 	/**
-	 *
+	 * @inheritDoc
 	 */
 	public function dump(string $file = null):string{
 		$file ??= $this->options->cachefile;

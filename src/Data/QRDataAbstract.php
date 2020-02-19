@@ -75,7 +75,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
-	 * Sets the data string (internally called by the constructor)
+	 * @inheritDoc
 	 */
 	public function setData(string $data):QRDataInterface{
 
@@ -97,12 +97,10 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
-	 * returns a fresh matrix object with the data written for the given $maskPattern
+	 * @inheritDoc
 	 */
 	public function initMatrix(int $maskPattern, bool $test = null):QRMatrix{
-		$matrix = new QRMatrix($this->version, $this->options->eccLevel);
-
-		return $matrix
+		return (new QRMatrix($this->version, $this->options->eccLevel))
 			->setFinderPattern()
 			->setSeparators()
 			->setAlignmentPattern()
@@ -159,12 +157,14 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
+	 * writes the actual data string to the BitBuffer
+	 *
 	 * @see \chillerlan\QRCode\Data\QRDataAbstract::writeBitBuffer()
 	 */
 	abstract protected function write(string $data):void;
 
 	/**
-	 * writes the string data to the BitBuffer
+	 * creates a BitBuffer and writes the string data to it
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
@@ -217,8 +217,6 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 	/**
 	 * ECC masking
-	 *
-	 * @see \chillerlan\QRCode\Data\QRDataAbstract::writeBitBuffer()
 	 *
 	 * @link http://www.thonky.com/qr-code-tutorial/error-correction-coding
 	 */

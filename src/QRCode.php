@@ -90,7 +90,10 @@ class QRCode{
 		],
 	];
 
-	protected QROptions $options;
+	/**
+	 * @var \chillerlan\QRCode\QROptions|\chillerlan\Settings\SettingsContainerInterface
+	 */
+	protected SettingsContainerInterface $options;
 
 	protected QRDataInterface $dataInterface;
 
@@ -237,7 +240,7 @@ class QRCode{
 	}
 
 	/**
-	 * checks is a given $string matches the characters of a given charmap, returns false on the first invalid occurence.
+	 * checks is a given $string matches the characters of a given $charmap, returns false on the first invalid occurence.
 	 */
 	protected function checkString(string $string, array $charmap):bool{
 		$len = strlen($string);

@@ -24,7 +24,7 @@ class QRString extends QROutputAbstract{
 	protected string $defaultMode = QRCode::OUTPUT_STRING_TEXT;
 
 	/**
-	 *
+	 * @inheritDoc
 	 */
 	protected function setModuleValues():void{
 

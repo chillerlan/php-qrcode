@@ -30,12 +30,6 @@ namespaced, cleaned up, improved and other stuff.
 [gh-action-badge]: https://github.com/chillerlan/php-qrcode/workflows/Continuous%20Integration/badge.svg
 [gh-action]: https://github.com/chillerlan/php-qrcode/actions
 
-Hi, please check out my other projects that are way cooler than qrcodes!
-
-- [php-oauth-core](https://github.com/chillerlan/php-oauth-core) - an OAuth 1/2 client library along with a bunch of [providers](https://github.com/chillerlan/php-oauth-providers)
-- [php-httpinterface](https://github.com/chillerlan/php-httpinterface) - a PSR-7/15/17/18 implemetation
-- [php-database](https://github.com/chillerlan/php-database) - a database client & querybuilder for MySQL, Postgres, SQLite, MSSQL, Firebird
-
 ## Documentation
 
 ### Requirements
@@ -46,7 +40,9 @@ Hi, please check out my other projects that are way cooler than qrcodes!
 ### Installation
 **requires [composer](https://getcomposer.org)**
 
-*composer.json* (note: replace `dev-master` with a [version boundary](https://getcomposer.org/doc/articles/versions.md))
+via terminal: `composer require chillerlan/php-qrcode`
+
+*composer.json* (note: replace `dev-master` with a [version boundary](https://getcomposer.org/doc/articles/versions.md), e.g. `^3.2`)
 ```json
 {
 	"require": {
@@ -55,23 +51,6 @@ Hi, please check out my other projects that are way cooler than qrcodes!
 	}
 }
 ```
-
-#### Manual installation
-Download the desired version of the package from [master](https://github.com/chillerlan/php-qrcode/archive/master.zip) or
-[release](https://github.com/chillerlan/php-qrcode/releases) and extract the contents to your project folder.  After that:
-- run `composer install` to install the required dependencies and generate `/vendor/autoload.php`.
-- if you use a custom autoloader, point the namespace `chillerlan\QRCode` to the folder `src` of the package
-
-Profit!
-
-#### Framework Integration
-- Drupal [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
-- WordPress [`wp-two-factor-auth`](https://github.com/sjinks/wp-two-factor-auth)
-- WordPress [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
-- WoltLab Suite [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)  
-- [Cachet](https://github.com/CachetHQ/Cachet)
-- [slack-qrcode](https://github.com/sameyasu/slack-qrcode)
-- [gaara 嘎啦](https://github.com/xutengx/gaara)
 
 ### Usage
 We want to encode this URI for a mobile authenticator into a QRcode image:
@@ -389,4 +368,19 @@ I don't take responsibility for molten CPUs, misled applications, failed log-ins
 
 The word "QR Code" is registered trademark of *DENSO WAVE INCORPORATED*<br>
 http://www.denso-wave.com/qrcode/faqpatent-e.html
+
+### Framework Integration
+- Drupal [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
+- WordPress [`wp-two-factor-auth`](https://github.com/sjinks/wp-two-factor-auth)
+- WordPress [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
+- WoltLab Suite [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)  
+- [Cachet](https://github.com/CachetHQ/Cachet)
+- other uses: [dependents](https://github.com/chillerlan/php-qrcode/network/dependents) / [packages](https://github.com/chillerlan/php-qrcode/network/dependents?dependent_type=PACKAGE)
+
+
+Hi, please check out my other projects that are way cooler than qrcodes!
+
+- [php-oauth-core](https://github.com/chillerlan/php-oauth-core) - an OAuth 1/2 client library along with a bunch of [providers](https://github.com/chillerlan/php-oauth-providers)
+- [php-httpinterface](https://github.com/chillerlan/php-httpinterface) - a PSR-7/15/17/18 implemetation
+- [php-database](https://github.com/chillerlan/php-database) - a database client & querybuilder for MySQL, Postgres, SQLite, MSSQL, Firebird
 
