@@ -144,8 +144,11 @@ abstract class QRDataAbstract implements QRDataInterface{
 		$maxlength = 0;
 
 		// guess the version number within the given range
+		$dataMode = QRCode::DATA_MODES[$this->datamode];
+		$eccMode  = QRCode::ECC_MODES[$this->options->eccLevel];
+
 		foreach(range($this->options->versionMin, $this->options->versionMax) as $version){
-			$maxlength = $this::MAX_LENGTH[$version][QRCode::DATA_MODES[$this->datamode]][QRCode::ECC_MODES[$this->options->eccLevel]];
+			$maxlength = $this::MAX_LENGTH[$version][$dataMode][$eccMode];
 
 			if($this->strlen <= $maxlength){
 				return $version;
