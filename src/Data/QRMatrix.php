@@ -201,6 +201,21 @@ class QRMatrix{
 	}
 
 	/**
+	 * shortcut to initialize the matrix
+	 */
+	public function init(int $maskPattern, bool $test = null):QRMatrix{
+		return $this
+			->setFinderPattern()
+			->setSeparators()
+			->setAlignmentPattern()
+			->setTimingPattern()
+			->setVersionNumber($test)
+			->setFormatInfo($maskPattern, $test)
+			->setDarkModule()
+		;
+	}
+
+	/**
 	 *
 	 */
 	public function matrix():array{

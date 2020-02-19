@@ -101,13 +101,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 */
 	public function initMatrix(int $maskPattern, bool $test = null):QRMatrix{
 		return (new QRMatrix($this->version, $this->options->eccLevel))
-			->setFinderPattern()
-			->setSeparators()
-			->setAlignmentPattern()
-			->setTimingPattern()
-			->setVersionNumber($test)
-			->setFormatInfo($maskPattern, $test)
-			->setDarkModule()
+			->init($maskPattern, $test)
 			->mapData($this->matrixdata, $maskPattern)
 		;
 	}
