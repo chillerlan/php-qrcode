@@ -92,7 +92,10 @@ abstract class QROutputAbstract implements QROutputInterface{
 	abstract protected function setModuleValues():void;
 
 	/**
+	 * saves the qr data to a file
+	 *
 	 * @see file_put_contents()
+	 * @see \chillerlan\QRCode\QROptions::cachefile
 	 *
 	 * @param string $data
 	 * @param string $file
@@ -110,11 +113,10 @@ abstract class QROutputAbstract implements QROutputInterface{
 	}
 
 	/**
-	 * @param string|null $file
-	 *
-	 * @return string|mixed
+	 * @inheritDoc
 	 */
 	public function dump(string $file = null){
+		// call the built-in output method
 		$data = call_user_func([$this, $this->outputMode ?? $this->defaultMode]);
 		$file = $file ?? $this->options->cachefile;
 

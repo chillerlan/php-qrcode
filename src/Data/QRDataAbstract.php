@@ -86,7 +86,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 * QRDataInterface constructor.
 	 *
 	 * @param \chillerlan\Settings\SettingsContainerInterface $options
-	 * @param string|null                           $data
+	 * @param string|null                                     $data
 	 */
 	public function __construct(SettingsContainerInterface $options, string $data = null){
 		$this->options = $options;
@@ -97,11 +97,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
-	 * Sets the data string (internally called by the constructor)
-	 *
-	 * @param string $data
-	 *
-	 * @return \chillerlan\QRCode\Data\QRDataInterface
+	 * @inheritDoc
 	 */
 	public function setData(string $data):QRDataInterface{
 
@@ -123,17 +119,10 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
-	 * returns a fresh matrix object with the data written for the given $maskPattern
-	 *
-	 * @param int       $maskPattern
-	 * @param bool|null $test
-	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
+	 * @inheritDoc
 	 */
 	public function initMatrix(int $maskPattern, bool $test = null):QRMatrix{
-		$matrix = new QRMatrix($this->version, $this->options->eccLevel);
-
-		return $matrix
+		return (new QRMatrix($this->version, $this->options->eccLevel))
 			->setFinderPattern()
 			->setSeparators()
 			->setAlignmentPattern()
@@ -196,6 +185,8 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
+	 * writes the actual data string to the BitBuffer
+	 *
 	 * @see \chillerlan\QRCode\Data\QRDataAbstract::writeBitBuffer()
 	 *
 	 * @param string $data
@@ -205,7 +196,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	abstract protected function write(string $data):void;
 
 	/**
-	 * writes the string data to the BitBuffer
+	 * creates a BitBuffer and writes the string data to it
 	 *
 	 * @param string $data
 	 *
@@ -261,8 +252,6 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 	/**
 	 * ECC masking
-	 *
-	 * @see \chillerlan\QRCode\Data\QRDataAbstract::writeBitBuffer()
 	 *
 	 * @link http://www.thonky.com/qr-code-tutorial/error-correction-coding
 	 *

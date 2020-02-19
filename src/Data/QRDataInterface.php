@@ -166,6 +166,8 @@ interface QRDataInterface{
 	];
 
 	/**
+	 * Sets the data string (internally called by the constructor)
+	 *
 	 * @param string $data
 	 *
 	 * @return \chillerlan\QRCode\Data\QRDataInterface
@@ -173,8 +175,10 @@ interface QRDataInterface{
 	public function setData(string $data):QRDataInterface;
 
 	/**
-	 * @param int  $maskPattern
-	 * @param bool $test
+	 * returns a fresh matrix object with the data written for the given $maskPattern
+	 *
+	 * @param int       $maskPattern
+	 * @param bool|null $test
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */

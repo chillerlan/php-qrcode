@@ -55,7 +55,7 @@ trait QROptionsTrait{
 	/**
 	 * Mask Pattern to use
 	 *
-	 *  [0...7] or QRCode::MASK_PATTERN_AUTO
+	 *   [0...7] or QRCode::MASK_PATTERN_AUTO
 	 *
 	 * @var int
 	 */
@@ -69,7 +69,7 @@ trait QROptionsTrait{
 	protected $addQuietzone = true;
 
 	/**
-	 *  Size of the quiet zone
+	 * Size of the quiet zone
 	 *
 	 *   internally clamped to [0 ... $moduleCount / 2], defaults to 4 modules
 	 *
@@ -268,6 +268,8 @@ trait QROptionsTrait{
 	}
 
 	/**
+	 * sets the minimum version number
+	 *
 	 * @param int $version
 	 *
 	 * @return void
@@ -277,6 +279,8 @@ trait QROptionsTrait{
 	}
 
 	/**
+	 * sets the maximum version number
+	 *
 	 * @param int $version
 	 *
 	 * @return void
@@ -286,6 +290,8 @@ trait QROptionsTrait{
 	}
 
 	/**
+	 * sets the error correction level
+	 *
 	 * @param int $eccLevel
 	 *
 	 * @return void
@@ -301,6 +307,8 @@ trait QROptionsTrait{
 	}
 
 	/**
+	 * sets/clamps the mask pattern
+	 *
 	 * @param int $maskPattern
 	 *
 	 * @return void
@@ -314,6 +322,8 @@ trait QROptionsTrait{
 	}
 
 	/**
+	 * sets the transparency background color
+	 *
 	 * @param mixed $imageTransparencyBG
 	 *
 	 * @return void
@@ -343,6 +353,8 @@ trait QROptionsTrait{
 	}
 
 	/**
+	 * sets/clamps the version number
+	 *
 	 * @param int $version
 	 *
 	 * @return void

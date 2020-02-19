@@ -91,7 +91,7 @@ class QRCode{
 	];
 
 	/**
-	 * @var \chillerlan\QRCode\QROptions
+	 * @var \chillerlan\QRCode\QROptions|\chillerlan\Settings\SettingsContainerInterface
 	 */
 	protected $options;
 

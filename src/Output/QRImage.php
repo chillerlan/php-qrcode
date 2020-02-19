@@ -43,7 +43,7 @@ class QRImage extends QROutputAbstract{
 	protected $image;
 
 	/**
-	 * @return void
+	 * @inheritDoc
 	 */
 	protected function setModuleValues():void{
 
@@ -64,9 +64,7 @@ class QRImage extends QROutputAbstract{
 	}
 
 	/**
-	 * @param string|null $file
-	 *
-	 * @return string
+	 * @inheritDoc
 	 */
 	public function dump(string $file = null):string{
 		$this->image = imagecreatetruecolor($this->length, $this->length);

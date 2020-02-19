@@ -42,6 +42,8 @@ interface QROutputInterface{
 	];
 
 	/**
+	 * generates the output, optionally dumps it to a file, and returns it
+	 *
 	 * @param string|null $file
 	 *
 	 * @return mixed
