@@ -250,10 +250,10 @@ trait QROptionsTrait{
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	protected function set_imageTransparencyBG($imageTransparencyBG):void{
+	protected function set_imageTransparencyBG(array $imageTransparencyBG):void{
 
 		// invalid value - set to white as default
-		if(!is_array($imageTransparencyBG) || count($imageTransparencyBG) < 3){
+		if(count($imageTransparencyBG) < 3){
 			$this->imageTransparencyBG = [255, 255, 255];
 
 			return;
