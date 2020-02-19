@@ -181,9 +181,9 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 		$this->write($data);
 
-		// there was an error writing the BitBuffer data, which is... unlikely.
+		// overflow, likely caused due to invalid version setting
 		if($this->bitBuffer->length > $MAX_BITS){
-			throw new QRCodeException(sprintf('code length overflow. (%d > %d bit)', $this->bitBuffer->length, $MAX_BITS)); // @codeCoverageIgnore
+			throw new QRCodeDataException(sprintf('code length overflow. (%d > %d bit)', $this->bitBuffer->length, $MAX_BITS));
 		}
 
 		// end code.

@@ -60,4 +60,10 @@ abstract class DatainterfaceTestAbstract extends QRTestAbstract{
 		$this->getMethod('getMinimumVersion')->invoke($this->dataInterface);
 	}
 
+	public function testCodeLengthOverflowException(){
+		$this->expectException(QRCodeDataException::class);
+		$this->expectExceptionMessage('code length overflow');
+
+		$this->dataInterface->setData(\str_repeat('0', 1337));
+	}
 }

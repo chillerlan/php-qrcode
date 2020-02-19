@@ -49,4 +49,12 @@ class KanjiTest extends DatainterfaceTestAbstract{
 
 		$this->dataInterface->setData('Ã');
 	}
+
+	public function testCodeLengthOverflowException(){
+		$this->expectException(QRCodeDataException::class);
+		$this->expectExceptionMessage('code length overflow');
+
+		$this->dataInterface->setData(\str_repeat('荷', 1337));
+	}
+
 }
