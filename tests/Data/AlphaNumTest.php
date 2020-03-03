@@ -36,7 +36,7 @@ class AlphaNumTest extends DatainterfaceTestAbstract{
 		92, 112, 20, 198, 27
 	];
 
-	public function testGetCharCodeException(){
+	public function testGetCharCodeException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('illegal char: "#" [35]');
 
