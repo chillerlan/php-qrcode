@@ -224,7 +224,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 		$rsBlocks     = array_fill(0, $l1, [$b1, $b2]);
 		$rsCount      = $l1 + $l2;
-		$this->ecdata = array_fill(0, $rsCount, null);
+		$this->ecdata = array_fill(0, $rsCount, []);
 		$this->dcdata = $this->ecdata;
 
 		if($l2 > 0){
