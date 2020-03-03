@@ -18,7 +18,7 @@ class QRStringTest extends QROutputTestAbstract{
 
 	protected string $FQCN = QRString::class;
 
-	public function types(){
+	public function types():array{
 		return [
 			'json' => [QRCode::OUTPUT_STRING_JSON],
 			'text' => [QRCode::OUTPUT_STRING_TEXT],
@@ -27,9 +27,8 @@ class QRStringTest extends QROutputTestAbstract{
 
 	/**
 	 * @dataProvider types
-	 * @param $type
 	 */
-	public function testStringOutput($type){
+	public function testStringOutput(string $type):void{
 		$this->options->outputType = $type;
 		$this->options->cachefile  = $this::cachefile.$type;
 		$this->setOutputInterface();
@@ -38,7 +37,7 @@ class QRStringTest extends QROutputTestAbstract{
 		$this::assertSame($data, file_get_contents($this->options->cachefile));
 	}
 
-	public function testSetModuleValues(){
+	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [
 			// data

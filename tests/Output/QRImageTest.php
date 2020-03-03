@@ -18,7 +18,7 @@ class QRImageTest extends QROutputTestAbstract{
 
 	protected string $FQCN = QRImage::class;
 
-	public function types(){
+	public function types():array{
 		return [
 			'png' => [QRCode::OUTPUT_IMAGE_PNG],
 			'gif' => [QRCode::OUTPUT_IMAGE_GIF],
@@ -28,9 +28,8 @@ class QRImageTest extends QROutputTestAbstract{
 
 	/**
 	 * @dataProvider types
-	 * @param $type
 	 */
-	public function testImageOutput($type){
+	public function testImageOutput(string $type):void{
 		$this->options->outputType  = $type;
 		$this->options->imageBase64 = false;
 
@@ -45,7 +44,7 @@ class QRImageTest extends QROutputTestAbstract{
 		$this::assertSame($img, file_get_contents($this::cachefile.$type));
 	}
 
-	public function testSetModuleValues(){
+	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [
 			// data

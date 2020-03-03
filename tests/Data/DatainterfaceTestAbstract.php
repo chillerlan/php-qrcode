@@ -16,6 +16,8 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\{QRCodeDataException, QRDataInterface, QRMatrix};
 use chillerlan\QRCodeTest\QRTestAbstract;
 
+use function str_repeat;
+
 abstract class DatainterfaceTestAbstract extends QRTestAbstract{
 
 	protected QRDataInterface $dataInterface;
@@ -27,32 +29,34 @@ abstract class DatainterfaceTestAbstract extends QRTestAbstract{
 	protected function setUp():void{
 		parent::setUp();
 
+		/** @noinspection PhpFieldAssignmentTypeMismatchInspection */
 		$this->dataInterface = $this->reflection->newInstanceArgs([new QROptions(['version' => 4])]);
 	}
 
-	public function testInstance(){
+	public function testInstance():void{
+		/** @noinspection PhpFieldAssignmentTypeMismatchInspection */
 		$this->dataInterface = $this->reflection->newInstanceArgs([new QROptions, $this->testdata]);
 
 		$this::assertInstanceOf(QRDataInterface::class, $this->dataInterface);
 	}
 
-	public function testSetData(){
+	public function testSetData():void{
 		$this->dataInterface->setData($this->testdata);
 
 		$this::assertSame($this->expected, $this->getProperty('matrixdata')->getValue($this->dataInterface));
 	}
 
-	public function testInitMatrix(){
+	public function testInitMatrix():void{
 		$m = $this->dataInterface->setData($this->testdata)->initMatrix(0);
 
 		$this::assertInstanceOf(QRMatrix::class, $m);
 	}
 
-	public function testGetMinimumVersion(){
+	public function testGetMinimumVersion():void{
 		$this::assertSame(1, $this->getMethod('getMinimumVersion')->invoke($this->dataInterface));
 	}
 
-	public function testGetMinimumVersionException(){
+	public function testGetMinimumVersionException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('data exceeds');
 
@@ -60,10 +64,11 @@ abstract class DatainterfaceTestAbstract extends QRTestAbstract{
 		$this->getMethod('getMinimumVersion')->invoke($this->dataInterface);
 	}
 
-	public function testCodeLengthOverflowException(){
+	public function testCodeLengthOverflowException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('code length overflow');
 
-		$this->dataInterface->setData(\str_repeat('0', 1337));
+		$this->dataInterface->setData(str_repeat('0', 1337));
 	}
+
 }

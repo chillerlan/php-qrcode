@@ -24,13 +24,13 @@ class PolynomialTest extends QRTestAbstract{
 		$this->polynomial = new Polynomial;
 	}
 
-	public function testGexp(){
+	public function testGexp():void{
 		$this::assertSame(142, $this->polynomial->gexp(-1));
 		$this::assertSame(133, $this->polynomial->gexp(128));
 		$this::assertSame(2,   $this->polynomial->gexp(256));
 	}
 
-	public function testGlogException(){
+	public function testGlogException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('log(0)');
 

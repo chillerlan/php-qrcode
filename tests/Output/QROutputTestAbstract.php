@@ -42,16 +42,17 @@ abstract class QROutputTestAbstract extends QRTestAbstract{
 		$this->setOutputInterface();
 	}
 
-	protected function setOutputInterface(){
+	protected function setOutputInterface():QROutputInterface{
+		/** @noinspection PhpFieldAssignmentTypeMismatchInspection */
 		$this->outputInterface = $this->reflection->newInstanceArgs([$this->options, (new Byte($this->options, 'testdata'))->initMatrix(0)]);
 		return $this->outputInterface;
 	}
 
-	public function testInstance(){
+	public function testInstance():void{
 		$this::assertInstanceOf(QROutputInterface::class, $this->outputInterface);
 	}
 
-	public function testSaveException(){
+	public function testSaveException():void{
 		$this->expectException(QRCodeOutputException::class);
 		$this->expectExceptionMessage('Could not write data to cache file: /foo');
 

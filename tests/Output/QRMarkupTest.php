@@ -18,7 +18,7 @@ class QRMarkupTest extends QROutputTestAbstract{
 
 	protected string $FQCN = QRMarkup::class;
 
-	public function types(){
+	public function types():array{
 		return [
 			'html' => [QRCode::OUTPUT_MARKUP_HTML],
 			'svg'  => [QRCode::OUTPUT_MARKUP_SVG],
@@ -27,9 +27,8 @@ class QRMarkupTest extends QROutputTestAbstract{
 
 	/**
 	 * @dataProvider types
-	 * @param $type
 	 */
-	public function testMarkupOutputFile($type){
+	public function testMarkupOutputFile(string $type):void{
 		$this->options->outputType = $type;
 		$this->options->cachefile  = $this::cachefile.$type;
 		$this->setOutputInterface();
@@ -40,9 +39,8 @@ class QRMarkupTest extends QROutputTestAbstract{
 
 	/**
 	 * @dataProvider types
-	 * @param $type
 	 */
-	public function testMarkupOutput($type){
+	public function testMarkupOutput(string $type):void{
 		$this->options->outputType = $type;
 		$this->setOutputInterface();
 
@@ -60,7 +58,7 @@ class QRMarkupTest extends QROutputTestAbstract{
 		$this::assertSame(trim($expected), trim($this->outputInterface->dump()));
 	}
 
-	public function testSetModuleValues(){
+	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [
 			// data

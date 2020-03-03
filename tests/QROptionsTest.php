@@ -21,14 +21,14 @@ class QROptionsTest extends TestCase{
 	/** @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions */
 	protected SettingsContainerInterface $options;
 
-	public function testVersionClamp(){
+	public function testVersionClamp():void{
 		$this::assertSame(40, (new QROptions(['version' => 42]))->version);
 		$this::assertSame(1, (new QROptions(['version' => -42]))->version);
 		$this::assertSame(21, (new QROptions(['version' => 21]))->version);
 		$this::assertSame(QRCode::VERSION_AUTO, (new QROptions)->version); // QRCode::VERSION_AUTO = -1, default
 	}
 
-	public function testVersionMinMaxClamp(){
+	public function testVersionMinMaxClamp():void{
 		// normal clamp
 		$o = new QROptions(['versionMin' => 5, 'versionMax' => 10]);
 		$this::assertSame(5, $o->versionMin);
@@ -49,20 +49,20 @@ class QROptionsTest extends TestCase{
 		$this::assertSame(40, $o->versionMax);
 	}
 
-	public function testMaskPatternClamp(){
+	public function testMaskPatternClamp():void{
 		$this::assertSame(7, (new QROptions(['maskPattern' => 42]))->maskPattern);
 		$this::assertSame(0, (new QROptions(['maskPattern' => -42]))->maskPattern);
 		$this::assertSame(QRCode::MASK_PATTERN_AUTO, (new QROptions)->maskPattern); // QRCode::MASK_PATTERN_AUTO = -1, default
 	}
 
-	public function testInvalidEccLevelException(){
+	public function testInvalidEccLevelException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('Invalid error correct level: 42');
 
 		new QROptions(['eccLevel' => 42]);
 	}
 
-	public function testClampRGBValues(){
+	public function testClampRGBValues():void{
 		$o = new QROptions(['imageTransparencyBG' => [-1, 0, 999]]);
 
 		$this::assertSame(0, $o->imageTransparencyBG[0]);
@@ -70,7 +70,7 @@ class QROptionsTest extends TestCase{
 		$this::assertSame(255, $o->imageTransparencyBG[2]);
 	}
 
-	public function testInvalidRGBValueException(){
+	public function testInvalidRGBValueException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('Invalid RGB value.');
 

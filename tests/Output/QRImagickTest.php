@@ -28,7 +28,7 @@ class QRImagickTest extends QROutputTestAbstract{
 		parent::setUp();
 	}
 
-	public function testImageOutput(){
+	public function testImageOutput():void{
 		$type = QRCode::OUTPUT_IMAGICK;
 
 		$this->options->outputType = $type;
@@ -39,7 +39,7 @@ class QRImagickTest extends QROutputTestAbstract{
 		$this::assertSame($img, file_get_contents($this::cachefile.$type));
 	}
 
-	public function testSetModuleValues(){
+	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [
 			// data

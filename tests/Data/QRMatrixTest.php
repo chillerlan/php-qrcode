@@ -28,44 +28,45 @@ class QRMatrixTest extends QRTestAbstract{
 	protected function setUp():void{
 		parent::setUp();
 
+		/** @noinspection PhpFieldAssignmentTypeMismatchInspection */
 		$this->matrix = $this->reflection->newInstanceArgs([$this->version, QRCode::ECC_L]);
 	}
 
-	public function testInvalidVersionException(){
+	public function testInvalidVersionException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid QR Code version');
 
 		$this->reflection->newInstanceArgs([42, 0]);
 	}
 
-	public function testInvalidEccException(){
+	public function testInvalidEccException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid ecc level');
 
 		$this->reflection->newInstanceArgs([1, 42]);
 	}
 
-	public function testInstance(){
+	public function testInstance():void{
 		$this::assertInstanceOf($this->FQCN, $this->matrix);
 	}
 
-	public function testSize(){
+	public function testSize():void{
 		$this::assertCount($this->matrix->size(), $this->matrix->matrix());
 	}
 
-	public function testVersion(){
+	public function testVersion():void{
 		$this::assertSame($this->version, $this->matrix->version());
 	}
 
-	public function testECC(){
+	public function testECC():void{
 		$this::assertSame(QRCode::ECC_L, $this->matrix->eccLevel());
 	}
 
-	public function testMaskPattern(){
+	public function testMaskPattern():void{
 		$this::assertSame(-1, $this->matrix->maskPattern());
 	}
 
-	public function testGetSetCheck(){
+	public function testGetSetCheck():void{
 		$this->matrix->set(10, 10, true, QRMatrix::M_TEST);
 		$this::assertSame(65280, $this->matrix->get(10, 10));
 		$this::assertTrue($this->matrix->check(10, 10));
@@ -75,13 +76,13 @@ class QRMatrixTest extends QRTestAbstract{
 		$this::assertFalse($this->matrix->check(20, 20));
 	}
 
-	public function testSetDarkModule(){
+	public function testSetDarkModule():void{
 		$this->matrix->setDarkModule();
 
 		$this::assertSame(QRMatrix::M_DARKMODULE << 8, $this->matrix->get(8, $this->matrix->size() - 8));
 	}
 
-	public function testSetFinderPattern(){
+	public function testSetFinderPattern():void{
 		$this->matrix->setFinderPattern();
 
 		$this::assertSame(QRMatrix::M_FINDER << 8, $this->matrix->get(0, 0));
@@ -89,7 +90,7 @@ class QRMatrixTest extends QRTestAbstract{
 		$this::assertSame(QRMatrix::M_FINDER << 8, $this->matrix->get($this->matrix->size() - 1, 0));
 	}
 
-	public function testSetSeparators(){
+	public function testSetSeparators():void{
 		$this->matrix->setSeparators();
 
 		$this::assertSame(QRMatrix::M_SEPARATOR, $this->matrix->get(7, 0));
@@ -98,7 +99,7 @@ class QRMatrixTest extends QRTestAbstract{
 		$this::assertSame(QRMatrix::M_SEPARATOR, $this->matrix->get($this->matrix->size() - 8, 0));
 	}
 
-	public function testSetAlignmentPattern(){
+	public function testSetAlignmentPattern():void{
 		$this->matrix
 			->setFinderPattern()
 			->setAlignmentPattern()
@@ -120,7 +121,7 @@ class QRMatrixTest extends QRTestAbstract{
 
 	}
 
-	public function testSetTimingPattern(){
+	public function testSetTimingPattern():void{
 		$this->matrix
 			->setAlignmentPattern()
 			->setTimingPattern()
@@ -143,7 +144,7 @@ class QRMatrixTest extends QRTestAbstract{
 		}
 	}
 
-	public function testSetVersionNumber(){
+	public function testSetVersionNumber():void{
 		$this->matrix->setVersionNumber(true);
 
 		$this::assertSame(QRMatrix::M_VERSION, $this->matrix->get($this->matrix->size() - 9, 0));
@@ -152,7 +153,7 @@ class QRMatrixTest extends QRTestAbstract{
 		$this::assertSame(QRMatrix::M_VERSION, $this->matrix->get(5, $this->matrix->size() - 11));
 	}
 
-	public function testSetFormatInfo(){
+	public function testSetFormatInfo():void{
 		$this->matrix->setFormatInfo(0, true);
 
 		$this::assertSame(QRMatrix::M_FORMAT, $this->matrix->get(8, 0));
@@ -161,7 +162,7 @@ class QRMatrixTest extends QRTestAbstract{
 		$this::assertSame(QRMatrix::M_FORMAT, $this->matrix->get($this->matrix->size() - 8, 8));
 	}
 
-	public function testSetQuietZone(){
+	public function testSetQuietZone():void{
 		$size = $this->matrix->size();
 		$q    = 5;
 
@@ -181,7 +182,7 @@ class QRMatrixTest extends QRTestAbstract{
 		$this::assertSame(QRMatrix::M_TEST << 8, $this->matrix->get($size - 1 - $q, $size - 1 - $q));
 	}
 
-	public function testSetQuietZoneException(){
+	public function testSetQuietZoneException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('use only after writing data');
 

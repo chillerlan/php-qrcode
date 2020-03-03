@@ -34,24 +34,24 @@ class QRCodeTest extends QRTestAbstract{
 		$this->qrcode = $this->reflection->newInstance();
 	}
 
-	public function testIsNumber(){
+	public function testIsNumber():void{
 		$this::assertTrue($this->qrcode->isNumber('0123456789'));
 		$this::assertFalse($this->qrcode->isNumber('ABC'));
 	}
 
-	public function testIsAlphaNum(){
+	public function testIsAlphaNum():void{
 		$this::assertTrue($this->qrcode->isAlphaNum('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:'));
 		$this::assertFalse($this->qrcode->isAlphaNum('abc'));
 	}
 
-	public function testIsKanji(){
+	public function testIsKanji():void{
 		$this::assertTrue($this->qrcode->isKanji('茗荷'));
 		$this::assertFalse($this->qrcode->isKanji('Ã'));
 	}
 
 	// coverage
 
-	public function typeDataProvider(){
+	public function typeDataProvider():array{
 		return [
 			'png'  => [QRCode::OUTPUT_IMAGE_PNG, 'data:image/png;base64,'],
 			'gif'  => [QRCode::OUTPUT_IMAGE_GIF, 'data:image/gif;base64,'],
@@ -67,40 +67,40 @@ class QRCodeTest extends QRTestAbstract{
 	 * @dataProvider typeDataProvider
 	 * @param $type
 	 */
-	public function testRenderImage($type, $expected){
+	public function testRenderImage($type, $expected):void{
 		$this->qrcode = $this->reflection->newInstanceArgs([new QROptions(['outputType' => $type])]);
 
 		$this::assertStringContainsString($expected, $this->qrcode->render('test'));
 	}
 
-	public function testInitDataInterfaceException(){
+	public function testInitDataInterfaceException():void{
 		$this->expectException(QRCodeOutputException::class);
 		$this->expectExceptionMessage('invalid output type');
 
 		(new QRCode(new QROptions(['outputType' => 'foo'])))->render('test');
 	}
 
-	public function testGetMatrixException(){
+	public function testGetMatrixException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('QRCode::getMatrix() No data given.');
 
 		$this->qrcode->getMatrix('');
 	}
 
-	public function testTrim() {
+	public function testTrim():void{
 		$m1 = $this->qrcode->getMatrix('hello');
 		$m2 = $this->qrcode->getMatrix('hello '); // added space
 
 		$this::assertNotEquals($m1, $m2);
 	}
 
-	public function testImageTransparencyBGDefault(){
+	public function testImageTransparencyBGDefault():void{
 		$this->qrcode = $this->reflection->newInstanceArgs([new QROptions(['imageTransparencyBG' => ['foo']])]);
 
 		$this::assertSame([255,255,255], $this->getProperty('options')->getValue($this->qrcode)->imageTransparencyBG);
 	}
 
-	public function testCustomOutput(){
+	public function testCustomOutput():void{
 
 		$options = new QROptions([
 			'version'         => 5,
@@ -114,7 +114,7 @@ class QRCodeTest extends QRTestAbstract{
 		$this::assertSame($expected, $this->reflection->newInstanceArgs([$options])->render('test'));
 	}
 
-	public function testDataModeOverride(){
+	public function testDataModeOverride():void{
 		$this->qrcode = $this->reflection->newInstance();
 
 		$this::assertInstanceOf(Number::class, $this->qrcode->initDataInterface('123'));
@@ -128,7 +128,7 @@ class QRCodeTest extends QRTestAbstract{
 		$this::assertInstanceOf(Byte::class, $this->qrcode->initDataInterface(random_bytes(32)));
 	}
 
-	public function testDataModeOverrideError(){
+	public function testDataModeOverrideError():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('illegal char:');
 

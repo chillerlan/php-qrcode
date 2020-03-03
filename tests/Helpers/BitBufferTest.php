@@ -23,7 +23,7 @@ class BitBufferTest extends QRTestAbstract{
 		$this->bitBuffer = new BitBuffer;
 	}
 
-	public function bitProvider(){
+	public function bitProvider():array{
 		return [
 			'number'   => [QRCode::DATA_NUMBER, 16],
 			'alphanum' => [QRCode::DATA_ALPHANUM, 32],
@@ -35,13 +35,13 @@ class BitBufferTest extends QRTestAbstract{
 	/**
 	 * @dataProvider bitProvider
 	 */
-	public function testPut($data, $value){
+	public function testPut(int $data, int $value):void{
 		$this->bitBuffer->put($data, 4);
 		$this::assertSame($value, $this->bitBuffer->buffer[0]);
 		$this::assertSame(4, $this->bitBuffer->length);
 	}
 
-	public function testClear(){
+	public function testClear():void{
 		$this->bitBuffer->clear();
 		$this::assertSame([], $this->bitBuffer->buffer);
 		$this::assertSame(0, $this->bitBuffer->length);
