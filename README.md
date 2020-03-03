@@ -33,7 +33,7 @@ namespaced, cleaned up, improved and other stuff.
 ## Documentation
 
 ### Requirements
-- PHP 7.2+
+- PHP 7.4+
   - `ext-gd`, `ext-json`, `ext-mbstring`
   - optional `ext-imagick`
 
@@ -42,11 +42,11 @@ namespaced, cleaned up, improved and other stuff.
 
 via terminal: `composer require chillerlan/php-qrcode`
 
-*composer.json* (note: replace `dev-master` with a [version boundary](https://getcomposer.org/doc/articles/versions.md), e.g. `^3.2`)
+*composer.json* (note: replace `dev-master` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^3.2` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions)
 ```json
 {
 	"require": {
-		"php": "^7.2",
+		"php": "^7.4",
 		"chillerlan/php-qrcode": "dev-master"
 	}
 }
@@ -99,6 +99,8 @@ foreach($matrix->matrix() as $y => $row){
 
 		// get a module's value
 		$value = $module;
+
+		// or via the matrix's getter method
 		$value = $matrix->get($x, $y);
 
 		// boolean check a module
@@ -116,24 +118,23 @@ foreach($matrix->matrix() as $y => $row){
 Have a look [in this folder](https://github.com/chillerlan/php-qrcode/tree/master/examples) for some more usage examples.
 
 #### Custom module values
-Previous versions of `QRCode` held only boolean matrix values that only allowed to determine whether a module was dark or not. Now you can distinguish between different parts of the matrix, namely the several required patterns from the QR Code specification, and use them in different ways.
-
-The dark value is the module (light) value shifted by 8 bits to the left: `$value = $M_TYPE << ($bool ? 8 : 0);`, where `$M_TYPE` is one of the `QRMatrix::M_*` constants.
+You can distinguish between different parts of the matrix, namely the several required patterns from the QR Code specification, and use them in different ways.
+The dark value is the module value (light) shifted by 8 bits to the left: `$value = $M_TYPE << ($bool ? 8 : 0);`, where `$M_TYPE` is one of the `QRMatrix::M_*` constants.
 You can check the value for a type explicitly like...
 ```php
 // for true (dark)
-$value >> 8 === $M_TYPE;
+($value >> 8) === $M_TYPE;
 
-//for false (light)
+// for false (light)
 $value === $M_TYPE;
 ```
 ...or you can perform a loose check, ignoring the module value
 ```php
 // for true
-$value >> 8 > 0;
+($value >> 8) > 0;
 
 // for false
-$value >> 8 === 0
+($value >> 8) === 0;
 ```
 
 See also `QRMatrix::set()`, `QRMatrix::check()` and [`QRMatrix` constants](#qrmatrix-constants).
@@ -190,11 +191,11 @@ Instead of bloating your code you can simply create your own output interface by
 class MyCustomOutput extends QROutputAbstract{
 
 	// inherited from QROutputAbstract
-	protected $matrix;      // QRMatrix
-	protected $moduleCount; // modules QRMatrix::size()
-	protected $options;     // MyCustomOptions or QROptions
-	protected $scale;       // scale factor from options
-	protected $length;      // length of the matrix ($moduleCount * $scale)
+	protected QRMatrix $matrix;   // QRMatrix
+	protected int $moduleCount;   // modules QRMatrix::size()
+	protected QROptions $options; // MyCustomOptions or QROptions
+	protected int $scale;         // scale factor from options
+	protected int $length;        // length of the matrix ($moduleCount * $scale)
 
 	// ...check/set default module values (abstract method, called by the constructor)
 	protected function setModuleValues():void{
@@ -220,7 +221,7 @@ class MyCustomOutput extends QROutputAbstract{
 In case you need additional settings for your output module, just extend `QROptions`...
 ```
 class MyCustomOptions extends QROptions{
-	protected $myParam = 'defaultValue';
+	protected string $myParam = 'defaultValue';
 
 	// ...
 }
@@ -229,7 +230,7 @@ class MyCustomOptions extends QROptions{
 
 ```php
 trait MyCustomOptionsTrait{
-	protected $myParam = 'defaultValue';
+	protected string $myParam = 'defaultValue';
 
 	// ...
 }
@@ -330,6 +331,7 @@ property | type | default | allowed | description
 method | return | description
 ------ | ------ | -----------
 `__construct(int $version, int $eclevel)` | - | -
+`init(int $maskPattern, bool $test = null)` | `QRMatrix` | 
 `matrix()` | array | the internal matrix representation as a 2 dimensional array
 `version()` | int | the current QR Code version
 `eccLevel()` | int | current ECC level
