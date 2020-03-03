@@ -92,7 +92,7 @@ class QRImageWithText extends QRImage{
 
 		// loop through the string and draw the letters
 		foreach(\str_split($text) as $i => $chr){
-			\imagechar($this->image, $textSize, $i * $w + $x, $this->length, $chr, $fontColor);
+			\imagechar($this->image, $textSize, (int)($i * $w + $x), $this->length, $chr, $fontColor);
 		}
 	}
 
