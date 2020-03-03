@@ -12,7 +12,7 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\{QRCode, QRCodeException};
+use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\Helpers\{BitBuffer, Polynomial};
 use chillerlan\Settings\SettingsContainerInterface;
 
@@ -93,10 +93,8 @@ abstract class QRDataAbstract implements QRDataInterface{
 			? $this->getMinimumVersion()
 			: $this->options->version;
 
-		$this->matrixdata = $this
-			->writeBitBuffer($data)
-			->maskECC()
-		;
+		$this->writeBitBuffer($data);
+		$this->matrixdata = $this->maskECC();
 
 		return $this;
 	}
@@ -170,7 +168,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	protected function writeBitBuffer(string $data):QRDataInterface{
+	protected function writeBitBuffer(string $data):void{
 		$this->bitBuffer = new BitBuffer;
 
 		$MAX_BITS = $this::MAX_BITS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
@@ -214,7 +212,6 @@ abstract class QRDataAbstract implements QRDataInterface{
 			$this->bitBuffer->put(0x11, 8);
 		}
 
-		return $this;
 	}
 
 	/**
@@ -283,7 +280,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
-	 * @return int[]
+	 *
 	 */
 	protected function poly(int $key, int $count):array{
 		$rsPoly  = new Polynomial;

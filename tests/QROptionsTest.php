@@ -22,10 +22,18 @@ class QROptionsTest extends TestCase{
 	protected SettingsContainerInterface $options;
 
 	public function testVersionClamp():void{
-		$this::assertSame(40, (new QROptions(['version' => 42]))->version);
-		$this::assertSame(1, (new QROptions(['version' => -42]))->version);
-		$this::assertSame(21, (new QROptions(['version' => 21]))->version);
-		$this::assertSame(QRCode::VERSION_AUTO, (new QROptions)->version); // QRCode::VERSION_AUTO = -1, default
+		$o = new QROptions(['version' => 42]);
+		$this::assertSame(40, $o->version);
+
+		$o = new QROptions(['version' => -42]);
+		$this::assertSame(1, $o->version);
+
+		$o = new QROptions(['version' => 21]);
+		$this::assertSame(21, $o->version);
+
+		// QRCode::VERSION_AUTO = -1, default
+		$o = new QROptions;
+		$this::assertSame(QRCode::VERSION_AUTO, $o->version);
 	}
 
 	public function testVersionMinMaxClamp():void{
@@ -50,16 +58,23 @@ class QROptionsTest extends TestCase{
 	}
 
 	public function testMaskPatternClamp():void{
-		$this::assertSame(7, (new QROptions(['maskPattern' => 42]))->maskPattern);
-		$this::assertSame(0, (new QROptions(['maskPattern' => -42]))->maskPattern);
-		$this::assertSame(QRCode::MASK_PATTERN_AUTO, (new QROptions)->maskPattern); // QRCode::MASK_PATTERN_AUTO = -1, default
+		$o = new QROptions(['maskPattern' => 42]);
+		$this::assertSame(7, $o->maskPattern);
+
+		$o = new QROptions(['maskPattern' => -42]);
+		$this::assertSame(0, $o->maskPattern);
+
+		// QRCode::MASK_PATTERN_AUTO = -1, default
+		$o = new QROptions;
+		$this::assertSame(QRCode::MASK_PATTERN_AUTO, $o->maskPattern);
 	}
 
 	public function testInvalidEccLevelException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('Invalid error correct level: 42');
 
-		new QROptions(['eccLevel' => 42]);
+		/** @noinspection PhpUnusedLocalVariableInspection */
+		$o = new QROptions(['eccLevel' => 42]);
 	}
 
 	public function testClampRGBValues():void{
@@ -74,6 +89,7 @@ class QROptionsTest extends TestCase{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('Invalid RGB value.');
 
-		new QROptions(['imageTransparencyBG' => ['r', 'g', 'b']]);
+		/** @noinspection PhpUnusedLocalVariableInspection */
+		$o = new QROptions(['imageTransparencyBG' => ['r', 'g', 'b']]);
 	}
 }

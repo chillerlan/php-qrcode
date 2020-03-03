@@ -216,7 +216,7 @@ class QRMatrix{
 	}
 
 	/**
-	 *
+	 * @return int[][]
 	 */
 	public function matrix():array{
 		return $this->matrix;

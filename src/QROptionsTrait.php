@@ -12,7 +12,7 @@
 
 namespace chillerlan\QRCode;
 
-use function array_values, count, is_array, is_numeric, max, min, sprintf;
+use function array_values, count, is_numeric, max, min, sprintf;
 
 trait QROptionsTrait{
 

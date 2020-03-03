@@ -76,7 +76,7 @@ class MaskPatternTester{
 							continue;
 						}
 
-						if($this->matrix->check($x + $rx, $y + $ry) === ($val >> 8 > 0)){
+						if($this->matrix->check($x + $rx, $y + $ry) === (($val >> 8) > 0)){
 							$count++;
 						}
 

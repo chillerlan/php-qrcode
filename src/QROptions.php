@@ -21,7 +21,7 @@ use chillerlan\Settings\SettingsContainerAbstract;
  * @property int    $eccLevel
  * @property int    $maskPattern
  * @property bool   $addQuietzone
- * @property bool   $quietzoneSize
+ * @property int    $quietzoneSize
  *
  * @property string $dataMode
  * @property string $outputType
@@ -32,7 +32,7 @@ use chillerlan\Settings\SettingsContainerAbstract;
  * @property int    $scale
  *
  * @property string $cssClass
- * @property string $svgOpacity
+ * @property float  $svgOpacity
  * @property string $svgDefs
  * @property int    $svgViewBoxSize
  *
