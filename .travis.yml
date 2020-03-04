@@ -5,6 +5,9 @@ addons:
 
 language: php
 
+env:
+  - PHAN_ALLOW_XDEBUG=0
+
 matrix:
   include:
     - php: 7.4
