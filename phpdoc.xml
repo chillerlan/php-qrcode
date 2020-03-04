@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <phpdoc>
 	<parser>
-		<target>public/docs</target>
+		<target>docs</target>
 	</parser>
 	<transformer>
-		<target>public/docs</target>
+		<target>docs</target>
 	</transformer>
 	<files>
 		<directory>src</directory>
