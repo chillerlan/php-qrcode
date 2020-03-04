@@ -6,8 +6,8 @@ addons:
 language: php
 
 env:
-  - PHAN_ALLOW_XDEBUG=0
-  - PHAN_DISABLE_XDEBUG_WARN=1
+  global:
+    - PHAN_ALLOW_XDEBUG=0 PHAN_DISABLE_XDEBUG_WARN=1
 
 matrix:
   include:
