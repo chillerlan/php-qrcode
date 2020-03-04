@@ -108,7 +108,9 @@ class QRMarkup extends QROutputAbstract{
 					}
 
 					if($count > 0){
-						$len = $count;
+						$len   = $count;
+						$start ??= 0; // avoid type coercion in sprintf() - phan happy
+
 						$path .= sprintf('M%s %s h%s v1 h-%sZ ', $start, $y, $len, $len);
 
 						// reset count
