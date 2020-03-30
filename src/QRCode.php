@@ -229,14 +229,14 @@ class QRCode{
 	 * checks if a string qualifies as numeric
 	 */
 	public function isNumber(string $string):bool{
-		return $this->checkString($string, QRDataInterface::NUMBER_CHAR_MAP);
+		return $this->checkString($string, QRDataInterface::CHAR_MAP_NUMBER);
 	}
 
 	/**
 	 * checks if a string qualifies as alphanumeric
 	 */
 	public function isAlphaNum(string $string):bool{
-		return $this->checkString($string, QRDataInterface::ALPHANUM_CHAR_MAP);
+		return $this->checkString($string, QRDataInterface::CHAR_MAP_ALPHANUM);
 	}
 
 	/**

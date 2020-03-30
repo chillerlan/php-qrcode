@@ -59,7 +59,7 @@ class Number extends QRDataAbstract{
 		for($i = 0; $i < $len; $i++){
 			$c = ord($string[$i]);
 
-			if(!in_array($string[$i], $this::NUMBER_CHAR_MAP, true)){
+			if(!in_array($string[$i], $this::CHAR_MAP_NUMBER, true)){
 				throw new QRCodeDataException(sprintf('illegal char: "%s" [%d]', $string[$i], $c));
 			}
 

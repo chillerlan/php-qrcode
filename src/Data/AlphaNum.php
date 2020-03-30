@@ -44,7 +44,7 @@ class AlphaNum extends QRDataAbstract{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	protected function getCharCode(string $chr):int{
-		$i = array_search($chr, $this::ALPHANUM_CHAR_MAP);
+		$i = array_search($chr, $this::CHAR_MAP_ALPHANUM);
 
 		if($i !== false){
 			return $i;
