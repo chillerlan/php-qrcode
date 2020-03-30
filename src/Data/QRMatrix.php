@@ -13,6 +13,7 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\QRCode;
+use Closure;
 
 use function array_fill, array_key_exists, array_push, array_unshift, count, floor, in_array, max, min, range;
 
