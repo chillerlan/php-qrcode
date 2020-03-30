@@ -490,7 +490,8 @@ class QRMatrix{
 	}
 
 	/**
-	 * Maps the binary $data array from QRDataInterface::maskECC() on the matrix, using $maskPattern
+	 * Maps the binary $data array from QRDataInterface::maskECC() on the matrix,
+	 * masking the data using $maskPattern (ISO/IEC 18004:2000 Section 8.8)
 	 *
 	 * @see \chillerlan\QRCode\Data\QRDataAbstract::maskECC()
 	 *
@@ -500,9 +501,13 @@ class QRMatrix{
 	public function mapData(array $data, int $maskPattern):QRMatrix{
 		$this->maskPattern = $maskPattern;
 		$byteCount         = count($data);
-		$size              = $this->moduleCount - 1;
+		$y                 = $this->moduleCount - 1;
+		$inc               = -1;
+		$byteIndex         = 0;
+		$bitIndex          = 7;
+		$mask              = $this->getMask($this->maskPattern);
 
-		for($i = $size, $y = $size, $inc = -1, $byteIndex = 0, $bitIndex  = 7; $i > 0; $i -= 2){
+		for($i = $y; $i > 0; $i -= 2){
 
 			if($i === 6){
 				$i--;
@@ -519,7 +524,7 @@ class QRMatrix{
 							$v = (($data[$byteIndex] >> $bitIndex) & 1) === 1;
 						}
 
-						if($this->getMask($x, $y, $maskPattern) === 0){
+						if($mask($x, $y) === 0){
 							$v = !$v;
 						}
 
@@ -550,31 +555,30 @@ class QRMatrix{
 	}
 
 	/**
+	 * ISO/IEC 18004:2000 Section 8.8.1
+	 *
 	 * @see \chillerlan\QRCode\QRMatrix::mapData()
 	 *
 	 * @internal
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	protected function getMask(int $x, int $y, int $maskPattern):int{
-		$a = $y + $x;
-		$m = $y * $x;
+	protected function getMask(int $maskPattern):Closure{
 
-		if($maskPattern >= 0 && $maskPattern < 8){
-			// this is literally the same as the stupid switch...
-			return [
-				$a % 2,
-				$y % 2,
-				$x % 3,
-				$a % 3,
-				(floor($y / 2) + floor($x / 3)) % 2,
-				$m % 2 + $m % 3,
-				($m % 2 + $m % 3) % 2,
-				($m % 3 + $a % 2) % 2
-			][$maskPattern];
+		if((0b111 & $maskPattern) !== $maskPattern){
+			throw new QRCodeDataException('invalid mask pattern'); // @codeCoverageIgnore
 		}
 
-		throw new QRCodeDataException('invalid mask pattern'); // @codeCoverageIgnore
+		return [
+			0b000 => fn($x, $y):int => ($x + $y) % 2,
+			0b001 => fn($x, $y):int => $x % 2,
+			0b010 => fn($x, $y):int => $y % 3,
+			0b011 => fn($x, $y):int => ($x + $y) % 3,
+			0b100 => fn($x, $y):int => ((int)($x / 2) + (int)($y / 3)) % 2,
+			0b101 => fn($x, $y):int => (($x * $y) % 2) + (($x * $y) % 3),
+			0b110 => fn($x, $y):int => ((($x * $y) % 2) + (($x * $y) % 3)) % 2,
+			0b111 => fn($x, $y):int => ((($x * $y) % 3) + (($x + $y) % 2)) % 2,
+		][$maskPattern];
 	}
 
 }
