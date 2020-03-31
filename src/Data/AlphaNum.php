@@ -19,7 +19,7 @@ use function array_search, ord, sprintf;
 /**
  * Alphanumeric mode: 0 to 9, A to Z, space, $ % * + - . / :
  */
-class AlphaNum extends QRDataAbstract{
+final class AlphaNum extends QRDataAbstract{
 
 	protected int $datamode = QRCode::DATA_ALPHANUM;
 

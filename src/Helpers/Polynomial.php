@@ -19,7 +19,7 @@ use function array_fill, count, sprintf;
 /**
  * @link http://www.thonky.com/qr-code-tutorial/error-correction-coding
  */
-class Polynomial{
+final class Polynomial{
 
 	/**
 	 * @link http://www.thonky.com/qr-code-tutorial/log-antilog-table

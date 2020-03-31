@@ -19,7 +19,7 @@ use function ord, sprintf, substr;
 /**
  * Numeric mode: decimal digits 0 through 9
  */
-class Number extends QRDataAbstract{
+final class Number extends QRDataAbstract{
 
 	protected int $datamode = QRCode::DATA_NUMBER;
 

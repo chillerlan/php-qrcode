@@ -19,7 +19,7 @@ use function mb_strlen, ord, sprintf, strlen;
 /**
  * Kanji mode: double-byte characters from the Shift JIS character set
  */
-class Kanji extends QRDataAbstract{
+final class Kanji extends QRDataAbstract{
 
 	protected int $datamode = QRCode::DATA_KANJI;
 

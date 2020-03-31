@@ -19,7 +19,7 @@ use function abs, call_user_func;
  *
  * @link http://www.thonky.com/qr-code-tutorial/data-masking
  */
-class MaskPatternTester{
+final class MaskPatternTester{
 
 	protected QRMatrix $matrix;
 

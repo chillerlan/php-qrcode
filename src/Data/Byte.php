@@ -19,7 +19,7 @@ use function ord;
 /**
  * Byte mode, ISO-8859-1 or UTF-8
  */
-class Byte extends QRDataAbstract{
+final class Byte extends QRDataAbstract{
 
 	protected int $datamode = QRCode::DATA_BYTE;
 

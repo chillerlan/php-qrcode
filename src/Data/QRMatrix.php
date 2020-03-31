@@ -20,7 +20,7 @@ use function array_fill, array_key_exists, array_push, array_unshift, count, flo
 /**
  * @link http://www.thonky.com/qr-code-tutorial/format-version-information
  */
-class QRMatrix{
+final class QRMatrix{
 
 	public const M_NULL       = 0x00;
 	public const M_DARKMODULE = 0x02;

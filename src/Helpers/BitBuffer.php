@@ -14,7 +14,7 @@ namespace chillerlan\QRCode\Helpers;
 
 use function count, floor;
 
-class BitBuffer{
+final class BitBuffer{
 
 	/** @var int[] */
 	public array $buffer = [];
