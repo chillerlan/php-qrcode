@@ -182,30 +182,30 @@ abstract class QRDataAbstract implements QRDataInterface{
 		$this->write($data);
 
 		// overflow, likely caused due to invalid version setting
-		if($this->bitBuffer->length > $MAX_BITS){
-			throw new QRCodeDataException(sprintf('code length overflow. (%d > %d bit)', $this->bitBuffer->length, $MAX_BITS));
+		if($this->bitBuffer->getLength() > $MAX_BITS){
+			throw new QRCodeDataException(sprintf('code length overflow. (%d > %d bit)', $this->bitBuffer->getLength(), $MAX_BITS));
 		}
 
 		// end code.
-		if($this->bitBuffer->length + 4 <= $MAX_BITS){
+		if($this->bitBuffer->getLength() + 4 <= $MAX_BITS){
 			$this->bitBuffer->put(0, 4);
 		}
 
 		// padding
-		while($this->bitBuffer->length % 8 !== 0){
+		while($this->bitBuffer->getLength() % 8 !== 0){
 			$this->bitBuffer->putBit(false);
 		}
 
 		// padding
 		while(true){
 
-			if($this->bitBuffer->length >= $MAX_BITS){
+			if($this->bitBuffer->getLength() >= $MAX_BITS){
 				break;
 			}
 
 			$this->bitBuffer->put(0xEC, 8);
 
-			if($this->bitBuffer->length >= $MAX_BITS){
+			if($this->bitBuffer->getLength() >= $MAX_BITS){
 				break;
 			}
 
@@ -236,6 +236,8 @@ abstract class QRDataAbstract implements QRDataInterface{
 		$maxEcCount     = 0;
 		$offset         = 0;
 
+		$bitBuffer = $this->bitBuffer->getBuffer();
+
 		foreach($rsBlocks as $key => $block){
 			[$rsBlockTotal, $dcCount] = $block;
 
@@ -245,7 +247,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 			$this->dcdata[$key] = array_fill(0, $dcCount, null);
 
 			foreach($this->dcdata[$key] as $a => $_z){
-				$this->dcdata[$key][$a] = 0xff & $this->bitBuffer->buffer[$a + $offset];
+				$this->dcdata[$key][$a] = 0xff & $bitBuffer[$a + $offset];
 			}
 
 			[$num, $add] = $this->poly($key, $ecCount);

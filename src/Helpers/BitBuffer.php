@@ -17,9 +17,9 @@ use function count, floor;
 final class BitBuffer{
 
 	/** @var int[] */
-	public array $buffer = [];
+	protected array $buffer = [];
 
-	public int $length = 0;
+	protected int $length = 0;
 
 	/**
 	 *
@@ -60,6 +60,20 @@ final class BitBuffer{
 		$this->length++;
 
 		return $this;
+	}
+
+	/**
+	 * returns the current buffer length
+	 */
+	public function getLength():int{
+		return $this->length;
+	}
+
+	/**
+	 * returns the buffer content
+	 */
+	public function getBuffer():array{
+		return $this->buffer;
 	}
 
 }
