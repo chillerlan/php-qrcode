@@ -246,7 +246,7 @@ class QRCode{
 		$len = strlen($string);
 
 		for($i = 0; $i < $len; $i++){
-			if(!in_array($string[$i], $charmap, true)){
+			if(!isset($charmap[$string[$i]])){
 				return false;
 			}
 		}

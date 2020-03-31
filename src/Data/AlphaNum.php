@@ -14,7 +14,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\QRCode;
 
-use function array_search, ord, sprintf;
+use function ord, sprintf;
 
 /**
  * Alphanumeric mode: 0 to 9, A to Z, space, $ % * + - . / :
@@ -44,13 +44,12 @@ final class AlphaNum extends QRDataAbstract{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	protected function getCharCode(string $chr):int{
-		$i = array_search($chr, $this::CHAR_MAP_ALPHANUM);
 
-		if($i !== false){
-			return $i;
+		if(!isset($this::CHAR_MAP_ALPHANUM[$chr])){
+			throw new QRCodeDataException(sprintf('illegal char: "%s" [%d]', $chr, ord($chr)));
 		}
 
-		throw new QRCodeDataException(sprintf('illegal char: "%s" [%d]', $chr, ord($chr)));
+		return $this::CHAR_MAP_ALPHANUM[$chr];
 	}
 
 }
