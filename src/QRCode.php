@@ -91,6 +91,18 @@ class QRCode{
 	];
 
 	/**
+	 * Map of data mode => interface
+	 *
+	 * @var string[]
+	 */
+	protected const DATA_INTERFACES = [
+		'Number'   => Number::class,
+		'AlphaNum' => AlphaNum::class,
+		'Kanji'    => Kanji::class,
+		'Byte'     => Byte::class,
+	];
+
+	/**
 	 * @var \chillerlan\QRCode\QROptions|\chillerlan\Settings\SettingsContainerInterface
 	 */
 	protected SettingsContainerInterface $options;
@@ -163,21 +175,18 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function initDataInterface(string $data):QRDataInterface{
-		$dataModes     = ['Number', 'AlphaNum', 'Kanji', 'Byte'];
-		$dataNamespace = __NAMESPACE__.'\\Data\\';
 
 		// allow forcing the data mode
 		// see https://github.com/chillerlan/php-qrcode/issues/39
-		if(in_array($this->options->dataMode, $dataModes, true)){
-			$dataInterface = $dataNamespace.$this->options->dataMode;
+		$interface = $this::DATA_INTERFACES[$this->options->dataMode] ?? null;
 
-			return new $dataInterface($this->options, $data);
+		if($interface !== null){
+			return new $interface($this->options, $data);
 		}
 
-		foreach($dataModes as $mode){
-			$dataInterface = $dataNamespace.$mode;
+		foreach($this::DATA_INTERFACES as $mode => $dataInterface){
 
-			if(call_user_func_array([$this, 'is'.$mode], [$data]) && class_exists($dataInterface)){
+			if(call_user_func_array([$this, 'is'.$mode], [$data])){
 				return new $dataInterface($this->options, $data);
 			}
 
