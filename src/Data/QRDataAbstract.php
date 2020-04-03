@@ -252,7 +252,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 			[$num, $add] = $this->poly($key, $ecCount);
 
-			foreach($this->ecdata[$key] as $c => $_z){
+			foreach($this->ecdata[$key] as $c => $_){
 				$modIndex               = $c + $add;
 				$this->ecdata[$key][$c] = $modIndex >= 0 ? $num[$modIndex] : 0;
 			}
@@ -264,7 +264,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 		$data  = array_fill(0, $totalCodeCount, null);
 		$index = 0;
 
-		$mask = function(array $arr, int $count) use (&$data, &$index, $rsCount){
+		$mask = function(array $arr, int $count) use (&$data, &$index, $rsCount):void{
 			for($x = 0; $x < $count; $x++){
 				for($y = 0; $y < $rsCount; $y++){
 					if($x < count($arr[$y])){

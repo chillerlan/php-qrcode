@@ -88,7 +88,7 @@ final class MaskPatternTester{
 
 					for($rx = -1; $rx <= 1; $rx++){
 
-						if(($ry === 0 && $rx === 0) || ($x + $rx < 0 || $this->moduleCount <= $x + $rx)){
+						if(($ry === 0 && $rx === 0) || (($x + $rx) < 0 || $this->moduleCount <= ($x + $rx))){
 							continue;
 						}
 
@@ -206,7 +206,7 @@ final class MaskPatternTester{
 
 		foreach($this->matrix->matrix() as $y => $row){
 			foreach($row as $x => $val){
-				if($val >> 8 > 0){
+				if(($val >> 8) > 0){
 					$count++;
 				}
 			}
