@@ -145,7 +145,7 @@ class QRCode{
 		$this->dataInterface = $this->initDataInterface($data);
 
 		$maskPattern = $this->options->maskPattern === $this::MASK_PATTERN_AUTO
-			? $this->getBestMaskPattern()
+			? (new MaskPatternTester($this->dataInterface))->getBestMaskPattern()
 			: $this->options->maskPattern;
 
 		$matrix = $this->dataInterface->initMatrix($maskPattern);
@@ -155,23 +155,6 @@ class QRCode{
 		}
 
 		return $matrix;
-	}
-
-	/**
-	 * shoves a QRMatrix through the MaskPatternTester to find the lowest penalty mask pattern
-	 *
-	 * @see \chillerlan\QRCode\Data\MaskPatternTester
-	 */
-	protected function getBestMaskPattern():int{
-		$penalties = [];
-
-		for($pattern = 0; $pattern < 8; $pattern++){
-			$tester = new MaskPatternTester($this->dataInterface->initMatrix($pattern, true));
-
-			$penalties[$pattern] = $tester->testPattern();
-		}
-
-		return array_search(min($penalties), $penalties, true);
 	}
 
 	/**

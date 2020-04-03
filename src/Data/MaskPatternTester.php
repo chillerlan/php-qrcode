@@ -15,7 +15,7 @@ namespace chillerlan\QRCode\Data;
 use function abs, call_user_func;
 
 /**
- * The sole purpose of this class is to receive a QRMatrix object and run the pattern tests on it.
+ * Receives a QRDataInterface object and runs the mask pattern tests on it.
  *
  * @link http://www.thonky.com/qr-code-tutorial/data-masking
  */
@@ -23,18 +23,36 @@ final class MaskPatternTester{
 
 	protected QRMatrix $matrix;
 
+	protected QRDataInterface $dataInterface;
+
 	protected int $moduleCount;
 
 	/**
-	 * Receives the matrix an sets the module count
+	 * Receives the QRDataInterface
 	 *
 	 * @see \chillerlan\QRCode\QROptions::$maskPattern
 	 * @see \chillerlan\QRCode\Data\QRMatrix::$maskPattern
-	 * @see \chillerlan\QRCode\QRCode::getBestMaskPattern()
 	 */
-	public function __construct(QRMatrix $matrix){
-		$this->matrix      = $matrix;
-		$this->moduleCount = $this->matrix->size();
+	public function __construct(QRDataInterface $dataInterface){
+		$this->dataInterface = $dataInterface;
+	}
+
+	/**
+	 * shoves a QRMatrix through the MaskPatternTester to find the lowest penalty mask pattern
+	 *
+	 * @see \chillerlan\QRCode\Data\MaskPatternTester
+	 */
+	public function getBestMaskPattern():int{
+		$penalties = [];
+
+		for($pattern = 0; $pattern < 8; $pattern++){
+			$this->matrix = $this->dataInterface->initMatrix($pattern, true);
+			$this->moduleCount = $this->matrix->size();
+
+			$penalties[$pattern] = $this->testPattern();
+		}
+
+		return array_search(min($penalties), $penalties, true);
 	}
 
 	/**
@@ -42,9 +60,8 @@ final class MaskPatternTester{
 	 *
 	 * @see \chillerlan\QRCode\QROptions::$maskPattern
 	 * @see \chillerlan\QRCode\Data\QRMatrix::$maskPattern
-	 * @see \chillerlan\QRCode\QRCode::getBestMaskPattern()
 	 */
-	public function testPattern():int{
+	protected function testPattern():int{
 		$penalty  = 0;
 
 		for($level = 1; $level <= 4; $level++){
