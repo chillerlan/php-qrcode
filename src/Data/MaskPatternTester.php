@@ -46,10 +46,7 @@ final class MaskPatternTester{
 		$penalties = [];
 
 		for($pattern = 0; $pattern < 8; $pattern++){
-			$this->matrix = $this->dataInterface->initMatrix($pattern, true);
-			$this->moduleCount = $this->matrix->size();
-
-			$penalties[$pattern] = $this->testPattern();
+			$penalties[$pattern] = $this->testPattern($pattern);
 		}
 
 		return array_search(min($penalties), $penalties, true);
@@ -61,8 +58,10 @@ final class MaskPatternTester{
 	 * @see \chillerlan\QRCode\QROptions::$maskPattern
 	 * @see \chillerlan\QRCode\Data\QRMatrix::$maskPattern
 	 */
-	protected function testPattern():int{
-		$penalty  = 0;
+	public function testPattern(int $pattern):int{
+		$this->matrix      = $this->dataInterface->initMatrix($pattern, true);
+		$this->moduleCount = $this->matrix->size();
+		$penalty           = 0;
 
 		for($level = 1; $level <= 4; $level++){
 			$penalty += call_user_func([$this, 'testLevel'.$level]);
