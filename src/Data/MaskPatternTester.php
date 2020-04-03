@@ -12,7 +12,7 @@
 
 namespace chillerlan\QRCode\Data;
 
-use function abs, call_user_func;
+use function abs, array_search, call_user_func, min;
 
 /**
  * Receives a QRDataInterface object and runs the mask pattern tests on it.

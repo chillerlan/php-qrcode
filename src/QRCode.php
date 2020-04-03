@@ -20,7 +20,7 @@ use chillerlan\QRCode\Output\{
 };
 use chillerlan\Settings\SettingsContainerInterface;
 
-use function array_search, call_user_func_array, class_exists, in_array, mb_internal_encoding, min, ord, strlen;
+use function call_user_func_array, class_exists, in_array, mb_internal_encoding, ord, strlen;
 
 /**
  * Turns a text string into a Model 2 QR Code
