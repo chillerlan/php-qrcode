@@ -64,6 +64,8 @@ class QRImage extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	public function dump(string $file = null):string{
+		$file ??= $this->options->cachefile;
+
 		$this->image = imagecreatetruecolor($this->length, $this->length);
 
 		// avoid: Indirect modification of overloaded property $imageTransparencyBG has no effect
@@ -83,7 +85,11 @@ class QRImage extends QROutputAbstract{
 			}
 		}
 
-		$imageData = $this->dumpImage($file);
+		$imageData = $this->dumpImage();
+
+		if($file !== null){
+			$this->saveToFile($imageData, $file);
+		}
 
 		if((bool)$this->options->imageBase64){
 			$imageData = sprintf('data:image/%s;base64,%s', $this->options->outputType, base64_encode($imageData));
@@ -109,13 +115,9 @@ class QRImage extends QROutputAbstract{
 	/**
 	 * @param string|null $file
 	 *
-	 * @return string
-
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function dumpImage(string $file = null):string{
-		$file ??= $this->options->cachefile;
-
+	protected function dumpImage():string{
 		ob_start();
 
 		try{
@@ -132,10 +134,6 @@ class QRImage extends QROutputAbstract{
 		imagedestroy($this->image);
 
 		ob_end_clean();
-
-		if($file !== null){
-			$this->saveToFile($imageData, $file);
-		}
 
 		return $imageData;
 	}
