@@ -269,6 +269,11 @@ trait QROptionsTrait{
 
 		foreach($imageTransparencyBG as $k => $v){
 
+			// cut off exceeding items
+			if($k > 2){
+				break;
+			}
+
 			if(!is_numeric($v)){
 				throw new QRCodeException('Invalid RGB value.');
 			}
