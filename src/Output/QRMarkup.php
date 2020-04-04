@@ -54,7 +54,12 @@ class QRMarkup extends QROutputAbstract{
 	 * HTML output
 	 */
 	protected function html():string{
-		$html = '<div class="'.$this->options->cssClass.'">'.$this->options->eol;
+
+		$html = empty($this->options->cssClass)
+			? '<div>'
+			: '<div class="'.$this->options->cssClass.'">';
+
+		$html .= $this->options->eol;
 
 		foreach($this->matrix->matrix() as $row){
 			$html .= '<div>';
