@@ -8,6 +8,8 @@
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2018 smiley
  * @license      MIT
+ *
+ * @noinspection PhpUnused
  */
 
 namespace chillerlan\QRCode;

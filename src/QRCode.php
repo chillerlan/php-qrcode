@@ -321,6 +321,8 @@ class QRCode{
 
 	/**
 	 * a dummy
+	 *
+	 * @noinspection PhpUnused
 	 */
 	protected function isByte(string $data):bool{
 		return !empty($data);
