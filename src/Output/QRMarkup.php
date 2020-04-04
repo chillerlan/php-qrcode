@@ -53,7 +53,7 @@ class QRMarkup extends QROutputAbstract{
 	/**
 	 * HTML output
 	 */
-	protected function html():string{
+	protected function html(string $file = null):string{
 
 		$html = empty($this->options->cssClass)
 			? '<div>'
@@ -73,7 +73,7 @@ class QRMarkup extends QROutputAbstract{
 
 		$html .= '</div>'.$this->options->eol;
 
-		if($this->options->cachefile){
+		if($file !== null){
 			return '<!DOCTYPE html>'.
 			       '<head><meta charset="UTF-8"><title>QR Code</title></head>'.
 			       '<body>'.$this->options->eol.$html.'</body>';
@@ -87,7 +87,7 @@ class QRMarkup extends QROutputAbstract{
 	 *
 	 * @see https://github.com/codemasher/php-qrcode/pull/5
 	 */
-	protected function svg():string{
+	protected function svg(string $file = null):string{
 		$matrix = $this->matrix->matrix();
 
 		$svg = sprintf($this->svgHeader, $this->options->cssClass, $this->options->svgViewBoxSize ?? $this->moduleCount)
@@ -145,7 +145,7 @@ class QRMarkup extends QROutputAbstract{
 		$svg .= '</svg>'.$this->options->eol;
 
 		// if saving to file, append the correct headers
-		if($this->options->cachefile){
+		if($file !== null){
 			return '<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">'.
 			       $this->options->eol.$svg;
 		}

@@ -8,6 +8,8 @@
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
+ *
+ * @noinspection PhpUnusedParameterInspection
  */
 
 namespace chillerlan\QRCode\Output;
@@ -47,7 +49,7 @@ class QRString extends QROutputAbstract{
 	/**
 	 * string output
 	 */
-	protected function text():string{
+	protected function text(string $file = null):string{
 		$str = [];
 
 		foreach($this->matrix->matrix() as $row){
@@ -66,7 +68,7 @@ class QRString extends QROutputAbstract{
 	/**
 	 * JSON output
 	 */
-	protected function json():string{
+	protected function json(string $file = null):string{
 		return json_encode($this->matrix->matrix());
 	}
 
