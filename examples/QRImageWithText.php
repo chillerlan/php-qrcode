@@ -26,6 +26,8 @@ class QRImageWithText extends QRImage{
 	 * @return string
 	 */
 	public function dump(string $file = null, string $text = null):string{
+		$file ??= $this->options->cachefile;
+
 		$this->image = \imagecreatetruecolor($this->length, $this->length);
 		$background  = \imagecolorallocate($this->image, ...$this->options->imageTransparencyBG);
 
@@ -46,7 +48,11 @@ class QRImageWithText extends QRImage{
 			$this->addText($text);
 		}
 
-		$imageData = $this->dumpImage($file);
+		$imageData = $this->dumpImage();
+
+		if($file !== null){
+			$this->saveToFile($imageData, $file);
+		}
 
 		if((bool)$this->options->imageBase64){
 			$imageData = 'data:image/'.$this->options->outputType.';base64,'.\base64_encode($imageData);
