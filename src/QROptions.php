@@ -15,43 +15,37 @@ namespace chillerlan\QRCode;
 use chillerlan\Settings\SettingsContainerAbstract;
 
 /**
- * @property int    $version
- * @property int    $versionMin
- * @property int    $versionMax
- * @property int    $eccLevel
- * @property int    $maskPattern
- * @property bool   $addQuietzone
- * @property int    $quietzoneSize
+ * The QRCode settings container
  *
- * @property string $dataMode
- * @property string $outputType
- * @property string $outputInterface
- * @property string $cachefile
- *
- * @property string $eol
- * @property int    $scale
- *
- * @property string $cssClass
- * @property float  $svgOpacity
- * @property string $svgDefs
- * @property int    $svgViewBoxSize
- *
- * @property string $textDark
- * @property string $textLight
- *
- * @property string $markupDark
- * @property string $markupLight
- *
- * @property bool   $imageBase64
- * @property bool   $imageTransparent
- * @property array  $imageTransparencyBG
- * @property int    $pngCompression
- * @property int    $jpegQuality
- *
- * @property string $imagickFormat
- * @property string $imagickBG
- *
- * @property array  $moduleValues
+ * @property int         $version
+ * @property int         $versionMin
+ * @property int         $versionMax
+ * @property int         $eccLevel
+ * @property int         $maskPattern
+ * @property bool        $addQuietzone
+ * @property int         $quietzoneSize
+ * @property string|null $dataMode
+ * @property string      $outputType
+ * @property string|null $outputInterface
+ * @property string|null $cachefile
+ * @property string      $eol
+ * @property int         $scale
+ * @property string      $cssClass
+ * @property float       $svgOpacity
+ * @property string      $svgDefs
+ * @property int         $svgViewBoxSize
+ * @property string      $textDark
+ * @property string      $textLight
+ * @property string      $markupDark
+ * @property string      $markupLight
+ * @property bool        $imageBase64
+ * @property bool        $imageTransparent
+ * @property array       $imageTransparencyBG
+ * @property int         $pngCompression
+ * @property int         $jpegQuality
+ * @property string      $imagickFormat
+ * @property string|null $imagickBG
+ * @property array|null  $moduleValues
  */
 class QROptions extends SettingsContainerAbstract{
 	use QROptionsTrait;

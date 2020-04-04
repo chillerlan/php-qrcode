@@ -13,16 +13,22 @@
 namespace chillerlan\QRCode\Data;
 
 /**
- *
+ * Specifies the methods reqired for the data modules (Number, Alphanum, Byte and Kanji)
+ * and holds version information in several constants
  */
 interface QRDataInterface{
 
+	/**
+	 * @var int[]
+	 */
 	const CHAR_MAP_NUMBER = [
 		'0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9,
 	];
 
 	/**
 	 * ISO/IEC 18004:2000 Table 5
+	 *
+	 * @var int[]
 	 */
 	const CHAR_MAP_ALPHANUM = [
 		'0' =>  0, '1' =>  1, '2' =>  2, '3' =>  3, '4' =>  4, '5' =>  5, '6' =>  6, '7' =>  7,
@@ -34,7 +40,11 @@ interface QRDataInterface{
 	];
 
 	/**
-	 * @link http://www.qrcode.com/en/about/version.html
+	 * ISO/IEC 18004:2000 Tables 7-11 - Number of symbol characters and input data capacity for versions 1 to 40
+	 *
+	 * @see http://www.qrcode.com/en/about/version.html
+	 *
+	 * @var int [][][]
 	 */
 	const MAX_LENGTH =[
 	//	v  => [NUMERIC => [L, M, Q, H ], ALPHANUM => [L, M, Q, H], BINARY => [L, M, Q, H  ], KANJI => [L, M, Q, H   ]]  // modules
@@ -80,6 +90,11 @@ interface QRDataInterface{
 		40 => [[7089, 5596, 3993, 3057], [4296, 3391, 2420, 1852], [2953, 2331, 1663, 1273], [1817, 1435, 1024,  784]], // 177
 	];
 
+	/**
+	 * ISO/IEC 18004:2000 Tables 7-11 - Number of symbol characters and input data capacity for versions 1 to 40
+	 *
+	 * @var int [][]
+	 */
 	const MAX_BITS = [
 		// version => [L, M, Q, H ]
 		1  => [  152,   128,   104,    72],
@@ -125,7 +140,9 @@ interface QRDataInterface{
 	];
 
 	/**
-	 * @link http://www.thonky.com/qr-code-tutorial/error-correction-table
+	 * @see http://www.thonky.com/qr-code-tutorial/error-correction-table
+	 *
+	 * @var int [][][]
 	 */
 	const RSBLOCKS = [
 		1  => [[ 1,  0,  26,  19], [ 1,  0, 26, 16], [ 1,  0, 26, 13], [ 1,  0, 26,  9]],

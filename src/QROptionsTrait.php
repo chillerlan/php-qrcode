@@ -14,17 +14,22 @@ namespace chillerlan\QRCode;
 
 use function array_values, count, is_numeric, max, min, sprintf;
 
+/**
+ * The QRCode plug-in settings & setter functionality
+ */
 trait QROptionsTrait{
 
 	/**
 	 * QR Code version number
 	 *
-	 *   [1 ... 40] or QRCode::VERSION_AUTO
+	 * [1 ... 40] or QRCode::VERSION_AUTO
 	 */
 	protected int $version = QRCode::VERSION_AUTO;
 
 	/**
-	 * Minimum QR version (if $version = QRCode::VERSION_AUTO)
+	 * Minimum QR version
+	 *
+	 * if $version = QRCode::VERSION_AUTO
 	 */
 	protected int $versionMin = 1;
 
@@ -36,18 +41,19 @@ trait QROptionsTrait{
 	/**
 	 * Error correct level
 	 *
-	 *   QRCode::ECC_X where X is
-	 *    L =>  7%
-	 *    M => 15%
-	 *    Q => 25%
-	 *    H => 30%
+	 * QRCode::ECC_X where X is:
+	 *
+	 *   - L =>  7%
+	 *   - M => 15%
+	 *   - Q => 25%
+	 *   - H => 30%
 	 */
 	protected int $eccLevel = QRCode::ECC_L;
 
 	/**
 	 * Mask Pattern to use
 	 *
-	 *   [0...7] or QRCode::MASK_PATTERN_AUTO
+	 * [0...7] or QRCode::MASK_PATTERN_AUTO
 	 */
 	protected int $maskPattern = QRCode::MASK_PATTERN_AUTO;
 
@@ -59,12 +65,13 @@ trait QROptionsTrait{
 	/**
 	 * Size of the quiet zone
 	 *
-	 *   internally clamped to [0 ... $moduleCount / 2], defaults to 4 modules
+	 * internally clamped to [0 ... $moduleCount / 2], defaults to 4 modules
 	 */
 	protected int $quietzoneSize = 4;
 
 	/**
 	 * Use this to circumvent the data mode detection and force the usage of the given mode.
+	 *
 	 * valid modes are: Number, AlphaNum, Kanji, Byte
 	 *
 	 * @see https://github.com/chillerlan/php-qrcode/issues/39
@@ -72,10 +79,12 @@ trait QROptionsTrait{
 	protected ?string $dataMode = null;
 
 	/**
-	 * QRCode::OUTPUT_MARKUP_XXXX where XXXX = HTML, SVG
-	 * QRCode::OUTPUT_IMAGE_XXX where XXX = PNG, GIF, JPG
-	 * QRCode::OUTPUT_STRING_XXXX where XXXX = TEXT, JSON
-	 * QRCode::OUTPUT_CUSTOM
+	 * The output type
+	 *
+	 *   - QRCode::OUTPUT_MARKUP_XXXX where XXXX = HTML, SVG
+	 *   - QRCode::OUTPUT_IMAGE_XXX where XXX = PNG, GIF, JPG
+	 *   - QRCode::OUTPUT_STRING_XXXX where XXXX = TEXT, JSON
+	 *   - QRCode::OUTPUT_CUSTOM
 	 */
 	protected string $outputType = QRCode::OUTPUT_IMAGE_PNG;
 
@@ -95,8 +104,7 @@ trait QROptionsTrait{
 	protected string $eol = PHP_EOL;
 
 	/**
-	 * size of a QR code pixel [SVG, IMAGE_*]
-	 * HTML -> via CSS
+	 * size of a QR code pixel [SVG, IMAGE_*], HTML via CSS
 	 */
 	protected int $scale = 5;
 
@@ -190,8 +198,8 @@ trait QROptionsTrait{
 	/**
 	 * Module values map
 	 *
-	 *   HTML, IMAGICK: #ABCDEF, cssname, rgb(), rgba()...
-	 *   IMAGE: [63, 127, 255] // R, G, B
+	 *   - HTML, IMAGICK: #ABCDEF, cssname, rgb(), rgba()...
+	 *   - IMAGE: [63, 127, 255] // R, G, B
 	 */
 	protected ?array $moduleValues = null;
 

@@ -8,6 +8,8 @@
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2018 smiley
  * @license      MIT
+ *
+ * @noinspection PhpComposerExtensionStubsInspection
  */
 
 namespace chillerlan\QRCode\Output;
@@ -17,10 +19,10 @@ use Imagick, ImagickDraw, ImagickPixel;
 use function is_string;
 
 /**
- * ImageMagick output module
- * requires ext-imagick
- * @link http://php.net/manual/book.imagick.php
- * @link http://phpimagick.com
+ * ImageMagick output module (requires ext-imagick)
+ *
+ * @see http://php.net/manual/book.imagick.php
+ * @see http://phpimagick.com
  */
 class QRImagick extends QROutputAbstract{
 
@@ -67,7 +69,7 @@ class QRImagick extends QROutputAbstract{
 	}
 
 	/**
-	 *
+	 * Creates the QR image via ImagickDraw
 	 */
 	protected function drawImage(Imagick $imagick):string{
 		$draw = new ImagickDraw;

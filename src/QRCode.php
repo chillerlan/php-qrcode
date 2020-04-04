@@ -25,45 +25,37 @@ use function call_user_func_array, class_exists, in_array, mb_internal_encoding,
 /**
  * Turns a text string into a Model 2 QR Code
  *
- * @link https://github.com/kazuhikoarase/qrcode-generator/tree/master/php
- * @link http://www.qrcode.com/en/codes/model12.html
- * @link http://www.thonky.com/qr-code-tutorial/
+ * @see https://github.com/kazuhikoarase/qrcode-generator/tree/master/php
+ * @see http://www.qrcode.com/en/codes/model12.html
+ * @see https://www.swisseduc.ch/informatik/theoretische_informatik/qr_codes/docs/qr_standard.pdf
+ * @see https://en.wikipedia.org/wiki/QR_code
+ * @see http://www.thonky.com/qr-code-tutorial/
  */
 class QRCode{
 
-	/**
-	 * API constants
-	 */
-	public const OUTPUT_MARKUP_HTML = 'html';
-	public const OUTPUT_MARKUP_SVG  = 'svg';
-	public const OUTPUT_IMAGE_PNG   = 'png';
-	public const OUTPUT_IMAGE_JPG   = 'jpg';
-	public const OUTPUT_IMAGE_GIF   = 'gif';
-	public const OUTPUT_STRING_JSON = 'json';
-	public const OUTPUT_STRING_TEXT = 'text';
-	public const OUTPUT_IMAGICK     = 'imagick';
-	public const OUTPUT_CUSTOM      = 'custom';
-
+	/** @var int */
 	public const VERSION_AUTO       = -1;
+	/** @var int */
 	public const MASK_PATTERN_AUTO  = -1;
 
-	public const ECC_L         = 0b01; // 7%.
-	public const ECC_M         = 0b00; // 15%.
-	public const ECC_Q         = 0b11; // 25%.
-	public const ECC_H         = 0b10; // 30%.
+	// ISO/IEC 18004:2000 Table 2
 
+	/** @var int */
 	public const DATA_NUMBER   = 0b0001;
+	/** @var int */
 	public const DATA_ALPHANUM = 0b0010;
+	/** @var int */
 	public const DATA_BYTE     = 0b0100;
+	/** @var int */
 	public const DATA_KANJI    = 0b1000;
 
-	public const ECC_MODES = [
-		self::ECC_L => 0,
-		self::ECC_M => 1,
-		self::ECC_Q => 2,
-		self::ECC_H => 3,
-	];
-
+	/**
+	 * References to the keys of the following tables:
+	 *
+	 * @see \chillerlan\QRCode\Data\QRDataInterface::MAX_LENGTH
+	 *
+	 * @var int[]
+	 */
 	public const DATA_MODES = [
 		self::DATA_NUMBER   => 0,
 		self::DATA_ALPHANUM => 1,
@@ -71,6 +63,57 @@ class QRCode{
 		self::DATA_KANJI    => 3,
 	];
 
+	// ISO/IEC 18004:2000 Tables 12, 25
+
+	/** @var int */
+	public const ECC_L = 0b01; // 7%.
+	/** @var int */
+	public const ECC_M = 0b00; // 15%.
+	/** @var int */
+	public const ECC_Q = 0b11; // 25%.
+	/** @var int */
+	public const ECC_H = 0b10; // 30%.
+
+	/**
+	 * References to the keys of the following tables:
+	 *
+	 * @see \chillerlan\QRCode\Data\QRDataInterface::MAX_BITS
+	 * @see \chillerlan\QRCode\Data\QRDataInterface::RSBLOCKS
+	 * @see \chillerlan\QRCode\Data\QRMatrix::formatPattern
+	 *
+	 * @var int[]
+	 */
+	public const ECC_MODES = [
+		self::ECC_L => 0,
+		self::ECC_M => 1,
+		self::ECC_Q => 2,
+		self::ECC_H => 3,
+	];
+
+	/** @var string */
+	public const OUTPUT_MARKUP_HTML = 'html';
+	/** @var string */
+	public const OUTPUT_MARKUP_SVG  = 'svg';
+	/** @var string */
+	public const OUTPUT_IMAGE_PNG   = 'png';
+	/** @var string */
+	public const OUTPUT_IMAGE_JPG   = 'jpg';
+	/** @var string */
+	public const OUTPUT_IMAGE_GIF   = 'gif';
+	/** @var string */
+	public const OUTPUT_STRING_JSON = 'json';
+	/** @var string */
+	public const OUTPUT_STRING_TEXT = 'text';
+	/** @var string */
+	public const OUTPUT_IMAGICK     = 'imagick';
+	/** @var string */
+	public const OUTPUT_CUSTOM      = 'custom';
+
+	/**
+	 * Map of built-in output modules => capabilities
+	 *
+	 * @var string[][]
+	 */
 	public const OUTPUT_MODES = [
 		QRMarkup::class => [
 			self::OUTPUT_MARKUP_SVG,
@@ -103,22 +146,31 @@ class QRCode{
 	];
 
 	/**
+	 * The settings container
+	 *
 	 * @var \chillerlan\QRCode\QROptions|\chillerlan\Settings\SettingsContainerInterface
 	 */
 	protected SettingsContainerInterface $options;
 
+	/**
+	 * The selected data interface (Number, AlphaNum, Kanji, Byte)
+	 */
 	protected QRDataInterface $dataInterface;
 
 	/**
-	 * @see http://php.net/manual/function.mb-internal-encoding.php
+	 * The current encoding (before the QRCode instance was invoked)
+	 *
+	 * @see http://php.net/manual/function.mb-internal-encoding.php mb_internal_encoding()
 	 */
 	protected string $mbCurrentEncoding;
 
 	/**
 	 * QRCode constructor.
+	 *
+	 * Sets the options instance, determines the current mb-encoding and sets it to UTF-8
 	 */
 	public function __construct(SettingsContainerInterface $options = null){
-		// save the current mb encoding (in case it differs from UTF-8)
+		// save the current mb-encoding (in case it differs from UTF-8)
 		$this->mbCurrentEncoding = mb_internal_encoding();
 		// use UTF-8 from here on
 		mb_internal_encoding('UTF-8');
@@ -127,10 +179,11 @@ class QRCode{
 	}
 
 	/**
+	 * Restores the previous mb-encoding setting, so that we don't mess up the rest of the script
+	 *
 	 * @return void
 	 */
 	public function __destruct(){
-		// restore the previous mb_internal_encoding, so that we don't mess up the rest of the script
 		mb_internal_encoding($this->mbCurrentEncoding);
 	}
 

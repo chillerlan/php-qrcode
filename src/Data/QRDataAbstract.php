@@ -35,6 +35,8 @@ abstract class QRDataAbstract implements QRDataInterface{
 
 	/**
 	 * mode length bits for the version breakpoints 1-9, 10-26 and 27-40
+	 *
+	 * ISO/IEC 18004:2000 Table 3 - Number of bits in Character Count Indicator
 	 */
 	protected array $lengthBits = [0, 0, 0];
 
@@ -166,7 +168,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	/**
 	 * creates a BitBuffer and writes the string data to it
 	 *
-	 * @throws \chillerlan\QRCode\QRCodeException
+	 * @throws \chillerlan\QRCode\QRCodeException on data overflow
 	 */
 	protected function writeBitBuffer(string $data):void{
 		$this->bitBuffer = new BitBuffer;
@@ -186,7 +188,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 			throw new QRCodeDataException(sprintf('code length overflow. (%d > %d bit)', $this->bitBuffer->getLength(), $MAX_BITS));
 		}
 
-		// end code.
+		// add terminator (ISO/IEC 18004:2000 Table 2)
 		if($this->bitBuffer->getLength() + 4 <= $MAX_BITS){
 			$this->bitBuffer->put(0, 4);
 		}
@@ -217,7 +219,9 @@ abstract class QRDataAbstract implements QRDataInterface{
 	/**
 	 * ECC masking
 	 *
-	 * @link http://www.thonky.com/qr-code-tutorial/error-correction-coding
+	 * ISO/IEC 18004:2000 Section 8.5 ff
+	 *
+	 * @see http://www.thonky.com/qr-code-tutorial/error-correction-coding
 	 */
 	protected function maskECC():array{
 		[$l1, $l2, $b1, $b2] = $this::RSBLOCKS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
@@ -282,7 +286,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	}
 
 	/**
-	 *
+	 * helper method for the polynomial operations
 	 */
 	protected function poly(int $key, int $count):array{
 		$rsPoly  = new Polynomial;

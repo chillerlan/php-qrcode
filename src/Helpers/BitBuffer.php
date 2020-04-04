@@ -14,15 +14,25 @@ namespace chillerlan\QRCode\Helpers;
 
 use function count, floor;
 
+/**
+ * Holds the raw binary data
+ */
 final class BitBuffer{
 
-	/** @var int[] */
+	/**
+	 * The buffer content
+	 *
+	 * @var int[]
+	 */
 	protected array $buffer = [];
 
+	/**
+	 * Length of the content (bits)
+	 */
 	protected int $length = 0;
 
 	/**
-	 *
+	 * clears the buffer
 	 */
 	public function clear():BitBuffer{
 		$this->buffer = [];
@@ -32,7 +42,7 @@ final class BitBuffer{
 	}
 
 	/**
-	 *
+	 * appends a sequence of bits
 	 */
 	public function put(int $num, int $length):BitBuffer{
 
@@ -44,7 +54,7 @@ final class BitBuffer{
 	}
 
 	/**
-	 *
+	 * appends a single bit
 	 */
 	public function putBit(bool $bit):BitBuffer{
 		$bufIndex = floor($this->length / 8);

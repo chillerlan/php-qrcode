@@ -18,6 +18,9 @@ use function mb_strlen, ord, sprintf, strlen;
 
 /**
  * Kanji mode: double-byte characters from the Shift JIS character set
+ *
+ * ISO/IEC 18004:2000 Section 8.3.5
+ * ISO/IEC 18004:2000 Section 8.4.5
  */
 final class Kanji extends QRDataAbstract{
 
@@ -34,6 +37,8 @@ final class Kanji extends QRDataAbstract{
 
 	/**
 	 * @inheritdoc
+	 *
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException on an illegal character occurence
 	 */
 	protected function write(string $data):void{
 		$len = strlen($data);

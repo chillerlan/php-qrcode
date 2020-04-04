@@ -4,7 +4,7 @@
  *
  * @filesource   Number.php
  * @created      26.11.2015
- * @package      QRCode
+ * @package      chillerlan\QRCode\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
@@ -17,7 +17,10 @@ use chillerlan\QRCode\QRCode;
 use function ord, sprintf, substr;
 
 /**
- * Numeric mode: decimal digits 0 through 9
+ * Numeric mode: decimal digits 0 to 9
+ *
+ * ISO/IEC 18004:2000 Section 8.3.2
+ * ISO/IEC 18004:2000 Section 8.4.2
  */
 final class Number extends QRDataAbstract{
 
@@ -50,12 +53,14 @@ final class Number extends QRDataAbstract{
 	}
 
 	/**
-	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
+	 * get the code for the given numeric string
+	 *
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException on an illegal character occurence
 	 */
 	protected function parseInt(string $string):int{
 		$num = 0;
-
 		$len = strlen($string);
+
 		for($i = 0; $i < $len; $i++){
 			$c = ord($string[$i]);
 

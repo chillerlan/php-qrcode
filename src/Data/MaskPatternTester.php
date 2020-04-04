@@ -17,12 +17,15 @@ use function abs, array_search, call_user_func_array, min;
 /**
  * Receives a QRDataInterface object and runs the mask pattern tests on it.
  *
- * @link http://www.thonky.com/qr-code-tutorial/data-masking
+ * ISO/IEC 18004:2000 Section 8.8.2 - Evaluation of masking results
+ *
+ * @see http://www.thonky.com/qr-code-tutorial/data-masking
  */
 final class MaskPatternTester{
 
-	protected QRMatrix $matrix;
-
+	/**
+	 * The data interface that contains the data matrix to test
+	 */
 	protected QRDataInterface $dataInterface;
 
 	/**
@@ -153,7 +156,7 @@ final class MaskPatternTester{
 	}
 
 	/**
-	 * Checks if there are patterns that look similar to the finder patterns
+	 * Checks if there are patterns that look similar to the finder patterns (1:1:3:1:1 ratio)
 	 */
 	protected function testLevel3(QRMatrix $m, int $size):float{
 		$penalty = 0;

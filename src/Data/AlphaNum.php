@@ -18,6 +18,9 @@ use function ord, sprintf;
 
 /**
  * Alphanumeric mode: 0 to 9, A to Z, space, $ % * + - . / :
+ *
+ * ISO/IEC 18004:2000 Section 8.3.3
+ * ISO/IEC 18004:2000 Section 8.4.3
  */
 final class AlphaNum extends QRDataAbstract{
 
@@ -41,7 +44,9 @@ final class AlphaNum extends QRDataAbstract{
 	}
 
 	/**
-	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
+	 * get the code for the given character
+	 *
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException on an illegal character occurence
 	 */
 	protected function getCharCode(string $chr):int{
 

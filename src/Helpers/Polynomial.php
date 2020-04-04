@@ -17,12 +17,14 @@ use chillerlan\QRCode\QRCodeException;
 use function array_fill, count, sprintf;
 
 /**
- * @link http://www.thonky.com/qr-code-tutorial/error-correction-coding
+ * Polynomial long division helpers
+ *
+ * @see http://www.thonky.com/qr-code-tutorial/error-correction-coding
  */
 final class Polynomial{
 
 	/**
-	 * @link http://www.thonky.com/qr-code-tutorial/log-antilog-table
+	 * @see http://www.thonky.com/qr-code-tutorial/log-antilog-table
 	 */
 	protected const table = [
 		[  1,   0], [  2,   0], [  4,   1], [  8,  25], [ 16,   2], [ 32,  50], [ 64,  26], [128, 198],
@@ -79,7 +81,10 @@ final class Polynomial{
 	}
 
 	/**
+	 * @param int[]    $num
+	 * @param int|null $shift
 	 *
+	 * @return \chillerlan\QRCode\Helpers\Polynomial
 	 */
 	public function setNum(array $num, int $shift = null):Polynomial{
 		$offset = 0;
@@ -99,7 +104,9 @@ final class Polynomial{
 	}
 
 	/**
+	 * @param int[] $e
 	 *
+	 * @return \chillerlan\QRCode\Helpers\Polynomial
 	 */
 	public function multiply(array $e):Polynomial{
 		$n = array_fill(0, count($this->num) + count($e) - 1, 0);
@@ -119,7 +126,9 @@ final class Polynomial{
 	}
 
 	/**
+	 * @param int[] $e
 	 *
+	 * @return \chillerlan\QRCode\Helpers\Polynomial
 	 */
 	public function mod(array $e):Polynomial{
 		$n = $this->num;
