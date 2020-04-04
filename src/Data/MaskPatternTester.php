@@ -163,13 +163,13 @@ final class MaskPatternTester{
 
 				if($x <= $size - 7){
 					if(
-						$m->check($x    , $y)
+						    $m->check($x    , $y)
 						&& !$m->check($x + 1, $y)
-						&& $m->check($x + 2, $y)
-						&& $m->check($x + 3, $y)
-						&& $m->check($x + 4, $y)
+						&&  $m->check($x + 2, $y)
+						&&  $m->check($x + 3, $y)
+						&&  $m->check($x + 4, $y)
 						&& !$m->check($x + 5, $y)
-						&& $m->check($x + 6, $y)
+						&&  $m->check($x + 6, $y)
 					){
 						$penalty += 40;
 					}
@@ -177,13 +177,13 @@ final class MaskPatternTester{
 
 				if($y <= $size - 7){
 					if(
-						$m->check($x, $y)
+						    $m->check($x, $y)
 						&& !$m->check($x, $y + 1)
-						&& $m->check($x, $y + 2)
-						&& $m->check($x, $y + 3)
-						&& $m->check($x, $y + 4)
+						&&  $m->check($x, $y + 2)
+						&&  $m->check($x, $y + 3)
+						&&  $m->check($x, $y + 4)
 						&& !$m->check($x, $y + 5)
-						&& $m->check($x, $y + 6)
+						&&  $m->check($x, $y + 6)
 					){
 						$penalty += 40;
 					}
