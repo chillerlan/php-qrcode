@@ -8,6 +8,7 @@
 	</transformer>
 	<files>
 		<directory>src</directory>
+		<directory>tests</directory>
 	</files>
 	<transformations>
 		<template name="responsive-twig"/>

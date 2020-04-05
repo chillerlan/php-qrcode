@@ -12,12 +12,26 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\{QRCode, Output\QRString};
+use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Output\{QROutputInterface, QRString};
 
+/**
+ * Tests the QRString output module
+ */
 class QRStringTest extends QROutputTestAbstract{
 
-	protected string $FQCN = QRString::class;
+	/**
+	 * @inheritDoc
+	 * @internal
+	 */
+	protected function getOutputInterface(QROptions $options):QROutputInterface{
+		return new QRString($options, $this->matrix);
+	}
 
+	/**
+	 * @inheritDoc
+	 * @internal
+	 */
 	public function types():array{
 		return [
 			'json' => [QRCode::OUTPUT_STRING_JSON],
@@ -26,17 +40,8 @@ class QRStringTest extends QROutputTestAbstract{
 	}
 
 	/**
-	 * @dataProvider types
+	 * @inheritDoc
 	 */
-	public function testStringOutput(string $type):void{
-		$this->options->outputType = $type;
-		$this->options->cachefile  = $this::cachefile.$type;
-		$this->setOutputInterface();
-		$data = $this->outputInterface->dump();
-
-		$this::assertSame($data, file_get_contents($this->options->cachefile));
-	}
-
 	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [
@@ -45,8 +50,8 @@ class QRStringTest extends QROutputTestAbstract{
 			4    => 'B',
 		];
 
-		$this->setOutputInterface();
-		$data = $this->outputInterface->dump();
+		$this->outputInterface = $this->getOutputInterface($this->options);
+		$data                  = $this->outputInterface->dump();
 
 		$this::assertStringContainsString('A', $data);
 		$this::assertStringContainsString('B', $data);

@@ -12,12 +12,40 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\{QRCode, Output\QRImage};
+use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Output\{QROutputInterface, QRImage};
 
+/**
+ * Tests the QRImage output module
+ */
 class QRImageTest extends QROutputTestAbstract{
 
-	protected string $FQCN = QRImage::class;
+	/**
+	 * @inheritDoc
+	 * @internal
+	 */
+	public function setUp():void{
 
+		if(!extension_loaded('gd')){
+			$this->markTestSkipped('ext-gd not loaded');
+			return;
+		}
+
+		parent::setUp();
+	}
+
+	/**
+	 * @inheritDoc
+	 * @internal
+	 */
+	protected function getOutputInterface(QROptions $options):QROutputInterface{
+		return new QRImage($options, $this->matrix);
+	}
+
+	/**
+	 * @inheritDoc
+	 * @internal
+	 */
 	public function types():array{
 		return [
 			'png' => [QRCode::OUTPUT_IMAGE_PNG],
@@ -27,23 +55,8 @@ class QRImageTest extends QROutputTestAbstract{
 	}
 
 	/**
-	 * @dataProvider types
+	 * @inheritDoc
 	 */
-	public function testImageOutput(string $type):void{
-		$this->options->outputType  = $type;
-		$this->options->imageBase64 = false;
-
-		$this->setOutputInterface();
-		$this->outputInterface->dump($this::cachefile.$type);
-		$img = $this->outputInterface->dump();
-
-		if($type === QRCode::OUTPUT_IMAGE_JPG){ // jpeg encoding may cause different results
-			$this->markAsRisky();
-		}
-
-		$this::assertSame($img, file_get_contents($this::cachefile.$type));
-	}
-
 	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [
@@ -52,7 +65,8 @@ class QRImageTest extends QROutputTestAbstract{
 			4    => [255, 255, 255],
 		];
 
-		$this->setOutputInterface()->dump();
+		$this->outputInterface = $this->getOutputInterface($this->options);
+		$this->outputInterface->dump();
 
 		$this::assertTrue(true); // tricking the code coverage
 	}

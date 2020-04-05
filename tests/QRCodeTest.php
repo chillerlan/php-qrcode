@@ -13,73 +13,86 @@
 namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCode\{QROptions, QRCode};
-use chillerlan\QRCode\Data\{AlphaNum, Byte, Number, QRCodeDataException};
+use chillerlan\QRCode\Data\{AlphaNum, Byte, Kanji, Number, QRCodeDataException};
 use chillerlan\QRCode\Output\QRCodeOutputException;
-use chillerlan\QRCodeExamples\MyCustomOutput;
+use PHPUnit\Framework\TestCase;
 
 use function random_bytes;
 
-class QRCodeTest extends QRTestAbstract{
+/**
+ * Tests basic functions of the QRCode class
+ */
+class QRCodeTest extends TestCase{
 
-	protected string $FQCN = QRCode::class;
+	/** @internal  */
+	protected QRCode $qrcode;
+	/** @internal  */
+	protected QROptions $options;
 
 	/**
-	 * @var \chillerlan\QRCode\QRCode
+	 * invoke test instances
+	 *
+	 * @internal
 	 */
-	protected $qrcode;
-
 	protected function setUp():void{
-		parent::setUp();
-
-		$this->qrcode = $this->reflection->newInstance();
+		$this->qrcode  = new QRCode;
+		$this->options = new QROptions;
 	}
 
+	/**
+	 * isNumber() should pass on yna number and fail on anything else
+	 */
 	public function testIsNumber():void{
 		$this::assertTrue($this->qrcode->isNumber('0123456789'));
-		$this::assertFalse($this->qrcode->isNumber('ABC'));
+
+		$this::assertFalse($this->qrcode->isNumber('ABC123'));
 	}
 
+	/**
+	 * isAlphaNum() should pass on the 45 defined characters and fail on anything else (e.g. lowercase)
+	 */
 	public function testIsAlphaNum():void{
 		$this::assertTrue($this->qrcode->isAlphaNum('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:'));
+
 		$this::assertFalse($this->qrcode->isAlphaNum('abc'));
 	}
 
+	/**
+	 * isKanji() should pass on Kanji/SJIS characters and fail on everything else
+	 */
 	public function testIsKanji():void{
 		$this::assertTrue($this->qrcode->isKanji('茗荷'));
+
 		$this::assertFalse($this->qrcode->isKanji('Ã'));
-	}
-
-	// coverage
-
-	public function typeDataProvider():array{
-		return [
-			'png'  => [QRCode::OUTPUT_IMAGE_PNG, 'data:image/png;base64,'],
-			'gif'  => [QRCode::OUTPUT_IMAGE_GIF, 'data:image/gif;base64,'],
-			'jpg'  => [QRCode::OUTPUT_IMAGE_JPG, 'data:image/jpg;base64,'],
-			'svg'  => [QRCode::OUTPUT_MARKUP_SVG, '<svg xmlns="http://www.w3.org/2000/svg" class="qr-svg " style="width: 100%; height: auto;" viewBox="'],
-			'html' => [QRCode::OUTPUT_MARKUP_HTML, '<div><span style="background:'],
-			'text' => [QRCode::OUTPUT_STRING_TEXT, '⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕'.PHP_EOL],
-			'json' => [QRCode::OUTPUT_STRING_JSON, '[[18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18],'],
-		];
+		$this::assertFalse($this->qrcode->isKanji('ABC'));
+		$this::assertFalse($this->qrcode->isKanji('123'));
 	}
 
 	/**
-	 * @dataProvider typeDataProvider
-	 * @param $type
+	 * isByte() passses any binary string and only fails on empty strings
 	 */
-	public function testRenderImage($type, $expected):void{
-		$this->qrcode = $this->reflection->newInstanceArgs([new QROptions(['outputType' => $type])]);
+	public function testIsByte():void{
+		$this::assertTrue($this->qrcode->isByte("\x01\x02\x03"));
+		$this::assertTrue($this->qrcode->isByte('            ')); // not empty!
 
-		$this::assertStringContainsString($expected, $this->qrcode->render('test'));
+		$this::assertFalse($this->qrcode->isByte(''));
 	}
 
+	/**
+	 * tests if an exception is thrown when an invalid (built-in) output type is specified
+	 */
 	public function testInitDataInterfaceException():void{
 		$this->expectException(QRCodeOutputException::class);
 		$this->expectExceptionMessage('invalid output type');
 
-		(new QRCode(new QROptions(['outputType' => 'foo'])))->render('test');
+		$this->options->outputType = 'foo';
+
+		(new QRCode($this->options))->render('test');
 	}
 
+	/**
+	 * tests if an exception is thrown when trying to call getMatrix() without data (empty string, no data set)
+	 */
 	public function testGetMatrixException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('QRCode::getMatrix() No data given.');
@@ -87,54 +100,52 @@ class QRCodeTest extends QRTestAbstract{
 		$this->qrcode->getMatrix('');
 	}
 
-	public function testTrim():void{
-		$m1 = $this->qrcode->getMatrix('hello');
-		$m2 = $this->qrcode->getMatrix('hello '); // added space
+	/**
+	 * test whether stings are trimmed (they are not) - i'm still torn on that (see isByte)
+	 */
+	public function testAvoidTrimming():void{
+		$m1 = $this->qrcode->getMatrix('hello')->matrix();
+		$m2 = $this->qrcode->getMatrix('hello ')->matrix(); // added space
 
-		$this::assertNotEquals($m1, $m2);
+		$this::assertNotSame($m1, $m2);
 	}
 
-	public function testImageTransparencyBGDefault():void{
-		$this->qrcode = $this->reflection->newInstanceArgs([new QROptions(['imageTransparencyBG' => ['foo']])]);
-
-		$this::assertSame([255,255,255], $this->getProperty('options')->getValue($this->qrcode)->imageTransparencyBG);
-	}
-
-	public function testCustomOutput():void{
-
-		$options = new QROptions([
-			'version'         => 5,
-			'eccLevel'        => QRCode::ECC_L,
-			'outputType'      => QRCode::OUTPUT_CUSTOM,
-			'outputInterface' => MyCustomOutput::class,
-		]);
-
-		$expected = '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111110101011110100001011110011111110000000010000010011111001010011111001010000010000000010111010111000001101011000001010111010000000010111010111010110000011010110010111010000000010111010100110101100000110101010111010000000010000010001101011000001101011010000010000000011111110101010101010101010101011111110000000000000000001010011111001010011000000000000000011110010101111010000101111010100111010000000001110001001011110100001011110110010010000000001100010011111001010011111001011110010000000011010000101000001101011000001011001010000000001101011010010110000011010110100000100000000000001001001110101100000110101101011100000000011100010100101011000001101011001100000000000000001000101100101001111100101111101010000000000111011111010111101000010111101100000000000001111000010000101111010000101101001110000000000100011110001111100101001111101000110000000010001001001101100000110101100110100010000000011100111001001101011000001101111011000000000010110101000000011010110000011011101100000000001111011110000110101100000110100001000000000010111100001111110010100111110100110100000000011001011111100001011110100001011010110000000000100101001101000010111101000000100110000000001011011100010100111110010100110011100000000010010101010011010110000011010000010010000000000111011101100000110101100001111110000000000000000000111011000001101011001000110110000000011111110000110000011010110011010111110000000010000010010010011111001010011000111100000000010111010010111010000101111011111101100000000010111010101011110100001011111100010010000000010111010111111001010011111011101010100000000010000010111000001101011000011001101000000000011111110111010110000011010110111100110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';
-
-		$this::assertSame($expected, $this->reflection->newInstanceArgs([$options])->render('test'));
-	}
-
+	/**
+	 * tests if the data mode is overriden if QROptions::$dataModeOverride is set to a valid value
+	 *
+	 * @see https://github.com/chillerlan/php-qrcode/issues/39
+	 */
 	public function testDataModeOverride():void{
-		$this->qrcode = $this->reflection->newInstance();
+
+		// no (or invalid) value set - auto detection
+		$this->options->dataModeOverride = 'foo';
+		$this->qrcode = new QRCode;
 
 		$this::assertInstanceOf(Number::class, $this->qrcode->initDataInterface('123'));
 		$this::assertInstanceOf(AlphaNum::class, $this->qrcode->initDataInterface('ABC123'));
 		$this::assertInstanceOf(Byte::class, $this->qrcode->initDataInterface(random_bytes(32)));
+		$this::assertInstanceOf(Kanji::class, $this->qrcode->initDataInterface('茗荷'));
 
-		$this->qrcode = $this->reflection->newInstanceArgs([new QROptions(['dataMode' => 'Byte'])]);
+		// data mode set: force the given data mode
+		$this->options->dataModeOverride = 'Byte';
+		$this->qrcode = new QRCode($this->options);
 
 		$this::assertInstanceOf(Byte::class, $this->qrcode->initDataInterface('123'));
 		$this::assertInstanceOf(Byte::class, $this->qrcode->initDataInterface('ABC123'));
 		$this::assertInstanceOf(Byte::class, $this->qrcode->initDataInterface(random_bytes(32)));
+		$this::assertInstanceOf(Byte::class, $this->qrcode->initDataInterface('茗荷'));
 	}
 
+	/**
+	 * tests if an exception is thrown when an invalid character occurs when forcing a data mode other than Byte
+	 */
 	public function testDataModeOverrideError():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('illegal char:');
 
-		$this->qrcode = $this->reflection->newInstanceArgs([new QROptions(['dataModeOverride' => 'AlphaNum'])]);
+		$this->options->dataModeOverride = 'AlphaNum';
 
-		$this->qrcode->initDataInterface(random_bytes(32));
+		(new QRCode($this->options))->initDataInterface(random_bytes(32));
 	}
 
 }

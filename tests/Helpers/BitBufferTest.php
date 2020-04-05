@@ -12,10 +12,14 @@
 
 namespace chillerlan\QRCodeTest\Helpers;
 
-use chillerlan\QRCode\{QRCode, Helpers\BitBuffer};
-use chillerlan\QRCodeTest\QRTestAbstract;
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Helpers\BitBuffer;
+use PHPUnit\Framework\TestCase;
 
-class BitBufferTest extends QRTestAbstract{
+/**
+ * BitBuffer coverage test
+ */
+final class BitBufferTest extends TestCase{
 
 	protected BitBuffer $bitBuffer;
 

@@ -14,9 +14,12 @@ namespace chillerlan\QRCodeTest\Helpers;
 
 use chillerlan\QRCode\Helpers\Polynomial;
 use chillerlan\QRCode\QRCodeException;
-use chillerlan\QRCodeTest\QRTestAbstract;
+use PHPUnit\Framework\TestCase;
 
-class PolynomialTest extends QRTestAbstract{
+/**
+ * Polynomial coverage test
+ */
+final class PolynomialTest extends TestCase{
 
 	protected Polynomial $polynomial;
 

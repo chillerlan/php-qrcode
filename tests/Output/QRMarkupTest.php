@@ -12,12 +12,26 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\{QRCode, Output\QRMarkup};
+use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Output\{QROutputInterface, QRMarkup};
 
+/**
+ * Tests the QRMarkup output module
+ */
 class QRMarkupTest extends QROutputTestAbstract{
 
-	protected string $FQCN = QRMarkup::class;
+	/**
+	 * @inheritDoc
+	 * @internal
+	 */
+	protected function getOutputInterface(QROptions $options):QROutputInterface{
+		return new QRMarkup($options, $this->matrix);
+	}
 
+	/**
+	 * @inheritDoc
+	 * @internal
+	 */
 	public function types():array{
 		return [
 			'html' => [QRCode::OUTPUT_MARKUP_HTML],
@@ -26,38 +40,8 @@ class QRMarkupTest extends QROutputTestAbstract{
 	}
 
 	/**
-	 * @dataProvider types
+	 * @inheritDoc
 	 */
-	public function testMarkupOutputFile(string $type):void{
-		$this->options->outputType = $type;
-		$this->options->cachefile  = $this::cachefile.$type;
-		$this->setOutputInterface();
-		$data = $this->outputInterface->dump();
-
-		$this::assertSame($data, file_get_contents($this->options->cachefile));
-	}
-
-	/**
-	 * @dataProvider types
-	 */
-	public function testMarkupOutput(string $type):void{
-		$this->options->outputType = $type;
-		$this->setOutputInterface();
-
-		$expected = explode($this->options->eol, file_get_contents($this::cachefile.$type));
-		// cut off the doctype & head
-		array_shift($expected);
-
-		if($type === QRCode::OUTPUT_MARKUP_HTML){
-			// cut off the </body> tag
-			array_pop($expected);
-		}
-
-		$expected = implode($this->options->eol, $expected);
-
-		$this::assertSame(trim($expected), trim($this->outputInterface->dump()));
-	}
-
 	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [
@@ -66,7 +50,7 @@ class QRMarkupTest extends QROutputTestAbstract{
 			4    => '#ECF9BE',
 		];
 
-		$this->setOutputInterface();
+		$this->outputInterface = $this->getOutputInterface($this->options);
 		$data = $this->outputInterface->dump();
 		$this::assertStringContainsString('#4A6000', $data);
 		$this::assertStringContainsString('#ECF9BE', $data);

@@ -12,14 +12,18 @@
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\Data\{AlphaNum, QRCodeDataException};
+use chillerlan\QRCode\Data\{AlphaNum, QRCodeDataException, QRDataInterface};
+use chillerlan\QRCode\QROptions;
 
-class AlphaNumTest extends DatainterfaceTestAbstract{
+/**
+ * Tests the AlphaNum class
+ */
+final class AlphaNumTest extends DatainterfaceTestAbstract{
 
-	protected string $FQCN = AlphaNum::class;
-
+	/** @internal */
 	protected string $testdata  = '0 $%*+-./:';
 
+	/** @internal */
 	protected array  $expected  = [
 		32, 80, 36, 212, 252, 15, 175, 251,
 		176, 236, 17, 236, 17, 236, 17, 236,
@@ -36,6 +40,17 @@ class AlphaNumTest extends DatainterfaceTestAbstract{
 		92, 112, 20, 198, 27
 	];
 
+	/**
+	 * @inheritDoc
+	 * @internal
+	 */
+	protected function getDataInterfaceInstance(QROptions $options):QRDataInterface{
+		return new AlphaNum($options);
+	}
+
+	/**
+	 * Tests if an exception is thrown when an invalid character is encountered
+	 */
 	public function testGetCharCodeException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('illegal char: "#" [35]');

@@ -12,12 +12,18 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\{QRCode, Output\QRImagick};
+use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Output\{QROutputInterface, QRImagick};
 
+/**
+ * Tests the QRImagick output module
+ */
 class QRImagickTest extends QROutputTestAbstract{
 
-	protected string $FQCN = QRImagick::class;
-
+	/**
+	 * @inheritDoc
+	 * @internal
+	 */
 	public function setUp():void{
 
 		if(!extension_loaded('imagick')){
@@ -28,17 +34,27 @@ class QRImagickTest extends QROutputTestAbstract{
 		parent::setUp();
 	}
 
-	public function testImageOutput():void{
-		$type = QRCode::OUTPUT_IMAGICK;
-
-		$this->options->outputType = $type;
-		$this->setOutputInterface();
-		$this->outputInterface->dump($this::cachefile.$type);
-		$img = $this->outputInterface->dump();
-
-		$this::assertSame($img, file_get_contents($this::cachefile.$type));
+	/**
+	 * @inheritDoc
+	 * @internal
+	 */
+	protected function getOutputInterface(QROptions $options):QROutputInterface{
+		return new QRImagick($options, $this->matrix);
 	}
 
+	/**
+	 * @inheritDoc
+	 * @internal
+	 */
+	public function types():array{
+		return [
+			'imagick' => [QRCode::OUTPUT_IMAGICK],
+		];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [
@@ -47,7 +63,8 @@ class QRImagickTest extends QROutputTestAbstract{
 			4    => '#ECF9BE',
 		];
 
-		$this->setOutputInterface()->dump();
+		$this->outputInterface = $this->getOutputInterface($this->options);
+		$this->outputInterface->dump();
 
 		$this::assertTrue(true); // tricking the code coverage
 	}

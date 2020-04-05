@@ -14,58 +14,97 @@ namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
-use chillerlan\QRCodeTest\QRTestAbstract;
+use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 
-class QRMatrixTest extends QRTestAbstract{
+/**
+ * Tests the QRMatix class
+ */
+final class QRMatrixTest extends TestCase{
 
-	protected string $FQCN = QRMatrix::class;
-
-	protected int $version = 7;
-
+	/** @internal */
+	protected const version = 40;
+	/** @internal */
 	protected QRMatrix $matrix;
 
+	/**
+	 * invokes a QRMatrix object
+	 *
+	 * @internal
+	 */
 	protected function setUp():void{
-		parent::setUp();
-
-		/** @noinspection PhpFieldAssignmentTypeMismatchInspection */
-		$this->matrix = $this->reflection->newInstanceArgs([$this->version, QRCode::ECC_L]);
+		$this->matrix = $this->getMatrix($this::version);
 	}
 
+	/**
+	 * shortcut
+	 *
+	 * @internal
+	 */
+	protected function getMatrix(int $version):QRMatrix{
+		return  new QRMatrix($version, QRCode::ECC_L);
+	}
+
+	/**
+	 * Validates the QRMatrix instance
+	 */
+	public function testInstance():void{
+		$this::assertInstanceOf(QRMatrix::class, $this->matrix);
+	}
+
+	/**
+	 * Tests if an exception is thrown when an invalid QR version was given
+	 */
 	public function testInvalidVersionException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid QR Code version');
 
-		$this->reflection->newInstanceArgs([42, 0]);
+		$this->matrix = new QRMatrix(42, 0);
 	}
 
+	/**
+	 * Tests if an exception is thrown when an invalid ECC level was given
+	 */
 	public function testInvalidEccException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid ecc level');
 
-		$this->reflection->newInstanceArgs([1, 42]);
+		$this->matrix = new QRMatrix(1, 42);
 	}
 
-	public function testInstance():void{
-		$this::assertInstanceOf($this->FQCN, $this->matrix);
-	}
-
+	/**
+	 * Tests if size() returns the actual matrix size/count
+	 */
 	public function testSize():void{
 		$this::assertCount($this->matrix->size(), $this->matrix->matrix());
 	}
 
+	/**
+	 * Tests if version() returns the current (given) version
+	 */
 	public function testVersion():void{
-		$this::assertSame($this->version, $this->matrix->version());
+		$this::assertSame($this::version, $this->matrix->version());
 	}
 
+	/**
+	 * Tests if eccLevel() returns the current (given) ECC level
+	 */
 	public function testECC():void{
 		$this::assertSame(QRCode::ECC_L, $this->matrix->eccLevel());
 	}
 
+	/**
+	 * Tests if maskPattern() returns the current (or default) mask pattern
+	 */
 	public function testMaskPattern():void{
-		$this::assertSame(-1, $this->matrix->maskPattern());
+		$this::assertSame(-1, $this->matrix->maskPattern()); // default
+
+		// @todo: actual mask pattern after mapData()
 	}
 
+	/**
+	 * Tests the set(), get() and check() methods
+	 */
 	public function testGetSetCheck():void{
 		$this->matrix->set(10, 10, true, QRMatrix::M_TEST);
 		$this::assertSame(65280, $this->matrix->get(10, 10));
@@ -76,62 +115,112 @@ class QRMatrixTest extends QRTestAbstract{
 		$this::assertFalse($this->matrix->check(20, 20));
 	}
 
-	public function testSetDarkModule():void{
-		$this->matrix->setDarkModule();
+	/**
+	 * Version data provider for several pattern tests
+	 *
+	 * @return int[][]
+	 * @internal
+	 */
+	public function versionProvider():array{
+		$versions = [];
 
-		$this::assertSame(QRMatrix::M_DARKMODULE << 8, $this->matrix->get(8, $this->matrix->size() - 8));
+		for($i = 1; $i <= 40; $i++){
+			$versions[] = [$i];
+		}
+
+		return $versions;
 	}
 
-	public function testSetFinderPattern():void{
-		$this->matrix->setFinderPattern();
+	/**
+	 * Tests setting the dark module and verifies its position
+	 *
+	 * @dataProvider versionProvider
+	 */
+	public function testSetDarkModule(int $version):void{
+		$matrix = $this->getMatrix($version)->setDarkModule();
 
-		$this::assertSame(QRMatrix::M_FINDER << 8, $this->matrix->get(0, 0));
-		$this::assertSame(QRMatrix::M_FINDER << 8, $this->matrix->get(0, $this->matrix->size() - 1));
-		$this::assertSame(QRMatrix::M_FINDER << 8, $this->matrix->get($this->matrix->size() - 1, 0));
+		$this::assertSame(QRMatrix::M_DARKMODULE << 8, $matrix->get(8, $matrix->size() - 8));
 	}
 
-	public function testSetSeparators():void{
-		$this->matrix->setSeparators();
+	/**
+	 * Tests setting the finder patterns and verifies their positions
+	 *
+	 * @dataProvider versionProvider
+	 */
+	public function testSetFinderPattern(int $version):void{
+		$matrix = $this->getMatrix($version)->setFinderPattern();
 
-		$this::assertSame(QRMatrix::M_SEPARATOR, $this->matrix->get(7, 0));
-		$this::assertSame(QRMatrix::M_SEPARATOR, $this->matrix->get(0, 7));
-		$this::assertSame(QRMatrix::M_SEPARATOR, $this->matrix->get(0, $this->matrix->size() - 8));
-		$this::assertSame(QRMatrix::M_SEPARATOR, $this->matrix->get($this->matrix->size() - 8, 0));
+		$this::assertSame(QRMatrix::M_FINDER << 8, $matrix->get(0, 0));
+		$this::assertSame(QRMatrix::M_FINDER << 8, $matrix->get(0, $matrix->size() - 1));
+		$this::assertSame(QRMatrix::M_FINDER << 8, $matrix->get($matrix->size() - 1, 0));
 	}
 
-	public function testSetAlignmentPattern():void{
-		$this->matrix
+	/**
+	 * Tests the separator patterns and verifies their positions
+	 *
+	 * @dataProvider versionProvider
+	 */
+	public function testSetSeparators(int $version):void{
+		$matrix = $this->getMatrix($version)->setSeparators();
+
+		$this::assertSame(QRMatrix::M_SEPARATOR, $matrix->get(7, 0));
+		$this::assertSame(QRMatrix::M_SEPARATOR, $matrix->get(0, 7));
+		$this::assertSame(QRMatrix::M_SEPARATOR, $matrix->get(0, $matrix->size() - 8));
+		$this::assertSame(QRMatrix::M_SEPARATOR, $matrix->get($matrix->size() - 8, 0));
+	}
+
+	/**
+	 * Tests the alignment patterns and verifies their positions - version 1 (no pattern) skipped
+	 *
+	 * @dataProvider versionProvider
+	 */
+	public function testSetAlignmentPattern(int $version):void{
+
+		if($version === 1){
+			$this->markTestSkipped('N/A');
+			return;
+		}
+
+		$matrix = $this
+			->getMatrix($version)
 			->setFinderPattern()
 			->setAlignmentPattern()
 		;
 
-		$alignmentPattern = (new ReflectionClass(QRMatrix::class))->getConstant('alignmentPattern')[$this->version];
+		$alignmentPattern = (new ReflectionClass(QRMatrix::class))->getConstant('alignmentPattern')[$version];
 
 		foreach($alignmentPattern as $py){
 			foreach($alignmentPattern as $px){
 
-				if($this->matrix->get($px, $py) === QRMatrix::M_FINDER << 8){
-					$this::assertSame(QRMatrix::M_FINDER << 8, $this->matrix->get($px, $py), 'skipped finder pattern');
+				if($matrix->get($px, $py) === QRMatrix::M_FINDER << 8){
+					$this::assertSame(QRMatrix::M_FINDER << 8, $matrix->get($px, $py), 'skipped finder pattern');
 					continue;
 				}
 
-				$this::assertSame(QRMatrix::M_ALIGNMENT << 8, $this->matrix->get($px, $py));
+				$this::assertSame(QRMatrix::M_ALIGNMENT << 8, $matrix->get($px, $py));
 			}
 		}
 
 	}
 
-	public function testSetTimingPattern():void{
-		$this->matrix
+	/**
+	 * Tests the timing patterns and verifies their positions
+	 *
+	 * @dataProvider versionProvider
+	 */
+	public function testSetTimingPattern(int $version):void{
+
+		$matrix = $this
+			->getMatrix($version)
 			->setAlignmentPattern()
 			->setTimingPattern()
 		;
 
-		$size = $this->matrix->size();
+		$size = $matrix->size();
 
 		for($i = 7; $i < $size - 7; $i++){
 			if($i % 2 === 0){
-				$p1 = $this->matrix->get(6, $i);
+				$p1 = $matrix->get(6, $i);
 
 				if($p1 === QRMatrix::M_ALIGNMENT << 8){
 					$this::assertSame(QRMatrix::M_ALIGNMENT << 8, $p1, 'skipped alignment pattern');
@@ -139,49 +228,75 @@ class QRMatrixTest extends QRTestAbstract{
 				}
 
 				$this::assertSame(QRMatrix::M_TIMING << 8, $p1);
-				$this::assertSame(QRMatrix::M_TIMING << 8, $this->matrix->get($i, 6));
+				$this::assertSame(QRMatrix::M_TIMING << 8, $matrix->get($i, 6));
 			}
 		}
 	}
 
-	public function testSetVersionNumber():void{
-		$this->matrix->setVersionNumber(true);
+	/**
+	 * Tests the version patterns and verifies their positions - version < 7 skipped
+	 *
+	 * @dataProvider versionProvider
+	 */
+	public function testSetVersionNumber(int $version):void{
 
-		$this::assertSame(QRMatrix::M_VERSION, $this->matrix->get($this->matrix->size() - 9, 0));
-		$this::assertSame(QRMatrix::M_VERSION, $this->matrix->get($this->matrix->size() - 11, 5));
-		$this::assertSame(QRMatrix::M_VERSION, $this->matrix->get(0, $this->matrix->size() - 9));
-		$this::assertSame(QRMatrix::M_VERSION, $this->matrix->get(5, $this->matrix->size() - 11));
+		if($version < 7){
+			$this->markTestSkipped('N/A');
+			return;
+		}
+
+		$matrix = $this->getMatrix($version)->setVersionNumber(true);
+
+		$this::assertSame(QRMatrix::M_VERSION, $matrix->get($matrix->size() - 9, 0));
+		$this::assertSame(QRMatrix::M_VERSION, $matrix->get($matrix->size() - 11, 5));
+		$this::assertSame(QRMatrix::M_VERSION, $matrix->get(0, $matrix->size() - 9));
+		$this::assertSame(QRMatrix::M_VERSION, $matrix->get(5, $matrix->size() - 11));
 	}
 
-	public function testSetFormatInfo():void{
-		$this->matrix->setFormatInfo(0, true);
+	/**
+	 * Tests the format patterns and verifies their positions
+	 *
+	 * @dataProvider versionProvider
+	 */
+	public function testSetFormatInfo(int $version):void{
+		$matrix = $this->getMatrix($version)->setFormatInfo(0, true);
 
-		$this::assertSame(QRMatrix::M_FORMAT, $this->matrix->get(8, 0));
-		$this::assertSame(QRMatrix::M_FORMAT, $this->matrix->get(0, 8));
-		$this::assertSame(QRMatrix::M_FORMAT, $this->matrix->get($this->matrix->size() - 1, 8));
-		$this::assertSame(QRMatrix::M_FORMAT, $this->matrix->get($this->matrix->size() - 8, 8));
+		$this::assertSame(QRMatrix::M_FORMAT, $matrix->get(8, 0));
+		$this::assertSame(QRMatrix::M_FORMAT, $matrix->get(0, 8));
+		$this::assertSame(QRMatrix::M_FORMAT, $matrix->get($matrix->size() - 1, 8));
+		$this::assertSame(QRMatrix::M_FORMAT, $matrix->get($matrix->size() - 8, 8));
 	}
 
-	public function testSetQuietZone():void{
-		$size = $this->matrix->size();
+	/**
+	 * Tests the quiet zone pattern and verifies its position
+	 *
+	 * @dataProvider versionProvider
+	 */
+	public function testSetQuietZone(int $version):void{
+		$matrix = $this->getMatrix($version);
+
+		$size = $matrix->size();
 		$q    = 5;
 
-		$this->matrix->set(0, 0, true, QRMatrix::M_TEST);
-		$this->matrix->set($size - 1, $size - 1, true, QRMatrix::M_TEST);
+		$matrix->set(0, 0, true, QRMatrix::M_TEST);
+		$matrix->set($size - 1, $size - 1, true, QRMatrix::M_TEST);
 
-		$this->matrix->setQuietZone($q);
+		$matrix->setQuietZone($q);
 
-		$this::assertCount($size + 2 * $q, $this->matrix->matrix());
-		$this::assertCount($size + 2 * $q, $this->matrix->matrix()[$size - 1]);
+		$this::assertCount($size + 2 * $q, $matrix->matrix());
+		$this::assertCount($size + 2 * $q, $matrix->matrix()[$size - 1]);
 
-		$size = $this->matrix->size();
-		$this::assertSame(QRMatrix::M_QUIETZONE, $this->matrix->get(0, 0));
-		$this::assertSame(QRMatrix::M_QUIETZONE, $this->matrix->get($size - 1, $size - 1));
+		$size = $matrix->size();
+		$this::assertSame(QRMatrix::M_QUIETZONE, $matrix->get(0, 0));
+		$this::assertSame(QRMatrix::M_QUIETZONE, $matrix->get($size - 1, $size - 1));
 
-		$this::assertSame(QRMatrix::M_TEST << 8, $this->matrix->get($q, $q));
-		$this::assertSame(QRMatrix::M_TEST << 8, $this->matrix->get($size - 1 - $q, $size - 1 - $q));
+		$this::assertSame(QRMatrix::M_TEST << 8, $matrix->get($q, $q));
+		$this::assertSame(QRMatrix::M_TEST << 8, $matrix->get($size - 1 - $q, $size - 1 - $q));
 	}
 
+	/**
+	 * Tests if an exception is thrown in an attempt to create it before data was written
+	 */
 	public function testSetQuietZoneException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('use only after writing data');
