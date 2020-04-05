@@ -74,12 +74,8 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v2
 
-      - name: "Install ext-ast"
-        run: php7.4 pecl install ast-1.0.6
-
       - name: "Install locked dependencies with composer"
         run: php7.4 $(which composer) install --no-interaction --no-progress --no-suggest
 
       - name: "Run phan"
-        run: php7.4 vendor/bin/phan
-
+        run: php7.4 vendor/bin/phan --allow-polyfill-parser
