@@ -29,7 +29,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v1.1.0
+        uses: actions/checkout@v2
 
       - name: "Install lowest dependencies with composer"
         if: matrix.dependencies == 'lowest'
@@ -49,7 +49,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v1.1.0
+        uses: actions/checkout@v2
 
       - name: "Install locked dependencies with composer"
         run: php7.4 $(which composer) install --no-interaction --no-progress --no-suggest
@@ -64,3 +64,19 @@ jobs:
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: bash <(curl -s https://codecov.io/bash)
+
+
+  static-code-analysis:
+    name: "Static Code Analysis"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+
+      - name: "Install locked dependencies with composer"
+        run: php7.4 $(which composer) install --no-interaction --no-progress --no-suggest
+
+      - name: "Run phan"
+        run: php7.4 vendor/bin/phan
+
