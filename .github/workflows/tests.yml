@@ -69,6 +69,8 @@ jobs:
   static-code-analysis:
     name: "Static Code Analysis"
     runs-on: ubuntu-latest
+    env:
+      extensions: ast
 
     steps:
       - name: "Checkout"
