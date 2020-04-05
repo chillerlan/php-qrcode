@@ -37,7 +37,7 @@ class QRImage extends QROutputAbstract{
 	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
 
 		if(!extension_loaded('gd')){
-			throw new QRCodeException('ext-gd not loaded');
+			throw new QRCodeException('ext-gd not loaded'); // @codeCoverageIgnore
 		}
 
 		parent::__construct($options, $matrix);

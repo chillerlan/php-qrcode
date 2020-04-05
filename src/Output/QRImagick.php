@@ -35,7 +35,7 @@ class QRImagick extends QROutputAbstract{
 	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
 
 		if(!extension_loaded('imagick')){
-			throw new QRCodeException('ext-imagick not loaded');
+			throw new QRCodeException('ext-imagick not loaded'); // @codeCoverageIgnore
 		}
 
 		parent::__construct($options, $matrix);
