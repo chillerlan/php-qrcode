@@ -596,6 +596,8 @@ class QRMatrix{
 	}
 
 	/**
+	 * ISO/IEC 18004:2000 Section 8.8.1
+	 *
 	 * @see \chillerlan\QRCode\QRMatrix::mapData()
 	 *
 	 * @internal
@@ -615,10 +617,10 @@ class QRMatrix{
 			// this is literally the same as the stupid switch...
 			return [
 				$a % 2,
-				$y % 2,
-				$x % 3,
+				$x % 2,
+				$y % 3,
 				$a % 3,
-				(floor($y / 2) + floor($x / 3)) % 2,
+				((int)($y / 2) + (int)($x / 3)) % 2,
 				$m % 2 + $m % 3,
 				($m % 2 + $m % 3) % 2,
 				($m % 3 + $a % 2) % 2
