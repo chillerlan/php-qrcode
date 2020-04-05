@@ -74,11 +74,11 @@ trait QROptionsTrait{
 	/**
 	 * Use this to circumvent the data mode detection and force the usage of the given mode.
 	 *
-	 * valid modes are: Number, AlphaNum, Kanji, Byte
+	 * valid modes are: Number, AlphaNum, Kanji, Byte (case insensitive)
 	 *
 	 * @see https://github.com/chillerlan/php-qrcode/issues/39
 	 */
-	protected ?string $dataMode = null;
+	protected ?string $dataModeOverride = null;
 
 	/**
 	 * The output type

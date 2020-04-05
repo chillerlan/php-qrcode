@@ -132,7 +132,7 @@ class QRCodeTest extends QRTestAbstract{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('illegal char:');
 
-		$this->qrcode = $this->reflection->newInstanceArgs([new QROptions(['dataMode' => 'AlphaNum'])]);
+		$this->qrcode = $this->reflection->newInstanceArgs([new QROptions(['dataModeOverride' => 'AlphaNum'])]);
 
 		$this->qrcode->initDataInterface(random_bytes(32));
 	}

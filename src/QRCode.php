@@ -20,7 +20,7 @@ use chillerlan\QRCode\Output\{
 };
 use chillerlan\Settings\SettingsContainerInterface;
 
-use function call_user_func_array, class_exists, in_array, mb_internal_encoding, ord, strlen;
+use function call_user_func_array, class_exists, in_array, mb_internal_encoding, ord, strlen, strtolower;
 
 /**
  * Turns a text string into a Model 2 QR Code
@@ -139,10 +139,10 @@ class QRCode{
 	 * @var string[]
 	 */
 	protected const DATA_INTERFACES = [
-		'Number'   => Number::class,
-		'AlphaNum' => AlphaNum::class,
-		'Kanji'    => Kanji::class,
-		'Byte'     => Byte::class,
+		'number'   => Number::class,
+		'alphanum' => AlphaNum::class,
+		'kanji'    => Kanji::class,
+		'byte'     => Byte::class,
 	];
 
 	/**
@@ -231,7 +231,7 @@ class QRCode{
 
 		// allow forcing the data mode
 		// see https://github.com/chillerlan/php-qrcode/issues/39
-		$interface = $this::DATA_INTERFACES[$this->options->dataMode] ?? null;
+		$interface = $this::DATA_INTERFACES[strtolower($this->options->dataModeOverride)] ?? null;
 
 		if($interface !== null){
 			return new $interface($this->options, $data);
