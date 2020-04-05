@@ -115,6 +115,11 @@ abstract class QROutputTestAbstract extends TestCase{
 	 * @dataProvider types
 	 */
 	public function testRenderImage(string $type):void{
+
+		if($type === QRCode::OUTPUT_IMAGE_JPG){
+			$this::markAsRisky();
+		}
+
 		$this->options->outputType = $type;
 
 		$this::assertSame(
