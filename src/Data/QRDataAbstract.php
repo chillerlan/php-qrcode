@@ -46,11 +46,6 @@ abstract class QRDataAbstract implements QRDataInterface{
 	protected int $version;
 
 	/**
-	 * the raw data that's being passed to QRMatrix::mapData()
-	 */
-	protected array $matrixdata;
-
-	/**
 	 * ECC temp data
 	 */
 	protected array $ecdata;
@@ -96,7 +91,6 @@ abstract class QRDataAbstract implements QRDataInterface{
 			: $this->options->version;
 
 		$this->writeBitBuffer($data);
-		$this->matrixdata = $this->maskECC();
 
 		return $this;
 	}
@@ -107,7 +101,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	public function initMatrix(int $maskPattern, bool $test = null):QRMatrix{
 		return (new QRMatrix($this->version, $this->options->eccLevel))
 			->init($maskPattern, $test)
-			->mapData($this->matrixdata, $maskPattern)
+			->mapData($this->maskECC(), $maskPattern)
 		;
 	}
 
