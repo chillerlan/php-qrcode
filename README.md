@@ -1,6 +1,6 @@
 # chillerlan/php-qrcode
 
-A PHP7.4+ QR Code library based on the [implementation](https://github.com/kazuhikoarase/qrcode-generator) by [Kazuhiko Arase](https://github.com/kazuhikoarase),
+A PHP 7.4+ QR Code library based on the [implementation](https://github.com/kazuhikoarase/qrcode-generator) by [Kazuhiko Arase](https://github.com/kazuhikoarase),
 namespaced, cleaned up, improved and other stuff.
 
 [![Packagist version][packagist-badge]][packagist]
@@ -34,8 +34,8 @@ namespaced, cleaned up, improved and other stuff.
 
 ### Requirements
 - PHP 7.4+
-  - `ext-gd`, `ext-json`, `ext-mbstring`
-  - optional `ext-imagick`
+  - `ext-json`, `ext-mbstring`
+  - optional: `ext-gd`, `ext-imagick`
 
 ### Installation
 **requires [composer](https://getcomposer.org)**
@@ -51,6 +51,12 @@ via terminal: `composer require chillerlan/php-qrcode`
 	}
 }
 ```
+
+For PHP version ... 
+  - 7.4+ use `^4.0`
+  - 7.2+ use `^3.2`
+  - 7.0+ use `^2.0`
+  - 5.6+ use `1.0.8` (please let PHP 5 die!)
 
 ### Usage
 We want to encode this URI for a mobile authenticator into a QRcode image:
@@ -280,6 +286,7 @@ method | return | description
 `isNumber(string $string)` | bool | checks if a string qualifies for `Number`
 `isAlphaNum(string $string)` | bool | checks if a string qualifies for `AlphaNum`
 `isKanji(string $string)` | bool | checks if a string qualifies for `Kanji`
+`isByte(string $string)` | bool | checks if a string is non-empty
 
 ####  `QRCode` constants
 name | description
@@ -304,7 +311,7 @@ property | type | default | allowed | description
 `$maskPattern` | int | `QRCode::MASK_PATTERN_AUTO` | 0...7 | Mask Pattern to use
 `$addQuietzone` | bool | `true` | - | Add a "quiet zone" (margin) according to the QR code spec
 `$quietzoneSize` | int | 4 | clamped to 0 ... `$matrixSize / 2` | Size of the quiet zone
-`$dataMode` | string | `null` | `Number`, `AlphaNum`, `Kanji`, `Byte` | allows overriding the data type detection
+`$dataModeOverride` | string | `null` | `Number`, `AlphaNum`, `Kanji`, `Byte` | allows overriding the data type detection
 `$outputType` | string | `QRCode::OUTPUT_IMAGE_PNG` | `QRCode::OUTPUT_*` | built-in output type
 `$outputInterface` | string | `null` | * | FQCN of the custom `QROutputInterface` if `QROptions::$outputType` is set to `QRCode::OUTPUT_CUSTOM`
 `$cachefile` | string | `null` | * | optional cache file path
