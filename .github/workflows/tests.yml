@@ -69,12 +69,13 @@ jobs:
   static-code-analysis:
     name: "Static Code Analysis"
     runs-on: ubuntu-latest
-    env:
-      extensions: ast
 
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
+
+      - name: "Install ext-ast"
+        run: php7.4 pecl install ast-1.0.6
 
       - name: "Install locked dependencies with composer"
         run: php7.4 $(which composer) install --no-interaction --no-progress --no-suggest
