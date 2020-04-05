@@ -20,7 +20,7 @@ use chillerlan\QRCode\Output\{
 };
 use chillerlan\Settings\SettingsContainerInterface;
 
-use function call_user_func_array, class_exists, in_array, mb_internal_encoding, ord, strlen, strtolower;
+use function call_user_func_array, class_exists, in_array, mb_internal_encoding, ord, strlen, strtolower, str_split;
 
 /**
  * Turns a text string into a Model 2 QR Code
@@ -288,10 +288,9 @@ class QRCode{
 	 * checks is a given $string matches the characters of a given $charmap, returns false on the first invalid occurence.
 	 */
 	protected function checkString(string $string, array $charmap):bool{
-		$len = strlen($string);
 
-		for($i = 0; $i < $len; $i++){
-			if(!isset($charmap[$string[$i]])){
+		foreach(str_split($string) as $chr){
+			if(!isset($charmap[$chr])){
 				return false;
 			}
 		}
