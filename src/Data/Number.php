@@ -14,7 +14,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\QRCode;
 
-use function ord, sprintf, substr;
+use function ord, sprintf, str_split, substr;
 
 /**
  * Numeric mode: decimal digits 0 to 9
@@ -59,13 +59,12 @@ final class Number extends QRDataAbstract{
 	 */
 	protected function parseInt(string $string):int{
 		$num = 0;
-		$len = strlen($string);
 
-		for($i = 0; $i < $len; $i++){
-			$c = ord($string[$i]);
+		foreach(str_split($string) as $chr){
+			$c = ord($chr);
 
-			if(!isset($this::CHAR_MAP_NUMBER[$string[$i]])){
-				throw new QRCodeDataException(sprintf('illegal char: "%s" [%d]', $string[$i], $c));
+			if(!isset($this::CHAR_MAP_NUMBER[$chr])){
+				throw new QRCodeDataException(sprintf('illegal char: "%s" [%d]', $chr, $c));
 			}
 
 			$c   = $c - 48; // ord('0')
