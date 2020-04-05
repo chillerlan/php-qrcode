@@ -9,13 +9,7 @@ matrix:
   include:
     - php: 7.2
     - php: 7.3
-    - php: 7.4snapshot
     - php: 7.4
-#    - php: nightly
-  allow_failures:
-    - php: 7.4snapshot
-    - php: 7.4 # ext-gd missing https://travis-ci.community/t/add-php-7-4-branch-to-test-against/2179/16
-#    - php: nightly
 
 before_install:
   - pecl channel-update pecl.php.net
