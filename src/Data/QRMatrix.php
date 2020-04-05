@@ -483,6 +483,8 @@ class QRMatrix{
 		$this->maskPattern = $maskPattern;
 		$byteCount = count($data);
 		$size      = $this->moduleCount - 1;
+		$mask      = $this->getMask($this->maskPattern);
+
 
 		for($i = $size, $y = $size, $inc = -1, $byteIndex = 0, $bitIndex  = 7; $i > 0; $i -= 2){
 
@@ -501,7 +503,7 @@ class QRMatrix{
 							$v = (($data[$byteIndex] >> $bitIndex) & 1) === 1;
 						}
 
-						if($this->getMask($x, $y, $maskPattern) === 0){
+						if($mask($x, $y) === 0){
 							$v = !$v;
 						}
 
@@ -532,35 +534,32 @@ class QRMatrix{
 	}
 
 	/**
+	 * ISO/IEC 18004:2000 Section 8.8.1
+	 *
 	 * @see \chillerlan\QRCode\QRMatrix::mapData()
 	 *
-	 * @codeCoverageIgnore
 	 * @internal
 	 *
-	 * @param int $x
-	 * @param int $y
 	 * @param int $maskPattern
 	 *
-	 * @return int
+	 * @return \Closure
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	protected function getMask($x, $y, $maskPattern) {
-		$a = $y + $x;
-		$m = $y * $x;
+	protected function getMask($maskPattern){
 
-		// i hate it so much
-		switch($maskPattern){
-			case 0: return $a % 2;
-			case 1: return $y % 2;
-			case 2: return $x % 3;
-			case 3: return $a % 3;
-			case 4: return (floor($y / 2) + floor($x / 3)) % 2;
-			case 5: return $m % 2 + $m % 3;
-			case 6: return ($m % 2 + $m % 3) % 2;
-			case 7: return ($m % 3 + $a % 2) % 2;
+		if((0b111 & $maskPattern) !== $maskPattern){
+			throw new QRCodeDataException('invalid mask pattern'); // @codeCoverageIgnore
 		}
 
-		throw new QRCodeDataException('invalid mask pattern');
+		return [
+			0b000 => function($x, $y){ return ($x + $y) % 2; },
+			0b001 => function($x, $y){ return $x % 2; },
+			0b010 => function($x, $y){ return $y % 3; },
+			0b011 => function($x, $y){ return ($x + $y) % 3; },
+			0b100 => function($x, $y){ return ((int)($x / 2) + (int)($y / 3)) % 2; },
+			0b101 => function($x, $y){ return (($x * $y) % 2) + (($x * $y) % 3); },
+			0b110 => function($x, $y){ return ((($x * $y) % 2) + (($x * $y) % 3)) % 2; },
+			0b111 => function($x, $y){ return ((($x * $y) % 3) + (($x + $y) % 2)) % 2; },
+		][$maskPattern];
 	}
-
 }
