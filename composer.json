@@ -40,10 +40,5 @@
 			"chillerlan\\QRCodeTest\\": "tests/",
 			"chillerlan\\QRCodeExamples\\": "examples/"
 		}
-	},
-	"extra": {
-		"branch-alias": {
-			"dev-v2.0.x-php5": "1.0.8-dev"
-		}
 	}
 }
