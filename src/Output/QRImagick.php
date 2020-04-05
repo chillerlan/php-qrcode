@@ -14,9 +14,12 @@
 
 namespace chillerlan\QRCode\Output;
 
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\QRCodeException;
+use chillerlan\Settings\SettingsContainerInterface;
 use Imagick, ImagickDraw, ImagickPixel;
 
-use function is_string;
+use function extension_loaded, is_string;
 
 /**
  * ImageMagick output module (requires ext-imagick)
@@ -25,6 +28,18 @@ use function is_string;
  * @see http://phpimagick.com
  */
 class QRImagick extends QROutputAbstract{
+
+	/**
+	 * @inheritDoc
+	 */
+	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
+
+		if(!extension_loaded('imagick')){
+			throw new QRCodeException('ext-imagick not loaded');
+		}
+
+		parent::__construct($options, $matrix);
+	}
 
 	/**
 	 * @inheritDoc

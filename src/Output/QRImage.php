@@ -9,15 +9,18 @@
  * @copyright    2015 Smiley
  * @license      MIT
  *
+ * @noinspection PhpComposerExtensionStubsInspection
  * @noinspection PhpUnused
  */
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\{QRCode, QRCodeException};
+use chillerlan\Settings\SettingsContainerInterface;
 use Exception;
 
-use function array_values, base64_encode, call_user_func, count, imagecolorallocate, imagecolortransparent,
+use function array_values, base64_encode, call_user_func, count, extension_loaded, imagecolorallocate, imagecolortransparent,
 	imagecreatetruecolor, imagedestroy, imagefilledrectangle, imagegif, imagejpeg, imagepng, in_array,
 	is_array, ob_end_clean, ob_get_contents, ob_start, range, sprintf;
 
@@ -27,6 +30,18 @@ use function array_values, base64_encode, call_user_func, count, imagecoloralloc
  * @see http://php.net/manual/book.image.php
  */
 class QRImage extends QROutputAbstract{
+
+	/**
+	 * @inheritDoc
+	 */
+	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
+
+		if(!extension_loaded('gd')){
+			throw new QRCodeException('ext-gd not loaded');
+		}
+
+		parent::__construct($options, $matrix);
+	}
 
 	/**
 	 * GD image types that support transparency
