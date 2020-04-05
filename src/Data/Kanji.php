@@ -46,17 +46,17 @@ final class Kanji extends QRDataAbstract{
 		for($i = 0; $i + 1 < $len; $i += 2){
 			$c = ((0xff & ord($data[$i])) << 8) | (0xff & ord($data[$i + 1]));
 
-			if(0x8140 <= $c && $c <= 0x9FFC){
+			if($c >= 0x8140 && $c <= 0x9FFC){
 				$c -= 0x8140;
 			}
-			elseif(0xE040 <= $c && $c <= 0xEBBF){
+			elseif($c >= 0xE040 && $c <= 0xEBBF){
 				$c -= 0xC140;
 			}
 			else{
 				throw new QRCodeDataException(sprintf('illegal char at %d [%d]', $i + 1, $c));
 			}
 
-			$this->bitBuffer->put((($c >> 8) & 0xff) * 0xC0 + ($c & 0xff), 13);
+			$this->bitBuffer->put(((($c >> 8) & 0xff) * 0xC0) + ($c & 0xff), 13);
 
 		}
 
