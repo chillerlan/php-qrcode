@@ -34,6 +34,8 @@ namespaced, cleaned up, improved and other stuff.
 
 ## Documentation
 
+A documentation created with [phpDocumentor](https://www.phpdoc.org/) can be found at https://chillerlan.github.io/php-qrcode/ (WIP).
+
 ### Requirements
 - PHP 7.4+
   - `ext-json`, `ext-mbstring`
