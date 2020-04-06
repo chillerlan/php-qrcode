@@ -56,7 +56,7 @@ For PHP version ...
   - 7.4+ use `^4.0`
   - 7.2+ use `^3.2`
   - 7.0+ use `^2.0`
-  - 5.6+ use `1.0.8` (please let PHP 5 die!)
+  - 5.6+ use `1.0.9` (please let PHP 5 die!)
 
 ### Usage
 We want to encode this URI for a mobile authenticator into a QRcode image:
