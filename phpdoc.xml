@@ -2,6 +2,10 @@
 <phpdoc>
 	<parser>
 		<target>docs</target>
+		<encoding>utf8</encoding>
+		<markers>
+			<item>TODO</item>
+		</markers>
 	</parser>
 	<transformer>
 		<target>docs</target>
@@ -11,6 +15,6 @@
 		<directory>tests</directory>
 	</files>
 	<transformations>
-		<template name="responsive-twig"/>
+		<template name="clean"/>
 	</transformations>
 </phpdoc>
