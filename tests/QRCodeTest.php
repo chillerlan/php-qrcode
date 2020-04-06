@@ -40,7 +40,7 @@ class QRCodeTest extends TestCase{
 	}
 
 	/**
-	 * isNumber() should pass on yna number and fail on anything else
+	 * isNumber() should pass on any number and fail on anything else
 	 */
 	public function testIsNumber():void{
 		$this::assertTrue($this->qrcode->isNumber('0123456789'));
