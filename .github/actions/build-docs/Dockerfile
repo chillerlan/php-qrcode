@@ -11,5 +11,6 @@ LABEL "com.github.actions.color"="blue"
 RUN echo "display_errors = Off" > $PHP_INI_DIR/conf.d/errors.ini
 
 COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
