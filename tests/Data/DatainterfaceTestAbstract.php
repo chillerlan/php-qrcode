@@ -21,7 +21,7 @@ use ReflectionClass;
 use function str_repeat;
 
 /**
- * Te data interface test abstract
+ * The data interface test abstract
  */
 abstract class DatainterfaceTestAbstract extends TestCase{
 
