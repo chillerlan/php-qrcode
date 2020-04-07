@@ -9,5 +9,5 @@ Locally created docs will appear in this directory. If you'd like to create loca
 - run it in the repository root directory:
   - on Windows `c:\path\to\php.exe c:\path\to\phpDocumentor.phar --config=phpdoc.xml`
   - on Linux just `php /path/to/phpDocumentor.phar --config=phpdoc.xml`
-  - open [index.html](./index.html) in a browser
-  - profit!
+- open [index.html](./index.html) in a browser
+- profit!
