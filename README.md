@@ -38,8 +38,8 @@ A documentation created with [phpDocumentor](https://www.phpdoc.org/) can be fou
 
 ### Requirements
 - PHP 7.4+
-  - `ext-json`, `ext-mbstring`
-  - optional: `ext-gd`, `ext-imagick`
+  - `ext-mbstring`
+  - optional: `ext-json`, `ext-gd`, `ext-imagick`
 
 ### Installation
 **requires [composer](https://getcomposer.org)**

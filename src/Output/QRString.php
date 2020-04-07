@@ -10,6 +10,7 @@
  * @license      MIT
  *
  * @noinspection PhpUnusedParameterInspection
+ * @noinspection PhpComposerExtensionStubsInspection
  */
 
 namespace chillerlan\QRCode\Output;
