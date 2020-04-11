@@ -617,6 +617,9 @@ final class QRMatrix{
 	/**
 	 * ISO/IEC 18004:2000 Section 8.8.1
 	 *
+	 * Note that some versions of the QR code standard have had errors in the section about mask patterns.
+	 * The information below has been corrected. (https://www.thonky.com/qr-code-tutorial/mask-patterns)
+	 *
 	 * @see \chillerlan\QRCode\QRMatrix::mapData()
 	 *
 	 * @internal
@@ -631,10 +634,10 @@ final class QRMatrix{
 
 		return [
 			0b000 => fn($x, $y):int => ($x + $y) % 2,
-			0b001 => fn($x, $y):int => $x % 2,
-			0b010 => fn($x, $y):int => $y % 3,
+			0b001 => fn($x, $y):int => $y % 2,
+			0b010 => fn($x, $y):int => $x % 3,
 			0b011 => fn($x, $y):int => ($x + $y) % 3,
-			0b100 => fn($x, $y):int => ((int)($x / 2) + (int)($y / 3)) % 2,
+			0b100 => fn($x, $y):int => ((int)($y / 2) + (int)($x / 3)) % 2,
 			0b101 => fn($x, $y):int => (($x * $y) % 2) + (($x * $y) % 3),
 			0b110 => fn($x, $y):int => ((($x * $y) % 2) + (($x * $y) % 3)) % 2,
 			0b111 => fn($x, $y):int => ((($x * $y) % 3) + (($x + $y) % 2)) % 2,

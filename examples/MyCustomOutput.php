@@ -28,6 +28,8 @@ class MyCustomOutput extends QROutputAbstract{
 			for($col = 0; $col < $this->moduleCount; $col++){
 				$output .= (int)$this->matrix->check($col, $row);
 			}
+
+			$output .= \PHP_EOL;
 		}
 
 		return $output;
