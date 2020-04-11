@@ -161,43 +161,41 @@ final class MaskPatternTester{
 	 * Checks if there are patterns that look similar to the finder patterns (1:1:3:1:1 ratio)
 	 */
 	protected function testLevel3(QRMatrix $m, int $size):float{
-		$penalty = 0;
+		$penalties = 0;
 
 		foreach($m->matrix() as $y => $row){
 			foreach($row as $x => $val){
 
-				if($x <= $size - 7){
-					if(
-						    $m->check($x    , $y)
-						&& !$m->check($x + 1, $y)
-						&&  $m->check($x + 2, $y)
-						&&  $m->check($x + 3, $y)
-						&&  $m->check($x + 4, $y)
-						&& !$m->check($x + 5, $y)
-						&&  $m->check($x + 6, $y)
-					){
-						$penalty += 40;
-					}
+				if(
+					$x + 6 < $size
+					&&  $m->check($x    , $y)
+					&& !$m->check($x + 1, $y)
+					&&  $m->check($x + 2, $y)
+					&&  $m->check($x + 3, $y)
+					&&  $m->check($x + 4, $y)
+					&& !$m->check($x + 5, $y)
+					&&  $m->check($x + 6, $y)
+				){
+					$penalties++;
 				}
 
-				if($y <= $size - 7){
-					if(
-						    $m->check($x, $y)
-						&& !$m->check($x, $y + 1)
-						&&  $m->check($x, $y + 2)
-						&&  $m->check($x, $y + 3)
-						&&  $m->check($x, $y + 4)
-						&& !$m->check($x, $y + 5)
-						&&  $m->check($x, $y + 6)
-					){
-						$penalty += 40;
-					}
+				if(
+					$y + 6 < $size
+					&&  $m->check($x, $y    )
+					&& !$m->check($x, $y + 1)
+					&&  $m->check($x, $y + 2)
+					&&  $m->check($x, $y + 3)
+					&&  $m->check($x, $y + 4)
+					&& !$m->check($x, $y + 5)
+					&&  $m->check($x, $y + 6)
+				){
+					$penalties++;
 				}
 
 			}
 		}
 
-		return $penalty;
+		return $penalties * 40;
 	}
 
 	/**
