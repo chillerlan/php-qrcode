@@ -260,7 +260,7 @@ final class QRMatrix{
 	/**
 	 * Returns the data matrix, returns a pure boolean representation if $boolean is set to true
 	 *
-	 * @return int[][]
+	 * @return int[][]|bool[][]
 	 */
 	public function matrix(bool $boolean = false):array{
 
