@@ -21,6 +21,7 @@ interface QROutputInterface{
 
 	const DEFAULT_MODULE_VALUES = [
 		// light
+		QRMatrix::M_NULL            => false, // 0
 		QRMatrix::M_DATA            => false, // 4
 		QRMatrix::M_FINDER          => false, // 6
 		QRMatrix::M_SEPARATOR       => false, // 8
