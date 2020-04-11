@@ -258,12 +258,27 @@ final class QRMatrix{
 	}
 
 	/**
-	 * Returns the data matrix
+	 * Returns the data matrix, returns a pure boolean representation if $boolean is set to true
 	 *
 	 * @return int[][]
 	 */
-	public function matrix():array{
-		return $this->matrix;
+	public function matrix(bool $boolean = false):array{
+
+		if(!$boolean){
+			return $this->matrix;
+		}
+
+		$matrix = [];
+
+		foreach($this->matrix as $y => $row){
+			$matrix[$y] = [];
+
+			foreach($row as $x => $val){
+				$matrix[$y][$x] = ($val >> 8) > 0;
+			}
+		}
+
+		return $matrix;
 	}
 
 	/**
@@ -325,7 +340,7 @@ final class QRMatrix{
 	 *            $value >> 8 === 0
 	 */
 	public function check(int $x, int $y):bool{
-		return $this->matrix[$y][$x] >> 8 > 0;
+		return ($this->matrix[$y][$x] >> 8) > 0;
 	}
 
 
