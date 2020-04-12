@@ -153,7 +153,7 @@ final class MaskPatternTester{
 
 				if(
 					$x + 6 < $size
-					&&  $m[$y][$x]
+					&&  $val
 					&& !$m[$y][$x + 1]
 					&&  $m[$y][$x + 2]
 					&&  $m[$y][$x + 3]
@@ -166,7 +166,7 @@ final class MaskPatternTester{
 
 				if(
 					$y + 6 < $size
-					&&  $m[$y][$x]
+					&&  $val
 					&& !$m[$y + 1][$x]
 					&&  $m[$y + 2][$x]
 					&&  $m[$y + 3][$x]
