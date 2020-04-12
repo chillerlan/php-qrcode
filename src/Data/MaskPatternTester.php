@@ -66,7 +66,7 @@ final class MaskPatternTester{
 		$penalty = 0;
 
 		for($level = 1; $level <= 4; $level++){
-			$penalty += call_user_func_array([$this, 'testLevel'.$level], [$matrix, $matrix->size()]);
+			$penalty += call_user_func_array([$this, 'testLevel'.$level], [$matrix->matrix(true), $matrix->size()]);
 		}
 
 		return (int)$penalty;
@@ -75,10 +75,10 @@ final class MaskPatternTester{
 	/**
 	 * Checks for each group of five or more same-colored modules in a row (or column)
 	 */
-	protected function testLevel1(QRMatrix $m, int $size):float{
+	protected function testLevel1(array $m, int $size):int{
 		$penalty = 0;
 
-		foreach($m->matrix() as $y => $row){
+		foreach($m as $y => $row){
 			foreach($row as $x => $val){
 				$count = 0;
 
@@ -94,7 +94,7 @@ final class MaskPatternTester{
 							continue;
 						}
 
-						if($m->check($x + $rx, $y + $ry) === (($val >> 8) > 0)){
+						if($m[$y + $ry][$x + $rx] === $val){
 							$count++;
 						}
 
@@ -114,10 +114,10 @@ final class MaskPatternTester{
 	/**
 	 * Checks for each 2x2 area of same-colored modules in the matrix
 	 */
-	protected function testLevel2(QRMatrix $m, int $size):float{
+	protected function testLevel2(array $m, int $size):int{
 		$penalty = 0;
 
-		foreach($m->matrix() as $y => $row){
+		foreach($m as $y => $row){
 
 			if($y > $size - 2){
 				break;
@@ -129,65 +129,50 @@ final class MaskPatternTester{
 					break;
 				}
 
-				$count = 0;
-
-				if($val >> 8 > 0){
-					$count++;
+				if(
+					   $val === $m[$y][$x + 1]
+					&& $val === $m[$y + 1][$x]
+					&& $val === $m[$y + 1][$x + 1]
+				){
+					$penalty++;
 				}
-
-				if($m->check($y, $x + 1)){
-					$count++;
-				}
-
-				if($m->check($y + 1, $x)){
-					$count++;
-				}
-
-				if($m->check($y + 1, $x + 1)){
-					$count++;
-				}
-
-				if($count === 0 || $count === 4){
-					$penalty += 3;
-				}
-
 			}
 		}
 
-		return $penalty;
+		return 3 * $penalty;
 	}
 
 	/**
 	 * Checks if there are patterns that look similar to the finder patterns (1:1:3:1:1 ratio)
 	 */
-	protected function testLevel3(QRMatrix $m, int $size):float{
+	protected function testLevel3(array $m, int $size):int{
 		$penalties = 0;
 
-		foreach($m->matrix() as $y => $row){
+		foreach($m as $y => $row){
 			foreach($row as $x => $val){
 
 				if(
 					$x + 6 < $size
-					&&  $m->check($x    , $y)
-					&& !$m->check($x + 1, $y)
-					&&  $m->check($x + 2, $y)
-					&&  $m->check($x + 3, $y)
-					&&  $m->check($x + 4, $y)
-					&& !$m->check($x + 5, $y)
-					&&  $m->check($x + 6, $y)
+					&&  $m[$y][$x]
+					&& !$m[$y][$x + 1]
+					&&  $m[$y][$x + 2]
+					&&  $m[$y][$x + 3]
+					&&  $m[$y][$x + 4]
+					&& !$m[$y][$x + 5]
+					&&  $m[$y][$x + 6]
 				){
 					$penalties++;
 				}
 
 				if(
 					$y + 6 < $size
-					&&  $m->check($x, $y    )
-					&& !$m->check($x, $y + 1)
-					&&  $m->check($x, $y + 2)
-					&&  $m->check($x, $y + 3)
-					&&  $m->check($x, $y + 4)
-					&& !$m->check($x, $y + 5)
-					&&  $m->check($x, $y + 6)
+					&&  $m[$y][$x]
+					&& !$m[$y + 1][$x]
+					&&  $m[$y + 2][$x]
+					&&  $m[$y + 3][$x]
+					&&  $m[$y + 4][$x]
+					&& !$m[$y + 5][$x]
+					&&  $m[$y + 6][$x]
 				){
 					$penalties++;
 				}
@@ -201,12 +186,12 @@ final class MaskPatternTester{
 	/**
 	 * Checks if more than half of the modules are dark or light, with a larger penalty for a larger difference
 	 */
-	protected function testLevel4(QRMatrix $m, int $size):float{
+	protected function testLevel4(array $m, int $size):float{
 		$count = 0;
 
-		foreach($m->matrix() as $y => $row){
+		foreach($m as $y => $row){
 			foreach($row as $x => $val){
-				if(($val >> 8) > 0){
+				if($val){
 					$count++;
 				}
 			}

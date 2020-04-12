@@ -27,7 +27,7 @@ final class MaskPatternTesterTest extends TestCase{
 	public function testMaskpattern():void{
 		$dataInterface = new Byte(new QROptions(['version' => 10]), 'test');
 
-		$this::assertSame(4, (new MaskPatternTester($dataInterface))->getBestMaskPattern());
+		$this::assertSame(3, (new MaskPatternTester($dataInterface))->getBestMaskPattern());
 	}
 
 	/**
@@ -36,7 +36,7 @@ final class MaskPatternTesterTest extends TestCase{
 	public function testMaskpatternID():void{
 		$dataInterface = new Byte(new QROptions(['version' => 10]), 'test');
 
-		$this::assertSame(6178, (new MaskPatternTester($dataInterface))->testPattern(0));
+		$this::assertSame(4243, (new MaskPatternTester($dataInterface))->testPattern(3));
 	}
 
 }
