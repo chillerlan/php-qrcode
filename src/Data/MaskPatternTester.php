@@ -56,7 +56,7 @@ class MaskPatternTester{
 		$penalty  = 0;
 
 		for($level = 1; $level <= 4; $level++){
-			$penalty += call_user_func([$this, 'testLevel'.$level]);
+			$penalty += call_user_func_array([$this, 'testLevel'.$level], [$this->matrix->matrix(true)]);
 		}
 
 		return (int)$penalty;
@@ -65,12 +65,12 @@ class MaskPatternTester{
 	/**
 	 * Checks for each group of five or more same-colored modules in a row (or column)
 	 *
-	 * @return float
+	 * @return int
 	 */
-	protected function testLevel1():float{
+	protected function testLevel1(array $m):int{
 		$penalty = 0;
 
-		foreach($this->matrix->matrix() as $y => $row){
+		foreach($m as $y => $row){
 			foreach($row as $x => $val){
 				$count = 0;
 
@@ -82,11 +82,11 @@ class MaskPatternTester{
 
 					for($rx = -1; $rx <= 1; $rx++){
 
-						if(($ry === 0 && $rx === 0) || ($x + $rx < 0 || $this->moduleCount <= $x + $rx)){
+						if(($ry === 0 && $rx === 0) || (($x + $rx) < 0 || $this->moduleCount <= ($x + $rx))){
 							continue;
 						}
 
-						if($this->matrix->check($x + $rx, $y + $ry) === ($val >> 8 > 0)){
+						if($m[$y + $ry][$x + $rx] === $val){
 							$count++;
 						}
 
@@ -106,94 +106,77 @@ class MaskPatternTester{
 	/**
 	 * Checks for each 2x2 area of same-colored modules in the matrix
 	 *
-	 * @return float
+	 * @return int
 	 */
-	protected function testLevel2():float{
+	protected function testLevel2(array $m):int{
 		$penalty = 0;
 
-		foreach($this->matrix->matrix() as $y => $row){
+		foreach($m as $y => $row){
 
-			if($y > $this->moduleCount - 2){
+			if($y > ($this->moduleCount - 2)){
 				break;
 			}
 
 			foreach($row as $x => $val){
 
-				if($x > $this->moduleCount - 2){
+				if($x > ($this->moduleCount - 2)){
 					break;
 				}
 
-				$count = 0;
-
-				if($val >> 8 > 0){
-					$count++;
+				if(
+					   $val === $m[$y][$x + 1]
+					&& $val === $m[$y + 1][$x]
+					&& $val === $m[$y + 1][$x + 1]
+				){
+					$penalty++;
 				}
-
-				if($this->matrix->check($y, $x + 1)){
-					$count++;
-				}
-
-				if($this->matrix->check($y + 1, $x)){
-					$count++;
-				}
-
-				if($this->matrix->check($y + 1, $x + 1)){
-					$count++;
-				}
-
-				if($count === 0 || $count === 4){
-					$penalty += 3;
-				}
-
 			}
 		}
 
-		return $penalty;
+		return 3 * $penalty;
 	}
 
 	/**
-	 * Checks if there are patterns that look similar to the finder patterns
+	 * Checks if there are patterns that look similar to the finder patterns (1:1:3:1:1 ratio)
 	 *
-	 * @return float
+	 * @return int
 	 */
-	protected function testLevel3():float{
-		$penalty = 0;
+	protected function testLevel3(array $m):int{
+		$penalties = 0;
 
-		foreach($this->matrix->matrix() as $y => $row){
+		foreach($m as $y => $row){
 			foreach($row as $x => $val){
 
-				if($x <= $this->moduleCount - 7){
-					if(
-						    $this->matrix->check($x    , $y)
-						&& !$this->matrix->check($x + 1, $y)
-						&&  $this->matrix->check($x + 2, $y)
-						&&  $this->matrix->check($x + 3, $y)
-						&&  $this->matrix->check($x + 4, $y)
-						&& !$this->matrix->check($x + 5, $y)
-						&&  $this->matrix->check($x + 6, $y)
-					){
-						$penalty += 40;
-					}
+				if(
+					($x + 6) < $this->moduleCount
+					&&  $val
+					&& !$m[$y][$x + 1]
+					&&  $m[$y][$x + 2]
+					&&  $m[$y][$x + 3]
+					&&  $m[$y][$x + 4]
+					&& !$m[$y][$x + 5]
+					&&  $m[$y][$x + 6]
+				){
+					$penalties++;
 				}
 
-				if($y <= $this->moduleCount - 7){
-					if(
-						    $this->matrix->check($x, $y)
-						&& !$this->matrix->check($x, $y + 1)
-						&&  $this->matrix->check($x, $y + 2)
-						&&  $this->matrix->check($x, $y + 3)
-						&&  $this->matrix->check($x, $y + 4)
-						&& !$this->matrix->check($x, $y + 5)
-						&&  $this->matrix->check($x, $y + 6)
-					){
-						$penalty += 40;
-					}
+				if(
+					($y + 6) < $this->moduleCount
+					&&  $val
+					&& !$m[$y + 1][$x]
+					&&  $m[$y + 2][$x]
+					&&  $m[$y + 3][$x]
+					&&  $m[$y + 4][$x]
+					&& !$m[$y + 5][$x]
+					&&  $m[$y + 6][$x]
+				){
+					$penalties++;
 				}
 
 			}
 		}
 
-		return $penalty;
+		return $penalties * 40;
 	}
 
 	/**
@@ -201,12 +184,12 @@ class MaskPatternTester{
 	 *
 	 * @return float
 	 */
-	protected function testLevel4():float {
+	protected function testLevel4(array $m):float{
 		$count = 0;
 
-		foreach($this->matrix->matrix() as $y => $row){
+		foreach($m as $y => $row){
 			foreach($row as $x => $val){
-				if($val >> 8 > 0){
+				if($val){
 					$count++;
 				}
 			}
