@@ -21,10 +21,9 @@ class MaskPatternTesterTest extends QRTestAbstract{
 
 	// coverage
 	public function testMaskpattern(){
-		$matrix = (new Byte(new QROptions(['version' => 10]), 'test'))->initMatrix(0, true);
+		$matrix = (new Byte(new QROptions(['version' => 10]), 'test'))->initMatrix(3, true);
 
-		$this->assertSame(6178, (new MaskPatternTester($matrix))->testPattern());
+		$this->assertSame(4243, (new MaskPatternTester($matrix))->testPattern());
 	}
-
 
 }

@@ -220,10 +220,27 @@ class QRMatrix{
 	}
 
 	/**
-	 * @return array
+	 * Returns the data matrix, returns a pure boolean representation if $boolean is set to true
+	 *
+	 * @return int[][]|bool[][]
 	 */
-	public function matrix():array{
-		return $this->matrix;
+	public function matrix(bool $boolean = false):array{
+
+		if(!$boolean){
+			return $this->matrix;
+		}
+
+		$matrix = [];
+
+		foreach($this->matrix as $y => $row){
+			$matrix[$y] = [];
+
+			foreach($row as $x => $val){
+				$matrix[$y][$x] = ($val >> 8) > 0;
+			}
+		}
+
+		return $matrix;
 	}
 
 	/**
@@ -600,6 +617,9 @@ class QRMatrix{
 	/**
 	 * ISO/IEC 18004:2000 Section 8.8.1
 	 *
+	 * Note that some versions of the QR code standard have had errors in the section about mask patterns.
+	 * The information below has been corrected. (https://www.thonky.com/qr-code-tutorial/mask-patterns)
+	 *
 	 * @see \chillerlan\QRCode\QRMatrix::mapData()
 	 *
 	 * @internal
@@ -617,10 +637,10 @@ class QRMatrix{
 
 		return [
 			0b000 => function($x, $y):int{ return ($x + $y) % 2; },
-			0b001 => function($x, $y):int{ return $x % 2; },
-			0b010 => function($x, $y):int{ return $y % 3; },
+			0b001 => function($x, $y):int{ return $y % 2; },
+			0b010 => function($x, $y):int{ return $x % 3; },
 			0b011 => function($x, $y):int{ return ($x + $y) % 3; },
-			0b100 => function($x, $y):int{ return ((int)($x / 2) + (int)($y / 3)) % 2; },
+			0b100 => function($x, $y):int{ return ((int)($y / 2) + (int)($x / 3)) % 2; },
 			0b101 => function($x, $y):int{ return (($x * $y) % 2) + (($x * $y) % 3); },
 			0b110 => function($x, $y):int{ return ((($x * $y) % 2) + (($x * $y) % 3)) % 2; },
 			0b111 => function($x, $y):int{ return ((($x * $y) % 3) + (($x + $y) % 2)) % 2; },
