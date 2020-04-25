@@ -65,6 +65,8 @@ For PHP version ...
 ### Usage
 We want to encode this URI for a mobile authenticator into a QRcode image:
 ```php
+use chillerlan\QRCode\QRCode;
+
 $data = 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net';
 
 //quick and simple:
