@@ -30,13 +30,14 @@ use function array_values, class_exists, count, is_array;
 class QRFpdf extends QROutputAbstract{
 
 	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
-		parent::__construct($options, $matrix);
 
 		if(!class_exists(FPDF::class)){
 			throw new BadMethodCallException(
 				'The QRFpdf output requires FPDF as dependency but the class "\FPDF" couldn\'t be found.'
 			);
 		}
+
+		parent::__construct($options, $matrix);
 	}
 
 	/**
