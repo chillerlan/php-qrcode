@@ -14,8 +14,8 @@
 
 namespace chillerlan\QRCode\Output;
 
-use BadMethodCallException;
 use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\QRCodeException;
 use chillerlan\Settings\SettingsContainerInterface;
 use FPDF;
 
@@ -32,9 +32,11 @@ class QRFpdf extends QROutputAbstract{
 	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
 
 		if(!class_exists(FPDF::class)){
-			throw new BadMethodCallException(
+			// @codeCoverageIgnoreStart
+			throw new QRCodeException(
 				'The QRFpdf output requires FPDF as dependency but the class "\FPDF" couldn\'t be found.'
 			);
+			// @codeCoverageIgnoreEnd
 		}
 
 		parent::__construct($options, $matrix);
