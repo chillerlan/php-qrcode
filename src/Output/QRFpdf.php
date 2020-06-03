@@ -12,8 +12,6 @@
  * @license      MIT
  */
 
-declare(strict_types=1);
-
 namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
