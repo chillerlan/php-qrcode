@@ -7,6 +7,12 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 
+/**
+ * QRFpdf output module (requires fpdf)
+ *
+ * @see https://github.com/Setasign/FPDF
+ * @see http://www.fpdf.org/
+ */
 class QRFpdf extends QROutputAbstract
 {
     public function __construct(SettingsContainerInterface $options, QRMatrix $matrix)
