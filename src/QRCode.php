@@ -15,7 +15,9 @@ namespace chillerlan\QRCode;
 use chillerlan\QRCode\Data\{
 	AlphaNum, Byte, Kanji, MaskPatternTester, Number, QRCodeDataException, QRDataInterface, QRMatrix
 };
-use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString};
+use chillerlan\QRCode\Output\{
+	QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString
+};
 use chillerlan\Settings\SettingsContainerInterface;
 
 use function call_user_func_array, class_exists, in_array, mb_internal_encoding, ord, strlen, strtolower, str_split;
