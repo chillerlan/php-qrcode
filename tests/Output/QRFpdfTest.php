@@ -79,11 +79,13 @@ class QRFpdfTest extends QROutputTestAbstract{
 	public function testRenderImage(string $type):void{
 		$this->options->outputType = $type;
 
-		$this::assertSame(
-			// substr() to avoid CreationDate
-			substr(file_get_contents(__DIR__.'/samples/'.$type), 0, 2560),
-			substr((new QRCode($this->options))->render('test'), 0, 2560)
-		);
+		// substr() to avoid CreationDate
+		$expected = substr(file_get_contents(__DIR__.'/samples/'.$type), 0, 2560);
+		$actual   = substr((new QRCode($this->options))->render('test'), 0, 2560);
+
+		\var_dump([$expected, $actual]);
+
+		$this::assertSame($expected, $actual);
 	}
 
 }
