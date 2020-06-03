@@ -39,7 +39,7 @@ A documentation created with [phpDocumentor](https://www.phpdoc.org/) can be fou
 ### Requirements
 - PHP 7.4+
   - `ext-mbstring`
-  - optional: `ext-json`, `ext-gd`, `ext-imagick`
+  - optional: `ext-json`, `ext-gd`, `ext-imagick`, `setasign/fpdf` (for QR fpdf output module)
 
 ### Installation
 **requires [composer](https://getcomposer.org)**
@@ -301,6 +301,7 @@ name | description
 `OUTPUT_IMAGE_PNG`, `OUTPUT_IMAGE_JPG`, `OUTPUT_IMAGE_GIF` | `QROptions::$outputType` image
 `OUTPUT_STRING_JSON`, `OUTPUT_STRING_TEXT` | `QROptions::$outputType` string
 `OUTPUT_IMAGICK` | `QROptions::$outputType` ImageMagick
+`OUTPUT_FPDF` | `QROptions::$outputType` string
 `OUTPUT_CUSTOM` | `QROptions::$outputType`, requires `QROptions::$outputInterface`
 `ECC_L`, `ECC_M`, `ECC_Q`, `ECC_H`, | ECC-Level: 7%, 15%, 25%, 30%  in `QROptions::$eccLevel`
 `DATA_NUMBER`, `DATA_ALPHANUM`, `DATA_BYTE`, `DATA_KANJI` | `QRDataInterface::$datamode`
