@@ -43,4 +43,4 @@ $options = new QROptions([
 
 \header('Content-type: application/pdf');
 
-echo (new QRCode($options))->render($data, 'example_fpdf.pdf');
+echo (new QRCode($options))->render($data);
