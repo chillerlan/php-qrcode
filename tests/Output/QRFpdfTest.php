@@ -83,8 +83,6 @@ class QRFpdfTest extends QROutputTestAbstract{
 		$expected = substr(file_get_contents(__DIR__.'/samples/'.$type), 0, 2500);
 		$actual   = substr((new QRCode($this->options))->render('test'), 0, 2500);
 
-		\var_dump([$expected, $actual]);
-
 		$this::assertSame($expected, $actual);
 	}
 
