@@ -308,6 +308,8 @@ trait QROptionsTrait{
 
 	/**
 	 * sets the FPDF measurement unit
+	 *
+	 * @codeCoverageIgnore
 	 */
 	protected function set_fpdfMeasureUnit(string $unit):void{
 		$unit = strtolower($unit);
