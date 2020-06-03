@@ -45,6 +45,7 @@ use chillerlan\Settings\SettingsContainerAbstract;
  * @property int         $jpegQuality
  * @property string      $imagickFormat
  * @property string|null $imagickBG
+ * @property string      $fpdfMeasureUnit
  * @property array|null  $moduleValues
  */
 class QROptions extends SettingsContainerAbstract{

@@ -69,7 +69,7 @@ class QRFpdf extends QROutputAbstract{
 	public function dump(string $file = null):string{
 		$file ??= $this->options->cachefile;
 
-		$fpdf = new FPDF('P', 'pt', [$this->length, $this->length]);
+		$fpdf = new FPDF('P', $this->options->fpdfMeasureUnit, [$this->length, $this->length]);
 		$fpdf->AddPage();
 
 		$prevColor = null;
