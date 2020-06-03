@@ -1,4 +1,16 @@
 <?php
+/**
+ * Class QRFpdf
+ *
+ * https://github.com/chillerlan/php-qrcode/pull/49
+ *
+ * @filesource   QRFpdf.php
+ * @created      03.06.2020
+ * @package      chillerlan\QRCode\Output
+ * @author       Maximilian Kresse
+ *
+ * @license      MIT
+ */
 
 declare(strict_types=1);
 
