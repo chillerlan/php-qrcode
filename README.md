@@ -34,8 +34,11 @@ namespaced, cleaned up, improved and other stuff.
 
 ### Requirements
 - PHP 7.2+
-  - `ext-gd`, `ext-json`, `ext-mbstring`
-  - optional `ext-imagick`
+  - `ext-mbstring`
+  - optional: 
+     - `ext-json`, `ext-gd`
+     - `ext-imagick` with [ImageMagick](https://imagemagick.org) installed
+     - [`setasign/fpdf`](https://github.com/setasign/fpdf) for the PDF output module
 
 ### Installation
 **requires [composer](https://getcomposer.org)**
@@ -289,6 +292,7 @@ name | description
 `OUTPUT_IMAGE_PNG`, `OUTPUT_IMAGE_JPG`, `OUTPUT_IMAGE_GIF` | `QROptions::$outputType` image
 `OUTPUT_STRING_JSON`, `OUTPUT_STRING_TEXT` | `QROptions::$outputType` string
 `OUTPUT_IMAGICK` | `QROptions::$outputType` ImageMagick
+`OUTPUT_FPDF` | `QROptions::$outputType` PDF, using [FPDF](https://github.com/setasign/fpdf)
 `OUTPUT_CUSTOM` | `QROptions::$outputType`, requires `QROptions::$outputInterface`
 `ECC_L`, `ECC_M`, `ECC_Q`, `ECC_H`, | ECC-Level: 7%, 15%, 25%, 30%  in `QROptions::$eccLevel`
 `DATA_NUMBER`, `DATA_ALPHANUM`, `DATA_BYTE`, `DATA_KANJI` | `QRDataInterface::$datamode`

@@ -16,7 +16,7 @@ use chillerlan\QRCode\Data\{
 	MaskPatternTester, QRCodeDataException, QRDataInterface, QRMatrix
 };
 use chillerlan\QRCode\Output\{
-	QRCodeOutputException, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString
+	QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString
 };
 use chillerlan\Settings\SettingsContainerInterface;
 
@@ -42,6 +42,7 @@ class QRCode{
 	public const OUTPUT_STRING_JSON = 'json';
 	public const OUTPUT_STRING_TEXT = 'text';
 	public const OUTPUT_IMAGICK     = 'imagick';
+	public const OUTPUT_FPDF        = 'fpdf';
 	public const OUTPUT_CUSTOM      = 'custom';
 
 	public const VERSION_AUTO       = -1;
@@ -88,6 +89,9 @@ class QRCode{
 		QRImagick::class => [
 			self::OUTPUT_IMAGICK,
 		],
+		QRFpdf::class => [
+			self::OUTPUT_FPDF
+		]
 	];
 
 	/**

@@ -25,16 +25,16 @@
 	],
 	"require": {
 		"php": "^7.2",
-		"ext-gd": "*",
-		"ext-json": "*",
 		"ext-mbstring": "*",
 		"chillerlan/php-settings-container": "^1.2"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^8.5"
+		"phpunit/phpunit": "^8.5",
+		"setasign/fpdf": "^1.8.2"
 	},
 	"suggest": {
-		"chillerlan/php-authenticator": "Yet another Google authenticator! Also creates URIs for mobile apps."
+		"chillerlan/php-authenticator": "Yet another Google authenticator! Also creates URIs for mobile apps.",
+		"setasign/fpdf": "Required to use the QR FPDF output."
 	},
 	"autoload": {
 		"psr-4": {
