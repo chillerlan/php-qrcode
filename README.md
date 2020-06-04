@@ -60,8 +60,8 @@ via terminal: `composer require chillerlan/php-qrcode`
 ```
 
 For PHP version ... 
-  - 7.4+ use `^4.0`
-  - 7.2+ use `^3.2`
+  - 7.4+ use `^4.1`
+  - 7.2+ use `^3.3`
   - 7.0+ use `^2.0`
   - 5.6+ use `1.0.9` (please let PHP 5 die!)
 
