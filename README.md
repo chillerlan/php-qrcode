@@ -16,7 +16,7 @@ namespaced, cleaned up, improved and other stuff.
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?style=flat-square
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
 [license-badge]: https://img.shields.io/github/license/chillerlan/php-qrcode.svg?style=flat-square
-[license]: https://github.com/chillerlan/php-qrcode/blob/master/LICENSE
+[license]: https://github.com/chillerlan/php-qrcode/blob/main/LICENSE
 [travis-badge]: https://img.shields.io/travis/chillerlan/php-qrcode.svg?style=flat-square
 [travis]: https://travis-ci.org/chillerlan/php-qrcode
 [coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode.svg?style=flat-square
@@ -49,12 +49,12 @@ A documentation created with [phpDocumentor](https://www.phpdoc.org/) can be fou
 
 via terminal: `composer require chillerlan/php-qrcode`
 
-*composer.json* (note: replace `dev-master` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^3.2` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions)
+*composer.json* (note: replace `dev-main` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^3.2` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions)
 ```json
 {
 	"require": {
 		"php": "^7.4",
-		"chillerlan/php-qrcode": "dev-master"
+		"chillerlan/php-qrcode": "dev-main"
 	}
 }
 ```
@@ -75,8 +75,8 @@ echo '<img src="'.(new QRCode)->render($data).'" alt="QR Code" />';
 ```
 
 <p align="center">
-	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/master/examples/example_image.png">
-	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/master/examples/example_svg.png">
+	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/main/examples/example_image.png">
+	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/main/examples/example_svg.png">
 </p>
 
 Wait, what was that? Please again, slower!
@@ -128,7 +128,7 @@ foreach($matrix->matrix() as $y => $row){
 }
 ```
 
-Have a look [in this folder](https://github.com/chillerlan/php-qrcode/tree/master/examples) for some more usage examples.
+Have a look [in this folder](https://github.com/chillerlan/php-qrcode/tree/main/examples) for some more usage examples.
 
 #### Custom module values
 You can distinguish between different parts of the matrix, namely the several required patterns from the QR Code specification, and use them in different ways.
@@ -198,7 +198,7 @@ $options->moduleValues = [
 ```
 
 #### Custom `QROutputInterface`
-Instead of bloating your code you can simply create your own output interface by extending `QROutputAbstract`. Have a look at the [built-in output modules](https://github.com/chillerlan/php-qrcode/tree/master/src/Output).
+Instead of bloating your code you can simply create your own output interface by extending `QROutputAbstract`. Have a look at the [built-in output modules](https://github.com/chillerlan/php-qrcode/tree/main/src/Output).
 
 ```php
 class MyCustomOutput extends QROutputAbstract{
@@ -239,7 +239,7 @@ class MyCustomOptions extends QROptions{
 	// ...
 }
 ```
-...or use the [`SettingsContainerInterface`](https://github.com/chillerlan/php-settings-container/blob/master/src/SettingsContainerInterface.php), which is the more flexible approach.
+...or use the [`SettingsContainerInterface`](https://github.com/chillerlan/php-settings-container/blob/main/src/SettingsContainerInterface.php), which is the more flexible approach.
 
 ```php
 trait MyCustomOptionsTrait{
@@ -286,7 +286,7 @@ $qrOutputInterface->dump();
 ####  `QRCode` methods
 method | return | description
 ------ | ------ | -----------
-`__construct(QROptions $options = null)` | - | see [`SettingsContainerInterface`](https://github.com/chillerlan/php-settings-container/blob/master/src/SettingsContainerInterface.php)
+`__construct(QROptions $options = null)` | - | see [`SettingsContainerInterface`](https://github.com/chillerlan/php-settings-container/blob/main/src/SettingsContainerInterface.php)
 `render(string $data, string $file = null)` | mixed, `QROutputInterface::dump()` | renders a QR Code for the given `$data` and `QROptions`, saves `$file` optional
 `getMatrix(string $data)` | `QRMatrix` | returns a `QRMatrix` object for the given `$data` and current `QROptions`
 `initDataInterface(string $data)` | `QRDataInterface` | returns a fresh `QRDataInterface` for the given `$data`
