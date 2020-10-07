@@ -18,8 +18,11 @@ matrix:
 
 before_install:
   - pecl channel-update pecl.php.net
-  - printf "\n" | pecl install imagick
   - pecl install ast
+  - |
+    if [ $TRAVIS_PHP_VERSION != 'nightly' ]; then
+      printf "\n" | pecl install imagick;
+    fi
 
 install:
   - composer install --no-interaction --prefer-source
