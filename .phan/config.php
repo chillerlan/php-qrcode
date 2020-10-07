@@ -28,6 +28,7 @@ return [
 		'src',
 		'tests',
 		'vendor',
+		'.phan/stubs'
 	],
 
 	// A regex used to match every file name that you want to
