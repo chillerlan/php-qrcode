@@ -12,6 +12,9 @@ env:
 matrix:
   include:
     - php: 7.4
+    - php: nightly
+  allow_failures:
+    - php: nightly
 
 before_install:
   - pecl channel-update pecl.php.net
