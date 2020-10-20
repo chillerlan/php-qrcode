@@ -1,5 +1,5 @@
 # https://hub.docker.com/r/phpdoc/phpdoc
-FROM phpdoc/phpdoc:3.0
+FROM phpdoc/phpdoc:latest
 
 LABEL "repository"="https://github.com/chillerlan/php-qrcode"
 
