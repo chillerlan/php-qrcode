@@ -14,10 +14,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    env:
-      PHP_EXTENSIONS: ast, gd, imagick, json, mbstring
-#      PHP_INI_VALUES:
-
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
@@ -28,8 +24,8 @@ jobs:
           php-version: "7.4"
           coverage: none
           tools: pecl
-          extensions: ${{ env.PHP_EXTENSIONS }}
-#          ini-values: ${{ env.PHP_INI_VALUES }}
+          extensions: ast, gd, imagick, json, mbstring
+#          ini-values:
 
       - name: "Update dependencies with composer"
         run: composer update --no-interaction --no-ansi --no-progress --no-suggest
@@ -46,10 +42,6 @@ jobs:
     name: "Unit Tests"
 
     runs-on: ${{ matrix.os }}
-
-    env:
-      PHP_EXTENSIONS: gd, imagick, json, mbstring
-#      PHP_INI_VALUES:
 
     strategy:
       fail-fast: false
@@ -78,8 +70,8 @@ jobs:
           php-version: ${{ matrix.php-version }}
           coverage: pcov
           tools: pecl
-          extensions: ${{ env.PHP_EXTENSIONS }}
-#          ini-values: ${{ env.PHP_INI_VALUES }}
+          extensions: gd, imagick, json, mbstring
+#          ini-values:
 
       - name: "Determine composer cache directory on Linux"
         if: matrix.os == 'ubuntu-latest'
