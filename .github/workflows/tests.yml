@@ -1,43 +1,113 @@
 # https://help.github.com/en/categories/automating-your-workflow-with-github-actions
-# https://github.com/ergebnis/php-library-template
 # https://github.com/sebastianbergmann/phpunit/blob/master/.github/workflows/ci.yml
 
 on:
-  pull_request:
-  push:
-    branches:
-      - main
-    tags:
-      - "**"
+  - pull_request
+  - push
 
 name: "Continuous Integration"
 
 jobs:
 
-  tests:
-    name: "Unit Tests"
+  static-code-analysis:
+    name: "Static Code Analysis"
+
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        php-binary:
-          - php7.4
-
-        dependencies:
-          - lowest
-          - highest
+    env:
+      PHP_EXTENSIONS: ast, gd, imagick, json, mbstring
+#      PHP_INI_VALUES:
 
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
 
+      - name: "Install PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "7.4"
+          coverage: none
+          tools: pecl
+          extensions: ${{ env.PHP_EXTENSIONS }}
+#          ini-values: ${{ env.PHP_INI_VALUES }}
+
+      - name: "Update dependencies with composer"
+        run: composer update --no-interaction --no-ansi --no-progress --no-suggest
+
+      - name: "phan env"
+        run: |
+          echo "PHAN_ALLOW_XDEBUG=0" >> $GITHUB_ENV
+          echo "PHAN_DISABLE_XDEBUG_WARN=1" >> $GITHUB_ENV
+
+      - name: "Run phan"
+        run: php vendor/bin/phan
+
+  tests:
+    name: "Unit Tests"
+
+    runs-on: ${{ matrix.os }}
+
+    env:
+      PHP_EXTENSIONS: gd, imagick, json, mbstring
+#      PHP_INI_VALUES:
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+        php-version:
+          - "7.4"
+          - "8.0"
+        dependencies:
+          - lowest
+          - highest
+
+    steps:
+      - name: "Configure git to avoid issues with line endings"
+        if: matrix.os == 'windows-latest'
+        run: git config --global core.autocrlf false
+
+      - name: "Checkout"
+        uses: actions/checkout@v2
+
+      - name: "Install PHP with extensions"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: pcov
+          tools: pecl
+          extensions: ${{ env.PHP_EXTENSIONS }}
+#          ini-values: ${{ env.PHP_INI_VALUES }}
+
+      - name: "Determine composer cache directory on Linux"
+        if: matrix.os == 'ubuntu-latest'
+        run: echo "COMPOSER_CACHE_DIR=$(composer config cache-dir)" >> $GITHUB_ENV
+
+      - name: "Determine composer cache directory on Windows"
+        if: matrix.os == 'windows-latest'
+        run: echo "COMPOSER_CACHE_DIR=%LOCALAPPDATA%\Composer" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: "Cache dependencies installed with composer"
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.COMPOSER_CACHE_DIR }}
+          key: php${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-${{ hashFiles('**/composer.json') }}
+          restore-keys: php${{ matrix.php-version }}-composer-${{ matrix.dependencies }}-
+
       - name: "Install lowest dependencies with composer"
         if: matrix.dependencies == 'lowest'
-        run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --no-progress --no-suggest --prefer-lowest
+        run: composer update --no-ansi --no-interaction --no-progress --no-suggest --prefer-lowest
 
       - name: "Install highest dependencies with composer"
         if: matrix.dependencies == 'highest'
-        run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --no-progress --no-suggest
+        run: composer update --no-ansi --no-interaction --no-progress --no-suggest
 
-      - name: "Run unit tests with phpunit"
-        run: ${{ matrix.php-binary }} vendor/bin/phpunit --configuration=phpunit.xml --no-coverage
+      - name: "Run tests with phpunit"
+        run: php vendor/bin/phpunit --configuration=phpunit.xml
+
+      - name: "Send code coverage report to Codecov.io"
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
