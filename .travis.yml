@@ -29,7 +29,7 @@ install:
   - composer validate
 
 script:
-  - vendor/bin/phpunit --configuration phpunit.xml --coverage-clover clover.xml
+  - vendor/bin/phpunit --configuration phpunit.xml
   - vendor/bin/phan
 
 after_script: bash <(curl -s https://codecov.io/bash)
