@@ -177,8 +177,6 @@ class QRCode{
 	public function __construct(SettingsContainerInterface $options = null){
 		// save the current mb-encoding (in case it differs from UTF-8)
 		$this->mbCurrentEncoding = mb_internal_encoding();
-		// use UTF-8 from here on
-		mb_internal_encoding('UTF-8');
 
 		$this->options = $options ?? new QROptions;
 	}
@@ -198,6 +196,9 @@ class QRCode{
 	 * @return mixed
 	 */
 	public function render(string $data, string $file = null){
+		// use UTF-8 from here on
+		mb_internal_encoding('UTF-8');
+
 		return $this->initOutputInterface($data)->dump($file);
 	}
 
