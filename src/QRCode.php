@@ -20,7 +20,7 @@ use chillerlan\QRCode\Output\{
 };
 use chillerlan\Settings\SettingsContainerInterface;
 
-use function call_user_func_array, class_exists, in_array, mb_internal_encoding, ord, strlen, strtolower, str_split;
+use function call_user_func_array, class_exists, in_array, ord, strlen, strtolower, str_split;
 
 /**
  * Turns a text string into a Model 2 QR Code
@@ -163,31 +163,12 @@ class QRCode{
 	protected QRDataInterface $dataInterface;
 
 	/**
-	 * The current encoding (before the QRCode instance was invoked)
-	 *
-	 * @see http://php.net/manual/function.mb-internal-encoding.php mb_internal_encoding()
-	 */
-	protected string $mbCurrentEncoding;
-
-	/**
 	 * QRCode constructor.
 	 *
 	 * Sets the options instance, determines the current mb-encoding and sets it to UTF-8
 	 */
 	public function __construct(SettingsContainerInterface $options = null){
-		// save the current mb-encoding (in case it differs from UTF-8)
-		$this->mbCurrentEncoding = mb_internal_encoding();
-
 		$this->options = $options ?? new QROptions;
-	}
-
-	/**
-	 * Restores the previous mb-encoding setting, so that we don't mess up the rest of the script
-	 *
-	 * @return void
-	 */
-	public function __destruct(){
-		mb_internal_encoding($this->mbCurrentEncoding);
 	}
 
 	/**
@@ -196,9 +177,6 @@ class QRCode{
 	 * @return mixed
 	 */
 	public function render(string $data, string $file = null){
-		// use UTF-8 from here on
-		mb_internal_encoding('UTF-8');
-
 		return $this->initOutputInterface($data)->dump($file);
 	}
 
