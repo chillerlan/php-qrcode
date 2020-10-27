@@ -64,8 +64,8 @@ Note: replace `dev-main` with a [version constraint](https://getcomposer.org/doc
 For PHP version ... 
   - 7.4+ use `^4.2`
   - 7.2+ use `^3.3`
-  - 7.0+ use `^2.0`
-  - 5.6+ use `1.0.9` (please let PHP 5 die!)
+  - 7.0+ use `^2.0` (PHP 7.0 and 7.1 are EOL!)
+  - 5.6+ use `^1.0` (please let PHP 5 die!)
 
 ### Quickstart
 We want to encode this URI for a mobile authenticator into a QRcode image:
@@ -89,6 +89,7 @@ Wait, what was that? Please again, slower! See [Advanced usage](https://github.c
 - WordPress [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
 - WoltLab Suite [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)  
 - [Cachet](https://github.com/CachetHQ/Cachet)
+- [Appwrite](https://github.com/appwrite/appwrite)  
 - other uses: [dependents](https://github.com/chillerlan/php-qrcode/network/dependents) / [packages](https://github.com/chillerlan/php-qrcode/network/dependents?dependent_type=PACKAGE)
 
 ### Shameless advertising
