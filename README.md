@@ -26,7 +26,7 @@ namespaced, cleaned up, improved and other stuff.
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?style=flat-square
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 [donate-badge]: https://img.shields.io/badge/donate-paypal-ff33aa.svg?style=flat-square
-[donate]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WLYUNAT9ZTJZ4
+[donate]: https://www.paypal.com/donate?hosted_button_id=WLYUNAT9ZTJZ4
 [gh-action-badge]: https://github.com/chillerlan/php-qrcode/workflows/Continuous%20Integration/badge.svg
 [gh-action]: https://github.com/chillerlan/php-qrcode/actions?query=workflow%3A%22Continuous+Integration%22
 [gh-docs-badge]: https://github.com/chillerlan/php-qrcode/workflows/Docs/badge.svg
