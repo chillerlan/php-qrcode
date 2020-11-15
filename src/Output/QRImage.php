@@ -33,6 +33,8 @@ class QRImage extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
+	 *
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
 
@@ -115,7 +117,7 @@ class QRImage extends QROutputAbstract{
 			$this->saveToFile($imageData, $file);
 		}
 
-		if((bool)$this->options->imageBase64){
+		if($this->options->imageBase64){
 			$imageData = sprintf('data:image/%s;base64,%s', $this->options->outputType, base64_encode($imageData));
 		}
 

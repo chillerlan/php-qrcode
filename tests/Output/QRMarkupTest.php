@@ -43,7 +43,7 @@ class QRMarkupTest extends QROutputTestAbstract{
 	 * @inheritDoc
 	 */
 	public function testSetModuleValues():void{
-
+		$this->options->imageBase64  = false;
 		$this->options->moduleValues = [
 			// data
 			1024 => '#4A6000',

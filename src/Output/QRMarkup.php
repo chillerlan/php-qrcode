@@ -150,6 +150,10 @@ class QRMarkup extends QROutputAbstract{
 			       $this->options->eol.$svg;
 		}
 
+		if($this->options->imageBase64){
+			$svg = sprintf('data:image/svg+xml;base64,%s', base64_encode($svg));
+		}
+
 		return $svg;
 	}
 
