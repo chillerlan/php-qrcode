@@ -574,6 +574,8 @@ final class QRMatrix{
 	 * Clears a space of $width * $height in order to add a logo or text. ECC level "H" (30%) is required.
 	 * This method should be called from within an output module (after the matrix has been filled with data).
 	 *
+	 * @link https://github.com/chillerlan/php-qrcode/issues/52
+	 *
 	 * @codeCoverageIgnore (for now)
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
