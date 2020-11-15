@@ -30,6 +30,7 @@ interface QROutputInterface{
 		QRMatrix::M_FORMAT          => false, // 14
 		QRMatrix::M_VERSION         => false, // 16
 		QRMatrix::M_QUIETZONE       => false, // 18
+		QRMatrix::M_LOGO            => false, // 20
 		QRMatrix::M_TEST            => false, // 255
 		// dark
 		QRMatrix::M_DARKMODULE << 8 => true,  // 512

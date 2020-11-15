@@ -45,8 +45,8 @@ final class QRMatrix{
 	public const M_VERSION    = 0x10;
 	/** @var int */
 	public const M_QUIETZONE  = 0x12;
-
-#	public const M_LOGO       = 0x14; // @todo
+	/** @var int */
+	public const M_LOGO       = 0x14;
 	/** @var int */
 	public const M_TEST       = 0xff;
 
@@ -557,6 +557,60 @@ final class QRMatrix{
 		for($i = 0; $i < $size; $i++){
 			array_unshift($this->matrix, $r);
 			array_push($this->matrix, $r);
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Clears a space of $width * $height in order to add a logo or text. ECC level "H" (30%) is required.
+	 * This method should be called from within an output module (after the matrix has been filled with data).
+	 *
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
+	 */
+	public function setLogoSpace(int $width, int $height):QRMatrix{
+
+		// for logos we operate in ECC H (30%) only
+		if($this->eclevel !== 0b10){
+			throw new QRCodeDataException('ECC level "H" required to add logo space');
+		}
+
+		// we need uneven sizes, adjust if needed
+		if(($width % 2) === 0){
+			$width++;
+		}
+
+		if(($height % 2) === 0){
+			$height++;
+		}
+
+		$dataModules = 0;
+
+		// count the data modules
+		foreach($this->matrix as $y => $row){
+			foreach($row as $x => $val){
+				if($val === $this::M_DATA || $val >> 8 === $this::M_DATA){
+					$dataModules++;
+				}
+			}
+		}
+
+		// throw if the logo space exceeds the maximum error correction capacity
+		// @todo: this might need some adjustment
+		if($width * $height > floor($dataModules * 0.3)){
+			throw new QRCodeDataException('logo space exceeds the maximum error correction capacity');
+		}
+
+		// clear the space
+		$startX = ($this->moduleCount - $width) / 2;
+		$startY = ($this->moduleCount - $height) / 2;
+
+		foreach($this->matrix as $y => $row){
+			foreach($row as $x => $val){
+				if($x >= $startX && $x < $startX + $width && $y >= $startY && $y < $startY + $height){
+					$this->set($x, $y, false, $this::M_LOGO);
+				}
+			}
 		}
 
 		return $this;
