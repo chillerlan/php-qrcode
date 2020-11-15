@@ -19,6 +19,8 @@ use PHPUnit\Framework\TestCase;
 
 use function file_exists, mkdir;
 
+use const PHP_OS_FAMILY;
+
 /**
  * Test abstract for the several (built-in) output modules,
  * should also be used to test custom output modules
@@ -117,7 +119,9 @@ abstract class QROutputTestAbstract extends TestCase{
 
 		// may fail on CI, different PHP (platform) versions produce different output
 		// the samples were generated on php-7.4.3-Win32-vc15-x64
-		if(\PHP_OS_FAMILY !== 'Windows' && ($type === QRCode::OUTPUT_IMAGE_JPG || $type === QRCode::OUTPUT_IMAGICK)){
+		if(PHP_OS_FAMILY !== 'Windows'
+		   && ($type === QRCode::OUTPUT_IMAGE_JPG || $type === QRCode::OUTPUT_IMAGICK || $type === QRCode::OUTPUT_MARKUP_SVG)
+		){
 			$this::markTestSkipped('may fail on CI');
 			return;
 		}
