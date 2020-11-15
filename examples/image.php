@@ -48,7 +48,7 @@ $options = new QROptions([
 		8    => [255, 255, 255],
 		// quietzone
 		18   => [255, 255, 255],
-		// logo
+		// logo (requires a call to QRMatrix::setLogoSpace())
 		20    => [255, 255, 255],
 	],
 ]);
