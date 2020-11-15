@@ -48,6 +48,8 @@ final class QRMatrix{
 	/** @var int */
 	public const M_LOGO       = 0x14;
 	/** @var int */
+	public const M_FINDER_DOT = 0x16;
+	/** @var int */
 	public const M_TEST       = 0xff;
 
 	/**
@@ -369,12 +371,18 @@ final class QRMatrix{
 		foreach($pos as $c){
 			for($y = 0; $y < 7; $y++){
 				for($x = 0; $x < 7; $x++){
-					$this->set(
-						$c[0] + $y,
-						$c[1] + $x,
-						!(($x > 0 && $x < 6 && ($y === 1 || $y === 5)) || ($y > 0 && $y < 6 && ($x === 1 || $x === 5))),
-						$this::M_FINDER
-					);
+					// outer (dark) 7*7 square
+					if($x === 0 || $x === 6 || $y === 0 || $y === 6){
+						$this->set($c[0] + $y, $c[1] + $x, true, $this::M_FINDER);
+					}
+					// inner (light) 5*5 square
+					elseif($x === 1 || $x === 5 || $y === 1 || $y === 5){
+						$this->set($c[0] + $y, $c[1] + $x, false, $this::M_FINDER);
+					}
+					// 3*3 dot
+					else{
+						$this->set($c[0] + $y, $c[1] + $x, true, $this::M_FINDER_DOT);
+					}
 				}
 			}
 		}

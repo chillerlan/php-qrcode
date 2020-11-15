@@ -40,6 +40,7 @@ interface QROutputInterface{
 		QRMatrix::M_TIMING << 8     => true,  // 3072
 		QRMatrix::M_FORMAT << 8     => true,  // 3584
 		QRMatrix::M_VERSION << 8    => true,  // 4096
+		QRMatrix::M_FINDER_DOT << 8 => true,  // 5632
 		QRMatrix::M_TEST << 8       => true,  // 65280
 	];
 
