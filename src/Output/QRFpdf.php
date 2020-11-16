@@ -65,8 +65,10 @@ class QRFpdf extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
+	 *
+	 * @return string|\FPDF
 	 */
-	public function dump(string $file = null):string{
+	public function dump(string $file = null){
 		$file ??= $this->options->cachefile;
 
 		$fpdf = new FPDF('P', $this->options->fpdfMeasureUnit, [$this->length, $this->length]);
@@ -88,6 +90,10 @@ class QRFpdf extends QROutputAbstract{
 				$fpdf->Rect($x * $this->scale, $y * $this->scale, 1 * $this->scale, 1 * $this->scale, 'F');
 			}
 
+		}
+
+		if($this->options->returnResource){
+			return $fpdf;
 		}
 
 		$pdfData = $fpdf->Output('S');

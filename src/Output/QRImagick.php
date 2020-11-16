@@ -29,6 +29,8 @@ use function extension_loaded, is_string;
  */
 class QRImagick extends QROutputAbstract{
 
+	protected Imagick $imagick;
+
 	/**
 	 * @inheritDoc
 	 */
@@ -62,19 +64,27 @@ class QRImagick extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
+	 *
+	 * @return string|\Imagick
 	 */
-	public function dump(string $file = null):string{
+	public function dump(string $file = null){
 		$file ??= $this->options->cachefile;
-		$imagick = new Imagick;
+		$this->imagick = new Imagick;
 
-		$imagick->newImage(
+		$this->imagick->newImage(
 			$this->length,
 			$this->length,
 			new ImagickPixel($this->options->imagickBG ?? 'transparent'),
 			$this->options->imagickFormat
 		);
 
-		$imageData = $this->drawImage($imagick);
+		$this->drawImage();
+
+		if($this->options->returnResource){
+			return $this->imagick;
+		}
+
+		$imageData = $this->imagick->getImageBlob();
 
 		if($file !== null){
 			$this->saveToFile($imageData, $file);
@@ -86,7 +96,7 @@ class QRImagick extends QROutputAbstract{
 	/**
 	 * Creates the QR image via ImagickDraw
 	 */
-	protected function drawImage(Imagick $imagick):string{
+	protected function drawImage():void{
 		$draw = new ImagickDraw;
 
 		foreach($this->matrix->matrix() as $y => $row){
@@ -103,9 +113,7 @@ class QRImagick extends QROutputAbstract{
 			}
 		}
 
-		$imagick->drawImage($draw);
-
-		return (string)$imagick;
+		$this->imagick->drawImage($draw);
 	}
 
 }

@@ -157,6 +157,22 @@ trait QROptionsTrait{
 	protected string $markupLight = '#fff';
 
 	/**
+	 * Return the image resource instead of a render if applicable.
+	 * This option overrides other output options, such as $cachefile and $imageBase64.
+	 *
+	 * Supported by the following modules:
+	 *
+	 * - QRImage:   resource (PHP < 8), GdImage
+	 * - QRImagick: Imagick
+	 * - QRFpdf:    FPDF
+	 *
+	 * @see \chillerlan\QRCode\Output\QROutputInterface::dump()
+	 *
+	 * @var bool
+	 */
+	protected bool $returnResource = false;
+
+	/**
 	 * toggle base64 or raw image data
 	 */
 	protected bool $imageBase64 = true;
@@ -186,7 +202,7 @@ trait QROptionsTrait{
 	/**
 	 * Imagick output format
 	 *
-	 * @see Imagick::setType()
+	 * @see \Imagick::setType()
 	 */
 	protected string $imagickFormat = 'png';
 

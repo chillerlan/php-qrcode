@@ -47,7 +47,7 @@ class QRImage extends QROutputAbstract{
 	 * The GD image resource
 	 *
 	 * @see imagecreatetruecolor()
-	 * @var resource
+	 * @var resource|\GdImage
 	 */
 	protected $image;
 
@@ -88,8 +88,10 @@ class QRImage extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
+	 *
+	 * @return string|\GdImage
 	 */
-	public function dump(string $file = null):string{
+	public function dump(string $file = null){
 		$file ??= $this->options->cachefile;
 
 		$this->image = imagecreatetruecolor($this->length, $this->length);
@@ -109,6 +111,10 @@ class QRImage extends QROutputAbstract{
 			foreach($row as $x => $M_TYPE){
 				$this->setPixel($x, $y, $this->moduleValues[$M_TYPE]);
 			}
+		}
+
+		if($this->options->returnResource){
+			return $this->image;
 		}
 
 		$imageData = $this->dumpImage();
