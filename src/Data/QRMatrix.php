@@ -596,20 +596,11 @@ final class QRMatrix{
 			$height++;
 		}
 
-		$dataModules = 0;
-
-		// count the data modules
-		foreach($this->matrix as $y => $row){
-			foreach($row as $x => $val){
-				if($val === $this::M_DATA || $val >> 8 === $this::M_DATA){
-					$dataModules++;
-				}
-			}
-		}
+		// $this->moduleCount includes the quiet zone (if created), we need the QR size here
+		$length = $this->version * 4 + 17;
 
 		// throw if the logo space exceeds the maximum error correction capacity
-		// @todo: this might need some adjustment
-		if($width * $height > floor($dataModules * 0.3)){
+		if($width * $height > floor($length * $length * 0.2)){
 			throw new QRCodeDataException('logo space exceeds the maximum error correction capacity');
 		}
 
