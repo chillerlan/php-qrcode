@@ -77,7 +77,8 @@ class QRFpdfTest extends QROutputTestAbstract{
 	 * @dataProvider types
 	 */
 	public function testRenderImage(string $type):void{
-		$this->options->outputType = $type;
+		$this->options->outputType  = $type;
+		$this->options->imageBase64 = false;
 
 		// substr() to avoid CreationDate
 		$expected = substr(file_get_contents(__DIR__.'/samples/'.$type), 0, 2500);
