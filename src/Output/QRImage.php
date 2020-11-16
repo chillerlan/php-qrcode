@@ -32,20 +32,6 @@ use function array_values, base64_encode, call_user_func, count, extension_loade
 class QRImage extends QROutputAbstract{
 
 	/**
-	 * @inheritDoc
-	 *
-	 * @throws \chillerlan\QRCode\QRCodeException
-	 */
-	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
-
-		if(!extension_loaded('gd')){
-			throw new QRCodeException('ext-gd not loaded'); // @codeCoverageIgnore
-		}
-
-		parent::__construct($options, $matrix);
-	}
-
-	/**
 	 * GD image types that support transparency
 	 *
 	 * @var string[]
@@ -64,6 +50,20 @@ class QRImage extends QROutputAbstract{
 	 * @var resource
 	 */
 	protected $image;
+
+	/**
+	 * @inheritDoc
+	 *
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
+
+		if(!extension_loaded('gd')){
+			throw new QRCodeException('ext-gd not loaded'); // @codeCoverageIgnore
+		}
+
+		parent::__construct($options, $matrix);
+	}
 
 	/**
 	 * @inheritDoc
