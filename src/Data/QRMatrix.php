@@ -571,7 +571,16 @@ final class QRMatrix{
 	}
 
 	/**
-	 * Clears a space of $width * $height in order to add a logo or text. ECC level "H" (30%) is required.
+	 * Clears a space of $width * $height in order to add a logo or text.
+	 *
+	 * Additionally, the logo space can be positioned within the QR Code - respecting the main functional patterns -
+	 * using $startX and $startY. If either of these are null, the logo space will be centered in that direction.
+	 * ECC level "H" (30%) is required.
+	 *
+	 * Please note that adding a logo space minimizes the error correction capacity of the QR Code and
+	 * created images may become unreadable, especially when printed with a chance to receive damage.
+	 * Please test thoroughly before using this feature in production.
+	 *
 	 * This method should be called from within an output module (after the matrix has been filled with data).
 	 *
 	 * @link https://github.com/chillerlan/php-qrcode/issues/52
@@ -580,7 +589,7 @@ final class QRMatrix{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function setLogoSpace(int $width, int $height):QRMatrix{
+	public function setLogoSpace(int $width, int $height, int $startX = null, int $startY = null):QRMatrix{
 
 		// for logos we operate in ECC H (30%) only
 		if($this->eclevel !== 0b10){
@@ -604,12 +613,23 @@ final class QRMatrix{
 			throw new QRCodeDataException('logo space exceeds the maximum error correction capacity');
 		}
 
-		// clear the space
-		$startX = ($this->moduleCount - $width) / 2;
-		$startY = ($this->moduleCount - $height) / 2;
+		// quiet zone size
+		$qz     = ($this->moduleCount - $length) / 2;
+		$start  = $qz + 9;
+		$end    = $this->moduleCount - $qz;
 
+		// determine start coordinates, try not to interfere with functional patterns
+		$startX = ($startX !== null ? $startX : ($length - $width) / 2) + $qz;
+		$startY = ($startY !== null ? $startY : ($length - $height) / 2) + $qz;
+
+		// clear the space
 		foreach($this->matrix as $y => $row){
 			foreach($row as $x => $val){
+
+				if($x < $start || $y < $start ||$x >= $end || $y >= $end){
+					continue;
+				}
+
 				if($x >= $startX && $x < $startX + $width && $y >= $startY && $y < $startY + $height){
 					$this->set($x, $y, false, $this::M_LOGO);
 				}
