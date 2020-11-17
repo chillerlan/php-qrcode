@@ -585,8 +585,6 @@ final class QRMatrix{
 	 *
 	 * @link https://github.com/chillerlan/php-qrcode/issues/52
 	 *
-	 * @codeCoverageIgnore (for now)
-	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function setLogoSpace(int $width, int $height, int $startX = null, int $startY = null):QRMatrix{
@@ -614,23 +612,25 @@ final class QRMatrix{
 		}
 
 		// quiet zone size
-		$qz     = ($this->moduleCount - $length) / 2;
-		$start  = $qz + 9;
-		$end    = $this->moduleCount - $qz;
+		$qz    = ($this->moduleCount - $length) / 2;
+		// skip quiet zone and the first 9 rows/columns (finder-, mode-, version- and timing patterns)
+		$start = $qz + 9;
+		// skip quiet zone
+		$end   = $this->moduleCount - $qz;
 
-		// determine start coordinates, try not to interfere with functional patterns
+		// determine start coordinates
 		$startX = ($startX !== null ? $startX : ($length - $width) / 2) + $qz;
 		$startY = ($startY !== null ? $startY : ($length - $height) / 2) + $qz;
 
 		// clear the space
 		foreach($this->matrix as $y => $row){
 			foreach($row as $x => $val){
-
+				// out of bounds, skip
 				if($x < $start || $y < $start ||$x >= $end || $y >= $end){
 					continue;
 				}
-
-				if($x >= $startX && $x < $startX + $width && $y >= $startY && $y < $startY + $height){
+				// a match
+				if($x >= $startX && $x < ($startX + $width) && $y >= $startY && $y < ($startY + $height)){
 					$this->set($x, $y, false, $this::M_LOGO);
 				}
 			}

@@ -10,7 +10,6 @@
  * @license      MIT
  *
  * @noinspection PhpComposerExtensionStubsInspection
- * @noinspection PhpUnused
  */
 
 namespace chillerlan\QRCode\Output;
@@ -48,6 +47,8 @@ class QRImage extends QROutputAbstract{
 	 *
 	 * @see imagecreatetruecolor()
 	 * @var resource|\GdImage
+	 *
+	 * @phan-suppress PhanUndeclaredTypeProperty
 	 */
 	protected $image;
 
@@ -90,6 +91,8 @@ class QRImage extends QROutputAbstract{
 	 * @inheritDoc
 	 *
 	 * @return string|\GdImage
+	 *
+	 * @phan-suppress PhanUndeclaredTypeReturnType, PhanTypeMismatchReturn
 	 */
 	public function dump(string $file = null){
 		$file ??= $this->options->cachefile;
