@@ -71,4 +71,12 @@ class QRFpdfTest extends QROutputTestAbstract{
 		$this::assertSame($expected, $actual);
 	}
 
+	public function testOutputGetResource():void{
+		$this->options->returnResource = true;
+
+		$this->setOutputInterface();
+
+		$this::assertInstanceOf(FPDF::class, $this->outputInterface->dump());
+	}
+
 }

@@ -65,8 +65,10 @@ class QRImage extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
+	 *
+	 * @return string|resource
 	 */
-	public function dump(string $file = null):string{
+	public function dump(string $file = null){
 		$this->image = imagecreatetruecolor($this->length, $this->length);
 
 		// avoid: Indirect modification of overloaded property $imageTransparencyBG has no effect
@@ -84,6 +86,10 @@ class QRImage extends QROutputAbstract{
 			foreach($row as $x => $M_TYPE){
 				$this->setPixel($x, $y, $this->moduleValues[$M_TYPE]);
 			}
+		}
+
+		if($this->options->returnResource){
+			return $this->image;
 		}
 
 		$imageData = $this->dumpImage($file);

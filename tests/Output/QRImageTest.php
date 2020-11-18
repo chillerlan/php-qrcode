@@ -58,4 +58,12 @@ class QRImageTest extends QROutputTestAbstract{
 		$this->assertTrue(true); // tricking the code coverage
 	}
 
+	public function testOutputGetResource():void{
+		$this->options->returnResource = true;
+
+		$this->setOutputInterface();
+
+		$this::assertIsResource($this->outputInterface->dump());
+	}
+
 }
