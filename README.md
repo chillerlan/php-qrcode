@@ -16,7 +16,7 @@ namespaced, cleaned up, improved and other stuff.
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?style=flat-square
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
 [license-badge]: https://img.shields.io/github/license/chillerlan/php-qrcode.svg?style=flat-square
-[license]: https://github.com/chillerlan/php-qrcode/blob/master/LICENSE
+[license]: https://github.com/chillerlan/php-qrcode/blob/main/LICENSE
 [travis-badge]: https://img.shields.io/travis/chillerlan/php-qrcode.svg?style=flat-square
 [travis]: https://travis-ci.org/chillerlan/php-qrcode
 [coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode.svg?style=flat-square
@@ -26,7 +26,7 @@ namespaced, cleaned up, improved and other stuff.
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?style=flat-square
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 [donate-badge]: https://img.shields.io/badge/donate-paypal-ff33aa.svg?style=flat-square
-[donate]: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=WLYUNAT9ZTJZ4
+[donate]: https://www.paypal.com/donate?hosted_button_id=WLYUNAT9ZTJZ4
 [gh-action-badge]: https://github.com/chillerlan/php-qrcode/workflows/Continuous%20Integration/badge.svg
 [gh-action]: https://github.com/chillerlan/php-qrcode/actions
 
@@ -50,7 +50,7 @@ via terminal: `composer require chillerlan/php-qrcode`
 {
 	"require": {
 		"php": "^7.2",
-		"chillerlan/php-qrcode": "dev-master"
+		"chillerlan/php-qrcode": "^3.4"
 	}
 }
 ```
@@ -65,8 +65,8 @@ echo '<img src="'.(new QRCode)->render($data).'" alt="QR Code" />';
 ```
 
 <p align="center">
-	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/master/examples/example_image.png">
-	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/master/examples/example_svg.png">
+	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/main/examples/example_image.png">
+	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/main/examples/example_svg.png">
 </p>
 
 Wait, what was that? Please again, slower!
@@ -342,6 +342,7 @@ method | return | description
 `get(int $x, int $y)` | int | returns the value of the module
 `set(int $x, int $y, bool $value, int $M_TYPE)` | `QRMatrix` | sets the `$M_TYPE` value for the module
 `check(int $x, int $y)` | bool | checks whether a module is true (dark) or false (light)
+`setLogoSpace(int $width, int $height, int $startX = null, int $startY = null)` | `QRMatrix` | creates a logo space in the matrix
 
 #### `QRMatrix` constants
 name | light (false) | dark (true) | description
@@ -379,6 +380,7 @@ http://www.denso-wave.com/qrcode/faqpatent-e.html
 - WordPress [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
 - WoltLab Suite [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)  
 - [Cachet](https://github.com/CachetHQ/Cachet)
+- [Appwrite](https://github.com/appwrite/appwrite)
 - other uses: [dependents](https://github.com/chillerlan/php-qrcode/network/dependents) / [packages](https://github.com/chillerlan/php-qrcode/network/dependents?dependent_type=PACKAGE)
 
 
