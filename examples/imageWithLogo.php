@@ -22,8 +22,8 @@ $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
  * @noinspection PhpIllegalPsrClassPathInspection
  */
 class LogoOptions extends QROptions{
-	protected int $logoWidth;
-	protected int $logoHeight;
+	protected $logoWidth;
+	protected $logoHeight;
 }
 
 $options = new LogoOptions;
