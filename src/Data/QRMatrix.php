@@ -32,7 +32,8 @@ class QRMatrix{
 	public const M_FORMAT     = 0x0e;
 	public const M_VERSION    = 0x10;
 	public const M_QUIETZONE  = 0x12;
-#	public const M_LOGO       = 0x14; // @todo
+	public const M_LOGO       = 0x14;
+	public const M_FINDER_DOT = 0x16;
 
 	public const M_TEST       = 0xff;
 
@@ -352,12 +353,18 @@ class QRMatrix{
 		foreach($pos as $c){
 			for($y = 0; $y < 7; $y++){
 				for($x = 0; $x < 7; $x++){
-					$this->set(
-						$c[0] + $y,
-						$c[1] + $x,
-						!(($x > 0 && $x < 6 && ($y === 1 || $y === 5)) || ($y > 0 && $y < 6 && ($x === 1 || $x === 5))),
-						$this::M_FINDER
-					);
+					// outer (dark) 7*7 square
+					if($x === 0 || $x === 6 || $y === 0 || $y === 6){
+						$this->set($c[0] + $y, $c[1] + $x, true, $this::M_FINDER);
+					}
+					// inner (light) 5*5 square
+					elseif($x === 1 || $x === 5 || $y === 1 || $y === 5){
+						$this->set($c[0] + $y, $c[1] + $x, false, $this::M_FINDER);
+					}
+					// 3*3 dot
+					else{
+						$this->set($c[0] + $y, $c[1] + $x, true, $this::M_FINDER_DOT);
+					}
 				}
 			}
 		}
@@ -546,6 +553,82 @@ class QRMatrix{
 		for($i = 0; $i < $size; $i++){
 			array_unshift($this->matrix, $r);
 			array_push($this->matrix, $r);
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Clears a space of $width * $height in order to add a logo or text.
+	 *
+	 * Additionally, the logo space can be positioned within the QR Code - respecting the main functional patterns -
+	 * using $startX and $startY. If either of these are null, the logo space will be centered in that direction.
+	 * ECC level "H" (30%) is required.
+	 *
+	 * Please note that adding a logo space minimizes the error correction capacity of the QR Code and
+	 * created images may become unreadable, especially when printed with a chance to receive damage.
+	 * Please test thoroughly before using this feature in production.
+	 *
+	 * This method should be called from within an output module (after the matrix has been filled with data).
+	 * Note that there is no restiction on how many times this method could be called on the same matrix instance.
+	 *
+	 * @link https://github.com/chillerlan/php-qrcode/issues/52
+	 *
+	 * @param int      $width
+	 * @param int      $height
+	 * @param int|null $startX
+	 * @param int|null $startY
+	 *
+	 * @return \chillerlan\QRCode\Data\QRMatrix
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
+	 */
+	public function setLogoSpace(int $width, int $height, int $startX = null, int $startY = null):QRMatrix{
+
+		// for logos we operate in ECC H (30%) only
+		if($this->eclevel !== 0b10){
+			throw new QRCodeDataException('ECC level "H" required to add logo space');
+		}
+
+		// we need uneven sizes, adjust if needed
+		if(($width % 2) === 0){
+			$width++;
+		}
+
+		if(($height % 2) === 0){
+			$height++;
+		}
+
+		// $this->moduleCount includes the quiet zone (if created), we need the QR size here
+		$length = $this->version * 4 + 17;
+
+		// throw if the logo space exceeds the maximum error correction capacity
+		if($width * $height > floor($length * $length * 0.2)){
+			throw new QRCodeDataException('logo space exceeds the maximum error correction capacity');
+		}
+
+		// quiet zone size
+		$qz    = ($this->moduleCount - $length) / 2;
+		// skip quiet zone and the first 9 rows/columns (finder-, mode-, version- and timing patterns)
+		$start = $qz + 9;
+		// skip quiet zone
+		$end   = $this->moduleCount - $qz;
+
+		// determine start coordinates
+		$startX = ($startX !== null ? $startX : ($length - $width) / 2) + $qz;
+		$startY = ($startY !== null ? $startY : ($length - $height) / 2) + $qz;
+
+		// clear the space
+		foreach($this->matrix as $y => $row){
+			foreach($row as $x => $val){
+				// out of bounds, skip
+				if($x < $start || $y < $start ||$x >= $end || $y >= $end){
+					continue;
+				}
+				// a match
+				if($x >= $startX && $x < ($startX + $width) && $y >= $startY && $y < ($startY + $height)){
+					$this->set($x, $y, false, $this::M_LOGO);
+				}
+			}
 		}
 
 		return $this;

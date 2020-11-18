@@ -13,6 +13,7 @@
 namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
 use chillerlan\QRCodeTest\QRTestAbstract;
 use ReflectionClass;
@@ -189,6 +190,71 @@ class QRMatrixTest extends QRTestAbstract{
 		$this->expectExceptionMessage('use only after writing data');
 
 		$this->matrix->setQuietZone();
+	}
+
+	public function testSetLogoSpaceOrientation():void{
+		$o = new QROptions;
+		$o->version      = 10;
+		$o->eccLevel     = QRCode::ECC_H;
+		$o->addQuietzone = false;
+
+		$matrix = (new QRCode($o))->getMatrix('testdata');
+		// also testing size adjustment to uneven numbers
+		$matrix->setLogoSpace(20, 14);
+
+		// NW corner
+		$this::assertNotSame(QRMatrix::M_LOGO, $matrix->get(17, 20));
+		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(18, 21));
+
+		// SE corner
+		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(38, 35));
+		$this::assertNotSame(QRMatrix::M_LOGO, $matrix->get(39, 36));
+	}
+
+	public function testSetLogoSpacePosition():void{
+		$o = new QROptions;
+		$o->version       = 10;
+		$o->eccLevel      = QRCode::ECC_H;
+		$o->addQuietzone  = true;
+		$o->quietzoneSize = 10;
+
+		$m = (new QRCode($o))->getMatrix('testdata');
+
+		// logo space should not overwrite quiet zone & function patterns
+		$m->setLogoSpace(21, 21, -10, -10);
+		$this::assertSame(QRMatrix::M_QUIETZONE, $m->get(9, 9));
+		$this::assertSame(QRMatrix::M_FINDER << 8, $m->get(10, 10));
+		$this::assertSame(QRMatrix::M_FINDER << 8, $m->get(16, 16));
+		$this::assertSame(QRMatrix::M_SEPARATOR, $m->get(17, 17));
+		$this::assertSame(QRMatrix::M_FORMAT << 8, $m->get(18, 18));
+		$this::assertSame(QRMatrix::M_LOGO, $m->get(19, 19));
+		$this::assertSame(QRMatrix::M_LOGO, $m->get(20, 20));
+		$this::assertNotSame(QRMatrix::M_LOGO, $m->get(21, 21));
+
+		// i just realized that setLogoSpace() could be called multiple times
+		// on the same instance and i'm not going to do anything about it :P
+		$m->setLogoSpace(21, 21, 45, 45);
+		$this::assertNotSame(QRMatrix::M_LOGO, $m->get(54, 54));
+		$this::assertSame(QRMatrix::M_LOGO, $m->get(55, 55));
+		$this::assertSame(QRMatrix::M_QUIETZONE, $m->get(67, 67));
+	}
+
+	public function testSetLogoSpaceInvalidEccException():void{
+		$this->expectException(QRCodeDataException::class);
+		$this->expectExceptionMessage('ECC level "H" required to add logo space');
+
+		(new QRCode)->getMatrix('testdata')->setLogoSpace(50, 50);
+	}
+
+	public function testSetLogoSpaceMaxSizeException():void{
+		$this->expectException(QRCodeDataException::class);
+		$this->expectExceptionMessage('logo space exceeds the maximum error correction capacity');
+
+		$o = new QROptions;
+		$o->version  = 5;
+		$o->eccLevel = QRCode::ECC_H;
+
+		(new QRCode($o))->getMatrix('testdata')->setLogoSpace(50, 50);
 	}
 
 }
