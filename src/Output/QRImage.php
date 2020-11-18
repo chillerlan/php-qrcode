@@ -12,7 +12,9 @@
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\{QRCode, QRCodeException};
+use chillerlan\Settings\SettingsContainerInterface;
 use Exception;
 
 use function array_values, base64_encode, call_user_func, count, imagecolorallocate, imagecolortransparent,
@@ -41,6 +43,20 @@ class QRImage extends QROutputAbstract{
 	 * @var resource
 	 */
 	protected $image;
+
+	/**
+	 * @inheritDoc
+	 *
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
+
+		if(!extension_loaded('gd')){
+			throw new QRCodeException('ext-gd not loaded'); // @codeCoverageIgnore
+		}
+
+		parent::__construct($options, $matrix);
+	}
 
 	/**
 	 * @inheritDoc
