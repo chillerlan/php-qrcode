@@ -8,6 +8,8 @@
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
+ *
+ * @noinspection PhpComposerExtensionStubsInspection
  */
 
 namespace chillerlan\QRCode\Output;
@@ -110,7 +112,7 @@ class QRImage extends QROutputAbstract{
 
 		$imageData = $this->dumpImage($file);
 
-		if((bool)$this->options->imageBase64){
+		if($this->options->imageBase64){
 			$imageData = sprintf('data:image/%s;base64,%s', $this->options->outputType, base64_encode($imageData));
 		}
 

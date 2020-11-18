@@ -13,6 +13,7 @@ $options = new QROptions([
     'outputType'   => QRCode::OUTPUT_FPDF,
     'eccLevel'     => QRCode::ECC_L,
     'scale'        => 5,
+    'imageBase64'  => false,
     'moduleValues' => [
         // finder
         1536 => [0, 63, 255], // dark (true)

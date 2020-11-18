@@ -21,7 +21,6 @@ $options = new QROptions([
 	'outputType'   => QRCode::OUTPUT_IMAGICK,
 	'eccLevel'     => QRCode::ECC_L,
 	'scale'        => 5,
-	'imageBase64'  => false,
 	'moduleValues' => [
 		// finder
 		1536 => '#A71111', // dark (true)
