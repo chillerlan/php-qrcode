@@ -90,7 +90,7 @@ class QRImage extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 *
-	 * @return string|\GdImage
+	 * @return string|resource|\GdImage
 	 *
 	 * @phan-suppress PhanUndeclaredTypeReturnType, PhanTypeMismatchReturn
 	 */
