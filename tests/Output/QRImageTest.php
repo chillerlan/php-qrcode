@@ -71,4 +71,19 @@ class QRImageTest extends QROutputTestAbstract{
 		$this::assertTrue(true); // tricking the code coverage
 	}
 
+	/**
+	 * @phan-suppress PhanUndeclaredClassReference
+	 */
+	public function testOutputGetResource():void{
+		$this->options->returnResource = true;
+		$this->outputInterface         = $this->getOutputInterface($this->options);
+
+		$actual = $this->outputInterface->dump();
+
+		/** @noinspection PhpElementIsNotAvailableInCurrentPhpVersionInspection */
+		\PHP_MAJOR_VERSION >= 8
+			? $this::assertInstanceOf(\GdImage::class, $actual)
+			: $this::assertIsResource($actual);
+	}
+
 }

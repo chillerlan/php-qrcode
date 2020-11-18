@@ -12,6 +12,7 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
+use Imagick;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Output\{QROutputInterface, QRImagick};
 
@@ -68,5 +69,13 @@ class QRImagickTest extends QROutputTestAbstract{
 
 		$this::assertTrue(true); // tricking the code coverage
 	}
+
+	public function testOutputGetResource():void{
+		$this->options->returnResource = true;
+		$this->outputInterface         = $this->getOutputInterface($this->options);
+
+		$this::assertInstanceOf(Imagick::class, $this->outputInterface->dump());
+	}
+
 
 }
