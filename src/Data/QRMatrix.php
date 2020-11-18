@@ -582,6 +582,7 @@ final class QRMatrix{
 	 * Please test thoroughly before using this feature in production.
 	 *
 	 * This method should be called from within an output module (after the matrix has been filled with data).
+	 * Note that there is no restiction on how many times this method could be called on the same matrix instance.
 	 *
 	 * @link https://github.com/chillerlan/php-qrcode/issues/52
 	 *
