@@ -3,12 +3,8 @@
 # https://github.com/sebastianbergmann/phpunit/blob/master/.github/workflows/ci.yml
 
 on:
-  pull_request:
-  push:
-    branches:
-      - master
-    tags:
-      - "**"
+  - pull_request
+  - push
 
 name: "Continuous Integration"
 
@@ -25,20 +21,11 @@ jobs:
           - php7.3
           - php7.4
 
-        dependencies:
-          - lowest
-          - highest
-
     steps:
       - name: "Checkout"
         uses: actions/checkout@v1.1.0
 
-      - name: "Install lowest dependencies with composer"
-        if: matrix.dependencies == 'lowest'
-        run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --no-progress --no-suggest --prefer-lowest
-
-      - name: "Install highest dependencies with composer"
-        if: matrix.dependencies == 'highest'
+      - name: "Install dependencies with composer"
         run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --no-progress --no-suggest
 
       - name: "Run unit tests with phpunit"
