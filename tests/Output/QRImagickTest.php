@@ -8,6 +8,9 @@
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2018 smiley
  * @license      MIT
+ *
+ * @noinspection PhpUndefinedClassInspection
+ * @noinspection PhpComposerExtensionStubsInspection
  */
 
 namespace chillerlan\QRCodeTest\Output;
@@ -29,6 +32,8 @@ class QRImagickTest extends QROutputTestAbstract{
 
 		if(!extension_loaded('imagick')){
 			$this->markTestSkipped('ext-imagick not loaded');
+
+			/** @noinspection PhpUnreachableStatementInspection */
 			return;
 		}
 

@@ -31,6 +31,8 @@ class QRFpdfTest extends QROutputTestAbstract{
 
 		if(!class_exists(FPDF::class)){
 			$this->markTestSkipped('FPDF not available');
+
+			/** @noinspection PhpUnreachableStatementInspection */
 			return;
 		}
 
