@@ -56,7 +56,7 @@ class QRCodeTest extends QRTestAbstract{
 			'png'  => [QRCode::OUTPUT_IMAGE_PNG, 'data:image/png;base64,'],
 			'gif'  => [QRCode::OUTPUT_IMAGE_GIF, 'data:image/gif;base64,'],
 			'jpg'  => [QRCode::OUTPUT_IMAGE_JPG, 'data:image/jpg;base64,'],
-			'svg'  => [QRCode::OUTPUT_MARKUP_SVG, '<svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="qr-svg " style="width: 100%; height: auto;" viewBox="'],
+			'svg'  => [QRCode::OUTPUT_MARKUP_SVG, 'data:image/svg+xml;base64,'],
 			'html' => [QRCode::OUTPUT_MARKUP_HTML, '<div><span style="background:'],
 			'text' => [QRCode::OUTPUT_STRING_TEXT, '⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕⭕'.PHP_EOL],
 			'json' => [QRCode::OUTPUT_STRING_JSON, '[[18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18,18],'],

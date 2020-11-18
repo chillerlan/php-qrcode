@@ -43,7 +43,8 @@ class QRMarkupTest extends QROutputTestAbstract{
 	 * @param $type
 	 */
 	public function testMarkupOutput($type){
-		$this->options->outputType = $type;
+		$this->options->imageBase64 = false;
+		$this->options->outputType  = $type;
 		$this->setOutputInterface();
 
 		$expected = explode($this->options->eol, file_get_contents($this::cachefile.$type));
@@ -62,6 +63,7 @@ class QRMarkupTest extends QROutputTestAbstract{
 
 	public function testSetModuleValues(){
 
+		$this->options->imageBase64  = false;
 		$this->options->moduleValues = [
 			// data
 			1024 => '#4A6000',

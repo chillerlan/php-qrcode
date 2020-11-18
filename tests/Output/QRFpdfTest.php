@@ -61,7 +61,8 @@ class QRFpdfTest extends QROutputTestAbstract{
 	public function testRenderImage():void{
 		$type = QRCode::OUTPUT_FPDF;
 
-		$this->options->outputType = $type;
+		$this->options->outputType  = $type;
+		$this->options->imageBase64 = false;
 		$this->outputInterface->dump($this::cachefile.$type);
 
 		// substr() to avoid CreationDate
