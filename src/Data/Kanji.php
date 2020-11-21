@@ -13,7 +13,7 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Helpers\BitBuffer;
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Common\Mode;
 
 use function mb_convert_encoding, mb_detect_encoding, mb_strlen, ord, sprintf, strlen;
 
@@ -25,7 +25,7 @@ use function mb_convert_encoding, mb_detect_encoding, mb_strlen, ord, sprintf, s
  */
 final class Kanji extends QRDataModeAbstract{
 
-	protected array $lengthBits = [8, 10, 12];
+	protected int $datamode = Mode::DATA_KANJI;
 
 	public function __construct(string $data){
 		parent::__construct($data);
@@ -76,8 +76,8 @@ final class Kanji extends QRDataModeAbstract{
 	public function write(BitBuffer $bitBuffer, int $version):void{
 
 		$bitBuffer
-			->put(QRCode::DATA_KANJI, 4)
-			->put($this->getCharCount(), $this->getLengthBitsForVersion($version))
+			->put($this->datamode, 4)
+			->put($this->getCharCount(), Mode::getLengthBitsForVersion($this->datamode, $version))
 		;
 
 		$len = strlen($this->data);

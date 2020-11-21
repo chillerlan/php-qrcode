@@ -13,6 +13,7 @@
 namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, MaskPatternTester, Number, QRData, QRCodeDataException, QRMatrix};
+use chillerlan\QRCode\Common\Mode;
 use chillerlan\QRCode\Output\{
 	QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString
 };
@@ -35,19 +36,6 @@ class QRCode{
 	public const VERSION_AUTO       = -1;
 	/** @var int */
 	public const MASK_PATTERN_AUTO  = -1;
-
-	// ISO/IEC 18004:2000 Table 2
-
-	/** @var int */
-	public const DATA_NUMBER   = 0b0001;
-	/** @var int */
-	public const DATA_ALPHANUM = 0b0010;
-	/** @var int */
-	public const DATA_BYTE     = 0b0100;
-	/** @var int */
-	public const DATA_KANJI    = 0b1000;
-	/** @var int */
-	public const DATA_ECI      = 0b0111;
 
 	// ISO/IEC 18004:2000 Tables 12, 25
 
@@ -125,18 +113,6 @@ class QRCode{
 	];
 
 	/**
-	 * Map of data mode => interface (detection order)
-	 *
-	 * @var string[]
-	 */
-	protected const DATA_INTERFACES = [
-		self::DATA_NUMBER   => Number::class,
-		self::DATA_ALPHANUM => AlphaNum::class,
-		self::DATA_KANJI    => Kanji::class,
-		self::DATA_BYTE     => Byte::class,
-	];
-
-	/**
 	 * A collection of one or more data segments of [classname, data] to write
 	 *
 	 * @see \chillerlan\QRCode\Data\QRDataModeInterface
@@ -175,7 +151,7 @@ class QRCode{
 
 		if($data !== null){
 			/** @var \chillerlan\QRCode\Data\QRDataModeInterface $dataInterface */
-			foreach($this::DATA_INTERFACES as $dataInterface){
+			foreach(Mode::DATA_INTERFACES as $dataInterface){
 
 				if($dataInterface::validateString($data)){
 					$this->addSegment($data, $dataInterface);

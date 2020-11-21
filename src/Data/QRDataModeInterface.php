@@ -21,9 +21,9 @@ use chillerlan\QRCode\Helpers\BitBuffer;
 interface QRDataModeInterface{
 
 	/**
-	 * returns the length bits for the given breakpoint [0,1,2]
+	 * returns the current data mode constant
 	 */
-	public function getLengthBits(int $k):int;
+	public function getDataMode():int;
 
 	/**
 	 * retruns the length in bits of the data string

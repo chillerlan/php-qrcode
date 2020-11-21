@@ -14,6 +14,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\Helpers\{BitBuffer, Polynomial};
+use chillerlan\QRCode\Common\Mode;
 use chillerlan\Settings\SettingsContainerInterface;
 
 use function array_column, array_combine, array_fill, array_keys, array_merge, count, max, range, sprintf;
@@ -221,7 +222,7 @@ class QRData{
 
 		foreach($this->dataSegments as $segment){
 			// data length in bits of the current segment +4 bits for each mode descriptor
-			$length += ($segment->getLengthInBits() + $segment->getLengthBits(0) + 4);
+			$length += ($segment->getLengthInBits() + Mode::LENGTH_BITS[$segment->getDataMode()][0] + 4);
 
 			if(!$segment instanceof ECI){
 				// mode length bits margin to the next breakpoint

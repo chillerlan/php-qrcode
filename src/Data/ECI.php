@@ -13,7 +13,7 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Helpers\BitBuffer;
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Common\Mode;
 
 /**
  * Adds an ECI Designator
@@ -59,6 +59,8 @@ class ECI extends QRDataModeAbstract{
 	 */
 	protected int $encoding;
 
+	protected int $datamode = Mode::DATA_ECI;
+
 	/**
 	 * @inheritDoc
 	 */
@@ -87,7 +89,7 @@ class ECI extends QRDataModeAbstract{
 	 */
 	public function write(BitBuffer $bitBuffer, int $version):void{
 		$bitBuffer
-			->put(QRCode::DATA_ECI, 4)
+			->put($this->datamode, 4)
 			->put($this->encoding, 8)
 		;
 	}

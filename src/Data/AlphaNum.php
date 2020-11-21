@@ -13,7 +13,7 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Helpers\BitBuffer;
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Common\Mode;
 
 use function ceil, ord, sprintf, str_split;
 
@@ -39,7 +39,7 @@ final class AlphaNum extends QRDataModeAbstract{
 		'+' => 40, '-' => 41, '.' => 42, '/' => 43, ':' => 44,
 	];
 
-	protected array $lengthBits = [9, 11, 13];
+	protected int $datamode = Mode::DATA_ALPHANUM;
 
 	/**
 	 * @inheritdoc
@@ -69,8 +69,8 @@ final class AlphaNum extends QRDataModeAbstract{
 		$len = $this->getCharCount();
 
 		$bitBuffer
-			->put(QRCode::DATA_ALPHANUM, 4)
-			->put($len, $this->getLengthBitsForVersion($version))
+			->put($this->datamode, 4)
+			->put($len, Mode::getLengthBitsForVersion($this->datamode, $version))
 		;
 
 		// encode 2 characters in 11 bits

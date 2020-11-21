@@ -13,7 +13,7 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Helpers\BitBuffer;
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Common\Mode;
 
 use function ord;
 
@@ -25,7 +25,7 @@ use function ord;
  */
 final class Byte extends QRDataModeAbstract{
 
-	protected array $lengthBits = [8, 16, 16];
+	protected int $datamode = Mode::DATA_BYTE;
 
 	/**
 	 * @inheritdoc
@@ -48,8 +48,8 @@ final class Byte extends QRDataModeAbstract{
 		$len = $this->getCharCount();
 
 		$bitBuffer
-			->put(QRCode::DATA_BYTE, 4)
-			->put($len, $this->getLengthBitsForVersion($version))
+			->put($this->datamode, 4)
+			->put($len, Mode::getLengthBitsForVersion($this->datamode, $version))
 		;
 
 		$i = 0;
