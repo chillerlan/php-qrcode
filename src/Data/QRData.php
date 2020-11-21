@@ -188,7 +188,7 @@ class QRData{
 		foreach($dataSegments as $segment){
 			[$class, $data] = $segment;
 
-			$this->dataSegments[] = new $class($this->bitBuffer, $data);
+			$this->dataSegments[] = new $class($data);
 		}
 
 		$this->version = $this->options->version === QRCode::VERSION_AUTO
@@ -271,7 +271,7 @@ class QRData{
 		$MAX_BITS = $this->maxBitsForEcc[$this->version];
 
 		foreach($this->dataSegments as $segment){
-			$segment->write($this->version);
+			$segment->write($this->bitBuffer, $this->version);
 		}
 
 		// overflow, likely caused due to invalid version setting

@@ -12,6 +12,7 @@
 
 namespace chillerlan\QRCode\Data;
 
+use chillerlan\QRCode\Helpers\BitBuffer;
 use chillerlan\QRCode\QRCode;
 
 use function ceil, ord, sprintf, str_split;
@@ -38,15 +39,13 @@ final class AlphaNum extends QRDataModeAbstract{
 		'+' => 40, '-' => 41, '.' => 42, '/' => 43, ':' => 44,
 	];
 
-	protected int $datamode = QRCode::DATA_ALPHANUM;
-
 	protected array $lengthBits = [9, 11, 13];
 
 	/**
 	 * @inheritdoc
 	 */
 	public function getLengthInBits():int{
-		return (int)ceil($this->getLength() * (11 / 2));
+		return (int)ceil($this->getCharCount() * (11 / 2));
 	}
 
 	/**
@@ -66,16 +65,22 @@ final class AlphaNum extends QRDataModeAbstract{
 	/**
 	 * @inheritdoc
 	 */
-	public function write(int $version):void{
-		$this->writeSegmentHeader($version);
-		$len = $this->getLength();
+	public function write(BitBuffer $bitBuffer, int $version):void{
+		$len = $this->getCharCount();
 
+		$bitBuffer
+			->put(QRCode::DATA_ALPHANUM, 4)
+			->put($len, $this->getLengthBitsForVersion($version))
+		;
+
+		// encode 2 characters in 11 bits
 		for($i = 0; $i + 1 < $len; $i += 2){
-			$this->bitBuffer->put($this->getCharCode($this->data[$i]) * 45 + $this->getCharCode($this->data[$i + 1]), 11);
+			$bitBuffer->put($this->getCharCode($this->data[$i]) * 45 + $this->getCharCode($this->data[$i + 1]), 11);
 		}
 
+		// encode a remaining character in 6 bits
 		if($i < $len){
-			$this->bitBuffer->put($this->getCharCode($this->data[$i]), 6);
+			$bitBuffer->put($this->getCharCode($this->data[$i]), 6);
 		}
 
 	}

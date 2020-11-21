@@ -12,6 +12,7 @@
 
 namespace chillerlan\QRCode\Data;
 
+use chillerlan\QRCode\Helpers\BitBuffer;
 use chillerlan\QRCode\QRCode;
 
 use function ceil, ord, sprintf, str_split, substr;
@@ -31,15 +32,13 @@ final class Number extends QRDataModeAbstract{
 		'0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9,
 	];
 
-	protected int $datamode = QRCode::DATA_NUMBER;
-
 	protected array $lengthBits = [10, 12, 14];
 
 	/**
 	 * @inheritdoc
 	 */
 	public function getLengthInBits():int{
-		return (int)ceil($this->getLength() * (10 / 3));
+		return (int)ceil($this->getCharCount() * (10 / 3));
 	}
 
 	/**
@@ -59,23 +58,31 @@ final class Number extends QRDataModeAbstract{
 	/**
 	 * @inheritdoc
 	 */
-	public function write(int $version):void{
-		$this->writeSegmentHeader($version);
-		$len = $this->getLength();
-		$i   = 0;
+	public function write(BitBuffer $bitBuffer, int $version):void{
+		$len = $this->getCharCount();
 
+		$bitBuffer
+			->put(QRCode::DATA_NUMBER, 4)
+			->put($len, $this->getLengthBitsForVersion($version))
+		;
+
+		$i = 0;
+
+		// encode numeric triplets in 10 bits
 		while($i + 2 < $len){
-			$this->bitBuffer->put($this->parseInt(substr($this->data, $i, 3)), 10);
+			$bitBuffer->put($this->parseInt(substr($this->data, $i, 3)), 10);
 			$i += 3;
 		}
 
 		if($i < $len){
 
-			if($len - $i === 1){
-				$this->bitBuffer->put($this->parseInt(substr($this->data, $i, $i + 1)), 4);
+			// encode 2 remaining numbers in 7 bits
+			if($len - $i === 2){
+				$bitBuffer->put($this->parseInt(substr($this->data, $i, 2)), 7);
 			}
-			elseif($len - $i === 2){
-				$this->bitBuffer->put($this->parseInt(substr($this->data, $i, $i + 2)), 7);
+			// encode one remaining number in 4 bits
+			elseif($len - $i === 1){
+				$bitBuffer->put($this->parseInt(substr($this->data, $i, 1)), 4);
 			}
 
 		}

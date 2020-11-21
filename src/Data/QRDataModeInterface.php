@@ -12,6 +12,8 @@
 
 namespace chillerlan\QRCode\Data;
 
+use chillerlan\QRCode\Helpers\BitBuffer;
+
 /**
  * Specifies the methods reqired for the data modules (Number, Alphanum, Byte and Kanji)
  * and holds version information in several constants
@@ -38,6 +40,6 @@ interface QRDataModeInterface{
 	 *
 	 * @see \chillerlan\QRCode\Data\QRData::writeBitBuffer()
 	 */
-	public function write(int $version):void;
+	public function write(BitBuffer $bitBuffer, int $version):void;
 
 }

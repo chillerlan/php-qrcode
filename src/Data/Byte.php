@@ -12,6 +12,7 @@
 
 namespace chillerlan\QRCode\Data;
 
+use chillerlan\QRCode\Helpers\BitBuffer;
 use chillerlan\QRCode\QRCode;
 
 use function ord;
@@ -24,15 +25,13 @@ use function ord;
  */
 final class Byte extends QRDataModeAbstract{
 
-	protected int $datamode = QRCode::DATA_BYTE;
-
 	protected array $lengthBits = [8, 16, 16];
 
 	/**
 	 * @inheritdoc
 	 */
 	public function getLengthInBits():int{
-		return $this->getLength() * 8;
+		return $this->getCharCount() * 8;
 	}
 
 	/**
@@ -45,13 +44,18 @@ final class Byte extends QRDataModeAbstract{
 	/**
 	 * @inheritdoc
 	 */
-	public function write(int $version):void{
-		$this->writeSegmentHeader($version);
-		$len = $this->getLength();
-		$i   = 0;
+	public function write(BitBuffer $bitBuffer, int $version):void{
+		$len = $this->getCharCount();
+
+		$bitBuffer
+			->put(QRCode::DATA_BYTE, 4)
+			->put($len, $this->getLengthBitsForVersion($version))
+		;
+
+		$i = 0;
 
 		while($i < $len){
-			$this->bitBuffer->put(ord($this->data[$i]), 8);
+			$bitBuffer->put(ord($this->data[$i]), 8);
 			$i++;
 		}
 

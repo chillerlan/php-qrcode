@@ -19,11 +19,6 @@ use chillerlan\QRCode\Helpers\BitBuffer;
 abstract class QRDataModeAbstract implements QRDataModeInterface{
 
 	/**
-	 * the current data mode: Num, Alphanum, Kanji, Byte
-	 */
-	protected int $datamode;
-
-	/**
 	 * mode length bits for the version breakpoints 1-9, 10-26 and 27-40
 	 *
 	 * ISO/IEC 18004:2000 Table 3 - Number of bits in Character Count Indicator
@@ -36,29 +31,16 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 	protected string $data;
 
 	/**
-	 * a BitBuffer instance
-	 */
-	protected BitBuffer $bitBuffer;
-
-	/**
 	 * QRDataModeAbstract constructor.
-	 *
-	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function __construct(BitBuffer $bitBuffer, string $data){
-		// do we need this here? we check during write anyways.
-#		if(!static::validateString($data)){
-#			throw new QRCodeDataException('invalid data string');
-#		}
-
-		$this->bitBuffer = $bitBuffer;
+	public function __construct(string $data){
 		$this->data      = $data;
 	}
 
 	/**
 	 * returns the character count of the $data string
 	 */
-	protected function getLength():int{
+	protected function getCharCount():int{
 		return strlen($this->data);
 	}
 
@@ -84,18 +66,6 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 		}
 
 		throw new QRCodeDataException(sprintf('invalid version number: %d', $version));
-	}
-
-	/**
-	 *
-	 */
-	protected function writeSegmentHeader(int $version):void{
-
-		$this->bitBuffer
-			->put($this->datamode, 4)
-			->put($this->getLength(), $this->getLengthBitsForVersion($version))
-		;
-
 	}
 
 }

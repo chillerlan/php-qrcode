@@ -25,12 +25,10 @@ use function mb_convert_encoding, mb_detect_encoding, mb_strlen, ord, sprintf, s
  */
 final class Kanji extends QRDataModeAbstract{
 
-	protected int $datamode = QRCode::DATA_KANJI;
-
 	protected array $lengthBits = [8, 10, 12];
 
-	public function __construct(BitBuffer $bitBuffer, string $data){
-		parent::__construct($bitBuffer, $data);
+	public function __construct(string $data){
+		parent::__construct($data);
 
 		/** @noinspection PhpFieldAssignmentTypeMismatchInspection */
 		$this->data = mb_convert_encoding($this->data, 'SJIS', mb_detect_encoding($this->data));
@@ -39,7 +37,7 @@ final class Kanji extends QRDataModeAbstract{
 	/**
 	 * @inheritdoc
 	 */
-	protected function getLength():int{
+	protected function getCharCount():int{
 		return mb_strlen($this->data, 'SJIS');
 	}
 
@@ -47,7 +45,7 @@ final class Kanji extends QRDataModeAbstract{
 	 * @inheritdoc
 	 */
 	public function getLengthInBits():int{
-		return $this->getLength() * 13;
+		return $this->getCharCount() * 13;
 	}
 
 	/**
@@ -75,9 +73,14 @@ final class Kanji extends QRDataModeAbstract{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException on an illegal character occurence
 	 */
-	public function write(int $version):void{
-		$this->writeSegmentHeader($version);
-		$len = strlen($this->data); // not self::getLength() - we need 8-bit length
+	public function write(BitBuffer $bitBuffer, int $version):void{
+
+		$bitBuffer
+			->put(QRCode::DATA_KANJI, 4)
+			->put($this->getCharCount(), $this->getLengthBitsForVersion($version))
+		;
+
+		$len = strlen($this->data);
 
 		for($i = 0; $i + 1 < $len; $i += 2){
 			$c = ((0xff & ord($this->data[$i])) << 8) | (0xff & ord($this->data[$i + 1]));
@@ -92,8 +95,7 @@ final class Kanji extends QRDataModeAbstract{
 				throw new QRCodeDataException(sprintf('illegal char at %d [%d]', $i + 1, $c));
 			}
 
-			$this->bitBuffer->put(((($c >> 8) & 0xff) * 0xC0) + ($c & 0xff), 13);
-
+			$bitBuffer->put(((($c >> 8) & 0xff) * 0xC0) + ($c & 0xff), 13);
 		}
 
 		if($i < $len){
