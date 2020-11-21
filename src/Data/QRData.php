@@ -222,8 +222,11 @@ class QRData{
 		foreach($this->dataSegments as $segment){
 			// data length in bits of the current segment +4 bits for each mode descriptor
 			$length += ($segment->getLengthInBits() + $segment->getLengthBits(0) + 4);
-			// mode length bits margin to the next breakpoint
-			$margin += ($segment instanceof Byte ? 8 : 2);
+
+			if(!$segment instanceof ECI){
+				// mode length bits margin to the next breakpoint
+				$margin += ($segment instanceof Byte ? 8 : 2);
+			}
 		}
 
 		foreach([9, 26, 40] as $breakpoint){

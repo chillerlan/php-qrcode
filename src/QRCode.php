@@ -12,9 +12,7 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\QRCode\Data\{
-	AlphaNum, Byte, Kanji, MaskPatternTester, Number, QRData, QRCodeDataException, QRMatrix
-};
+use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, MaskPatternTester, Number, QRData, QRCodeDataException, QRMatrix};
 use chillerlan\QRCode\Output\{
 	QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString
 };
@@ -48,6 +46,8 @@ class QRCode{
 	public const DATA_BYTE     = 0b0100;
 	/** @var int */
 	public const DATA_KANJI    = 0b1000;
+	/** @var int */
+	public const DATA_ECI      = 0b0111;
 
 	// ISO/IEC 18004:2000 Tables 12, 25
 
@@ -276,7 +276,13 @@ class QRCode{
 		return Byte::validateString($string);
 	}
 
-	protected function addSegment(string $data, string $classname):void{
+	/**
+	 * @param string|int $data
+	 * @param string     $classname
+	 *
+	 * @return void
+	 */
+	protected function addSegment($data, string $classname):void{
 		$this->dataSegments[] = [$classname, $data];
 	}
 
@@ -304,4 +310,9 @@ class QRCode{
 		return $this;
 	}
 
+	public function addEciDesignator(int $encoding):QRCode{
+		$this->addSegment($encoding, ECI::class);
+
+		return $this;
+	}
 }
