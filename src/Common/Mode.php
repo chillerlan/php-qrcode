@@ -85,4 +85,11 @@ class Mode{
 		throw new QRCodeException(sprintf('invalid version number: %d', $version));
 	}
 
+	/**
+	 * returns the array of length bits for the given mode
+	 */
+	public static function getLengthBitsForMode(int $mode):array{
+		return self::LENGTH_BITS[$mode];
+	}
+
 }
