@@ -36,9 +36,12 @@ $options->logoHeight       = 13;
 $options->scale            = 5;
 $options->imageTransparent = false;
 
+$qrcode = new QRCode($options);
+$qrcode->addByteSegment($data);
+
 header('Content-type: image/png');
 
-$qrOutputInterface = new QRImageWithLogo($options, (new QRCode($options))->getMatrix($data));
+$qrOutputInterface = new QRImageWithLogo($options, $qrcode->getMatrix());
 
 // dump the output, with an additional logo
 echo $qrOutputInterface->dump(null, __DIR__.'/octocat.png');

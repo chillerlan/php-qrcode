@@ -72,15 +72,6 @@ trait QROptionsTrait{
 	protected int $quietzoneSize = 4;
 
 	/**
-	 * Use this to circumvent the data mode detection and force the usage of the given mode.
-	 *
-	 * valid modes are: Number, AlphaNum, Kanji, Byte (case insensitive)
-	 *
-	 * @see https://github.com/chillerlan/php-qrcode/issues/39
-	 */
-	protected ?string $dataModeOverride = null;
-
-	/**
 	 * The output type
 	 *
 	 *   - QRCode::OUTPUT_MARKUP_XXXX where XXXX = HTML, SVG

@@ -13,14 +13,14 @@
 namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Data\{
-	AlphaNum, Byte, Kanji, MaskPatternTester, Number, QRCodeDataException, QRDataInterface, QRMatrix
+	AlphaNum, Byte, Kanji, MaskPatternTester, Number, QRData, QRCodeDataException, QRMatrix
 };
 use chillerlan\QRCode\Output\{
 	QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString
 };
 use chillerlan\Settings\SettingsContainerInterface;
 
-use function call_user_func_array, class_exists, in_array, ord, strlen, strtolower, str_split;
+use function class_exists, in_array;
 
 /**
  * Turns a text string into a Model 2 QR Code
@@ -49,20 +49,6 @@ class QRCode{
 	/** @var int */
 	public const DATA_KANJI    = 0b1000;
 
-	/**
-	 * References to the keys of the following tables:
-	 *
-	 * @see \chillerlan\QRCode\Data\QRDataInterface::MAX_LENGTH
-	 *
-	 * @var int[]
-	 */
-	public const DATA_MODES = [
-		self::DATA_NUMBER   => 0,
-		self::DATA_ALPHANUM => 1,
-		self::DATA_BYTE     => 2,
-		self::DATA_KANJI    => 3,
-	];
-
 	// ISO/IEC 18004:2000 Tables 12, 25
 
 	/** @var int */
@@ -77,8 +63,8 @@ class QRCode{
 	/**
 	 * References to the keys of the following tables:
 	 *
-	 * @see \chillerlan\QRCode\Data\QRDataInterface::MAX_BITS
-	 * @see \chillerlan\QRCode\Data\QRDataInterface::RSBLOCKS
+	 * @see \chillerlan\QRCode\Data\QRData::MAX_BITS
+	 * @see \chillerlan\QRCode\Data\QRData::RSBLOCKS
 	 * @see \chillerlan\QRCode\Data\QRMatrix::formatPattern
 	 *
 	 * @var int[]
@@ -134,21 +120,30 @@ class QRCode{
 			self::OUTPUT_IMAGICK,
 		],
 		QRFpdf::class => [
-			self::OUTPUT_FPDF
-		]
+			self::OUTPUT_FPDF,
+		],
 	];
 
 	/**
-	 * Map of data mode => interface
+	 * Map of data mode => interface (detection order)
 	 *
 	 * @var string[]
 	 */
 	protected const DATA_INTERFACES = [
-		'number'   => Number::class,
-		'alphanum' => AlphaNum::class,
-		'kanji'    => Kanji::class,
-		'byte'     => Byte::class,
+		self::DATA_NUMBER   => Number::class,
+		self::DATA_ALPHANUM => AlphaNum::class,
+		self::DATA_KANJI    => Kanji::class,
+		self::DATA_BYTE     => Byte::class,
 	];
+
+	/**
+	 * A collection of one or more data segments of [classname, data] to write
+	 *
+	 * @see \chillerlan\QRCode\Data\QRDataModeInterface
+	 *
+	 * @var string[][]|int[][]
+	 */
+	protected array $dataSegments = [];
 
 	/**
 	 * The settings container
@@ -160,7 +155,7 @@ class QRCode{
 	/**
 	 * The selected data interface (Number, AlphaNum, Kanji, Byte)
 	 */
-	protected QRDataInterface $dataInterface;
+	protected QRData $dataInterface;
 
 	/**
 	 * QRCode constructor.
@@ -176,22 +171,39 @@ class QRCode{
 	 *
 	 * @return mixed
 	 */
-	public function render(string $data, string $file = null){
-		return $this->initOutputInterface($data)->dump($file);
+	public function render(string $data = null, string $file = null){
+
+		if($data !== null){
+			/** @var \chillerlan\QRCode\Data\QRDataModeInterface $dataInterface */
+			foreach($this::DATA_INTERFACES as $dataInterface){
+
+				if($dataInterface::validateString($data)){
+					$this->addSegment($data, $dataInterface);
+
+					break;
+				}
+
+			}
+
+		}
+
+		return $this->initOutputInterface()->dump($file);
 	}
+
+
 
 	/**
 	 * Returns a QRMatrix object for the given $data and current QROptions
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function getMatrix(string $data):QRMatrix{
+	public function getMatrix():QRMatrix{
 
-		if(empty($data)){
+		if(empty($this->dataSegments)){
 			throw new QRCodeDataException('QRCode::getMatrix() No data given.');
 		}
 
-		$this->dataInterface = $this->initDataInterface($data);
+		$this->dataInterface = new QRData($this->options, $this->dataSegments);
 
 		$maskPattern = $this->options->maskPattern === $this::MASK_PATTERN_AUTO
 			? (new MaskPatternTester($this->dataInterface))->getBestMaskPattern()
@@ -207,46 +219,20 @@ class QRCode{
 	}
 
 	/**
-	 * returns a fresh QRDataInterface for the given $data
-	 *
-	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
-	 */
-	public function initDataInterface(string $data):QRDataInterface{
-
-		// allow forcing the data mode
-		// see https://github.com/chillerlan/php-qrcode/issues/39
-		$interface = $this::DATA_INTERFACES[strtolower($this->options->dataModeOverride)] ?? null;
-
-		if($interface !== null){
-			return new $interface($this->options, $data);
-		}
-
-		foreach($this::DATA_INTERFACES as $mode => $dataInterface){
-
-			if(call_user_func_array([$this, 'is'.$mode], [$data])){
-				return new $dataInterface($this->options, $data);
-			}
-
-		}
-
-		throw new QRCodeDataException('invalid data type'); // @codeCoverageIgnore
-	}
-
-	/**
 	 * returns a fresh (built-in) QROutputInterface
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function initOutputInterface(string $data):QROutputInterface{
+	protected function initOutputInterface():QROutputInterface{
 
 		if($this->options->outputType === $this::OUTPUT_CUSTOM && class_exists($this->options->outputInterface)){
-			return new $this->options->outputInterface($this->options, $this->getMatrix($data));
+			return new $this->options->outputInterface($this->options, $this->getMatrix());
 		}
 
 		foreach($this::OUTPUT_MODES as $outputInterface => $modes){
 
 			if(in_array($this->options->outputType, $modes, true) && class_exists($outputInterface)){
-				return new $outputInterface($this->options, $this->getMatrix($data));
+				return new $outputInterface($this->options, $this->getMatrix());
 			}
 
 		}
@@ -255,58 +241,67 @@ class QRCode{
 	}
 
 	/**
-	 * checks if a string qualifies as numeric
+	 * checks if a string qualifies as numeric (convenience method)
+	 *
+	 * @see Number::validateString()
 	 */
 	public function isNumber(string $string):bool{
-		return $this->checkString($string, QRDataInterface::CHAR_MAP_NUMBER);
+		return Number::validateString($string);
 	}
 
 	/**
-	 * checks if a string qualifies as alphanumeric
+	 * checks if a string qualifies as alphanumeric (convenience method)
+	 *
+	 * @see AlphaNum::validateString()
 	 */
 	public function isAlphaNum(string $string):bool{
-		return $this->checkString($string, QRDataInterface::CHAR_MAP_ALPHANUM);
+		return AlphaNum::validateString($string);
 	}
 
 	/**
-	 * checks is a given $string matches the characters of a given $charmap, returns false on the first invalid occurence.
-	 */
-	protected function checkString(string $string, array $charmap):bool{
-
-		foreach(str_split($string) as $chr){
-			if(!isset($charmap[$chr])){
-				return false;
-			}
-		}
-
-		return true;
-	}
-
-	/**
-	 * checks if a string qualifies as Kanji
+	 * checks if a string qualifies as Kanji (convenience method)
+	 *
+	 * @see Kanji::validateString()
 	 */
 	public function isKanji(string $string):bool{
-		$i   = 0;
-		$len = strlen($string);
-
-		while($i + 1 < $len){
-			$c = ((0xff & ord($string[$i])) << 8) | (0xff & ord($string[$i + 1]));
-
-			if(!($c >= 0x8140 && $c <= 0x9FFC) && !($c >= 0xE040 && $c <= 0xEBBF)){
-				return false;
-			}
-
-			$i += 2;
-		}
-
-		return $i >= $len;
+		return Kanji::validateString($string);
 	}
 
 	/**
-	 * a dummy
+	 * a dummy (convenience method)
+	 *
+	 * @see Byte::validateString()
 	 */
-	public function isByte(string $data):bool{
-		return !empty($data);
+	public function isByte(string $string):bool{
+		return Byte::validateString($string);
+	}
+
+	protected function addSegment(string $data, string $classname):void{
+		$this->dataSegments[] = [$classname, $data];
+	}
+
+	public function addNumberSegment(string $data):QRCode{
+		$this->addSegment($data, Number::class);
+
+		return $this;
+	}
+
+	public function addAlphaNumSegment(string $data):QRCode{
+		$this->addSegment($data, AlphaNum::class);
+
+		return $this;
+	}
+
+	public function addKanjiSegment(string $data):QRCode{
+		$this->addSegment($data, Kanji::class);
+
+		return $this;
+	}
+
+	public function addByteSegment(string $data):QRCode{
+		$this->addSegment($data, Byte::class);
+
+		return $this;
 	}
 
 }

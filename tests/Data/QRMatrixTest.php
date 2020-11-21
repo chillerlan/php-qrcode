@@ -315,7 +315,7 @@ final class QRMatrixTest extends TestCase{
 		$o->eccLevel     = QRCode::ECC_H;
 		$o->addQuietzone = false;
 
-		$matrix = (new QRCode($o))->getMatrix('testdata');
+		$matrix = (new QRCode($o))->addByteSegment('testdata')->getMatrix();
 		// also testing size adjustment to uneven numbers
 		$matrix->setLogoSpace(20, 14);
 
@@ -335,7 +335,7 @@ final class QRMatrixTest extends TestCase{
 		$o->addQuietzone  = true;
 		$o->quietzoneSize = 10;
 
-		$m = (new QRCode($o))->getMatrix('testdata');
+		$m = (new QRCode($o))->addByteSegment('testdata')->getMatrix();
 
 		// logo space should not overwrite quiet zone & function patterns
 		$m->setLogoSpace(21, 21, -10, -10);
@@ -360,7 +360,7 @@ final class QRMatrixTest extends TestCase{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('ECC level "H" required to add logo space');
 
-		(new QRCode)->getMatrix('testdata')->setLogoSpace(50, 50);
+		(new QRCode)->addByteSegment('testdata')->getMatrix()->setLogoSpace(50, 50);
 	}
 
 	public function testSetLogoSpaceMaxSizeException():void{
@@ -371,7 +371,7 @@ final class QRMatrixTest extends TestCase{
 		$o->version  = 5;
 		$o->eccLevel = QRCode::ECC_H;
 
-		(new QRCode($o))->getMatrix('testdata')->setLogoSpace(50, 50);
+		(new QRCode($o))->addByteSegment('testdata')->getMatrix()->setLogoSpace(50, 50);
 	}
 
 }

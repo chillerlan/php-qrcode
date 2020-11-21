@@ -22,7 +22,10 @@ $options = new QROptions([
 	'eccLevel'     => QRCode::ECC_L,
 ]);
 
-$qrOutputInterface = new MyCustomOutput($options, (new QRCode($options))->getMatrix($data));
+$qrcode = new QRCode($options);
+$qrcode->addByteSegment($data);
+
+$qrOutputInterface = new MyCustomOutput($options, $qrcode->getMatrix());
 
 var_dump($qrOutputInterface->dump());
 

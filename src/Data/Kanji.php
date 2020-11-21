@@ -12,9 +12,10 @@
 
 namespace chillerlan\QRCode\Data;
 
+use chillerlan\QRCode\Helpers\BitBuffer;
 use chillerlan\QRCode\QRCode;
 
-use function mb_strlen, ord, sprintf, strlen;
+use function mb_convert_encoding, mb_detect_encoding, mb_strlen, ord, sprintf, strlen;
 
 /**
  * Kanji mode: double-byte characters from the Shift JIS character set
@@ -22,17 +23,51 @@ use function mb_strlen, ord, sprintf, strlen;
  * ISO/IEC 18004:2000 Section 8.3.5
  * ISO/IEC 18004:2000 Section 8.4.5
  */
-final class Kanji extends QRDataAbstract{
+final class Kanji extends QRDataModeAbstract{
 
 	protected int $datamode = QRCode::DATA_KANJI;
 
 	protected array $lengthBits = [8, 10, 12];
 
+	public function __construct(BitBuffer $bitBuffer, string $data){
+		parent::__construct($bitBuffer, $data);
+
+		/** @noinspection PhpFieldAssignmentTypeMismatchInspection */
+		$this->data = mb_convert_encoding($this->data, 'SJIS', mb_detect_encoding($this->data));
+	}
+
 	/**
 	 * @inheritdoc
 	 */
-	protected function getLength(string $data):int{
-		return mb_strlen($data, 'SJIS');
+	protected function getLength():int{
+		return mb_strlen($this->data, 'SJIS');
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function getLengthInBits():int{
+		return $this->getLength() * 13;
+	}
+
+	/**
+	 * checks if a string qualifies as Kanji
+	 */
+	public static function validateString(string $string):bool{
+		$i   = 0;
+		$len = strlen($string);
+
+		while($i + 1 < $len){
+			$c = ((0xff & ord($string[$i])) << 8) | (0xff & ord($string[$i + 1]));
+
+			if(!($c >= 0x8140 && $c <= 0x9FFC) && !($c >= 0xE040 && $c <= 0xEBBF)){
+				return false;
+			}
+
+			$i += 2;
+		}
+
+		return $i >= $len;
 	}
 
 	/**
@@ -40,11 +75,12 @@ final class Kanji extends QRDataAbstract{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException on an illegal character occurence
 	 */
-	protected function write(string $data):void{
-		$len = strlen($data);
+	public function write(int $version):void{
+		$this->writeSegmentHeader($version);
+		$len = strlen($this->data); // not self::getLength() - we need 8-bit length
 
 		for($i = 0; $i + 1 < $len; $i += 2){
-			$c = ((0xff & ord($data[$i])) << 8) | (0xff & ord($data[$i + 1]));
+			$c = ((0xff & ord($this->data[$i])) << 8) | (0xff & ord($this->data[$i + 1]));
 
 			if($c >= 0x8140 && $c <= 0x9FFC){
 				$c -= 0x8140;

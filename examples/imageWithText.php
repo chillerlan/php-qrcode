@@ -25,9 +25,12 @@ $options = new QROptions([
 	'imageBase64'  => false,
 ]);
 
+$qrcode = new QRCode($options);
+$qrcode->addByteSegment($data);
+
 header('Content-type: image/png');
 
-$qrOutputInterface = new QRImageWithText($options, (new QRCode($options))->getMatrix($data));
+$qrOutputInterface = new QRImageWithText($options, $qrcode->getMatrix());
 
 // dump the output, with additional text
 echo $qrOutputInterface->dump(null, 'example text');

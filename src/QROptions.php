@@ -24,7 +24,6 @@ use chillerlan\Settings\SettingsContainerAbstract;
  * @property int         $maskPattern
  * @property bool        $addQuietzone
  * @property int         $quietzoneSize
- * @property string|null $dataModeOverride
  * @property string      $outputType
  * @property string|null $outputInterface
  * @property string|null $cachefile

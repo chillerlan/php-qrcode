@@ -14,7 +14,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\QRCode;
 
-use function ord, sprintf, str_split, substr;
+use function ceil, ord, sprintf, str_split, substr;
 
 /**
  * Numeric mode: decimal digits 0 to 9
@@ -22,7 +22,14 @@ use function ord, sprintf, str_split, substr;
  * ISO/IEC 18004:2000 Section 8.3.2
  * ISO/IEC 18004:2000 Section 8.4.2
  */
-final class Number extends QRDataAbstract{
+final class Number extends QRDataModeAbstract{
+
+	/**
+	 * @var int[]
+	 */
+	protected const CHAR_MAP_NUMBER = [
+		'0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9,
+	];
 
 	protected int $datamode = QRCode::DATA_NUMBER;
 
@@ -31,21 +38,44 @@ final class Number extends QRDataAbstract{
 	/**
 	 * @inheritdoc
 	 */
-	protected function write(string $data):void{
-		$i = 0;
+	public function getLengthInBits():int{
+		return (int)ceil($this->getLength() * (10 / 3));
+	}
 
-		while($i + 2 < $this->strlen){
-			$this->bitBuffer->put($this->parseInt(substr($data, $i, 3)), 10);
+	/**
+	 * @inheritdoc
+	 */
+	public static function validateString(string $string):bool{
+
+		foreach(str_split($string) as $chr){
+			if(!isset(self::CHAR_MAP_NUMBER[$chr])){
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function write(int $version):void{
+		$this->writeSegmentHeader($version);
+		$len = $this->getLength();
+		$i   = 0;
+
+		while($i + 2 < $len){
+			$this->bitBuffer->put($this->parseInt(substr($this->data, $i, 3)), 10);
 			$i += 3;
 		}
 
-		if($i < $this->strlen){
+		if($i < $len){
 
-			if($this->strlen - $i === 1){
-				$this->bitBuffer->put($this->parseInt(substr($data, $i, $i + 1)), 4);
+			if($len - $i === 1){
+				$this->bitBuffer->put($this->parseInt(substr($this->data, $i, $i + 1)), 4);
 			}
-			elseif($this->strlen - $i === 2){
-				$this->bitBuffer->put($this->parseInt(substr($data, $i, $i + 2)), 7);
+			elseif($len - $i === 2){
+				$this->bitBuffer->put($this->parseInt(substr($this->data, $i, $i + 2)), 7);
 			}
 
 		}
@@ -63,7 +93,7 @@ final class Number extends QRDataAbstract{
 		foreach(str_split($string) as $chr){
 			$c = ord($chr);
 
-			if(!isset($this::CHAR_MAP_NUMBER[$chr])){
+			if(!isset(self::CHAR_MAP_NUMBER[$chr])){
 				throw new QRCodeDataException(sprintf('illegal char: "%s" [%d]', $chr, $c));
 			}
 

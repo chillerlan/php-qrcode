@@ -22,7 +22,7 @@ use function ord;
  * ISO/IEC 18004:2000 Section 8.3.4
  * ISO/IEC 18004:2000 Section 8.4.4
  */
-final class Byte extends QRDataAbstract{
+final class Byte extends QRDataModeAbstract{
 
 	protected int $datamode = QRCode::DATA_BYTE;
 
@@ -31,11 +31,27 @@ final class Byte extends QRDataAbstract{
 	/**
 	 * @inheritdoc
 	 */
-	protected function write(string $data):void{
-		$i = 0;
+	public function getLengthInBits():int{
+		return $this->getLength() * 8;
+	}
 
-		while($i < $this->strlen){
-			$this->bitBuffer->put(ord($data[$i]), 8);
+	/**
+	 * @inheritdoc
+	 */
+	public static function validateString(string $string):bool{
+		return !empty($string);
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function write(int $version):void{
+		$this->writeSegmentHeader($version);
+		$len = $this->getLength();
+		$i   = 0;
+
+		while($i < $len){
+			$this->bitBuffer->put(ord($this->data[$i]), 8);
 			$i++;
 		}
 

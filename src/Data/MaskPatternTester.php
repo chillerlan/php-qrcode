@@ -17,7 +17,7 @@ namespace chillerlan\QRCode\Data;
 use function abs, array_search, call_user_func_array, min;
 
 /**
- * Receives a QRDataInterface object and runs the mask pattern tests on it.
+ * Receives a QRData object and runs the mask pattern tests on it.
  *
  * ISO/IEC 18004:2000 Section 8.8.2 - Evaluation of masking results
  *
@@ -28,16 +28,16 @@ final class MaskPatternTester{
 	/**
 	 * The data interface that contains the data matrix to test
 	 */
-	protected QRDataInterface $dataInterface;
+	protected QRData $qrData;
 
 	/**
-	 * Receives the QRDataInterface
+	 * Receives the QRData object
 	 *
 	 * @see \chillerlan\QRCode\QROptions::$maskPattern
 	 * @see \chillerlan\QRCode\Data\QRMatrix::$maskPattern
 	 */
-	public function __construct(QRDataInterface $dataInterface){
-		$this->dataInterface = $dataInterface;
+	public function __construct(QRData $qrData){
+		$this->qrData = $qrData;
 	}
 
 	/**
@@ -62,7 +62,7 @@ final class MaskPatternTester{
 	 * @see \chillerlan\QRCode\Data\QRMatrix::$maskPattern
 	 */
 	public function testPattern(int $pattern):int{
-		$matrix  = $this->dataInterface->initMatrix($pattern, true);
+		$matrix  = $this->qrData->initMatrix($pattern, true);
 		$penalty = 0;
 
 		for($level = 1; $level <= 4; $level++){

@@ -13,7 +13,7 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Data\{Byte, QRMatrix};
+use chillerlan\QRCode\Data\{Byte, QRData, QRMatrix};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use PHPUnit\Framework\TestCase;
 
@@ -48,7 +48,7 @@ abstract class QROutputTestAbstract extends TestCase{
 		}
 
 		$this->options         = new QROptions;
-		$this->matrix          = (new Byte($this->options, 'testdata'))->initMatrix(0);
+		$this->matrix          = (new QRData($this->options, [[Byte::class, 'testdata']]))->initMatrix(0);
 		$this->outputInterface = $this->getOutputInterface($this->options);
 	}
 

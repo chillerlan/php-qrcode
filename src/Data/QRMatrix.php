@@ -641,10 +641,10 @@ final class QRMatrix{
 	}
 
 	/**
-	 * Maps the binary $data array from QRDataInterface::maskECC() on the matrix,
+	 * Maps the binary $data array from QRData::maskECC() on the matrix,
 	 * masking the data using $maskPattern (ISO/IEC 18004:2000 Section 8.8)
 	 *
-	 * @see \chillerlan\QRCode\Data\QRDataAbstract::maskECC()
+	 * @see \chillerlan\QRCode\Data\QRData::maskECC()
 	 *
 	 * @param int[] $data
 	 * @param int   $maskPattern

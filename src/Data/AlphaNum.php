@@ -14,7 +14,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\QRCode;
 
-use function ord, sprintf;
+use function ceil, ord, sprintf, str_split;
 
 /**
  * Alphanumeric mode: 0 to 9, A to Z, space, $ % * + - . / :
@@ -22,7 +22,21 @@ use function ord, sprintf;
  * ISO/IEC 18004:2000 Section 8.3.3
  * ISO/IEC 18004:2000 Section 8.4.3
  */
-final class AlphaNum extends QRDataAbstract{
+final class AlphaNum extends QRDataModeAbstract{
+
+	/**
+	 * ISO/IEC 18004:2000 Table 5
+	 *
+	 * @var int[]
+	 */
+	protected const CHAR_MAP_ALPHANUM = [
+		'0' =>  0, '1' =>  1, '2' =>  2, '3' =>  3, '4' =>  4, '5' =>  5, '6' =>  6, '7' =>  7,
+		'8' =>  8, '9' =>  9, 'A' => 10, 'B' => 11, 'C' => 12, 'D' => 13, 'E' => 14, 'F' => 15,
+		'G' => 16, 'H' => 17, 'I' => 18, 'J' => 19, 'K' => 20, 'L' => 21, 'M' => 22, 'N' => 23,
+		'O' => 24, 'P' => 25, 'Q' => 26, 'R' => 27, 'S' => 28, 'T' => 29, 'U' => 30, 'V' => 31,
+		'W' => 32, 'X' => 33, 'Y' => 34, 'Z' => 35, ' ' => 36, '$' => 37, '%' => 38, '*' => 39,
+		'+' => 40, '-' => 41, '.' => 42, '/' => 43, ':' => 44,
+	];
 
 	protected int $datamode = QRCode::DATA_ALPHANUM;
 
@@ -31,14 +45,37 @@ final class AlphaNum extends QRDataAbstract{
 	/**
 	 * @inheritdoc
 	 */
-	protected function write(string $data):void{
+	public function getLengthInBits():int{
+		return (int)ceil($this->getLength() * (11 / 2));
+	}
 
-		for($i = 0; $i + 1 < $this->strlen; $i += 2){
-			$this->bitBuffer->put($this->getCharCode($data[$i]) * 45 + $this->getCharCode($data[$i + 1]), 11);
+	/**
+	 * @inheritdoc
+	 */
+	public static function validateString(string $string):bool{
+
+		foreach(str_split($string) as $chr){
+			if(!isset(self::CHAR_MAP_ALPHANUM[$chr])){
+				return false;
+			}
 		}
 
-		if($i < $this->strlen){
-			$this->bitBuffer->put($this->getCharCode($data[$i]), 6);
+		return true;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function write(int $version):void{
+		$this->writeSegmentHeader($version);
+		$len = $this->getLength();
+
+		for($i = 0; $i + 1 < $len; $i += 2){
+			$this->bitBuffer->put($this->getCharCode($this->data[$i]) * 45 + $this->getCharCode($this->data[$i + 1]), 11);
+		}
+
+		if($i < $len){
+			$this->bitBuffer->put($this->getCharCode($this->data[$i]), 6);
 		}
 
 	}
@@ -50,11 +87,11 @@ final class AlphaNum extends QRDataAbstract{
 	 */
 	protected function getCharCode(string $chr):int{
 
-		if(!isset($this::CHAR_MAP_ALPHANUM[$chr])){
+		if(!isset(self::CHAR_MAP_ALPHANUM[$chr])){
 			throw new QRCodeDataException(sprintf('illegal char: "%s" [%d]', $chr, ord($chr)));
 		}
 
-		return $this::CHAR_MAP_ALPHANUM[$chr];
+		return self::CHAR_MAP_ALPHANUM[$chr];
 	}
 
 }
