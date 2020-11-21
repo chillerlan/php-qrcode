@@ -62,8 +62,8 @@ class ECI extends QRDataModeAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	public function __construct(BitBuffer $bitBuffer, int $encoding){
-		parent::__construct($bitBuffer, '');
+	public function __construct(int $encoding){
+		parent::__construct('');
 
 		$this->encoding = $encoding;
 	}
@@ -85,9 +85,11 @@ class ECI extends QRDataModeAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	public function write(int $version):void{
-		$this->bitBuffer->put(QRCode::DATA_ECI, 4);
-		$this->bitBuffer->put($this->encoding, 8);
+	public function write(BitBuffer $bitBuffer, int $version):void{
+		$bitBuffer
+			->put(QRCode::DATA_ECI, 4)
+			->put($this->encoding, 8)
+		;
 	}
 
 }
