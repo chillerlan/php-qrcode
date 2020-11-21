@@ -12,6 +12,7 @@
 
 namespace chillerlan\QRCodeTest\Data;
 
+use chillerlan\QRCode\Common\Version;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
@@ -43,7 +44,7 @@ final class QRMatrixTest extends TestCase{
 	 * @internal
 	 */
 	protected function getMatrix(int $version):QRMatrix{
-		return  new QRMatrix($version, QRCode::ECC_L);
+		return  new QRMatrix(new Version($version), QRCode::ECC_L);
 	}
 
 	/**
@@ -54,23 +55,13 @@ final class QRMatrixTest extends TestCase{
 	}
 
 	/**
-	 * Tests if an exception is thrown when an invalid QR version was given
-	 */
-	public function testInvalidVersionException():void{
-		$this->expectException(QRCodeDataException::class);
-		$this->expectExceptionMessage('invalid QR Code version');
-
-		$this->matrix = new QRMatrix(42, 0);
-	}
-
-	/**
 	 * Tests if an exception is thrown when an invalid ECC level was given
 	 */
 	public function testInvalidEccException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid ecc level');
 
-		$this->matrix = new QRMatrix(1, 42);
+		$this->matrix = new QRMatrix(new Version(1), 42);
 	}
 
 	/**
@@ -190,7 +181,7 @@ final class QRMatrixTest extends TestCase{
 			->setAlignmentPattern()
 		;
 
-		$alignmentPattern = (new ReflectionClass(QRMatrix::class))->getConstant('alignmentPattern')[$version];
+		$alignmentPattern = Version::ALIGNMENT_PATTERN[$version];
 
 		foreach($alignmentPattern as $py){
 			foreach($alignmentPattern as $px){

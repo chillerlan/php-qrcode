@@ -12,10 +12,11 @@
 
 namespace chillerlan\QRCode\Data;
 
+use chillerlan\QRCode\Common\Version;
 use chillerlan\QRCode\QRCode;
 use Closure;
 
-use function array_fill, array_key_exists, array_push, array_unshift, count, floor, in_array, max, min, range;
+use function array_fill, array_key_exists, array_push, array_unshift, count, floor, max, min, range;
 
 /**
  * Holds a numerical representation of the final QR Code;
@@ -51,100 +52,6 @@ final class QRMatrix{
 	public const M_FINDER_DOT = 0x16;
 	/** @var int */
 	public const M_TEST       = 0xff;
-
-	/**
-	 * ISO/IEC 18004:2000 Annex E, Table E.1 - Row/column coordinates of center module of Alignment Patterns
-	 *
-	 * version -> pattern
-	 *
-	 * @var int[][]
-	 */
-	protected const alignmentPattern = [
-		1  => [],
-		2  => [6, 18],
-		3  => [6, 22],
-		4  => [6, 26],
-		5  => [6, 30],
-		6  => [6, 34],
-		7  => [6, 22, 38],
-		8  => [6, 24, 42],
-		9  => [6, 26, 46],
-		10 => [6, 28, 50],
-		11 => [6, 30, 54],
-		12 => [6, 32, 58],
-		13 => [6, 34, 62],
-		14 => [6, 26, 46, 66],
-		15 => [6, 26, 48, 70],
-		16 => [6, 26, 50, 74],
-		17 => [6, 30, 54, 78],
-		18 => [6, 30, 56, 82],
-		19 => [6, 30, 58, 86],
-		20 => [6, 34, 62, 90],
-		21 => [6, 28, 50, 72,  94],
-		22 => [6, 26, 50, 74,  98],
-		23 => [6, 30, 54, 78, 102],
-		24 => [6, 28, 54, 80, 106],
-		25 => [6, 32, 58, 84, 110],
-		26 => [6, 30, 58, 86, 114],
-		27 => [6, 34, 62, 90, 118],
-		28 => [6, 26, 50, 74,  98, 122],
-		29 => [6, 30, 54, 78, 102, 126],
-		30 => [6, 26, 52, 78, 104, 130],
-		31 => [6, 30, 56, 82, 108, 134],
-		32 => [6, 34, 60, 86, 112, 138],
-		33 => [6, 30, 58, 86, 114, 142],
-		34 => [6, 34, 62, 90, 118, 146],
-		35 => [6, 30, 54, 78, 102, 126, 150],
-		36 => [6, 24, 50, 76, 102, 128, 154],
-		37 => [6, 28, 54, 80, 106, 132, 158],
-		38 => [6, 32, 58, 84, 110, 136, 162],
-		39 => [6, 26, 54, 82, 110, 138, 166],
-		40 => [6, 30, 58, 86, 114, 142, 170],
-	];
-
-	/**
-	 * ISO/IEC 18004:2000 Annex D, Table D.1 - Version information bit stream for each version
-	 *
-	 * no version pattern for QR Codes < 7
-	 *
-	 * @var int[]
-	 */
-	protected const versionPattern = [
-		7  => 0b000111110010010100,
-		8  => 0b001000010110111100,
-		9  => 0b001001101010011001,
-		10 => 0b001010010011010011,
-		11 => 0b001011101111110110,
-		12 => 0b001100011101100010,
-		13 => 0b001101100001000111,
-		14 => 0b001110011000001101,
-		15 => 0b001111100100101000,
-		16 => 0b010000101101111000,
-		17 => 0b010001010001011101,
-		18 => 0b010010101000010111,
-		19 => 0b010011010100110010,
-		20 => 0b010100100110100110,
-		21 => 0b010101011010000011,
-		22 => 0b010110100011001001,
-		23 => 0b010111011111101100,
-		24 => 0b011000111011000100,
-		25 => 0b011001000111100001,
-		26 => 0b011010111110101011,
-		27 => 0b011011000010001110,
-		28 => 0b011100110000011010,
-		29 => 0b011101001100111111,
-		30 => 0b011110110101110101,
-		31 => 0b011111001001010000,
-		32 => 0b100000100111010101,
-		33 => 0b100001011011110000,
-		34 => 0b100010100010111010,
-		35 => 0b100011011110011111,
-		36 => 0b100100101100001011,
-		37 => 0b100101010000101110,
-		38 => 0b100110101001100100,
-		39 => 0b100111010101000001,
-		40 => 0b101000110001101001,
-	];
 
 	/**
 	 * ISO/IEC 18004:2000 Section 8.9 - Format Information
@@ -197,11 +104,6 @@ final class QRMatrix{
 	];
 
 	/**
-	 * the current QR Code version number
-	 */
-	protected int $version;
-
-	/**
 	 * the current ECC level
 	 */
 	protected int $eclevel;
@@ -212,7 +114,7 @@ final class QRMatrix{
 	protected int $maskPattern = QRCode::MASK_PATTERN_AUTO;
 
 	/**
-	 * the size (side length) of the matrix
+	 * the size (side length) of the matrix, including quiet zone (if created)
 	 */
 	protected int $moduleCount;
 
@@ -224,15 +126,16 @@ final class QRMatrix{
 	protected array $matrix;
 
 	/**
+	 * a Version instance
+	 */
+	protected Version $version;
+
+	/**
 	 * QRMatrix constructor.
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function __construct(int $version, int $eclevel){
-
-		if(!in_array($version, range(1, 40), true)){
-			throw new QRCodeDataException('invalid QR Code version');
-		}
+	public function __construct(Version $version, int $eclevel){
 
 		if(!array_key_exists($eclevel, QRCode::ECC_MODES)){
 			throw new QRCodeDataException('invalid ecc level');
@@ -240,7 +143,7 @@ final class QRMatrix{
 
 		$this->version     = $version;
 		$this->eclevel     = $eclevel;
-		$this->moduleCount = $this->version * 4 + 17;
+		$this->moduleCount = $this->version->getDimension();
 		$this->matrix      = array_fill(0, $this->moduleCount, array_fill(0, $this->moduleCount, $this::M_NULL));
 	}
 
@@ -287,7 +190,7 @@ final class QRMatrix{
 	 * Returns the current version number
 	 */
 	public function version():int{
-		return $this->version;
+		return $this->version->getVersionNumber();
 	}
 
 	/**
@@ -350,7 +253,7 @@ final class QRMatrix{
 	 * Sets the "dark module", that is always on the same position 1x1px away from the bottom left finder
 	 */
 	public function setDarkModule():QRMatrix{
-		$this->set(8, 4 * $this->version + 9, true, $this::M_DARKMODULE);
+		$this->set(8, 4 * $this->version->getVersionNumber() + 9, true, $this::M_DARKMODULE);
 
 		return $this;
 	}
@@ -426,9 +329,10 @@ final class QRMatrix{
 	 * ISO/IEC 18004:2000 Section 7.3.5
 	 */
 	public function setAlignmentPattern():QRMatrix{
+		$alignmentPattern = $this->version->getAlignmentPattern();
 
-		foreach($this::alignmentPattern[$this->version] as $y){
-			foreach($this::alignmentPattern[$this->version] as $x){
+		foreach($alignmentPattern as $y){
+			foreach($alignmentPattern as $x){
 
 				// skip existing patterns
 				if($this->matrix[$y][$x] !== $this::M_NULL){
@@ -478,9 +382,9 @@ final class QRMatrix{
 	 * ISO/IEC 18004:2000 Section 8.10
 	 */
 	public function setVersionNumber(bool $test = null):QRMatrix{
-		$bits = $this::versionPattern[$this->version] ?? false;
+		$bits = $this->version->getVersionPattern();
 
-		if($bits !== false){
+		if($bits !== null){
 
 			for($i = 0; $i < 18; $i++){
 				$a = (int)floor($i / 3);
@@ -605,7 +509,7 @@ final class QRMatrix{
 		}
 
 		// $this->moduleCount includes the quiet zone (if created), we need the QR size here
-		$length = $this->version * 4 + 17;
+		$length = $this->version->getDimension();
 
 		// throw if the logo space exceeds the maximum error correction capacity
 		if($width * $height > floor($length * $length * 0.2)){

@@ -51,7 +51,7 @@ class QRCode{
 	/**
 	 * References to the keys of the following tables:
 	 *
-	 * @see \chillerlan\QRCode\Data\QRData::MAX_BITS
+	 * @see \chillerlan\QRCode\Common\Version::MAX_BITS
 	 * @see \chillerlan\QRCode\Data\QRData::RSBLOCKS
 	 * @see \chillerlan\QRCode\Data\QRMatrix::formatPattern
 	 *

@@ -12,66 +12,17 @@
 
 namespace chillerlan\QRCode\Data;
 
+use chillerlan\QRCode\Common\{Mode, Version};
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\Helpers\{BitBuffer, Polynomial};
-use chillerlan\QRCode\Common\Mode;
 use chillerlan\Settings\SettingsContainerInterface;
 
-use function array_column, array_combine, array_fill, array_keys, array_merge, count, max, range, sprintf;
+use function array_fill, array_merge, count, max, range, sprintf;
 
 /**
  * Processes the binary data and maps it on a matrix which is then being returned
  */
 class QRData{
-
-	/**
-	 * ISO/IEC 18004:2000 Tables 7-11 - Number of symbol characters and input data capacity for versions 1 to 40
-	 *
-	 * @var int [][]
-	 */
-	const MAX_BITS = [
-		// version => [L, M, Q, H ]
-		1  => [  152,   128,   104,    72],
-		2  => [  272,   224,   176,   128],
-		3  => [  440,   352,   272,   208],
-		4  => [  640,   512,   384,   288],
-		5  => [  864,   688,   496,   368],
-		6  => [ 1088,   864,   608,   480],
-		7  => [ 1248,   992,   704,   528],
-		8  => [ 1552,  1232,   880,   688],
-		9  => [ 1856,  1456,  1056,   800],
-		10 => [ 2192,  1728,  1232,   976],
-		11 => [ 2592,  2032,  1440,  1120],
-		12 => [ 2960,  2320,  1648,  1264],
-		13 => [ 3424,  2672,  1952,  1440],
-		14 => [ 3688,  2920,  2088,  1576],
-		15 => [ 4184,  3320,  2360,  1784],
-		16 => [ 4712,  3624,  2600,  2024],
-		17 => [ 5176,  4056,  2936,  2264],
-		18 => [ 5768,  4504,  3176,  2504],
-		19 => [ 6360,  5016,  3560,  2728],
-		20 => [ 6888,  5352,  3880,  3080],
-		21 => [ 7456,  5712,  4096,  3248],
-		22 => [ 8048,  6256,  4544,  3536],
-		23 => [ 8752,  6880,  4912,  3712],
-		24 => [ 9392,  7312,  5312,  4112],
-		25 => [10208,  8000,  5744,  4304],
-		26 => [10960,  8496,  6032,  4768],
-		27 => [11744,  9024,  6464,  5024],
-		28 => [12248,  9544,  6968,  5288],
-		29 => [13048, 10136,  7288,  5608],
-		30 => [13880, 10984,  7880,  5960],
-		31 => [14744, 11640,  8264,  6344],
-		32 => [15640, 12328,  8920,  6760],
-		33 => [16568, 13048,  9368,  7208],
-		34 => [17528, 13800,  9848,  7688],
-		35 => [18448, 14496, 10288,  7888],
-		36 => [19472, 15312, 10832,  8432],
-		37 => [20528, 15936, 11408,  8768],
-		38 => [21616, 16816, 12016,  9136],
-		39 => [22496, 17728, 12656,  9776],
-		40 => [23648, 18672, 13328, 10208],
-	];
 
 	/**
 	 * @see http://www.thonky.com/qr-code-tutorial/error-correction-table
@@ -124,7 +75,7 @@ class QRData{
 	/**
 	 * current QR Code version
 	 */
-	protected int $version;
+	protected Version $version;
 
 	/**
 	 * ECC temp data
@@ -167,13 +118,9 @@ class QRData{
 	 * @param array|null                                      $dataSegments
 	 */
 	public function __construct(SettingsContainerInterface $options, array $dataSegments = null){
-		$this->options   = $options;
-		$this->bitBuffer = new BitBuffer;
-
-		$this->maxBitsForEcc = array_combine(
-			array_keys($this::MAX_BITS),
-			array_column($this::MAX_BITS, QRCode::ECC_MODES[$this->options->eccLevel])
-		);
+		$this->options       = $options;
+		$this->bitBuffer     = new BitBuffer;
+		$this->maxBitsForEcc = Version::getMaxBitsForEcc($this->options->eccLevel);
 
 		if(!empty($dataSegments)){
 			$this->setData($dataSegments);
@@ -192,9 +139,11 @@ class QRData{
 			$this->dataSegments[] = new $class($data);
 		}
 
-		$this->version = $this->options->version === QRCode::VERSION_AUTO
+		$version = $this->options->version === QRCode::VERSION_AUTO
 			? $this->getMinimumVersion()
 			: $this->options->version;
+
+		$this->version = new Version($version);
 
 		$this->writeBitBuffer();
 
@@ -272,10 +221,11 @@ class QRData{
 	 * @throws \chillerlan\QRCode\QRCodeException on data overflow
 	 */
 	protected function writeBitBuffer():void{
-		$MAX_BITS = $this->maxBitsForEcc[$this->version];
+		$version  = $this->version->getVersionNumber();
+		$MAX_BITS = $this->maxBitsForEcc[$version];
 
 		foreach($this->dataSegments as $segment){
-			$segment->write($this->bitBuffer, $this->version);
+			$segment->write($this->bitBuffer, $version);
 		}
 
 		// overflow, likely caused due to invalid version setting
@@ -320,7 +270,7 @@ class QRData{
 	 * @see http://www.thonky.com/qr-code-tutorial/error-correction-coding
 	 */
 	protected function maskECC():array{
-		[$l1, $l2, $b1, $b2] = $this::RSBLOCKS[$this->version][QRCode::ECC_MODES[$this->options->eccLevel]];
+		[$l1, $l2, $b1, $b2] = $this::RSBLOCKS[$this->version->getVersionNumber()][QRCode::ECC_MODES[$this->options->eccLevel]];
 
 		$rsBlocks     = array_fill(0, $l1, [$b1, $b2]);
 		$rsCount      = $l1 + $l2;
