@@ -41,9 +41,9 @@ class QRImageWithLogo extends QRImage{
 		}
 
 		$this->matrix->setLogoSpace(
-			$this->options->logoWidth,
-			$this->options->logoHeight
-		// not utilizing the position here
+			$this->options->logoSpaceWidth,
+			$this->options->logoSpaceHeight
+			// not utilizing the position here
 		);
 
 		// there's no need to save the result of dump() into $this->image here
@@ -55,9 +55,9 @@ class QRImageWithLogo extends QRImage{
 		$w = imagesx($im);
 		$h = imagesy($im);
 
-		// set new logo size, leave a border of 1 module
-		$lw = ($this->options->logoWidth - 2) * $this->options->scale;
-		$lh = ($this->options->logoHeight - 2) * $this->options->scale;
+		// set new logo size, leave a border of 1 module (no proportional resize/centering)
+		$lw = ($this->options->logoSpaceWidth - 2) * $this->options->scale;
+		$lh = ($this->options->logoSpaceHeight - 2) * $this->options->scale;
 
 		// get the qrcode size
 		$ql = $this->matrix->size() * $this->options->scale;
