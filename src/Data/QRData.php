@@ -196,10 +196,16 @@ class QRData{
 		}
 
 		// Padding: ISO/IEC 18004:2000 8.4.9 Bit stream to codeword conversion
+
+		// if the final codeword is not exactly 8 bits in length, it shall be made 8 bits long
+		// by the addition of padding bits with binary value 0
 		while($this->bitBuffer->getLength() % 8 !== 0){
 			$this->bitBuffer->putBit(false);
 		}
 
+		// The message bit stream shall then be extended to fill the data capacity of the symbol
+		// corresponding to the Version and Error Correction Level, by the addition of the Pad
+		// Codewords 11101100 and 00010001 alternately.
 		while(true){
 
 			if($this->bitBuffer->getLength() >= $MAX_BITS){

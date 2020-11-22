@@ -14,6 +14,8 @@ namespace chillerlan\QRCode\Common;
 
 use chillerlan\QRCode\QRCodeException;
 
+use function array_column, array_combine, array_keys;
+
 /**
  */
 class EccLevel{

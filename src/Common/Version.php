@@ -1,5 +1,6 @@
 <?php
 /**
+ * Class Version
  *
  * @filesource   Version.php
  * @created      19.11.2020
@@ -11,13 +12,10 @@
 
 namespace chillerlan\QRCode\Common;
 
-use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QRCodeException;
 
-use function array_column, array_combine, array_keys;
-
 /**
- * Class Version
+ *
  */
 class Version{
 
