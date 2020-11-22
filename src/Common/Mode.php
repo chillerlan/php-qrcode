@@ -48,9 +48,9 @@ class Mode{
 	 */
 	public const LENGTH_BITS = [
 		self::DATA_NUMBER   => [10, 12, 14],
-		self::DATA_ALPHANUM => [9, 11, 13],
-		self::DATA_BYTE     => [8, 16, 16],
-		self::DATA_KANJI    => [8, 10, 12],
+		self::DATA_ALPHANUM => [ 9, 11, 13],
+		self::DATA_BYTE     => [ 8, 16, 16],
+		self::DATA_KANJI    => [ 8, 10, 12],
 	];
 
 	/**
@@ -76,10 +76,15 @@ class Mode{
 			throw new QRCodeException('invalid mode given');
 		}
 
+		$minVersion = 0;
+
 		foreach([9, 26, 40] as $key => $breakpoint){
-			if($version <= $breakpoint){
+
+			if($version > $minVersion && $version <= $breakpoint){
 				return self::LENGTH_BITS[$mode][$key];
 			}
+
+			$minVersion = $breakpoint;
 		}
 
 		throw new QRCodeException(sprintf('invalid version number: %d', $version));
