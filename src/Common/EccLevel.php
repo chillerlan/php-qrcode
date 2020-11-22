@@ -212,6 +212,9 @@ class EccLevel{
 		$this->eccLevel = $eccLevel;
 	}
 
+	/**
+	 * returns the ordinal value of the current ECC level
+	 */
 	public function getOrdinal():int{
 		return $this->eccLevel;
 	}
@@ -234,7 +237,6 @@ class EccLevel{
 	/**
 	 * returns the format pattern for the given $eccLevel and $maskPattern
 	 *
-	 * @return int
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public function getformatPattern(int $maskPattern):int{
@@ -246,6 +248,9 @@ class EccLevel{
 		return self::formatPattern[self::MODES[$this->eccLevel]][$maskPattern];
 	}
 
+	/**
+	 * returns an array wit the max bit lengths for version 1-40 and the current ECC level
+	 */
 	public function getMaxBits():array{
 		return array_combine(
 			array_keys(self::MAX_BITS),

@@ -59,10 +59,10 @@ class Mode{
 	 * @var string[]
 	 */
 	public const DATA_INTERFACES = [
-		Mode::DATA_NUMBER   => Number::class,
-		Mode::DATA_ALPHANUM => AlphaNum::class,
-		Mode::DATA_KANJI    => Kanji::class,
-		Mode::DATA_BYTE     => Byte::class,
+		self::DATA_NUMBER   => Number::class,
+		self::DATA_ALPHANUM => AlphaNum::class,
+		self::DATA_KANJI    => Kanji::class,
+		self::DATA_BYTE     => Byte::class,
 	];
 
 	/**

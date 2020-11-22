@@ -132,18 +132,32 @@ class Version{
 		$this->version = $version;
 	}
 
+	/**
+	 * returns the current version number
+	 */
 	public function getVersionNumber():int{
 		return $this->version;
 	}
 
+	/**
+	 * the matrix size for the given version
+	 */
 	public function getDimension():int{
 		return $this->version * 4 + 17;
 	}
 
+	/**
+	 * the version pattern for the given version
+	 */
 	public function getVersionPattern():?int{
 		return self::VERSION_PATTERN[$this->version] ?? null;
 	}
 
+	/**
+	 * the alignment patterns for the current version
+	 *
+	 * @return int[]
+	 */
 	public function getAlignmentPattern():array{
 		return self::ALIGNMENT_PATTERN[$this->version];
 	}
