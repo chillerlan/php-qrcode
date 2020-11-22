@@ -12,12 +12,10 @@
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\Common\Version;
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Common\{EccLevel, Version};
+use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 
 /**
  * Tests the QRMatix class
@@ -44,7 +42,7 @@ final class QRMatrixTest extends TestCase{
 	 * @internal
 	 */
 	protected function getMatrix(int $version):QRMatrix{
-		return  new QRMatrix(new Version($version), QRCode::ECC_L);
+		return  new QRMatrix(new Version($version), new EccLevel(EccLevel::L));
 	}
 
 	/**
@@ -52,16 +50,6 @@ final class QRMatrixTest extends TestCase{
 	 */
 	public function testInstance():void{
 		$this::assertInstanceOf(QRMatrix::class, $this->matrix);
-	}
-
-	/**
-	 * Tests if an exception is thrown when an invalid ECC level was given
-	 */
-	public function testInvalidEccException():void{
-		$this->expectException(QRCodeDataException::class);
-		$this->expectExceptionMessage('invalid ecc level');
-
-		$this->matrix = new QRMatrix(new Version(1), 42);
 	}
 
 	/**
@@ -75,14 +63,14 @@ final class QRMatrixTest extends TestCase{
 	 * Tests if version() returns the current (given) version
 	 */
 	public function testVersion():void{
-		$this::assertSame($this::version, $this->matrix->version());
+		$this::assertSame($this::version, $this->matrix->version()->getVersionNumber());
 	}
 
 	/**
 	 * Tests if eccLevel() returns the current (given) ECC level
 	 */
 	public function testECC():void{
-		$this::assertSame(QRCode::ECC_L, $this->matrix->eccLevel());
+		$this::assertSame(EccLevel::L, $this->matrix->eccLevel()->getOrdinal());
 	}
 
 	/**
@@ -303,7 +291,7 @@ final class QRMatrixTest extends TestCase{
 	public function testSetLogoSpaceOrientation():void{
 		$o = new QROptions;
 		$o->version      = 10;
-		$o->eccLevel     = QRCode::ECC_H;
+		$o->eccLevel     = EccLevel::H;
 		$o->addQuietzone = false;
 
 		$matrix = (new QRCode($o))->addByteSegment('testdata')->getMatrix();
@@ -322,7 +310,7 @@ final class QRMatrixTest extends TestCase{
 	public function testSetLogoSpacePosition():void{
 		$o = new QROptions;
 		$o->version       = 10;
-		$o->eccLevel      = QRCode::ECC_H;
+		$o->eccLevel      = EccLevel::H;
 		$o->addQuietzone  = true;
 		$o->quietzoneSize = 10;
 
@@ -360,7 +348,7 @@ final class QRMatrixTest extends TestCase{
 
 		$o = new QROptions;
 		$o->version  = 5;
-		$o->eccLevel = QRCode::ECC_H;
+		$o->eccLevel = EccLevel::H;
 
 		(new QRCode($o))->addByteSegment('testdata')->getMatrix()->setLogoSpace(50, 50);
 	}

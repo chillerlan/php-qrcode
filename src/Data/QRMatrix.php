@@ -12,11 +12,11 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\Common\Version;
+use chillerlan\QRCode\Common\{EccLevel, Version};
 use chillerlan\QRCode\QRCode;
 use Closure;
 
-use function array_fill, array_key_exists, array_push, array_unshift, count, floor, max, min, range;
+use function array_fill, array_push, array_unshift, count, floor, max, min, range;
 
 /**
  * Holds a numerical representation of the final QR Code;
@@ -54,61 +54,6 @@ final class QRMatrix{
 	public const M_TEST       = 0xff;
 
 	/**
-	 * ISO/IEC 18004:2000 Section 8.9 - Format Information
-	 *
-	 * ECC level -> mask pattern
-	 *
-	 * @var int[][]
-	 */
-	protected const formatPattern = [
-		[ // L
-			0b111011111000100,
-			0b111001011110011,
-			0b111110110101010,
-			0b111100010011101,
-			0b110011000101111,
-			0b110001100011000,
-			0b110110001000001,
-			0b110100101110110,
-		],
-		[ // M
-			0b101010000010010,
-			0b101000100100101,
-			0b101111001111100,
-			0b101101101001011,
-			0b100010111111001,
-			0b100000011001110,
-			0b100111110010111,
-			0b100101010100000,
-		],
-		[ // Q
-			0b011010101011111,
-			0b011000001101000,
-			0b011111100110001,
-			0b011101000000110,
-			0b010010010110100,
-			0b010000110000011,
-			0b010111011011010,
-			0b010101111101101,
-		],
-		[ // H
-			0b001011010001001,
-			0b001001110111110,
-			0b001110011100111,
-			0b001100111010000,
-			0b000011101100010,
-			0b000001001010101,
-			0b000110100001100,
-			0b000100000111011,
-		],
-	];
-
-	/**
-	 * the current ECC level
-	 */
-	protected int $eclevel;
-
-	/**
 	 * the used mask pattern, set via QRMatrix::mapData()
 	 */
 	protected int $maskPattern = QRCode::MASK_PATTERN_AUTO;
@@ -126,23 +71,21 @@ final class QRMatrix{
 	protected array $matrix;
 
 	/**
+	 * the current ECC level
+	 */
+	protected EccLevel $ecclevel;
+
+	/**
 	 * a Version instance
 	 */
 	protected Version $version;
 
 	/**
 	 * QRMatrix constructor.
-	 *
-	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function __construct(Version $version, int $eclevel){
-
-		if(!array_key_exists($eclevel, QRCode::ECC_MODES)){
-			throw new QRCodeDataException('invalid ecc level');
-		}
-
+	public function __construct(Version $version, EccLevel $eclevel){
 		$this->version     = $version;
-		$this->eclevel     = $eclevel;
+		$this->ecclevel    = $eclevel;
 		$this->moduleCount = $this->version->getDimension();
 		$this->matrix      = array_fill(0, $this->moduleCount, array_fill(0, $this->moduleCount, $this::M_NULL));
 	}
@@ -189,15 +132,15 @@ final class QRMatrix{
 	/**
 	 * Returns the current version number
 	 */
-	public function version():int{
-		return $this->version->getVersionNumber();
+	public function version():Version{
+		return $this->version;
 	}
 
 	/**
 	 * Returns the current ECC level
 	 */
-	public function eccLevel():int{
-		return $this->eclevel;
+	public function eccLevel():EccLevel{
+		return $this->ecclevel;
 	}
 
 	/**
@@ -406,7 +349,7 @@ final class QRMatrix{
 	 * ISO/IEC 18004:2000 Section 8.9
 	 */
 	public function setFormatInfo(int $maskPattern, bool $test = null):QRMatrix{
-		$bits = $this::formatPattern[QRCode::ECC_MODES[$this->eclevel]][$maskPattern] ?? 0;
+		$bits = $this->ecclevel->getformatPattern($maskPattern);
 
 		for($i = 0; $i < 15; $i++){
 			$v = !$test && (($bits >> $i) & 1) === 1;
@@ -495,7 +438,7 @@ final class QRMatrix{
 	public function setLogoSpace(int $width, int $height, int $startX = null, int $startY = null):QRMatrix{
 
 		// for logos we operate in ECC H (30%) only
-		if($this->eclevel !== QRCode::ECC_H){
+		if($this->ecclevel->getOrdinal() !== EccLevel::H){
 			throw new QRCodeDataException('ECC level "H" required to add logo space');
 		}
 

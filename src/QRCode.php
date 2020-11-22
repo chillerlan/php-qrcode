@@ -37,33 +37,6 @@ class QRCode{
 	/** @var int */
 	public const MASK_PATTERN_AUTO  = -1;
 
-	// ISO/IEC 18004:2000 Tables 12, 25
-
-	/** @var int */
-	public const ECC_L = 0b01; // 7%.
-	/** @var int */
-	public const ECC_M = 0b00; // 15%.
-	/** @var int */
-	public const ECC_Q = 0b11; // 25%.
-	/** @var int */
-	public const ECC_H = 0b10; // 30%.
-
-	/**
-	 * References to the keys of the following tables:
-	 *
-	 * @see \chillerlan\QRCode\Common\Version::MAX_BITS
-	 * @see \chillerlan\QRCode\Data\QRData::RSBLOCKS
-	 * @see \chillerlan\QRCode\Data\QRMatrix::formatPattern
-	 *
-	 * @var int[]
-	 */
-	public const ECC_MODES = [
-		self::ECC_L => 0,
-		self::ECC_M => 1,
-		self::ECC_Q => 2,
-		self::ECC_H => 3,
-	];
-
 	/** @var string */
 	public const OUTPUT_MARKUP_HTML = 'html';
 	/** @var string */

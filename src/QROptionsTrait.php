@@ -14,6 +14,8 @@
 
 namespace chillerlan\QRCode;
 
+use chillerlan\QRCode\Common\EccLevel;
+
 use function array_values, count, in_array, is_numeric, max, min, sprintf, strtolower;
 
 /**
@@ -50,7 +52,7 @@ trait QROptionsTrait{
 	 *   - Q => 25%
 	 *   - H => 30%
 	 */
-	protected int $eccLevel = QRCode::ECC_L;
+	protected int $eccLevel = EccLevel::L;
 
 	/**
 	 * Mask Pattern to use
@@ -251,7 +253,7 @@ trait QROptionsTrait{
 	 */
 	protected function set_eccLevel(int $eccLevel):void{
 
-		if(!isset(QRCode::ECC_MODES[$eccLevel])){
+		if(!isset(EccLevel::MODES[$eccLevel])){
 			throw new QRCodeException(sprintf('Invalid error correct level: %s', $eccLevel));
 		}
 

@@ -13,7 +13,7 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCodeExamples\MyCustomOutput;
-use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\{Common\EccLevel, QRCode, QROptions};
 use chillerlan\QRCode\Output\{QROutputInterface, QRString};
 
 /**
@@ -63,7 +63,7 @@ class QRStringTest extends QROutputTestAbstract{
 	 */
 	public function testCustomOutput():void{
 		$this->options->version         = 5;
-		$this->options->eccLevel        = QRCode::ECC_L;
+		$this->options->eccLevel        = EccLevel::L;
 		$this->options->outputType      = QRCode::OUTPUT_CUSTOM;
 		$this->options->outputInterface = MyCustomOutput::class;
 
