@@ -11,28 +11,29 @@
 namespace chillerlan\QRCodeExamples;
 
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Common\EccLevel;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
 $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 /**
- * @property int $logoWidth
- * @property int $logoHeight
+ * @property int $logoSpaceWidth
+ * @property int $logoSpaceHeight
  *
  * @noinspection PhpIllegalPsrClassPathInspection
  */
 class LogoOptions extends QROptions{
-	protected int $logoWidth;
-	protected int $logoHeight;
+	protected int $logoSpaceWidth;
+	protected int $logoSpaceHeight;
 }
 
 $options = new LogoOptions;
 
 $options->version          = 7;
-$options->eccLevel         = QRCode::ECC_H;
+$options->eccLevel         = EccLevel::H;
 $options->imageBase64      = false;
-$options->logoWidth        = 13;
-$options->logoHeight       = 13;
+$options->logoSpaceWidth   = 13;
+$options->logoSpaceHeight  = 13;
 $options->scale            = 5;
 $options->imageTransparent = false;
 

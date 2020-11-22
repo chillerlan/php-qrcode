@@ -11,6 +11,7 @@
 namespace chillerlan\QRCodeExamples;
 
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Common\EccLevel;
 
 require_once '../vendor/autoload.php';
 
@@ -60,9 +61,9 @@ header('Content-Type: text/html; charset=utf-8');
 	$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 
 	$options = new QROptions([
-		'version' => 5,
-		'outputType' => QRCode::OUTPUT_MARKUP_HTML,
-		'eccLevel' => QRCode::ECC_L,
+		'version'      => 5,
+		'outputType'   => QRCode::OUTPUT_MARKUP_HTML,
+		'eccLevel'     => EccLevel::L,
 		'moduleValues' => [
 			// finder
 			1536 => '#A71111', // dark (true)

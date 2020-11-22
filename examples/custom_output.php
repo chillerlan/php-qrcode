@@ -11,6 +11,7 @@
 namespace chillerlan\QRCodeExamples;
 
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Common\EccLevel;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -19,7 +20,7 @@ $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 // invoke the QROutputInterface manually
 $options = new QROptions([
 	'version'      => 5,
-	'eccLevel'     => QRCode::ECC_L,
+	'eccLevel'     => EccLevel::L,
 ]);
 
 $qrcode = new QRCode($options);
@@ -33,7 +34,7 @@ var_dump($qrOutputInterface->dump());
 // or just
 $options = new QROptions([
 	'version'         => 5,
-	'eccLevel'        => QRCode::ECC_L,
+	'eccLevel'        => EccLevel::L,
 	'outputType'      => QRCode::OUTPUT_CUSTOM,
 	'outputInterface' => MyCustomOutput::class,
 ]);

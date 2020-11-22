@@ -11,6 +11,7 @@
 namespace chillerlan\QRCodeExamples;
 
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Common\EccLevel;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -19,7 +20,7 @@ $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 $options = new QROptions([
 	'version'      => 7,
 	'outputType'   => QRCode::OUTPUT_IMAGICK,
-	'eccLevel'     => QRCode::ECC_L,
+	'eccLevel'     => EccLevel::L,
 	'scale'        => 5,
 	'moduleValues' => [
 		// finder

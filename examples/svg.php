@@ -11,6 +11,7 @@
 namespace chillerlan\QRCodeExamples;
 
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Common\EccLevel;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -18,14 +19,14 @@ $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 $gzip = true;
 
 $options = new QROptions([
-	'version'      => 7,
-	'outputType'   => QRCode::OUTPUT_MARKUP_SVG,
-	'eccLevel'     => QRCode::ECC_L,
+	'version'        => 7,
+	'outputType'     => QRCode::OUTPUT_MARKUP_SVG,
+	'eccLevel'       => EccLevel::L,
 	'svgViewBoxSize' => 530,
-	'addQuietzone' => true,
-	'cssClass'     => 'my-css-class',
-	'svgOpacity'   => 1.0,
-	'svgDefs'      => '
+	'addQuietzone'   => true,
+	'cssClass'       => 'my-css-class',
+	'svgOpacity'     => 1.0,
+	'svgDefs'        => '
 		<linearGradient id="g2">
 			<stop offset="0%" stop-color="#39F" />
 			<stop offset="100%" stop-color="#F3F" />
