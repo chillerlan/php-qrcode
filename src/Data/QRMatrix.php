@@ -589,12 +589,12 @@ class QRMatrix{
 			throw new QRCodeDataException('ECC level "H" required to add logo space');
 		}
 
-		// we need uneven sizes, adjust if needed
-		if(($width % 2) === 0){
+		// we need uneven sizes to center the logo space, adjust if needed
+		if($startX === null && ($width % 2) === 0){
 			$width++;
 		}
 
-		if(($height % 2) === 0){
+		if($startY === null && ($height % 2) === 0){
 			$height++;
 		}
 
