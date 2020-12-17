@@ -73,7 +73,7 @@ final class QRMatrix{
 	/**
 	 * the current ECC level
 	 */
-	protected EccLevel $ecclevel;
+	protected EccLevel $eccLevel;
 
 	/**
 	 * a Version instance
@@ -83,9 +83,9 @@ final class QRMatrix{
 	/**
 	 * QRMatrix constructor.
 	 */
-	public function __construct(Version $version, EccLevel $eclevel){
+	public function __construct(Version $version, EccLevel $eccLevel){
 		$this->version     = $version;
-		$this->ecclevel    = $eclevel;
+		$this->eccLevel    = $eccLevel;
 		$this->moduleCount = $this->version->getDimension();
 		$this->matrix      = array_fill(0, $this->moduleCount, array_fill(0, $this->moduleCount, $this::M_NULL));
 	}
@@ -140,7 +140,7 @@ final class QRMatrix{
 	 * Returns the current ECC level
 	 */
 	public function eccLevel():EccLevel{
-		return $this->ecclevel;
+		return $this->eccLevel;
 	}
 
 	/**
@@ -349,7 +349,7 @@ final class QRMatrix{
 	 * ISO/IEC 18004:2000 Section 8.9
 	 */
 	public function setFormatInfo(int $maskPattern, bool $test = null):QRMatrix{
-		$bits = $this->ecclevel->getformatPattern($maskPattern);
+		$bits = $this->eccLevel->getformatPattern($maskPattern);
 
 		for($i = 0; $i < 15; $i++){
 			$v = !$test && (($bits >> $i) & 1) === 1;
@@ -438,7 +438,7 @@ final class QRMatrix{
 	public function setLogoSpace(int $width, int $height, int $startX = null, int $startY = null):QRMatrix{
 
 		// for logos we operate in ECC H (30%) only
-		if($this->ecclevel->getOrdinal() !== EccLevel::H){
+		if($this->eccLevel->getOrdinal() !== EccLevel::H){
 			throw new QRCodeDataException('ECC level "H" required to add logo space');
 		}
 

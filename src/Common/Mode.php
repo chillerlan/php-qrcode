@@ -18,7 +18,7 @@ use chillerlan\QRCode\QRCodeException;
 /**
  * ISO 18004:2006, 6.4.1, Tables 2 and 3
  */
-class Mode{
+final class Mode{
 
 	// ISO/IEC 18004:2000 Table 2
 

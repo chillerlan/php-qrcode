@@ -17,8 +17,9 @@ use chillerlan\QRCode\QRCodeException;
 use function array_column, array_combine, array_keys;
 
 /**
+ *
  */
-class EccLevel{
+final class EccLevel{
 
 	// ISO/IEC 18004:2000 Tables 12, 25
 
@@ -54,7 +55,7 @@ class EccLevel{
 	 *
 	 * @var int [][][]
 	 */
-	const RSBLOCKS = [
+	private const RSBLOCKS = [
 		1  => [[ 1,  0,  26,  19], [ 1,  0, 26, 16], [ 1,  0, 26, 13], [ 1,  0, 26,  9]],
 		2  => [[ 1,  0,  44,  34], [ 1,  0, 44, 28], [ 1,  0, 44, 22], [ 1,  0, 44, 16]],
 		3  => [[ 1,  0,  70,  55], [ 1,  0, 70, 44], [ 2,  0, 35, 17], [ 2,  0, 35, 13]],
@@ -102,7 +103,7 @@ class EccLevel{
 	 *
 	 * @var int [][]
 	 */
-	const MAX_BITS = [
+	private const MAX_BITS = [
 	//  v  => [    L,     M,     Q,     H]  // modules
 		1  => [  152,   128,   104,    72], //  21
 		2  => [  272,   224,   176,   128], //  25
@@ -153,7 +154,7 @@ class EccLevel{
 	 *
 	 * @var int[][]
 	 */
-	protected const formatPattern = [
+	private const FORMAT_PATTERN = [
 		[ // L
 		  0b111011111000100,
 		  0b111001011110011,
@@ -245,7 +246,7 @@ class EccLevel{
 			throw new QRCodeException('invalid mask pattern');
 		}
 
-		return self::formatPattern[self::MODES[$this->eccLevel]][$maskPattern];
+		return self::FORMAT_PATTERN[self::MODES[$this->eccLevel]][$maskPattern];
 	}
 
 	/**
