@@ -38,6 +38,9 @@ jobs:
       - name: "Run phan"
         run: php vendor/bin/phan
 
+      - name: "Run PHP-CS fixer"
+        run: php vendor/bin/php-cs-fixer fix --no-interaction --dry-run --diff --using-cache=no -v
+
   tests:
     name: "Unit Tests"
 
