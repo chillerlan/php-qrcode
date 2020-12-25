@@ -31,7 +31,8 @@
 	"require-dev": {
 		"phpunit/phpunit": "^9.4",
 		"phan/phan": "^3.2.2",
-		"setasign/fpdf": "^1.8.2"
+		"setasign/fpdf": "^1.8.2",
+		"friendsofphp/php-cs-fixer": "^2.17"
 	},
 	"suggest": {
 		"chillerlan/php-authenticator": "Yet another Google authenticator! Also creates URIs for mobile apps.",
