@@ -12,48 +12,53 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Output\{QROutputInterface, QRMarkup};
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\QRMarkup;
 
 /**
  * Tests the QRMarkup output module
  */
-class QRMarkupTest extends QROutputTestAbstract{
+class QRMarkupTest extends QROutputTestAbstract
+{
 
-	/**
-	 * @inheritDoc
-	 * @internal
-	 */
-	protected function getOutputInterface(QROptions $options):QROutputInterface{
-		return new QRMarkup($options, $this->matrix);
-	}
+    /**
+     * @inheritDoc
+     * @internal
+     */
+    protected function getOutputInterface(QROptions $options):QROutputInterface
+    {
+        return new QRMarkup($options, $this->matrix);
+    }
 
-	/**
-	 * @inheritDoc
-	 * @internal
-	 */
-	public function types():array{
-		return [
-			'html' => [QRCode::OUTPUT_MARKUP_HTML],
-			'svg'  => [QRCode::OUTPUT_MARKUP_SVG],
-		];
-	}
+    /**
+     * @inheritDoc
+     * @internal
+     */
+    public function types():array
+    {
+        return [
+            'html' => [QRCode::OUTPUT_MARKUP_HTML],
+            'svg'  => [QRCode::OUTPUT_MARKUP_SVG],
+        ];
+    }
 
-	/**
-	 * @inheritDoc
-	 */
-	public function testSetModuleValues():void{
-		$this->options->imageBase64  = false;
-		$this->options->moduleValues = [
-			// data
-			1024 => '#4A6000',
-			4    => '#ECF9BE',
-		];
+    /**
+     * @inheritDoc
+     */
+    public function testSetModuleValues():void
+    {
+        $this->options->imageBase64  = false;
+        $this->options->moduleValues = [
+            // data
+            1024 => '#4A6000',
+            4    => '#ECF9BE',
+        ];
 
-		$this->outputInterface = $this->getOutputInterface($this->options);
-		$data = $this->outputInterface->dump();
-		$this::assertStringContainsString('#4A6000', $data);
-		$this::assertStringContainsString('#ECF9BE', $data);
-	}
-
+        $this->outputInterface = $this->getOutputInterface($this->options);
+        $data = $this->outputInterface->dump();
+        $this::assertStringContainsString('#4A6000', $data);
+        $this::assertStringContainsString('#ECF9BE', $data);
+    }
 }

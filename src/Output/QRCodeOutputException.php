@@ -14,4 +14,6 @@ namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\QRCodeException;
 
-class QRCodeOutputException extends QRCodeException{}
+class QRCodeOutputException extends QRCodeException
+{
+}

@@ -49,6 +49,7 @@ use chillerlan\Settings\SettingsContainerAbstract;
  * @property string      $fpdfMeasureUnit
  * @property array|null  $moduleValues
  */
-class QROptions extends SettingsContainerAbstract{
-	use QROptionsTrait;
+class QROptions extends SettingsContainerAbstract
+{
+    use QROptionsTrait;
 }

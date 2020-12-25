@@ -19,7 +19,10 @@ use chillerlan\QRCode\QRCodeException;
 use chillerlan\Settings\SettingsContainerInterface;
 use FPDF;
 
-use function array_values, class_exists, count, is_array;
+use function array_values;
+use class_exists;
+use count;
+use is_array;
 
 /**
  * QRFpdf output module (requires fpdf)
@@ -27,86 +30,81 @@ use function array_values, class_exists, count, is_array;
  * @see https://github.com/Setasign/FPDF
  * @see http://www.fpdf.org/
  */
-class QRFpdf extends QROutputAbstract{
+class QRFpdf extends QROutputAbstract
+{
+    public function __construct(SettingsContainerInterface $options, QRMatrix $matrix)
+    {
+        if (!class_exists(FPDF::class)) {
+            // @codeCoverageIgnoreStart
+            throw new QRCodeException(
+                'The QRFpdf output requires FPDF as dependency but the class "\FPDF" couldn\'t be found.'
+            );
+            // @codeCoverageIgnoreEnd
+        }
 
-	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
+        parent::__construct($options, $matrix);
+    }
 
-		if(!class_exists(FPDF::class)){
-			// @codeCoverageIgnoreStart
-			throw new QRCodeException(
-				'The QRFpdf output requires FPDF as dependency but the class "\FPDF" couldn\'t be found.'
-			);
-			// @codeCoverageIgnoreEnd
-		}
+    /**
+     * @inheritDoc
+     */
+    protected function setModuleValues():void
+    {
+        foreach ($this::DEFAULT_MODULE_VALUES as $M_TYPE => $defaultValue) {
+            $v = $this->options->moduleValues[$M_TYPE] ?? null;
 
-		parent::__construct($options, $matrix);
-	}
+            if (!is_array($v) || count($v) < 3) {
+                $this->moduleValues[$M_TYPE] = $defaultValue
+                    ? [0, 0, 0]
+                    : [255, 255, 255];
+            } else {
+                $this->moduleValues[$M_TYPE] = array_values($v);
+            }
+        }
+    }
 
-	/**
-	 * @inheritDoc
-	 */
-	protected function setModuleValues():void{
+    /**
+     * @inheritDoc
+     *
+     * @return string|\FPDF
+     */
+    public function dump(string $file = null)
+    {
+        $file ??= $this->options->cachefile;
 
-		foreach($this::DEFAULT_MODULE_VALUES as $M_TYPE => $defaultValue){
-			$v = $this->options->moduleValues[$M_TYPE] ?? null;
+        $fpdf = new FPDF('P', $this->options->fpdfMeasureUnit, [$this->length, $this->length]);
+        $fpdf->AddPage();
 
-			if(!is_array($v) || count($v) < 3){
-				$this->moduleValues[$M_TYPE] = $defaultValue
-					? [0, 0, 0]
-					: [255, 255, 255];
-			}
-			else{
-				$this->moduleValues[$M_TYPE] = array_values($v);
-			}
+        $prevColor = null;
 
-		}
+        foreach ($this->matrix->matrix() as $y => $row) {
+            foreach ($row as $x => $M_TYPE) {
+                /** @var int $M_TYPE */
+                $color = $this->moduleValues[$M_TYPE];
 
-	}
+                if ($prevColor === null || $prevColor !== $color) {
+                    $fpdf->SetFillColor(...$color);
+                    $prevColor = $color;
+                }
 
-	/**
-	 * @inheritDoc
-	 *
-	 * @return string|\FPDF
-	 */
-	public function dump(string $file = null){
-		$file ??= $this->options->cachefile;
+                $fpdf->Rect($x * $this->scale, $y * $this->scale, 1 * $this->scale, 1 * $this->scale, 'F');
+            }
+        }
 
-		$fpdf = new FPDF('P', $this->options->fpdfMeasureUnit, [$this->length, $this->length]);
-		$fpdf->AddPage();
+        if ($this->options->returnResource) {
+            return $fpdf;
+        }
 
-		$prevColor = null;
+        $pdfData = $fpdf->Output('S');
 
-		foreach($this->matrix->matrix() as $y => $row){
+        if ($file !== null) {
+            $this->saveToFile($pdfData, $file);
+        }
 
-			foreach($row as $x => $M_TYPE){
-				/** @var int $M_TYPE */
-				$color = $this->moduleValues[$M_TYPE];
+        if ($this->options->imageBase64) {
+            $pdfData = sprintf('data:application/pdf;base64,%s', base64_encode($pdfData));
+        }
 
-				if($prevColor === null || $prevColor !== $color){
-					$fpdf->SetFillColor(...$color);
-					$prevColor = $color;
-				}
-
-				$fpdf->Rect($x * $this->scale, $y * $this->scale, 1 * $this->scale, 1 * $this->scale, 'F');
-			}
-
-		}
-
-		if($this->options->returnResource){
-			return $fpdf;
-		}
-
-		$pdfData = $fpdf->Output('S');
-
-		if($file !== null){
-			$this->saveToFile($pdfData, $file);
-		}
-
-		if($this->options->imageBase64){
-			$pdfData = sprintf('data:application/pdf;base64,%s', base64_encode($pdfData));
-		}
-
-		return $pdfData;
-	}
-
+        return $pdfData;
+    }
 }

@@ -12,78 +12,83 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Output\{QROutputInterface, QRImage};
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\QRImage;
 
 /**
  * Tests the QRImage output module
  */
-class QRImageTest extends QROutputTestAbstract{
+class QRImageTest extends QROutputTestAbstract
+{
 
-	/**
-	 * @inheritDoc
-	 * @internal
-	 */
-	public function setUp():void{
+    /**
+     * @inheritDoc
+     * @internal
+     */
+    public function setUp():void
+    {
+        if (!extension_loaded('gd')) {
+            $this->markTestSkipped('ext-gd not loaded');
+            return;
+        }
 
-		if(!extension_loaded('gd')){
-			$this->markTestSkipped('ext-gd not loaded');
-			return;
-		}
+        parent::setUp();
+    }
 
-		parent::setUp();
-	}
+    /**
+     * @inheritDoc
+     * @internal
+     */
+    protected function getOutputInterface(QROptions $options):QROutputInterface
+    {
+        return new QRImage($options, $this->matrix);
+    }
 
-	/**
-	 * @inheritDoc
-	 * @internal
-	 */
-	protected function getOutputInterface(QROptions $options):QROutputInterface{
-		return new QRImage($options, $this->matrix);
-	}
+    /**
+     * @inheritDoc
+     * @internal
+     */
+    public function types():array
+    {
+        return [
+            'png' => [QRCode::OUTPUT_IMAGE_PNG],
+            'gif' => [QRCode::OUTPUT_IMAGE_GIF],
+            'jpg' => [QRCode::OUTPUT_IMAGE_JPG],
+        ];
+    }
 
-	/**
-	 * @inheritDoc
-	 * @internal
-	 */
-	public function types():array{
-		return [
-			'png' => [QRCode::OUTPUT_IMAGE_PNG],
-			'gif' => [QRCode::OUTPUT_IMAGE_GIF],
-			'jpg' => [QRCode::OUTPUT_IMAGE_JPG],
-		];
-	}
+    /**
+     * @inheritDoc
+     */
+    public function testSetModuleValues():void
+    {
+        $this->options->moduleValues = [
+            // data
+            1024 => [0, 0, 0],
+            4    => [255, 255, 255],
+        ];
 
-	/**
-	 * @inheritDoc
-	 */
-	public function testSetModuleValues():void{
+        $this->outputInterface = $this->getOutputInterface($this->options);
+        $this->outputInterface->dump();
 
-		$this->options->moduleValues = [
-			// data
-			1024 => [0, 0, 0],
-			4    => [255, 255, 255],
-		];
+        $this::assertTrue(true); // tricking the code coverage
+    }
 
-		$this->outputInterface = $this->getOutputInterface($this->options);
-		$this->outputInterface->dump();
+    /**
+     * @phan-suppress PhanUndeclaredClassReference
+     */
+    public function testOutputGetResource():void
+    {
+        $this->options->returnResource = true;
+        $this->outputInterface         = $this->getOutputInterface($this->options);
 
-		$this::assertTrue(true); // tricking the code coverage
-	}
+        $actual = $this->outputInterface->dump();
 
-	/**
-	 * @phan-suppress PhanUndeclaredClassReference
-	 */
-	public function testOutputGetResource():void{
-		$this->options->returnResource = true;
-		$this->outputInterface         = $this->getOutputInterface($this->options);
-
-		$actual = $this->outputInterface->dump();
-
-		/** @noinspection PhpElementIsNotAvailableInCurrentPhpVersionInspection */
-		\PHP_MAJOR_VERSION >= 8
-			? $this::assertInstanceOf(\GdImage::class, $actual)
-			: $this::assertIsResource($actual);
-	}
-
+        /** @noinspection PhpElementIsNotAvailableInCurrentPhpVersionInspection */
+        \PHP_MAJOR_VERSION >= 8
+            ? $this::assertInstanceOf(\GdImage::class, $actual)
+            : $this::assertIsResource($actual);
+    }
 }
