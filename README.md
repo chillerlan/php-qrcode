@@ -9,9 +9,7 @@ namespaced, cleaned up, improved and other stuff.
 [![Travis CI][travis-badge]][travis]
 [![CodeCov][coverage-badge]][coverage]
 [![Scrunitizer CI][scrutinizer-badge]][scrutinizer]
-[![Packagist downloads][downloads-badge]][downloads]
-[![PayPal donate][donate-badge]][donate]
-
+[![Packagist downloads][downloads-badge]][downloads]<br/>
 [![Continuous Integration][gh-action-badge]][gh-action] [![phpDocs][gh-docs-badge]][gh-docs]
 
 [php-badge]: https://img.shields.io/packagist/php-v/chillerlan/php-qrcode?logo=php&color=8892BF
@@ -28,8 +26,6 @@ namespaced, cleaned up, improved and other stuff.
 [scrutinizer]: https://scrutinizer-ci.com/g/chillerlan/php-qrcode
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
-[donate-badge]: https://img.shields.io/badge/-donate-ff33aa.svg?logo=paypal
-[donate]: https://www.paypal.com/donate?hosted_button_id=WLYUNAT9ZTJZ4
 [gh-action-badge]: https://github.com/chillerlan/php-qrcode/workflows/Continuous%20Integration/badge.svg
 [gh-action]: https://github.com/chillerlan/php-qrcode/actions?query=workflow%3A%22Continuous+Integration%22
 [gh-docs-badge]: https://github.com/chillerlan/php-qrcode/workflows/Docs/badge.svg
