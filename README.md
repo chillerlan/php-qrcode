@@ -3,6 +3,7 @@
 A PHP 7.4+ QR Code library based on the [implementation](https://github.com/kazuhikoarase/qrcode-generator) by [Kazuhiko Arase](https://github.com/kazuhikoarase),
 namespaced, cleaned up, improved and other stuff.
 
+[![PHP Version Support][php-badge]][php]
 [![Packagist version][packagist-badge]][packagist]
 [![License][license-badge]][license]
 [![Travis CI][travis-badge]][travis]
@@ -13,19 +14,21 @@ namespaced, cleaned up, improved and other stuff.
 
 [![Continuous Integration][gh-action-badge]][gh-action] [![phpDocs][gh-docs-badge]][gh-docs]
 
-[packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?style=flat-square
+[php-badge]: https://img.shields.io/packagist/php-v/chillerlan/php-qrcode?logo=php&color=8892BF
+[php]: https://www.php.net/supported-versions.php
+[packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
-[license-badge]: https://img.shields.io/github/license/chillerlan/php-qrcode.svg?style=flat-square
+[license-badge]: https://img.shields.io/github/license/chillerlan/php-qrcode.svg
 [license]: https://github.com/chillerlan/php-qrcode/blob/main/LICENSE
-[travis-badge]: https://img.shields.io/travis/chillerlan/php-qrcode.svg?style=flat-square
+[travis-badge]: https://img.shields.io/travis/chillerlan/php-qrcode.svg?logo=travis
 [travis]: https://travis-ci.org/chillerlan/php-qrcode
-[coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode.svg?style=flat-square
+[coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode.svg?logo=codecov
 [coverage]: https://codecov.io/github/chillerlan/php-qrcode
-[scrutinizer-badge]: https://img.shields.io/scrutinizer/g/chillerlan/php-qrcode.svg?style=flat-square
+[scrutinizer-badge]: https://img.shields.io/scrutinizer/g/chillerlan/php-qrcode.svg?logo=scrutinizer
 [scrutinizer]: https://scrutinizer-ci.com/g/chillerlan/php-qrcode
-[downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?style=flat-square
+[downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
-[donate-badge]: https://img.shields.io/badge/donate-paypal-ff33aa.svg?style=flat-square
+[donate-badge]: https://img.shields.io/badge/-donate-ff33aa.svg?logo=paypal
 [donate]: https://www.paypal.com/donate?hosted_button_id=WLYUNAT9ZTJZ4
 [gh-action-badge]: https://github.com/chillerlan/php-qrcode/workflows/Continuous%20Integration/badge.svg
 [gh-action]: https://github.com/chillerlan/php-qrcode/actions?query=workflow%3A%22Continuous+Integration%22
