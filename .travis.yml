@@ -21,7 +21,7 @@ before_install:
   - pecl channel-update pecl.php.net
   - pecl install ast
   - |
-    if [ $TRAVIS_PHP_VERSION != 'nightly' ]; then
+    if [ $TRAVIS_PHP_VERSION == '7.4' ]; then
       printf "\n" | pecl install imagick;
     fi
 
