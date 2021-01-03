@@ -10,7 +10,8 @@ namespaced, cleaned up, improved and other stuff.
 [![CodeCov][coverage-badge]][coverage]
 [![Scrunitizer CI][scrutinizer-badge]][scrutinizer]
 [![Packagist downloads][downloads-badge]][downloads]<br/>
-[![Continuous Integration][gh-action-badge]][gh-action] [![phpDocs][gh-docs-badge]][gh-docs]
+[![Continuous Integration][gh-action-badge]][gh-action] 
+[![phpDocs][gh-docs-badge]][gh-docs]
 
 [php-badge]: https://img.shields.io/packagist/php-v/chillerlan/php-qrcode?logo=php&color=8892BF
 [php]: https://www.php.net/supported-versions.php
@@ -18,8 +19,8 @@ namespaced, cleaned up, improved and other stuff.
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
 [license-badge]: https://img.shields.io/github/license/chillerlan/php-qrcode.svg
 [license]: https://github.com/chillerlan/php-qrcode/blob/main/LICENSE
-[travis-badge]: https://img.shields.io/travis/chillerlan/php-qrcode.svg?logo=travis
-[travis]: https://travis-ci.org/chillerlan/php-qrcode
+[travis-badge]: https://img.shields.io/travis/com/chillerlan/php-qrcode/main?logo=travis
+[travis]: https://travis-ci.com/github/chillerlan/php-qrcode
 [coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode.svg?logo=codecov
 [coverage]: https://codecov.io/github/chillerlan/php-qrcode
 [scrutinizer-badge]: https://img.shields.io/scrutinizer/g/chillerlan/php-qrcode.svg?logo=scrutinizer
