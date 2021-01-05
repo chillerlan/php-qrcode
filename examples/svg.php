@@ -20,6 +20,7 @@ $gzip = true;
 $options = new QROptions([
 	'version'      => 7,
 	'outputType'   => QRCode::OUTPUT_MARKUP_SVG,
+	'imageBase64'  => false,
 	'eccLevel'     => QRCode::ECC_L,
 	'svgViewBoxSize' => 530,
 	'addQuietzone' => true,
