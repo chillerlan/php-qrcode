@@ -89,7 +89,7 @@ jobs:
         run: composer update --no-ansi --no-interaction --no-progress --no-suggest
 
       - name: "Run tests with phpunit"
-        run: php vendor/bin/phpunit --configuration=phpunit.xml
+        run: php vendor/phpunit/phpunit/phpunit --configuration=phpunit.xml
 
       - name: "Send code coverage report to Codecov.io"
         uses: codecov/codecov-action@v1
