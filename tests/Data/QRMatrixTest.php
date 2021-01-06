@@ -169,7 +169,7 @@ final class QRMatrixTest extends TestCase{
 			->setAlignmentPattern()
 		;
 
-		$alignmentPattern = Version::ALIGNMENT_PATTERN[$version];
+		$alignmentPattern = (new Version($version))->getAlignmentPattern();
 
 		foreach($alignmentPattern as $py){
 			foreach($alignmentPattern as $px){
