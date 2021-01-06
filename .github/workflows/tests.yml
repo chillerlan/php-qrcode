@@ -54,9 +54,9 @@ jobs:
           - "8.0"
 
     steps:
-      - name: "Configure git to avoid issues with line endings"
-        if: matrix.os == 'windows-latest'
-        run: git config --global core.autocrlf false
+#      - name: "Configure git to avoid issues with line endings"
+#        if: matrix.os == 'windows-latest'
+#        run: git config --global core.autocrlf false
 
       - name: "Checkout"
         uses: actions/checkout@v2
