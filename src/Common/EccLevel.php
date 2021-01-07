@@ -37,7 +37,7 @@ final class EccLevel{
 	 *
 	 * @see \chillerlan\QRCode\Common\Version::MAX_BITS
 	 * @see \chillerlan\QRCode\Common\EccLevel::RSBLOCKS
-	 * @see \chillerlan\QRCode\Data\QRMatrix::formatPattern
+	 * @see \chillerlan\QRCode\Common\EccLevel::formatPattern
 	 *
 	 * @var int[]
 	 */
@@ -46,6 +46,13 @@ final class EccLevel{
 		self::M => 1,
 		self::Q => 2,
 		self::H => 3,
+	];
+
+	public const MODES_STRING = [
+		self::L => 'L',
+		self::M => 'M',
+		self::Q => 'Q',
+		self::H => 'H',
 	];
 
 	/**
@@ -211,6 +218,13 @@ final class EccLevel{
 		}
 
 		$this->eccLevel = $eccLevel;
+	}
+
+	/**
+	 * returns the string representation of the current ECC level
+	 */
+	public function __toString():string{
+		return self::MODES_STRING[$this->eccLevel];
 	}
 
 	/**
