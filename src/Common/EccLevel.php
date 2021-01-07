@@ -217,7 +217,7 @@ final class EccLevel{
 	 * returns the ordinal value of the current ECC level
 	 */
 	public function getOrdinal():int{
-		return $this->eccLevel;
+		return self::MODES[$this->eccLevel];
 	}
 
 	/**
