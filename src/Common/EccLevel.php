@@ -214,6 +214,13 @@ final class EccLevel{
 	}
 
 	/**
+	 * returns the current ECC level
+	 */
+	public function getLevel():int{
+		return $this->eccLevel;
+	}
+
+	/**
 	 * returns the ordinal value of the current ECC level
 	 */
 	public function getOrdinal():int{

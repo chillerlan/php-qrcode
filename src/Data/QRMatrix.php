@@ -438,7 +438,7 @@ final class QRMatrix{
 	public function setLogoSpace(int $width, int $height, int $startX = null, int $startY = null):QRMatrix{
 
 		// for logos we operate in ECC H (30%) only
-		if($this->eccLevel->getOrdinal() !== EccLevel::H){
+		if($this->eccLevel->getLevel() !== EccLevel::H){
 			throw new QRCodeDataException('ECC level "H" required to add logo space');
 		}
 
