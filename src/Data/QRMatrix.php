@@ -16,6 +16,7 @@ use chillerlan\QRCode\Common\{EccLevel, Version};
 use chillerlan\QRCode\QRCode;
 use Closure;
 
+use SplFixedArray;
 use function array_fill, array_push, array_unshift, count, floor, max, min, range;
 
 /**
@@ -493,14 +494,14 @@ final class QRMatrix{
 	 *
 	 * @see \chillerlan\QRCode\Data\QRData::maskECC()
 	 *
-	 * @param int[] $data
-	 * @param int   $maskPattern
+	 * @param \SplFixedArray<int> $data
+	 * @param int                $maskPattern
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
-	public function mapData(array $data, int $maskPattern):QRMatrix{
+	public function mapData(SplFixedArray $data, int $maskPattern):QRMatrix{
 		$this->maskPattern = $maskPattern;
-		$byteCount         = count($data);
+		$byteCount         = $data->count();
 		$y                 = $this->moduleCount - 1;
 		$inc               = -1;
 		$byteIndex         = 0;

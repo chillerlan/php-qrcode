@@ -52,14 +52,18 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 	/**
 	 * Tests ecc masking and verifies against a sample
 	 */
-	public function testMaskEcc():void{
+/*	public function testMaskEcc():void{
 		$this->dataInterface->setData([$this->testdata]);
 
 		$maskECC = $this->reflection->getMethod('maskECC');
 		$maskECC->setAccessible(true);
 
-		$this::assertSame($this->expected, $maskECC->invoke($this->dataInterface));
-	}
+		$bitBuffer = $this->reflection->getProperty('bitBuffer');
+		$bitBuffer->setAccessible(true);
+		$bb = $bitBuffer->getValue($this->dataInterface);
+
+		$this::assertSame($this->expected, $maskECC->invokeArgs($this->dataInterface, [$bb->getBuffer()]));
+	}*/
 
 	/**
 	 * @see testInitMatrix()
