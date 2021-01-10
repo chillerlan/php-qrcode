@@ -45,14 +45,14 @@ final class ReedSolomon{
 	 * @return \SplFixedArray<int>
 	 */
 	public function interleaveEcBytes(BitBuffer $bitBuffer):SplFixedArray{
-		[$l1, $l2, $b1, $b2] = $this->version->getRSBlocks($this->eccLevel->getLevel());
+		[$numEccCodewords, [[$l1, $b1], [$l2, $b2]]] = $this->version->getRSBlocks($this->eccLevel);
 
 		$numRsBlocks = $l1 + $l2;
 		$ecBytes     = new SplFixedArray($numRsBlocks);
-		$rsBlocks    = array_fill(0, $l1, [$b1, $b2]);
+		$rsBlocks    = array_fill(0, $l1, [$numEccCodewords + $b1, $b1]);
 
 		if($l2 > 0){
-			$rsBlocks = array_merge($rsBlocks, array_fill(0, $l2, [$b1 + 1, $b2 + 1]));
+			$rsBlocks = array_merge($rsBlocks, array_fill(0, $l2, [$numEccCodewords + $b2, $b2]));
 		}
 
 		$dataBytes      = SplFixedArray::fromArray($rsBlocks);
