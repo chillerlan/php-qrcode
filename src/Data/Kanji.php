@@ -73,11 +73,11 @@ final class Kanji extends QRDataModeAbstract{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException on an illegal character occurence
 	 */
-	public function write(BitBuffer $bitBuffer, int $version):void{
+	public function write(BitBuffer $bitBuffer, int $versionNumber):void{
 
 		$bitBuffer
 			->put($this->datamode, 4)
-			->put($this->getCharCount(), Mode::getLengthBitsForVersion($this->datamode, $version))
+			->put($this->getCharCount(), Mode::getLengthBitsForVersion($this->datamode, $versionNumber))
 		;
 
 		$len = strlen($this->data);

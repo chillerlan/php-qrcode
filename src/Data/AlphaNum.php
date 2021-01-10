@@ -65,12 +65,12 @@ final class AlphaNum extends QRDataModeAbstract{
 	/**
 	 * @inheritdoc
 	 */
-	public function write(BitBuffer $bitBuffer, int $version):void{
+	public function write(BitBuffer $bitBuffer, int $versionNumber):void{
 		$len = $this->getCharCount();
 
 		$bitBuffer
 			->put($this->datamode, 4)
-			->put($len, Mode::getLengthBitsForVersion($this->datamode, $version))
+			->put($len, Mode::getLengthBitsForVersion($this->datamode, $versionNumber))
 		;
 
 		// encode 2 characters in 11 bits

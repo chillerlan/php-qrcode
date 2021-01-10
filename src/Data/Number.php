@@ -58,12 +58,12 @@ final class Number extends QRDataModeAbstract{
 	/**
 	 * @inheritdoc
 	 */
-	public function write(BitBuffer $bitBuffer, int $version):void{
+	public function write(BitBuffer $bitBuffer, int $versionNumber):void{
 		$len = $this->getCharCount();
 
 		$bitBuffer
 			->put($this->datamode, 4)
-			->put($len, Mode::getLengthBitsForVersion($this->datamode, $version))
+			->put($len, Mode::getLengthBitsForVersion($this->datamode, $versionNumber))
 		;
 
 		$i = 0;

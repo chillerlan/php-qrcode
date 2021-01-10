@@ -40,6 +40,6 @@ interface QRDataModeInterface{
 	 *
 	 * @see \chillerlan\QRCode\Data\QRData::writeBitBuffer()
 	 */
-	public function write(BitBuffer $bitBuffer, int $version):void;
+	public function write(BitBuffer $bitBuffer, int $versionNumber):void;
 
 }

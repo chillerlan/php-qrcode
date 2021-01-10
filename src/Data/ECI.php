@@ -87,7 +87,7 @@ class ECI extends QRDataModeAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	public function write(BitBuffer $bitBuffer, int $version):void{
+	public function write(BitBuffer $bitBuffer, int $versionNumber):void{
 		$bitBuffer
 			->put($this->datamode, 4)
 			->put($this->encoding, 8)
