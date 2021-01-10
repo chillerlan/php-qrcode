@@ -313,8 +313,6 @@ final class Version{
 
 	/**
 	 * returns ECC block information for the given $version and $eccLevel
-	 *
-	 * @return int[]
 	 */
 	public function getRSBlocks(EccLevel $eccLevel):array{
 		return self::RSBLOCKS[$this->version][$eccLevel->getOrdinal()];
