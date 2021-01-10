@@ -17,7 +17,7 @@ use chillerlan\QRCode\QRCode;
 use Closure;
 
 use SplFixedArray;
-use function array_fill, array_push, array_unshift, count, floor, max, min, range;
+use function array_fill, array_push, array_unshift, floor, max, min, range;
 
 /**
  * Holds a numerical representation of the final QR Code;
