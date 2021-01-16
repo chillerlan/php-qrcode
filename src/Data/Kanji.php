@@ -12,8 +12,7 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\Helpers\BitBuffer;
-use chillerlan\QRCode\Common\Mode;
+use chillerlan\QRCode\Common\{BitBuffer, Mode};
 
 use function mb_convert_encoding, mb_detect_encoding, mb_strlen, ord, sprintf, strlen;
 

@@ -12,7 +12,7 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\Helpers\BitBuffer;
+use chillerlan\QRCode\Common\BitBuffer;
 
 /**
  * Specifies the methods reqired for the data modules (Number, Alphanum, Byte and Kanji)

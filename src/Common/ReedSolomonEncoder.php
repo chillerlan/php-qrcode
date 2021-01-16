@@ -12,7 +12,6 @@
 
 namespace chillerlan\QRCode\Common;
 
-use chillerlan\QRCode\Helpers\BitBuffer;
 use SplFixedArray;
 
 use function array_fill, array_merge, count, max;

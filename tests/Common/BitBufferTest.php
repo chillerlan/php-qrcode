@@ -4,16 +4,15 @@
  *
  * @filesource   BitBufferTest.php
  * @created      08.02.2016
- * @package      chillerlan\QRCodeTest\Helpers
+ * @package      chillerlan\QRCodeTest\Common
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace chillerlan\QRCodeTest\Helpers;
+namespace chillerlan\QRCodeTest\Common;
 
-use chillerlan\QRCode\Helpers\BitBuffer;
-use chillerlan\QRCode\Common\Mode;
+use chillerlan\QRCode\Common\{BitBuffer, Mode};
 use PHPUnit\Framework\TestCase;
 
 /**

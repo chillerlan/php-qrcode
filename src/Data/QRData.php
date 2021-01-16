@@ -12,9 +12,8 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\Common\{EccLevel, Mode, ReedSolomonEncoder, Version};
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, Mode, ReedSolomonEncoder, Version};
 use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\Helpers\BitBuffer;
 use chillerlan\Settings\SettingsContainerInterface;
 
 use function range, sprintf;

@@ -4,13 +4,13 @@
  *
  * @filesource   BitBuffer.php
  * @created      25.11.2015
- * @package      chillerlan\QRCode\Helpers
+ * @package      chillerlan\QRCode\Common
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace chillerlan\QRCode\Helpers;
+namespace chillerlan\QRCode\Common;
 
 use function count, floor;
 
