@@ -48,7 +48,7 @@ abstract class QROutputTestAbstract extends TestCase{
 		}
 
 		$this->options         = new QROptions;
-		$this->matrix          = (new QRData($this->options, [[Byte::class, 'testdata']]))->initMatrix(0);
+		$this->matrix          = (new QRData($this->options, [[Byte::class, 'testdata']]))->writeMatrix(0);
 		$this->outputInterface = $this->getOutputInterface($this->options);
 	}
 

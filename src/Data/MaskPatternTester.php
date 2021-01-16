@@ -62,7 +62,7 @@ final class MaskPatternTester{
 	 * @see \chillerlan\QRCode\Data\QRMatrix::$maskPattern
 	 */
 	public function testPattern(int $pattern):int{
-		$matrix  = $this->qrData->initMatrix($pattern, true);
+		$matrix  = $this->qrData->writeMatrix($pattern, true);
 		$penalty = 0;
 
 		for($level = 1; $level <= 4; $level++){

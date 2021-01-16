@@ -158,7 +158,7 @@ class QRCode{
 			? (new MaskPatternTester($this->dataInterface))->getBestMaskPattern()
 			: $this->options->maskPattern;
 
-		$matrix = $this->dataInterface->initMatrix($maskPattern);
+		$matrix = $this->dataInterface->writeMatrix($maskPattern);
 
 		if((bool)$this->options->addQuietzone){
 			$matrix->setQuietZone($this->options->quietzoneSize);

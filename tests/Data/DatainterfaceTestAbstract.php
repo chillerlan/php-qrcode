@@ -82,7 +82,7 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 	public function testInitMatrix(int $maskPattern):void{
 		$this->dataInterface->setData([$this->testdata]);
 
-		$matrix = $this->dataInterface->initMatrix($maskPattern);
+		$matrix = $this->dataInterface->writeMatrix($maskPattern);
 
 		$this::assertInstanceOf(QRMatrix::class, $matrix);
 		$this::assertSame($maskPattern, $matrix->maskPattern());
