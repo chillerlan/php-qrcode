@@ -31,7 +31,7 @@ final class GenericGFPoly{
 	private array $coefficients;
 
 	/**
-	 * @param array|null $coefficients array coefficients as ints representing elements of GF(size), arranged
+	 * @param array      $coefficients array coefficients as ints representing elements of GF(size), arranged
 	 *                                 from most significant (highest-power term) coefficient to least significant
 	 * @param int|null   $degree
 	 *
