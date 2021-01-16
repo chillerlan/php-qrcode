@@ -102,6 +102,9 @@ Hi, please check out my other projects that are way cooler than qrcodes!
 ### Disclaimer!
 I don't take responsibility for molten CPUs, misled applications, failed log-ins etc.. Use at your own risk!
 
+#### License notice
+Parts of this code are [ported to php](https://github.com/khanamiryan/php-qrcode-detector-decoder) from the [ZXing project](https://github.com/zxing/zxing) and licensed under the Apache License, Version 2.0.
+
 #### Trademark Notice
 
 The word "QR Code" is registered trademark of *DENSO WAVE INCORPORATED*<br>

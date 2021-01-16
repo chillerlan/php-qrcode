@@ -6,12 +6,20 @@
 	"minimum-stability": "stable",
 	"type": "library",
 	"keywords": [
-		"QR code", "qrcode", "qr", "qrcode-generator", "phpqrcode"
+		"QR code", "qrcode", "qr", "qrcode-generator", "phpqrcode", "qrcode-reader"
 	],
 	"authors": [
 		{
 			"name": "Kazuhiko Arase",
-			"homepage": "https://github.com/kazuhikoarase"
+			"homepage": "https://github.com/kazuhikoarase/qrcode-generator"
+		},
+		{
+			"name":"ZXing Authors",
+			"homepage": "https://github.com/zxing/zxing"
+		},
+		{
+			"name": "Ashot Khanamiryan",
+			"homepage": "https://github.com/khanamiryan/php-qrcode-detector-decoder"
 		},
 		{
 			"name": "Smiley",
