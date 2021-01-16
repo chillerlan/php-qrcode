@@ -21,7 +21,7 @@ use function range, sprintf;
 /**
  * Processes the binary data and maps it on a matrix which is then being returned
  */
-class QRData{
+final class QRData{
 
 	/**
 	 * the options instance

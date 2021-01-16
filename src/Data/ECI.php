@@ -19,7 +19,7 @@ use chillerlan\QRCode\Common\{BitBuffer, Mode};
  *
  * Please note that you have to take care for the correct data encoding when adding with QRCode::add*Segment()
  */
-class ECI extends QRDataModeAbstract{
+final class ECI extends QRDataModeAbstract{
 
 	public const CP437                 = 0;  // Code page 437, DOS Latin US
 	public const ISO_IEC_8859_1_GLI    = 1;  // GLI encoding with characters 0 to 127 identical to ISO/IEC 646 and characters 128 to 255 identical to ISO 8859-1
