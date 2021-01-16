@@ -85,17 +85,17 @@ final class ReedSolomonEncoder{
 
 		$rsPolyDegree = $rsPoly->getDegree();
 
-		$num = (new GenericGFPoly($dataBytes, $rsPolyDegree))
+		$modCoefficients = (new GenericGFPoly($dataBytes, $rsPolyDegree))
 			->mod($rsPoly)
 			->getCoefficients()
 		;
 
 		$ecBytes = array_fill(0, $rsPolyDegree, 0);
-		$count   = count($num) - count($ecBytes);
+		$count   = count($modCoefficients) - $rsPolyDegree;
 
 		foreach($ecBytes as $i => &$val){
 			$modIndex = $i + $count;
-			$val      = $modIndex >= 0 ? $num[$modIndex] : 0;
+			$val      = $modIndex >= 0 ? $modCoefficients[$modIndex] : 0;
 		}
 
 		return $ecBytes;

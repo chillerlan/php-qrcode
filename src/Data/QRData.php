@@ -24,6 +24,23 @@ use function range, sprintf;
 class QRData{
 
 	/**
+	 * the options instance
+	 *
+	 * @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions
+	 */
+	protected SettingsContainerInterface $options;
+
+	/**
+	 * a BitBuffer instance
+	 */
+	protected BitBuffer $bitBuffer;
+
+	/**
+	 * an EccLevel instance
+	 */
+	protected EccLevel $eccLevel;
+
+	/**
 	 * current QR Code version
 	 */
 	protected Version $version;
@@ -39,20 +56,6 @@ class QRData{
 	 * @var int[]
 	 */
 	protected array $maxBitsForEcc;
-
-	/**
-	 * the options instance
-	 *
-	 * @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions
-	 */
-	protected SettingsContainerInterface $options;
-
-	/**
-	 * a BitBuffer instance
-	 */
-	protected BitBuffer $bitBuffer;
-
-	protected EccLevel $eccLevel;
 
 	/**
 	 * QRData constructor.
@@ -154,7 +157,6 @@ class QRData{
 			if($total <= $this->maxBitsForEcc[$version]){
 				return $version;
 			}
-
 		}
 
 		// it's almost impossible to run into this one as $this::estimateTotalBitLength() would throw first

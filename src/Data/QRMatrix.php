@@ -495,7 +495,7 @@ final class QRMatrix{
 	 * @see \chillerlan\QRCode\Data\QRData::maskECC()
 	 *
 	 * @param \SplFixedArray<int> $data
-	 * @param int                $maskPattern
+	 * @param int                 $maskPattern
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
