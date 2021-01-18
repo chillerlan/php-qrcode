@@ -11,6 +11,7 @@
 namespace chillerlan\QRCodeExamples;
 
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Common\EccLevel;
 
 require_once '../vendor/autoload.php';
@@ -25,20 +26,12 @@ header('Content-Type: text/html; charset=utf-8');
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>QRCode test</title>
 	<style>
-		body{
-			margin: 5em;
-			padding: 0;
-		}
-
 		div.qrcode{
-			margin: 0;
-			padding: 0;
+            margin: 5em;
 		}
 
 		/* rows */
 		div.qrcode > div {
-			margin: 0;
-			padding: 0;
 			height: 10px;
 		}
 
@@ -48,14 +41,9 @@ header('Content-Type: text/html; charset=utf-8');
 			width: 10px;
 			height: 10px;
 		}
-
-		div.qrcode > div > span {
-			background-color: #ccc;
-		}
 	</style>
 </head>
 <body>
-	<div class="qrcode">
 <?php
 
 	$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
@@ -64,38 +52,39 @@ header('Content-Type: text/html; charset=utf-8');
 		'version'      => 5,
 		'outputType'   => QRCode::OUTPUT_MARKUP_HTML,
 		'eccLevel'     => EccLevel::L,
+		'cssClass'     => 'qrcode',
 		'moduleValues' => [
 			// finder
-			1536 => '#A71111', // dark (true)
-			6    => '#FFBFBF', // light (false)
+			QRMatrix::M_FINDER | QRMatrix::IS_DARK     => '#A71111', // dark (true)
+			QRMatrix::M_FINDER                         => '#FFBFBF', // light (false)
+			QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK => '#A71111', // finder dot, dark (true)
 			// alignment
-			2560 => '#A70364',
-			10   => '#FFC9C9',
+			QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK  => '#A70364',
+			QRMatrix::M_ALIGNMENT                      => '#FFC9C9',
 			// timing
-			3072 => '#98005D',
-			12   => '#FFB8E9',
+			QRMatrix::M_TIMING | QRMatrix::IS_DARK     => '#98005D',
+			QRMatrix::M_TIMING                         => '#FFB8E9',
 			// format
-			3584 => '#003804',
-			14   => '#00FB12',
+			QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => '#003804',
+			QRMatrix::M_FORMAT                         => '#00FB12',
 			// version
-			4096 => '#650098',
-			16   => '#E0B8FF',
+			QRMatrix::M_VERSION | QRMatrix::IS_DARK    => '#650098',
+			QRMatrix::M_VERSION                        => '#E0B8FF',
 			// data
-			1024 => '#4A6000',
-			4    => '#ECF9BE',
+			QRMatrix::M_DATA | QRMatrix::IS_DARK       => '#4A6000',
+			QRMatrix::M_DATA                           => '#ECF9BE',
 			// darkmodule
-			512  => '#080063',
+			QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK => '#080063',
 			// separator
-			8    => '#AFBFBF',
+			QRMatrix::M_SEPARATOR                      => '#AFBFBF',
 			// quietzone
-			18   => '#FFFFFF',
+			QRMatrix::M_QUIETZONE                      => '#DDDDDD',
 		],
 	]);
 
 	echo (new QRCode($options))->render($data);
 
 ?>
-	</div>
 </body>
 </html>
 

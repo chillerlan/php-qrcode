@@ -11,6 +11,7 @@
 namespace chillerlan\QRCodeExamples;
 
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Common\EccLevel;
 
 require_once __DIR__.'/../vendor/autoload.php';
@@ -39,29 +40,30 @@ $options = new QROptions([
 		<style>rect{shape-rendering:crispEdges}</style>',
 	'moduleValues' => [
 		// finder
-		1536 => 'url(#g1)', // dark (true)
-		6    => '#fff', // light (false)
+		QRMatrix::M_FINDER | QRMatrix::IS_DARK     => 'url(#g1)', // dark (true)
+		QRMatrix::M_FINDER                         => '#fff',     // light (false)
+		QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK => 'url(#g2)', // finder dot, dark (true)
 		// alignment
-		2560 => 'url(#g1)',
-		10   => '#fff',
+		QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK  => 'url(#g1)',
+		QRMatrix::M_ALIGNMENT                      => '#fff',
 		// timing
-		3072 => 'url(#g1)',
-		12   => '#fff',
+		QRMatrix::M_TIMING | QRMatrix::IS_DARK     => 'url(#g1)',
+		QRMatrix::M_TIMING                         => '#fff',
 		// format
-		3584 => 'url(#g1)',
-		14   => '#fff',
+		QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => 'url(#g1)',
+		QRMatrix::M_FORMAT                         => '#fff',
 		// version
-		4096 => 'url(#g1)',
-		16   => '#fff',
+		QRMatrix::M_VERSION | QRMatrix::IS_DARK    => 'url(#g1)',
+		QRMatrix::M_VERSION                        => '#fff',
 		// data
-		1024 => 'url(#g2)',
-		4    => '#fff',
+		QRMatrix::M_DATA | QRMatrix::IS_DARK       => 'url(#g2)',
+		QRMatrix::M_DATA                           => '#fff',
 		// darkmodule
-		512  => 'url(#g1)',
+		QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK => 'url(#g1)',
 		// separator
-		8    => '#fff',
+		QRMatrix::M_SEPARATOR                      => '#fff',
 		// quietzone
-		18   => '#fff',
+		QRMatrix::M_QUIETZONE                      => '#fff',
 	],
 ]);
 
@@ -72,7 +74,7 @@ header('Content-type: image/svg+xml');
 if($gzip === true){
 	header('Vary: Accept-Encoding');
 	header('Content-Encoding: gzip');
-	$qrcode = gzencode($qrcode ,9);
+	$qrcode = gzencode($qrcode, 9);
 }
 echo $qrcode;
 

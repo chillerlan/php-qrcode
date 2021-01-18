@@ -21,27 +21,27 @@ interface QROutputInterface{
 
 	const DEFAULT_MODULE_VALUES = [
 		// light
-		QRMatrix::M_NULL            => false, // 0
-		QRMatrix::M_DATA            => false, // 4
-		QRMatrix::M_FINDER          => false, // 6
-		QRMatrix::M_SEPARATOR       => false, // 8
-		QRMatrix::M_ALIGNMENT       => false, // 10
-		QRMatrix::M_TIMING          => false, // 12
-		QRMatrix::M_FORMAT          => false, // 14
-		QRMatrix::M_VERSION         => false, // 16
-		QRMatrix::M_QUIETZONE       => false, // 18
-		QRMatrix::M_LOGO            => false, // 20
-		QRMatrix::M_TEST            => false, // 255
+		QRMatrix::M_NULL                           => false,
+		QRMatrix::M_DATA                           => false,
+		QRMatrix::M_FINDER                         => false,
+		QRMatrix::M_SEPARATOR                      => false,
+		QRMatrix::M_ALIGNMENT                      => false,
+		QRMatrix::M_TIMING                         => false,
+		QRMatrix::M_FORMAT                         => false,
+		QRMatrix::M_VERSION                        => false,
+		QRMatrix::M_QUIETZONE                      => false,
+		QRMatrix::M_LOGO                           => false,
+		QRMatrix::M_TEST                           => false,
 		// dark
-		QRMatrix::M_DARKMODULE << 8 => true,  // 512
-		QRMatrix::M_DATA << 8       => true,  // 1024
-		QRMatrix::M_FINDER << 8     => true,  // 1536
-		QRMatrix::M_ALIGNMENT << 8  => true,  // 2560
-		QRMatrix::M_TIMING << 8     => true,  // 3072
-		QRMatrix::M_FORMAT << 8     => true,  // 3584
-		QRMatrix::M_VERSION << 8    => true,  // 4096
-		QRMatrix::M_FINDER_DOT << 8 => true,  // 5632
-		QRMatrix::M_TEST << 8       => true,  // 65280
+		QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK => true,
+		QRMatrix::M_DATA | QRMatrix::IS_DARK       => true,
+		QRMatrix::M_FINDER | QRMatrix::IS_DARK     => true,
+		QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK  => true,
+		QRMatrix::M_TIMING | QRMatrix::IS_DARK     => true,
+		QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => true,
+		QRMatrix::M_VERSION | QRMatrix::IS_DARK    => true,
+		QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK => true,
+		QRMatrix::M_TEST | QRMatrix::IS_DARK       => true,
 	];
 
 	/**

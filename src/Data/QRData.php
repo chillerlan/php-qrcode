@@ -105,7 +105,8 @@ final class QRData{
 
 		return (new QRMatrix($this->version, $this->eccLevel))
 			->init($maskPattern, $test)
-			->mapData($data, $maskPattern)
+			->mapData($data)
+			->mask($maskPattern)
 		;
 	}
 

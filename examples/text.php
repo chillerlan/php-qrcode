@@ -11,6 +11,7 @@
 namespace chillerlan\QRCodeExamples;
 
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Common\EccLevel;
 
 require_once __DIR__.'/../vendor/autoload.php';
@@ -34,29 +35,30 @@ $options = new QROptions([
 	'eccLevel'     => EccLevel::L,
 	'moduleValues' => [
 		// finder
-		1536 => 'A', // dark (true)
-		6    => 'a', // light (false)
+		QRMatrix::M_FINDER | QRMatrix::IS_DARK     => 'A', // dark (true)
+		QRMatrix::M_FINDER                         => 'a', // light (false)
+		QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK => 'ä', // finder dot, dark (true)
 		// alignment
-		2560 => 'B',
-		10   => 'b',
+		QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK  => 'B',
+		QRMatrix::M_ALIGNMENT                      => 'b',
 		// timing
-		3072 => 'C',
-		12   => 'c',
+		QRMatrix::M_TIMING | QRMatrix::IS_DARK     => 'C',
+		QRMatrix::M_TIMING                         => 'c',
 		// format
-		3584 => 'D',
-		14   => 'd',
+		QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => 'D',
+		QRMatrix::M_FORMAT                         => 'd',
 		// version
-		4096 => 'E',
-		16   => 'e',
+		QRMatrix::M_VERSION | QRMatrix::IS_DARK    => 'E',
+		QRMatrix::M_VERSION                        => 'e',
 		// data
-		1024 => 'F',
-		4    => 'f',
+		QRMatrix::M_DATA | QRMatrix::IS_DARK       => 'F',
+		QRMatrix::M_DATA                           => 'f',
 		// darkmodule
-		512  => 'G',
+		QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK => 'G',
 		// separator
-		8    => 'h',
+		QRMatrix::M_SEPARATOR                      => 'h',
 		// quietzone
-		18   => 'i',
+		QRMatrix::M_QUIETZONE                      => 'i',
 	],
 ]);
 
