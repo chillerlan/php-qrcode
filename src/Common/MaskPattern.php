@@ -16,9 +16,9 @@ use chillerlan\QRCode\QRCodeException;
 use Closure;
 
 /**
- *
+ * ISO/IEC 18004:2000 Section 8.8.1
  */
-class MaskPattern{
+final class MaskPattern{
 
 	public const PATTERN_000 = 0b000;
 	public const PATTERN_001 = 0b001;
@@ -45,39 +45,43 @@ class MaskPattern{
 	/**
 	 * MaskPattern constructor.
 	 *
-	 * ISO/IEC 18004:2000 Section 8.8.1
-	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public function __construct(int $maskPattern){
 
 		if((0b111 & $maskPattern) !== $maskPattern){
-			throw new QRCodeException('invalid mask pattern'); // @codeCoverageIgnore
+			throw new QRCodeException('invalid mask pattern');
 		}
 
 		$this->maskPattern = $maskPattern;
 	}
 
+	/**
+	 * Returns the current mask pattern
+	 */
 	public function getPattern():int{
 		return $this->maskPattern;
 	}
 
 	/**
-	 * ISO/IEC 18004:2000 Section 8.8.1
+	 * Returns a closure that applies the mask for the chosen mask pattern.
 	 *
 	 * Note that some versions of the QR code standard have had errors in the section about mask patterns.
-	 * The information below has been corrected. (https://www.thonky.com/qr-code-tutorial/mask-patterns)
+	 * The information below has been corrected.
+	 *
+	 * @see https://www.thonky.com/qr-code-tutorial/mask-patterns
 	 */
 	public function getMask():Closure{
+		// $x = column (width), $y = row (height)
 		return [
-			self::PATTERN_000 => fn($x, $y):int => ($x + $y) % 2,
-			self::PATTERN_001 => fn($x, $y):int => $y % 2,
-			self::PATTERN_010 => fn($x, $y):int => $x % 3,
-			self::PATTERN_011 => fn($x, $y):int => ($x + $y) % 3,
-			self::PATTERN_100 => fn($x, $y):int => ((int)($y / 2) + (int)($x / 3)) % 2,
-			self::PATTERN_101 => fn($x, $y):int => (($x * $y) % 2) + (($x * $y) % 3),
-			self::PATTERN_110 => fn($x, $y):int => ((($x * $y) % 2) + (($x * $y) % 3)) % 2,
-			self::PATTERN_111 => fn($x, $y):int => ((($x * $y) % 3) + (($x + $y) % 2)) % 2,
+			self::PATTERN_000 => fn(int $x, int $y):int => ($x + $y) % 2,
+			self::PATTERN_001 => fn(int $x, int $y):int => $y % 2,
+			self::PATTERN_010 => fn(int $x, int $y):int => $x % 3,
+			self::PATTERN_011 => fn(int $x, int $y):int => ($x + $y) % 3,
+			self::PATTERN_100 => fn(int $x, int $y):int => ((int)($y / 2) + (int)($x / 3)) % 2,
+			self::PATTERN_101 => fn(int $x, int $y):int => (($x * $y) % 2) + (($x * $y) % 3),
+			self::PATTERN_110 => fn(int $x, int $y):int => ((($x * $y) % 2) + (($x * $y) % 3)) % 2,
+			self::PATTERN_111 => fn(int $x, int $y):int => ((($x * $y) % 3) + (($x + $y) % 2)) % 2,
 		][$this->maskPattern];
 	}
 

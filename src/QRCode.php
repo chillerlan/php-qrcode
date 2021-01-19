@@ -13,11 +13,8 @@
 namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, MaskPatternTester, Number, QRData, QRCodeDataException, QRMatrix};
-use chillerlan\QRCode\Common\MaskPattern;
-use chillerlan\QRCode\Common\Mode;
-use chillerlan\QRCode\Output\{
-	QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString
-};
+use chillerlan\QRCode\Common\{MaskPattern, Mode};
+use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString};
 use chillerlan\Settings\SettingsContainerInterface;
 
 use function class_exists, in_array;
@@ -140,8 +137,6 @@ class QRCode{
 		return $this->initOutputInterface()->dump($file);
 	}
 
-
-
 	/**
 	 * Returns a QRMatrix object for the given $data and current QROptions
 	 *
@@ -192,8 +187,6 @@ class QRCode{
 
 	/**
 	 * checks if a string qualifies as numeric (convenience method)
-	 *
-	 * @see Number::validateString()
 	 */
 	public function isNumber(string $string):bool{
 		return Number::validateString($string);
@@ -201,8 +194,6 @@ class QRCode{
 
 	/**
 	 * checks if a string qualifies as alphanumeric (convenience method)
-	 *
-	 * @see AlphaNum::validateString()
 	 */
 	public function isAlphaNum(string $string):bool{
 		return AlphaNum::validateString($string);
@@ -210,8 +201,6 @@ class QRCode{
 
 	/**
 	 * checks if a string qualifies as Kanji (convenience method)
-	 *
-	 * @see Kanji::validateString()
 	 */
 	public function isKanji(string $string):bool{
 		return Kanji::validateString($string);
@@ -219,14 +208,15 @@ class QRCode{
 
 	/**
 	 * a dummy (convenience method)
-	 *
-	 * @see Byte::validateString()
 	 */
 	public function isByte(string $string):bool{
 		return Byte::validateString($string);
 	}
 
 	/**
+	 * ISO/IEC 18004:2000 8.3.6 - Mixing modes
+	 * ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length
+	 *
 	 * @param string|int $data
 	 * @param string     $classname
 	 *
@@ -236,33 +226,49 @@ class QRCode{
 		$this->dataSegments[] = [$classname, $data];
 	}
 
+	/**
+	 * ISO/IEC 18004:2000 8.3.2 - Numeric Mode
+	 */
 	public function addNumberSegment(string $data):QRCode{
 		$this->addSegment($data, Number::class);
 
 		return $this;
 	}
 
+	/**
+	 * ISO/IEC 18004:2000 8.3.3 - Alphanumeric Mode
+	 */
 	public function addAlphaNumSegment(string $data):QRCode{
 		$this->addSegment($data, AlphaNum::class);
 
 		return $this;
 	}
 
+	/**
+	 * ISO/IEC 18004:2000 8.3.5 - Kanji Mode
+	 */
 	public function addKanjiSegment(string $data):QRCode{
 		$this->addSegment($data, Kanji::class);
 
 		return $this;
 	}
 
+	/**
+	 * ISO/IEC 18004:2000 8.3.4 - 8-bit Byte Mode
+	 */
 	public function addByteSegment(string $data):QRCode{
 		$this->addSegment($data, Byte::class);
 
 		return $this;
 	}
 
+	/**
+	 * ISO/IEC 18004:2000 8.3.1 - Extended Channel Interpretation (ECI) Mode
+	 */
 	public function addEciDesignator(int $encoding):QRCode{
 		$this->addSegment($encoding, ECI::class);
 
 		return $this;
 	}
+
 }
