@@ -12,7 +12,9 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, MaskPatternTester, Number, QRData, QRCodeDataException, QRMatrix};
+use chillerlan\QRCode\Data\{
+	AlphaNum, Byte, ECI, Kanji, MaskPatternTester, Number, QRData, QRCodeDataException, QRDataModeInterface, QRMatrix
+};
 use chillerlan\QRCode\Common\{MaskPattern, Mode};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString};
 use chillerlan\Settings\SettingsContainerInterface;
@@ -88,7 +90,7 @@ class QRCode{
 	 *
 	 * @see \chillerlan\QRCode\Data\QRDataModeInterface
 	 *
-	 * @var string[][]|int[][]
+	 * @var \chillerlan\QRCode\Data\QRDataModeInterface[]
 	 */
 	protected array $dataSegments = [];
 
@@ -125,7 +127,7 @@ class QRCode{
 			foreach(Mode::DATA_INTERFACES as $dataInterface){
 
 				if($dataInterface::validateString($data)){
-					$this->addSegment($data, $dataInterface);
+					$this->addSegment(new $dataInterface($data));
 
 					break;
 				}
@@ -216,21 +218,16 @@ class QRCode{
 	/**
 	 * ISO/IEC 18004:2000 8.3.6 - Mixing modes
 	 * ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length
-	 *
-	 * @param string|int $data
-	 * @param string     $classname
-	 *
-	 * @return void
 	 */
-	protected function addSegment($data, string $classname):void{
-		$this->dataSegments[] = [$classname, $data];
+	protected function addSegment(QRDataModeInterface $segment):void{
+		$this->dataSegments[] = $segment;
 	}
 
 	/**
 	 * ISO/IEC 18004:2000 8.3.2 - Numeric Mode
 	 */
 	public function addNumberSegment(string $data):QRCode{
-		$this->addSegment($data, Number::class);
+		$this->addSegment(new Number($data));
 
 		return $this;
 	}
@@ -239,7 +236,7 @@ class QRCode{
 	 * ISO/IEC 18004:2000 8.3.3 - Alphanumeric Mode
 	 */
 	public function addAlphaNumSegment(string $data):QRCode{
-		$this->addSegment($data, AlphaNum::class);
+		$this->addSegment(new AlphaNum($data));
 
 		return $this;
 	}
@@ -248,7 +245,7 @@ class QRCode{
 	 * ISO/IEC 18004:2000 8.3.5 - Kanji Mode
 	 */
 	public function addKanjiSegment(string $data):QRCode{
-		$this->addSegment($data, Kanji::class);
+		$this->addSegment(new Kanji($data));
 
 		return $this;
 	}
@@ -257,7 +254,7 @@ class QRCode{
 	 * ISO/IEC 18004:2000 8.3.4 - 8-bit Byte Mode
 	 */
 	public function addByteSegment(string $data):QRCode{
-		$this->addSegment($data, Byte::class);
+		$this->addSegment(new Byte($data));
 
 		return $this;
 	}
@@ -266,7 +263,7 @@ class QRCode{
 	 * ISO/IEC 18004:2000 8.3.1 - Extended Channel Interpretation (ECI) Mode
 	 */
 	public function addEciDesignator(int $encoding):QRCode{
-		$this->addSegment($encoding, ECI::class);
+		$this->addSegment(new ECI($encoding));
 
 		return $this;
 	}

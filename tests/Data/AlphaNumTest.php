@@ -20,7 +20,7 @@ use chillerlan\QRCode\Data\{AlphaNum, QRCodeDataException};
 final class AlphaNumTest extends DatainterfaceTestAbstract{
 
 	/** @internal */
-	protected array $testdata  = [AlphaNum::class, '0 $%*+-./:'];
+	protected array $testdata = [AlphaNum::class, '0 $%*+-./:'];
 
 	/** @internal */
 	protected array  $expected  = [
@@ -46,7 +46,9 @@ final class AlphaNumTest extends DatainterfaceTestAbstract{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('illegal char: "#" [35]');
 
-		$this->dataInterface->setData([[AlphaNum::class, '#']]);
+		$this->testdata = [AlphaNum::class, '#'];
+
+		$this->setTestData();
 	}
 
 }

@@ -46,7 +46,9 @@ final class NumberTest extends DatainterfaceTestAbstract{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('illegal char: "#" [35]');
 
-		$this->dataInterface->setData([[Number::class, '#']]);
+		$this->testdata = [Number::class, '#'];
+
+		$this->setTestData();
 	}
 
 }

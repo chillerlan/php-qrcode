@@ -46,7 +46,9 @@ final class KanjiTest extends DatainterfaceTestAbstract{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('illegal char at 1 [16191]');
 
-		$this->dataInterface->setData([[Kanji::class, 'ÃÃ']]);
+		$this->testdata = [Kanji::class, 'ÃÃ'];
+
+		$this->setTestData();
 	}
 
 	/**
@@ -56,7 +58,9 @@ final class KanjiTest extends DatainterfaceTestAbstract{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('illegal char at 1');
 
-		$this->dataInterface->setData([[Kanji::class, 'Ã']]);
+		$this->testdata = [Kanji::class, 'Ã'];
+
+		$this->setTestData();
 	}
 
 }

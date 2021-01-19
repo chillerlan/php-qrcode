@@ -26,7 +26,7 @@ final class MaskPatternTesterTest extends TestCase{
 	 * Tests getting the best mask pattern
 	 */
 	public function testMaskpattern():void{
-		$dataInterface = new QRData(new QROptions(['version' => 10]), [[Byte::class, 'test']]);
+		$dataInterface = new QRData(new QROptions(['version' => 10]), [new Byte('test')]);
 
 		$this::assertSame(3, (new MaskPatternTester($dataInterface))->getBestMaskPattern()->getPattern());
 	}
@@ -35,7 +35,7 @@ final class MaskPatternTesterTest extends TestCase{
 	 * Tests getting the penalty value for a given mask pattern
 	 */
 	public function testMaskpatternID():void{
-		$dataInterface = new QRData(new QROptions(['version' => 10]), [[Byte::class, 'test']]);
+		$dataInterface = new QRData(new QROptions(['version' => 10]), [new Byte('test')]);
 
 		$this::assertSame(4243, (new MaskPatternTester($dataInterface))->testPattern(new MaskPattern(MaskPattern::PATTERN_011)));
 	}

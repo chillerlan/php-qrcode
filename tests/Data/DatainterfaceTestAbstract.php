@@ -43,6 +43,11 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 		$this->reflection    = new ReflectionClass($this->dataInterface);
 	}
 
+	protected function setTestData():void{
+		[$class, $data] = $this->testdata;
+		$this->dataInterface->setData([new $class($data)]);
+	}
+
 	/**
 	 * Verifies the data interface instance
 	 */
@@ -81,7 +86,7 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 	 * @dataProvider MaskPatternProvider
 	 */
 	public function testInitMatrix(int $maskPattern):void{
-		$this->dataInterface->setData([$this->testdata]);
+		$this->setTestData();
 
 		$matrix = $this->dataInterface->writeMatrix(new MaskPattern($maskPattern));
 
@@ -93,7 +98,7 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 	 * Tests getting the minimum QR version for the given data
 	 */
 	public function testGetMinimumVersion():void{
-		$this->dataInterface->setData([$this->testdata]);
+		$this->setTestData();
 
 		$getMinimumVersion = $this->reflection->getMethod('getMinimumVersion');
 		$getMinimumVersion->setAccessible(true);
@@ -111,7 +116,7 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 
 		$this->dataInterface = new QRData(
 			new QROptions(['version' => QRCode::VERSION_AUTO]),
-			[[$class, str_repeat($data, 1337)]]
+			[new $class(str_repeat($data, 1337))]
 		);
 	}
 
@@ -122,8 +127,9 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('code length overflow');
 		[$class, $data] = $this->testdata;
+		$this->testdata = [$class, str_repeat($data, 1337)];
 
-		$this->dataInterface->setData([[$class, str_repeat($data, 1337)]]);
+		$this->setTestData();
 	}
 
 }
