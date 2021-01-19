@@ -12,7 +12,7 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\Common\{BitBuffer, EccLevel, Mode, ReedSolomonEncoder, Version};
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, Mode, ReedSolomonEncoder, Version};
 use chillerlan\QRCode\QRCode;
 use chillerlan\Settings\SettingsContainerInterface;
 
@@ -100,7 +100,7 @@ final class QRData{
 	/**
 	 * returns a fresh matrix object with the data written for the given $maskPattern
 	 */
-	public function writeMatrix(int $maskPattern, bool $test = null):QRMatrix{
+	public function writeMatrix(MaskPattern $maskPattern, bool $test = null):QRMatrix{
 		$data = (new ReedSolomonEncoder)->interleaveEcBytes($this->bitBuffer, $this->version, $this->eccLevel);
 
 		return (new QRMatrix($this->version, $this->eccLevel))

@@ -13,6 +13,7 @@
 namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, MaskPatternTester, Number, QRData, QRCodeDataException, QRMatrix};
+use chillerlan\QRCode\Common\MaskPattern;
 use chillerlan\QRCode\Common\Mode;
 use chillerlan\QRCode\Output\{
 	QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString
@@ -156,7 +157,7 @@ class QRCode{
 
 		$maskPattern = $this->options->maskPattern === $this::MASK_PATTERN_AUTO
 			? (new MaskPatternTester($this->dataInterface))->getBestMaskPattern()
-			: $this->options->maskPattern;
+			: new MaskPattern($this->options->maskPattern);
 
 		$matrix = $this->dataInterface->writeMatrix($maskPattern);
 

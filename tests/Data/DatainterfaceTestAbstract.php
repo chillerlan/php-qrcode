@@ -12,6 +12,7 @@
 
 namespace chillerlan\QRCodeTest\Data;
 
+use chillerlan\QRCode\Common\MaskPattern;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 use PHPUnit\Framework\TestCase;
@@ -82,10 +83,10 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 	public function testInitMatrix(int $maskPattern):void{
 		$this->dataInterface->setData([$this->testdata]);
 
-		$matrix = $this->dataInterface->writeMatrix($maskPattern);
+		$matrix = $this->dataInterface->writeMatrix(new MaskPattern($maskPattern));
 
 		$this::assertInstanceOf(QRMatrix::class, $matrix);
-		$this::assertSame($maskPattern, $matrix->maskPattern());
+		$this::assertSame($maskPattern, $matrix->maskPattern()->getPattern());
 	}
 
 	/**

@@ -14,6 +14,7 @@
 
 namespace chillerlan\QRCode\Data;
 
+use chillerlan\QRCode\Common\MaskPattern;
 use function abs, array_search, call_user_func_array, min;
 
 /**
@@ -45,14 +46,14 @@ final class MaskPatternTester{
 	 *
 	 * @see \chillerlan\QRCode\Data\MaskPatternTester
 	 */
-	public function getBestMaskPattern():int{
+	public function getBestMaskPattern():MaskPattern{
 		$penalties = [];
 
-		for($pattern = 0; $pattern < 8; $pattern++){
-			$penalties[$pattern] = $this->testPattern($pattern);
+		foreach(MaskPattern::PATTERNS as $pattern){
+			$penalties[$pattern] = $this->testPattern(new MaskPattern($pattern));
 		}
 
-		return array_search(min($penalties), $penalties, true);
+		return new MaskPattern(array_search(min($penalties), $penalties, true));
 	}
 
 	/**
@@ -61,7 +62,7 @@ final class MaskPatternTester{
 	 * @see \chillerlan\QRCode\QROptions::$maskPattern
 	 * @see \chillerlan\QRCode\Data\QRMatrix::$maskPattern
 	 */
-	public function testPattern(int $pattern):int{
+	public function testPattern(MaskPattern $pattern):int{
 		$matrix  = $this->qrData->writeMatrix($pattern, true);
 		$penalty = 0;
 

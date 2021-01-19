@@ -193,16 +193,9 @@ final class EccLevel{
 
 	/**
 	 * returns the format pattern for the given $eccLevel and $maskPattern
-	 *
-	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function getformatPattern(int $maskPattern):int{
-
-		if((0b111 & $maskPattern) !== $maskPattern){
-			throw new QRCodeException('invalid mask pattern');
-		}
-
-		return self::FORMAT_PATTERN[self::MODES[$this->eccLevel]][$maskPattern];
+	public function getformatPattern(MaskPattern $maskPattern):int{
+		return self::FORMAT_PATTERN[self::MODES[$this->eccLevel]][$maskPattern->getPattern()];
 	}
 
 	/**

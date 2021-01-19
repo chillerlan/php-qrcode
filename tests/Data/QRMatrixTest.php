@@ -12,7 +12,7 @@
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\Common\{EccLevel, Version};
+use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
 use PHPUnit\Framework\TestCase;
@@ -77,9 +77,12 @@ final class QRMatrixTest extends TestCase{
 	 * Tests if maskPattern() returns the current (or default) mask pattern
 	 */
 	public function testMaskPattern():void{
-		$this::assertSame(-1, $this->matrix->maskPattern()); // default
+		$this::assertSame(null, $this->matrix->maskPattern());
 
-		// @todo: actual mask pattern after mapData()
+		$matrix = (new QRCode)->addByteSegment('testdata')->getMatrix();
+
+		$this::assertInstanceOf(MaskPattern::class, $matrix->maskPattern());
+		$this::assertSame(MaskPattern::PATTERN_010, $matrix->maskPattern()->getPattern());
 	}
 
 	/**
@@ -243,7 +246,7 @@ final class QRMatrixTest extends TestCase{
 	 * @dataProvider versionProvider
 	 */
 	public function testSetFormatInfo(int $version):void{
-		$matrix = $this->getMatrix($version)->setFormatInfo(0, true);
+		$matrix = $this->getMatrix($version)->setFormatInfo(new MaskPattern(MaskPattern::PATTERN_000), true);
 
 		$this::assertSame(QRMatrix::M_FORMAT, $matrix->get(8, 0));
 		$this::assertSame(QRMatrix::M_FORMAT, $matrix->get(0, 8));

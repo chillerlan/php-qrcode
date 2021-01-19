@@ -12,9 +12,7 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\Common\{EccLevel, Version};
-use chillerlan\QRCode\QRCode;
-use Closure;
+use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 
 use SplFixedArray;
 use function array_fill, array_push, array_unshift, floor, max, min, range;
@@ -57,9 +55,9 @@ final class QRMatrix{
 	public const IS_DARK      = 0b100000000000;
 
 	/**
-	 * the used mask pattern, set via QRMatrix::mapData()
+	 * the used mask pattern, set via QRMatrix::mask()
 	 */
-	protected int $maskPattern = QRCode::MASK_PATTERN_AUTO;
+	protected ?MaskPattern $maskPattern = null;
 
 	/**
 	 * the size (side length) of the matrix, including quiet zone (if created)
@@ -96,7 +94,7 @@ final class QRMatrix{
 	/**
 	 * shortcut to initialize the matrix
 	 */
-	public function init(int $maskPattern, bool $test = null):QRMatrix{
+	public function init(MaskPattern $maskPattern, bool $test = null):QRMatrix{
 		return $this
 			->setFinderPattern()
 			->setSeparators()
@@ -149,7 +147,7 @@ final class QRMatrix{
 	/**
 	 * Returns the current mask pattern
 	 */
-	public function maskPattern():int{
+	public function maskPattern():?MaskPattern{
 		return $this->maskPattern;
 	}
 
@@ -365,7 +363,7 @@ final class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 8.9
 	 */
-	public function setFormatInfo(int $maskPattern, bool $test = null):QRMatrix{
+	public function setFormatInfo(MaskPattern $maskPattern, bool $test = null):QRMatrix{
 		$bits = $this->eccLevel->getformatPattern($maskPattern);
 
 		for($i = 0; $i < 15; $i++){
@@ -569,9 +567,9 @@ final class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 8.8.1
 	 */
-	public function mask(int $maskPattern):QRMatrix{
+	public function mask(MaskPattern $maskPattern):QRMatrix{
 		$this->maskPattern = $maskPattern;
-		$mask              = $this->getMask($this->maskPattern);
+		$mask              = $this->maskPattern->getMask();
 
 		foreach($this->matrix as $y => &$row){
 			foreach($row as $x => &$val){
@@ -582,36 +580,6 @@ final class QRMatrix{
 		}
 
 		return $this;
-	}
-
-	/**
-	 * ISO/IEC 18004:2000 Section 8.8.1
-	 *
-	 * Note that some versions of the QR code standard have had errors in the section about mask patterns.
-	 * The information below has been corrected. (https://www.thonky.com/qr-code-tutorial/mask-patterns)
-	 *
-	 * @see \chillerlan\QRCode\QRMatrix::mapData()
-	 *
-	 * @internal
-	 *
-	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
-	 */
-	protected function getMask(int $maskPattern):Closure{
-
-		if((0b111 & $maskPattern) !== $maskPattern){
-			throw new QRCodeDataException('invalid mask pattern'); // @codeCoverageIgnore
-		}
-
-		return [
-			0b000 => fn($x, $y):int => ($x + $y) % 2,
-			0b001 => fn($x, $y):int => $y % 2,
-			0b010 => fn($x, $y):int => $x % 3,
-			0b011 => fn($x, $y):int => ($x + $y) % 3,
-			0b100 => fn($x, $y):int => ((int)($y / 2) + (int)($x / 3)) % 2,
-			0b101 => fn($x, $y):int => (($x * $y) % 2) + (($x * $y) % 3),
-			0b110 => fn($x, $y):int => ((($x * $y) % 2) + (($x * $y) % 3)) % 2,
-			0b111 => fn($x, $y):int => ((($x * $y) % 3) + (($x + $y) % 2)) % 2,
-		][$maskPattern];
 	}
 
 }
