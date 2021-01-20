@@ -14,8 +14,7 @@ namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\{Data\QRMatrix, QRCode};
 use chillerlan\Settings\SettingsContainerInterface;
-
-use function call_user_func_array, dirname, file_put_contents, get_called_class, in_array, is_writable, sprintf;
+use function base64_encode, call_user_func_array, dirname, file_put_contents, get_called_class, in_array, is_writable, sprintf;
 
 /**
  * common output abstract
@@ -91,6 +90,13 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 * Sets the initial module values (clean-up & defaults)
 	 */
 	abstract protected function setModuleValues():void;
+
+	/**
+	 * Returns a base64 data URI for the given string and mime type
+	 */
+	protected function base64encode(string $data, string $mime):string{
+		return sprintf('data:%s;base64,%s', $mime, base64_encode($data));
+	}
 
 	/**
 	 * saves the qr data to a file

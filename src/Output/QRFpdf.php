@@ -103,7 +103,7 @@ class QRFpdf extends QROutputAbstract{
 		}
 
 		if($this->options->imageBase64){
-			$pdfData = sprintf('data:application/pdf;base64,%s', base64_encode($pdfData));
+			$pdfData = $this->base64encode($pdfData, 'application/pdf');
 		}
 
 		return $pdfData;
