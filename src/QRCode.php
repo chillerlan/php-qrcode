@@ -15,11 +15,10 @@ namespace chillerlan\QRCode;
 use chillerlan\QRCode\Data\{
 	AlphaNum, Byte, ECI, Kanji, MaskPatternTester, Number, QRData, QRCodeDataException, QRDataModeInterface, QRMatrix
 };
-use chillerlan\QRCode\Common\{MaskPattern, Mode};
+use chillerlan\QRCode\Common\{ECICharset, MaskPattern, Mode};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString};
 use chillerlan\Settings\SettingsContainerInterface;
-
-use function class_exists, in_array;
+use function class_exists, in_array, mb_convert_encoding, mb_internal_encoding;
 
 /**
  * Turns a text string into a Model 2 QR Code
@@ -266,6 +265,29 @@ class QRCode{
 		$this->addSegment(new ECI($encoding));
 
 		return $this;
+	}
+
+	/**
+	 * i hate this somehow but i'll leave it for now
+	 *
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 */
+	public function addEciSegment(int $encoding, string $data):QRCode{
+		// validate the encoding id
+		$eciCharset = new ECICharset($encoding);
+		// get charset name
+		$eciCharsetName = $eciCharset->getName();
+		// convert the string to the given charset
+		if($eciCharsetName !== null){
+			$data = mb_convert_encoding($data, $eciCharsetName, mb_internal_encoding());
+			// add ECI designator
+			$this->addSegment(new ECI($eciCharset->getID()));
+			$this->addSegment(new Byte($data));
+
+			return $this;
+		}
+
+		throw new QRCodeException('unable to add ECI segment');
 	}
 
 }
