@@ -18,7 +18,7 @@ use chillerlan\QRCode\Data\{
 use chillerlan\QRCode\Common\{ECICharset, MaskPattern, Mode};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString};
 use chillerlan\Settings\SettingsContainerInterface;
-use function class_exists, in_array, mb_convert_encoding, mb_internal_encoding;
+use function class_exists, in_array, mb_convert_encoding, mb_detect_encoding;
 
 /**
  * Turns a text string into a Model 2 QR Code
@@ -279,7 +279,7 @@ class QRCode{
 		$eciCharsetName = $eciCharset->getName();
 		// convert the string to the given charset
 		if($eciCharsetName !== null){
-			$data = mb_convert_encoding($data, $eciCharsetName, mb_internal_encoding());
+			$data = mb_convert_encoding($data, $eciCharsetName, mb_detect_encoding($data));
 			// add ECI designator
 			$this->addSegment(new ECI($eciCharset->getID()));
 			$this->addSegment(new Byte($data));
