@@ -12,6 +12,7 @@
 
 namespace chillerlan\QRCode\Common;
 
+use InvalidArgumentException;
 use function count, floor;
 
 /**
@@ -24,12 +25,23 @@ final class BitBuffer{
 	 *
 	 * @var int[]
 	 */
-	protected array $buffer = [];
+	private array $buffer;
 
 	/**
 	 * Length of the content (bits)
 	 */
-	protected int $length = 0;
+	private int $length;
+
+	private int $bytesRead = 0;
+	private int $bitsRead  = 0;
+
+	/**
+	 * BitBuffer constructor.
+	 */
+	public function __construct(array $bytes = null){
+		$this->buffer = $bytes ?? [];
+		$this->length = count($this->buffer);
+	}
 
 	/**
 	 * clears the buffer
@@ -57,14 +69,14 @@ final class BitBuffer{
 	 * appends a single bit
 	 */
 	public function putBit(bool $bit):BitBuffer{
-		$bufIndex = floor($this->length / 8);
+		$bufIndex = (int)floor($this->length / 8);
 
 		if(count($this->buffer) <= $bufIndex){
 			$this->buffer[] = 0;
 		}
 
 		if($bit === true){
-			$this->buffer[(int)$bufIndex] |= (0x80 >> ($this->length % 8));
+			$this->buffer[$bufIndex] |= (0x80 >> ($this->length % 8));
 		}
 
 		$this->length++;
@@ -84,6 +96,67 @@ final class BitBuffer{
 	 */
 	public function getBuffer():array{
 		return $this->buffer;
+	}
+
+	/**
+	 * @return int number of bits that can be read successfully
+	 */
+	public function available():int{
+		return 8 * ($this->length - $this->bytesRead) - $this->bitsRead;
+	}
+
+	/**
+	 * @author Sean Owen, ZXing
+	 *
+	 * @param int $numBits number of bits to read
+	 *
+	 * @return int representing the bits read. The bits will appear as the least-significant
+	 *         bits of the int
+	 * @throws InvalidArgumentException if numBits isn't in [1,32] or more than is available
+	 */
+	public function read(int $numBits):int{
+
+		if($numBits < 1 || $numBits > 32 || $numBits > $this->available()){
+			throw new InvalidArgumentException('invalid $numBits: '.$numBits);
+		}
+
+		$result = 0;
+
+		// First, read remainder from current byte
+		if($this->bitsRead > 0){
+			$bitsLeft       = 8 - $this->bitsRead;
+			$toRead         = $numBits < $bitsLeft ? $numBits : $bitsLeft;
+			$bitsToNotRead  = $bitsLeft - $toRead;
+			$mask           = (0xff >> (8 - $toRead)) << $bitsToNotRead;
+			$result         = ($this->buffer[$this->bytesRead] & $mask) >> $bitsToNotRead;
+			$numBits        -= $toRead;
+			$this->bitsRead += $toRead;
+
+			if($this->bitsRead == 8){
+				$this->bitsRead = 0;
+				$this->bytesRead++;
+			}
+		}
+
+		// Next read whole bytes
+		if($numBits > 0){
+
+			while($numBits >= 8){
+				$result = ($result << 8) | ($this->buffer[$this->bytesRead] & 0xff);
+				$this->bytesRead++;
+				$numBits -= 8;
+			}
+
+			// Finally read a partial byte
+			if($numBits > 0){
+				$bitsToNotRead  = 8 - $numBits;
+				$mask           = (0xff >> $bitsToNotRead) << $bitsToNotRead;
+				$result         = ($result << $numBits) | (($this->buffer[$this->bytesRead] & $mask) >> $bitsToNotRead);
+				$this->bitsRead += $numBits;
+			}
+		}
+
+		return $result;
 	}
 
 }
