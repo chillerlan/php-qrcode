@@ -24,7 +24,7 @@ use function mb_convert_encoding, mb_detect_encoding, mb_strlen, ord, sprintf, s
  */
 final class Kanji extends QRDataModeAbstract{
 
-	protected int $datamode = Mode::DATA_KANJI;
+	protected static int $datamode = Mode::DATA_KANJI;
 
 	public function __construct(string $data){
 		parent::__construct($data);
@@ -75,8 +75,8 @@ final class Kanji extends QRDataModeAbstract{
 	public function write(BitBuffer $bitBuffer, int $versionNumber):void{
 
 		$bitBuffer
-			->put($this->datamode, 4)
-			->put($this->getCharCount(), Mode::getLengthBitsForVersion($this->datamode, $versionNumber))
+			->put($this::$datamode, 4)
+			->put($this->getCharCount(), Mode::getLengthBitsForVersion($this::$datamode, $versionNumber))
 		;
 
 		$len = strlen($this->data);

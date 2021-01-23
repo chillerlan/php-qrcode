@@ -19,7 +19,7 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 	/**
 	 * the current data mode: Num, Alphanum, Kanji, Byte
 	 */
-	protected int $datamode;
+	protected static int $datamode;
 
 	/**
 	 * The data to write
@@ -44,7 +44,7 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 	 * @inheritDoc
 	 */
 	public function getDataMode():int{
-		return $this->datamode;
+		return $this::$datamode;
 	}
 
 }

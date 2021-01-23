@@ -38,7 +38,7 @@ final class AlphaNum extends QRDataModeAbstract{
 		'+' => 40, '-' => 41, '.' => 42, '/' => 43, ':' => 44,
 	];
 
-	protected int $datamode = Mode::DATA_ALPHANUM;
+	protected static int $datamode = Mode::DATA_ALPHANUM;
 
 	/**
 	 * @inheritdoc
@@ -68,8 +68,8 @@ final class AlphaNum extends QRDataModeAbstract{
 		$len = $this->getCharCount();
 
 		$bitBuffer
-			->put($this->datamode, 4)
-			->put($len, Mode::getLengthBitsForVersion($this->datamode, $versionNumber))
+			->put($this::$datamode, 4)
+			->put($len, Mode::getLengthBitsForVersion($this::$datamode, $versionNumber))
 		;
 
 		// encode 2 characters in 11 bits
