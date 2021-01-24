@@ -48,7 +48,10 @@
 	"autoload": {
 		"psr-4": {
 			"chillerlan\\QRCode\\": "src/"
-		}
+		},
+		"files": [
+			"src/includes.php"
+		]
 	},
 	"autoload-dev": {
 		"psr-4": {
