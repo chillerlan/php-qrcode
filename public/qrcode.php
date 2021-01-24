@@ -1,6 +1,5 @@
 <?php
 /**
- * @filesource   qrcode.php
  * @created      18.11.2017
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley

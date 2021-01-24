@@ -3,7 +3,6 @@
  * example for additional text
  * @link https://github.com/chillerlan/php-qrcode/issues/35
  *
- * @filesource   imageWithText.php
  * @created      22.06.2019
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2019 Smiley

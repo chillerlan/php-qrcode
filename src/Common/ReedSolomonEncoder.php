@@ -2,9 +2,7 @@
 /**
  * Class ReedSolomonEncoder
  *
- * @filesource   ReedSolomonEncoder.php
  * @created      07.01.2021
- * @package      chillerlan\QRCode\Common
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2021 smiley
  * @license      MIT

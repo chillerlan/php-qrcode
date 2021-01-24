@@ -2,9 +2,7 @@
 /**
  * Class DatainterfaceTestAbstract
  *
- * @filesource   DatainterfaceTestAbstract.php
  * @created      24.11.2017
- * @package      chillerlan\QRCodeTest\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT

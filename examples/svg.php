@@ -1,7 +1,5 @@
 <?php
 /**
- *
- * @filesource   svg.php
  * @created      21.12.2017
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley

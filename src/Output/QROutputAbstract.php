@@ -2,9 +2,7 @@
 /**
  * Class QROutputAbstract
  *
- * @filesource   QROutputAbstract.php
  * @created      09.12.2015
- * @package      chillerlan\QRCode\Output
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
@@ -117,6 +115,8 @@ abstract class QROutputAbstract implements QROutputInterface{
 
 	/**
 	 * @inheritDoc
+	 *
+	 * @return mixed
 	 */
 	public function dump(string $file = null){
 		$file ??= $this->options->cachefile;

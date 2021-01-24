@@ -2,9 +2,7 @@
 /**
  * Class GF256
  *
- * @filesource   GF256.php
  * @created      16.01.2021
- * @package      chillerlan\QRCode\Common
  * @author       ZXing Authors
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2021 Smiley

@@ -2,9 +2,7 @@
 /**
  * Class QRMatrix
  *
- * @filesource   QRMatrix.php
  * @created      15.11.2017
- * @package      chillerlan\QRCode\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT

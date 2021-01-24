@@ -2,9 +2,7 @@
 /**
  * Class QRMarkup
  *
- * @filesource   QRMarkup.php
  * @created      17.12.2016
- * @package      chillerlan\QRCode\Output
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2016 Smiley
  * @license      MIT

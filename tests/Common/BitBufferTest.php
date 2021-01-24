@@ -2,9 +2,7 @@
 /**
  * Class BitBufferTest
  *
- * @filesource   BitBufferTest.php
  * @created      08.02.2016
- * @package      chillerlan\QRCodeTest\Common
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT

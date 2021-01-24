@@ -2,9 +2,7 @@
 /**
  * Class Byte
  *
- * @filesource   Byte.php
  * @created      25.11.2015
- * @package      chillerlan\QRCode\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT

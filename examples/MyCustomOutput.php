@@ -2,9 +2,7 @@
 /**
  * Class MyCustomOutput
  *
- * @filesource   MyCustomOutput.php
  * @created      24.12.2017
- * @package      chillerlan\QRCodeExamples
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT

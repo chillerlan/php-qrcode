@@ -2,9 +2,7 @@
 /**
  * Class QRImageWithLogo
  *
- * @filesource   QRImageWithLogo.php
  * @created      18.11.2020
- * @package      chillerlan\QRCodeExamples
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2020 smiley
  * @license      MIT

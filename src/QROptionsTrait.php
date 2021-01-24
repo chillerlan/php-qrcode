@@ -2,9 +2,7 @@
 /**
  * Trait QROptionsTrait
  *
- * @filesource   QROptionsTrait.php
  * @created      10.03.2018
- * @package      chillerlan\QRCode
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2018 smiley
  * @license      MIT

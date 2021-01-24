@@ -2,9 +2,7 @@
 /**
  * Class QRMarkupTest
  *
- * @filesource   QRMarkupTest.php
  * @created      24.12.2017
- * @package      chillerlan\QRCodeTest\Output
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT

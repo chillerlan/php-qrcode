@@ -1,7 +1,5 @@
 <?php
 /**
- *
- * @filesource   imageWithLogo.php
  * @created      18.11.2020
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2020 smiley

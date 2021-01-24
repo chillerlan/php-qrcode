@@ -2,9 +2,7 @@
 /**
  * Class Mode
  *
- * @filesource   Mode.php
  * @created      19.11.2020
- * @package      chillerlan\QRCode\Common
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2020 smiley
  * @license      MIT

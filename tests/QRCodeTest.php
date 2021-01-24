@@ -2,9 +2,7 @@
 /**
  * Class QRCodeTest
  *
- * @filesource   QRCodeTest.php
  * @created      17.11.2017
- * @package      chillerlan\QRCodeTest
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT

@@ -2,9 +2,7 @@
 /**
  * Class ECI
  *
- * @filesource   ECI.php
  * @created      20.11.2020
- * @package      chillerlan\QRCode\Data
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2020 smiley
  * @license      MIT

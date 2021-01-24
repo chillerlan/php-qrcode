@@ -6,9 +6,7 @@
  *
  * @link         https://github.com/chillerlan/php-qrcode/issues/35
  *
- * @filesource   QRImageWithText.php
  * @created      22.06.2019
- * @package      chillerlan\QRCodeExamples
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2019 smiley
  * @license      MIT
