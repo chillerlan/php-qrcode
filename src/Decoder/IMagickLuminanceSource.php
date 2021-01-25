@@ -13,7 +13,7 @@
 
 namespace chillerlan\QRCode\Decoder;
 
-use Imagick, InvalidArgumentException;
+use Imagick;
 use function count;
 
 /**

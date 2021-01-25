@@ -153,6 +153,7 @@ final class Decoder{
 
 		// All blocks have the same amount of data, except that the last n
 		// (where n may be 0) have 1 more byte. Figure out where these start.
+		/** @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset */
 		$shorterBlocksTotalCodewords = count($result[0][1]);
 		$longerBlocksStartAt         = count($result) - 1;
 
@@ -185,6 +186,7 @@ final class Decoder{
 		}
 
 		// Now add in error correction blocks
+		/** @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset */
 		$max = count($result[0][1]);
 
 		for($i = $shorterBlocksNumDataCodewords; $i < $max; $i++){

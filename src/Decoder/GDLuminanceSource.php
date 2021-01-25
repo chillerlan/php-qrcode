@@ -8,7 +8,7 @@
  * @copyright    2021 Smiley
  * @license      Apache-2.0
  *
- *  @noinspection PhpComposerExtensionStubsInspection
+ * @noinspection PhpComposerExtensionStubsInspection
  */
 
 namespace chillerlan\QRCode\Decoder;
@@ -39,11 +39,9 @@ final class GDLuminanceSource extends LuminanceSource{
 	 */
 	public function __construct($gdImage){
 
-		/**
-		 * @noinspection PhpElementIsNotAvailableInCurrentPhpVersionInspection
-		 * @phan-suppress PhanUndeclaredClassInstanceof
-		 */
+		/** @noinspection PhpElementIsNotAvailableInCurrentPhpVersionInspection, PhpFullyQualifiedNameUsageInspection */
 		if(
+			/** @phan-suppress-next-line PhanUndeclaredClassInstanceof */
 			(PHP_MAJOR_VERSION >= 8 && !$gdImage instanceof \GdImage)
 			|| (PHP_MAJOR_VERSION < 8 && (!is_resource($gdImage) || get_resource_type($gdImage) !== 'gd'))
 		){

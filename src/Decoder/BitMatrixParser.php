@@ -47,7 +47,7 @@ final class BitMatrixParser{
 	 * {@link #readVersion()}. Before proceeding with {@link #readCodewords()} the
 	 * {@link #mirror()} method should be called.
 	 *
-	 * @param bool mirror Whether to read version and format information mirrored.
+	 * @param bool $mirror Whether to read version and format information mirrored.
 	 */
 	public function setMirror(bool $mirror):void{
 		$this->parsedVersion    = null;
@@ -203,8 +203,8 @@ final class BitMatrixParser{
 	 * @param int $maskedFormatInfo2 second copy of same info; both are checked at the same time
 	 *                               to establish best match
 	 *
-	 * @return \chillerlan\QRCode\Common\FormatInformation information about the format it specifies, or {@code null}
-	 *                                                     if doesn't seem to match any known pattern
+	 * @return \chillerlan\QRCode\Common\FormatInformation|null information about the format it specifies, or null
+	 *                                                          if doesn't seem to match any known pattern
 	 */
 	private function doDecodeFormatInformation(int $maskedFormatInfo1, int $maskedFormatInfo2):?FormatInformation{
 		// Find the int in FORMAT_INFO_DECODE_LOOKUP with fewest bits differing
@@ -298,6 +298,11 @@ final class BitMatrixParser{
 		throw new RuntimeException('failed to read version');
 	}
 
+	/**
+	 * @param int $versionBits
+	 *
+	 * @return \chillerlan\QRCode\Common\Version|null
+	 */
 	private function decodeVersionInformation(int $versionBits):?Version{
 		$bestDifference = PHP_INT_MAX;
 		$bestVersion    = 0;
@@ -313,6 +318,7 @@ final class BitMatrixParser{
 
 			// Otherwise see if this is the closest to a real version info bit string
 			// we have seen so far
+			/** @phan-suppress-next-line PhanTypeMismatchArgumentNullable ($targetVersionPattern is never null here) */
 			$bitsDifference = numBitsDiffering($versionBits, $targetVersionPattern);
 
 			if($bitsDifference < $bestDifference){
