@@ -85,6 +85,7 @@ class QRCodeReaderTest extends TestCase{
 				$data['version: '.$version->getVersionNumber().$eccLevel->__toString()] = [
 					$version,
 					$eccLevel,
+					/** @phan-suppress-next-line PhanTypeMismatchArgumentNullableInternal */
 					substr($str, 0, $version->getMaxLengthForMode(Mode::DATA_BYTE, $eccLevel))
 				];
 			}

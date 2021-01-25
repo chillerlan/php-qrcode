@@ -78,6 +78,7 @@ final class QRCodeReader{
 
 	/**
 	 * @param \Imagick|\GdImage|resource $imgSource
+	 * @phan-suppress PhanUndeclaredTypeParameter
 	 *
 	 * @return \chillerlan\QRCode\Decoder\DecoderResult
 	 */
