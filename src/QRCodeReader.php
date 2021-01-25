@@ -29,7 +29,6 @@ final class QRCodeReader{
 	 * @param \Imagick|\GdImage|resource $im
 	 *
 	 * @return \chillerlan\QRCode\Decoder\DecoderResult
-	 * @phan-suppress PhanUndeclaredTypeParameter (GdImage)
 	 */
 	protected function decode($im):DecoderResult{
 
@@ -78,7 +77,6 @@ final class QRCodeReader{
 
 	/**
 	 * @param \Imagick|\GdImage|resource $imgSource
-	 * @phan-suppress PhanUndeclaredTypeParameter
 	 *
 	 * @return \chillerlan\QRCode\Decoder\DecoderResult
 	 */

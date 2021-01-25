@@ -25,7 +25,6 @@ final class GDLuminanceSource extends LuminanceSource{
 
 	/**
 	 * @var resource|\GdImage
-	 * @phan-suppress PhanUndeclaredTypeProperty
 	 */
 	private $gdImage;
 
@@ -33,15 +32,13 @@ final class GDLuminanceSource extends LuminanceSource{
 	 * GDLuminanceSource constructor.
 	 *
 	 * @param resource|\GdImage $gdImage
-	 * @phan-suppress PhanUndeclaredTypeParameter
 	 *
 	 * @throws \InvalidArgumentException
 	 */
 	public function __construct($gdImage){
 
-		/** @noinspection PhpElementIsNotAvailableInCurrentPhpVersionInspection, PhpFullyQualifiedNameUsageInspection */
+		/** @noinspection PhpFullyQualifiedNameUsageInspection */
 		if(
-			/** @phan-suppress-next-line PhanUndeclaredClassInstanceof */
 			(PHP_MAJOR_VERSION >= 8 && !$gdImage instanceof \GdImage)
 			|| (PHP_MAJOR_VERSION < 8 && (!is_resource($gdImage) || get_resource_type($gdImage) !== 'gd'))
 		){

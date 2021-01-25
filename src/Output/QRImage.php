@@ -45,8 +45,6 @@ class QRImage extends QROutputAbstract{
 	 *
 	 * @see imagecreatetruecolor()
 	 * @var resource|\GdImage
-	 *
-	 * @phan-suppress PhanUndeclaredTypeProperty
 	 */
 	protected $image;
 
