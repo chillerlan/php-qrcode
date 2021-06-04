@@ -343,7 +343,7 @@ final class Detector{
 			$sourceBottomRightY = $dimMinusThree;
 		}
 
-		return PerspectiveTransform::quadrilateralToQuadrilateral(
+		return (new PerspectiveTransform)->quadrilateralToQuadrilateral(
 			3.5, 3.5,
 			$dimMinusThree, 3.5,
 			$sourceBottomRightX, $sourceBottomRightY,
