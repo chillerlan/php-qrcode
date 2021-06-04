@@ -12,7 +12,7 @@
 namespace chillerlan\QRCode\Decoder;
 
 use Exception, InvalidArgumentException, RuntimeException;
-use chillerlan\QRCode\Common\{BitBuffer, EccLevel, ECICharset, Mode, ReedSolomonDecoder, Version};
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, Mode, ReedSolomonDecoder, Version};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number};
 use chillerlan\QRCode\Detector\Detector;
 use function count, array_fill, mb_convert_encoding, mb_detect_encoding;
@@ -246,8 +246,7 @@ final class Decoder{
 
 			if($datamode === Mode::DATA_ECI){
 				// Count doesn't apply to ECI
-				$value      = ECI::parseValue($bits);
-				$eciCharset = new ECICharset($value);
+				$eciCharset = ECI::parseValue($bits);
 			}
 			/** @noinspection PhpStatementHasEmptyBodyInspection */
 			elseif($datamode === Mode::DATA_FNC1_FIRST || $datamode === Mode::DATA_FNC1_SECOND){

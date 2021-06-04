@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\Common\{BitBuffer, Mode};
+use chillerlan\QRCode\Common\{BitBuffer, ECICharset, Mode};
 
 /**
  * Adds an ECI Designator
@@ -54,26 +54,22 @@ final class ECI extends QRDataModeAbstract{
 	/**
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public static function parseValue(BitBuffer $bitBuffer):int{
+	public static function parseValue(BitBuffer $bitBuffer):ECICharset{
 		$firstByte = $bitBuffer->read(8);
 
 		if(($firstByte & 0x80) === 0){
 			// just one byte
-			return $firstByte & 0x7f;
+			return new ECICharset($firstByte & 0x7f);
 		}
 
 		if(($firstByte & 0xc0) === 0x80){
 			// two bytes
-			$secondByte = $bitBuffer->read(8);
-
-			return (($firstByte & 0x3f) << 8) | $secondByte;
+			return new ECICharset((($firstByte & 0x3f) << 8) | $bitBuffer->read(8));
 		}
 
 		if(($firstByte & 0xe0) === 0xC0){
 			// three bytes
-			$secondThirdBytes = $bitBuffer->read(16);
-
-			return (($firstByte & 0x1f) << 16) | $secondThirdBytes;
+			return new ECICharset((($firstByte & 0x1f) << 16) | $bitBuffer->read(16));
 		}
 
 		throw new QRCodeDataException('error decoding ECI value');
