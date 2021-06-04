@@ -13,7 +13,6 @@ namespace chillerlan\QRCode\Decoder;
 
 use chillerlan\QRCode\Common\{MaskPattern, Version};
 use InvalidArgumentException;
-use function chillerlan\QRCode\Common\uRShift;
 use function array_fill, count;
 
 final class BitMatrix{
@@ -110,7 +109,7 @@ final class BitMatrix{
 
 		$this->bits[$offset] ??= 0;
 
-		return (uRShift($this->bits[$offset], ($x & 0x1f)) & 1) !== 0;
+		return (BitMatrixParser::uRShift($this->bits[$offset], ($x & 0x1f)) & 1) !== 0;
 	}
 
 	/**

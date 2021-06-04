@@ -32,11 +32,11 @@ abstract class ResultPoint{
 	}
 
 	public function getX():float{
-		return (float)$this->x;
+		return $this->x;
 	}
 
 	public function getY():float{
-		return (float)$this->y;
+		return $this->y;
 	}
 
 	public function getEstimatedModuleSize():float{

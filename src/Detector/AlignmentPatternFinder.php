@@ -14,7 +14,6 @@ namespace chillerlan\QRCode\Detector;
 use chillerlan\QRCode\Decoder\BitMatrix;
 use function abs, count;
 
-
 /**
  * <p>This class attempts to find alignment patterns in a QR Code. Alignment patterns look like finder
  * patterns but are smaller and appear at regular intervals throughout the image.</p>
@@ -35,7 +34,6 @@ final class AlignmentPatternFinder{
 	private float     $moduleSize;
 	/** @var \chillerlan\QRCode\Detector\AlignmentPattern[] */
 	private array $possibleCenters;
-	private array $crossCheckStateCount;
 
 	/**
 	 * <p>Creates a finder that will look in a portion of the whole image.</p>
@@ -47,7 +45,6 @@ final class AlignmentPatternFinder{
 		$this->bitMatrix            = $image;
 		$this->moduleSize           = $moduleSize;
 		$this->possibleCenters      = [];
-		$this->crossCheckStateCount = [];
 	}
 
 	/**
@@ -228,7 +225,7 @@ final class AlignmentPatternFinder{
 	 */
 	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):?float{
 		$maxI          = $this->bitMatrix->getDimension();
-		$stateCount    = $this->crossCheckStateCount;
+		$stateCount    = [];
 		$stateCount[0] = 0;
 		$stateCount[1] = 0;
 		$stateCount[2] = 0;

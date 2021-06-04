@@ -132,10 +132,10 @@ final class GridSampler{
 
 		for($y = 0; $y < $dimension; $y++){
 			$max    = count($points);
-			$iValue = (float)$y + 0.5;
+			$iValue = $y + 0.5;
 
 			for($x = 0; $x < $max; $x += 2){
-				$points[$x]     = (float)($x / 2) + 0.5;
+				$points[$x]     = ($x / 2) + 0.5;
 				$points[$x + 1] = $iValue;
 			}
 

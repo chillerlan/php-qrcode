@@ -12,7 +12,7 @@
 namespace chillerlan\QRCode\Decoder;
 
 use InvalidArgumentException;
-use function chillerlan\QRCode\Common\arraycopy;
+use function array_slice, array_splice;
 
 /**
  * The purpose of this class hierarchy is to abstract different bitmap implementations across
@@ -82,7 +82,11 @@ abstract class LuminanceSource{
 			throw new InvalidArgumentException('Requested row is outside the image: '.$y);
 		}
 
-		return arraycopy($this->luminances, $y * $this->width, [], 0, $this->width);
+		$arr = [];
+
+		array_splice($arr, 0, $this->width, array_slice($this->luminances, $y * $this->width, $this->width));
+
+		return $arr;
 	}
 
 	/**

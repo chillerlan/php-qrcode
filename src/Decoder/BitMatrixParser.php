@@ -13,8 +13,7 @@ namespace chillerlan\QRCode\Decoder;
 
 use RuntimeException;
 use chillerlan\QRCode\Common\{Version, FormatInformation};
-use function chillerlan\QRCode\Common\numBitsDiffering;
-use const PHP_INT_MAX;
+use const PHP_INT_MAX, PHP_INT_SIZE;
 
 /**
  * @author Sean Owen
@@ -219,7 +218,7 @@ final class BitMatrixParser{
 				return new FormatInformation($maskedBits);
 			}
 
-			$bitsDifference = numBitsDiffering($maskedFormatInfo1, $dataBits);
+			$bitsDifference = self::numBitsDiffering($maskedFormatInfo1, $dataBits);
 
 			if($bitsDifference < $bestDifference){
 				$bestFormatInfo = $maskedBits;
@@ -228,7 +227,7 @@ final class BitMatrixParser{
 
 			if($maskedFormatInfo1 !== $maskedFormatInfo2){
 				// also try the other option
-				$bitsDifference = numBitsDiffering($maskedFormatInfo2, $dataBits);
+				$bitsDifference = self::numBitsDiffering($maskedFormatInfo2, $dataBits);
 
 				if($bitsDifference < $bestDifference){
 					$bestFormatInfo = $maskedBits;
@@ -319,7 +318,7 @@ final class BitMatrixParser{
 			// Otherwise see if this is the closest to a real version info bit string
 			// we have seen so far
 			/** @phan-suppress-next-line PhanTypeMismatchArgumentNullable ($targetVersionPattern is never null here) */
-			$bitsDifference = numBitsDiffering($versionBits, $targetVersionPattern);
+			$bitsDifference = self::numBitsDiffering($versionBits, $targetVersionPattern);
 
 			if($bitsDifference < $bestDifference){
 				$bestVersion    = $i;
@@ -334,6 +333,30 @@ final class BitMatrixParser{
 
 		// If we didn't find a close enough match, fail
 		return null;
+	}
+
+	public static function uRShift(int $a, int $b):int{
+
+		if($b === 0){
+			return $a;
+		}
+
+		return ($a >> $b) & ~((1 << (8 * PHP_INT_SIZE - 1)) >> ($b - 1));
+	}
+
+	private static function numBitsDiffering(int $a, int $b):int{
+		// a now has a 1 bit exactly where its bit differs with b's
+		$a ^= $b;
+		// Offset i holds the number of 1 bits in the binary representation of i
+		$BITS_SET_IN_HALF_BYTE = [0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4];
+		// Count bits set quickly with a series of lookups:
+		$count = 0;
+
+		for($i = 0; $i < 32; $i += 4){
+			$count += $BITS_SET_IN_HALF_BYTE[self::uRShift($a, $i) & 0x0F];
+		}
+
+		return $count;
 	}
 
 }

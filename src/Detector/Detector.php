@@ -15,7 +15,6 @@ use RuntimeException;
 use chillerlan\QRCode\Common\Version;
 use chillerlan\QRCode\Decoder\BitMatrix;
 use function abs, is_nan, max, min, round;
-use function chillerlan\QRCode\Common\distance;
 use const NAN;
 
 /**
@@ -210,7 +209,7 @@ final class Detector{
 			if(($state === 1) === $this->bitMatrix->get($realX, $realY)){
 
 				if($state === 2){
-					return distance($x, $y, $fromX, $fromY);
+					return FinderPattern::distance($x, $y, $fromX, $fromY);
 				}
 
 				$state++;
@@ -233,7 +232,7 @@ final class Detector{
 		// is "white" so this last po$at (toX+xStep,toY) is the right ending. This is really a
 		// small approximation; (toX+xStep,toY+yStep) might be really correct. Ignore this.
 		if($state === 2){
-			return distance($toX + $xstep, $toY, $fromX, $fromY);
+			return FinderPattern::distance($toX + $xstep, $toY, $fromX, $fromY);
 		}
 
 		// else we didn't find even black-white-black; no estimate is really possible
@@ -252,8 +251,8 @@ final class Detector{
 		FinderPattern $bottomLeft,
 		float $moduleSize
 	):int{
-		$tltrCentersDimension = (int)round($topLeft->distance($topRight) / $moduleSize);
-		$tlblCentersDimension = (int)round($topLeft->distance($bottomLeft) / $moduleSize);
+		$tltrCentersDimension = (int)round($topLeft->getDistance($topRight) / $moduleSize);
+		$tlblCentersDimension = (int)round($topLeft->getDistance($bottomLeft) / $moduleSize);
 		$dimension            = (int)((($tltrCentersDimension + $tlblCentersDimension) / 2) + 7);
 
 		switch($dimension % 4){

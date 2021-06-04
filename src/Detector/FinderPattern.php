@@ -11,7 +11,7 @@
 
 namespace chillerlan\QRCode\Detector;
 
-use function chillerlan\QRCode\Common\{distance, squaredDistance};
+use function sqrt;
 
 /**
  * <p>Encapsulates a finder pattern, which are the three square patterns found in
@@ -24,10 +24,10 @@ final class FinderPattern extends ResultPoint{
 
 	private int $count;
 
-	public function __construct(float $posX, float $posY, float $estimatedModuleSize, int $count = 1){
+	public function __construct(float $posX, float $posY, float $estimatedModuleSize, int $count = null){
 		parent::__construct($posX, $posY, $estimatedModuleSize);
 
-		$this->count = $count;
+		$this->count = $count ?? 1;
 	}
 
 	public function getCount():int{
@@ -39,15 +39,15 @@ final class FinderPattern extends ResultPoint{
 	 *
 	 * @return float distance between two points
 	 */
-	public function distance(FinderPattern $b):float{
-		return distance($this->getX(), $this->getY(), $b->getX(), $b->getY());
+	public function getDistance(FinderPattern $b):float{
+		return self::distance($this->x, $this->y, $b->x, $b->y);
 	}
 
 	/**
 	 * Get square of distance between a and b.
 	 */
-	public function squaredDistance(FinderPattern $b):float{
-		return squaredDistance($this->getX(), $this->getY(), $b->getX(), $b->getY());
+	public function getSquaredDistance(FinderPattern $b):float{
+		return self::squaredDistance($this->x, $this->y, $b->x, $b->y);
 	}
 
 	/**
@@ -64,6 +64,17 @@ final class FinderPattern extends ResultPoint{
 			($this->count * $this->estimatedModuleSize + $newModuleSize) / $combinedCount,
 			$combinedCount
 		);
+	}
+
+	private static function squaredDistance(float $aX, float $aY, float $bX, float $bY):float{
+		$xDiff = $aX - $bX;
+		$yDiff = $aY - $bY;
+
+		return $xDiff * $xDiff + $yDiff * $yDiff;
+	}
+
+	public static function distance(float $aX, float $aY, float $bX, float $bY):float{
+		return sqrt(self::squaredDistance($aX, $aY, $bX, $bY));
 	}
 
 }

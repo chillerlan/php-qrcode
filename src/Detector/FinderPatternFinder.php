@@ -35,8 +35,6 @@ final class FinderPatternFinder{
 	/** @var \chillerlan\QRCode\Detector\FinderPattern[] */
 	private array $possibleCenters;
 	private bool  $hasSkipped = false;
-	/** @var int[] */
-	private array $crossCheckStateCount;
 
 	/**
 	 * <p>Creates a finder that will search the image for three finder patterns.</p>
@@ -44,9 +42,8 @@ final class FinderPatternFinder{
 	 * @param BitMatrix $bitMatrix image to search
 	 */
 	public function __construct(BitMatrix $bitMatrix){
-		$this->bitMatrix            = $bitMatrix;
-		$this->possibleCenters      = [];
-		$this->crossCheckStateCount = $this->getCrossCheckStateCount();
+		$this->bitMatrix       = $bitMatrix;
+		$this->possibleCenters = [];
 	}
 
 	/**
@@ -649,7 +646,7 @@ final class FinderPatternFinder{
 
 			for($j = $i + 1; $j < $startSize - 1; $j++){
 				$fpj      = $this->possibleCenters[$j];
-				$squares0 = $fpi->squaredDistance($fpj);
+				$squares0 = $fpi->getSquaredDistance($fpj);
 
 				for($k = $j + 1; $k < $startSize; $k++){
 					$fpk           = $this->possibleCenters[$k];
@@ -661,8 +658,8 @@ final class FinderPatternFinder{
 					}
 
 					$a = $squares0;
-					$b = $fpj->squaredDistance($fpk);
-					$c = $fpi->squaredDistance($fpk);
+					$b = $fpj->getSquaredDistance($fpk);
+					$c = $fpi->getSquaredDistance($fpk);
 
 					// sorts ascending - inlined
 					if($a < $b){
@@ -734,9 +731,9 @@ final class FinderPatternFinder{
 	private function orderBestPatterns(array $patterns):array{
 
 		// Find distances between pattern centers
-		$zeroOneDistance = $patterns[0]->distance($patterns[1]);
-		$oneTwoDistance  = $patterns[1]->distance($patterns[2]);
-		$zeroTwoDistance = $patterns[0]->distance($patterns[2]);
+		$zeroOneDistance = $patterns[0]->getDistance($patterns[1]);
+		$oneTwoDistance  = $patterns[1]->getDistance($patterns[2]);
+		$zeroTwoDistance = $patterns[0]->getDistance($patterns[2]);
 
 		// Assume one closest to other two is B; A and C will just be guesses at first
 		if($oneTwoDistance >= $zeroOneDistance && $oneTwoDistance >= $zeroTwoDistance){
