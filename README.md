@@ -10,12 +10,12 @@ namespaced, cleaned up, improved and other stuff.
 [![CodeCov][coverage-badge]][coverage]
 [![Scrunitizer CI][scrutinizer-badge]][scrutinizer]
 [![Packagist downloads][downloads-badge]][downloads]<br/>
-[![Continuous Integration][gh-action-badge]][gh-action] 
+[![Continuous Integration][gh-action-badge]][gh-action]
 [![phpDocs][gh-docs-badge]][gh-docs]
 
 [php-badge]: https://img.shields.io/packagist/php-v/chillerlan/php-qrcode?logo=php&color=8892BF
 [php]: https://www.php.net/supported-versions.php
-[packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg
+[packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?logo=packagist
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
 [license-badge]: https://img.shields.io/github/license/chillerlan/php-qrcode.svg
 [license]: https://github.com/chillerlan/php-qrcode/blob/main/LICENSE
@@ -25,7 +25,7 @@ namespaced, cleaned up, improved and other stuff.
 [coverage]: https://codecov.io/github/chillerlan/php-qrcode
 [scrutinizer-badge]: https://img.shields.io/scrutinizer/g/chillerlan/php-qrcode.svg?logo=scrutinizer
 [scrutinizer]: https://scrutinizer-ci.com/g/chillerlan/php-qrcode
-[downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg
+[downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?logo=packagist
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 [gh-action-badge]: https://github.com/chillerlan/php-qrcode/workflows/Continuous%20Integration/badge.svg
 [gh-action]: https://github.com/chillerlan/php-qrcode/actions?query=workflow%3A%22Continuous+Integration%22
@@ -34,13 +34,13 @@ namespaced, cleaned up, improved and other stuff.
 
 ## Documentation
 
-See [the wiki](https://github.com/chillerlan/php-qrcode/wiki) for advanced documentation. 
+See [the wiki](https://github.com/chillerlan/php-qrcode/wiki) for advanced documentation.
 An API documentation created with [phpDocumentor](https://www.phpdoc.org/) can be found at https://chillerlan.github.io/php-qrcode/ (WIP).
 
 ### Requirements
 - PHP 7.4+
   - `ext-mbstring`
-  - optional: 
+  - optional:
     - `ext-json`, `ext-gd`
     - `ext-imagick` with [ImageMagick](https://imagemagick.org) installed
     - [`setasign/fpdf`](https://github.com/setasign/fpdf) for the PDF output module
@@ -50,7 +50,7 @@ An API documentation created with [phpDocumentor](https://www.phpdoc.org/) can b
 
 via terminal: `composer require chillerlan/php-qrcode`
 
-*composer.json* 
+*composer.json*
 ```json
 {
 	"require": {
@@ -61,7 +61,7 @@ via terminal: `composer require chillerlan/php-qrcode`
 ```
 
 Note: replace `dev-main` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^4.3` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions.
-For PHP version ... 
+For PHP version ...
   - 7.4+ use `^4.3`
   - 7.2+ use `^3.3`
   - 7.0+ use `^2.0` (PHP 7.0 and 7.1 are EOL!)
@@ -87,9 +87,9 @@ Wait, what was that? Please again, slower! See [Advanced usage](https://github.c
 - Drupal [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
 - WordPress [`wp-two-factor-auth`](https://github.com/sjinks/wp-two-factor-auth)
 - WordPress [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
-- WoltLab Suite [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)  
+- WoltLab Suite [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)
 - [Cachet](https://github.com/CachetHQ/Cachet)
-- [Appwrite](https://github.com/appwrite/appwrite)  
+- [Appwrite](https://github.com/appwrite/appwrite)
 - other uses: [dependents](https://github.com/chillerlan/php-qrcode/network/dependents) / [packages](https://github.com/chillerlan/php-qrcode/network/dependents?dependent_type=PACKAGE)
 
 ### Shameless advertising
