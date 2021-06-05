@@ -10,9 +10,9 @@
  * @noinspection PhpUnused
  */
 
-namespace chillerlan\QRCode\Data;
+namespace chillerlan\QRCode\Common;
 
-use chillerlan\QRCode\Common\MaskPattern;
+use chillerlan\QRCode\Data\QRData;
 use function abs, array_search, call_user_func_array, min;
 
 /**

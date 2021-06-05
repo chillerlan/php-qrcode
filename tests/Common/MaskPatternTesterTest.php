@@ -8,11 +8,11 @@
  * @license      MIT
  */
 
-namespace chillerlan\QRCodeTest\Data;
+namespace chillerlan\QRCodeTest\Common;
 
-use chillerlan\QRCode\Common\MaskPattern;
+use chillerlan\QRCode\Common\{MaskPattern, MaskPatternTester};
+use chillerlan\QRCode\Data\{Byte, QRData};
 use chillerlan\QRCode\QROptions;
-use chillerlan\QRCode\Data\{Byte, MaskPatternTester, QRData};
 use PHPUnit\Framework\TestCase;
 
 /**
