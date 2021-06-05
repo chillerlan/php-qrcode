@@ -76,9 +76,9 @@ abstract class QROutputTestAbstract extends TestCase{
 #		}
 
 		$this->expectException(QRCodeOutputException::class);
-		$this->expectExceptionMessage('Could not write data to cache file: /foo.bar');
+		$this->expectExceptionMessage('Could not write data to cache file: /foo/bar.test');
 
-		$this->options->cachefile = '/foo.bar';
+		$this->options->cachefile = '/foo/bar.test';
 		$this->outputInterface = $this->getOutputInterface($this->options);
 		$this->outputInterface->dump();
 	}
