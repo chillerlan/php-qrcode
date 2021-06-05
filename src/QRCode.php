@@ -14,7 +14,7 @@ use chillerlan\QRCode\Common\{ECICharset, MaskPattern, MaskPatternTester, Mode};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number, QRData, QRCodeDataException, QRDataModeInterface, QRMatrix};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString};
 use chillerlan\Settings\SettingsContainerInterface;
-use function class_exists, in_array, mb_convert_encoding, mb_detect_encoding;
+use function class_exists, class_implements, in_array, mb_convert_encoding, mb_detect_encoding;
 
 /**
  * Turns a text string into a Model 2 QR Code
@@ -153,7 +153,7 @@ class QRCode{
 
 		$matrix = $this->dataInterface->writeMatrix($maskPattern);
 
-		if((bool)$this->options->addQuietzone){
+		if($this->options->addQuietzone){
 			$matrix->setQuietZone($this->options->quietzoneSize);
 		}
 
@@ -167,19 +167,37 @@ class QRCode{
 	 */
 	protected function initOutputInterface():QROutputInterface{
 
-		if($this->options->outputType === $this::OUTPUT_CUSTOM && class_exists($this->options->outputInterface)){
-			return new $this->options->outputInterface($this->options, $this->getMatrix());
+		if($this->options->outputType === $this::OUTPUT_CUSTOM){
+			return $this->initCustomOutputInterface();
 		}
 
 		foreach($this::OUTPUT_MODES as $outputInterface => $modes){
 
-			if(in_array($this->options->outputType, $modes, true) && class_exists($outputInterface)){
+			if(in_array($this->options->outputType, $modes)){
 				return new $outputInterface($this->options, $this->getMatrix());
 			}
 
 		}
 
 		throw new QRCodeOutputException('invalid output type');
+	}
+
+	/**
+	 * initializes a custom output module after checking the existence of the class and if it implemnts the required interface
+	 *
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
+	protected function initCustomOutputInterface():QROutputInterface{
+
+		if(!class_exists($this->options->outputInterface)){
+			throw new QRCodeOutputException('invalid custom output module');
+		}
+
+		if(!in_array(QROutputInterface::class, class_implements($this->options->outputInterface))){
+			throw new QRCodeOutputException('custom output module does not implement QROutputInterface');
+		}
+
+		return new $this->options->outputInterface($this->options, $this->getMatrix());
 	}
 
 	/**
