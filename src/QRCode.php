@@ -10,10 +10,8 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\QRCode\Data\{
-	AlphaNum, Byte, ECI, Kanji, Number, QRData, QRCodeDataException, QRDataModeInterface, QRMatrix
-};
 use chillerlan\QRCode\Common\{ECICharset, MaskPattern, MaskPatternTester, Mode};
+use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number, QRData, QRCodeDataException, QRDataModeInterface, QRMatrix};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString};
 use chillerlan\Settings\SettingsContainerInterface;
 use function class_exists, in_array, mb_convert_encoding, mb_detect_encoding;
