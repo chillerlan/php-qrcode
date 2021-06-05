@@ -55,29 +55,29 @@ final class QRMatrix{
 	/**
 	 * the used mask pattern, set via QRMatrix::mask()
 	 */
-	protected ?MaskPattern $maskPattern = null;
+	private ?MaskPattern $maskPattern = null;
 
 	/**
 	 * the size (side length) of the matrix, including quiet zone (if created)
 	 */
-	protected int $moduleCount;
+	private int $moduleCount;
 
 	/**
 	 * the actual matrix data array
 	 *
 	 * @var int[][]
 	 */
-	protected array $matrix;
+	private array $matrix;
 
 	/**
 	 * the current ECC level
 	 */
-	protected EccLevel $eccLevel;
+	private EccLevel $eccLevel;
 
 	/**
 	 * a Version instance
 	 */
-	protected Version $version;
+	private Version $version;
 
 	/**
 	 * QRMatrix constructor.

@@ -27,7 +27,7 @@ final class MaskPatternTester{
 	/**
 	 * The data interface that contains the data matrix to test
 	 */
-	protected QRData $qrData;
+	private QRData $qrData;
 
 	/**
 	 * Receives the QRData object
@@ -74,7 +74,7 @@ final class MaskPatternTester{
 	/**
 	 * Checks for each group of five or more same-colored modules in a row (or column)
 	 */
-	protected function testLevel1(array $m, int $size):int{
+	private function testLevel1(array $m, int $size):int{
 		$penalty = 0;
 
 		foreach($m as $y => $row){
@@ -113,7 +113,7 @@ final class MaskPatternTester{
 	/**
 	 * Checks for each 2x2 area of same-colored modules in the matrix
 	 */
-	protected function testLevel2(array $m, int $size):int{
+	private function testLevel2(array $m, int $size):int{
 		$penalty = 0;
 
 		foreach($m as $y => $row){
@@ -144,7 +144,7 @@ final class MaskPatternTester{
 	/**
 	 * Checks if there are patterns that look similar to the finder patterns (1:1:3:1:1 ratio)
 	 */
-	protected function testLevel3(array $m, int $size):int{
+	private function testLevel3(array $m, int $size):int{
 		$penalties = 0;
 
 		foreach($m as $y => $row){
@@ -185,7 +185,7 @@ final class MaskPatternTester{
 	/**
 	 * Checks if more than half of the modules are dark or light, with a larger penalty for a larger difference
 	 */
-	protected function testLevel4(array $m, int $size):float{
+	private function testLevel4(array $m, int $size):float{
 		$count = 0;
 
 		foreach($m as $y => $row){

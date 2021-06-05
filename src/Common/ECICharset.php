@@ -13,7 +13,10 @@ namespace chillerlan\QRCode\Common;
 use InvalidArgumentException;
 use function array_key_exists;
 
-class ECICharset{
+/**
+ *
+ */
+final class ECICharset{
 
 	public const CP437                 = 0;  // Code page 437, DOS Latin US
 	public const ISO_IEC_8859_1_GLI    = 1;  // GLI encoding with characters 0 to 127 identical to ISO/IEC 646 and characters 128 to 255 identical to ISO 8859-1

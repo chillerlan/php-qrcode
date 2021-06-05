@@ -256,7 +256,7 @@ final class Version{
 	/**
 	 * QR Code version number
 	 */
-	protected int $version;
+	private int $version;
 
 	/**
 	 * Version constructor.

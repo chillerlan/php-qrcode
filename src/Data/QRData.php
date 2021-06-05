@@ -26,34 +26,34 @@ final class QRData{
 	 *
 	 * @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions
 	 */
-	protected SettingsContainerInterface $options;
+	private SettingsContainerInterface $options;
 
 	/**
 	 * a BitBuffer instance
 	 */
-	protected BitBuffer $bitBuffer;
+	private BitBuffer $bitBuffer;
 
 	/**
 	 * an EccLevel instance
 	 */
-	protected EccLevel $eccLevel;
+	private EccLevel $eccLevel;
 
 	/**
 	 * current QR Code version
 	 */
-	protected Version $version;
+	private Version $version;
 
 	/**
 	 * @var \chillerlan\QRCode\Data\QRDataModeInterface[]
 	 */
-	protected array $dataSegments = [];
+	private array $dataSegments = [];
 
 	/**
 	 * Max bits for the current ECC mode
 	 *
 	 * @var int[]
 	 */
-	protected array $maxBitsForEcc;
+	private array $maxBitsForEcc;
 
 	/**
 	 * QRData constructor.
@@ -108,7 +108,7 @@ final class QRData{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	protected function estimateTotalBitLength():int{
+	private function estimateTotalBitLength():int{
 		$length = 0;
 		$margin = 0;
 
@@ -142,7 +142,7 @@ final class QRData{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	protected function getMinimumVersion():int{
+	private function getMinimumVersion():int{
 		$total = $this->estimateTotalBitLength();
 
 		// guess the version number within the given range
@@ -162,7 +162,7 @@ final class QRData{
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException on data overflow
 	 */
-	protected function writeBitBuffer():void{
+	private function writeBitBuffer():void{
 		$version  = $this->version->getVersionNumber();
 		$MAX_BITS = $this->maxBitsForEcc[$version];
 

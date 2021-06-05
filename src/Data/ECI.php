@@ -24,7 +24,7 @@ final class ECI extends QRDataModeAbstract{
 	/**
 	 * The current ECI encoding id
 	 */
-	protected int $encoding;
+	private int $encoding;
 
 	/**
 	 * @inheritDoc

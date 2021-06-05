@@ -30,7 +30,7 @@ final class QRCodeReader{
 	 *
 	 * @return \chillerlan\QRCode\Decoder\DecoderResult
 	 */
-	protected function decode($im):DecoderResult{
+	private function decode($im):DecoderResult{
 
 		$source = $this->useImagickIfAvailable
 			? new IMagickLuminanceSource($im)
