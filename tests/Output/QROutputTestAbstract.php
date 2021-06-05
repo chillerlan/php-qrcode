@@ -70,11 +70,6 @@ abstract class QROutputTestAbstract extends TestCase{
 	 * Tests if an exception is thrown when trying to write a cache file to an invalid destination
 	 */
 	public function testSaveException():void{
-
-#		if(PHP_OS_FAMILY === 'Windows'){
-#			$this::markTestSkipped('why does this fail on CI??');
-#		}
-
 		$this->expectException(QRCodeOutputException::class);
 		$this->expectExceptionMessage('Could not write data to cache file: /foo/bar.test');
 

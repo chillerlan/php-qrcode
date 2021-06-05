@@ -46,6 +46,8 @@ class QRCodeReaderTest extends TestCase{
 			'damaged'    => ['damaged.png', 'https://smiley.codes/qrcode/'],
 			// covers Binarizer::getHistogramBlackMatrix()
 			'smol'       => ['smol.png', 'https://smiley.codes/qrcode/'],
+			'tilted'     => ['tilted.png', 'Hello world!'], // tilted 22° CCW
+			'rotated'    => ['rotated.png', 'Hello world!'], // rotated 90° CW
 		];
 	}
 
@@ -55,7 +57,7 @@ class QRCodeReaderTest extends TestCase{
 	public function testReaderGD(string $img, string $expected):void{
 		$reader = new QRCodeReader(false);
 
-		self::assertSame($expected, (string)$reader->readFile(__DIR__.'/qrcodes/'.$img));
+		$this::assertSame($expected, (string)$reader->readFile(__DIR__.'/qrcodes/'.$img));
 	}
 
 	/**
@@ -64,17 +66,17 @@ class QRCodeReaderTest extends TestCase{
 	public function testReaderImagick(string $img, string $expected):void{
 
 		if(!extension_loaded('imagick')){
-			self::markTestSkipped('imagick not installed');
+			$this::markTestSkipped('imagick not installed');
 		}
 
 		$reader = new QRCodeReader(true);
 
-		self::assertSame($expected, (string)$reader->readFile(__DIR__.'/qrcodes/'.$img));
+		$this::assertSame($expected, (string)$reader->readFile(__DIR__.'/qrcodes/'.$img));
 	}
 
 	public function dataTestProvider():array{
 		$data = [];
-		$str  = str_repeat(self::loremipsum, 5);
+		$str  = str_repeat($this::loremipsum, 5);
 
 		foreach(range(1, 40) as $v){
 			$version = new Version($v);
@@ -82,7 +84,7 @@ class QRCodeReaderTest extends TestCase{
 			foreach(EccLevel::MODES as $ecc => $_){
 				$eccLevel = new EccLevel($ecc);
 
-				$data['version: '.$version->getVersionNumber().$eccLevel->__toString()] = [
+				$data['version: '.$version.$eccLevel] = [
 					$version,
 					$eccLevel,
 					/** @phan-suppress-next-line PhanTypeMismatchArgumentNullableInternal */
@@ -103,20 +105,19 @@ class QRCodeReaderTest extends TestCase{
 		$options->eccLevel         = $ecc->getLevel();
 		$options->version          = $version->getVersionNumber();
 		$options->imageBase64      = false;
-		$options->scale            = 1; // what's interesting is that a smaller scale seems to produce less errors???
-
-		$imagedata = (new QRCode($options))->render($expected);
+		$options->scale            = 1; // what's interesting is that a smaller scale seems to produce fewer reader errors???
 
 		try{
-			$result = (new QRCodeReader(true))->readBlob($imagedata);
+			$imagedata = (new QRCode($options))->render($expected);
+			$result    = (new QRCodeReader(true))->readBlob($imagedata);
 		}
 		catch(Exception $e){
-			self::markTestSkipped($version->getVersionNumber().$ecc->__toString().': '.$e->getMessage());
+			$this::markTestSkipped($version.$ecc.': '.$e->getMessage());
 		}
 
-		self::assertSame($expected, $result->getText());
-		self::assertSame($version->getVersionNumber(), $result->getVersion()->getVersionNumber());
-		self::assertSame($ecc->getLevel(), $result->getEccLevel()->getLevel());
+		$this::assertSame($expected, $result->getText());
+		$this::assertSame($version->getVersionNumber(), $result->getVersion()->getVersionNumber());
+		$this::assertSame($ecc->getLevel(), $result->getEccLevel()->getLevel());
 	}
 
 }
