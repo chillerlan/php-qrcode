@@ -71,17 +71,14 @@ abstract class QROutputTestAbstract extends TestCase{
 	 */
 	public function testSaveException():void{
 
-		if(PHP_OS_FAMILY === 'Windows'){
-			$this::markTestSkipped('why does this fail on CI??');
-
-			/** @noinspection PhpUnreachableStatementInspection */
-			return;
-		}
+#		if(PHP_OS_FAMILY === 'Windows'){
+#			$this::markTestSkipped('why does this fail on CI??');
+#		}
 
 		$this->expectException(QRCodeOutputException::class);
-		$this->expectExceptionMessage('Could not write data to cache file: /foo');
+		$this->expectExceptionMessage('Could not write data to cache file: /foo.bar');
 
-		$this->options->cachefile = '/foo';
+		$this->options->cachefile = '/foo.bar';
 		$this->outputInterface = $this->getOutputInterface($this->options);
 		$this->outputInterface->dump();
 	}
