@@ -273,6 +273,13 @@ final class Version{
 	}
 
 	/**
+	 * returns the current version number as string
+	 */
+	public function __toString():string{
+		return (string)$this->version;
+	}
+
+	/**
 	 * returns the current version number
 	 */
 	public function getVersionNumber():int{
