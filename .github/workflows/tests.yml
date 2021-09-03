@@ -25,7 +25,7 @@ jobs:
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "7.2"
+          php-version: "7.4"
           coverage: none
           tools: pecl
           extensions: ast, gd, imagick, json, mbstring
@@ -46,7 +46,7 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - windows-latest
+#          - windows-latest
         php-version:
           - "7.2"
           - "7.3"

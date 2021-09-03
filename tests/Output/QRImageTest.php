@@ -13,6 +13,7 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\{QRCode, Output\QRImage};
+use const PHP_MAJOR_VERSION;
 
 class QRImageTest extends QROutputTestAbstract{
 
@@ -63,7 +64,14 @@ class QRImageTest extends QROutputTestAbstract{
 
 		$this->setOutputInterface();
 
-		$this::assertIsResource($this->outputInterface->dump());
+		$data = $this->outputInterface->dump();
+
+		if(PHP_MAJOR_VERSION >= 8){
+			$this::assertInstanceOf('\\GdImage', $data);
+		}
+		else{
+			$this::assertIsResource($data);
+		}
 	}
 
 }
