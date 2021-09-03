@@ -62,8 +62,8 @@ via terminal: `composer require chillerlan/php-qrcode`
 
 Note: replace `dev-main` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^3.2` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions.
 For PHP version ... 
-  - 7.4+ use `^4.2`
-  - 7.2+ use `^3.3`
+  - 7.4+ use `^4.3`
+  - 7.2+ use `^3.4.1` (PHP 7.2 is EOL and 7.3 soon! v3.4.1 also supports PHP8 - however, it's no longer supported)
   - 7.0+ use `^2.0` (PHP 7.0 and 7.1 are EOL!)
   - 5.6+ use `^1.0` (please let PHP 5 die!)
 
