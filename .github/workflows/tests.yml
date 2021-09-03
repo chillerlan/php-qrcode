@@ -1,5 +1,4 @@
 # https://help.github.com/en/categories/automating-your-workflow-with-github-actions
-# https://github.com/localheinz/php-library-template/blob/master/.github/workflows/continuous-integration.yml
 # https://github.com/sebastianbergmann/phpunit/blob/master/.github/workflows/ci.yml
 
 on:
@@ -10,47 +9,69 @@ name: "Continuous Integration"
 
 jobs:
 
+  static-code-analysis:
+    name: "Static Code Analysis"
+
+    runs-on: ubuntu-latest
+
+    env:
+      PHAN_ALLOW_XDEBUG: 0
+      PHAN_DISABLE_XDEBUG_WARN: 1
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+
+      - name: "Install PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "7.2"
+          coverage: none
+          tools: pecl
+          extensions: ast, gd, imagick, json, mbstring
+
+      - name: "Update dependencies with composer"
+        run: composer update --no-interaction --no-ansi --no-progress --no-suggest
+
+      - name: "Run phan"
+        run: php vendor/bin/phan
+
   tests:
     name: "Unit Tests"
-    runs-on: ubuntu-latest
+
+    runs-on: ${{ matrix.os }}
 
     strategy:
+      fail-fast: false
       matrix:
-        php-binary:
-          - php7.2
-          - php7.3
-          - php7.4
-          - php8.0
+        os:
+          - ubuntu-latest
+          - windows-latest
+        php-version:
+          - "7.2"
+          - "7.3"
+          - "7.4"
+          - "8.0"
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v1.1.0
+        uses: actions/checkout@v2
+
+      - name: "Install PHP with extensions"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          coverage: pcov
+          tools: pecl
+          extensions: gd, imagick, json, mbstring
 
       - name: "Install dependencies with composer"
-        run: ${{ matrix.php-binary }} $(which composer) update --no-interaction --no-progress --no-suggest
+        run: composer update --no-ansi --no-interaction --no-progress --no-suggest
 
-      - name: "Run unit tests with phpunit"
-        run: ${{ matrix.php-binary }} vendor/bin/phpunit --configuration=phpunit.xml --no-coverage
-
-
-  code-coverage:
-    name: "Code Coverage"
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v1.1.0
-
-      - name: "Install locked dependencies with composer"
-        run: php7.4 $(which composer) install --no-interaction --no-progress --no-suggest
-
-      - name: "Dump Xdebug filter with phpunit/phpunit"
-        run: php7.4 vendor/bin/phpunit --configuration=phpunit.xml --dump-xdebug-filter=.build/phpunit/xdebug-filter.php
-
-      - name: "Collect code coverage with Xdebug and phpunit/phpunit"
-        run: php7.4 vendor/bin/phpunit --configuration=phpunit.xml --prepend=.build/phpunit/xdebug-filter.php
+      - name: "Run tests with phpunit"
+        run: php vendor/phpunit/phpunit/phpunit --configuration=phpunit.xml
 
       - name: "Send code coverage report to Codecov.io"
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        run: bash <(curl -s https://codecov.io/bash)
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
