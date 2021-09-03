@@ -14,6 +14,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      PHAN_ALLOW_XDEBUG: 0
+      PHAN_DISABLE_XDEBUG_WARN: 1
+
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
@@ -29,11 +33,6 @@ jobs:
 
       - name: "Update dependencies with composer"
         run: composer update --no-interaction --no-ansi --no-progress --no-suggest
-
-      - name: "phan env"
-        run: |
-          echo "PHAN_ALLOW_XDEBUG=0" >> $GITHUB_ENV
-          echo "PHAN_DISABLE_XDEBUG_WARN=1" >> $GITHUB_ENV
 
       - name: "Run phan"
         run: php vendor/bin/phan
@@ -52,6 +51,7 @@ jobs:
         php-version:
           - "7.4"
           - "8.0"
+          - "8.1"
 
     steps:
 #      - name: "Configure git to avoid issues with line endings"
@@ -69,21 +69,6 @@ jobs:
           tools: pecl
           extensions: gd, imagick, json, mbstring
 #          ini-values:
-
-      - name: "Determine composer cache directory on Linux"
-        if: matrix.os == 'ubuntu-latest'
-        run: echo "COMPOSER_CACHE_DIR=$(composer config cache-dir)" >> $GITHUB_ENV
-
-      - name: "Determine composer cache directory on Windows"
-        if: matrix.os == 'windows-latest'
-        run: echo "COMPOSER_CACHE_DIR=%LOCALAPPDATA%\Composer" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
-
-      - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.COMPOSER_CACHE_DIR }}
-          key: php${{ matrix.php-version }}-composer-${{ hashFiles('**/composer.json') }}
-          restore-keys: php${{ matrix.php-version }}-composer-
 
       - name: "Install dependencies with composer"
         run: composer update --no-ansi --no-interaction --no-progress --no-suggest
