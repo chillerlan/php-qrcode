@@ -17,9 +17,9 @@ use chillerlan\QRCode\Data\{Byte, QRMatrix};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use PHPUnit\Framework\TestCase;
 
-use function file_exists, mkdir;
+use function file_exists, in_array, mkdir;
 
-use const PHP_OS_FAMILY;
+use const PHP_OS_FAMILY, PHP_VERSION_ID;
 
 /**
  * Test abstract for the several (built-in) output modules,
@@ -120,11 +120,9 @@ abstract class QROutputTestAbstract extends TestCase{
 		// may fail on CI, different PHP (platform) versions produce different output
 		// the samples were generated on php-7.4.3-Win32-vc15-x64
 		if(
-			PHP_OS_FAMILY !== 'Windows' && (
-			   $type === QRCode::OUTPUT_IMAGE_JPG
-			|| $type === QRCode::OUTPUT_IMAGICK
-			|| $type === QRCode::OUTPUT_MARKUP_SVG
-		)){
+			(PHP_OS_FAMILY !== 'Windows' || PHP_VERSION_ID >= 80100)
+			&& in_array($type, [QRCode::OUTPUT_IMAGE_JPG, QRCode::OUTPUT_IMAGICK, QRCode::OUTPUT_MARKUP_SVG])
+		){
 			$this::markTestSkipped('may fail on CI');
 
 			/** @noinspection PhpUnreachableStatementInspection */
