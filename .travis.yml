@@ -18,8 +18,10 @@ matrix:
   include:
     - php: 7.4
     - php: 8.0
+    - php: 8.1
     - php: nightly
   allow_failures:
+    - php: 8.1
     - php: nightly
 
 before_install:
