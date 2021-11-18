@@ -52,6 +52,9 @@ final class GDLuminanceSource extends LuminanceSource{
 		$this->setLuminancePixels();
 	}
 
+	/**
+	 *
+	 */
 	private function setLuminancePixels():void{
 		for($j = 0; $j < $this->height; $j++){
 			for($i = 0; $i < $this->width; $i++){

@@ -164,6 +164,9 @@ final class ReedSolomonDecoder{
 		return $result;
 	}
 
+	/**
+	 *
+	 */
 	private function findErrorMagnitudes(GenericGFPoly $errorEvaluator, array $errorLocations):array{
 		// This is directly applying Forney's Formula
 		$s      = count($errorLocations);

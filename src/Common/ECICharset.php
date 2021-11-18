@@ -89,6 +89,9 @@ final class ECICharset{
 
 	private int $charsetID;
 
+	/**
+	 *
+	 */
 	public function __construct(int $charsetID){
 
 		if(!array_key_exists($charsetID, self::MB_ENCODINGS)){
@@ -98,10 +101,16 @@ final class ECICharset{
 		$this->charsetID = $charsetID;
 	}
 
+	/**
+	 *
+	 */
 	public function getID():int{
 		return $this->charsetID;
 	}
 
+	/**
+	 *
+	 */
 	public function getName():?string{
 		return self::MB_ENCODINGS[$this->charsetID];
 	}

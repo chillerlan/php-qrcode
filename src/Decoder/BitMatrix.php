@@ -15,12 +15,18 @@ use chillerlan\QRCode\Common\{MaskPattern, Version};
 use InvalidArgumentException;
 use function array_fill, count;
 
+/**
+ *
+ */
 final class BitMatrix{
 
 	private int   $dimension;
 	private int   $rowSize;
 	private array $bits;
 
+	/**
+	 *
+	 */
 	public function __construct(int $dimension){
 		$this->dimension = $dimension;
 		$this->rowSize   = ((int)(($this->dimension + 0x1f) / 0x20));

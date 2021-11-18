@@ -117,9 +117,7 @@ final class GenericGFPoly{
 	}
 
 	/**
-	 * @param \chillerlan\QRCode\Common\GenericGFPoly $other
 	 *
-	 * @return \chillerlan\QRCode\Common\GenericGFPoly
 	 */
 	public function multiply(GenericGFPoly $other):self{
 
@@ -139,8 +137,6 @@ final class GenericGFPoly{
 	}
 
 	/**
-	 * @param \chillerlan\QRCode\Common\GenericGFPoly $other
-	 *
 	 * @return \chillerlan\QRCode\Common\GenericGFPoly[] [quotient, remainder]
 	 */
 	public function divide(GenericGFPoly $other):array{
@@ -167,9 +163,7 @@ final class GenericGFPoly{
 	}
 
 	/**
-	 * @param int $scalar
 	 *
-	 * @return \chillerlan\QRCode\Common\GenericGFPoly
 	 */
 	public function multiplyInt(int $scalar):self{
 
@@ -191,10 +185,7 @@ final class GenericGFPoly{
 	}
 
 	/**
-	 * @param int $degree
-	 * @param int $coefficient
 	 *
-	 * @return \chillerlan\QRCode\Common\GenericGFPoly
 	 */
 	public function multiplyByMonomial(int $degree, int $coefficient):self{
 
@@ -216,9 +207,7 @@ final class GenericGFPoly{
 	}
 
 	/**
-	 * @param \chillerlan\QRCode\Common\GenericGFPoly $other
 	 *
-	 * @return \chillerlan\QRCode\Common\GenericGFPoly
 	 */
 	public function mod(GenericGFPoly $other):self{
 
@@ -236,9 +225,7 @@ final class GenericGFPoly{
 	}
 
 	/**
-	 * @param \chillerlan\QRCode\Common\GenericGFPoly $other
 	 *
-	 * @return \chillerlan\QRCode\Common\GenericGFPoly
 	 */
 	public function addOrSubtract(GenericGFPoly $other):self{
 

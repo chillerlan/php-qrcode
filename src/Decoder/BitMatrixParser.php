@@ -61,6 +61,9 @@ final class BitMatrixParser{
 		$this->bitMatrix->mirror();
 	}
 
+	/**
+	 *
+	 */
 	private function copyBit(int $i, int $j, int $versionBits):int{
 
 		$bit = $this->mirror
@@ -335,6 +338,9 @@ final class BitMatrixParser{
 		return null;
 	}
 
+	/**
+	 *
+	 */
 	public static function uRShift(int $a, int $b):int{
 
 		if($b === 0){
@@ -344,6 +350,9 @@ final class BitMatrixParser{
 		return ($a >> $b) & ~((1 << (8 * PHP_INT_SIZE - 1)) >> ($b - 1));
 	}
 
+	/**
+	 *
+	 */
 	private static function numBitsDiffering(int $a, int $b):int{
 		// a now has a 1 bit exactly where its bit differs with b's
 		$a ^= $b;

@@ -187,8 +187,6 @@ final class FinderPatternFinder{
 	 * figures the location of the center of this run.
 	 *
 	 * @param int[] $stateCount
-	 *
-	 * @return float
 	 */
 	private function centerFromEnd(array $stateCount, int $end):float{
 		return (float)(($end - $stateCount[4] - $stateCount[3]) - $stateCount[2] / 2.0);
@@ -196,8 +194,6 @@ final class FinderPatternFinder{
 
 	/**
 	 * @param int[] $stateCount
-	 *
-	 * @return bool
 	 */
 	private function foundPatternCross(array $stateCount):bool{
 		// Allow less than 50% variance from 1-1-3-1-1 proportions
@@ -206,8 +202,6 @@ final class FinderPatternFinder{
 
 	/**
 	 * @param int[] $stateCount
-	 *
-	 * @return bool
 	 */
 	private function foundPatternDiagonal(array $stateCount):bool{
 		// Allow less than 75% variance from 1-1-3-1-1 proportions

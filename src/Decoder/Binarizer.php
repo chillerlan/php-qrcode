@@ -47,6 +47,9 @@ final class Binarizer{
 
 	private LuminanceSource $source;
 
+	/**
+	 *
+	 */
 	public function __construct(LuminanceSource $source){
 		$this->source = $source;
 	}
@@ -154,6 +157,9 @@ final class Binarizer{
 		return $this->getHistogramBlackMatrix($width, $height);
 	}
 
+	/**
+	 *
+	 */
 	public function getHistogramBlackMatrix(int $width, int $height):BitMatrix{
 		$matrix = new BitMatrix(max($width, $height));
 

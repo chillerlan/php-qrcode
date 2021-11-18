@@ -17,10 +17,16 @@ use Imagick, InvalidArgumentException;
 use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, GDLuminanceSource, IMagickLuminanceSource};
 use function extension_loaded, file_exists, file_get_contents, imagecreatefromstring, is_file, is_readable;
 
+/**
+ *
+ */
 final class QRCodeReader{
 
 	private bool $useImagickIfAvailable;
 
+	/**
+	 *
+	 */
 	public function __construct(bool $useImagickIfAvailable = true){
 		$this->useImagickIfAvailable = $useImagickIfAvailable && extension_loaded('imagick');
 	}

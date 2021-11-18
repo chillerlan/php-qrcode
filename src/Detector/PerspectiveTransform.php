@@ -32,6 +32,9 @@ final class PerspectiveTransform{
 	private float $a32;
 	private float $a33;
 
+	/**
+	 *
+	 */
 	private function set(
 		float $a11, float $a21, float $a31,
 		float $a12, float $a22, float $a32,
@@ -50,6 +53,9 @@ final class PerspectiveTransform{
 		return $this;
 	}
 
+	/**
+	 *
+	 */
 	public function quadrilateralToQuadrilateral(
 		float $x0, float $y0, float $x1, float $y1, float $x2, float $y2, float $x3, float $y3,
 		float $x0p, float $y0p, float $x1p, float $y1p, float $x2p, float $y2p, float $x3p, float $y3p
@@ -59,6 +65,9 @@ final class PerspectiveTransform{
 			->times($this->quadrilateralToSquare($x0, $y0, $x1, $y1, $x2, $y2, $x3, $y3));
 	}
 
+	/**
+	 *
+	 */
 	private function quadrilateralToSquare(
 		float $x0, float $y0, float $x1, float $y1,
 		float $x2, float $y2, float $x3, float $y3
@@ -69,6 +78,9 @@ final class PerspectiveTransform{
 			->buildAdjoint();
 	}
 
+	/**
+	 *
+	 */
 	private function buildAdjoint():self{
 		// Adjoint is the transpose of the cofactor matrix:
 		return $this->set(
@@ -84,6 +96,9 @@ final class PerspectiveTransform{
 		);
 	}
 
+	/**
+	 *
+	 */
 	private function squareToQuadrilateral(
 		float $x0, float $y0, float $x1, float $y1,
 		float $x2, float $y2, float $x3, float $y3
@@ -111,6 +126,9 @@ final class PerspectiveTransform{
 		);
 	}
 
+	/**
+	 *
+	 */
 	private function times(PerspectiveTransform $other):self{
 		return $this->set(
 			$this->a11 * $other->a11 + $this->a21 * $other->a12 + $this->a31 * $other->a13,
@@ -125,6 +143,9 @@ final class PerspectiveTransform{
 		);
 	}
 
+	/**
+	 *
+	 */
 	public function transformPoints(array &$xValues, array &$yValues = null):void{
 		$max = count($xValues);
 

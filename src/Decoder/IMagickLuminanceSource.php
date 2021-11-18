@@ -39,6 +39,9 @@ final class IMagickLuminanceSource extends LuminanceSource{
 		$this->setLuminancePixels();
 	}
 
+	/**
+	 *
+	 */
 	private function setLuminancePixels():void{
 		$this->imagick->setImageColorspace(Imagick::COLORSPACE_GRAY);
 		$pixels = $this->imagick->exportImagePixels(1, 1, $this->width, $this->height, 'RGB', Imagick::PIXEL_CHAR);

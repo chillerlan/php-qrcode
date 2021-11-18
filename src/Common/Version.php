@@ -330,5 +330,4 @@ final class Version{
 		return self::TOTAL_CODEWORDS[$this->version];
 	}
 
-
 }

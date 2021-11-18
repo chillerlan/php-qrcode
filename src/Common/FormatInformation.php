@@ -65,15 +65,24 @@ final class FormatInformation{
 	private int $errorCorrectionLevel;
 	private int $dataMask;
 
+	/**
+	 *
+	 */
 	public function __construct(int $formatInfo){
 		$this->errorCorrectionLevel = ($formatInfo >> 3) & 0x03; // Bits 3,4
 		$this->dataMask             = ($formatInfo & 0x07); // Bottom 3 bits
 	}
 
+	/**
+	 *
+	 */
 	public function getErrorCorrectionLevel():EccLevel{
 		return new EccLevel($this->errorCorrectionLevel);
 	}
 
+	/**
+	 *
+	 */
 	public function getDataMask():MaskPattern{
 		return new MaskPattern($this->dataMask);
 	}

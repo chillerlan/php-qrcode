@@ -24,6 +24,9 @@ final class Kanji extends QRDataModeAbstract{
 
 	protected static int $datamode = Mode::DATA_KANJI;
 
+	/**
+	 *
+	 */
 	public function __construct(string $data){
 		parent::__construct($data);
 

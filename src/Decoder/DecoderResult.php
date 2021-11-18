@@ -29,6 +29,9 @@ final class DecoderResult{
 	private int      $structuredAppendParity;
 	private int      $structuredAppendSequenceNumber;
 
+	/**
+	 *
+	 */
 	public function __construct(
 		array $rawBytes,
 		string $text,
@@ -59,26 +62,44 @@ final class DecoderResult{
 		return $this->text;
 	}
 
+	/**
+	 *
+	 */
 	public function __toString():string{
 		return $this->text;
 	}
 
+	/**
+	 *
+	 */
 	public function getVersion():Version{
 		return $this->version;
 	}
 
+	/**
+	 *
+	 */
 	public function getEccLevel():EccLevel{
 		return $this->eccLevel;
 	}
 
+	/**
+	 *
+	 */
 	public function hasStructuredAppend():bool{
 		return $this->structuredAppendParity >= 0 && $this->structuredAppendSequenceNumber >= 0;
 	}
 
+	/**
+	 *
+	 */
 	public function getStructuredAppendParity():int{
 		return $this->structuredAppendParity;
 	}
 
+	/**
+	 *
+	 */
 	public function getStructuredAppendSequenceNumber():int{
 		return $this->structuredAppendSequenceNumber;
 	}
