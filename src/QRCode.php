@@ -197,6 +197,7 @@ class QRCode{
 			throw new QRCodeOutputException('custom output module does not implement QROutputInterface');
 		}
 
+		/** @phan-suppress-next-line PhanTypeExpectedObjectOrClassName */
 		return new $this->options->outputInterface($this->options, $this->getMatrix());
 	}
 
