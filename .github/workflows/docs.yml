@@ -22,7 +22,9 @@ jobs:
         uses: ./.github/actions/build-docs
 
       - name: "Publish Docs to gh-pages"
-        uses: maxheld83/ghpages@v0.3.0
-        env:
-          BUILD_DIR: docs/
-          GH_PAT: ${{ secrets.GH_PAT }}
+        uses: JamesIves/github-pages-deploy-action@4.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist
+          CLEAN: true

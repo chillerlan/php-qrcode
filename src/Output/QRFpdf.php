@@ -2,14 +2,11 @@
 /**
  * Class QRFpdf
  *
- * https://github.com/chillerlan/php-qrcode/pull/49
- *
- * @filesource   QRFpdf.php
  * @created      03.06.2020
- * @package      chillerlan\QRCode\Output
  * @author       Maximilian Kresse
- *
  * @license      MIT
+ *
+ * @see https://github.com/chillerlan/php-qrcode/pull/49
  */
 
 namespace chillerlan\QRCode\Output;
@@ -104,7 +101,7 @@ class QRFpdf extends QROutputAbstract{
 		}
 
 		if($this->options->imageBase64){
-			$pdfData = sprintf('data:application/pdf;base64,%s', base64_encode($pdfData));
+			$pdfData = $this->base64encode($pdfData, 'application/pdf');
 		}
 
 		return $pdfData;

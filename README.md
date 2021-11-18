@@ -9,12 +9,12 @@ namespaced, cleaned up, improved and other stuff.
 [![CodeCov][coverage-badge]][coverage]
 [![Scrunitizer CI][scrutinizer-badge]][scrutinizer]
 [![Packagist downloads][downloads-badge]][downloads]<br/>
-[![Continuous Integration][gh-action-badge]][gh-action] 
+[![Continuous Integration][gh-action-badge]][gh-action]
 [![phpDocs][gh-docs-badge]][gh-docs]
 
 [php-badge]: https://img.shields.io/packagist/php-v/chillerlan/php-qrcode?logo=php&color=8892BF
 [php]: https://www.php.net/supported-versions.php
-[packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg
+[packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?logo=packagist
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
 [license-badge]: https://img.shields.io/github/license/chillerlan/php-qrcode.svg
 [license]: https://github.com/chillerlan/php-qrcode/blob/main/LICENSE
@@ -22,7 +22,7 @@ namespaced, cleaned up, improved and other stuff.
 [coverage]: https://codecov.io/github/chillerlan/php-qrcode
 [scrutinizer-badge]: https://img.shields.io/scrutinizer/g/chillerlan/php-qrcode.svg?logo=scrutinizer
 [scrutinizer]: https://scrutinizer-ci.com/g/chillerlan/php-qrcode
-[downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg
+[downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?logo=packagist
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 [gh-action-badge]: https://github.com/chillerlan/php-qrcode/workflows/Continuous%20Integration/badge.svg
 [gh-action]: https://github.com/chillerlan/php-qrcode/actions?query=workflow%3A%22Continuous+Integration%22
@@ -31,13 +31,13 @@ namespaced, cleaned up, improved and other stuff.
 
 ## Documentation
 
-See [the wiki](https://github.com/chillerlan/php-qrcode/wiki) for advanced documentation. 
+See [the wiki](https://github.com/chillerlan/php-qrcode/wiki) for advanced documentation.
 An API documentation created with [phpDocumentor](https://www.phpdoc.org/) can be found at https://chillerlan.github.io/php-qrcode/ (WIP).
 
 ### Requirements
 - PHP 7.4+
   - `ext-mbstring`
-  - optional: 
+  - optional:
     - `ext-json`, `ext-gd`
     - `ext-imagick` with [ImageMagick](https://imagemagick.org) installed
     - [`setasign/fpdf`](https://github.com/setasign/fpdf) for the PDF output module
@@ -47,7 +47,7 @@ An API documentation created with [phpDocumentor](https://www.phpdoc.org/) can b
 
 via terminal: `composer require chillerlan/php-qrcode`
 
-*composer.json* 
+*composer.json*
 ```json
 {
 	"require": {
@@ -74,8 +74,8 @@ echo '<img src="'.(new QRCode)->render($data).'" alt="QR Code" />';
 ```
 
 <p align="center">
-	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/main/examples/example_image.png">
-	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/main/examples/example_svg.png">
+	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/main/docs/example_image.png">
+	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/main/docs/example_svg.png">
 </p>
 
 Wait, what was that? Please again, slower! See [Advanced usage](https://github.com/chillerlan/php-qrcode/wiki/Advanced-usage) on the wiki.
@@ -84,7 +84,7 @@ Wait, what was that? Please again, slower! See [Advanced usage](https://github.c
 - Drupal [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
 - WordPress [`wp-two-factor-auth`](https://github.com/sjinks/wp-two-factor-auth)
 - WordPress [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
-- WoltLab Suite [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)  
+- WoltLab Suite [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)
 - [Cachet](https://github.com/CachetHQ/Cachet)
 - [Appwrite](https://github.com/appwrite/appwrite)
 - [twill](https://github.com/area17/twill)
@@ -99,6 +99,9 @@ Hi, please check out my other projects that are way cooler than qrcodes!
 
 ### Disclaimer!
 I don't take responsibility for molten CPUs, misled applications, failed log-ins etc.. Use at your own risk!
+
+#### License notice
+Parts of this code are [ported to php](https://github.com/khanamiryan/php-qrcode-detector-decoder) from the [ZXing project](https://github.com/zxing/zxing) and licensed under the Apache License, Version 2.0.
 
 #### Trademark Notice
 

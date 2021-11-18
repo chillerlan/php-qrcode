@@ -2,9 +2,7 @@
 /**
  * Class QROptions
  *
- * @filesource   QROptions.php
  * @created      08.12.2015
- * @package      chillerlan\QRCode
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
@@ -24,7 +22,6 @@ use chillerlan\Settings\SettingsContainerAbstract;
  * @property int         $maskPattern
  * @property bool        $addQuietzone
  * @property int         $quietzoneSize
- * @property string|null $dataModeOverride
  * @property string      $outputType
  * @property string|null $outputInterface
  * @property string|null $cachefile

@@ -2,18 +2,15 @@
 /**
  * Class BitBufferTest
  *
- * @filesource   BitBufferTest.php
  * @created      08.02.2016
- * @package      chillerlan\QRCodeTest\Helpers
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
  */
 
-namespace chillerlan\QRCodeTest\Helpers;
+namespace chillerlan\QRCodeTest\Common;
 
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\Helpers\BitBuffer;
+use chillerlan\QRCode\Common\{BitBuffer, Mode};
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -29,10 +26,10 @@ final class BitBufferTest extends TestCase{
 
 	public function bitProvider():array{
 		return [
-			'number'   => [QRCode::DATA_NUMBER, 16],
-			'alphanum' => [QRCode::DATA_ALPHANUM, 32],
-			'byte'     => [QRCode::DATA_BYTE, 64],
-			'kanji'    => [QRCode::DATA_KANJI, 128],
+			'number'   => [Mode::DATA_NUMBER, 16],
+			'alphanum' => [Mode::DATA_ALPHANUM, 32],
+			'byte'     => [Mode::DATA_BYTE, 64],
+			'kanji'    => [Mode::DATA_KANJI, 128],
 		];
 	}
 

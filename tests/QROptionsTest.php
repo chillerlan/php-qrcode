@@ -2,9 +2,7 @@
 /**
  * Class QROptionsTest
  *
- * @filesource   QROptionsTest.php
  * @created      08.11.2018
- * @package      chillerlan\QRCodeTest
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2018 smiley
  * @license      MIT

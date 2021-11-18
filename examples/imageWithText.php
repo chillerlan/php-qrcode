@@ -3,7 +3,6 @@
  * example for additional text
  * @link https://github.com/chillerlan/php-qrcode/issues/35
  *
- * @filesource   imageWithText.php
  * @created      22.06.2019
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2019 Smiley
@@ -25,9 +24,12 @@ $options = new QROptions([
 	'imageBase64'  => false,
 ]);
 
+$qrcode = new QRCode($options);
+$qrcode->addByteSegment($data);
+
 header('Content-type: image/png');
 
-$qrOutputInterface = new QRImageWithText($options, (new QRCode($options))->getMatrix($data));
+$qrOutputInterface = new QRImageWithText($options, $qrcode->getMatrix());
 
 // dump the output, with additional text
 echo $qrOutputInterface->dump(null, 'example text');

@@ -2,9 +2,7 @@
 /**
  * Class QRImagickTest
  *
- * @filesource   QRImagickTest.php
  * @created      04.07.2018
- * @package      chillerlan\QRCodeTest\Output
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2018 smiley
  * @license      MIT

@@ -2,9 +2,7 @@
 /**
  * Trait QROptionsTrait
  *
- * @filesource   QROptionsTrait.php
  * @created      10.03.2018
- * @package      chillerlan\QRCode
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2018 smiley
  * @license      MIT
@@ -13,6 +11,8 @@
  */
 
 namespace chillerlan\QRCode;
+
+use chillerlan\QRCode\Common\EccLevel;
 
 use function array_values, count, in_array, is_numeric, max, min, sprintf, strtolower;
 
@@ -50,7 +50,7 @@ trait QROptionsTrait{
 	 *   - Q => 25%
 	 *   - H => 30%
 	 */
-	protected int $eccLevel = QRCode::ECC_L;
+	protected int $eccLevel = EccLevel::L;
 
 	/**
 	 * Mask Pattern to use
@@ -70,15 +70,6 @@ trait QROptionsTrait{
 	 * internally clamped to [0 ... $moduleCount / 2], defaults to 4 modules
 	 */
 	protected int $quietzoneSize = 4;
-
-	/**
-	 * Use this to circumvent the data mode detection and force the usage of the given mode.
-	 *
-	 * valid modes are: Number, AlphaNum, Kanji, Byte (case insensitive)
-	 *
-	 * @see https://github.com/chillerlan/php-qrcode/issues/39
-	 */
-	protected ?string $dataModeOverride = null;
 
 	/**
 	 * The output type
@@ -260,7 +251,7 @@ trait QROptionsTrait{
 	 */
 	protected function set_eccLevel(int $eccLevel):void{
 
-		if(!isset(QRCode::ECC_MODES[$eccLevel])){
+		if(!isset(EccLevel::MODES[$eccLevel])){
 			throw new QRCodeException(sprintf('Invalid error correct level: %s', $eccLevel));
 		}
 

@@ -2,9 +2,7 @@
 /**
  * Class QRImageWithLogo
  *
- * @filesource   QRImageWithLogo.php
  * @created      18.11.2020
- * @package      chillerlan\QRCodeExamples
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2020 smiley
  * @license      MIT
@@ -72,7 +70,7 @@ class QRImageWithLogo extends QRImage{
 		}
 
 		if($this->options->imageBase64){
-			$imageData = 'data:image/'.$this->options->outputType.';base64,'.base64_encode($imageData);
+			$imageData = $this->base64encode($imageData, 'image/'.$this->options->outputType);
 		}
 
 		return $imageData;

@@ -2,9 +2,7 @@
 /**
  * Class QRImageTest
  *
- * @filesource   QRImageTest.php
  * @created      24.12.2017
- * @package      chillerlan\QRCodeTest\Output
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT
@@ -72,7 +70,7 @@ class QRImageTest extends QROutputTestAbstract{
 	}
 
 	/**
-	 * @phan-suppress PhanUndeclaredClassReference
+	 *
 	 */
 	public function testOutputGetResource():void{
 		$this->options->returnResource = true;
@@ -80,7 +78,7 @@ class QRImageTest extends QROutputTestAbstract{
 
 		$actual = $this->outputInterface->dump();
 
-		/** @noinspection PhpElementIsNotAvailableInCurrentPhpVersionInspection */
+		/** @noinspection PhpFullyQualifiedNameUsageInspection */
 		\PHP_MAJOR_VERSION >= 8
 			? $this::assertInstanceOf(\GdImage::class, $actual)
 			: $this::assertIsResource($actual);

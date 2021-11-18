@@ -6,9 +6,7 @@
  *
  * @link         https://github.com/chillerlan/php-qrcode/issues/35
  *
- * @filesource   QRImageWithText.php
  * @created      22.06.2019
- * @package      chillerlan\QRCodeExamples
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2019 smiley
  * @license      MIT
@@ -20,7 +18,7 @@ namespace chillerlan\QRCodeExamples;
 
 use chillerlan\QRCode\Output\QRImage;
 
-use function base64_encode, imagechar, imagecolorallocate, imagecolortransparent, imagecopymerge, imagecreatetruecolor,
+use function imagechar, imagecolorallocate, imagecolortransparent, imagecopymerge, imagecreatetruecolor,
 	imagedestroy, imagefilledrectangle, imagefontwidth, in_array, round, str_split, strlen;
 
 class QRImageWithText extends QRImage{
@@ -50,7 +48,7 @@ class QRImageWithText extends QRImage{
 		}
 
 		if($this->options->imageBase64){
-			$imageData = 'data:image/'.$this->options->outputType.';base64,'.base64_encode($imageData);
+			$imageData = $this->base64encode($imageData, 'image/'.$this->options->outputType);
 		}
 
 		return $imageData;

@@ -2,9 +2,7 @@
 /**
  * Class QRStringTest
  *
- * @filesource   QRStringTest.php
  * @created      24.12.2017
- * @package      chillerlan\QRCodeTest\Output
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT
@@ -12,9 +10,11 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCodeExamples\MyCustomOutput;
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Common\EccLevel;
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QROutputInterface, QRString};
+use chillerlan\QRCodeExamples\MyCustomOutput;
 
 /**
  * Tests the QRString output module
@@ -47,8 +47,8 @@ class QRStringTest extends QROutputTestAbstract{
 
 		$this->options->moduleValues = [
 			// data
-			1024 => 'A',
-			4    => 'B',
+			QRMatrix::M_DATA | QRMatrix::IS_DARK => 'A',
+			QRMatrix::M_DATA                     => 'B',
 		];
 
 		$this->outputInterface = $this->getOutputInterface($this->options);
@@ -63,7 +63,7 @@ class QRStringTest extends QROutputTestAbstract{
 	 */
 	public function testCustomOutput():void{
 		$this->options->version         = 5;
-		$this->options->eccLevel        = QRCode::ECC_L;
+		$this->options->eccLevel        = EccLevel::L;
 		$this->options->outputType      = QRCode::OUTPUT_CUSTOM;
 		$this->options->outputInterface = MyCustomOutput::class;
 

@@ -2,9 +2,7 @@
 /**
  * Class AlphaNum
  *
- * @filesource   AlphaNum.php
  * @created      25.11.2015
- * @package      chillerlan\QRCode\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
@@ -12,9 +10,9 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Common\{BitBuffer, Mode};
 
-use function ord, sprintf;
+use function array_flip, ceil, ord, sprintf, str_split;
 
 /**
  * Alphanumeric mode: 0 to 9, A to Z, space, $ % * + - . / :
@@ -22,23 +20,64 @@ use function ord, sprintf;
  * ISO/IEC 18004:2000 Section 8.3.3
  * ISO/IEC 18004:2000 Section 8.4.3
  */
-final class AlphaNum extends QRDataAbstract{
+final class AlphaNum extends QRDataModeAbstract{
 
-	protected int $datamode = QRCode::DATA_ALPHANUM;
+	/**
+	 * ISO/IEC 18004:2000 Table 5
+	 *
+	 * @var int[]
+	 */
+	private const CHAR_MAP_ALPHANUM = [
+		'0' =>  0, '1' =>  1, '2' =>  2, '3' =>  3, '4' =>  4, '5' =>  5, '6' =>  6, '7' =>  7,
+		'8' =>  8, '9' =>  9, 'A' => 10, 'B' => 11, 'C' => 12, 'D' => 13, 'E' => 14, 'F' => 15,
+		'G' => 16, 'H' => 17, 'I' => 18, 'J' => 19, 'K' => 20, 'L' => 21, 'M' => 22, 'N' => 23,
+		'O' => 24, 'P' => 25, 'Q' => 26, 'R' => 27, 'S' => 28, 'T' => 29, 'U' => 30, 'V' => 31,
+		'W' => 32, 'X' => 33, 'Y' => 34, 'Z' => 35, ' ' => 36, '$' => 37, '%' => 38, '*' => 39,
+		'+' => 40, '-' => 41, '.' => 42, '/' => 43, ':' => 44,
+	];
 
-	protected array $lengthBits = [9, 11, 13];
+	protected static int $datamode = Mode::DATA_ALPHANUM;
 
 	/**
 	 * @inheritdoc
 	 */
-	protected function write(string $data):void{
+	public function getLengthInBits():int{
+		return (int)ceil($this->getCharCount() * (11 / 2));
+	}
 
-		for($i = 0; $i + 1 < $this->strlen; $i += 2){
-			$this->bitBuffer->put($this->getCharCode($data[$i]) * 45 + $this->getCharCode($data[$i + 1]), 11);
+	/**
+	 * @inheritdoc
+	 */
+	public static function validateString(string $string):bool{
+
+		foreach(str_split($string) as $chr){
+			if(!isset(self::CHAR_MAP_ALPHANUM[$chr])){
+				return false;
+			}
 		}
 
-		if($i < $this->strlen){
-			$this->bitBuffer->put($this->getCharCode($data[$i]), 6);
+		return true;
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function write(BitBuffer $bitBuffer, int $versionNumber):void{
+		$len = $this->getCharCount();
+
+		$bitBuffer
+			->put($this::$datamode, 4)
+			->put($len, Mode::getLengthBitsForVersion($this::$datamode, $versionNumber))
+		;
+
+		// encode 2 characters in 11 bits
+		for($i = 0; $i + 1 < $len; $i += 2){
+			$bitBuffer->put($this->getCharCode($this->data[$i]) * 45 + $this->getCharCode($this->data[$i + 1]), 11);
+		}
+
+		// encode a remaining character in 6 bits
+		if($i < $len){
+			$bitBuffer->put($this->getCharCode($this->data[$i]), 6);
 		}
 
 	}
@@ -50,11 +89,56 @@ final class AlphaNum extends QRDataAbstract{
 	 */
 	protected function getCharCode(string $chr):int{
 
-		if(!isset($this::CHAR_MAP_ALPHANUM[$chr])){
+		if(!isset(self::CHAR_MAP_ALPHANUM[$chr])){
 			throw new QRCodeDataException(sprintf('illegal char: "%s" [%d]', $chr, ord($chr)));
 		}
 
-		return $this::CHAR_MAP_ALPHANUM[$chr];
+		return self::CHAR_MAP_ALPHANUM[$chr];
+	}
+
+	/**
+	 * @inheritdoc
+	 *
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
+	 */
+	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
+		$length  = $bitBuffer->read(Mode::getLengthBitsForVersion(self::$datamode, $versionNumber));
+		$charmap = array_flip(self::CHAR_MAP_ALPHANUM);
+
+		// @todo
+		$toAlphaNumericChar = function(int $ord) use ($charmap):string{
+
+			if(isset($charmap[$ord])){
+				return $charmap[$ord];
+			}
+
+			throw new QRCodeDataException('invalid character value: '.$ord);
+		};
+
+		$result = '';
+		// Read two characters at a time
+		while($length > 1){
+
+			if($bitBuffer->available() < 11){
+				throw new QRCodeDataException('not enough bits available');
+			}
+
+			$nextTwoCharsBits = $bitBuffer->read(11);
+			$result           .= $toAlphaNumericChar($nextTwoCharsBits / 45);
+			$result           .= $toAlphaNumericChar($nextTwoCharsBits % 45);
+			$length           -= 2;
+		}
+
+		if($length === 1){
+			// special case: one character left
+			if($bitBuffer->available() < 6){
+				throw new QRCodeDataException('not enough bits available');
+			}
+
+			$result .= $toAlphaNumericChar($bitBuffer->read(6));
+		}
+
+		return $result;
 	}
 
 }

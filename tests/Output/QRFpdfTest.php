@@ -2,9 +2,7 @@
 /**
  * Class QRFpdfTest
  *
- * @filesource   QRFpdfTest.php
  * @created      03.06.2020
- * @package      chillerlan\QRCodeTest\Output
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2020 smiley
  * @license      MIT

@@ -2,9 +2,7 @@
 /**
  * Class QRMarkup
  *
- * @filesource   QRMarkup.php
  * @created      17.12.2016
- * @package      chillerlan\QRCode\Output
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2016 Smiley
  * @license      MIT
@@ -151,7 +149,7 @@ class QRMarkup extends QROutputAbstract{
 		}
 
 		if($this->options->imageBase64){
-			$svg = sprintf('data:image/svg+xml;base64,%s', base64_encode($svg));
+			$svg = $this->base64encode($svg, 'image/svg+xml');
 		}
 
 		return $svg;

@@ -2,9 +2,7 @@
 /**
  * Class QRMatrixTest
  *
- * @filesource   QRMatrixTest.php
  * @created      17.11.2017
- * @package      chillerlan\QRCodeTest\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT
@@ -12,11 +10,10 @@
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
+use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
 
 /**
  * Tests the QRMatix class
@@ -43,7 +40,7 @@ final class QRMatrixTest extends TestCase{
 	 * @internal
 	 */
 	protected function getMatrix(int $version):QRMatrix{
-		return  new QRMatrix($version, QRCode::ECC_L);
+		return  new QRMatrix(new Version($version), new EccLevel(EccLevel::L));
 	}
 
 	/**
@@ -51,26 +48,6 @@ final class QRMatrixTest extends TestCase{
 	 */
 	public function testInstance():void{
 		$this::assertInstanceOf(QRMatrix::class, $this->matrix);
-	}
-
-	/**
-	 * Tests if an exception is thrown when an invalid QR version was given
-	 */
-	public function testInvalidVersionException():void{
-		$this->expectException(QRCodeDataException::class);
-		$this->expectExceptionMessage('invalid QR Code version');
-
-		$this->matrix = new QRMatrix(42, 0);
-	}
-
-	/**
-	 * Tests if an exception is thrown when an invalid ECC level was given
-	 */
-	public function testInvalidEccException():void{
-		$this->expectException(QRCodeDataException::class);
-		$this->expectExceptionMessage('invalid ecc level');
-
-		$this->matrix = new QRMatrix(1, 42);
 	}
 
 	/**
@@ -84,23 +61,26 @@ final class QRMatrixTest extends TestCase{
 	 * Tests if version() returns the current (given) version
 	 */
 	public function testVersion():void{
-		$this::assertSame($this::version, $this->matrix->version());
+		$this::assertSame($this::version, $this->matrix->version()->getVersionNumber());
 	}
 
 	/**
 	 * Tests if eccLevel() returns the current (given) ECC level
 	 */
 	public function testECC():void{
-		$this::assertSame(QRCode::ECC_L, $this->matrix->eccLevel());
+		$this::assertSame(EccLevel::MODES[EccLevel::L], $this->matrix->eccLevel()->getOrdinal());
 	}
 
 	/**
 	 * Tests if maskPattern() returns the current (or default) mask pattern
 	 */
 	public function testMaskPattern():void{
-		$this::assertSame(-1, $this->matrix->maskPattern()); // default
+		$this::assertSame(null, $this->matrix->maskPattern());
 
-		// @todo: actual mask pattern after mapData()
+		$matrix = (new QRCode)->addByteSegment('testdata')->getMatrix();
+
+		$this::assertInstanceOf(MaskPattern::class, $matrix->maskPattern());
+		$this::assertSame(MaskPattern::PATTERN_010, $matrix->maskPattern()->getPattern());
 	}
 
 	/**
@@ -108,11 +88,11 @@ final class QRMatrixTest extends TestCase{
 	 */
 	public function testGetSetCheck():void{
 		$this->matrix->set(10, 10, true, QRMatrix::M_TEST);
-		$this::assertSame(65280, $this->matrix->get(10, 10));
+		$this::assertSame(QRMatrix::M_TEST | QRMatrix::IS_DARK, $this->matrix->get(10, 10));
 		$this::assertTrue($this->matrix->check(10, 10));
 
 		$this->matrix->set(20, 20, false, QRMatrix::M_TEST);
-		$this::assertSame(255, $this->matrix->get(20, 20));
+		$this::assertSame(QRMatrix::M_TEST, $this->matrix->get(20, 20));
 		$this::assertFalse($this->matrix->check(20, 20));
 	}
 
@@ -140,7 +120,7 @@ final class QRMatrixTest extends TestCase{
 	public function testSetDarkModule(int $version):void{
 		$matrix = $this->getMatrix($version)->setDarkModule();
 
-		$this::assertSame(QRMatrix::M_DARKMODULE << 8, $matrix->get(8, $matrix->size() - 8));
+		$this::assertSame(QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK, $matrix->get(8, $matrix->size() - 8));
 	}
 
 	/**
@@ -151,9 +131,9 @@ final class QRMatrixTest extends TestCase{
 	public function testSetFinderPattern(int $version):void{
 		$matrix = $this->getMatrix($version)->setFinderPattern();
 
-		$this::assertSame(QRMatrix::M_FINDER << 8, $matrix->get(0, 0));
-		$this::assertSame(QRMatrix::M_FINDER << 8, $matrix->get(0, $matrix->size() - 1));
-		$this::assertSame(QRMatrix::M_FINDER << 8, $matrix->get($matrix->size() - 1, 0));
+		$this::assertSame(QRMatrix::M_FINDER | QRMatrix::IS_DARK, $matrix->get(0, 0));
+		$this::assertSame(QRMatrix::M_FINDER | QRMatrix::IS_DARK, $matrix->get(0, $matrix->size() - 1));
+		$this::assertSame(QRMatrix::M_FINDER | QRMatrix::IS_DARK, $matrix->get($matrix->size() - 1, 0));
 	}
 
 	/**
@@ -190,17 +170,17 @@ final class QRMatrixTest extends TestCase{
 			->setAlignmentPattern()
 		;
 
-		$alignmentPattern = (new ReflectionClass(QRMatrix::class))->getConstant('alignmentPattern')[$version];
+		$alignmentPattern = (new Version($version))->getAlignmentPattern();
 
 		foreach($alignmentPattern as $py){
 			foreach($alignmentPattern as $px){
 
-				if($matrix->get($px, $py) === QRMatrix::M_FINDER << 8){
-					$this::assertSame(QRMatrix::M_FINDER << 8, $matrix->get($px, $py), 'skipped finder pattern');
+				if($matrix->get($px, $py) === (QRMatrix::M_FINDER | QRMatrix::IS_DARK)){
+					$this::assertSame(QRMatrix::M_FINDER | QRMatrix::IS_DARK, $matrix->get($px, $py), 'skipped finder pattern');
 					continue;
 				}
 
-				$this::assertSame(QRMatrix::M_ALIGNMENT << 8, $matrix->get($px, $py));
+				$this::assertSame(QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK, $matrix->get($px, $py));
 			}
 		}
 
@@ -225,13 +205,13 @@ final class QRMatrixTest extends TestCase{
 			if($i % 2 === 0){
 				$p1 = $matrix->get(6, $i);
 
-				if($p1 === QRMatrix::M_ALIGNMENT << 8){
-					$this::assertSame(QRMatrix::M_ALIGNMENT << 8, $p1, 'skipped alignment pattern');
+				if($p1 === (QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK)){
+					$this::assertSame(QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK, $p1, 'skipped alignment pattern');
 					continue;
 				}
 
-				$this::assertSame(QRMatrix::M_TIMING << 8, $p1);
-				$this::assertSame(QRMatrix::M_TIMING << 8, $matrix->get($i, 6));
+				$this::assertSame(QRMatrix::M_TIMING | QRMatrix::IS_DARK, $p1);
+				$this::assertSame(QRMatrix::M_TIMING | QRMatrix::IS_DARK, $matrix->get($i, 6));
 			}
 		}
 	}
@@ -264,7 +244,7 @@ final class QRMatrixTest extends TestCase{
 	 * @dataProvider versionProvider
 	 */
 	public function testSetFormatInfo(int $version):void{
-		$matrix = $this->getMatrix($version)->setFormatInfo(0, true);
+		$matrix = $this->getMatrix($version)->setFormatInfo(new MaskPattern(MaskPattern::PATTERN_000), true);
 
 		$this::assertSame(QRMatrix::M_FORMAT, $matrix->get(8, 0));
 		$this::assertSame(QRMatrix::M_FORMAT, $matrix->get(0, 8));
@@ -295,8 +275,8 @@ final class QRMatrixTest extends TestCase{
 		$this::assertSame(QRMatrix::M_QUIETZONE, $matrix->get(0, 0));
 		$this::assertSame(QRMatrix::M_QUIETZONE, $matrix->get($size - 1, $size - 1));
 
-		$this::assertSame(QRMatrix::M_TEST << 8, $matrix->get($q, $q));
-		$this::assertSame(QRMatrix::M_TEST << 8, $matrix->get($size - 1 - $q, $size - 1 - $q));
+		$this::assertSame(QRMatrix::M_TEST | QRMatrix::IS_DARK, $matrix->get($q, $q));
+		$this::assertSame(QRMatrix::M_TEST | QRMatrix::IS_DARK, $matrix->get($size - 1 - $q, $size - 1 - $q));
 	}
 
 	/**
@@ -312,10 +292,10 @@ final class QRMatrixTest extends TestCase{
 	public function testSetLogoSpaceOrientation():void{
 		$o = new QROptions;
 		$o->version      = 10;
-		$o->eccLevel     = QRCode::ECC_H;
+		$o->eccLevel     = EccLevel::H;
 		$o->addQuietzone = false;
 
-		$matrix = (new QRCode($o))->getMatrix('testdata');
+		$matrix = (new QRCode($o))->addByteSegment('testdata')->getMatrix();
 		// also testing size adjustment to uneven numbers
 		$matrix->setLogoSpace(20, 14);
 
@@ -331,19 +311,19 @@ final class QRMatrixTest extends TestCase{
 	public function testSetLogoSpacePosition():void{
 		$o = new QROptions;
 		$o->version       = 10;
-		$o->eccLevel      = QRCode::ECC_H;
+		$o->eccLevel      = EccLevel::H;
 		$o->addQuietzone  = true;
 		$o->quietzoneSize = 10;
 
-		$m = (new QRCode($o))->getMatrix('testdata');
+		$m = (new QRCode($o))->addByteSegment('testdata')->getMatrix();
 
 		// logo space should not overwrite quiet zone & function patterns
 		$m->setLogoSpace(21, 21, -10, -10);
 		$this::assertSame(QRMatrix::M_QUIETZONE, $m->get(9, 9));
-		$this::assertSame(QRMatrix::M_FINDER << 8, $m->get(10, 10));
-		$this::assertSame(QRMatrix::M_FINDER << 8, $m->get(16, 16));
+		$this::assertSame(QRMatrix::M_FINDER | QRMatrix::IS_DARK, $m->get(10, 10));
+		$this::assertSame(QRMatrix::M_FINDER | QRMatrix::IS_DARK, $m->get(16, 16));
 		$this::assertSame(QRMatrix::M_SEPARATOR, $m->get(17, 17));
-		$this::assertSame(QRMatrix::M_FORMAT << 8, $m->get(18, 18));
+		$this::assertSame(QRMatrix::M_FORMAT | QRMatrix::IS_DARK, $m->get(18, 18));
 		$this::assertSame(QRMatrix::M_LOGO, $m->get(19, 19));
 		$this::assertSame(QRMatrix::M_LOGO, $m->get(20, 20));
 		$this::assertNotSame(QRMatrix::M_LOGO, $m->get(21, 21));
@@ -360,7 +340,7 @@ final class QRMatrixTest extends TestCase{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('ECC level "H" required to add logo space');
 
-		(new QRCode)->getMatrix('testdata')->setLogoSpace(50, 50);
+		(new QRCode)->addByteSegment('testdata')->getMatrix()->setLogoSpace(50, 50);
 	}
 
 	public function testSetLogoSpaceMaxSizeException():void{
@@ -369,9 +349,32 @@ final class QRMatrixTest extends TestCase{
 
 		$o = new QROptions;
 		$o->version  = 5;
-		$o->eccLevel = QRCode::ECC_H;
+		$o->eccLevel = EccLevel::H;
 
-		(new QRCode($o))->getMatrix('testdata')->setLogoSpace(50, 50);
+		(new QRCode($o))->addByteSegment('testdata')->getMatrix()->setLogoSpace(50, 50);
+	}
+
+	/**
+	 * Tests flipping the value of a module
+	 */
+	public function testFlip():void{
+		// using the dark module here because i'm lazy
+		$matrix = $this->getMatrix(10)->setDarkModule();
+		$x = 8;
+		$y = $matrix->size() - 8;
+
+		// cover checkType()
+		$this::assertTrue($matrix->checkType($x, $y, QRMatrix::M_DARKMODULE));
+		// verify the current state (dark)
+		$this::assertSame(QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK, $matrix->get($x, $y));
+		// flip
+		$matrix->flip($x, $y);
+		// verify flip
+		$this::assertSame(QRMatrix::M_DARKMODULE, $matrix->get($x, $y));
+		// flip again
+		$matrix->flip($x, $y);
+		// verify flip
+		$this::assertSame(QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK, $matrix->get($x, $y));
 	}
 
 }

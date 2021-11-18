@@ -2,9 +2,7 @@
 /**
  * Class QRImage
  *
- * @filesource   QRImage.php
  * @created      05.12.2015
- * @package      chillerlan\QRCode\Output
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
@@ -19,9 +17,9 @@ use chillerlan\QRCode\{QRCode, QRCodeException};
 use chillerlan\Settings\SettingsContainerInterface;
 use Exception;
 
-use function array_values, base64_encode, call_user_func, count, extension_loaded, imagecolorallocate, imagecolortransparent,
+use function array_values, call_user_func, count, extension_loaded, imagecolorallocate, imagecolortransparent,
 	imagecreatetruecolor, imagedestroy, imagefilledrectangle, imagegif, imagejpeg, imagepng, in_array,
-	is_array, ob_end_clean, ob_get_contents, ob_start, range, sprintf;
+	is_array, ob_end_clean, ob_get_contents, ob_start, range;
 
 /**
  * Converts the matrix into GD images, raw or base64 output (requires ext-gd)
@@ -47,8 +45,6 @@ class QRImage extends QROutputAbstract{
 	 *
 	 * @see imagecreatetruecolor()
 	 * @var resource|\GdImage
-	 *
-	 * @phan-suppress PhanUndeclaredTypeProperty
 	 */
 	protected $image;
 
@@ -128,7 +124,7 @@ class QRImage extends QROutputAbstract{
 		}
 
 		if($this->options->imageBase64){
-			$imageData = sprintf('data:image/%s;base64,%s', $this->options->outputType, base64_encode($imageData));
+			$imageData = $this->base64encode($imageData, 'image/'.$this->options->outputType);
 		}
 
 		return $imageData;

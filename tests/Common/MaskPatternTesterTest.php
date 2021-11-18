@@ -2,18 +2,17 @@
 /**
  * Class MaskPatternTesterTest
  *
- * @filesource   MaskPatternTesterTest.php
  * @created      24.11.2017
- * @package      chillerlan\QRCodeTest\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT
  */
 
-namespace chillerlan\QRCodeTest\Data;
+namespace chillerlan\QRCodeTest\Common;
 
+use chillerlan\QRCode\Common\{MaskPattern, MaskPatternTester};
+use chillerlan\QRCode\Data\{Byte, QRData};
 use chillerlan\QRCode\QROptions;
-use chillerlan\QRCode\Data\{Byte, MaskPatternTester};
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -25,18 +24,18 @@ final class MaskPatternTesterTest extends TestCase{
 	 * Tests getting the best mask pattern
 	 */
 	public function testMaskpattern():void{
-		$dataInterface = new Byte(new QROptions(['version' => 10]), 'test');
+		$dataInterface = new QRData(new QROptions(['version' => 10]), [new Byte('test')]);
 
-		$this::assertSame(3, (new MaskPatternTester($dataInterface))->getBestMaskPattern());
+		$this::assertSame(3, (new MaskPatternTester($dataInterface))->getBestMaskPattern()->getPattern());
 	}
 
 	/**
 	 * Tests getting the penalty value for a given mask pattern
 	 */
 	public function testMaskpatternID():void{
-		$dataInterface = new Byte(new QROptions(['version' => 10]), 'test');
+		$dataInterface = new QRData(new QROptions(['version' => 10]), [new Byte('test')]);
 
-		$this::assertSame(4243, (new MaskPatternTester($dataInterface))->testPattern(3));
+		$this::assertSame(4243, (new MaskPatternTester($dataInterface))->testPattern(new MaskPattern(MaskPattern::PATTERN_011)));
 	}
 
 }

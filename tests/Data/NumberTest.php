@@ -2,9 +2,7 @@
 /**
  * Class NumberTest
  *
- * @filesource   NumberTest.php
  * @created      24.11.2017
- * @package      chillerlan\QRCodeTest\Data
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT
@@ -12,8 +10,7 @@
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\QROptions;
-use chillerlan\QRCode\Data\{Number, QRCodeDataException, QRDataInterface};
+use chillerlan\QRCode\Data\{Number, QRCodeDataException};
 
 /**
  * Tests the Number class
@@ -21,7 +18,7 @@ use chillerlan\QRCode\Data\{Number, QRCodeDataException, QRDataInterface};
 final class NumberTest extends DatainterfaceTestAbstract{
 
 	/** @internal */
-	protected string $testdata  = '0123456789';
+	protected array $testdata  = [Number::class, '0123456789'];
 
 	/** @internal */
 	protected array $expected = [
@@ -41,21 +38,15 @@ final class NumberTest extends DatainterfaceTestAbstract{
 	];
 
 	/**
-	 * @inheritDoc
-	 * @internal
-	 */
-	protected function getDataInterfaceInstance(QROptions $options):QRDataInterface{
-		return new Number($options);
-	}
-
-	/**
 	 * Tests if an exception is thrown when an invalid character is encountered
 	 */
 	public function testGetCharCodeException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('illegal char: "#" [35]');
 
-		$this->dataInterface->setData('#');
+		$this->testdata = [Number::class, '#'];
+
+		$this->setTestData();
 	}
 
 }

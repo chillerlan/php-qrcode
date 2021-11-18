@@ -2,9 +2,7 @@
 /**
  * Class QRCodeTest
  *
- * @filesource   QRCodeTest.php
  * @created      17.11.2017
- * @package      chillerlan\QRCodeTest
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT
@@ -13,11 +11,9 @@
 namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCode\{QROptions, QRCode};
-use chillerlan\QRCode\Data\{AlphaNum, Byte, Kanji, Number, QRCodeDataException};
+use chillerlan\QRCode\Data\QRCodeDataException;
 use chillerlan\QRCode\Output\QRCodeOutputException;
 use PHPUnit\Framework\TestCase;
-
-use function random_bytes;
 
 /**
  * Tests basic functions of the QRCode class
@@ -97,55 +93,7 @@ class QRCodeTest extends TestCase{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('QRCode::getMatrix() No data given.');
 
-		$this->qrcode->getMatrix('');
-	}
-
-	/**
-	 * test whether stings are trimmed (they are not) - i'm still torn on that (see isByte)
-	 */
-	public function testAvoidTrimming():void{
-		$m1 = $this->qrcode->getMatrix('hello')->matrix();
-		$m2 = $this->qrcode->getMatrix('hello ')->matrix(); // added space
-
-		$this::assertNotSame($m1, $m2);
-	}
-
-	/**
-	 * tests if the data mode is overriden if QROptions::$dataModeOverride is set to a valid value
-	 *
-	 * @see https://github.com/chillerlan/php-qrcode/issues/39
-	 */
-	public function testDataModeOverride():void{
-
-		// no (or invalid) value set - auto detection
-		$this->options->dataModeOverride = 'foo';
-		$this->qrcode = new QRCode;
-
-		$this::assertInstanceOf(Number::class, $this->qrcode->initDataInterface('123'));
-		$this::assertInstanceOf(AlphaNum::class, $this->qrcode->initDataInterface('ABC123'));
-		$this::assertInstanceOf(Byte::class, $this->qrcode->initDataInterface(random_bytes(32)));
-		$this::assertInstanceOf(Kanji::class, $this->qrcode->initDataInterface('茗荷'));
-
-		// data mode set: force the given data mode
-		$this->options->dataModeOverride = 'Byte';
-		$this->qrcode = new QRCode($this->options);
-
-		$this::assertInstanceOf(Byte::class, $this->qrcode->initDataInterface('123'));
-		$this::assertInstanceOf(Byte::class, $this->qrcode->initDataInterface('ABC123'));
-		$this::assertInstanceOf(Byte::class, $this->qrcode->initDataInterface(random_bytes(32)));
-		$this::assertInstanceOf(Byte::class, $this->qrcode->initDataInterface('茗荷'));
-	}
-
-	/**
-	 * tests if an exception is thrown when an invalid character occurs when forcing a data mode other than Byte
-	 */
-	public function testDataModeOverrideError():void{
-		$this->expectException(QRCodeDataException::class);
-		$this->expectExceptionMessage('illegal char:');
-
-		$this->options->dataModeOverride = 'AlphaNum';
-
-		(new QRCode($this->options))->initDataInterface(random_bytes(32));
+		$this->qrcode->getMatrix();
 	}
 
 }

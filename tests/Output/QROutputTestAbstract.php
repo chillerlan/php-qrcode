@@ -2,9 +2,7 @@
 /**
  * Class QROutputTestAbstract
  *
- * @filesource   QROutputTestAbstract.php
  * @created      24.12.2017
- * @package      chillerlan\QRCodeTest\Output
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT
@@ -13,7 +11,8 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Data\{Byte, QRMatrix};
+use chillerlan\QRCode\Common\MaskPattern;
+use chillerlan\QRCode\Data\{Byte, QRData, QRMatrix};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use PHPUnit\Framework\TestCase;
 
@@ -48,7 +47,8 @@ abstract class QROutputTestAbstract extends TestCase{
 		}
 
 		$this->options         = new QROptions;
-		$this->matrix          = (new Byte($this->options, 'testdata'))->initMatrix(0);
+		$this->matrix          = (new QRData($this->options, [new Byte('testdata')]))
+			->writeMatrix(new MaskPattern(MaskPattern::PATTERN_010));
 		$this->outputInterface = $this->getOutputInterface($this->options);
 	}
 
