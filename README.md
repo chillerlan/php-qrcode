@@ -6,7 +6,6 @@ namespaced, cleaned up, improved and other stuff.
 [![PHP Version Support][php-badge]][php]
 [![Packagist version][packagist-badge]][packagist]
 [![License][license-badge]][license]
-[![Travis CI][travis-badge]][travis]
 [![CodeCov][coverage-badge]][coverage]
 [![Scrunitizer CI][scrutinizer-badge]][scrutinizer]
 [![Packagist downloads][downloads-badge]][downloads]<br/>
@@ -19,8 +18,6 @@ namespaced, cleaned up, improved and other stuff.
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
 [license-badge]: https://img.shields.io/github/license/chillerlan/php-qrcode.svg
 [license]: https://github.com/chillerlan/php-qrcode/blob/main/LICENSE
-[travis-badge]: https://img.shields.io/travis/com/chillerlan/php-qrcode/main?logo=travis
-[travis]: https://travis-ci.com/github/chillerlan/php-qrcode
 [coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode.svg?logo=codecov
 [coverage]: https://codecov.io/github/chillerlan/php-qrcode
 [scrutinizer-badge]: https://img.shields.io/scrutinizer/g/chillerlan/php-qrcode.svg?logo=scrutinizer
@@ -89,7 +86,8 @@ Wait, what was that? Please again, slower! See [Advanced usage](https://github.c
 - WordPress [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
 - WoltLab Suite [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)  
 - [Cachet](https://github.com/CachetHQ/Cachet)
-- [Appwrite](https://github.com/appwrite/appwrite)  
+- [Appwrite](https://github.com/appwrite/appwrite)
+- [twill](https://github.com/area17/twill)
 - other uses: [dependents](https://github.com/chillerlan/php-qrcode/network/dependents) / [packages](https://github.com/chillerlan/php-qrcode/network/dependents?dependent_type=PACKAGE)
 
 ### Shameless advertising
