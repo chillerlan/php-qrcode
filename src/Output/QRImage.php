@@ -102,6 +102,7 @@ class QRImage extends QROutputAbstract{
 		// avoid: Indirect modification of overloaded property $imageTransparencyBG has no effect
 		// https://stackoverflow.com/a/10455217
 		$tbg        = $this->options->imageTransparencyBG;
+		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
 		$background = imagecolorallocate($this->image, ...$tbg);
 
 		if((bool)$this->options->imageTransparent && in_array($this->options->outputType, $this::TRANSPARENCY_TYPES, true)){
@@ -143,6 +144,7 @@ class QRImage extends QROutputAbstract{
 			$y * $this->scale,
 			($x + 1) * $this->scale,
 			($y + 1) * $this->scale,
+			/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
 			imagecolorallocate($this->image, ...$rgb)
 		);
 	}

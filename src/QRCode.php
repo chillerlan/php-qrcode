@@ -240,6 +240,7 @@ class QRCode{
 	protected function initOutputInterface(string $data):QROutputInterface{
 
 		if($this->options->outputType === $this::OUTPUT_CUSTOM && class_exists($this->options->outputInterface)){
+			/** @phan-suppress-next-line PhanTypeExpectedObjectOrClassName */
 			return new $this->options->outputInterface($this->options, $this->getMatrix($data));
 		}
 
