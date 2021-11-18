@@ -44,7 +44,7 @@ final class BitBuffer{
 	/**
 	 * clears the buffer
 	 */
-	public function clear():BitBuffer{
+	public function clear():self{
 		$this->buffer = [];
 		$this->length = 0;
 
@@ -54,7 +54,7 @@ final class BitBuffer{
 	/**
 	 * appends a sequence of bits
 	 */
-	public function put(int $num, int $length):BitBuffer{
+	public function put(int $num, int $length):self{
 
 		for($i = 0; $i < $length; $i++){
 			$this->putBit((($num >> ($length - $i - 1)) & 1) === 1);
@@ -66,7 +66,7 @@ final class BitBuffer{
 	/**
 	 * appends a single bit
 	 */
-	public function putBit(bool $bit):BitBuffer{
+	public function putBit(bool $bit):self{
 		$bufIndex = (int)floor($this->length / 8);
 
 		if(count($this->buffer) <= $bufIndex){

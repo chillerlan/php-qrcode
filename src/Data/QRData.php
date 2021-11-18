@@ -76,7 +76,7 @@ final class QRData{
 	/**
 	 * Sets the data string (internally called by the constructor)
 	 */
-	public function setData(array $dataSegments):QRData{
+	public function setData(array $dataSegments):self{
 		$this->dataSegments = $dataSegments;
 
 		$version = $this->options->version === QRCode::VERSION_AUTO

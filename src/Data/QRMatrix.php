@@ -92,7 +92,7 @@ final class QRMatrix{
 	/**
 	 * shortcut to initialize the matrix
 	 */
-	public function init(MaskPattern $maskPattern, bool $test = null):QRMatrix{
+	public function init(MaskPattern $maskPattern, bool $test = null):self{
 		return $this
 			->setFinderPattern()
 			->setSeparators()
@@ -171,7 +171,7 @@ final class QRMatrix{
 	 *   true  => $M_TYPE | 0x800
 	 *   false => $M_TYPE
 	 */
-	public function set(int $x, int $y, bool $value, int $M_TYPE):QRMatrix{
+	public function set(int $x, int $y, bool $value, int $M_TYPE):self{
 		$this->matrix[$y][$x] = $M_TYPE | ($value ? $this::IS_DARK : 0);
 
 		return $this;
@@ -180,7 +180,7 @@ final class QRMatrix{
 	/**
 	 * Flips the value of the module
 	 */
-	public function flip(int $x, int $y):QRMatrix{
+	public function flip(int $x, int $y):self{
 		$this->matrix[$y][$x] ^= $this::IS_DARK;
 
 		return $this;
@@ -208,7 +208,7 @@ final class QRMatrix{
 	/**
 	 * Sets the "dark module", that is always on the same position 1x1px away from the bottom left finder
 	 */
-	public function setDarkModule():QRMatrix{
+	public function setDarkModule():self{
 		$this->set(8, 4 * $this->version->getVersionNumber() + 9, true, $this::M_DARKMODULE);
 
 		return $this;
@@ -219,7 +219,7 @@ final class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 7.3.2
 	 */
-	public function setFinderPattern():QRMatrix{
+	public function setFinderPattern():self{
 
 		$pos = [
 			[0, 0], // top left
@@ -254,7 +254,7 @@ final class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 7.3.3
 	 */
-	public function setSeparators():QRMatrix{
+	public function setSeparators():self{
 
 		$h = [
 			[7, 0],
@@ -284,7 +284,7 @@ final class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 7.3.5
 	 */
-	public function setAlignmentPattern():QRMatrix{
+	public function setAlignmentPattern():self{
 		$alignmentPattern = $this->version->getAlignmentPattern();
 
 		foreach($alignmentPattern as $y){
@@ -315,7 +315,7 @@ final class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 7.3.4
 	 */
-	public function setTimingPattern():QRMatrix{
+	public function setTimingPattern():self{
 
 		foreach(range(8, $this->moduleCount - 8 - 1) as $i){
 
@@ -337,7 +337,7 @@ final class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 8.10
 	 */
-	public function setVersionNumber(bool $test = null):QRMatrix{
+	public function setVersionNumber(bool $test = null):self{
 		$bits = $this->version->getVersionPattern();
 
 		if($bits !== null){
@@ -361,7 +361,7 @@ final class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 8.9
 	 */
-	public function setFormatInfo(MaskPattern $maskPattern, bool $test = null):QRMatrix{
+	public function setFormatInfo(MaskPattern $maskPattern, bool $test = null):self{
 		$bits = $this->eccLevel->getformatPattern($maskPattern);
 
 		for($i = 0; $i < 15; $i++){
@@ -401,7 +401,7 @@ final class QRMatrix{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function setQuietZone(int $size = null):QRMatrix{
+	public function setQuietZone(int $size = null):self{
 
 		if($this->matrix[$this->moduleCount - 1][$this->moduleCount - 1] === $this::M_NULL){
 			throw new QRCodeDataException('use only after writing data');
@@ -448,7 +448,7 @@ final class QRMatrix{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function setLogoSpace(int $width, int $height, int $startX = null, int $startY = null):QRMatrix{
+	public function setLogoSpace(int $width, int $height, int $startX = null, int $startY = null):self{
 
 		// for logos we operate in ECC H (30%) only
 		if($this->eccLevel->getLevel() !== EccLevel::H){
@@ -510,7 +510,7 @@ final class QRMatrix{
 	 *
 	 * @return \chillerlan\QRCode\Data\QRMatrix
 	 */
-	public function mapData(SplFixedArray $data):QRMatrix{
+	public function mapData(SplFixedArray $data):self{
 		$byteCount         = $data->count();
 		$y                 = $this->moduleCount - 1;
 		$inc               = -1;
@@ -565,7 +565,7 @@ final class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 8.8.1
 	 */
-	public function mask(MaskPattern $maskPattern):QRMatrix{
+	public function mask(MaskPattern $maskPattern):self{
 		$this->maskPattern = $maskPattern;
 		$mask              = $this->maskPattern->getMask();
 

@@ -55,7 +55,7 @@ final class FinderPattern extends ResultPoint{
 	 * with a new estimate. It returns a new {@code FinderPattern} containing a weighted average
 	 * based on count.
 	 */
-	public function combineEstimate(float $i, float $j, float $newModuleSize):FinderPattern{
+	public function combineEstimate(float $i, float $j, float $newModuleSize):self{
 		$combinedCount = $this->count + 1;
 
 		return new self(

@@ -36,7 +36,7 @@ final class PerspectiveTransform{
 		float $a11, float $a21, float $a31,
 		float $a12, float $a22, float $a32,
 		float $a13, float $a23, float $a33
-	):PerspectiveTransform{
+	):self{
 		$this->a11 = $a11;
 		$this->a12 = $a12;
 		$this->a13 = $a13;
@@ -53,7 +53,7 @@ final class PerspectiveTransform{
 	public function quadrilateralToQuadrilateral(
 		float $x0, float $y0, float $x1, float $y1, float $x2, float $y2, float $x3, float $y3,
 		float $x0p, float $y0p, float $x1p, float $y1p, float $x2p, float $y2p, float $x3p, float $y3p
-	):PerspectiveTransform{
+	):self{
 		return (new self)
 			->squareToQuadrilateral($x0p, $y0p, $x1p, $y1p, $x2p, $y2p, $x3p, $y3p)
 			->times($this->quadrilateralToSquare($x0, $y0, $x1, $y1, $x2, $y2, $x3, $y3));
@@ -62,14 +62,14 @@ final class PerspectiveTransform{
 	private function quadrilateralToSquare(
 		float $x0, float $y0, float $x1, float $y1,
 		float $x2, float $y2, float $x3, float $y3
-	):PerspectiveTransform{
+	):self{
 		// Here, the adjoint serves as the inverse:
 		return $this
 			->squareToQuadrilateral($x0, $y0, $x1, $y1, $x2, $y2, $x3, $y3)
 			->buildAdjoint();
 	}
 
-	private function buildAdjoint():PerspectiveTransform{
+	private function buildAdjoint():self{
 		// Adjoint is the transpose of the cofactor matrix:
 		return $this->set(
 			$this->a22 * $this->a33 - $this->a23 * $this->a32,
@@ -87,7 +87,7 @@ final class PerspectiveTransform{
 	private function squareToQuadrilateral(
 		float $x0, float $y0, float $x1, float $y1,
 		float $x2, float $y2, float $x3, float $y3
-	):PerspectiveTransform{
+	):self{
 		$dx3 = $x0 - $x1 + $x2 - $x3;
 		$dy3 = $y0 - $y1 + $y2 - $y3;
 
@@ -111,7 +111,7 @@ final class PerspectiveTransform{
 		);
 	}
 
-	private function times(PerspectiveTransform $other):PerspectiveTransform{
+	private function times(PerspectiveTransform $other):self{
 		return $this->set(
 			$this->a11 * $other->a11 + $this->a21 * $other->a12 + $this->a31 * $other->a13,
 			$this->a11 * $other->a21 + $this->a21 * $other->a22 + $this->a31 * $other->a23,

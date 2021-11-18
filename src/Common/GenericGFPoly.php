@@ -121,7 +121,7 @@ final class GenericGFPoly{
 	 *
 	 * @return \chillerlan\QRCode\Common\GenericGFPoly
 	 */
-	public function multiply(GenericGFPoly $other):GenericGFPoly{
+	public function multiply(GenericGFPoly $other):self{
 
 		if($this->isZero() || $other->isZero()){
 			return new self([0]);
@@ -171,7 +171,7 @@ final class GenericGFPoly{
 	 *
 	 * @return \chillerlan\QRCode\Common\GenericGFPoly
 	 */
-	public function multiplyInt(int $scalar):GenericGFPoly{
+	public function multiplyInt(int $scalar):self{
 
 		if($scalar === 0){
 			return new self([0]);
@@ -196,7 +196,7 @@ final class GenericGFPoly{
 	 *
 	 * @return \chillerlan\QRCode\Common\GenericGFPoly
 	 */
-	public function multiplyByMonomial(int $degree, int $coefficient):GenericGFPoly{
+	public function multiplyByMonomial(int $degree, int $coefficient):self{
 
 		if($degree < 0){
 			throw new InvalidArgumentException();
@@ -220,7 +220,7 @@ final class GenericGFPoly{
 	 *
 	 * @return \chillerlan\QRCode\Common\GenericGFPoly
 	 */
-	public function mod(GenericGFPoly $other):GenericGFPoly{
+	public function mod(GenericGFPoly $other):self{
 
 		if(count($this->coefficients) - count($other->coefficients) < 0){
 			return $this;
@@ -240,7 +240,7 @@ final class GenericGFPoly{
 	 *
 	 * @return \chillerlan\QRCode\Common\GenericGFPoly
 	 */
-	public function addOrSubtract(GenericGFPoly $other):GenericGFPoly{
+	public function addOrSubtract(GenericGFPoly $other):self{
 
 		if($this->isZero()){
 			return $other;

@@ -104,7 +104,7 @@ class QRCode{
 	/**
 	 * QRCode constructor.
 	 *
-	 * Sets the options instance, determines the current mb-encoding and sets it to UTF-8
+	 * Sets the options instance
 	 */
 	public function __construct(SettingsContainerInterface $options = null){
 		$this->options = $options ?? new QROptions;
@@ -240,7 +240,7 @@ class QRCode{
 	/**
 	 * ISO/IEC 18004:2000 8.3.2 - Numeric Mode
 	 */
-	public function addNumberSegment(string $data):QRCode{
+	public function addNumberSegment(string $data):self{
 		$this->addSegment(new Number($data));
 
 		return $this;
@@ -249,7 +249,7 @@ class QRCode{
 	/**
 	 * ISO/IEC 18004:2000 8.3.3 - Alphanumeric Mode
 	 */
-	public function addAlphaNumSegment(string $data):QRCode{
+	public function addAlphaNumSegment(string $data):self{
 		$this->addSegment(new AlphaNum($data));
 
 		return $this;
@@ -258,7 +258,7 @@ class QRCode{
 	/**
 	 * ISO/IEC 18004:2000 8.3.5 - Kanji Mode
 	 */
-	public function addKanjiSegment(string $data):QRCode{
+	public function addKanjiSegment(string $data):self{
 		$this->addSegment(new Kanji($data));
 
 		return $this;
@@ -267,7 +267,7 @@ class QRCode{
 	/**
 	 * ISO/IEC 18004:2000 8.3.4 - 8-bit Byte Mode
 	 */
-	public function addByteSegment(string $data):QRCode{
+	public function addByteSegment(string $data):self{
 		$this->addSegment(new Byte($data));
 
 		return $this;
@@ -276,7 +276,7 @@ class QRCode{
 	/**
 	 * ISO/IEC 18004:2000 8.3.1 - Extended Channel Interpretation (ECI) Mode
 	 */
-	public function addEciDesignator(int $encoding):QRCode{
+	public function addEciDesignator(int $encoding):self{
 		$this->addSegment(new ECI($encoding));
 
 		return $this;
@@ -287,7 +287,7 @@ class QRCode{
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function addEciSegment(int $encoding, string $data):QRCode{
+	public function addEciSegment(int $encoding, string $data):self{
 		// validate the encoding id
 		$eciCharset = new ECICharset($encoding);
 		// get charset name
