@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		 xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.4/phpunit.xsd"
+		 xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
 		 bootstrap="vendor/autoload.php"
 		 cacheResultFile=".build/phpunit.result.cache"
 		 colors="true"
