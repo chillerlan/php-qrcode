@@ -12,6 +12,7 @@
 
 namespace chillerlan\QRCodeTest;
 
+use chillerlan\Settings\SettingsContainerInterface;
 use Exception;
 use chillerlan\QRCode\Common\{EccLevel, Mode, Version};
 use chillerlan\QRCode\{QRCode, QROptions, QRCodeReader};
@@ -31,6 +32,12 @@ class QRCodeReaderTest extends TestCase{
 		.'A big cotton ball in the sky. I\'m gonna add just a tiny little amount of Prussian Blue. '
 		.'They say everything looks better with odd numbers of things. But sometimes I put even numbers—just '
 		.'to upset the critics. We\'ll lay all these little funky little things in there. ';
+
+	private SettingsContainerInterface $options;
+
+	protected function setUp():void{
+		$this->options = new QROptions;
+	}
 
 	public function qrCodeProvider():array{
 		return [
@@ -55,7 +62,9 @@ class QRCodeReaderTest extends TestCase{
 	 * @dataProvider qrCodeProvider
 	 */
 	public function testReaderGD(string $img, string $expected):void{
-		$reader = new QRCodeReader(false);
+		$this->options->useImagickIfAvailable = false;
+
+		$reader = new QRCodeReader($this->options);
 
 		$this::assertSame($expected, (string)$reader->readFile(__DIR__.'/qrcodes/'.$img));
 	}
@@ -69,7 +78,9 @@ class QRCodeReaderTest extends TestCase{
 			$this::markTestSkipped('imagick not installed');
 		}
 
-		$reader = new QRCodeReader(true);
+		$this->options->useImagickIfAvailable = true;
+
+		$reader = new QRCodeReader($this->options);
 
 		$this::assertSame($expected, (string)$reader->readFile(__DIR__.'/qrcodes/'.$img));
 	}
@@ -100,16 +111,17 @@ class QRCodeReaderTest extends TestCase{
 	 * @dataProvider dataTestProvider
 	 */
 	public function testReadData(Version $version, EccLevel $ecc, string $expected):void{
-		$options = new QROptions;
-#		$options->imageTransparent = false;
-		$options->eccLevel         = $ecc->getLevel();
-		$options->version          = $version->getVersionNumber();
-		$options->imageBase64      = false;
-		$options->scale            = 1; // what's interesting is that a smaller scale seems to produce fewer reader errors???
+
+#		$this->options->imageTransparent      = false;
+		$this->options->eccLevel              = $ecc->getLevel();
+		$this->options->version               = $version->getVersionNumber();
+		$this->options->imageBase64           = false;
+		$this->options->scale                 = 1; // what's interesting is that a smaller scale seems to produce fewer reader errors???
+		$this->options->useImagickIfAvailable = true;
 
 		try{
-			$imagedata = (new QRCode($options))->render($expected);
-			$result    = (new QRCodeReader(true))->readBlob($imagedata);
+			$imagedata = (new QRCode($this->options))->render($expected);
+			$result    = (new QRCodeReader($this->options))->readBlob($imagedata);
 		}
 		catch(Exception $e){
 			$this::markTestSkipped($version.$ecc.': '.$e->getMessage());

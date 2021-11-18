@@ -13,6 +13,7 @@
 
 namespace chillerlan\QRCode;
 
+use chillerlan\Settings\SettingsContainerInterface;
 use Imagick, InvalidArgumentException;
 use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, GDLuminanceSource, IMagickLuminanceSource};
 use function extension_loaded, file_exists, file_get_contents, imagecreatefromstring, is_file, is_readable;
@@ -22,13 +23,18 @@ use function extension_loaded, file_exists, file_get_contents, imagecreatefromst
  */
 final class QRCodeReader{
 
-	private bool $useImagickIfAvailable;
+	/**
+	 * The settings container
+	 *
+	 * @var \chillerlan\QRCode\QROptions|\chillerlan\Settings\SettingsContainerInterface
+	 */
+	private SettingsContainerInterface $options;
 
 	/**
 	 *
 	 */
-	public function __construct(bool $useImagickIfAvailable = true){
-		$this->useImagickIfAvailable = $useImagickIfAvailable && extension_loaded('imagick');
+	public function __construct(SettingsContainerInterface $options = null){
+		$this->options = $options ?? new QROptions;
 	}
 
 	/**
@@ -38,7 +44,7 @@ final class QRCodeReader{
 	 */
 	private function decode($im):DecoderResult{
 
-		$source = $this->useImagickIfAvailable
+		$source = $this->options->useImagickIfAvailable
 			? new IMagickLuminanceSource($im)
 			: new GDLuminanceSource($im);
 
@@ -56,7 +62,7 @@ final class QRCodeReader{
 			throw new InvalidArgumentException('invalid file: '.$imgFilePath);
 		}
 
-		$im = $this->useImagickIfAvailable
+		$im = $this->options->useImagickIfAvailable
 			? new Imagick($imgFilePath)
 			: imagecreatefromstring(file_get_contents($imgFilePath));
 
@@ -70,7 +76,7 @@ final class QRCodeReader{
 	 */
 	public function readBlob(string $imgBlob):DecoderResult{
 
-		if($this->useImagickIfAvailable){
+		if($this->options->useImagickIfAvailable){
 			$im = new Imagick;
 			$im->readImageBlob($imgBlob);
 		}

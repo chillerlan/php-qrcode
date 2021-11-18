@@ -14,7 +14,7 @@ namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Common\EccLevel;
 
-use function array_values, count, in_array, is_numeric, max, min, sprintf, strtolower;
+use function array_values, count, extension_loaded, in_array, is_numeric, max, min, sprintf, strtolower;
 
 /**
  * The QRCode plug-in settings & setter functionality
@@ -220,6 +220,11 @@ trait QROptionsTrait{
 	protected ?array $moduleValues = null;
 
 	/**
+	 * use Imaagick (if available) when reading QR Codes
+	 */
+	protected bool $useImagickIfAvailable = false;
+
+	/**
 	 * clamp min/max version number
 	 */
 	protected function setMinMaxVersion(int $versionMin, int $versionMax):void{
@@ -326,6 +331,15 @@ trait QROptionsTrait{
 		}
 
 		// @todo throw or ignore silently?
+	}
+
+	/**
+	 * enables Imagick for the QR Code reader if the extension is available
+	 *
+	 * @codeCoverageIgnore
+	 */
+	protected function set_useImagickIfAvailable(bool $useImagickIfAvailable):void{
+		$this->useImagickIfAvailable = $useImagickIfAvailable && extension_loaded('imagick');
 	}
 
 }
