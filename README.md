@@ -58,7 +58,7 @@ via terminal: `composer require chillerlan/php-qrcode`
 ```
 
 Note: replace `dev-main` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^3.2` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions.
-For PHP version ... 
+For PHP version ...
   - 7.4+ use `^4.3`
   - 7.2+ use `^3.4.1` (PHP 7.2 is EOL and 7.3 soon! v3.4.1 also supports PHP8 - however, it's no longer supported)
   - 7.0+ use `^2.0` (PHP 7.0 and 7.1 are EOL!)
@@ -74,8 +74,8 @@ echo '<img src="'.(new QRCode)->render($data).'" alt="QR Code" />';
 ```
 
 <p align="center">
-	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/main/docs/example_image.png">
-	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/main/docs/example_svg.png">
+	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/main/.github/images/example_image.png">
+	<img alt="QR codes are awesome!" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/main/.github/images/example_svg.png">
 </p>
 
 Wait, what was that? Please again, slower! See [Advanced usage](https://github.com/chillerlan/php-qrcode/wiki/Advanced-usage) on the wiki.
