@@ -48,5 +48,14 @@
 			"chillerlan\\QRCodeTest\\": "tests/",
 			"chillerlan\\QRCodeExamples\\": "examples/"
 		}
+	},
+	"scripts": {
+		"phpunit": "@php vendor/bin/phpunit",
+		"phan": "@php vendor/bin/phan"
+	},
+	"config": {
+		"lock": false,
+		"sort-packages": true,
+		"platform-check": true
 	}
 }
