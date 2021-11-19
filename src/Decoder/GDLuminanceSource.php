@@ -41,7 +41,7 @@ final class GDLuminanceSource extends LuminanceSourceAbstract{
 		/** @noinspection PhpFullyQualifiedNameUsageInspection */
 		if(
 			(PHP_MAJOR_VERSION >= 8 && !$gdImage instanceof \GdImage)
-			|| (!is_resource($gdImage) || get_resource_type($gdImage) !== 'gd')
+			|| (PHP_MAJOR_VERSION < 8 && (!is_resource($gdImage) || get_resource_type($gdImage) !== 'gd'))
 		){
 			throw new InvalidArgumentException('Invalid GD image source.');
 		}
