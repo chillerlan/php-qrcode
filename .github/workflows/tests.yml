@@ -2,8 +2,12 @@
 # https://github.com/sebastianbergmann/phpunit/blob/master/.github/workflows/ci.yml
 
 on:
-  - pull_request
-  - push
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 name: "Continuous Integration"
 
@@ -51,7 +55,7 @@ jobs:
           php-version: "7.4"
           coverage: none
           tools: phpDocumentor
-          extensions: ast, gd, imagick, json, mbstring
+          extensions: gd, imagick, json, mbstring
 
       - name: "Build Docs"
         run: phpdoc --config=phpdoc.xml
