@@ -54,7 +54,7 @@ jobs:
           extensions: ast, gd, imagick, json, mbstring
 
       - name: "Build Docs"
-        run: phpdoc --config=phpdoc.xml`
+        run: phpdoc --config=phpdoc.xml
 
       - name: "Publish Docs to gh-pages"
         uses: JamesIves/github-pages-deploy-action@4.1.5
