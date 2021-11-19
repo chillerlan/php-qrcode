@@ -93,51 +93,27 @@
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/chillerlan-qrcode-decoder.html">Decoder</a></li>
     </ul>
 
-    <article class="phpdocumentor-element -class">
+    <article class="phpdocumentor-element -interface">
         <h2 class="phpdocumentor-content__title">
-    LuminanceSource
-
-    
-            <div class="phpdocumentor-element__package">
-            in package
+    LuminanceSourceInterface
+                <div class="phpdocumentor-element__package">
+            in
             <ul class="phpdocumentor-breadcrumbs">
-                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Application.html">Application</a></li>
+                                    <li><a href="packages/Application.html">Application</a></li>
                             </ul>
         </div>
-    
-    
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSource.php"><a href="files/src-decoder-luminancesource.html"><abbr title="src/Decoder/LuminanceSource.php">LuminanceSource.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSourceInterface.php"><a href="files/src-decoder-luminancesourceinterface.html"><abbr title="src/Decoder/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">15</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">The purpose of this class hierarchy is to abstract different bitmap implementations across
-platforms into a standard interface for requesting greyscale luminance values. The interface
-only provides immutable methods; therefore crop and rotation create copies. This is to ensure
-that one Reader does not modify the original luminance source and leave it in an unknown state
-for other Readers in the chain.</p>
+        
 
 
-
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>dswitkin@google.com (Daniel Switkin)</p>
-</section>
-
-                                    </dd>
-                        </dl>
 
 
 
@@ -150,43 +126,29 @@ for other Readers in the chain.</p>
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-                <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#property_height">$height</a>
+                    <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_fromBlob">fromBlob()</a>
     <span>
-                &nbsp;: int            </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#property_luminances">$luminances</a>
-    <span>
-                &nbsp;: array&lt;string|int, mixed&gt;            </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#property_width">$width</a>
-    <span>
-                &nbsp;: int            </span>
-</dt>
-<dd></dd>
-
-                <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#method___construct">__construct()</a>
-    <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: self    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#method_getHeight">getHeight()</a>
+    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_fromFile">fromFile()</a>
+    <span>
+                        &nbsp;: self    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_getHeight">getHeight()</a>
     <span>
                         &nbsp;: int    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#method_getMatrix">getMatrix()</a>
+    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_getMatrix">getMatrix()</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
@@ -194,7 +156,7 @@ for other Readers in the chain.</p>
 {@code int luminance = array[y * width + x] &amp; 0xff}</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#method_getRow">getRow()</a>
+    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_getRow">getRow()</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
@@ -205,16 +167,9 @@ to only fetch this row rather than the whole image, since no 2D Readers may be i
 getMatrix() may never be called.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#method_getWidth">getWidth()</a>
+    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_getWidth">getWidth()</a>
     <span>
                         &nbsp;: int    </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#method_setLuminancePixel">setLuminancePixel()</a>
-    <span>
-                        &nbsp;: void    </span>
 </dt>
 <dd></dd>
 
@@ -224,157 +179,40 @@ getMatrix() may never be called.</dd>
 
         
 
-        
-    <section class="phpdocumentor-properties">
-        <h3 class="phpdocumentor-elements__header" id="properties">
-            Properties
-            <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
-        </h3>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="property_height">
-        $height
-        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#property_height" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSource.php"><a href="files/src-decoder-luminancesource.html"><abbr title="src/Decoder/LuminanceSource.php">LuminanceSource.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">30</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$height</span>
-    </code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="property_luminances">
-        $luminances
-        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#property_luminances" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSource.php"><a href="files/src-decoder-luminancesource.html"><abbr title="src/Decoder/LuminanceSource.php">LuminanceSource.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">28</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
-    <span class="phpdocumentor-signature__name">$luminances</span>
-    </code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="property_width">
-        $width
-        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#property_width" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSource.php"><a href="files/src-decoder-luminancesource.html"><abbr title="src/Decoder/LuminanceSource.php">LuminanceSource.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">29</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$width</span>
-    </code>
-
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-
-</article>
-            </section>
-
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article
         class="phpdocumentor-element
             -method
             -public
-                                                        "
+                                    -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method___construct">
-        __construct()
-        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_fromBlob">
+        fromBlob()
+        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_fromBlob" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSource.php"><a href="files/src-decoder-luminancesource.html"><abbr title="src/Decoder/LuminanceSource.php">LuminanceSource.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSourceInterface.php"><a href="files/src-decoder-luminancesourceinterface.html"><abbr title="src/Decoder/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">35</span>
+    <span class="phpdocumentor-element-found-in__line">52</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$width</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$height</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">fromBlob</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$blob</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$width</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$height</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                <span class="phpdocumentor-signature__argument__name">$blob</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
@@ -385,7 +223,51 @@ getMatrix() may never be called.</dd>
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">self</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_fromFile">
+        fromFile()
+        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_fromFile" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSourceInterface.php"><a href="files/src-decoder-luminancesourceinterface.html"><abbr title="src/Decoder/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">51</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">fromFile</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$path</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$path</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">self</span>
             &mdash;
         
     
@@ -398,12 +280,12 @@ getMatrix() may never be called.</dd>
 >
     <h4 class="phpdocumentor-element__name" id="method_getHeight">
         getHeight()
-        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#method_getHeight" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_getHeight" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSource.php"><a href="files/src-decoder-luminancesource.html"><abbr title="src/Decoder/LuminanceSource.php">LuminanceSource.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSourceInterface.php"><a href="files/src-decoder-luminancesourceinterface.html"><abbr title="src/Decoder/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">67</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 
     </aside>
 
@@ -432,12 +314,12 @@ getMatrix() may never be called.</dd>
 >
     <h4 class="phpdocumentor-element__name" id="method_getMatrix">
         getMatrix()
-        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#method_getMatrix" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_getMatrix" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSource.php"><a href="files/src-decoder-luminancesource.html"><abbr title="src/Decoder/LuminanceSource.php">LuminanceSource.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSourceInterface.php"><a href="files/src-decoder-luminancesourceinterface.html"><abbr title="src/Decoder/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">53</span>
+    <span class="phpdocumentor-element-found-in__line">25</span>
 
     </aside>
 
@@ -470,12 +352,12 @@ of the result.</p>
 >
     <h4 class="phpdocumentor-element__name" id="method_getRow">
         getRow()
-        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#method_getRow" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_getRow" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSource.php"><a href="files/src-decoder-luminancesource.html"><abbr title="src/Decoder/LuminanceSource.php">LuminanceSource.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSourceInterface.php"><a href="files/src-decoder-luminancesourceinterface.html"><abbr title="src/Decoder/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">82</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
@@ -521,12 +403,12 @@ getMatrix() may never be called.</p>
 >
     <h4 class="phpdocumentor-element__name" id="method_getWidth">
         getWidth()
-        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#method_getWidth" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_getWidth" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSource.php"><a href="files/src-decoder-luminancesource.html"><abbr title="src/Decoder/LuminanceSource.php">LuminanceSource.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSourceInterface.php"><a href="files/src-decoder-luminancesourceinterface.html"><abbr title="src/Decoder/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">60</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
@@ -545,62 +427,6 @@ getMatrix() may never be called.</p>
             <section class="phpdocumentor-description"><p>The width of the bitmap.</p>
 </section>
 
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_setLuminancePixel">
-        setLuminancePixel()
-        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#method_setLuminancePixel" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSource.php"><a href="files/src-decoder-luminancesource.html"><abbr title="src/Decoder/LuminanceSource.php">LuminanceSource.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">102</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__name">setLuminancePixel</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$r</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$g</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$b</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$r</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$g</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$b</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-        
     
 </article>
             </section>
@@ -681,7 +507,7 @@ getMatrix() may never be called.</p>
 </section>
             </div>
         </div>
-        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSource.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
