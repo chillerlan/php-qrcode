@@ -55,6 +55,7 @@ class QRCodeReaderTest extends TestCase{
 			'smol'       => ['smol.png', 'https://smiley.codes/qrcode/'],
 			'tilted'     => ['tilted.png', 'Hello world!'], // tilted 22° CCW
 			'rotated'    => ['rotated.png', 'Hello world!'], // rotated 90° CW
+			'gradient'   => ['example_svg.png', 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s'], // color gradient (from svg example)
 		];
 	}
 
