@@ -24,7 +24,7 @@ namespaced, cleaned up, improved and other stuff.
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?logo=packagist
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 [gh-action-badge]: https://github.com/chillerlan/php-qrcode/workflows/Continuous%20Integration/badge.svg
-[gh-action]: https://github.com/chillerlan/php-qrcode/actions?query=workflow%3A%22Continuous+Integration%22
+[gh-action]: https://github.com/chillerlan/php-qrcode/actions/workflows/tests.yml?query=branch%3Amain
 
 ## Documentation
 
