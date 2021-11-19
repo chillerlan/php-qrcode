@@ -14,14 +14,15 @@
 namespace chillerlan\QRCode\Decoder;
 
 use InvalidArgumentException;
-use function get_resource_type, imagecolorat, imagecolorsforindex, imagesx, imagesy, is_resource;
+use function file_get_contents, get_resource_type, imagecolorat, imagecolorsforindex,
+	imagecreatefromstring, imagesx, imagesy, is_resource;
 use const PHP_MAJOR_VERSION;
 
 /**
  * This class is used to help decode images from files which arrive as GD Resource
  * It does not support rotation.
  */
-final class GDLuminanceSource extends LuminanceSource{
+final class GDLuminanceSource extends LuminanceSourceAbstract{
 
 	/**
 	 * @var resource|\GdImage
@@ -40,7 +41,7 @@ final class GDLuminanceSource extends LuminanceSource{
 		/** @noinspection PhpFullyQualifiedNameUsageInspection */
 		if(
 			(PHP_MAJOR_VERSION >= 8 && !$gdImage instanceof \GdImage)
-			|| (PHP_MAJOR_VERSION < 8 && (!is_resource($gdImage) || get_resource_type($gdImage) !== 'gd'))
+			|| (!is_resource($gdImage) || get_resource_type($gdImage) !== 'gd')
 		){
 			throw new InvalidArgumentException('Invalid GD image source.');
 		}
@@ -64,6 +65,18 @@ final class GDLuminanceSource extends LuminanceSource{
 				$this->setLuminancePixel($pixel['red'], $pixel['green'], $pixel['blue']);
 			}
 		}
+	}
+
+	/** @inheritDoc */
+	public static function fromFile(string $path):self{
+		$path = self::checkFile($path);
+
+		return new self(imagecreatefromstring(file_get_contents($path)));
+	}
+
+	/** @inheritDoc */
+	public static function fromBlob(string $blob):self{
+		return new self(imagecreatefromstring($blob));
 	}
 
 }

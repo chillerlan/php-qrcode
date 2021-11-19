@@ -1,6 +1,6 @@
 <?php
 /**
- * Class LuminanceSource
+ * Class LuminanceSourceAbstract
  *
  * @created      24.01.2021
  * @author       ZXing Authors
@@ -12,7 +12,7 @@
 namespace chillerlan\QRCode\Decoder;
 
 use InvalidArgumentException;
-use function array_slice, array_splice;
+use function array_slice, array_splice, file_exists, is_file, is_readable, realpath;
 
 /**
  * The purpose of this class hierarchy is to abstract different bitmap implementations across
@@ -23,7 +23,7 @@ use function array_slice, array_splice;
  *
  * @author dswitkin@google.com (Daniel Switkin)
  */
-abstract class LuminanceSource{
+abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 
 	protected array $luminances;
 	protected int   $width;
@@ -38,47 +38,24 @@ abstract class LuminanceSource{
 		// In order to measure pure decoding speed, we convert the entire image to a greyscale array
 		// up front, which is the same as the Y channel of the YUVLuminanceSource in the real app.
 		$this->luminances = [];
-		// @todo: grayscale?
-		//$this->luminances = $this->grayScaleToBitmap($this->grayscale());
 	}
 
-	/**
-	 * Fetches luminance data for the underlying bitmap. Values should be fetched using:
-	 * {@code int luminance = array[y * width + x] & 0xff}
-	 *
-	 * @return array A row-major 2D array of luminance values. Do not use result.length as it may be
-	 *         larger than width * height bytes on some platforms. Do not modify the contents
-	 *         of the result.
-	 */
+	/** @inheritDoc */
 	public function getMatrix():array{
 		return $this->luminances;
 	}
 
-	/**
-	 * @return int The width of the bitmap.
-	 */
+	/** @inheritDoc */
 	public function getWidth():int{
 		return $this->width;
 	}
 
-	/**
-	 * @return int The height of the bitmap.
-	 */
+	/** @inheritDoc */
 	public function getHeight():int{
 		return $this->height;
 	}
 
-	/**
-	 * Fetches one row of luminance data from the underlying platform's bitmap. Values range from
-	 * 0 (black) to 255 (white). Because Java does not have an unsigned byte type, callers will have
-	 * to bitwise and with 0xff for each value. It is preferable for implementations of this method
-	 * to only fetch this row rather than the whole image, since no 2D Readers may be installed and
-	 * getMatrix() may never be called.
-	 *
-	 * @param int $y  The row to fetch, which must be in [0,getHeight())
-	 *
-	 * @return array An array containing the luminance data.
-	 */
+	/** @inheritDoc */
 	public function getRow(int $y):array{
 
 		if($y < 0 || $y >= $this->getHeight()){
@@ -93,11 +70,7 @@ abstract class LuminanceSource{
 	}
 
 	/**
-	 * @param int $r
-	 * @param int $g
-	 * @param int $b
 	 *
-	 * @return void
 	 */
 	protected function setLuminancePixel(int $r, int $g, int $b):void{
 		$this->luminances[] = $r === $g && $g === $b
@@ -105,6 +78,25 @@ abstract class LuminanceSource{
 			? $r // (($r + 128) % 256) - 128;
 			// Calculate luminance cheaply, favoring green.
 			: ($r + 2 * $g + $b) / 4; // (((($r + 2 * $g + $b) / 4) + 128) % 256) - 128;
+	}
+
+	/**
+	 *
+	 */
+	protected static function checkFile(string $path):string{
+		$path = trim($path);
+
+		if(!file_exists($path) || !is_file($path) || !is_readable($path)){
+			throw new InvalidArgumentException('invalid file: '.$path);
+		}
+
+		$realpath = realpath($path);
+
+		if($realpath === false){
+			throw new InvalidArgumentException('unable to resolve path: '.$path);
+		}
+
+		return $realpath;
 	}
 
 }

@@ -12,6 +12,7 @@ namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Common\{ECICharset, MaskPattern, MaskPatternTester, Mode};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number, QRData, QRCodeDataException, QRDataModeInterface, QRMatrix};
+use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, GDLuminanceSource, IMagickLuminanceSource};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString};
 use chillerlan\Settings\SettingsContainerInterface;
 use function class_exists, class_implements, in_array, mb_convert_encoding, mb_detect_encoding;
@@ -81,15 +82,6 @@ class QRCode{
 	];
 
 	/**
-	 * A collection of one or more data segments of [classname, data] to write
-	 *
-	 * @see \chillerlan\QRCode\Data\QRDataModeInterface
-	 *
-	 * @var \chillerlan\QRCode\Data\QRDataModeInterface[]
-	 */
-	protected array $dataSegments = [];
-
-	/**
 	 * The settings container
 	 *
 	 * @var \chillerlan\QRCode\QROptions|\chillerlan\Settings\SettingsContainerInterface
@@ -102,12 +94,31 @@ class QRCode{
 	protected QRData $dataInterface;
 
 	/**
+	 * A collection of one or more data segments of [classname, data] to write
+	 *
+	 * @see \chillerlan\QRCode\Data\QRDataModeInterface
+	 *
+	 * @var \chillerlan\QRCode\Data\QRDataModeInterface[]
+	 */
+	protected array $dataSegments = [];
+
+	/**
+	 * The FQCN of the luminance sporce class to use in the reader (GD or Imagick)
+	 *
+	 * @see \chillerlan\QRCode\Decoder\LuminanceSourceInterface
+	 */
+	private string $luminanceSourceClass;
+
+	/**
 	 * QRCode constructor.
 	 *
 	 * Sets the options instance
 	 */
 	public function __construct(SettingsContainerInterface $options = null){
-		$this->options = $options ?? new QROptions;
+		$this->options              = $options ?? new QROptions;
+		$this->luminanceSourceClass = $this->options->useImagickIfAvailable
+			? IMagickLuminanceSource::class
+			: GDLuminanceSource::class;
 	}
 
 	/**
@@ -303,6 +314,31 @@ class QRCode{
 		}
 
 		throw new QRCodeException('unable to add ECI segment');
+	}
+
+	/**
+	 * Clears the data segments array
+	 */
+	public function clearSegments():self{
+		$this->dataSegments = [];
+
+		return $this;
+	}
+
+	/**
+	 * Reads a QR Code from a given file
+	 */
+	public function readFromFile(string $path):DecoderResult{
+		/** @noinspection PhpUndefinedMethodInspection */
+		return (new Decoder)->decode($this->luminanceSourceClass::fromFile($path));
+	}
+
+	/**
+	 * Reads a QR Code from the given data blob
+	 */
+	public function readFromBlob(string $blob):DecoderResult{
+		/** @noinspection PhpUndefinedMethodInspection */
+		return (new Decoder)->decode($this->luminanceSourceClass::fromBlob($blob));
 	}
 
 }

@@ -31,12 +31,12 @@ final class Decoder{
 	 * <p>Decodes a QR Code represented as a {@link \chillerlan\QRCode\Decoder\BitMatrix}.
 	 * A 1 or "true" is taken to mean a black module.</p>
 	 *
-	 * @param \chillerlan\QRCode\Decoder\LuminanceSource $source
+	 * @param \chillerlan\QRCode\Decoder\LuminanceSourceInterface $source
 	 *
 	 * @return \chillerlan\QRCode\Decoder\DecoderResult text and bytes encoded within the QR Code
 	 * @throws \Exception if the QR Code cannot be decoded
 	 */
-	public function decode(LuminanceSource $source):DecoderResult{
+	public function decode(LuminanceSourceInterface $source):DecoderResult{
 		$matrix    = (new Binarizer($source))->getBlackMatrix();
 		$bitMatrix = (new Detector($matrix))->detect();
 

@@ -45,12 +45,12 @@ final class Binarizer{
 	private const LUMINANCE_SHIFT   = 3;
 	private const LUMINANCE_BUCKETS = 32;
 
-	private LuminanceSource $source;
+	private LuminanceSourceInterface $source;
 
 	/**
 	 *
 	 */
-	public function __construct(LuminanceSource $source){
+	public function __construct(LuminanceSourceInterface $source){
 		$this->source = $source;
 	}
 

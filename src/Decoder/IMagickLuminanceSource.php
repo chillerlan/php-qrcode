@@ -20,7 +20,7 @@ use function count;
  * This class is used to help decode images from files which arrive as Imagick Resource
  * It does not support rotation.
  */
-final class IMagickLuminanceSource extends LuminanceSource{
+final class IMagickLuminanceSource extends LuminanceSourceAbstract{
 
 	private Imagick $imagick;
 
@@ -51,6 +51,21 @@ final class IMagickLuminanceSource extends LuminanceSource{
 		for($i = 0; $i < $countPixels; $i += 3){
 			$this->setLuminancePixel($pixels[$i] & 0xff, $pixels[$i + 1] & 0xff, $pixels[$i + 2] & 0xff);
 		}
+	}
+
+	/** @inheritDoc */
+	public static function fromFile(string $path):self{
+		$path = self::checkFile($path);
+
+		return new self(new Imagick($path));
+	}
+
+	/** @inheritDoc */
+	public static function fromBlob(string $blob):self{
+		$im = new Imagick;
+		$im->readImageBlob($blob);
+
+		return new self($im);
 	}
 
 }

@@ -15,7 +15,7 @@ namespace chillerlan\QRCodeTest;
 use chillerlan\Settings\SettingsContainerInterface;
 use Exception;
 use chillerlan\QRCode\Common\{EccLevel, Mode, Version};
-use chillerlan\QRCode\{QRCode, QROptions, QRCodeReader};
+use chillerlan\QRCode\{QRCode, QROptions};
 use PHPUnit\Framework\TestCase;
 use function extension_loaded, range, str_repeat, substr;
 
@@ -64,9 +64,9 @@ class QRCodeReaderTest extends TestCase{
 	public function testReaderGD(string $img, string $expected):void{
 		$this->options->useImagickIfAvailable = false;
 
-		$reader = new QRCodeReader($this->options);
+		$reader = new QRCode($this->options);
 
-		$this::assertSame($expected, (string)$reader->readFile(__DIR__.'/qrcodes/'.$img));
+		$this::assertSame($expected, (string)$reader->readFromFile(__DIR__.'/qrcodes/'.$img));
 	}
 
 	/**
@@ -80,9 +80,9 @@ class QRCodeReaderTest extends TestCase{
 
 		$this->options->useImagickIfAvailable = true;
 
-		$reader = new QRCodeReader($this->options);
+		$reader = new QRCode($this->options);
 
-		$this::assertSame($expected, (string)$reader->readFile(__DIR__.'/qrcodes/'.$img));
+		$this::assertSame($expected, (string)$reader->readFromFile(__DIR__.'/qrcodes/'.$img));
 	}
 
 	public function dataTestProvider():array{
@@ -120,8 +120,9 @@ class QRCodeReaderTest extends TestCase{
 		$this->options->useImagickIfAvailable = true;
 
 		try{
-			$imagedata = (new QRCode($this->options))->render($expected);
-			$result    = (new QRCodeReader($this->options))->readBlob($imagedata);
+			$qrcode = new QRCode($this->options);
+			$imagedata = $qrcode->render($expected);
+			$result    = $qrcode->readFromBlob($imagedata);
 		}
 		catch(Exception $e){
 			$this::markTestSkipped($version.$ecc.': '.$e->getMessage());
