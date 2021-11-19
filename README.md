@@ -10,7 +10,6 @@ namespaced, cleaned up, improved and other stuff.
 [![Scrunitizer CI][scrutinizer-badge]][scrutinizer]
 [![Packagist downloads][downloads-badge]][downloads]<br/>
 [![Continuous Integration][gh-action-badge]][gh-action]
-[![phpDocs][gh-docs-badge]][gh-docs]
 
 [php-badge]: https://img.shields.io/packagist/php-v/chillerlan/php-qrcode?logo=php&color=8892BF
 [php]: https://www.php.net/supported-versions.php
@@ -26,8 +25,6 @@ namespaced, cleaned up, improved and other stuff.
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 [gh-action-badge]: https://github.com/chillerlan/php-qrcode/workflows/Continuous%20Integration/badge.svg
 [gh-action]: https://github.com/chillerlan/php-qrcode/actions?query=workflow%3A%22Continuous+Integration%22
-[gh-docs-badge]: https://github.com/chillerlan/php-qrcode/workflows/Docs/badge.svg
-[gh-docs]: https://github.com/chillerlan/php-qrcode/actions?query=workflow%3ADocs
 
 ## Documentation
 
@@ -60,9 +57,13 @@ via terminal: `composer require chillerlan/php-qrcode`
 Note: replace `dev-main` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^3.2` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions.
 For PHP version ...
   - 7.4+ use `^4.3`
-  - 7.2+ use `^3.4.1` (PHP 7.2 is EOL and 7.3 soon! v3.4.1 also supports PHP8 - however, it's no longer supported)
-  - 7.0+ use `^2.0` (PHP 7.0 and 7.1 are EOL!)
+  - 7.2+ use `^3.4.1` (v3.4.1 also supports PHP8)
+  - 7.0+ use `^2.0`
   - 5.6+ use `^1.0` (please let PHP 5 die!)
+
+In case you want to keep using `dev-main`, specify the hash of a commit to avoid running into unforseen issues like so: `dev-main#b625396e0752d79747a55205ae7e191eeb459dcd`
+
+PSA: [PHP 7.0 - 7.3 are EOL](https://www.php.net/supported-versions.php) and therefore the respective `QRCode` versions are also no longer supported!
 
 ### Quickstart
 We want to encode this URI for a mobile authenticator into a QRcode image:
@@ -101,7 +102,7 @@ Hi, please check out my other projects that are way cooler than qrcodes!
 I don't take responsibility for molten CPUs, misled applications, failed log-ins etc.. Use at your own risk!
 
 #### License notice
-Parts of this code are [ported to php](https://github.com/khanamiryan/php-qrcode-detector-decoder) from the [ZXing project](https://github.com/zxing/zxing) and licensed under the Apache License, Version 2.0.
+Parts of this code are [ported to php](https://github.com/khanamiryan/php-qrcode-detector-decoder) from the [ZXing project](https://github.com/zxing/zxing) and licensed under the [Apache License, Version 2.0](./NOTICE).
 
 #### Trademark Notice
 
