@@ -10,7 +10,6 @@ namespaced, cleaned up, improved and other stuff.
 [![Scrunitizer CI][scrutinizer-badge]][scrutinizer]
 [![Packagist downloads][downloads-badge]][downloads]<br/>
 [![Continuous Integration][gh-action-badge]][gh-action] 
-[![phpDocs][gh-docs-badge]][gh-docs]
 
 [php-badge]: https://img.shields.io/packagist/php-v/chillerlan/php-qrcode?logo=php&color=8892BF
 [php]: https://www.php.net/supported-versions.php
@@ -26,8 +25,6 @@ namespaced, cleaned up, improved and other stuff.
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 [gh-action-badge]: https://github.com/chillerlan/php-qrcode/workflows/Continuous%20Integration/badge.svg
 [gh-action]: https://github.com/chillerlan/php-qrcode/actions?query=workflow%3A%22Continuous+Integration%22
-[gh-docs-badge]: https://github.com/chillerlan/php-qrcode/workflows/Docs/badge.svg
-[gh-docs]: https://github.com/chillerlan/php-qrcode/actions?query=workflow%3ADocs
 
 ## Documentation
 
