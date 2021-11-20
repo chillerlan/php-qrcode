@@ -2536,6 +2536,11 @@ Search.appendIndex(
             "summary": "ISO\/IEC\u002018004\u003A2000\u00208.3.6\u0020\u002D\u0020Mixing\u0020modes\nISO\/IEC\u002018004\u003A2000\u0020Annex\u0020H\u0020\u002D\u0020Optimisation\u0020of\u0020bit\u0020stream\u0020length",
             "url": "classes/chillerlan-QRCode-QRCode.html#method_addSegment"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AclearSegments\u0028\u0029",
+            "name": "clearSegments",
+            "summary": "Clears\u0020the\u0020data\u0020segments\u0020array",
+            "url": "classes/chillerlan-QRCode-QRCode.html#method_clearSegments"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AaddNumberSegment\u0028\u0029",
             "name": "addNumberSegment",
             "summary": "ISO\/IEC\u002018004\u003A2000\u00208.3.2\u0020\u002D\u0020Numeric\u0020Mode",
@@ -2566,11 +2571,6 @@ Search.appendIndex(
             "summary": "i\u0020hate\u0020this\u0020somehow\u0020but\u0020i\u0027ll\u0020leave\u0020it\u0020for\u0020now",
             "url": "classes/chillerlan-QRCode-QRCode.html#method_addEciSegment"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AclearSegments\u0028\u0029",
-            "name": "clearSegments",
-            "summary": "Clears\u0020the\u0020data\u0020segments\u0020array",
-            "url": "classes/chillerlan-QRCode-QRCode.html#method_clearSegments"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AreadFromFile\u0028\u0029",
             "name": "readFromFile",
             "summary": "Reads\u0020a\u0020QR\u0020Code\u0020from\u0020a\u0020given\u0020file",
@@ -2580,6 +2580,11 @@ Search.appendIndex(
             "name": "readFromBlob",
             "summary": "Reads\u0020a\u0020QR\u0020Code\u0020from\u0020the\u0020given\u0020data\u0020blob",
             "url": "classes/chillerlan-QRCode-QRCode.html#method_readFromBlob"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AreadFromSource\u0028\u0029",
+            "name": "readFromSource",
+            "summary": "Reads\u0020a\u0020QR\u0020Code\u0020from\u0020the\u0020given\u0020luminance\u0020source",
+            "url": "classes/chillerlan-QRCode-QRCode.html#method_readFromSource"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AVERSION_AUTO",
             "name": "VERSION_AUTO",
@@ -3216,11 +3221,6 @@ Search.appendIndex(
             "summary": "Tests\u0020the\u0020QR\u0020Code\u0020reader",
             "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest\u003A\u003AsetUp\u0028\u0029",
-            "name": "setUp",
-            "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html#method_setUp"
-        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest\u003A\u003AqrCodeProvider\u0028\u0029",
             "name": "qrCodeProvider",
             "summary": "",
@@ -3236,6 +3236,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html#method_testReaderImagick"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest\u003A\u003AtestReaderMultiSegment\u0028\u0029",
+            "name": "testReaderMultiSegment",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html#method_testReaderMultiSegment"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest\u003A\u003AdataTestProvider\u0028\u0029",
             "name": "dataTestProvider",
             "summary": "",
@@ -3250,11 +3255,6 @@ Search.appendIndex(
             "name": "loremipsum",
             "summary": "",
             "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html#constant_loremipsum"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest\u003A\u003A\u0024options",
-            "name": "options",
-            "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html#property_options"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeTest",
             "name": "QRCodeTest",
