@@ -12,7 +12,7 @@ namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Common\{ECICharset, MaskPattern, MaskPatternTester, Mode};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number, QRData, QRCodeDataException, QRDataModeInterface, QRMatrix};
-use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, GDLuminanceSource, IMagickLuminanceSource};
+use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, GDLuminanceSource, IMagickLuminanceSource, LuminanceSourceInterface};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString};
 use chillerlan\Settings\SettingsContainerInterface;
 use function class_exists, class_implements, in_array, mb_convert_encoding, mb_detect_encoding;
@@ -249,6 +249,15 @@ class QRCode{
 	}
 
 	/**
+	 * Clears the data segments array
+	 */
+	public function clearSegments():self{
+		$this->dataSegments = [];
+
+		return $this;
+	}
+
+	/**
 	 * ISO/IEC 18004:2000 8.3.2 - Numeric Mode
 	 */
 	public function addNumberSegment(string $data):self{
@@ -317,20 +326,11 @@ class QRCode{
 	}
 
 	/**
-	 * Clears the data segments array
-	 */
-	public function clearSegments():self{
-		$this->dataSegments = [];
-
-		return $this;
-	}
-
-	/**
 	 * Reads a QR Code from a given file
 	 */
 	public function readFromFile(string $path):DecoderResult{
 		/** @noinspection PhpUndefinedMethodInspection */
-		return (new Decoder)->decode($this->luminanceSourceClass::fromFile($path));
+		return $this->readFromSource($this->luminanceSourceClass::fromFile($path));
 	}
 
 	/**
@@ -338,7 +338,15 @@ class QRCode{
 	 */
 	public function readFromBlob(string $blob):DecoderResult{
 		/** @noinspection PhpUndefinedMethodInspection */
-		return (new Decoder)->decode($this->luminanceSourceClass::fromBlob($blob));
+		return $this->readFromSource($this->luminanceSourceClass::fromBlob($blob));
+	}
+
+	/**
+	 * Reads a QR Code from the given luminance source
+	 */
+	public function readFromSource(LuminanceSourceInterface $source):DecoderResult{
+		/** @noinspection PhpUndefinedMethodInspection */
+		return (new Decoder)->decode($source);
 	}
 
 }
