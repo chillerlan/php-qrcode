@@ -102,7 +102,7 @@ class QRCodeReaderTest extends TestCase{
 		$data = [];
 		$str  = str_repeat($this::loremipsum, 5);
 
-		foreach(range(1, 10) as $v){
+		foreach(range(1, 40) as $v){
 			$version = new Version($v);
 
 			foreach(EccLevel::MODES as $ecc => $_){
