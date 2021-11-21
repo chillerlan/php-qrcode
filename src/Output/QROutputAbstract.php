@@ -115,8 +115,6 @@ abstract class QROutputAbstract implements QROutputInterface{
 
 	/**
 	 * @inheritDoc
-	 *
-	 * @return mixed
 	 */
 	public function dump(string $file = null){
 		$file ??= $this->options->cachefile;

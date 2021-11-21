@@ -22,6 +22,9 @@ use function chr, implode, mb_convert_encoding, mb_detect_encoding, mb_internal_
  */
 final class Kanji extends QRDataModeAbstract{
 
+	/**
+	 * @inheritDoc
+	 */
 	protected static int $datamode = Mode::DATA_KANJI;
 
 	/**
@@ -30,19 +33,18 @@ final class Kanji extends QRDataModeAbstract{
 	public function __construct(string $data){
 		parent::__construct($data);
 
-		/** @noinspection PhpFieldAssignmentTypeMismatchInspection */
 		$this->data = mb_convert_encoding($this->data, 'SJIS', mb_detect_encoding($this->data));
 	}
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 */
 	protected function getCharCount():int{
 		return mb_strlen($this->data, 'SJIS');
 	}
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 */
 	public function getLengthInBits():int{
 		return $this->getCharCount() * 13;
@@ -69,7 +71,7 @@ final class Kanji extends QRDataModeAbstract{
 	}
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException on an illegal character occurence
 	 */
@@ -105,7 +107,7 @@ final class Kanji extends QRDataModeAbstract{
 	}
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */

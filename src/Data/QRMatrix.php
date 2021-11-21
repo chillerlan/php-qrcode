@@ -13,7 +13,7 @@ namespace chillerlan\QRCode\Data;
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 
 use SplFixedArray;
-use function array_fill, array_push, array_unshift, floor, max, min, range;
+use function array_fill, array_unshift, floor, max, min, range;
 
 /**
  * Holds a numerical representation of the final QR Code;
@@ -414,7 +414,7 @@ final class QRMatrix{
 		for($y = 0; $y < $this->moduleCount; $y++){
 			for($i = 0; $i < $size; $i++){
 				array_unshift($this->matrix[$y], $this::M_QUIETZONE);
-				array_push($this->matrix[$y], $this::M_QUIETZONE);
+				$this->matrix[$y][] = $this::M_QUIETZONE;
 			}
 		}
 
@@ -424,7 +424,7 @@ final class QRMatrix{
 
 		for($i = 0; $i < $size; $i++){
 			array_unshift($this->matrix, $r);
-			array_push($this->matrix, $r);
+			$this->matrix[] = $r;
 		}
 
 		return $this;

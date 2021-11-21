@@ -89,7 +89,7 @@ class QRCodeReaderTest extends TestCase{
 		$byte     = 'https://smiley.codes/qrcode/';
 
 		$qrcode = (new QRCode($options))
-			->addNumberSegment($numeric)
+			->addNumericSegment($numeric)
 			->addAlphaNumSegment($alphanum)
 			->addKanjiSegment($kanji)
 			->addByteSegment($byte)

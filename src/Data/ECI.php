@@ -19,6 +19,9 @@ use chillerlan\QRCode\Common\{BitBuffer, ECICharset, Mode};
  */
 final class ECI extends QRDataModeAbstract{
 
+	/**
+	 * @inheritDoc
+	 */
 	protected static int $datamode = Mode::DATA_ECI;
 
 	/**
@@ -41,7 +44,7 @@ final class ECI extends QRDataModeAbstract{
 		return 8;
 	}
 
-		/**
+	/**
 	 * @inheritDoc
 	 */
 	public function write(BitBuffer $bitBuffer, int $versionNumber):void{

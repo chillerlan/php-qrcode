@@ -116,6 +116,7 @@ class QRCode{
 	 */
 	public function __construct(SettingsContainerInterface $options = null){
 		$this->options              = $options ?? new QROptions;
+		// i hate this
 		$this->luminanceSourceClass = $this->options->useImagickIfAvailable
 			? IMagickLuminanceSource::class
 			: GDLuminanceSource::class;
@@ -241,6 +242,8 @@ class QRCode{
 	}
 
 	/**
+	 * Adds a data segment
+	 *
 	 * ISO/IEC 18004:2000 8.3.6 - Mixing modes
 	 * ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length
 	 */
@@ -258,15 +261,19 @@ class QRCode{
 	}
 
 	/**
+	 * Adds a numeric data segment
+	 *
 	 * ISO/IEC 18004:2000 8.3.2 - Numeric Mode
 	 */
-	public function addNumberSegment(string $data):self{
+	public function addNumericSegment(string $data):self{
 		$this->addSegment(new Number($data));
 
 		return $this;
 	}
 
 	/**
+	 * Adds an alphanumeric data segment
+	 *
 	 * ISO/IEC 18004:2000 8.3.3 - Alphanumeric Mode
 	 */
 	public function addAlphaNumSegment(string $data):self{
@@ -276,6 +283,8 @@ class QRCode{
 	}
 
 	/**
+	 * Adds a Kanji data segment
+	 *
 	 * ISO/IEC 18004:2000 8.3.5 - Kanji Mode
 	 */
 	public function addKanjiSegment(string $data):self{
@@ -285,6 +294,8 @@ class QRCode{
 	}
 
 	/**
+	 * Adds an 8-bit byte data segment
+	 *
 	 * ISO/IEC 18004:2000 8.3.4 - 8-bit Byte Mode
 	 */
 	public function addByteSegment(string $data):self{
@@ -294,6 +305,8 @@ class QRCode{
 	}
 
 	/**
+	 * Adds a standalone ECI designator
+	 *
 	 * ISO/IEC 18004:2000 8.3.1 - Extended Channel Interpretation (ECI) Mode
 	 */
 	public function addEciDesignator(int $encoding):self{
@@ -303,6 +316,8 @@ class QRCode{
 	}
 
 	/**
+	 * Adds an ECI data segment (including designator)
+	 *
 	 * i hate this somehow but i'll leave it for now
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException

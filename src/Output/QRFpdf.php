@@ -12,7 +12,6 @@
 namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\QRCodeException;
 use chillerlan\Settings\SettingsContainerInterface;
 use FPDF;
 
@@ -26,12 +25,18 @@ use function array_values, class_exists, count, is_array;
  */
 class QRFpdf extends QROutputAbstract{
 
+	/**
+	 * QRFpdf constructor.
+	 *
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
 	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
 
 		if(!class_exists(FPDF::class)){
 			// @codeCoverageIgnoreStart
-			throw new QRCodeException(
-				'The QRFpdf output requires FPDF as dependency but the class "\FPDF" couldn\'t be found.'
+			throw new QRCodeOutputException(
+				'The QRFpdf output requires FPDF (https://github.com/Setasign/FPDF)'.
+				' as dependency but the class "\\FPDF" couldn\'t be found.'
 			);
 			// @codeCoverageIgnoreEnd
 		}

@@ -27,6 +27,9 @@ final class MaskPattern{
 	public const PATTERN_110 = 0b110;
 	public const PATTERN_111 = 0b111;
 
+	/**
+	 * @var int[]
+	 */
 	public const PATTERNS = [
 		self::PATTERN_000,
 		self::PATTERN_001,
@@ -38,6 +41,9 @@ final class MaskPattern{
 		self::PATTERN_111,
 	];
 
+	/**
+	 * The current mask pattern value (0-7)
+	 */
 	private int $maskPattern;
 
 	/**

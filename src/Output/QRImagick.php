@@ -13,7 +13,6 @@
 namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\QRCodeException;
 use chillerlan\Settings\SettingsContainerInterface;
 use Imagick, ImagickDraw, ImagickPixel;
 
@@ -31,11 +30,13 @@ class QRImagick extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
+	 *
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
 
 		if(!extension_loaded('imagick')){
-			throw new QRCodeException('ext-imagick not loaded'); // @codeCoverageIgnore
+			throw new QRCodeOutputException('ext-imagick not loaded'); // @codeCoverageIgnore
 		}
 
 		parent::__construct($options, $matrix);

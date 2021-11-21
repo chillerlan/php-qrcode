@@ -11,7 +11,7 @@
 namespace chillerlan\QRCode\Common;
 
 use InvalidArgumentException;
-use function count, floor;
+use function count, floor, min;
 
 /**
  * Holds the raw binary data
@@ -30,11 +30,20 @@ final class BitBuffer{
 	 */
 	private int $length;
 
+	/**
+	 * Read count (bytes)
+	 */
 	private int $bytesRead = 0;
+
+	/**
+	 * Read count (bits)
+	 */
 	private int $bitsRead  = 0;
 
 	/**
 	 * BitBuffer constructor.
+	 *
+	 * @param int[] $bytes
 	 */
 	public function __construct(array $bytes = null){
 		$this->buffer = $bytes ?? [];
@@ -42,22 +51,12 @@ final class BitBuffer{
 	}
 
 	/**
-	 * clears the buffer
-	 */
-	public function clear():self{
-		$this->buffer = [];
-		$this->length = 0;
-
-		return $this;
-	}
-
-	/**
 	 * appends a sequence of bits
 	 */
-	public function put(int $num, int $length):self{
+	public function put(int $bits, int $length):self{
 
 		for($i = 0; $i < $length; $i++){
-			$this->putBit((($num >> ($length - $i - 1)) & 1) === 1);
+			$this->putBit((($bits >> ($length - $i - 1)) & 1) === 1);
 		}
 
 		return $this;
@@ -108,8 +107,7 @@ final class BitBuffer{
 	 *
 	 * @param int $numBits number of bits to read
 	 *
-	 * @return int representing the bits read. The bits will appear as the least-significant
-	 *         bits of the int
+	 * @return int representing the bits read. The bits will appear as the least-significant bits of the int
 	 * @throws InvalidArgumentException if numBits isn't in [1,32] or more than is available
 	 */
 	public function read(int $numBits):int{
@@ -123,7 +121,7 @@ final class BitBuffer{
 		// First, read remainder from current byte
 		if($this->bitsRead > 0){
 			$bitsLeft       = 8 - $this->bitsRead;
-			$toRead         = $numBits < $bitsLeft ? $numBits : $bitsLeft;
+			$toRead         = min($numBits, $bitsLeft);
 			$bitsToNotRead  = $bitsLeft - $toRead;
 			$mask           = (0xff >> (8 - $toRead)) << $bitsToNotRead;
 			$result         = ($this->buffer[$this->bytesRead] & $mask) >> $bitsToNotRead;

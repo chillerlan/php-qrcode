@@ -87,6 +87,9 @@ final class ECICharset{
 		self::EUC_KR                => 'EUC-KR',
 	];
 
+	/**
+	 * The current ECI character set ID
+	 */
 	private int $charsetID;
 
 	/**
@@ -102,14 +105,17 @@ final class ECICharset{
 	}
 
 	/**
-	 *
+	 * Returns the current character set ID
 	 */
 	public function getID():int{
 		return $this->charsetID;
 	}
 
 	/**
+	 * Returns the name of the current character set or null if no name is available
 	 *
+	 * @see \mb_convert_encoding()
+	 * @see \iconv()
 	 */
 	public function getName():?string{
 		return self::MB_ENCODINGS[$this->charsetID];

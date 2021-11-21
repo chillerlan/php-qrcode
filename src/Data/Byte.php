@@ -22,24 +22,27 @@ use function ord;
  */
 final class Byte extends QRDataModeAbstract{
 
+	/**
+	 * @inheritDoc
+	 */
 	protected static int $datamode = Mode::DATA_BYTE;
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 */
 	public function getLengthInBits():int{
 		return $this->getCharCount() * 8;
 	}
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 */
 	public static function validateString(string $string):bool{
 		return !empty($string);
 	}
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 */
 	public function write(BitBuffer $bitBuffer, int $versionNumber):void{
 		$len = $this->getCharCount();
@@ -59,7 +62,7 @@ final class Byte extends QRDataModeAbstract{
 	}
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */

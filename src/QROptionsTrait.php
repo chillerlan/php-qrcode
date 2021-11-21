@@ -53,7 +53,7 @@ trait QROptionsTrait{
 	protected int $eccLevel = EccLevel::L;
 
 	/**
-	 * Mask Pattern to use
+	 * Mask Pattern to use (no value in using, mostly for unit testing purposes)
 	 *
 	 * [0...7] or QRCode::MASK_PATTERN_AUTO
 	 */
@@ -335,8 +335,6 @@ trait QROptionsTrait{
 
 	/**
 	 * enables Imagick for the QR Code reader if the extension is available
-	 *
-	 * @codeCoverageIgnore
 	 */
 	protected function set_useImagickIfAvailable(bool $useImagickIfAvailable):void{
 		$this->useImagickIfAvailable = $useImagickIfAvailable && extension_loaded('imagick');

@@ -109,7 +109,7 @@ final class ReedSolomonDecoder{
 		$t     = new GenericGFPoly([1]);
 
 		// Run Euclidean algorithm until r's degree is less than R/2
-		while($r->getDegree() >= $R / 2){
+		while(2 * $r->getDegree() >= $R){
 			$rLastLast = $rLast;
 			$tLastLast = $tLast;
 			$rLast     = $r;

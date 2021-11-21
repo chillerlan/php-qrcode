@@ -27,7 +27,7 @@ final class AlphaNum extends QRDataModeAbstract{
 	 *
 	 * @var int[]
 	 */
-	private const CHAR_MAP_ALPHANUM = [
+	private const CHAR_TO_ORD = [
 		'0' =>  0, '1' =>  1, '2' =>  2, '3' =>  3, '4' =>  4, '5' =>  5, '6' =>  6, '7' =>  7,
 		'8' =>  8, '9' =>  9, 'A' => 10, 'B' => 11, 'C' => 12, 'D' => 13, 'E' => 14, 'F' => 15,
 		'G' => 16, 'H' => 17, 'I' => 18, 'J' => 19, 'K' => 20, 'L' => 21, 'M' => 22, 'N' => 23,
@@ -36,22 +36,25 @@ final class AlphaNum extends QRDataModeAbstract{
 		'+' => 40, '-' => 41, '.' => 42, '/' => 43, ':' => 44,
 	];
 
+	/**
+	 * @inheritDoc
+	 */
 	protected static int $datamode = Mode::DATA_ALPHANUM;
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 */
 	public function getLengthInBits():int{
 		return (int)ceil($this->getCharCount() * (11 / 2));
 	}
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 */
 	public static function validateString(string $string):bool{
 
 		foreach(str_split($string) as $chr){
-			if(!isset(self::CHAR_MAP_ALPHANUM[$chr])){
+			if(!isset(self::CHAR_TO_ORD[$chr])){
 				return false;
 			}
 		}
@@ -60,7 +63,7 @@ final class AlphaNum extends QRDataModeAbstract{
 	}
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 */
 	public function write(BitBuffer $bitBuffer, int $versionNumber):void{
 		$len = $this->getCharCount();
@@ -87,23 +90,23 @@ final class AlphaNum extends QRDataModeAbstract{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException on an illegal character occurence
 	 */
-	protected function getCharCode(string $chr):int{
+	private function getCharCode(string $chr):int{
 
-		if(!isset(self::CHAR_MAP_ALPHANUM[$chr])){
-			throw new QRCodeDataException(sprintf('illegal char: "%s" [%d]', $chr, ord($chr)));
+		if(isset(self::CHAR_TO_ORD[$chr])){
+			return self::CHAR_TO_ORD[$chr];
 		}
 
-		return self::CHAR_MAP_ALPHANUM[$chr];
+		throw new QRCodeDataException(sprintf('illegal char: "%s" [%d]', $chr, ord($chr)));
 	}
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
 		$length  = $bitBuffer->read(Mode::getLengthBitsForVersion(self::$datamode, $versionNumber));
-		$charmap = array_flip(self::CHAR_MAP_ALPHANUM);
+		$charmap = array_flip(self::CHAR_TO_ORD);
 
 		// @todo
 		$toAlphaNumericChar = function(int $ord) use ($charmap):string{

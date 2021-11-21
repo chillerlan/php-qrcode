@@ -42,10 +42,4 @@ final class BitBufferTest extends TestCase{
 		$this::assertSame(4, $this->bitBuffer->getLength());
 	}
 
-	public function testClear():void{
-		$this->bitBuffer->clear();
-		$this::assertSame([], $this->bitBuffer->getBuffer());
-		$this::assertSame(0, $this->bitBuffer->getLength());
-	}
-
 }

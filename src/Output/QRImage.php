@@ -13,7 +13,7 @@
 namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\{QRCode, QRCodeException};
+use chillerlan\QRCode\QRCode;
 use chillerlan\Settings\SettingsContainerInterface;
 use Exception;
 
@@ -51,12 +51,12 @@ class QRImage extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 *
-	 * @throws \chillerlan\QRCode\QRCodeException
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
 
 		if(!extension_loaded('gd')){
-			throw new QRCodeException('ext-gd not loaded'); // @codeCoverageIgnore
+			throw new QRCodeOutputException('ext-gd not loaded'); // @codeCoverageIgnore
 		}
 
 		parent::__construct($options, $matrix);
@@ -95,7 +95,7 @@ class QRImage extends QROutputAbstract{
 
 		$this->image = imagecreatetruecolor($this->length, $this->length);
 
-		// avoid: Indirect modification of overloaded property $imageTransparencyBG has no effect
+		// avoid: "Indirect modification of overloaded property $imageTransparencyBG has no effect"
 		// https://stackoverflow.com/a/10455217
 		$tbg        = $this->options->imageTransparencyBG;
 		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */

@@ -25,26 +25,29 @@ final class Number extends QRDataModeAbstract{
 	/**
 	 * @var int[]
 	 */
-	private const CHAR_MAP_NUMBER = [
+	private const NUMBER_TO_ORD = [
 		'0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9,
 	];
 
+	/**
+	 * @inheritDoc
+	 */
 	protected static int $datamode = Mode::DATA_NUMBER;
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 */
 	public function getLengthInBits():int{
 		return (int)ceil($this->getCharCount() * (10 / 3));
 	}
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 */
 	public static function validateString(string $string):bool{
 
 		foreach(str_split($string) as $chr){
-			if(!isset(self::CHAR_MAP_NUMBER[$chr])){
+			if(!isset(self::NUMBER_TO_ORD[$chr])){
 				return false;
 			}
 		}
@@ -53,7 +56,7 @@ final class Number extends QRDataModeAbstract{
 	}
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 */
 	public function write(BitBuffer $bitBuffer, int $versionNumber):void{
 		$len = $this->getCharCount();
@@ -97,7 +100,7 @@ final class Number extends QRDataModeAbstract{
 		foreach(str_split($string) as $chr){
 			$c = ord($chr);
 
-			if(!isset(self::CHAR_MAP_NUMBER[$chr])){
+			if(!isset(self::NUMBER_TO_ORD[$chr])){
 				throw new QRCodeDataException(sprintf('illegal char: "%s" [%d]', $chr, $c));
 			}
 
@@ -109,13 +112,13 @@ final class Number extends QRDataModeAbstract{
 	}
 
 	/**
-	 * @inheritdoc
+	 * @inheritDoc
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
 		$length  = $bitBuffer->read(Mode::getLengthBitsForVersion(self::$datamode, $versionNumber));
-		$charmap = array_flip(self::CHAR_MAP_NUMBER);
+		$charmap = array_flip(self::NUMBER_TO_ORD);
 
 		// @todo
 		$toNumericChar = function(int $ord) use ($charmap):string{

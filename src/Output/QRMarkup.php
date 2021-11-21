@@ -24,8 +24,8 @@ class QRMarkup extends QROutputAbstract{
 	/**
 	 * @see \sprintf()
 	 */
-	protected string $svgHeader = '<svg xmlns="http://www.w3.org/2000/svg" class="qr-svg %1$s" '.
-	                              'style="width: 100%%; height: auto;" viewBox="0 0 %2$d %2$d">';
+	protected string $svgHeader = '<svg xmlns="http://www.w3.org/2000/svg"'.
+	' class="qr-svg %1$s" style="width: 100%%; height: auto;" viewBox="0 0 %2$d %2$d">';
 
 	/**
 	 * @inheritDoc

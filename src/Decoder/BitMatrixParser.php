@@ -88,7 +88,7 @@ final class BitMatrixParser{
 		// Get the data mask for the format used in this QR Code. This will exclude
 		// some bits from reading as we wind through the bit matrix.
 		$dimension = $this->bitMatrix->getDimension();
-		$this->bitMatrix->unmask($dimension, $formatInfo->getDataMask());
+		$this->bitMatrix->unmask($dimension, $formatInfo->getMaskPattern());
 		$functionPattern = $this->bitMatrix->buildFunctionPattern($version);
 
 		$readingUp    = true;
@@ -189,8 +189,8 @@ final class BitMatrixParser{
 		// Should return null, but, some QR codes apparently do not mask this info.
 		// Try again by actually masking the pattern first.
 		$this->parsedFormatInfo = $this->doDecodeFormatInformation(
-			$formatInfoBits1 ^ FormatInformation::MASK_QR,
-			$formatInfoBits2 ^ FormatInformation::MASK_QR
+			$formatInfoBits1 ^ FormatInformation::FORMAT_INFO_MASK_QR,
+			$formatInfoBits2 ^ FormatInformation::FORMAT_INFO_MASK_QR
 		);
 
 		if($this->parsedFormatInfo !== null){

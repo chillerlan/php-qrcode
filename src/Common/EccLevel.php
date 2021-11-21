@@ -15,7 +15,7 @@ use chillerlan\QRCode\QRCodeException;
 use function array_column, array_combine, array_keys;
 
 /**
- *
+ * This class encapsulates the four error correction levels defined by the QR code standard.
  */
 final class EccLevel{
 
@@ -46,6 +46,9 @@ final class EccLevel{
 		self::H => 3,
 	];
 
+	/**
+	 * @var string[]
+	 */
 	public const MODES_STRING = [
 		self::L => 'L',
 		self::M => 'M',
@@ -152,6 +155,14 @@ final class EccLevel{
 		],
 	];
 
+	/**
+	 * The current ECC level value
+	 *
+	 * L: 0b01
+	 * M: 0b00
+	 * Q: 0b11
+	 * H: 0b10
+	 */
 	private int $eccLevel;
 
 	/**

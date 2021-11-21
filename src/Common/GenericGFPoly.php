@@ -16,11 +16,11 @@ use InvalidArgumentException;
 use function array_fill, array_slice, array_splice, count;
 
 /**
- * <p>Represents a polynomial whose coefficients are elements of a GF.
- * Instances of this class are immutable.</p>
+ * Represents a polynomial whose coefficients are elements of a GF.
+ * Instances of this class are immutable.
  *
- * <p>Much credit is due to William Rucklidge since portions of this code are an indirect
- * port of his C++ Reed-Solomon implementation.</p>
+ * Much credit is due to William Rucklidge since portions of this code are an indirect
+ * port of his C++ Reed-Solomon implementation.
  *
  * @author Sean Owen
  */
@@ -34,7 +34,7 @@ final class GenericGFPoly{
 	 * @param int|null   $degree
 	 *
 	 * @throws \InvalidArgumentException if argument is null or empty, or if leading coefficient is 0 and this is not a
-	 *                                  constant polynomial (that is, it is not the monomial "0")
+	 *                                   constant polynomial (that is, it is not the monomial "0")
 	 */
 	public function __construct(array $coefficients, int $degree = null){
 		$degree ??= 0;

@@ -12,15 +12,14 @@
 namespace chillerlan\QRCode\Common;
 
 /**
- * <p>Encapsulates a QR Code's format information, including the data mask used and
- * error correction level.</p>
+ * Encapsulates a QR Code's format information, including the data mask used and error correction level.
  *
  * @author Sean Owen
- * @see    \chillerlan\QRCode\Common\ErrorCorrectionLevel
+ * @see    \chillerlan\QRCode\Common\EccLevel
  */
 final class FormatInformation{
 
-	public const MASK_QR = 0x5412;
+	public const FORMAT_INFO_MASK_QR = 0x5412;
 
 	/**
 	 * See ISO 18004:2006, Annex C, Table C.1
@@ -62,29 +61,41 @@ final class FormatInformation{
 		[0x1F, 0x2BED],
 	];
 
+	/**
+	 * The current ECC level value
+	 *
+	 * L: 0b01
+	 * M: 0b00
+	 * Q: 0b11
+	 * H: 0b10
+	 */
 	private int $errorCorrectionLevel;
-	private int $dataMask;
 
 	/**
-	 *
+	 * The current mask pattern (0-7)
+	 */
+	private int $maskPattern;
+
+	/**
+	 * Receives the format information from a parsed QR Code, detects ECC level and mask pattern
 	 */
 	public function __construct(int $formatInfo){
 		$this->errorCorrectionLevel = ($formatInfo >> 3) & 0x03; // Bits 3,4
-		$this->dataMask             = ($formatInfo & 0x07); // Bottom 3 bits
+		$this->maskPattern          = ($formatInfo & 0x07); // Bottom 3 bits
 	}
 
 	/**
-	 *
+	 * Returns and EccLevel instance ith the detected ECC level set
 	 */
 	public function getErrorCorrectionLevel():EccLevel{
 		return new EccLevel($this->errorCorrectionLevel);
 	}
 
 	/**
-	 *
+	 * Returns a MaskPattern instance with the detected mask pattern set
 	 */
-	public function getDataMask():MaskPattern{
-		return new MaskPattern($this->dataMask);
+	public function getMaskPattern():MaskPattern{
+		return new MaskPattern($this->maskPattern);
 	}
 
 }
