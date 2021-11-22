@@ -15,8 +15,8 @@ If you have a question or an issue that is not a bug, please use the Q&A section
 A clear and concise description of what the bug is.
 
 **Steps to reproduce the behavior**
-- Execute ...
-- ...
+- When i do ...
+- The code below ...
 - Error message: ...
 
 **Code sample**
@@ -32,7 +32,7 @@ If applicable, add screenshots to help explain your problem.
 
 **Environment (please complete the following information):**
  - PHP version/OS: [e.g. 7.4.12, Ubuntu 20.04]
- - Library Version [e.g. 4.3.1]
+ - Library version: [e.g. 4.3.1]
 
 **Additional context**
 Add any other context about the problem here.
