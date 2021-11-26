@@ -12,7 +12,7 @@
 
 namespace chillerlan\QRCodeTest;
 
-use Exception;
+use Exception, Generator;
 use chillerlan\QRCode\Common\{EccLevel, Mode, Version};
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Decoder\{GDLuminanceSource, IMagickLuminanceSource};
@@ -98,9 +98,8 @@ class QRCodeReaderTest extends TestCase{
 		$this::assertSame($numeric.$alphanum.$kanji.$byte, (string)$qrcode->readFromBlob($qrcode->render()));
 	}
 
-	public function dataTestProvider():array{
-		$data = [];
-		$str  = str_repeat($this::loremipsum, 5);
+	public function dataTestProvider():Generator{
+		$str = str_repeat($this::loremipsum, 5);
 
 		foreach(range(1, 40) as $v){
 			$version = new Version($v);
@@ -108,16 +107,14 @@ class QRCodeReaderTest extends TestCase{
 			foreach(EccLevel::MODES as $ecc => $_){
 				$eccLevel = new EccLevel($ecc);
 
-				$data['version: '.$version.$eccLevel] = [
+				yield 'version: '.$version.$eccLevel => [
 					$version,
 					$eccLevel,
-					/** @phan-suppress-next-line PhanTypeMismatchArgumentNullableInternal */
-					substr($str, 0, $version->getMaxLengthForMode(Mode::DATA_BYTE, $eccLevel))
+					substr($str, 0, $version->getMaxLengthForMode(Mode::DATA_BYTE, $eccLevel) ?? '')
 				];
 			}
 		}
 
-		return $data;
 	}
 
 	/**
