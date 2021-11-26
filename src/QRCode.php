@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\QRCode\Common\{ECICharset, MaskPattern, MaskPatternTester, Mode};
+use chillerlan\QRCode\Common\{EccLevel, ECICharset, MaskPattern, MaskPatternTester, Mode};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number, QRData, QRCodeDataException, QRDataModeInterface, QRMatrix};
 use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, GDLuminanceSource, IMagickLuminanceSource, LuminanceSourceInterface};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString};
@@ -32,6 +32,21 @@ class QRCode{
 	public const VERSION_AUTO       = -1;
 	/** @var int */
 	public const MASK_PATTERN_AUTO  = -1;
+
+	/**
+	 * @deprecated backward compatibility
+	 * @see \chillerlan\QRCode\Common\EccLevel
+	 */
+	/** @var int */
+	public const ECC_L     = EccLevel::L;
+	/** @var int */
+	public const ECC_M     = EccLevel::M;
+	/** @var int */
+	public const ECC_Q     = EccLevel::Q;
+	/** @var int */
+	public const ECC_H     = EccLevel::H;
+	/** @var int[] */
+	public const ECC_MODES = EccLevel::MODES;
 
 	/** @var string */
 	public const OUTPUT_MARKUP_HTML = 'html';
