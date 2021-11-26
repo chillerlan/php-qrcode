@@ -111,12 +111,11 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/FormatInformation.php"><a href="files/src-common-formatinformation.html"><abbr title="src/Common/FormatInformation.php">FormatInformation.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">21</span>
+    <span class="phpdocumentor-element-found-in__line">20</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">&lt;p&gt;Encapsulates a QR Code&#039;s format information, including the data mask used and
-error correction level.&lt;/p&gt;</p>
+            <p class="phpdocumentor-summary">Encapsulates a QR Code&#039;s format information, including the data mask used and error correction level.</p>
 
 
 
@@ -138,7 +137,7 @@ error correction level.&lt;/p&gt;</p>
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\Common\ErrorCorrectionLevel">ErrorCorrectionLevel</abbr></span>
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a></span>
                                         
                                              
                                     </dd>
@@ -163,46 +162,46 @@ error correction level.&lt;/p&gt;</p>
 <dd>See ISO 18004:2006, Annex C, Table C.1</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#constant_MASK_QR">MASK_QR</a>
+    <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#constant_FORMAT_INFO_MASK_QR">FORMAT_INFO_MASK_QR</a>
     <span>
         &nbsp;= 0x5412                    </span>
 </dt>
 <dd></dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#property_dataMask">$dataMask</a>
-    <span>
-                &nbsp;: int            </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#property_errorCorrectionLevel">$errorCorrectionLevel</a>
     <span>
                 &nbsp;: int            </span>
 </dt>
-<dd></dd>
+<dd>The current ECC level value</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#property_maskPattern">$maskPattern</a>
+    <span>
+                &nbsp;: int            </span>
+</dt>
+<dd>The current mask pattern (0-7)</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#method___construct">__construct()</a>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#method_getDataMask">getDataMask()</a>
-    <span>
-                        &nbsp;: <a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>    </span>
-</dt>
-<dd></dd>
+<dd>Receives the format information from a parsed QR Code, detects ECC level and mask pattern</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#method_getErrorCorrectionLevel">getErrorCorrectionLevel()</a>
     <span>
                         &nbsp;: <a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>    </span>
 </dt>
-<dd></dd>
+<dd>Returns and EccLevel instance ith the detected ECC level set</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#method_getMaskPattern">getMaskPattern()</a>
+    <span>
+                        &nbsp;: <a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>    </span>
+</dt>
+<dd>Returns a MaskPattern instance with the detected mask pattern set</dd>
 
         </dl>
 
@@ -223,7 +222,7 @@ error correction level.&lt;/p&gt;</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/FormatInformation.php"><a href="files/src-common-formatinformation.html"><abbr title="src/Common/FormatInformation.php">FormatInformation.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
@@ -246,15 +245,15 @@ error correction level.&lt;/p&gt;</p>
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_MASK_QR">
-        MASK_QR
-        <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#constant_MASK_QR" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_FORMAT_INFO_MASK_QR">
+        FORMAT_INFO_MASK_QR
+        <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#constant_FORMAT_INFO_MASK_QR" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/FormatInformation.php"><a href="files/src-common-formatinformation.html"><abbr title="src/Common/FormatInformation.php">FormatInformation.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">23</span>
+    <span class="phpdocumentor-element-found-in__line">22</span>
 
     </aside>
 
@@ -262,7 +261,7 @@ error correction level.&lt;/p&gt;</p>
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">MASK_QR</span>
+    <span class="phpdocumentor-signature__name">FORMAT_INFO_MASK_QR</span>
     = <span class="phpdocumentor-signature__default-value">0x5412</span>
 </code>
 
@@ -289,27 +288,32 @@ error correction level.&lt;/p&gt;</p>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_dataMask">
-        $dataMask
-        <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#property_dataMask" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_errorCorrectionLevel">
+        $errorCorrectionLevel
+        <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#property_errorCorrectionLevel" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/FormatInformation.php"><a href="files/src-common-formatinformation.html"><abbr title="src/Common/FormatInformation.php">FormatInformation.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">66</span>
+    <span class="phpdocumentor-element-found-in__line">72</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The current ECC level value</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$dataMask</span>
+    <span class="phpdocumentor-signature__name">$errorCorrectionLevel</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>L: 0b01
+M: 0b00
+Q: 0b11
+H: 0b10</p>
+</section>
 
         <section class="phpdocumentor-description"></section>
 
@@ -323,28 +327,28 @@ error correction level.&lt;/p&gt;</p>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_errorCorrectionLevel">
-        $errorCorrectionLevel
-        <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#property_errorCorrectionLevel" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_maskPattern">
+        $maskPattern
+        <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#property_maskPattern" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/FormatInformation.php"><a href="files/src-common-formatinformation.html"><abbr title="src/Common/FormatInformation.php">FormatInformation.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">65</span>
+    <span class="phpdocumentor-element-found-in__line">77</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The current mask pattern (0-7)</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$errorCorrectionLevel</span>
+    <span class="phpdocumentor-signature__name">$maskPattern</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <section class="phpdocumentor-description"></section>
 
     
@@ -370,11 +374,12 @@ error correction level.&lt;/p&gt;</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/FormatInformation.php"><a href="files/src-common-formatinformation.html"><abbr title="src/Common/FormatInformation.php">FormatInformation.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">71</span>
+    <span class="phpdocumentor-element-found-in__line">82</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Receives the format information from a parsed QR Code, detects ECC level and mask pattern</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$formatInfo</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
@@ -406,38 +411,6 @@ error correction level.&lt;/p&gt;</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getDataMask">
-        getDataMask()
-        <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#method_getDataMask" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/FormatInformation.php"><a href="files/src-common-formatinformation.html"><abbr title="src/Common/FormatInformation.php">FormatInformation.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">86</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">getDataMask</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a></span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a></span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_getErrorCorrectionLevel">
         getErrorCorrectionLevel()
         <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#method_getErrorCorrectionLevel" class="headerlink"><i class="fas fa-link"></i></a>
@@ -445,11 +418,12 @@ error correction level.&lt;/p&gt;</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/FormatInformation.php"><a href="files/src-common-formatinformation.html"><abbr title="src/Common/FormatInformation.php">FormatInformation.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">79</span>
+    <span class="phpdocumentor-element-found-in__line">90</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Returns and EccLevel instance ith the detected ECC level set</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">getErrorCorrectionLevel</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a></span></code>
@@ -460,6 +434,39 @@ error correction level.&lt;/p&gt;</p>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a></span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getMaskPattern">
+        getMaskPattern()
+        <a href="classes/chillerlan-QRCode-Common-FormatInformation.html#method_getMaskPattern" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/FormatInformation.php"><a href="files/src-common-formatinformation.html"><abbr title="src/Common/FormatInformation.php">FormatInformation.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">97</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Returns a MaskPattern instance with the detected mask pattern set</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">getMaskPattern</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a></span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a></span>
             &mdash;
         
     

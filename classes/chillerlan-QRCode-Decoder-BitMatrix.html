@@ -212,10 +212,8 @@
     <span>
                         &nbsp;: void    </span>
 </dt>
-<dd>&lt;p&gt;Encapsulates data masks for the data bits in a QR code, per ISO 18004:2006 6.8. Implementations
-of this class can un-mask a raw BitMatrix. For simplicity, they will unmask the entire BitMatrix,
-including areas used for finder patterns, timing patterns, etc. These areas should be unused
-after the point they are unmasked anyway.&lt;/p&gt;</dd>
+<dd>Implementations of this method reverse the data masking process applied to a QR Code and
+make its bits ready to read.</dd>
 
         </dl>
 
@@ -755,25 +753,18 @@ after the point they are unmasked anyway.&lt;/p&gt;</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">196</span>
+    <span class="phpdocumentor-element-found-in__line">188</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">&lt;p&gt;Encapsulates data masks for the data bits in a QR code, per ISO 18004:2006 6.8. Implementations
-of this class can un-mask a raw BitMatrix. For simplicity, they will unmask the entire BitMatrix,
-including areas used for finder patterns, timing patterns, etc. These areas should be unused
-after the point they are unmasked anyway.&lt;/p&gt;</p>
+        <p class="phpdocumentor-summary">Implementations of this method reverse the data masking process applied to a QR Code and
+make its bits ready to read.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">unmask</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$dimension</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$maskPattern</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"><p>Note that the diagram in section 6.8.1 is misleading since it indicates that i is column position
-and j is row position. In fact, as the text says, i is row position and j is column position.</p>
-<p>Implementations of this method reverse the data masking process applied to a QR Code and
-make its bits ready to read.</p>
-</section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">

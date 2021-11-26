@@ -180,28 +180,34 @@
     <span>
                         &nbsp;: int    </span>
 </dt>
-<dd>Checks for each group of five or more same-colored modules in a row (or column)</dd>
+<dd>Apply mask penalty rule 1 and return the penalty. Find repetitive cells with the same color and
+give penalty to them. Example: 00000 or 11111.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Common-MaskPatternTester.html#method_testLevel2">testLevel2()</a>
     <span>
                         &nbsp;: int    </span>
 </dt>
-<dd>Checks for each 2x2 area of same-colored modules in the matrix</dd>
+<dd>Apply mask penalty rule 2 and return the penalty. Find 2x2 blocks with the same color and give
+penalty to them. This is actually equivalent to the spec&#039;s rule, which is to find MxN blocks and give a
+penalty proportional to (M-1)x(N-1), because this is the number of 2x2 blocks inside such a block.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Common-MaskPatternTester.html#method_testLevel3">testLevel3()</a>
     <span>
                         &nbsp;: int    </span>
 </dt>
-<dd>Checks if there are patterns that look similar to the finder patterns (1:1:3:1:1 ratio)</dd>
+<dd>Apply mask penalty rule 3 and return the penalty. Find consecutive runs of 1:1:3:1:1:4
+starting with black, or 4:1:1:3:1:1 starting with white, and give penalty to them.  If we
+find patterns like 000010111010000, we give penalty once.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Common-MaskPatternTester.html#method_testLevel4">testLevel4()</a>
     <span>
                         &nbsp;: float    </span>
 </dt>
-<dd>Checks if more than half of the modules are dark or light, with a larger penalty for a larger difference</dd>
+<dd>Apply mask penalty rule 4 and return the penalty. Calculate the ratio of dark cells and give
+penalty if the ratio is far from 50%. It gives 10 penalty for 5% distance.</dd>
 
         </dl>
 
@@ -448,11 +454,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPatternTester.php"><a href="files/src-common-maskpatterntester.html"><abbr title="src/Common/MaskPatternTester.php">MaskPatternTester.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">77</span>
+    <span class="phpdocumentor-element-found-in__line">78</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Checks for each group of five or more same-colored modules in a row (or column)</p>
+        <p class="phpdocumentor-summary">Apply mask penalty rule 1 and return the penalty. Find repetitive cells with the same color and
+give penalty to them. Example: 00000 or 11111.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -500,11 +507,13 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPatternTester.php"><a href="files/src-common-maskpatterntester.html"><abbr title="src/Common/MaskPatternTester.php">MaskPatternTester.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">116</span>
+    <span class="phpdocumentor-element-found-in__line">119</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Checks for each 2x2 area of same-colored modules in the matrix</p>
+        <p class="phpdocumentor-summary">Apply mask penalty rule 2 and return the penalty. Find 2x2 blocks with the same color and give
+penalty to them. This is actually equivalent to the spec&#039;s rule, which is to find MxN blocks and give a
+penalty proportional to (M-1)x(N-1), because this is the number of 2x2 blocks inside such a block.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -552,11 +561,13 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPatternTester.php"><a href="files/src-common-maskpatterntester.html"><abbr title="src/Common/MaskPatternTester.php">MaskPatternTester.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">147</span>
+    <span class="phpdocumentor-element-found-in__line">152</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Checks if there are patterns that look similar to the finder patterns (1:1:3:1:1 ratio)</p>
+        <p class="phpdocumentor-summary">Apply mask penalty rule 3 and return the penalty. Find consecutive runs of 1:1:3:1:1:4
+starting with black, or 4:1:1:3:1:1 starting with white, and give penalty to them.  If we
+find patterns like 000010111010000, we give penalty once.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -604,11 +615,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPatternTester.php"><a href="files/src-common-maskpatterntester.html"><abbr title="src/Common/MaskPatternTester.php">MaskPatternTester.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">188</span>
+    <span class="phpdocumentor-element-found-in__line">194</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Checks if more than half of the modules are dark or light, with a larger penalty for a larger difference</p>
+        <p class="phpdocumentor-summary">Apply mask penalty rule 4 and return the penalty. Calculate the ratio of dark cells and give
+penalty if the ratio is far from 50%. It gives 10 penalty for 5% distance.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>

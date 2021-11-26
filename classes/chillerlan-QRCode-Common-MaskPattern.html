@@ -199,7 +199,7 @@
     <span>
                 &nbsp;: int            </span>
 </dt>
-<dd></dd>
+<dd>The current mask pattern value (0-7)</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Common-MaskPattern.html#method___construct">__construct()</a>
@@ -473,23 +473,21 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__type">array&lt;string|int, int&gt;</span>
     <span class="phpdocumentor-signature__name">PATTERNS</span>
     = <span class="phpdocumentor-signature__default-value">[self::PATTERN_000, self::PATTERN_001, self::PATTERN_010, self::PATTERN_011, self::PATTERN_100, self::PATTERN_101, self::PATTERN_110, self::PATTERN_111]</span>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -517,19 +515,19 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">41</span>
+    <span class="phpdocumentor-element-found-in__line">47</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The current mask pattern value (0-7)</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">$maskPattern</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <section class="phpdocumentor-description"></section>
 
     
@@ -555,7 +553,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">48</span>
+    <span class="phpdocumentor-element-found-in__line">54</span>
 
     </aside>
 
@@ -613,7 +611,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">72</span>
+    <span class="phpdocumentor-element-found-in__line">84</span>
 
     </aside>
 
@@ -623,8 +621,12 @@
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">getMask</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Closure">Closure</abbr></span></code>
 
-        <section class="phpdocumentor-description"><p>Note that some versions of the QR code standard have had errors in the section about mask patterns.
-The information below has been corrected.</p>
+        <section class="phpdocumentor-description"><p>Encapsulates data masks for the data bits in a QR code, per ISO 18004:2006 6.8. Implementations
+of this class can un-mask a raw BitMatrix. For simplicity, they will unmask the entire BitMatrix,
+including areas used for finder patterns, timing patterns, etc. These areas should be unused
+after the point they are unmasked anyway.</p>
+<p>Note that the diagram in section 6.8.1 is misleading since it indicates that i is column position
+and j is row position. In fact, as the text says, i is row position and j is column position.</p>
 </section>
 
     
@@ -639,6 +641,14 @@ The information below has been corrected.</p>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                     <span class="phpdocumentor-tag-link"><a href="https://www.thonky.com/qr-code-tutorial/mask-patterns"><abbr title="https://www.thonky.com/qr-code-tutorial/mask-patterns">https://www.thonky.com/qr-code-tutorial/mask-patterns</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/zxing/zxing/blob/e9e2bd280bcaeabd59d0f955798384fe6c018a6c/core/src/main/java/com/google/zxing/qrcode/decoder/DataMask.java#L32-L117"><abbr title="https://github.com/zxing/zxing/blob/e9e2bd280bcaeabd59d0f955798384fe6c018a6c/core/src/main/java/com/google/zxing/qrcode/decoder/DataMask.java#L32-L117">https://github.com/zxing/zxing/blob/e9e2bd280bcaeabd59d0f955798384fe6c018a6c/core/src/main/java/com/google/zxing/qrcode/decoder/DataMask.java#L32-L117</abbr></a></span>
                                         
                                              
                                     </dd>
@@ -663,7 +673,7 @@ The information below has been corrected.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">60</span>
+    <span class="phpdocumentor-element-found-in__line">66</span>
 
     </aside>
 

@@ -177,6 +177,41 @@
 
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/chillerlan-QRCode-QRCode.html#constant_ECC_H">ECC_H</a>
+    <span>
+        &nbsp;= chillerlanQRCodeCommonEccLevel::H                    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/chillerlan-QRCode-QRCode.html#constant_ECC_L">ECC_L</a>
+    <span>
+        &nbsp;= chillerlanQRCodeCommonEccLevel::L                    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/chillerlan-QRCode-QRCode.html#constant_ECC_M">ECC_M</a>
+    <span>
+        &nbsp;= chillerlanQRCodeCommonEccLevel::M                    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/chillerlan-QRCode-QRCode.html#constant_ECC_MODES">ECC_MODES</a>
+    <span>
+        &nbsp;= chillerlanQRCodeCommonEccLevel::MODES                    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/chillerlan-QRCode-QRCode.html#constant_ECC_Q">ECC_Q</a>
+    <span>
+        &nbsp;= chillerlanQRCodeCommonEccLevel::Q                    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-QRCode.html#constant_MASK_PATTERN_AUTO">MASK_PATTERN_AUTO</a>
     <span>
         &nbsp;= -1                    </span>
@@ -307,42 +342,42 @@
     <span>
                         &nbsp;: self    </span>
 </dt>
-<dd>ISO/IEC 18004:2000 8.3.3 - Alphanumeric Mode</dd>
+<dd>Adds an alphanumeric data segment</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-QRCode.html#method_addByteSegment">addByteSegment()</a>
     <span>
                         &nbsp;: self    </span>
 </dt>
-<dd>ISO/IEC 18004:2000 8.3.4 - 8-bit Byte Mode</dd>
+<dd>Adds an 8-bit byte data segment</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-QRCode.html#method_addEciDesignator">addEciDesignator()</a>
     <span>
                         &nbsp;: self    </span>
 </dt>
-<dd>ISO/IEC 18004:2000 8.3.1 - Extended Channel Interpretation (ECI) Mode</dd>
+<dd>Adds a standalone ECI designator</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-QRCode.html#method_addEciSegment">addEciSegment()</a>
     <span>
                         &nbsp;: self    </span>
 </dt>
-<dd>i hate this somehow but i&#039;ll leave it for now</dd>
+<dd>Adds an ECI data segment (including designator)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-QRCode.html#method_addKanjiSegment">addKanjiSegment()</a>
     <span>
                         &nbsp;: self    </span>
 </dt>
-<dd>ISO/IEC 18004:2000 8.3.5 - Kanji Mode</dd>
+<dd>Adds a Kanji data segment</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-QRCode.html#method_addNumberSegment">addNumberSegment()</a>
+    <a href="classes/chillerlan-QRCode-QRCode.html#method_addNumericSegment">addNumericSegment()</a>
     <span>
                         &nbsp;: self    </span>
 </dt>
-<dd>ISO/IEC 18004:2000 8.3.2 - Numeric Mode</dd>
+<dd>Adds a numeric data segment</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-QRCode.html#method_clearSegments">clearSegments()</a>
@@ -419,8 +454,7 @@
     <span>
                         &nbsp;: void    </span>
 </dt>
-<dd>ISO/IEC 18004:2000 8.3.6 - Mixing modes
-ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
+<dd>Adds a data segment</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-QRCode.html#method_initCustomOutputInterface">initCustomOutputInterface()</a>
@@ -446,6 +480,141 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
             Constants
             <a href="classes/chillerlan-QRCode-QRCode.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_ECC_H">
+        ECC_H
+        <a href="classes/chillerlan-QRCode-QRCode.html#constant_ECC_H" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">47</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">ECC_H</span>
+    = <span class="phpdocumentor-signature__default-value">chillerlanQRCodeCommonEccLevel::H</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_ECC_L">
+        ECC_L
+        <a href="classes/chillerlan-QRCode-QRCode.html#constant_ECC_L" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">41</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">ECC_L</span>
+    = <span class="phpdocumentor-signature__default-value">chillerlanQRCodeCommonEccLevel::L</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_ECC_M">
+        ECC_M
+        <a href="classes/chillerlan-QRCode-QRCode.html#constant_ECC_M" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">43</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">ECC_M</span>
+    = <span class="phpdocumentor-signature__default-value">chillerlanQRCodeCommonEccLevel::M</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_ECC_MODES">
+        ECC_MODES
+        <a href="classes/chillerlan-QRCode-QRCode.html#constant_ECC_MODES" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">49</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">array&lt;string|int, int&gt;</span>
+    <span class="phpdocumentor-signature__name">ECC_MODES</span>
+    = <span class="phpdocumentor-signature__default-value">chillerlanQRCodeCommonEccLevel::MODES</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_ECC_Q">
+        ECC_Q
+        <a href="classes/chillerlan-QRCode-QRCode.html#constant_ECC_Q" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">45</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">ECC_Q</span>
+    = <span class="phpdocumentor-signature__default-value">chillerlanQRCodeCommonEccLevel::Q</span>
+</code>
+
+
+    
+    
+    
+
+</article>
                     <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_MASK_PATTERN_AUTO">
         MASK_PATTERN_AUTO
@@ -482,7 +651,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">55</span>
+    <span class="phpdocumentor-element-found-in__line">70</span>
 
     </aside>
 
@@ -509,7 +678,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">53</span>
+    <span class="phpdocumentor-element-found-in__line">68</span>
 
     </aside>
 
@@ -536,7 +705,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">45</span>
+    <span class="phpdocumentor-element-found-in__line">60</span>
 
     </aside>
 
@@ -563,7 +732,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">43</span>
+    <span class="phpdocumentor-element-found-in__line">58</span>
 
     </aside>
 
@@ -590,7 +759,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">41</span>
+    <span class="phpdocumentor-element-found-in__line">56</span>
 
     </aside>
 
@@ -617,7 +786,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">51</span>
+    <span class="phpdocumentor-element-found-in__line">66</span>
 
     </aside>
 
@@ -644,7 +813,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">52</span>
 
     </aside>
 
@@ -671,7 +840,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">39</span>
+    <span class="phpdocumentor-element-found-in__line">54</span>
 
     </aside>
 
@@ -698,7 +867,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">62</span>
+    <span class="phpdocumentor-element-found-in__line">77</span>
 
     </aside>
 
@@ -726,7 +895,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">47</span>
+    <span class="phpdocumentor-element-found-in__line">62</span>
 
     </aside>
 
@@ -753,7 +922,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">49</span>
+    <span class="phpdocumentor-element-found-in__line">64</span>
 
     </aside>
 
@@ -822,7 +991,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">94</span>
+    <span class="phpdocumentor-element-found-in__line">109</span>
 
     </aside>
 
@@ -856,7 +1025,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">103</span>
+    <span class="phpdocumentor-element-found-in__line">118</span>
 
     </aside>
 
@@ -903,7 +1072,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">89</span>
+    <span class="phpdocumentor-element-found-in__line">104</span>
 
     </aside>
 
@@ -936,7 +1105,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">110</span>
+    <span class="phpdocumentor-element-found-in__line">125</span>
 
     </aside>
 
@@ -988,7 +1157,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">117</span>
+    <span class="phpdocumentor-element-found-in__line">132</span>
 
     </aside>
 
@@ -1034,17 +1203,19 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">272</span>
+    <span class="phpdocumentor-element-found-in__line">294</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">ISO/IEC 18004:2000 8.3.3 - Alphanumeric Mode</p>
+        <p class="phpdocumentor-summary">Adds an alphanumeric data segment</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">addAlphaNumSegment</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 8.3.3 - Alphanumeric Mode</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1078,17 +1249,19 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">290</span>
+    <span class="phpdocumentor-element-found-in__line">316</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">ISO/IEC 18004:2000 8.3.4 - 8-bit Byte Mode</p>
+        <p class="phpdocumentor-summary">Adds an 8-bit byte data segment</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">addByteSegment</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 8.3.4 - 8-bit Byte Mode</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1122,17 +1295,19 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">299</span>
+    <span class="phpdocumentor-element-found-in__line">327</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">ISO/IEC 18004:2000 8.3.1 - Extended Channel Interpretation (ECI) Mode</p>
+        <p class="phpdocumentor-summary">Adds a standalone ECI designator</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">addEciDesignator</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$encoding</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 8.3.1 - Extended Channel Interpretation (ECI) Mode</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1166,17 +1341,19 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">310</span>
+    <span class="phpdocumentor-element-found-in__line">340</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">i hate this somehow but i&#039;ll leave it for now</p>
+        <p class="phpdocumentor-summary">Adds an ECI data segment (including designator)</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">addEciSegment</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$encoding</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>i hate this somehow but i'll leave it for now</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1232,17 +1409,19 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">281</span>
+    <span class="phpdocumentor-element-found-in__line">305</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">ISO/IEC 18004:2000 8.3.5 - Kanji Mode</p>
+        <p class="phpdocumentor-summary">Adds a Kanji data segment</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">addKanjiSegment</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 8.3.5 - Kanji Mode</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1269,24 +1448,26 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_addNumberSegment">
-        addNumberSegment()
-        <a href="classes/chillerlan-QRCode-QRCode.html#method_addNumberSegment" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_addNumericSegment">
+        addNumericSegment()
+        <a href="classes/chillerlan-QRCode-QRCode.html#method_addNumericSegment" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">263</span>
+    <span class="phpdocumentor-element-found-in__line">283</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">ISO/IEC 18004:2000 8.3.2 - Numeric Mode</p>
+        <p class="phpdocumentor-summary">Adds a numeric data segment</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">addNumberSegment</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+                <span class="phpdocumentor-signature__name">addNumericSegment</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 8.3.2 - Numeric Mode</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1320,7 +1501,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">254</span>
+    <span class="phpdocumentor-element-found-in__line">272</span>
 
     </aside>
 
@@ -1353,7 +1534,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">153</span>
+    <span class="phpdocumentor-element-found-in__line">169</span>
 
     </aside>
 
@@ -1400,7 +1581,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">225</span>
+    <span class="phpdocumentor-element-found-in__line">241</span>
 
     </aside>
 
@@ -1444,7 +1625,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">239</span>
+    <span class="phpdocumentor-element-found-in__line">255</span>
 
     </aside>
 
@@ -1488,7 +1669,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">232</span>
+    <span class="phpdocumentor-element-found-in__line">248</span>
 
     </aside>
 
@@ -1532,7 +1713,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">218</span>
+    <span class="phpdocumentor-element-found-in__line">234</span>
 
     </aside>
 
@@ -1576,7 +1757,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">339</span>
+    <span class="phpdocumentor-element-found-in__line">369</span>
 
     </aside>
 
@@ -1620,7 +1801,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">331</span>
+    <span class="phpdocumentor-element-found-in__line">361</span>
 
     </aside>
 
@@ -1664,7 +1845,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">347</span>
+    <span class="phpdocumentor-element-found-in__line">377</span>
 
     </aside>
 
@@ -1708,7 +1889,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">129</span>
+    <span class="phpdocumentor-element-found-in__line">145</span>
 
     </aside>
 
@@ -1760,18 +1941,20 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">247</span>
+    <span class="phpdocumentor-element-found-in__line">265</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">ISO/IEC 18004:2000 8.3.6 - Mixing modes
-ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</p>
+        <p class="phpdocumentor-summary">Adds a data segment</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
                 <span class="phpdocumentor-signature__name">addSegment</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRDataModeInterface.html"><abbr title="\chillerlan\QRCode\Data\QRDataModeInterface">QRDataModeInterface</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$segment</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 8.3.6 - Mixing modes
+ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1805,7 +1988,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">201</span>
+    <span class="phpdocumentor-element-found-in__line">217</span>
 
     </aside>
 
@@ -1852,7 +2035,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">179</span>
+    <span class="phpdocumentor-element-found-in__line">195</span>
 
     </aside>
 
