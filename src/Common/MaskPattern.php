@@ -70,22 +70,28 @@ final class MaskPattern{
 	/**
 	 * Returns a closure that applies the mask for the chosen mask pattern.
 	 *
-	 * Note that some versions of the QR code standard have had errors in the section about mask patterns.
-	 * The information below has been corrected.
+	 * Encapsulates data masks for the data bits in a QR code, per ISO 18004:2006 6.8. Implementations
+	 * of this class can un-mask a raw BitMatrix. For simplicity, they will unmask the entire BitMatrix,
+	 * including areas used for finder patterns, timing patterns, etc. These areas should be unused
+	 * after the point they are unmasked anyway.
+	 *
+	 * Note that the diagram in section 6.8.1 is misleading since it indicates that i is column position
+	 * and j is row position. In fact, as the text says, i is row position and j is column position.
 	 *
 	 * @see https://www.thonky.com/qr-code-tutorial/mask-patterns
+	 * @see https://github.com/zxing/zxing/blob/e9e2bd280bcaeabd59d0f955798384fe6c018a6c/core/src/main/java/com/google/zxing/qrcode/decoder/DataMask.java#L32-L117
 	 */
 	public function getMask():Closure{
 		// $x = column (width), $y = row (height)
 		return [
-			self::PATTERN_000 => fn(int $x, int $y):int => ($x + $y) % 2,
-			self::PATTERN_001 => fn(int $x, int $y):int => $y % 2,
-			self::PATTERN_010 => fn(int $x, int $y):int => $x % 3,
-			self::PATTERN_011 => fn(int $x, int $y):int => ($x + $y) % 3,
-			self::PATTERN_100 => fn(int $x, int $y):int => ((int)($y / 2) + (int)($x / 3)) % 2,
-			self::PATTERN_101 => fn(int $x, int $y):int => (($x * $y) % 2) + (($x * $y) % 3),
-			self::PATTERN_110 => fn(int $x, int $y):int => ((($x * $y) % 2) + (($x * $y) % 3)) % 2,
-			self::PATTERN_111 => fn(int $x, int $y):int => ((($x * $y) % 3) + (($x + $y) % 2)) % 2,
+			self::PATTERN_000 => fn(int $x, int $y):bool => (($x + $y) % 2) === 0,
+			self::PATTERN_001 => fn(int $x, int $y):bool => ($y % 2) === 0,
+			self::PATTERN_010 => fn(int $x, int $y):bool => ($x % 3) === 0,
+			self::PATTERN_011 => fn(int $x, int $y):bool => (($x + $y) % 3) === 0,
+			self::PATTERN_100 => fn(int $x, int $y):bool => (((int)($y / 2) + (int)($x / 3)) % 2) === 0,
+			self::PATTERN_101 => fn(int $x, int $y):bool => ($x * $y) % 6 === 0, // ((($x * $y) % 2) + (($x * $y) % 3)) === 0,
+			self::PATTERN_110 => fn(int $x, int $y):bool => (($x * $y) % 6) < 3, // (((($x * $y) % 2) + (($x * $y) % 3)) % 2) === 0,
+			self::PATTERN_111 => fn(int $x, int $y):bool => (($x + $y + (($x * $y) % 3)) % 2) === 0, // (((($x * $y) % 3) + (($x + $y) % 2)) % 2) === 0,
 		][$this->maskPattern];
 	}
 

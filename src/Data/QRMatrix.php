@@ -571,7 +571,7 @@ final class QRMatrix{
 
 		foreach($this->matrix as $y => &$row){
 			foreach($row as $x => &$val){
-				if($mask($x, $y) === 0 && ($val & $this::M_DATA) === $this::M_DATA){
+				if($mask($x, $y) && ($val & $this::M_DATA) === $this::M_DATA){
 					$val ^= $this::IS_DARK;
 				}
 			}

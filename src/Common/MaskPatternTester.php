@@ -72,7 +72,8 @@ final class MaskPatternTester{
 	}
 
 	/**
-	 * Checks for each group of five or more same-colored modules in a row (or column)
+	 * Apply mask penalty rule 1 and return the penalty. Find repetitive cells with the same color and
+	 * give penalty to them. Example: 00000 or 11111.
 	 */
 	private function testLevel1(array $m, int $size):int{
 		$penalty = 0;
@@ -111,7 +112,9 @@ final class MaskPatternTester{
 	}
 
 	/**
-	 * Checks for each 2x2 area of same-colored modules in the matrix
+	 * Apply mask penalty rule 2 and return the penalty. Find 2x2 blocks with the same color and give
+	 * penalty to them. This is actually equivalent to the spec's rule, which is to find MxN blocks and give a
+	 * penalty proportional to (M-1)x(N-1), because this is the number of 2x2 blocks inside such a block.
 	 */
 	private function testLevel2(array $m, int $size):int{
 		$penalty = 0;
@@ -142,7 +145,9 @@ final class MaskPatternTester{
 	}
 
 	/**
-	 * Checks if there are patterns that look similar to the finder patterns (1:1:3:1:1 ratio)
+	 * Apply mask penalty rule 3 and return the penalty. Find consecutive runs of 1:1:3:1:1:4
+	 * starting with black, or 4:1:1:3:1:1 starting with white, and give penalty to them.  If we
+	 * find patterns like 000010111010000, we give penalty once.
 	 */
 	private function testLevel3(array $m, int $size):int{
 		$penalties = 0;
@@ -183,7 +188,8 @@ final class MaskPatternTester{
 	}
 
 	/**
-	 * Checks if more than half of the modules are dark or light, with a larger penalty for a larger difference
+	 * Apply mask penalty rule 4 and return the penalty. Calculate the ratio of dark cells and give
+	 * penalty if the ratio is far from 50%. It gives 10 penalty for 5% distance.
 	 */
 	private function testLevel4(array $m, int $size):float{
 		$count = 0;
