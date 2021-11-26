@@ -208,7 +208,9 @@ final class EccLevel{
 	}
 
 	/**
-	 * returns an array wit the max bit lengths for version 1-40 and the current ECC level
+	 * returns an array with the max bit lengths for version 1-40 and the current ECC level
+	 *
+	 * @return int[]
 	 */
 	public function getMaxBits():array{
 		return array_combine(

@@ -25,7 +25,7 @@ final class Byte extends QRDataModeAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected static int $datamode = Mode::DATA_BYTE;
+	protected static int $datamode = Mode::BYTE;
 
 	/**
 	 * @inheritDoc

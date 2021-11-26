@@ -32,7 +32,7 @@ final class Number extends QRDataModeAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected static int $datamode = Mode::DATA_NUMBER;
+	protected static int $datamode = Mode::NUMBER;
 
 	/**
 	 * @inheritDoc

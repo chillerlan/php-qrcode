@@ -22,7 +22,7 @@ final class ECI extends QRDataModeAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected static int $datamode = Mode::DATA_ECI;
+	protected static int $datamode = Mode::ECI;
 
 	/**
 	 * The current ECI encoding id

@@ -240,20 +240,20 @@ final class Decoder{
 			$datamode = $bits->read(4); // mode is encoded by 4 bits
 
 			// OK, assume we're done. Really, a TERMINATOR mode should have been recorded here
-			if($datamode === Mode::DATA_TERMINATOR){
+			if($datamode === Mode::TERMINATOR){
 				break;
 			}
 
-			if($datamode === Mode::DATA_ECI){
+			if($datamode === Mode::ECI){
 				// Count doesn't apply to ECI
 				$eciCharset = ECI::parseValue($bits);
 			}
 			/** @noinspection PhpStatementHasEmptyBodyInspection */
-			elseif($datamode === Mode::DATA_FNC1_FIRST || $datamode === Mode::DATA_FNC1_SECOND){
+			elseif($datamode === Mode::FNC1_FIRST || $datamode === Mode::FNC1_SECOND){
 				// We do little with FNC1 except alter the parsed result a bit according to the spec
 #				$fc1InEffect = true;
 			}
-			elseif($datamode === Mode::DATA_STRCTURED_APPEND){
+			elseif($datamode === Mode::STRCTURED_APPEND){
 				if($bits->available() < 16){
 					throw new RuntimeException('structured append: not enough bits left');
 				}
@@ -274,10 +274,10 @@ final class Decoder{
 				}*/
 #				else{
 					// "Normal" QR code modes:
-					if($datamode === Mode::DATA_NUMBER){
+					if($datamode === Mode::NUMBER){
 						$result .= Number::decodeSegment($bits, $versionNumber);
 					}
-					elseif($datamode === Mode::DATA_ALPHANUM){
+					elseif($datamode === Mode::ALPHANUM){
 						$str = AlphaNum::decodeSegment($bits, $versionNumber);
 
 						// See section 6.4.8.1, 6.4.8.2
@@ -300,7 +300,7 @@ final class Decoder{
 */
 						$result .= $str;
 					}
-					elseif($datamode === Mode::DATA_BYTE){
+					elseif($datamode === Mode::BYTE){
 						$str = Byte::decodeSegment($bits, $versionNumber);
 
 						if($eciCharset !== null){
@@ -321,7 +321,7 @@ final class Decoder{
 
 						$result .= $str;
 					}
-					elseif($datamode === Mode::DATA_KANJI){
+					elseif($datamode === Mode::KANJI){
 						$result .= Kanji::decodeSegment($bits, $versionNumber);
 					}
 					else{

@@ -110,7 +110,7 @@ class QRCodeReaderTest extends TestCase{
 				yield 'version: '.$version.$eccLevel => [
 					$version,
 					$eccLevel,
-					substr($str, 0, $version->getMaxLengthForMode(Mode::DATA_BYTE, $eccLevel) ?? '')
+					substr($str, 0, $version->getMaxLengthForMode(Mode::BYTE, $eccLevel) ?? '')
 				];
 			}
 		}

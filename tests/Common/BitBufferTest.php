@@ -26,10 +26,10 @@ final class BitBufferTest extends TestCase{
 
 	public function bitProvider():array{
 		return [
-			'number'   => [Mode::DATA_NUMBER, 16],
-			'alphanum' => [Mode::DATA_ALPHANUM, 32],
-			'byte'     => [Mode::DATA_BYTE, 64],
-			'kanji'    => [Mode::DATA_KANJI, 128],
+			'number'   => [Mode::NUMBER, 16],
+			'alphanum' => [Mode::ALPHANUM, 32],
+			'byte'     => [Mode::BYTE, 64],
+			'kanji'    => [Mode::KANJI, 128],
 		];
 	}
 

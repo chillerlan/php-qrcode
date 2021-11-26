@@ -25,7 +25,7 @@ final class Kanji extends QRDataModeAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected static int $datamode = Mode::DATA_KANJI;
+	protected static int $datamode = Mode::KANJI;
 
 	/**
 	 *

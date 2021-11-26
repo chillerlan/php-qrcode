@@ -39,7 +39,7 @@ final class AlphaNum extends QRDataModeAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected static int $datamode = Mode::DATA_ALPHANUM;
+	protected static int $datamode = Mode::ALPHANUM;
 
 	/**
 	 * @inheritDoc

@@ -146,7 +146,7 @@ class QRCode{
 
 		if($data !== null){
 			/** @var \chillerlan\QRCode\Data\QRDataModeInterface $dataInterface */
-			foreach(Mode::DATA_INTERFACES as $dataInterface){
+			foreach(Mode::INTERFACES as $dataInterface){
 
 				if($dataInterface::validateString($data)){
 					$this->addSegment(new $dataInterface($data));

@@ -21,23 +21,23 @@ final class Mode{
 	// ISO/IEC 18004:2000 Table 2
 
 	/** @var int */
-	public const DATA_TERMINATOR       = 0b0000;
+	public const TERMINATOR       = 0b0000;
 	/** @var int */
-	public const DATA_NUMBER           = 0b0001;
+	public const NUMBER           = 0b0001;
 	/** @var int */
-	public const DATA_ALPHANUM         = 0b0010;
+	public const ALPHANUM         = 0b0010;
 	/** @var int */
-	public const DATA_BYTE             = 0b0100;
+	public const BYTE             = 0b0100;
 	/** @var int */
-	public const DATA_KANJI            = 0b1000;
+	public const KANJI            = 0b1000;
 	/** @var int */
-	public const DATA_STRCTURED_APPEND = 0b0011;
+	public const STRCTURED_APPEND = 0b0011;
 	/** @var int */
-	public const DATA_FNC1_FIRST       = 0b0101;
+	public const FNC1_FIRST       = 0b0101;
 	/** @var int */
-	public const DATA_FNC1_SECOND      = 0b1001;
+	public const FNC1_SECOND      = 0b1001;
 	/** @var int */
-	public const DATA_ECI              = 0b0111;
+	public const ECI              = 0b0111;
 
 	/**
 	 * mode length bits for the version breakpoints 1-9, 10-26 and 27-40
@@ -45,10 +45,10 @@ final class Mode{
 	 * ISO/IEC 18004:2000 Table 3 - Number of bits in Character Count Indicator
 	 */
 	public const LENGTH_BITS = [
-		self::DATA_NUMBER   => [10, 12, 14],
-		self::DATA_ALPHANUM => [ 9, 11, 13],
-		self::DATA_BYTE     => [ 8, 16, 16],
-		self::DATA_KANJI    => [ 8, 10, 12],
+		self::NUMBER   => [10, 12, 14],
+		self::ALPHANUM => [9, 11, 13],
+		self::BYTE     => [8, 16, 16],
+		self::KANJI    => [8, 10, 12],
 	];
 
 	/**
@@ -56,11 +56,11 @@ final class Mode{
 	 *
 	 * @var string[]
 	 */
-	public const DATA_INTERFACES = [
-		self::DATA_NUMBER   => Number::class,
-		self::DATA_ALPHANUM => AlphaNum::class,
-		self::DATA_KANJI    => Kanji::class,
-		self::DATA_BYTE     => Byte::class,
+	public const INTERFACES = [
+		self::NUMBER   => Number::class,
+		self::ALPHANUM => AlphaNum::class,
+		self::KANJI    => Kanji::class,
+		self::BYTE     => Byte::class,
 	];
 
 	/**
@@ -70,11 +70,11 @@ final class Mode{
 	 *
 	 * @var int[]
 	 */
-	public const DATA_MODES = [
-		self::DATA_NUMBER   => 0,
-		self::DATA_ALPHANUM => 1,
-		self::DATA_BYTE     => 2,
-		self::DATA_KANJI    => 3,
+	public const MODES = [
+		self::NUMBER   => 0,
+		self::ALPHANUM => 1,
+		self::BYTE     => 2,
+		self::KANJI    => 3,
 	];
 
 	/**

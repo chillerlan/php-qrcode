@@ -313,7 +313,7 @@ final class Version{
 	 * the maximum character count for the given $mode and $eccLevel
 	 */
 	public function getMaxLengthForMode(int $mode, EccLevel $eccLevel):?int{
-		return self::MAX_LENGTH[$this->version][Mode::DATA_MODES[$mode]][$eccLevel->getOrdinal()] ?? null;
+		return self::MAX_LENGTH[$this->version][Mode::MODES[$mode]][$eccLevel->getOrdinal()] ?? null;
 	}
 
 	/**
