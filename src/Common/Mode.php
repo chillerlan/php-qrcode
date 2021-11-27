@@ -64,20 +64,6 @@ final class Mode{
 	];
 
 	/**
-	 * References to the keys of the following table(s):
-	 *
-	 * @see \chillerlan\QRCode\Common\Version::MAX_LENGTH
-	 *
-	 * @var int[]
-	 */
-	public const MODES = [
-		self::NUMBER   => 0,
-		self::ALPHANUM => 1,
-		self::BYTE     => 2,
-		self::KANJI    => 3,
-	];
-
-	/**
 	 * returns the length bits for the version breakpoints 1-9, 10-26 and 27-40
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException

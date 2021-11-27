@@ -29,24 +29,22 @@ use function class_exists, class_implements, in_array, mb_convert_encoding, mb_d
 class QRCode{
 
 	/** @var int */
-	public const VERSION_AUTO       = -1;
+	public const VERSION_AUTO      = -1;
 	/** @var int */
-	public const MASK_PATTERN_AUTO  = -1;
+	public const MASK_PATTERN_AUTO = -1;
 
 	/**
 	 * @deprecated backward compatibility
 	 * @see \chillerlan\QRCode\Common\EccLevel
 	 */
 	/** @var int */
-	public const ECC_L     = EccLevel::L;
+	public const ECC_L = EccLevel::L;
 	/** @var int */
-	public const ECC_M     = EccLevel::M;
+	public const ECC_M = EccLevel::M;
 	/** @var int */
-	public const ECC_Q     = EccLevel::Q;
+	public const ECC_Q = EccLevel::Q;
 	/** @var int */
-	public const ECC_H     = EccLevel::H;
-	/** @var int[] */
-	public const ECC_MODES = EccLevel::MODES;
+	public const ECC_H = EccLevel::H;
 
 	/** @var string */
 	public const OUTPUT_MARKUP_HTML = 'html';

@@ -311,9 +311,23 @@ final class Version{
 
 	/**
 	 * the maximum character count for the given $mode and $eccLevel
+	 *
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public function getMaxLengthForMode(int $mode, EccLevel $eccLevel):?int{
-		return self::MAX_LENGTH[$this->version][Mode::MODES[$mode]][$eccLevel->getOrdinal()] ?? null;
+
+		$dataModes = [
+			Mode::NUMBER   => 0,
+			Mode::ALPHANUM => 1,
+			Mode::BYTE     => 2,
+			Mode::KANJI    => 3,
+		];
+
+		if(!isset($dataModes[$mode])){
+			throw new QRCodeException('invalid $mode');
+		}
+
+		return self::MAX_LENGTH[$this->version][$dataModes[$mode]][$eccLevel->getOrdinal()] ?? null;
 	}
 
 	/**

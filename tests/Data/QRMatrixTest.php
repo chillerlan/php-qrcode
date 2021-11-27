@@ -68,7 +68,7 @@ final class QRMatrixTest extends TestCase{
 	 * Tests if eccLevel() returns the current (given) ECC level
 	 */
 	public function testECC():void{
-		$this::assertSame(EccLevel::MODES[EccLevel::L], $this->matrix->eccLevel()->getOrdinal());
+		$this::assertSame(EccLevel::L, $this->matrix->eccLevel()->getLevel());
 	}
 
 	/**

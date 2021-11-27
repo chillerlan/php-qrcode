@@ -256,7 +256,7 @@ trait QROptionsTrait{
 	 */
 	protected function set_eccLevel(int $eccLevel):void{
 
-		if(!isset(EccLevel::MODES[$eccLevel])){
+		if(!in_array($eccLevel, [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H], true)){
 			throw new QRCodeException(sprintf('Invalid error correct level: %s', $eccLevel));
 		}
 

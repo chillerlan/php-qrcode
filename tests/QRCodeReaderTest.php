@@ -104,7 +104,7 @@ class QRCodeReaderTest extends TestCase{
 		foreach(range(1, 40) as $v){
 			$version = new Version($v);
 
-			foreach(EccLevel::MODES as $ecc => $_){
+			foreach([EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H] as $ecc){
 				$eccLevel = new EccLevel($ecc);
 
 				yield 'version: '.$version.$eccLevel => [

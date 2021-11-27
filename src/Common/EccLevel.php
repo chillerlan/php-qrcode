@@ -31,32 +31,6 @@ final class EccLevel{
 	public const H = 0b10; // 30%.
 
 	/**
-	 * References to the keys of the following tables:
-	 *
-	 * @see \chillerlan\QRCode\Common\Version::MAX_BITS
-	 * @see \chillerlan\QRCode\Common\EccLevel::RSBLOCKS
-	 * @see \chillerlan\QRCode\Common\EccLevel::formatPattern
-	 *
-	 * @var int[]
-	 */
-	public const MODES = [
-		self::L => 0,
-		self::M => 1,
-		self::Q => 2,
-		self::H => 3,
-	];
-
-	/**
-	 * @var string[]
-	 */
-	public const MODES_STRING = [
-		self::L => 'L',
-		self::M => 'M',
-		self::Q => 'Q',
-		self::H => 'H',
-	];
-
-	/**
 	 * ISO/IEC 18004:2000 Tables 7-11 - Number of symbol characters and input data capacity for versions 1 to 40
 	 *
 	 * @var int [][]
@@ -183,7 +157,12 @@ final class EccLevel{
 	 * returns the string representation of the current ECC level
 	 */
 	public function __toString():string{
-		return self::MODES_STRING[$this->eccLevel];
+		return [
+			self::L => 'L',
+			self::M => 'M',
+			self::Q => 'Q',
+			self::H => 'H',
+		][$this->eccLevel];
 	}
 
 	/**
@@ -195,16 +174,27 @@ final class EccLevel{
 
 	/**
 	 * returns the ordinal value of the current ECC level
+	 *
+	 * references to the keys of the following tables:
+	 *
+	 * @see \chillerlan\QRCode\Common\EccLevel::MAX_BITS
+	 * @see \chillerlan\QRCode\Common\EccLevel::FORMAT_PATTERN
+	 * @see \chillerlan\QRCode\Common\Version::RSBLOCKS
 	 */
 	public function getOrdinal():int{
-		return self::MODES[$this->eccLevel];
+		return [
+			self::L => 0,
+			self::M => 1,
+			self::Q => 2,
+			self::H => 3,
+		][$this->eccLevel];
 	}
 
 	/**
 	 * returns the format pattern for the given $eccLevel and $maskPattern
 	 */
 	public function getformatPattern(MaskPattern $maskPattern):int{
-		return self::FORMAT_PATTERN[self::MODES[$this->eccLevel]][$maskPattern->getPattern()];
+		return self::FORMAT_PATTERN[$this->getOrdinal()][$maskPattern->getPattern()];
 	}
 
 	/**
@@ -215,7 +205,7 @@ final class EccLevel{
 	public function getMaxBits():array{
 		return array_combine(
 			array_keys(self::MAX_BITS),
-			array_column(self::MAX_BITS, self::MODES[$this->eccLevel])
+			array_column(self::MAX_BITS, $this->getOrdinal())
 		);
 	}
 
