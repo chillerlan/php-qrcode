@@ -132,88 +132,81 @@
 
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_ALPHANUM">DATA_ALPHANUM</a>
+    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_ALPHANUM">ALPHANUM</a>
     <span>
         &nbsp;= 0b10                    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_BYTE">DATA_BYTE</a>
+    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_BYTE">BYTE</a>
     <span>
         &nbsp;= 0b100                    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_ECI">DATA_ECI</a>
+    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_ECI">ECI</a>
     <span>
         &nbsp;= 0b111                    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_FNC1_FIRST">DATA_FNC1_FIRST</a>
+    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_FNC1_FIRST">FNC1_FIRST</a>
     <span>
         &nbsp;= 0b101                    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_FNC1_SECOND">DATA_FNC1_SECOND</a>
+    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_FNC1_SECOND">FNC1_SECOND</a>
     <span>
         &nbsp;= 0b1001                    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_INTERFACES">DATA_INTERFACES</a>
+    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_INTERFACES">INTERFACES</a>
     <span>
-        &nbsp;= [self::DATA_NUMBER =&gt; chillerlanQRCodeDataNumber::class, self::DATA_ALPHANUM =&gt; chillerlanQRCodeDataAlphaNum::class, self::DATA_KANJI =&gt; chillerlanQRCodeDataKanji::class, self::DATA_BYTE =&gt; chillerlanQRCodeDataByte::class]                    </span>
+        &nbsp;= [self::NUMBER =&gt; chillerlanQRCodeDataNumber::class, self::ALPHANUM =&gt; chillerlanQRCodeDataAlphaNum::class, self::KANJI =&gt; chillerlanQRCodeDataKanji::class, self::BYTE =&gt; chillerlanQRCodeDataByte::class]                    </span>
 </dt>
 <dd>Map of data mode =&gt; interface (detection order)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_KANJI">DATA_KANJI</a>
+    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_KANJI">KANJI</a>
     <span>
         &nbsp;= 0b1000                    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_MODES">DATA_MODES</a>
+    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_LENGTH_BITS">LENGTH_BITS</a>
     <span>
-        &nbsp;= [self::DATA_NUMBER =&gt; 0, self::DATA_ALPHANUM =&gt; 1, self::DATA_BYTE =&gt; 2, self::DATA_KANJI =&gt; 3]                    </span>
+        &nbsp;= [self::NUMBER =&gt; [10, 12, 14], self::ALPHANUM =&gt; [9, 11, 13], self::BYTE =&gt; [8, 16, 16], self::KANJI =&gt; [8, 10, 12]]                    </span>
 </dt>
-<dd>References to the keys of the following table(s):</dd>
+<dd>mode length bits for the version breakpoints 1-9, 10-26 and 27-40</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_NUMBER">DATA_NUMBER</a>
+    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_NUMBER">NUMBER</a>
     <span>
         &nbsp;= 0b1                    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_STRCTURED_APPEND">DATA_STRCTURED_APPEND</a>
+    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_STRCTURED_APPEND">STRCTURED_APPEND</a>
     <span>
         &nbsp;= 0b11                    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_TERMINATOR">DATA_TERMINATOR</a>
+    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_TERMINATOR">TERMINATOR</a>
     <span>
         &nbsp;= 0b0                    </span>
 </dt>
 <dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_LENGTH_BITS">LENGTH_BITS</a>
-    <span>
-        &nbsp;= [self::DATA_NUMBER =&gt; [10, 12, 14], self::DATA_ALPHANUM =&gt; [9, 11, 13], self::DATA_BYTE =&gt; [8, 16, 16], self::DATA_KANJI =&gt; [8, 10, 12]]                    </span>
-</dt>
-<dd>mode length bits for the version breakpoints 1-9, 10-26 and 27-40</dd>
 
                     <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#method_getLengthBitsForMode">getLengthBitsForMode()</a>
@@ -240,9 +233,9 @@
             <a href="classes/chillerlan-QRCode-Common-Mode.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_DATA_ALPHANUM">
-        DATA_ALPHANUM
-        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_ALPHANUM" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_ALPHANUM">
+        ALPHANUM
+        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_ALPHANUM" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -256,7 +249,7 @@
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">DATA_ALPHANUM</span>
+    <span class="phpdocumentor-signature__name">ALPHANUM</span>
     = <span class="phpdocumentor-signature__default-value">0b10</span>
 </code>
 
@@ -267,9 +260,9 @@
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_DATA_BYTE">
-        DATA_BYTE
-        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_BYTE" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_BYTE">
+        BYTE
+        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_BYTE" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -283,7 +276,7 @@
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">DATA_BYTE</span>
+    <span class="phpdocumentor-signature__name">BYTE</span>
     = <span class="phpdocumentor-signature__default-value">0b100</span>
 </code>
 
@@ -294,9 +287,9 @@
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_DATA_ECI">
-        DATA_ECI
-        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_ECI" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_ECI">
+        ECI
+        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_ECI" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -310,7 +303,7 @@
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">DATA_ECI</span>
+    <span class="phpdocumentor-signature__name">ECI</span>
     = <span class="phpdocumentor-signature__default-value">0b111</span>
 </code>
 
@@ -321,9 +314,9 @@
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_DATA_FNC1_FIRST">
-        DATA_FNC1_FIRST
-        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_FNC1_FIRST" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_FNC1_FIRST">
+        FNC1_FIRST
+        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_FNC1_FIRST" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -337,7 +330,7 @@
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">DATA_FNC1_FIRST</span>
+    <span class="phpdocumentor-signature__name">FNC1_FIRST</span>
     = <span class="phpdocumentor-signature__default-value">0b101</span>
 </code>
 
@@ -348,9 +341,9 @@
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_DATA_FNC1_SECOND">
-        DATA_FNC1_SECOND
-        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_FNC1_SECOND" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_FNC1_SECOND">
+        FNC1_SECOND
+        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_FNC1_SECOND" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -364,7 +357,7 @@
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">DATA_FNC1_SECOND</span>
+    <span class="phpdocumentor-signature__name">FNC1_SECOND</span>
     = <span class="phpdocumentor-signature__default-value">0b1001</span>
 </code>
 
@@ -375,9 +368,9 @@
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_DATA_INTERFACES">
-        DATA_INTERFACES
-        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_INTERFACES" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_INTERFACES">
+        INTERFACES
+        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_INTERFACES" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -392,8 +385,8 @@
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">array&lt;string|int, string&gt;</span>
-    <span class="phpdocumentor-signature__name">DATA_INTERFACES</span>
-    = <span class="phpdocumentor-signature__default-value">[self::DATA_NUMBER =&gt; chillerlanQRCodeDataNumber::class, self::DATA_ALPHANUM =&gt; chillerlanQRCodeDataAlphaNum::class, self::DATA_KANJI =&gt; chillerlanQRCodeDataKanji::class, self::DATA_BYTE =&gt; chillerlanQRCodeDataByte::class]</span>
+    <span class="phpdocumentor-signature__name">INTERFACES</span>
+    = <span class="phpdocumentor-signature__default-value">[self::NUMBER =&gt; chillerlanQRCodeDataNumber::class, self::ALPHANUM =&gt; chillerlanQRCodeDataAlphaNum::class, self::KANJI =&gt; chillerlanQRCodeDataKanji::class, self::BYTE =&gt; chillerlanQRCodeDataByte::class]</span>
 </code>
 
 
@@ -403,9 +396,9 @@
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_DATA_KANJI">
-        DATA_KANJI
-        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_KANJI" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_KANJI">
+        KANJI
+        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_KANJI" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -419,131 +412,8 @@
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">DATA_KANJI</span>
+    <span class="phpdocumentor-signature__name">KANJI</span>
     = <span class="phpdocumentor-signature__default-value">0b1000</span>
-</code>
-
-
-    
-    
-    
-
-</article>
-                    <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_DATA_MODES">
-        DATA_MODES
-        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_MODES" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">73</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">References to the keys of the following table(s):</p>
-
-    <code class="phpdocumentor-signature phpdocumentor-code ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">array&lt;string|int, int&gt;</span>
-    <span class="phpdocumentor-signature__name">DATA_MODES</span>
-    = <span class="phpdocumentor-signature__default-value">[self::DATA_NUMBER =&gt; 0, self::DATA_ALPHANUM =&gt; 1, self::DATA_BYTE =&gt; 2, self::DATA_KANJI =&gt; 3]</span>
-</code>
-
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Common-Version.html#constant_MAX_LENGTH"><abbr title="\chillerlan\QRCode\Common\Version::MAX_LENGTH">Version::MAX_LENGTH</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                        </dl>
-
-</article>
-                    <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_DATA_NUMBER">
-        DATA_NUMBER
-        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_NUMBER" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">26</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">DATA_NUMBER</span>
-    = <span class="phpdocumentor-signature__default-value">0b1</span>
-</code>
-
-
-    
-    
-    
-
-</article>
-                    <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_DATA_STRCTURED_APPEND">
-        DATA_STRCTURED_APPEND
-        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_STRCTURED_APPEND" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">34</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">DATA_STRCTURED_APPEND</span>
-    = <span class="phpdocumentor-signature__default-value">0b11</span>
-</code>
-
-
-    
-    
-    
-
-</article>
-                    <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_DATA_TERMINATOR">
-        DATA_TERMINATOR
-        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_TERMINATOR" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">24</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">DATA_TERMINATOR</span>
-    = <span class="phpdocumentor-signature__default-value">0b0</span>
 </code>
 
 
@@ -571,7 +441,7 @@
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">LENGTH_BITS</span>
-    = <span class="phpdocumentor-signature__default-value">[self::DATA_NUMBER =&gt; [10, 12, 14], self::DATA_ALPHANUM =&gt; [9, 11, 13], self::DATA_BYTE =&gt; [8, 16, 16], self::DATA_KANJI =&gt; [8, 10, 12]]</span>
+    = <span class="phpdocumentor-signature__default-value">[self::NUMBER =&gt; [10, 12, 14], self::ALPHANUM =&gt; [9, 11, 13], self::BYTE =&gt; [8, 16, 16], self::KANJI =&gt; [8, 10, 12]]</span>
 </code>
 
 
@@ -580,6 +450,87 @@
 
         <section class="phpdocumentor-description"></section>
 
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_NUMBER">
+        NUMBER
+        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_NUMBER" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">26</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">NUMBER</span>
+    = <span class="phpdocumentor-signature__default-value">0b1</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_STRCTURED_APPEND">
+        STRCTURED_APPEND
+        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_STRCTURED_APPEND" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">34</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">STRCTURED_APPEND</span>
+    = <span class="phpdocumentor-signature__default-value">0b11</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_TERMINATOR">
+        TERMINATOR
+        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_TERMINATOR" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">24</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+    <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">TERMINATOR</span>
+    = <span class="phpdocumentor-signature__default-value">0b0</span>
+</code>
+
+
+    
+    
     
 
 </article>
@@ -605,7 +556,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">108</span>
+    <span class="phpdocumentor-element-found-in__line">94</span>
 
     </aside>
 
@@ -649,7 +600,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">85</span>
+    <span class="phpdocumentor-element-found-in__line">71</span>
 
     </aside>
 

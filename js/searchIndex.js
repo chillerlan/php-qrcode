@@ -93,7 +93,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\EccLevel\u003A\u003AgetMaxBits\u0028\u0029",
             "name": "getMaxBits",
-            "summary": "returns\u0020an\u0020array\u0020wit\u0020the\u0020max\u0020bit\u0020lengths\u0020for\u0020version\u00201\u002D40\u0020and\u0020the\u0020current\u0020ECC\u0020level",
+            "summary": "returns\u0020an\u0020array\u0020with\u0020the\u0020max\u0020bit\u0020lengths\u0020for\u0020version\u00201\u002D40\u0020and\u0020the\u0020current\u0020ECC\u0020level",
             "url": "classes/chillerlan-QRCode-Common-EccLevel.html#method_getMaxBits"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\EccLevel\u003A\u003AL",
@@ -115,16 +115,6 @@ Search.appendIndex(
             "name": "H",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Common-EccLevel.html#constant_H"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\Common\\EccLevel\u003A\u003AMODES",
-            "name": "MODES",
-            "summary": "References\u0020to\u0020the\u0020keys\u0020of\u0020the\u0020following\u0020tables\u003A",
-            "url": "classes/chillerlan-QRCode-Common-EccLevel.html#constant_MODES"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\Common\\EccLevel\u003A\u003AMODES_STRING",
-            "name": "MODES_STRING",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-Common-EccLevel.html#constant_MODES_STRING"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\EccLevel\u003A\u003AMAX_BITS",
             "name": "MAX_BITS",
@@ -601,65 +591,60 @@ Search.appendIndex(
             "summary": "returns\u0020the\u0020array\u0020of\u0020length\u0020bits\u0020for\u0020the\u0020given\u0020mode",
             "url": "classes/chillerlan-QRCode-Common-Mode.html#method_getLengthBitsForMode"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ADATA_TERMINATOR",
-            "name": "DATA_TERMINATOR",
+            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ATERMINATOR",
+            "name": "TERMINATOR",
             "summary": "",
-            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_TERMINATOR"
+            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_TERMINATOR"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ADATA_NUMBER",
-            "name": "DATA_NUMBER",
+            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ANUMBER",
+            "name": "NUMBER",
             "summary": "",
-            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_NUMBER"
+            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_NUMBER"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ADATA_ALPHANUM",
-            "name": "DATA_ALPHANUM",
+            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003AALPHANUM",
+            "name": "ALPHANUM",
             "summary": "",
-            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_ALPHANUM"
+            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_ALPHANUM"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ADATA_BYTE",
-            "name": "DATA_BYTE",
+            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ABYTE",
+            "name": "BYTE",
             "summary": "",
-            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_BYTE"
+            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_BYTE"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ADATA_KANJI",
-            "name": "DATA_KANJI",
+            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003AKANJI",
+            "name": "KANJI",
             "summary": "",
-            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_KANJI"
+            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_KANJI"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ADATA_STRCTURED_APPEND",
-            "name": "DATA_STRCTURED_APPEND",
+            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ASTRCTURED_APPEND",
+            "name": "STRCTURED_APPEND",
             "summary": "",
-            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_STRCTURED_APPEND"
+            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_STRCTURED_APPEND"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ADATA_FNC1_FIRST",
-            "name": "DATA_FNC1_FIRST",
+            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003AFNC1_FIRST",
+            "name": "FNC1_FIRST",
             "summary": "",
-            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_FNC1_FIRST"
+            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_FNC1_FIRST"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ADATA_FNC1_SECOND",
-            "name": "DATA_FNC1_SECOND",
+            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003AFNC1_SECOND",
+            "name": "FNC1_SECOND",
             "summary": "",
-            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_FNC1_SECOND"
+            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_FNC1_SECOND"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ADATA_ECI",
-            "name": "DATA_ECI",
+            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003AECI",
+            "name": "ECI",
             "summary": "",
-            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_ECI"
+            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_ECI"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ALENGTH_BITS",
             "name": "LENGTH_BITS",
             "summary": "mode\u0020length\u0020bits\u0020for\u0020the\u0020version\u0020breakpoints\u00201\u002D9,\u002010\u002D26\u0020and\u002027\u002D40",
             "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_LENGTH_BITS"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ADATA_INTERFACES",
-            "name": "DATA_INTERFACES",
+            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003AINTERFACES",
+            "name": "INTERFACES",
             "summary": "Map\u0020of\u0020data\u0020mode\u0020\u003D\u003E\u0020interface\u0020\u0028detection\u0020order\u0029",
-            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_INTERFACES"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ADATA_MODES",
-            "name": "DATA_MODES",
-            "summary": "References\u0020to\u0020the\u0020keys\u0020of\u0020the\u0020following\u0020table\u0028s\u0029\u003A",
-            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_DATA_MODES"
+            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_INTERFACES"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\ReedSolomonDecoder",
             "name": "ReedSolomonDecoder",
@@ -815,11 +800,6 @@ Search.appendIndex(
             "name": "write",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-AlphaNum.html#method_write"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\AlphaNum\u003A\u003AgetCharCode\u0028\u0029",
-            "name": "getCharCode",
-            "summary": "get\u0020the\u0020code\u0020for\u0020the\u0020given\u0020character",
-            "url": "classes/chillerlan-QRCode-Data-AlphaNum.html#method_getCharCode"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\AlphaNum\u003A\u003AdecodeSegment\u0028\u0029",
             "name": "decodeSegment",
@@ -2611,11 +2591,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-QRCode.html#constant_ECC_H"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AECC_MODES",
-            "name": "ECC_MODES",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-QRCode.html#constant_ECC_MODES"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AOUTPUT_MARKUP_HTML",
             "name": "OUTPUT_MARKUP_HTML",
             "summary": "",
@@ -2976,30 +2951,55 @@ Search.appendIndex(
             "summary": "Tests\u0020the\u0020AlphaNum\u0020class",
             "url": "classes/chillerlan-QRCodeTest-Data-AlphaNumTest.html"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\AlphaNumTest\u003A\u003AtestGetCharCodeException\u0028\u0029",
-            "name": "testGetCharCodeException",
-            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020an\u0020invalid\u0020character\u0020is\u0020encountered",
-            "url": "classes/chillerlan-QRCodeTest-Data-AlphaNumTest.html#method_testGetCharCodeException"
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\AlphaNumTest\u003A\u003A\u0024FQN",
+            "name": "FQN",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-AlphaNumTest.html#property_FQN"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\AlphaNumTest\u003A\u003A\u0024testdata",
+            "name": "testdata",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-AlphaNumTest.html#property_testdata"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ByteTest",
             "name": "ByteTest",
             "summary": "Tests\u0020the\u0020Byte\u0020class",
             "url": "classes/chillerlan-QRCodeTest-Data-ByteTest.html"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ByteTest\u003A\u003AtestInvalidDataException\u0028\u0029",
+            "name": "testInvalidDataException",
+            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020an\u0020invalid\u0020character\u0020is\u0020encountered",
+            "url": "classes/chillerlan-QRCodeTest-Data-ByteTest.html#method_testInvalidDataException"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ByteTest\u003A\u003A\u0024FQN",
+            "name": "FQN",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-ByteTest.html#property_FQN"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ByteTest\u003A\u003A\u0024testdata",
+            "name": "testdata",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-ByteTest.html#property_testdata"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract",
             "name": "DatainterfaceTestAbstract",
             "summary": "The\u0020data\u0020interface\u0020test\u0020abstract",
             "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AsetTestData\u0028\u0029",
-            "name": "setTestData",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AsetUp\u0028\u0029",
+            "name": "setUp",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_setTestData"
+            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_setUp"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestInstance\u0028\u0029",
             "name": "testInstance",
             "summary": "Verifies\u0020the\u0020data\u0020interface\u0020instance",
             "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testInstance"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AmaskPatternProvider\u0028\u0029",
+            "name": "maskPatternProvider",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_maskPatternProvider"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestInitMatrix\u0028\u0029",
             "name": "testInitMatrix",
@@ -3021,30 +3021,65 @@ Search.appendIndex(
             "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020on\u0020data\u0020overflow",
             "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testCodeLengthOverflowException"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestInvalidDataException\u0028\u0029",
+            "name": "testInvalidDataException",
+            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020an\u0020invalid\u0020character\u0020is\u0020encountered",
+            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testInvalidDataException"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestInvalidDataOnEmptyException\u0028\u0029",
+            "name": "testInvalidDataOnEmptyException",
+            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020if\u0020the\u0020given\u0020string\u0020is\u0020empty",
+            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testInvalidDataOnEmptyException"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003A\u0024reflection",
+            "name": "reflection",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#property_reflection"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003A\u0024dataInterface",
+            "name": "dataInterface",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#property_dataInterface"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003A\u0024FQN",
+            "name": "FQN",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#property_FQN"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003A\u0024testdata",
+            "name": "testdata",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#property_testdata"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\KanjiTest",
             "name": "KanjiTest",
             "summary": "Tests\u0020the\u0020Kanji\u0020class",
             "url": "classes/chillerlan-QRCodeTest-Data-KanjiTest.html"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\KanjiTest\u003A\u003AtestIllegalCharException1\u0028\u0029",
-            "name": "testIllegalCharException1",
-            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020an\u0020invalid\u0020character\u0020is\u0020encountered",
-            "url": "classes/chillerlan-QRCodeTest-Data-KanjiTest.html#method_testIllegalCharException1"
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\KanjiTest\u003A\u003A\u0024FQN",
+            "name": "FQN",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-KanjiTest.html#property_FQN"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\KanjiTest\u003A\u003AtestIllegalCharException2\u0028\u0029",
-            "name": "testIllegalCharException2",
-            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020an\u0020invalid\u0020character\u0020is\u0020encountered",
-            "url": "classes/chillerlan-QRCodeTest-Data-KanjiTest.html#method_testIllegalCharException2"
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\KanjiTest\u003A\u003A\u0024testdata",
+            "name": "testdata",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-KanjiTest.html#property_testdata"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\NumberTest",
             "name": "NumberTest",
             "summary": "Tests\u0020the\u0020Number\u0020class",
             "url": "classes/chillerlan-QRCodeTest-Data-NumberTest.html"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\NumberTest\u003A\u003AtestGetCharCodeException\u0028\u0029",
-            "name": "testGetCharCodeException",
-            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020an\u0020invalid\u0020character\u0020is\u0020encountered",
-            "url": "classes/chillerlan-QRCodeTest-Data-NumberTest.html#method_testGetCharCodeException"
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\NumberTest\u003A\u003A\u0024FQN",
+            "name": "FQN",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-NumberTest.html#property_FQN"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\NumberTest\u003A\u003A\u0024testdata",
+            "name": "testdata",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-NumberTest.html#property_testdata"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest",
             "name": "QRMatrixTest",

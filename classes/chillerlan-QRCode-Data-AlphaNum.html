@@ -207,13 +207,6 @@ ISO/IEC 18004:2000 Section 8.4.3</p>
 </dt>
 <dd>returns the character count of the $data string</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/chillerlan-QRCode-Data-AlphaNum.html#method_getCharCode">getCharCode()</a>
-    <span>
-                        &nbsp;: int    </span>
-</dt>
-<dd>get the code for the given character</dd>
-
         </dl>
 
 
@@ -320,7 +313,7 @@ ISO/IEC 18004:2000 Section 8.4.3</p>
     <span class="phpdocumentor-signature__visibility">protected</span>
     <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">$datamode</span>
-     = <span class="phpdocumentor-signature__default-value">chillerlanQRCodeCommonMode::DATA_ALPHANUM</span></code>
+     = <span class="phpdocumentor-signature__default-value">chillerlanQRCodeCommonMode::ALPHANUM</span></code>
 
     
         <section class="phpdocumentor-description"></section>
@@ -361,7 +354,7 @@ ISO/IEC 18004:2000 Section 8.4.3</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRDataModeAbstract.php"><a href="files/src-data-qrdatamodeabstract.html"><abbr title="src/Data/QRDataModeAbstract.php">QRDataModeAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 
@@ -385,6 +378,20 @@ ISO/IEC 18004:2000 Section 8.4.3</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Data-QRCodeDataException.html"><abbr title="\chillerlan\QRCode\Data\QRCodeDataException">QRCodeDataException</abbr></a></span>
+                                                            
+                                             
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
@@ -405,7 +412,7 @@ ISO/IEC 18004:2000 Section 8.4.3</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/AlphaNum.php"><a href="files/src-data-alphanum.html"><abbr title="src/Data/AlphaNum.php">AlphaNum.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">107</span>
+    <span class="phpdocumentor-element-found-in__line">93</span>
 
     </aside>
 
@@ -477,7 +484,7 @@ ISO/IEC 18004:2000 Section 8.4.3</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRDataModeAbstract.php"><a href="files/src-data-qrdatamodeabstract.html"><abbr title="src/Data/QRDataModeAbstract.php">QRDataModeAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">44</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
@@ -688,7 +695,7 @@ ISO/IEC 18004:2000 Section 8.4.3</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRDataModeAbstract.php"><a href="files/src-data-qrdatamodeabstract.html"><abbr title="src/Data/QRDataModeAbstract.php">QRDataModeAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">44</span>
 
     </aside>
 
@@ -701,66 +708,6 @@ ISO/IEC 18004:2000 Section 8.4.3</p>
     
     
     
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getCharCode">
-        getCharCode()
-        <a href="classes/chillerlan-QRCode-Data-AlphaNum.html#method_getCharCode" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Data/AlphaNum.php"><a href="files/src-data-alphanum.html"><abbr title="src/Data/AlphaNum.php">AlphaNum.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">93</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">get the code for the given character</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                <span class="phpdocumentor-signature__name">getCharCode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$chr</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$chr</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Data-QRCodeDataException.html"><abbr title="\chillerlan\QRCode\Data\QRCodeDataException">QRCodeDataException</abbr></a></span>
-                                                            
-                                                 <section class="phpdocumentor-description"><p>on an illegal character occurence</p>
-</section>
-
-                                    </dd>
-                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
