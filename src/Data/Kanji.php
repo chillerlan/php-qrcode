@@ -57,6 +57,10 @@ final class Kanji extends QRDataModeAbstract{
 		$i   = 0;
 		$len = strlen($string);
 
+		if($len < 2){
+			return false;
+		}
+
 		while($i + 1 < $len){
 			$c = ((0xff & ord($string[$i])) << 8) | (0xff & ord($string[$i + 1]));
 

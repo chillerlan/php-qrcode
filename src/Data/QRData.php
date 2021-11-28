@@ -193,19 +193,16 @@ final class QRData{
 		// The message bit stream shall then be extended to fill the data capacity of the symbol
 		// corresponding to the Version and Error Correction Level, by the addition of the Pad
 		// Codewords 11101100 and 00010001 alternately.
+		$alternate = false;
+
 		while(true){
 
 			if($this->bitBuffer->getLength() >= $MAX_BITS){
 				break;
 			}
 
-			$this->bitBuffer->put(0b11101100, 8);
-
-			if($this->bitBuffer->getLength() >= $MAX_BITS){
-				break;
-			}
-
-			$this->bitBuffer->put(0b00010001, 8);
+			$this->bitBuffer->put($alternate ? 0b00010001 : 0b11101100, 8);
+			$alternate = !$alternate;
 		}
 
 	}

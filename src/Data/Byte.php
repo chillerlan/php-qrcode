@@ -12,7 +12,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
 
-use function ord;
+use function chr, ord;
 
 /**
  * Byte mode, ISO-8859-1 or UTF-8
@@ -76,7 +76,7 @@ final class Byte extends QRDataModeAbstract{
 		$readBytes = '';
 
 		for($i = 0; $i < $length; $i++){
-			$readBytes .= \chr($bitBuffer->read(8));
+			$readBytes .= chr($bitBuffer->read(8));
 		}
 
 		return $readBytes;

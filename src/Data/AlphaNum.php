@@ -12,7 +12,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
 
-use function array_flip, ceil, ord, sprintf, str_split;
+use function array_flip, ceil, str_split;
 
 /**
  * Alphanumeric mode: 0 to 9, A to Z, space, $ % * + - . / :
@@ -75,28 +75,14 @@ final class AlphaNum extends QRDataModeAbstract{
 
 		// encode 2 characters in 11 bits
 		for($i = 0; $i + 1 < $len; $i += 2){
-			$bitBuffer->put($this->getCharCode($this->data[$i]) * 45 + $this->getCharCode($this->data[$i + 1]), 11);
+			$bitBuffer->put(self::CHAR_TO_ORD[$this->data[$i]] * 45 + self::CHAR_TO_ORD[$this->data[$i + 1]], 11);
 		}
 
 		// encode a remaining character in 6 bits
 		if($i < $len){
-			$bitBuffer->put($this->getCharCode($this->data[$i]), 6);
+			$bitBuffer->put(self::CHAR_TO_ORD[$this->data[$i]], 6);
 		}
 
-	}
-
-	/**
-	 * get the code for the given character
-	 *
-	 * @throws \chillerlan\QRCode\Data\QRCodeDataException on an illegal character occurence
-	 */
-	private function getCharCode(string $chr):int{
-
-		if(isset(self::CHAR_TO_ORD[$chr])){
-			return self::CHAR_TO_ORD[$chr];
-		}
-
-		throw new QRCodeDataException(sprintf('illegal char: "%s" [%d]', $chr, ord($chr)));
 	}
 
 	/**

@@ -26,8 +26,15 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 
 	/**
 	 * QRDataModeAbstract constructor.
+	 *
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function __construct(string $data){
+
+		if(!$this::validateString($data)){
+			throw new QRCodeDataException('invalid data');
+		}
+
 		$this->data = $data;
 	}
 

@@ -24,26 +24,14 @@ use function str_repeat;
  */
 abstract class DatainterfaceTestAbstract extends TestCase{
 
-	/** @internal */
 	protected ReflectionClass $reflection;
-	/** @internal */
-	protected QRData $dataInterface;
-	/** @internal */
-	protected array $testdata;
-	/** @internal */
-	protected array $expected;
+	protected QRData          $dataInterface;
+	protected string          $FQN;
+	protected string          $testdata;
 
-	/**
-	 * @internal
-	 */
 	protected function setUp():void{
-		$this->dataInterface = new QRData(new QROptions(['version' => 4]), []);
+		$this->dataInterface = new QRData(new QROptions(['version' => 4]));
 		$this->reflection    = new ReflectionClass($this->dataInterface);
-	}
-
-	protected function setTestData():void{
-		[$class, $data] = $this->testdata;
-		$this->dataInterface->setData([new $class($data)]);
 	}
 
 	/**
@@ -54,37 +42,20 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 	}
 
 	/**
-	 * Tests ecc masking and verifies against a sample
-	 */
-/*	public function testMaskEcc():void{
-		$this->dataInterface->setData([$this->testdata]);
-
-		$maskECC = $this->reflection->getMethod('maskECC');
-		$maskECC->setAccessible(true);
-
-		$bitBuffer = $this->reflection->getProperty('bitBuffer');
-		$bitBuffer->setAccessible(true);
-		$bb = $bitBuffer->getValue($this->dataInterface);
-
-		$this::assertSame($this->expected, $maskECC->invokeArgs($this->dataInterface, [$bb->getBuffer()]));
-	}*/
-
-	/**
 	 * @see testInitMatrix()
-	 * @internal
 	 * @return int[][]
 	 */
-	public function MaskPatternProvider():array{
+	public function maskPatternProvider():array{
 		return [[0], [1], [2], [3], [4], [5], [6], [7]];
 	}
 
 	/**
 	 * Tests initializing the data matrix
 	 *
-	 * @dataProvider MaskPatternProvider
+	 * @dataProvider maskPatternProvider
 	 */
 	public function testInitMatrix(int $maskPattern):void{
-		$this->setTestData();
+		$this->dataInterface->setData([new $this->FQN($this->testdata)]);
 
 		$matrix = $this->dataInterface->writeMatrix(new MaskPattern($maskPattern));
 
@@ -96,7 +67,7 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 	 * Tests getting the minimum QR version for the given data
 	 */
 	public function testGetMinimumVersion():void{
-		$this->setTestData();
+		$this->dataInterface->setData([new $this->FQN($this->testdata)]);
 
 		$getMinimumVersion = $this->reflection->getMethod('getMinimumVersion');
 		$getMinimumVersion->setAccessible(true);
@@ -110,11 +81,10 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 	public function testGetMinimumVersionException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('data exceeds');
-		[$class, $data] = $this->testdata;
 
 		$this->dataInterface = new QRData(
 			new QROptions(['version' => QRCode::VERSION_AUTO]),
-			[new $class(str_repeat($data, 1337))]
+			[new $this->FQN(str_repeat($this->testdata, 1337))]
 		);
 	}
 
@@ -124,10 +94,28 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 	public function testCodeLengthOverflowException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('code length overflow');
-		[$class, $data] = $this->testdata;
-		$this->testdata = [$class, str_repeat($data, 1337)];
 
-		$this->setTestData();
+		$this->dataInterface->setData([new $this->FQN(str_repeat($this->testdata, 1337))]);
+	}
+
+	/**
+	 * Tests if an exception is thrown when an invalid character is encountered
+	 */
+	public function testInvalidDataException():void{
+		$this->expectException(QRCodeDataException::class);
+		$this->expectExceptionMessage('invalid data');
+
+		$this->dataInterface->setData([new $this->FQN('##')]);
+	}
+
+	/**
+	 * Tests if an exception is thrown if the given string is empty
+	 */
+	public function testInvalidDataOnEmptyException():void{
+		$this->expectException(QRCodeDataException::class);
+		$this->expectExceptionMessage('invalid data');
+
+		$this->dataInterface->setData([new $this->FQN('')]);
 	}
 
 }

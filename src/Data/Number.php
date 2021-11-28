@@ -98,14 +98,12 @@ final class Number extends QRDataModeAbstract{
 		$num = 0;
 
 		foreach(str_split($string) as $chr){
-			$c = ord($chr);
 
 			if(!isset(self::NUMBER_TO_ORD[$chr])){
-				throw new QRCodeDataException(sprintf('illegal char: "%s" [%d]', $chr, $c));
+				throw new QRCodeDataException(sprintf('illegal char: "%s"', $chr));
 			}
 
-			$c   = $c - 48; // ord('0')
-			$num = $num * 10 + $c;
+			$num = $num * 10 + ord($chr) - 48;
 		}
 
 		return $num;
