@@ -37,8 +37,7 @@ final class Decoder{
 	 * @throws \Throwable if the QR Code cannot be decoded
 	 */
 	public function decode(LuminanceSourceInterface $source):DecoderResult{
-		$matrix    = (new Binarizer($source))->getBlackMatrix();
-		$bitMatrix = (new Detector($matrix))->detect();
+		$bitMatrix = (new Detector($source))->detect();
 
 		try{
 			// clone the BitMatrix to avoid errors in case we run into mirroring

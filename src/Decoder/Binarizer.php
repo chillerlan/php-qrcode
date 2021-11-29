@@ -160,7 +160,7 @@ final class Binarizer{
 	/**
 	 *
 	 */
-	public function getHistogramBlackMatrix(int $width, int $height):BitMatrix{
+	private function getHistogramBlackMatrix(int $width, int $height):BitMatrix{
 		$matrix = new BitMatrix(max($width, $height));
 
 		// Quickly calculates the histogram by sampling four rows from the image. This proved to be

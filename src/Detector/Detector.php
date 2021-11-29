@@ -11,6 +11,7 @@
 
 namespace chillerlan\QRCode\Detector;
 
+use chillerlan\QRCode\Decoder\{Binarizer, LuminanceSourceInterface};
 use RuntimeException;
 use chillerlan\QRCode\Common\Version;
 use chillerlan\QRCode\Decoder\BitMatrix;
@@ -30,8 +31,8 @@ final class Detector{
 	/**
 	 * Detector constructor.
 	 */
-	public function __construct(BitMatrix $image){
-		$this->bitMatrix = $image;
+	public function __construct(LuminanceSourceInterface $source){
+		$this->bitMatrix = (new Binarizer($source))->getBlackMatrix();
 	}
 
 	/**
@@ -40,7 +41,7 @@ final class Detector{
 	public function detect():BitMatrix{
 		[$bottomLeft, $topLeft, $topRight] = (new FinderPatternFinder($this->bitMatrix))->find();
 
-		$moduleSize         = (float)$this->calculateModuleSize($topLeft, $topRight, $bottomLeft);
+		$moduleSize         = $this->calculateModuleSize($topLeft, $topRight, $bottomLeft);
 		$dimension          = $this->computeDimension($topLeft, $topRight, $bottomLeft, $moduleSize);
 		$provisionalVersion = new Version((int)(($dimension - 17) / 4));
 		$alignmentPattern   = null;
