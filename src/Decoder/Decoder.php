@@ -11,7 +11,7 @@
 
 namespace chillerlan\QRCode\Decoder;
 
-use Exception, InvalidArgumentException, RuntimeException;
+use InvalidArgumentException, RuntimeException, Throwable;
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, Mode, ReedSolomonDecoder, Version};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number};
 use chillerlan\QRCode\Detector\Detector;
@@ -34,68 +34,56 @@ final class Decoder{
 	 * @param \chillerlan\QRCode\Decoder\LuminanceSourceInterface $source
 	 *
 	 * @return \chillerlan\QRCode\Decoder\DecoderResult text and bytes encoded within the QR Code
-	 * @throws \Exception if the QR Code cannot be decoded
+	 * @throws \Throwable if the QR Code cannot be decoded
 	 */
 	public function decode(LuminanceSourceInterface $source):DecoderResult{
 		$matrix    = (new Binarizer($source))->getBlackMatrix();
 		$bitMatrix = (new Detector($matrix))->detect();
 
-		$fe = null;
-
 		try{
-			// Construct a parser and read version, error-correction level
 			// clone the BitMatrix to avoid errors in case we run into mirroring
-			return $this->decodeParser(new BitMatrixParser(clone $bitMatrix));
+			return $this->decodeMatrix(clone $bitMatrix);
 		}
-		catch(Exception $e){
-			$fe = $e;
-		}
+		catch(Throwable $e){
 
-		try{
-			$parser = new BitMatrixParser(clone $bitMatrix);
-
-			// Will be attempting a mirrored reading of the version and format info.
-			$parser->setMirror(true);
-
-			// Preemptively read the version.
-#			$parser->readVersion();
-
-			// Preemptively read the format information.
-#			$parser->readFormatInformation();
-
-			/*
-			 * Since we're here, this means we have successfully detected some kind
-			 * of version and format information when mirrored. This is a good sign,
-			 * that the QR code may be mirrored, and we should try once more with a
-			 * mirrored content.
-			 */
-			// Prepare for a mirrored reading.
-			$parser->mirror();
-
-			return $this->decodeParser($parser);
-		}
-		catch(Exception $e){
-			// Throw the exception from the original reading
-			if($fe instanceof Exception){
-				throw $fe;
+			try{
+				/*
+				 * Prepare for a mirrored reading.
+				 *
+				 * Since we're here, this means we have successfully detected some kind
+				 * of version and format information when mirrored. This is a good sign,
+				 * that the QR code may be mirrored, and we should try once more with a
+				 * mirrored content.
+				 */
+				return $this->decodeMatrix($bitMatrix->setMirror(true)->mirror());
+			}
+			catch(Throwable $f){
+				// Throw the exception from the original reading
+				throw $e;
 			}
 
-			throw $e;
 		}
 
 	}
 
 	/**
-	 * @param \chillerlan\QRCode\Decoder\BitMatrixParser $parser
+	 * @param \chillerlan\QRCode\Decoder\BitMatrix $bitMatrix
 	 *
 	 * @return \chillerlan\QRCode\Decoder\DecoderResult
 	 */
-	private function decodeParser(BitMatrixParser $parser):DecoderResult{
-		$version  = $parser->readVersion();
-		$eccLevel = $parser->readFormatInformation()->getErrorCorrectionLevel();
-
+	private function decodeMatrix(BitMatrix $bitMatrix):DecoderResult{
 		// Read raw codewords
-		$rawCodewords  = $parser->readCodewords();
+		$rawCodewords = $bitMatrix->readCodewords();
+		$version      = $bitMatrix->getVersion();
+		$formatInfo   = $bitMatrix->getFormatInfo();
+
+		// technically this shouldn't happen as the respective read meathods would throw first
+		if($version === null || $formatInfo === null){
+			throw new RuntimeException('unable to read version or ecc level');
+		}
+
+		$eccLevel = $formatInfo->getErrorCorrectionLevel();
+
 		// Separate into data blocks
 		$dataBlocks = $this->getDataBlocks($rawCodewords, $version, $eccLevel);
 
