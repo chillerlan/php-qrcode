@@ -97,7 +97,8 @@ final class QRData{
 		$data = (new ReedSolomonEncoder)->interleaveEcBytes($this->bitBuffer, $this->version, $this->eccLevel);
 
 		return (new QRMatrix($this->version, $this->eccLevel))
-			->init($maskPattern, $test)
+			->initFunctionalPatterns()
+			->initFormatInfo($maskPattern, $test)
 			->mapData($data)
 			->mask($maskPattern)
 		;

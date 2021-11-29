@@ -90,17 +90,25 @@ final class QRMatrix{
 	}
 
 	/**
-	 * shortcut to initialize the matrix
+	 * shortcut to initialize the functional patterns
 	 */
-	public function init(MaskPattern $maskPattern, bool $test = null):self{
+	public function initFunctionalPatterns():self{
 		return $this
 			->setFinderPattern()
 			->setSeparators()
 			->setAlignmentPattern()
 			->setTimingPattern()
+			->setDarkModule()
+		;
+	}
+
+	/**
+	 * shortcut to set format and version info
+	 */
+	public function initFormatInfo(MaskPattern $maskPattern, bool $test = null):self{
+		return $this
 			->setVersionNumber($test)
 			->setFormatInfo($maskPattern, $test)
-			->setDarkModule()
 		;
 	}
 
@@ -207,9 +215,11 @@ final class QRMatrix{
 
 	/**
 	 * Sets the "dark module", that is always on the same position 1x1px away from the bottom left finder
+	 *
+	 * 4 * version + 9 or moduleCount - 8
 	 */
 	public function setDarkModule():self{
-		$this->set(8, 4 * $this->version->getVersionNumber() + 9, true, $this::M_DARKMODULE);
+		$this->set(8, $this->moduleCount - 8, true, $this::M_DARKMODULE);
 
 		return $this;
 	}
@@ -389,8 +399,6 @@ final class QRMatrix{
 
 		}
 
-		$this->set(8, $this->moduleCount - 8, !$test, $this::M_FORMAT);
-
 		return $this;
 	}
 
@@ -527,22 +535,24 @@ final class QRMatrix{
 				for($c = 0; $c < 2; $c++){
 					$x = $i - $c;
 
-					if($this->matrix[$y][$x] === $this::M_NULL){
-						$v = false;
-
-						if($byteIndex < $byteCount){
-							$v = (($data[$byteIndex] >> $bitIndex) & 1) === 1;
-						}
-
-						$this->matrix[$y][$x] = $this::M_DATA | ($v ? $this::IS_DARK : 0);
-						$bitIndex--;
-
-						if($bitIndex === -1){
-							$byteIndex++;
-							$bitIndex = 7;
-						}
-
+					if($this->matrix[$y][$x] !== $this::M_NULL){
+						continue;
 					}
+
+					$v = false;
+
+					if($byteIndex < $byteCount){
+						$v = (($data[$byteIndex] >> $bitIndex) & 1) === 1;
+					}
+
+					$this->matrix[$y][$x] = $this::M_DATA | ($v ? $this::IS_DARK : 0);
+					$bitIndex--;
+
+					if($bitIndex === -1){
+						$byteIndex++;
+						$bitIndex = 7;
+					}
+
 				}
 
 				$y += $inc;
