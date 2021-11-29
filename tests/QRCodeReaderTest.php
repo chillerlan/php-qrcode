@@ -140,9 +140,9 @@ class QRCodeReaderTest extends TestCase{
 			$this::markTestSkipped(sprintf('skipped version %s%s: %s', $version, $ecc, $e->getMessage()));
 		}
 
-		$this::assertSame($expected, $result->getText());
-		$this::assertSame($version->getVersionNumber(), $result->getVersion()->getVersionNumber());
-		$this::assertSame($ecc->getLevel(), $result->getEccLevel()->getLevel());
+		$this::assertSame($expected, $result->text);
+		$this::assertSame($version->getVersionNumber(), $result->version->getVersionNumber());
+		$this::assertSame($ecc->getLevel(), $result->eccLevel->getLevel());
 	}
 
 }

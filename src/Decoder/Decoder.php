@@ -318,7 +318,14 @@ final class Decoder{
 			}
 		}
 
-		return new DecoderResult($bytes, $result, $version, $ecLevel, $symbolSequence, $parityData);
+		return new DecoderResult([
+			'rawBytes'                 => $bytes,
+			'text'                     => $result,
+			'version'                  => $version,
+			'eccLevel'                 => $ecLevel,
+			'structuredAppendParity'   => $parityData,
+			'structuredAppendSequence' => $symbolSequence
+		]);
 	}
 
 }

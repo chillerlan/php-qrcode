@@ -11,97 +11,61 @@
 
 namespace chillerlan\QRCode\Decoder;
 
+use chillerlan\Settings\SettingsContainerAbstract;
 use chillerlan\QRCode\Common\{EccLevel, Version};
 
 /**
- * <p>Encapsulates the result of decoding a matrix of bits. This typically
+ * Encapsulates the result of decoding a matrix of bits. This typically
  * applies to 2D barcode formats. For now it contains the raw bytes obtained,
- * as well as a String interpretation of those bytes, if applicable.</p>
+ * as well as a String interpretation of those bytes, if applicable.
  *
- * @author Sean Owen
+ * @property int[]                              $rawBytes
+ * @property string                             $text
+ * @property \chillerlan\QRCode\Common\Version  $version
+ * @property \chillerlan\QRCode\Common\EccLevel $eccLevel
+ * @property int                                $structuredAppendParity
+ * @property int                                $structuredAppendSequence
  */
-final class DecoderResult{
+final class DecoderResult extends SettingsContainerAbstract{
 
-	private array    $rawBytes;
-	private string   $text;
-	private Version  $version;
-	private EccLevel $eccLevel;
-	private int      $structuredAppendParity;
-	private int      $structuredAppendSequenceNumber;
+	protected array    $rawBytes;
+	protected string   $text;
+	protected Version  $version;
+	protected EccLevel $eccLevel;
+	protected int      $structuredAppendParity = -1;
+	protected int      $structuredAppendSequence = -1;
 
 	/**
-	 *
+	 * @inheritDoc
 	 */
-	public function __construct(
-		array $rawBytes,
-		string $text,
-		Version $version,
-		EccLevel $eccLevel,
-		int $saSequence = -1,
-		int $saParity = -1
-	){
-		$this->rawBytes                       = $rawBytes;
-		$this->text                           = $text;
-		$this->version                        = $version;
-		$this->eccLevel                       = $eccLevel;
-		$this->structuredAppendParity         = $saParity;
-		$this->structuredAppendSequenceNumber = $saSequence;
+	public function __set($property, $value):void{
+		// noop, read-only
 	}
 
 	/**
-	 * @return int[] raw bytes encoded by the barcode, if applicable, otherwise {@code null}
-	 */
-	public function getRawBytes():array{
-		return $this->rawBytes;
-	}
-
-	/**
-	 * @return string raw text encoded by the barcode
-	 */
-	public function getText():string{
-		return $this->text;
-	}
-
-	/**
-	 *
+	 * @inheritDoc
 	 */
 	public function __toString():string{
 		return $this->text;
 	}
 
 	/**
-	 *
+	 * @inheritDoc
 	 */
-	public function getVersion():Version{
-		return $this->version;
-	}
+	public function fromIterable(iterable $properties):self{
 
-	/**
-	 *
-	 */
-	public function getEccLevel():EccLevel{
-		return $this->eccLevel;
+		foreach($properties as $key => $value){
+			parent::__set($key, $value);
+		}
+
+		return $this;
 	}
 
 	/**
 	 *
 	 */
 	public function hasStructuredAppend():bool{
-		return $this->structuredAppendParity >= 0 && $this->structuredAppendSequenceNumber >= 0;
-	}
-
-	/**
-	 *
-	 */
-	public function getStructuredAppendParity():int{
-		return $this->structuredAppendParity;
-	}
-
-	/**
-	 *
-	 */
-	public function getStructuredAppendSequenceNumber():int{
-		return $this->structuredAppendSequenceNumber;
+		return $this->structuredAppendParity >= 0 && $this->structuredAppendSequence >= 0;
 	}
 
 }
