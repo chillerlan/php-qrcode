@@ -12,7 +12,7 @@ namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Common\{EccLevel, ECICharset, MaskPattern, MaskPatternTester, Mode};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number, QRData, QRCodeDataException, QRDataModeInterface, QRMatrix};
-use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, GDLuminanceSource, IMagickLuminanceSource, LuminanceSourceInterface};
+use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, LuminanceSourceInterface};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString};
 use chillerlan\Settings\SettingsContainerInterface;
 use function class_exists, class_implements, in_array, mb_convert_encoding, mb_detect_encoding;
@@ -116,23 +116,12 @@ class QRCode{
 	protected array $dataSegments = [];
 
 	/**
-	 * The FQCN of the luminance sporce class to use in the reader (GD or Imagick)
-	 *
-	 * @see \chillerlan\QRCode\Decoder\LuminanceSourceInterface
-	 */
-	private string $luminanceSourceClass;
-
-	/**
 	 * QRCode constructor.
 	 *
 	 * Sets the options instance
 	 */
 	public function __construct(SettingsContainerInterface $options = null){
-		$this->options              = $options ?? new QROptions;
-		// i hate this
-		$this->luminanceSourceClass = $this->options->useImagickIfAvailable
-			? IMagickLuminanceSource::class
-			: GDLuminanceSource::class;
+		$this->options = $options ?? new QROptions;
 	}
 
 	/**
@@ -357,23 +346,20 @@ class QRCode{
 	 * Reads a QR Code from a given file
 	 */
 	public function readFromFile(string $path):DecoderResult{
-		/** @noinspection PhpUndefinedMethodInspection */
-		return $this->readFromSource($this->luminanceSourceClass::fromFile($path));
+		return $this->readFromSource($this->options->getLuminanceSourceFQCN()::fromFile($path));
 	}
 
 	/**
 	 * Reads a QR Code from the given data blob
 	 */
 	public function readFromBlob(string $blob):DecoderResult{
-		/** @noinspection PhpUndefinedMethodInspection */
-		return $this->readFromSource($this->luminanceSourceClass::fromBlob($blob));
+		return $this->readFromSource($this->options->getLuminanceSourceFQCN()::fromBlob($blob));
 	}
 
 	/**
 	 * Reads a QR Code from the given luminance source
 	 */
 	public function readFromSource(LuminanceSourceInterface $source):DecoderResult{
-		/** @noinspection PhpUndefinedMethodInspection */
 		return (new Decoder)->decode($source);
 	}
 
