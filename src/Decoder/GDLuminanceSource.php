@@ -13,7 +13,6 @@
 
 namespace chillerlan\QRCode\Decoder;
 
-use InvalidArgumentException;
 use function file_get_contents, get_resource_type, imagecolorat, imagecolorsforindex,
 	imagecreatefromstring, imagesx, imagesy, is_resource;
 use const PHP_MAJOR_VERSION;
@@ -34,7 +33,7 @@ final class GDLuminanceSource extends LuminanceSourceAbstract{
 	 *
 	 * @param resource|\GdImage $gdImage
 	 *
-	 * @throws \InvalidArgumentException
+	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	public function __construct($gdImage){
 
@@ -43,7 +42,7 @@ final class GDLuminanceSource extends LuminanceSourceAbstract{
 			(PHP_MAJOR_VERSION >= 8 && !$gdImage instanceof \GdImage)
 			|| (PHP_MAJOR_VERSION < 8 && (!is_resource($gdImage) || get_resource_type($gdImage) !== 'gd'))
 		){
-			throw new InvalidArgumentException('Invalid GD image source.');
+			throw new QRCodeDecoderException('Invalid GD image source.');
 		}
 
 		parent::__construct(imagesx($gdImage), imagesy($gdImage));

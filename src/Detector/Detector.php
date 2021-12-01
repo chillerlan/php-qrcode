@@ -12,7 +12,6 @@
 namespace chillerlan\QRCode\Detector;
 
 use chillerlan\QRCode\Decoder\{Binarizer, LuminanceSourceInterface};
-use RuntimeException;
 use chillerlan\QRCode\Common\Version;
 use chillerlan\QRCode\Decoder\BitMatrix;
 use function abs, is_nan, max, min, round;
@@ -78,7 +77,7 @@ final class Detector{
 	 * Computes an average estimated module size based on estimated derived from the positions
 	 * of the three finder patterns.
 	 *
-	 * @throws \RuntimeException
+	 * @throws \chillerlan\QRCode\Detector\QRCodeDetectorException
 	 */
 	private function calculateModuleSize(FinderPattern $topLeft, FinderPattern $topRight, FinderPattern $bottomLeft):float{
 		// Take the average
@@ -88,7 +87,7 @@ final class Detector{
 		) / 2.0;
 
 		if($moduleSize < 1.0){
-			throw new RuntimeException('module size < 1.0');
+			throw new QRCodeDetectorException('module size < 1.0');
 		}
 
 		return $moduleSize;
@@ -244,7 +243,7 @@ final class Detector{
 	 * Computes the dimension (number of modules on a size) of the QR Code based on the position
 	 * of the finder patterns and estimated module size.
 	 *
-	 * @throws \RuntimeException
+	 * @throws \chillerlan\QRCode\Detector\QRCodeDetectorException
 	 */
 	private function computeDimension(
 		FinderPattern $topLeft,
@@ -265,11 +264,11 @@ final class Detector{
 				$dimension--;
 				break;
 			case 3:
-				throw new RuntimeException('estimated dimension: '.$dimension);
+				throw new QRCodeDetectorException('estimated dimension: '.$dimension);
 		}
 
 		if($dimension % 4 !== 1){
-			throw new RuntimeException('dimension mod 4 is not 1');
+			throw new QRCodeDetectorException('dimension mod 4 is not 1');
 		}
 
 		return $dimension;

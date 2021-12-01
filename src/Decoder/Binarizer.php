@@ -11,7 +11,6 @@
 
 namespace chillerlan\QRCode\Decoder;
 
-use RuntimeException;
 use function array_fill, count, max;
 
 /**
@@ -55,7 +54,7 @@ final class Binarizer{
 	}
 
 	/**
-	 * @throws \RuntimeException
+	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	private function estimateBlackPoint(array $buckets):int{
 		// Find the tallest peak in the histogram.
@@ -101,7 +100,7 @@ final class Binarizer{
 		// If there is too little contrast in the image to pick a meaningful black point, throw rather
 		// than waste time trying to decode the image, and risk false positives.
 		if($secondPeak - $firstPeak <= $numBuckets / 16){
-			throw new RuntimeException('no meaningful dark point found');
+			throw new QRCodeDecoderException('no meaningful dark point found');
 		}
 
 		// Find a valley between them that is low and closer to the white peak.

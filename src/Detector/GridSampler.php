@@ -11,8 +11,8 @@
 
 namespace chillerlan\QRCode\Detector;
 
-use Exception, RuntimeException;
 use chillerlan\QRCode\Decoder\BitMatrix;
+use Throwable;
 use function array_fill, count, sprintf;
 
 /**
@@ -44,7 +44,7 @@ final class GridSampler{
 	 * @param \chillerlan\QRCode\Decoder\BitMatrix $bitMatrix image into which the points should map
 	 * @param float[]                  $points    actual points in x1,y1,...,xn,yn form
 	 *
-	 * @throws \RuntimeException if an endpoint is lies outside the image boundaries
+	 * @throws \chillerlan\QRCode\Detector\QRCodeDetectorException if an endpoint is lies outside the image boundaries
 	 */
 	private function checkAndNudgePoints(BitMatrix $bitMatrix, array $points):void{
 		$dimension = $bitMatrix->getDimension();
@@ -57,7 +57,7 @@ final class GridSampler{
 			$y = (int)$points[$offset + 1];
 
 			if($x < -1 || $x > $dimension || $y < -1 || $y > $dimension){
-				throw new RuntimeException(sprintf('checkAndNudgePoints 1, x: %s, y: %s, d: %s', $x, $y, $dimension));
+				throw new QRCodeDetectorException(sprintf('checkAndNudgePoints 1, x: %s, y: %s, d: %s', $x, $y, $dimension));
 			}
 
 			$nudged = false;
@@ -87,7 +87,7 @@ final class GridSampler{
 			$y = (int)$points[$offset + 1];
 
 			if($x < -1 || $x > $dimension || $y < -1 || $y > $dimension){
-				throw new RuntimeException(sprintf('checkAndNudgePoints 2, x: %s, y: %s, d: %s', $x, $y, $dimension));
+				throw new QRCodeDetectorException(sprintf('checkAndNudgePoints 2, x: %s, y: %s, d: %s', $x, $y, $dimension));
 			}
 
 			$nudged = false;
@@ -118,13 +118,13 @@ final class GridSampler{
 	 *
 	 * @return \chillerlan\QRCode\Decoder\BitMatrix representing a grid of points sampled from the image within a region
 	 *   defined by the "from" parameters
-	 * @throws \RuntimeException if image can't be sampled, for example, if the transformation defined
+	 * @throws \chillerlan\QRCode\Detector\QRCodeDetectorException if image can't be sampled, for example, if the transformation defined
 	 *   by the given points is invalid or results in sampling outside the image boundaries
 	 */
 	public function sampleGrid(BitMatrix $image, int $dimension, PerspectiveTransform $transform):BitMatrix{
 
 		if($dimension <= 0){
-			throw new RuntimeException('invalid matrix size');
+			throw new QRCodeDetectorException('invalid matrix size');
 		}
 
 		$bits   = new BitMatrix($dimension);
@@ -152,7 +152,7 @@ final class GridSampler{
 					}
 				}
 			}
-			catch(Exception $aioobe){//ArrayIndexOutOfBoundsException
+			catch(Throwable $aioobe){//ArrayIndexOutOfBoundsException
 				// This feels wrong, but, sometimes if the finder patterns are misidentified, the resulting
 				// transform gets "twisted" such that it maps a straight line of points to a set of points
 				// whose endpoints are in bounds, but others are not. There is probably some mathematical
@@ -160,7 +160,7 @@ final class GridSampler{
 				// This results in an ugly runtime exception despite our clever checks above -- can't have
 				// that. We could check each point's coordinates but that feels duplicative. We settle for
 				// catching and wrapping ArrayIndexOutOfBoundsException.
-				throw new RuntimeException('ArrayIndexOutOfBoundsException');
+				throw new QRCodeDetectorException('ArrayIndexOutOfBoundsException');
 			}
 
 		}

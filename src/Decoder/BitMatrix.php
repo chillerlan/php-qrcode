@@ -12,7 +12,6 @@
 namespace chillerlan\QRCode\Decoder;
 
 use chillerlan\QRCode\Common\{FormatInformation, Version};
-use InvalidArgumentException, RuntimeException;
 use function array_fill, count;
 use const PHP_INT_MAX, PHP_INT_SIZE;
 
@@ -74,23 +73,23 @@ final class BitMatrix{
 	 * @param int $width  ;  The width of the region
 	 * @param int $height ;  The height of the region
 	 *
-	 * @throws \InvalidArgumentException
+	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	public function setRegion(int $left, int $top, int $width, int $height):self{
 
 		if($top < 0 || $left < 0){
-			throw new InvalidArgumentException('Left and top must be nonnegative');
+			throw new QRCodeDecoderException('Left and top must be non-negative');
 		}
 
 		if($height < 1 || $width < 1){
-			throw new InvalidArgumentException('Height and width must be at least 1');
+			throw new QRCodeDecoderException('Height and width must be at least 1');
 		}
 
 		$right  = $left + $width;
 		$bottom = $top + $height;
 
 		if($bottom > $this->dimension || $right > $this->dimension){
-			throw new InvalidArgumentException('The region must fit inside the matrix');
+			throw new QRCodeDecoderException('The region must fit inside the matrix');
 		}
 
 		for($y = $top; $y < $bottom; $y++){
@@ -256,7 +255,7 @@ final class BitMatrix{
 	 * QR Code.
 	 *
 	 * @return array bytes encoded within the QR Code
-	 * @throws \RuntimeException if the exact number of bytes expected is not read
+	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException if the exact number of bytes expected is not read
 	 */
 	public function readCodewords():array{
 		$this->formatInfo = $this->readFormatInformation();
@@ -308,7 +307,7 @@ final class BitMatrix{
 		}
 
 		if($resultOffset !== $this->version->getTotalCodewords()){
-			throw new RuntimeException('offset differs from total codewords for version');
+			throw new QRCodeDecoderException('offset differs from total codewords for version');
 		}
 
 		return $result;
@@ -317,9 +316,9 @@ final class BitMatrix{
 	/**
 	 * Reads format information from one of its two locations within the QR Code.
 	 *
-	 * @return \chillerlan\QRCode\Common\FormatInformation encapsulating the QR Code's format info
-	 * @throws \RuntimeException                           if both format information locations cannot be parsed as
-	 *                                                     the valid encoding of format information
+	 * @return \chillerlan\QRCode\Common\FormatInformation       encapsulating the QR Code's format info
+	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException if both format information locations cannot be parsed as
+	 *                                                           the valid encoding of format information
 	 */
 	private function readFormatInformation():FormatInformation{
 
@@ -372,7 +371,7 @@ final class BitMatrix{
 			return $this->formatInfo;
 		}
 
-		throw new RuntimeException('failed to read format info');
+		throw new QRCodeDecoderException('failed to read format info');
 	}
 
 	/**
@@ -424,9 +423,9 @@ final class BitMatrix{
 	/**
 	 * Reads version information from one of its two locations within the QR Code.
 	 *
-	 * @return \chillerlan\QRCode\Common\Version encapsulating the QR Code's version
-	 * @throws \RuntimeException                 if both version information locations cannot be parsed as
-	 *                                           the valid encoding of version information
+	 * @return \chillerlan\QRCode\Common\Version                 encapsulating the QR Code's version
+	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException if both version information locations cannot be parsed as
+	 *                                                           the valid encoding of version information
 	 */
 	private function readVersion():Version{
 
@@ -471,7 +470,7 @@ final class BitMatrix{
 			return $this->version;
 		}
 
-		throw new RuntimeException('failed to read version');
+		throw new QRCodeDecoderException('failed to read version');
 	}
 
 	/**

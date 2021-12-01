@@ -11,7 +11,6 @@
 
 namespace chillerlan\QRCode\Decoder;
 
-use InvalidArgumentException;
 use function array_slice, array_splice, file_exists, is_file, is_readable, realpath;
 
 /**
@@ -59,7 +58,7 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 	public function getRow(int $y):array{
 
 		if($y < 0 || $y >= $this->getHeight()){
-			throw new InvalidArgumentException('Requested row is outside the image: '.$y);
+			throw new QRCodeDecoderException('Requested row is outside the image: '.$y);
 		}
 
 		$arr = [];
@@ -81,19 +80,19 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 	}
 
 	/**
-	 *
+	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	protected static function checkFile(string $path):string{
 		$path = trim($path);
 
 		if(!file_exists($path) || !is_file($path) || !is_readable($path)){
-			throw new InvalidArgumentException('invalid file: '.$path);
+			throw new QRCodeDecoderException('invalid file: '.$path);
 		}
 
 		$realpath = realpath($path);
 
 		if($realpath === false){
-			throw new InvalidArgumentException('unable to resolve path: '.$path);
+			throw new QRCodeDecoderException('unable to resolve path: '.$path);
 		}
 
 		return $realpath;

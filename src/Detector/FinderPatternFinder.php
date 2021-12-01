@@ -13,7 +13,6 @@
 
 namespace chillerlan\QRCode\Detector;
 
-use RuntimeException;
 use chillerlan\QRCode\Decoder\BitMatrix;
 use function abs, count, usort;
 use const PHP_FLOAT_MAX;
@@ -617,13 +616,13 @@ final class FinderPatternFinder{
 	 * @return \chillerlan\QRCode\Detector\FinderPattern[] the 3 best FinderPatterns from our list of candidates. The "best" are
 	 *         those that have been detected at least #CENTER_QUORUM times, and whose module
 	 *         size differs from the average among those patterns the least
-	 * @throws \RuntimeException if 3 such finder patterns do not exist
+	 * @throws \chillerlan\QRCode\Detector\QRCodeDetectorException if 3 such finder patterns do not exist
 	 */
 	private function selectBestPatterns():array{
 		$startSize = count($this->possibleCenters);
 
 		if($startSize < 3){
-			throw new RuntimeException('could not find enough finder patterns');
+			throw new QRCodeDetectorException('could not find enough finder patterns');
 		}
 
 		usort(
@@ -708,7 +707,7 @@ final class FinderPatternFinder{
 		}
 
 		if($distortion === PHP_FLOAT_MAX){
-			throw new RuntimeException('finder patterns may be too distorted');
+			throw new QRCodeDetectorException('finder patterns may be too distorted');
 		}
 
 		return $bestPatterns;

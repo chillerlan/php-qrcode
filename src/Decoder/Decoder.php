@@ -11,7 +11,7 @@
 
 namespace chillerlan\QRCode\Decoder;
 
-use InvalidArgumentException, RuntimeException, Throwable;
+use Throwable;
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, Mode, ReedSolomonDecoder, Version};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number};
 use chillerlan\QRCode\Detector\Detector;
@@ -33,8 +33,8 @@ final class Decoder{
 	 *
 	 * @param \chillerlan\QRCode\Decoder\LuminanceSourceInterface $source
 	 *
-	 * @return \chillerlan\QRCode\Decoder\DecoderResult text and bytes encoded within the QR Code
-	 * @throws \Throwable if the QR Code cannot be decoded
+	 * @return \chillerlan\QRCode\Decoder\DecoderResult                     text and bytes encoded within the QR Code
+	 * @throws \Throwable|\chillerlan\QRCode\Decoder\QRCodeDecoderException if the QR Code cannot be decoded
 	 */
 	public function decode(LuminanceSourceInterface $source):DecoderResult{
 		$bitMatrix = (new Detector($source))->detect();
@@ -66,9 +66,7 @@ final class Decoder{
 	}
 
 	/**
-	 * @param \chillerlan\QRCode\Decoder\BitMatrix $bitMatrix
-	 *
-	 * @return \chillerlan\QRCode\Decoder\DecoderResult
+	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	private function decodeMatrix(BitMatrix $bitMatrix):DecoderResult{
 		// Read raw codewords
@@ -78,7 +76,7 @@ final class Decoder{
 
 		// technically this shouldn't happen as the respective read meathods would throw first
 		if($version === null || $formatInfo === null){
-			throw new RuntimeException('unable to read version or ecc level');
+			throw new QRCodeDecoderException('unable to read version or ecc level');
 		}
 
 		$eccLevel = $formatInfo->getErrorCorrectionLevel();
@@ -114,12 +112,12 @@ final class Decoder{
 	 * @param \chillerlan\QRCode\Common\EccLevel $eccLevel     error-correction level of the QR Code
 	 *
 	 * @return array DataBlocks containing original bytes, "de-interleaved" from representation in the QR Code
-	 * @throws \InvalidArgumentException
+	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	private function getDataBlocks(array $rawCodewords, Version $version, EccLevel $eccLevel):array{
 
 		if(count($rawCodewords) !== $version->getTotalCodewords()){
-			throw new InvalidArgumentException('$rawCodewords differ from total codewords for version');
+			throw new QRCodeDecoderException('$rawCodewords differ from total codewords for version');
 		}
 
 		// Figure out the number and size of data blocks used by this version and
@@ -210,7 +208,7 @@ final class Decoder{
 	}
 
 	/**
-	 * @throws \RuntimeException
+	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	private function decodeBitStream(array $bytes, Version $version, EccLevel $ecLevel):DecoderResult{
 		$bits           = new BitBuffer($bytes);
@@ -242,7 +240,7 @@ final class Decoder{
 			}
 			elseif($datamode === Mode::STRCTURED_APPEND){
 				if($bits->available() < 16){
-					throw new RuntimeException('structured append: not enough bits left');
+					throw new QRCodeDecoderException('structured append: not enough bits left');
 				}
 				// sequence number and parity is added later to the result metadata
 				// Read next 8 bits (symbol sequence #) and 8 bits (parity data), then continue
@@ -312,7 +310,7 @@ final class Decoder{
 						$result .= Kanji::decodeSegment($bits, $versionNumber);
 					}
 					else{
-						throw new RuntimeException('invalid data mode');
+						throw new QRCodeDecoderException('invalid data mode');
 					}
 #				}
 			}
