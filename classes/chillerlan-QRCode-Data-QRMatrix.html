@@ -322,11 +322,18 @@ maps the ECC coded binary data and applies the mask pattern</p>
 <dd>Returns the value of the module at position [$x, $y]</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_init">init()</a>
+    <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_initFormatInfo">initFormatInfo()</a>
     <span>
                         &nbsp;: self    </span>
 </dt>
-<dd>shortcut to initialize the matrix</dd>
+<dd>shortcut to set format and version info</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_initFunctionalPatterns">initFunctionalPatterns()</a>
+    <span>
+                        &nbsp;: self    </span>
+</dt>
+<dd>shortcut to initialize the functional patterns</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_mapData">mapData()</a>
@@ -1078,7 +1085,7 @@ masking the data using $maskPattern (ISO/IEC 18004:2000 Section 8.8)</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">204</span>
+    <span class="phpdocumentor-element-found-in__line">212</span>
 
     </aside>
 
@@ -1133,7 +1140,7 @@ false =&gt; $value &amp; 0x800 === 0</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">194</span>
+    <span class="phpdocumentor-element-found-in__line">202</span>
 
     </aside>
 
@@ -1195,7 +1202,7 @@ false =&gt; $value &amp; 0x800 === 0</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">141</span>
+    <span class="phpdocumentor-element-found-in__line">149</span>
 
     </aside>
 
@@ -1228,7 +1235,7 @@ false =&gt; $value &amp; 0x800 === 0</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">183</span>
+    <span class="phpdocumentor-element-found-in__line">191</span>
 
     </aside>
 
@@ -1280,7 +1287,7 @@ false =&gt; $value &amp; 0x800 === 0</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">164</span>
+    <span class="phpdocumentor-element-found-in__line">172</span>
 
     </aside>
 
@@ -1325,22 +1332,22 @@ false =&gt; $value &amp; 0x800 === 0</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_init">
-        init()
-        <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_init" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_initFormatInfo">
+        initFormatInfo()
+        <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_initFormatInfo" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">95</span>
+    <span class="phpdocumentor-element-found-in__line">108</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">shortcut to initialize the matrix</p>
+        <p class="phpdocumentor-summary">shortcut to set format and version info</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">init</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$maskPattern</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$test</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+                <span class="phpdocumentor-signature__name">initFormatInfo</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$maskPattern</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -1353,16 +1360,41 @@ false =&gt; $value &amp; 0x800 === 0</p>
                     <section class="phpdocumentor-description"></section>
 
             </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$test</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
             </dl>
 
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">self</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_initFunctionalPatterns">
+        initFunctionalPatterns()
+        <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_initFunctionalPatterns" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">95</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">shortcut to initialize the functional patterns</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">initFunctionalPatterns</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+
+    
+    
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -1384,7 +1416,7 @@ false =&gt; $value &amp; 0x800 === 0</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">513</span>
+    <span class="phpdocumentor-element-found-in__line">521</span>
 
     </aside>
 
@@ -1442,7 +1474,7 @@ masking the data using $maskPattern (ISO/IEC 18004:2000 Section 8.8)</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">568</span>
+    <span class="phpdocumentor-element-found-in__line">578</span>
 
     </aside>
 
@@ -1488,7 +1520,7 @@ masking the data using $maskPattern (ISO/IEC 18004:2000 Section 8.8)</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">148</span>
+    <span class="phpdocumentor-element-found-in__line">156</span>
 
     </aside>
 
@@ -1521,7 +1553,7 @@ masking the data using $maskPattern (ISO/IEC 18004:2000 Section 8.8)</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">112</span>
+    <span class="phpdocumentor-element-found-in__line">120</span>
 
     </aside>
 
@@ -1565,7 +1597,7 @@ masking the data using $maskPattern (ISO/IEC 18004:2000 Section 8.8)</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">174</span>
+    <span class="phpdocumentor-element-found-in__line">182</span>
 
     </aside>
 
@@ -1636,7 +1668,7 @@ false =&gt; $M_TYPE</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">287</span>
+    <span class="phpdocumentor-element-found-in__line">297</span>
 
     </aside>
 
@@ -1671,7 +1703,7 @@ false =&gt; $M_TYPE</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">211</span>
+    <span class="phpdocumentor-element-found-in__line">221</span>
 
     </aside>
 
@@ -1681,7 +1713,9 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">setDarkModule</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>4 * version + 9 or moduleCount - 8</p>
+</section>
+
     
     
 
@@ -1704,7 +1738,7 @@ false =&gt; $M_TYPE</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">222</span>
+    <span class="phpdocumentor-element-found-in__line">232</span>
 
     </aside>
 
@@ -1739,7 +1773,7 @@ false =&gt; $M_TYPE</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">364</span>
+    <span class="phpdocumentor-element-found-in__line">374</span>
 
     </aside>
 
@@ -1747,7 +1781,7 @@ false =&gt; $M_TYPE</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">setFormatInfo</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$maskPattern</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$test</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+                <span class="phpdocumentor-signature__name">setFormatInfo</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$maskPattern</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
         <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 Section 8.9</p>
 </section>
@@ -1758,14 +1792,6 @@ false =&gt; $M_TYPE</p>
                 <span class="phpdocumentor-signature__argument__name">$maskPattern</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a></span>
                             </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$test</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
 
@@ -1793,7 +1819,7 @@ false =&gt; $M_TYPE</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">451</span>
+    <span class="phpdocumentor-element-found-in__line">459</span>
 
     </aside>
 
@@ -1891,7 +1917,7 @@ Note that there is no restiction on how many times this method could be called o
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">404</span>
+    <span class="phpdocumentor-element-found-in__line">412</span>
 
     </aside>
 
@@ -1951,7 +1977,7 @@ Note that there is no restiction on how many times this method could be called o
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">257</span>
+    <span class="phpdocumentor-element-found-in__line">267</span>
 
     </aside>
 
@@ -1986,7 +2012,7 @@ Note that there is no restiction on how many times this method could be called o
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">318</span>
+    <span class="phpdocumentor-element-found-in__line">328</span>
 
     </aside>
 
@@ -2021,7 +2047,7 @@ Note that there is no restiction on how many times this method could be called o
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">340</span>
+    <span class="phpdocumentor-element-found-in__line">350</span>
 
     </aside>
 
@@ -2029,23 +2055,12 @@ Note that there is no restiction on how many times this method could be called o
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">setVersionNumber</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$test</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+                <span class="phpdocumentor-signature__name">setVersionNumber</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
         <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 Section 8.10</p>
 </section>
 
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$test</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
+    
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -2067,7 +2082,7 @@ Note that there is no restiction on how many times this method could be called o
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">157</span>
+    <span class="phpdocumentor-element-found-in__line">165</span>
 
     </aside>
 
@@ -2102,7 +2117,7 @@ Note that there is no restiction on how many times this method could be called o
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">134</span>
+    <span class="phpdocumentor-element-found-in__line">142</span>
 
     </aside>
 

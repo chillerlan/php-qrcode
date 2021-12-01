@@ -97,6 +97,9 @@
         <h2 class="phpdocumentor-content__title">
     DecoderResult
 
+        <span class="phpdocumentor-element__extends">
+        extends <abbr title="\chillerlan\Settings\SettingsContainerAbstract">SettingsContainerAbstract</abbr>
+    </span>
     
             <div class="phpdocumentor-element__package">
             in package
@@ -111,31 +114,16 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">23</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">&lt;p&gt;Encapsulates the result of decoding a matrix of bits. This typically
+            <p class="phpdocumentor-summary">Encapsulates the result of decoding a matrix of bits. This typically
 applies to 2D barcode formats. For now it contains the raw bytes obtained,
-as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
+as well as a String interpretation of those bytes, if applicable.</p>
 
 
 
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">author</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Sean Owen</p>
-</section>
-
-                                    </dd>
-                        </dl>
 
 
 
@@ -148,42 +136,84 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-                <dt class="phpdocumentor-table-of-contents__entry -property -private">
+                <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_eccLevel">$eccLevel</a>
     <span>
                 &nbsp;: <a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>            </span>
 </dt>
 <dd></dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_rawBytes">$rawBytes</a>
     <span>
-                &nbsp;: array&lt;string|int, mixed&gt;            </span>
+                &nbsp;: array&lt;string|int, int&gt;            </span>
 </dt>
 <dd></dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_structuredAppendParity">$structuredAppendParity</a>
     <span>
                 &nbsp;: int            </span>
 </dt>
 <dd></dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_structuredAppendSequenceNumber">$structuredAppendSequenceNumber</a>
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_structuredAppendSequence">$structuredAppendSequence</a>
     <span>
                 &nbsp;: int            </span>
 </dt>
 <dd></dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_text">$text</a>
     <span>
                 &nbsp;: string            </span>
 </dt>
 <dd></dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_version">$version</a>
+    <span>
+                &nbsp;: <a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_eccLevel">$eccLevel</a>
+    <span>
+                &nbsp;: <a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_rawBytes">$rawBytes</a>
+    <span>
+                &nbsp;: array&lt;string|int, mixed&gt;            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_structuredAppendParity">$structuredAppendParity</a>
+    <span>
+                &nbsp;: int            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_structuredAppendSequence">$structuredAppendSequence</a>
+    <span>
+                &nbsp;: int            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_text">$text</a>
+    <span>
+                &nbsp;: string            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_version">$version</a>
     <span>
                 &nbsp;: <a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>            </span>
@@ -191,9 +221,9 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
 <dd></dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method___construct">__construct()</a>
+    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method___set">__set()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                        &nbsp;: void    </span>
 </dt>
 <dd></dd>
 
@@ -205,44 +235,9 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_getEccLevel">getEccLevel()</a>
+    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_fromIterable">fromIterable()</a>
     <span>
-                        &nbsp;: <a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>    </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_getRawBytes">getRawBytes()</a>
-    <span>
-                        &nbsp;: array&lt;string|int, int&gt;    </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_getStructuredAppendParity">getStructuredAppendParity()</a>
-    <span>
-                        &nbsp;: int    </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_getStructuredAppendSequenceNumber">getStructuredAppendSequenceNumber()</a>
-    <span>
-                        &nbsp;: int    </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_getText">getText()</a>
-    <span>
-                        &nbsp;: string    </span>
-</dt>
-<dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_getVersion">getVersion()</a>
-    <span>
-                        &nbsp;: <a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>    </span>
+                        &nbsp;: self    </span>
 </dt>
 <dd></dd>
 
@@ -269,7 +264,7 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
         class="
             phpdocumentor-element
             -property
-            -private
+            -public
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="property_eccLevel">
@@ -281,13 +276,211 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">0</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$eccLevel</span>
+    </code>
+
+    
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_rawBytes">
+        $rawBytes
+        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_rawBytes" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, int&gt;</span>
+    <span class="phpdocumentor-signature__name">$rawBytes</span>
+    </code>
+
+    
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_structuredAppendParity">
+        $structuredAppendParity
+        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_structuredAppendParity" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$structuredAppendParity</span>
+    </code>
+
+    
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_structuredAppendSequence">
+        $structuredAppendSequence
+        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_structuredAppendSequence" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$structuredAppendSequence</span>
+    </code>
+
+    
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_text">
+        $text
+        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_text" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">string</span>
+    <span class="phpdocumentor-signature__name">$text</span>
+    </code>
+
+    
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_version">
+        $version
+        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_version" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">0</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a></span>
+    <span class="phpdocumentor-signature__name">$version</span>
+    </code>
+
+    
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_eccLevel">
+        $eccLevel
+        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_eccLevel" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">34</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a></span>
     <span class="phpdocumentor-signature__name">$eccLevel</span>
     </code>
@@ -303,7 +496,7 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
         class="
             phpdocumentor-element
             -property
-            -private
+            -protected
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="property_rawBytes">
@@ -315,13 +508,13 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
+    <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$rawBytes</span>
     </code>
@@ -337,7 +530,7 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
         class="
             phpdocumentor-element
             -property
-            -private
+            -protected
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="property_structuredAppendParity">
@@ -349,16 +542,16 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
+    <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">$structuredAppendParity</span>
-    </code>
+     = <span class="phpdocumentor-signature__default-value">-1</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -371,28 +564,28 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
         class="
             phpdocumentor-element
             -property
-            -private
+            -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_structuredAppendSequenceNumber">
-        $structuredAppendSequenceNumber
-        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_structuredAppendSequenceNumber" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_structuredAppendSequence">
+        $structuredAppendSequence
+        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_structuredAppendSequence" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">36</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
+    <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$structuredAppendSequenceNumber</span>
-    </code>
+    <span class="phpdocumentor-signature__name">$structuredAppendSequence</span>
+     = <span class="phpdocumentor-signature__default-value">-1</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -405,7 +598,7 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
         class="
             phpdocumentor-element
             -property
-            -private
+            -protected
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="property_text">
@@ -417,13 +610,13 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
+    <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type">string</span>
     <span class="phpdocumentor-signature__name">$text</span>
     </code>
@@ -439,7 +632,7 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
         class="
             phpdocumentor-element
             -property
-            -private
+            -protected
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="property_version">
@@ -451,13 +644,13 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
+    <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a></span>
     <span class="phpdocumentor-signature__name">$version</span>
     </code>
@@ -482,69 +675,37 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method___construct">
-        __construct()
-        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method___set">
+        __set()
+        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method___set" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">35</span>
+    <span class="phpdocumentor-element-found-in__line">41</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$rawBytes</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$text</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$eccLevel</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$saSequence</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">-1</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$saParity</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">-1</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                <span class="phpdocumentor-signature__name">__set</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$property</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$rawBytes</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                <span class="phpdocumentor-signature__argument__name">$property</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$text</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                             </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$version</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a></span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$eccLevel</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a></span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$saSequence</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">-1</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$saParity</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">-1</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
 
@@ -552,9 +713,22 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
         
     
@@ -572,7 +746,7 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">68</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
@@ -584,6 +758,19 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
@@ -597,192 +784,52 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getEccLevel">
-        getEccLevel()
-        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_getEccLevel" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_fromIterable">
+        fromIterable()
+        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_fromIterable" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">82</span>
+    <span class="phpdocumentor-element-found-in__line">55</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">getEccLevel</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a></span></code>
+                <span class="phpdocumentor-signature__name">fromIterable</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">iteratable&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$properties</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
     
-    
-    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$properties</span>
+                : <span class="phpdocumentor-signature__argument__return-type">iteratable&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a></span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getRawBytes">
-        getRawBytes()
-        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_getRawBytes" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">54</span>
-
-    </aside>
+            </dd>
+            </dl>
 
     
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">getRawBytes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span></code>
-
-    
-    
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>raw bytes encoded by the barcode, if applicable, otherwise null</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getStructuredAppendParity">
-        getStructuredAppendParity()
-        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_getStructuredAppendParity" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">96</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">getStructuredAppendParity</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getStructuredAppendSequenceNumber">
-        getStructuredAppendSequenceNumber()
-        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_getStructuredAppendSequenceNumber" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">103</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">getStructuredAppendSequenceNumber</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getText">
-        getText()
-        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_getText" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">61</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">getText</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>raw text encoded by the barcode</p>
-</section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getVersion">
-        getVersion()
-        <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_getVersion" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">75</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">getVersion</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a></span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a></span>
+    <span class="phpdocumentor-signature__response_type">self</span>
             &mdash;
         
     
@@ -800,7 +847,7 @@ as well as a String interpretation of those bytes, if applicable.&lt;/p&gt;</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/DecoderResult.php"><a href="files/src-decoder-decoderresult.html"><abbr title="src/Decoder/DecoderResult.php">DecoderResult.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">89</span>
+    <span class="phpdocumentor-element-found-in__line">67</span>
 
     </aside>
 

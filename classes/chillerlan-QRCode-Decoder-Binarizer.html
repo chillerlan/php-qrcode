@@ -229,13 +229,6 @@ but for now it was not a win to use local blocks for 1D.</p>
 constructor instead, but there are some advantages to doing it lazily, such as making
 profiling easier, and not doing heavy lifting when callers don&#039;t expect it.</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getHistogramBlackMatrix">getHistogramBlackMatrix()</a>
-    <span>
-                        &nbsp;: <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a>    </span>
-</dt>
-<dd></dd>
-
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_calculateBlackPoints">calculateBlackPoints()</a>
     <span>
@@ -263,6 +256,13 @@ on the last pixels in the row/column which are also used in the previous block).
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_estimateBlackPoint">estimateBlackPoint()</a>
     <span>
                         &nbsp;: int    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getHistogramBlackMatrix">getHistogramBlackMatrix()</a>
+    <span>
+                        &nbsp;: <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a>    </span>
 </dt>
 <dd></dd>
 
@@ -616,57 +616,6 @@ fetched using getBlackRow(), so don't mix and match between them.</p>
                     <article
         class="phpdocumentor-element
             -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getHistogramBlackMatrix">
-        getHistogramBlackMatrix()
-        <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getHistogramBlackMatrix" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Binarizer.php"><a href="files/src-decoder-binarizer.html"><abbr title="src/Decoder/Binarizer.php">Binarizer.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">163</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">getHistogramBlackMatrix</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$width</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$height</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$width</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$height</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
             -private
                                                         "
 >
@@ -939,6 +888,57 @@ on the last pixels in the row/column which are also used in the previous block).
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">int</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getHistogramBlackMatrix">
+        getHistogramBlackMatrix()
+        <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getHistogramBlackMatrix" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Binarizer.php"><a href="files/src-decoder-binarizer.html"><abbr title="src/Decoder/Binarizer.php">Binarizer.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">163</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                <span class="phpdocumentor-signature__name">getHistogramBlackMatrix</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$width</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$height</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$width</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$height</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span>
             &mdash;
         
     
