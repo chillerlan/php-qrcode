@@ -19,8 +19,8 @@ use function abs, is_nan, max, min, round;
 use const NAN;
 
 /**
- * <p>Encapsulates logic that can detect a QR Code in an image, even if the QR Code
- * is rotated or skewed, or partially obscured.</p>
+ * Encapsulates logic that can detect a QR Code in an image, even if the QR Code
+ * is rotated or skewed, or partially obscured.
  *
  * @author Sean Owen
  */
@@ -36,7 +36,7 @@ final class Detector{
 	}
 
 	/**
-	 * <p>Detects a QR Code in an image.</p>
+	 * Detects a QR Code in an image.
 	 */
 	public function detect():BitMatrix{
 		[$bottomLeft, $topLeft, $topRight] = (new FinderPatternFinder($this->bitMatrix))->find();
@@ -75,8 +75,8 @@ final class Detector{
 	}
 
 	/**
-	 * <p>Computes an average estimated module size based on estimated derived from the positions
-	 * of the three finder patterns.</p>
+	 * Computes an average estimated module size based on estimated derived from the positions
+	 * of the three finder patterns.
 	 *
 	 * @throws \RuntimeException
 	 */
@@ -95,9 +95,9 @@ final class Detector{
 	}
 
 	/**
-	 * <p>Estimates module size based on two finder patterns -- it uses
-	 * {@link #sizeOfBlackWhiteBlackRunBothWays(int, int, int, int)} to figure the
-	 * width of each, measuring along the axis between their centers.</p>
+	 * Estimates module size based on two finder patterns -- it uses
+	 * #sizeOfBlackWhiteBlackRunBothWays(int, int, int, int) to figure the
+	 * width of each, measuring along the axis between their centers.
 	 */
 	private function calculateModuleSizeOneWay(FinderPattern $pattern, FinderPattern $otherPattern):float{
 
@@ -128,9 +128,9 @@ final class Detector{
 	}
 
 	/**
-	 * See {@link #sizeOfBlackWhiteBlackRun(int, int, int, int)}; computes the total width of
+	 * See #sizeOfBlackWhiteBlackRun(int, int, int, int); computes the total width of
 	 * a finder pattern by looking for a black-white-black run from the center in the direction
-	 * of another po$(another finder pattern center), and in the opposite direction too.</p>
+	 * of another po$(another finder pattern center), and in the opposite direction too.
 	 */
 	private function sizeOfBlackWhiteBlackRunBothWays(float $fromX, float $fromY, float $toX, float $toY):float{
 		$result    = $this->sizeOfBlackWhiteBlackRun((int)$fromX, (int)$fromY, (int)$toX, (int)$toY);
@@ -168,12 +168,12 @@ final class Detector{
 	}
 
 	/**
-	 * <p>This method traces a line from a po$in the image, in the direction towards another point.
+	 * This method traces a line from a po$in the image, in the direction towards another point.
 	 * It begins in a black region, and keeps going until it finds white, then black, then white again.
-	 * It reports the distance from the start to this point.</p>
+	 * It reports the distance from the start to this point.
 	 *
-	 * <p>This is used when figuring out how wide a finder pattern is, when the finder pattern
-	 * may be skewed or rotated.</p>
+	 * This is used when figuring out how wide a finder pattern is, when the finder pattern
+	 * may be skewed or rotated.
 	 */
 	private function sizeOfBlackWhiteBlackRun(int $fromX, int $fromY, int $toX, int $toY):float{
 		// Mild variant of Bresenham's algorithm;
@@ -241,8 +241,8 @@ final class Detector{
 	}
 
 	/**
-	 * <p>Computes the dimension (number of modules on a size) of the QR Code based on the position
-	 * of the finder patterns and estimated module size.</p>
+	 * Computes the dimension (number of modules on a size) of the QR Code based on the position
+	 * of the finder patterns and estimated module size.
 	 *
 	 * @throws \RuntimeException
 	 */
@@ -276,8 +276,8 @@ final class Detector{
 	}
 
 	/**
-	 * <p>Attempts to locate an alignment pattern in a limited region of the image, which is
-	 * guessed to contain it.</p>
+	 * Attempts to locate an alignment pattern in a limited region of the image, which is
+	 * guessed to contain it.
 	 *
 	 * @param float $overallEstModuleSize estimated module size so far
 	 * @param int   $estAlignmentX        x coordinate of center of area probably containing alignment pattern

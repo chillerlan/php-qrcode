@@ -18,8 +18,8 @@ use chillerlan\QRCode\Detector\Detector;
 use function count, array_fill, mb_convert_encoding, mb_detect_encoding;
 
 /**
- * <p>The main class which implements QR Code decoding -- as opposed to locating and extracting
- * the QR Code from an image.</p>
+ * The main class which implements QR Code decoding -- as opposed to locating and extracting
+ * the QR Code from an image.
  *
  * @author Sean Owen
  */
@@ -28,8 +28,8 @@ final class Decoder{
 #	private const GB2312_SUBSET = 1;
 
 	/**
-	 * <p>Decodes a QR Code represented as a {@link \chillerlan\QRCode\Decoder\BitMatrix}.
-	 * A 1 or "true" is taken to mean a black module.</p>
+	 * Decodes a QR Code represented as a BitMatrix.
+	 * A 1 or "true" is taken to mean a black module.
 	 *
 	 * @param \chillerlan\QRCode\Decoder\LuminanceSourceInterface $source
 	 *
@@ -105,9 +105,9 @@ final class Decoder{
 	}
 
 	/**
-	 * <p>When QR Codes use multiple data blocks, they are actually interleaved.
+	 * When QR Codes use multiple data blocks, they are actually interleaved.
 	 * That is, the first byte of data block 1 to n is written, then the second bytes, and so on. This
-	 * method will separate the data into original blocks.</p>
+	 * method will separate the data into original blocks.
 	 *
 	 * @param array                              $rawCodewords bytes as read directly from the QR Code
 	 * @param \chillerlan\QRCode\Common\Version  $version      version of the QR Code
@@ -187,8 +187,8 @@ final class Decoder{
 	}
 
 	/**
-	 * <p>Given data and error-correction codewords received, possibly corrupted by errors, attempts to
-	 * correct the errors in-place using Reed-Solomon error correction.</p>
+	 * Given data and error-correction codewords received, possibly corrupted by errors, attempts to
+	 * correct the errors in-place using Reed-Solomon error correction.
 	 */
 	private function correctErrors(array $codewordBytes, int $numDataCodewords):array{
 		// First read into an array of ints

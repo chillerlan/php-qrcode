@@ -23,7 +23,7 @@ use function array_fill, count, sprintf;
  * Imaging library, but which may not be available in other environments such as J2ME, and vice
  * versa.
  *
- * The implementation used can be controlled by calling {@link #setGridSampler(GridSampler)}
+ * The implementation used can be controlled by calling #setGridSampler(GridSampler)
  * with an instance of a class which implements this interface.
  *
  * @author Sean Owen
@@ -31,15 +31,15 @@ use function array_fill, count, sprintf;
 final class GridSampler{
 
 	/**
-	 * <p>Checks a set of points that have been transformed to sample points on an image against
-	 * the image's dimensions to see if the point are even within the image.</p>
+	 * Checks a set of points that have been transformed to sample points on an image against
+	 * the image's dimensions to see if the point are even within the image.
 	 *
-	 * <p>This method will actually "nudge" the endpoints back onto the image if they are found to be
+	 * This method will actually "nudge" the endpoints back onto the image if they are found to be
 	 * barely (less than 1 pixel) off the image. This accounts for imperfect detection of finder
-	 * patterns in an image where the QR Code runs all the way to the image border.</p>
+	 * patterns in an image where the QR Code runs all the way to the image border.
 	 *
-	 * <p>For efficiency, the method will check points from either end of the line until one is found
-	 * to be within the image. Because the set of points are assumed to be linear, this is valid.</p>
+	 * For efficiency, the method will check points from either end of the line until one is found
+	 * to be within the image. Because the set of points are assumed to be linear, this is valid.
 	 *
 	 * @param \chillerlan\QRCode\Decoder\BitMatrix $bitMatrix image into which the points should map
 	 * @param float[]                  $points    actual points in x1,y1,...,xn,yn form

@@ -15,10 +15,10 @@ use RuntimeException;
 use function array_fill, count;
 
 /**
- * <p>Implements Reed-Solomon decoding, as the name implies.</p>
+ * Implements Reed-Solomon decoding, as the name implies.
  *
- * <p>The algorithm will not be explained here, but the following references were helpful
- * in creating this implementation:</p>
+ * The algorithm will not be explained here, but the following references were helpful
+ * in creating this implementation:
  *
  * <ul>
  * <li>Bruce Maggs.
@@ -29,8 +29,8 @@ use function array_fill, count;
  * (see discussion of Euclidean algorithm)</li>
  * </ul>
  *
- * <p>Much credit is due to William Rucklidge since portions of this code are an indirect
- * port of his C++ Reed-Solomon implementation.</p>
+ * Much credit is due to William Rucklidge since portions of this code are an indirect
+ * port of his C++ Reed-Solomon implementation.
  *
  * @author Sean Owen
  * @author William Rucklidge
@@ -39,9 +39,9 @@ use function array_fill, count;
 final class ReedSolomonDecoder{
 
 	/**
-	 * <p>Decodes given set of received codewords, which include both data and error-correction
+	 * Decodes given set of received codewords, which include both data and error-correction
 	 * codewords. Really, this means it uses Reed-Solomon to detect and correct errors, in-place,
-	 * in the input.</p>
+	 * in the input.
 	 *
 	 * @param array $received        data and error-correction codewords
 	 * @param int   $numEccCodewords number of error-correction codewords available

@@ -38,7 +38,7 @@ final class BitMatrix{
 	}
 
 	/**
-	 * <p>Sets the given bit to true.</p>
+	 * Sets the given bit to true.
 	 *
 	 * @param int $x ;  The horizontal component (i.e. which column)
 	 * @param int $y ;  The vertical component (i.e. which row)
@@ -53,7 +53,7 @@ final class BitMatrix{
 	}
 
 	/**
-	 * <p>Flips the given bit. 1 << (0xf9 & 0x1f)</p>
+	 * Flips the given bit. 1 << (0xf9 & 0x1f)
 	 *
 	 * @param int $x ;  The horizontal component (i.e. which column)
 	 * @param int $y ;  The vertical component (i.e. which row)
@@ -67,7 +67,7 @@ final class BitMatrix{
 	}
 
 	/**
-	 * <p>Sets a square region of the bit matrix to true.</p>
+	 * Sets a square region of the bit matrix to true.
 	 *
 	 * @param int $left   ;  The horizontal position to begin at (inclusive)
 	 * @param int $top    ;  The vertical position to begin at (inclusive)
@@ -127,7 +127,7 @@ final class BitMatrix{
 	}
 
 	/**
-	 * <p>Gets the requested bit, where true means black.</p>
+	 * Gets the requested bit, where true means black.
 	 *
 	 * @param int $x The horizontal component (i.e. which column)
 	 * @param int $y The vertical component (i.e. which row)
@@ -224,9 +224,9 @@ final class BitMatrix{
 
 	/**
 	 * Prepare the parser for a mirrored operation.
-	 * This flag has effect only on the {@link #readFormatInformation()} and the
-	 * {@link #readVersion()}. Before proceeding with {@link #readCodewords()} the
-	 * {@link #mirror()} method should be called.
+	 * This flag has effect only on the #readFormatInformation() and the
+	 * #readVersion(). Before proceeding with #readCodewords() the
+	 * #mirror() method should be called.
 	 *
 	 * @param bool $mirror Whether to read version and format information mirrored.
 	 */
@@ -251,9 +251,9 @@ final class BitMatrix{
 	}
 
 	/**
-	 * <p>Reads the bits in the {@link BitMatrix} representing the finder pattern in the
+	 * Reads the bits in the BitMatrix representing the finder pattern in the
 	 * correct order in order to reconstruct the codewords bytes contained within the
-	 * QR Code.</p>
+	 * QR Code.
 	 *
 	 * @return array bytes encoded within the QR Code
 	 * @throws \RuntimeException if the exact number of bytes expected is not read
@@ -315,7 +315,7 @@ final class BitMatrix{
 	}
 
 	/**
-	 * <p>Reads format information from one of its two locations within the QR Code.</p>
+	 * Reads format information from one of its two locations within the QR Code.
 	 *
 	 * @return \chillerlan\QRCode\Common\FormatInformation encapsulating the QR Code's format info
 	 * @throws \RuntimeException                           if both format information locations cannot be parsed as
@@ -422,7 +422,7 @@ final class BitMatrix{
 	}
 
 	/**
-	 * <p>Reads version information from one of its two locations within the QR Code.</p>
+	 * Reads version information from one of its two locations within the QR Code.
 	 *
 	 * @return \chillerlan\QRCode\Common\Version encapsulating the QR Code's version
 	 * @throws \RuntimeException                 if both version information locations cannot be parsed as

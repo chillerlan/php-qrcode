@@ -15,16 +15,16 @@ use chillerlan\QRCode\Decoder\BitMatrix;
 use function abs, count;
 
 /**
- * <p>This class attempts to find alignment patterns in a QR Code. Alignment patterns look like finder
- * patterns but are smaller and appear at regular intervals throughout the image.</p>
+ * This class attempts to find alignment patterns in a QR Code. Alignment patterns look like finder
+ * patterns but are smaller and appear at regular intervals throughout the image.
  *
- * <p>At the moment this only looks for the bottom-right alignment pattern.</p>
+ * At the moment this only looks for the bottom-right alignment pattern.
  *
- * <p>This is mostly a simplified copy of {@link FinderPatternFinder}. It is copied,
+ * This is mostly a simplified copy of FinderPatternFinder. It is copied,
  * pasted and stripped down here for maximum performance but does unfortunately duplicate
- * some code.</p>
+ * some code.
  *
- * <p>This class is thread-safe but not reentrant. Each thread must allocate its own object.</p>
+ * This class is thread-safe but not reentrant. Each thread must allocate its own object.
  *
  * @author Sean Owen
  */
@@ -36,7 +36,7 @@ final class AlignmentPatternFinder{
 	private array $possibleCenters;
 
 	/**
-	 * <p>Creates a finder that will look in a portion of the whole image.</p>
+	 * Creates a finder that will look in a portion of the whole image.
 	 *
 	 * @param \chillerlan\QRCode\Decoder\BitMatrix $image      image to search
 	 * @param float                                $moduleSize estimated module size so far
@@ -48,8 +48,8 @@ final class AlignmentPatternFinder{
 	}
 
 	/**
-	 * <p>This method attempts to find the bottom-right alignment pattern in the image. It is a bit messy since
-	 * it's pretty performance-critical and so is written to be fast foremost.</p>
+	 * This method attempts to find the bottom-right alignment pattern in the image. It is a bit messy since
+	 * it's pretty performance-critical and so is written to be fast foremost.
 	 *
 	 * @param int $startX left column from which to start searching
 	 * @param int $startY top row from which to start searching
@@ -163,10 +163,10 @@ final class AlignmentPatternFinder{
 	}
 
 	/**
-	 * <p>This is called when a horizontal scan finds a possible alignment pattern. It will
+	 * This is called when a horizontal scan finds a possible alignment pattern. It will
 	 * cross check with a vertical scan, and if successful, will see if this pattern had been
 	 * found on a previous horizontal scan. If so, we consider it confirmed and conclude we have
-	 * found the alignment pattern.</p>
+	 * found the alignment pattern.
 	 *
 	 * @param int[] $stateCount reading state module counts from horizontal scan
 	 * @param int   $i          row where alignment pattern may be found
@@ -211,9 +211,9 @@ final class AlignmentPatternFinder{
 	}
 
 	/**
-	 * <p>After a horizontal scan finds a potential alignment pattern, this method
+	 * After a horizontal scan finds a potential alignment pattern, this method
 	 * "cross-checks" by scanning down vertically through the center of the possible
-	 * alignment pattern to see if the same proportion is detected.</p>
+	 * alignment pattern to see if the same proportion is detected.
 	 *
 	 * @param int $startI   row where an alignment pattern was detected
 	 * @param int $centerJ  center of the section that appears to cross an alignment pattern

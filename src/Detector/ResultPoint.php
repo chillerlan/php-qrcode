@@ -14,8 +14,8 @@ namespace chillerlan\QRCode\Detector;
 use function abs;
 
 /**
- * <p>Encapsulates a point of interest in an image containing a barcode. Typically, this
- * would be the location of a finder pattern or the corner of the barcode, for example.</p>
+ * Encapsulates a point of interest in an image containing a barcode. Typically, this
+ * would be the location of a finder pattern or the corner of the barcode, for example.
  *
  * @author Sean Owen
  */
@@ -56,8 +56,8 @@ abstract class ResultPoint{
 	}
 
 	/**
-	 * <p>Determines if this finder pattern "about equals" a finder pattern at the stated
-	 * position and size -- meaning, it is at nearly the same center with nearly the same size.</p>
+	 * Determines if this finder pattern "about equals" a finder pattern at the stated
+	 * position and size -- meaning, it is at nearly the same center with nearly the same size.
 	 */
 	public function aboutEquals(float $moduleSize, float $i, float $j):bool{
 

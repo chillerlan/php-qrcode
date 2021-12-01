@@ -16,12 +16,12 @@ use InvalidArgumentException;
 use function array_fill;
 
 /**
- * <p>This class contains utility methods for performing mathematical operations over
- * the Galois Fields. Operations use a given primitive polynomial in calculations.</p>
+ * This class contains utility methods for performing mathematical operations over
+ * the Galois Fields. Operations use a given primitive polynomial in calculations.
  *
- * <p>Throughout this package, elements of the GF are represented as an {@code int}
+ * Throughout this package, elements of the GF are represented as an int
  * for convenience and speed (but at the cost of memory).
- * </p>
+ *
  *
  * @author Sean Owen
  * @author David Olivier

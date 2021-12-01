@@ -19,10 +19,10 @@ use function abs, count, usort;
 use const PHP_FLOAT_MAX;
 
 /**
- * <p>This class attempts to find finder patterns in a QR Code. Finder patterns are the square
- * markers at three corners of a QR Code.</p>
+ * This class attempts to find finder patterns in a QR Code. Finder patterns are the square
+ * markers at three corners of a QR Code.
  *
- * <p>This class is thread-safe but not reentrant. Each thread must allocate its own object.
+ * This class is thread-safe but not reentrant. Each thread must allocate its own object.
  *
  * @author Sean Owen
  */
@@ -37,7 +37,7 @@ final class FinderPatternFinder{
 	private bool  $hasSkipped = false;
 
 	/**
-	 * <p>Creates a finder that will search the image for three finder patterns.</p>
+	 * Creates a finder that will search the image for three finder patterns.
 	 *
 	 * @param BitMatrix $bitMatrix image to search
 	 */
@@ -318,9 +318,9 @@ final class FinderPatternFinder{
 	}
 
 	/**
-	 * <p>After a horizontal scan finds a potential finder pattern, this method
+	 * After a horizontal scan finds a potential finder pattern, this method
 	 * "cross-checks" by scanning down vertically through the center of the possible
-	 * finder pattern to see if the same proportion is detected.</p>
+	 * finder pattern to see if the same proportion is detected.
 	 *
 	 * @param int $startI   ;  row where a finder pattern was detected
 	 * @param int $centerJ  ; center of the section that appears to cross a finder pattern
@@ -409,9 +409,9 @@ final class FinderPatternFinder{
 	}
 
 	/**
-	 * <p>Like {@link #crossCheckVertical(int, int, int, int)}, and in fact is basically identical,
+	 * Like #crossCheckVertical(int, int, int, int), and in fact is basically identical,
 	 * except it reads horizontally instead of vertically. This is used to cross-cross
-	 * check a vertical cross check and locate the real center of the alignment pattern.</p>
+	 * check a vertical cross check and locate the real center of the alignment pattern.
 	 */
 	private function crossCheckHorizontal(int $startJ, int $centerI, int $maxCount, int $originalStateCountTotal):?float{
 		$maxJ       = $this->bitMatrix->getDimension();
@@ -489,13 +489,13 @@ final class FinderPatternFinder{
 	}
 
 	/**
-	 * <p>This is called when a horizontal scan finds a possible alignment pattern. It will
+	 * This is called when a horizontal scan finds a possible alignment pattern. It will
 	 * cross check with a vertical scan, and if successful, will, ah, cross-cross-check
 	 * with another horizontal scan. This is needed primarily to locate the real horizontal
 	 * center of the pattern in cases of extreme skew.
-	 * And then we cross-cross-cross check with another diagonal scan.</p>
+	 * And then we cross-cross-cross check with another diagonal scan.
 	 *
-	 * <p>If that succeeds the finder pattern location is added to a list that tracks
+	 * If that succeeds the finder pattern location is added to a list that tracks
 	 * the number of times each location has been nearly-matched as a finder pattern.
 	 * Each additional find is more evidence that the location is in fact a finder
 	 * pattern center
@@ -581,7 +581,7 @@ final class FinderPatternFinder{
 
 	/**
 	 * @return bool true if we have found at least 3 finder patterns that have been detected
-	 *              at least {@link #CENTER_QUORUM} times each, and, the estimated module size of the
+	 *              at least #CENTER_QUORUM times each, and, the estimated module size of the
 	 *              candidates is "pretty similar"
 	 */
 	private function haveMultiplyConfirmedCenters():bool{
@@ -614,8 +614,8 @@ final class FinderPatternFinder{
 	}
 
 	/**
-	 * @return \chillerlan\QRCode\Detector\FinderPattern[] the 3 best {@link FinderPattern}s from our list of candidates. The "best" are
-	 *         those that have been detected at least {@link #CENTER_QUORUM} times, and whose module
+	 * @return \chillerlan\QRCode\Detector\FinderPattern[] the 3 best FinderPatterns from our list of candidates. The "best" are
+	 *         those that have been detected at least #CENTER_QUORUM times, and whose module
 	 *         size differs from the average among those patterns the least
 	 * @throws \RuntimeException if 3 such finder patterns do not exist
 	 */
