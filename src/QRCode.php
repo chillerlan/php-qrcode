@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\QRCode\Common\{EccLevel, ECICharset, MaskPattern, MaskPatternTester, Mode};
+use chillerlan\QRCode\Common\{EccLevel, ECICharset, MaskPattern, Mode};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number, QRData, QRCodeDataException, QRDataModeInterface, QRMatrix};
 use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, LuminanceSourceInterface};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString};
@@ -102,11 +102,6 @@ class QRCode{
 	protected SettingsContainerInterface $options;
 
 	/**
-	 * The selected data interface (Number, AlphaNum, Kanji, Byte)
-	 */
-	protected QRData $dataInterface;
-
-	/**
 	 * A collection of one or more data segments of [classname, data] to write
 	 *
 	 * @see \chillerlan\QRCode\Data\QRDataModeInterface
@@ -159,13 +154,12 @@ class QRCode{
 			throw new QRCodeDataException('QRCode::getMatrix() No data given.');
 		}
 
-		$this->dataInterface = new QRData($this->options, $this->dataSegments);
-
-		$maskPattern = $this->options->maskPattern === $this::MASK_PATTERN_AUTO
-			? (new MaskPatternTester($this->dataInterface))->getBestMaskPattern()
+		$dataInterface = new QRData($this->options, $this->dataSegments);
+		$maskPattern   = $this->options->maskPattern === $this::MASK_PATTERN_AUTO
+			? MaskPattern::getBestPattern($dataInterface)
 			: new MaskPattern($this->options->maskPattern);
 
-		$matrix = $this->dataInterface->writeMatrix($maskPattern);
+		$matrix = $dataInterface->writeMatrix($maskPattern);
 
 		if($this->options->addQuietzone){
 			$matrix->setQuietZone($this->options->quietzoneSize);

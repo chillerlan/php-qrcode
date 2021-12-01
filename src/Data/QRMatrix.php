@@ -105,10 +105,10 @@ final class QRMatrix{
 	/**
 	 * shortcut to set format and version info
 	 */
-	public function initFormatInfo(MaskPattern $maskPattern, bool $test = null):self{
+	public function initFormatInfo(MaskPattern $maskPattern):self{
 		return $this
-			->setVersionNumber($test)
-			->setFormatInfo($maskPattern, $test)
+			->setVersionNumber()
+			->setFormatInfo($maskPattern)
 		;
 	}
 
@@ -347,7 +347,7 @@ final class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 8.10
 	 */
-	public function setVersionNumber(bool $test = null):self{
+	public function setVersionNumber():self{
 		$bits = $this->version->getVersionPattern();
 
 		if($bits !== null){
@@ -355,7 +355,7 @@ final class QRMatrix{
 			for($i = 0; $i < 18; $i++){
 				$a = (int)($i / 3);
 				$b = $i % 3 + $this->moduleCount - 8 - 3;
-				$v = !$test && (($bits >> $i) & 1) === 1;
+				$v = (($bits >> $i) & 1) === 1;
 
 				$this->set($b, $a, $v, $this::M_VERSION); // ne
 				$this->set($a, $b, $v, $this::M_VERSION); // sw
@@ -371,11 +371,11 @@ final class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 8.9
 	 */
-	public function setFormatInfo(MaskPattern $maskPattern, bool $test = null):self{
+	public function setFormatInfo(MaskPattern $maskPattern):self{
 		$bits = $this->eccLevel->getformatPattern($maskPattern);
 
 		for($i = 0; $i < 15; $i++){
-			$v = !$test && (($bits >> $i) & 1) === 1;
+			$v = (($bits >> $i) & 1) === 1;
 
 			if($i < 6){
 				$this->set(8, $i, $v, $this::M_FORMAT);

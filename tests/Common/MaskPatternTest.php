@@ -120,4 +120,38 @@ final class MaskPatternTest extends TestCase{
 		$maskPattern = new MaskPattern(42);
 	}
 
+	public function testPenaltyRule1():void{
+		// horizontal
+		$this::assertSame(0, MaskPattern::testRule1([[0, 0, 0, 0]], 1, 4));
+		$this::assertSame(3, MaskPattern::testRule1([[0, 0, 0, 0, 0, 1]], 1, 6));
+		$this::assertSame(4, MaskPattern::testRule1([[0, 0, 0, 0, 0, 0]], 1, 6));
+		// vertical
+		$this::assertSame(0, MaskPattern::testRule1([[0], [0], [0], [0]], 4, 1));
+		$this::assertSame(3, MaskPattern::testRule1([[0], [0], [0], [0], [0], [1]], 6, 1));
+		$this::assertSame(4, MaskPattern::testRule1([[0], [0], [0], [0], [0], [0]], 6, 1));
+	}
+
+	public function testPenaltyRule2():void{
+		$this::assertSame(0, MaskPattern::testRule2([[0]], 1, 1));
+		$this::assertSame(0, MaskPattern::testRule2([[0, 0], [0, 1]], 2, 2));
+		$this::assertSame(3, MaskPattern::testRule2([[0, 0], [0, 0]], 2, 2));
+		$this::assertSame(12, MaskPattern::testRule2([[0, 0, 0], [0, 0, 0], [0, 0, 0]], 3, 3));
+	}
+
+	public function testPenaltyRule3():void{
+		// horizontal
+		$this::assertSame(40, MaskPattern::testRule3([[0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1]], 1, 11));
+		$this::assertSame(40, MaskPattern::testRule3([[1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0]], 1, 11));
+		$this::assertSame(0, MaskPattern::testRule3([[1, 0, 1, 1, 1, 0, 1]], 1, 7));
+		// vertical
+		$this::assertSame(40, MaskPattern::testRule3([[0], [0], [0], [0], [1], [0], [1], [1], [1], [0], [1]], 11, 1));
+		$this::assertSame(40, MaskPattern::testRule3([[1], [0], [1], [1], [1], [0], [1], [0], [0], [0], [0]], 11, 1));
+		$this::assertSame(0, MaskPattern::testRule3([[1], [0], [1], [1], [1], [0], [1]], 7, 1));
+	}
+
+	public function testPenaltyRule4():void{
+		$this::assertSame(100, MaskPattern::testRule4([[0]], 1, 1));
+		$this::assertSame(0, MaskPattern::testRule4([[0, 1]], 1, 2));
+		$this::assertSame(30, MaskPattern::testRule4([[0, 1, 1, 1, 1, 0]], 1, 6));
+	}
 }

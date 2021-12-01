@@ -14,21 +14,18 @@ use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
 use PHPUnit\Framework\TestCase;
+use Generator;
 
 /**
  * Tests the QRMatix class
  */
 final class QRMatrixTest extends TestCase{
 
-	/** @internal */
 	protected const version = 40;
-	/** @internal */
 	protected QRMatrix $matrix;
 
 	/**
 	 * invokes a QRMatrix object
-	 *
-	 * @internal
 	 */
 	protected function setUp():void{
 		$this->matrix = $this->getMatrix($this::version);
@@ -36,8 +33,6 @@ final class QRMatrixTest extends TestCase{
 
 	/**
 	 * shortcut
-	 *
-	 * @internal
 	 */
 	protected function getMatrix(int $version):QRMatrix{
 		return  new QRMatrix(new Version($version), new EccLevel(EccLevel::L));
@@ -80,7 +75,7 @@ final class QRMatrixTest extends TestCase{
 		$matrix = (new QRCode)->addByteSegment('testdata')->getMatrix();
 
 		$this::assertInstanceOf(MaskPattern::class, $matrix->maskPattern());
-		$this::assertSame(MaskPattern::PATTERN_010, $matrix->maskPattern()->getPattern());
+		$this::assertSame(MaskPattern::PATTERN_100, $matrix->maskPattern()->getPattern());
 	}
 
 	/**
@@ -98,18 +93,11 @@ final class QRMatrixTest extends TestCase{
 
 	/**
 	 * Version data provider for several pattern tests
-	 *
-	 * @return int[][]
-	 * @internal
 	 */
-	public function versionProvider():array{
-		$versions = [];
-
-		for($i = 1; $i <= 40; $i++){
-			$versions[] = [$i];
+	public function versionProvider():Generator{
+		foreach(range(1, 40) as $i){
+			yield 'version: '.$i => [$i];
 		}
-
-		return $versions;
 	}
 
 	/**
@@ -158,10 +146,7 @@ final class QRMatrixTest extends TestCase{
 	public function testSetAlignmentPattern(int $version):void{
 
 		if($version === 1){
-			$this->markTestSkipped('N/A');
-
-			/** @noinspection PhpUnreachableStatementInspection */
-			return;
+			$this->markTestSkipped('N/A (Version 1 has no alignment pattern)');
 		}
 
 		$matrix = $this
@@ -175,8 +160,8 @@ final class QRMatrixTest extends TestCase{
 		foreach($alignmentPattern as $py){
 			foreach($alignmentPattern as $px){
 
-				if($matrix->get($px, $py) === (QRMatrix::M_FINDER | QRMatrix::IS_DARK)){
-					$this::assertSame(QRMatrix::M_FINDER | QRMatrix::IS_DARK, $matrix->get($px, $py), 'skipped finder pattern');
+				if($matrix->checkType($px, $py, QRMatrix::M_FINDER)){
+					// skip finder pattern
 					continue;
 				}
 
@@ -203,14 +188,13 @@ final class QRMatrixTest extends TestCase{
 
 		for($i = 7; $i < $size - 7; $i++){
 			if($i % 2 === 0){
-				$p1 = $matrix->get(6, $i);
 
-				if($p1 === (QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK)){
-					$this::assertSame(QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK, $p1, 'skipped alignment pattern');
+				if($matrix->checkType(6, $i, QRMatrix::M_ALIGNMENT)){
+					// skip alignment pattern
 					continue;
 				}
 
-				$this::assertSame(QRMatrix::M_TIMING | QRMatrix::IS_DARK, $p1);
+				$this::assertSame(QRMatrix::M_TIMING | QRMatrix::IS_DARK, $matrix->get(6, $i));
 				$this::assertSame(QRMatrix::M_TIMING | QRMatrix::IS_DARK, $matrix->get($i, 6));
 			}
 		}
@@ -224,18 +208,18 @@ final class QRMatrixTest extends TestCase{
 	public function testSetVersionNumber(int $version):void{
 
 		if($version < 7){
-			$this->markTestSkipped('N/A');
+			$this->markTestSkipped('N/A (Version < 7)');
 
 			/** @noinspection PhpUnreachableStatementInspection */
 			return;
 		}
 
-		$matrix = $this->getMatrix($version)->setVersionNumber(true);
+		$matrix = $this->getMatrix($version)->setVersionNumber();
 
-		$this::assertSame(QRMatrix::M_VERSION, $matrix->get($matrix->size() - 9, 0));
-		$this::assertSame(QRMatrix::M_VERSION, $matrix->get($matrix->size() - 11, 5));
-		$this::assertSame(QRMatrix::M_VERSION, $matrix->get(0, $matrix->size() - 9));
-		$this::assertSame(QRMatrix::M_VERSION, $matrix->get(5, $matrix->size() - 11));
+		$this::assertTrue($matrix->checkType($matrix->size() - 9, 0, QRMatrix::M_VERSION));
+		$this::assertTrue($matrix->checkType($matrix->size() - 11, 5, QRMatrix::M_VERSION));
+		$this::assertTrue($matrix->checkType(0, $matrix->size() - 9, QRMatrix::M_VERSION));
+		$this::assertTrue($matrix->checkType(5, $matrix->size() - 11, QRMatrix::M_VERSION));
 	}
 
 	/**
@@ -244,12 +228,12 @@ final class QRMatrixTest extends TestCase{
 	 * @dataProvider versionProvider
 	 */
 	public function testSetFormatInfo(int $version):void{
-		$matrix = $this->getMatrix($version)->setFormatInfo(new MaskPattern(MaskPattern::PATTERN_000), true);
+		$matrix = $this->getMatrix($version)->setFormatInfo(new MaskPattern(MaskPattern::PATTERN_000));
 
-		$this::assertSame(QRMatrix::M_FORMAT, $matrix->get(8, 0));
-		$this::assertSame(QRMatrix::M_FORMAT, $matrix->get(0, 8));
-		$this::assertSame(QRMatrix::M_FORMAT, $matrix->get($matrix->size() - 1, 8));
-		$this::assertSame(QRMatrix::M_FORMAT, $matrix->get($matrix->size() - 8, 8));
+		$this::assertTrue($matrix->checkType(8, 0, QRMatrix::M_FORMAT));
+		$this::assertTrue($matrix->checkType(0, 8, QRMatrix::M_FORMAT));
+		$this::assertTrue($matrix->checkType($matrix->size() - 1, 8, QRMatrix::M_FORMAT));
+		$this::assertTrue($matrix->checkType($matrix->size() - 8, 8, QRMatrix::M_FORMAT));
 	}
 
 	/**
@@ -272,15 +256,15 @@ final class QRMatrixTest extends TestCase{
 		$this::assertCount($size + 2 * $q, $matrix->matrix()[$size - 1]);
 
 		$size = $matrix->size();
-		$this::assertSame(QRMatrix::M_QUIETZONE, $matrix->get(0, 0));
-		$this::assertSame(QRMatrix::M_QUIETZONE, $matrix->get($size - 1, $size - 1));
+		$this::assertTrue($matrix->checkType(0, 0, QRMatrix::M_QUIETZONE));
+		$this::assertTrue($matrix->checkType($size - 1, $size - 1, QRMatrix::M_QUIETZONE));
 
 		$this::assertSame(QRMatrix::M_TEST | QRMatrix::IS_DARK, $matrix->get($q, $q));
 		$this::assertSame(QRMatrix::M_TEST | QRMatrix::IS_DARK, $matrix->get($size - 1 - $q, $size - 1 - $q));
 	}
 
 	/**
-	 * Tests if an exception is thrown in an attempt to create it before data was written
+	 * Tests if an exception is thrown in an attempt to create the quiet zone before data was written
 	 */
 	public function testSetQuietZoneException():void{
 		$this->expectException(QRCodeDataException::class);
@@ -289,6 +273,9 @@ final class QRMatrixTest extends TestCase{
 		$this->matrix->setQuietZone();
 	}
 
+	/**
+	 * Tests the auto orientation of the logo space
+	 */
 	public function testSetLogoSpaceOrientation():void{
 		$o = new QROptions;
 		$o->version      = 10;
@@ -300,14 +287,17 @@ final class QRMatrixTest extends TestCase{
 		$matrix->setLogoSpace(20, 14);
 
 		// NW corner
-		$this::assertNotSame(QRMatrix::M_LOGO, $matrix->get(17, 20));
-		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(18, 21));
+		$this::assertFalse($matrix->checkType(17, 20, QRMatrix::M_LOGO));
+		$this::assertTrue($matrix->checkType(18, 21, QRMatrix::M_LOGO));
 
 		// SE corner
-		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(38, 35));
-		$this::assertNotSame(QRMatrix::M_LOGO, $matrix->get(39, 36));
+		$this::assertTrue($matrix->checkType(38, 35, QRMatrix::M_LOGO));
+		$this::assertFalse($matrix->checkType(39, 36, QRMatrix::M_LOGO));
 	}
 
+	/**
+	 * Tests the manual positioning of the logo space
+	 */
 	public function testSetLogoSpacePosition():void{
 		$o = new QROptions;
 		$o->version       = 10;
@@ -336,6 +326,9 @@ final class QRMatrixTest extends TestCase{
 		$this::assertSame(QRMatrix::M_QUIETZONE, $m->get(67, 67));
 	}
 
+	/**
+	 * Tests whether an exception is thrown when an ECC level other than "H" is set when attempting to add logo space
+	 */
 	public function testSetLogoSpaceInvalidEccException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('ECC level "H" required to add logo space');
@@ -343,6 +336,9 @@ final class QRMatrixTest extends TestCase{
 		(new QRCode)->addByteSegment('testdata')->getMatrix()->setLogoSpace(50, 50);
 	}
 
+	/**
+	 * Tests whether an exception is thrown when the logo space size exceeds the maximum ECC capacity
+	 */
 	public function testSetLogoSpaceMaxSizeException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('logo space exceeds the maximum error correction capacity');

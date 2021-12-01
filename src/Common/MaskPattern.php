@@ -10,11 +10,16 @@
 
 namespace chillerlan\QRCode\Common;
 
+use chillerlan\QRCode\Data\QRData;
 use chillerlan\QRCode\QRCodeException;
 use Closure;
+use function abs, array_search, count, min;
 
 /**
  * ISO/IEC 18004:2000 Section 8.8.1
+ * ISO/IEC 18004:2000 Section 8.8.2 - Evaluation of masking results
+ *
+ * @see http://www.thonky.com/qr-code-tutorial/data-masking
  */
 final class MaskPattern{
 
@@ -93,6 +98,200 @@ final class MaskPattern{
 			self::PATTERN_110 => fn(int $x, int $y):bool => (($x * $y) % 6) < 3, // (((($x * $y) % 2) + (($x * $y) % 3)) % 2) === 0,
 			self::PATTERN_111 => fn(int $x, int $y):bool => (($x + $y + (($x * $y) % 3)) % 2) === 0, // (((($x * $y) % 3) + (($x + $y) % 2)) % 2) === 0,
 		][$this->maskPattern];
+	}
+
+	/**
+	 * Evaluates the matrix of the given data interface and returns a new mask pattern instance for the best result
+	 */
+	public static function getBestPattern(QRData $dataInterface):self{
+		$penalties = [];
+
+		foreach(self::PATTERNS as $pattern){
+			$matrix  = $dataInterface->writeMatrix(new self($pattern))->matrix(true);
+			$penalty = 0;
+
+			for($level = 1; $level <= 4; $level++){
+				$penalty += self::{'testRule'.$level}($matrix, count($matrix), count($matrix[0]));
+			}
+
+			$penalties[$pattern] = (int)$penalty;
+		}
+
+		return new self(array_search(min($penalties), $penalties, true));
+	}
+
+	/**
+	 * Apply mask penalty rule 1 and return the penalty. Find repetitive cells with the same color and
+	 * give penalty to them. Example: 00000 or 11111.
+	 */
+	public static function testRule1(array $matrix, int $height, int $width):int{
+		return self::applyRule1($matrix, $height, $width, true) + self::applyRule1($matrix, $height, $width, false);
+	}
+
+	private static function applyRule1(array $matrix, int $height, int $width, bool $isHorizontal):int{
+		$penalty = 0;
+		$iLimit  = $isHorizontal ? $height : $width;
+		$jLimit  = $isHorizontal ? $width : $height;
+
+		for($i = 0; $i < $iLimit; $i++){
+			$numSameBitCells = 0;
+			$prevBit         = -1;
+
+			for($j = 0; $j < $jLimit; $j++){
+				$bit = $isHorizontal ? $matrix[$i][$j] : $matrix[$j][$i];
+
+				if($bit === $prevBit){
+					$numSameBitCells++;
+				}
+				else{
+
+					if($numSameBitCells >= 5){
+						$penalty += 3 + ($numSameBitCells - 5);
+					}
+
+					$numSameBitCells = 1;  // Include the cell itself.
+					$prevBit         = $bit;
+				}
+			}
+			if($numSameBitCells >= 5){
+				$penalty += 3 + ($numSameBitCells - 5);
+			}
+		}
+
+		return $penalty;
+	}
+
+	/**
+	 * Apply mask penalty rule 2 and return the penalty. Find 2x2 blocks with the same color and give
+	 * penalty to them. This is actually equivalent to the spec's rule, which is to find MxN blocks and give a
+	 * penalty proportional to (M-1)x(N-1), because this is the number of 2x2 blocks inside such a block.
+	 */
+	public static function testRule2(array $matrix, int $height, int $width):int{
+		$penalty = 0;
+
+		foreach($matrix as $y => $row){
+
+			if($y > $height - 2){
+				break;
+			}
+
+			foreach($row as $x => $val){
+
+				if($x > $width - 2){
+					break;
+				}
+
+				if(
+					$val === $row[$x + 1]
+					&& $val === $matrix[$y + 1][$x]
+					&& $val === $matrix[$y + 1][$x + 1]
+				){
+					$penalty++;
+				}
+			}
+		}
+
+		return 3 * $penalty;
+	}
+
+	/**
+	 * Apply mask penalty rule 3 and return the penalty. Find consecutive runs of 1:1:3:1:1:4
+	 * starting with black, or 4:1:1:3:1:1 starting with white, and give penalty to them.  If we
+	 * find patterns like 000010111010000, we give penalty once.
+	 */
+	public static function testRule3(array $matrix, int $height, int $width):int{
+		$penalties = 0;
+
+		foreach($matrix as $y => $row){
+			foreach($row as $x => $val){
+
+				if(
+					$x + 6 < $width
+					&&  $val
+					&& !$row[$x + 1]
+					&&  $row[$x + 2]
+					&&  $row[$x + 3]
+					&&  $row[$x + 4]
+					&& !$row[$x + 5]
+					&&  $row[$x + 6]
+					&& (
+						self::isWhiteHorizontal($row, $width, $x - 4, $x)
+						|| self::isWhiteHorizontal($row, $width, $x + 7, $x + 11)
+					)
+				){
+					$penalties++;
+				}
+
+				if(
+					$y + 6 < $height
+					&&  $val
+					&& !$matrix[$y + 1][$x]
+					&&  $matrix[$y + 2][$x]
+					&&  $matrix[$y + 3][$x]
+					&&  $matrix[$y + 4][$x]
+					&& !$matrix[$y + 5][$x]
+					&&  $matrix[$y + 6][$x]
+					&& (
+						self::isWhiteVertical($matrix, $height, $x, $y - 4, $y)
+						|| self::isWhiteVertical($matrix, $height, $x, $y + 7, $y + 11)
+					)
+				){
+					$penalties++;
+				}
+
+			}
+		}
+
+		return $penalties * 40;
+	}
+
+	private static function isWhiteHorizontal(array $row, int $width, int $from, int $to):bool{
+
+		if($from < 0 || $width < $to){
+			return false;
+		}
+
+		for($x = $from; $x < $to; $x++){
+			if($row[$x]){
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	private static function isWhiteVertical(array $matrix, int $height, int $x, int $from, int $to):bool{
+
+		if($from < 0 || $height < $to){
+			return false;
+		}
+
+		for($y = $from; $y < $to; $y++){
+			if($matrix[$y][$x]){
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Apply mask penalty rule 4 and return the penalty. Calculate the ratio of dark cells and give
+	 * penalty if the ratio is far from 50%. It gives 10 penalty for 5% distance.
+	 */
+	public static function testRule4(array $matrix, int $height, int $width):int{
+		$darkCells  = 0;
+		$totalCells = $height * $width;
+
+		foreach($matrix as $row){
+			foreach($row as $val){
+				if($val){
+					$darkCells++;
+				}
+			}
+		}
+
+		return (int)(abs($darkCells * 2 - $totalCells) * 10 / $totalCells) * 10;
 	}
 
 }

@@ -93,12 +93,12 @@ final class QRData{
 	/**
 	 * returns a fresh matrix object with the data written for the given $maskPattern
 	 */
-	public function writeMatrix(MaskPattern $maskPattern, bool $test = null):QRMatrix{
+	public function writeMatrix(MaskPattern $maskPattern):QRMatrix{
 		$data = (new ReedSolomonEncoder)->interleaveEcBytes($this->bitBuffer, $this->version, $this->eccLevel);
 
 		return (new QRMatrix($this->version, $this->eccLevel))
 			->initFunctionalPatterns()
-			->initFormatInfo($maskPattern, $test)
+			->initFormatInfo($maskPattern)
 			->mapData($data)
 			->mask($maskPattern)
 		;
