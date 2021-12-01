@@ -115,11 +115,11 @@
 
     </aside>
 
-            <p class="phpdocumentor-summary">&lt;p&gt;This class attempts to find alignment patterns in a QR Code. Alignment patterns look like finder
-patterns but are smaller and appear at regular intervals throughout the image.&lt;/p&gt;</p>
+            <p class="phpdocumentor-summary">This class attempts to find alignment patterns in a QR Code. Alignment patterns look like finder
+patterns but are smaller and appear at regular intervals throughout the image.</p>
 
     <section class="phpdocumentor-description"><p>At the moment this only looks for the bottom-right alignment pattern.</p>
-<p>This is mostly a simplified copy of [](FinderPatternFinder). It is copied,
+<p>This is mostly a simplified copy of FinderPatternFinder. It is copied,
 pasted and stripped down here for maximum performance but does unfortunately duplicate
 some code.</p>
 <p>This class is thread-safe but not reentrant. Each thread must allocate its own object.</p>
@@ -179,15 +179,15 @@ some code.</p>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd>&lt;p&gt;Creates a finder that will look in a portion of the whole image.&lt;/p&gt;</dd>
+<dd>Creates a finder that will look in a portion of the whole image.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Detector-AlignmentPatternFinder.html#method_find">find()</a>
     <span>
                         &nbsp;: <a href="classes/chillerlan-QRCode-Detector-AlignmentPattern.html"><abbr title="\chillerlan\QRCode\Detector\AlignmentPattern">AlignmentPattern</abbr></a>|null    </span>
 </dt>
-<dd>&lt;p&gt;This method attempts to find the bottom-right alignment pattern in the image. It is a bit messy since
-it&#039;s pretty performance-critical and so is written to be fast foremost.&lt;/p&gt;</dd>
+<dd>This method attempts to find the bottom-right alignment pattern in the image. It is a bit messy since
+it&#039;s pretty performance-critical and so is written to be fast foremost.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Detector-AlignmentPatternFinder.html#method_centerFromEnd">centerFromEnd()</a>
@@ -202,9 +202,9 @@ figures the location of the center of this black/white/black run.</dd>
     <span>
                         &nbsp;: float|null    </span>
 </dt>
-<dd>&lt;p&gt;After a horizontal scan finds a potential alignment pattern, this method
+<dd>After a horizontal scan finds a potential alignment pattern, this method
 &quot;cross-checks&quot; by scanning down vertically through the center of the possible
-alignment pattern to see if the same proportion is detected.&lt;/p&gt;</dd>
+alignment pattern to see if the same proportion is detected.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Detector-AlignmentPatternFinder.html#method_foundPatternCross">foundPatternCross()</a>
@@ -218,10 +218,10 @@ alignment pattern to see if the same proportion is detected.&lt;/p&gt;</dd>
     <span>
                         &nbsp;: <a href="classes/chillerlan-QRCode-Detector-AlignmentPattern.html"><abbr title="\chillerlan\QRCode\Detector\AlignmentPattern">AlignmentPattern</abbr></a>|null    </span>
 </dt>
-<dd>&lt;p&gt;This is called when a horizontal scan finds a possible alignment pattern. It will
+<dd>This is called when a horizontal scan finds a possible alignment pattern. It will
 cross check with a vertical scan, and if successful, will see if this pattern had been
 found on a previous horizontal scan. If so, we consider it confirmed and conclude we have
-found the alignment pattern.&lt;/p&gt;</dd>
+found the alignment pattern.</dd>
 
         </dl>
 
@@ -359,7 +359,7 @@ found the alignment pattern.&lt;/p&gt;</dd>
 
     </aside>
 
-        <p class="phpdocumentor-summary">&lt;p&gt;Creates a finder that will look in a portion of the whole image.&lt;/p&gt;</p>
+        <p class="phpdocumentor-summary">Creates a finder that will look in a portion of the whole image.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -413,8 +413,8 @@ found the alignment pattern.&lt;/p&gt;</dd>
 
     </aside>
 
-        <p class="phpdocumentor-summary">&lt;p&gt;This method attempts to find the bottom-right alignment pattern in the image. It is a bit messy since
-it&#039;s pretty performance-critical and so is written to be fast foremost.&lt;/p&gt;</p>
+        <p class="phpdocumentor-summary">This method attempts to find the bottom-right alignment pattern in the image. It is a bit messy since
+it&#039;s pretty performance-critical and so is written to be fast foremost.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -537,9 +537,9 @@ figures the location of the center of this black/white/black run.</p>
 
     </aside>
 
-        <p class="phpdocumentor-summary">&lt;p&gt;After a horizontal scan finds a potential alignment pattern, this method
+        <p class="phpdocumentor-summary">After a horizontal scan finds a potential alignment pattern, this method
 &quot;cross-checks&quot; by scanning down vertically through the center of the possible
-alignment pattern to see if the same proportion is detected.&lt;/p&gt;</p>
+alignment pattern to see if the same proportion is detected.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -659,10 +659,10 @@ used by alignment patterns to be considered a match</p>
 
     </aside>
 
-        <p class="phpdocumentor-summary">&lt;p&gt;This is called when a horizontal scan finds a possible alignment pattern. It will
+        <p class="phpdocumentor-summary">This is called when a horizontal scan finds a possible alignment pattern. It will
 cross check with a vertical scan, and if successful, will see if this pattern had been
 found on a previous horizontal scan. If so, we consider it confirmed and conclude we have
-found the alignment pattern.&lt;/p&gt;</p>
+found the alignment pattern.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>

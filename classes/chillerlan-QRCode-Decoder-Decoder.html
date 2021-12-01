@@ -115,8 +115,8 @@
 
     </aside>
 
-            <p class="phpdocumentor-summary">&lt;p&gt;The main class which implements QR Code decoding -- as opposed to locating and extracting
-the QR Code from an image.&lt;/p&gt;</p>
+            <p class="phpdocumentor-summary">The main class which implements QR Code decoding -- as opposed to locating and extracting
+the QR Code from an image.</p>
 
 
 
@@ -152,15 +152,15 @@ the QR Code from an image.&lt;/p&gt;</p>
     <span>
                         &nbsp;: <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html"><abbr title="\chillerlan\QRCode\Decoder\DecoderResult">DecoderResult</abbr></a>    </span>
 </dt>
-<dd>&lt;p&gt;Decodes a QR Code represented as a {@link \chillerlan\QRCode\Decoder\BitMatrix}.</dd>
+<dd>Decodes a QR Code represented as a BitMatrix.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Decoder-Decoder.html#method_correctErrors">correctErrors()</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>&lt;p&gt;Given data and error-correction codewords received, possibly corrupted by errors, attempts to
-correct the errors in-place using Reed-Solomon error correction.&lt;/p&gt;</dd>
+<dd>Given data and error-correction codewords received, possibly corrupted by errors, attempts to
+correct the errors in-place using Reed-Solomon error correction.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Decoder-Decoder.html#method_decodeBitStream">decodeBitStream()</a>
@@ -181,7 +181,7 @@ correct the errors in-place using Reed-Solomon error correction.&lt;/p&gt;</dd>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>&lt;p&gt;When QR Codes use multiple data blocks, they are actually interleaved.</dd>
+<dd>When QR Codes use multiple data blocks, they are actually interleaved.</dd>
 
         </dl>
 
@@ -213,13 +213,13 @@ correct the errors in-place using Reed-Solomon error correction.&lt;/p&gt;</dd>
 
     </aside>
 
-        <p class="phpdocumentor-summary">&lt;p&gt;Decodes a QR Code represented as a {@link \chillerlan\QRCode\Decoder\BitMatrix}.</p>
+        <p class="phpdocumentor-summary">Decodes a QR Code represented as a BitMatrix.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">decode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html"><abbr title="\chillerlan\QRCode\Decoder\LuminanceSourceInterface">LuminanceSourceInterface</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html"><abbr title="\chillerlan\QRCode\Decoder\DecoderResult">DecoderResult</abbr></a></span></code>
 
-        <section class="phpdocumentor-description"><p>A 1 or &quot;true&quot; is taken to mean a black module.</p></p>
+        <section class="phpdocumentor-description"><p>A 1 or &quot;true&quot; is taken to mean a black module.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -276,8 +276,8 @@ correct the errors in-place using Reed-Solomon error correction.&lt;/p&gt;</dd>
 
     </aside>
 
-        <p class="phpdocumentor-summary">&lt;p&gt;Given data and error-correction codewords received, possibly corrupted by errors, attempts to
-correct the errors in-place using Reed-Solomon error correction.&lt;/p&gt;</p>
+        <p class="phpdocumentor-summary">Given data and error-correction codewords received, possibly corrupted by errors, attempts to
+correct the errors in-place using Reed-Solomon error correction.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -444,14 +444,14 @@ correct the errors in-place using Reed-Solomon error correction.&lt;/p&gt;</p>
 
     </aside>
 
-        <p class="phpdocumentor-summary">&lt;p&gt;When QR Codes use multiple data blocks, they are actually interleaved.</p>
+        <p class="phpdocumentor-summary">When QR Codes use multiple data blocks, they are actually interleaved.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
                 <span class="phpdocumentor-signature__name">getDataBlocks</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$rawCodewords</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$eccLevel</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
         <section class="phpdocumentor-description"><p>That is, the first byte of data block 1 to n is written, then the second bytes, and so on. This
-method will separate the data into original blocks.</p></p>
+method will separate the data into original blocks.</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>

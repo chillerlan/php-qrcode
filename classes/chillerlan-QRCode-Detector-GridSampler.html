@@ -122,7 +122,7 @@ to take advantage of platform-specific optimized implementations, like Sun&#039;
 Imaging library, but which may not be available in other environments such as J2ME, and vice
 versa.</p>
 
-    <section class="phpdocumentor-description"><p>The implementation used can be controlled by calling <a href="#setGridSampler(GridSampler)"></a>
+    <section class="phpdocumentor-description"><p>The implementation used can be controlled by calling #setGridSampler(GridSampler)
 with an instance of a class which implements this interface.</p>
 </section>
 
@@ -168,8 +168,8 @@ image space.</dd>
     <span>
                         &nbsp;: void    </span>
 </dt>
-<dd>&lt;p&gt;Checks a set of points that have been transformed to sample points on an image against
-the image&#039;s dimensions to see if the point are even within the image.&lt;/p&gt;</dd>
+<dd>Checks a set of points that have been transformed to sample points on an image against
+the image&#039;s dimensions to see if the point are even within the image.</dd>
 
         </dl>
 
@@ -283,14 +283,14 @@ defined by the &quot;from&quot; parameters</p>
 
     </aside>
 
-        <p class="phpdocumentor-summary">&lt;p&gt;Checks a set of points that have been transformed to sample points on an image against
-the image&#039;s dimensions to see if the point are even within the image.&lt;/p&gt;</p>
+        <p class="phpdocumentor-summary">Checks a set of points that have been transformed to sample points on an image against
+the image&#039;s dimensions to see if the point are even within the image.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
                 <span class="phpdocumentor-signature__name">checkAndNudgePoints</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bitMatrix</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, float&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$points</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
-        <section class="phpdocumentor-description"><p>This method will actually "nudge" the endpoints back onto the image if they are found to be
+        <section class="phpdocumentor-description"><p>This method will actually &quot;nudge&quot; the endpoints back onto the image if they are found to be
 barely (less than 1 pixel) off the image. This accounts for imperfect detection of finder
 patterns in an image where the QR Code runs all the way to the image border.</p>
 <p>For efficiency, the method will check points from either end of the line until one is found

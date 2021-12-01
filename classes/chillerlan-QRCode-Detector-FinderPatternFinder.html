@@ -115,10 +115,10 @@
 
     </aside>
 
-            <p class="phpdocumentor-summary">&lt;p&gt;This class attempts to find finder patterns in a QR Code. Finder patterns are the square
-markers at three corners of a QR Code.&lt;/p&gt;</p>
+            <p class="phpdocumentor-summary">This class attempts to find finder patterns in a QR Code. Finder patterns are the square
+markers at three corners of a QR Code.</p>
 
-    <section class="phpdocumentor-description"><p>This class is thread-safe but not reentrant. Each thread must allocate its own object.
+    <section class="phpdocumentor-description"><p>This class is thread-safe but not reentrant. Each thread must allocate its own object.</p>
 </section>
 
 
@@ -196,7 +196,7 @@ markers at three corners of a QR Code.&lt;/p&gt;</p>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd>&lt;p&gt;Creates a finder that will search the image for three finder patterns.&lt;/p&gt;</dd>
+<dd>Creates a finder that will search the image for three finder patterns.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_find">find()</a>
@@ -227,18 +227,18 @@ finder pattern to see if the same proportion is detected.</dd>
     <span>
                         &nbsp;: float|null    </span>
 </dt>
-<dd>&lt;p&gt;Like {@link #crossCheckVertical(int, int, int, int)}, and in fact is basically identical,
+<dd>Like #crossCheckVertical(int, int, int, int), and in fact is basically identical,
 except it reads horizontally instead of vertically. This is used to cross-cross
-check a vertical cross check and locate the real center of the alignment pattern.&lt;/p&gt;</dd>
+check a vertical cross check and locate the real center of the alignment pattern.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossCheckVertical">crossCheckVertical()</a>
     <span>
                         &nbsp;: float|null    </span>
 </dt>
-<dd>&lt;p&gt;After a horizontal scan finds a potential finder pattern, this method
+<dd>After a horizontal scan finds a potential finder pattern, this method
 &quot;cross-checks&quot; by scanning down vertically through the center of the possible
-finder pattern to see if the same proportion is detected.&lt;/p&gt;</dd>
+finder pattern to see if the same proportion is detected.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossProductZ">crossProductZ()</a>
@@ -294,7 +294,7 @@ finder pattern to see if the same proportion is detected.&lt;/p&gt;</dd>
     <span>
                         &nbsp;: bool    </span>
 </dt>
-<dd>&lt;p&gt;This is called when a horizontal scan finds a possible alignment pattern. It will
+<dd>This is called when a horizontal scan finds a possible alignment pattern. It will
 cross check with a vertical scan, and if successful, will, ah, cross-cross-check
 with another horizontal scan. This is needed primarily to locate the real horizontal
 center of the pattern in cases of extreme skew.</dd>
@@ -550,7 +550,7 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
 
     </aside>
 
-        <p class="phpdocumentor-summary">&lt;p&gt;Creates a finder that will search the image for three finder patterns.&lt;/p&gt;</p>
+        <p class="phpdocumentor-summary">Creates a finder that will search the image for three finder patterns.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -737,9 +737,9 @@ finder pattern to see if the same proportion is detected.</p>
 
     </aside>
 
-        <p class="phpdocumentor-summary">&lt;p&gt;Like {@link #crossCheckVertical(int, int, int, int)}, and in fact is basically identical,
+        <p class="phpdocumentor-summary">Like #crossCheckVertical(int, int, int, int), and in fact is basically identical,
 except it reads horizontally instead of vertically. This is used to cross-cross
-check a vertical cross check and locate the real center of the alignment pattern.&lt;/p&gt;</p>
+check a vertical cross check and locate the real center of the alignment pattern.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -807,9 +807,9 @@ check a vertical cross check and locate the real center of the alignment pattern
 
     </aside>
 
-        <p class="phpdocumentor-summary">&lt;p&gt;After a horizontal scan finds a potential finder pattern, this method
+        <p class="phpdocumentor-summary">After a horizontal scan finds a potential finder pattern, this method
 &quot;cross-checks&quot; by scanning down vertically through the center of the possible
-finder pattern to see if the same proportion is detected.&lt;/p&gt;</p>
+finder pattern to see if the same proportion is detected.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -1192,7 +1192,7 @@ used by finder patterns to be considered a match</p>
 
     </aside>
 
-        <p class="phpdocumentor-summary">&lt;p&gt;This is called when a horizontal scan finds a possible alignment pattern. It will
+        <p class="phpdocumentor-summary">This is called when a horizontal scan finds a possible alignment pattern. It will
 cross check with a vertical scan, and if successful, will, ah, cross-cross-check
 with another horizontal scan. This is needed primarily to locate the real horizontal
 center of the pattern in cases of extreme skew.</p>
@@ -1201,11 +1201,11 @@ center of the pattern in cases of extreme skew.</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                 <span class="phpdocumentor-signature__name">handlePossibleCenter</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$stateCount</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$i</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$j</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
-        <section class="phpdocumentor-description"><p>And then we cross-cross-cross check with another diagonal scan.</p></p>
+        <section class="phpdocumentor-description"><p>And then we cross-cross-cross check with another diagonal scan.</p>
 <p>If that succeeds the finder pattern location is added to a list that tracks
 the number of times each location has been nearly-matched as a finder pattern.
 Each additional find is more evidence that the location is in fact a finder
-pattern center
+pattern center</p>
 </section>
 
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -1279,7 +1279,7 @@ pattern center
     <span class="phpdocumentor-signature__response_type">bool</span>
             &mdash;
             <section class="phpdocumentor-description"><p>true if we have found at least 3 finder patterns that have been detected
-at least <a href="#CENTER_QUORUM"></a> times each, and, the estimated module size of the
+at least #CENTER_QUORUM times each, and, the estimated module size of the
 candidates is &quot;pretty similar&quot;</p>
 </section>
 
@@ -1376,8 +1376,8 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;</span>
             &mdash;
-            <section class="phpdocumentor-description"><p>the 3 best <a href="FinderPattern"></a>s from our list of candidates. The &quot;best&quot; are
-those that have been detected at least <a href="#CENTER_QUORUM"></a> times, and whose module
+            <section class="phpdocumentor-description"><p>the 3 best FinderPatterns from our list of candidates. The &quot;best&quot; are
+those that have been detected at least #CENTER_QUORUM times, and whose module
 size differs from the average among those patterns the least</p>
 </section>
 

@@ -418,7 +418,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\GF256",
             "name": "GF256",
-            "summary": "\u003Cp\u003EThis\u0020class\u0020contains\u0020utility\u0020methods\u0020for\u0020performing\u0020mathematical\u0020operations\u0020over\nthe\u0020Galois\u0020Fields.\u0020Operations\u0020use\u0020a\u0020given\u0020primitive\u0020polynomial\u0020in\u0020calculations.\u003C\/p\u003E",
+            "summary": "This\u0020class\u0020contains\u0020utility\u0020methods\u0020for\u0020performing\u0020mathematical\u0020operations\u0020over\nthe\u0020Galois\u0020Fields.\u0020Operations\u0020use\u0020a\u0020given\u0020primitive\u0020polynomial\u0020in\u0020calculations.",
             "url": "classes/chillerlan-QRCode-Common-GF256.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\GF256\u003A\u003AaddOrSubtract\u0028\u0029",
@@ -643,12 +643,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\ReedSolomonDecoder",
             "name": "ReedSolomonDecoder",
-            "summary": "\u003Cp\u003EImplements\u0020Reed\u002DSolomon\u0020decoding,\u0020as\u0020the\u0020name\u0020implies.\u003C\/p\u003E",
+            "summary": "Implements\u0020Reed\u002DSolomon\u0020decoding,\u0020as\u0020the\u0020name\u0020implies.",
             "url": "classes/chillerlan-QRCode-Common-ReedSolomonDecoder.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\ReedSolomonDecoder\u003A\u003Adecode\u0028\u0029",
             "name": "decode",
-            "summary": "\u003Cp\u003EDecodes\u0020given\u0020set\u0020of\u0020received\u0020codewords,\u0020which\u0020include\u0020both\u0020data\u0020and\u0020error\u002Dcorrection\ncodewords.\u0020Really,\u0020this\u0020means\u0020it\u0020uses\u0020Reed\u002DSolomon\u0020to\u0020detect\u0020and\u0020correct\u0020errors,\u0020in\u002Dplace,\nin\u0020the\u0020input.\u003C\/p\u003E",
+            "summary": "Decodes\u0020given\u0020set\u0020of\u0020received\u0020codewords,\u0020which\u0020include\u0020both\u0020data\u0020and\u0020error\u002Dcorrection\ncodewords.\u0020Really,\u0020this\u0020means\u0020it\u0020uses\u0020Reed\u002DSolomon\u0020to\u0020detect\u0020and\u0020correct\u0020errors,\u0020in\u002Dplace,\nin\u0020the\u0020input.",
             "url": "classes/chillerlan-QRCode-Common-ReedSolomonDecoder.html#method_decode"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\ReedSolomonDecoder\u003A\u003ArunEuclideanAlgorithm\u0028\u0029",
@@ -1388,17 +1388,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003Aset\u0028\u0029",
             "name": "set",
-            "summary": "\u003Cp\u003ESets\u0020the\u0020given\u0020bit\u0020to\u0020true.\u003C\/p\u003E",
+            "summary": "Sets\u0020the\u0020given\u0020bit\u0020to\u0020true.",
             "url": "classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_set"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003Aflip\u0028\u0029",
             "name": "flip",
-            "summary": "\u003Cp\u003EFlips\u0020the\u0020given\u0020bit.\u00201\u0020\u003C\u003C\u0020\u00280xf9\u0020\u0026\u00200x1f\u0029\u003C\/p\u003E",
+            "summary": "Flips\u0020the\u0020given\u0020bit.\u00201\u0020\u003C\u003C\u0020\u00280xf9\u0020\u0026\u00200x1f\u0029",
             "url": "classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_flip"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003AsetRegion\u0028\u0029",
             "name": "setRegion",
-            "summary": "\u003Cp\u003ESets\u0020a\u0020square\u0020region\u0020of\u0020the\u0020bit\u0020matrix\u0020to\u0020true.\u003C\/p\u003E",
+            "summary": "Sets\u0020a\u0020square\u0020region\u0020of\u0020the\u0020bit\u0020matrix\u0020to\u0020true.",
             "url": "classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_setRegion"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003AgetDimension\u0028\u0029",
@@ -1418,7 +1418,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "\u003Cp\u003EGets\u0020the\u0020requested\u0020bit,\u0020where\u0020true\u0020means\u0020black.\u003C\/p\u003E",
+            "summary": "Gets\u0020the\u0020requested\u0020bit,\u0020where\u0020true\u0020means\u0020black.",
             "url": "classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_get"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003AbuildFunctionPattern\u0028\u0029",
@@ -1448,12 +1448,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003AreadCodewords\u0028\u0029",
             "name": "readCodewords",
-            "summary": "\u003Cp\u003EReads\u0020the\u0020bits\u0020in\u0020the\u0020\u007B\u0040link\u0020BitMatrix\u007D\u0020representing\u0020the\u0020finder\u0020pattern\u0020in\u0020the\ncorrect\u0020order\u0020in\u0020order\u0020to\u0020reconstruct\u0020the\u0020codewords\u0020bytes\u0020contained\u0020within\u0020the\nQR\u0020Code.\u003C\/p\u003E",
+            "summary": "Reads\u0020the\u0020bits\u0020in\u0020the\u0020BitMatrix\u0020representing\u0020the\u0020finder\u0020pattern\u0020in\u0020the\ncorrect\u0020order\u0020in\u0020order\u0020to\u0020reconstruct\u0020the\u0020codewords\u0020bytes\u0020contained\u0020within\u0020the\nQR\u0020Code.",
             "url": "classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_readCodewords"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003AreadFormatInformation\u0028\u0029",
             "name": "readFormatInformation",
-            "summary": "\u003Cp\u003EReads\u0020format\u0020information\u0020from\u0020one\u0020of\u0020its\u0020two\u0020locations\u0020within\u0020the\u0020QR\u0020Code.\u003C\/p\u003E",
+            "summary": "Reads\u0020format\u0020information\u0020from\u0020one\u0020of\u0020its\u0020two\u0020locations\u0020within\u0020the\u0020QR\u0020Code.",
             "url": "classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_readFormatInformation"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003AdoDecodeFormatInformation\u0028\u0029",
@@ -1463,7 +1463,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003AreadVersion\u0028\u0029",
             "name": "readVersion",
-            "summary": "\u003Cp\u003EReads\u0020version\u0020information\u0020from\u0020one\u0020of\u0020its\u0020two\u0020locations\u0020within\u0020the\u0020QR\u0020Code.\u003C\/p\u003E",
+            "summary": "Reads\u0020version\u0020information\u0020from\u0020one\u0020of\u0020its\u0020two\u0020locations\u0020within\u0020the\u0020QR\u0020Code.",
             "url": "classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_readVersion"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003AdecodeVersionInformation\u0028\u0029",
@@ -1508,12 +1508,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\Decoder",
             "name": "Decoder",
-            "summary": "\u003Cp\u003EThe\u0020main\u0020class\u0020which\u0020implements\u0020QR\u0020Code\u0020decoding\u0020\u002D\u002D\u0020as\u0020opposed\u0020to\u0020locating\u0020and\u0020extracting\nthe\u0020QR\u0020Code\u0020from\u0020an\u0020image.\u003C\/p\u003E",
+            "summary": "The\u0020main\u0020class\u0020which\u0020implements\u0020QR\u0020Code\u0020decoding\u0020\u002D\u002D\u0020as\u0020opposed\u0020to\u0020locating\u0020and\u0020extracting\nthe\u0020QR\u0020Code\u0020from\u0020an\u0020image.",
             "url": "classes/chillerlan-QRCode-Decoder-Decoder.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\Decoder\u003A\u003Adecode\u0028\u0029",
             "name": "decode",
-            "summary": "\u003Cp\u003EDecodes\u0020a\u0020QR\u0020Code\u0020represented\u0020as\u0020a\u0020\u007B\u0040link\u0020\\chillerlan\\QRCode\\Decoder\\BitMatrix\u007D.",
+            "summary": "Decodes\u0020a\u0020QR\u0020Code\u0020represented\u0020as\u0020a\u0020BitMatrix.",
             "url": "classes/chillerlan-QRCode-Decoder-Decoder.html#method_decode"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\Decoder\u003A\u003AdecodeMatrix\u0028\u0029",
@@ -1523,12 +1523,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\Decoder\u003A\u003AgetDataBlocks\u0028\u0029",
             "name": "getDataBlocks",
-            "summary": "\u003Cp\u003EWhen\u0020QR\u0020Codes\u0020use\u0020multiple\u0020data\u0020blocks,\u0020they\u0020are\u0020actually\u0020interleaved.",
+            "summary": "When\u0020QR\u0020Codes\u0020use\u0020multiple\u0020data\u0020blocks,\u0020they\u0020are\u0020actually\u0020interleaved.",
             "url": "classes/chillerlan-QRCode-Decoder-Decoder.html#method_getDataBlocks"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\Decoder\u003A\u003AcorrectErrors\u0028\u0029",
             "name": "correctErrors",
-            "summary": "\u003Cp\u003EGiven\u0020data\u0020and\u0020error\u002Dcorrection\u0020codewords\u0020received,\u0020possibly\u0020corrupted\u0020by\u0020errors,\u0020attempts\u0020to\ncorrect\u0020the\u0020errors\u0020in\u002Dplace\u0020using\u0020Reed\u002DSolomon\u0020error\u0020correction.\u003C\/p\u003E",
+            "summary": "Given\u0020data\u0020and\u0020error\u002Dcorrection\u0020codewords\u0020received,\u0020possibly\u0020corrupted\u0020by\u0020errors,\u0020attempts\u0020to\ncorrect\u0020the\u0020errors\u0020in\u002Dplace\u0020using\u0020Reed\u002DSolomon\u0020error\u0020correction.",
             "url": "classes/chillerlan-QRCode-Decoder-Decoder.html#method_correctErrors"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\Decoder\u003A\u003AdecodeBitStream\u0028\u0029",
@@ -1663,7 +1663,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\LuminanceSourceAbstract\u003A\u003AgetMatrix\u0028\u0029",
             "name": "getMatrix",
-            "summary": "Fetches\u0020luminance\u0020data\u0020for\u0020the\u0020underlying\u0020bitmap.\u0020Values\u0020should\u0020be\u0020fetched\u0020using\u003A\n\u007B\u0040code\u0020int\u0020luminance\u0020\u003D\u0020array\u005By\u0020\u002A\u0020width\u0020\u002B\u0020x\u005D\u0020\u0026\u00200xff\u007D",
+            "summary": "Fetches\u0020luminance\u0020data\u0020for\u0020the\u0020underlying\u0020bitmap.\u0020Values\u0020should\u0020be\u0020fetched\u0020using\u003A\n\u0060int\u0020luminance\u0020\u003D\u0020array\u005By\u0020\u002A\u0020width\u0020\u002B\u0020x\u005D\u0020\u0026\u00200xff\u0060",
             "url": "classes/chillerlan-QRCode-Decoder-LuminanceSourceAbstract.html#method_getMatrix"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\LuminanceSourceAbstract\u003A\u003AgetWidth\u0028\u0029",
@@ -1713,7 +1713,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\LuminanceSourceInterface\u003A\u003AgetMatrix\u0028\u0029",
             "name": "getMatrix",
-            "summary": "Fetches\u0020luminance\u0020data\u0020for\u0020the\u0020underlying\u0020bitmap.\u0020Values\u0020should\u0020be\u0020fetched\u0020using\u003A\n\u007B\u0040code\u0020int\u0020luminance\u0020\u003D\u0020array\u005By\u0020\u002A\u0020width\u0020\u002B\u0020x\u005D\u0020\u0026\u00200xff\u007D",
+            "summary": "Fetches\u0020luminance\u0020data\u0020for\u0020the\u0020underlying\u0020bitmap.\u0020Values\u0020should\u0020be\u0020fetched\u0020using\u003A\n\u0060int\u0020luminance\u0020\u003D\u0020array\u005By\u0020\u002A\u0020width\u0020\u002B\u0020x\u005D\u0020\u0026\u00200xff\u0060",
             "url": "classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_getMatrix"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\LuminanceSourceInterface\u003A\u003AgetWidth\u0028\u0029",
@@ -1743,27 +1743,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\AlignmentPattern",
             "name": "AlignmentPattern",
-            "summary": "\u003Cp\u003EEncapsulates\u0020an\u0020alignment\u0020pattern,\u0020which\u0020are\u0020the\u0020smaller\u0020square\u0020patterns\u0020found\u0020in\nall\u0020but\u0020the\u0020simplest\u0020QR\u0020Codes.\u003C\/p\u003E",
+            "summary": "Encapsulates\u0020an\u0020alignment\u0020pattern,\u0020which\u0020are\u0020the\u0020smaller\u0020square\u0020patterns\u0020found\u0020in\nall\u0020but\u0020the\u0020simplest\u0020QR\u0020Codes.",
             "url": "classes/chillerlan-QRCode-Detector-AlignmentPattern.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\AlignmentPattern\u003A\u003AcombineEstimate\u0028\u0029",
             "name": "combineEstimate",
-            "summary": "Combines\u0020this\u0020object\u0027s\u0020current\u0020estimate\u0020of\u0020a\u0020finder\u0020pattern\u0020position\u0020and\u0020module\u0020size\nwith\u0020a\u0020new\u0020estimate.\u0020It\u0020returns\u0020a\u0020new\u0020\u007B\u0040code\u0020FinderPattern\u007D\u0020containing\u0020an\u0020average\u0020of\u0020the\u0020two.",
+            "summary": "Combines\u0020this\u0020object\u0027s\u0020current\u0020estimate\u0020of\u0020a\u0020finder\u0020pattern\u0020position\u0020and\u0020module\u0020size\nwith\u0020a\u0020new\u0020estimate.\u0020It\u0020returns\u0020a\u0020new\u0020FinderPattern\u0020containing\u0020an\u0020average\u0020of\u0020the\u0020two.",
             "url": "classes/chillerlan-QRCode-Detector-AlignmentPattern.html#method_combineEstimate"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\AlignmentPatternFinder",
             "name": "AlignmentPatternFinder",
-            "summary": "\u003Cp\u003EThis\u0020class\u0020attempts\u0020to\u0020find\u0020alignment\u0020patterns\u0020in\u0020a\u0020QR\u0020Code.\u0020Alignment\u0020patterns\u0020look\u0020like\u0020finder\npatterns\u0020but\u0020are\u0020smaller\u0020and\u0020appear\u0020at\u0020regular\u0020intervals\u0020throughout\u0020the\u0020image.\u003C\/p\u003E",
+            "summary": "This\u0020class\u0020attempts\u0020to\u0020find\u0020alignment\u0020patterns\u0020in\u0020a\u0020QR\u0020Code.\u0020Alignment\u0020patterns\u0020look\u0020like\u0020finder\npatterns\u0020but\u0020are\u0020smaller\u0020and\u0020appear\u0020at\u0020regular\u0020intervals\u0020throughout\u0020the\u0020image.",
             "url": "classes/chillerlan-QRCode-Detector-AlignmentPatternFinder.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\AlignmentPatternFinder\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "\u003Cp\u003ECreates\u0020a\u0020finder\u0020that\u0020will\u0020look\u0020in\u0020a\u0020portion\u0020of\u0020the\u0020whole\u0020image.\u003C\/p\u003E",
+            "summary": "Creates\u0020a\u0020finder\u0020that\u0020will\u0020look\u0020in\u0020a\u0020portion\u0020of\u0020the\u0020whole\u0020image.",
             "url": "classes/chillerlan-QRCode-Detector-AlignmentPatternFinder.html#method___construct"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\AlignmentPatternFinder\u003A\u003Afind\u0028\u0029",
             "name": "find",
-            "summary": "\u003Cp\u003EThis\u0020method\u0020attempts\u0020to\u0020find\u0020the\u0020bottom\u002Dright\u0020alignment\u0020pattern\u0020in\u0020the\u0020image.\u0020It\u0020is\u0020a\u0020bit\u0020messy\u0020since\nit\u0027s\u0020pretty\u0020performance\u002Dcritical\u0020and\u0020so\u0020is\u0020written\u0020to\u0020be\u0020fast\u0020foremost.\u003C\/p\u003E",
+            "summary": "This\u0020method\u0020attempts\u0020to\u0020find\u0020the\u0020bottom\u002Dright\u0020alignment\u0020pattern\u0020in\u0020the\u0020image.\u0020It\u0020is\u0020a\u0020bit\u0020messy\u0020since\nit\u0027s\u0020pretty\u0020performance\u002Dcritical\u0020and\u0020so\u0020is\u0020written\u0020to\u0020be\u0020fast\u0020foremost.",
             "url": "classes/chillerlan-QRCode-Detector-AlignmentPatternFinder.html#method_find"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\AlignmentPatternFinder\u003A\u003AfoundPatternCross\u0028\u0029",
@@ -1773,7 +1773,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\AlignmentPatternFinder\u003A\u003AhandlePossibleCenter\u0028\u0029",
             "name": "handlePossibleCenter",
-            "summary": "\u003Cp\u003EThis\u0020is\u0020called\u0020when\u0020a\u0020horizontal\u0020scan\u0020finds\u0020a\u0020possible\u0020alignment\u0020pattern.\u0020It\u0020will\ncross\u0020check\u0020with\u0020a\u0020vertical\u0020scan,\u0020and\u0020if\u0020successful,\u0020will\u0020see\u0020if\u0020this\u0020pattern\u0020had\u0020been\nfound\u0020on\u0020a\u0020previous\u0020horizontal\u0020scan.\u0020If\u0020so,\u0020we\u0020consider\u0020it\u0020confirmed\u0020and\u0020conclude\u0020we\u0020have\nfound\u0020the\u0020alignment\u0020pattern.\u003C\/p\u003E",
+            "summary": "This\u0020is\u0020called\u0020when\u0020a\u0020horizontal\u0020scan\u0020finds\u0020a\u0020possible\u0020alignment\u0020pattern.\u0020It\u0020will\ncross\u0020check\u0020with\u0020a\u0020vertical\u0020scan,\u0020and\u0020if\u0020successful,\u0020will\u0020see\u0020if\u0020this\u0020pattern\u0020had\u0020been\nfound\u0020on\u0020a\u0020previous\u0020horizontal\u0020scan.\u0020If\u0020so,\u0020we\u0020consider\u0020it\u0020confirmed\u0020and\u0020conclude\u0020we\u0020have\nfound\u0020the\u0020alignment\u0020pattern.",
             "url": "classes/chillerlan-QRCode-Detector-AlignmentPatternFinder.html#method_handlePossibleCenter"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\AlignmentPatternFinder\u003A\u003AcenterFromEnd\u0028\u0029",
@@ -1783,7 +1783,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\AlignmentPatternFinder\u003A\u003AcrossCheckVertical\u0028\u0029",
             "name": "crossCheckVertical",
-            "summary": "\u003Cp\u003EAfter\u0020a\u0020horizontal\u0020scan\u0020finds\u0020a\u0020potential\u0020alignment\u0020pattern,\u0020this\u0020method\n\u0022cross\u002Dchecks\u0022\u0020by\u0020scanning\u0020down\u0020vertically\u0020through\u0020the\u0020center\u0020of\u0020the\u0020possible\nalignment\u0020pattern\u0020to\u0020see\u0020if\u0020the\u0020same\u0020proportion\u0020is\u0020detected.\u003C\/p\u003E",
+            "summary": "After\u0020a\u0020horizontal\u0020scan\u0020finds\u0020a\u0020potential\u0020alignment\u0020pattern,\u0020this\u0020method\n\u0022cross\u002Dchecks\u0022\u0020by\u0020scanning\u0020down\u0020vertically\u0020through\u0020the\u0020center\u0020of\u0020the\u0020possible\nalignment\u0020pattern\u0020to\u0020see\u0020if\u0020the\u0020same\u0020proportion\u0020is\u0020detected.",
             "url": "classes/chillerlan-QRCode-Detector-AlignmentPatternFinder.html#method_crossCheckVertical"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\AlignmentPatternFinder\u003A\u003A\u0024bitMatrix",
@@ -1803,7 +1803,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\Detector",
             "name": "Detector",
-            "summary": "\u003Cp\u003EEncapsulates\u0020logic\u0020that\u0020can\u0020detect\u0020a\u0020QR\u0020Code\u0020in\u0020an\u0020image,\u0020even\u0020if\u0020the\u0020QR\u0020Code\nis\u0020rotated\u0020or\u0020skewed,\u0020or\u0020partially\u0020obscured.\u003C\/p\u003E",
+            "summary": "Encapsulates\u0020logic\u0020that\u0020can\u0020detect\u0020a\u0020QR\u0020Code\u0020in\u0020an\u0020image,\u0020even\u0020if\u0020the\u0020QR\u0020Code\nis\u0020rotated\u0020or\u0020skewed,\u0020or\u0020partially\u0020obscured.",
             "url": "classes/chillerlan-QRCode-Detector-Detector.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\Detector\u003A\u003A__construct\u0028\u0029",
@@ -1813,37 +1813,37 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\Detector\u003A\u003Adetect\u0028\u0029",
             "name": "detect",
-            "summary": "\u003Cp\u003EDetects\u0020a\u0020QR\u0020Code\u0020in\u0020an\u0020image.\u003C\/p\u003E",
+            "summary": "Detects\u0020a\u0020QR\u0020Code\u0020in\u0020an\u0020image.",
             "url": "classes/chillerlan-QRCode-Detector-Detector.html#method_detect"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\Detector\u003A\u003AcalculateModuleSize\u0028\u0029",
             "name": "calculateModuleSize",
-            "summary": "\u003Cp\u003EComputes\u0020an\u0020average\u0020estimated\u0020module\u0020size\u0020based\u0020on\u0020estimated\u0020derived\u0020from\u0020the\u0020positions\nof\u0020the\u0020three\u0020finder\u0020patterns.\u003C\/p\u003E",
+            "summary": "Computes\u0020an\u0020average\u0020estimated\u0020module\u0020size\u0020based\u0020on\u0020estimated\u0020derived\u0020from\u0020the\u0020positions\nof\u0020the\u0020three\u0020finder\u0020patterns.",
             "url": "classes/chillerlan-QRCode-Detector-Detector.html#method_calculateModuleSize"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\Detector\u003A\u003AcalculateModuleSizeOneWay\u0028\u0029",
             "name": "calculateModuleSizeOneWay",
-            "summary": "\u003Cp\u003EEstimates\u0020module\u0020size\u0020based\u0020on\u0020two\u0020finder\u0020patterns\u0020\u002D\u002D\u0020it\u0020uses\n\u007B\u0040link\u0020\u0023sizeOfBlackWhiteBlackRunBothWays\u0028int,\u0020int,\u0020int,\u0020int\u0029\u007D\u0020to\u0020figure\u0020the\nwidth\u0020of\u0020each,\u0020measuring\u0020along\u0020the\u0020axis\u0020between\u0020their\u0020centers.\u003C\/p\u003E",
+            "summary": "Estimates\u0020module\u0020size\u0020based\u0020on\u0020two\u0020finder\u0020patterns\u0020\u002D\u002D\u0020it\u0020uses\n\u0023sizeOfBlackWhiteBlackRunBothWays\u0028int,\u0020int,\u0020int,\u0020int\u0029\u0020to\u0020figure\u0020the\nwidth\u0020of\u0020each,\u0020measuring\u0020along\u0020the\u0020axis\u0020between\u0020their\u0020centers.",
             "url": "classes/chillerlan-QRCode-Detector-Detector.html#method_calculateModuleSizeOneWay"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\Detector\u003A\u003AsizeOfBlackWhiteBlackRunBothWays\u0028\u0029",
             "name": "sizeOfBlackWhiteBlackRunBothWays",
-            "summary": "See\u0020\u007B\u0040link\u0020\u0023sizeOfBlackWhiteBlackRun\u0028int,\u0020int,\u0020int,\u0020int\u0029\u007D\u003B\u0020computes\u0020the\u0020total\u0020width\u0020of\na\u0020finder\u0020pattern\u0020by\u0020looking\u0020for\u0020a\u0020black\u002Dwhite\u002Dblack\u0020run\u0020from\u0020the\u0020center\u0020in\u0020the\u0020direction\nof\u0020another\u0020po\u0024\u0028another\u0020finder\u0020pattern\u0020center\u0029,\u0020and\u0020in\u0020the\u0020opposite\u0020direction\u0020too.\u003C\/p\u003E",
+            "summary": "See\u0020\u0023sizeOfBlackWhiteBlackRun\u0028int,\u0020int,\u0020int,\u0020int\u0029\u003B\u0020computes\u0020the\u0020total\u0020width\u0020of\na\u0020finder\u0020pattern\u0020by\u0020looking\u0020for\u0020a\u0020black\u002Dwhite\u002Dblack\u0020run\u0020from\u0020the\u0020center\u0020in\u0020the\u0020direction\nof\u0020another\u0020po\u0024\u0028another\u0020finder\u0020pattern\u0020center\u0029,\u0020and\u0020in\u0020the\u0020opposite\u0020direction\u0020too.",
             "url": "classes/chillerlan-QRCode-Detector-Detector.html#method_sizeOfBlackWhiteBlackRunBothWays"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\Detector\u003A\u003AsizeOfBlackWhiteBlackRun\u0028\u0029",
             "name": "sizeOfBlackWhiteBlackRun",
-            "summary": "\u003Cp\u003EThis\u0020method\u0020traces\u0020a\u0020line\u0020from\u0020a\u0020po\u0024in\u0020the\u0020image,\u0020in\u0020the\u0020direction\u0020towards\u0020another\u0020point.",
+            "summary": "This\u0020method\u0020traces\u0020a\u0020line\u0020from\u0020a\u0020po\u0024in\u0020the\u0020image,\u0020in\u0020the\u0020direction\u0020towards\u0020another\u0020point.",
             "url": "classes/chillerlan-QRCode-Detector-Detector.html#method_sizeOfBlackWhiteBlackRun"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\Detector\u003A\u003AcomputeDimension\u0028\u0029",
             "name": "computeDimension",
-            "summary": "\u003Cp\u003EComputes\u0020the\u0020dimension\u0020\u0028number\u0020of\u0020modules\u0020on\u0020a\u0020size\u0029\u0020of\u0020the\u0020QR\u0020Code\u0020based\u0020on\u0020the\u0020position\nof\u0020the\u0020finder\u0020patterns\u0020and\u0020estimated\u0020module\u0020size.\u003C\/p\u003E",
+            "summary": "Computes\u0020the\u0020dimension\u0020\u0028number\u0020of\u0020modules\u0020on\u0020a\u0020size\u0029\u0020of\u0020the\u0020QR\u0020Code\u0020based\u0020on\u0020the\u0020position\nof\u0020the\u0020finder\u0020patterns\u0020and\u0020estimated\u0020module\u0020size.",
             "url": "classes/chillerlan-QRCode-Detector-Detector.html#method_computeDimension"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\Detector\u003A\u003AfindAlignmentInRegion\u0028\u0029",
             "name": "findAlignmentInRegion",
-            "summary": "\u003Cp\u003EAttempts\u0020to\u0020locate\u0020an\u0020alignment\u0020pattern\u0020in\u0020a\u0020limited\u0020region\u0020of\u0020the\u0020image,\u0020which\u0020is\nguessed\u0020to\u0020contain\u0020it.\u003C\/p\u003E",
+            "summary": "Attempts\u0020to\u0020locate\u0020an\u0020alignment\u0020pattern\u0020in\u0020a\u0020limited\u0020region\u0020of\u0020the\u0020image,\u0020which\u0020is\nguessed\u0020to\u0020contain\u0020it.",
             "url": "classes/chillerlan-QRCode-Detector-Detector.html#method_findAlignmentInRegion"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\Detector\u003A\u003AcreateTransform\u0028\u0029",
@@ -1858,7 +1858,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPattern",
             "name": "FinderPattern",
-            "summary": "\u003Cp\u003EEncapsulates\u0020a\u0020finder\u0020pattern,\u0020which\u0020are\u0020the\u0020three\u0020square\u0020patterns\u0020found\u0020in\nthe\u0020corners\u0020of\u0020QR\u0020Codes.\u0020It\u0020also\u0020encapsulates\u0020a\u0020count\u0020of\u0020similar\u0020finder\u0020patterns,\nas\u0020a\u0020convenience\u0020to\u0020the\u0020finder\u0027s\u0020bookkeeping.\u003C\/p\u003E",
+            "summary": "Encapsulates\u0020a\u0020finder\u0020pattern,\u0020which\u0020are\u0020the\u0020three\u0020square\u0020patterns\u0020found\u0020in\nthe\u0020corners\u0020of\u0020QR\u0020Codes.\u0020It\u0020also\u0020encapsulates\u0020a\u0020count\u0020of\u0020similar\u0020finder\u0020patterns,\nas\u0020a\u0020convenience\u0020to\u0020the\u0020finder\u0027s\u0020bookkeeping.",
             "url": "classes/chillerlan-QRCode-Detector-FinderPattern.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPattern\u003A\u003A__construct\u0028\u0029",
@@ -1883,7 +1883,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPattern\u003A\u003AcombineEstimate\u0028\u0029",
             "name": "combineEstimate",
-            "summary": "Combines\u0020this\u0020object\u0027s\u0020current\u0020estimate\u0020of\u0020a\u0020finder\u0020pattern\u0020position\u0020and\u0020module\u0020size\nwith\u0020a\u0020new\u0020estimate.\u0020It\u0020returns\u0020a\u0020new\u0020\u007B\u0040code\u0020FinderPattern\u007D\u0020containing\u0020a\u0020weighted\u0020average\nbased\u0020on\u0020count.",
+            "summary": "Combines\u0020this\u0020object\u0027s\u0020current\u0020estimate\u0020of\u0020a\u0020finder\u0020pattern\u0020position\u0020and\u0020module\u0020size\nwith\u0020a\u0020new\u0020estimate.\u0020It\u0020returns\u0020a\u0020new\u0020FinderPattern\u0020containing\u0020a\u0020weighted\u0020average\nbased\u0020on\u0020count.",
             "url": "classes/chillerlan-QRCode-Detector-FinderPattern.html#method_combineEstimate"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPattern\u003A\u003AsquaredDistance\u0028\u0029",
@@ -1903,12 +1903,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPatternFinder",
             "name": "FinderPatternFinder",
-            "summary": "\u003Cp\u003EThis\u0020class\u0020attempts\u0020to\u0020find\u0020finder\u0020patterns\u0020in\u0020a\u0020QR\u0020Code.\u0020Finder\u0020patterns\u0020are\u0020the\u0020square\nmarkers\u0020at\u0020three\u0020corners\u0020of\u0020a\u0020QR\u0020Code.\u003C\/p\u003E",
+            "summary": "This\u0020class\u0020attempts\u0020to\u0020find\u0020finder\u0020patterns\u0020in\u0020a\u0020QR\u0020Code.\u0020Finder\u0020patterns\u0020are\u0020the\u0020square\nmarkers\u0020at\u0020three\u0020corners\u0020of\u0020a\u0020QR\u0020Code.",
             "url": "classes/chillerlan-QRCode-Detector-FinderPatternFinder.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPatternFinder\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "\u003Cp\u003ECreates\u0020a\u0020finder\u0020that\u0020will\u0020search\u0020the\u0020image\u0020for\u0020three\u0020finder\u0020patterns.\u003C\/p\u003E",
+            "summary": "Creates\u0020a\u0020finder\u0020that\u0020will\u0020search\u0020the\u0020image\u0020for\u0020three\u0020finder\u0020patterns.",
             "url": "classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method___construct"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPatternFinder\u003A\u003Afind\u0028\u0029",
@@ -1953,17 +1953,17 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPatternFinder\u003A\u003AcrossCheckVertical\u0028\u0029",
             "name": "crossCheckVertical",
-            "summary": "\u003Cp\u003EAfter\u0020a\u0020horizontal\u0020scan\u0020finds\u0020a\u0020potential\u0020finder\u0020pattern,\u0020this\u0020method\n\u0022cross\u002Dchecks\u0022\u0020by\u0020scanning\u0020down\u0020vertically\u0020through\u0020the\u0020center\u0020of\u0020the\u0020possible\nfinder\u0020pattern\u0020to\u0020see\u0020if\u0020the\u0020same\u0020proportion\u0020is\u0020detected.\u003C\/p\u003E",
+            "summary": "After\u0020a\u0020horizontal\u0020scan\u0020finds\u0020a\u0020potential\u0020finder\u0020pattern,\u0020this\u0020method\n\u0022cross\u002Dchecks\u0022\u0020by\u0020scanning\u0020down\u0020vertically\u0020through\u0020the\u0020center\u0020of\u0020the\u0020possible\nfinder\u0020pattern\u0020to\u0020see\u0020if\u0020the\u0020same\u0020proportion\u0020is\u0020detected.",
             "url": "classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossCheckVertical"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPatternFinder\u003A\u003AcrossCheckHorizontal\u0028\u0029",
             "name": "crossCheckHorizontal",
-            "summary": "\u003Cp\u003ELike\u0020\u007B\u0040link\u0020\u0023crossCheckVertical\u0028int,\u0020int,\u0020int,\u0020int\u0029\u007D,\u0020and\u0020in\u0020fact\u0020is\u0020basically\u0020identical,\nexcept\u0020it\u0020reads\u0020horizontally\u0020instead\u0020of\u0020vertically.\u0020This\u0020is\u0020used\u0020to\u0020cross\u002Dcross\ncheck\u0020a\u0020vertical\u0020cross\u0020check\u0020and\u0020locate\u0020the\u0020real\u0020center\u0020of\u0020the\u0020alignment\u0020pattern.\u003C\/p\u003E",
+            "summary": "Like\u0020\u0023crossCheckVertical\u0028int,\u0020int,\u0020int,\u0020int\u0029,\u0020and\u0020in\u0020fact\u0020is\u0020basically\u0020identical,\nexcept\u0020it\u0020reads\u0020horizontally\u0020instead\u0020of\u0020vertically.\u0020This\u0020is\u0020used\u0020to\u0020cross\u002Dcross\ncheck\u0020a\u0020vertical\u0020cross\u0020check\u0020and\u0020locate\u0020the\u0020real\u0020center\u0020of\u0020the\u0020alignment\u0020pattern.",
             "url": "classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossCheckHorizontal"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPatternFinder\u003A\u003AhandlePossibleCenter\u0028\u0029",
             "name": "handlePossibleCenter",
-            "summary": "\u003Cp\u003EThis\u0020is\u0020called\u0020when\u0020a\u0020horizontal\u0020scan\u0020finds\u0020a\u0020possible\u0020alignment\u0020pattern.\u0020It\u0020will\ncross\u0020check\u0020with\u0020a\u0020vertical\u0020scan,\u0020and\u0020if\u0020successful,\u0020will,\u0020ah,\u0020cross\u002Dcross\u002Dcheck\nwith\u0020another\u0020horizontal\u0020scan.\u0020This\u0020is\u0020needed\u0020primarily\u0020to\u0020locate\u0020the\u0020real\u0020horizontal\ncenter\u0020of\u0020the\u0020pattern\u0020in\u0020cases\u0020of\u0020extreme\u0020skew.",
+            "summary": "This\u0020is\u0020called\u0020when\u0020a\u0020horizontal\u0020scan\u0020finds\u0020a\u0020possible\u0020alignment\u0020pattern.\u0020It\u0020will\ncross\u0020check\u0020with\u0020a\u0020vertical\u0020scan,\u0020and\u0020if\u0020successful,\u0020will,\u0020ah,\u0020cross\u002Dcross\u002Dcheck\nwith\u0020another\u0020horizontal\u0020scan.\u0020This\u0020is\u0020needed\u0020primarily\u0020to\u0020locate\u0020the\u0020real\u0020horizontal\ncenter\u0020of\u0020the\u0020pattern\u0020in\u0020cases\u0020of\u0020extreme\u0020skew.",
             "url": "classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_handlePossibleCenter"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPatternFinder\u003A\u003AfindRowSkip\u0028\u0029",
@@ -2028,7 +2028,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\GridSampler\u003A\u003AcheckAndNudgePoints\u0028\u0029",
             "name": "checkAndNudgePoints",
-            "summary": "\u003Cp\u003EChecks\u0020a\u0020set\u0020of\u0020points\u0020that\u0020have\u0020been\u0020transformed\u0020to\u0020sample\u0020points\u0020on\u0020an\u0020image\u0020against\nthe\u0020image\u0027s\u0020dimensions\u0020to\u0020see\u0020if\u0020the\u0020point\u0020are\u0020even\u0020within\u0020the\u0020image.\u003C\/p\u003E",
+            "summary": "Checks\u0020a\u0020set\u0020of\u0020points\u0020that\u0020have\u0020been\u0020transformed\u0020to\u0020sample\u0020points\u0020on\u0020an\u0020image\u0020against\nthe\u0020image\u0027s\u0020dimensions\u0020to\u0020see\u0020if\u0020the\u0020point\u0020are\u0020even\u0020within\u0020the\u0020image.",
             "url": "classes/chillerlan-QRCode-Detector-GridSampler.html#method_checkAndNudgePoints"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\GridSampler\u003A\u003AsampleGrid\u0028\u0029",
@@ -2038,7 +2038,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\PerspectiveTransform",
             "name": "PerspectiveTransform",
-            "summary": "\u003Cp\u003EThis\u0020class\u0020implements\u0020a\u0020perspective\u0020transform\u0020in\u0020two\u0020dimensions.\u0020Given\u0020four\u0020source\u0020and\u0020four\ndestination\u0020points,\u0020it\u0020will\u0020compute\u0020the\u0020transformation\u0020implied\u0020between\u0020them.\u0020The\u0020code\u0020is\u0020based\ndirectly\u0020upon\u0020section\u00203.4.2\u0020of\u0020George\u0020Wolberg\u0027s\u0020\u0022Digital\u0020Image\u0020Warping\u0022\u003B\u0020see\u0020pages\u002054\u002D56.\u003C\/p\u003E",
+            "summary": "This\u0020class\u0020implements\u0020a\u0020perspective\u0020transform\u0020in\u0020two\u0020dimensions.\u0020Given\u0020four\u0020source\u0020and\u0020four\ndestination\u0020points,\u0020it\u0020will\u0020compute\u0020the\u0020transformation\u0020implied\u0020between\u0020them.\u0020The\u0020code\u0020is\u0020based\ndirectly\u0020upon\u0020section\u00203.4.2\u0020of\u0020George\u0020Wolberg\u0027s\u0020\u0022Digital\u0020Image\u0020Warping\u0022\u003B\u0020see\u0020pages\u002054\u002D56.",
             "url": "classes/chillerlan-QRCode-Detector-PerspectiveTransform.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\PerspectiveTransform\u003A\u003Aset\u0028\u0029",
@@ -2123,7 +2123,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\ResultPoint",
             "name": "ResultPoint",
-            "summary": "\u003Cp\u003EEncapsulates\u0020a\u0020point\u0020of\u0020interest\u0020in\u0020an\u0020image\u0020containing\u0020a\u0020barcode.\u0020Typically,\u0020this\nwould\u0020be\u0020the\u0020location\u0020of\u0020a\u0020finder\u0020pattern\u0020or\u0020the\u0020corner\u0020of\u0020the\u0020barcode,\u0020for\u0020example.\u003C\/p\u003E",
+            "summary": "Encapsulates\u0020a\u0020point\u0020of\u0020interest\u0020in\u0020an\u0020image\u0020containing\u0020a\u0020barcode.\u0020Typically,\u0020this\nwould\u0020be\u0020the\u0020location\u0020of\u0020a\u0020finder\u0020pattern\u0020or\u0020the\u0020corner\u0020of\u0020the\u0020barcode,\u0020for\u0020example.",
             "url": "classes/chillerlan-QRCode-Detector-ResultPoint.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\ResultPoint\u003A\u003A__construct\u0028\u0029",
@@ -2148,7 +2148,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\ResultPoint\u003A\u003AaboutEquals\u0028\u0029",
             "name": "aboutEquals",
-            "summary": "\u003Cp\u003EDetermines\u0020if\u0020this\u0020finder\u0020pattern\u0020\u0022about\u0020equals\u0022\u0020a\u0020finder\u0020pattern\u0020at\u0020the\u0020stated\nposition\u0020and\u0020size\u0020\u002D\u002D\u0020meaning,\u0020it\u0020is\u0020at\u0020nearly\u0020the\u0020same\u0020center\u0020with\u0020nearly\u0020the\u0020same\u0020size.\u003C\/p\u003E",
+            "summary": "Determines\u0020if\u0020this\u0020finder\u0020pattern\u0020\u0022about\u0020equals\u0022\u0020a\u0020finder\u0020pattern\u0020at\u0020the\u0020stated\nposition\u0020and\u0020size\u0020\u002D\u002D\u0020meaning,\u0020it\u0020is\u0020at\u0020nearly\u0020the\u0020same\u0020center\u0020with\u0020nearly\u0020the\u0020same\u0020size.",
             "url": "classes/chillerlan-QRCode-Detector-ResultPoint.html#method_aboutEquals"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\ResultPoint\u003A\u003A\u0024x",
