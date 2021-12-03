@@ -124,9 +124,6 @@ abstract class QROutputTestAbstract extends TestCase{
 			&& in_array($type, [QRCode::OUTPUT_IMAGE_JPG, QRCode::OUTPUT_IMAGICK, QRCode::OUTPUT_MARKUP_SVG])
 		){
 			$this::markTestSkipped('may fail on CI');
-
-			/** @noinspection PhpUnreachableStatementInspection */
-			return;
 		}
 
 		$this->options->outputType = $type;

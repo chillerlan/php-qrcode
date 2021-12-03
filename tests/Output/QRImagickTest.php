@@ -30,9 +30,6 @@ class QRImagickTest extends QROutputTestAbstract{
 
 		if(!extension_loaded('imagick')){
 			$this->markTestSkipped('ext-imagick not loaded');
-
-			/** @noinspection PhpUnreachableStatementInspection */
-			return;
 		}
 
 		parent::setUp();

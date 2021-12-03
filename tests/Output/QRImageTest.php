@@ -26,7 +26,6 @@ class QRImageTest extends QROutputTestAbstract{
 
 		if(!extension_loaded('gd')){
 			$this->markTestSkipped('ext-gd not loaded');
-			return;
 		}
 
 		parent::setUp();

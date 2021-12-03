@@ -209,9 +209,6 @@ final class QRMatrixTest extends TestCase{
 
 		if($version < 7){
 			$this->markTestSkipped('N/A (Version < 7)');
-
-			/** @noinspection PhpUnreachableStatementInspection */
-			return;
 		}
 
 		$matrix = $this->getMatrix($version)->setVersionNumber();
