@@ -41,8 +41,9 @@ class QRMarkupTest extends QROutputTestAbstract{
 	 * @inheritDoc
 	 */
 	public function testSetModuleValues():void{
-		$this->options->imageBase64  = false;
-		$this->options->moduleValues = [
+		$this->options->imageBase64      = false;
+		$this->options->imageTransparent = false;
+		$this->options->moduleValues     = [
 			// data
 			QRMatrix::M_DATA | QRMatrix::IS_DARK => '#4A6000',
 			QRMatrix::M_DATA                     => '#ECF9BE',

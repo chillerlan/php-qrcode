@@ -31,6 +31,14 @@ use chillerlan\Settings\SettingsContainerAbstract;
  * @property float       $svgOpacity
  * @property string      $svgDefs
  * @property int         $svgViewBoxSize
+ * @property string      $svgPreserveAspectRatio
+ * @property string      $svgWidth
+ * @property string      $svgHeight
+ * @property bool        $svgConnectPaths
+ * @property array       $svgExcludeFromConnect
+ * @property bool        $svgDrawCircularModules
+ * @property float       $svgCircleRadius
+ * @property array       $svgKeepAsSquare
  * @property string      $textDark
  * @property string      $textLight
  * @property string      $markupDark

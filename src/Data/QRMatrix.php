@@ -204,6 +204,20 @@ final class QRMatrix{
 	}
 
 	/**
+	 * checks whether a module matches one of the given $M_TYPES
+	 */
+	public function checkTypes(int $x, int $y, array $M_TYPES):bool{
+
+		foreach($M_TYPES as $type){
+			if($this->checkType($x, $y, $type)){
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Checks whether a module is true (dark) or false (light)
 	 *
 	 *   true  => $value & 0x800 === 0x800

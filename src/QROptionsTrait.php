@@ -115,18 +115,65 @@ trait QROptionsTrait{
 	/**
 	 * anything between <defs>
 	 *
-	 * @see https://developer.mozilla.org/docs/Web/SVG/Element/defs
+	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs
 	 */
-	protected string $svgDefs = '<style>rect{shape-rendering:crispEdges}</style>';
+	protected string $svgDefs = '';
 
 	/**
 	 * SVG viewBox size. a single integer number which defines width/height of the viewBox attribute.
 	 *
 	 * viewBox="0 0 x x"
 	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
 	 * @see https://css-tricks.com/scale-svg/#article-header-id-3
 	 */
 	protected ?int $svgViewBoxSize = null;
+
+	/**
+	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
+	 */
+	protected string $svgPreserveAspectRatio = 'xMidYMid';
+
+	/**
+	 * optional "width" attribute with the specified value (note that the value is not checked!)
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/width
+	 */
+	protected ?string $svgWidth = null;
+
+	/**
+	 * optional "height" attribute with the specified value (note that the value is not checked!)
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/height
+	 */
+	protected ?string $svgHeight = null;
+
+	/**
+	 * whether to connect the paths for the several module types to avoid weird glitches when using gradients etc.
+	 *
+	 * @see https://github.com/chillerlan/php-qrcode/issues/57
+	 */
+	protected bool $svgConnectPaths = false;
+
+	/**
+	 * specify which paths/patterns to exclude from connecting if $svgConnectPaths is set to true
+	 */
+	protected array $svgExcludeFromConnect = [];
+
+	/**
+	 * specify whether to draw the modules as filled circles
+	 */
+	protected bool $svgDrawCircularModules = false;
+
+	/**
+	 * specifies the radius of the modules when $svgDrawCircularModules is set to true
+	 */
+	protected float $svgCircleRadius = 0.45;
+
+	/**
+	 * specifies which module types to exclude when $svgDrawCircularModules is set to true
+	 */
+	protected array $svgKeepAsSquare = [];
 
 	/**
 	 * string substitute for dark
