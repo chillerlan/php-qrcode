@@ -1161,6 +1161,11 @@ Search.appendIndex(
             "summary": "Checks\u0020whether\u0020a\u0020module\u0020is\u0020of\u0020the\u0020given\u0020\u0024M_TYPE",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkType"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AcheckTypes\u0028\u0029",
+            "name": "checkTypes",
+            "summary": "checks\u0020whether\u0020a\u0020module\u0020matches\u0020one\u0020of\u0020the\u0020given\u0020\u0024M_TYPES",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkTypes"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003Acheck\u0028\u0029",
             "name": "check",
             "summary": "Checks\u0020whether\u0020a\u0020module\u0020is\u0020true\u0020\u0028dark\u0029\u0020or\u0020false\u0020\u0028light\u0029",
@@ -1741,6 +1746,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_fromBlob"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Decoder\\QRCodeDecoderException",
+            "name": "QRCodeDecoderException",
+            "summary": "An\u0020exception\u0020container",
+            "url": "classes/chillerlan-QRCode-Decoder-QRCodeDecoderException.html"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\AlignmentPattern",
             "name": "AlignmentPattern",
             "summary": "Encapsulates\u0020an\u0020alignment\u0020pattern,\u0020which\u0020are\u0020the\u0020smaller\u0020square\u0020patterns\u0020found\u0020in\nall\u0020but\u0020the\u0020simplest\u0020QR\u0020Codes.",
@@ -2121,6 +2131,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Detector-PerspectiveTransform.html#property_a33"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Detector\\QRCodeDetectorException",
+            "name": "QRCodeDetectorException",
+            "summary": "An\u0020exception\u0020container",
+            "url": "classes/chillerlan-QRCode-Detector-QRCodeDetectorException.html"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\ResultPoint",
             "name": "ResultPoint",
             "summary": "Encapsulates\u0020a\u0020point\u0020of\u0020interest\u0020in\u0020an\u0020image\u0020containing\u0020a\u0020barcode.\u0020Typically,\u0020this\nwould\u0020be\u0020the\u0020location\u0020of\u0020a\u0020finder\u0020pattern\u0020or\u0020the\u0020corner\u0020of\u0020the\u0020barcode,\u0020for\u0020example.",
@@ -2276,10 +2291,20 @@ Search.appendIndex(
             "summary": "Creates\u0020the\u0020QR\u0020image\u0020via\u0020ImagickDraw",
             "url": "classes/chillerlan-QRCode-Output-QRImagick.html#method_drawImage"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003AdrawPixel\u0028\u0029",
+            "name": "drawPixel",
+            "summary": "draws\u0020a\u0020single\u0020pixel\u0020at\u0020the\u0020given\u0020position",
+            "url": "classes/chillerlan-QRCode-Output-QRImagick.html#method_drawPixel"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003A\u0024imagick",
             "name": "imagick",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QRImagick.html#property_imagick"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003A\u0024imagickDraw",
+            "name": "imagickDraw",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QRImagick.html#property_imagickDraw"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup",
             "name": "QRMarkup",
@@ -2301,15 +2326,25 @@ Search.appendIndex(
             "summary": "SVG\u0020output",
             "url": "classes/chillerlan-QRCode-Output-QRMarkup.html#method_svg"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup\u003A\u003AsvgHeader\u0028\u0029",
+            "name": "svgHeader",
+            "summary": "returns\u0020the\u0020\u003Csvg\u003E\u0020header\u0020with\u0020the\u0020given\u0020options\u0020parsed",
+            "url": "classes/chillerlan-QRCode-Output-QRMarkup.html#method_svgHeader"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup\u003A\u003AsvgPaths\u0028\u0029",
+            "name": "svgPaths",
+            "summary": "returns\u0020one\u0020or\u0020more\u0020SVG\u0020\u003Cpath\u003E\u0020elements",
+            "url": "classes/chillerlan-QRCode-Output-QRMarkup.html#method_svgPaths"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup\u003A\u003AsvgModule\u0028\u0029",
+            "name": "svgModule",
+            "summary": "returns\u0020a\u0020path\u0020segment\u0020for\u0020a\u0020single\u0020module",
+            "url": "classes/chillerlan-QRCode-Output-QRMarkup.html#method_svgModule"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup\u003A\u003A\u0024defaultMode",
             "name": "defaultMode",
             "summary": "the\u0020default\u0020output\u0020mode\u0020of\u0020the\u0020current\u0020output\u0020module",
             "url": "classes/chillerlan-QRCode-Output-QRMarkup.html#property_defaultMode"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup\u003A\u003A\u0024svgHeader",
-            "name": "svgHeader",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-Output-QRMarkup.html#property_svgHeader"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract",
             "name": "QROutputAbstract",
@@ -2765,6 +2800,46 @@ Search.appendIndex(
             "name": "svgViewBoxSize",
             "summary": "SVG\u0020viewBox\u0020size.\u0020a\u0020single\u0020integer\u0020number\u0020which\u0020defines\u0020width\/height\u0020of\u0020the\u0020viewBox\u0020attribute.",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgViewBoxSize"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgPreserveAspectRatio",
+            "name": "svgPreserveAspectRatio",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgPreserveAspectRatio"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgWidth",
+            "name": "svgWidth",
+            "summary": "optional\u0020\u0022width\u0022\u0020attribute\u0020with\u0020the\u0020specified\u0020value\u0020\u0028note\u0020that\u0020the\u0020value\u0020is\u0020not\u0020checked\u0021\u0029",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgWidth"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgHeight",
+            "name": "svgHeight",
+            "summary": "optional\u0020\u0022height\u0022\u0020attribute\u0020with\u0020the\u0020specified\u0020value\u0020\u0028note\u0020that\u0020the\u0020value\u0020is\u0020not\u0020checked\u0021\u0029",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgHeight"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgConnectPaths",
+            "name": "svgConnectPaths",
+            "summary": "whether\u0020to\u0020connect\u0020the\u0020paths\u0020for\u0020the\u0020several\u0020module\u0020types\u0020to\u0020avoid\u0020weird\u0020glitches\u0020when\u0020using\u0020gradients\u0020etc.",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgConnectPaths"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgExcludeFromConnect",
+            "name": "svgExcludeFromConnect",
+            "summary": "specify\u0020which\u0020paths\/patterns\u0020to\u0020exclude\u0020from\u0020connecting\u0020if\u0020\u0024svgConnectPaths\u0020is\u0020set\u0020to\u0020true",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgExcludeFromConnect"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgDrawCircularModules",
+            "name": "svgDrawCircularModules",
+            "summary": "specify\u0020whether\u0020to\u0020draw\u0020the\u0020modules\u0020as\u0020filled\u0020circles",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgDrawCircularModules"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgCircleRadius",
+            "name": "svgCircleRadius",
+            "summary": "specifies\u0020the\u0020radius\u0020of\u0020the\u0020modules\u0020when\u0020\u0024svgDrawCircularModules\u0020is\u0020set\u0020to\u0020true",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgCircleRadius"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgKeepAsSquare",
+            "name": "svgKeepAsSquare",
+            "summary": "specifies\u0020which\u0020module\u0020types\u0020to\u0020exclude\u0020when\u0020\u0024svgDrawCircularModules\u0020is\u0020set\u0020to\u0020true",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgKeepAsSquare"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024textDark",
             "name": "textDark",
