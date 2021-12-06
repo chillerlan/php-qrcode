@@ -27,6 +27,7 @@ use function extension_loaded, is_string;
 class QRImagick extends QROutputAbstract{
 
 	protected Imagick $imagick;
+	protected ImagickDraw $imagickDraw;
 
 	/**
 	 * @inheritDoc
@@ -85,6 +86,8 @@ class QRImagick extends QROutputAbstract{
 
 		$imageData = $this->imagick->getImageBlob();
 
+		$this->imagick->destroy();
+
 		if($file !== null){
 			$this->saveToFile($imageData, $file);
 		}
@@ -96,23 +99,29 @@ class QRImagick extends QROutputAbstract{
 	 * Creates the QR image via ImagickDraw
 	 */
 	protected function drawImage():void{
-		$draw = new ImagickDraw;
+		$this->imagickDraw = new ImagickDraw;
 
 		foreach($this->matrix->matrix() as $y => $row){
 			foreach($row as $x => $M_TYPE){
-				$draw->setStrokeColor($this->moduleValues[$M_TYPE]);
-				$draw->setFillColor($this->moduleValues[$M_TYPE]);
-				$draw->rectangle(
-					$x * $this->scale,
-					$y * $this->scale,
-					($x + 1) * $this->scale,
-					($y + 1) * $this->scale
-				);
-
+				$this->drawPixel($x, $y, $M_TYPE);
 			}
 		}
 
-		$this->imagick->drawImage($draw);
+		$this->imagick->drawImage($this->imagickDraw);
+	}
+
+	/**
+	 * draws a single pixel at the given position
+	 */
+	protected function drawPixel(int $x, int $y, int $M_TYPE):void{
+		$this->imagickDraw->setStrokeColor($this->moduleValues[$M_TYPE]);
+		$this->imagickDraw->setFillColor($this->moduleValues[$M_TYPE]);
+		$this->imagickDraw->rectangle(
+			$x * $this->scale,
+			$y * $this->scale,
+			($x + 1) * $this->scale,
+			($y + 1) * $this->scale
+		);
 	}
 
 }

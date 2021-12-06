@@ -12,7 +12,7 @@ namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\{Data\QRMatrix, QRCode};
 use chillerlan\Settings\SettingsContainerInterface;
-use function base64_encode, call_user_func_array, dirname, file_put_contents, get_called_class, in_array, is_writable, sprintf;
+use function base64_encode, dirname, file_put_contents, get_called_class, in_array, is_writable, sprintf;
 
 /**
  * common output abstract
@@ -74,8 +74,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 		$this->moduleCount = $this->matrix->size();
 		$this->scale       = $this->options->scale;
 		$this->length      = $this->moduleCount * $this->scale;
-
-		$class = get_called_class();
+		$class             = get_called_class();
 
 		if(isset(QRCode::OUTPUT_MODES[$class]) && in_array($this->options->outputType, QRCode::OUTPUT_MODES[$class])){
 			$this->outputMode = $this->options->outputType;
@@ -121,7 +120,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 
 		// call the built-in output method with the optional file path as parameter
 		// to make the called method aware if a cache file was given
-		$data = call_user_func_array([$this, $this->outputMode ?? $this->defaultMode], [$file]);
+		$data = $this->{$this->outputMode ?? $this->defaultMode}($file);
 
 		if($file !== null){
 			$this->saveToFile($data, $file);

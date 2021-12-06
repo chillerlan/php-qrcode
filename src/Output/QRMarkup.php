@@ -50,7 +50,7 @@ class QRMarkup extends QROutputAbstract{
 
 		$html = empty($this->options->cssClass)
 			? '<div>'
-			: '<div class="'.$this->options->cssClass.'">';
+			: sprintf('<div class="%s">', $this->options->cssClass);
 
 		$html .= $this->options->eol;
 
@@ -58,7 +58,7 @@ class QRMarkup extends QROutputAbstract{
 			$html .= '<div>';
 
 			foreach($row as $M_TYPE){
-				$html .= '<span style="background: '.$this->moduleValues[$M_TYPE].';"></span>';
+				$html .= sprintf('<span style="background: %s;"></span>', $this->moduleValues[$M_TYPE]);
 			}
 
 			$html .= '</div>'.$this->options->eol;
@@ -67,9 +67,10 @@ class QRMarkup extends QROutputAbstract{
 		$html .= '</div>'.$this->options->eol;
 
 		if($file !== null){
-			return '<!DOCTYPE html>'.
-			       '<head><meta charset="UTF-8"><title>QR Code</title></head>'.
-			       '<body>'.$this->options->eol.$html.'</body>';
+			return sprintf(
+				'<!DOCTYPE html><head><meta charset="UTF-8"><title>QR Code</title></head><body>%s</body>',
+				$this->options->eol.$html
+			);
 		}
 
 		return $html;

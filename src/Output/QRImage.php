@@ -101,7 +101,7 @@ class QRImage extends QROutputAbstract{
 		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
 		$background = imagecolorallocate($this->image, ...$tbg);
 
-		if((bool)$this->options->imageTransparent && in_array($this->options->outputType, $this::TRANSPARENCY_TYPES, true)){
+		if($this->options->imageTransparent && in_array($this->options->outputType, $this::TRANSPARENCY_TYPES, true)){
 			imagecolortransparent($this->image, $background);
 		}
 
@@ -109,7 +109,7 @@ class QRImage extends QROutputAbstract{
 
 		foreach($this->matrix->matrix() as $y => $row){
 			foreach($row as $x => $M_TYPE){
-				$this->setPixel($x, $y, $this->moduleValues[$M_TYPE]);
+				$this->setPixel($x, $y, $M_TYPE);
 			}
 		}
 
@@ -133,7 +133,7 @@ class QRImage extends QROutputAbstract{
 	/**
 	 * Creates a single QR pixel with the given settings
 	 */
-	protected function setPixel(int $x, int $y, array $rgb):void{
+	protected function setPixel(int $x, int $y, int $M_TYPE):void{
 		imagefilledrectangle(
 			$this->image,
 			$x * $this->scale,
@@ -141,7 +141,7 @@ class QRImage extends QROutputAbstract{
 			($x + 1) * $this->scale,
 			($y + 1) * $this->scale,
 			/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
-			imagecolorallocate($this->image, ...$rgb)
+			imagecolorallocate($this->image, ...$this->moduleValues[$M_TYPE])
 		);
 	}
 

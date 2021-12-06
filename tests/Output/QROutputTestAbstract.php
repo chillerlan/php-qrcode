@@ -103,9 +103,8 @@ abstract class QROutputTestAbstract extends TestCase{
 		$this->options->outputType  = $type;
 		$this->options->cachefile   = $this->builddir.'/test.'.$type;
 		$this->options->imageBase64 = false;
-
-		$this->outputInterface     = $this->getOutputInterface($this->options);
-		$data                      = $this->outputInterface->dump(); // creates the cache file
+		$this->outputInterface      = $this->getOutputInterface($this->options);
+		$data                       = $this->outputInterface->dump(); // creates the cache file
 
 		$this::assertSame($data, file_get_contents($this->options->cachefile));
 	}
