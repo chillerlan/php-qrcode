@@ -80,7 +80,7 @@ trait QROptionsTrait{
 	 *   - QRCode::OUTPUT_STRING_XXXX where XXXX = TEXT, JSON
 	 *   - QRCode::OUTPUT_CUSTOM
 	 */
-	protected string $outputType = QRCode::OUTPUT_IMAGE_PNG;
+	protected string $outputType = QRCode::OUTPUT_MARKUP_SVG;
 
 	/**
 	 * the FQCN of the custom QROutputInterface if $outputType is set to QRCode::OUTPUT_CUSTOM

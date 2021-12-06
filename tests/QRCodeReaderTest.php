@@ -81,6 +81,7 @@ class QRCodeReaderTest extends TestCase{
 
 	public function testReaderMultiSegment():void{
 		$options = new QROptions;
+		$options->outputType  = QRCode::OUTPUT_IMAGE_PNG;
 		$options->imageBase64 = false;
 
 		$numeric  = '123456789012345678901234567890';
@@ -120,6 +121,7 @@ class QRCodeReaderTest extends TestCase{
 	public function testReadData(Version $version, EccLevel $ecc, string $expected):void{
 		$options = new QROptions;
 
+		$options->outputType            = QRCode::OUTPUT_IMAGE_PNG;
 #		$options->imageTransparent      = false;
 		$options->eccLevel              = $ecc->getLevel();
 		$options->version               = $version->getVersionNumber();
