@@ -105,7 +105,7 @@ trait QROptionsTrait{
 	/**
 	 * a common css class
 	 */
-	protected string $cssClass = '';
+	protected string $cssClass = 'qrcode';
 
 	/**
 	 * SVG opacity
