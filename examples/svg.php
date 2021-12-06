@@ -14,7 +14,7 @@ use chillerlan\QRCode\Common\EccLevel;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs';
+$data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 $gzip = true;
 
 $options = new QROptions([
@@ -60,4 +60,5 @@ if($gzip){
 	header('Content-Encoding: gzip');
 	$qrcode = gzencode($qrcode, 9);
 }
+
 echo $qrcode;
