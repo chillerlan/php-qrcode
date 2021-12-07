@@ -21,16 +21,12 @@ use function count;
  * This class is used to help decode images from files which arrive as Imagick Resource
  * It does not support rotation.
  */
-final class IMagickLuminanceSource extends LuminanceSourceAbstract{
+class IMagickLuminanceSource extends LuminanceSourceAbstract{
 
-	private Imagick $imagick;
+	protected Imagick $imagick;
 
 	/**
 	 * IMagickLuminanceSource constructor.
-	 *
-	 * @param \Imagick $imagick
-	 *
-	 * @throws \InvalidArgumentException
 	 */
 	public function __construct(Imagick $imagick, SettingsContainerInterface $options = null){
 		parent::__construct($imagick->getImageWidth(), $imagick->getImageHeight(), $options);
@@ -43,7 +39,7 @@ final class IMagickLuminanceSource extends LuminanceSourceAbstract{
 	/**
 	 *
 	 */
-	private function setLuminancePixels():void{
+	protected function setLuminancePixels():void{
 
 		if($this->options->readerGrayscale){
 			$this->imagick->setImageColorspace(Imagick::COLORSPACE_GRAY);

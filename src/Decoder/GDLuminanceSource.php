@@ -22,17 +22,18 @@ use const IMG_FILTER_BRIGHTNESS, IMG_FILTER_CONTRAST, IMG_FILTER_GRAYSCALE, PHP_
  * This class is used to help decode images from files which arrive as GD Resource
  * It does not support rotation.
  */
-final class GDLuminanceSource extends LuminanceSourceAbstract{
+class GDLuminanceSource extends LuminanceSourceAbstract{
 
 	/**
 	 * @var resource|\GdImage
 	 */
-	private $gdImage;
+	protected $gdImage;
 
 	/**
 	 * GDLuminanceSource constructor.
 	 *
-	 * @param resource|\GdImage $gdImage
+	 * @param resource|\GdImage                                    $gdImage
+	 * @param \chillerlan\Settings\SettingsContainerInterface|null $options
 	 *
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
@@ -56,7 +57,7 @@ final class GDLuminanceSource extends LuminanceSourceAbstract{
 	/**
 	 *
 	 */
-	private function setLuminancePixels():void{
+	protected function setLuminancePixels():void{
 
 		if($this->options->readerGrayscale){
 			imagefilter($this->gdImage,  IMG_FILTER_GRAYSCALE);
