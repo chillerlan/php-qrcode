@@ -2716,10 +2716,10 @@ Search.appendIndex(
             "summary": "sets\u0020the\u0020FPDF\u0020measurement\u0020unit",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_fpdfMeasureUnit"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_useImagickIfAvailable\u0028\u0029",
-            "name": "set_useImagickIfAvailable",
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_readerUseImagickIfAvailable\u0028\u0029",
+            "name": "set_readerUseImagickIfAvailable",
             "summary": "enables\u0020Imagick\u0020for\u0020the\u0020QR\u0020Code\u0020reader\u0020if\u0020the\u0020extension\u0020is\u0020available",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_useImagickIfAvailable"
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_readerUseImagickIfAvailable"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003AgetLuminanceSourceFQCN\u0028\u0029",
             "name": "getLuminanceSourceFQCN",
