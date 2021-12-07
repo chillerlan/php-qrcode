@@ -13,9 +13,10 @@
 
 namespace chillerlan\QRCode\Decoder;
 
+use chillerlan\Settings\SettingsContainerInterface;
 use function file_get_contents, get_resource_type, imagecolorat, imagecolorsforindex,
-	imagecreatefromstring, imagesx, imagesy, is_resource;
-use const PHP_MAJOR_VERSION;
+	imagecreatefromstring, imagefilter, imagesx, imagesy, is_resource;
+use const IMG_FILTER_BRIGHTNESS, IMG_FILTER_CONTRAST, IMG_FILTER_GRAYSCALE, PHP_MAJOR_VERSION;
 
 /**
  * This class is used to help decode images from files which arrive as GD Resource
@@ -35,7 +36,7 @@ final class GDLuminanceSource extends LuminanceSourceAbstract{
 	 *
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
-	public function __construct($gdImage){
+	public function __construct($gdImage, SettingsContainerInterface $options = null){
 
 		/** @noinspection PhpFullyQualifiedNameUsageInspection */
 		if(
@@ -45,7 +46,7 @@ final class GDLuminanceSource extends LuminanceSourceAbstract{
 			throw new QRCodeDecoderException('Invalid GD image source.');
 		}
 
-		parent::__construct(imagesx($gdImage), imagesy($gdImage));
+		parent::__construct(imagesx($gdImage), imagesy($gdImage), $options);
 
 		$this->gdImage = $gdImage;
 
@@ -56,6 +57,16 @@ final class GDLuminanceSource extends LuminanceSourceAbstract{
 	 *
 	 */
 	private function setLuminancePixels():void{
+
+		if($this->options->readerGrayscale){
+			imagefilter($this->gdImage,  IMG_FILTER_GRAYSCALE);
+		}
+
+		if($this->options->readerIncreaseContrast){
+			imagefilter($this->gdImage, IMG_FILTER_BRIGHTNESS, -100);
+			imagefilter($this->gdImage, IMG_FILTER_CONTRAST, -100);
+		}
+
 		for($j = 0; $j < $this->height; $j++){
 			for($i = 0; $i < $this->width; $i++){
 				$argb  = imagecolorat($this->gdImage, $i, $j);
@@ -64,18 +75,17 @@ final class GDLuminanceSource extends LuminanceSourceAbstract{
 				$this->setLuminancePixel($pixel['red'], $pixel['green'], $pixel['blue']);
 			}
 		}
+
 	}
 
 	/** @inheritDoc */
-	public static function fromFile(string $path):self{
-		$path = self::checkFile($path);
-
-		return new self(imagecreatefromstring(file_get_contents($path)));
+	public static function fromFile(string $path, SettingsContainerInterface $options = null):self{
+		return new self(imagecreatefromstring(file_get_contents(self::checkFile($path))), $options);
 	}
 
 	/** @inheritDoc */
-	public static function fromBlob(string $blob):self{
-		return new self(imagecreatefromstring($blob));
+	public static function fromBlob(string $blob, SettingsContainerInterface $options = null):self{
+		return new self(imagecreatefromstring($blob), $options);
 	}
 
 }

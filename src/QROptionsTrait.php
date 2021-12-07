@@ -270,7 +270,19 @@ trait QROptionsTrait{
 	/**
 	 * use Imaagick (if available) when reading QR Codes
 	 */
-	protected bool $useImagickIfAvailable = false;
+	protected bool $readerUseImagickIfAvailable = false;
+
+	/**
+	 * grayscale the image before reading
+	 */
+	protected bool $readerGrayscale = false;
+
+	/**
+	 * increase the contrast before reading
+	 *
+	 * note that applying contrast works different in GD and Imagick, so mileage may vary
+	 */
+	protected bool $readerIncreaseContrast = false;
 
 	/**
 	 * clamp min/max version number
@@ -385,7 +397,7 @@ trait QROptionsTrait{
 	 * enables Imagick for the QR Code reader if the extension is available
 	 */
 	protected function set_useImagickIfAvailable(bool $useImagickIfAvailable):void{
-		$this->useImagickIfAvailable = $useImagickIfAvailable && extension_loaded('imagick');
+		$this->readerUseImagickIfAvailable = $useImagickIfAvailable && extension_loaded('imagick');
 	}
 
 	/**
@@ -395,7 +407,7 @@ trait QROptionsTrait{
 	 */
 	public function getLuminanceSourceFQCN():string{
 		// i still hate this
-		return $this->useImagickIfAvailable
+		return $this->readerUseImagickIfAvailable
 			? IMagickLuminanceSource::class
 			: GDLuminanceSource::class;
 	}

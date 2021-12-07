@@ -13,6 +13,7 @@
 
 namespace chillerlan\QRCode\Decoder;
 
+use chillerlan\Settings\SettingsContainerInterface;
 use Imagick;
 use function count;
 
@@ -31,8 +32,8 @@ final class IMagickLuminanceSource extends LuminanceSourceAbstract{
 	 *
 	 * @throws \InvalidArgumentException
 	 */
-	public function __construct(Imagick $imagick){
-		parent::__construct($imagick->getImageWidth(), $imagick->getImageHeight());
+	public function __construct(Imagick $imagick, SettingsContainerInterface $options = null){
+		parent::__construct($imagick->getImageWidth(), $imagick->getImageHeight(), $options);
 
 		$this->imagick = $imagick;
 
@@ -43,29 +44,36 @@ final class IMagickLuminanceSource extends LuminanceSourceAbstract{
 	 *
 	 */
 	private function setLuminancePixels():void{
-		$this->imagick->setImageColorspace(Imagick::COLORSPACE_GRAY);
+
+		if($this->options->readerGrayscale){
+			$this->imagick->setImageColorspace(Imagick::COLORSPACE_GRAY);
+		}
+
+		if($this->options->readerIncreaseContrast){
+			for($i = 0; $i < 10; $i++){
+				$this->imagick->contrastImage(0);
+			}
+		}
+
 		$pixels = $this->imagick->exportImagePixels(1, 1, $this->width, $this->height, 'RGB', Imagick::PIXEL_CHAR);
+		$count  = count($pixels);
 
-		$countPixels = count($pixels);
-
-		for($i = 0; $i < $countPixels; $i += 3){
+		for($i = 0; $i < $count; $i += 3){
 			$this->setLuminancePixel($pixels[$i] & 0xff, $pixels[$i + 1] & 0xff, $pixels[$i + 2] & 0xff);
 		}
 	}
 
 	/** @inheritDoc */
-	public static function fromFile(string $path):self{
-		$path = self::checkFile($path);
-
-		return new self(new Imagick($path));
+	public static function fromFile(string $path, SettingsContainerInterface $options = null):self{
+		return new self(new Imagick(self::checkFile($path)), $options);
 	}
 
 	/** @inheritDoc */
-	public static function fromBlob(string $blob):self{
+	public static function fromBlob(string $blob, SettingsContainerInterface $options = null):self{
 		$im = new Imagick;
 		$im->readImageBlob($blob);
 
-		return new self($im);
+		return new self($im, $options);
 	}
 
 }

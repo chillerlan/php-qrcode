@@ -340,14 +340,14 @@ class QRCode{
 	 * Reads a QR Code from a given file
 	 */
 	public function readFromFile(string $path):DecoderResult{
-		return $this->readFromSource($this->options->getLuminanceSourceFQCN()::fromFile($path));
+		return $this->readFromSource($this->options->getLuminanceSourceFQCN()::fromFile($path, $this->options));
 	}
 
 	/**
 	 * Reads a QR Code from the given data blob
 	 */
 	public function readFromBlob(string $blob):DecoderResult{
-		return $this->readFromSource($this->options->getLuminanceSourceFQCN()::fromBlob($blob));
+		return $this->readFromSource($this->options->getLuminanceSourceFQCN()::fromBlob($blob, $this->options));
 	}
 
 	/**

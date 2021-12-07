@@ -48,8 +48,14 @@ interface LuminanceSourceInterface{
 	 */
 	public function getRow(int $y):array;
 
-
+	/**
+	 * Creates a LuminanceSource instance from the given file
+	 */
 	public static function fromFile(string $path):self;
+
+	/**
+	 * Creates a LuminanceSource instance from the given data blob
+	 */
 	public static function fromBlob(string $blob):self;
 
 }

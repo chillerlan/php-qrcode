@@ -11,6 +11,8 @@
 
 namespace chillerlan\QRCode\Decoder;
 
+use chillerlan\QRCode\QROptions;
+use chillerlan\Settings\SettingsContainerInterface;
 use function array_slice, array_splice, file_exists, is_file, is_readable, realpath;
 
 /**
@@ -24,6 +26,8 @@ use function array_slice, array_splice, file_exists, is_file, is_readable, realp
  */
 abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 
+	/** @var \chillerlan\QRCode\QROptions|\chillerlan\Settings\SettingsContainerInterface */
+	protected SettingsContainerInterface $options;
 	protected array $luminances;
 	protected int   $width;
 	protected int   $height;
@@ -31,11 +35,11 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 	/**
 	 *
 	 */
-	public function __construct(int $width, int $height){
-		$this->width  = $width;
-		$this->height = $height;
-		// In order to measure pure decoding speed, we convert the entire image to a greyscale array
-		// up front, which is the same as the Y channel of the YUVLuminanceSource in the real app.
+	public function __construct(int $width, int $height, SettingsContainerInterface $options = null){
+		$this->width   = $width;
+		$this->height  = $height;
+		$this->options = $options ?? new QROptions;
+
 		$this->luminances = [];
 	}
 

@@ -53,7 +53,9 @@ use chillerlan\Settings\SettingsContainerAbstract;
  * @property string|null $imagickBG
  * @property string      $fpdfMeasureUnit
  * @property array|null  $moduleValues
- * @property bool        $useImagickIfAvailable
+ * @property bool        $readerUseImagickIfAvailable
+ * @property bool        $readerGrayscale
+ * @property bool        $readerIncreaseContrast
  */
 class QROptions extends SettingsContainerAbstract{
 	use QROptionsTrait;

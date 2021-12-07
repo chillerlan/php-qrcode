@@ -12,6 +12,7 @@
 
 namespace chillerlan\QRCodeTest;
 
+use chillerlan\Settings\SettingsContainerInterface;
 use Exception, Generator;
 use chillerlan\QRCode\Common\{EccLevel, Mode, Version};
 use chillerlan\QRCode\{QRCode, QROptions};
@@ -34,6 +35,12 @@ class QRCodeReaderTest extends TestCase{
 		.'They say everything looks better with odd numbers of things. But sometimes I put even numbers—just '
 		.'to upset the critics. We\'ll lay all these little funky little things in there. ';
 
+	protected SettingsContainerInterface $options;
+
+	protected function setUp():void{
+		$this->options = new QROptions;
+	}
+
 	public function qrCodeProvider():array{
 		return [
 			'helloworld' => ['hello_world.png', 'Hello world!'],
@@ -51,6 +58,7 @@ class QRCodeReaderTest extends TestCase{
 			'tilted'     => ['tilted.png', 'Hello world!'], // tilted 22° CCW
 			'rotated'    => ['rotated.png', 'Hello world!'], // rotated 90° CW
 			'gradient'   => ['example_svg.png', 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s'], // color gradient (from svg example)
+			'dots'       => ['example_svg_dots.png', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'], // color gradient (from svg example)
 		];
 	}
 
@@ -58,7 +66,11 @@ class QRCodeReaderTest extends TestCase{
 	 * @dataProvider qrCodeProvider
 	 */
 	public function testReaderGD(string $img, string $expected):void{
-		$this::assertSame($expected, (string)(new QRCode)->readFromSource(GDLuminanceSource::fromFile(__DIR__.'/qrcodes/'.$img)));
+		$this->options->readerGrayscale        = true;
+		$this->options->readerIncreaseContrast = true;
+
+		$this::assertSame($expected, (string)(new QRCode)
+			->readFromSource(GDLuminanceSource::fromFile(__DIR__.'/qrcodes/'.$img, $this->options)));
 	}
 
 	/**
@@ -70,26 +82,28 @@ class QRCodeReaderTest extends TestCase{
 			$this::markTestSkipped('imagick not installed');
 		}
 
-		// Y THO?? https://github.com/chillerlan/php-qrcode/runs/4270411373
-		// "could not find enough finder patterns"
-		if($img === 'example_svg.png' && PHP_OS_FAMILY === 'Windows' && PHP_VERSION_ID < 80100){
-			$this::markTestSkipped('random gradient example issue??');
+		$this->options->readerGrayscale        = true;
+		$this->options->readerIncreaseContrast = true;
+
+		if($img === 'damaged.png'){
+			// for some reason that don't work for the damaged example, GD does a better job here
+			$this->options->readerIncreaseContrast = false;
 		}
 
-		$this::assertSame($expected, (string)(new QRCode)->readFromSource(IMagickLuminanceSource::fromFile(__DIR__.'/qrcodes/'.$img)));
+		$this::assertSame($expected, (string)(new QRCode)
+			->readFromSource(IMagickLuminanceSource::fromFile(__DIR__.'/qrcodes/'.$img, $this->options)));
 	}
 
 	public function testReaderMultiSegment():void{
-		$options = new QROptions;
-		$options->outputType  = QRCode::OUTPUT_IMAGE_PNG;
-		$options->imageBase64 = false;
+		$this->options->outputType  = QRCode::OUTPUT_IMAGE_PNG;
+		$this->options->imageBase64 = false;
 
 		$numeric  = '123456789012345678901234567890';
 		$alphanum = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:';
 		$kanji    = '茗荷茗荷茗荷茗荷';
 		$byte     = 'https://smiley.codes/qrcode/';
 
-		$qrcode = (new QRCode($options))
+		$qrcode = (new QRCode($this->options))
 			->addNumericSegment($numeric)
 			->addAlphaNumSegment($alphanum)
 			->addKanjiSegment($kanji)
@@ -119,22 +133,20 @@ class QRCodeReaderTest extends TestCase{
 	 * @dataProvider dataTestProvider
 	 */
 	public function testReadData(Version $version, EccLevel $ecc, string $expected):void{
-		$options = new QROptions;
-
-		$options->outputType            = QRCode::OUTPUT_IMAGE_PNG;
-#		$options->imageTransparent      = false;
-		$options->eccLevel              = $ecc->getLevel();
-		$options->version               = $version->getVersionNumber();
-		$options->imageBase64           = false;
-		$options->useImagickIfAvailable = true;
+		$this->options->outputType                  = QRCode::OUTPUT_IMAGE_PNG;
+#		$this->options->imageTransparent            = false;
+		$this->options->eccLevel                    = $ecc->getLevel();
+		$this->options->version                     = $version->getVersionNumber();
+		$this->options->imageBase64                 = false;
+		$this->options->readerUseImagickIfAvailable = true;
 		// what's interesting is that a smaller scale seems to produce fewer reader errors???
 		// usually from version 20 up, independend of the luminance source
 		// scale 1-2 produces none, scale 3: 1 error, scale 4: 6 errors, scale 5: 5 errors, scale 10: 10 errors
 		// @see \chillerlan\QRCode\Detector\GridSampler::checkAndNudgePoints()
-		$options->scale                 = 2;
+		$this->options->scale                       = 2;
 
 		try{
-			$qrcode    = new QRCode($options);
+			$qrcode    = new QRCode($this->options);
 			$imagedata = $qrcode->render($expected);
 			$result    = $qrcode->readFromBlob($imagedata);
 		}
