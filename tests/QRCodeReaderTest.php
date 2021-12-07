@@ -19,7 +19,6 @@ use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Decoder\{GDLuminanceSource, IMagickLuminanceSource};
 use PHPUnit\Framework\TestCase;
 use function extension_loaded, range, sprintf, str_repeat, substr;
-use const PHP_OS_FAMILY, PHP_VERSION_ID;
 
 /**
  * Tests the QR Code reader
