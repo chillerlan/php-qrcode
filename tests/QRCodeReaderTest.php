@@ -76,7 +76,7 @@ class QRCodeReaderTest extends TestCase{
 		}
 
 		$this::assertSame($expected, (string)(new QRCode)
-			->readFromSource(GDLuminanceSource::fromFile(__DIR__.'/qrcodes/'.$img, $this->options)));
+			->readFromSource(GDLuminanceSource::fromFile(__DIR__.'/samples/'.$img, $this->options)));
 	}
 
 	/**
@@ -94,7 +94,7 @@ class QRCodeReaderTest extends TestCase{
 		}
 
 		$this::assertSame($expected, (string)(new QRCode)
-			->readFromSource(IMagickLuminanceSource::fromFile(__DIR__.'/qrcodes/'.$img, $this->options)));
+			->readFromSource(IMagickLuminanceSource::fromFile(__DIR__.'/samples/'.$img, $this->options)));
 	}
 
 	public function testReaderMultiSegment():void{

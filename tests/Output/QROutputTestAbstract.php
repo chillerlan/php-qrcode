@@ -128,7 +128,7 @@ abstract class QROutputTestAbstract extends TestCase{
 		$this->options->outputType = $type;
 
 		$this::assertSame(
-			trim(file_get_contents(__DIR__.'/samples/'.$type)),
+			trim(file_get_contents(__DIR__.'/../samples/'.$type)),
 			trim((new QRCode($this->options))->render('test'))
 		);
 	}

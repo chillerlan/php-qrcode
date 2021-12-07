@@ -78,7 +78,7 @@ class QRFpdfTest extends QROutputTestAbstract{
 		$this->options->imageBase64 = false;
 
 		// substr() to avoid CreationDate
-		$expected = substr(file_get_contents(__DIR__.'/samples/'.$type), 0, 2500);
+		$expected = substr(file_get_contents(__DIR__.'/../samples/'.$type), 0, 2500);
 		$actual   = substr((new QRCode($this->options))->render('test'), 0, 2500);
 
 		$this::assertSame($expected, $actual);

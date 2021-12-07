@@ -68,7 +68,7 @@ class QRStringTest extends QROutputTestAbstract{
 		$this->options->outputInterface = MyCustomOutput::class;
 
 		$this::assertSame(
-			file_get_contents(__DIR__.'/samples/custom'),
+			file_get_contents(__DIR__.'/../samples/custom'),
 			(new QRCode($this->options))->render('test')
 		);
 	}
