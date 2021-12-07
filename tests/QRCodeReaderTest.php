@@ -42,31 +42,38 @@ class QRCodeReaderTest extends TestCase{
 
 	public function qrCodeProvider():array{
 		return [
-			'helloworld' => ['hello_world.png', 'Hello world!'],
+			'helloworld' => ['hello_world.png', 'Hello world!', false],
 			// covers mirroring
-			'mirrored'   => ['hello_world_mirrored.png', 'Hello world!'],
+			'mirrored'   => ['hello_world_mirrored.png', 'Hello world!', false],
 			// data modes
-			'byte'       => ['byte.png', 'https://smiley.codes/qrcode/'],
-			'numeric'    => ['numeric.png', '123456789012345678901234567890'],
-			'alphanum'   => ['alphanum.png', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:'],
-			'kanji'      => ['kanji.png', '茗荷茗荷茗荷茗荷'],
+			'byte'       => ['byte.png', 'https://smiley.codes/qrcode/', true],
+			'numeric'    => ['numeric.png', '123456789012345678901234567890', false],
+			'alphanum'   => ['alphanum.png', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:', false],
+			'kanji'      => ['kanji.png', '茗荷茗荷茗荷茗荷', false],
 			// covers most of ReedSolomonDecoder
-			'damaged'    => ['damaged.png', 'https://smiley.codes/qrcode/'],
+			'damaged'    => ['damaged.png', 'https://smiley.codes/qrcode/', false],
 			// covers Binarizer::getHistogramBlackMatrix()
-			'smol'       => ['smol.png', 'https://smiley.codes/qrcode/'],
-			'tilted'     => ['tilted.png', 'Hello world!'], // tilted 22° CCW
-			'rotated'    => ['rotated.png', 'Hello world!'], // rotated 90° CW
-			'gradient'   => ['example_svg.png', 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s'], // color gradient (from svg example)
-			'dots'       => ['example_svg_dots.png', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'], // color gradient (from svg example)
+			'smol'       => ['smol.png', 'https://smiley.codes/qrcode/', false],
+			// tilted 22° CCW
+			'tilted'     => ['tilted.png', 'Hello world!', false],
+			// rotated 90° CW
+			'rotated'    => ['rotated.png', 'Hello world!', false],
+			// color gradient (from old svg example)
+			'gradient'   => ['example_svg.png', 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s', true],
+			// color gradient (from svg example)
+			'dots'       => ['example_svg_dots.png', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', true],
 		];
 	}
 
 	/**
 	 * @dataProvider qrCodeProvider
 	 */
-	public function testReaderGD(string $img, string $expected):void{
-		$this->options->readerGrayscale        = true;
-		$this->options->readerIncreaseContrast = true;
+	public function testReaderGD(string $img, string $expected, bool $grayscale):void{
+
+		if($grayscale){
+			$this->options->readerGrayscale        = true;
+			$this->options->readerIncreaseContrast = true;
+		}
 
 		$this::assertSame($expected, (string)(new QRCode)
 			->readFromSource(GDLuminanceSource::fromFile(__DIR__.'/qrcodes/'.$img, $this->options)));
@@ -75,18 +82,15 @@ class QRCodeReaderTest extends TestCase{
 	/**
 	 * @dataProvider qrCodeProvider
 	 */
-	public function testReaderImagick(string $img, string $expected):void{
+	public function testReaderImagick(string $img, string $expected, bool $grayscale):void{
 
 		if(!extension_loaded('imagick')){
 			$this::markTestSkipped('imagick not installed');
 		}
 
-		$this->options->readerGrayscale        = true;
-		$this->options->readerIncreaseContrast = true;
-
-		if($img === 'damaged.png'){
-			// for some reason that don't work for the damaged example, GD does a better job here
-			$this->options->readerIncreaseContrast = false;
+		if($grayscale){
+			$this->options->readerGrayscale        = true;
+			$this->options->readerIncreaseContrast = true;
 		}
 
 		$this::assertSame($expected, (string)(new QRCode)
