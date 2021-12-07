@@ -20,14 +20,10 @@ use function array_fill, count;
  * The algorithm will not be explained here, but the following references were helpful
  * in creating this implementation:
  *
- * <ul>
- * <li>Bruce Maggs.
- * <a href="http://www.cs.cmu.edu/afs/cs.cmu.edu/project/pscico-guyb/realworld/www/rs_decode.ps">
- * "Decoding Reed-Solomon Codes"</a> (see discussion of Forney's Formula)</li>
- * <li>J.I. Hall. <a href="www.mth.msu.edu/~jhall/classes/codenotes/GRS.pdf">
- * "Chapter 5. Generalized Reed-Solomon Codes"</a>
- * (see discussion of Euclidean algorithm)</li>
- * </ul>
+ * - Bruce Maggs "Decoding Reed-Solomon Codes" (see discussion of Forney's Formula)
+ *   http://www.cs.cmu.edu/afs/cs.cmu.edu/project/pscico-guyb/realworld/www/rs_decode.ps
+ * - J.I. Hall. "Chapter 5. Generalized Reed-Solomon Codes" (see discussion of Euclidean algorithm)
+ *   https://users.math.msu.edu/users/halljo/classes/codenotes/GRS.pdf
  *
  * Much credit is due to William Rucklidge since portions of this code are an indirect
  * port of his C++ Reed-Solomon implementation.

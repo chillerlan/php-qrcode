@@ -14,7 +14,6 @@ use chillerlan\QRCode\Common\BitBuffer;
 
 /**
  * Specifies the methods reqired for the data modules (Number, Alphanum, Byte and Kanji)
- * and holds version information in several constants
  */
 interface QRDataModeInterface{
 
