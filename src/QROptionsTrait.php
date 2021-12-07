@@ -396,7 +396,7 @@ trait QROptionsTrait{
 	/**
 	 * enables Imagick for the QR Code reader if the extension is available
 	 */
-	protected function set_useImagickIfAvailable(bool $useImagickIfAvailable):void{
+	protected function set_readerUseImagickIfAvailable(bool $useImagickIfAvailable):void{
 		$this->readerUseImagickIfAvailable = $useImagickIfAvailable && extension_loaded('imagick');
 	}
 
