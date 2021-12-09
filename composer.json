@@ -52,7 +52,6 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"chillerlan\\QRCodePublic\\": "public/",
 			"chillerlan\\QRCodeTest\\": "tests/",
 			"chillerlan\\QRCodeExamples\\": "examples/"
 		}
