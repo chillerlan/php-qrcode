@@ -14,27 +14,17 @@ use chillerlan\QRCode\Common\EccLevel;
 require_once __DIR__.'/../vendor/autoload.php';
 
 $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
-/**
- * @property int $logoSpaceWidth
- * @property int $logoSpaceHeight
- *
- * @noinspection PhpIllegalPsrClassPathInspection
- */
-class LogoOptions extends QROptions{
-	// size in QR modules, multiply with QROptions::$scale for pixel size
-	protected int $logoSpaceWidth;
-	protected int $logoSpaceHeight;
-}
 
-$options = new LogoOptions;
-
-$options->version          = 7;
-$options->eccLevel         = EccLevel::H;
-$options->imageBase64      = false;
-$options->logoSpaceWidth   = 13;
-$options->logoSpaceWidth   = 13;
-$options->scale            = 5;
-$options->imageTransparent = false;
+$options = new QROptions([
+	'version'          => 7,
+	'eccLevel'         => EccLevel::H,
+	'imageBase64'      => false,
+	'addLogoSpace'     => true,
+	'logoSpaceWidth'   => 13,
+	'logoSpaceHeight'  => 13,
+	'scale'            => 5,
+	'imageTransparent' => false,
+]);
 
 $qrcode = new QRCode($options);
 $qrcode->addByteSegment($data);

@@ -161,6 +161,16 @@ class QRCode{
 
 		$matrix = $dataInterface->writeMatrix($maskPattern);
 
+		// add matrix modifications after mask pattern evaluation and before handing over to output
+		if($this->options->addLogoSpace){
+			$matrix->setLogoSpace(
+				$this->options->logoSpaceWidth,
+				$this->options->logoSpaceHeight,
+				$this->options->logoSpaceStartX,
+				$this->options->logoSpaceStartY
+			);
+		}
+
 		if($this->options->addQuietzone){
 			$matrix->setQuietZone($this->options->quietzoneSize);
 		}

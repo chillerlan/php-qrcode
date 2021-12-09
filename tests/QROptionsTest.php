@@ -139,4 +139,51 @@ class QROptionsTest extends TestCase{
 		$o = new QROptions(['imageTransparencyBG' => ['r', 'g', 'b']]);
 	}
 
+	/**
+	 * @return int[][]
+	 */
+	public function logoSpaceValueProvider():array{
+		return [
+			'negative' => [ -1,   0],
+			'zero'     => [  0,   0],
+			'normal'   => [ 69,  69],
+			'max'      => [177, 177],
+			'exceed'   => [178, 177],
+		];
+	}
+
+	/**
+	 * Tests the clamping (between 0 and 177) of the logo space values
+	 *
+	 * @dataProvider logoSpaceValueProvider
+	 */
+	public function testClampLogoSpaceValue(int $value, int $expected):void{
+		$o = new QROptions;
+
+		foreach(['logoSpaceWidth', 'logoSpaceHeight', 'logoSpaceStartX', 'logoSpaceStartY'] as $prop){
+			$o->{$prop} = $value;
+			$this::assertSame($expected, $o->{$prop});
+		}
+
+	}
+
+	/**
+	 * Tests if the optional logo space start values are nullable
+	 */
+	public function testLogoSpaceStartNullable():void{
+		$o = new QROptions([
+			'logoSpaceStartX' => 42,
+			'logoSpaceStartY' => 69,
+		]);
+
+		$this::assertSame(42, $o->logoSpaceStartX);
+		$this::assertSame(69, $o->logoSpaceStartY);
+
+		$o->logoSpaceStartX = null;
+		$o->logoSpaceStartY = null;
+
+		$this::assertNull($o->logoSpaceStartX);
+		$this::assertNull($o->logoSpaceStartY);
+	}
+
 }

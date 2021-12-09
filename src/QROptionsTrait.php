@@ -285,6 +285,31 @@ trait QROptionsTrait{
 	protected bool $readerIncreaseContrast = false;
 
 	/**
+	 * Toggles logo space creation
+	 */
+	protected bool $addLogoSpace = false;
+
+	/**
+	 * width of the logo space
+	 */
+	protected int $logoSpaceWidth = 0;
+
+	/**
+	 * height of the logo space
+	 */
+	protected int $logoSpaceHeight = 0;
+
+	/**
+	 * optional horizontal start position of the logo space (top left corner)
+	 */
+	protected ?int $logoSpaceStartX = null;
+
+	/**
+	 * optional vertical start position of the logo space (top left corner)
+	 */
+	protected ?int $logoSpaceStartY = null;
+
+	/**
 	 * clamp min/max version number
 	 */
 	protected function setMinMaxVersion(int $versionMin, int $versionMax):void{
@@ -410,6 +435,41 @@ trait QROptionsTrait{
 		return $this->readerUseImagickIfAvailable
 			? IMagickLuminanceSource::class
 			: GDLuminanceSource::class;
+	}
+
+	/**
+	 * clamp the logo space values between 0 and maximum length (177 modules at version 40)
+	 */
+	protected function clampLogoSpaceValue(int $value):int{
+		return (int)max(0, min(177, $value));
+	}
+
+	/**
+	 * clamp/set logo space width
+	 */
+	protected function set_logoSpaceWidth(int $value):void{
+		$this->logoSpaceWidth = $this->clampLogoSpaceValue($value);
+	}
+
+	/**
+	 * clamp/set logo space height
+	 */
+	protected function set_logoSpaceHeight(int $value):void{
+		$this->logoSpaceHeight = $this->clampLogoSpaceValue($value);
+	}
+
+	/**
+	 * clamp/set horizontal logo space start
+	 */
+	protected function set_logoSpaceStartX(?int $value):void{
+		$this->logoSpaceStartX = $value === null ? null : $this->clampLogoSpaceValue($value);
+	}
+
+	/**
+	 * clamp/set vertical logo space start
+	 */
+	protected function set_logoSpaceStartY(?int $value):void{
+		$this->logoSpaceStartY = $value === null ? null : $this->clampLogoSpaceValue($value);
 	}
 
 }

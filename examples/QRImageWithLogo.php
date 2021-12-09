@@ -16,9 +16,6 @@ use chillerlan\QRCode\Output\{QRCodeOutputException, QRImage};
 
 use function imagecopyresampled, imagecreatefrompng, imagesx, imagesy, is_file, is_readable;
 
-/**
- * @property \chillerlan\QRCodeExamples\LogoOptions $options
- */
 class QRImageWithLogo extends QRImage{
 
 	/**
@@ -37,12 +34,6 @@ class QRImageWithLogo extends QRImage{
 		if(!is_file($logo) || !is_readable($logo)){
 			throw new QRCodeOutputException('invalid logo');
 		}
-
-		$this->matrix->setLogoSpace(
-			$this->options->logoSpaceWidth,
-			$this->options->logoSpaceHeight
-			// not utilizing the position here
-		);
 
 		// there's no need to save the result of dump() into $this->image here
 		parent::dump($file);
