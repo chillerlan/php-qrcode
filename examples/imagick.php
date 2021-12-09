@@ -17,11 +17,14 @@ require_once __DIR__.'/../vendor/autoload.php';
 $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 
 $options = new QROptions([
-	'version'      => 7,
-	'outputType'   => QRCode::OUTPUT_IMAGICK,
-	'eccLevel'     => EccLevel::L,
-	'scale'        => 5,
-	'moduleValues' => [
+	'version'             => 7,
+	'outputType'          => QRCode::OUTPUT_IMAGICK,
+	'eccLevel'            => EccLevel::L,
+	'scale'               => 20,
+	'drawCircularModules' => true,
+	'circleRadius'        => 0.4,
+	'keepAsSquare'        => [QRMatrix::M_FINDER|QRMatrix::IS_DARK, QRMatrix::M_FINDER_DOT, QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK],
+	'moduleValues'        => [
 		// finder
 		QRMatrix::M_FINDER | QRMatrix::IS_DARK     => '#A71111', // dark (true)
 		QRMatrix::M_FINDER                         => '#FFBFBF', // light (false)

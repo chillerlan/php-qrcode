@@ -103,7 +103,7 @@ class QRImagick extends QROutputAbstract{
 
 		foreach($this->matrix->matrix() as $y => $row){
 			foreach($row as $x => $M_TYPE){
-				$this->drawPixel($x, $y, $M_TYPE);
+				$this->setPixel($x, $y, $M_TYPE);
 			}
 		}
 
@@ -113,14 +113,22 @@ class QRImagick extends QROutputAbstract{
 	/**
 	 * draws a single pixel at the given position
 	 */
-	protected function drawPixel(int $x, int $y, int $M_TYPE):void{
+	protected function setPixel(int $x, int $y, int $M_TYPE):void{
 		$this->imagickDraw->setStrokeColor($this->moduleValues[$M_TYPE]);
 		$this->imagickDraw->setFillColor($this->moduleValues[$M_TYPE]);
-		$this->imagickDraw->rectangle(
-			$x * $this->scale,
-			$y * $this->scale,
-			($x + 1) * $this->scale,
-			($y + 1) * $this->scale
+
+		$this->options->drawCircularModules && !$this->matrix->checkTypes($x, $y, $this->options->keepAsSquare)
+			? $this->imagickDraw->circle(
+				($x + 0.5) * $this->scale,
+				($y + 0.5) * $this->scale,
+				($x + 0.5 + $this->options->circleRadius) * $this->scale,
+				($y + 0.5) * $this->scale
+			)
+			: $this->imagickDraw->rectangle(
+				$x * $this->scale,
+				$y * $this->scale,
+				($x + 1) * $this->scale,
+				($y + 1) * $this->scale
 		);
 	}
 
