@@ -15,11 +15,11 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\QRCode;
 use chillerlan\Settings\SettingsContainerInterface;
-use Exception;
+use ErrorException, Exception;
 
 use function array_values, count, extension_loaded, imagecolorallocate, imagecolortransparent, imagecreatetruecolor,
 	 imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng, imagescale, in_array,
-	is_array, ob_end_clean, ob_get_contents, ob_start, range;
+	is_array, ob_end_clean, ob_get_contents, ob_start, range, restore_error_handler, set_error_handler;
 use const IMG_BICUBIC;
 
 /**
@@ -90,8 +90,15 @@ class QRImage extends QROutputAbstract{
 	 * @return string|resource|\GdImage
 	 *
 	 * @phan-suppress PhanUndeclaredTypeReturnType, PhanTypeMismatchReturn
+	 * @throws \ErrorException
 	 */
 	public function dump(string $file = null){
+
+		/** @phan-suppress-next-line PhanTypeMismatchArgumentInternal */
+		set_error_handler(function(int $severity, string $msg, string $file, int $line):void{
+			throw new ErrorException($msg, 0, $severity, $file, $line);
+		});
+
 		$file ??= $this->options->cachefile;
 
 		// we're scaling the image up in order to draw crisp round circles, otherwise they appear square-y on small scales
@@ -126,6 +133,8 @@ class QRImage extends QROutputAbstract{
 		}
 
 		if($this->options->returnResource){
+			restore_error_handler();
+
 			return $this->image;
 		}
 
@@ -138,6 +147,8 @@ class QRImage extends QROutputAbstract{
 		if($this->options->imageBase64){
 			$imageData = $this->base64encode($imageData, 'image/'.$this->options->outputType);
 		}
+
+		restore_error_handler();
 
 		return $imageData;
 	}
