@@ -189,8 +189,8 @@ class QRMarkup extends QROutputAbstract{
 			return '';
 		}
 
-		if($this->options->svgDrawCircularModules && !$this->matrix->checkTypes($x, $y, $this->options->svgKeepAsSquare)){
-			$r = $this->options->svgCircleRadius;
+		if($this->options->drawCircularModules && !$this->matrix->checkTypes($x, $y, $this->options->keepAsSquare)){
+			$r = $this->options->circleRadius;
 
 			return sprintf(
 				'M%1$s %2$s a%3$s %3$s 0 1 0 %4$s 0 a%3$s,%3$s 0 1 0 -%4$s 0Z',

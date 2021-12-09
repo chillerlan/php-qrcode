@@ -162,18 +162,20 @@ trait QROptionsTrait{
 
 	/**
 	 * specify whether to draw the modules as filled circles
+	 *
+	 * @see https://github.com/chillerlan/php-qrcode/issues/23
 	 */
-	protected bool $svgDrawCircularModules = false;
+	protected bool $drawCircularModules = false;
 
 	/**
 	 * specifies the radius of the modules when $svgDrawCircularModules is set to true
 	 */
-	protected float $svgCircleRadius = 0.45;
+	protected float $circleRadius = 0.45;
 
 	/**
 	 * specifies which module types to exclude when $svgDrawCircularModules is set to true
 	 */
-	protected array $svgKeepAsSquare = [];
+	protected array $keepAsSquare = [];
 
 	/**
 	 * string substitute for dark

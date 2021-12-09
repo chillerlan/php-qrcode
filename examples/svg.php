@@ -29,10 +29,10 @@ $options = new QROptions([
 	'markupDark'             => '',
 	'markupLight'            => '',
 	// draw the modules as circles isntead of squares
-	'svgDrawCircularModules' => true,
-	'svgCircleRadius'           => 0.3,
+	'drawCircularModules' => true,
+	'circleRadius'           => 0.4,
 	// keep modules of thhese types as square
-	'svgKeepAsSquare'        => [QRMatrix::M_FINDER|QRMatrix::IS_DARK, QRMatrix::M_FINDER_DOT, QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK],
+	'keepAsSquare'        => [QRMatrix::M_FINDER|QRMatrix::IS_DARK, QRMatrix::M_FINDER_DOT, QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK],
 	// connect
 	'svgConnectPaths'        => true,
 	// https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient

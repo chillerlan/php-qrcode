@@ -17,9 +17,10 @@ use chillerlan\QRCode\QRCode;
 use chillerlan\Settings\SettingsContainerInterface;
 use Exception;
 
-use function array_values, call_user_func, count, extension_loaded, imagecolorallocate, imagecolortransparent,
-	imagecreatetruecolor, imagedestroy, imagefilledrectangle, imagegif, imagejpeg, imagepng, in_array,
+use function array_values, count, extension_loaded, imagecolorallocate, imagecolortransparent, imagecreatetruecolor,
+	 imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng, imagescale, in_array,
 	is_array, ob_end_clean, ob_get_contents, ob_start, range;
+use const IMG_BICUBIC;
 
 /**
  * Converts the matrix into GD images, raw or base64 output (requires ext-gd)
@@ -93,6 +94,12 @@ class QRImage extends QROutputAbstract{
 	public function dump(string $file = null){
 		$file ??= $this->options->cachefile;
 
+		// we're scaling the image up in order to draw crisp round circles, otherwise they appear square-y on small scales
+		if($this->options->drawCircularModules && $this->options->scale <= 20){
+			$this->length  = ($this->length + 2) * 10;
+			$this->scale  *= 10;
+		}
+
 		$this->image = imagecreatetruecolor($this->length, $this->length);
 
 		// avoid: "Indirect modification of overloaded property $imageTransparencyBG has no effect"
@@ -111,6 +118,11 @@ class QRImage extends QROutputAbstract{
 			foreach($row as $x => $M_TYPE){
 				$this->setPixel($x, $y, $M_TYPE);
 			}
+		}
+
+		// scale down to the expected size
+		if($this->options->drawCircularModules && $this->options->scale <= 20){
+			$this->image = imagescale($this->image, $this->length/10, $this->length/10, IMG_BICUBIC);
 		}
 
 		if($this->options->returnResource){
@@ -134,15 +146,26 @@ class QRImage extends QROutputAbstract{
 	 * Creates a single QR pixel with the given settings
 	 */
 	protected function setPixel(int $x, int $y, int $M_TYPE):void{
-		imagefilledrectangle(
-			$this->image,
-			$x * $this->scale,
-			$y * $this->scale,
-			($x + 1) * $this->scale,
-			($y + 1) * $this->scale,
-			/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
-			imagecolorallocate($this->image, ...$this->moduleValues[$M_TYPE])
-		);
+		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
+		$color = imagecolorallocate($this->image, ...$this->moduleValues[$M_TYPE]);
+
+		$this->options->drawCircularModules && !$this->matrix->checkTypes($x, $y, $this->options->keepAsSquare)
+			? imagefilledellipse(
+				$this->image,
+				($x * $this->scale) + ($this->scale / 2),
+				($y * $this->scale) + ($this->scale / 2),
+				2 * $this->options->circleRadius * $this->scale,
+				2 * $this->options->circleRadius * $this->scale,
+				$color
+			)
+			: imagefilledrectangle(
+				$this->image,
+				$x * $this->scale,
+				$y * $this->scale,
+				($x + 1) * $this->scale,
+				($y + 1) * $this->scale,
+				$color
+			);
 	}
 
 	/**
@@ -154,7 +177,7 @@ class QRImage extends QROutputAbstract{
 		ob_start();
 
 		try{
-			call_user_func([$this, $this->outputMode ?? $this->defaultMode]);
+			$this->{$this->outputMode ?? $this->defaultMode}();
 		}
 		// not going to cover edge cases
 		// @codeCoverageIgnoreStart
