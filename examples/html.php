@@ -44,7 +44,7 @@ header('Content-Type: text/html; charset=utf-8');
 <body>
 <?php
 
-	$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
+	$data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 
 	$options = new QROptions([
 		'version'      => 5,
