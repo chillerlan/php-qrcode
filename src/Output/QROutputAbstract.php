@@ -106,7 +106,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	protected function saveToFile(string $data, string $file):bool{
 
 		if(!is_writable(dirname($file))){
-			throw new QRCodeOutputException(sprintf('Could not write data to cache file: %s', $file));
+			throw new QRCodeOutputException(sprintf('Cannot write data to cache file: %s', $file));
 		}
 
 		return (bool)file_put_contents($file, $data);
