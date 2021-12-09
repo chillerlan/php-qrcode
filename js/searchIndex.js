@@ -2296,10 +2296,10 @@ Search.appendIndex(
             "summary": "Creates\u0020the\u0020QR\u0020image\u0020via\u0020ImagickDraw",
             "url": "classes/chillerlan-QRCode-Output-QRImagick.html#method_drawImage"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003AdrawPixel\u0028\u0029",
-            "name": "drawPixel",
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003AsetPixel\u0028\u0029",
+            "name": "setPixel",
             "summary": "draws\u0020a\u0020single\u0020pixel\u0020at\u0020the\u0020given\u0020position",
-            "url": "classes/chillerlan-QRCode-Output-QRImagick.html#method_drawPixel"
+            "url": "classes/chillerlan-QRCode-Output-QRImagick.html#method_setPixel"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003A\u0024imagick",
             "name": "imagick",
@@ -2856,20 +2856,20 @@ Search.appendIndex(
             "summary": "specify\u0020which\u0020paths\/patterns\u0020to\u0020exclude\u0020from\u0020connecting\u0020if\u0020\u0024svgConnectPaths\u0020is\u0020set\u0020to\u0020true",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgExcludeFromConnect"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgDrawCircularModules",
-            "name": "svgDrawCircularModules",
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024drawCircularModules",
+            "name": "drawCircularModules",
             "summary": "specify\u0020whether\u0020to\u0020draw\u0020the\u0020modules\u0020as\u0020filled\u0020circles",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgDrawCircularModules"
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_drawCircularModules"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgCircleRadius",
-            "name": "svgCircleRadius",
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024circleRadius",
+            "name": "circleRadius",
             "summary": "specifies\u0020the\u0020radius\u0020of\u0020the\u0020modules\u0020when\u0020\u0024svgDrawCircularModules\u0020is\u0020set\u0020to\u0020true",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgCircleRadius"
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_circleRadius"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgKeepAsSquare",
-            "name": "svgKeepAsSquare",
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024keepAsSquare",
+            "name": "keepAsSquare",
             "summary": "specifies\u0020which\u0020module\u0020types\u0020to\u0020exclude\u0020when\u0020\u0024svgDrawCircularModules\u0020is\u0020set\u0020to\u0020true",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgKeepAsSquare"
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_keepAsSquare"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024textDark",
             "name": "textDark",
