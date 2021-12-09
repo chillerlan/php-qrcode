@@ -18,12 +18,10 @@ use PHPUnit\Framework\TestCase;
 /**
  * QROptions test
  */
-class QROptionsTest extends TestCase{
+final class QROptionsTest extends TestCase{
 
 	/**
-	 * @see testVersionClamp()
 	 * @return int[][]
-	 * @internal
 	 */
 	public function VersionProvider():array{
 		return [
@@ -46,9 +44,7 @@ class QROptionsTest extends TestCase{
 	}
 
 	/**
-	 * @see testVersionMinMaxClamp()
 	 * @return int[][]
-	 * @internal
 	 */
 	public function VersionMinMaxProvider():array{
 		return [
@@ -72,9 +68,7 @@ class QROptionsTest extends TestCase{
 	}
 
 	/**
-	 * @see testMaskPatternClamp()
 	 * @return int[][]
-	 * @internal
 	 */
 	public function MaskPatternProvider():array{
 		return [
@@ -106,9 +100,7 @@ class QROptionsTest extends TestCase{
 	}
 
 	/**
-	 * @see testClampRGBValues()
 	 * @return int[][][]
-	 * @internal
 	 */
 	public function RGBProvider():array{
 		return [

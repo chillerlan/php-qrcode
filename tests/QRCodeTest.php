@@ -18,17 +18,13 @@ use PHPUnit\Framework\TestCase;
 /**
  * Tests basic functions of the QRCode class
  */
-class QRCodeTest extends TestCase{
+final class QRCodeTest extends TestCase{
 
-	/** @internal  */
-	protected QRCode $qrcode;
-	/** @internal  */
-	protected QROptions $options;
+	private QRCode $qrcode;
+	private QROptions $options;
 
 	/**
 	 * invoke test instances
-	 *
-	 * @internal
 	 */
 	protected function setUp():void{
 		$this->qrcode  = new QRCode;

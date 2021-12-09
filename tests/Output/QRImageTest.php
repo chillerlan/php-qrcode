@@ -10,19 +10,20 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Output\{QROutputInterface, QRImage};
+use const PHP_MAJOR_VERSION;
 
 /**
  * Tests the QRImage output module
  */
-class QRImageTest extends QROutputTestAbstract{
+final class QRImageTest extends QROutputTestAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @internal
 	 */
-	public function setUp():void{
+	protected function setUp():void{
 
 		if(!extension_loaded('gd')){
 			$this->markTestSkipped('ext-gd not loaded');
@@ -33,7 +34,6 @@ class QRImageTest extends QROutputTestAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @internal
 	 */
 	protected function getOutputInterface(QROptions $options):QROutputInterface{
 		return new QRImage($options, $this->matrix);
@@ -41,7 +41,6 @@ class QRImageTest extends QROutputTestAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @internal
 	 */
 	public function types():array{
 		return [
@@ -58,8 +57,8 @@ class QRImageTest extends QROutputTestAbstract{
 
 		$this->options->moduleValues = [
 			// data
-			1024 => [0, 0, 0],
-			4    => [255, 255, 255],
+			QRMatrix::M_DATA | QRMatrix::IS_DARK => [0, 0, 0],
+			QRMatrix::M_DATA                     => [255, 255, 255],
 		];
 
 		$this->outputInterface = $this->getOutputInterface($this->options);
@@ -78,7 +77,7 @@ class QRImageTest extends QROutputTestAbstract{
 		$actual = $this->outputInterface->dump();
 
 		/** @noinspection PhpFullyQualifiedNameUsageInspection */
-		\PHP_MAJOR_VERSION >= 8
+		PHP_MAJOR_VERSION >= 8
 			? $this::assertInstanceOf(\GdImage::class, $actual)
 			: $this::assertIsResource($actual);
 	}

@@ -19,11 +19,10 @@ use chillerlan\QRCodeExamples\MyCustomOutput;
 /**
  * Tests the QRString output module
  */
-class QRStringTest extends QROutputTestAbstract{
+final class QRStringTest extends QROutputTestAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @internal
 	 */
 	protected function getOutputInterface(QROptions $options):QROutputInterface{
 		return new QRString($options, $this->matrix);
@@ -31,7 +30,6 @@ class QRStringTest extends QROutputTestAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @internal
 	 */
 	public function types():array{
 		return [

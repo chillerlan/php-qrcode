@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
  */
 final class BitBufferTest extends TestCase{
 
-	protected BitBuffer $bitBuffer;
+	private BitBuffer $bitBuffer;
 
 	protected function setUp():void{
 		$this->bitBuffer = new BitBuffer;

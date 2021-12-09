@@ -10,17 +10,17 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\{Data\QRMatrix, QRCode, QROptions};
+use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QROutputInterface, QRMarkup};
 
 /**
  * Tests the QRMarkup output module
  */
-class QRMarkupTest extends QROutputTestAbstract{
+final class QRMarkupTest extends QROutputTestAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @internal
 	 */
 	protected function getOutputInterface(QROptions $options):QROutputInterface{
 		return new QRMarkup($options, $this->matrix);
@@ -28,7 +28,6 @@ class QRMarkupTest extends QROutputTestAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @internal
 	 */
 	public function types():array{
 		return [

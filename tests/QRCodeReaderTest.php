@@ -23,7 +23,7 @@ use function extension_loaded, range, sprintf, str_repeat, substr;
 /**
  * Tests the QR Code reader
  */
-class QRCodeReaderTest extends TestCase{
+final class QRCodeReaderTest extends TestCase{
 
 	// https://www.bobrosslipsum.com/
 	protected const loremipsum = 'Just let this happen. We just let this flow right out of our minds. '

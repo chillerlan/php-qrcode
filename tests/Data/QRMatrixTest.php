@@ -21,8 +21,8 @@ use Generator;
  */
 final class QRMatrixTest extends TestCase{
 
-	protected const version = 40;
-	protected QRMatrix $matrix;
+	private const version = 40;
+	private QRMatrix $matrix;
 
 	/**
 	 * invokes a QRMatrix object

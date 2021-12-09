@@ -26,19 +26,14 @@ use const PHP_OS_FAMILY, PHP_VERSION_ID;
  */
 abstract class QROutputTestAbstract extends TestCase{
 
-	/** @internal  */
-	protected string $builddir = __DIR__.'/../../.build/output_test';
-	/** @internal  */
+	/** @var \chillerlan\QRCode\QROptions|\chillerlan\Settings\SettingsContainerInterface */
+	protected QROptions         $options;
 	protected QROutputInterface $outputInterface;
-	/** @internal  */
-	protected QROptions $options;
-	/** @internal  */
-	protected QRMatrix $matrix;
+	protected QRMatrix          $matrix;
+	protected string            $builddir = __DIR__.'/../../.build/output_test';
 
 	/**
 	 * Attempts to create a directory under /.build and instances several required objects
-	 *
-	 * @internal
 	 */
 	protected function setUp():void{
 
@@ -54,8 +49,6 @@ abstract class QROutputTestAbstract extends TestCase{
 
 	/**
 	 * Returns a QROutputInterface instance with the given options and using $this->matrix
-	 *
-	 * @internal
 	 */
 	abstract protected function getOutputInterface(QROptions $options):QROutputInterface;
 
@@ -90,7 +83,6 @@ abstract class QROutputTestAbstract extends TestCase{
 	/**
 	 * @see testStringOutput()
 	 * @return string[][]
-	 * @internal
 	 */
 	abstract public function types():array;
 

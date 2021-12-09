@@ -14,19 +14,19 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use Imagick;
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Output\{QROutputInterface, QRImagick};
 
 /**
  * Tests the QRImagick output module
  */
-class QRImagickTest extends QROutputTestAbstract{
+final class QRImagickTest extends QROutputTestAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @internal
 	 */
-	public function setUp():void{
+	protected function setUp():void{
 
 		if(!extension_loaded('imagick')){
 			$this->markTestSkipped('ext-imagick not loaded');
@@ -37,7 +37,6 @@ class QRImagickTest extends QROutputTestAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @internal
 	 */
 	protected function getOutputInterface(QROptions $options):QROutputInterface{
 		return new QRImagick($options, $this->matrix);
@@ -45,7 +44,6 @@ class QRImagickTest extends QROutputTestAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @internal
 	 */
 	public function types():array{
 		return [
@@ -60,8 +58,8 @@ class QRImagickTest extends QROutputTestAbstract{
 
 		$this->options->moduleValues = [
 			// data
-			1024 => '#4A6000',
-			4    => '#ECF9BE',
+			QRMatrix::M_DATA | QRMatrix::IS_DARK => '#4A6000',
+			QRMatrix::M_DATA                     => '#ECF9BE',
 		];
 
 		$this->outputInterface = $this->getOutputInterface($this->options);

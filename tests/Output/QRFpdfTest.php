@@ -11,21 +11,21 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use FPDF;
-use chillerlan\QRCode\Output\{QRFpdf, QROutputInterface};
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\Output\{QRFpdf, QROutputInterface};
 
 use function class_exists, substr;
 
 /**
  * Tests the QRFpdf output module
  */
-class QRFpdfTest extends QROutputTestAbstract{
+final class QRFpdfTest extends QROutputTestAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @internal
 	 */
-	public function setUp():void{
+	protected function setUp():void{
 
 		if(!class_exists(FPDF::class)){
 			$this->markTestSkipped('FPDF not available');
@@ -36,7 +36,6 @@ class QRFpdfTest extends QROutputTestAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @internal
 	 */
 	protected function getOutputInterface(QROptions $options):QROutputInterface{
 		return new QRFpdf($options, $this->matrix);
@@ -44,7 +43,6 @@ class QRFpdfTest extends QROutputTestAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @internal
 	 */
 	public function types():array{
 		return [
@@ -59,8 +57,8 @@ class QRFpdfTest extends QROutputTestAbstract{
 
 		$this->options->moduleValues = [
 			// data
-			1024 => [0, 0, 0],
-			4    => [255, 255, 255],
+			QRMatrix::M_DATA | QRMatrix::IS_DARK => [0, 0, 0],
+			QRMatrix::M_DATA                     => [255, 255, 255],
 		];
 
 		$this->outputInterface = $this->getOutputInterface($this->options);
