@@ -46,20 +46,22 @@ class QRImagick extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function setModuleValues():void{
+	protected function moduleValueIsValid($value):bool{
+		return is_string($value);
+	}
 
-		foreach($this::DEFAULT_MODULE_VALUES as $type => $defaultValue){
-			$v = $this->options->moduleValues[$type] ?? null;
+	/**
+	 * @inheritDoc
+	 */
+	protected function getModuleValue($value):ImagickPixel{
+		return new ImagickPixel($value);
+	}
 
-			if(!is_string($v)){
-				$this->moduleValues[$type] = $defaultValue
-					? new ImagickPixel($this->options->markupDark)
-					: new ImagickPixel($this->options->markupLight);
-			}
-			else{
-				$this->moduleValues[$type] = new ImagickPixel($v);
-			}
-		}
+	/**
+	 * @inheritDoc
+	 */
+	protected function getDefaultModuleValue(bool $isDark):ImagickPixel{
+		return new ImagickPixel($isDark ? $this->options->markupDark : $this->options->markupLight);
 	}
 
 	/**
@@ -68,7 +70,7 @@ class QRImagick extends QROutputAbstract{
 	 * @return string|\Imagick
 	 */
 	public function dump(string $file = null){
-		$file ??= $this->options->cachefile;
+		$file          ??= $this->options->cachefile;
 		$this->imagick = new Imagick;
 
 		$this->imagick->newImage(
@@ -129,7 +131,7 @@ class QRImagick extends QROutputAbstract{
 				$y * $this->scale,
 				($x + 1) * $this->scale,
 				($y + 1) * $this->scale
-		);
+			);
 	}
 
 }

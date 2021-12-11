@@ -66,22 +66,22 @@ class QRImage extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function setModuleValues():void{
+	protected function moduleValueIsValid($value):bool{
+		return is_array($value) && count($value) >= 3;
+	}
 
-		foreach($this::DEFAULT_MODULE_VALUES as $M_TYPE => $defaultValue){
-			$v = $this->options->moduleValues[$M_TYPE] ?? null;
+	/**
+	 * @inheritDoc
+	 */
+	protected function getModuleValue($value):array{
+		return array_values($value);
+	}
 
-			if(!is_array($v) || count($v) < 3){
-				$this->moduleValues[$M_TYPE] = $defaultValue
-					? [0, 0, 0]
-					: [255, 255, 255];
-			}
-			else{
-				$this->moduleValues[$M_TYPE] = array_values($v);
-			}
-
-		}
-
+	/**
+	 * @inheritDoc
+	 */
+	protected function getDefaultModuleValue(bool $isDark):array{
+		return $isDark ? [0, 0, 0] : [255, 255, 255];
 	}
 
 	/**

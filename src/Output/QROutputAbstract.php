@@ -84,9 +84,42 @@ abstract class QROutputAbstract implements QROutputInterface{
 	}
 
 	/**
-	 * Sets the initial module values (clean-up & defaults)
+	 * Sets the initial module values
 	 */
-	abstract protected function setModuleValues():void;
+	protected function setModuleValues():void{
+
+		foreach($this::DEFAULT_MODULE_VALUES as $M_TYPE => $defaultValue){
+			$value = $this->options->moduleValues[$M_TYPE] ?? null;
+
+			$this->moduleValues[$M_TYPE] = $this->moduleValueIsValid($value)
+				? $this->getModuleValue($value)
+				: $this->getDefaultModuleValue($defaultValue);
+		}
+
+	}
+
+	/**
+	 * Determines whether the given value is valid
+	 *
+	 * @param mixed|null $value
+	 */
+	abstract protected function moduleValueIsValid($value):bool;
+
+	/**
+	 * Returns the final value for the given input (return value depends on the output module)
+	 *
+	 * @param mixed $value
+	 *
+	 * @return mixed
+	 */
+	abstract protected function getModuleValue($value);
+
+	/**
+	 * Returns a defualt value for either dark or light modules (return value depends on the output module)
+	 *
+	 * @return mixed
+	 */
+	abstract protected function getDefaultModuleValue(bool $isDark);
 
 	/**
 	 * Returns a base64 data URI for the given string and mime type

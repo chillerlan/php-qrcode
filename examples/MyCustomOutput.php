@@ -14,20 +14,42 @@ use chillerlan\QRCode\Output\QROutputAbstract;
 
 class MyCustomOutput extends QROutputAbstract{
 
-	protected function setModuleValues():void{
-		// TODO: Implement setModuleValues() method.
+	/**
+	 * @inheritDoc
+	 */
+	protected function moduleValueIsValid($value):bool{
+		// TODO: Implement moduleValueIsValid() method. (abstract)
+		return false;
 	}
 
-	public function dump(string $file = null):string{
+	/**
+	 * @inheritDoc
+	 */
+	protected function getModuleValue($value){
+		// TODO: Implement getModuleValue() method. (abstract)
+		return null;
+	}
 
+	/**
+	 * @inheritDoc
+	 */
+	protected function getDefaultModuleValue(bool $isDark){
+		// TODO: Implement getDefaultModuleValue() method. (abstract)
+		return null;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function dump(string $file = null):string{
 		$output = '';
 
-		for($row = 0; $row < $this->moduleCount; $row++){
-			for($col = 0; $col < $this->moduleCount; $col++){
-				$output .= (int)$this->matrix->check($col, $row);
+		for($y = 0; $y < $this->moduleCount; $y++){
+			for($x = 0; $x < $this->moduleCount; $x++){
+				$output .= (int)$this->matrix->check($x, $y);
 			}
 
-			$output .= \PHP_EOL;
+			$output .= $this->options->eol;
 		}
 
 		return $output;

@@ -25,22 +25,22 @@ class QRMarkup extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function setModuleValues():void{
+	protected function moduleValueIsValid($value):bool{
+		return is_string($value);
+	}
 
-		foreach($this::DEFAULT_MODULE_VALUES as $M_TYPE => $defaultValue){
-			$v = $this->options->moduleValues[$M_TYPE] ?? null;
+	/**
+	 * @inheritDoc
+	 */
+	protected function getModuleValue($value):string{
+		return trim(strip_tags($value), " '\"\r\n\t");
+	}
 
-			if(!is_string($v)){
-				$this->moduleValues[$M_TYPE] = $defaultValue
-					? $this->options->markupDark
-					: $this->options->markupLight;
-			}
-			else{
-				$this->moduleValues[$M_TYPE] = trim(strip_tags($v), " '\"\r\n\t");
-			}
-
-		}
-
+	/**
+	 * @inheritDoc
+	 */
+	protected function getDefaultModuleValue(bool $isDark):string{
+		return $isDark ? $this->options->markupDark : $this->options->markupLight;
 	}
 
 	/**
