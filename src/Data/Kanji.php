@@ -128,7 +128,7 @@ final class Kanji extends QRDataModeAbstract{
 		while($length > 0){
 			// Each 13 bits encodes a 2-byte character
 			$twoBytes          = $bitBuffer->read(13);
-			$assembledTwoBytes = (($twoBytes / 0x0c0) << 8) | ($twoBytes % 0x0c0);
+			$assembledTwoBytes = ((int)($twoBytes / 0x0c0) << 8) | ($twoBytes % 0x0c0);
 
 			$assembledTwoBytes += ($assembledTwoBytes < 0x01f00)
 				? 0x08140  // In the 0x8140 to 0x9FFC range

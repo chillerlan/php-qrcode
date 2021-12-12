@@ -113,7 +113,7 @@ final class AlphaNum extends QRDataModeAbstract{
 			}
 
 			$nextTwoCharsBits = $bitBuffer->read(11);
-			$result           .= $toAlphaNumericChar($nextTwoCharsBits / 45);
+			$result           .= $toAlphaNumericChar((int)($nextTwoCharsBits / 45));
 			$result           .= $toAlphaNumericChar($nextTwoCharsBits % 45);
 			$length           -= 2;
 		}
