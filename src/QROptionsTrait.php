@@ -243,9 +243,10 @@ trait QROptionsTrait{
 	/**
 	 * Imagick output format
 	 *
-	 * @see \Imagick::setType()
+	 * @see \Imagick::setImageFormat()
+	 * @see https://www.imagemagick.org/script/formats.php
 	 */
-	protected string $imagickFormat = 'png';
+	protected string $imagickFormat = 'png32';
 
 	/**
 	 * Imagick background color (defaults to "transparent")
