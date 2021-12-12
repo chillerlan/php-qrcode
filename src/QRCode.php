@@ -11,9 +11,9 @@
 namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Common\{EccLevel, ECICharset, MaskPattern, Mode};
-use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number, QRData, QRCodeDataException, QRDataModeInterface, QRMatrix};
+use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number, QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
 use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, LuminanceSourceInterface};
-use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRImage, QRImagick, QRMarkup, QROutputInterface, QRString};
+use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRGdImage, QRImagick, QRMarkup, QROutputInterface, QRString};
 use chillerlan\Settings\SettingsContainerInterface;
 use function class_exists, class_implements, in_array, mb_convert_encoding, mb_detect_encoding;
 
@@ -68,30 +68,20 @@ class QRCode{
 	public const OUTPUT_CUSTOM      = 'custom';
 
 	/**
-	 * Map of built-in output modules => capabilities
+	 * Map of built-in output modes => modules
 	 *
-	 * @var string[][]
+	 * @var string[]
 	 */
 	public const OUTPUT_MODES = [
-		QRMarkup::class => [
-			self::OUTPUT_MARKUP_SVG,
-			self::OUTPUT_MARKUP_HTML,
-		],
-		QRImage::class => [
-			self::OUTPUT_IMAGE_PNG,
-			self::OUTPUT_IMAGE_GIF,
-			self::OUTPUT_IMAGE_JPG,
-		],
-		QRString::class => [
-			self::OUTPUT_STRING_JSON,
-			self::OUTPUT_STRING_TEXT,
-		],
-		QRImagick::class => [
-			self::OUTPUT_IMAGICK,
-		],
-		QRFpdf::class => [
-			self::OUTPUT_FPDF,
-		],
+		self::OUTPUT_MARKUP_SVG  => QRMarkup::class,
+		self::OUTPUT_MARKUP_HTML => QRMarkup::class,
+		self::OUTPUT_IMAGE_PNG   => QRGdImage::class,
+		self::OUTPUT_IMAGE_GIF   => QRGdImage::class,
+		self::OUTPUT_IMAGE_JPG   => QRGdImage::class,
+		self::OUTPUT_STRING_JSON => QRString::class,
+		self::OUTPUT_STRING_TEXT => QRString::class,
+		self::OUTPUT_IMAGICK     => QRImagick::class,
+		self::OUTPUT_FPDF        => QRFpdf::class,
 	];
 
 	/**
@@ -135,9 +125,7 @@ class QRCode{
 
 					break;
 				}
-
 			}
-
 		}
 
 		return $this->initOutputInterface()->dump($file);
@@ -189,12 +177,10 @@ class QRCode{
 			return $this->initCustomOutputInterface();
 		}
 
-		foreach($this::OUTPUT_MODES as $outputInterface => $modes){
+		$outputInterface = $this::OUTPUT_MODES[$this->options->outputType] ?? false;
 
-			if(in_array($this->options->outputType, $modes)){
-				return new $outputInterface($this->options, $this->getMatrix());
-			}
-
+		if($outputInterface){
+			return new $outputInterface($this->options, $this->getMatrix());
 		}
 
 		throw new QRCodeOutputException('invalid output type');

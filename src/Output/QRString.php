@@ -46,9 +46,31 @@ class QRString extends QROutputAbstract{
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function dump(string $file = null):string{
+		$file ??= $this->options->cachefile;
+
+		switch($this->options->outputType){
+			case QRCode::OUTPUT_STRING_TEXT:
+				$data = $this->text();
+				break;
+			case QRCode::OUTPUT_STRING_JSON:
+			default:
+				$data = $this->json();
+		}
+
+		if($file !== null){
+			$this->saveToFile($data, $file);
+		}
+
+		return $data;
+	}
+
+	/**
 	 * string output
 	 */
-	protected function text(string $file = null):string{
+	protected function text():string{
 		$str = [];
 
 		foreach($this->matrix->matrix() as $row){
@@ -67,7 +89,7 @@ class QRString extends QROutputAbstract{
 	/**
 	 * JSON output
 	 */
-	protected function json(string $file = null):string{
+	protected function json():string{
 		return json_encode($this->matrix->matrix());
 	}
 

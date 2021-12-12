@@ -10,9 +10,9 @@
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\{Data\QRMatrix, QRCode};
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
-use function base64_encode, dirname, file_put_contents, get_called_class, in_array, is_writable, sprintf;
+use function base64_encode, dirname, file_put_contents, is_writable, sprintf;
 
 /**
  * common output abstract
@@ -25,18 +25,6 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 * @see \chillerlan\QRCode\Data\QRMatrix::size()
 	 */
 	protected int $moduleCount;
-
-	/**
-	 * the current output mode
-	 *
-	 * @see \chillerlan\QRCode\QROptions::$outputType
-	 */
-	protected string $outputMode;
-
-	/**
-	 * the default output mode of the current output module
-	 */
-	protected string $defaultMode;
 
 	/**
 	 * the current scaling for a QR pixel
@@ -74,11 +62,6 @@ abstract class QROutputAbstract implements QROutputInterface{
 		$this->moduleCount = $this->matrix->size();
 		$this->scale       = $this->options->scale;
 		$this->length      = $this->moduleCount * $this->scale;
-		$class             = get_called_class();
-
-		if(isset(QRCode::OUTPUT_MODES[$class]) && in_array($this->options->outputType, QRCode::OUTPUT_MODES[$class])){
-			$this->outputMode = $this->options->outputType;
-		}
 
 		$this->setModuleValues();
 	}
@@ -136,30 +119,15 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function saveToFile(string $data, string $file):bool{
+	protected function saveToFile(string $data, string $file):void{
 
 		if(!is_writable(dirname($file))){
 			throw new QRCodeOutputException(sprintf('Cannot write data to cache file: %s', $file));
 		}
 
-		return (bool)file_put_contents($file, $data);
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function dump(string $file = null){
-		$file ??= $this->options->cachefile;
-
-		// call the built-in output method with the optional file path as parameter
-		// to make the called method aware if a cache file was given
-		$data = $this->{$this->outputMode ?? $this->defaultMode}($file);
-
-		if($file !== null){
-			$this->saveToFile($data, $file);
+		if(file_put_contents($file, $data) === false){
+			throw new QRCodeOutputException(sprintf('Cannot write data to cache file: %s (file_put_contents error)', $file));
 		}
-
-		return $data;
 	}
 
 }

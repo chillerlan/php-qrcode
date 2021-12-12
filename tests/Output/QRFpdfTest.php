@@ -11,16 +11,19 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use FPDF;
-use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\{QRFpdf, QROutputInterface};
+use chillerlan\QRCode\Output\QRFpdf;
 
-use function class_exists, substr;
+use function class_exists;
 
 /**
  * Tests the QRFpdf output module
  */
 final class QRFpdfTest extends QROutputTestAbstract{
+
+	protected string $FQN  = QRFpdf::class;
+	protected string $type = QRCode::OUTPUT_FPDF;
 
 	/**
 	 * @inheritDoc
@@ -28,26 +31,10 @@ final class QRFpdfTest extends QROutputTestAbstract{
 	protected function setUp():void{
 
 		if(!class_exists(FPDF::class)){
-			$this->markTestSkipped('FPDF not available');
+			$this::markTestSkipped('FPDF not available');
 		}
 
 		parent::setUp();
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function getOutputInterface(QROptions $options):QROutputInterface{
-		return new QRFpdf($options, $this->matrix);
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function types():array{
-		return [
-			'fpdf' => [QRCode::OUTPUT_FPDF],
-		];
 	}
 
 	/**
@@ -61,30 +48,15 @@ final class QRFpdfTest extends QROutputTestAbstract{
 			QRMatrix::M_DATA                     => [255, 255, 255],
 		];
 
-		$this->outputInterface = $this->getOutputInterface($this->options);
+		$this->outputInterface = new $this->FQN($this->options, $this->matrix);
 		$this->outputInterface->dump();
 
 		$this::assertTrue(true); // tricking the code coverage
 	}
 
-	/**
-	 * @inheritDoc
-	 * @dataProvider types
-	 */
-	public function testRenderImage(string $type):void{
-		$this->options->outputType  = $type;
-		$this->options->imageBase64 = false;
-
-		// substr() to avoid CreationDate
-		$expected = substr(file_get_contents(__DIR__.'/../samples/'.$type), 0, 2500);
-		$actual   = substr((new QRCode($this->options))->render('test'), 0, 2500);
-
-		$this::assertSame($expected, $actual);
-	}
-
 	public function testOutputGetResource():void{
 		$this->options->returnResource = true;
-		$this->outputInterface         = $this->getOutputInterface($this->options);
+		$this->outputInterface         = new $this->FQN($this->options, $this->matrix);
 
 		$this::assertInstanceOf(FPDF::class, $this->outputInterface->dump());
 	}

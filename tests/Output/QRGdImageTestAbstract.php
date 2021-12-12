@@ -1,6 +1,6 @@
 <?php
 /**
- * Class QRImageTest
+ * Class QRGdImageTestAbstract
  *
  * @created      24.12.2017
  * @author       Smiley <smiley@chillerlan.net>
@@ -11,14 +11,15 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Output\{QROutputInterface, QRImage};
+use chillerlan\QRCode\Output\QRGdImage;
 use const PHP_MAJOR_VERSION;
 
 /**
- * Tests the QRImage output module
+ * Tests the QRGdImage output module
  */
-final class QRImageTest extends QROutputTestAbstract{
+abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
+
+	protected string $FQN  = QRGdImage::class;
 
 	/**
 	 * @inheritDoc
@@ -26,28 +27,10 @@ final class QRImageTest extends QROutputTestAbstract{
 	protected function setUp():void{
 
 		if(!extension_loaded('gd')){
-			$this->markTestSkipped('ext-gd not loaded');
+			$this::markTestSkipped('ext-gd not loaded');
 		}
 
 		parent::setUp();
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function getOutputInterface(QROptions $options):QROutputInterface{
-		return new QRImage($options, $this->matrix);
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function types():array{
-		return [
-			'png' => [QRCode::OUTPUT_IMAGE_PNG],
-			'gif' => [QRCode::OUTPUT_IMAGE_GIF],
-			'jpg' => [QRCode::OUTPUT_IMAGE_JPG],
-		];
 	}
 
 	/**
@@ -61,7 +44,7 @@ final class QRImageTest extends QROutputTestAbstract{
 			QRMatrix::M_DATA                     => [255, 255, 255],
 		];
 
-		$this->outputInterface = $this->getOutputInterface($this->options);
+		$this->outputInterface = new $this->FQN($this->options, $this->matrix);
 		$this->outputInterface->dump();
 
 		$this::assertTrue(true); // tricking the code coverage
@@ -72,7 +55,7 @@ final class QRImageTest extends QROutputTestAbstract{
 	 */
 	public function testOutputGetResource():void{
 		$this->options->returnResource = true;
-		$this->outputInterface         = $this->getOutputInterface($this->options);
+		$this->outputInterface         = new $this->FQN($this->options, $this->matrix);
 
 		$actual = $this->outputInterface->dump();
 

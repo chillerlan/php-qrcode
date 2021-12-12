@@ -80,6 +80,8 @@ class QRImagick extends QROutputAbstract{
 			$this->options->imagickFormat
 		);
 
+		$this->imagick->setImageType(Imagick::IMGTYPE_TRUECOLOR);
+
 		$this->drawImage();
 
 		if($this->options->returnResource){

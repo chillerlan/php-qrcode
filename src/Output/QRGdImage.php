@@ -1,6 +1,6 @@
 <?php
 /**
- * Class QRImage
+ * Class QRGdImage
  *
  * @created      05.12.2015
  * @author       Smiley <smiley@chillerlan.net>
@@ -15,11 +15,10 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\QRCode;
 use chillerlan\Settings\SettingsContainerInterface;
-use ErrorException, Exception;
-
+use ErrorException, Throwable;
 use function array_values, count, extension_loaded, imagecolorallocate, imagecolortransparent, imagecreatetruecolor,
-	 imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng, imagescale, in_array,
-	is_array, ob_end_clean, ob_get_contents, ob_start, range, restore_error_handler, set_error_handler;
+	imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng, imagescale, is_array,
+	max, min, ob_end_clean, ob_get_contents, ob_start, restore_error_handler, set_error_handler;
 use const IMG_BICUBIC;
 
 /**
@@ -27,19 +26,7 @@ use const IMG_BICUBIC;
  *
  * @see http://php.net/manual/book.image.php
  */
-class QRImage extends QROutputAbstract{
-
-	/**
-	 * GD image types that support transparency
-	 *
-	 * @var string[]
-	 */
-	protected const TRANSPARENCY_TYPES = [
-		QRCode::OUTPUT_IMAGE_PNG,
-		QRCode::OUTPUT_IMAGE_GIF,
-	];
-
-	protected string $defaultMode = QRCode::OUTPUT_IMAGE_PNG;
+class QRGdImage extends QROutputAbstract{
 
 	/**
 	 * The GD image resource
@@ -115,7 +102,7 @@ class QRImage extends QROutputAbstract{
 		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
 		$background = imagecolorallocate($this->image, ...$tbg);
 
-		if($this->options->imageTransparent && in_array($this->options->outputType, $this::TRANSPARENCY_TYPES, true)){
+		if($this->options->imageTransparent && $this->options->outputType !== QRCode::OUTPUT_IMAGE_JPG){
 			imagecolortransparent($this->image, $background);
 		}
 
@@ -188,11 +175,24 @@ class QRImage extends QROutputAbstract{
 		ob_start();
 
 		try{
-			$this->{$this->outputMode ?? $this->defaultMode}();
+
+			switch($this->options->outputType){
+				case QRCode::OUTPUT_IMAGE_GIF:
+					imagegif($this->image);
+					break;
+				case QRCode::OUTPUT_IMAGE_JPG:
+					imagejpeg($this->image, null, max(0, min(100, $this->options->jpegQuality)));
+					break;
+				// silently default to png output
+				case QRCode::OUTPUT_IMAGE_PNG:
+				default:
+					imagepng($this->image, null, max(-1, min(9, $this->options->pngCompression)));
+			}
+
 		}
 		// not going to cover edge cases
 		// @codeCoverageIgnoreStart
-		catch(Exception $e){
+		catch(Throwable $e){
 			throw new QRCodeOutputException($e->getMessage());
 		}
 		// @codeCoverageIgnoreEnd
@@ -203,45 +203,6 @@ class QRImage extends QROutputAbstract{
 		ob_end_clean();
 
 		return $imageData;
-	}
-
-	/**
-	 * PNG output
-	 *
-	 * @return void
-	 */
-	protected function png():void{
-		imagepng(
-			$this->image,
-			null,
-			in_array($this->options->pngCompression, range(-1, 9), true)
-				? $this->options->pngCompression
-				: -1
-		);
-	}
-
-	/**
-	 * Jiff - like... JitHub!
-	 *
-	 * @return void
-	 */
-	protected function gif():void{
-		imagegif($this->image);
-	}
-
-	/**
-	 * JPG output
-	 *
-	 * @return void
-	 */
-	protected function jpg():void{
-		imagejpeg(
-			$this->image,
-			null,
-			in_array($this->options->jpegQuality, range(0, 100), true)
-				? $this->options->jpegQuality
-				: 85
-		);
 	}
 
 }

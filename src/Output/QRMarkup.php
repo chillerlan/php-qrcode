@@ -44,9 +44,32 @@ class QRMarkup extends QROutputAbstract{
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function dump(string $file = null){
+		$file       ??= $this->options->cachefile;
+		$saveToFile   = $file !== null;
+
+		switch($this->options->outputType){
+			case QRCode::OUTPUT_MARKUP_HTML:
+				$data = $this->html($saveToFile);
+				break;
+			case QRCode::OUTPUT_MARKUP_SVG:
+			default:
+				$data = $this->svg($saveToFile);
+		}
+
+		if($saveToFile){
+			$this->saveToFile($data, $file);
+		}
+
+		return $data;
+	}
+
+	/**
 	 * HTML output
 	 */
-	protected function html(string $file = null):string{
+	protected function html(bool $saveToFile):string{
 
 		$html = empty($this->options->cssClass)
 			? '<div>'
@@ -66,7 +89,7 @@ class QRMarkup extends QROutputAbstract{
 
 		$html .= '</div>'.$this->options->eol;
 
-		if($file !== null){
+		if($saveToFile){
 			return sprintf(
 				'<!DOCTYPE html><head><meta charset="UTF-8"><title>QR Code</title></head><body>%s</body>',
 				$this->options->eol.$html
@@ -83,7 +106,7 @@ class QRMarkup extends QROutputAbstract{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg
 	 * @see https://www.sarasoueidan.com/demos/interactive-svg-coordinate-system/
 	 */
-	protected function svg(string $file = null):string{
+	protected function svg(bool $saveToFile):string{
 		$svg = $this->svgHeader();
 
 		if(!empty($this->options->svgDefs)){
@@ -96,7 +119,7 @@ class QRMarkup extends QROutputAbstract{
 		$svg .= sprintf('%1$s</svg>%1$s', $this->options->eol);
 
 		// transform to data URI only when not saving to file
-		if($file === null && $this->options->imageBase64){
+		if(!$saveToFile && $this->options->imageBase64){
 			$svg = $this->base64encode($svg, 'image/svg+xml');
 		}
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Class QRMarkupTest
+ * Class QRMarkupTestAbstract
  *
  * @created      24.12.2017
  * @author       Smiley <smiley@chillerlan.net>
@@ -10,31 +10,15 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\{QROutputInterface, QRMarkup};
+use chillerlan\QRCode\Output\QRMarkup;
 
 /**
  * Tests the QRMarkup output module
  */
-final class QRMarkupTest extends QROutputTestAbstract{
+abstract class QRMarkupTestAbstract extends QROutputTestAbstract{
 
-	/**
-	 * @inheritDoc
-	 */
-	protected function getOutputInterface(QROptions $options):QROutputInterface{
-		return new QRMarkup($options, $this->matrix);
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function types():array{
-		return [
-			'html' => [QRCode::OUTPUT_MARKUP_HTML],
-			'svg'  => [QRCode::OUTPUT_MARKUP_SVG],
-		];
-	}
+	protected string $FQN  = QRMarkup::class;
 
 	/**
 	 * @inheritDoc
@@ -48,7 +32,7 @@ final class QRMarkupTest extends QROutputTestAbstract{
 			QRMatrix::M_DATA                     => '#ECF9BE',
 		];
 
-		$this->outputInterface = $this->getOutputInterface($this->options);
+		$this->outputInterface = new $this->FQN($this->options, $this->matrix);
 		$data = $this->outputInterface->dump();
 		$this::assertStringContainsString('#4A6000', $data);
 		$this::assertStringContainsString('#ECF9BE', $data);
