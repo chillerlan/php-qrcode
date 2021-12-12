@@ -1,6 +1,6 @@
 <?php
 /**
- * Class QRCodeReaderTest
+ * Class QRCodeReaderTestAbstract
  *
  * @created      17.01.2021
  * @author       Smiley <smiley@chillerlan.net>
@@ -16,14 +16,13 @@ use chillerlan\Settings\SettingsContainerInterface;
 use Exception, Generator;
 use chillerlan\QRCode\Common\{EccLevel, Mode, Version};
 use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Decoder\{GDLuminanceSource, IMagickLuminanceSource};
 use PHPUnit\Framework\TestCase;
-use function extension_loaded, range, sprintf, str_repeat, substr;
+use function range, sprintf, str_repeat, substr;
 
 /**
  * Tests the QR Code reader
  */
-final class QRCodeReaderTest extends TestCase{
+abstract class QRCodeReaderTestAbstract extends TestCase{
 
 	// https://www.bobrosslipsum.com/
 	protected const loremipsum = 'Just let this happen. We just let this flow right out of our minds. '
@@ -35,9 +34,11 @@ final class QRCodeReaderTest extends TestCase{
 		.'to upset the critics. We\'ll lay all these little funky little things in there. ';
 
 	protected SettingsContainerInterface $options;
+	protected string                     $FQN;
 
 	protected function setUp():void{
 		$this->options = new QROptions;
+		$this->options->readerUseImagickIfAvailable = false;
 	}
 
 	public function qrCodeProvider():array{
@@ -68,33 +69,16 @@ final class QRCodeReaderTest extends TestCase{
 	/**
 	 * @dataProvider qrCodeProvider
 	 */
-	public function testReaderGD(string $img, string $expected, bool $grayscale):void{
+	public function testReader(string $img, string $expected, bool $grayscale):void{
 
 		if($grayscale){
 			$this->options->readerGrayscale        = true;
 			$this->options->readerIncreaseContrast = true;
 		}
 
+		/** @noinspection PhpUndefinedMethodInspection */
 		$this::assertSame($expected, (string)(new QRCode)
-			->readFromSource(GDLuminanceSource::fromFile(__DIR__.'/samples/'.$img, $this->options)));
-	}
-
-	/**
-	 * @dataProvider qrCodeProvider
-	 */
-	public function testReaderImagick(string $img, string $expected, bool $grayscale):void{
-
-		if(!extension_loaded('imagick')){
-			$this::markTestSkipped('imagick not installed');
-		}
-
-		if($grayscale){
-			$this->options->readerGrayscale        = true;
-			$this->options->readerIncreaseContrast = true;
-		}
-
-		$this::assertSame($expected, (string)(new QRCode)
-			->readFromSource(IMagickLuminanceSource::fromFile(__DIR__.'/samples/'.$img, $this->options)));
+			->readFromSource($this->FQN::fromFile(__DIR__.'/samples/'.$img, $this->options)));
 	}
 
 	public function testReaderMultiSegment():void{
@@ -136,17 +120,16 @@ final class QRCodeReaderTest extends TestCase{
 	 * @dataProvider dataTestProvider
 	 */
 	public function testReadData(Version $version, EccLevel $ecc, string $expected):void{
-		$this->options->outputType                  = QRCode::OUTPUT_IMAGE_PNG;
-#		$this->options->imageTransparent            = false;
-		$this->options->eccLevel                    = $ecc->getLevel();
-		$this->options->version                     = $version->getVersionNumber();
-		$this->options->imageBase64                 = false;
-		$this->options->readerUseImagickIfAvailable = true;
+		$this->options->outputType       = QRCode::OUTPUT_IMAGE_PNG;
+		$this->options->imageTransparent = false;
+		$this->options->eccLevel         = $ecc->getLevel();
+		$this->options->version          = $version->getVersionNumber();
+		$this->options->imageBase64      = false;
 		// what's interesting is that a smaller scale seems to produce fewer reader errors???
 		// usually from version 20 up, independend of the luminance source
 		// scale 1-2 produces none, scale 3: 1 error, scale 4: 6 errors, scale 5: 5 errors, scale 10: 10 errors
 		// @see \chillerlan\QRCode\Detector\GridSampler::checkAndNudgePoints()
-		$this->options->scale                       = 2;
+		$this->options->scale            = 2;
 
 		try{
 			$qrcode    = new QRCode($this->options);
