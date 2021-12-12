@@ -339,7 +339,7 @@ final class Binarizer{
 				for($j = 0, $o = $yoffset * $width + $xoffset; $j < self::BLOCK_SIZE; $j++, $o += $width){
 					for($i = 0; $i < self::BLOCK_SIZE; $i++){
 						// Comparison needs to be <= so that black == 0 pixels are black even if the threshold is 0.
-						if(($luminances[$o + $i] & 0xff) <= $average){
+						if(((int)($luminances[$o + $i]) & 0xff) <= $average){
 							$matrix->set($xoffset + $i, $yoffset + $j);
 						}
 					}
