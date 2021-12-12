@@ -18,6 +18,14 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - "7.4"
+          - "8.0"
+          - "8.1"
+
     env:
       PHAN_ALLOW_XDEBUG: 0
       PHAN_DISABLE_XDEBUG_WARN: 1
