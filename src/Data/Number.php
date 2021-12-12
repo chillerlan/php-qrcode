@@ -142,7 +142,7 @@ final class Number extends QRDataModeAbstract{
 				throw new QRCodeDataException('error decoding numeric value');
 			}
 
-			$result .= $toNumericChar($threeDigitsBits / 100);
+			$result .= $toNumericChar((int)($threeDigitsBits / 100));
 			$result .= $toNumericChar(($threeDigitsBits / 10) % 10);
 			$result .= $toNumericChar($threeDigitsBits % 10);
 
