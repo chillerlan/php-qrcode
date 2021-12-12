@@ -3586,55 +3586,80 @@ Search.appendIndex(
             "summary": "covers\u0020the\u0020custom\u0020output\u0020functionality\u0020via\u0020an\u0020example",
             "url": "classes/chillerlan-QRCodeTest-Output-QRStringTest.html#method_testCustomOutput"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest",
-            "name": "QRCodeReaderTest",
-            "summary": "Tests\u0020the\u0020QR\u0020Code\u0020reader",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html"
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderGDTest",
+            "name": "QRCodeReaderGDTest",
+            "summary": "Tests\u0020the\u0020GD\u0020based\u0020reader",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderGDTest.html"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest\u003A\u003AsetUp\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderGDTest\u003A\u003A\u0024FQN",
+            "name": "FQN",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderGDTest.html#property_FQN"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderImagickTest",
+            "name": "QRCodeReaderImagickTest",
+            "summary": "Tests\u0020the\u0020Imagick\u0020based\u0020reader",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderImagickTest.html"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderImagickTest\u003A\u003AsetUp\u0028\u0029",
             "name": "setUp",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html#method_setUp"
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderImagickTest.html#method_setUp"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest\u003A\u003AqrCodeProvider\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderImagickTest\u003A\u003A\u0024FQN",
+            "name": "FQN",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderImagickTest.html#property_FQN"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTestAbstract",
+            "name": "QRCodeReaderTestAbstract",
+            "summary": "Tests\u0020the\u0020QR\u0020Code\u0020reader",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTestAbstract.html"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTestAbstract\u003A\u003AsetUp\u0028\u0029",
+            "name": "setUp",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTestAbstract.html#method_setUp"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTestAbstract\u003A\u003AqrCodeProvider\u0028\u0029",
             "name": "qrCodeProvider",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html#method_qrCodeProvider"
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTestAbstract.html#method_qrCodeProvider"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest\u003A\u003AtestReaderGD\u0028\u0029",
-            "name": "testReaderGD",
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTestAbstract\u003A\u003AtestReader\u0028\u0029",
+            "name": "testReader",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html#method_testReaderGD"
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTestAbstract.html#method_testReader"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest\u003A\u003AtestReaderImagick\u0028\u0029",
-            "name": "testReaderImagick",
-            "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html#method_testReaderImagick"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest\u003A\u003AtestReaderMultiSegment\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTestAbstract\u003A\u003AtestReaderMultiSegment\u0028\u0029",
             "name": "testReaderMultiSegment",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html#method_testReaderMultiSegment"
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTestAbstract.html#method_testReaderMultiSegment"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest\u003A\u003AdataTestProvider\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTestAbstract\u003A\u003AdataTestProvider\u0028\u0029",
             "name": "dataTestProvider",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html#method_dataTestProvider"
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTestAbstract.html#method_dataTestProvider"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest\u003A\u003AtestReadData\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTestAbstract\u003A\u003AtestReadData\u0028\u0029",
             "name": "testReadData",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html#method_testReadData"
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTestAbstract.html#method_testReadData"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest\u003A\u003Aloremipsum",
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTestAbstract\u003A\u003Aloremipsum",
             "name": "loremipsum",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html#constant_loremipsum"
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTestAbstract.html#constant_loremipsum"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTest\u003A\u003A\u0024options",
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTestAbstract\u003A\u003A\u0024options",
             "name": "options",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTest.html#property_options"
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTestAbstract.html#property_options"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTestAbstract\u003A\u003A\u0024FQN",
+            "name": "FQN",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTestAbstract.html#property_FQN"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeTest",
             "name": "QRCodeTest",
