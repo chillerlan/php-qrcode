@@ -270,9 +270,9 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-QRCode.html#constant_OUTPUT_MODES">OUTPUT_MODES</a>
     <span>
-        &nbsp;= [chillerlanQRCodeOutputQRMarkup::class =&gt; [self::OUTPUT_MARKUP_SVG, self::OUTPUT_MARKUP_HTML], chillerlanQRCodeOutputQRImage::class =&gt; [self::OUTPUT_IMAGE_PNG, self::OUTPUT_IMAGE_GIF, self::OUTPUT_IMAGE_JPG], chillerlanQRCodeOutputQRString::class =&gt; [self::OUTPUT_STRING_JSON, self::OUTPUT_STRING_TEXT], chillerlanQRCodeOutputQRImagick::class =&gt; [self::OUTPUT_IMAGICK], chillerlanQRCodeOutputQRFpdf::class =&gt; [self::OUTPUT_FPDF]]                    </span>
+        &nbsp;= [self::OUTPUT_MARKUP_SVG =&gt; chillerlanQRCodeOutputQRMarkup::class, self::OUTPUT_MARKUP_HTML =&gt; chillerlanQRCodeOutputQRMarkup::class, self::OUTPUT_IMAGE_PNG =&gt; chillerlanQRCodeOutputQRGdImage::class, self::OUTPUT_IMAGE_GIF =&gt; chillerlanQRCodeOutputQRGdImage::class, self::OUTPUT_IMAGE_JPG =&gt; chillerlanQRCodeOutputQRGdImage::class, self::OUTPUT_STRING_JSON =&gt; chillerlanQRCodeOutputQRString::class, self::OUTPUT_STRING_TEXT =&gt; chillerlanQRCodeOutputQRString::class, self::OUTPUT_IMAGICK =&gt; chillerlanQRCodeOutputQRImagick::class, self::OUTPUT_FPDF =&gt; chillerlanQRCodeOutputQRFpdf::class]                    </span>
 </dt>
-<dd>Map of built-in output modules =&gt; capabilities</dd>
+<dd>Map of built-in output modes =&gt; modules</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-QRCode.html#constant_OUTPUT_STRING_JSON">OUTPUT_STRING_JSON</a>
@@ -823,13 +823,13 @@
 
     </aside>
 
-        <p class="phpdocumentor-summary">Map of built-in output modules =&gt; capabilities</p>
+        <p class="phpdocumentor-summary">Map of built-in output modes =&gt; modules</p>
 
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">array&lt;string|int, array&lt;string|int, string&gt;&gt;</span>
+    <span class="phpdocumentor-signature__type">array&lt;string|int, string&gt;</span>
     <span class="phpdocumentor-signature__name">OUTPUT_MODES</span>
-    = <span class="phpdocumentor-signature__default-value">[chillerlanQRCodeOutputQRMarkup::class =&gt; [self::OUTPUT_MARKUP_SVG, self::OUTPUT_MARKUP_HTML], chillerlanQRCodeOutputQRImage::class =&gt; [self::OUTPUT_IMAGE_PNG, self::OUTPUT_IMAGE_GIF, self::OUTPUT_IMAGE_JPG], chillerlanQRCodeOutputQRString::class =&gt; [self::OUTPUT_STRING_JSON, self::OUTPUT_STRING_TEXT], chillerlanQRCodeOutputQRImagick::class =&gt; [self::OUTPUT_IMAGICK], chillerlanQRCodeOutputQRFpdf::class =&gt; [self::OUTPUT_FPDF]]</span>
+    = <span class="phpdocumentor-signature__default-value">[self::OUTPUT_MARKUP_SVG =&gt; chillerlanQRCodeOutputQRMarkup::class, self::OUTPUT_MARKUP_HTML =&gt; chillerlanQRCodeOutputQRMarkup::class, self::OUTPUT_IMAGE_PNG =&gt; chillerlanQRCodeOutputQRGdImage::class, self::OUTPUT_IMAGE_GIF =&gt; chillerlanQRCodeOutputQRGdImage::class, self::OUTPUT_IMAGE_JPG =&gt; chillerlanQRCodeOutputQRGdImage::class, self::OUTPUT_STRING_JSON =&gt; chillerlanQRCodeOutputQRString::class, self::OUTPUT_STRING_TEXT =&gt; chillerlanQRCodeOutputQRString::class, self::OUTPUT_IMAGICK =&gt; chillerlanQRCodeOutputQRImagick::class, self::OUTPUT_FPDF =&gt; chillerlanQRCodeOutputQRFpdf::class]</span>
 </code>
 
 
@@ -943,7 +943,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">111</span>
+    <span class="phpdocumentor-element-found-in__line">101</span>
 
     </aside>
 
@@ -990,7 +990,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">102</span>
+    <span class="phpdocumentor-element-found-in__line">92</span>
 
     </aside>
 
@@ -1027,7 +1027,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">118</span>
+    <span class="phpdocumentor-element-found-in__line">108</span>
 
     </aside>
 
@@ -1073,7 +1073,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">285</span>
+    <span class="phpdocumentor-element-found-in__line">283</span>
 
     </aside>
 
@@ -1119,7 +1119,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">307</span>
+    <span class="phpdocumentor-element-found-in__line">305</span>
 
     </aside>
 
@@ -1165,7 +1165,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">318</span>
+    <span class="phpdocumentor-element-found-in__line">316</span>
 
     </aside>
 
@@ -1211,7 +1211,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">331</span>
+    <span class="phpdocumentor-element-found-in__line">329</span>
 
     </aside>
 
@@ -1279,7 +1279,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">296</span>
+    <span class="phpdocumentor-element-found-in__line">294</span>
 
     </aside>
 
@@ -1325,7 +1325,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">274</span>
+    <span class="phpdocumentor-element-found-in__line">272</span>
 
     </aside>
 
@@ -1371,7 +1371,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">263</span>
+    <span class="phpdocumentor-element-found-in__line">261</span>
 
     </aside>
 
@@ -1404,7 +1404,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">151</span>
+    <span class="phpdocumentor-element-found-in__line">139</span>
 
     </aside>
 
@@ -1442,7 +1442,7 @@
         class="phpdocumentor-element
             -method
             -public
-                                                        "
+            -deprecated                                            "
 >
     <h4 class="phpdocumentor-element__name" id="method_isAlphaNum">
         isAlphaNum()
@@ -1451,13 +1451,13 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">232</span>
+    <span class="phpdocumentor-element-found-in__line">224</span>
 
     </aside>
 
         <p class="phpdocumentor-summary">checks if a string qualifies as alphanumeric (convenience method)</p>
 
-    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">isAlphaNum</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$string</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
@@ -1475,6 +1475,26 @@
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">deprecated</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -1486,7 +1506,7 @@
         class="phpdocumentor-element
             -method
             -public
-                                                        "
+            -deprecated                                            "
 >
     <h4 class="phpdocumentor-element__name" id="method_isByte">
         isByte()
@@ -1495,13 +1515,13 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">246</span>
+    <span class="phpdocumentor-element-found-in__line">244</span>
 
     </aside>
 
         <p class="phpdocumentor-summary">a dummy (convenience method)</p>
 
-    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">isByte</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$string</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
@@ -1519,6 +1539,26 @@
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">deprecated</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -1530,7 +1570,7 @@
         class="phpdocumentor-element
             -method
             -public
-                                                        "
+            -deprecated                                            "
 >
     <h4 class="phpdocumentor-element__name" id="method_isKanji">
         isKanji()
@@ -1539,13 +1579,13 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">239</span>
+    <span class="phpdocumentor-element-found-in__line">234</span>
 
     </aside>
 
         <p class="phpdocumentor-summary">checks if a string qualifies as Kanji (convenience method)</p>
 
-    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">isKanji</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$string</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
@@ -1563,6 +1603,26 @@
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">deprecated</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -1574,7 +1634,7 @@
         class="phpdocumentor-element
             -method
             -public
-                                                        "
+            -deprecated                                            "
 >
     <h4 class="phpdocumentor-element__name" id="method_isNumber">
         isNumber()
@@ -1583,13 +1643,13 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">225</span>
+    <span class="phpdocumentor-element-found-in__line">214</span>
 
     </aside>
 
         <p class="phpdocumentor-summary">checks if a string qualifies as numeric (convenience method)</p>
 
-    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
     <span class="phpdocumentor-signature__visibility">public</span>
                 <span class="phpdocumentor-signature__name">isNumber</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$string</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
@@ -1607,6 +1667,26 @@
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">deprecated</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool</span>
@@ -1627,7 +1707,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">359</span>
+    <span class="phpdocumentor-element-found-in__line">357</span>
 
     </aside>
 
@@ -1671,7 +1751,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">352</span>
+    <span class="phpdocumentor-element-found-in__line">350</span>
 
     </aside>
 
@@ -1715,7 +1795,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">366</span>
+    <span class="phpdocumentor-element-found-in__line">364</span>
 
     </aside>
 
@@ -1759,7 +1839,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">127</span>
+    <span class="phpdocumentor-element-found-in__line">117</span>
 
     </aside>
 
@@ -1811,7 +1891,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">256</span>
+    <span class="phpdocumentor-element-found-in__line">254</span>
 
     </aside>
 
@@ -1858,7 +1938,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">208</span>
+    <span class="phpdocumentor-element-found-in__line">194</span>
 
     </aside>
 
@@ -1905,7 +1985,7 @@ ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QRCode.php"><a href="files/src-qrcode.html"><abbr title="src/QRCode.php">QRCode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">186</span>
+    <span class="phpdocumentor-element-found-in__line">174</span>
 
     </aside>
 
