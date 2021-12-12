@@ -20,4 +20,16 @@ final class KanjiTest extends DatainterfaceTestAbstract{
 	protected string $FQN      = Kanji::class;
 	protected string $testdata = '茗荷茗荷茗荷茗荷茗荷';
 
+	/**
+	 * isKanji() should pass on Kanji/SJIS characters and fail on everything else
+	 */
+	public function stringValidateProvider():array{
+		return [
+			['茗荷', true],
+			['Ã', false],
+			['ABC', false],
+			['123', false],
+		];
+	}
+
 }

@@ -32,45 +32,6 @@ final class QRCodeTest extends TestCase{
 	}
 
 	/**
-	 * isNumber() should pass on any number and fail on anything else
-	 */
-	public function testIsNumber():void{
-		$this::assertTrue($this->qrcode->isNumber('0123456789'));
-
-		$this::assertFalse($this->qrcode->isNumber('ABC123'));
-	}
-
-	/**
-	 * isAlphaNum() should pass on the 45 defined characters and fail on anything else (e.g. lowercase)
-	 */
-	public function testIsAlphaNum():void{
-		$this::assertTrue($this->qrcode->isAlphaNum('ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:'));
-
-		$this::assertFalse($this->qrcode->isAlphaNum('abc'));
-	}
-
-	/**
-	 * isKanji() should pass on Kanji/SJIS characters and fail on everything else
-	 */
-	public function testIsKanji():void{
-		$this::assertTrue($this->qrcode->isKanji('茗荷'));
-
-		$this::assertFalse($this->qrcode->isKanji('Ã'));
-		$this::assertFalse($this->qrcode->isKanji('ABC'));
-		$this::assertFalse($this->qrcode->isKanji('123'));
-	}
-
-	/**
-	 * isByte() passses any binary string and only fails on empty strings
-	 */
-	public function testIsByte():void{
-		$this::assertTrue($this->qrcode->isByte("\x01\x02\x03"));
-		$this::assertTrue($this->qrcode->isByte('            ')); // not empty!
-
-		$this::assertFalse($this->qrcode->isByte(''));
-	}
-
-	/**
 	 * tests if an exception is thrown when an invalid (built-in) output type is specified
 	 */
 	public function testInitDataInterfaceException():void{

@@ -146,7 +146,7 @@ final class QRMatrixTest extends TestCase{
 	public function testSetAlignmentPattern(int $version):void{
 
 		if($version === 1){
-			$this->markTestSkipped('N/A (Version 1 has no alignment pattern)');
+			$this::markTestSkipped('N/A (Version 1 has no alignment pattern)');
 		}
 
 		$matrix = $this
@@ -208,7 +208,7 @@ final class QRMatrixTest extends TestCase{
 	public function testSetVersionNumber(int $version):void{
 
 		if($version < 7){
-			$this->markTestSkipped('N/A (Version < 7)');
+			$this::markTestSkipped('N/A (Version < 7)');
 		}
 
 		$matrix = $this->getMatrix($version)->setVersionNumber();

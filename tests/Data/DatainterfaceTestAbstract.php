@@ -75,6 +75,16 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 		$this::assertSame(1, $getMinimumVersion->invoke($this->QRData));
 	}
 
+	abstract public function stringValidateProvider():array;
+
+	/**
+	 * @dataProvider stringValidateProvider
+	 */
+	public function testValidateString(string $string, bool $expected):void{
+		/** @noinspection PhpUndefinedMethodInspection */
+		$this::assertSame($expected, $this->FQN::validateString($string));
+	}
+
 	/**
 	 * Tests if an exception is thrown when the data exceeds the maximum version while auto detecting
 	 */

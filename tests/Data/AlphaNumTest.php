@@ -20,4 +20,14 @@ final class AlphaNumTest extends DatainterfaceTestAbstract{
 	protected string $FQN      = AlphaNum::class;
 	protected string $testdata = '0 $%*+-./:';
 
+	/**
+	 * isAlphaNum() should pass on the 45 defined characters and fail on anything else (e.g. lowercase)
+	 */
+	public function stringValidateProvider():array{
+		return [
+			['ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:', true],
+			['abc', false],
+		];
+	}
+
 }

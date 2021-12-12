@@ -21,10 +21,21 @@ final class ByteTest extends DatainterfaceTestAbstract{
 	protected string $testdata = '[¯\_(ツ)_/¯]';
 
 	/**
+	 * isByte() passses any binary string and only fails on empty strings
+	 */
+	public function stringValidateProvider():array{
+		return [
+			["\x01\x02\x03", true],
+			['            ', true], // not empty!
+			['', false],
+		];
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	public function testInvalidDataException():void{
-		$this->markTestSkipped('N/A');
+		$this::markTestSkipped('N/A');
 	}
 
 }

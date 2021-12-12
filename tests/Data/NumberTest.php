@@ -20,4 +20,14 @@ final class NumberTest extends DatainterfaceTestAbstract{
 	protected string $FQN      = Number::class;
 	protected string $testdata = '0123456789';
 
+	/**
+	 * isNumber() should pass on any number and fail on anything else
+	 */
+	public function stringValidateProvider():array{
+		return [
+			['0123456789', true],
+			['ABC123', false],
+		];
+	}
+
 }

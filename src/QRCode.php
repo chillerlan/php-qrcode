@@ -221,6 +221,9 @@ class QRCode{
 
 	/**
 	 * checks if a string qualifies as numeric (convenience method)
+	 *
+	 * @deprecated
+	 * @codeCoverageIgnore
 	 */
 	public function isNumber(string $string):bool{
 		return Number::validateString($string);
@@ -228,6 +231,9 @@ class QRCode{
 
 	/**
 	 * checks if a string qualifies as alphanumeric (convenience method)
+	 *
+	 * @deprecated
+	 * @codeCoverageIgnore
 	 */
 	public function isAlphaNum(string $string):bool{
 		return AlphaNum::validateString($string);
@@ -235,6 +241,9 @@ class QRCode{
 
 	/**
 	 * checks if a string qualifies as Kanji (convenience method)
+	 *
+	 * @deprecated
+	 * @codeCoverageIgnore
 	 */
 	public function isKanji(string $string):bool{
 		return Kanji::validateString($string);
@@ -242,6 +251,9 @@ class QRCode{
 
 	/**
 	 * a dummy (convenience method)
+	 *
+	 * @deprecated
+	 * @codeCoverageIgnore
 	 */
 	public function isByte(string $string):bool{
 		return Byte::validateString($string);
