@@ -14,12 +14,13 @@ use chillerlan\QRCode\Common\EccLevel;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
+$data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 
 $options = new QROptions([
 	'version'             => 7,
 	'outputType'          => QRCode::OUTPUT_IMAGICK,
 	'eccLevel'            => EccLevel::L,
+	'imagickBG'           => '#FFFFFF',
 	'scale'               => 20,
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.4,
@@ -37,7 +38,7 @@ $options = new QROptions([
 		QRMatrix::M_TIMING                         => '#FFB8E9',
 		// format
 		QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => '#003804',
-		QRMatrix::M_FORMAT                         => '#00FB12',
+		QRMatrix::M_FORMAT                         => '#CCFB12',
 		// version
 		QRMatrix::M_VERSION | QRMatrix::IS_DARK    => '#650098',
 		QRMatrix::M_VERSION                        => '#E0B8FF',

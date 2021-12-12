@@ -12,11 +12,11 @@
 
 namespace chillerlan\QRCodeExamples;
 
-use chillerlan\QRCode\Output\{QRCodeOutputException, QRImage};
+use chillerlan\QRCode\Output\{QRGdImage, QRCodeOutputException};
 
 use function imagecopyresampled, imagecreatefrompng, imagesx, imagesy, is_file, is_readable;
 
-class QRImageWithLogo extends QRImage{
+class QRImageWithLogo extends QRGdImage{
 
 	/**
 	 * @param string|null $file

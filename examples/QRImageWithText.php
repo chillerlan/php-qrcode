@@ -16,12 +16,12 @@
 
 namespace chillerlan\QRCodeExamples;
 
-use chillerlan\QRCode\Output\QRImage;
-
+use chillerlan\QRCode\Output\QRGdImage;
+use chillerlan\QRCode\QRCode;
 use function imagechar, imagecolorallocate, imagecolortransparent, imagecopymerge, imagecreatetruecolor,
-	imagedestroy, imagefilledrectangle, imagefontwidth, in_array, round, str_split, strlen;
+	imagedestroy, imagefilledrectangle, imagefontwidth, round, str_split, strlen;
 
-class QRImageWithText extends QRImage{
+class QRImageWithText extends QRGdImage{
 
 	/**
 	 * @param string|null $file
@@ -74,7 +74,7 @@ class QRImageWithText extends QRImage{
 		$background  = imagecolorallocate($this->image, ...$textBG);
 
 		// allow transparency
-		if($this->options->imageTransparent && in_array($this->options->outputType, $this::TRANSPARENCY_TYPES, true)){
+		if($this->options->imageTransparent && $this->options->outputType !== QRCode::OUTPUT_IMAGE_JPG){
 			imagecolortransparent($this->image, $background);
 		}
 
