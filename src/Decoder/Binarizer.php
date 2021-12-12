@@ -252,7 +252,7 @@ final class Binarizer{
 						// finish the rest of the rows quickly
 						for($yy++, $offset += $width; $yy < self::BLOCK_SIZE; $yy++, $offset += $width){
 							for($xx = 0; $xx < self::BLOCK_SIZE; $xx++){
-								$sum += $luminances[(int)($offset + $xx)] & 0xff;
+								$sum += (int)($luminances[(int)($offset + $xx)]) & 0xff;
 							}
 						}
 					}
