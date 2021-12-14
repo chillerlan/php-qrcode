@@ -2266,6 +2266,11 @@ Search.appendIndex(
             "summary": "The\u0020GD\u0020image\u0020resource",
             "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#property_image"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRImage",
+            "name": "QRImage",
+            "summary": "Converts\u0020the\u0020matrix\u0020into\u0020GD\u0020images,\u0020raw\u0020or\u0020base64\u0020output\u0020\u0028requires\u0020ext\u002Dgd\u0029",
+            "url": "classes/chillerlan-QRCode-Output-QRImage.html"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick",
             "name": "QRImagick",
             "summary": "ImageMagick\u0020output\u0020module\u0020\u0028requires\u0020ext\u002Dimagick\u0029",
