@@ -215,7 +215,7 @@ class QRCode{
 
 		// allow forcing the data mode
 		// see https://github.com/chillerlan/php-qrcode/issues/39
-		$interface = $this::DATA_INTERFACES[strtolower($this->options->dataModeOverride)] ?? null;
+		$interface = $this::DATA_INTERFACES[strtolower((string) $this->options->dataModeOverride)] ?? null;
 
 		if($interface !== null){
 			return new $interface($this->options, $data);
