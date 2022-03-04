@@ -11,7 +11,7 @@
 namespace chillerlan\QRCode\Output;
 
 /**
- * @deprecated backward compatibility, use QRGdImage instead
+ * @deprecated 5.0.0 backward compatibility, use QRGdImage instead
  * @see \chillerlan\QRCode\Output\QRGdImage
  */
 class QRImage extends QRGdImage{

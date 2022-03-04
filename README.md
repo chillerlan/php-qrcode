@@ -81,12 +81,16 @@ echo '<img src="'.(new QRCode)->render($data).'" alt="QR Code" />';
 Wait, what was that? Please again, slower! See [Advanced usage](https://github.com/chillerlan/php-qrcode/wiki/Advanced-usage) on the wiki.
 
 ### Framework Integration
-- Drupal [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
-- WordPress [`wp-two-factor-auth`](https://github.com/sjinks/wp-two-factor-auth)
-- WordPress [Simple 2FA `simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
-- WoltLab Suite [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)
-- [Cachet](https://github.com/CachetHQ/Cachet)
+- Drupal:
+  - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
+- WordPress:
+  - [`wp-two-factor-auth`](https://github.com/sjinks/wp-two-factor-auth)
+  - [`simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
+  - [`wordpress-seo`](https://github.com/Yoast/wordpress-seo)
+- WoltLab Suite
+  - [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)
 - [Appwrite](https://github.com/appwrite/appwrite)
+- [Cachet](https://github.com/CachetHQ/Cachet)
 - [twill](https://github.com/area17/twill)
 - other uses: [dependents](https://github.com/chillerlan/php-qrcode/network/dependents) / [packages](https://github.com/chillerlan/php-qrcode/network/dependents?dependent_type=PACKAGE)
 

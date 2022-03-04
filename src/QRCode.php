@@ -34,16 +34,31 @@ class QRCode{
 	public const MASK_PATTERN_AUTO = -1;
 
 	/**
-	 * @deprecated backward compatibility
-	 * @see \chillerlan\QRCode\Common\EccLevel
+	 * @deprecated 5.0.0
+	 * @see \chillerlan\QRCode\Common\EccLevel::L
+	 * @var int
 	 */
-	/** @var int */
 	public const ECC_L = EccLevel::L;
-	/** @var int */
+
+	/**
+	 * @deprecated 5.0.0
+	 * @see \chillerlan\QRCode\Common\EccLevel::M
+	 * @var int
+	 */
 	public const ECC_M = EccLevel::M;
-	/** @var int */
+
+	/**
+	 * @deprecated 5.0.0
+	 * @see \chillerlan\QRCode\Common\EccLevel::Q
+	 * @var int
+	 */
 	public const ECC_Q = EccLevel::Q;
-	/** @var int */
+
+	/**
+	 * @deprecated 5.0.0
+	 * @see \chillerlan\QRCode\Common\EccLevel::H
+	 * @var int
+	 */
 	public const ECC_H = EccLevel::H;
 
 	/** @var string */
@@ -208,7 +223,8 @@ class QRCode{
 	/**
 	 * checks if a string qualifies as numeric (convenience method)
 	 *
-	 * @deprecated
+	 * @deprecated 5.0.0
+	 * @see \chillerlan\QRCode\Data\Number::validateString()
 	 * @codeCoverageIgnore
 	 */
 	public function isNumber(string $string):bool{
@@ -218,7 +234,8 @@ class QRCode{
 	/**
 	 * checks if a string qualifies as alphanumeric (convenience method)
 	 *
-	 * @deprecated
+	 * @deprecated 5.0.0
+	 * @see \chillerlan\QRCode\Data\AlphaNum::validateString()
 	 * @codeCoverageIgnore
 	 */
 	public function isAlphaNum(string $string):bool{
@@ -228,7 +245,8 @@ class QRCode{
 	/**
 	 * checks if a string qualifies as Kanji (convenience method)
 	 *
-	 * @deprecated
+	 * @deprecated 5.0.0
+	 * @see \chillerlan\QRCode\Data\Kanji::validateString()
 	 * @codeCoverageIgnore
 	 */
 	public function isKanji(string $string):bool{
@@ -238,7 +256,8 @@ class QRCode{
 	/**
 	 * a dummy (convenience method)
 	 *
-	 * @deprecated
+	 * @deprecated 5.0.0
+	 * @see \chillerlan\QRCode\Data\Byte::validateString()
 	 * @codeCoverageIgnore
 	 */
 	public function isByte(string $string):bool{
