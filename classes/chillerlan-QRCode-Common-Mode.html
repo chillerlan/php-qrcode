@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Documentation</title>
+            <title>Documentation</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="../">
     <link rel="icon" href="images/favicon.ico"/>
@@ -54,14 +55,16 @@
 <aside class="phpdocumentor-column -four phpdocumentor-sidebar">
                     <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-                                    <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/chillerlan.html">chillerlan</a></h4>
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/chillerlan.html" class="">chillerlan</a>
+</h4>
     <ul class="phpdocumentor-list">
                     <li>
-                <a href="namespaces/chillerlan-qrcode.html">QRCode</a>
+                <a href="namespaces/chillerlan-qrcode.html" class="">QRCode</a>
                 
             </li>
                     <li>
-                <a href="namespaces/chillerlan-qrcodetest.html">QRCodeTest</a>
+                <a href="namespaces/chillerlan-qrcodetest.html" class="">QRCodeTest</a>
                 
             </li>
             </ul>
@@ -69,7 +72,9 @@
                         </section>
                 <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
-                                    <h4 class="phpdocumentor-sidebar__root-namespace"><a href="packages/Application.html">Application</a></h4>
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="packages/Application.html" class="">Application</a>
+</h4>
 
                         </section>
             
@@ -134,91 +139,91 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_ALPHANUM">ALPHANUM</a>
     <span>
-        &nbsp;= 0b10                    </span>
+        &nbsp;= 0b10                            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_BYTE">BYTE</a>
     <span>
-        &nbsp;= 0b100                    </span>
+        &nbsp;= 0b100                            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_ECI">ECI</a>
     <span>
-        &nbsp;= 0b111                    </span>
+        &nbsp;= 0b111                            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_FNC1_FIRST">FNC1_FIRST</a>
     <span>
-        &nbsp;= 0b101                    </span>
+        &nbsp;= 0b101                            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_FNC1_SECOND">FNC1_SECOND</a>
     <span>
-        &nbsp;= 0b1001                    </span>
+        &nbsp;= 0b1001                            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_INTERFACES">INTERFACES</a>
     <span>
-        &nbsp;= [self::NUMBER =&gt; chillerlanQRCodeDataNumber::class, self::ALPHANUM =&gt; chillerlanQRCodeDataAlphaNum::class, self::KANJI =&gt; chillerlanQRCodeDataKanji::class, self::BYTE =&gt; chillerlanQRCodeDataByte::class]                    </span>
+        &nbsp;= [self::NUMBER =&gt; \chillerlan\QRCode\Data\Number::class, self::ALPHANUM =&gt; \chillerlan\QRCode\Data\AlphaNum::class, self::KANJI =&gt; \chillerlan\QRCode\Data\Kanji::class, self::BYTE =&gt; \chillerlan\QRCode\Data\Byte::class]                            </span>
 </dt>
 <dd>Map of data mode =&gt; interface (detection order)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_KANJI">KANJI</a>
     <span>
-        &nbsp;= 0b1000                    </span>
+        &nbsp;= 0b1000                            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_LENGTH_BITS">LENGTH_BITS</a>
     <span>
-        &nbsp;= [self::NUMBER =&gt; [10, 12, 14], self::ALPHANUM =&gt; [9, 11, 13], self::BYTE =&gt; [8, 16, 16], self::KANJI =&gt; [8, 10, 12]]                    </span>
+        &nbsp;= [self::NUMBER =&gt; [10, 12, 14], self::ALPHANUM =&gt; [9, 11, 13], self::BYTE =&gt; [8, 16, 16], self::KANJI =&gt; [8, 10, 12]]                            </span>
 </dt>
 <dd>mode length bits for the version breakpoints 1-9, 10-26 and 27-40</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_NUMBER">NUMBER</a>
     <span>
-        &nbsp;= 0b1                    </span>
+        &nbsp;= 0b1                            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_STRCTURED_APPEND">STRCTURED_APPEND</a>
     <span>
-        &nbsp;= 0b11                    </span>
+        &nbsp;= 0b11                            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_TERMINATOR">TERMINATOR</a>
     <span>
-        &nbsp;= 0b0                    </span>
+        &nbsp;= 0b0                            </span>
 </dt>
 <dd></dd>
 
-                    <dt class="phpdocumentor-table-of-contents__entry -method -public">
+                        <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#method_getLengthBitsForMode">getLengthBitsForMode()</a>
     <span>
-                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
 <dd>returns the array of length bits for the given mode</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#method_getLengthBitsForVersion">getLengthBitsForVersion()</a>
     <span>
-                        &nbsp;: int    </span>
+                                &nbsp;: int    </span>
 </dt>
 <dd>returns the length bits for the version breakpoints 1-9, 10-26 and 27-40</dd>
 
@@ -248,7 +253,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">int</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">ALPHANUM</span>
     = <span class="phpdocumentor-signature__default-value">0b10</span>
 </code>
@@ -275,7 +280,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">int</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">BYTE</span>
     = <span class="phpdocumentor-signature__default-value">0b100</span>
 </code>
@@ -302,7 +307,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">int</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">ECI</span>
     = <span class="phpdocumentor-signature__default-value">0b111</span>
 </code>
@@ -329,7 +334,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">int</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">FNC1_FIRST</span>
     = <span class="phpdocumentor-signature__default-value">0b101</span>
 </code>
@@ -356,7 +361,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">int</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">FNC1_SECOND</span>
     = <span class="phpdocumentor-signature__default-value">0b1001</span>
 </code>
@@ -384,9 +389,9 @@
 
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">array&lt;string|int, string&gt;</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, string&gt;</span>
     <span class="phpdocumentor-signature__name">INTERFACES</span>
-    = <span class="phpdocumentor-signature__default-value">[self::NUMBER =&gt; chillerlanQRCodeDataNumber::class, self::ALPHANUM =&gt; chillerlanQRCodeDataAlphaNum::class, self::KANJI =&gt; chillerlanQRCodeDataKanji::class, self::BYTE =&gt; chillerlanQRCodeDataByte::class]</span>
+    = <span class="phpdocumentor-signature__default-value">[self::NUMBER =&gt; \chillerlan\QRCode\Data\Number::class, self::ALPHANUM =&gt; \chillerlan\QRCode\Data\AlphaNum::class, self::KANJI =&gt; \chillerlan\QRCode\Data\Kanji::class, self::BYTE =&gt; \chillerlan\QRCode\Data\Byte::class]</span>
 </code>
 
 
@@ -411,7 +416,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">int</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">KANJI</span>
     = <span class="phpdocumentor-signature__default-value">0b1000</span>
 </code>
@@ -439,7 +444,7 @@
 
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">LENGTH_BITS</span>
     = <span class="phpdocumentor-signature__default-value">[self::NUMBER =&gt; [10, 12, 14], self::ALPHANUM =&gt; [9, 11, 13], self::BYTE =&gt; [8, 16, 16], self::KANJI =&gt; [8, 10, 12]]</span>
 </code>
@@ -469,7 +474,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">int</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">NUMBER</span>
     = <span class="phpdocumentor-signature__default-value">0b1</span>
 </code>
@@ -496,7 +501,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">int</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">STRCTURED_APPEND</span>
     = <span class="phpdocumentor-signature__default-value">0b11</span>
 </code>
@@ -523,7 +528,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">int</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">TERMINATOR</span>
     = <span class="phpdocumentor-signature__default-value">0b0</span>
 </code>
