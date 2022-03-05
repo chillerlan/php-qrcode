@@ -37,7 +37,7 @@ jobs:
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "7.4"
+          php-version: ${{ matrix.php-version }}
           coverage: none
           tools: pecl
           extensions: ast, gd, imagick, json, mbstring
@@ -60,7 +60,7 @@ jobs:
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "7.4"
+          php-version: "8.0"
           coverage: none
           tools: phpDocumentor
           extensions: gd, imagick, json, mbstring
@@ -69,11 +69,11 @@ jobs:
         run: phpdoc --config=phpdoc.xml
 
       - name: "Publish Docs to gh-pages"
-        uses: JamesIves/github-pages-deploy-action@4.1.6
+        uses: JamesIves/github-pages-deploy-action@4.2.5
         with:
-          BRANCH: gh-pages
-          FOLDER: docs
-          CLEAN: true
+          branch: gh-pages
+          folder: docs
+          clean: true
 
   tests:
     name: "Unit Tests"
