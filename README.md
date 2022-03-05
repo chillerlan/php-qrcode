@@ -109,5 +109,5 @@ Parts of this code are [ported to php](https://github.com/khanamiryan/php-qrcode
 
 #### Trademark Notice
 
-The word "QR Code" is registered trademark of *DENSO WAVE INCORPORATED*<br>
-http://www.denso-wave.com/qrcode/faqpatent-e.html
+The word "QR Code" is a registered trademark of *DENSO WAVE INCORPORATED*<br>
+https://www.qrcode.com/en/faq.html#patentH2Title
