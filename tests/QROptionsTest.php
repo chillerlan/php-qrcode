@@ -178,4 +178,24 @@ final class QROptionsTest extends TestCase{
 		$this::assertNull($o->logoSpaceStartY);
 	}
 
+	/**
+	 * @return float[][]
+	 */
+	public function circleRadiusProvider():array{
+		return [
+			[0.0, 0.1],
+			[0.5, 0.5],
+			[1.5, 0.75],
+		];
+	}
+
+	/**
+	 * @dataProvider circleRadiusProvider
+	 */
+	public function testClampCircleRadius(float $value, float $expected):void{
+		$o = new QROptions(['circleRadius' => $value]);
+
+		$this::assertSame($expected, $o->circleRadius);
+	}
+
 }

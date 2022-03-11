@@ -475,4 +475,11 @@ trait QROptionsTrait{
 		$this->logoSpaceStartY = $value === null ? null : $this->clampLogoSpaceValue($value);
 	}
 
+	/**
+	 * clamp/set SVG circle radius
+	 */
+	protected function set_circleRadius(float $circleRadius):void{
+		$this->circleRadius = max(0.1, min(0.75, $circleRadius));
+	}
+
 }
