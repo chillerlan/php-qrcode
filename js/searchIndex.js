@@ -2791,6 +2791,11 @@ Search.appendIndex(
             "summary": "clamp\/set\u0020vertical\u0020logo\u0020space\u0020start",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_logoSpaceStartY"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_circleRadius\u0028\u0029",
+            "name": "set_circleRadius",
+            "summary": "clamp\/set\u0020SVG\u0020circle\u0020radius",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_circleRadius"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024version",
             "name": "version",
             "summary": "QR\u0020Code\u0020version\u0020number",
@@ -3815,6 +3820,16 @@ Search.appendIndex(
             "name": "testLogoSpaceStartNullable",
             "summary": "Tests\u0020if\u0020the\u0020optional\u0020logo\u0020space\u0020start\u0020values\u0020are\u0020nullable",
             "url": "classes/chillerlan-QRCodeTest-QROptionsTest.html#method_testLogoSpaceStartNullable"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QROptionsTest\u003A\u003AcircleRadiusProvider\u0028\u0029",
+            "name": "circleRadiusProvider",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-QROptionsTest.html#method_circleRadiusProvider"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QROptionsTest\u003A\u003AtestClampCircleRadius\u0028\u0029",
+            "name": "testClampCircleRadius",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-QROptionsTest.html#method_testClampCircleRadius"
         },                {
             "fqsen": "\\",
             "name": "\\",
