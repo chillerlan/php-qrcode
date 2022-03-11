@@ -216,7 +216,7 @@ class QRMarkup extends QROutputAbstract{
 			$r = $this->options->circleRadius;
 
 			return sprintf(
-				'M%1$s %2$s a%3$s %3$s 0 1 0 %4$s 0 a%3$s,%3$s 0 1 0 -%4$s 0Z',
+				'M%1$s %2$s a%3$s %3$s 0 1 0 %4$s 0 a%3$s %3$s 0 1 0 -%4$s 0Z',
 				($x + 0.5 - $r),
 				($y + 0.5),
 				$r,

@@ -36,7 +36,7 @@ final class EccLevel{
 	 * @var int [][]
 	 */
 	private const MAX_BITS = [
-	//  v  => [    L,     M,     Q,     H]  // modules
+	//	v  => [    L,     M,     Q,     H]  // modules
 		1  => [  152,   128,   104,    72], //  21
 		2  => [  272,   224,   176,   128], //  25
 		3  => [  440,   352,   272,   208], //  29
