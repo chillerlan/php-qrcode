@@ -219,11 +219,28 @@ trait QROptionsTrait{
 	protected bool $imageBase64 = true;
 
 	/**
-	 * toggle transparency, not supported by jpg
-	 */
+	 * toggle background transparency
+	 *
+	 * - In GdImage mode (png, gif) it sets imagecolortransparent() with QROptions::$imageTransparencyBG.
+	 *   It also sets the "normal" background color without transparency switch.
+	 *
+	 * - In SVG mode (as of v5), it won't render the "light" modules,
+	 *   as opacity/transparency can easily be set with css properties.
+	 *
+	 * - It has no effect in the FPDF and Imagick output modules.
+	 *
+	 * @see \chillerlan\QRCode\QROptions::$imageTransparencyBG
+	 * @see https://github.com/chillerlan/php-qrcode/discussions/121
+ 	 */
 	protected bool $imageTransparent = true;
 
 	/**
+	 * Sets the background color in GD mode.
+	 *
+	 * When QROptions::$imageTransparent is set to true, this color is set as transparent in imagecolortransparent()
+	 *
+	 * @see \chillerlan\QRCode\Output\QRGdImage
+	 * @see \chillerlan\QRCode\QROptions::$imageTransparent
 	 * @see imagecolortransparent()
 	 *
 	 * [R, G, B]
