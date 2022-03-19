@@ -2948,12 +2948,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imageTransparent",
             "name": "imageTransparent",
-            "summary": "toggle\u0020transparency,\u0020not\u0020supported\u0020by\u0020jpg",
+            "summary": "toggle\u0020background\u0020transparency",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparent"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imageTransparencyBG",
             "name": "imageTransparencyBG",
-            "summary": "",
+            "summary": "Sets\u0020the\u0020background\u0020color\u0020in\u0020GD\u0020mode.",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparencyBG"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024pngCompression",

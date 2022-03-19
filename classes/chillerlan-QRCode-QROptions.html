@@ -216,14 +216,14 @@
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd></dd>
+<dd>Sets the background color in GD mode.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparent">$imageTransparent</a>
     <span>
                         &nbsp;: bool            </span>
 </dt>
-<dd>toggle transparency, not supported by jpg</dd>
+<dd>toggle background transparency</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickBG">$imagickBG</a>
@@ -603,7 +603,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">293</span>
+    <span class="phpdocumentor-element-found-in__line">310</span>
 
     </aside>
 
@@ -897,7 +897,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">263</span>
+    <span class="phpdocumentor-element-found-in__line">280</span>
 
     </aside>
 
@@ -979,18 +979,21 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">231</span>
+    <span class="phpdocumentor-element-found-in__line">248</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Sets the background color in GD mode.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">$imageTransparencyBG</span>
      = <span class="phpdocumentor-signature__default-value">[255, 255, 255]</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>When QROptions::$imageTransparent is set to true, this color is set as transparent in imagecolortransparent()</p>
+</section>
+
         <section class="phpdocumentor-description"></section>
 
     
@@ -1000,6 +1003,22 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QRGdImage.html"><abbr title="\chillerlan\QRCode\Output\QRGdImage">QRGdImage</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$imageTransparent">QROptions::$imageTransparent</abbr></span>
+                                        
+                                             
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1028,11 +1047,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">224</span>
+    <span class="phpdocumentor-element-found-in__line">235</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">toggle transparency, not supported by jpg</p>
+        <p class="phpdocumentor-summary">toggle background transparency</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1040,10 +1059,46 @@
     <span class="phpdocumentor-signature__name">$imageTransparent</span>
      = <span class="phpdocumentor-signature__default-value">true</span></code>
 
-    
+        <section class="phpdocumentor-description"><ul>
+<li>
+<p>In GdImage mode (png, gif) it sets imagecolortransparent() with QROptions::$imageTransparencyBG.
+It also sets the &quot;normal&quot; background color without transparency switch.</p>
+</li>
+<li>
+<p>In SVG mode (as of v5), it won't render the &quot;light&quot; modules,
+as opacity/transparency can easily be set with css properties.</p>
+</li>
+<li>
+<p>It has no effect in the FPDF and Imagick output modules.</p>
+</li>
+</ul>
+</section>
+
         <section class="phpdocumentor-description"></section>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$imageTransparencyBG">QROptions::$imageTransparencyBG</abbr></span>
+                                        
+                                             
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/discussions/121"><abbr title="https://github.com/chillerlan/php-qrcode/discussions/121">https://github.com/chillerlan/php-qrcode/discussions/121</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                        </dl>
 
 </article>
                     <article
@@ -1062,7 +1117,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">256</span>
+    <span class="phpdocumentor-element-found-in__line">273</span>
 
     </aside>
 
@@ -1110,7 +1165,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">249</span>
+    <span class="phpdocumentor-element-found-in__line">266</span>
 
     </aside>
 
@@ -1166,7 +1221,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">241</span>
+    <span class="phpdocumentor-element-found-in__line">258</span>
 
     </aside>
 
@@ -1247,7 +1302,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">303</span>
+    <span class="phpdocumentor-element-found-in__line">320</span>
 
     </aside>
 
@@ -1281,7 +1336,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">308</span>
+    <span class="phpdocumentor-element-found-in__line">325</span>
 
     </aside>
 
@@ -1315,7 +1370,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">313</span>
+    <span class="phpdocumentor-element-found-in__line">330</span>
 
     </aside>
 
@@ -1349,7 +1404,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">298</span>
+    <span class="phpdocumentor-element-found-in__line">315</span>
 
     </aside>
 
@@ -1487,7 +1542,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">271</span>
+    <span class="phpdocumentor-element-found-in__line">288</span>
 
     </aside>
 
@@ -1601,7 +1656,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">236</span>
+    <span class="phpdocumentor-element-found-in__line">253</span>
 
     </aside>
 
@@ -1684,7 +1739,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">281</span>
+    <span class="phpdocumentor-element-found-in__line">298</span>
 
     </aside>
 
@@ -1718,7 +1773,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">288</span>
+    <span class="phpdocumentor-element-found-in__line">305</span>
 
     </aside>
 
@@ -1754,7 +1809,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">276</span>
+    <span class="phpdocumentor-element-found-in__line">293</span>
 
     </aside>
 
@@ -2420,7 +2475,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">436</span>
+    <span class="phpdocumentor-element-found-in__line">453</span>
 
     </aside>
 
@@ -2467,7 +2522,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">446</span>
+    <span class="phpdocumentor-element-found-in__line">463</span>
 
     </aside>
 
@@ -2511,7 +2566,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">481</span>
+    <span class="phpdocumentor-element-found-in__line">498</span>
 
     </aside>
 
@@ -2555,7 +2610,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">345</span>
+    <span class="phpdocumentor-element-found-in__line">362</span>
 
     </aside>
 
@@ -2613,7 +2668,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">414</span>
+    <span class="phpdocumentor-element-found-in__line">431</span>
 
     </aside>
 
@@ -2670,7 +2725,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">370</span>
+    <span class="phpdocumentor-element-found-in__line">387</span>
 
     </aside>
 
@@ -2728,7 +2783,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">460</span>
+    <span class="phpdocumentor-element-found-in__line">477</span>
 
     </aside>
 
@@ -2772,7 +2827,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">467</span>
+    <span class="phpdocumentor-element-found-in__line">484</span>
 
     </aside>
 
@@ -2816,7 +2871,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">474</span>
+    <span class="phpdocumentor-element-found-in__line">491</span>
 
     </aside>
 
@@ -2860,7 +2915,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">453</span>
+    <span class="phpdocumentor-element-found-in__line">470</span>
 
     </aside>
 
@@ -2904,7 +2959,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">357</span>
+    <span class="phpdocumentor-element-found-in__line">374</span>
 
     </aside>
 
@@ -2948,7 +3003,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">427</span>
+    <span class="phpdocumentor-element-found-in__line">444</span>
 
     </aside>
 
@@ -2992,7 +3047,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">401</span>
+    <span class="phpdocumentor-element-found-in__line">418</span>
 
     </aside>
 
@@ -3036,7 +3091,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">336</span>
+    <span class="phpdocumentor-element-found-in__line">353</span>
 
     </aside>
 
@@ -3080,7 +3135,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">329</span>
+    <span class="phpdocumentor-element-found-in__line">346</span>
 
     </aside>
 
@@ -3124,7 +3179,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">318</span>
+    <span class="phpdocumentor-element-found-in__line">335</span>
 
     </aside>
 
