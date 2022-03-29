@@ -163,7 +163,14 @@ trait QROptionsTrait{
 	/**
 	 * specify whether to draw the modules as filled circles
 	 *
+	 * a note for GDImage output:
+	 *
+	 * if QROptions::$scale is less or equal than 20, the image will be upscaled internally, then the modules will be drawn
+	 * using imagefilledellipse() and then scaled back to the expected size using IMG_BICUBIC which in turn produces
+	 * unexpected outcomes in combination with transparency - to avoid this, set scale to a value greater than 20.
+	 *
 	 * @see https://github.com/chillerlan/php-qrcode/issues/23
+	 * @see https://github.com/chillerlan/php-qrcode/discussions/122
 	 */
 	protected bool $drawCircularModules = false;
 
