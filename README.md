@@ -83,10 +83,13 @@ Wait, what was that? Please again, slower! See [Advanced usage](https://github.c
 ### Framework Integration
 - Drupal:
   - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
+- Symfony
+	- [phpqrcode-bundle](https://github.com/jonasarts/phpqrcode-bundle)
 - WordPress:
   - [`wp-two-factor-auth`](https://github.com/sjinks/wp-two-factor-auth)
   - [`simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
   - [`wordpress-seo`](https://github.com/Yoast/wordpress-seo)
+  - [`floating-share-button`](https://github.com/qriouslad/floating-share-button)
 - WoltLab Suite
   - [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)
 - [Appwrite](https://github.com/appwrite/appwrite)
