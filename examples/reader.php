@@ -8,11 +8,13 @@
  * @license      MIT
  */
 
+namespace chillerlan\QRCodeExamples;
+
 use chillerlan\QRCode\{QRCode, QROptions};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-/** @var chillerlan\Settings\SettingsContainerInterface $options */
+/** @var \chillerlan\Settings\SettingsContainerInterface $options */
 $options = new QROptions;
 $options->readerUseImagickIfAvailable = false;
 $options->readerGrayscale = true;
