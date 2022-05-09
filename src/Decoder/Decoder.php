@@ -318,7 +318,7 @@ final class Decoder{
 
 		return new DecoderResult([
 			'rawBytes'                 => $bytes,
-			'text'                     => $result,
+			'data'                     => $result,
 			'version'                  => $version,
 			'eccLevel'                 => $ecLevel,
 			'structuredAppendParity'   => $parityData,

@@ -97,7 +97,9 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 			->addByteSegment($byte)
 		;
 
-		$this::assertSame($numeric.$alphanum.$kanji.$byte, (string)$qrcode->readFromBlob($qrcode->render()));
+		$result = $qrcode->readFromBlob($qrcode->render());
+
+		$this::assertSame($numeric.$alphanum.$kanji.$byte, $result->data);
 	}
 
 	public function dataTestProvider():Generator{
@@ -140,7 +142,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 			$this::markTestSkipped(sprintf('skipped version %s%s: %s', $version, $ecc, $e->getMessage()));
 		}
 
-		$this::assertSame($expected, $result->text);
+		$this::assertSame($expected, $result->data);
 		$this::assertSame($version->getVersionNumber(), $result->version->getVersionNumber());
 		$this::assertSame($ecc->getLevel(), $result->eccLevel->getLevel());
 	}

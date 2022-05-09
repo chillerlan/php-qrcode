@@ -11,54 +11,69 @@
 
 namespace chillerlan\QRCode\Decoder;
 
-use chillerlan\Settings\SettingsContainerAbstract;
-use chillerlan\QRCode\Common\{EccLevel, Version};
+use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
+use function property_exists;
 
 /**
  * Encapsulates the result of decoding a matrix of bits. This typically
  * applies to 2D barcode formats. For now it contains the raw bytes obtained,
  * as well as a String interpretation of those bytes, if applicable.
  *
- * @property int[]                              $rawBytes
- * @property string                             $text
- * @property \chillerlan\QRCode\Common\Version  $version
- * @property \chillerlan\QRCode\Common\EccLevel $eccLevel
- * @property int                                $structuredAppendParity
- * @property int                                $structuredAppendSequence
+ * @property int[]                                 $rawBytes
+ * @property string                                $data
+ * @property \chillerlan\QRCode\Common\Version     $version
+ * @property \chillerlan\QRCode\Common\EccLevel    $eccLevel
+ * @property \chillerlan\QRCode\Common\MaskPattern $maskPattern
+ * @property int                                   $structuredAppendParity
+ * @property int                                   $structuredAppendSequence
  */
-final class DecoderResult extends SettingsContainerAbstract{
+final class DecoderResult{
 
-	protected array    $rawBytes;
-	protected string   $text;
-	protected Version  $version;
-	protected EccLevel $eccLevel;
-	protected int      $structuredAppendParity = -1;
-	protected int      $structuredAppendSequence = -1;
-
-	/**
-	 * @inheritDoc
-	 */
-	public function __set($property, $value):void{
-		// noop, read-only
-	}
+	protected array       $rawBytes;
+	protected string      $data;
+	protected Version     $version;
+	protected EccLevel    $eccLevel;
+	protected MaskPattern $maskPattern;
+	protected int         $structuredAppendParity = -1;
+	protected int         $structuredAppendSequence = -1;
 
 	/**
-	 * @inheritDoc
+	 * DecoderResult constructor.
 	 */
-	public function __toString():string{
-		return $this->text;
-	}
+	public function __construct(iterable $properties = null){
 
-	/**
-	 * @inheritDoc
-	 */
-	public function fromIterable(iterable $properties):self{
+		if(!empty($properties)){
 
-		foreach($properties as $key => $value){
-			parent::__set($key, $value);
+			foreach($properties as $property => $value){
+
+				if(!property_exists($this, $property)){
+					continue;
+				}
+
+				$this->{$property} = $value;
+			}
+
 		}
 
-		return $this;
+	}
+
+	/**
+	 * @return mixed|null
+	 */
+	public function __get(string $property){
+
+		if(property_exists($this, $property)){
+			return $this->{$property};
+		}
+
+		return null;
+	}
+
+	/**
+	 *
+	 */
+	public function __toString():string{
+		return $this->data;
 	}
 
 	/**
