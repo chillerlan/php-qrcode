@@ -34,28 +34,28 @@ class QRCode{
 	public const MASK_PATTERN_AUTO = -1;
 
 	/**
-	 * @deprecated 5.0.0
+	 * @deprecated 5.0.0 use EccLevel::L instead
 	 * @see \chillerlan\QRCode\Common\EccLevel::L
 	 * @var int
 	 */
 	public const ECC_L = EccLevel::L;
 
 	/**
-	 * @deprecated 5.0.0
+	 * @deprecated 5.0.0 use EccLevel::M instead
 	 * @see \chillerlan\QRCode\Common\EccLevel::M
 	 * @var int
 	 */
 	public const ECC_M = EccLevel::M;
 
 	/**
-	 * @deprecated 5.0.0
+	 * @deprecated 5.0.0 use EccLevel::Q instead
 	 * @see \chillerlan\QRCode\Common\EccLevel::Q
 	 * @var int
 	 */
 	public const ECC_Q = EccLevel::Q;
 
 	/**
-	 * @deprecated 5.0.0
+	 * @deprecated 5.0.0 use EccLevel::H instead
 	 * @see \chillerlan\QRCode\Common\EccLevel::H
 	 * @var int
 	 */
@@ -223,7 +223,7 @@ class QRCode{
 	/**
 	 * checks if a string qualifies as numeric (convenience method)
 	 *
-	 * @deprecated 5.0.0
+	 * @deprecated 5.0.0 use Number::validateString() instead
 	 * @see \chillerlan\QRCode\Data\Number::validateString()
 	 * @codeCoverageIgnore
 	 */
@@ -234,7 +234,7 @@ class QRCode{
 	/**
 	 * checks if a string qualifies as alphanumeric (convenience method)
 	 *
-	 * @deprecated 5.0.0
+	 * @deprecated 5.0.0 use AlphaNum::validateString() instead
 	 * @see \chillerlan\QRCode\Data\AlphaNum::validateString()
 	 * @codeCoverageIgnore
 	 */
@@ -245,7 +245,7 @@ class QRCode{
 	/**
 	 * checks if a string qualifies as Kanji (convenience method)
 	 *
-	 * @deprecated 5.0.0
+	 * @deprecated 5.0.0 use Kanji::validateString() instead
 	 * @see \chillerlan\QRCode\Data\Kanji::validateString()
 	 * @codeCoverageIgnore
 	 */
@@ -256,7 +256,7 @@ class QRCode{
 	/**
 	 * a dummy (convenience method)
 	 *
-	 * @deprecated 5.0.0
+	 * @deprecated 5.0.0 use Byte::validateString() instead
 	 * @see \chillerlan\QRCode\Data\Byte::validateString()
 	 * @codeCoverageIgnore
 	 */
