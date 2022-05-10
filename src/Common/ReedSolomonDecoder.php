@@ -11,7 +11,7 @@
 
 namespace chillerlan\QRCode\Common;
 
-use RuntimeException;
+use chillerlan\QRCode\QRCodeException;
 use function array_fill, array_reverse, count;
 
 /**
@@ -85,7 +85,7 @@ final class ReedSolomonDecoder{
 	 * @param int   $numEccCodewords number of error-correction codewords available
 	 *
 	 * @return int[]
-	 * @throws \RuntimeException if decoding fails for any reason
+	 * @throws \chillerlan\QRCode\QRCodeException if decoding fails for any reason
 	 */
 	private function decodeWords(array $received, int $numEccCodewords):array{
 		$poly                 = new GenericGFPoly($received);
@@ -119,7 +119,7 @@ final class ReedSolomonDecoder{
 			$position = $receivedCount - 1 - GF256::log($errorLocations[$i]);
 
 			if($position < 0){
-				throw new RuntimeException('Bad error location');
+				throw new QRCodeException('Bad error location');
 			}
 
 			$received[$position] ^= $errorMagnitudes[$i];
@@ -130,7 +130,7 @@ final class ReedSolomonDecoder{
 
 	/**
 	 * @return \chillerlan\QRCode\Common\GenericGFPoly[] [sigma, omega]
-	 * @throws \RuntimeException
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	private function runEuclideanAlgorithm(GenericGFPoly $a, GenericGFPoly $b, int $R):array{
 		// Assume a's degree is >= b's
@@ -158,14 +158,14 @@ final class ReedSolomonDecoder{
 			$t = $q->multiply($tLast)->addOrSubtract($tLastLast);
 
 			if($r->getDegree() >= $rLast->getDegree()){
-				throw new RuntimeException('Division algorithm failed to reduce polynomial?');
+				throw new QRCodeException('Division algorithm failed to reduce polynomial?');
 			}
 		}
 
 		$sigmaTildeAtZero = $t->getCoefficient(0);
 
 		if($sigmaTildeAtZero === 0){
-			throw new RuntimeException('sigmaTilde(0) was zero');
+			throw new QRCodeException('sigmaTilde(0) was zero');
 		}
 
 		$inverse = GF256::inverse($sigmaTildeAtZero);
@@ -174,7 +174,7 @@ final class ReedSolomonDecoder{
 	}
 
 	/**
-	 * @throws \RuntimeException
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	private function findErrorLocations(GenericGFPoly $errorLocator):array{
 		// This is a direct application of Chien's search
@@ -195,7 +195,7 @@ final class ReedSolomonDecoder{
 		}
 
 		if($e !== $numErrors){
-			throw new RuntimeException('Error locator degree does not match number of roots');
+			throw new QRCodeException('Error locator degree does not match number of roots');
 		}
 
 		return $result;

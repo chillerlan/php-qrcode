@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCode\Common;
 
-use InvalidArgumentException;
+use chillerlan\QRCode\QRCodeException;
 use function count, floor, min;
 
 /**
@@ -108,12 +108,12 @@ final class BitBuffer{
 	 * @param int $numBits number of bits to read
 	 *
 	 * @return int representing the bits read. The bits will appear as the least-significant bits of the int
-	 * @throws InvalidArgumentException if numBits isn't in [1,32] or more than is available
+	 * @throws \chillerlan\QRCode\QRCodeException if numBits isn't in [1,32] or more than is available
 	 */
 	public function read(int $numBits):int{
 
 		if($numBits < 1 || $numBits > 32 || $numBits > $this->available()){
-			throw new InvalidArgumentException('invalid $numBits: '.$numBits);
+			throw new QRCodeException('invalid $numBits: '.$numBits);
 		}
 
 		$result = 0;

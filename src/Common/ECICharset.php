@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCode\Common;
 
-use InvalidArgumentException;
+use chillerlan\QRCode\QRCodeException;
 use function array_key_exists;
 
 /**
@@ -93,12 +93,12 @@ final class ECICharset{
 	private int $charsetID;
 
 	/**
-	 *
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public function __construct(int $charsetID){
 
 		if(!array_key_exists($charsetID, self::MB_ENCODINGS)){
-			throw new InvalidArgumentException('invalid charset id: '.$charsetID);
+			throw new QRCodeException('invalid charset id: '.$charsetID);
 		}
 
 		$this->charsetID = $charsetID;

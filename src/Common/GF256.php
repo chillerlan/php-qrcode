@@ -11,7 +11,7 @@
 
 namespace chillerlan\QRCode\Common;
 
-use InvalidArgumentException;
+use chillerlan\QRCode\QRCodeException;
 
 use function array_fill;
 
@@ -84,11 +84,12 @@ final class GF256{
 
 	/**
 	 * @return GenericGFPoly the monomial representing coefficient * x^degree
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public static function buildMonomial(int $degree, int $coefficient):GenericGFPoly{
 
 		if($degree < 0){
-			throw new InvalidArgumentException();
+			throw new QRCodeException('degree < 0');
 		}
 
 		$coefficients    = array_fill(0, $degree + 1, 0);
@@ -114,11 +115,12 @@ final class GF256{
 
 	/**
 	 * @return int base 2 log of a in GF(size)
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public static function log(int $a):int{
 
 		if($a < 1){
-			throw new InvalidArgumentException();
+			throw new QRCodeException('$a < 1');
 		}
 
 		return self::logTable[$a];
@@ -126,11 +128,12 @@ final class GF256{
 
 	/**
 	 * @return int multiplicative inverse of a
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public static function inverse(int $a):int{
 
 		if($a === 0){
-			throw new InvalidArgumentException();
+			throw new QRCodeException('$a === 0');
 		}
 
 		return self::expTable[256 - self::logTable[$a] - 1];

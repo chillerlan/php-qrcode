@@ -11,7 +11,7 @@
 
 namespace chillerlan\QRCode\Common;
 
-use InvalidArgumentException;
+use chillerlan\QRCode\QRCodeException;
 
 use function array_fill, array_slice, array_splice, count;
 
@@ -33,18 +33,18 @@ final class GenericGFPoly{
 	 *                                 from most significant (highest-power term) coefficient to least significant
 	 * @param int|null   $degree
 	 *
-	 * @throws \InvalidArgumentException if argument is null or empty, or if leading coefficient is 0 and this is not a
-	 *                                   constant polynomial (that is, it is not the monomial "0")
+	 * @throws \chillerlan\QRCode\QRCodeException if argument is null or empty, or if leading coefficient is 0 and this
+	 *                                            is not a constant polynomial (that is, it is not the monomial "0")
 	 */
 	public function __construct(array $coefficients, int $degree = null){
 		$degree ??= 0;
 
 		if(empty($coefficients)){
-			throw new InvalidArgumentException('arg $coefficients is empty');
+			throw new QRCodeException('arg $coefficients is empty');
 		}
 
 		if($degree < 0){
-			throw new InvalidArgumentException('negative degree');
+			throw new QRCodeException('negative degree');
 		}
 
 		$coefficientsLength = count($coefficients);
@@ -138,11 +138,12 @@ final class GenericGFPoly{
 
 	/**
 	 * @return \chillerlan\QRCode\Common\GenericGFPoly[] [quotient, remainder]
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public function divide(GenericGFPoly $other):array{
 
 		if($other->isZero()){
-			throw new InvalidArgumentException('Division by 0');
+			throw new QRCodeException('Division by 0');
 		}
 
 		$quotient  = new self([0]);
@@ -185,12 +186,12 @@ final class GenericGFPoly{
 	}
 
 	/**
-	 *
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public function multiplyByMonomial(int $degree, int $coefficient):self{
 
 		if($degree < 0){
-			throw new InvalidArgumentException();
+			throw new QRCodeException('degree < 0');
 		}
 
 		if($coefficient === 0){
