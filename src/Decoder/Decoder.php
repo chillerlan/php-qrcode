@@ -12,7 +12,7 @@
 namespace chillerlan\QRCode\Decoder;
 
 use Throwable;
-use chillerlan\QRCode\Common\{BitBuffer, EccLevel, Mode, ReedSolomonDecoder, Version};
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, FormatInformation, Mode, ReedSolomonDecoder, Version};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number};
 use chillerlan\QRCode\Detector\Detector;
 use function count, array_fill, mb_convert_encoding, mb_detect_encoding;
@@ -26,6 +26,10 @@ use function count, array_fill, mb_convert_encoding, mb_detect_encoding;
 final class Decoder{
 
 #	private const GB2312_SUBSET = 1;
+
+	private ?Version $version = null;
+	private ?FormatInformation $formatInfo = null;
+	private EccLevel $eccLevel;
 
 	/**
 	 * Decodes a QR Code represented as a BitMatrix.
@@ -70,22 +74,18 @@ final class Decoder{
 	 */
 	private function decodeMatrix(BitMatrix $bitMatrix):DecoderResult{
 		// Read raw codewords
-		$rawCodewords = $bitMatrix->readCodewords();
-		$version      = $bitMatrix->getVersion();
-		$formatInfo   = $bitMatrix->getFormatInfo();
+		$rawCodewords     = $bitMatrix->readCodewords();
+		$this->version    = $bitMatrix->getVersion();
+		$this->formatInfo = $bitMatrix->getFormatInfo();
 
-		// technically this shouldn't happen as the respective read meathods would throw first
-		if($version === null || $formatInfo === null){
-			throw new QRCodeDecoderException('unable to read version or ecc level');
+		if($this->version === null || $this->formatInfo === null){
+			throw new QRCodeDecoderException('unable to read version or format info'); // @codeCoverageIgnore
 		}
 
-		$eccLevel = $formatInfo->getErrorCorrectionLevel();
-
-		// Separate into data blocks
-		$dataBlocks = $this->getDataBlocks($rawCodewords, $version, $eccLevel);
-
-		$resultBytes  = [];
-		$resultOffset = 0;
+		$this->eccLevel = $this->formatInfo->getErrorCorrectionLevel();
+		$dataBlocks     = $this->getDataBlocks($rawCodewords);
+		$resultBytes    = [];
+		$resultOffset   = 0;
 
 		// Error-correct and copy data blocks together into a stream of bytes
 		foreach($dataBlocks as $dataBlock){
@@ -99,7 +99,7 @@ final class Decoder{
 		}
 
 		// Decode the contents of that stream of bytes
-		return $this->decodeBitStream($resultBytes, $version, $eccLevel);
+		return $this->decodeBitStream($resultBytes);
 	}
 
 	/**
@@ -107,22 +107,16 @@ final class Decoder{
 	 * That is, the first byte of data block 1 to n is written, then the second bytes, and so on. This
 	 * method will separate the data into original blocks.
 	 *
-	 * @param array                              $rawCodewords bytes as read directly from the QR Code
-	 * @param \chillerlan\QRCode\Common\Version  $version      version of the QR Code
-	 * @param \chillerlan\QRCode\Common\EccLevel $eccLevel     error-correction level of the QR Code
+	 * @param array $rawCodewords bytes as read directly from the QR Code
 	 *
 	 * @return array DataBlocks containing original bytes, "de-interleaved" from representation in the QR Code
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
-	private function getDataBlocks(array $rawCodewords, Version $version, EccLevel $eccLevel):array{
-
-		if(count($rawCodewords) !== $version->getTotalCodewords()){
-			throw new QRCodeDecoderException('$rawCodewords differ from total codewords for version');
-		}
+	private function getDataBlocks(array $rawCodewords):array{
 
 		// Figure out the number and size of data blocks used by this version and
 		// error correction level
-		[$numEccCodewords, $eccBlocks] = $version->getRSBlocks($eccLevel);
+		[$numEccCodewords, $eccBlocks] = $this->version->getRSBlocks($this->eccLevel);
 
 		// Now establish DataBlocks of the appropriate size and number of data codewords
 		$result          = [];//new DataBlock[$totalBlocks];
@@ -210,11 +204,11 @@ final class Decoder{
 	/**
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
-	private function decodeBitStream(array $bytes, Version $version, EccLevel $ecLevel):DecoderResult{
+	private function decodeBitStream(array $bytes):DecoderResult{
 		$bits           = new BitBuffer($bytes);
 		$symbolSequence = -1;
 		$parityData     = -1;
-		$versionNumber  = $version->getVersionNumber();
+		$versionNumber  = $this->version->getVersionNumber();
 
 		$result      = '';
 		$eciCharset  = null;
@@ -319,8 +313,9 @@ final class Decoder{
 		return new DecoderResult([
 			'rawBytes'                 => $bytes,
 			'data'                     => $result,
-			'version'                  => $version,
-			'eccLevel'                 => $ecLevel,
+			'version'                  => $this->version,
+			'eccLevel'                 => $this->eccLevel,
+			'maskPattern'              => $this->formatInfo->getMaskPattern(),
 			'structuredAppendParity'   => $parityData,
 			'structuredAppendSequence' => $symbolSequence
 		]);
