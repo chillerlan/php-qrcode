@@ -1,4 +1,7 @@
-Copyright 2007 ZXing authors
+Parts of this code are ported to php from the ZXing project
+and licensed under the Apache License, Version 2.0.
+
+Copyright 2007 ZXing authors (https://github.com/zxing/zxing)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
