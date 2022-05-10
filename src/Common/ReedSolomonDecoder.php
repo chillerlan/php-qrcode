@@ -12,7 +12,7 @@
 namespace chillerlan\QRCode\Common;
 
 use RuntimeException;
-use function array_fill, count;
+use function array_fill, array_reverse, count;
 
 /**
  * Implements Reed-Solomon decoding, as the name implies.
@@ -48,24 +48,23 @@ final class ReedSolomonDecoder{
 	public function decode(array $received, int $numEccCodewords):array{
 		$poly                 = new GenericGFPoly($received);
 		$syndromeCoefficients = [];
-		$noError              = true;
+		$error                = false;
 
-		for($i = 0, $j = $numEccCodewords - 1; $i < $numEccCodewords; $i++, $j--){
-			$eval                     = $poly->evaluateAt(GF256::exp($i));
-			$syndromeCoefficients[$j] = $eval;
+		for($i = 0; $i < $numEccCodewords; $i++){
+			$syndromeCoefficients[$i] = $poly->evaluateAt(GF256::exp($i));
 
-			if($eval !== 0){
-				$noError = false;
+			if($syndromeCoefficients[$i] !== 0){
+				$error = true;
 			}
 		}
 
-		if($noError){
+		if(!$error){
 			return $received;
 		}
 
 		[$sigma, $omega] = $this->runEuclideanAlgorithm(
 			GF256::buildMonomial($numEccCodewords, 1),
-			new GenericGFPoly($syndromeCoefficients),
+			new GenericGFPoly(array_reverse($syndromeCoefficients)),
 			$numEccCodewords
 		);
 
