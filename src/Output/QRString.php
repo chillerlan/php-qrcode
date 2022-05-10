@@ -22,8 +22,6 @@ use function implode, is_string, json_encode;
  */
 class QRString extends QROutputAbstract{
 
-	protected string $defaultMode = QRCode::OUTPUT_STRING_TEXT;
-
 	/**
 	 * @inheritDoc
 	 */

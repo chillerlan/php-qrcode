@@ -130,6 +130,8 @@ final class Detector{
 	 * See #sizeOfBlackWhiteBlackRun(int, int, int, int); computes the total width of
 	 * a finder pattern by looking for a black-white-black run from the center in the direction
 	 * of another po$(another finder pattern center), and in the opposite direction too.
+	 *
+	 * @noinspection DuplicatedCode
 	 */
 	private function sizeOfBlackWhiteBlackRunBothWays(float $fromX, float $fromY, float $toX, float $toY):float{
 		$result    = $this->sizeOfBlackWhiteBlackRun((int)$fromX, (int)$fromY, (int)$toX, (int)$toY);
@@ -176,7 +178,7 @@ final class Detector{
 	 */
 	private function sizeOfBlackWhiteBlackRun(int $fromX, int $fromY, int $toX, int $toY):float{
 		// Mild variant of Bresenham's algorithm;
-		// see http://en.wikipedia.org/wiki/Bresenham's_line_algorithm
+		// @see https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
 		$steep = abs($toY - $fromY) > abs($toX - $fromX);
 
 		if($steep){

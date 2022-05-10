@@ -152,6 +152,7 @@ final class GridSampler{
 					}
 				}
 			}
+			// @codeCoverageIgnoreStart
 			catch(Throwable $aioobe){//ArrayIndexOutOfBoundsException
 				// This feels wrong, but, sometimes if the finder patterns are misidentified, the resulting
 				// transform gets "twisted" such that it maps a straight line of points to a set of points
@@ -162,6 +163,7 @@ final class GridSampler{
 				// catching and wrapping ArrayIndexOutOfBoundsException.
 				throw new QRCodeDetectorException('ArrayIndexOutOfBoundsException');
 			}
+			// @codeCoverageIgnoreEnd
 
 		}
 

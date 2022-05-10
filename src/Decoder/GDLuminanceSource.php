@@ -44,7 +44,7 @@ class GDLuminanceSource extends LuminanceSourceAbstract{
 			(PHP_MAJOR_VERSION >= 8 && !$gdImage instanceof \GdImage)
 			|| (PHP_MAJOR_VERSION < 8 && (!is_resource($gdImage) || get_resource_type($gdImage) !== 'gd'))
 		){
-			throw new QRCodeDecoderException('Invalid GD image source.');
+			throw new QRCodeDecoderException('Invalid GD image source.'); // @codeCoverageIgnore
 		}
 
 		parent::__construct(imagesx($gdImage), imagesy($gdImage), $options);

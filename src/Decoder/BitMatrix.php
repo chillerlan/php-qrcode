@@ -223,9 +223,9 @@ final class BitMatrix{
 
 	/**
 	 * Prepare the parser for a mirrored operation.
-	 * This flag has effect only on the #readFormatInformation() and the
-	 * #readVersion(). Before proceeding with #readCodewords() the
-	 * #mirror() method should be called.
+	 * This flag has effect only on the readFormatInformation() and the
+	 * readVersion() methods. Before proceeding with readCodewords() the
+	 * mirror() method should be called.
 	 *
 	 * @param bool $mirror Whether to read version and format information mirrored.
 	 */
@@ -426,6 +426,7 @@ final class BitMatrix{
 	 * @return \chillerlan\QRCode\Common\Version                 encapsulating the QR Code's version
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException if both version information locations cannot be parsed as
 	 *                                                           the valid encoding of version information
+	 * @noinspection DuplicatedCode
 	 */
 	private function readVersion():Version{
 

@@ -20,8 +20,6 @@ use function implode, is_string, ksort, sprintf, strip_tags, trim;
  */
 class QRMarkup extends QROutputAbstract{
 
-	protected string $defaultMode = QRCode::OUTPUT_MARKUP_SVG;
-
 	/**
 	 * @inheritDoc
 	 */

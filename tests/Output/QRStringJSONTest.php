@@ -24,7 +24,7 @@ final class QRStringJSONTest extends QRStringTestAbstract{
 	 * @inheritDoc
 	 */
 	protected function setUp():void{
-		// just in case someone's running this on some weird disto that's been compiled without ext-json
+		// just in case someone's running this on some weird distro that's been compiled without ext-json
 		if(!extension_loaded('json')){
 			$this::markTestSkipped('ext-json not loaded');
 		}
@@ -34,7 +34,7 @@ final class QRStringJSONTest extends QRStringTestAbstract{
 
 
 	public function testSetModuleValues():void{
-		$this::markTestSkipped('N/A');
+		$this::markTestSkipped('N/A (JSON test)');
 	}
 
 }

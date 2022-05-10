@@ -149,6 +149,7 @@ final class PerspectiveTransform{
 	public function transformPoints(array &$xValues, array &$yValues = null):void{
 		$max = count($xValues);
 
+		// @codeCoverageIgnoreStart (unused)
 		if($yValues !== null){
 
 			for($i = 0; $i < $max; $i++){
@@ -161,6 +162,7 @@ final class PerspectiveTransform{
 
 			return;
 		}
+		// @codeCoverageIgnoreEnd
 
 		for($i = 0; $i < $max; $i += 2){
 			$x               = $xValues[$i];
