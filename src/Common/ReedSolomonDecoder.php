@@ -35,6 +35,48 @@ use function array_fill, array_reverse, count;
 final class ReedSolomonDecoder{
 
 	/**
+	 * Error-correct and copy data blocks together into a stream of bytes
+	 */
+	public function decode(array $dataBlocks):array{
+		$resultBytes = [];
+
+		foreach($dataBlocks as $dataBlock){
+			[$numDataCodewords, $codewordBytes] = $dataBlock;
+
+			$corrected = $this->correctErrors($codewordBytes, $numDataCodewords);
+
+			for($i = 0; $i < $numDataCodewords; $i++){
+				$resultBytes[] = $corrected[$i];
+			}
+		}
+
+		return $resultBytes;
+	}
+
+	/**
+	 * Given data and error-correction codewords received, possibly corrupted by errors, attempts to
+	 * correct the errors in-place using Reed-Solomon error correction.
+	 */
+	private function correctErrors(array $codewordBytes, int $numDataCodewords):array{
+		// First read into an array of ints
+		$codewordsInts = [];
+
+		foreach($codewordBytes as $codewordByte){
+			$codewordsInts[] = $codewordByte & 0xFF;
+		}
+
+		$decoded = $this->decodeWords($codewordsInts, (count($codewordBytes) - $numDataCodewords));
+
+		// Copy back into array of bytes -- only need to worry about the bytes that were data
+		// We don't care about errors in the error-correction codewords
+		for($i = 0; $i < $numDataCodewords; $i++){
+			$codewordBytes[$i] = $decoded[$i];
+		}
+
+		return $codewordBytes;
+	}
+
+	/**
 	 * Decodes given set of received codewords, which include both data and error-correction
 	 * codewords. Really, this means it uses Reed-Solomon to detect and correct errors, in-place,
 	 * in the input.
@@ -45,7 +87,7 @@ final class ReedSolomonDecoder{
 	 * @return int[]
 	 * @throws \RuntimeException if decoding fails for any reason
 	 */
-	public function decode(array $received, int $numEccCodewords):array{
+	private function decodeWords(array $received, int $numEccCodewords):array{
 		$poly                 = new GenericGFPoly($received);
 		$syndromeCoefficients = [];
 		$error                = false;

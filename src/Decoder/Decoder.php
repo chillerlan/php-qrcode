@@ -83,21 +83,7 @@ final class Decoder{
 		}
 
 		$this->eccLevel = $this->formatInfo->getErrorCorrectionLevel();
-		$dataBlocks     = $this->getDataBlocks($rawCodewords);
-		$resultBytes    = [];
-		$resultOffset   = 0;
-
-		// Error-correct and copy data blocks together into a stream of bytes
-		foreach($dataBlocks as $dataBlock){
-			[$numDataCodewords, $codewordBytes] = $dataBlock;
-
-			$corrected = $this->correctErrors($codewordBytes, $numDataCodewords);
-
-			for($i = 0; $i < $numDataCodewords; $i++){
-				$resultBytes[$resultOffset++] = $corrected[$i];
-			}
-		}
-
+		$resultBytes    = (new ReedSolomonDecoder)->decode($this->getDataBlocks($rawCodewords));
 		// Decode the contents of that stream of bytes
 		return $this->decodeBitStream($resultBytes);
 	}
@@ -176,29 +162,6 @@ final class Decoder{
 		}
 
 		return $result;
-	}
-
-	/**
-	 * Given data and error-correction codewords received, possibly corrupted by errors, attempts to
-	 * correct the errors in-place using Reed-Solomon error correction.
-	 */
-	private function correctErrors(array $codewordBytes, int $numDataCodewords):array{
-		// First read into an array of ints
-		$codewordsInts = [];
-
-		foreach($codewordBytes as $i => $codewordByte){
-			$codewordsInts[$i] = $codewordByte & 0xFF;
-		}
-
-		$decoded = (new ReedSolomonDecoder)->decode($codewordsInts, (count($codewordBytes) - $numDataCodewords));
-
-		// Copy back into array of bytes -- only need to worry about the bytes that were data
-		// We don't care about errors in the error-correction codewords
-		for($i = 0; $i < $numDataCodewords; $i++){
-			$codewordBytes[$i] = $decoded[$i];
-		}
-
-		return $codewordBytes;
 	}
 
 	/**
