@@ -13,7 +13,7 @@ namespace chillerlan\QRCode;
 use chillerlan\QRCode\Common\{EccLevel, ECICharset, MaskPattern, Mode};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number, QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
 use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, LuminanceSourceInterface};
-use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRGdImage, QRImagick, QRMarkup, QROutputInterface, QRString};
+use chillerlan\QRCode\Output\{QRCodeOutputException, QRFpdf, QRGdImage, QRImagick, QRMarkup, QREps, QROutputInterface, QRString};
 use chillerlan\Settings\SettingsContainerInterface;
 use function class_exists, class_implements, in_array, mb_convert_encoding, mb_detect_encoding;
 
@@ -80,6 +80,8 @@ class QRCode{
 	/** @var string */
 	public const OUTPUT_FPDF        = 'fpdf';
 	/** @var string */
+	public const OUTPUT_EPS         = 'eps';
+	/** @var string */
 	public const OUTPUT_CUSTOM      = 'custom';
 
 	/**
@@ -97,6 +99,7 @@ class QRCode{
 		self::OUTPUT_STRING_TEXT => QRString::class,
 		self::OUTPUT_IMAGICK     => QRImagick::class,
 		self::OUTPUT_FPDF        => QRFpdf::class,
+		self::OUTPUT_EPS         => QREps::class,
 	];
 
 	/**
