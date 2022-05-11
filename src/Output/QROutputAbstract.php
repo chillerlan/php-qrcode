@@ -12,7 +12,8 @@ namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
-use function base64_encode, dirname, file_put_contents, is_writable, sprintf;
+use Closure;
+use function base64_encode, dirname, file_put_contents, is_writable, ksort, sprintf;
 
 /**
  * common output abstract
@@ -128,6 +129,37 @@ abstract class QROutputAbstract implements QROutputInterface{
 		if(file_put_contents($file, $data) === false){
 			throw new QRCodeOutputException(sprintf('Cannot write data to cache file: %s (file_put_contents error)', $file));
 		}
+	}
+
+	/**
+	 * collects the modules per QRMatrix::M_* type and runs a $transform functio on each module and
+	 * returns an array with the transformed modules
+	 */
+	protected function collectModules(Closure $transform):array{
+		$paths = [];
+
+		// collect the modules for each type
+		foreach($this->matrix->matrix() as $y => $row){
+			foreach($row as $x => $M_TYPE){
+
+				if($this->options->connectPaths && !$this->matrix->checkTypes($x, $y, $this->options->excludeFromConnect)){
+					// to connect paths we'll redeclare the $M_TYPE to data only
+					$M_TYPE = QRMatrix::M_DATA;
+
+					if($this->matrix->check($x, $y)){
+						$M_TYPE |= QRMatrix::IS_DARK;
+					}
+				}
+
+				// collect the modules per $M_TYPE
+				$paths[$M_TYPE][] = $transform($x, $y);
+			}
+		}
+
+		// beautify output
+		ksort($paths);
+
+		return $paths;
 	}
 
 }

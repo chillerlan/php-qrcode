@@ -36,7 +36,7 @@ $options = new QROptions([
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.4,
 	// connect paths
-	'svgConnectPaths'     => true,
+	'connectPaths'        => true,
 	// keep modules of thhese types as square
 	'keepAsSquare'        => [
 		QRMatrix::M_FINDER|QRMatrix::IS_DARK,

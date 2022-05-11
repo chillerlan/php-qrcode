@@ -153,12 +153,12 @@ trait QROptionsTrait{
 	 *
 	 * @see https://github.com/chillerlan/php-qrcode/issues/57
 	 */
-	protected bool $svgConnectPaths = false;
+	protected bool $connectPaths = false;
 
 	/**
 	 * specify which paths/patterns to exclude from connecting if $svgConnectPaths is set to true
 	 */
-	protected array $svgExcludeFromConnect = [];
+	protected array $excludeFromConnect = [];
 
 	/**
 	 * specify whether to draw the modules as filled circles

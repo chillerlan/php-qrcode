@@ -13,7 +13,7 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\QRCode;
 
-use function implode, is_string, ksort, sprintf, strip_tags, trim;
+use function implode, is_string, sprintf, strip_tags, trim;
 
 /**
  * Converts the matrix into markup types: HTML, SVG, ...
@@ -150,30 +150,8 @@ class QRMarkup extends QROutputAbstract{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path
 	 */
 	protected function svgPaths():string{
-		$paths = [];
-
-		// collect the modules for each type
-		foreach($this->matrix->matrix() as $y => $row){
-			foreach($row as $x => $M_TYPE){
-
-				if($this->options->svgConnectPaths && !$this->matrix->checkTypes($x, $y, $this->options->svgExcludeFromConnect)){
-					// to connect paths we'll redeclare the $M_TYPE to data only
-					$M_TYPE = QRMatrix::M_DATA;
-
-					if($this->matrix->check($x, $y)){
-						$M_TYPE |= QRMatrix::IS_DARK;
-					}
-				}
-
-				// collect the modules per $M_TYPE
-				$paths[$M_TYPE][] = $this->svgModule($x, $y);
-			}
-		}
-
-		// beautify output
-		ksort($paths);
-
-		$svg = [];
+		$paths = $this->collectModules(fn(int $x, int $y):string => $this->svgModule($x, $y));
+		$svg   = [];
 
 		// create the path elements
 		foreach($paths as $M_TYPE => $path){
