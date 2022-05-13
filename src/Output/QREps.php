@@ -50,8 +50,7 @@ class QREps extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	public function dump(string $file = null):string{
-		$file       ??= $this->options->cachefile;
-		$saveToFile   = $file !== null;
+		$file ??= $this->options->cachefile;
 
 		$eps = [
 			// main header
@@ -91,7 +90,7 @@ class QREps extends QROutputAbstract{
 
 		$data = implode("\n", $eps);
 
-		if($saveToFile){
+		if($file !== null){
 			$this->saveToFile($data, $file);
 		}
 
