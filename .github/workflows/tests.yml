@@ -69,7 +69,7 @@ jobs:
         run: phpdoc --config=phpdoc.xml
 
       - name: "Publish Docs to gh-pages"
-        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages
           folder: docs
