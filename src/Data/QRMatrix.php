@@ -533,68 +533,6 @@ final class QRMatrix{
 	}
 
 	/**
-	 * Maps the binary $data array from QRData::maskECC() on the matrix,
-	 * masking the data using $maskPattern (ISO/IEC 18004:2000 Section 8.8)
-	 *
-	 * @see \chillerlan\QRCode\Data\QRData::maskECC()
-	 *
-	 * @param \SplFixedArray<int> $data
-	 *
-	 * @return \chillerlan\QRCode\Data\QRMatrix
-	 */
-	public function mapData(SplFixedArray $data):self{
-		$byteCount         = $data->count();
-		$y                 = $this->moduleCount - 1;
-		$inc               = -1;
-		$byteIndex         = 0;
-		$bitIndex          = 7;
-
-		for($i = $y; $i > 0; $i -= 2){
-
-			if($i === 6){
-				$i--;
-			}
-
-			while(true){
-				for($c = 0; $c < 2; $c++){
-					$x = $i - $c;
-
-					if($this->matrix[$y][$x] !== $this::M_NULL){
-						continue;
-					}
-
-					$v = false;
-
-					if($byteIndex < $byteCount){
-						$v = (($data[$byteIndex] >> $bitIndex) & 1) === 1;
-					}
-
-					$this->matrix[$y][$x] = $this::M_DATA | ($v ? $this::IS_DARK : 0);
-					$bitIndex--;
-
-					if($bitIndex === -1){
-						$byteIndex++;
-						$bitIndex = 7;
-					}
-
-				}
-
-				$y += $inc;
-
-				if($y < 0 || $this->moduleCount <= $y){
-					$y   -=  $inc;
-					$inc  = -$inc;
-
-					break;
-				}
-
-			}
-		}
-
-		return $this;
-	}
-
-	/**
 	 * Applies the mask pattern
 	 *
 	 * ISO/IEC 18004:2000 Section 8.8.1
