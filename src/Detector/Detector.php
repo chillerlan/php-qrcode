@@ -162,7 +162,7 @@ final class Detector{
 		}
 
 		$otherToX = (int)($fromX + ($otherToX - $fromX) * $scale);
-		$result   += $this->sizeOfBlackWhiteBlackRun((int)$fromX, (int)$fromY, (int)$otherToX, (int)$otherToY);
+		$result   += $this->sizeOfBlackWhiteBlackRun((int)$fromX, (int)$fromY, $otherToX, $otherToY);
 
 		// Middle pixel is double-counted this way; subtract 1
 		return $result - 1.0;

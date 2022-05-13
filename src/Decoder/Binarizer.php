@@ -172,7 +172,7 @@ final class Binarizer{
 			$right           = (int)(($width * 4) / 5);
 
 			for($x = (int)($width / 5); $x < $right; $x++){
-				$pixel = $localLuminances[(int)$x] & 0xff;
+				$pixel = $localLuminances[$x] & 0xff;
 				$buckets[$pixel >> self::LUMINANCE_SHIFT]++;
 			}
 		}
@@ -188,7 +188,7 @@ final class Binarizer{
 			$offset = $y * $width;
 
 			for($x = 0; $x < $width; $x++){
-				$pixel = (int)($localLuminances[$offset + $x] & 0xff);
+				$pixel = $localLuminances[$offset + $x] & 0xff;
 
 				if($pixel < $blackPoint){
 					$matrix->set($x, $y);
@@ -286,7 +286,7 @@ final class Binarizer{
 					}
 				}
 
-				$blackPoints[$y][$x] = (int)($average);
+				$blackPoints[$y][$x] = $average;
 			}
 		}
 

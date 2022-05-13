@@ -3,9 +3,10 @@
  * Class MaskPattern
  *
  * @created      19.01.2021
- * @author       smiley <smiley@chillerlan.net>
- * @copyright    2021 smiley
- * @license      MIT
+ * @author       ZXing Authors
+ * @author       Smiley <smiley@chillerlan.net>
+ * @copyright    2021 Smiley
+ * @license      Apache-2.0
  */
 
 namespace chillerlan\QRCode\Common;
@@ -20,6 +21,7 @@ use function abs, array_search, count, min;
  * ISO/IEC 18004:2000 Section 8.8.2 - Evaluation of masking results
  *
  * @see http://www.thonky.com/qr-code-tutorial/data-masking
+ * @see https://github.com/zxing/zxing/blob/e9e2bd280bcaeabd59d0f955798384fe6c018a6c/core/src/main/java/com/google/zxing/qrcode/encoder/MaskUtil.java
  */
 final class MaskPattern{
 
@@ -128,6 +130,9 @@ final class MaskPattern{
 		return self::applyRule1($matrix, $height, $width, true) + self::applyRule1($matrix, $height, $width, false);
 	}
 
+	/**
+	 *
+	 */
 	private static function applyRule1(array $matrix, int $height, int $width, bool $isHorizontal):int{
 		$penalty = 0;
 		$iLimit  = $isHorizontal ? $height : $width;
@@ -215,7 +220,7 @@ final class MaskPattern{
 					&& !$row[$x + 5]
 					&&  $row[$x + 6]
 					&& (
-						self::isWhiteHorizontal($row, $width, $x - 4, $x)
+						   self::isWhiteHorizontal($row, $width, $x - 4, $x)
 						|| self::isWhiteHorizontal($row, $width, $x + 7, $x + 11)
 					)
 				){
@@ -232,7 +237,7 @@ final class MaskPattern{
 					&& !$matrix[$y + 5][$x]
 					&&  $matrix[$y + 6][$x]
 					&& (
-						self::isWhiteVertical($matrix, $height, $x, $y - 4, $y)
+						   self::isWhiteVertical($matrix, $height, $x, $y - 4, $y)
 						|| self::isWhiteVertical($matrix, $height, $x, $y + 7, $y + 11)
 					)
 				){
@@ -245,6 +250,9 @@ final class MaskPattern{
 		return $penalties * 40;
 	}
 
+	/**
+	 *
+	 */
 	private static function isWhiteHorizontal(array $row, int $width, int $from, int $to):bool{
 
 		if($from < 0 || $width < $to){
@@ -260,6 +268,9 @@ final class MaskPattern{
 		return true;
 	}
 
+	/**
+	 *
+	 */
 	private static function isWhiteVertical(array $matrix, int $height, int $x, int $from, int $to):bool{
 
 		if($from < 0 || $height < $to){
