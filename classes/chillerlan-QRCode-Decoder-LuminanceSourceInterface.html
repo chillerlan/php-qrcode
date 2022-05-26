@@ -153,7 +153,7 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_getMatrix">getMatrix()</a>
+    <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_getLuminances">getLuminances()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
@@ -169,7 +169,7 @@
 0 (black) to 255 (white). Because Java does not have an unsigned byte type, callers will have
 to bitwise and with 0xff for each value. It is preferable for implementations of this method
 to only fetch this row rather than the whole image, since no 2D Readers may be installed and
-getMatrix() may never be called.</dd>
+getLuminances() may never be called.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_getWidth">getWidth()</a>
@@ -317,9 +317,9 @@ getMatrix() may never be called.</dd>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getMatrix">
-        getMatrix()
-        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_getMatrix" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getLuminances">
+        getLuminances()
+        <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html#method_getLuminances" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/LuminanceSourceInterface.php"><a href="files/src-decoder-luminancesourceinterface.html"><abbr title="src/Decoder/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
@@ -333,7 +333,7 @@ getMatrix() may never be called.</dd>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getMatrix</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">getLuminances</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     
     
@@ -370,7 +370,7 @@ of the result.</p>
 0 (black) to 255 (white). Because Java does not have an unsigned byte type, callers will have
 to bitwise and with 0xff for each value. It is preferable for implementations of this method
 to only fetch this row rather than the whole image, since no 2D Readers may be installed and
-getMatrix() may never be called.</p>
+getLuminances() may never be called.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>

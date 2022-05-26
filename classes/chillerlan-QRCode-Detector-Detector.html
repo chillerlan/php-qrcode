@@ -153,7 +153,7 @@ is rotated or skewed, or partially obscured.</p>
 
 <dl class="phpdocumentor-table-of-contents">
                     <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/chillerlan-QRCode-Detector-Detector.html#property_bitMatrix">$bitMatrix</a>
+    <a href="classes/chillerlan-QRCode-Detector-Detector.html#property_matrix">$matrix</a>
     <span>
                         &nbsp;: <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a>            </span>
 </dt>
@@ -248,9 +248,9 @@ of another po$(another finder pattern center), and in the opposite direction too
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_bitMatrix">
-        $bitMatrix
-        <a href="classes/chillerlan-QRCode-Detector-Detector.html#property_bitMatrix" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_matrix">
+        $matrix
+        <a href="classes/chillerlan-QRCode-Detector-Detector.html#property_matrix" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -265,7 +265,7 @@ of another po$(another finder pattern center), and in the opposite direction too
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span>
-    <span class="phpdocumentor-signature__name">$bitMatrix</span>
+    <span class="phpdocumentor-signature__name">$matrix</span>
     </code>
 
         <section class="phpdocumentor-description"></section>
@@ -457,13 +457,13 @@ width of each, measuring along the axis between their centers.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">calculateModuleSizeOneWay</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pattern</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$otherPattern</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float</span></code>
+                    <span class="phpdocumentor-signature__name">calculateModuleSizeOneWay</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$a</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$b</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$pattern</span>
+                <span class="phpdocumentor-signature__argument__name">$a</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -471,7 +471,7 @@ width of each, measuring along the axis between their centers.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$otherPattern</span>
+                <span class="phpdocumentor-signature__argument__name">$b</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -501,7 +501,7 @@ width of each, measuring along the axis between their centers.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/Detector.php"><a href="files/src-detector-detector.html"><abbr title="src/Detector/Detector.php">Detector.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">250</span>
+    <span class="phpdocumentor-element-found-in__line">239</span>
 
     </aside>
 
@@ -510,13 +510,13 @@ of the finder patterns and estimated module size.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">computeDimension</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$topLeft</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$topRight</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bottomLeft</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$moduleSize</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+                    <span class="phpdocumentor-signature__name">computeDimension</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$nw</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ne</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sw</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$size</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$topLeft</span>
+                <span class="phpdocumentor-signature__argument__name">$nw</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -524,7 +524,7 @@ of the finder patterns and estimated module size.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$topRight</span>
+                <span class="phpdocumentor-signature__argument__name">$ne</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -532,7 +532,7 @@ of the finder patterns and estimated module size.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$bottomLeft</span>
+                <span class="phpdocumentor-signature__argument__name">$sw</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -540,7 +540,7 @@ of the finder patterns and estimated module size.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$moduleSize</span>
+                <span class="phpdocumentor-signature__argument__name">$size</span>
                 : <span class="phpdocumentor-signature__argument__return-type">float</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -584,20 +584,20 @@ of the finder patterns and estimated module size.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/Detector.php"><a href="files/src-detector-detector.html"><abbr title="src/Detector/Detector.php">Detector.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">324</span>
+    <span class="phpdocumentor-element-found-in__line">308</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">createTransform</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$topLeft</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$topRight</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bottomLeft</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$dimension</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-AlignmentPattern.html"><abbr title="\chillerlan\QRCode\Detector\AlignmentPattern">AlignmentPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$alignmentPattern</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Detector-PerspectiveTransform.html"><abbr title="\chillerlan\QRCode\Detector\PerspectiveTransform">PerspectiveTransform</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">createTransform</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$nw</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ne</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$sw</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$size</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-AlignmentPattern.html"><abbr title="\chillerlan\QRCode\Detector\AlignmentPattern">AlignmentPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ap</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Detector-PerspectiveTransform.html"><abbr title="\chillerlan\QRCode\Detector\PerspectiveTransform">PerspectiveTransform</abbr></a></span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$topLeft</span>
+                <span class="phpdocumentor-signature__argument__name">$nw</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -605,7 +605,7 @@ of the finder patterns and estimated module size.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$topRight</span>
+                <span class="phpdocumentor-signature__argument__name">$ne</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -613,7 +613,7 @@ of the finder patterns and estimated module size.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$bottomLeft</span>
+                <span class="phpdocumentor-signature__argument__name">$sw</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -621,7 +621,7 @@ of the finder patterns and estimated module size.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$dimension</span>
+                <span class="phpdocumentor-signature__argument__name">$size</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -629,7 +629,7 @@ of the finder patterns and estimated module size.</p>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$alignmentPattern</span>
+                <span class="phpdocumentor-signature__argument__name">$ap</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-AlignmentPattern.html"><abbr title="\chillerlan\QRCode\Detector\AlignmentPattern">AlignmentPattern</abbr></a></span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
@@ -659,7 +659,7 @@ of the finder patterns and estimated module size.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/Detector.php"><a href="files/src-detector-detector.html"><abbr title="src/Detector/Detector.php">Detector.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">290</span>
+    <span class="phpdocumentor-element-found-in__line">274</span>
 
     </aside>
 
@@ -734,7 +734,7 @@ guessed to contain it.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/Detector.php"><a href="files/src-detector-detector.html"><abbr title="src/Detector/Detector.php">Detector.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">179</span>
+    <span class="phpdocumentor-element-found-in__line">168</span>
 
     </aside>
 
@@ -807,7 +807,7 @@ may be skewed or rotated.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/Detector.php"><a href="files/src-detector-detector.html"><abbr title="src/Detector/Detector.php">Detector.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">136</span>
+    <span class="phpdocumentor-element-found-in__line">125</span>
 
     </aside>
 

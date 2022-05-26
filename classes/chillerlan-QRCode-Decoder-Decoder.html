@@ -155,14 +155,14 @@ the QR Code from an image.</p>
                     <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/chillerlan-QRCode-Decoder-Decoder.html#property_eccLevel">$eccLevel</a>
     <span>
-                        &nbsp;: <a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>            </span>
+                        &nbsp;: <a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>|null            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Decoder.html#property_formatInfo">$formatInfo</a>
+    <a href="classes/chillerlan-QRCode-Decoder-Decoder.html#property_maskPattern">$maskPattern</a>
     <span>
-                        &nbsp;: <a href="classes/chillerlan-QRCode-Common-FormatInformation.html"><abbr title="\chillerlan\QRCode\Common\FormatInformation">FormatInformation</abbr></a>|null            </span>
+                        &nbsp;: <a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>|null            </span>
 </dt>
 <dd></dd>
 
@@ -229,16 +229,16 @@ the QR Code from an image.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Decoder.php"><a href="files/src-decoder-decoder.html"><abbr title="src/Decoder/Decoder.php">Decoder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a></span>
+        <span class="phpdocumentor-signature__type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>|null</span>
     <span class="phpdocumentor-signature__name">$eccLevel</span>
-    </code>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
 
         <section class="phpdocumentor-description"></section>
 
@@ -254,24 +254,24 @@ the QR Code from an image.</p>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_formatInfo">
-        $formatInfo
-        <a href="classes/chillerlan-QRCode-Decoder-Decoder.html#property_formatInfo" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_maskPattern">
+        $maskPattern
+        <a href="classes/chillerlan-QRCode-Decoder-Decoder.html#property_maskPattern" class="headerlink"><i class="fas fa-link"></i></a>
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Decoder.php"><a href="files/src-decoder-decoder.html"><abbr title="src/Decoder/Decoder.php">Decoder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type"><a href="classes/chillerlan-QRCode-Common-FormatInformation.html"><abbr title="\chillerlan\QRCode\Common\FormatInformation">FormatInformation</abbr></a>|null</span>
-    <span class="phpdocumentor-signature__name">$formatInfo</span>
+        <span class="phpdocumentor-signature__type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>|null</span>
+    <span class="phpdocumentor-signature__name">$maskPattern</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
         <section class="phpdocumentor-description"></section>
@@ -398,7 +398,7 @@ the QR Code from an image.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Decoder.php"><a href="files/src-decoder-decoder.html"><abbr title="src/Decoder/Decoder.php">Decoder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">170</span>
+    <span class="phpdocumentor-element-found-in__line">171</span>
 
     </aside>
 
@@ -462,13 +462,13 @@ the QR Code from an image.</p>
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">decodeMatrix</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bitMatrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html"><abbr title="\chillerlan\QRCode\Decoder\DecoderResult">DecoderResult</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">decodeMatrix</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html"><abbr title="\chillerlan\QRCode\Decoder\DecoderResult">DecoderResult</abbr></a></span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$bitMatrix</span>
+                <span class="phpdocumentor-signature__argument__name">$matrix</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
