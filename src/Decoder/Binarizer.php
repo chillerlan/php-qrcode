@@ -46,12 +46,14 @@ final class Binarizer{
 	private const LUMINANCE_BUCKETS = 32;
 
 	private LuminanceSourceInterface $source;
+	private array                    $luminances;
 
 	/**
 	 *
 	 */
 	public function __construct(LuminanceSourceInterface $source){
-		$this->source = $source;
+		$this->source     = $source;
+		$this->luminances = $this->source->getLuminances();
 	}
 
 	/**
@@ -182,14 +184,13 @@ final class Binarizer{
 		// We delay reading the entire image luminance until the black point estimation succeeds.
 		// Although we end up reading four rows twice, it is consistent with our motto of
 		// "fail quickly" which is necessary for continuous scanning.
-		$localLuminances = $this->source->getMatrix();
-		$matrix          = new BitMatrix(max($width, $height));
+		$matrix = new BitMatrix(max($width, $height));
 
 		for($y = 0; $y < $height; $y++){
 			$offset = $y * $width;
 
 			for($x = 0; $x < $width; $x++){
-				$matrix->set($x, $y, (($localLuminances[$offset + $x] & 0xff) < $blackPoint), QRMatrix::M_DATA);
+				$matrix->set($x, $y, (($this->luminances[$offset + $x] & 0xff) < $blackPoint), QRMatrix::M_DATA);
 			}
 		}
 
@@ -202,7 +203,7 @@ final class Binarizer{
 	 *
 	 * @see http://groups.google.com/group/zxing/browse_thread/thread/d06efa2c35a7ddc0
 	 */
-	private function calculateBlackPoints(array $luminances, int $subWidth, int $subHeight, int $width, int $height):array{
+	private function calculateBlackPoints(int $subWidth, int $subHeight, int $width, int $height):array{
 		$blackPoints = array_fill(0, $subHeight, 0);
 
 		foreach($blackPoints as $key => $point){
@@ -232,7 +233,7 @@ final class Binarizer{
 				for($yy = 0, $offset = $yoffset * $width + $xoffset; $yy < self::BLOCK_SIZE; $yy++, $offset += $width){
 
 					for($xx = 0; $xx < self::BLOCK_SIZE; $xx++){
-						$pixel = (int)($luminances[(int)($offset + $xx)]) & 0xff;
+						$pixel = (int)($this->luminances[(int)($offset + $xx)]) & 0xff;
 						$sum   += $pixel;
 						// still looking for good contrast
 						if($pixel < $min){
@@ -249,7 +250,7 @@ final class Binarizer{
 						// finish the rest of the rows quickly
 						for($yy++, $offset += $width; $yy < self::BLOCK_SIZE; $yy++, $offset += $width){
 							for($xx = 0; $xx < self::BLOCK_SIZE; $xx++){
-								$sum += (int)($luminances[(int)($offset + $xx)]) & 0xff;
+								$sum += (int)($this->luminances[(int)($offset + $xx)]) & 0xff;
 							}
 						}
 					}
@@ -275,7 +276,9 @@ final class Binarizer{
 						// the boundaries is used for the interior.
 
 						// The (min < bp) is arbitrary but works better than other heuristics that were tried.
-						$averageNeighborBlackPoint = (int)(($blackPoints[$y - 1][$x] + (2 * $blackPoints[$y][$x - 1]) + $blackPoints[$y - 1][$x - 1]) / 4);
+						$averageNeighborBlackPoint = (int)(
+							($blackPoints[$y - 1][$x] + (2 * $blackPoints[$y][$x - 1]) + $blackPoints[$y - 1][$x - 1]) / 4
+						);
 
 						if($min < $averageNeighborBlackPoint){
 							$average = $averageNeighborBlackPoint;
@@ -295,15 +298,9 @@ final class Binarizer{
 	 * of the blocks around it. Also handles the corner cases (fractional blocks are computed based
 	 * on the last pixels in the row/column which are also used in the previous block).
 	 */
-	private function calculateThresholdForBlock(
-		int $subWidth,
-		int $subHeight,
-		int $width,
-		int $height
-	):BitMatrix{
+	private function calculateThresholdForBlock(int $subWidth, int $subHeight, int $width, int $height):BitMatrix{
 		$matrix      = new BitMatrix(max($width, $height));
-		$luminances  = $this->source->getMatrix();
-		$blackPoints = $this->calculateBlackPoints($luminances, $subWidth, $subHeight, $width, $height);
+		$blackPoints = $this->calculateBlackPoints($subWidth, $subHeight, $width, $height);
 
 		for($y = 0; $y < $subHeight; $y++){
 			$yoffset    = ($y << self::BLOCK_SIZE_POWER);
@@ -326,8 +323,8 @@ final class Binarizer{
 				$sum  = 0;
 
 				for($z = -2; $z <= 2; $z++){
-					$blackRow = $blackPoints[$top + $z];
-					$sum      += $blackRow[$left - 2] + $blackRow[$left - 1] + $blackRow[$left] + $blackRow[$left + 1] + $blackRow[$left + 2];
+					$br   = $blackPoints[$top + $z];
+					$sum += $br[$left - 2] + $br[$left - 1] + $br[$left] + $br[$left + 1] + $br[$left + 2];
 				}
 
 				$average = (int)($sum / 25);
@@ -336,7 +333,9 @@ final class Binarizer{
 				for($j = 0, $o = $yoffset * $width + $xoffset; $j < self::BLOCK_SIZE; $j++, $o += $width){
 					for($i = 0; $i < self::BLOCK_SIZE; $i++){
 						// Comparison needs to be <= so that black == 0 pixels are black even if the threshold is 0.
-						$matrix->set($xoffset + $i, $yoffset + $j, (((int)($luminances[$o + $i]) & 0xff) <= $average), QRMatrix::M_DATA);
+						$v = (((int)($this->luminances[$o + $i]) & 0xff) <= $average);
+
+						$matrix->set($xoffset + $i, $yoffset + $j, $v, QRMatrix::M_DATA);
 					}
 				}
 			}
@@ -345,6 +344,9 @@ final class Binarizer{
 		return $matrix;
 	}
 
+	/**
+	 * @noinspection PhpSameParameterValueInspection
+	 */
 	private function cap(int $value, int $min, int $max):int{
 
 		if($value < $min){

@@ -98,21 +98,10 @@ final class Detector{
 	 * #sizeOfBlackWhiteBlackRunBothWays(int, int, int, int) to figure the
 	 * width of each, measuring along the axis between their centers.
 	 */
-	private function calculateModuleSizeOneWay(FinderPattern $pattern, FinderPattern $otherPattern):float{
+	private function calculateModuleSizeOneWay(FinderPattern $a, FinderPattern $b):float{
 
-		$moduleSizeEst1 = $this->sizeOfBlackWhiteBlackRunBothWays(
-			$pattern->getX(),
-			$pattern->getY(),
-			$otherPattern->getX(),
-			$otherPattern->getY()
-		);
-
-		$moduleSizeEst2 = $this->sizeOfBlackWhiteBlackRunBothWays(
-			$otherPattern->getX(),
-			$otherPattern->getY(),
-			$pattern->getX(),
-			$pattern->getY()
-		);
+		$moduleSizeEst1 = $this->sizeOfBlackWhiteBlackRunBothWays($a->getX(), $a->getY(), $b->getX(), $b->getY());
+		$moduleSizeEst2 = $this->sizeOfBlackWhiteBlackRunBothWays($b->getX(), $b->getY(), $a->getX(), $a->getY());
 
 		if(is_nan($moduleSizeEst1)){
 			return $moduleSizeEst2 / 7.0;
@@ -247,14 +236,9 @@ final class Detector{
 	 *
 	 * @throws \chillerlan\QRCode\Detector\QRCodeDetectorException
 	 */
-	private function computeDimension(
-		FinderPattern $topLeft,
-		FinderPattern $topRight,
-		FinderPattern $bottomLeft,
-		float $moduleSize
-	):int{
-		$tltrCentersDimension = (int)round($topLeft->getDistance($topRight) / $moduleSize);
-		$tlblCentersDimension = (int)round($topLeft->getDistance($bottomLeft) / $moduleSize);
+	private function computeDimension(FinderPattern $nw, FinderPattern $ne, FinderPattern $sw, float $size):int{
+		$tltrCentersDimension = (int)round($nw->getDistance($ne) / $size);
+		$tlblCentersDimension = (int)round($nw->getDistance($sw) / $size);
 		$dimension            = (int)((($tltrCentersDimension + $tlblCentersDimension) / 2) + 7);
 
 		switch($dimension % 4){
@@ -322,24 +306,24 @@ final class Detector{
 	 *
 	 */
 	private function createTransform(
-		FinderPattern $topLeft,
-		FinderPattern $topRight,
-		FinderPattern $bottomLeft,
-		int $dimension,
-		AlignmentPattern $alignmentPattern = null
+		FinderPattern    $nw,
+		FinderPattern    $ne,
+		FinderPattern    $sw,
+		int              $size,
+		AlignmentPattern $ap = null
 	):PerspectiveTransform{
-		$dimMinusThree = (float)$dimension - 3.5;
+		$dimMinusThree = (float)$size - 3.5;
 
-		if($alignmentPattern instanceof AlignmentPattern){
-			$bottomRightX       = $alignmentPattern->getX();
-			$bottomRightY       = $alignmentPattern->getY();
+		if($ap instanceof AlignmentPattern){
+			$bottomRightX       = $ap->getX();
+			$bottomRightY       = $ap->getY();
 			$sourceBottomRightX = $dimMinusThree - 3.0;
 			$sourceBottomRightY = $sourceBottomRightX;
 		}
 		else{
 			// Don't have an alignment pattern, just make up the bottom-right point
-			$bottomRightX       = ($topRight->getX() - $topLeft->getX()) + $bottomLeft->getX();
-			$bottomRightY       = ($topRight->getY() - $topLeft->getY()) + $bottomLeft->getY();
+			$bottomRightX       = ($ne->getX() - $nw->getX()) + $sw->getX();
+			$bottomRightY       = ($ne->getY() - $nw->getY()) + $sw->getY();
 			$sourceBottomRightX = $dimMinusThree;
 			$sourceBottomRightY = $dimMinusThree;
 		}
@@ -349,10 +333,10 @@ final class Detector{
 			$dimMinusThree, 3.5,
 			$sourceBottomRightX, $sourceBottomRightY,
 			3.5, $dimMinusThree,
-			$topLeft->getX(), $topLeft->getY(),
-			$topRight->getX(), $topRight->getY(),
+			$nw->getX(), $nw->getY(),
+			$ne->getX(), $ne->getY(),
 			$bottomRightX, $bottomRightY,
-			$bottomLeft->getX(), $bottomLeft->getY()
+			$sw->getX(), $sw->getY()
 		);
 	}
 

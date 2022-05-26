@@ -22,7 +22,7 @@ interface LuminanceSourceInterface{
 	 *         larger than width * height bytes on some platforms. Do not modify the contents
 	 *         of the result.
 	 */
-	public function getMatrix():array;
+	public function getLuminances():array;
 
 	/**
 	 * @return int The width of the bitmap.
@@ -39,7 +39,7 @@ interface LuminanceSourceInterface{
 	 * 0 (black) to 255 (white). Because Java does not have an unsigned byte type, callers will have
 	 * to bitwise and with 0xff for each value. It is preferable for implementations of this method
 	 * to only fetch this row rather than the whole image, since no 2D Readers may be installed and
-	 * getMatrix() may never be called.
+	 * getLuminances() may never be called.
 	 *
 	 * @param int $y  The row to fetch, which must be in [0,getHeight())
 	 *

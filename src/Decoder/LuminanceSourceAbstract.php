@@ -44,7 +44,7 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 	}
 
 	/** @inheritDoc */
-	public function getMatrix():array{
+	public function getLuminances():array{
 		return $this->luminances;
 	}
 
