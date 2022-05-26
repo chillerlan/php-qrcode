@@ -10,10 +10,8 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
-
-use SplFixedArray;
-use function array_fill, array_unshift, floor, max, min, range;
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, ReedSolomonEncoder, Version};
+use function array_fill, array_unshift, count, floor, max, min, range;
 
 /**
  * Holds a numerical representation of the final QR Code;
@@ -21,7 +19,7 @@ use function array_fill, array_unshift, floor, max, min, range;
  *
  * @see http://www.thonky.com/qr-code-tutorial/format-version-information
  */
-final class QRMatrix{
+class QRMatrix{
 
 	/** @var int */
 	public const M_NULL       = 0b000000000000;
@@ -55,36 +53,37 @@ final class QRMatrix{
 	/**
 	 * the used mask pattern, set via QRMatrix::mask()
 	 */
-	private ?MaskPattern $maskPattern = null;
+	protected ?MaskPattern $maskPattern = null;
+
+	/**
+	 * the current ECC level
+	 */
+	protected ?EccLevel $eccLevel = null;
+
+	/**
+	 * a Version instance
+	 */
+	protected ?Version $version = null;
 
 	/**
 	 * the size (side length) of the matrix, including quiet zone (if created)
 	 */
-	private int $moduleCount;
+	protected int $moduleCount;
 
 	/**
 	 * the actual matrix data array
 	 *
 	 * @var int[][]
 	 */
-	private array $matrix;
-
-	/**
-	 * the current ECC level
-	 */
-	private EccLevel $eccLevel;
-
-	/**
-	 * a Version instance
-	 */
-	private Version $version;
+	protected array $matrix;
 
 	/**
 	 * QRMatrix constructor.
 	 */
-	public function __construct(Version $version, EccLevel $eccLevel){
+	public function __construct(Version $version, EccLevel $eccLevel, MaskPattern $maskPattern){
 		$this->version     = $version;
 		$this->eccLevel    = $eccLevel;
+		$this->maskPattern = $maskPattern;
 		$this->moduleCount = $this->version->getDimension();
 		$this->matrix      = array_fill(0, $this->moduleCount, array_fill(0, $this->moduleCount, $this::M_NULL));
 	}
@@ -99,16 +98,8 @@ final class QRMatrix{
 			->setAlignmentPattern()
 			->setTimingPattern()
 			->setDarkModule()
-		;
-	}
-
-	/**
-	 * shortcut to set format and version info
-	 */
-	public function initFormatInfo(MaskPattern $maskPattern):self{
-		return $this
 			->setVersionNumber()
-			->setFormatInfo($maskPattern)
+			->setFormatInfo()
 		;
 	}
 
@@ -139,14 +130,14 @@ final class QRMatrix{
 	/**
 	 * Returns the current version number
 	 */
-	public function version():Version{
+	public function version():?Version{
 		return $this->version;
 	}
 
 	/**
 	 * Returns the current ECC level
 	 */
-	public function eccLevel():EccLevel{
+	public function eccLevel():?EccLevel{
 		return $this->eccLevel;
 	}
 
@@ -385,8 +376,8 @@ final class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 8.9
 	 */
-	public function setFormatInfo(MaskPattern $maskPattern):self{
-		$bits = $this->eccLevel->getformatPattern($maskPattern);
+	public function setFormatInfo():self{
+		$bits = $this->eccLevel->getformatPattern($this->maskPattern);
 
 		for($i = 0; $i < 15; $i++){
 			$v = (($bits >> $i) & 1) === 1;
@@ -533,18 +524,62 @@ final class QRMatrix{
 	}
 
 	/**
-	 * Applies the mask pattern
+	 * Maps the interleaved binary $data on the matrix
+	 */
+	public function writeCodewords(BitBuffer $bitBuffer):self{
+		$data      = (new ReedSolomonEncoder)->interleaveEcBytes($bitBuffer, $this->version, $this->eccLevel);
+		$byteCount = count($data);
+		$iByte     = 0;
+		$iBit      = 7;
+		$direction = true;
+
+		for($i = $this->moduleCount - 1; $i > 0; $i -= 2){
+
+			// skip vertical alignment pattern
+			if($i === 6){
+				$i--;
+			}
+
+			for($count = 0; $count < $this->moduleCount; $count++){
+				$y = $direction ? $this->moduleCount - 1 - $count : $count;
+
+				for($col = 0; $col < 2; $col++){
+					$x = $i - $col;
+
+					// skip functional patterns
+					if($this->get($x, $y) !== $this::M_NULL){
+						continue;
+					}
+
+					$v = $iByte < $byteCount && (($data[$iByte] >> $iBit--) & 1) === 1;
+
+					$this->set($x, $y, $v, $this::M_DATA);
+
+					if($iBit === -1){
+						$iByte++;
+						$iBit = 7;
+					}
+				}
+			}
+
+			$direction = !$direction; // switch directions
+		}
+
+		return $this;
+	}
+
+	/**
+	 * Applies/reverses the mask pattern
 	 *
 	 * ISO/IEC 18004:2000 Section 8.8.1
 	 */
-	public function mask(MaskPattern $maskPattern):self{
-		$this->maskPattern = $maskPattern;
-		$mask              = $this->maskPattern->getMask();
+	public function mask():self{
+		$mask = $this->maskPattern->getMask();
 
-		foreach($this->matrix as $y => &$row){
-			foreach($row as $x => &$val){
+		foreach($this->matrix as $y => $row){
+			foreach($row as $x => $val){
 				if($mask($x, $y) && ($val & $this::M_DATA) === $this::M_DATA){
-					$val ^= $this::IS_DARK;
+					$this->flip($x, $y);
 				}
 			}
 		}

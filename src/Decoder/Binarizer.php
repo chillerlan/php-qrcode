@@ -11,6 +11,7 @@
 
 namespace chillerlan\QRCode\Decoder;
 
+use chillerlan\QRCode\Data\QRMatrix;
 use function array_fill, count, max;
 
 /**
@@ -160,7 +161,6 @@ final class Binarizer{
 	 *
 	 */
 	private function getHistogramBlackMatrix(int $width, int $height):BitMatrix{
-		$matrix = new BitMatrix(max($width, $height));
 
 		// Quickly calculates the histogram by sampling four rows from the image. This proved to be
 		// more robust on the blackbox tests than sampling a diagonal as we used to do.
@@ -183,16 +183,13 @@ final class Binarizer{
 		// Although we end up reading four rows twice, it is consistent with our motto of
 		// "fail quickly" which is necessary for continuous scanning.
 		$localLuminances = $this->source->getMatrix();
+		$matrix          = new BitMatrix(max($width, $height));
 
 		for($y = 0; $y < $height; $y++){
 			$offset = $y * $width;
 
 			for($x = 0; $x < $width; $x++){
-				$pixel = $localLuminances[$offset + $x] & 0xff;
-
-				if($pixel < $blackPoint){
-					$matrix->set($x, $y);
-				}
+				$matrix->set($x, $y, (($localLuminances[$offset + $x] & 0xff) < $blackPoint), QRMatrix::M_DATA);
 			}
 		}
 
@@ -339,9 +336,7 @@ final class Binarizer{
 				for($j = 0, $o = $yoffset * $width + $xoffset; $j < self::BLOCK_SIZE; $j++, $o += $width){
 					for($i = 0; $i < self::BLOCK_SIZE; $i++){
 						// Comparison needs to be <= so that black == 0 pixels are black even if the threshold is 0.
-						if(((int)($luminances[$o + $i]) & 0xff) <= $average){
-							$matrix->set($xoffset + $i, $yoffset + $j);
-						}
+						$matrix->set($xoffset + $i, $yoffset + $j, (((int)($luminances[$o + $i]) & 0xff) <= $average), QRMatrix::M_DATA);
 					}
 				}
 			}

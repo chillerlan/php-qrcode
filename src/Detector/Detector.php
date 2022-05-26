@@ -25,20 +25,20 @@ use const NAN;
  */
 final class Detector{
 
-	private BitMatrix $bitMatrix;
+	private BitMatrix $matrix;
 
 	/**
 	 * Detector constructor.
 	 */
 	public function __construct(LuminanceSourceInterface $source){
-		$this->bitMatrix = (new Binarizer($source))->getBlackMatrix();
+		$this->matrix = (new Binarizer($source))->getBlackMatrix();
 	}
 
 	/**
 	 * Detects a QR Code in an image.
 	 */
 	public function detect():BitMatrix{
-		[$bottomLeft, $topLeft, $topRight] = (new FinderPatternFinder($this->bitMatrix))->find();
+		[$bottomLeft, $topLeft, $topRight] = (new FinderPatternFinder($this->matrix))->find();
 
 		$moduleSize         = $this->calculateModuleSize($topLeft, $topRight, $bottomLeft);
 		$dimension          = $this->computeDimension($topLeft, $topRight, $bottomLeft, $moduleSize);
@@ -70,7 +70,7 @@ final class Detector{
 
 		$transform = $this->createTransform($topLeft, $topRight, $bottomLeft, $dimension, $alignmentPattern);
 
-		return (new GridSampler)->sampleGrid($this->bitMatrix, $dimension, $transform);
+		return (new GridSampler)->sampleGrid($this->matrix, $dimension, $transform);
 	}
 
 	/**
@@ -135,7 +135,7 @@ final class Detector{
 	 */
 	private function sizeOfBlackWhiteBlackRunBothWays(float $fromX, float $fromY, float $toX, float $toY):float{
 		$result    = $this->sizeOfBlackWhiteBlackRun((int)$fromX, (int)$fromY, (int)$toX, (int)$toY);
-		$dimension = $this->bitMatrix->getDimension();
+		$dimension = $this->matrix->size();
 		// Now count other way -- don't run off image though of course
 		$scale     = 1.0;
 		$otherToX  = $fromX - ($toX - $fromX);
@@ -208,7 +208,7 @@ final class Detector{
 			// Does current pixel mean we have moved white to black or vice versa?
 			// Scanning black in state 0,2 and white in state 1, so if we find the wrong
 			// color, advance to next state or end if we are in state 2 already
-			if(($state === 1) === $this->bitMatrix->get($realX, $realY)){
+			if(($state === 1) === $this->matrix->check($realX, $realY)){
 
 				if($state === 2){
 					return FinderPattern::distance($x, $y, $fromX, $fromY);
@@ -294,7 +294,7 @@ final class Detector{
 		float $allowanceFactor
 	):?AlignmentPattern{
 		// Look for an alignment pattern (3 modules in size) around where it should be
-		$dimension           = $this->bitMatrix->getDimension();
+		$dimension           = $this->matrix->size();
 		$allowance           = (int)($allowanceFactor * $overallEstModuleSize);
 		$alignmentAreaLeftX  = max(0, $estAlignmentX - $allowance);
 		$alignmentAreaRightX = min($dimension - 1, $estAlignmentX + $allowance);
@@ -310,7 +310,7 @@ final class Detector{
 			return null;
 		}
 
-		return (new AlignmentPatternFinder($this->bitMatrix, $overallEstModuleSize))->find(
+		return (new AlignmentPatternFinder($this->matrix, $overallEstModuleSize))->find(
 			$alignmentAreaLeftX,
 			$alignmentAreaTopY,
 			$alignmentAreaRightX - $alignmentAreaLeftX,

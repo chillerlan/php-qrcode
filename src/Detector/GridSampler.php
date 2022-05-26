@@ -11,6 +11,7 @@
 
 namespace chillerlan\QRCode\Detector;
 
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Decoder\BitMatrix;
 use Throwable;
 use function array_fill, count, sprintf;
@@ -41,13 +42,13 @@ final class GridSampler{
 	 * For efficiency, the method will check points from either end of the line until one is found
 	 * to be within the image. Because the set of points are assumed to be linear, this is valid.
 	 *
-	 * @param \chillerlan\QRCode\Decoder\BitMatrix $bitMatrix image into which the points should map
-	 * @param float[]                  $points    actual points in x1,y1,...,xn,yn form
+	 * @param \chillerlan\QRCode\Decoder\BitMatrix $matrix image into which the points should map
+	 * @param float[]                              $points actual points in x1,y1,...,xn,yn form
 	 *
 	 * @throws \chillerlan\QRCode\Detector\QRCodeDetectorException if an endpoint is lies outside the image boundaries
 	 */
-	private function checkAndNudgePoints(BitMatrix $bitMatrix, array $points):void{
-		$dimension = $bitMatrix->getDimension();
+	private function checkAndNudgePoints(BitMatrix $matrix, array $points):void{
+		$dimension = $matrix->size();
 		$nudged    = true;
 		$max       = count($points);
 
@@ -121,7 +122,7 @@ final class GridSampler{
 	 * @throws \chillerlan\QRCode\Detector\QRCodeDetectorException if image can't be sampled, for example, if the transformation defined
 	 *   by the given points is invalid or results in sampling outside the image boundaries
 	 */
-	public function sampleGrid(BitMatrix $image, int $dimension, PerspectiveTransform $transform):BitMatrix{
+	public function sampleGrid(BitMatrix $matrix, int $dimension, PerspectiveTransform $transform):BitMatrix{
 
 		if($dimension <= 0){
 			throw new QRCodeDetectorException('invalid matrix size');
@@ -142,14 +143,12 @@ final class GridSampler{
 			$transform->transformPoints($points);
 			// Quick check to see if points transformed to something inside the image;
 			// sufficient to check the endpoints
-			$this->checkAndNudgePoints($image, $points);
+			$this->checkAndNudgePoints($matrix, $points);
 
 			try{
 				for($x = 0; $x < $max; $x += 2){
-					if($image->get((int)$points[$x], (int)$points[$x + 1])){
-						// Black(-ish) pixel
-						$bits->set($x / 2, $y);
-					}
+					// Black(-ish) pixel
+					$bits->set($x / 2, $y, $matrix->check((int)$points[$x], (int)$points[$x + 1]), QRMatrix::M_DATA);
 				}
 			}
 			// @codeCoverageIgnoreStart

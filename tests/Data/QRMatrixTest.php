@@ -35,7 +35,7 @@ final class QRMatrixTest extends TestCase{
 	 * shortcut
 	 */
 	protected function getMatrix(int $version):QRMatrix{
-		return  new QRMatrix(new Version($version), new EccLevel(EccLevel::L));
+		return  new QRMatrix(new Version($version), new EccLevel(EccLevel::L), new MaskPattern(MaskPattern::PATTERN_000));
 	}
 
 	/**
@@ -70,8 +70,7 @@ final class QRMatrixTest extends TestCase{
 	 * Tests if maskPattern() returns the current (or default) mask pattern
 	 */
 	public function testMaskPattern():void{
-		$this::assertSame(null, $this->matrix->maskPattern());
-
+		// set via matrix evaluation
 		$matrix = (new QRCode)->addByteSegment('testdata')->getMatrix();
 
 		$this::assertInstanceOf(MaskPattern::class, $matrix->maskPattern());
@@ -225,7 +224,7 @@ final class QRMatrixTest extends TestCase{
 	 * @dataProvider versionProvider
 	 */
 	public function testSetFormatInfo(int $version):void{
-		$matrix = $this->getMatrix($version)->setFormatInfo(new MaskPattern(MaskPattern::PATTERN_000));
+		$matrix = $this->getMatrix($version)->setFormatInfo();
 
 		$this::assertTrue($matrix->checkType(8, 0, QRMatrix::M_FORMAT));
 		$this::assertTrue($matrix->checkType(0, 8, QRMatrix::M_FORMAT));

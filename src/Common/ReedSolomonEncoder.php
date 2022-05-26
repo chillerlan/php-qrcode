@@ -10,7 +10,6 @@
 
 namespace chillerlan\QRCode\Common;
 
-use chillerlan\QRCode\Data\QRMatrix;
 use function array_fill, array_merge, count, max;
 
 /**
@@ -25,10 +24,11 @@ final class ReedSolomonEncoder{
 
 	/**
 	 * ECC interleaving
+	 *
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function interleaveEcBytes(BitBuffer $bitBuffer, QRMatrix $matrix):QRMatrix{
-		$version = $matrix->version();
-		[$numEccCodewords, [[$l1, $b1], [$l2, $b2]]] = $version->getRSBlocks($matrix->eccLevel());
+	public function interleaveEcBytes(BitBuffer $bitBuffer, Version $version, EccLevel $eccLevel):array{
+		[$numEccCodewords, [[$l1, $b1], [$l2, $b2]]] = $version->getRSBlocks($eccLevel);
 
 		$rsBlocks = array_fill(0, $l1, [$numEccCodewords + $b1, $b1]);
 
@@ -66,7 +66,7 @@ final class ReedSolomonEncoder{
 		$this->interleave($dataBytes, $maxDataBytes, $numRsBlocks);
 		$this->interleave($ecBytes, $maxEcBytes, $numRsBlocks);
 
-		return $this->mapData($matrix);
+		return $this->interleavedData;
 	}
 
 	/**
@@ -108,62 +108,6 @@ final class ReedSolomonEncoder{
 				}
 			}
 		}
-	}
-
-	/**
-	 * Maps the interleaved binary $data on the matrix
-	 */
-	private function mapData(QRMatrix $matrix):QRMatrix{
-		$byteCount = count($this->interleavedData);
-		$size      = $matrix->size();
-		$y         = $size - 1;
-		$inc       = -1;
-		$byteIndex = 0;
-		$bitIndex  = 7;
-
-		for($i = $y; $i > 0; $i -= 2){
-
-			if($i === 6){
-				$i--;
-			}
-
-			while(true){
-				for($c = 0; $c < 2; $c++){
-					$x = $i - $c;
-
-					if($matrix->get($x, $y) !== QRMatrix::M_NULL){
-						continue;
-					}
-
-					$v = false;
-
-					if($byteIndex < $byteCount){
-						$v = (($this->interleavedData[$byteIndex] >> $bitIndex) & 1) === 1;
-					}
-
-					$matrix->set($x, $y, $v, QRMatrix::M_DATA);
-					$bitIndex--;
-
-					if($bitIndex === -1){
-						$byteIndex++;
-						$bitIndex = 7;
-					}
-
-				}
-
-				$y += $inc;
-
-				if($y < 0 || $size <= $y){
-					$y   -=  $inc;
-					$inc  = -$inc;
-
-					break;
-				}
-
-			}
-		}
-
-		return $matrix;
 	}
 
 }

@@ -12,7 +12,7 @@
 namespace chillerlan\QRCode\Decoder;
 
 use Throwable;
-use chillerlan\QRCode\Common\{BitBuffer, EccLevel, FormatInformation, Mode, ReedSolomonDecoder, Version};
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, Mode, ReedSolomonDecoder, Version};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number};
 use chillerlan\QRCode\Detector\Detector;
 use function count, array_fill, mb_convert_encoding, mb_detect_encoding;
@@ -28,8 +28,8 @@ final class Decoder{
 #	private const GB2312_SUBSET = 1;
 
 	private ?Version $version = null;
-	private ?FormatInformation $formatInfo = null;
-	private EccLevel $eccLevel;
+	private ?EccLevel $eccLevel = null;
+	private ?MaskPattern $maskPattern = null;
 
 	/**
 	 * Decodes a QR Code represented as a BitMatrix.
@@ -41,11 +41,11 @@ final class Decoder{
 	 * @throws \Throwable|\chillerlan\QRCode\Decoder\QRCodeDecoderException if the QR Code cannot be decoded
 	 */
 	public function decode(LuminanceSourceInterface $source):DecoderResult{
-		$bitMatrix = (new Detector($source))->detect();
+		$matrix = (new Detector($source))->detect();
 
 		try{
 			// clone the BitMatrix to avoid errors in case we run into mirroring
-			return $this->decodeMatrix(clone $bitMatrix);
+			return $this->decodeMatrix(clone $matrix);
 		}
 		catch(Throwable $e){
 
@@ -58,7 +58,7 @@ final class Decoder{
 				 * that the QR code may be mirrored, and we should try once more with a
 				 * mirrored content.
 				 */
-				return $this->decodeMatrix($bitMatrix->setMirror(true)->mirror());
+				return $this->decodeMatrix($matrix->setMirror(true)->mirror());
 			}
 			catch(Throwable $f){
 				// Throw the exception from the original reading
@@ -72,18 +72,18 @@ final class Decoder{
 	/**
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
-	private function decodeMatrix(BitMatrix $bitMatrix):DecoderResult{
+	private function decodeMatrix(BitMatrix $matrix):DecoderResult{
 		// Read raw codewords
-		$rawCodewords     = $bitMatrix->readCodewords();
-		$this->version    = $bitMatrix->getVersion();
-		$this->formatInfo = $bitMatrix->getFormatInfo();
+		$rawCodewords      = $matrix->readCodewords();
+		$this->version     = $matrix->version();
+		$this->eccLevel    = $matrix->eccLevel();
+		$this->maskPattern = $matrix->maskPattern();
 
-		if($this->version === null || $this->formatInfo === null){
+		if($this->version === null || $this->eccLevel === null || $this->maskPattern === null){
 			throw new QRCodeDecoderException('unable to read version or format info'); // @codeCoverageIgnore
 		}
 
-		$this->eccLevel = $this->formatInfo->getErrorCorrectionLevel();
-		$resultBytes    = (new ReedSolomonDecoder)->decode($this->getDataBlocks($rawCodewords));
+		$resultBytes = (new ReedSolomonDecoder)->decode($this->getDataBlocks($rawCodewords));
 		// Decode the contents of that stream of bytes
 		return $this->decodeBitStream($resultBytes);
 	}
@@ -102,6 +102,7 @@ final class Decoder{
 
 		// Figure out the number and size of data blocks used by this version and
 		// error correction level
+		/** @phan-suppress-next-line PhanTypeMismatchArgumentNullable */
 		[$numEccCodewords, $eccBlocks] = $this->version->getRSBlocks($this->eccLevel);
 
 		// Now establish DataBlocks of the appropriate size and number of data codewords
@@ -278,7 +279,7 @@ final class Decoder{
 			'data'                     => $result,
 			'version'                  => $this->version,
 			'eccLevel'                 => $this->eccLevel,
-			'maskPattern'              => $this->formatInfo->getMaskPattern(),
+			'maskPattern'              => $this->maskPattern,
 			'structuredAppendParity'   => $parityData,
 			'structuredAppendSequence' => $symbolSequence
 		]);

@@ -30,7 +30,7 @@ use function abs, count;
  */
 final class AlignmentPatternFinder{
 
-	private BitMatrix $bitMatrix;
+	private BitMatrix $matrix;
 	private float     $moduleSize;
 	/** @var \chillerlan\QRCode\Detector\AlignmentPattern[] */
 	private array $possibleCenters;
@@ -38,12 +38,12 @@ final class AlignmentPatternFinder{
 	/**
 	 * Creates a finder that will look in a portion of the whole image.
 	 *
-	 * @param \chillerlan\QRCode\Decoder\BitMatrix $image      image to search
+	 * @param \chillerlan\QRCode\Decoder\BitMatrix $matrix     image to search
 	 * @param float                                $moduleSize estimated module size so far
 	 */
-	public function __construct(BitMatrix $image, float $moduleSize){
-		$this->bitMatrix            = $image;
-		$this->moduleSize           = $moduleSize;
+	public function __construct(BitMatrix $matrix, float $moduleSize){
+		$this->matrix     = $matrix;
+		$this->moduleSize = $moduleSize;
 		$this->possibleCenters      = [];
 	}
 
@@ -75,7 +75,7 @@ final class AlignmentPatternFinder{
 			// Burn off leading white pixels before anything else; if we start in the middle of
 			// a white run, it doesn't make sense to count its length, since we don't know if the
 			// white run continued to the left of the start point
-			while($j < $maxJ && !$this->bitMatrix->get($j, $i)){
+			while($j < $maxJ && !$this->matrix->check($j, $i)){
 				$j++;
 			}
 
@@ -83,7 +83,7 @@ final class AlignmentPatternFinder{
 
 			while($j < $maxJ){
 
-				if($this->bitMatrix->get($j, $i)){
+				if($this->matrix->check($j, $i)){
 					// Black pixel
 					if($currentState === 1){ // Counting black pixels
 						$stateCount[$currentState]++;
@@ -224,7 +224,7 @@ final class AlignmentPatternFinder{
 	 * @return float|null vertical center of alignment pattern, or null if not found
 	 */
 	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):?float{
-		$maxI          = $this->bitMatrix->getDimension();
+		$maxI          = $this->matrix->size();
 		$stateCount    = [];
 		$stateCount[0] = 0;
 		$stateCount[1] = 0;
@@ -232,7 +232,7 @@ final class AlignmentPatternFinder{
 
 		// Start counting up from center
 		$i = $startI;
-		while($i >= 0 && $this->bitMatrix->get($centerJ, $i) && $stateCount[1] <= $maxCount){
+		while($i >= 0 && $this->matrix->check($centerJ, $i) && $stateCount[1] <= $maxCount){
 			$stateCount[1]++;
 			$i--;
 		}
@@ -241,7 +241,7 @@ final class AlignmentPatternFinder{
 			return null;
 		}
 
-		while($i >= 0 && !$this->bitMatrix->get($centerJ, $i) && $stateCount[0] <= $maxCount){
+		while($i >= 0 && !$this->matrix->check($centerJ, $i) && $stateCount[0] <= $maxCount){
 			$stateCount[0]++;
 			$i--;
 		}
@@ -252,7 +252,7 @@ final class AlignmentPatternFinder{
 
 		// Now also count down from center
 		$i = $startI + 1;
-		while($i < $maxI && $this->bitMatrix->get($centerJ, $i) && $stateCount[1] <= $maxCount){
+		while($i < $maxI && $this->matrix->check($centerJ, $i) && $stateCount[1] <= $maxCount){
 			$stateCount[1]++;
 			$i++;
 		}
@@ -261,7 +261,7 @@ final class AlignmentPatternFinder{
 			return null;
 		}
 
-		while($i < $maxI && !$this->bitMatrix->get($centerJ, $i) && $stateCount[2] <= $maxCount){
+		while($i < $maxI && !$this->matrix->check($centerJ, $i) && $stateCount[2] <= $maxCount){
 			$stateCount[2]++;
 			$i++;
 		}

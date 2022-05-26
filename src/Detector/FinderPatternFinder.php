@@ -30,7 +30,7 @@ final class FinderPatternFinder{
 	private const MIN_SKIP      = 2;
 	private const MAX_MODULES   = 177; // 1 pixel/module times 3 modules/center
 	private const CENTER_QUORUM = 2; // support up to version 10 for mobile clients
-	private BitMatrix $bitMatrix;
+	private BitMatrix $matrix;
 	/** @var \chillerlan\QRCode\Detector\FinderPattern[] */
 	private array $possibleCenters;
 	private bool  $hasSkipped = false;
@@ -38,10 +38,10 @@ final class FinderPatternFinder{
 	/**
 	 * Creates a finder that will search the image for three finder patterns.
 	 *
-	 * @param BitMatrix $bitMatrix image to search
+	 * @param BitMatrix $matrix image to search
 	 */
-	public function __construct(BitMatrix $bitMatrix){
-		$this->bitMatrix       = $bitMatrix;
+	public function __construct(BitMatrix $matrix){
+		$this->matrix          = $matrix;
 		$this->possibleCenters = [];
 	}
 
@@ -49,7 +49,7 @@ final class FinderPatternFinder{
 	 * @return \chillerlan\QRCode\Detector\FinderPattern[]
 	 */
 	public function find():array{
-		$dimension = $this->bitMatrix->getDimension();
+		$dimension = $this->matrix->size();
 
 		// We are looking for black/white/black/white/black modules in
 		// 1:1:3:1:1 ratio; this tracks the number of such modules seen so far
@@ -72,7 +72,7 @@ final class FinderPatternFinder{
 			for($j = 0; $j < $dimension; $j++){
 
 				// Black pixel
-				if($this->bitMatrix->get($j, $i)){
+				if($this->matrix->check($j, $i)){
 					// Counting white pixels
 					if(($currentState & 1) === 1){
 						$currentState++;
@@ -257,7 +257,7 @@ final class FinderPatternFinder{
 		// Start counting up, left from center finding black center mass
 		$i = 0;
 
-		while($centerI >= $i && $centerJ >= $i && $this->bitMatrix->get($centerJ - $i, $centerI - $i)){
+		while($centerI >= $i && $centerJ >= $i && $this->matrix->check($centerJ - $i, $centerI - $i)){
 			$stateCount[2]++;
 			$i++;
 		}
@@ -267,7 +267,7 @@ final class FinderPatternFinder{
 		}
 
 		// Continue up, left finding white space
-		while($centerI >= $i && $centerJ >= $i && !$this->bitMatrix->get($centerJ - $i, $centerI - $i)){
+		while($centerI >= $i && $centerJ >= $i && !$this->matrix->check($centerJ - $i, $centerI - $i)){
 			$stateCount[1]++;
 			$i++;
 		}
@@ -277,7 +277,7 @@ final class FinderPatternFinder{
 		}
 
 		// Continue up, left finding black border
-		while($centerI >= $i && $centerJ >= $i && $this->bitMatrix->get($centerJ - $i, $centerI - $i)){
+		while($centerI >= $i && $centerJ >= $i && $this->matrix->check($centerJ - $i, $centerI - $i)){
 			$stateCount[0]++;
 			$i++;
 		}
@@ -286,16 +286,16 @@ final class FinderPatternFinder{
 			return false;
 		}
 
-		$dimension = $this->bitMatrix->getDimension();
+		$dimension = $this->matrix->size();
 
 		// Now also count down, right from center
 		$i = 1;
-		while($centerI + $i < $dimension && $centerJ + $i < $dimension && $this->bitMatrix->get($centerJ + $i, $centerI + $i)){
+		while($centerI + $i < $dimension && $centerJ + $i < $dimension && $this->matrix->check($centerJ + $i, $centerI + $i)){
 			$stateCount[2]++;
 			$i++;
 		}
 
-		while($centerI + $i < $dimension && $centerJ + $i < $dimension && !$this->bitMatrix->get($centerJ + $i, $centerI + $i)){
+		while($centerI + $i < $dimension && $centerJ + $i < $dimension && !$this->matrix->check($centerJ + $i, $centerI + $i)){
 			$stateCount[3]++;
 			$i++;
 		}
@@ -304,7 +304,7 @@ final class FinderPatternFinder{
 			return false;
 		}
 
-		while($centerI + $i < $dimension && $centerJ + $i < $dimension && $this->bitMatrix->get($centerJ + $i, $centerI + $i)){
+		while($centerI + $i < $dimension && $centerJ + $i < $dimension && $this->matrix->check($centerJ + $i, $centerI + $i)){
 			$stateCount[4]++;
 			$i++;
 		}
@@ -328,14 +328,15 @@ final class FinderPatternFinder{
 	 * @param int $originalStateCountTotal
 	 *
 	 * @return float|null vertical center of finder pattern, or null if not found
+	 * @noinspection DuplicatedCode
 	 */
 	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):?float{
-		$maxI       = $this->bitMatrix->getDimension();
+		$maxI       = $this->matrix->size();
 		$stateCount = $this->getCrossCheckStateCount();
 
 		// Start counting up from center
 		$i = $startI;
-		while($i >= 0 && $this->bitMatrix->get($centerJ, $i)){
+		while($i >= 0 && $this->matrix->check($centerJ, $i)){
 			$stateCount[2]++;
 			$i--;
 		}
@@ -344,7 +345,7 @@ final class FinderPatternFinder{
 			return null;
 		}
 
-		while($i >= 0 && !$this->bitMatrix->get($centerJ, $i) && $stateCount[1] <= $maxCount){
+		while($i >= 0 && !$this->matrix->check($centerJ, $i) && $stateCount[1] <= $maxCount){
 			$stateCount[1]++;
 			$i--;
 		}
@@ -354,7 +355,7 @@ final class FinderPatternFinder{
 			return null;
 		}
 
-		while($i >= 0 && $this->bitMatrix->get($centerJ, $i) && $stateCount[0] <= $maxCount){
+		while($i >= 0 && $this->matrix->check($centerJ, $i) && $stateCount[0] <= $maxCount){
 			$stateCount[0]++;
 			$i--;
 		}
@@ -365,7 +366,7 @@ final class FinderPatternFinder{
 
 		// Now also count down from center
 		$i = $startI + 1;
-		while($i < $maxI && $this->bitMatrix->get($centerJ, $i)){
+		while($i < $maxI && $this->matrix->check($centerJ, $i)){
 			$stateCount[2]++;
 			$i++;
 		}
@@ -374,7 +375,7 @@ final class FinderPatternFinder{
 			return null;
 		}
 
-		while($i < $maxI && !$this->bitMatrix->get($centerJ, $i) && $stateCount[3] < $maxCount){
+		while($i < $maxI && !$this->matrix->check($centerJ, $i) && $stateCount[3] < $maxCount){
 			$stateCount[3]++;
 			$i++;
 		}
@@ -383,7 +384,7 @@ final class FinderPatternFinder{
 			return null;
 		}
 
-		while($i < $maxI && $this->bitMatrix->get($centerJ, $i) && $stateCount[4] < $maxCount){
+		while($i < $maxI && $this->matrix->check($centerJ, $i) && $stateCount[4] < $maxCount){
 			$stateCount[4]++;
 			$i++;
 		}
@@ -411,13 +412,14 @@ final class FinderPatternFinder{
 	 * Like #crossCheckVertical(int, int, int, int), and in fact is basically identical,
 	 * except it reads horizontally instead of vertically. This is used to cross-cross
 	 * check a vertical cross check and locate the real center of the alignment pattern.
+	 * @noinspection DuplicatedCode
 	 */
 	private function crossCheckHorizontal(int $startJ, int $centerI, int $maxCount, int $originalStateCountTotal):?float{
-		$maxJ       = $this->bitMatrix->getDimension();
+		$maxJ       = $this->matrix->size();
 		$stateCount = $this->getCrossCheckStateCount();
 
 		$j = $startJ;
-		while($j >= 0 && $this->bitMatrix->get($j, $centerI)){
+		while($j >= 0 && $this->matrix->check($j, $centerI)){
 			$stateCount[2]++;
 			$j--;
 		}
@@ -426,7 +428,7 @@ final class FinderPatternFinder{
 			return null;
 		}
 
-		while($j >= 0 && !$this->bitMatrix->get($j, $centerI) && $stateCount[1] <= $maxCount){
+		while($j >= 0 && !$this->matrix->check($j, $centerI) && $stateCount[1] <= $maxCount){
 			$stateCount[1]++;
 			$j--;
 		}
@@ -435,7 +437,7 @@ final class FinderPatternFinder{
 			return null;
 		}
 
-		while($j >= 0 && $this->bitMatrix->get($j, $centerI) && $stateCount[0] <= $maxCount){
+		while($j >= 0 && $this->matrix->check($j, $centerI) && $stateCount[0] <= $maxCount){
 			$stateCount[0]++;
 			$j--;
 		}
@@ -445,7 +447,7 @@ final class FinderPatternFinder{
 		}
 
 		$j = $startJ + 1;
-		while($j < $maxJ && $this->bitMatrix->get($j, $centerI)){
+		while($j < $maxJ && $this->matrix->check($j, $centerI)){
 			$stateCount[2]++;
 			$j++;
 		}
@@ -454,7 +456,7 @@ final class FinderPatternFinder{
 			return null;
 		}
 
-		while($j < $maxJ && !$this->bitMatrix->get($j, $centerI) && $stateCount[3] < $maxCount){
+		while($j < $maxJ && !$this->matrix->check($j, $centerI) && $stateCount[3] < $maxCount){
 			$stateCount[3]++;
 			$j++;
 		}
@@ -463,7 +465,7 @@ final class FinderPatternFinder{
 			return null;
 		}
 
-		while($j < $maxJ && $this->bitMatrix->get($j, $centerI) && $stateCount[4] < $maxCount){
+		while($j < $maxJ && $this->matrix->check($j, $centerI) && $stateCount[4] < $maxCount){
 			$stateCount[4]++;
 			$j++;
 		}
