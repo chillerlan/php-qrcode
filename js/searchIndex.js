@@ -3631,6 +3631,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCodeTest-QRCodeReaderImagickTest.html#method_setUp"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderImagickTest\u003A\u003AvectorQRCodeProvider\u0028\u0029",
+            "name": "vectorQRCodeProvider",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderImagickTest.html#method_vectorQRCodeProvider"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderImagickTest\u003A\u003AtestReadVectorFormats\u0028\u0029",
+            "name": "testReadVectorFormats",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderImagickTest.html#method_testReadVectorFormats"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderImagickTest\u003A\u003A\u0024FQN",
             "name": "FQN",
             "summary": "",
