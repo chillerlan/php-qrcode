@@ -119,7 +119,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 
     </aside>
 
@@ -154,6 +154,20 @@
 <dd></dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_debugMatrix">debugMatrix()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Matrix debugging console output</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_matrixProvider">matrixProvider()</a>
+    <span>
+                                &nbsp;: <abbr title="\Generator">Generator</abbr>    </span>
+</dt>
+<dd>Version data provider for several pattern tests</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testECC">testECC()</a>
     <span>
                                 &nbsp;: void    </span>
@@ -293,19 +307,12 @@
 </dt>
 <dd>Tests if version() returns the current (given) version</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_versionProvider">versionProvider()</a>
-    <span>
-                                &nbsp;: <abbr title="\Generator">Generator</abbr>    </span>
-</dt>
-<dd>Version data provider for several pattern tests</dd>
-
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_getMatrix">getMatrix()</a>
+    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_dm">dm()</a>
     <span>
-                                &nbsp;: <a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a>    </span>
+                                &nbsp;: void    </span>
 </dt>
-<dd>shortcut</dd>
+<dd>debugging shortcut qirth limit to a single version when using with matrixProvider</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_setUp">setUp()</a>
@@ -333,7 +340,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">24</span>
+    <span class="phpdocumentor-element-found-in__line">26</span>
 
     </aside>
 
@@ -377,7 +384,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 
     </aside>
 
@@ -406,6 +413,83 @@
         class="phpdocumentor-element
             -method
             -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_debugMatrix">
+        debugMatrix()
+        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_debugMatrix" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">43</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Matrix debugging console output</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">debugMatrix</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$matrix</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_matrixProvider">
+        matrixProvider()
+        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_matrixProvider" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">157</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Version data provider for several pattern tests</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">matrixProvider</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Generator">Generator</abbr></span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type"><abbr title="\Generator">Generator</abbr></span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="method_testECC">
@@ -415,7 +499,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">65</span>
+    <span class="phpdocumentor-element-found-in__line">126</span>
 
     </aside>
 
@@ -448,7 +532,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">352</span>
+    <span class="phpdocumentor-element-found-in__line">433</span>
 
     </aside>
 
@@ -481,7 +565,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">83</span>
+    <span class="phpdocumentor-element-found-in__line">144</span>
 
     </aside>
 
@@ -514,7 +598,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">44</span>
+    <span class="phpdocumentor-element-found-in__line">105</span>
 
     </aside>
 
@@ -547,7 +631,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">72</span>
+    <span class="phpdocumentor-element-found-in__line">133</span>
 
     </aside>
 
@@ -580,7 +664,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">145</span>
+    <span class="phpdocumentor-element-found-in__line">215</span>
 
     </aside>
 
@@ -588,14 +672,14 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testSetAlignmentPattern</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">testSetAlignmentPattern</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$version</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                <span class="phpdocumentor-signature__argument__name">$matrix</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
@@ -614,7 +698,7 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>versionProvider</p>
+                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
 </section>
 
                                     </dd>
@@ -639,7 +723,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">107</span>
+    <span class="phpdocumentor-element-found-in__line">171</span>
 
     </aside>
 
@@ -647,14 +731,14 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testSetDarkModule</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">testSetDarkModule</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$version</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                <span class="phpdocumentor-signature__argument__name">$matrix</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
@@ -673,7 +757,7 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>versionProvider</p>
+                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
 </section>
 
                                     </dd>
@@ -698,7 +782,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">118</span>
+    <span class="phpdocumentor-element-found-in__line">184</span>
 
     </aside>
 
@@ -706,14 +790,14 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testSetFinderPattern</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">testSetFinderPattern</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$version</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                <span class="phpdocumentor-signature__argument__name">$matrix</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
@@ -732,7 +816,7 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>versionProvider</p>
+                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
 </section>
 
                                     </dd>
@@ -757,7 +841,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">226</span>
+    <span class="phpdocumentor-element-found-in__line">301</span>
 
     </aside>
 
@@ -765,14 +849,14 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testSetFormatInfo</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">testSetFormatInfo</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$version</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                <span class="phpdocumentor-signature__argument__name">$matrix</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
@@ -791,7 +875,7 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>versionProvider</p>
+                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
 </section>
 
                                     </dd>
@@ -816,7 +900,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">328</span>
+    <span class="phpdocumentor-element-found-in__line">409</span>
 
     </aside>
 
@@ -849,7 +933,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">338</span>
+    <span class="phpdocumentor-element-found-in__line">419</span>
 
     </aside>
 
@@ -882,7 +966,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">275</span>
+    <span class="phpdocumentor-element-found-in__line">352</span>
 
     </aside>
 
@@ -915,7 +999,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">297</span>
+    <span class="phpdocumentor-element-found-in__line">376</span>
 
     </aside>
 
@@ -948,7 +1032,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">240</span>
+    <span class="phpdocumentor-element-found-in__line">317</span>
 
     </aside>
 
@@ -956,14 +1040,14 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testSetQuietZone</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">testSetQuietZone</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$version</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                <span class="phpdocumentor-signature__argument__name">$matrix</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
@@ -982,7 +1066,7 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>versionProvider</p>
+                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
 </section>
 
                                     </dd>
@@ -1007,7 +1091,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">265</span>
+    <span class="phpdocumentor-element-found-in__line">342</span>
 
     </aside>
 
@@ -1040,7 +1124,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">131</span>
+    <span class="phpdocumentor-element-found-in__line">199</span>
 
     </aside>
 
@@ -1048,14 +1132,14 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testSetSeparators</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">testSetSeparators</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$version</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                <span class="phpdocumentor-signature__argument__name">$matrix</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
@@ -1074,7 +1158,7 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>versionProvider</p>
+                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
 </section>
 
                                     </dd>
@@ -1099,7 +1183,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">178</span>
+    <span class="phpdocumentor-element-found-in__line">249</span>
 
     </aside>
 
@@ -1107,14 +1191,14 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testSetTimingPattern</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">testSetTimingPattern</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$version</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                <span class="phpdocumentor-signature__argument__name">$matrix</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
@@ -1133,7 +1217,7 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>versionProvider</p>
+                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
 </section>
 
                                     </dd>
@@ -1158,7 +1242,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">207</span>
+    <span class="phpdocumentor-element-found-in__line">280</span>
 
     </aside>
 
@@ -1166,14 +1250,14 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testSetVersionNumber</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">testSetVersionNumber</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$version</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                <span class="phpdocumentor-signature__argument__name">$matrix</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
@@ -1192,7 +1276,7 @@
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
-                                                 <section class="phpdocumentor-description"><p>versionProvider</p>
+                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
 </section>
 
                                     </dd>
@@ -1217,7 +1301,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">51</span>
+    <span class="phpdocumentor-element-found-in__line">112</span>
 
     </aside>
 
@@ -1250,7 +1334,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">58</span>
+    <span class="phpdocumentor-element-found-in__line">119</span>
 
     </aside>
 
@@ -1273,65 +1357,32 @@
                     <article
         class="phpdocumentor-element
             -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_versionProvider">
-        versionProvider()
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_versionProvider" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">96</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Version data provider for several pattern tests</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">versionProvider</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Generator">Generator</abbr></span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><abbr title="\Generator">Generator</abbr></span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getMatrix">
-        getMatrix()
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_getMatrix" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_dm">
+        dm()
+        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_dm" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">92</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">shortcut</p>
+        <p class="phpdocumentor-summary">debugging shortcut qirth limit to a single version when using with matrixProvider</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">getMatrix</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">dm</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$version</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                <span class="phpdocumentor-signature__argument__name">$matrix</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
@@ -1340,9 +1391,23 @@
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_matrixProvider"><abbr title="\chillerlan\QRCodeTest\Data\QRMatrixTest::matrixProvider()">QRMatrixTest::matrixProvider()</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></span>
+    <span class="phpdocumentor-signature__response_type">void</span>
             &mdash;
         
     
@@ -1360,7 +1425,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 

@@ -3231,10 +3231,15 @@ Search.appendIndex(
             "summary": "invokes\u0020a\u0020QRMatrix\u0020object",
             "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_setUp"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AgetMatrix\u0028\u0029",
-            "name": "getMatrix",
-            "summary": "shortcut",
-            "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_getMatrix"
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AdebugMatrix\u0028\u0029",
+            "name": "debugMatrix",
+            "summary": "Matrix\u0020debugging\u0020console\u0020output",
+            "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_debugMatrix"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003Adm\u0028\u0029",
+            "name": "dm",
+            "summary": "debugging\u0020shortcut\u0020qirth\u0020limit\u0020to\u0020a\u0020single\u0020version\u0020when\u0020using\u0020with\u0020matrixProvider",
+            "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_dm"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AtestInstance\u0028\u0029",
             "name": "testInstance",
@@ -3266,10 +3271,10 @@ Search.appendIndex(
             "summary": "Tests\u0020the\u0020set\u0028\u0029,\u0020get\u0028\u0029\u0020and\u0020check\u0028\u0029\u0020methods",
             "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetSetCheck"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AversionProvider\u0028\u0029",
-            "name": "versionProvider",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AmatrixProvider\u0028\u0029",
+            "name": "matrixProvider",
             "summary": "Version\u0020data\u0020provider\u0020for\u0020several\u0020pattern\u0020tests",
-            "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_versionProvider"
+            "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_matrixProvider"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AtestSetDarkModule\u0028\u0029",
             "name": "testSetDarkModule",
