@@ -25,6 +25,7 @@ jobs:
           - "7.4"
           - "8.0"
           - "8.1"
+          - "8.2"
 
     env:
       PHAN_ALLOW_XDEBUG: 0
@@ -90,6 +91,7 @@ jobs:
           - "7.4"
           - "8.0"
           - "8.1"
+          - "8.2"
 
     steps:
       - name: "Checkout"
