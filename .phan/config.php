@@ -54,5 +54,6 @@ return [
 	],
 	'suppress_issue_types' => [
 		'PhanDeprecatedFunction',
+		'PhanAccessMethodInternal',
 	],
 ];
