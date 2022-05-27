@@ -81,7 +81,7 @@ final class QRMatrixTest extends TestCase{
 
 		$out = (new QRString($opt, $matrix))->dump();
 
-		echo $out."\n\n";
+		echo "\n\n".$out."\n\n";
 	}
 
 	/**
