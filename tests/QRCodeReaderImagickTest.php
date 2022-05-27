@@ -11,6 +11,7 @@
 namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCode\Decoder\IMagickLuminanceSource;
+use chillerlan\QRCode\QRCode;
 use function extension_loaded;
 
 /**
@@ -19,7 +20,6 @@ use function extension_loaded;
 final class QRCodeReaderImagickTest extends QRCodeReaderTestAbstract{
 
 	protected string $FQN = IMagickLuminanceSource::class;
-
 
 	protected function setUp():void{
 
@@ -30,6 +30,21 @@ final class QRCodeReaderImagickTest extends QRCodeReaderTestAbstract{
 		parent::setUp();
 
 		$this->options->readerUseImagickIfAvailable = true;
+	}
+
+	public function vectorQRCodeProvider():array{
+		return [
+			'SVG' => ['vector_sample.svg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', false],
+			'EPS' => ['vector_sample.eps', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', false],
+		];
+	}
+
+	/**
+	 * @dataProvider vectorQRCodeProvider
+	 */
+	public function testReadVectorFormats(string $img, string $expected):void{
+		$this::assertSame($expected, (string)(new QRCode)
+			->readFromSource(IMagickLuminanceSource::fromFile(__DIR__.'/samples/'.$img, $this->options)));
 	}
 
 }
