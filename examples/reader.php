@@ -14,7 +14,7 @@ use chillerlan\QRCode\{QRCode, QROptions};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-/** @var \chillerlan\Settings\SettingsContainerInterface $options */
+// please excuse the IDE yelling https://youtrack.jetbrains.com/issue/WI-66549
 $options = new QROptions;
 $options->readerUseImagickIfAvailable = false;
 $options->readerGrayscale = true;
