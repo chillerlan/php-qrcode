@@ -158,9 +158,14 @@ class QRMatrix{
 	}
 
 	/**
-	 * Returns the value of the module at position [$x, $y]
+	 * Returns the value of the module at position [$x, $y] or -1 if the coordinate is outside of the matrix
 	 */
 	public function get(int $x, int $y):int{
+
+		if(!isset($this->matrix[$y][$x])){
+			return -1;
+		}
+
 		return $this->matrix[$y][$x];
 	}
 
@@ -171,7 +176,10 @@ class QRMatrix{
 	 *   false => $M_TYPE
 	 */
 	public function set(int $x, int $y, bool $value, int $M_TYPE):self{
-		$this->matrix[$y][$x] = $M_TYPE | ($value ? $this::IS_DARK : 0);
+
+		if(isset($this->matrix[$y][$x])){
+			$this->matrix[$y][$x] = $M_TYPE | ($value ? $this::IS_DARK : 0);
+		}
 
 		return $this;
 	}
@@ -180,7 +188,10 @@ class QRMatrix{
 	 * Flips the value of the module
 	 */
 	public function flip(int $x, int $y):self{
-		$this->matrix[$y][$x] ^= $this::IS_DARK;
+
+		if(isset($this->matrix[$y][$x])){
+			$this->matrix[$y][$x] ^= $this::IS_DARK;
+		}
 
 		return $this;
 	}
@@ -191,6 +202,11 @@ class QRMatrix{
 	 *   true => $value & $M_TYPE === $M_TYPE
 	 */
 	public function checkType(int $x, int $y, int $M_TYPE):bool{
+
+		if(!isset($this->matrix[$y][$x])){
+			return false;
+		}
+
 		return ($this->matrix[$y][$x] & $M_TYPE) === $M_TYPE;
 	}
 
