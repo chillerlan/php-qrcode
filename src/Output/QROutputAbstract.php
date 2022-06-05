@@ -152,7 +152,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 				}
 
 				// collect the modules per $M_TYPE
-				$paths[$M_TYPE][] = $transform($x, $y);
+				$paths[$M_TYPE][] = $transform($x, $y, $M_TYPE);
 			}
 		}
 
