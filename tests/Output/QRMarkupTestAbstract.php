@@ -11,14 +11,11 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QRMarkup;
 
 /**
  * Tests the QRMarkup output module
  */
 abstract class QRMarkupTestAbstract extends QROutputTestAbstract{
-
-	protected string $FQN  = QRMarkup::class;
 
 	/**
 	 * @inheritDoc
