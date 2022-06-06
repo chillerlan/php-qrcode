@@ -147,7 +147,7 @@ class QRGdImage extends QROutputAbstract{
 		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
 		$color = imagecolorallocate($this->image, ...$this->moduleValues[$M_TYPE]);
 
-		$this->options->drawCircularModules && !$this->matrix->checkTypes($x, $y, $this->options->keepAsSquare)
+		$this->options->drawCircularModules && $this->matrix->checkTypeNotIn($x, $y, $this->options->keepAsSquare)
 			? imagefilledellipse(
 				$this->image,
 				($x * $this->scale) + ($this->scale / 2),

@@ -188,7 +188,7 @@ class QRMarkup extends QROutputAbstract{
 			return '';
 		}
 
-		if($this->options->drawCircularModules && !$this->matrix->checkTypes($x, $y, $this->options->keepAsSquare)){
+		if($this->options->drawCircularModules && $this->matrix->checkTypeNotIn($x, $y, $this->options->keepAsSquare)){
 			$r = $this->options->circleRadius;
 
 			return sprintf(

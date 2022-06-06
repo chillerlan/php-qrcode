@@ -142,7 +142,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 		foreach($this->matrix->matrix() as $y => $row){
 			foreach($row as $x => $M_TYPE){
 
-				if($this->options->connectPaths && !$this->matrix->checkTypes($x, $y, $this->options->excludeFromConnect)){
+				if($this->options->connectPaths && $this->matrix->checkTypeNotIn($x, $y, $this->options->excludeFromConnect)){
 					// to connect paths we'll redeclare the $M_TYPE to data only
 					$M_TYPE = QRMatrix::M_DATA;
 
