@@ -134,6 +134,13 @@ abstract class QROutputAbstract implements QROutputInterface{
 	/**
 	 * collects the modules per QRMatrix::M_* type and runs a $transform functio on each module and
 	 * returns an array with the transformed modules
+	 *
+	 * The transform callback is called with the following parameters:
+	 *
+	 *   $x            - current column
+	 *   $y            - current row
+	 *   $M_TYPE       - field value
+	 *   $M_TYPE_LAYER - (possibly modified) field value that acts as layer id
 	 */
 	protected function collectModules(Closure $transform):array{
 		$paths = [];
@@ -141,18 +148,19 @@ abstract class QROutputAbstract implements QROutputInterface{
 		// collect the modules for each type
 		foreach($this->matrix->matrix() as $y => $row){
 			foreach($row as $x => $M_TYPE){
+				$M_TYPE_LAYER = $M_TYPE;
 
 				if($this->options->connectPaths && $this->matrix->checkTypeNotIn($x, $y, $this->options->excludeFromConnect)){
-					// to connect paths we'll redeclare the $M_TYPE to data only
-					$M_TYPE = QRMatrix::M_DATA;
+					// to connect paths we'll redeclare the $M_TYPE_LAYER to data only
+					$M_TYPE_LAYER = QRMatrix::M_DATA;
 
 					if($this->matrix->check($x, $y)){
-						$M_TYPE |= QRMatrix::IS_DARK;
+						$M_TYPE_LAYER |= QRMatrix::IS_DARK;
 					}
 				}
 
 				// collect the modules per $M_TYPE
-				$paths[$M_TYPE][] = $transform($x, $y, $M_TYPE);
+				$paths[$M_TYPE_LAYER][] = $transform($x, $y, $M_TYPE, $M_TYPE_LAYER);
 			}
 		}
 
