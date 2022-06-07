@@ -306,11 +306,12 @@ maps the ECC coded binary data and applies the mask pattern</p>
 <dd>Checks whether a module is of the given $M_TYPE</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkTypes">checkTypes()</a>
+    <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkTypeNotIn">checkTypeNotIn()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd>checks whether a module matches one of the given $M_TYPES</dd>
+<dd>checks whether the module at ($x, $y) is not in the given array of $M_TYPES,
+returns true if no matches are found, otherwise false.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_eccLevel">eccLevel()</a>
@@ -331,7 +332,7 @@ maps the ECC coded binary data and applies the mask pattern</p>
     <span>
                                 &nbsp;: int    </span>
 </dt>
-<dd>Returns the value of the module at position [$x, $y]</dd>
+<dd>Returns the value of the module at position [$x, $y] or -1 if the coordinate is outside of the matrix</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_initFunctionalPatterns">initFunctionalPatterns()</a>
@@ -1097,7 +1098,7 @@ maps the ECC coded binary data and applies the mask pattern</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">217</span>
+    <span class="phpdocumentor-element-found-in__line">234</span>
 
     </aside>
 
@@ -1152,7 +1153,7 @@ false =&gt; $value &amp; 0x800 === 0</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">193</span>
+    <span class="phpdocumentor-element-found-in__line">204</span>
 
     </aside>
 
@@ -1207,22 +1208,23 @@ false =&gt; $value &amp; 0x800 === 0</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_checkTypes">
-        checkTypes()
-        <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkTypes" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_checkTypeNotIn">
+        checkTypeNotIn()
+        <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkTypeNotIn" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">200</span>
+    <span class="phpdocumentor-element-found-in__line">217</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">checks whether a module matches one of the given $M_TYPES</p>
+        <p class="phpdocumentor-summary">checks whether the module at ($x, $y) is not in the given array of $M_TYPES,
+returns true if no matches are found, otherwise false.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">checkTypes</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$x</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$y</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$M_TYPES</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+                    <span class="phpdocumentor-signature__name">checkTypeNotIn</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$x</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$y</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$M_TYPES</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -1307,7 +1309,7 @@ false =&gt; $value &amp; 0x800 === 0</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">182</span>
+    <span class="phpdocumentor-element-found-in__line">190</span>
 
     </aside>
 
@@ -1363,7 +1365,7 @@ false =&gt; $value &amp; 0x800 === 0</p>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Returns the value of the module at position [$x, $y]</p>
+        <p class="phpdocumentor-summary">Returns the value of the module at position [$x, $y] or -1 if the coordinate is outside of the matrix</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -1444,7 +1446,7 @@ false =&gt; $value &amp; 0x800 === 0</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">576</span>
+    <span class="phpdocumentor-element-found-in__line">593</span>
 
     </aside>
 
@@ -1556,7 +1558,7 @@ false =&gt; $value &amp; 0x800 === 0</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">173</span>
+    <span class="phpdocumentor-element-found-in__line">178</span>
 
     </aside>
 
@@ -1627,7 +1629,7 @@ false =&gt; $M_TYPE</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">302</span>
+    <span class="phpdocumentor-element-found-in__line">319</span>
 
     </aside>
 
@@ -1662,7 +1664,7 @@ false =&gt; $M_TYPE</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">226</span>
+    <span class="phpdocumentor-element-found-in__line">243</span>
 
     </aside>
 
@@ -1697,7 +1699,7 @@ false =&gt; $M_TYPE</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">237</span>
+    <span class="phpdocumentor-element-found-in__line">254</span>
 
     </aside>
 
@@ -1732,7 +1734,7 @@ false =&gt; $M_TYPE</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">379</span>
+    <span class="phpdocumentor-element-found-in__line">396</span>
 
     </aside>
 
@@ -1767,7 +1769,7 @@ false =&gt; $M_TYPE</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">464</span>
+    <span class="phpdocumentor-element-found-in__line">481</span>
 
     </aside>
 
@@ -1865,7 +1867,7 @@ Note that there is no restiction on how many times this method could be called o
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">417</span>
+    <span class="phpdocumentor-element-found-in__line">434</span>
 
     </aside>
 
@@ -1925,7 +1927,7 @@ Note that there is no restiction on how many times this method could be called o
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">272</span>
+    <span class="phpdocumentor-element-found-in__line">289</span>
 
     </aside>
 
@@ -1960,7 +1962,7 @@ Note that there is no restiction on how many times this method could be called o
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">333</span>
+    <span class="phpdocumentor-element-found-in__line">350</span>
 
     </aside>
 
@@ -1995,7 +1997,7 @@ Note that there is no restiction on how many times this method could be called o
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">355</span>
+    <span class="phpdocumentor-element-found-in__line">372</span>
 
     </aside>
 
@@ -2098,7 +2100,7 @@ Note that there is no restiction on how many times this method could be called o
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">529</span>
+    <span class="phpdocumentor-element-found-in__line">546</span>
 
     </aside>
 

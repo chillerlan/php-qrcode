@@ -119,14 +119,12 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">21</span>
+    <span class="phpdocumentor-element-found-in__line">18</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Converts the matrix into markup types: HTML, SVG, .</p>
+            <p class="phpdocumentor-summary">Abstract for markup types: HTML, SVG, ... XML anyone?</p>
 
-    <section class="phpdocumentor-description"><p>..</p>
-</section>
 
 
 
@@ -193,7 +191,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_dump">dump()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: string    </span>
 </dt>
 <dd></dd>
 
@@ -213,6 +211,13 @@
 returns an array with the transformed modules</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_createMarkup">createMarkup()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_getDefaultModuleValue">getDefaultModuleValue()</a>
     <span>
                                 &nbsp;: mixed    </span>
@@ -225,13 +230,6 @@ returns an array with the transformed modules</dd>
                                 &nbsp;: mixed    </span>
 </dt>
 <dd>Returns the final value for the given input (return value depends on the output module)</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_html">html()</a>
-    <span>
-                                &nbsp;: string    </span>
-</dt>
-<dd>HTML output</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_moduleValueIsValid">moduleValueIsValid()</a>
@@ -253,34 +251,6 @@ returns an array with the transformed modules</dd>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Sets the initial module values</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_svg">svg()</a>
-    <span>
-                                &nbsp;: string    </span>
-</dt>
-<dd>SVG output</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_svgHeader">svgHeader()</a>
-    <span>
-                                &nbsp;: string    </span>
-</dt>
-<dd>returns the &lt;svg&gt; header with the given options parsed</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_svgModule">svgModule()</a>
-    <span>
-                                &nbsp;: string    </span>
-</dt>
-<dd>returns a path segment for a single module</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_svgPaths">svgPaths()</a>
-    <span>
-                                &nbsp;: string    </span>
-</dt>
-<dd>returns one or more SVG &lt;path&gt; elements</dd>
 
         </dl>
 
@@ -596,14 +566,14 @@ returns an array with the transformed modules</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">47</span>
+    <span class="phpdocumentor-element-found-in__line">44</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">dump</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">dump</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -634,7 +604,7 @@ returns an array with the transformed modules</dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
+    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
         
     
@@ -704,7 +674,7 @@ returns an array with the transformed modules</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputAbstract.php"><a href="files/src-output-qroutputabstract.html"><abbr title="src/Output/QROutputAbstract.php">QROutputAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">138</span>
+    <span class="phpdocumentor-element-found-in__line">145</span>
 
     </aside>
 
@@ -715,7 +685,13 @@ returns an array with the transformed modules</p>
     <span class="phpdocumentor-signature__visibility">protected</span>
                     <span class="phpdocumentor-signature__name">collectModules</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Closure">Closure</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$transform</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>The transform callback is called with the following parameters:</p>
+<p>$x            - current column
+$y            - current row
+$M_TYPE       - field value
+$M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
+</section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -740,6 +716,49 @@ returns an array with the transformed modules</p>
         class="phpdocumentor-element
             -method
             -protected
+                        -abstract                                "
+>
+    <h4 class="phpdocumentor-element__name" id="method_createMarkup">
+        createMarkup()
+        <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_createMarkup" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">60</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__abstract">abstract</span>                <span class="phpdocumentor-signature__name">createMarkup</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$saveToFile</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$saveToFile</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="method_getDefaultModuleValue">
@@ -749,7 +768,7 @@ returns an array with the transformed modules</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
@@ -806,7 +825,7 @@ returns an array with the transformed modules</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
@@ -855,50 +874,6 @@ returns an array with the transformed modules</p>
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_html">
-        html()
-        <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_html" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">70</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">HTML output</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">html</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$saveToFile</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$saveToFile</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_moduleValueIsValid">
         moduleValueIsValid()
         <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_moduleValueIsValid" class="headerlink"><i class="fas fa-link"></i></a>
@@ -906,7 +881,7 @@ returns an array with the transformed modules</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
@@ -1060,226 +1035,6 @@ returns an array with the transformed modules</p>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_svg">
-        svg()
-        <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_svg" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">107</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">SVG output</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">svg</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$saveToFile</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$saveToFile</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/codemasher/php-qrcode/pull/5"><abbr title="https://github.com/codemasher/php-qrcode/pull/5">https://github.com/codemasher/php-qrcode/pull/5</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg"><abbr title="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg">https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://www.sarasoueidan.com/demos/interactive-svg-coordinate-system/"><abbr title="https://www.sarasoueidan.com/demos/interactive-svg-coordinate-system/">https://www.sarasoueidan.com/demos/interactive-svg-coordinate-system/</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_svgHeader">
-        svgHeader()
-        <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_svgHeader" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">130</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">returns the &lt;svg&gt; header with the given options parsed</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">svgHeader</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-    
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_svgModule">
-        svgModule()
-        <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_svgModule" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">185</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">returns a path segment for a single module</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">svgModule</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$x</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$y</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$x</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$y</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d"><abbr title="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d">https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_svgPaths">
-        svgPaths()
-        <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_svgPaths" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">152</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">returns one or more SVG &lt;path&gt; elements</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">svgPaths</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path"><abbr title="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path">https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
         
     
