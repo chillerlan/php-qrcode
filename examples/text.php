@@ -1,7 +1,8 @@
 <?php
 /**
- * String output example (console QR Codes for Lynx users!)
+
  *
+ * @filesource   text.php
  * @created      21.12.2017
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
@@ -11,53 +12,59 @@
 namespace chillerlan\QRCodeExamples;
 
 use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Common\EccLevel;
-use PHPUnit\Util\Color;
+
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
+$data = 'https://github.com/chillerlan/php-qrcode';
 
 $options = new QROptions([
-	'version'      => 7,
+	'version'      => 5,
 	'outputType'   => QRCode::OUTPUT_STRING_TEXT,
-	'eccLevel'     => EccLevel::L,
-	'eol'          => Color::colorize('reset', "\x00\n"),
+	'eccLevel'     => QRCode::ECC_L,
+]);
+
+// <pre> to view it in a browser
+echo '<pre style="font-size: 75%; line-height: 1;">'.(new QRCode($options))->render($data).'</pre>';
+
+
+// custom values
+$options = new QROptions([
+	'version'      => 5,
+	'outputType'   => QRCode::OUTPUT_STRING_TEXT,
+	'eccLevel'     => QRCode::ECC_L,
 	'moduleValues' => [
 		// finder
-		QRMatrix::M_FINDER | QRMatrix::IS_DARK     => Color::colorize('fg-black', '🔴'), // dark (true)
-		QRMatrix::M_FINDER                         => Color::colorize('fg-black', '⭕'), // light (false)
-		QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK => Color::colorize('fg-black', '🔴'), // finder dot, dark (true)
+		1536 => 'A', // dark (true)
+		6    => 'a', // light (false)
 		// alignment
-		QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK  => Color::colorize('fg-blue', '🔴'),
-		QRMatrix::M_ALIGNMENT                      => Color::colorize('fg-blue', '⭕'),
+		2560 => 'B',
+		10   => 'b',
 		// timing
-		QRMatrix::M_TIMING | QRMatrix::IS_DARK     => Color::colorize('fg-red', '🔴'),
-		QRMatrix::M_TIMING                         => Color::colorize('fg-red', '⭕'),
+		3072 => 'C',
+		12   => 'c',
 		// format
-		QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => Color::colorize('fg-magenta', '🔴'),
-		QRMatrix::M_FORMAT                         => Color::colorize('fg-magenta', '⭕'),
+		3584 => 'D',
+		14   => 'd',
 		// version
-		QRMatrix::M_VERSION | QRMatrix::IS_DARK    => Color::colorize('fg-green', '🔴'),
-		QRMatrix::M_VERSION                        => Color::colorize('fg-green', '⭕'),
+		4096 => 'E',
+		16   => 'e',
 		// data
-		QRMatrix::M_DATA | QRMatrix::IS_DARK       => Color::colorize('fg-white', '🔴'),
-		QRMatrix::M_DATA                           => Color::colorize('fg-white', '⭕'),
+		1024 => 'F',
+		4    => 'f',
 		// darkmodule
-		QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK => Color::colorize('fg-black', '🔴'),
+		512  => 'G',
 		// separator
-		QRMatrix::M_SEPARATOR                      => Color::colorize('fg-cyan', '⭕'),
+		8    => 'h',
 		// quietzone
-		QRMatrix::M_QUIETZONE                      => Color::colorize('fg-cyan', '⭕'),
-		// logo space
-		QRMatrix::M_LOGO                           => Color::colorize('fg-yellow', '⭕'),
-		// empty
-		QRMatrix::M_NULL                           => Color::colorize('fg-black', '⭕'),
-		// data
-		QRMatrix::M_TEST | QRMatrix::IS_DARK       => Color::colorize('fg-white', '🔴'),
-		QRMatrix::M_TEST                           => Color::colorize('fg-black', '⭕'),
+		18   => 'i',
 	],
 ]);
 
-echo (new QRCode($options))->render($data);
+// <pre> to view it in a browser
+echo '<pre style="font-size: 75%; line-height: 1;">'.(new QRCode($options))->render($data).'</pre>';
+
+
+
+
+

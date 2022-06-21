@@ -2,7 +2,9 @@
 /**
  * Class MyCustomOutput
  *
+ * @filesource   MyCustomOutput.php
  * @created      24.12.2017
+ * @package      chillerlan\QRCodeExamples
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT
@@ -14,42 +16,21 @@ use chillerlan\QRCode\Output\QROutputAbstract;
 
 class MyCustomOutput extends QROutputAbstract{
 
-	/**
-	 * @inheritDoc
-	 */
-	protected function moduleValueIsValid($value):bool{
-		// TODO: Implement moduleValueIsValid() method. (abstract)
-		return false;
+	protected function setModuleValues():void{
+		// TODO: Implement setModuleValues() method.
 	}
 
-	/**
-	 * @inheritDoc
-	 */
-	protected function getModuleValue($value){
-		// TODO: Implement getModuleValue() method. (abstract)
-		return null;
-	}
+	public function dump(string $file = null){
 
-	/**
-	 * @inheritDoc
-	 */
-	protected function getDefaultModuleValue(bool $isDark){
-		// TODO: Implement getDefaultModuleValue() method. (abstract)
-		return null;
-	}
 
-	/**
-	 * @inheritDoc
-	 */
-	public function dump(string $file = null):string{
 		$output = '';
 
-		for($y = 0; $y < $this->moduleCount; $y++){
-			for($x = 0; $x < $this->moduleCount; $x++){
-				$output .= (int)$this->matrix->check($x, $y);
+		for($row = 0; $row < $this->moduleCount; $row++){
+			for($col = 0; $col < $this->moduleCount; $col++){
+				$output .= (int)$this->matrix->check($col, $row);
 			}
 
-			$output .= $this->options->eol;
+			$output .= \PHP_EOL;
 		}
 
 		return $output;

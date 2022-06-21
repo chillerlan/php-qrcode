@@ -1,5 +1,7 @@
 <?php
 /**
+ *
+ * @filesource   image.php
  * @created      24.12.2017
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
@@ -9,48 +11,42 @@
 namespace chillerlan\QRCodeExamples;
 
 use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Common\EccLevel;
+
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-$data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+$data = 'https://github.com/chillerlan/php-qrcode';
 
 $options = new QROptions([
-	'version'             => 7,
-	'outputType'          => QRCode::OUTPUT_IMAGICK,
-	'eccLevel'            => EccLevel::L,
-	'imagickBG'           => '#FFFFFF',
-	'scale'               => 20,
-	'drawCircularModules' => true,
-	'circleRadius'        => 0.4,
-	'keepAsSquare'        => [QRMatrix::M_FINDER|QRMatrix::IS_DARK, QRMatrix::M_FINDER_DOT, QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK],
-	'moduleValues'        => [
+	'version'      => 7,
+	'outputType'   => QRCode::OUTPUT_IMAGICK,
+	'eccLevel'     => QRCode::ECC_L,
+	'scale'        => 5,
+	'moduleValues' => [
 		// finder
-		QRMatrix::M_FINDER | QRMatrix::IS_DARK     => '#A71111', // dark (true)
-		QRMatrix::M_FINDER                         => '#FFBFBF', // light (false)
-		QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK => '#A71111', // finder dot, dark (true)
+		1536 => '#A71111', // dark (true)
+		6    => '#FFBFBF', // light (false)
 		// alignment
-		QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK  => '#A70364',
-		QRMatrix::M_ALIGNMENT                      => '#FFC9C9',
+		2560 => '#A70364',
+		10   => '#FFC9C9',
 		// timing
-		QRMatrix::M_TIMING | QRMatrix::IS_DARK     => '#98005D',
-		QRMatrix::M_TIMING                         => '#FFB8E9',
+		3072 => '#98005D',
+		12   => '#FFB8E9',
 		// format
-		QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => '#003804',
-		QRMatrix::M_FORMAT                         => '#CCFB12',
+		3584 => '#003804',
+		14   => '#00FB12',
 		// version
-		QRMatrix::M_VERSION | QRMatrix::IS_DARK    => '#650098',
-		QRMatrix::M_VERSION                        => '#E0B8FF',
+		4096 => '#650098',
+		16   => '#E0B8FF',
 		// data
-		QRMatrix::M_DATA | QRMatrix::IS_DARK       => '#4A6000',
-		QRMatrix::M_DATA                           => '#ECF9BE',
+		1024 => '#4A6000',
+		4    => '#ECF9BE',
 		// darkmodule
-		QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK => '#080063',
+		512  => '#080063',
 		// separator
-		QRMatrix::M_SEPARATOR                      => '#DDDDDD',
+		8    => '#DDDDDD',
 		// quietzone
-		QRMatrix::M_QUIETZONE                      => '#DDDDDD',
+		18   => '#DDDDDD',
 	],
 ]);
 

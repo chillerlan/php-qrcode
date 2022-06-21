@@ -6,7 +6,9 @@
  *
  * @link         https://github.com/chillerlan/php-qrcode/issues/35
  *
+ * @filesource   QRImageWithText.php
  * @created      22.06.2019
+ * @package      chillerlan\QRCodeExamples
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2019 smiley
  * @license      MIT
@@ -16,12 +18,12 @@
 
 namespace chillerlan\QRCodeExamples;
 
-use chillerlan\QRCode\Output\QRGdImage;
-use chillerlan\QRCode\QRCode;
-use function imagechar, imagecolorallocate, imagecolortransparent, imagecopymerge, imagecreatetruecolor,
-	imagedestroy, imagefilledrectangle, imagefontwidth, round, str_split, strlen;
+use chillerlan\QRCode\Output\QRImage;
 
-class QRImageWithText extends QRGdImage{
+use function base64_encode, imagechar, imagecolorallocate, imagecolortransparent, imagecopymerge, imagecreatetruecolor,
+	imagedestroy, imagefilledrectangle, imagefontwidth, in_array, round, str_split, strlen;
+
+class QRImageWithText extends QRImage{
 
 	/**
 	 * @param string|null $file
@@ -48,7 +50,7 @@ class QRImageWithText extends QRGdImage{
 		}
 
 		if($this->options->imageBase64){
-			$imageData = $this->base64encode($imageData, 'image/'.$this->options->outputType);
+			$imageData = 'data:image/'.$this->options->outputType.';base64,'.base64_encode($imageData);
 		}
 
 		return $imageData;
@@ -74,7 +76,7 @@ class QRImageWithText extends QRGdImage{
 		$background  = imagecolorallocate($this->image, ...$textBG);
 
 		// allow transparency
-		if($this->options->imageTransparent && $this->options->outputType !== QRCode::OUTPUT_IMAGE_JPG){
+		if($this->options->imageTransparent && in_array($this->options->outputType, $this::TRANSPARENCY_TYPES, true)){
 			imagecolortransparent($this->image, $background);
 		}
 

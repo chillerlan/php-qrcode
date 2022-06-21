@@ -1,5 +1,7 @@
 <?php
 /**
+ *
+ * @filesource   imageWithLogo.php
  * @created      18.11.2020
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2020 smiley
@@ -9,33 +11,36 @@
 namespace chillerlan\QRCodeExamples;
 
 use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Common\EccLevel;
-use chillerlan\QRCode\Data\QRMatrix;
+
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-$data = 'https://github.com';
+$data = 'https://github.com/chillerlan/php-qrcode';
+/**
+ * @property int $logoSpaceWidth
+ * @property int $logoSpaceHeight
+ *
+ * @noinspection PhpIllegalPsrClassPathInspection
+ */
+class LogoOptions extends QROptions{
+	// size in QR modules, multiply with QROptions::$scale for pixel size
+	protected int $logoSpaceWidth;
+	protected int $logoSpaceHeight;
+}
 
-$options = new QROptions([
-	'version'             => 5,
-	'eccLevel'            => EccLevel::H,
-	'imageBase64'         => false,
-	'addLogoSpace'        => true,
-	'logoSpaceWidth'      => 13,
-	'logoSpaceHeight'     => 13,
-	'scale'               => 6,
-	'imageTransparent'    => false,
-	'drawCircularModules' => true,
-	'circleRadius'        => 0.45,
-	'keepAsSquare'        => [QRMatrix::M_FINDER, QRMatrix::M_FINDER_DOT],
-]);
+$options = new LogoOptions;
 
-$qrcode = new QRCode($options);
-$qrcode->addByteSegment($data);
+$options->version          = 7;
+$options->eccLevel         = QRCode::ECC_H;
+$options->imageBase64      = false;
+$options->logoSpaceWidth   = 13;
+$options->logoSpaceHeight  = 13;
+$options->scale            = 5;
+$options->imageTransparent = false;
 
 header('Content-type: image/png');
 
-$qrOutputInterface = new QRImageWithLogo($options, $qrcode->getMatrix());
+$qrOutputInterface = new QRImageWithLogo($options, (new QRCode($options))->getMatrix($data));
 
 // dump the output, with an additional logo
 echo $qrOutputInterface->dump(null, __DIR__.'/octocat.png');

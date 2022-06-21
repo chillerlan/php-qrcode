@@ -2,7 +2,9 @@
 /**
  * Class QRImageWithLogo
  *
+ * @filesource   QRImageWithLogo.php
  * @created      18.11.2020
+ * @package      chillerlan\QRCodeExamples
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2020 smiley
  * @license      MIT
@@ -12,11 +14,14 @@
 
 namespace chillerlan\QRCodeExamples;
 
-use chillerlan\QRCode\Output\{QRGdImage, QRCodeOutputException};
+use chillerlan\QRCode\Output\{QRCodeOutputException, QRImage};
 
 use function imagecopyresampled, imagecreatefrompng, imagesx, imagesy, is_file, is_readable;
 
-class QRImageWithLogo extends QRGdImage{
+/**
+ * @property \chillerlan\QRCodeExamples\LogoOptions $options
+ */
+class QRImageWithLogo extends QRImage{
 
 	/**
 	 * @param string|null $file
@@ -34,6 +39,12 @@ class QRImageWithLogo extends QRGdImage{
 		if(!is_file($logo) || !is_readable($logo)){
 			throw new QRCodeOutputException('invalid logo');
 		}
+
+		$this->matrix->setLogoSpace(
+			$this->options->logoSpaceWidth,
+			$this->options->logoSpaceHeight
+			// not utilizing the position here
+		);
 
 		// there's no need to save the result of dump() into $this->image here
 		parent::dump($file);
@@ -61,7 +72,7 @@ class QRImageWithLogo extends QRGdImage{
 		}
 
 		if($this->options->imageBase64){
-			$imageData = $this->base64encode($imageData, 'image/'.$this->options->outputType);
+			$imageData = 'data:image/'.$this->options->outputType.';base64,'.base64_encode($imageData);
 		}
 
 		return $imageData;
