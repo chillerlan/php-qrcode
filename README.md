@@ -31,6 +31,7 @@ namespaced, cleaned up, improved and other stuff.
 See [the wiki](https://github.com/chillerlan/php-qrcode/wiki) for advanced documentation.
 
 For examples of the current release checkout the [examples](https://github.com/chillerlan/php-qrcode/tree/main/examples) page.
+Version specific examples are also included in the versions composer package as well as each regular release.
 
 An API documentation created with [phpDocumentor](https://www.phpdoc.org/) can be found at https://chillerlan.github.io/php-qrcode/ (WIP).
 
