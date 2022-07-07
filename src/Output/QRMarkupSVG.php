@@ -72,7 +72,7 @@ class QRMarkupSVG extends QRMarkup{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path
 	 */
 	protected function paths():string{
-		$paths = $this->collectModules(fn(int $x, int $y):string => $this->module($x, $y));
+		$paths = $this->collectModules(fn(int $x, int $y, int $M_TYPE):string => $this->module($x, $y, $M_TYPE));
 		$svg   = [];
 
 		// create the path elements
@@ -123,7 +123,7 @@ class QRMarkupSVG extends QRMarkup{
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
 	 */
-	protected function module(int $x, int $y):string{
+	protected function module(int $x, int $y, int $M_TYPE):string{
 
 		if($this->options->imageTransparent && !$this->matrix->check($x, $y)){
 			return '';
