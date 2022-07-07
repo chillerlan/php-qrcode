@@ -91,20 +91,31 @@ class QRMarkupSVG extends QRMarkup{
 				continue;
 			}
 
-			$cssClass = implode(' ', [
-				'qr-'.$M_TYPE,
-				($M_TYPE & QRMatrix::IS_DARK) === QRMatrix::IS_DARK ? 'dark' : 'light',
-				$this->options->cssClass,
-			]);
-
 			$format = empty($this->moduleValues[$M_TYPE])
 				? '<path class="%1$s" d="%2$s"/>'
 				: '<path class="%1$s" fill="%3$s" fill-opacity="%4$s" d="%2$s"/>';
 
-			$svg[] = sprintf($format, $cssClass, $path, $this->moduleValues[$M_TYPE], $this->options->svgOpacity);
+			$svg[] = sprintf(
+				$format,
+				$this->getCssClass($M_TYPE),
+				$path,
+				$this->moduleValues[$M_TYPE],
+				$this->options->svgOpacity)
+			;
 		}
 
 		return implode($this->options->eol, $svg);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getCssClass(int $M_TYPE):string{
+		return implode(' ', [
+			'qr-'.$M_TYPE,
+			($M_TYPE & QRMatrix::IS_DARK) === QRMatrix::IS_DARK ? 'dark' : 'light',
+			$this->options->cssClass,
+		]);
 	}
 
 	/**

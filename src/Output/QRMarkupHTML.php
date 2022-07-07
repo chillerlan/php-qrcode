@@ -23,7 +23,7 @@ class QRMarkupHTML extends QRMarkup{
 	protected function createMarkup(bool $saveToFile):string{
 		$html = empty($this->options->cssClass)
 			? '<div>'
-			: sprintf('<div class="%s">', $this->options->cssClass);
+			: sprintf('<div class="%s">', $this->getCssClass());
 
 		$html .= $this->options->eol;
 
@@ -48,6 +48,13 @@ class QRMarkupHTML extends QRMarkup{
 		}
 
 		return $html;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getCssClass(int $M_TYPE):string{
+		return $this->options->cssClass;
 	}
 
 }
