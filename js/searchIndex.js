@@ -2306,6 +2306,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QRMarkup.html#method_dump"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup\u003A\u003AgetCssClass\u0028\u0029",
+            "name": "getCssClass",
+            "summary": "returns\u0020a\u0020string\u0020with\u0020all\u0020css\u0020classes\u0020for\u0020the\u0020current\u0020element",
+            "url": "classes/chillerlan-QRCode-Output-QRMarkup.html#method_getCssClass"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup\u003A\u003AcreateMarkup\u0028\u0029",
             "name": "createMarkup",
             "summary": "",
@@ -2320,6 +2325,11 @@ Search.appendIndex(
             "name": "createMarkup",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QRMarkupHTML.html#method_createMarkup"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupHTML\u003A\u003AgetCssClass\u0028\u0029",
+            "name": "getCssClass",
+            "summary": "returns\u0020a\u0020string\u0020with\u0020all\u0020css\u0020classes\u0020for\u0020the\u0020current\u0020element",
+            "url": "classes/chillerlan-QRCode-Output-QRMarkupHTML.html#method_getCssClass"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG",
             "name": "QRMarkupSVG",
@@ -2340,6 +2350,11 @@ Search.appendIndex(
             "name": "paths",
             "summary": "returns\u0020one\u0020or\u0020more\u0020SVG\u0020\u003Cpath\u003E\u0020elements",
             "url": "classes/chillerlan-QRCode-Output-QRMarkupSVG.html#method_paths"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG\u003A\u003AgetCssClass\u0028\u0029",
+            "name": "getCssClass",
+            "summary": "returns\u0020a\u0020string\u0020with\u0020all\u0020css\u0020classes\u0020for\u0020the\u0020current\u0020element",
+            "url": "classes/chillerlan-QRCode-Output-QRMarkupSVG.html#method_getCssClass"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG\u003A\u003Amodule\u0028\u0029",
             "name": "module",
