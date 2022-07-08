@@ -60,11 +60,20 @@ abstract class QROutputAbstract implements QROutputInterface{
 	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
 		$this->options     = $options;
 		$this->matrix      = $matrix;
+
+		$this->setMatrixDimensions();
+		$this->setModuleValues();
+	}
+
+	/**
+	 * Sets/updates the matrix dimensions
+	 *
+	 * Call this method if you modify the matrix from within your custom module in case the dimensions have been changed
+	 */
+	protected function setMatrixDimensions():void{
 		$this->moduleCount = $this->matrix->size();
 		$this->scale       = $this->options->scale;
 		$this->length      = $this->moduleCount * $this->scale;
-
-		$this->setModuleValues();
 	}
 
 	/**
