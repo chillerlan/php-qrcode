@@ -91,7 +91,8 @@ class QRMarkupSVG extends QRMarkup{
 				continue;
 			}
 
-			$format = empty($this->moduleValues[$M_TYPE])
+			// ignore non-existent module values
+			$format = !isset($this->moduleValues[$M_TYPE]) || empty($this->moduleValues[$M_TYPE])
 				? '<path class="%1$s" d="%2$s"/>'
 				: '<path class="%1$s" fill="%3$s" fill-opacity="%4$s" d="%2$s"/>';
 
@@ -99,7 +100,7 @@ class QRMarkupSVG extends QRMarkup{
 				$format,
 				$this->getCssClass($M_TYPE),
 				$path,
-				$this->moduleValues[$M_TYPE],
+				$this->moduleValues[$M_TYPE] ?? '',
 				$this->options->svgOpacity)
 			;
 		}
