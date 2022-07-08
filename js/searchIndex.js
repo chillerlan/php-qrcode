@@ -2371,6 +2371,11 @@ Search.appendIndex(
             "summary": "QROutputAbstract\u0020constructor.",
             "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method___construct"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AsetMatrixDimensions\u0028\u0029",
+            "name": "setMatrixDimensions",
+            "summary": "Sets\/updates\u0020the\u0020matrix\u0020dimensions",
+            "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_setMatrixDimensions"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AsetModuleValues\u0028\u0029",
             "name": "setModuleValues",
             "summary": "Sets\u0020the\u0020initial\u0020module\u0020values",
