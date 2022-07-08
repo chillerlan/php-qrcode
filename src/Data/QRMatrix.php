@@ -211,6 +211,21 @@ class QRMatrix{
 	}
 
 	/**
+	 * checks whether the module at ($x, $y) is in the given array of $M_TYPES,
+	 * returns true if no matches are found, otherwise false.
+	 */
+	public function checkTypeIn(int $x, int $y, array $M_TYPES):bool{
+
+		foreach($M_TYPES as $type){
+			if($this->checkType($x, $y, $type)){
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * checks whether the module at ($x, $y) is not in the given array of $M_TYPES,
 	 * returns true if no matches are found, otherwise false.
 	 */
