@@ -6,12 +6,14 @@
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2022 smiley
  * @license      MIT
+ *
+ * @see https://github.com/chillerlan/php-qrcode/discussions/137
  */
 
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\QRMarkupSVG;
-use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
+use chillerlan\QRCode\{QRCode, QROptions};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -19,6 +21,9 @@ require_once __DIR__.'/../vendor/autoload.php';
  * Class definition
  */
 
+/**
+ * the extended SVG output module
+ */
 class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 
 	/**
@@ -27,10 +32,12 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 	protected function createMarkup(bool $saveToFile):string{
 		// some Pythagorean magick
 		$diameter      = sqrt(2 * pow($this->moduleCount + $this->options->additionalModules, 2));
+		// calculate the quiet zone size, add 1 to it as the outer circle stroke may go outside of it
 		$quietzoneSize = (int)ceil(($diameter - $this->moduleCount) / 2) + 1;
 		// add the quiet zone to fill the circle
 		$this->matrix->setQuietZone($quietzoneSize);
 		// update the matrix dimensions to avoid errors in subsequent calculations
+		// the moduleCount is now QR Code matrix + 2x quiet zone
 		$this->setMatrixDimensions();
 		// color the quiet zone
 		$this->colorQuietzone($quietzoneSize, $diameter / 2);
@@ -56,6 +63,9 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 		return $svg;
 	}
 
+	/**
+	 * Sets random modules of the quiet zone to dark
+	 */
 	protected function colorQuietzone(int $quietzoneSize, float $radius):void{
 		$l1 = $quietzoneSize - 1;
 		$l2 = $this->moduleCount - $quietzoneSize;
@@ -70,7 +80,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 
 				// leave one row of quiet zone around the matrix
 				if(
-					($x === $l1 && $y >= $l1 && $y <= $l2)
+					   ($x === $l1 && $y >= $l1 && $y <= $l2)
 					|| ($x === $l2 && $y >= $l1 && $y <= $l2)
 					|| ($y === $l1 && $x > $l1 && $x < $l2)
 					|| ($y === $l2 && $x > $l1 && $x < $l2)
@@ -124,9 +134,24 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 
 }
 
+/**
+ * the augmented options class
+ */
 class RoundQuietzoneOptions extends QROptions{
 
-	protected int $additionalModules = 5;
+	/**
+	 * The amount of additional modules to be used in the circle diameter calculation
+	 *
+	 * Note that the middle of the circle stroke goes through the (assumed) outer corners
+	 * or centers of the QR Code (excluding quiet zone)
+	 *
+	 * Example:
+	 *
+	 * - a value of -1 would go through the center of the outer corner modules of the finder patterns
+	 * - a value of 0 would go through the corner of the outer modules of the finder patterns
+	 * - a value of 3 would go through the center of the module outside next to the finder patterns, in a 45 degree angle
+	 */
+	protected int $additionalModules = 0;
 
 }
 
@@ -136,6 +161,8 @@ class RoundQuietzoneOptions extends QROptions{
  */
 
 $options = new RoundQuietzoneOptions([
+	'additionalModules'   => 5,
+
 	'version'             => 7,
 	'eccLevel'            => EccLevel::H, // maximum error correction capacity, esp. for print
 	'addQuietzone'        => false, // we're not adding a quiet zone, this is done internally in our own module
