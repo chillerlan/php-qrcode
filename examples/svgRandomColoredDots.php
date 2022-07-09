@@ -56,7 +56,11 @@ class RandomDotsSVGOutput extends QRMarkupSVG{
 				}
 
 				// collect the modules per $M_TYPE
-				$paths[$M_TYPE_LAYER][] = $transform($x, $y, $M_TYPE, $M_TYPE_LAYER);
+				$module = $transform($x, $y, $M_TYPE, $M_TYPE_LAYER);
+
+				if(!empty($module)){
+					$paths[$M_TYPE_LAYER][] = $module;
+				}
 			}
 		}
 
