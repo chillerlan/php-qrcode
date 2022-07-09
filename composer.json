@@ -53,8 +53,7 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"chillerlan\\QRCodeTest\\": "tests/",
-			"chillerlan\\QRCodeExamples\\": "examples/"
+			"chillerlan\\QRCodeTest\\": "tests/"
 		}
 	},
 	"scripts": {
