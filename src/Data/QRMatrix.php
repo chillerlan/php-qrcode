@@ -216,13 +216,7 @@ class QRMatrix{
 	 */
 	public function checkTypeIn(int $x, int $y, array $M_TYPES):bool{
 
-		foreach($M_TYPES as $type){
-			if($this->checkType($x, $y, $type)){
-				return true;
-			}
-		}
-
-		return false;
+		return !$this->checkTypeNotIn($x, $y, $M_TYPES);
 	}
 
 	/**
