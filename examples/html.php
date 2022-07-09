@@ -6,8 +6,6 @@
  * @license      MIT
  */
 
-namespace chillerlan\QRCodeExamples;
-
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Common\EccLevel;
@@ -15,36 +13,6 @@ use chillerlan\QRCode\Common\EccLevel;
 require_once '../vendor/autoload.php';
 
 header('Content-Type: text/html; charset=utf-8');
-
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	<title>QRCode test</title>
-	<style>
-		div.qrcode{
-            margin: 5em;
-		}
-
-		/* rows */
-		div.qrcode > div {
-			height: 10px;
-		}
-
-		/* modules */
-		div.qrcode > div > span {
-			display: inline-block;
-			width: 10px;
-			height: 10px;
-		}
-	</style>
-</head>
-<body>
-<?php
-
-	$data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 
 	$options = new QROptions([
 		'version'      => 5,
@@ -80,7 +48,35 @@ header('Content-Type: text/html; charset=utf-8');
 		],
 	]);
 
-	echo (new QRCode($options))->render($data);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>QRCode test</title>
+	<style>
+		div.qrcode{
+			margin: 5em;
+		}
+
+		/* rows */
+		div.qrcode > div {
+			height: 10px;
+		}
+
+		/* modules */
+		div.qrcode > div > span {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+		}
+	</style>
+</head>
+<body>
+<?php
+
+echo (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 ?>
 </body>

@@ -6,15 +6,11 @@
  * @license      MIT
  */
 
-namespace chillerlan\QRCodeExamples;
-
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Common\EccLevel;
 
 require_once __DIR__.'/../vendor/autoload.php';
-
-$data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 
 $options = new QROptions([
 	'version'             => 7,
@@ -56,9 +52,6 @@ $options = new QROptions([
 
 header('Content-type: image/png');
 
-echo (new QRCode($options))->render($data);
+echo (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
-
-
-
-
+exit;

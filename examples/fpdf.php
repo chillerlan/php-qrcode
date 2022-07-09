@@ -1,14 +1,15 @@
 <?php
-
-namespace chillerlan\QRCodeExamples;
+/**
+ * @created      03.06.2020
+ * @author       Maximilian Kresse
+ * @license      MIT
+ */
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Common\EccLevel;
 
 require_once __DIR__ . '/../vendor/autoload.php';
-
-$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 
 $options = new QROptions([
     'version'      => 7,
@@ -44,6 +45,10 @@ $options = new QROptions([
     ],
 ]);
 
-\header('Content-type: application/pdf');
+if(php_sapi_name() !== 'cli'){
+	header('Content-type: application/pdf');
+}
 
-echo (new QRCode($options))->render($data);
+echo (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+
+exit;

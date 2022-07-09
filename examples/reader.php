@@ -8,8 +8,6 @@
  * @license      MIT
  */
 
-namespace chillerlan\QRCodeExamples;
-
 use chillerlan\QRCode\{QRCode, QROptions};
 
 require_once __DIR__.'/../vendor/autoload.php';
@@ -23,3 +21,5 @@ $options->readerIncreaseContrast = true;
 $result = (new QRCode($options))->readFromFile(__DIR__.'/../.github/images/example_image.png');
 
 var_dump($result);
+
+exit;

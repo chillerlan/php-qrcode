@@ -6,15 +6,11 @@
  * @license      MIT
  */
 
-namespace chillerlan\QRCodeExamples;
-
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
 
 require_once __DIR__.'/../vendor/autoload.php';
-
-$data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 
 $options = new QROptions([
 	'version'      => 7,
@@ -22,7 +18,7 @@ $options = new QROptions([
 	'eccLevel'     => EccLevel::L,
 	'scale'        => 5,
 	'addQuietzone' => true,
-	'cachefile'    => __DIR__.'/test.eps',
+#	'cachefile'    => __DIR__.'/test.eps', // save to file
 	'moduleValues' => [
 		// finder
 		QRMatrix::M_FINDER | QRMatrix::IS_DARK     => 0xA71111, // dark (true)
@@ -52,11 +48,16 @@ $options = new QROptions([
 	],
 ]);
 
-// if viewed in the browser, we should push it as file download as EPS isn't usually supported
-header('Content-type: application/postscript');
-header('Content-Disposition: filename="qrcode.eps"');
 
-echo (new QRCode($options))->render($data);
+if(php_sapi_name() !== 'cli'){
+	// if viewed in the browser, we should push it as file download as EPS isn't usually supported
+	header('Content-type: application/postscript');
+	header('Content-Disposition: filename="qrcode.eps"');
+}
+
+echo (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+
+exit;
 
 
 

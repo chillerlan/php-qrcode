@@ -7,15 +7,96 @@
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2019 Smiley
  * @license      MIT
+ *
+ * @noinspection PhpIllegalPsrClassPathInspection, PhpComposerExtensionStubsInspection
  */
 
-namespace chillerlan\QRCodeExamples;
-
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Output\QRGdImage;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
+/*
+ * Class definition
+ */
+
+class QRImageWithText extends QRGdImage{
+
+	/**
+	 * @inheritDoc
+	 */
+	public function dump(string $file = null, string $text = null):string{
+		// set returnResource to true to skip further processing for now
+		$this->options->returnResource = true;
+
+		// there's no need to save the result of dump() into $this->image here
+		parent::dump($file);
+
+		// render text output if a string is given
+		if($text !== null){
+			$this->addText($text);
+		}
+
+		$imageData = $this->dumpImage();
+
+		if($file !== null){
+			$this->saveToFile($imageData, $file);
+		}
+
+		if($this->options->imageBase64){
+			$imageData = $this->base64encode($imageData, 'image/'.$this->options->outputType);
+		}
+
+		return $imageData;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function addText(string $text):void{
+		// save the qrcode image
+		$qrcode = $this->image;
+
+		// options things
+		$textSize  = 3; // see imagefontheight() and imagefontwidth()
+		$textBG    = [200, 200, 200];
+		$textColor = [50, 50, 50];
+
+		$bgWidth  = $this->length;
+		$bgHeight = $bgWidth + 20; // 20px extra space
+
+		// create a new image with additional space
+		$this->image = imagecreatetruecolor($bgWidth, $bgHeight);
+		$background  = imagecolorallocate($this->image, ...$textBG);
+
+		// allow transparency
+		if($this->options->imageTransparent && $this->options->outputType !== QRCode::OUTPUT_IMAGE_JPG){
+			imagecolortransparent($this->image, $background);
+		}
+
+		// fill the background
+		imagefilledrectangle($this->image, 0, 0, $bgWidth, $bgHeight, $background);
+
+		// copy over the qrcode
+		imagecopymerge($this->image, $qrcode, 0, 0, 0, 0, $this->length, $this->length, 100);
+		imagedestroy($qrcode);
+
+		$fontColor = imagecolorallocate($this->image, ...$textColor);
+		$w         = imagefontwidth($textSize);
+		$x         = round(($bgWidth - strlen($text) * $w) / 2);
+
+		// loop through the string and draw the letters
+		foreach(str_split($text) as $i => $chr){
+			imagechar($this->image, $textSize, (int)($i * $w + $x), $this->length, $chr, $fontColor);
+		}
+	}
+
+}
+
+
+/*
+ * Runtime
+ */
 
 $options = new QROptions([
 	'version'      => 7,
@@ -25,11 +106,14 @@ $options = new QROptions([
 ]);
 
 $qrcode = new QRCode($options);
-$qrcode->addByteSegment($data);
+$qrcode->addByteSegment('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 header('Content-type: image/png');
 
 $qrOutputInterface = new QRImageWithText($options, $qrcode->getMatrix());
 
 // dump the output, with additional text
+// the text could also be supplied via the options, see the svgWithLogo example
 echo $qrOutputInterface->dump(null, 'example text');
+
+exit;

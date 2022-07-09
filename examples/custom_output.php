@@ -4,14 +4,69 @@
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT
+ *
+ * @noinspection PhpIllegalPsrClassPathInspection
  */
-
-namespace chillerlan\QRCodeExamples;
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
+use chillerlan\QRCode\Output\QROutputAbstract;
 
 require_once __DIR__.'/../vendor/autoload.php';
+
+/*
+ * Class definition
+ */
+
+class MyCustomOutput extends QROutputAbstract{
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function moduleValueIsValid($value):bool{
+		// TODO: Implement moduleValueIsValid() method. (abstract)
+		return false;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getModuleValue($value){
+		// TODO: Implement getModuleValue() method. (abstract)
+		return null;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getDefaultModuleValue(bool $isDark){
+		// TODO: Implement getDefaultModuleValue() method. (abstract)
+		return null;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function dump(string $file = null):string{
+		$output = '';
+
+		for($y = 0; $y < $this->moduleCount; $y++){
+			for($x = 0; $x < $this->moduleCount; $x++){
+				$output .= (int)$this->matrix->check($x, $y);
+			}
+
+			$output .= $this->options->eol;
+		}
+
+		return $output;
+	}
+
+}
+
+
+/*
+ * Runtime
+ */
 
 $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 
@@ -29,7 +84,7 @@ $qrOutputInterface = new MyCustomOutput($options, $qrcode->getMatrix());
 var_dump($qrOutputInterface->dump());
 
 
-// or just
+// or just via the options
 $options = new QROptions([
 	'version'         => 5,
 	'eccLevel'        => EccLevel::L,
@@ -38,3 +93,5 @@ $options = new QROptions([
 ]);
 
 var_dump((new QRCode($options))->render($data));
+
+exit;

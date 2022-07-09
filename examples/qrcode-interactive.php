@@ -4,9 +4,9 @@
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT
+ *
+ * @noinspection PhpComposerExtensionStubsInspection
  */
-
-namespace chillerlan\QRCodePublic;
 
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\QRCode;
@@ -86,10 +86,12 @@ try{
 	send_response(['qrcode' => $qrcode]);
 }
 // Pokémon exception handler
-catch(\Exception $e){
+catch(Throwable $e){
 	header('HTTP/1.1 500 Internal Server Error');
 	send_response(['error' => $e->getMessage()]);
 }
+
+exit;
 
 /**
  * @param array $response

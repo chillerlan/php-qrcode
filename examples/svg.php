@@ -9,17 +9,11 @@
  * @noinspection PhpComposerExtensionStubsInspection
  */
 
-namespace chillerlan\QRCodeExamples;
-
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Common\EccLevel;
-use function gzencode, header;
 
 require_once __DIR__.'/../vendor/autoload.php';
-
-$data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-$gzip = true;
 
 $options = new QROptions([
 	'version'             => 7,
@@ -59,14 +53,18 @@ $options = new QROptions([
 	]]></style>',
 ]);
 
-$qrcode = (new QRCode($options))->render($data);
+$qrcode = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
-header('Content-type: image/svg+xml');
+if(php_sapi_name() !== 'cli'){
+	header('Content-type: image/svg+xml');
 
-if($gzip){
-	header('Vary: Accept-Encoding');
-	header('Content-Encoding: gzip');
-	$qrcode = gzencode($qrcode, 9);
+	if(extension_loaded('zlib')){
+		header('Vary: Accept-Encoding');
+		header('Content-Encoding: gzip');
+		$qrcode = gzencode($qrcode, 9);
+	}
 }
 
 echo $qrcode;
+
+exit;
