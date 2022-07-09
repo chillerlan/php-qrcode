@@ -20,3 +20,4 @@
 - [GD image with text](./imageWithText.php): description text under the QR Code
 - [SVG with logo](./svgWithLogo.php): an SVG QR Code with embedded logo (that is also SVG)
 - [SVG with randomly colored modules](./svgRandomColoredDots.php): a visual effect using multiple colors for the matrix modules
+- [SVG with a round shape and randomly filled quiet zone](./svgRoundQuietzone.php): example similar to the QR Codes of a certain vendor
