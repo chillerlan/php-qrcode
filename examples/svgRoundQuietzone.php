@@ -1,13 +1,13 @@
 <?php
 /**
- * svgRoundQuietzone.php
+ * @see https://github.com/chillerlan/php-qrcode/discussions/137
  *
  * @created      09.07.2022
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2022 smiley
  * @license      MIT
  *
- * @see https://github.com/chillerlan/php-qrcode/discussions/137
+ * @noinspection PhpIllegalPsrClassPathInspection
  */
 
 use chillerlan\QRCode\Common\EccLevel;
@@ -69,6 +69,8 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 	protected function colorQuietzone(int $quietzoneSize, float $radius):void{
 		$l1 = $quietzoneSize - 1;
 		$l2 = $this->moduleCount - $quietzoneSize;
+		// substract 1/2 stroke width and module radius from the circle radius to not cut off modules
+		$r  = $radius - $this->options->circleRadius * 2;
 
 		foreach($this->matrix->matrix() as $y => $row){
 			foreach($row as $x => $value){
@@ -82,13 +84,15 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 				if(
 					   ($x === $l1 && $y >= $l1 && $y <= $l2)
 					|| ($x === $l2 && $y >= $l1 && $y <= $l2)
-					|| ($y === $l1 && $x > $l1 && $x < $l2)
-					|| ($y === $l2 && $x > $l1 && $x < $l2)
+					|| ($y === $l1 && $x >= $l1 && $x <= $l2)
+					|| ($y === $l2 && $x >= $l1 && $x <= $l2)
 				){
 					continue;
 				}
 
-				if($this->checkIfInsideCircle($x, $y, $radius)){
+				// we need to add 0.5 units to the check values since we're calculating the element centers
+				// ($x/$y is the element's assumed top left corner)
+				if($this->checkIfInsideCircle($x + 0.5, $y + 0.5, $r)){
 					$this->matrix->set($x, $y, (bool)rand(0, 1), QRMatrix::M_QUIETZONE);
 				}
 			}
@@ -99,11 +103,9 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 	/**
 	 * @see https://stackoverflow.com/a/7227057
 	 */
-	protected function checkIfInsideCircle(int $x, int $y, float $radius):bool{
-		// we need to add 0.5 units since we're calculating the element centers ($x/$y is the element's assumed top left corner)
-		$dx = abs($x + 0.5 - $this->moduleCount / 2);
-		$dy = abs($y + 0.5 - $this->moduleCount / 2);
-		$radius -= $this->options->circleRadius * 2;
+	protected function checkIfInsideCircle(float $x, float $y, float $radius):bool{
+		$dx = abs($x - $this->moduleCount / 2);
+		$dy = abs($y - $this->moduleCount / 2);
 
 		if($dx + $dy <= $radius){
 			return true;
@@ -125,10 +127,11 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 	 */
 	protected function addCircle(float $radius):string{
 		return sprintf(
-			'<circle id="circle" cx="%1$s" cy="%1$s" r="%2$s" stroke-width="%3$s"/>',
+			'%4$s<circle id="circle" cx="%1$s" cy="%1$s" r="%2$s" stroke-width="%3$s"/>',
 			$this->moduleCount / 2,
 			round($radius, 5),
-			2 * $this->options->circleRadius
+			$this->options->circleRadius * 2,
+			$this->options->eol
 		);
 	}
 

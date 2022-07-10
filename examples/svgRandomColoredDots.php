@@ -1,11 +1,11 @@
 <?php
 /**
+ * @see https://github.com/chillerlan/php-qrcode/discussions/136
+ *
  * @created      09.07.2022
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2022 Smiley
  * @license      MIT
- *
- * @see https://github.com/chillerlan/php-qrcode/discussions/136
  *
  * @noinspection PhpIllegalPsrClassPathInspection
  */
