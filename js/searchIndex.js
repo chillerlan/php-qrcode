@@ -1136,6 +1136,11 @@ Search.appendIndex(
             "summary": "Checks\u0020whether\u0020a\u0020module\u0020is\u0020true\u0020\u0028dark\u0029\u0020or\u0020false\u0020\u0028light\u0029",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_check"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AcheckNeighbours\u0028\u0029",
+            "name": "checkNeighbours",
+            "summary": "Checks\u0020the\u0020status\u0020neighbouring\u0020modules\u0020of\u0020the\u0020given\u0020module\u0020at\u0020\u0028\u0024x,\u0020\u0024y\u0029\u0020and\u0020returns\u0020a\u0020bitmask\u0020with\u0020the\u0020results.",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkNeighbours"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AsetDarkModule\u0028\u0029",
             "name": "setDarkModule",
             "summary": "Sets\u0020the\u0020\u0022dark\u0020module\u0022,\u0020that\u0020is\u0020always\u0020on\u0020the\u0020same\u0020position\u00201x1px\u0020away\u0020from\u0020the\u0020bottom\u0020left\u0020finder",
@@ -1260,6 +1265,11 @@ Search.appendIndex(
             "name": "IS_DARK",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_IS_DARK"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003Aneighbours",
+            "name": "neighbours",
+            "summary": "Map\u0020of\u0020flag\u0020\u003D\u003E\u0020coord",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_neighbours"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003A\u0024moduleCount",
             "name": "moduleCount",
