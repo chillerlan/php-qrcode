@@ -1,6 +1,6 @@
 ---
 name: General issue
-about: Create a report to help us improve
+about: An issue that is not a bug - please use the discussions instead! Thanks!
 title: ''
 labels: ''
 assignees: ''
