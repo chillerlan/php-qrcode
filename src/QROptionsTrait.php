@@ -62,6 +62,8 @@ trait QROptionsTrait{
 
 	/**
 	 * Add a "quiet zone" (margin) according to the QR code spec
+	 *
+	 * @see https://www.qrcode.com/en/howto/code.html
 	 */
 	protected bool $addQuietzone = true;
 
