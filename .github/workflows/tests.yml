@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
@@ -52,10 +52,11 @@ jobs:
           - "7.3"
           - "7.4"
           - "8.0"
+          - "8.1"
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: "Install PHP with extensions"
         uses: shivammathur/setup-php@v2
@@ -72,6 +73,4 @@ jobs:
         run: php vendor/phpunit/phpunit/phpunit --configuration=phpunit.xml
 
       - name: "Send code coverage report to Codecov.io"
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+        uses: codecov/codecov-action@v3
