@@ -104,6 +104,7 @@ class QRImagick extends QROutputAbstract{
 	 */
 	protected function drawImage():void{
 		$this->imagickDraw = new ImagickDraw;
+		$this->imagickDraw->setStrokeWidth(0);
 
 		foreach($this->matrix->matrix() as $y => $row){
 			foreach($row as $x => $M_TYPE){
@@ -118,7 +119,6 @@ class QRImagick extends QROutputAbstract{
 	 * draws a single pixel at the given position
 	 */
 	protected function setPixel(int $x, int $y, int $M_TYPE):void{
-		$this->imagickDraw->setStrokeColor($this->moduleValues[$M_TYPE]);
 		$this->imagickDraw->setFillColor($this->moduleValues[$M_TYPE]);
 
 		$this->options->drawCircularModules && $this->matrix->checkTypeNotIn($x, $y, $this->options->keepAsSquare)
