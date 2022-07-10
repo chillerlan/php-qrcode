@@ -48,20 +48,20 @@ via terminal: `composer require chillerlan/php-qrcode`
 ```json
 {
 	"require": {
-		"php": "^7.4",
+		"php": "^7.4 || ^8.0",
 		"chillerlan/php-qrcode": "dev-main"
 	}
 }
 ```
 
-Note: replace `dev-main` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^3.2` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions.
+Note: replace `dev-main` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^4.3` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions.
 For PHP version ...
   - 7.4+ use `^4.3`
   - 7.2+ use `^3.4.1` (v3.4.1 also supports PHP8)
   - 7.0+ use `^2.0`
   - 5.6+ use `^1.0` (please let PHP 5 die!)
 
-In case you want to keep using `dev-main`, specify the hash of a commit to avoid running into unforseen issues like so: `dev-main#b625396e0752d79747a55205ae7e191eeb459dcd`
+In case you want to keep using `dev-main`, specify the hash of a commit to avoid running into unforseen issues like so: `dev-main#cb69751c3bc090a7fdd2f2601bbe10f28d225f10`
 
 PSA: [PHP 7.0 - 7.3 are EOL](https://www.php.net/supported-versions.php) and therefore the respective `QRCode` versions are also no longer supported!
 
