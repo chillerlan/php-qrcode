@@ -51,6 +51,24 @@ class QRMatrix{
 	public const IS_DARK      = 0b100000000000;
 
 	/**
+	 * Map of flag => coord
+	 *
+	 * @see \chillerlan\QRCode\Data\QRMatrix::checkNeighbours()
+	 *
+	 * @var array
+	 */
+	protected const neighbours = [
+		0b00000001 => [-1, -1],
+		0b00000010 => [ 0, -1],
+		0b00000100 => [ 1, -1],
+		0b00001000 => [ 1,  0],
+		0b00010000 => [ 1,  1],
+		0b00100000 => [ 0,  1],
+		0b01000000 => [-1,  1],
+		0b10000000 => [-1,  0]
+	];
+
+	/**
 	 * the used mask pattern, set via QRMatrix::mask()
 	 */
 	protected ?MaskPattern $maskPattern = null;
@@ -233,6 +251,35 @@ class QRMatrix{
 	 */
 	public function check(int $x, int $y):bool{
 		return $this->checkType($x, $y, $this::IS_DARK);
+	}
+
+	/**
+	 * Checks the status neighbouring modules of the given module at ($x, $y) and returns a bitmask with the results.
+	 *
+	 * The 8 flags of the bitmask represent the status of each of the neighbouring fields,
+	 * starting with the lowest bit for top left, going clockwise:
+	 *
+	 *   1 2 3
+	 *   8 # 4
+	 *   7 6 5
+	 */
+	public function checkNeighbours(int $x, int $y, int $M_TYPE_VALUE = null):int{
+		$bits = 0;
+
+		foreach($this::neighbours as $bit => $coord){
+			[$ix, $iy] = $coord;
+
+			// check if the field is the same type
+			if($M_TYPE_VALUE !== null && ($this->get($x + $ix, $y + $iy) | $this::IS_DARK) !== ($M_TYPE_VALUE | $this::IS_DARK)){
+				continue;
+			}
+
+			if($this->checkType($x + $ix, $y + $iy, $this::IS_DARK)){
+				$bits |= $bit;
+			}
+		}
+
+		return $bits;
 	}
 
 	/**
