@@ -150,10 +150,10 @@ class QRGdImage extends QROutputAbstract{
 		$this->options->drawCircularModules && $this->matrix->checkTypeNotIn($x, $y, $this->options->keepAsSquare)
 			? imagefilledellipse(
 				$this->image,
-				($x * $this->scale) + ($this->scale / 2),
-				($y * $this->scale) + ($this->scale / 2),
-				2 * $this->options->circleRadius * $this->scale,
-				2 * $this->options->circleRadius * $this->scale,
+				(int)(($x * $this->scale) + ($this->scale / 2)),
+				(int)(($y * $this->scale) + ($this->scale / 2)),
+				(int)(2 * $this->options->circleRadius * $this->scale),
+				(int)(2 * $this->options->circleRadius * $this->scale),
 				$color
 			)
 			: imagefilledrectangle(
