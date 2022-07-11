@@ -19,7 +19,7 @@ use ErrorException, Throwable;
 use function array_values, count, extension_loaded, imagecolorallocate, imagecolortransparent, imagecreatetruecolor,
 	imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng, imagescale, is_array,
 	max, min, ob_end_clean, ob_get_contents, ob_start, restore_error_handler, set_error_handler;
-use const IMG_BICUBIC;
+use const IMG_BILINEAR_FIXED;
 
 /**
  * Converts the matrix into GD images, raw or base64 output (requires ext-gd)
@@ -116,7 +116,7 @@ class QRGdImage extends QROutputAbstract{
 
 		// scale down to the expected size
 		if($this->options->drawCircularModules && $this->options->scale <= 20){
-			$this->image = imagescale($this->image, $this->length/10, $this->length/10, IMG_BICUBIC);
+			$this->image = imagescale($this->image, $this->length/10, $this->length/10, IMG_BILINEAR_FIXED);
 		}
 
 		if($this->options->returnResource){
