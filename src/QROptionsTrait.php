@@ -389,6 +389,13 @@ trait QROptionsTrait{
 	}
 
 	/**
+	 * sets/clamps the quiet zone size
+	 */
+	protected function set_quietzoneSize(int $quietzoneSize):void{
+		$this->quietzoneSize = max(0, min($quietzoneSize, 75));
+	}
+
+	/**
 	 * sets the transparency background color
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
