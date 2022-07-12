@@ -84,7 +84,7 @@ Wait, what was that? Please again, slower! See [Advanced usage](https://github.c
 - Drupal:
   - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
 - Symfony
-	- [phpqrcode-bundle](https://github.com/jonasarts/phpqrcode-bundle)
+  - [phpqrcode-bundle](https://github.com/jonasarts/phpqrcode-bundle)
 - WordPress:
   - [`wp-two-factor-auth`](https://github.com/sjinks/wp-two-factor-auth)
   - [`simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
@@ -95,6 +95,7 @@ Wait, what was that? Please again, slower! See [Advanced usage](https://github.c
 - [Appwrite](https://github.com/appwrite/appwrite)
 - [Cachet](https://github.com/CachetHQ/Cachet)
 - [twill](https://github.com/area17/twill)
+- [GÉANT CAT](https://github.com/GEANT/CAT)
 - other uses: [dependents](https://github.com/chillerlan/php-qrcode/network/dependents) / [packages](https://github.com/chillerlan/php-qrcode/network/dependents?dependent_type=PACKAGE)
 
 ### Shameless advertising
