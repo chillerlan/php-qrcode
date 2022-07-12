@@ -364,6 +364,17 @@ trait QROptionsTrait{
 	}
 
 	/**
+	 * sets/clamps the version number
+	 */
+	protected function set_version(int $version):void{
+
+		if($version !== QRCode::VERSION_AUTO){
+			$this->version = max(1, min(40, $version));
+		}
+
+	}
+
+	/**
 	 * sets the error correction level
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
@@ -426,17 +437,6 @@ trait QROptionsTrait{
 
 		// use the array values to not run into errors with the spread operator (...$arr)
 		$this->imageTransparencyBG = array_values($this->imageTransparencyBG);
-	}
-
-	/**
-	 * sets/clamps the version number
-	 */
-	protected function set_version(int $version):void{
-
-		if($version !== QRCode::VERSION_AUTO){
-			$this->version = max(1, min(40, $version));
-		}
-
 	}
 
 	/**

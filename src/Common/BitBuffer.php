@@ -128,7 +128,7 @@ final class BitBuffer{
 			$numBits        -= $toRead;
 			$this->bitsRead += $toRead;
 
-			if($this->bitsRead == 8){
+			if($this->bitsRead === 8){
 				$this->bitsRead = 0;
 				$this->bytesRead++;
 			}
