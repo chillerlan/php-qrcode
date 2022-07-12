@@ -343,7 +343,7 @@ final class QRMatrixTest extends TestCase{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('use only after writing data');
 
-		$this->matrix->setQuietZone();
+		$this->matrix->setQuietZone(42);
 	}
 
 	/**

@@ -11,7 +11,7 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, ReedSolomonEncoder, Version};
-use function array_fill, array_unshift, count, floor, max, min, range;
+use function array_fill, count, floor, range;
 
 /**
  * Holds a numerical representation of the final QR Code;
@@ -103,7 +103,14 @@ class QRMatrix{
 		$this->eccLevel    = $eccLevel;
 		$this->maskPattern = $maskPattern;
 		$this->moduleCount = $this->version->getDimension();
-		$this->matrix      = array_fill(0, $this->moduleCount, array_fill(0, $this->moduleCount, $this::M_NULL));
+		$this->matrix      = $this->createMatrix($this->moduleCount, $this::M_NULL);
+	}
+
+	/**
+	 * Creates a 2-dimensional array (square) of the given $size
+	 */
+	protected function createMatrix(int $size, int $value):array{
+		return array_fill(0, $size, array_fill(0, $size, $value));
 	}
 
 	/**
@@ -478,31 +485,26 @@ class QRMatrix{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function setQuietZone(int $size = null):self{
+	public function setQuietZone(int $quietZoneSize):self{
 
 		if($this->matrix[$this->moduleCount - 1][$this->moduleCount - 1] === $this::M_NULL){
 			throw new QRCodeDataException('use only after writing data');
 		}
 
-		$size = $size !== null
-			? max(0, min($size, floor($this->moduleCount / 2)))
-			: 4;
+		// create a matrix with the new size
+		$newSize   = $this->moduleCount + ($quietZoneSize * 2);
+		$newMatrix = $this->createMatrix($newSize, $this::M_QUIETZONE);
 
+		// copy over the current matrix
 		for($y = 0; $y < $this->moduleCount; $y++){
-			for($i = 0; $i < $size; $i++){
-				array_unshift($this->matrix[$y], $this::M_QUIETZONE);
-				$this->matrix[$y][] = $this::M_QUIETZONE;
+			for($x = 0; $x < $this->moduleCount; $x++){
+				$newMatrix[$y + $quietZoneSize][$x + $quietZoneSize] = $this->matrix[$y][$x];
 			}
 		}
 
-		$this->moduleCount += ($size * 2);
-
-		$r = array_fill(0, $this->moduleCount, $this::M_QUIETZONE);
-
-		for($i = 0; $i < $size; $i++){
-			array_unshift($this->matrix, $r);
-			$this->matrix[] = $r;
-		}
+		// set the new values
+		$this->moduleCount = $newSize;
+		$this->matrix      = $newMatrix;
 
 		return $this;
 	}
