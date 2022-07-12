@@ -1076,6 +1076,11 @@ Search.appendIndex(
             "summary": "QRMatrix\u0020constructor.",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method___construct"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AcreateMatrix\u0028\u0029",
+            "name": "createMatrix",
+            "summary": "Creates\u0020a\u00202\u002Ddimensional\u0020array\u0020\u0028square\u0029\u0020of\u0020the\u0020given\u0020\u0024size",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_createMatrix"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AinitFunctionalPatterns\u0028\u0029",
             "name": "initFunctionalPatterns",
             "summary": "shortcut\u0020to\u0020initialize\u0020the\u0020functional\u0020patterns",
@@ -2736,6 +2741,11 @@ Search.appendIndex(
             "summary": "sets\u0020the\u0020maximum\u0020version\u0020number",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_versionMax"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_version\u0028\u0029",
+            "name": "set_version",
+            "summary": "sets\/clamps\u0020the\u0020version\u0020number",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_version"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_eccLevel\u0028\u0029",
             "name": "set_eccLevel",
             "summary": "sets\u0020the\u0020error\u0020correction\u0020level",
@@ -2746,15 +2756,15 @@ Search.appendIndex(
             "summary": "sets\/clamps\u0020the\u0020mask\u0020pattern",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_maskPattern"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_quietzoneSize\u0028\u0029",
+            "name": "set_quietzoneSize",
+            "summary": "sets\/clamps\u0020the\u0020quiet\u0020zone\u0020size",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_quietzoneSize"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_imageTransparencyBG\u0028\u0029",
             "name": "set_imageTransparencyBG",
             "summary": "sets\u0020the\u0020transparency\u0020background\u0020color",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imageTransparencyBG"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_version\u0028\u0029",
-            "name": "set_version",
-            "summary": "sets\/clamps\u0020the\u0020version\u0020number",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_version"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_fpdfMeasureUnit\u0028\u0029",
             "name": "set_fpdfMeasureUnit",
