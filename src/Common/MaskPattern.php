@@ -25,6 +25,8 @@ use function abs, array_search, count, min;
  */
 final class MaskPattern{
 
+	public const AUTO = -1;
+
 	public const PATTERN_000 = 0b000;
 	public const PATTERN_001 = 0b001;
 	public const PATTERN_010 = 0b010;

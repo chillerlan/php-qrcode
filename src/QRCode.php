@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\QRCode\Common\{EccLevel, ECICharset, MaskPattern, Mode};
+use chillerlan\QRCode\Common\{EccLevel, ECICharset, MaskPattern, Mode, Version};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number, QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
 use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, LuminanceSourceInterface};
 use chillerlan\QRCode\Output\{
@@ -30,10 +30,19 @@ use function class_exists, class_implements, in_array, mb_convert_encoding, mb_d
  */
 class QRCode{
 
-	/** @var int */
-	public const VERSION_AUTO      = -1;
-	/** @var int */
-	public const MASK_PATTERN_AUTO = -1;
+	/**
+	 * @deprecated 5.0.0 use Version::AUTO instead
+	 * @see \chillerlan\QRCode\Common\Version::AUTO
+	 * @var int
+	 */
+	public const VERSION_AUTO      = Version::AUTO;
+
+	/**
+	 * @deprecated 5.0.0 use MaskPattern::AUTO instead
+	 * @see \chillerlan\QRCode\Common\MaskPattern::AUTO
+	 * @var int
+	 */
+	public const MASK_PATTERN_AUTO = MaskPattern::AUTO;
 
 	/**
 	 * @deprecated 5.0.0 use EccLevel::L instead
@@ -163,7 +172,7 @@ class QRCode{
 		}
 
 		$dataInterface = new QRData($this->options, $this->dataSegments);
-		$maskPattern   = $this->options->maskPattern === $this::MASK_PATTERN_AUTO
+		$maskPattern   = $this->options->maskPattern === MaskPattern::AUTO
 			? MaskPattern::getBestPattern($dataInterface)
 			: new MaskPattern($this->options->maskPattern);
 

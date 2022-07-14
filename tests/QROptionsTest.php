@@ -12,7 +12,8 @@
 
 namespace chillerlan\QRCodeTest;
 
-use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
+use chillerlan\QRCode\{QRCodeException, QROptions};
+use chillerlan\QRCode\Common\{MaskPattern, Version};
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -28,7 +29,7 @@ final class QROptionsTest extends TestCase{
 			'values > 40 should be clamped to 40'        => [42, 40],
 			'values < 1 should be clamped to 1'          => [-42, 1],
 			'values in between shold not be touched'     => [21, 21],
-			'value -1 should be treated as is (default)' => [QRCode::VERSION_AUTO, -1],
+			'value -1 should be treated as is (default)' => [Version::AUTO, -1],
 		];
 	}
 
@@ -74,7 +75,7 @@ final class QROptionsTest extends TestCase{
 		return [
 			'exceed max'   => [42, 7,],
 			'exceed min'   => [-42, 0],
-			'default (-1)' => [QRCode::MASK_PATTERN_AUTO, -1],
+			'default (-1)' => [MaskPattern::AUTO, -1],
 		];
 	}
 

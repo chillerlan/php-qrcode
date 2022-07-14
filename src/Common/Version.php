@@ -17,6 +17,8 @@ use chillerlan\QRCode\QRCodeException;
  */
 final class Version{
 
+	public const AUTO = -1;
+
 	/**
 	 * ISO/IEC 18004:2000 Annex E, Table E.1 - Row/column coordinates of center module of Alignment Patterns
 	 *

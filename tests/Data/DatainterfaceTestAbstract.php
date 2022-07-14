@@ -10,8 +10,7 @@
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\Common\MaskPattern;
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Common\{MaskPattern, Version};
 use chillerlan\QRCode\QROptions;
 use PHPUnit\Framework\TestCase;
 use chillerlan\QRCode\Data\{QRCodeDataException, QRData, QRMatrix};
@@ -93,7 +92,7 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 		$this->expectExceptionMessage('data exceeds');
 
 		$this->QRData = new QRData(
-			new QROptions(['version' => QRCode::VERSION_AUTO]),
+			new QROptions(['version' => Version::AUTO]),
 			[new $this->FQN(str_repeat($this->testdata, 1337))]
 		);
 	}

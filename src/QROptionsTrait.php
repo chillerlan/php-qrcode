@@ -12,8 +12,7 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\QRCode\Common\EccLevel;
-
+use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\Decoder\{GDLuminanceSource, IMagickLuminanceSource};
 use function array_values, count, extension_loaded, in_array, is_numeric, max, min, sprintf, strtolower;
 
@@ -25,9 +24,9 @@ trait QROptionsTrait{
 	/**
 	 * QR Code version number
 	 *
-	 * [1 ... 40] or QRCode::VERSION_AUTO
+	 * [1 ... 40] or Version::AUTO
 	 */
-	protected int $version = QRCode::VERSION_AUTO;
+	protected int $version = Version::AUTO;
 
 	/**
 	 * Minimum QR version
@@ -56,9 +55,9 @@ trait QROptionsTrait{
 	/**
 	 * Mask Pattern to use (no value in using, mostly for unit testing purposes)
 	 *
-	 * [0...7] or QRCode::MASK_PATTERN_AUTO
+	 * [0...7] or MaskPattern::PATTERN_AUTO
 	 */
-	protected int $maskPattern = QRCode::MASK_PATTERN_AUTO;
+	protected int $maskPattern = MaskPattern::AUTO;
 
 	/**
 	 * Add a "quiet zone" (margin) according to the QR code spec
@@ -368,7 +367,7 @@ trait QROptionsTrait{
 	 */
 	protected function set_version(int $version):void{
 
-		if($version !== QRCode::VERSION_AUTO){
+		if($version !== Version::AUTO){
 			$this->version = max(1, min(40, $version));
 		}
 
@@ -393,7 +392,7 @@ trait QROptionsTrait{
 	 */
 	protected function set_maskPattern(int $maskPattern):void{
 
-		if($maskPattern !== QRCode::MASK_PATTERN_AUTO){
+		if($maskPattern !== MaskPattern::AUTO){
 			$this->maskPattern = max(0, min(7, $maskPattern));
 		}
 

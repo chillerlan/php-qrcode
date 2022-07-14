@@ -11,7 +11,6 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, Mode, Version};
-use chillerlan\QRCode\QRCode;
 use chillerlan\Settings\SettingsContainerInterface;
 
 use function sprintf;
@@ -79,7 +78,7 @@ final class QRData{
 	public function setData(array $dataSegments):self{
 		$this->dataSegments = $dataSegments;
 
-		$version = $this->options->version === QRCode::VERSION_AUTO
+		$version = $this->options->version === Version::AUTO
 			? $this->getMinimumVersion()
 			: $this->options->version;
 
