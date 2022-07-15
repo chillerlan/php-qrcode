@@ -215,86 +215,88 @@
     <a href="classes/chillerlan-QRCode-Common-EccLevel.html#constant_MAX_BITS">MAX_BITS</a>
     <span>
         &nbsp;= [
-    //	v  =&gt; [    L,     M,     Q,     H]  // modules
-    1 =&gt; [152, 128, 104, 72],
-    //  21
-    2 =&gt; [272, 224, 176, 128],
-    //  25
-    3 =&gt; [440, 352, 272, 208],
-    //  29
-    4 =&gt; [640, 512, 384, 288],
-    //  33
-    5 =&gt; [864, 688, 496, 368],
-    //  37
-    6 =&gt; [1088, 864, 608, 480],
-    //  41
-    7 =&gt; [1248, 992, 704, 528],
-    //  45
-    8 =&gt; [1552, 1232, 880, 688],
-    //  49
-    9 =&gt; [1856, 1456, 1056, 800],
-    //  53
-    10 =&gt; [2192, 1728, 1232, 976],
-    //  57
-    11 =&gt; [2592, 2032, 1440, 1120],
-    //  61
-    12 =&gt; [2960, 2320, 1648, 1264],
-    //  65
-    13 =&gt; [3424, 2672, 1952, 1440],
-    //  69 NICE!
-    14 =&gt; [3688, 2920, 2088, 1576],
-    //  73
-    15 =&gt; [4184, 3320, 2360, 1784],
-    //  77
-    16 =&gt; [4712, 3624, 2600, 2024],
-    //  81
-    17 =&gt; [5176, 4056, 2936, 2264],
-    //  85
-    18 =&gt; [5768, 4504, 3176, 2504],
-    //  89
-    19 =&gt; [6360, 5016, 3560, 2728],
-    //  93
-    20 =&gt; [6888, 5352, 3880, 3080],
-    //  97
-    21 =&gt; [7456, 5712, 4096, 3248],
-    // 101
-    22 =&gt; [8048, 6256, 4544, 3536],
-    // 105
-    23 =&gt; [8752, 6880, 4912, 3712],
-    // 109
-    24 =&gt; [9392, 7312, 5312, 4112],
-    // 113
-    25 =&gt; [10208, 8000, 5744, 4304],
-    // 117
-    26 =&gt; [10960, 8496, 6032, 4768],
-    // 121
-    27 =&gt; [11744, 9024, 6464, 5024],
-    // 125
-    28 =&gt; [12248, 9544, 6968, 5288],
-    // 129
-    29 =&gt; [13048, 10136, 7288, 5608],
-    // 133
-    30 =&gt; [13880, 10984, 7880, 5960],
-    // 137
-    31 =&gt; [14744, 11640, 8264, 6344],
-    // 141
-    32 =&gt; [15640, 12328, 8920, 6760],
-    // 145
-    33 =&gt; [16568, 13048, 9368, 7208],
-    // 149
-    34 =&gt; [17528, 13800, 9848, 7688],
-    // 153
-    35 =&gt; [18448, 14496, 10288, 7888],
-    // 157
-    36 =&gt; [19472, 15312, 10832, 8432],
-    // 161
-    37 =&gt; [20528, 15936, 11408, 8768],
-    // 165
-    38 =&gt; [21616, 16816, 12016, 9136],
-    // 169
-    39 =&gt; [22496, 17728, 12656, 9776],
-    // 173
-    40 =&gt; [23648, 18672, 13328, 10208],
+    //	[    L,     M,     Q,     H]  // v  =&gt; modules
+    [null, null, null, null],
+    // 0  =&gt;  will be ignored, index starts at 1
+    [152, 128, 104, 72],
+    // 1  =&gt;  21
+    [272, 224, 176, 128],
+    // 2  =&gt;  25
+    [440, 352, 272, 208],
+    // 3  =&gt;  29
+    [640, 512, 384, 288],
+    // 4  =&gt;  33
+    [864, 688, 496, 368],
+    // 5  =&gt;  37
+    [1088, 864, 608, 480],
+    // 6  =&gt;  41
+    [1248, 992, 704, 528],
+    // 7  =&gt;  45
+    [1552, 1232, 880, 688],
+    // 8  =&gt;  49
+    [1856, 1456, 1056, 800],
+    // 9  =&gt;  53
+    [2192, 1728, 1232, 976],
+    // 10 =&gt;  57
+    [2592, 2032, 1440, 1120],
+    // 11 =&gt;  61
+    [2960, 2320, 1648, 1264],
+    // 12 =&gt;  65
+    [3424, 2672, 1952, 1440],
+    // 13 =&gt;  69 NICE!
+    [3688, 2920, 2088, 1576],
+    // 14 =&gt;  73
+    [4184, 3320, 2360, 1784],
+    // 15 =&gt;  77
+    [4712, 3624, 2600, 2024],
+    // 16 =&gt;  81
+    [5176, 4056, 2936, 2264],
+    // 17 =&gt;  85
+    [5768, 4504, 3176, 2504],
+    // 18 =&gt;  89
+    [6360, 5016, 3560, 2728],
+    // 19 =&gt;  93
+    [6888, 5352, 3880, 3080],
+    // 20 =&gt;  97
+    [7456, 5712, 4096, 3248],
+    // 21 =&gt; 101
+    [8048, 6256, 4544, 3536],
+    // 22 =&gt; 105
+    [8752, 6880, 4912, 3712],
+    // 23 =&gt; 109
+    [9392, 7312, 5312, 4112],
+    // 24 =&gt; 113
+    [10208, 8000, 5744, 4304],
+    // 25 =&gt; 117
+    [10960, 8496, 6032, 4768],
+    // 26 =&gt; 121
+    [11744, 9024, 6464, 5024],
+    // 27 =&gt; 125
+    [12248, 9544, 6968, 5288],
+    // 28 =&gt; 129
+    [13048, 10136, 7288, 5608],
+    // 29 =&gt; 133
+    [13880, 10984, 7880, 5960],
+    // 30 =&gt; 137
+    [14744, 11640, 8264, 6344],
+    // 31 =&gt; 141
+    [15640, 12328, 8920, 6760],
+    // 32 =&gt; 145
+    [16568, 13048, 9368, 7208],
+    // 33 =&gt; 149
+    [17528, 13800, 9848, 7688],
+    // 34 =&gt; 153
+    [18448, 14496, 10288, 7888],
+    // 35 =&gt; 157
+    [19472, 15312, 10832, 8432],
+    // 36 =&gt; 161
+    [20528, 15936, 11408, 8768],
+    // 37 =&gt; 165
+    [21616, 16816, 12016, 9136],
+    // 38 =&gt; 169
+    [22496, 17728, 12656, 9776],
+    // 39 =&gt; 173
+    [23648, 18672, 13328, 10208],
 ]                            </span>
 </dt>
 <dd>ISO/IEC 18004:2000 Tables 7-11 - Number of symbol characters and input data capacity for versions 1 to 40</dd>
@@ -475,7 +477,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/EccLevel.php"><a href="files/src-common-ecclevel.html"><abbr title="src/Common/EccLevel.php">EccLevel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">89</span>
+    <span class="phpdocumentor-element-found-in__line">90</span>
 
     </aside>
 
@@ -556,86 +558,88 @@
         <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">MAX_BITS</span>
     = <span class="phpdocumentor-signature__default-value">[
-    //	v  =&gt; [    L,     M,     Q,     H]  // modules
-    1 =&gt; [152, 128, 104, 72],
-    //  21
-    2 =&gt; [272, 224, 176, 128],
-    //  25
-    3 =&gt; [440, 352, 272, 208],
-    //  29
-    4 =&gt; [640, 512, 384, 288],
-    //  33
-    5 =&gt; [864, 688, 496, 368],
-    //  37
-    6 =&gt; [1088, 864, 608, 480],
-    //  41
-    7 =&gt; [1248, 992, 704, 528],
-    //  45
-    8 =&gt; [1552, 1232, 880, 688],
-    //  49
-    9 =&gt; [1856, 1456, 1056, 800],
-    //  53
-    10 =&gt; [2192, 1728, 1232, 976],
-    //  57
-    11 =&gt; [2592, 2032, 1440, 1120],
-    //  61
-    12 =&gt; [2960, 2320, 1648, 1264],
-    //  65
-    13 =&gt; [3424, 2672, 1952, 1440],
-    //  69 NICE!
-    14 =&gt; [3688, 2920, 2088, 1576],
-    //  73
-    15 =&gt; [4184, 3320, 2360, 1784],
-    //  77
-    16 =&gt; [4712, 3624, 2600, 2024],
-    //  81
-    17 =&gt; [5176, 4056, 2936, 2264],
-    //  85
-    18 =&gt; [5768, 4504, 3176, 2504],
-    //  89
-    19 =&gt; [6360, 5016, 3560, 2728],
-    //  93
-    20 =&gt; [6888, 5352, 3880, 3080],
-    //  97
-    21 =&gt; [7456, 5712, 4096, 3248],
-    // 101
-    22 =&gt; [8048, 6256, 4544, 3536],
-    // 105
-    23 =&gt; [8752, 6880, 4912, 3712],
-    // 109
-    24 =&gt; [9392, 7312, 5312, 4112],
-    // 113
-    25 =&gt; [10208, 8000, 5744, 4304],
-    // 117
-    26 =&gt; [10960, 8496, 6032, 4768],
-    // 121
-    27 =&gt; [11744, 9024, 6464, 5024],
-    // 125
-    28 =&gt; [12248, 9544, 6968, 5288],
-    // 129
-    29 =&gt; [13048, 10136, 7288, 5608],
-    // 133
-    30 =&gt; [13880, 10984, 7880, 5960],
-    // 137
-    31 =&gt; [14744, 11640, 8264, 6344],
-    // 141
-    32 =&gt; [15640, 12328, 8920, 6760],
-    // 145
-    33 =&gt; [16568, 13048, 9368, 7208],
-    // 149
-    34 =&gt; [17528, 13800, 9848, 7688],
-    // 153
-    35 =&gt; [18448, 14496, 10288, 7888],
-    // 157
-    36 =&gt; [19472, 15312, 10832, 8432],
-    // 161
-    37 =&gt; [20528, 15936, 11408, 8768],
-    // 165
-    38 =&gt; [21616, 16816, 12016, 9136],
-    // 169
-    39 =&gt; [22496, 17728, 12656, 9776],
-    // 173
-    40 =&gt; [23648, 18672, 13328, 10208],
+    //	[    L,     M,     Q,     H]  // v  =&gt; modules
+    [null, null, null, null],
+    // 0  =&gt;  will be ignored, index starts at 1
+    [152, 128, 104, 72],
+    // 1  =&gt;  21
+    [272, 224, 176, 128],
+    // 2  =&gt;  25
+    [440, 352, 272, 208],
+    // 3  =&gt;  29
+    [640, 512, 384, 288],
+    // 4  =&gt;  33
+    [864, 688, 496, 368],
+    // 5  =&gt;  37
+    [1088, 864, 608, 480],
+    // 6  =&gt;  41
+    [1248, 992, 704, 528],
+    // 7  =&gt;  45
+    [1552, 1232, 880, 688],
+    // 8  =&gt;  49
+    [1856, 1456, 1056, 800],
+    // 9  =&gt;  53
+    [2192, 1728, 1232, 976],
+    // 10 =&gt;  57
+    [2592, 2032, 1440, 1120],
+    // 11 =&gt;  61
+    [2960, 2320, 1648, 1264],
+    // 12 =&gt;  65
+    [3424, 2672, 1952, 1440],
+    // 13 =&gt;  69 NICE!
+    [3688, 2920, 2088, 1576],
+    // 14 =&gt;  73
+    [4184, 3320, 2360, 1784],
+    // 15 =&gt;  77
+    [4712, 3624, 2600, 2024],
+    // 16 =&gt;  81
+    [5176, 4056, 2936, 2264],
+    // 17 =&gt;  85
+    [5768, 4504, 3176, 2504],
+    // 18 =&gt;  89
+    [6360, 5016, 3560, 2728],
+    // 19 =&gt;  93
+    [6888, 5352, 3880, 3080],
+    // 20 =&gt;  97
+    [7456, 5712, 4096, 3248],
+    // 21 =&gt; 101
+    [8048, 6256, 4544, 3536],
+    // 22 =&gt; 105
+    [8752, 6880, 4912, 3712],
+    // 23 =&gt; 109
+    [9392, 7312, 5312, 4112],
+    // 24 =&gt; 113
+    [10208, 8000, 5744, 4304],
+    // 25 =&gt; 117
+    [10960, 8496, 6032, 4768],
+    // 26 =&gt; 121
+    [11744, 9024, 6464, 5024],
+    // 27 =&gt; 125
+    [12248, 9544, 6968, 5288],
+    // 28 =&gt; 129
+    [13048, 10136, 7288, 5608],
+    // 29 =&gt; 133
+    [13880, 10984, 7880, 5960],
+    // 30 =&gt; 137
+    [14744, 11640, 8264, 6344],
+    // 31 =&gt; 141
+    [15640, 12328, 8920, 6760],
+    // 32 =&gt; 145
+    [16568, 13048, 9368, 7208],
+    // 33 =&gt; 149
+    [17528, 13800, 9848, 7688],
+    // 34 =&gt; 153
+    [18448, 14496, 10288, 7888],
+    // 35 =&gt; 157
+    [19472, 15312, 10832, 8432],
+    // 36 =&gt; 161
+    [20528, 15936, 11408, 8768],
+    // 37 =&gt; 165
+    [21616, 16816, 12016, 9136],
+    // 38 =&gt; 169
+    [22496, 17728, 12656, 9776],
+    // 39 =&gt; 173
+    [23648, 18672, 13328, 10208],
 ]</span>
 </code>
 
@@ -671,7 +675,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/EccLevel.php"><a href="files/src-common-ecclevel.html"><abbr title="src/Common/EccLevel.php">EccLevel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">140</span>
+    <span class="phpdocumentor-element-found-in__line">141</span>
 
     </aside>
 
@@ -714,7 +718,7 @@ H: 0b10</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/EccLevel.php"><a href="files/src-common-ecclevel.html"><abbr title="src/Common/EccLevel.php">EccLevel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">147</span>
+    <span class="phpdocumentor-element-found-in__line">148</span>
 
     </aside>
 
@@ -772,7 +776,7 @@ H: 0b10</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/EccLevel.php"><a href="files/src-common-ecclevel.html"><abbr title="src/Common/EccLevel.php">EccLevel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">159</span>
+    <span class="phpdocumentor-element-found-in__line">160</span>
 
     </aside>
 
@@ -805,7 +809,7 @@ H: 0b10</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/EccLevel.php"><a href="files/src-common-ecclevel.html"><abbr title="src/Common/EccLevel.php">EccLevel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">196</span>
+    <span class="phpdocumentor-element-found-in__line">197</span>
 
     </aside>
 
@@ -849,7 +853,7 @@ H: 0b10</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/EccLevel.php"><a href="files/src-common-ecclevel.html"><abbr title="src/Common/EccLevel.php">EccLevel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">171</span>
+    <span class="phpdocumentor-element-found-in__line">172</span>
 
     </aside>
 
@@ -882,7 +886,7 @@ H: 0b10</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/EccLevel.php"><a href="files/src-common-ecclevel.html"><abbr title="src/Common/EccLevel.php">EccLevel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">205</span>
+    <span class="phpdocumentor-element-found-in__line">206</span>
 
     </aside>
 
@@ -915,7 +919,7 @@ H: 0b10</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/EccLevel.php"><a href="files/src-common-ecclevel.html"><abbr title="src/Common/EccLevel.php">EccLevel.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">184</span>
+    <span class="phpdocumentor-element-found-in__line">185</span>
 
     </aside>
 
