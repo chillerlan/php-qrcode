@@ -481,6 +481,11 @@ Search.appendIndex(
             "summary": "Apply\u0020mask\u0020penalty\u0020rule\u00204\u0020and\u0020return\u0020the\u0020penalty.\u0020Calculate\u0020the\u0020ratio\u0020of\u0020dark\u0020cells\u0020and\u0020give\npenalty\u0020if\u0020the\u0020ratio\u0020is\u0020far\u0020from\u002050\u0025.\u0020It\u0020gives\u002010\u0020penalty\u0020for\u00205\u0025\u0020distance.",
             "url": "classes/chillerlan-QRCode-Common-MaskPattern.html#method_testRule4"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Common\\MaskPattern\u003A\u003AAUTO",
+            "name": "AUTO",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Common-MaskPattern.html#constant_AUTO"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\MaskPattern\u003A\u003APATTERN_000",
             "name": "PATTERN_000",
             "summary": "",
@@ -715,6 +720,11 @@ Search.appendIndex(
             "name": "getTotalCodewords",
             "summary": "returns\u0020the\u0020maximum\u0020codewords\u0020for\u0020the\u0020current\u0020version",
             "url": "classes/chillerlan-QRCode-Common-Version.html#method_getTotalCodewords"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Common\\Version\u003A\u003AAUTO",
+            "name": "AUTO",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Common-Version.html#constant_AUTO"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\Version\u003A\u003AALIGNMENT_PATTERN",
             "name": "ALIGNMENT_PATTERN",
@@ -2466,6 +2476,66 @@ Search.appendIndex(
             "summary": "generates\u0020the\u0020output,\u0020optionally\u0020dumps\u0020it\u0020to\u0020a\u0020file,\u0020and\u0020returns\u0020it",
             "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#method_dump"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AMARKUP_HTML",
+            "name": "MARKUP_HTML",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MARKUP_HTML"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AMARKUP_SVG",
+            "name": "MARKUP_SVG",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MARKUP_SVG"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AGDIMAGE_PNG",
+            "name": "GDIMAGE_PNG",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_PNG"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AGDIMAGE_JPG",
+            "name": "GDIMAGE_JPG",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_JPG"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AGDIMAGE_GIF",
+            "name": "GDIMAGE_GIF",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_GIF"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003ASTRING_JSON",
+            "name": "STRING_JSON",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_STRING_JSON"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003ASTRING_TEXT",
+            "name": "STRING_TEXT",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_STRING_TEXT"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AIMAGICK",
+            "name": "IMAGICK",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_IMAGICK"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AFPDF",
+            "name": "FPDF",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_FPDF"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AEPS",
+            "name": "EPS",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_EPS"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003ACUSTOM",
+            "name": "CUSTOM",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_CUSTOM"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AMODES",
+            "name": "MODES",
+            "summary": "Map\u0020of\u0020built\u002Din\u0020output\u0020modes\u0020\u003D\u003E\u0020modules",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MODES"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003ADEFAULT_MODULE_VALUES",
             "name": "DEFAULT_MODULE_VALUES",
             "summary": "",
@@ -2698,7 +2768,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AOUTPUT_MODES",
             "name": "OUTPUT_MODES",
-            "summary": "Map\u0020of\u0020built\u002Din\u0020output\u0020modes\u0020\u003D\u003E\u0020modules",
+            "summary": "",
             "url": "classes/chillerlan-QRCode-QRCode.html#constant_OUTPUT_MODES"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003A\u0024options",
