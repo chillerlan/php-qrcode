@@ -86,17 +86,19 @@ Wait, what was that? Please again, slower! See [Advanced usage](https://github.c
 - Symfony
   - [phpqrcode-bundle](https://github.com/jonasarts/phpqrcode-bundle)
 - WordPress:
-  - [`wp-two-factor-auth`](https://github.com/sjinks/wp-two-factor-auth)
-  - [`simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
-  - [`wordpress-seo`](https://github.com/Yoast/wordpress-seo)
-  - [`floating-share-button`](https://github.com/qriouslad/floating-share-button)
+  - [wp-two-factor-auth](https://github.com/sjinks/wp-two-factor-auth)
+  - [simple-2fa](https://wordpress.org/plugins/simple-2fa/)
+  - [wordpress-seo](https://github.com/Yoast/wordpress-seo)
+  - [floating-share-button](https://github.com/qriouslad/floating-share-button)
 - WoltLab Suite
   - [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)
-- [Appwrite](https://github.com/appwrite/appwrite)
-- [Cachet](https://github.com/CachetHQ/Cachet)
-- [twill](https://github.com/area17/twill)
-- [GÉANT CAT](https://github.com/GEANT/CAT)
-- other uses: [dependents](https://github.com/chillerlan/php-qrcode/network/dependents) / [packages](https://github.com/chillerlan/php-qrcode/network/dependents?dependent_type=PACKAGE)
+- other uses:
+  - [dependents](https://github.com/chillerlan/php-qrcode/network/dependents) / [packages](https://github.com/chillerlan/php-qrcode/network/dependents?dependent_type=PACKAGE)
+  - [Appwrite](https://github.com/appwrite/appwrite)
+  - [Cachet](https://github.com/CachetHQ/Cachet)
+  - [GÉANT CAT](https://github.com/GEANT/CAT)
+  - [openITCOCKPIT](https://github.com/it-novum/openITCOCKPIT)
+  - [twill](https://github.com/area17/twill)
 
 ### Shameless advertising
 Hi, please check out my other projects that are way cooler than qrcodes!
