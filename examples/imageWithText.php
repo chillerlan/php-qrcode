@@ -12,7 +12,7 @@
  */
 
 use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Output\QRGdImage;
+use chillerlan\QRCode\Output\{QROutputInterface, QRGdImage};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -70,7 +70,7 @@ class QRImageWithText extends QRGdImage{
 		$background  = imagecolorallocate($this->image, ...$textBG);
 
 		// allow transparency
-		if($this->options->imageTransparent && $this->options->outputType !== QRCode::OUTPUT_IMAGE_JPG){
+		if($this->options->imageTransparent && $this->options->outputType !== QROutputInterface::GDIMAGE_JPG){
 			imagecolortransparent($this->image, $background);
 		}
 
@@ -100,7 +100,7 @@ class QRImageWithText extends QRGdImage{
 
 $options = new QROptions([
 	'version'      => 7,
-	'outputType'   => QRCode::OUTPUT_IMAGE_PNG,
+	'outputType'   => QROutputInterface::GDIMAGE_PNG,
 	'scale'        => 3,
 	'imageBase64'  => false,
 ]);

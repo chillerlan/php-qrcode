@@ -17,6 +17,50 @@ use chillerlan\QRCode\Data\QRMatrix;
  */
 interface QROutputInterface{
 
+	/** @var string */
+	const MARKUP_HTML = 'html';
+	/** @var string */
+	const MARKUP_SVG  = 'svg';
+	/** @var string */
+	const GDIMAGE_PNG = 'png';
+	/** @var string */
+	const GDIMAGE_JPG = 'jpg';
+	/** @var string */
+	const GDIMAGE_GIF = 'gif';
+	/** @var string */
+	const STRING_JSON = 'json';
+	/** @var string */
+	const STRING_TEXT = 'text';
+	/** @var string */
+	const IMAGICK     = 'imagick';
+	/** @var string */
+	const FPDF        = 'fpdf';
+	/** @var string */
+	const EPS         = 'eps';
+	/** @var string */
+	const CUSTOM      = 'custom';
+
+	/**
+	 * Map of built-in output modes => modules
+	 *
+	 * @var string[]
+	 */
+	const MODES = [
+		self::MARKUP_SVG  => QRMarkupSVG::class,
+		self::MARKUP_HTML => QRMarkupHTML::class,
+		self::GDIMAGE_PNG => QRGdImage::class,
+		self::GDIMAGE_GIF => QRGdImage::class,
+		self::GDIMAGE_JPG => QRGdImage::class,
+		self::STRING_JSON => QRString::class,
+		self::STRING_TEXT => QRString::class,
+		self::IMAGICK     => QRImagick::class,
+		self::FPDF        => QRFpdf::class,
+		self::EPS         => QREps::class,
+	];
+
+	/**
+	 * @var bool[]
+	 */
 	const DEFAULT_MODULE_VALUES = [
 		// light
 		QRMatrix::M_NULL                           => false,

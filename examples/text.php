@@ -9,15 +9,16 @@
  */
 
 use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Common\EccLevel;
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\Output\QROutputInterface;
 use PHPUnit\Util\Color;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
 $options = new QROptions([
 	'version'      => 7,
-	'outputType'   => QRCode::OUTPUT_STRING_TEXT,
+	'outputType'   => QROutputInterface::STRING_TEXT,
 	'eccLevel'     => EccLevel::L,
 	'eol'          => Color::colorize('reset', "\x00\n"),
 	'moduleValues' => [

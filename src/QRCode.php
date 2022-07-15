@@ -13,9 +13,7 @@ namespace chillerlan\QRCode;
 use chillerlan\QRCode\Common\{EccLevel, ECICharset, MaskPattern, Mode, Version};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number, QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
 use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, LuminanceSourceInterface};
-use chillerlan\QRCode\Output\{
-	QRCodeOutputException, QRFpdf, QRGdImage, QRImagick, QRMarkupHTML, QRMarkupSVG, QREps, QROutputInterface, QRString
-};
+use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
 use function class_exists, class_implements, in_array, mb_convert_encoding, mb_detect_encoding;
 
@@ -72,46 +70,89 @@ class QRCode{
 	 */
 	public const ECC_H = EccLevel::H;
 
-	/** @var string */
-	public const OUTPUT_MARKUP_HTML = 'html';
-	/** @var string */
-	public const OUTPUT_MARKUP_SVG  = 'svg';
-	/** @var string */
-	public const OUTPUT_IMAGE_PNG   = 'png';
-	/** @var string */
-	public const OUTPUT_IMAGE_JPG   = 'jpg';
-	/** @var string */
-	public const OUTPUT_IMAGE_GIF   = 'gif';
-	/** @var string */
-	public const OUTPUT_STRING_JSON = 'json';
-	/** @var string */
-	public const OUTPUT_STRING_TEXT = 'text';
-	/** @var string */
-	public const OUTPUT_IMAGICK     = 'imagick';
-	/** @var string */
-	public const OUTPUT_FPDF        = 'fpdf';
-	/** @var string */
-	public const OUTPUT_EPS         = 'eps';
-	/** @var string */
-	public const OUTPUT_CUSTOM      = 'custom';
+	/**
+	 * @deprecated 5.0.0 use QROutputInterface::MARKUP_HTML instead
+	 * @see \chillerlan\QRCode\Output\QROutputInterface::MARKUP_HTML
+	 * @var string
+	 */
+	public const OUTPUT_MARKUP_HTML = QROutputInterface::MARKUP_HTML;
 
 	/**
-	 * Map of built-in output modes => modules
-	 *
+	 * @deprecated 5.0.0 use QROutputInterface::MARKUP_SVG instead
+	 * @see \chillerlan\QRCode\Output\QROutputInterface::MARKUP_SVG
+	 * @var string
+	 */
+	public const OUTPUT_MARKUP_SVG  = QROutputInterface::MARKUP_SVG;
+
+	/**
+	 * @deprecated 5.0.0 use QROutputInterface::GDIMAGE_PNG instead
+	 * @see \chillerlan\QRCode\Output\QROutputInterface::GDIMAGE_PNG
+	 * @var string
+	 */
+	public const OUTPUT_IMAGE_PNG   = QROutputInterface::GDIMAGE_PNG;
+
+	/**
+	 * @deprecated 5.0.0 use QROutputInterface::GDIMAGE_JPG instead
+	 * @see \chillerlan\QRCode\Output\QROutputInterface::GDIMAGE_JPG
+	 * @var string
+	 */
+	public const OUTPUT_IMAGE_JPG   = QROutputInterface::GDIMAGE_JPG;
+
+	/**
+	 * @deprecated 5.0.0 use QROutputInterface::GDIMAGE_GIF instead
+	 * @see \chillerlan\QRCode\Output\QROutputInterface::GDIMAGE_GIF
+	 * @var string
+	 */
+	public const OUTPUT_IMAGE_GIF   = QROutputInterface::GDIMAGE_GIF;
+
+	/**
+	 * @deprecated 5.0.0 use QROutputInterface::STRING_JSON instead
+	 * @see \chillerlan\QRCode\Output\QROutputInterface::STRING_JSON
+	 * @var string
+	 */
+	public const OUTPUT_STRING_JSON = QROutputInterface::STRING_JSON;
+
+	/**
+	 * @deprecated 5.0.0 use QROutputInterface::STRING_TEXT instead
+	 * @see \chillerlan\QRCode\Output\QROutputInterface::STRING_TEXT
+	 * @var string
+	 */
+	public const OUTPUT_STRING_TEXT = QROutputInterface::STRING_TEXT;
+
+	/**
+	 * @deprecated 5.0.0 use QROutputInterface::IMAGICK instead
+	 * @see \chillerlan\QRCode\Output\QROutputInterface::IMAGICK
+	 * @var string
+	 */
+	public const OUTPUT_IMAGICK     = QROutputInterface::IMAGICK;
+
+	/**
+	 * @deprecated 5.0.0 use QROutputInterface::FPDF instead
+	 * @see \chillerlan\QRCode\Output\QROutputInterface::FPDF
+	 * @var string
+	 */
+	public const OUTPUT_FPDF        = QROutputInterface::FPDF;
+
+	/**
+	 * @deprecated 5.0.0 use QROutputInterface::EPS instead
+	 * @see \chillerlan\QRCode\Output\QROutputInterface::EPS
+	 * @var string
+	 */
+	public const OUTPUT_EPS         = QROutputInterface::EPS;
+
+	/**
+	 * @deprecated 5.0.0 use QROutputInterface::CUSTOM instead
+	 * @see \chillerlan\QRCode\Output\QROutputInterface::CUSTOM
+	 * @var string
+	 */
+	public const OUTPUT_CUSTOM      = QROutputInterface::CUSTOM;
+
+	/**
+	 * @deprecated 5.0.0 use QROutputInterface::MODES instead
+	 * @see \chillerlan\QRCode\Output\QROutputInterface::MODES
 	 * @var string[]
 	 */
-	public const OUTPUT_MODES = [
-		self::OUTPUT_MARKUP_SVG  => QRMarkupSVG::class,
-		self::OUTPUT_MARKUP_HTML => QRMarkupHTML::class,
-		self::OUTPUT_IMAGE_PNG   => QRGdImage::class,
-		self::OUTPUT_IMAGE_GIF   => QRGdImage::class,
-		self::OUTPUT_IMAGE_JPG   => QRGdImage::class,
-		self::OUTPUT_STRING_JSON => QRString::class,
-		self::OUTPUT_STRING_TEXT => QRString::class,
-		self::OUTPUT_IMAGICK     => QRImagick::class,
-		self::OUTPUT_FPDF        => QRFpdf::class,
-		self::OUTPUT_EPS         => QREps::class,
-	];
+	public const OUTPUT_MODES       = QROutputInterface::MODES;
 
 	/**
 	 * The settings container
@@ -202,11 +243,11 @@ class QRCode{
 	 */
 	protected function initOutputInterface():QROutputInterface{
 
-		if($this->options->outputType === $this::OUTPUT_CUSTOM){
+		if($this->options->outputType === QROutputInterface::CUSTOM){
 			return $this->initCustomOutputInterface();
 		}
 
-		$outputInterface = $this::OUTPUT_MODES[$this->options->outputType] ?? false;
+		$outputInterface = QROutputInterface::MODES[$this->options->outputType] ?? false;
 
 		if($outputInterface){
 			return new $outputInterface($this->options, $this->getMatrix());

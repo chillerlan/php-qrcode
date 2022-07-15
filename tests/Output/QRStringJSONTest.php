@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Output\QROutputInterface;
 use function extension_loaded;
 
 /**
@@ -18,7 +18,7 @@ use function extension_loaded;
  */
 final class QRStringJSONTest extends QRStringTestAbstract{
 
-	protected string $type = QRCode::OUTPUT_STRING_JSON;
+	protected string $type = QROutputInterface::STRING_JSON;
 
 	/**
 	 * @inheritDoc

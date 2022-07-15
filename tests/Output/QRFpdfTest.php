@@ -11,9 +11,8 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use FPDF;
-use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QRFpdf;
+use chillerlan\QRCode\Output\{QRFpdf, QROutputInterface};
 
 use function class_exists;
 
@@ -23,7 +22,7 @@ use function class_exists;
 final class QRFpdfTest extends QROutputTestAbstract{
 
 	protected string $FQN  = QRFpdf::class;
-	protected string $type = QRCode::OUTPUT_FPDF;
+	protected string $type = QROutputInterface::FPDF;
 
 	/**
 	 * @inheritDoc

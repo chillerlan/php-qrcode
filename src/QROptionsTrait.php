@@ -12,6 +12,7 @@
 
 namespace chillerlan\QRCode;
 
+use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\Decoder\{GDLuminanceSource, IMagickLuminanceSource};
 use function array_values, count, extension_loaded, in_array, is_numeric, max, min, sprintf, strtolower;
@@ -76,12 +77,15 @@ trait QROptionsTrait{
 	/**
 	 * The output type
 	 *
-	 *   - QRCode::OUTPUT_MARKUP_XXXX where XXXX = HTML, SVG
-	 *   - QRCode::OUTPUT_IMAGE_XXX where XXX = PNG, GIF, JPG
-	 *   - QRCode::OUTPUT_STRING_XXXX where XXXX = TEXT, JSON
-	 *   - QRCode::OUTPUT_CUSTOM
+	 *   - QROutputInterface::MARKUP_XXXX where XXXX = HTML, SVG
+	 *   - QROutputInterface::GDIMAGE_XXX where XXX = PNG, GIF, JPG
+	 *   - QROutputInterface::STRING_XXXX where XXXX = TEXT, JSON
+	 *   - QROutputInterface::IMAGICK
+	 *   - QROutputInterface::EPS
+	 *   - QROutputInterface::FPDF
+	 *   - QROutputInterface::CUSTOM
 	 */
-	protected string $outputType = QRCode::OUTPUT_MARKUP_SVG;
+	protected string $outputType = QROutputInterface::MARKUP_SVG;
 
 	/**
 	 * the FQCN of the custom QROutputInterface if $outputType is set to QRCode::OUTPUT_CUSTOM

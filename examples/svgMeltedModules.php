@@ -9,7 +9,7 @@
 
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QRMarkupSVG;
+use chillerlan\QRCode\Output\{QROutputInterface, QRMarkupSVG};
 use chillerlan\QRCode\{QRCode, QROptions};
 
 require_once __DIR__.'/../vendor/autoload.php';
@@ -249,7 +249,7 @@ $options = new MeltedOutputOptions([
 	'connectPaths'    => true,
 	'imageBase64'     => false,
 
-	'outputType'      => QRCode::OUTPUT_CUSTOM,
+	'outputType'      => QROutputInterface::CUSTOM,
 	'outputInterface' => MeltedSVGQRCodeOutput::class,
 	'excludeFromConnect'        => [
 		QRMatrix::M_FINDER|QRMatrix::IS_DARK,

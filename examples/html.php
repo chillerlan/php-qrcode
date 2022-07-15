@@ -7,8 +7,9 @@
  */
 
 use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Common\EccLevel;
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\Output\QROutputInterface;
 
 require_once '../vendor/autoload.php';
 
@@ -16,7 +17,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 	$options = new QROptions([
 		'version'      => 5,
-		'outputType'   => QRCode::OUTPUT_MARKUP_HTML,
+		'outputType'   => QROutputInterface::MARKUP_HTML,
 		'eccLevel'     => EccLevel::L,
 		'cssClass'     => 'qrcode',
 		'moduleValues' => [

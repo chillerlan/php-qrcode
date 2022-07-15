@@ -12,11 +12,12 @@
 
 namespace chillerlan\QRCodeTest;
 
-use chillerlan\Settings\SettingsContainerInterface;
-use Exception, Generator;
-use chillerlan\QRCode\Common\{EccLevel, Mode, Version};
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Common\{EccLevel, Mode, Version};
+use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\Settings\SettingsContainerInterface;
 use PHPUnit\Framework\TestCase;
+use Exception, Generator;
 use function range, sprintf, str_repeat, substr;
 
 /**
@@ -82,7 +83,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 	}
 
 	public function testReaderMultiSegment():void{
-		$this->options->outputType  = QRCode::OUTPUT_IMAGE_PNG;
+		$this->options->outputType  = QROutputInterface::GDIMAGE_PNG;
 		$this->options->imageBase64 = false;
 
 		$numeric  = '123456789012345678901234567890';
@@ -122,7 +123,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 	 * @dataProvider dataTestProvider
 	 */
 	public function testReadData(Version $version, EccLevel $ecc, string $expected):void{
-		$this->options->outputType       = QRCode::OUTPUT_IMAGE_PNG;
+		$this->options->outputType       = QROutputInterface::GDIMAGE_PNG;
 		$this->options->imageTransparent = false;
 		$this->options->eccLevel         = $ecc->getLevel();
 		$this->options->version          = $version->getVersionNumber();

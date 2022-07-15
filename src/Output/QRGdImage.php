@@ -13,7 +13,6 @@
 namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\QRCode;
 use chillerlan\Settings\SettingsContainerInterface;
 use ErrorException, Throwable;
 use function array_values, count, extension_loaded, imagecolorallocate, imagecolortransparent, imagecreatetruecolor,
@@ -102,7 +101,7 @@ class QRGdImage extends QROutputAbstract{
 		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
 		$background = imagecolorallocate($this->image, ...$tbg);
 
-		if($this->options->imageTransparent && $this->options->outputType !== QRCode::OUTPUT_IMAGE_JPG){
+		if($this->options->imageTransparent && $this->options->outputType !== QROutputInterface::GDIMAGE_JPG){
 			imagecolortransparent($this->image, $background);
 		}
 
@@ -177,14 +176,14 @@ class QRGdImage extends QROutputAbstract{
 		try{
 
 			switch($this->options->outputType){
-				case QRCode::OUTPUT_IMAGE_GIF:
+				case QROutputInterface::GDIMAGE_GIF:
 					imagegif($this->image);
 					break;
-				case QRCode::OUTPUT_IMAGE_JPG:
+				case QROutputInterface::GDIMAGE_JPG:
 					imagejpeg($this->image, null, max(0, min(100, $this->options->jpegQuality)));
 					break;
 				// silently default to png output
-				case QRCode::OUTPUT_IMAGE_PNG:
+				case QROutputInterface::GDIMAGE_PNG:
 				default:
 					imagepng($this->image, null, max(-1, min(9, $this->options->pngCompression)));
 			}

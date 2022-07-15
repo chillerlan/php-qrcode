@@ -10,13 +10,13 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Output\QROutputInterface;
 
 /**
  *
  */
 final class QRGdImageGIFTest extends QRGdImageTestAbstract{
 
-	protected string $type = QRCode::OUTPUT_IMAGE_GIF;
+	protected string $type = QROutputInterface::GDIMAGE_GIF;
 
 }

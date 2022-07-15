@@ -10,8 +10,7 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\Output\QRMarkupSVG;
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Output\{QRMarkupSVG, QROutputInterface};
 
 /**
  *
@@ -19,6 +18,6 @@ use chillerlan\QRCode\QRCode;
 final class QRMarkupSVGTest extends QRMarkupTestAbstract{
 
 	protected string $FQN  = QRMarkupSVG::class;
-	protected string $type = QRCode::OUTPUT_MARKUP_SVG;
+	protected string $type = QROutputInterface::MARKUP_SVG;
 
 }

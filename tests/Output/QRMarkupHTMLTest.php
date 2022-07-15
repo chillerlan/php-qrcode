@@ -10,8 +10,7 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\Output\QRMarkupHTML;
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Output\{QRMarkupHTML, QROutputInterface};
 
 /**
  *
@@ -19,6 +18,6 @@ use chillerlan\QRCode\QRCode;
 final class QRMarkupHTMLTest extends QRMarkupTestAbstract{
 
 	protected string $FQN  = QRMarkupHTML::class;
-	protected string $type = QRCode::OUTPUT_MARKUP_HTML;
+	protected string $type = QROutputInterface::MARKUP_HTML;
 
 }

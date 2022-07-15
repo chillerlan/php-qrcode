@@ -11,14 +11,14 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Output\QROutputInterface;
 
 /**
  *
  */
 final class QRStringTEXTTest extends QRStringTestAbstract{
 
-	protected string $type = QRCode::OUTPUT_STRING_TEXT;
+	protected string $type = QROutputInterface::STRING_TEXT;
 
 	/**
 	 * @inheritDoc

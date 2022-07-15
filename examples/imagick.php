@@ -7,14 +7,15 @@
  */
 
 use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Common\EccLevel;
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\Output\QROutputInterface;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
 $options = new QROptions([
 	'version'             => 7,
-	'outputType'          => QRCode::OUTPUT_IMAGICK,
+	'outputType'          => QROutputInterface::IMAGICK,
 	'eccLevel'            => EccLevel::L,
 	'imagickBG'           => '#FFFFFF',
 	'scale'               => 20,

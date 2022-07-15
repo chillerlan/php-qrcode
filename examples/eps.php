@@ -9,12 +9,13 @@
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\Output\QROutputInterface;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
 $options = new QROptions([
 	'version'      => 7,
-	'outputType'   => QRCode::OUTPUT_EPS,
+	'outputType'   => QROutputInterface::EPS,
 	'eccLevel'     => EccLevel::L,
 	'scale'        => 5,
 	'addQuietzone' => true,

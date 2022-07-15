@@ -10,7 +10,7 @@
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
-use chillerlan\QRCode\Output\QROutputAbstract;
+use chillerlan\QRCode\Output\{QROutputAbstract, QROutputInterface};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -88,7 +88,7 @@ var_dump($qrOutputInterface->dump());
 $options = new QROptions([
 	'version'         => 5,
 	'eccLevel'        => EccLevel::L,
-	'outputType'      => QRCode::OUTPUT_CUSTOM,
+	'outputType'      => QROutputInterface::CUSTOM,
 	'outputInterface' => MyCustomOutput::class,
 ]);
 

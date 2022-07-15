@@ -13,7 +13,7 @@ namespace chillerlan\QRCodeTest\Data;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
-use chillerlan\QRCode\Output\QRString;
+use chillerlan\QRCode\Output\{QROutputInterface, QRString};
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Util\Color;
 use Generator;
@@ -42,7 +42,7 @@ final class QRMatrixTest extends TestCase{
 	 */
 	public static function debugMatrix(QRMatrix $matrix):void{
 		$opt = new QROptions;
-		$opt->outputType  = QRCode::OUTPUT_STRING_TEXT;
+		$opt->outputType  = QROutputInterface::STRING_TEXT;
 		$opt->eol         = Color::colorize('reset', "\x00\n");
 		$opt->moduleValues = [
 			// finder

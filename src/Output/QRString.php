@@ -13,8 +13,6 @@
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\QRCode;
-
 use function implode, is_string, json_encode;
 
 /**
@@ -50,10 +48,10 @@ class QRString extends QROutputAbstract{
 		$file ??= $this->options->cachefile;
 
 		switch($this->options->outputType){
-			case QRCode::OUTPUT_STRING_TEXT:
+			case QROutputInterface::STRING_TEXT:
 				$data = $this->text();
 				break;
-			case QRCode::OUTPUT_STRING_JSON:
+			case QROutputInterface::STRING_JSON:
 			default:
 				$data = $this->json();
 		}

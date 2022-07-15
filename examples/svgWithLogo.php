@@ -11,7 +11,7 @@
 use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QRMarkupSVG;
+use chillerlan\QRCode\Output\{QROutputInterface, QRMarkupSVG};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -102,7 +102,7 @@ $options = new SVGWithLogoOptions([
 	'svgLogoCssClass'     => 'dark',
 	// QROptions
 	'version'             => 5,
-	'outputType'          => QRCode::OUTPUT_CUSTOM,
+	'outputType'          => QROutputInterface::CUSTOM,
 	'outputInterface'     => QRSvgWithLogo::class,
 	'imageBase64'         => false,
 	// ECC level H is necessary when using logos
