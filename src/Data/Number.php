@@ -91,18 +91,11 @@ final class Number extends QRDataModeAbstract{
 
 	/**
 	 * get the code for the given numeric string
-	 *
-	 * @throws \chillerlan\QRCode\Data\QRCodeDataException on an illegal character occurence
 	 */
-	protected function parseInt(string $string):int{
+	private function parseInt(string $string):int{
 		$num = 0;
 
 		foreach(str_split($string) as $chr){
-
-			if(!isset(self::NUMBER_TO_ORD[$chr])){
-				throw new QRCodeDataException(sprintf('illegal char: "%s"', $chr));
-			}
-
 			$num = $num * 10 + ord($chr) - 48;
 		}
 
