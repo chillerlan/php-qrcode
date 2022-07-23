@@ -27,6 +27,7 @@ final class ByteTest extends DatainterfaceTestAbstract{
 		return [
 			["\x01\x02\x03", true],
 			['            ', true], // not empty!
+			['0', true], // should survive !empty()
 			['', false],
 		];
 	}

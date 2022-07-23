@@ -38,7 +38,7 @@ final class Byte extends QRDataModeAbstract{
 	 * @inheritDoc
 	 */
 	public static function validateString(string $string):bool{
-		return !empty($string);
+		return $string !== '';
 	}
 
 	/**
