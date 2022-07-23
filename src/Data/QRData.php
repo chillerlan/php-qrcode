@@ -74,6 +74,8 @@ final class QRData{
 
 	/**
 	 * Sets the data string (internally called by the constructor)
+	 *
+	 * Subsequent calls will overwrite the current state - use the QRCode::add*Segement() method instead
 	 */
 	public function setData(array $dataSegments):self{
 		$this->dataSegments = $dataSegments;
@@ -84,6 +86,7 @@ final class QRData{
 
 		$this->version = new Version($version);
 
+		$this->bitBuffer->clear();
 		$this->writeBitBuffer();
 
 		return $this;

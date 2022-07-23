@@ -155,4 +155,16 @@ final class BitBuffer{
 		return $result;
 	}
 
+	/**
+	 * Clears the buffer and resets the stats
+	 */
+	public function clear():self{
+		$this->buffer    = [];
+		$this->length    = 0;
+		$this->bytesRead = 0;
+		$this->bitsRead  = 0;
+
+		return $this;
+	}
+
 }
