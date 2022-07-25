@@ -74,6 +74,7 @@ class QRCodeTest extends TestCase{
 	public function testIsByte():void{
 		$this::assertTrue($this->qrcode->isByte("\x01\x02\x03"));
 		$this::assertTrue($this->qrcode->isByte('            ')); // not empty!
+		$this::assertTrue($this->qrcode->isByte('0'));
 
 		$this::assertFalse($this->qrcode->isByte(''));
 	}

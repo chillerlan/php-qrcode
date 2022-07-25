@@ -307,7 +307,7 @@ class QRCode{
 	 * a dummy
 	 */
 	public function isByte(string $data):bool{
-		return !empty($data);
+		return $data !== '';
 	}
 
 }
