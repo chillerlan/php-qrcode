@@ -34,7 +34,7 @@ final class QRCodeTest extends TestCase{
 	/**
 	 * tests if an exception is thrown when an invalid (built-in) output type is specified
 	 */
-	public function testInitDataInterfaceException():void{
+	public function testInitOutputInterfaceException():void{
 		$this->expectException(QRCodeOutputException::class);
 		$this->expectExceptionMessage('invalid output type');
 

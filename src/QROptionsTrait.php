@@ -370,11 +370,7 @@ trait QROptionsTrait{
 	 * sets/clamps the version number
 	 */
 	protected function set_version(int $version):void{
-
-		if($version !== Version::AUTO){
-			$this->version = max(1, min(40, $version));
-		}
-
+		$this->version = $version !== Version::AUTO ? max(1, min(40, $version)) : Version::AUTO; // @todo
 	}
 
 	/**

@@ -13,7 +13,7 @@ namespace chillerlan\QRCodeTest\Data;
 use chillerlan\QRCode\Common\{MaskPattern, Version};
 use chillerlan\QRCode\QROptions;
 use PHPUnit\Framework\TestCase;
-use chillerlan\QRCode\Data\{QRCodeDataException, QRData, QRMatrix};
+use chillerlan\QRCode\Data\{QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
 use ReflectionClass;
 
 use function str_repeat;
@@ -34,10 +34,19 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 	}
 
 	/**
-	 * Verifies the data interface instance
+	 * Verifies the QRData instance
 	 */
 	public function testInstance():void{
 		$this::assertInstanceOf(QRData::class, $this->QRData);
+	}
+
+	/**
+	 * Verifies the QRDataModeInterface instance
+	 */
+	public function testDataModeInstance():void{
+		$datamode = new $this->FQN($this->testdata);
+
+		$this::assertInstanceOf(QRDataModeInterface::class, $datamode);
 	}
 
 	/**
@@ -77,6 +86,8 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 	abstract public function stringValidateProvider():array;
 
 	/**
+	 * Tests if a string is properly validated for the respective data mode
+	 *
 	 * @dataProvider stringValidateProvider
 	 */
 	public function testValidateString(string $string, bool $expected):void{

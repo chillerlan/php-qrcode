@@ -191,6 +191,8 @@ final class QROptionsTest extends TestCase{
 	}
 
 	/**
+	 * Tests clamping of the circle radius
+	 *
 	 * @dataProvider circleRadiusProvider
 	 */
 	public function testClampCircleRadius(float $value, float $expected):void{

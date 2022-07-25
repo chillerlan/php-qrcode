@@ -92,6 +92,8 @@ final class MaskPatternTest extends TestCase{
 	}
 
 	/**
+	 * Tests if the mask function generates the correct pattern
+	 *
 	 * @dataProvider maskPatternProvider
 	 */
 	public function testMask(int $pattern, array $expected):void{
@@ -104,7 +106,7 @@ final class MaskPatternTest extends TestCase{
 
 		for($x = 0; $x < 6; $x++){
 			for($y = 0; $y < 6; $y++){
-				if(($expected[$y][$x] === 1) !== $mask($x, $y)){
+				if($mask($x, $y) !== ($expected[$y][$x] === 1)){
 					return false;
 				}
 			}
@@ -113,6 +115,9 @@ final class MaskPatternTest extends TestCase{
 		return true;
 	}
 
+	/**
+	 * Tests if an exception is thrown on an incorrect mask pattern
+	 */
 	public function testInvalidMaskPatternException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('invalid mask pattern');

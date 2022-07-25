@@ -137,15 +137,15 @@ final class MaskPattern{
 	 */
 	private static function applyRule1(array $matrix, int $height, int $width, bool $isHorizontal):int{
 		$penalty = 0;
-		$iLimit  = $isHorizontal ? $height : $width;
-		$jLimit  = $isHorizontal ? $width : $height;
+		$yLimit  = $isHorizontal ? $height : $width;
+		$xLimit  = $isHorizontal ? $width : $height;
 
-		for($i = 0; $i < $iLimit; $i++){
+		for($y = 0; $y < $yLimit; $y++){
 			$numSameBitCells = 0;
-			$prevBit         = -1;
+			$prevBit         = null;
 
-			for($j = 0; $j < $jLimit; $j++){
-				$bit = $isHorizontal ? $matrix[$i][$j] : $matrix[$j][$i];
+			for($x = 0; $x < $xLimit; $x++){
+				$bit = $isHorizontal ? $matrix[$y][$x] : $matrix[$x][$y];
 
 				if($bit === $prevBit){
 					$numSameBitCells++;

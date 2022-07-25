@@ -228,13 +228,10 @@ final class QRMatrixTest extends TestCase{
 
 		foreach($alignmentPattern as $py){
 			foreach($alignmentPattern as $px){
-
-				if($matrix->checkType($px, $py, QRMatrix::M_FINDER)){
-					// skip finder pattern
-					continue;
+				// skip finder pattern
+				if($matrix->checkTypeNotIn($px, $py, [QRMatrix::M_FINDER, QRMatrix::M_FINDER_DOT])){
+					$this::assertSame(QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK, $matrix->get($px, $py));
 				}
-
-				$this::assertSame(QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK, $matrix->get($px, $py));
 			}
 		}
 
@@ -258,14 +255,11 @@ final class QRMatrixTest extends TestCase{
 
 		for($i = 7; $i < $size - 7; $i++){
 			if($i % 2 === 0){
-
-				if($matrix->checkType(6, $i, QRMatrix::M_ALIGNMENT)){
-					// skip alignment pattern
-					continue;
+				// skip alignment pattern
+				if($matrix->checkTypeNotIn(6, $i, [QRMatrix::M_ALIGNMENT])){
+					$this::assertSame(QRMatrix::M_TIMING | QRMatrix::IS_DARK, $matrix->get(6, $i));
+					$this::assertSame(QRMatrix::M_TIMING | QRMatrix::IS_DARK, $matrix->get($i, 6));
 				}
-
-				$this::assertSame(QRMatrix::M_TIMING | QRMatrix::IS_DARK, $matrix->get(6, $i));
-				$this::assertSame(QRMatrix::M_TIMING | QRMatrix::IS_DARK, $matrix->get($i, 6));
 			}
 		}
 
