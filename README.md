@@ -81,6 +81,7 @@ echo '<img src="'.(new QRCode)->render($data).'" alt="QR Code" />';
 </p>
 
 Wait, what was that? Please again, slower! See [Advanced usage](https://github.com/chillerlan/php-qrcode/wiki/Advanced-usage) on the wiki.
+Also, have a look [in the examples folder](https://github.com/chillerlan/php-qrcode/tree/main/examples) for some more usage examples.
 
 ### Framework Integration
 - Drupal:
