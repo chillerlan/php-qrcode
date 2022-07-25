@@ -49,7 +49,7 @@ final class Byte extends QRDataModeAbstract{
 
 		$bitBuffer
 			->put($this::$datamode, 4)
-			->put($len, Mode::getLengthBitsForVersion($this::$datamode, $versionNumber))
+			->put($len, $this::getLengthBits($versionNumber))
 		;
 
 		$i = 0;
@@ -67,7 +67,7 @@ final class Byte extends QRDataModeAbstract{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
-		$length = $bitBuffer->read(Mode::getLengthBitsForVersion(self::$datamode, $versionNumber));
+		$length = $bitBuffer->read(self::getLengthBits($versionNumber));
 
 		if($bitBuffer->available() < 8 * $length){
 			throw new QRCodeDataException('not enough bits available');

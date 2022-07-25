@@ -10,6 +10,8 @@
 
 namespace chillerlan\QRCode\Data;
 
+use chillerlan\QRCode\Common\Mode;
+
 /**
  */
 abstract class QRDataModeAbstract implements QRDataModeInterface{
@@ -50,6 +52,13 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 	 */
 	public function getDataMode():int{
 		return $this::$datamode;
+	}
+
+	/**
+	 * shortcut
+	 */
+	protected static function getLengthBits(int $versionNumber):int{
+		return Mode::getLengthBitsForVersion(static::$datamode, $versionNumber);
 	}
 
 }

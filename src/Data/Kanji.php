@@ -83,7 +83,7 @@ final class Kanji extends QRDataModeAbstract{
 
 		$bitBuffer
 			->put($this::$datamode, 4)
-			->put($this->getCharCount(), Mode::getLengthBitsForVersion($this::$datamode, $versionNumber))
+			->put($this->getCharCount(), $this::getLengthBits($versionNumber))
 		;
 
 		$len = strlen($this->data);
@@ -116,7 +116,7 @@ final class Kanji extends QRDataModeAbstract{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
-		$length = $bitBuffer->read(Mode::getLengthBitsForVersion(self::$datamode, $versionNumber));
+		$length = $bitBuffer->read(self::getLengthBits($versionNumber));
 
 		if($bitBuffer->available() < $length * 13){
 			throw new QRCodeDataException('not enough bits available');

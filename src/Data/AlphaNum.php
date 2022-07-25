@@ -70,7 +70,7 @@ final class AlphaNum extends QRDataModeAbstract{
 
 		$bitBuffer
 			->put($this::$datamode, 4)
-			->put($len, Mode::getLengthBitsForVersion($this::$datamode, $versionNumber))
+			->put($len, $this::getLengthBits($versionNumber))
 		;
 
 		// encode 2 characters in 11 bits
@@ -91,7 +91,7 @@ final class AlphaNum extends QRDataModeAbstract{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
-		$length  = $bitBuffer->read(Mode::getLengthBitsForVersion(self::$datamode, $versionNumber));
+		$length  = $bitBuffer->read(self::getLengthBits($versionNumber));
 		$charmap = array_flip(self::CHAR_TO_ORD);
 
 		// @todo
