@@ -41,6 +41,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Common-BitBuffer.html#method_read"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Common\\BitBuffer\u003A\u003Aclear\u0028\u0029",
+            "name": "clear",
+            "summary": "Clears\u0020the\u0020buffer\u0020and\u0020resets\u0020the\u0020stats",
+            "url": "classes/chillerlan-QRCode-Common-BitBuffer.html#method_clear"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\BitBuffer\u003A\u003A\u0024buffer",
             "name": "buffer",
             "summary": "The\u0020buffer\u0020content",
@@ -3148,7 +3153,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Common\\MaskPatternTest\u003A\u003AtestMask\u0028\u0029",
             "name": "testMask",
-            "summary": "",
+            "summary": "Tests\u0020if\u0020the\u0020mask\u0020function\u0020generates\u0020the\u0020correct\u0020pattern",
             "url": "classes/chillerlan-QRCodeTest-Common-MaskPatternTest.html#method_testMask"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Common\\MaskPatternTest\u003A\u003AassertMask\u0028\u0029",
@@ -3158,7 +3163,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Common\\MaskPatternTest\u003A\u003AtestInvalidMaskPatternException\u0028\u0029",
             "name": "testInvalidMaskPatternException",
-            "summary": "",
+            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020on\u0020an\u0020incorrect\u0020mask\u0020pattern",
             "url": "classes/chillerlan-QRCodeTest-Common-MaskPatternTest.html#method_testInvalidMaskPatternException"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Common\\MaskPatternTest\u003A\u003AtestPenaltyRule1\u0028\u0029",
@@ -3238,8 +3243,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestInstance\u0028\u0029",
             "name": "testInstance",
-            "summary": "Verifies\u0020the\u0020data\u0020interface\u0020instance",
+            "summary": "Verifies\u0020the\u0020QRData\u0020instance",
             "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testInstance"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestDataModeInstance\u0028\u0029",
+            "name": "testDataModeInstance",
+            "summary": "Verifies\u0020the\u0020QRDataModeInterface\u0020instance",
+            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testDataModeInstance"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AmaskPatternProvider\u0028\u0029",
             "name": "maskPatternProvider",
@@ -3263,7 +3273,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestValidateString\u0028\u0029",
             "name": "testValidateString",
-            "summary": "",
+            "summary": "Tests\u0020if\u0020a\u0020string\u0020is\u0020properly\u0020validated\u0020for\u0020the\u0020respective\u0020data\u0020mode",
             "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testValidateString"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestGetMinimumVersionException\u0028\u0029",
@@ -3836,10 +3846,10 @@ Search.appendIndex(
             "summary": "invoke\u0020test\u0020instances",
             "url": "classes/chillerlan-QRCodeTest-QRCodeTest.html#method_setUp"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeTest\u003A\u003AtestInitDataInterfaceException\u0028\u0029",
-            "name": "testInitDataInterfaceException",
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeTest\u003A\u003AtestInitOutputInterfaceException\u0028\u0029",
+            "name": "testInitOutputInterfaceException",
             "summary": "tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020an\u0020invalid\u0020\u0028built\u002Din\u0029\u0020output\u0020type\u0020is\u0020specified",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testInitDataInterfaceException"
+            "url": "classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testInitOutputInterfaceException"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeTest\u003A\u003AtestGetMatrixException\u0028\u0029",
             "name": "testGetMatrixException",
@@ -3933,7 +3943,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QROptionsTest\u003A\u003AtestClampCircleRadius\u0028\u0029",
             "name": "testClampCircleRadius",
-            "summary": "",
+            "summary": "Tests\u0020clamping\u0020of\u0020the\u0020circle\u0020radius",
             "url": "classes/chillerlan-QRCodeTest-QROptionsTest.html#method_testClampCircleRadius"
         },                {
             "fqsen": "\\",
