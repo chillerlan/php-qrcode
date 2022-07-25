@@ -12,7 +12,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
 
-use function array_flip, ceil, ord, sprintf, str_split, substr;
+use function array_flip, ceil, ord, str_split, substr;
 
 /**
  * Numeric mode: decimal digits 0 to 9
