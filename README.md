@@ -1,31 +1,31 @@
 # chillerlan/php-qrcode
 
-A PHP 7.4+ QR Code library based on the [implementation](https://github.com/kazuhikoarase/qrcode-generator) by [Kazuhiko Arase](https://github.com/kazuhikoarase),
-namespaced, cleaned up, improved and other stuff.
+A PHP 7.4+ QR Code library based on the [implementation by Kazuhiko Arase](https://github.com/kazuhikoarase/qrcode-generator),
+namespaced, cleaned up, improved and other stuff. It also features a QR Code reader which is based on the [ZXing library](https://github.com/zxing/zxing).
 
 **Attention:** there is now also a javascript port: [chillerlan/js-qrcode](https://github.com/chillerlan/js-qrcode).
 
 [![PHP Version Support][php-badge]][php]
 [![Packagist version][packagist-badge]][packagist]
 [![License][license-badge]][license]
+[![Continuous Integration][gh-action-badge]][gh-action]
 [![CodeCov][coverage-badge]][coverage]
 [![Scrunitizer CI][scrutinizer-badge]][scrutinizer]
-[![Packagist downloads][downloads-badge]][downloads]<br/>
-[![Continuous Integration][gh-action-badge]][gh-action]
+[![Packagist downloads][downloads-badge]][downloads]
 
 [php-badge]: https://img.shields.io/packagist/php-v/chillerlan/php-qrcode?logo=php&color=8892BF
 [php]: https://www.php.net/supported-versions.php
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?logo=packagist
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
-[license-badge]: https://img.shields.io/github/license/chillerlan/php-qrcode.svg
-[license]: https://github.com/chillerlan/php-qrcode/blob/main/LICENSE
+[license-badge]: https://img.shields.io/badge/license-MIT-green.svg
+[license]: https://github.com/chillerlan/php-qrcode/blob/main/LICENSE-MIT
 [coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode.svg?logo=codecov
 [coverage]: https://codecov.io/github/chillerlan/php-qrcode
 [scrutinizer-badge]: https://img.shields.io/scrutinizer/g/chillerlan/php-qrcode.svg?logo=scrutinizer
 [scrutinizer]: https://scrutinizer-ci.com/g/chillerlan/php-qrcode
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?logo=packagist
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
-[gh-action-badge]: https://github.com/chillerlan/php-qrcode/workflows/Continuous%20Integration/badge.svg
+[gh-action-badge]: https://img.shields.io/github/workflow/status/chillerlan/php-qrcode/Continuous%20Integration?logo=github
 [gh-action]: https://github.com/chillerlan/php-qrcode/actions/workflows/tests.yml?query=branch%3Amain
 
 ## Documentation
@@ -40,6 +40,8 @@ An API documentation created with [phpDocumentor](https://www.phpdoc.org/) can b
     - `ext-json`, `ext-gd`
     - `ext-imagick` with [ImageMagick](https://imagemagick.org) installed
     - [`setasign/fpdf`](https://github.com/setasign/fpdf) for the PDF output module
+
+For the QRCode reader, either `ext-gd` or `ext-imagick` is required!
 
 ### Installation
 **requires [composer](https://getcomposer.org)**
@@ -82,6 +84,21 @@ echo '<img src="'.(new QRCode)->render($data).'" alt="QR Code" />';
 
 Wait, what was that? Please again, slower! See [Advanced usage](https://github.com/chillerlan/php-qrcode/wiki/Advanced-usage) on the wiki.
 Also, have a look [in the examples folder](https://github.com/chillerlan/php-qrcode/tree/main/examples) for some more usage examples.
+
+### Reading QR Codes
+
+Using the built-in QR Code reader is pretty straight-forward:
+```php
+$result = (new QRCode)->readFromFile('path/to/file.png'); // -> DecoderResult
+
+// you can now use the result instance...
+$content = $result->data;
+$matrix  = $result->getMatrix(); // -> QRMatrix
+
+// ...or simply cast it to string to get the content:
+$content = (string)$result;
+```
+It's generally a good idea to wrap the reading in a try/catch block to handle any errors that may occur in the process.
 
 ### Framework Integration
 - Drupal:
