@@ -56,6 +56,8 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 			'kanji'      => ['kanji.png', '茗荷茗荷茗荷茗荷', false],
 			// covers most of ReedSolomonDecoder
 			'damaged'    => ['damaged.png', 'https://smiley.codes/qrcode/', false],
+			// covers attempt to read 2nd (bottom left) version info
+			'version2'   => ['damaged_version.png', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', false],
 			// covers Binarizer::getHistogramBlackMatrix()
 			'smol'       => ['smol.png', 'https://smiley.codes/qrcode/', false],
 			// tilted 22° CCW
