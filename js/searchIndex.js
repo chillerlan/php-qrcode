@@ -2786,6 +2786,11 @@ Search.appendIndex(
             "summary": "A\u0020collection\u0020of\u0020one\u0020or\u0020more\u0020data\u0020segments\u0020of\u0020\u005Bclassname,\u0020data\u005D\u0020to\u0020write",
             "url": "classes/chillerlan-QRCode-QRCode.html#property_dataSegments"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003A\u0024luminanceSourceFQN",
+            "name": "luminanceSourceFQN",
+            "summary": "The\u0020luminance\u0020source\u0020for\u0020the\u0020reader",
+            "url": "classes/chillerlan-QRCode-QRCode.html#property_luminanceSourceFQN"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCodeException",
             "name": "QRCodeException",
             "summary": "An\u0020exception\u0020container",
@@ -2850,11 +2855,6 @@ Search.appendIndex(
             "name": "set_readerUseImagickIfAvailable",
             "summary": "enables\u0020Imagick\u0020for\u0020the\u0020QR\u0020Code\u0020reader\u0020if\u0020the\u0020extension\u0020is\u0020available",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_readerUseImagickIfAvailable"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003AgetLuminanceSourceFQCN\u0028\u0029",
-            "name": "getLuminanceSourceFQCN",
-            "summary": "returns\u0020the\u0020FQCN\u0020of\u0020the\u0020luminance\u0020source\u0020class\u0020to\u0020use\u0020in\u0020the\u0020reader\u0020\u0028GD\u0020or\u0020Imagick\u0029",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_getLuminanceSourceFQCN"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003AclampLogoSpaceValue\u0028\u0029",
             "name": "clampLogoSpaceValue",
