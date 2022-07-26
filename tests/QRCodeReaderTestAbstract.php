@@ -24,6 +24,7 @@ use function range, sprintf, str_repeat, substr;
  * Tests the QR Code reader
  */
 abstract class QRCodeReaderTestAbstract extends TestCase{
+	use QRMaxLengthTrait;
 
 	// https://www.bobrosslipsum.com/
 	protected const loremipsum = 'Just let this happen. We just let this flow right out of our minds. '
@@ -111,7 +112,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 
 			foreach([EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H] as $ecc){
 				$eccLevel = new EccLevel($ecc);
-				$expected = substr($str, 0, $version->getMaxLengthForMode(Mode::BYTE, $eccLevel) ?? '');
+				$expected = substr($str, 0, $this->getMaxLengthForMode(Mode::BYTE, $version, $eccLevel) ?? '');
 
 				yield 'version: '.$version.$eccLevel => [$version, $eccLevel, $expected];
 			}
