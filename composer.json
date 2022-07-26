@@ -2,7 +2,10 @@
 	"name": "chillerlan/php-qrcode",
 	"description": "A QR code generator. PHP 7.4+",
 	"homepage": "https://github.com/chillerlan/php-qrcode",
-	"license": "MIT",
+	"license": [
+		"MIT",
+		"Apache-2.0"
+	],
 	"minimum-stability": "stable",
 	"type": "library",
 	"keywords": [

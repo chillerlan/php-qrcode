@@ -4,6 +4,7 @@
  *
  * @created      24.01.2021
  * @author       ZXing Authors
+ * @author       Ashot Khanamiryan
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2021 Smiley
  * @license      Apache-2.0

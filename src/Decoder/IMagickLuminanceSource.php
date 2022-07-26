@@ -3,10 +3,10 @@
  * Class IMagickLuminanceSource
  *
  * @created      17.01.2021
- * @author       ZXing Authors
+ * @author       Ashot Khanamiryan
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2021 Smiley
- * @license      Apache-2.0
+ * @license      MIT
  *
  * @noinspection PhpComposerExtensionStubsInspection
  */
