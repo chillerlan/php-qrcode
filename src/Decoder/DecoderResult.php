@@ -11,7 +11,8 @@
 
 namespace chillerlan\QRCode\Decoder;
 
-use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, Version};
 use function property_exists;
 
 /**
@@ -81,6 +82,17 @@ final class DecoderResult{
 	 */
 	public function hasStructuredAppend():bool{
 		return $this->structuredAppendParity >= 0 && $this->structuredAppendSequence >= 0;
+	}
+
+	/**
+	 * Returns a QRMatrix instance with thesettings and data of the reader result
+	 */
+	public function getMatrix():QRMatrix{
+		return (new QRMatrix($this->version, $this->eccLevel, $this->maskPattern))
+			->initFunctionalPatterns()
+			->writeCodewords(new BitBuffer($this->rawBytes))
+			->mask()
+		;
 	}
 
 }
