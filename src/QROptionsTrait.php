@@ -14,7 +14,6 @@ namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
-use chillerlan\QRCode\Decoder\{GDLuminanceSource, IMagickLuminanceSource};
 use function array_values, count, extension_loaded, in_array, is_numeric, max, min, sprintf, strtolower;
 
 /**
@@ -458,18 +457,6 @@ trait QROptionsTrait{
 	 */
 	protected function set_readerUseImagickIfAvailable(bool $useImagickIfAvailable):void{
 		$this->readerUseImagickIfAvailable = $useImagickIfAvailable && extension_loaded('imagick');
-	}
-
-	/**
-	 * returns the FQCN of the luminance source class to use in the reader (GD or Imagick)
-	 *
-	 * @see \chillerlan\QRCode\Decoder\LuminanceSourceInterface
-	 */
-	public function getLuminanceSourceFQCN():string{
-		// i still hate this
-		return $this->readerUseImagickIfAvailable
-			? IMagickLuminanceSource::class
-			: GDLuminanceSource::class;
 	}
 
 	/**
