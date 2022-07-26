@@ -12,6 +12,7 @@
 
 namespace chillerlan\QRCodeTest;
 
+use chillerlan\QRCodeTest\Data\QRMatrixTest;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\{EccLevel, Mode, Version};
 use chillerlan\QRCode\Output\QROutputInterface;
@@ -79,8 +80,11 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		}
 
 		/** @noinspection PhpUndefinedMethodInspection */
-		$this::assertSame($expected, (string)(new QRCode)
-			->readFromSource($this->FQN::fromFile(__DIR__.'/samples/'.$img, $this->options)));
+		$result = (new QRCode)->readFromSource($this->FQN::fromFile(__DIR__.'/samples/'.$img, $this->options));
+
+		QRMatrixTest::debugMatrix($result->getMatrix());
+
+		$this::assertSame($expected, (string)$result);
 	}
 
 	public function testReaderMultiSegment():void{

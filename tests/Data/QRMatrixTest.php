@@ -17,6 +17,7 @@ use chillerlan\QRCode\Output\{QROutputInterface, QRString};
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Util\Color;
 use Generator;
+use function defined;
 
 /**
  * Tests the QRMatix class
@@ -41,6 +42,11 @@ final class QRMatrixTest extends TestCase{
 	 * Matrix debugging console output
 	 */
 	public static function debugMatrix(QRMatrix $matrix):void{
+
+		if(defined('TEST_IS_CI') && TEST_IS_CI === true){
+			return;
+		}
+
 		$opt = new QROptions;
 		$opt->outputType  = QROutputInterface::STRING_TEXT;
 		$opt->eol         = Color::colorize('reset', "\x00\n");
