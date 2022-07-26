@@ -109,7 +109,7 @@ final class AlphaNum extends QRDataModeAbstract{
 		while($length > 1){
 
 			if($bitBuffer->available() < 11){
-				throw new QRCodeDataException('not enough bits available');
+				throw new QRCodeDataException('not enough bits available'); // @codeCoverageIgnore
 			}
 
 			$nextTwoCharsBits = $bitBuffer->read(11);
@@ -121,7 +121,7 @@ final class AlphaNum extends QRDataModeAbstract{
 		if($length === 1){
 			// special case: one character left
 			if($bitBuffer->available() < 6){
-				throw new QRCodeDataException('not enough bits available');
+				throw new QRCodeDataException('not enough bits available'); // @codeCoverageIgnore
 			}
 
 			$result .= $toAlphaNumericChar($bitBuffer->read(6));

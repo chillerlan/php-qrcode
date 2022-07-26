@@ -126,7 +126,7 @@ final class Number extends QRDataModeAbstract{
 		while($length >= 3){
 			// Each 10 bits encodes three digits
 			if($bitBuffer->available() < 10){
-				throw new QRCodeDataException('not enough bits available');
+				throw new QRCodeDataException('not enough bits available'); // @codeCoverageIgnore
 			}
 
 			$threeDigitsBits = $bitBuffer->read(10);
@@ -145,7 +145,7 @@ final class Number extends QRDataModeAbstract{
 		if($length === 2){
 			// Two digits left over to read, encoded in 7 bits
 			if($bitBuffer->available() < 7){
-				throw new QRCodeDataException('not enough bits available');
+				throw new QRCodeDataException('not enough bits available'); // @codeCoverageIgnore
 			}
 
 			$twoDigitsBits = $bitBuffer->read(7);
@@ -160,7 +160,7 @@ final class Number extends QRDataModeAbstract{
 		elseif($length === 1){
 			// One digit left over to read
 			if($bitBuffer->available() < 4){
-				throw new QRCodeDataException('not enough bits available');
+				throw new QRCodeDataException('not enough bits available'); // @codeCoverageIgnore
 			}
 
 			$digitBits = $bitBuffer->read(4);

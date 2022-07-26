@@ -70,7 +70,7 @@ final class Byte extends QRDataModeAbstract{
 		$length = $bitBuffer->read(self::getLengthBits($versionNumber));
 
 		if($bitBuffer->available() < 8 * $length){
-			throw new QRCodeDataException('not enough bits available');
+			throw new QRCodeDataException('not enough bits available'); // @codeCoverageIgnore
 		}
 
 		$readBytes = '';

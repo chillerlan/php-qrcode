@@ -155,6 +155,10 @@ final class QRMatrixTest extends TestCase{
 		$this->matrix->set(20, 20, false, QRMatrix::M_TEST);
 		$this::assertSame(QRMatrix::M_TEST, $this->matrix->get(20, 20));
 		$this::assertFalse($this->matrix->check(20, 20));
+
+		// out of range
+		$this::assertFalse($this->matrix->check(-1, -1));
+		$this::assertSame(-1, $this->matrix->get(-1, -1));
 	}
 
 	/**
@@ -414,6 +418,20 @@ final class QRMatrixTest extends TestCase{
 	}
 
 	/**
+	 * Tests whether an exception is thrown when width or height exceed the matrix size
+	 */
+	public function testSetLogoSpaceExceedsException():void{
+		$this->expectException(QRCodeDataException::class);
+		$this->expectExceptionMessage('logo dimensions exceed matrix size');
+
+		$o = new QROptions;
+		$o->version  = 5;
+		$o->eccLevel = EccLevel::H;
+
+		(new QRCode($o))->addByteSegment('testdata')->getMatrix()->setLogoSpace(69, 1);
+	}
+
+	/**
 	 * Tests whether an exception is thrown when the logo space size exceeds the maximum ECC capacity
 	 */
 	public function testSetLogoSpaceMaxSizeException():void{
@@ -450,4 +468,95 @@ final class QRMatrixTest extends TestCase{
 		$this::assertSame(QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK, $this->matrix->get($x, $y));
 	}
 
+	/**
+	 * Tests checking whether the M_TYPE of a module is not one of an array of M_TYPES
+	 */
+	public function testCheckTypeNotIn():void{
+		$this->matrix->set(10, 10, true, QRMatrix::M_QUIETZONE);
+
+		$this::assertTrue($this->matrix->checkTypeNotIn(10, 10, [QRMatrix::M_DATA, QRMatrix::M_FINDER]));
+		$this::assertFalse($this->matrix->checkTypeNotIn(10, 10, [QRMatrix::M_QUIETZONE, QRMatrix::M_FINDER]));
+	}
+
+	/**
+	 * Tests checking the adjacent modules
+	 */
+	public function testCheckNeighbours():void{
+
+		$this->matrix
+			->setFinderPattern()
+			->setAlignmentPattern()
+		;
+
+		/*
+		 * center of finder pattern (surrounded by all dark)
+		 *
+		 *   # # # # # # #
+		 *   #           #
+		 *   #   # # #   #
+		 *   #   # 0 #   #
+		 *   #   # # #   #
+		 *   #           #
+		 *   # # # # # # #
+		 */
+		$this::assertSame(0b11111111, $this->matrix->checkNeighbours(3, 3));
+
+		/*
+		 * center of alignment pattern (surrounded by all light)
+		 *
+		 *   # # # # #
+		 *   #       #
+		 *   #   0   #
+		 *   #       #
+		 *   # # # # #
+		 */
+		$this::assertSame(0b00000000, $this->matrix->checkNeighbours(30, 30));
+
+		/*
+		 * top left light block of finder pattern
+		 *
+		 *   # # #
+		 *   # 0
+		 *   #   #
+		 */
+		$this::assertSame(0b11010111, $this->matrix->checkNeighbours(1, 1));
+
+		/*
+		 * bottom left light block of finder pattern
+		 *
+		 *   #   #
+		 *   # 0
+		 *   # # #
+		 */
+		$this::assertSame(0b11110101, $this->matrix->checkNeighbours(1, 5));
+
+		/*
+		 * top right light block of finder pattern
+		 *
+		 *   # # #
+		 *     0 #
+		 *   #   #
+		 */
+		$this::assertSame(0b01011111, $this->matrix->checkNeighbours(5, 1));
+
+		/*
+		 * bottom right light block of finder pattern
+		 *
+		 *   #   #
+		 *     0 #
+		 *   # # #
+		 */
+		$this::assertSame(0b01111101, $this->matrix->checkNeighbours(5, 5));
+
+
+		/*
+		 * M_TYPE check
+		 *
+		 *   # # #
+		 *     0
+		 *   X X X
+		 */
+		$this::assertSame(0b00000111, $this->matrix->checkNeighbours(3, 1, QRMatrix::M_FINDER));
+		$this::assertSame(0b01110000, $this->matrix->checkNeighbours(3, 1, QRMatrix::M_FINDER_DOT));
+	}
 }

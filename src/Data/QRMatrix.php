@@ -534,17 +534,17 @@ class QRMatrix{
 			throw new QRCodeDataException('ECC level "H" required to add logo space');
 		}
 
-		// if width and height happen to be exactly 0 (default value), just return - nothing to do
-		if($width === 0 || $height === 0){
-			return $this;
+		// if width and height happen to be negative or 0 (default value), just return - nothing to do
+		if($width <= 0 || $height <= 0){
+			return $this; // @codeCoverageIgnore
 		}
 
 		// $this->moduleCount includes the quiet zone (if created), we need the QR size here
 		$length = $this->version->getDimension();
 
-		// throw if the size is negative or exceeds the qrcode size
-		if($width < 0 || $height < 0 || $width > $length || $height > $length){
-			throw new QRCodeDataException('invalid logo dimensions');
+		// throw if the size is exceeds the qrcode size
+		if($width > $length || $height > $length){
+			throw new QRCodeDataException('logo dimensions exceed matrix size');
 		}
 
 		// we need uneven sizes to center the logo space, adjust if needed

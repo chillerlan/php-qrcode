@@ -112,7 +112,7 @@ final class BitBuffer{
 	 */
 	public function read(int $numBits):int{
 
-		if($numBits < 1 || $numBits > 32 || $numBits > $this->available()){
+		if($numBits < 1 || $numBits > $this->available()){
 			throw new QRCodeException('invalid $numBits: '.$numBits);
 		}
 

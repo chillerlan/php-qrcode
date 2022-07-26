@@ -11,6 +11,7 @@
 namespace chillerlan\QRCodeTest\Common;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
+use chillerlan\QRCode\QRCodeException;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -40,6 +41,14 @@ final class BitBufferTest extends TestCase{
 		$this->bitBuffer->put($data, 4);
 		$this::assertSame($value, $this->bitBuffer->getBuffer()[0]);
 		$this::assertSame(4, $this->bitBuffer->getLength());
+	}
+
+	public function testReadException():void{
+		$this->expectException(QRCodeException::class);
+		$this->expectExceptionMessage('invalid $numBits');
+
+		$this->bitBuffer->put(Mode::KANJI, 4);
+		$this->bitBuffer->read($this->bitBuffer->available() + 1);
 	}
 
 }

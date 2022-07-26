@@ -33,7 +33,7 @@ final class EccLevel{
 	/**
 	 * ISO/IEC 18004:2000 Tables 7-11 - Number of symbol characters and input data capacity for versions 1 to 40
 	 *
-	 * @var int [][]
+	 * @var int[][]
 	 */
 	private const MAX_BITS = [
 	//	[    L,     M,     Q,     H]  // v  => modules

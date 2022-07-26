@@ -90,9 +90,16 @@ final class Mode{
 
 	/**
 	 * returns the array of length bits for the given mode
+	 *
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public static function getLengthBitsForMode(int $mode):array{
-		return self::LENGTH_BITS[$mode];
+
+		if(isset(self::LENGTH_BITS[$mode])){
+			return self::LENGTH_BITS[$mode];
+		}
+
+		throw new QRCodeException('invalid mode given');
 	}
 
 }

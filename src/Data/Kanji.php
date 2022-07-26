@@ -119,7 +119,7 @@ final class Kanji extends QRDataModeAbstract{
 		$length = $bitBuffer->read(self::getLengthBits($versionNumber));
 
 		if($bitBuffer->available() < $length * 13){
-			throw new QRCodeDataException('not enough bits available');
+			throw new QRCodeDataException('not enough bits available');  // @codeCoverageIgnore
 		}
 
 		$buffer = [];
