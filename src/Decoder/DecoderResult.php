@@ -30,13 +30,13 @@ use function property_exists;
  */
 final class DecoderResult{
 
-	protected array       $rawBytes;
-	protected string      $data;
-	protected Version     $version;
-	protected EccLevel    $eccLevel;
-	protected MaskPattern $maskPattern;
-	protected int         $structuredAppendParity = -1;
-	protected int         $structuredAppendSequence = -1;
+	private array       $rawBytes;
+	private string      $data;
+	private Version     $version;
+	private EccLevel    $eccLevel;
+	private MaskPattern $maskPattern;
+	private int         $structuredAppendParity = -1;
+	private int         $structuredAppendSequence = -1;
 
 	/**
 	 * DecoderResult constructor.
