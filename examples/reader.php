@@ -18,8 +18,13 @@ $options->readerUseImagickIfAvailable = false;
 $options->readerGrayscale = true;
 $options->readerIncreaseContrast = true;
 
-$result = (new QRCode($options))->readFromFile(__DIR__.'/../.github/images/example_image.png');
+try{
+	$result = (new QRCode($options))->readFromFile(__DIR__.'/../.github/images/example_image.png');
 
-var_dump($result);
+	var_dump($result);
+}
+catch(Throwable $e){
+	echo $e->getMessage();
+}
 
 exit;
