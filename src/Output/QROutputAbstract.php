@@ -117,7 +117,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	/**
 	 * Returns a base64 data URI for the given string and mime type
 	 */
-	protected function base64encode(string $data, string $mime):string{
+	protected function toBase64DataURI(string $data, string $mime):string{
 		return sprintf('data:%s;base64,%s', $mime, base64_encode($data));
 	}
 

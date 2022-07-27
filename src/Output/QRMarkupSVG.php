@@ -40,7 +40,7 @@ class QRMarkupSVG extends QRMarkup{
 
 		// transform to data URI only when not saving to file
 		if(!$saveToFile && $this->options->imageBase64){
-			$svg = $this->base64encode($svg, 'image/svg+xml');
+			$svg = $this->toBase64DataURI($svg, 'image/svg+xml');
 		}
 
 		return $svg;

@@ -64,7 +64,7 @@ class QRImageWithLogo extends QRGdImage{
 		}
 
 		if($this->options->imageBase64){
-			$imageData = $this->base64encode($imageData, 'image/'.$this->options->outputType);
+			$imageData = $this->toBase64DataURI($imageData, 'image/'.$this->options->outputType);
 		}
 
 		return $imageData;
