@@ -35,10 +35,10 @@ An API documentation created with [phpDocumentor](https://www.phpdoc.org/) can b
 
 ### Requirements
 - PHP 7.4+
-  - `ext-mbstring`
+  - [`ext-mbstring`](https://www.php.net/manual/book.mbstring.php)
   - optional:
-    - `ext-json`, `ext-gd`
-    - `ext-imagick` with [ImageMagick](https://imagemagick.org) installed
+    - [`ext-gd`](https://www.php.net/manual/book.image)
+    - [`ext-imagick`](https://github.com/Imagick/imagick) with [ImageMagick](https://imagemagick.org) installed
     - [`setasign/fpdf`](https://github.com/setasign/fpdf) for the PDF output module
 
 For the QRCode reader, either `ext-gd` or `ext-imagick` is required!
@@ -46,9 +46,11 @@ For the QRCode reader, either `ext-gd` or `ext-imagick` is required!
 ### Installation
 **requires [composer](https://getcomposer.org)**
 
-via terminal: `composer require chillerlan/php-qrcode`
-
-*composer.json*
+via terminal:
+```
+composer require chillerlan/php-qrcode
+```
+via `composer.json`:
 ```json
 {
 	"require": {
@@ -57,17 +59,8 @@ via terminal: `composer require chillerlan/php-qrcode`
 	}
 }
 ```
-
 Note: replace `dev-main` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^4.3` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions.
-For PHP version ...
-  - 7.4+ use `^4.3`
-  - 7.2+ use `^3.4.1` (v3.4.1 also supports PHP8)
-  - 7.0+ use `^2.0`
-  - 5.6+ use `^1.0` (please let PHP 5 die!)
-
-In case you want to keep using `dev-main`, specify the hash of a commit to avoid running into unforseen issues like so: `dev-main#cb69751c3bc090a7fdd2f2601bbe10f28d225f10`
-
-PSA: [PHP 7.0 - 7.3 are EOL](https://www.php.net/supported-versions.php) and therefore the respective `QRCode` versions are also no longer supported!
+See [the installation guide on the wiki](https://github.com/chillerlan/php-qrcode/wiki/Installation) for more info!
 
 ### Quickstart
 We want to encode this URI for a mobile authenticator into a QRcode image:
@@ -77,7 +70,6 @@ $data = 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net';
 // quick and simple:
 echo '<img src="'.(new QRCode)->render($data).'" alt="QR Code" />';
 ```
-
 <p align="center">
 	<img alt="QR codes are awesome!" style="width: auto; height: 530px;" src="https://raw.githubusercontent.com/chillerlan/php-qrcode/main/.github/images/example.svg">
 </p>
