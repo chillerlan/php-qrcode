@@ -234,18 +234,11 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_base64encode">base64encode()</a>
-    <span>
-                                &nbsp;: string    </span>
-</dt>
-<dd>Returns a base64 data URI for the given string and mime type</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_collectModules">collectModules()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd>collects the modules per QRMatrix::M_* type and runs a $transform functio on each module and
+<dd>collects the modules per QRMatrix::M_* type and runs a $transform function on each module and
 returns an array with the transformed modules</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
@@ -267,7 +260,7 @@ returns an array with the transformed modules</dd>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>Returns a defualt value for either dark or light modules (return value depends on the output module)</dd>
+<dd>Returns a default value for either dark or light modules (return value depends on the output module)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getModuleValue">getModuleValue()</a>
@@ -324,6 +317,13 @@ returns an array with the transformed modules</dd>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Sets the initial module values</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_toBase64DataURI">toBase64DataURI()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Returns a base64 data URI for the given string and mime type</dd>
 
         </dl>
 
@@ -688,58 +688,6 @@ returns an array with the transformed modules</dd>
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_base64encode">
-        base64encode()
-        <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_base64encode" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputAbstract.php"><a href="files/src-output-qroutputabstract.html"><abbr title="src/Output/QROutputAbstract.php">QROutputAbstract.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">120</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Returns a base64 data URI for the given string and mime type</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">base64encode</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mime</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$data</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$mime</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">string</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_collectModules">
         collectModules()
         <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_collectModules" class="headerlink"><i class="fas fa-link"></i></a>
@@ -751,7 +699,7 @@ returns an array with the transformed modules</dd>
 
     </aside>
 
-        <p class="phpdocumentor-summary">collects the modules per QRMatrix::M_* type and runs a $transform functio on each module and
+        <p class="phpdocumentor-summary">collects the modules per QRMatrix::M_* type and runs a $transform function on each module and
 returns an array with the transformed modules</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -915,7 +863,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Returns a defualt value for either dark or light modules (return value depends on the output module)</p>
+        <p class="phpdocumentor-summary">Returns a default value for either dark or light modules (return value depends on the output module)</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1328,6 +1276,58 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_toBase64DataURI">
+        toBase64DataURI()
+        <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_toBase64DataURI" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputAbstract.php"><a href="files/src-output-qroutputabstract.html"><abbr title="src/Output/QROutputAbstract.php">QROutputAbstract.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">120</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Returns a base64 data URI for the given string and mime type</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">toBase64DataURI</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mime</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$data</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$mime</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
         
     

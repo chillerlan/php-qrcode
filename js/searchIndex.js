@@ -2173,7 +2173,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QREps\u003A\u003AgetDefaultModuleValue\u0028\u0029",
             "name": "getDefaultModuleValue",
-            "summary": "Returns\u0020a\u0020defualt\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
+            "summary": "Returns\u0020a\u0020default\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
             "url": "classes/chillerlan-QRCode-Output-QREps.html#method_getDefaultModuleValue"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QREps\u003A\u003Adump\u0028\u0029",
@@ -2203,7 +2203,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRFpdf\u003A\u003AgetDefaultModuleValue\u0028\u0029",
             "name": "getDefaultModuleValue",
-            "summary": "Returns\u0020a\u0020defualt\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
+            "summary": "Returns\u0020a\u0020default\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
             "url": "classes/chillerlan-QRCode-Output-QRFpdf.html#method_getDefaultModuleValue"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRFpdf\u003A\u003Adump\u0028\u0029",
@@ -2233,7 +2233,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AgetDefaultModuleValue\u0028\u0029",
             "name": "getDefaultModuleValue",
-            "summary": "Returns\u0020a\u0020defualt\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
+            "summary": "Returns\u0020a\u0020default\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
             "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_getDefaultModuleValue"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003Adump\u0028\u0029",
@@ -2283,7 +2283,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003AgetDefaultModuleValue\u0028\u0029",
             "name": "getDefaultModuleValue",
-            "summary": "Returns\u0020a\u0020defualt\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
+            "summary": "Returns\u0020a\u0020default\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
             "url": "classes/chillerlan-QRCode-Output-QRImagick.html#method_getDefaultModuleValue"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003Adump\u0028\u0029",
@@ -2328,7 +2328,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup\u003A\u003AgetDefaultModuleValue\u0028\u0029",
             "name": "getDefaultModuleValue",
-            "summary": "Returns\u0020a\u0020defualt\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
+            "summary": "Returns\u0020a\u0020default\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
             "url": "classes/chillerlan-QRCode-Output-QRMarkup.html#method_getDefaultModuleValue"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup\u003A\u003Adump\u0028\u0029",
@@ -2423,13 +2423,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AgetDefaultModuleValue\u0028\u0029",
             "name": "getDefaultModuleValue",
-            "summary": "Returns\u0020a\u0020defualt\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
+            "summary": "Returns\u0020a\u0020default\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
             "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getDefaultModuleValue"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003Abase64encode\u0028\u0029",
-            "name": "base64encode",
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AtoBase64DataURI\u0028\u0029",
+            "name": "toBase64DataURI",
             "summary": "Returns\u0020a\u0020base64\u0020data\u0020URI\u0020for\u0020the\u0020given\u0020string\u0020and\u0020mime\u0020type",
-            "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_base64encode"
+            "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_toBase64DataURI"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AsaveToFile\u0028\u0029",
             "name": "saveToFile",
@@ -2438,7 +2438,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AcollectModules\u0028\u0029",
             "name": "collectModules",
-            "summary": "collects\u0020the\u0020modules\u0020per\u0020QRMatrix\u003A\u003AM_\u002A\u0020type\u0020and\u0020runs\u0020a\u0020\u0024transform\u0020functio\u0020on\u0020each\u0020module\u0020and\nreturns\u0020an\u0020array\u0020with\u0020the\u0020transformed\u0020modules",
+            "summary": "collects\u0020the\u0020modules\u0020per\u0020QRMatrix\u003A\u003AM_\u002A\u0020type\u0020and\u0020runs\u0020a\u0020\u0024transform\u0020function\u0020on\u0020each\u0020module\u0020and\nreturns\u0020an\u0020array\u0020with\u0020the\u0020transformed\u0020modules",
             "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_collectModules"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003A\u0024moduleCount",
@@ -2563,7 +2563,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRString\u003A\u003AgetDefaultModuleValue\u0028\u0029",
             "name": "getDefaultModuleValue",
-            "summary": "Returns\u0020a\u0020defualt\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
+            "summary": "Returns\u0020a\u0020default\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
             "url": "classes/chillerlan-QRCode-Output-QRString.html#method_getDefaultModuleValue"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRString\u003A\u003Adump\u0028\u0029",
@@ -2593,7 +2593,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003Arender\u0028\u0029",
             "name": "render",
-            "summary": "Renders\u0020a\u0020QR\u0020Code\u0020for\u0020the\u0020given\u0020\u0024data\u0020and\u0020QROptions",
+            "summary": "Renders\u0020a\u0020QR\u0020Code\u0020for\u0020the\u0020given\u0020\u0024data\u0020and\u0020QROptions,\u0020saves\u0020\u0024file\u0020optionally",
             "url": "classes/chillerlan-QRCode-QRCode.html#method_render"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AgetMatrix\u0028\u0029",
@@ -3078,7 +3078,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024readerUseImagickIfAvailable",
             "name": "readerUseImagickIfAvailable",
-            "summary": "use\u0020Imaagick\u0020\u0028if\u0020available\u0029\u0020when\u0020reading\u0020QR\u0020Codes",
+            "summary": "use\u0020Imagick\u0020\u0028if\u0020available\u0029\u0020when\u0020reading\u0020QR\u0020Codes",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_readerUseImagickIfAvailable"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024readerGrayscale",
