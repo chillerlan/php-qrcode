@@ -252,9 +252,6 @@ class QRMatrix{
 
 	/**
 	 * Checks whether a module is true (dark) or false (light)
-	 *
-	 *   true  => $value & 0x800 === 0x800
-	 *   false => $value & 0x800 === 0
 	 */
 	public function check(int $x, int $y):bool{
 		return $this->checkType($x, $y, $this::IS_DARK);

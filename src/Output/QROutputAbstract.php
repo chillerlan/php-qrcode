@@ -108,7 +108,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	abstract protected function getModuleValue($value);
 
 	/**
-	 * Returns a defualt value for either dark or light modules (return value depends on the output module)
+	 * Returns a default value for either dark or light modules (return value depends on the output module)
 	 *
 	 * @return mixed
 	 */
@@ -141,7 +141,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	}
 
 	/**
-	 * collects the modules per QRMatrix::M_* type and runs a $transform functio on each module and
+	 * collects the modules per QRMatrix::M_* type and runs a $transform function on each module and
 	 * returns an array with the transformed modules
 	 *
 	 * The transform callback is called with the following parameters:

@@ -299,7 +299,7 @@ trait QROptionsTrait{
 	protected ?array $moduleValues = null;
 
 	/**
-	 * use Imaagick (if available) when reading QR Codes
+	 * use Imagick (if available) when reading QR Codes
 	 */
 	protected bool $readerUseImagickIfAvailable = false;
 

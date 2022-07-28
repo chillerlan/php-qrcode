@@ -190,7 +190,7 @@ class QRCode{
 	}
 
 	/**
-	 * Renders a QR Code for the given $data and QROptions
+	 * Renders a QR Code for the given $data and QROptions, saves $file optionally
 	 *
 	 * @return mixed
 	 */
