@@ -3041,10 +3041,20 @@ Search.appendIndex(
             "summary": "toggle\u0020background\u0020transparency",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparent"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024drawLightModules",
+            "name": "drawLightModules",
+            "summary": "whether\u0020to\u0020draw\u0020the\u0020light\u0020\u0028false\u0029\u0020modules",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_drawLightModules"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imageTransparencyBG",
             "name": "imageTransparencyBG",
-            "summary": "Sets\u0020the\u0020background\u0020color\u0020in\u0020GD\u0020mode.",
+            "summary": "Sets\u0020the\u0020background\u0020color\u0020in\u0020GD\u0020mode\u003A\u0020\u005BR,\u0020G,\u0020B\u005D.",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparencyBG"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024bgColor",
+            "name": "bgColor",
+            "summary": "Sets\u0020the\u0020image\u0020background\u0020color\u0020\u0028if\u0020applicable\u0029",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_bgColor"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024pngCompression",
             "name": "pngCompression",
@@ -3063,7 +3073,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imagickBG",
             "name": "imagickBG",
-            "summary": "Imagick\u0020background\u0020color\u0020\u0028defaults\u0020to\u0020\u0022transparent\u0022\u0029",
+            "summary": "Imagick\u0020background\u0020color",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickBG"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024fpdfMeasureUnit",
