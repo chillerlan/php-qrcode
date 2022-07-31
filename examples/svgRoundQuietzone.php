@@ -174,7 +174,7 @@ $options = new RoundQuietzoneOptions([
 	'outputInterface'     => RoundQuietzoneSVGoutput::class, // load our own output class
 	'markupDark'          => '', // avoid "fill" attributes on paths
 	'markupLight'         => '',
-	'imageTransparent'    => true, // set to false to add the light modules
+	'drawLightModules'    => false, // set to true to add the light modules
 
 	'connectPaths'        => true,
 	'excludeFromConnect'  => [

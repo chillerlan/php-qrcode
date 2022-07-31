@@ -232,31 +232,40 @@ trait QROptionsTrait{
 	/**
 	 * toggle background transparency
 	 *
-	 * - In GdImage mode (png, gif) it sets imagecolortransparent() with QROptions::$imageTransparencyBG.
-	 *   It also sets the "normal" background color without transparency switch.
+	 * - GdImage: (png, gif) it sets imagecolortransparent() with {@see \chillerlan\QRCode\QROptions::$imageTransparencyBG}
 	 *
-	 * - In SVG mode (as of v5), it won't render the "light" modules,
-	 *   as opacity/transparency can easily be set with css properties.
 	 *
-	 * - It has no effect in the FPDF and Imagick output modules.
-	 *
-	 * @see \chillerlan\QRCode\QROptions::$imageTransparencyBG
 	 * @see https://github.com/chillerlan/php-qrcode/discussions/121
  	 */
 	protected bool $imageTransparent = true;
 
 	/**
-	 * Sets the background color in GD mode.
+	 * whether to draw the light (false) modules
 	 *
-	 * When QROptions::$imageTransparent is set to true, this color is set as transparent in imagecolortransparent()
+	 * @var bool
+	 */
+	protected bool $drawLightModules = true;
+
+	/**
+	 * Sets the background color in GD mode: [R, G, B].
+	 *
+	 * When $imageTransparent is set to true, this color is set as transparent in imagecolortransparent()
 	 *
 	 * @see \chillerlan\QRCode\Output\QRGdImage
 	 * @see \chillerlan\QRCode\QROptions::$imageTransparent
 	 * @see imagecolortransparent()
-	 *
-	 * [R, G, B]
 	 */
 	protected array $imageTransparencyBG = [255, 255, 255];
+
+	/**
+	 * Sets the image background color (if applicable)
+	 *
+	 * - Imagick: defaults to "transparent" or "white", depending on $imageTransparent, {@see \ImagickPixel::__construct()}
+	 * - GdImage: defaults to $imageTransparencyBG, {@see \chillerlan\QRCode\QROptions::$imageTransparencyBG}
+	 *
+	 * @var mixed|null
+	 */
+	protected $bgColor = null;
 
 	/**
 	 * @see imagepng()
@@ -277,8 +286,10 @@ trait QROptionsTrait{
 	protected string $imagickFormat = 'png32';
 
 	/**
-	 * Imagick background color (defaults to "transparent")
+	 * Imagick background color
 	 *
+	 * @deprecated 5.0.0 use QROptions::$bgColor instead
+	 * @see \chillerlan\QRCode\QROptions::$bgColor
 	 * @see \ImagickPixel::__construct()
 	 */
 	protected ?string $imagickBG = null;

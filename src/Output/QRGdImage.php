@@ -95,14 +95,21 @@ class QRGdImage extends QROutputAbstract{
 
 		$this->image = imagecreatetruecolor($this->length, $this->length);
 
-		// avoid: "Indirect modification of overloaded property $imageTransparencyBG has no effect"
+		// avoid: "Indirect modification of overloaded property $x has no effect"
 		// https://stackoverflow.com/a/10455217
-		$tbg        = $this->options->imageTransparencyBG;
+		$bgColor = $this->options->imageTransparencyBG;
+
+		if($this->moduleValueIsValid($this->options->bgColor)){
+			$bgColor = $this->getModuleValue($this->options->bgColor);
+		}
+
 		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
-		$background = imagecolorallocate($this->image, ...$tbg);
+		$background = imagecolorallocate($this->image, ...$bgColor);
 
 		if($this->options->imageTransparent && $this->options->outputType !== QROutputInterface::GDIMAGE_JPG){
-			imagecolortransparent($this->image, $background);
+			$tbg = $this->options->imageTransparencyBG;
+			/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
+			imagecolortransparent($this->image, imagecolorallocate($this->image, ...$tbg));
 		}
 
 		imagefilledrectangle($this->image, 0, 0, $this->length, $this->length, $background);

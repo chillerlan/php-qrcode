@@ -22,7 +22,7 @@ abstract class QRMarkupTestAbstract extends QROutputTestAbstract{
 	 */
 	public function testSetModuleValues():void{
 		$this->options->imageBase64      = false;
-		$this->options->imageTransparent = false;
+		$this->options->drawLightModules = true;
 		$this->options->moduleValues     = [
 			// data
 			QRMatrix::M_DATA | QRMatrix::IS_DARK => '#4A6000',

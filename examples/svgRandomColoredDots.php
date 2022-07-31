@@ -124,7 +124,7 @@ $options = new RandomDotsOptions([
 	'outputInterface'     => RandomDotsSVGOutput::class,
 	'markupDark'          => '',
 	'markupLight'         => '',
-	'imageTransparent'    => true,
+	'drawLightModules'    => false,
 
 	'connectPaths'        => true,
 	'excludeFromConnect'  => [

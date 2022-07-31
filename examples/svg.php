@@ -22,8 +22,8 @@ $options = new QROptions([
 	'imageBase64'         => false,
 	'eccLevel'            => EccLevel::L,
 	'addQuietzone'        => true,
-	// if set to true, the light modules won't be rendered
-	'imageTransparent'    => false,
+	// if set to false, the light modules won't be rendered
+	'drawLightModules'    => true,
 	// empty the default value to remove the fill* attributes from the <path> elements
 	'markupDark'          => '',
 	'markupLight'         => '',

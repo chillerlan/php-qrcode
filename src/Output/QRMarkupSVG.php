@@ -126,7 +126,7 @@ class QRMarkupSVG extends QRMarkup{
 	 */
 	protected function module(int $x, int $y, int $M_TYPE):string{
 
-		if($this->options->imageTransparent && !$this->matrix->check($x, $y)){
+		if(!$this->options->drawLightModules && !$this->matrix->check($x, $y)){
 			return '';
 		}
 

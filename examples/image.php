@@ -19,6 +19,7 @@ $options = new QROptions([
 	'eccLevel'            => EccLevel::L,
 	'scale'               => 10,
 	'imageBase64'         => false,
+	'bgColor'             => [200, 200, 200],
 	'imageTransparent'    => false,
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.4,

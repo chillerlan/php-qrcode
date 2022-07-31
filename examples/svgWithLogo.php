@@ -109,7 +109,7 @@ $options = new SVGWithLogoOptions([
 	'eccLevel'            => EccLevel::H,
 	'addQuietzone'        => true,
 	// if set to true, the light modules won't be rendered
-	'imageTransparent'    => false,
+	'drawLightModules'    => true,
 	// empty the default value to remove the fill* attributes from the <path> elements
 	'markupDark'          => '',
 	'markupLight'         => '',

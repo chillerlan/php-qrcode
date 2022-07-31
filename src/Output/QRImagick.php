@@ -73,14 +73,14 @@ class QRImagick extends QROutputAbstract{
 		$file          ??= $this->options->cachefile;
 		$this->imagick = new Imagick;
 
-		$this->imagick->newImage(
-			$this->length,
-			$this->length,
-			new ImagickPixel($this->options->imagickBG ?? 'transparent'),
-			$this->options->imagickFormat
-		);
+		$bgColor = $this->options->imageTransparent ? 'transparent' : 'white';
 
-		$this->imagick->setImageType(Imagick::IMGTYPE_TRUECOLOR);
+		// keep the imagickBG property for now (until v6)
+		if($this->moduleValueIsValid($this->options->bgColor ?? $this->options->imagickBG)){
+			$bgColor = $this->options->bgColor ?? $this->options->imagickBG;
+		}
+
+		$this->imagick->newImage($this->length, $this->length, new ImagickPixel($bgColor), $this->options->imagickFormat);
 
 		$this->drawImage();
 
@@ -119,6 +119,11 @@ class QRImagick extends QROutputAbstract{
 	 * draws a single pixel at the given position
 	 */
 	protected function setPixel(int $x, int $y, int $M_TYPE):void{
+
+		if(!$this->options->drawLightModules && !$this->matrix->check($x, $y)){
+			return;
+		}
+
 		$this->imagickDraw->setFillColor($this->moduleValues[$M_TYPE]);
 
 		$this->options->drawCircularModules && $this->matrix->checkTypeNotIn($x, $y, $this->options->keepAsSquare)
