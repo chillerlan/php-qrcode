@@ -29,7 +29,7 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 	protected string          $testdata;
 
 	protected function setUp():void{
-		$this->QRData     = new QRData(new QROptions(['version' => 4]));
+		$this->QRData     = new QRData(new QROptions);
 		$this->reflection = new ReflectionClass($this->QRData);
 	}
 
@@ -79,8 +79,11 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 
 		$getMinimumVersion = $this->reflection->getMethod('getMinimumVersion');
 		$getMinimumVersion->setAccessible(true);
+		/** @var \chillerlan\QRCode\Common\Version $version */
+		$version = $getMinimumVersion->invoke($this->QRData);
 
-		$this::assertSame(1, $getMinimumVersion->invoke($this->QRData));
+		$this::assertInstanceOf(Version::class, $version);
+		$this::assertSame(1, $version->getVersionNumber());
 	}
 
 	abstract public function stringValidateProvider():array;
@@ -102,10 +105,7 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('data exceeds');
 
-		$this->QRData = new QRData(
-			new QROptions(['version' => Version::AUTO]),
-			[new $this->FQN(str_repeat($this->testdata, 1337))]
-		);
+		$this->QRData->setData([new $this->FQN(str_repeat($this->testdata, 1337))]);
 	}
 
 	/**
@@ -115,7 +115,10 @@ abstract class DatainterfaceTestAbstract extends TestCase{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('code length overflow');
 
-		$this->QRData->setData([new $this->FQN(str_repeat($this->testdata, 1337))]);
+		$this->QRData = new QRData(
+			new QROptions(['version' => 4]),
+			[new $this->FQN(str_repeat($this->testdata, 1337))]
+		);
 	}
 
 	/**

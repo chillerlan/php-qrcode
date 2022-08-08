@@ -79,15 +79,34 @@ final class QRData{
 	 */
 	public function setData(array $dataSegments):self{
 		$this->dataSegments = $dataSegments;
-
-		$version = $this->options->version === Version::AUTO
-			? $this->getMinimumVersion()
-			: $this->options->version;
-
-		$this->version = new Version($version);
+		$this->version      = $this->getMinimumVersion();
 
 		$this->bitBuffer->clear();
 		$this->writeBitBuffer();
+
+		return $this;
+	}
+
+	/**
+	 * Sets a BitBuffer object
+	 *
+	 * this can be used instead of setData(), however, the version auto detection is not available in this case.
+	 *
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
+	 */
+	public function setBitBuffer(BitBuffer $bitBuffer):self{
+
+		if($this->options->version === Version::AUTO){
+			throw new QRCodeDataException('version auto detection is not available');
+		}
+
+		if($bitBuffer->getLength() === 0){
+			throw new QRCodeDataException('the given BitBuffer is empty');
+		}
+
+		$this->dataSegments = [];
+		$this->bitBuffer    = $bitBuffer;
+		$this->version      = new Version($this->options->version);
 
 		return $this;
 	}
@@ -142,13 +161,18 @@ final class QRData{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	private function getMinimumVersion():int{
+	private function getMinimumVersion():Version{
+
+		if($this->options->version !== Version::AUTO){
+			return new Version($this->options->version);
+		}
+
 		$total = $this->estimateTotalBitLength();
 
 		// guess the version number within the given range
 		for($version = $this->options->versionMin; $version <= $this->options->versionMax; $version++){
 			if($total <= $this->maxBitsForEcc[$version]){
-				return $version;
+				return new Version($version);
 			}
 		}
 
