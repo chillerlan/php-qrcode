@@ -961,6 +961,11 @@ Search.appendIndex(
             "summary": "Sets\u0020the\u0020data\u0020string\u0020\u0028internally\u0020called\u0020by\u0020the\u0020constructor\u0029",
             "url": "classes/chillerlan-QRCode-Data-QRData.html#method_setData"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRData\u003A\u003AsetBitBuffer\u0028\u0029",
+            "name": "setBitBuffer",
+            "summary": "Sets\u0020a\u0020BitBuffer\u0020object",
+            "url": "classes/chillerlan-QRCode-Data-QRData.html#method_setBitBuffer"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRData\u003A\u003AwriteMatrix\u0028\u0029",
             "name": "writeMatrix",
             "summary": "returns\u0020a\u0020fresh\u0020matrix\u0020object\u0020with\u0020the\u0020data\u0020written\u0020and\u0020masked\u0020with\u0020the\u0020given\u0020\u0024maskPattern",
@@ -3490,6 +3495,16 @@ Search.appendIndex(
             "name": "testdata",
             "summary": "",
             "url": "classes/chillerlan-QRCodeTest-Data-NumberTest.html#property_testdata"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRDataTest",
+            "name": "QRDataTest",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-QRDataTest.html"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRDataTest\u003A\u003AtestSetBitBuffer\u0028\u0029",
+            "name": "testSetBitBuffer",
+            "summary": "tests\u0020setting\u0020the\u0020BitBuffer\u0020object\u0020directly",
+            "url": "classes/chillerlan-QRCodeTest-Data-QRDataTest.html#method_testSetBitBuffer"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest",
             "name": "QRMatrixTest",
