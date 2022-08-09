@@ -90,7 +90,9 @@ final class QRData{
 	/**
 	 * Sets a BitBuffer object
 	 *
-	 * this can be used instead of setData(), however, the version auto detection is not available in this case.
+	 * This can be used instead of setData(), however, the version auto detection is not available in this case.
+	 * The version needs match the length bits range for the data mode the data has been encoded with,
+	 * additionally the bit array needs to contain enough pad bits.
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
@@ -202,7 +204,7 @@ final class QRData{
 
 		// add terminator (ISO/IEC 18004:2000 Table 2)
 		if($this->bitBuffer->getLength() + 4 <= $MAX_BITS){
-			$this->bitBuffer->put(0b0000, 4);
+			$this->bitBuffer->put(0, 4);
 		}
 
 		// Padding: ISO/IEC 18004:2000 8.4.9 Bit stream to codeword conversion
@@ -218,13 +220,9 @@ final class QRData{
 		// Codewords 11101100 and 00010001 alternately.
 		$alternate = false;
 
-		while(true){
-
-			if($this->bitBuffer->getLength() >= $MAX_BITS){
-				break;
-			}
-
+		while($this->bitBuffer->getLength() <= $MAX_BITS){
 			$this->bitBuffer->put($alternate ? 0b00010001 : 0b11101100, 8);
+
 			$alternate = !$alternate;
 		}
 
