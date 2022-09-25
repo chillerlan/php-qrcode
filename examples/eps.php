@@ -14,38 +14,41 @@ use chillerlan\QRCode\Output\QROutputInterface;
 require_once __DIR__.'/../vendor/autoload.php';
 
 $options = new QROptions([
-	'version'      => 7,
-	'outputType'   => QROutputInterface::EPS,
-	'eccLevel'     => EccLevel::L,
-	'scale'        => 5,
-	'addQuietzone' => true,
-#	'cachefile'    => __DIR__.'/test.eps', // save to file
-	'moduleValues' => [
+	'version'          => 7,
+	'outputType'       => QROutputInterface::EPS,
+	'eccLevel'         => EccLevel::L,
+	'scale'            => 5,
+	'addQuietzone'     => true,
+	'drawLightModules' => false,
+	'cachefile'        => __DIR__.'/test.eps', // save to file
+	'moduleValues'     => [
 		// finder
-		QRMatrix::M_FINDER | QRMatrix::IS_DARK     => 0xA71111, // dark (true)
-		QRMatrix::M_FINDER                         => 0xFFBFBF, // light (false)
-		QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK => 0xA71111, // finder dot, dark (true)
+		QRMatrix::M_FINDER | QRMatrix::IS_DARK     => [0, 63, 255], // dark (true)
+		QRMatrix::M_FINDER                         => [233, 233, 233], // light (false)
+		QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK => [0, 63, 255], // finder dot, dark (true)
 		// alignment
-		QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK  => 0xA70364,
-		QRMatrix::M_ALIGNMENT                      => 0xFFC9C9,
+		QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK  => [255, 0, 255],
+		QRMatrix::M_ALIGNMENT                      => [233, 233, 233],
 		// timing
-		QRMatrix::M_TIMING | QRMatrix::IS_DARK     => 0x98005D,
-		QRMatrix::M_TIMING                         => 0xFFB8E9,
+		QRMatrix::M_TIMING | QRMatrix::IS_DARK     => [255, 0, 0],
+		QRMatrix::M_TIMING                         => [233, 233, 233],
 		// format
-		QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => 0x003804,
-		QRMatrix::M_FORMAT                         => 0x00FB12,
+		QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => [67, 159, 84],
+		QRMatrix::M_FORMAT                         => [233, 233, 233],
 		// version
-		QRMatrix::M_VERSION | QRMatrix::IS_DARK    => 0x650098,
-		QRMatrix::M_VERSION                        => 0xE0B8FF,
+		QRMatrix::M_VERSION | QRMatrix::IS_DARK    => [62, 174, 190],
+		QRMatrix::M_VERSION                        => [233, 233, 233],
 		// data
-		QRMatrix::M_DATA | QRMatrix::IS_DARK       => 0x4A6000,
-		QRMatrix::M_DATA                           => 0xECF9BE,
+		QRMatrix::M_DATA | QRMatrix::IS_DARK       => [0, 0, 0],
+		QRMatrix::M_DATA                           => [233, 233, 233],
 		// darkmodule
-		QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK => 0x080063,
+		QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK => [0, 0, 0],
 		// separator
-		QRMatrix::M_SEPARATOR                      => 0xAFBFBF,
+		QRMatrix::M_SEPARATOR                      => [233, 233, 233],
 		// quietzone
-		QRMatrix::M_QUIETZONE                      => 0xDDDDDD,
+		QRMatrix::M_QUIETZONE                      => [233, 233, 233],
+		// logo (requires a call to QRMatrix::setLogoSpace()), see QRImageWithLogo
+		QRMatrix::M_LOGO                           => [233, 233, 233],
 	],
 ]);
 
