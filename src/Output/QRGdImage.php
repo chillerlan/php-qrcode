@@ -15,8 +15,8 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use ErrorException, Throwable;
-use function array_values, count, extension_loaded, imagecolorallocate, imagecolortransparent, imagecreatetruecolor,
-	imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng, imagescale, is_array,
+use function count, extension_loaded, imagecolorallocate, imagecolortransparent, imagecreatetruecolor,
+	imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng, imagescale, is_array, is_numeric,
 	max, min, ob_end_clean, ob_get_contents, ob_start, restore_error_handler, set_error_handler;
 use const IMG_BILINEAR_FIXED;
 
@@ -53,14 +53,33 @@ class QRGdImage extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	protected function moduleValueIsValid($value):bool{
-		return is_array($value) && count($value) >= 3;
+
+		if(!is_array($value) || count($value) < 3){
+			return false;
+		}
+
+		// check the first 3 values of the array
+		for($i = 0; $i < 3; $i++){
+			if(!is_numeric($value[$i])){
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	protected function getModuleValue($value):array{
-		return array_values($value);
+		$v = [];
+
+		for($i = 0; $i < 3; $i++){
+			// clamp value
+			$v[] = (int)max(0, min(255, $value[$i]));
+		}
+
+		return $v;
 	}
 
 	/**
@@ -106,8 +125,12 @@ class QRGdImage extends QROutputAbstract{
 		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
 		$background = imagecolorallocate($this->image, ...$bgColor);
 
-		if($this->options->imageTransparent && $this->options->outputType !== QROutputInterface::GDIMAGE_JPG){
-			$tbg = $this->options->imageTransparencyBG;
+		if(
+			   $this->options->imageTransparent
+			&& $this->options->outputType !== QROutputInterface::GDIMAGE_JPG
+			&& $this->moduleValueIsValid($this->options->imageTransparencyBG)
+		){
+			$tbg = $this->getModuleValue($this->options->imageTransparencyBG);
 			/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
 			imagecolortransparent($this->image, imagecolorallocate($this->image, ...$tbg));
 		}
