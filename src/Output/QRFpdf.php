@@ -15,7 +15,7 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use FPDF;
 
-use function array_values, class_exists, count, is_array, is_numeric, max, min;
+use function class_exists, count, is_array, is_numeric, max, min;
 
 /**
  * QRFpdf output module (requires fpdf)
