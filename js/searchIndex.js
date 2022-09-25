@@ -2186,6 +2186,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QREps.html#method_dump"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QREps\u003A\u003Amodule\u0028\u0029",
+            "name": "module",
+            "summary": "returns\u0020a\u0020path\u0020segment\u0020for\u0020a\u0020single\u0020module",
+            "url": "classes/chillerlan-QRCode-Output-QREps.html#method_module"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRFpdf",
             "name": "QRFpdf",
             "summary": "QRFpdf\u0020output\u0020module\u0020\u0028requires\u0020fpdf\u0029",
