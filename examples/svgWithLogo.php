@@ -117,7 +117,7 @@ $options = new SVGWithLogoOptions([
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.45,
 	// connect paths
-	'svgConnectPaths'     => true,
+	'connectPaths'     => true,
 	// keep modules of thhese types as square
 	'keepAsSquare'        => [
 		QRMatrix::M_FINDER|QRMatrix::IS_DARK,
