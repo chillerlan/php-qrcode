@@ -53,6 +53,10 @@ final class AlphaNum extends QRDataModeAbstract{
 	 */
 	public static function validateString(string $string):bool{
 
+		if($string === ''){
+			return false;
+		}
+
 		foreach(str_split($string) as $chr){
 			if(!isset(self::CHAR_TO_ORD[$chr])){
 				return false;

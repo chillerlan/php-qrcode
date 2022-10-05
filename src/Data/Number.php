@@ -46,6 +46,10 @@ final class Number extends QRDataModeAbstract{
 	 */
 	public static function validateString(string $string):bool{
 
+		if($string === ''){
+			return false;
+		}
+
 		foreach(str_split($string) as $chr){
 			if(!isset(self::NUMBER_TO_ORD[$chr])){
 				return false;
