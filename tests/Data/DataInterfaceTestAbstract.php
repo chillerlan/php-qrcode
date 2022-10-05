@@ -128,7 +128,8 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid data');
 
-		$this->QRData->setData([new $this->FQN('##')]);
+		/** @phan-suppress-next-line PhanNoopNew */
+		new $this->FQN('##');
 	}
 
 	/**
@@ -138,7 +139,8 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid data');
 
-		$this->QRData->setData([new $this->FQN('')]);
+		/** @phan-suppress-next-line PhanNoopNew */
+		new $this->FQN('');
 	}
 
 }
