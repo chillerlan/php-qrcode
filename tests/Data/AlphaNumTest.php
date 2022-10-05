@@ -15,7 +15,7 @@ use chillerlan\QRCode\Data\AlphaNum;
 /**
  * Tests the AlphaNum class
  */
-final class AlphaNumTest extends DatainterfaceTestAbstract{
+final class AlphaNumTest extends DataInterfaceTestAbstract{
 
 	protected string $FQN      = AlphaNum::class;
 	protected string $testdata = '0 $%*+-./:';

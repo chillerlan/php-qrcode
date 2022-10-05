@@ -15,7 +15,7 @@ use chillerlan\QRCode\Data\Number;
 /**
  * Tests the Number class
  */
-final class NumberTest extends DatainterfaceTestAbstract{
+final class NumberTest extends DataInterfaceTestAbstract{
 
 	protected string $FQN      = Number::class;
 	protected string $testdata = '0123456789';

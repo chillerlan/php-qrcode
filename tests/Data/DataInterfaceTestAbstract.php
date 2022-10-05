@@ -1,6 +1,6 @@
 <?php
 /**
- * Class DatainterfaceTestAbstract
+ * Class DataInterfaceTestAbstract
  *
  * @created      24.11.2017
  * @author       Smiley <smiley@chillerlan.net>
@@ -21,7 +21,7 @@ use function str_repeat;
 /**
  * The data interface test abstract
  */
-abstract class DatainterfaceTestAbstract extends TestCase{
+abstract class DataInterfaceTestAbstract extends TestCase{
 
 	protected ReflectionClass $reflection;
 	protected QRData          $QRData;

@@ -15,7 +15,7 @@ use chillerlan\QRCode\Data\Kanji;
 /**
  * Tests the Kanji class
  */
-final class KanjiTest extends DatainterfaceTestAbstract{
+final class KanjiTest extends DataInterfaceTestAbstract{
 
 	protected string $FQN      = Kanji::class;
 	protected string $testdata = '茗荷茗荷茗荷茗荷茗荷';

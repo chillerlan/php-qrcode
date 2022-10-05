@@ -15,7 +15,7 @@ use chillerlan\QRCode\Data\Byte;
 /**
  * Tests the Byte class
  */
-final class ByteTest extends DatainterfaceTestAbstract{
+final class ByteTest extends DataInterfaceTestAbstract{
 
 	protected string $FQN      = Byte::class;
 	protected string $testdata = '[¯\_(ツ)_/¯]';
