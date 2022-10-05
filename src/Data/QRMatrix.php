@@ -306,8 +306,8 @@ class QRMatrix{
 
 		$pos = [
 			[0, 0], // top left
-			[$this->moduleCount - 7, 0], // bottom left
-			[0, $this->moduleCount - 7], // top right
+			[$this->moduleCount - 7, 0], // top right
+			[0, $this->moduleCount - 7], // bottom left
 		];
 
 		foreach($pos as $c){
