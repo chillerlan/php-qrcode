@@ -3376,90 +3376,90 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCodeTest-Data-ByteTest.html#property_testdata"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract",
-            "name": "DatainterfaceTestAbstract",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract",
+            "name": "DataInterfaceTestAbstract",
             "summary": "The\u0020data\u0020interface\u0020test\u0020abstract",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AsetUp\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AsetUp\u0028\u0029",
             "name": "setUp",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_setUp"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_setUp"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestInstance\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestInstance\u0028\u0029",
             "name": "testInstance",
             "summary": "Verifies\u0020the\u0020QRData\u0020instance",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testInstance"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testInstance"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestDataModeInstance\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestDataModeInstance\u0028\u0029",
             "name": "testDataModeInstance",
             "summary": "Verifies\u0020the\u0020QRDataModeInterface\u0020instance",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testDataModeInstance"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testDataModeInstance"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AmaskPatternProvider\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AmaskPatternProvider\u0028\u0029",
             "name": "maskPatternProvider",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_maskPatternProvider"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_maskPatternProvider"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestInitMatrix\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestInitMatrix\u0028\u0029",
             "name": "testInitMatrix",
             "summary": "Tests\u0020initializing\u0020the\u0020data\u0020matrix",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testInitMatrix"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testInitMatrix"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestGetMinimumVersion\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestGetMinimumVersion\u0028\u0029",
             "name": "testGetMinimumVersion",
             "summary": "Tests\u0020getting\u0020the\u0020minimum\u0020QR\u0020version\u0020for\u0020the\u0020given\u0020data",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testGetMinimumVersion"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testGetMinimumVersion"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AstringValidateProvider\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AstringValidateProvider\u0028\u0029",
             "name": "stringValidateProvider",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_stringValidateProvider"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_stringValidateProvider"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestValidateString\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestValidateString\u0028\u0029",
             "name": "testValidateString",
             "summary": "Tests\u0020if\u0020a\u0020string\u0020is\u0020properly\u0020validated\u0020for\u0020the\u0020respective\u0020data\u0020mode",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testValidateString"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testValidateString"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestGetMinimumVersionException\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestGetMinimumVersionException\u0028\u0029",
             "name": "testGetMinimumVersionException",
             "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020the\u0020data\u0020exceeds\u0020the\u0020maximum\u0020version\u0020while\u0020auto\u0020detecting",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testGetMinimumVersionException"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testGetMinimumVersionException"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestCodeLengthOverflowException\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestCodeLengthOverflowException\u0028\u0029",
             "name": "testCodeLengthOverflowException",
             "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020on\u0020data\u0020overflow",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testCodeLengthOverflowException"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testCodeLengthOverflowException"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestInvalidDataException\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestInvalidDataException\u0028\u0029",
             "name": "testInvalidDataException",
             "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020an\u0020invalid\u0020character\u0020is\u0020encountered",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testInvalidDataException"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testInvalidDataException"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003AtestInvalidDataOnEmptyException\u0028\u0029",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestInvalidDataOnEmptyException\u0028\u0029",
             "name": "testInvalidDataOnEmptyException",
             "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020if\u0020the\u0020given\u0020string\u0020is\u0020empty",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#method_testInvalidDataOnEmptyException"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testInvalidDataOnEmptyException"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003A\u0024reflection",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003A\u0024reflection",
             "name": "reflection",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#property_reflection"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#property_reflection"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003A\u0024QRData",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003A\u0024QRData",
             "name": "QRData",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#property_QRData"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#property_QRData"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003A\u0024FQN",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003A\u0024FQN",
             "name": "FQN",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#property_FQN"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#property_FQN"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DatainterfaceTestAbstract\u003A\u003A\u0024testdata",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003A\u0024testdata",
             "name": "testdata",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Data-DatainterfaceTestAbstract.html#property_testdata"
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#property_testdata"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\KanjiTest",
             "name": "KanjiTest",
