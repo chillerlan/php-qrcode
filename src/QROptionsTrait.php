@@ -380,17 +380,20 @@ trait QROptionsTrait{
 	 * sets/clamps the version number
 	 */
 	protected function set_version(int $version):void{
-		$this->version = $version !== Version::AUTO ? max(1, min(40, $version)) : Version::AUTO; // @todo
+		$this->version = $version !== Version::AUTO ? max(1, min(40, $version)) : Version::AUTO;
 	}
 
 	/**
 	 * sets the error correction level
 	 *
+	 * @todo: accept string values (PHP8+)
+	 * @see https://github.com/chillerlan/php-qrcode/discussions/160
+	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function set_eccLevel(int $eccLevel):void{
 
-		if(!in_array($eccLevel, [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H], true)){
+		if((0b11 & $eccLevel) !== $eccLevel){
 			throw new QRCodeException(sprintf('Invalid error correct level: %s', $eccLevel));
 		}
 
