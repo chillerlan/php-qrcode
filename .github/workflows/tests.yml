@@ -44,7 +44,7 @@ jobs:
           extensions: ast, gd, imagick, json, mbstring
 
       - name: "Update dependencies with composer"
-        run: composer update --no-interaction --no-ansi --no-progress --no-suggest
+        uses: ramsey/composer-install@v2
 
       - name: "Run phan"
         run: php vendor/bin/phan
@@ -70,7 +70,7 @@ jobs:
         run: phpdoc --config=phpdoc.xml
 
       - name: "Publish Docs to gh-pages"
-        uses: JamesIves/github-pages-deploy-action@v4.3.4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: docs
@@ -106,7 +106,7 @@ jobs:
           extensions: gd, imagick, json, mbstring
 
       - name: "Install dependencies with composer"
-        run: composer update --no-ansi --no-interaction --no-progress --no-suggest
+        uses: ramsey/composer-install@v2
 
       - name: "Run tests with phpunit"
         run: php vendor/bin/phpunit --configuration=phpunit.xml.dist
