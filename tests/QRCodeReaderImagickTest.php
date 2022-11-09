@@ -44,6 +44,8 @@ final class QRCodeReaderImagickTest extends QRCodeReaderTestAbstract{
 	}
 
 	/**
+	 * This test fails on Windows and PHP < 8.1 for whatever reason
+	 *
 	 * @dataProvider vectorQRCodeProvider
 	 */
 	public function testReadVectorFormats(string $img, string $expected):void{
