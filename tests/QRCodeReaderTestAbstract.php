@@ -118,9 +118,11 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 			$version = new Version($v);
 
 			foreach($eccLevels as $eccLevel){
-				$expected = substr($str, 0, $this->getMaxLengthForMode(Mode::BYTE, $version, $eccLevel) ?? '');
-
-				yield 'version: '.$version.$eccLevel => [$version, $eccLevel, $expected];
+				yield 'version: '.$version.$eccLevel => [
+					$version,
+					$eccLevel,
+					substr($str, 0, $this->getMaxLengthForMode(Mode::BYTE, $version, $eccLevel) ?? '')
+				];
 			}
 		}
 
