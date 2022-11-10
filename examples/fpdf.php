@@ -13,12 +13,14 @@ use chillerlan\QRCode\Output\QROutputInterface;
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $options = new QROptions([
-    'version'      => 7,
-    'outputType'   => QROutputInterface::FPDF,
-    'eccLevel'     => EccLevel::L,
-    'scale'        => 5,
-    'imageBase64'  => false,
-    'moduleValues' => [
+    'version'          => 7,
+    'outputType'       => QROutputInterface::FPDF,
+    'eccLevel'         => EccLevel::L,
+    'scale'            => 5,
+    'bgColor'          => [234, 234, 234],
+    'drawLightModules' => false,
+    'imageBase64'      => false,
+    'moduleValues'     => [
         // finder
         QRMatrix::M_FINDER | QRMatrix::IS_DARK     => [0, 63, 255], // dark (true)
         QRMatrix::M_FINDER                         => [255, 255, 255], // light (false), white is the transparency color and is enabled by default

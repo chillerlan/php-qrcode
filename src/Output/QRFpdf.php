@@ -95,11 +95,23 @@ class QRFpdf extends QROutputAbstract{
 		$fpdf = new FPDF('P', $this->options->fpdfMeasureUnit, [$this->length, $this->length]);
 		$fpdf->AddPage();
 
+		if($this->moduleValueIsValid($this->options->bgColor)){
+			$bgColor = $this->getModuleValue($this->options->bgColor);
+
+			$fpdf->SetFillColor(...$bgColor);
+			$fpdf->Rect(0, 0, $this->length, $this->length, 'F');
+		}
+
 		$prevColor = null;
 
 		foreach($this->matrix->matrix() as $y => $row){
 
 			foreach($row as $x => $M_TYPE){
+
+				if(!$this->options->drawLightModules && !$this->matrix->check($x, $y)){
+					continue;
+				}
+
 				/** @var int $M_TYPE */
 				$color = $this->moduleValues[$M_TYPE];
 
@@ -109,7 +121,7 @@ class QRFpdf extends QROutputAbstract{
 					$prevColor = $color;
 				}
 
-				$fpdf->Rect($x * $this->scale, $y * $this->scale, 1 * $this->scale, 1 * $this->scale, 'F');
+				$fpdf->Rect($x * $this->scale, $y * $this->scale, $this->scale, $this->scale, 'F');
 			}
 
 		}
