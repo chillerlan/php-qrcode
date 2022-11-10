@@ -3948,7 +3948,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderImagickTest\u003A\u003AtestReadVectorFormats\u0028\u0029",
             "name": "testReadVectorFormats",
-            "summary": "",
+            "summary": "This\u0020test\u0020fails\u0020on\u0020Windows\u0020and\u0020PHP\u0020\u003C\u00208.1\u0020for\u0020whatever\u0020reason",
             "url": "classes/chillerlan-QRCodeTest-QRCodeReaderImagickTest.html#method_testReadVectorFormats"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderImagickTest\u003A\u003A\u0024FQN",
