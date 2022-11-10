@@ -97,7 +97,7 @@ class QRFpdf extends QROutputAbstract{
 
 		if($this->moduleValueIsValid($this->options->bgColor)){
 			$bgColor = $this->getModuleValue($this->options->bgColor);
-
+			/** @phan-suppress-next-line PhanParamTooFewUnpack */
 			$fpdf->SetFillColor(...$bgColor);
 			$fpdf->Rect(0, 0, $this->length, $this->length, 'F');
 		}
