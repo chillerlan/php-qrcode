@@ -62,7 +62,7 @@ For the QRCode reader, either `ext-gd` or `ext-imagick` is required!
 **requires [composer](https://getcomposer.org)**
 
 via terminal:
-```
+```bash
 composer require chillerlan/php-qrcode
 ```
 via `composer.json`:
