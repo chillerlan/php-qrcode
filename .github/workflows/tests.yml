@@ -52,6 +52,8 @@ jobs:
   build-docs:
     name: "Build and publish Docs"
 
+    if: github.ref_name === 'main'
+
     runs-on: ubuntu-latest
 
     steps:
