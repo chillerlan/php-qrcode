@@ -42,7 +42,7 @@ class QRMarkupHTML extends QRMarkup{
 		// wrap the snippet into a body when saving to file
 		if($saveToFile){
 			$html = sprintf(
-				'<!DOCTYPE html><head><meta charset="UTF-8"><title>QR Code</title></head><body>%s</body>',
+				'<!DOCTYPE html><html><head><meta charset="UTF-8"><title>QR Code</title></head><body>%s</body></html>',
 				$this->options->eol.$html
 			);
 		}
