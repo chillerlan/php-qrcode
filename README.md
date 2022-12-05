@@ -115,7 +115,6 @@ It's generally a good idea to wrap the reading in a try/catch block to handle an
 - WordPress:
   - [wp-two-factor-auth](https://github.com/sjinks/wp-two-factor-auth)
   - [simple-2fa](https://wordpress.org/plugins/simple-2fa/)
-  - [wordpress-seo](https://github.com/Yoast/wordpress-seo)
   - [floating-share-button](https://github.com/qriouslad/floating-share-button)
 - WoltLab Suite
   - [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)
