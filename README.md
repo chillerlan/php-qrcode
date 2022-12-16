@@ -25,7 +25,7 @@ namespaced, cleaned up, improved and other stuff. It also features a QR Code rea
 [scrutinizer]: https://scrutinizer-ci.com/g/chillerlan/php-qrcode
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?logo=packagist
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
-[gh-action-badge]: https://img.shields.io/github/workflow/status/chillerlan/php-qrcode/Continuous%20Integration?logo=github
+[gh-action-badge]: https://img.shields.io/github/actions/workflow/status/chillerlan/php-qrcode/tests.yml?branch=main&logo=github
 [gh-action]: https://github.com/chillerlan/php-qrcode/actions/workflows/tests.yml?query=branch%3Amain
 
 ## Features
