@@ -25,6 +25,6 @@
 	</logging>
 	<php>
 		<!-- whether the test runs on CI or not - set to false to allow debug output -->
-		<const name="TEST_IS_CI" value="false"/>
+		<const name="TEST_IS_CI" value="true"/>
 	</php>
 </phpunit>
