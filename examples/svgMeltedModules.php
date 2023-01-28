@@ -26,6 +26,14 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 	/**
 	 * @inheritDoc
 	 */
+	protected function path(string $path, int $M_TYPE):string{
+		// omit the "fill" and "opacity" attributes on the path element
+		return sprintf('<path class="%s" d="%s"/>', $this->getCssClass($M_TYPE), $path);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function collectModules(Closure $transform):array{
 		$paths = [];
 

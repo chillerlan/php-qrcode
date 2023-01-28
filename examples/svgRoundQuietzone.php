@@ -64,6 +64,14 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	protected function path(string $path, int $M_TYPE):string{
+		// omit the "fill" and "opacity" attributes on the path element
+		return sprintf('<path class="%s" d="%s"/>', $this->getCssClass($M_TYPE), $path);
+	}
+
+	/**
 	 * Sets random modules of the quiet zone to dark
 	 */
 	protected function colorQuietzone(int $quietzoneSize, float $radius):void{
@@ -172,8 +180,6 @@ $options = new RoundQuietzoneOptions([
 	'imageBase64'         => false, // avoid base64 URI output
 	'outputType'          => QROutputInterface::CUSTOM,
 	'outputInterface'     => RoundQuietzoneSVGoutput::class, // load our own output class
-	'markupDark'          => '', // avoid "fill" attributes on paths
-	'markupLight'         => '',
 	'drawLightModules'    => false, // set to true to add the light modules
 
 	'connectPaths'        => true,

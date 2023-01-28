@@ -40,6 +40,14 @@ class QRSvgWithLogo extends QRMarkupSVG{
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	protected function path(string $path, int $M_TYPE):string{
+		// omit the "fill" and "opacity" attributes on the path element
+		return sprintf('<path class="%s" d="%s"/>', $this->getCssClass($M_TYPE), $path);
+	}
+
+	/**
 	 * returns a <g> element that contains the SVG logo and positions it properly within the QR Code
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g
@@ -110,9 +118,6 @@ $options = new SVGWithLogoOptions([
 	'addQuietzone'        => true,
 	// if set to true, the light modules won't be rendered
 	'drawLightModules'    => true,
-	// empty the default value to remove the fill* attributes from the <path> elements
-	'markupDark'          => '',
-	'markupLight'         => '',
 	// draw the modules as circles isntead of squares
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.45,

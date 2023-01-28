@@ -68,8 +68,6 @@ class QRMarkupSVG extends QRMarkup{
 
 	/**
 	 * returns one or more SVG <path> elements
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path
 	 */
 	protected function paths():string{
 		$paths = $this->collectModules(fn(int $x, int $y, int $M_TYPE):string => $this->module($x, $y, $M_TYPE));
@@ -91,21 +89,30 @@ class QRMarkupSVG extends QRMarkup{
 				continue;
 			}
 
-			// ignore non-existent module values
-			$format = !isset($this->moduleValues[$M_TYPE]) || empty($this->moduleValues[$M_TYPE])
-				? '<path class="%1$s" d="%2$s"/>'
-				: '<path class="%1$s" fill="%3$s" fill-opacity="%4$s" d="%2$s"/>';
-
-			$svg[] = sprintf(
-				$format,
-				$this->getCssClass($M_TYPE),
-				$path,
-				$this->moduleValues[$M_TYPE] ?? '',
-				$this->options->svgOpacity)
-			;
+			$svg[] = $this->path($path, $M_TYPE);
 		}
 
 		return implode($this->options->eol, $svg);
+	}
+
+	/**
+	 * renders and returns a single <path> element
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path
+	 */
+	protected function path(string $path, int $M_TYPE):string{
+		// ignore non-existent module values
+		$format = !isset($this->moduleValues[$M_TYPE]) || empty($this->moduleValues[$M_TYPE])
+			? '<path class="%1$s" d="%2$s"/>'
+			: '<path class="%1$s" fill="%3$s" fill-opacity="%4$s" d="%2$s"/>';
+
+		return sprintf(
+			$format,
+			$this->getCssClass($M_TYPE),
+			$path,
+			$this->moduleValues[$M_TYPE] ?? '', // value may or may not exist
+			$this->options->svgOpacity
+		);
 	}
 
 	/**

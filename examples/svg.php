@@ -24,7 +24,7 @@ $options = new QROptions([
 	'addQuietzone'        => true,
 	// if set to false, the light modules won't be rendered
 	'drawLightModules'    => true,
-	// empty the default value to remove the fill* attributes from the <path> elements
+	// empty the default value to remove the fill* and opacity* attributes from the <path> elements
 	'markupDark'          => '',
 	'markupLight'         => '',
 	// draw the modules as circles isntead of squares
@@ -32,7 +32,7 @@ $options = new QROptions([
 	'circleRadius'        => 0.4,
 	// connect paths
 	'connectPaths'        => true,
-	// keep modules of thhese types as square
+	// keep modules of these types as square
 	'keepAsSquare'        => [
 		QRMatrix::M_FINDER|QRMatrix::IS_DARK,
 		QRMatrix::M_FINDER_DOT,

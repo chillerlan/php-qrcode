@@ -25,6 +25,14 @@ require_once __DIR__.'/../vendor/autoload.php';
 class RandomDotsSVGOutput extends QRMarkupSVG{
 
 	/**
+	 * @inheritDoc
+	 */
+	protected function path(string $path, int $M_TYPE):string{
+		// omit the "fill" and "opacity" attributes on the path element
+		return sprintf('<path class="%s" d="%s"/>', $this->getCssClass($M_TYPE), $path);
+	}
+
+	/**
 	 * To alter the layer a module appears on, we need to re-implement the collection method
 	 *
 	 * @inheritDoc
@@ -122,8 +130,6 @@ $options = new RandomDotsOptions([
 	'imageBase64'         => false,
 	'outputType'          => QROutputInterface::CUSTOM,
 	'outputInterface'     => RandomDotsSVGOutput::class,
-	'markupDark'          => '',
-	'markupLight'         => '',
 	'drawLightModules'    => false,
 
 	'connectPaths'        => true,
