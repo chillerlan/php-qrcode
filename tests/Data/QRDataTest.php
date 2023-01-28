@@ -55,9 +55,9 @@ class QRDataTest extends TestCase{
 		$output       = new QRGdImage($options, $matrix);
 		$decodeResult = (new QRCode($options))->readFromBlob($output->dump());
 
-		$this::assertSame($decodeResult->data, 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s');
-
 		QRMatrixTest::debugMatrix($matrix);
+
+		$this::assertSame($decodeResult->data, 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s');
 	}
 
 }

@@ -183,9 +183,9 @@ final class QRMatrixTest extends TestCase{
 	public function testSetDarkModule(QRMatrix $matrix):void{
 		$matrix->setDarkModule();
 
-		$this::assertSame(QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK, $matrix->get(8, $matrix->size() - 8));
-
 		$this->dm($matrix);
+
+		$this::assertSame(QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK, $matrix->get(8, $matrix->size() - 8));
 	}
 
 	/**
@@ -196,11 +196,11 @@ final class QRMatrixTest extends TestCase{
 	public function testSetFinderPattern(QRMatrix $matrix):void{
 		$matrix->setFinderPattern();
 
+		$this->dm($matrix);
+
 		$this::assertSame(QRMatrix::M_FINDER | QRMatrix::IS_DARK, $matrix->get(0, 0));
 		$this::assertSame(QRMatrix::M_FINDER | QRMatrix::IS_DARK, $matrix->get(0, $matrix->size() - 1));
 		$this::assertSame(QRMatrix::M_FINDER | QRMatrix::IS_DARK, $matrix->get($matrix->size() - 1, 0));
-
-		$this->dm($matrix);
 	}
 
 	/**
@@ -211,12 +211,12 @@ final class QRMatrixTest extends TestCase{
 	public function testSetSeparators(QRMatrix $matrix):void{
 		$matrix->setSeparators();
 
+		$this->dm($matrix);
+
 		$this::assertSame(QRMatrix::M_SEPARATOR, $matrix->get(7, 0));
 		$this::assertSame(QRMatrix::M_SEPARATOR, $matrix->get(0, 7));
 		$this::assertSame(QRMatrix::M_SEPARATOR, $matrix->get(0, $matrix->size() - 8));
 		$this::assertSame(QRMatrix::M_SEPARATOR, $matrix->get($matrix->size() - 8, 0));
-
-		$this->dm($matrix);
 	}
 
 	/**
@@ -236,6 +236,8 @@ final class QRMatrixTest extends TestCase{
 			->setAlignmentPattern()
 		;
 
+		$this->dm($matrix);
+
 		$alignmentPattern = $version->getAlignmentPattern();
 
 		foreach($alignmentPattern as $py){
@@ -247,7 +249,6 @@ final class QRMatrixTest extends TestCase{
 			}
 		}
 
-		$this->dm($matrix);
 	}
 
 	/**
@@ -263,6 +264,8 @@ final class QRMatrixTest extends TestCase{
 			->setTimingPattern()
 		;
 
+		$this->dm($matrix);
+
 		$size = $matrix->size();
 
 		for($i = 7; $i < $size - 7; $i++){
@@ -275,7 +278,6 @@ final class QRMatrixTest extends TestCase{
 			}
 		}
 
-		$this->dm($matrix);
 	}
 
 	/**
@@ -291,12 +293,12 @@ final class QRMatrixTest extends TestCase{
 
 		$matrix->setVersionNumber();
 
+		$this->dm($matrix);
+
 		$this::assertTrue($matrix->checkType($matrix->size() - 9, 0, QRMatrix::M_VERSION));
 		$this::assertTrue($matrix->checkType($matrix->size() - 11, 5, QRMatrix::M_VERSION));
 		$this::assertTrue($matrix->checkType(0, $matrix->size() - 9, QRMatrix::M_VERSION));
 		$this::assertTrue($matrix->checkType(5, $matrix->size() - 11, QRMatrix::M_VERSION));
-
-		$this->dm($matrix);
 	}
 
 	/**
@@ -307,12 +309,12 @@ final class QRMatrixTest extends TestCase{
 	public function testSetFormatInfo(QRMatrix $matrix):void{
 		$matrix->setFormatInfo();
 
+		$this->dm($matrix);
+
 		$this::assertTrue($matrix->checkType(8, 0, QRMatrix::M_FORMAT));
 		$this::assertTrue($matrix->checkType(0, 8, QRMatrix::M_FORMAT));
 		$this::assertTrue($matrix->checkType($matrix->size() - 1, 8, QRMatrix::M_FORMAT));
 		$this::assertTrue($matrix->checkType($matrix->size() - 8, 8, QRMatrix::M_FORMAT));
-
-		$this->dm($matrix);
 	}
 
 	/**
@@ -333,13 +335,14 @@ final class QRMatrixTest extends TestCase{
 		$this::assertCount($size + 2 * $q, $matrix->matrix()[$size - 1]);
 
 		$size = $matrix->size();
+
+		$this->dm($matrix);
+
 		$this::assertTrue($matrix->checkType(0, 0, QRMatrix::M_QUIETZONE));
 		$this::assertTrue($matrix->checkType($size - 1, $size - 1, QRMatrix::M_QUIETZONE));
 
 		$this::assertSame(QRMatrix::M_TEST | QRMatrix::IS_DARK, $matrix->get($q, $q));
 		$this::assertSame(QRMatrix::M_TEST | QRMatrix::IS_DARK, $matrix->get($size - 1 - $q, $size - 1 - $q));
-
-		$this->dm($matrix);
 	}
 
 	/**
@@ -387,6 +390,8 @@ final class QRMatrixTest extends TestCase{
 		// also testing size adjustment to uneven numbers
 		$matrix->setLogoSpace(20, 14);
 
+		self::debugMatrix($matrix);
+
 		// NW corner
 		$this::assertFalse($matrix->checkType(17, 20, QRMatrix::M_LOGO));
 		$this::assertTrue($matrix->checkType(18, 21, QRMatrix::M_LOGO));
@@ -394,8 +399,6 @@ final class QRMatrixTest extends TestCase{
 		// SE corner
 		$this::assertTrue($matrix->checkType(38, 35, QRMatrix::M_LOGO));
 		$this::assertFalse($matrix->checkType(39, 36, QRMatrix::M_LOGO));
-
-		self::debugMatrix($matrix);
 	}
 
 	/**
@@ -409,6 +412,8 @@ final class QRMatrixTest extends TestCase{
 		$o->quietzoneSize = 10;
 
 		$matrix = (new QRCode($o))->addByteSegment('testdata')->getMatrix();
+
+		self::debugMatrix($matrix);
 
 		// logo space should not overwrite quiet zone & function patterns
 		$matrix->setLogoSpace(21, 21, -10, -10);
@@ -427,8 +432,6 @@ final class QRMatrixTest extends TestCase{
 		$this::assertNotSame(QRMatrix::M_LOGO, $matrix->get(54, 54));
 		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(55, 55));
 		$this::assertSame(QRMatrix::M_QUIETZONE, $matrix->get(67, 67));
-
-		self::debugMatrix($matrix);
 	}
 
 	/**
