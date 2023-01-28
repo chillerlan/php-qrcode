@@ -15,7 +15,6 @@ use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
 use chillerlan\QRCode\Output\{QROutputInterface, QRString};
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Util\Color;
 use Generator;
 use function defined;
 
@@ -49,40 +48,43 @@ final class QRMatrixTest extends TestCase{
 
 		$opt = new QROptions;
 		$opt->outputType  = QROutputInterface::STRING_TEXT;
-		$opt->eol         = Color::colorize('reset', "\x00\n");
+		$opt->eol         = "\n";
 		$opt->moduleValues = [
+			// this is not ideal but it seems it's not possible anymore to colorize emoji via ansi codes
+			// 🔴 🟠 🟡 🟢 🔵 🟣 ⚫️ ⚪️ 🟤
+			// 🟥 🟧 🟨 🟩 🟦 🟪 ⬛ ⬜ 🟫
 			// finder
-			QRMatrix::M_FINDER | QRMatrix::IS_DARK     => Color::colorize('fg-black', '🔴'), // dark (true)
-			QRMatrix::M_FINDER                         => Color::colorize('fg-black', '⭕'), // light (false)
-			QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK => Color::colorize('fg-black', '🔴'), // finder dot, dark (true)
+			QRMatrix::M_FINDER | QRMatrix::IS_DARK     => '🟥', // dark (true)
+			QRMatrix::M_FINDER                         => '🔴', // light (false)
+			QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK => '🟥', // finder dot, dark (true)
 			// alignment
-			QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK  => Color::colorize('fg-blue', '🔴'),
-			QRMatrix::M_ALIGNMENT                      => Color::colorize('fg-blue', '⭕'),
+			QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK  => '🟧',
+			QRMatrix::M_ALIGNMENT                      => '🟠',
 			// timing
-			QRMatrix::M_TIMING | QRMatrix::IS_DARK     => Color::colorize('fg-red', '🔴'),
-			QRMatrix::M_TIMING                         => Color::colorize('fg-red', '⭕'),
+			QRMatrix::M_TIMING | QRMatrix::IS_DARK     => '🟨',
+			QRMatrix::M_TIMING                         => '🟡',
 			// format
-			QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => Color::colorize('fg-magenta', '🔴'),
-			QRMatrix::M_FORMAT                         => Color::colorize('fg-magenta', '⭕'),
+			QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => '🟪',
+			QRMatrix::M_FORMAT                         => '🟣',
 			// version
-			QRMatrix::M_VERSION | QRMatrix::IS_DARK    => Color::colorize('fg-green', '🔴'),
-			QRMatrix::M_VERSION                        => Color::colorize('fg-green', '⭕'),
+			QRMatrix::M_VERSION | QRMatrix::IS_DARK    => '🟩',
+			QRMatrix::M_VERSION                        => '🟢',
 			// data
-			QRMatrix::M_DATA | QRMatrix::IS_DARK       => Color::colorize('fg-white', '🔴'),
-			QRMatrix::M_DATA                           => Color::colorize('fg-white', '⭕'),
+			QRMatrix::M_DATA | QRMatrix::IS_DARK       => '🟦',
+			QRMatrix::M_DATA                           => '🔵',
 			// darkmodule
-			QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK => Color::colorize('fg-black', '🔴'),
+			QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK => '🟫',
 			// separator
-			QRMatrix::M_SEPARATOR                      => Color::colorize('fg-cyan', '⭕'),
+			QRMatrix::M_SEPARATOR                      => '⚪️',
 			// quietzone
-			QRMatrix::M_QUIETZONE                      => Color::colorize('fg-cyan', '⭕'),
+			QRMatrix::M_QUIETZONE                      => '⬜',
 			// logo space
-			QRMatrix::M_LOGO                           => Color::colorize('fg-yellow', '⭕'),
+			QRMatrix::M_LOGO                           => '⬜',
 			// empty
-			QRMatrix::M_NULL                           => Color::colorize('fg-black', '⭕'),
+			QRMatrix::M_NULL                           => '🟤',
 			// data
-			QRMatrix::M_TEST | QRMatrix::IS_DARK       => Color::colorize('fg-white', '🔴'),
-			QRMatrix::M_TEST                           => Color::colorize('fg-black', '⭕'),
+			QRMatrix::M_TEST | QRMatrix::IS_DARK       => '⬛',
+			QRMatrix::M_TEST                           => '⚫️',
 		];
 
 		$out = (new QRString($opt, $matrix))->dump();
