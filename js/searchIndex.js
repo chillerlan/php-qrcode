@@ -3611,6 +3611,11 @@ Search.appendIndex(
             "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020in\u0020an\u0020attempt\u0020to\u0020create\u0020the\u0020quiet\u0020zone\u0020before\u0020data\u0020was\u0020written",
             "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetQuietZoneException"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AtestSetLogoSpaceOmitHeight\u0028\u0029",
+            "name": "testSetLogoSpaceOmitHeight",
+            "summary": "Tests\u0020if\u0020the\u0020logo\u0020space\u0020is\u0020drawn\u0020square\u0020if\u0020one\u0020of\u0020the\u0020dimensions\u0020is\u0020omitted",
+            "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetLogoSpaceOmitHeight"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AtestSetLogoSpaceOrientation\u0028\u0029",
             "name": "testSetLogoSpaceOrientation",
             "summary": "Tests\u0020the\u0020auto\u0020orientation\u0020of\u0020the\u0020logo\u0020space",

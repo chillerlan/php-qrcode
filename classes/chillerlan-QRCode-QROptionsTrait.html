@@ -268,7 +268,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_logoSpaceHeight">$logoSpaceHeight</a>
     <span>
-                        &nbsp;: int            </span>
+                        &nbsp;: int|null            </span>
 </dt>
 <dd>height of the logo space</dd>
 
@@ -289,7 +289,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_logoSpaceWidth">$logoSpaceWidth</a>
     <span>
-                        &nbsp;: int            </span>
+                        &nbsp;: int|null            </span>
 </dt>
 <dd>width of the logo space</dd>
 
@@ -464,7 +464,7 @@
                 <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_clampLogoSpaceValue">clampLogoSpaceValue()</a>
     <span>
-                                &nbsp;: int    </span>
+                                &nbsp;: int|null    </span>
 </dt>
 <dd>clamp the logo space values between 0 and maximum length (177 modules at version 40)</dd>
 
@@ -1479,7 +1479,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">342</span>
+    <span class="phpdocumentor-element-found-in__line">346</span>
 
     </aside>
 
@@ -1487,11 +1487,13 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">int</span>
+        <span class="phpdocumentor-signature__type">int|null</span>
     <span class="phpdocumentor-signature__name">$logoSpaceHeight</span>
-     = <span class="phpdocumentor-signature__default-value">0</span></code>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>if only either $logoSpaceWidth or $logoSpaceHeight is given, the logo space is assumed a square of that size</p>
+</section>
+
         <section class="phpdocumentor-description"></section>
 
     
@@ -1513,7 +1515,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">347</span>
+    <span class="phpdocumentor-element-found-in__line">351</span>
 
     </aside>
 
@@ -1547,7 +1549,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">352</span>
+    <span class="phpdocumentor-element-found-in__line">356</span>
 
     </aside>
 
@@ -1581,7 +1583,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">337</span>
+    <span class="phpdocumentor-element-found-in__line">339</span>
 
     </aside>
 
@@ -1589,11 +1591,13 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">int</span>
+        <span class="phpdocumentor-signature__type">int|null</span>
     <span class="phpdocumentor-signature__name">$logoSpaceWidth</span>
-     = <span class="phpdocumentor-signature__default-value">0</span></code>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>if only either $logoSpaceWidth or $logoSpaceHeight is given, the logo space is assumed a square of that size</p>
+</section>
+
         <section class="phpdocumentor-description"></section>
 
     
@@ -2573,7 +2577,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">479</span>
+    <span class="phpdocumentor-element-found-in__line">483</span>
 
     </aside>
 
@@ -2581,14 +2585,14 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">clampLogoSpaceValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+                    <span class="phpdocumentor-signature__name">clampLogoSpaceValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int|null</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$value</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
@@ -2599,7 +2603,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
+    <span class="phpdocumentor-signature__response_type">int|null</span>
             &mdash;
         
     
@@ -2617,7 +2621,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">514</span>
+    <span class="phpdocumentor-element-found-in__line">523</span>
 
     </aside>
 
@@ -2661,7 +2665,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">394</span>
+    <span class="phpdocumentor-element-found-in__line">398</span>
 
     </aside>
 
@@ -2736,7 +2740,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">459</span>
+    <span class="phpdocumentor-element-found-in__line">463</span>
 
     </aside>
 
@@ -2793,7 +2797,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">426</span>
+    <span class="phpdocumentor-element-found-in__line">430</span>
 
     </aside>
 
@@ -2851,7 +2855,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">493</span>
+    <span class="phpdocumentor-element-found-in__line">502</span>
 
     </aside>
 
@@ -2859,14 +2863,14 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">set_logoSpaceHeight</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">set_logoSpaceHeight</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$value</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
@@ -2895,7 +2899,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">500</span>
+    <span class="phpdocumentor-element-found-in__line">509</span>
 
     </aside>
 
@@ -2939,7 +2943,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">507</span>
+    <span class="phpdocumentor-element-found-in__line">516</span>
 
     </aside>
 
@@ -2983,7 +2987,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">486</span>
+    <span class="phpdocumentor-element-found-in__line">495</span>
 
     </aside>
 
@@ -2991,14 +2995,14 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">set_logoSpaceWidth</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">set_logoSpaceWidth</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$value</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int|null</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
@@ -3027,7 +3031,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">406</span>
+    <span class="phpdocumentor-element-found-in__line">410</span>
 
     </aside>
 
@@ -3071,7 +3075,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">417</span>
+    <span class="phpdocumentor-element-found-in__line">421</span>
 
     </aside>
 
@@ -3115,7 +3119,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">472</span>
+    <span class="phpdocumentor-element-found-in__line">476</span>
 
     </aside>
 
@@ -3159,7 +3163,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">382</span>
+    <span class="phpdocumentor-element-found-in__line">386</span>
 
     </aside>
 
@@ -3203,7 +3207,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">375</span>
+    <span class="phpdocumentor-element-found-in__line">379</span>
 
     </aside>
 
@@ -3247,7 +3251,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">368</span>
+    <span class="phpdocumentor-element-found-in__line">372</span>
 
     </aside>
 
@@ -3291,7 +3295,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">357</span>
+    <span class="phpdocumentor-element-found-in__line">361</span>
 
     </aside>
 
