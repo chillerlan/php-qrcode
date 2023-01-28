@@ -333,13 +333,17 @@ trait QROptionsTrait{
 
 	/**
 	 * width of the logo space
+	 *
+	 * if only either $logoSpaceWidth or $logoSpaceHeight is given, the logo space is assumed a square of that size
 	 */
-	protected int $logoSpaceWidth = 0;
+	protected ?int $logoSpaceWidth = null;
 
 	/**
 	 * height of the logo space
+	 *
+	 * if only either $logoSpaceWidth or $logoSpaceHeight is given, the logo space is assumed a square of that size
 	 */
-	protected int $logoSpaceHeight = 0;
+	protected ?int $logoSpaceHeight = null;
 
 	/**
 	 * optional horizontal start position of the logo space (top left corner)
@@ -476,21 +480,26 @@ trait QROptionsTrait{
 	/**
 	 * clamp the logo space values between 0 and maximum length (177 modules at version 40)
 	 */
-	protected function clampLogoSpaceValue(int $value):int{
+	protected function clampLogoSpaceValue(?int $value):?int{
+
+		if($value === null){
+			return null;
+		}
+
 		return (int)max(0, min(177, $value));
 	}
 
 	/**
 	 * clamp/set logo space width
 	 */
-	protected function set_logoSpaceWidth(int $value):void{
+	protected function set_logoSpaceWidth(?int $value):void{
 		$this->logoSpaceWidth = $this->clampLogoSpaceValue($value);
 	}
 
 	/**
 	 * clamp/set logo space height
 	 */
-	protected function set_logoSpaceHeight(int $value):void{
+	protected function set_logoSpaceHeight(?int $value):void{
 		$this->logoSpaceHeight = $this->clampLogoSpaceValue($value);
 	}
 
@@ -498,14 +507,14 @@ trait QROptionsTrait{
 	 * clamp/set horizontal logo space start
 	 */
 	protected function set_logoSpaceStartX(?int $value):void{
-		$this->logoSpaceStartX = $value === null ? null : $this->clampLogoSpaceValue($value);
+		$this->logoSpaceStartX = $this->clampLogoSpaceValue($value);
 	}
 
 	/**
 	 * clamp/set vertical logo space start
 	 */
 	protected function set_logoSpaceStartY(?int $value):void{
-		$this->logoSpaceStartY = $value === null ? null : $this->clampLogoSpaceValue($value);
+		$this->logoSpaceStartY = $this->clampLogoSpaceValue($value);
 	}
 
 	/**

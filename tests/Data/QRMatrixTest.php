@@ -353,6 +353,28 @@ final class QRMatrixTest extends TestCase{
 	}
 
 	/**
+	 * Tests if the logo space is drawn square if one of the dimensions is omitted
+	 */
+	public function testSetLogoSpaceOmitHeight():void{
+		$o = new QROptions;
+		$o->version         = 2;
+		$o->eccLevel        = EccLevel::H;
+		$o->addQuietzone    = false;
+		$o->addLogoSpace    = true;
+		$o->logoSpaceHeight = 5;
+
+		$matrix = (new QRCode($o))->addByteSegment('testdata')->getMatrix();
+
+		self::debugMatrix($matrix);
+
+		$this::assertFalse($matrix->checkType(9, 9, QRMatrix::M_LOGO));
+		$this::assertTrue($matrix->checkType(10, 10, QRMatrix::M_LOGO));
+
+		$this::assertTrue($matrix->checkType(14, 14, QRMatrix::M_LOGO));
+		$this::assertFalse($matrix->checkType(15, 15, QRMatrix::M_LOGO));
+	}
+
+	/**
 	 * Tests the auto orientation of the logo space
 	 */
 	public function testSetLogoSpaceOrientation():void{

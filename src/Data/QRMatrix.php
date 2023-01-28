@@ -508,6 +508,7 @@ class QRMatrix{
 
 	/**
 	 * Clears a space of $width * $height in order to add a logo or text.
+	 * If no $height is given, the space will be assumed a square of $width.
 	 *
 	 * Additionally, the logo space can be positioned within the QR Code - respecting the main functional patterns -
 	 * using $startX and $startY. If either of these are null, the logo space will be centered in that direction.
@@ -524,11 +525,15 @@ class QRMatrix{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function setLogoSpace(int $width, int $height, int $startX = null, int $startY = null):self{
+	public function setLogoSpace(int $width, int $height = null, int $startX = null, int $startY = null):self{
 
 		// for logos we operate in ECC H (30%) only
 		if($this->eccLevel->getLevel() !== EccLevel::H){
 			throw new QRCodeDataException('ECC level "H" required to add logo space');
+		}
+
+		if($height === null){
+			$height = $width;
 		}
 
 		// if width and height happen to be negative or 0 (default value), just return - nothing to do

@@ -231,9 +231,18 @@ class QRCode{
 
 		// add matrix modifications after mask pattern evaluation and before handing over to output
 		if($this->options->addLogoSpace){
+			$logoSpaceWidth  = $this->options->logoSpaceWidth;
+			$logoSpaceHeight = $this->options->logoSpaceHeight;
+
+			// check whether one of the dimensions was omitted
+			if($logoSpaceWidth === null || $logoSpaceHeight === null){
+				$logoSpaceWidth  = $logoSpaceWidth ?? $logoSpaceHeight ?? 0;
+				$logoSpaceHeight = null;
+			}
+
 			$matrix->setLogoSpace(
-				$this->options->logoSpaceWidth,
-				$this->options->logoSpaceHeight,
+				$logoSpaceWidth,
+				$logoSpaceHeight,
 				$this->options->logoSpaceStartX,
 				$this->options->logoSpaceStartY
 			);
