@@ -42,6 +42,7 @@ final class QRMatrixTest extends TestCase{
 	 */
 	public static function debugMatrix(QRMatrix $matrix):void{
 
+		/** @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist */
 		if(defined('TEST_IS_CI') && TEST_IS_CI === true){
 			return;
 		}

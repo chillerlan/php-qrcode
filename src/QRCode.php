@@ -404,6 +404,8 @@ class QRCode{
 	/**
 	 * Adds a standalone ECI designator
 	 *
+	 * The ECI designator must be followed by a Byte segment that contains the string encoded according to the given ECI charset
+	 *
 	 * ISO/IEC 18004:2000 8.3.1 - Extended Channel Interpretation (ECI) Mode
 	 */
 	public function addEciDesignator(int $encoding):self{

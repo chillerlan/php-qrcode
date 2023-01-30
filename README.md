@@ -125,6 +125,8 @@ It's generally a good idea to wrap the reading in a try/catch block to handle an
   - [GÉANT CAT](https://github.com/GEANT/CAT)
   - [openITCOCKPIT](https://github.com/it-novum/openITCOCKPIT)
   - [twill](https://github.com/area17/twill)
+- Articles:
+  - https://www.twilio.com/blog/create-qr-code-in-php
 
 ### Shameless advertising
 Hi, please check out my other projects that are way cooler than qrcodes!
