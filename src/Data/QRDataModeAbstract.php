@@ -32,6 +32,7 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function __construct(string $data){
+		$data = $this::convertEncoding($data);
 
 		if(!$this::validateString($data)){
 			throw new QRCodeDataException('invalid data');
@@ -59,6 +60,15 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 	 */
 	protected static function getLengthBits(int $versionNumber):int{
 		return Mode::getLengthBitsForVersion(static::$datamode, $versionNumber);
+	}
+
+	/**
+	 * encoding conversion helper
+	 *
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
+	 */
+	public static function convertEncoding(string $string):string{
+		return $string;
 	}
 
 }
