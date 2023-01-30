@@ -13,7 +13,7 @@ namespace chillerlan\QRCodeTest;
 use chillerlan\QRCode\Decoder\IMagickLuminanceSource;
 use chillerlan\QRCode\QRCode;
 use function extension_loaded;
-use const PHP_OS_FAMILY;
+use const PHP_OS_FAMILY, PHP_VERSION_ID;
 
 /**
  * Tests the Imagick based reader
@@ -44,14 +44,16 @@ final class QRCodeReaderImagickTest extends QRCodeReaderTestAbstract{
 	}
 
 	/**
-	 * This test fails on Windows and PHP < 8.1 for whatever reason
-	 *
 	 * @dataProvider vectorQRCodeProvider
 	 */
 	public function testReadVectorFormats(string $img, string $expected):void{
 
 		if(PHP_OS_FAMILY === 'Linux'){
 			$this::markTestSkipped('avoid imagick conversion errors (ha ha)');
+		}
+
+		if(PHP_OS_FAMILY === 'Windows' && PHP_VERSION_ID < 80100){
+			$this::markTestSkipped('This test fails on Windows and PHP < 8.1 for whatever reason');
 		}
 
 		$this::assertSame($expected, (string)(new QRCode)
