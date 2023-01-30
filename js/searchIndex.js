@@ -863,13 +863,8 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji",
             "name": "Kanji",
-            "summary": "Kanji\u0020mode\u003A\u0020double\u002Dbyte\u0020characters\u0020from\u0020the\u0020Shift\u0020JIS\u0020character\u0020set",
+            "summary": "Kanji\u0020mode\u003A\u0020double\u002Dbyte\u0020characters\u0020from\u0020the\u0020Shift\u002DJIS\u0020character\u0020set",
             "url": "classes/chillerlan-QRCode-Data-Kanji.html"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "QRDataModeAbstract\u0020constructor.",
-            "url": "classes/chillerlan-QRCode-Data-Kanji.html#method___construct"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji\u003A\u003AgetCharCount\u0028\u0029",
             "name": "getCharCount",
@@ -881,9 +876,14 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-Kanji.html#method_getLengthInBits"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji\u003A\u003AconvertEncoding\u0028\u0029",
+            "name": "convertEncoding",
+            "summary": "encoding\u0020conversion\u0020helper",
+            "url": "classes/chillerlan-QRCode-Data-Kanji.html#method_convertEncoding"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji\u003A\u003AvalidateString\u0028\u0029",
             "name": "validateString",
-            "summary": "checks\u0020if\u0020a\u0020string\u0020qualifies\u0020as\u0020Kanji",
+            "summary": "checks\u0020if\u0020a\u0020string\u0020qualifies\u0020as\u0020SJIS\u0020Kanji",
             "url": "classes/chillerlan-QRCode-Data-Kanji.html#method_validateString"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji\u003A\u003Awrite\u0028\u0029",
@@ -895,6 +895,11 @@ Search.appendIndex(
             "name": "decodeSegment",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-Kanji.html#method_decodeSegment"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji\u003A\u003AsjisEncoding",
+            "name": "sjisEncoding",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-Kanji.html#constant_sjisEncoding"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji\u003A\u003A\u0024datamode",
             "name": "datamode",
@@ -1040,6 +1045,11 @@ Search.appendIndex(
             "name": "getLengthBits",
             "summary": "shortcut",
             "url": "classes/chillerlan-QRCode-Data-QRDataModeAbstract.html#method_getLengthBits"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRDataModeAbstract\u003A\u003AconvertEncoding\u0028\u0029",
+            "name": "convertEncoding",
+            "summary": "encoding\u0020conversion\u0020helper",
+            "url": "classes/chillerlan-QRCode-Data-QRDataModeAbstract.html#method_convertEncoding"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRDataModeAbstract\u003A\u003A\u0024datamode",
             "name": "datamode",
@@ -3476,6 +3486,16 @@ Search.appendIndex(
             "summary": "isKanji\u0028\u0029\u0020should\u0020pass\u0020on\u0020Kanji\/SJIS\u0020characters\u0020and\u0020fail\u0020on\u0020everything\u0020else",
             "url": "classes/chillerlan-QRCodeTest-Data-KanjiTest.html#method_stringValidateProvider"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\KanjiTest\u003A\u003AkanjiProvider\u0028\u0029",
+            "name": "kanjiProvider",
+            "summary": "lists\u0020the\u0020valid\u0020SJIS\u0020kanj",
+            "url": "classes/chillerlan-QRCodeTest-Data-KanjiTest.html#method_kanjiProvider"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\KanjiTest\u003A\u003AtestValidateSJIS\u0028\u0029",
+            "name": "testValidateSJIS",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-KanjiTest.html#method_testValidateSJIS"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\KanjiTest\u003A\u003A\u0024FQN",
             "name": "FQN",
             "summary": "",
@@ -3958,7 +3978,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderImagickTest\u003A\u003AtestReadVectorFormats\u0028\u0029",
             "name": "testReadVectorFormats",
-            "summary": "This\u0020test\u0020fails\u0020on\u0020Windows\u0020and\u0020PHP\u0020\u003C\u00208.1\u0020for\u0020whatever\u0020reason",
+            "summary": "",
             "url": "classes/chillerlan-QRCodeTest-QRCodeReaderImagickTest.html#method_testReadVectorFormats"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderImagickTest\u003A\u003A\u0024FQN",

@@ -119,17 +119,47 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/Kanji.php"><a href="files/src-data-kanji.html"><abbr title="src/Data/Kanji.php">Kanji.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">23</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Kanji mode: double-byte characters from the Shift JIS character set</p>
+            <p class="phpdocumentor-summary">Kanji mode: double-byte characters from the Shift-JIS character set</p>
 
     <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 Section 8.3.5
 ISO/IEC 18004:2000 Section 8.4.5</p>
 </section>
 
 
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="https://en.wikipedia.org/wiki/Shift_JIS#As_defined_in_JIS_X_0208:1997"><abbr title="https://en.wikipedia.org/wiki/Shift_JIS#As_defined_in_JIS_X_0208:1997">https://en.wikipedia.org/wiki/Shift_JIS#As_defined_in_JIS_X_0208:1997</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="http://www.rikai.com/library/kanjitables/kanji_codes.sjis.shtml"><abbr title="http://www.rikai.com/library/kanjitables/kanji_codes.sjis.shtml">http://www.rikai.com/library/kanjitables/kanji_codes.sjis.shtml</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="https://gist.github.com/codemasher/d07d3e6e9346c08e7a41b8b978784952"><abbr title="https://gist.github.com/codemasher/d07d3e6e9346c08e7a41b8b978784952">https://gist.github.com/codemasher/d07d3e6e9346c08e7a41b8b978784952</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                        </dl>
 
 
 
@@ -142,6 +172,13 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/chillerlan-QRCode-Data-Kanji.html#constant_sjisEncoding">sjisEncoding</a>
+    <span>
+        &nbsp;= &#039;SJIS&#039;                            </span>
+</dt>
+<dd></dd>
+
                     <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-Data-QRDataModeAbstract.html#property_data">$data</a>
     <span>
@@ -157,11 +194,18 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
 <dd>the current data mode: Num, Alphanum, Kanji, Byte</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Data-Kanji.html#method___construct">__construct()</a>
+    <a href="classes/chillerlan-QRCode-Data-QRDataModeAbstract.html#method___construct">__construct()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
 <dd>QRDataModeAbstract constructor.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/chillerlan-QRCode-Data-Kanji.html#method_convertEncoding">convertEncoding()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>encoding conversion helper</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-Kanji.html#method_decodeSegment">decodeSegment()</a>
@@ -189,7 +233,7 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd>checks if a string qualifies as Kanji</dd>
+<dd>checks if a string qualifies as SJIS Kanji</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-Kanji.html#method_write">write()</a>
@@ -217,6 +261,41 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
 
 
         
+    <section class="phpdocumentor-constants">
+        <h3 class="phpdocumentor-elements__header" id="constants">
+            Constants
+            <a href="classes/chillerlan-QRCode-Data-Kanji.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+        </h3>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_sjisEncoding">
+        sjisEncoding
+        <a href="classes/chillerlan-QRCode-Data-Kanji.html#constant_sjisEncoding" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Data/Kanji.php"><a href="files/src-data-kanji.html"><abbr title="src/Data/Kanji.php">Kanji.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">32</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">sjisEncoding</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;SJIS&#039;</span>
+</code>
+
+
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+            </section>
 
         
     <section class="phpdocumentor-properties">
@@ -274,7 +353,7 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/Kanji.php"><a href="files/src-data-kanji.html"><abbr title="src/Data/Kanji.php">Kanji.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
@@ -320,12 +399,12 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
 >
     <h4 class="phpdocumentor-element__name" id="method___construct">
         __construct()
-        <a href="classes/chillerlan-QRCode-Data-Kanji.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Data-QRDataModeAbstract.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Data/Kanji.php"><a href="files/src-data-kanji.html"><abbr title="src/Data/Kanji.php">Kanji.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRDataModeAbstract.php"><a href="files/src-data-qrdatamodeabstract.html"><abbr title="src/Data/QRDataModeAbstract.php">QRDataModeAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">34</span>
 
     </aside>
 
@@ -349,9 +428,80 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Data-QRCodeDataException.html"><abbr title="\chillerlan\QRCode\Data\QRCodeDataException">QRCodeDataException</abbr></a></span>
+                                                            
+                                             
+                                    </dd>
+                        </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
+    <h4 class="phpdocumentor-element__name" id="method_convertEncoding">
+        convertEncoding()
+        <a href="classes/chillerlan-QRCode-Data-Kanji.html#method_convertEncoding" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Data/Kanji.php"><a href="files/src-data-kanji.html"><abbr title="src/Data/Kanji.php">Kanji.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">56</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">encoding conversion helper</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">convertEncoding</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$string</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$string</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
         
     
@@ -369,7 +519,7 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/Kanji.php"><a href="files/src-data-kanji.html"><abbr title="src/Data/Kanji.php">Kanji.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">118</span>
+    <span class="phpdocumentor-element-found-in__line">165</span>
 
     </aside>
 
@@ -441,7 +591,7 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRDataModeAbstract.php"><a href="files/src-data-qrdatamodeabstract.html"><abbr title="src/Data/QRDataModeAbstract.php">QRDataModeAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">53</span>
+    <span class="phpdocumentor-element-found-in__line">54</span>
 
     </aside>
 
@@ -532,11 +682,11 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/Kanji.php"><a href="files/src-data-kanji.html"><abbr title="src/Data/Kanji.php">Kanji.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">56</span>
+    <span class="phpdocumentor-element-found-in__line">81</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">checks if a string qualifies as Kanji</p>
+        <p class="phpdocumentor-summary">checks if a string qualifies as SJIS Kanji</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -576,7 +726,7 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/Kanji.php"><a href="files/src-data-kanji.html"><abbr title="src/Data/Kanji.php">Kanji.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">82</span>
+    <span class="phpdocumentor-element-found-in__line">129</span>
 
     </aside>
 
@@ -696,7 +846,7 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRDataModeAbstract.php"><a href="files/src-data-qrdatamodeabstract.html"><abbr title="src/Data/QRDataModeAbstract.php">QRDataModeAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">60</span>
+    <span class="phpdocumentor-element-found-in__line">61</span>
 
     </aside>
 
