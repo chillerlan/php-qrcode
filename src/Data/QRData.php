@@ -88,6 +88,15 @@ final class QRData{
 	}
 
 	/**
+	 * Returns the current BitBuffer instance
+	 *
+	 * @codeCoverageIgnore
+	 */
+	public function getBitBuffer():BitBuffer{
+		return $this->bitBuffer;
+	}
+
+	/**
 	 * Sets a BitBuffer object
 	 *
 	 * This can be used instead of setData(), however, the version auto detection is not available in this case.
