@@ -29,7 +29,7 @@ final class Kanji extends QRDataModeAbstract{
 
 	// SJIS, SJIS-2004
 	// SJIS-2004 may produce errors in PHP < 8
-	public const sjisEncoding = 'SJIS';
+	public const ENCODING = 'SJIS';
 
 	/**
 	 * @inheritDoc
@@ -40,7 +40,7 @@ final class Kanji extends QRDataModeAbstract{
 	 * @inheritDoc
 	 */
 	protected function getCharCount():int{
-		return mb_strlen($this->data, self::sjisEncoding);
+		return mb_strlen($this->data, self::ENCODING);
 	}
 
 	/**
@@ -54,7 +54,7 @@ final class Kanji extends QRDataModeAbstract{
 	 * @inheritDoc
 	 */
 	public static function convertEncoding(string $string):string{
-		mb_detect_order(['ASCII', mb_internal_encoding(), 'UTF-8', 'SJIS', 'SJIS-2004']);
+		mb_detect_order([mb_internal_encoding(), 'UTF-8', 'SJIS', 'SJIS-2004']);
 
 		$detected = mb_detect_encoding($string, null, true);
 
@@ -62,11 +62,11 @@ final class Kanji extends QRDataModeAbstract{
 			throw new QRCodeDataException('mb_detect_encoding error');
 		}
 
-		if($detected === self::sjisEncoding){
+		if($detected === self::ENCODING){
 			return $string;
 		}
 
-		$string = mb_convert_encoding($string, self::sjisEncoding, $detected);
+		$string = mb_convert_encoding($string, self::ENCODING, $detected);
 
 		if(!is_string($string)){
 			throw new QRCodeDataException(sprintf('invalid encoding: %s', $detected));
@@ -138,7 +138,7 @@ final class Kanji extends QRDataModeAbstract{
 		for($i = 0; $i + 1 < $len; $i += 2){
 			$c = ((0xff & ord($this->data[$i])) << 8) | (0xff & ord($this->data[$i + 1]));
 
-			if($c >= 0x8140 && $c <= 0x9ffC){
+			if($c >= 0x8140 && $c <= 0x9ffc){
 				$c -= 0x8140;
 			}
 			elseif($c >= 0xe040 && $c <= 0xebbf){
@@ -188,7 +188,7 @@ final class Kanji extends QRDataModeAbstract{
 			$length--;
 		}
 
-		return mb_convert_encoding(implode($buffer), mb_internal_encoding(), self::sjisEncoding);
+		return mb_convert_encoding(implode($buffer), mb_internal_encoding(), self::ENCODING);
 	}
 
 }

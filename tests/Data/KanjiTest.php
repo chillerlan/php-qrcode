@@ -74,7 +74,7 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 		}
 
 		// we need to put the joined byte sequence in a proper encoding
-		return array_map(fn($chr) => mb_convert_encoding($chr, Kanji::sjisEncoding, Kanji::sjisEncoding), $list);
+		return array_map(fn($chr) => mb_convert_encoding($chr, Kanji::ENCODING, Kanji::ENCODING), $list);
 	}
 
 	/**
@@ -96,7 +96,7 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 			$this::markTestSkipped(sprintf(
 				'invalid glyph: %s => %s',
 				bin2hex($kanji),
-				mb_convert_encoding($kanji, Kanji::sjisEncoding, mb_internal_encoding())
+				mb_convert_encoding($kanji, Kanji::ENCODING, mb_internal_encoding())
 			));
 		}
 	}
