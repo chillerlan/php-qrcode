@@ -581,6 +581,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_KANJI"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003AHANZI",
+            "name": "HANZI",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Common-Mode.html#constant_HANZI"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003ASTRCTURED_APPEND",
             "name": "STRCTURED_APPEND",
             "summary": "",
@@ -861,6 +866,51 @@ Search.appendIndex(
             "summary": "The\u0020current\u0020ECI\u0020encoding\u0020id",
             "url": "classes/chillerlan-QRCode-Data-ECI.html#property_encoding"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Hanzi",
+            "name": "Hanzi",
+            "summary": "Hanzi\u0020\u0028simplified\u0020Chinese\u0029\u0020mode,\u0020GBT18284\u002D2000\u003A\u0020double\u002Dbyte\u0020characters\u0020from\u0020the\u0020GB2312\/GB18030\u0020character\u0020set",
+            "url": "classes/chillerlan-QRCode-Data-Hanzi.html"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Hanzi\u003A\u003AgetCharCount\u0028\u0029",
+            "name": "getCharCount",
+            "summary": "returns\u0020the\u0020character\u0020count\u0020of\u0020the\u0020\u0024data\u0020string",
+            "url": "classes/chillerlan-QRCode-Data-Hanzi.html#method_getCharCount"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Hanzi\u003A\u003AgetLengthInBits\u0028\u0029",
+            "name": "getLengthInBits",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-Hanzi.html#method_getLengthInBits"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Hanzi\u003A\u003AconvertEncoding\u0028\u0029",
+            "name": "convertEncoding",
+            "summary": "encoding\u0020conversion\u0020helper",
+            "url": "classes/chillerlan-QRCode-Data-Hanzi.html#method_convertEncoding"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Hanzi\u003A\u003AvalidateString\u0028\u0029",
+            "name": "validateString",
+            "summary": "checks\u0020if\u0020a\u0020string\u0020qualifies\u0020as\u0020Hanzi\/GB2312",
+            "url": "classes/chillerlan-QRCode-Data-Hanzi.html#method_validateString"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Hanzi\u003A\u003Awrite\u0028\u0029",
+            "name": "write",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-Hanzi.html#method_write"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Hanzi\u003A\u003AdecodeSegment\u0028\u0029",
+            "name": "decodeSegment",
+            "summary": "See\u0020specification\u0020GBT\u002018284\u002D2000",
+            "url": "classes/chillerlan-QRCode-Data-Hanzi.html#method_decodeSegment"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Hanzi\u003A\u003AENCODING",
+            "name": "ENCODING",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-Hanzi.html#constant_ENCODING"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Hanzi\u003A\u003A\u0024datamode",
+            "name": "datamode",
+            "summary": "the\u0020current\u0020data\u0020mode\u003A\u0020Num,\u0020Alphanum,\u0020Kanji,\u0020Byte",
+            "url": "classes/chillerlan-QRCode-Data-Hanzi.html#property_datamode"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji",
             "name": "Kanji",
             "summary": "Kanji\u0020mode\u003A\u0020double\u002Dbyte\u0020characters\u0020from\u0020the\u0020Shift\u002DJIS\u0020character\u0020set",
@@ -896,10 +946,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-Kanji.html#method_decodeSegment"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji\u003A\u003AsjisEncoding",
-            "name": "sjisEncoding",
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji\u003A\u003AENCODING",
+            "name": "ENCODING",
             "summary": "",
-            "url": "classes/chillerlan-QRCode-Data-Kanji.html#constant_sjisEncoding"
+            "url": "classes/chillerlan-QRCode-Data-Kanji.html#constant_ENCODING"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji\u003A\u003A\u0024datamode",
             "name": "datamode",
@@ -965,6 +1015,11 @@ Search.appendIndex(
             "name": "setData",
             "summary": "Sets\u0020the\u0020data\u0020string\u0020\u0028internally\u0020called\u0020by\u0020the\u0020constructor\u0029",
             "url": "classes/chillerlan-QRCode-Data-QRData.html#method_setData"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRData\u003A\u003AgetBitBuffer\u0028\u0029",
+            "name": "getBitBuffer",
+            "summary": "Returns\u0020the\u0020current\u0020BitBuffer\u0020instance",
+            "url": "classes/chillerlan-QRCode-Data-QRData.html#method_getBitBuffer"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRData\u003A\u003AsetBitBuffer\u0028\u0029",
             "name": "setBitBuffer",
@@ -2678,8 +2733,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AaddKanjiSegment\u0028\u0029",
             "name": "addKanjiSegment",
-            "summary": "Adds\u0020a\u0020Kanji\u0020data\u0020segment",
+            "summary": "Adds\u0020a\u0020Kanji\u0020data\u0020segment\u0020\u0028Japanese\u0020double\u002Dbyte\u0020characters,\u0020Shift\u002DJIS\u0029",
             "url": "classes/chillerlan-QRCode-QRCode.html#method_addKanjiSegment"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AaddHanziSegment\u0028\u0029",
+            "name": "addHanziSegment",
+            "summary": "Adds\u0020a\u0020Hanzi\u0020data\u0020segment\u0020\u0028simplified\u0020Chinese\u0020double\u002Dbyte\u0020characters,\u0020GB2312\/GB18030\u0029",
+            "url": "classes/chillerlan-QRCode-QRCode.html#method_addHanziSegment"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AaddByteSegment\u0028\u0029",
             "name": "addByteSegment",
@@ -3436,6 +3496,16 @@ Search.appendIndex(
             "summary": "Tests\u0020if\u0020a\u0020string\u0020is\u0020properly\u0020validated\u0020for\u0020the\u0020respective\u0020data\u0020mode",
             "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testValidateString"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AversionBreakpointProvider\u0028\u0029",
+            "name": "versionBreakpointProvider",
+            "summary": "returns\u0020versions\u0020within\u0020the\u0020version\u0020breakpoints\u00201\u002D9,\u002010\u002D26\u0020and\u002027\u002D40",
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_versionBreakpointProvider"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestDecodeSegment\u0028\u0029",
+            "name": "testDecodeSegment",
+            "summary": "Tests\u0020decoding\u0020a\u0020data\u0020segment\u0020from\u0020a\u0020given\u0020BitBuffer",
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testDecodeSegment"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestGetMinimumVersionException\u0028\u0029",
             "name": "testGetMinimumVersionException",
             "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020the\u0020data\u0020exceeds\u0020the\u0020maximum\u0020version\u0020while\u0020auto\u0020detecting",
@@ -3475,6 +3545,36 @@ Search.appendIndex(
             "name": "testdata",
             "summary": "",
             "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#property_testdata"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\HanziTest",
+            "name": "HanziTest",
+            "summary": "Tests\u0020the\u0020Hanzi\/GB2312\u0020class",
+            "url": "classes/chillerlan-QRCodeTest-Data-HanziTest.html"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\HanziTest\u003A\u003AstringValidateProvider\u0028\u0029",
+            "name": "stringValidateProvider",
+            "summary": "isGB2312\u0028\u0029\u0020should\u0020pass\u0020on\u0020Hanzi\/Hanzi\u0020characters\u0020and\u0020fail\u0020on\u0020everything\u0020else",
+            "url": "classes/chillerlan-QRCodeTest-Data-HanziTest.html#method_stringValidateProvider"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\HanziTest\u003A\u003AhanziProvider\u0028\u0029",
+            "name": "hanziProvider",
+            "summary": "lists\u0020all\u0020characters\u0020in\u0020the\u0020valid\u0020GB2312\u0020range",
+            "url": "classes/chillerlan-QRCodeTest-Data-HanziTest.html#method_hanziProvider"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\HanziTest\u003A\u003AtestValidateGB2312\u0028\u0029",
+            "name": "testValidateGB2312",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-HanziTest.html#method_testValidateGB2312"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\HanziTest\u003A\u003A\u0024FQN",
+            "name": "FQN",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-HanziTest.html#property_FQN"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\HanziTest\u003A\u003A\u0024testdata",
+            "name": "testdata",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-HanziTest.html#property_testdata"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\KanjiTest",
             "name": "KanjiTest",

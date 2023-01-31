@@ -172,9 +172,16 @@
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_HANZI">HANZI</a>
+    <span>
+        &nbsp;= 0b1101                            </span>
+</dt>
+<dd></dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_INTERFACES">INTERFACES</a>
     <span>
-        &nbsp;= [self::NUMBER =&gt; \chillerlan\QRCode\Data\Number::class, self::ALPHANUM =&gt; \chillerlan\QRCode\Data\AlphaNum::class, self::KANJI =&gt; \chillerlan\QRCode\Data\Kanji::class, self::BYTE =&gt; \chillerlan\QRCode\Data\Byte::class]                            </span>
+        &nbsp;= [self::NUMBER =&gt; \chillerlan\QRCode\Data\Number::class, self::ALPHANUM =&gt; \chillerlan\QRCode\Data\AlphaNum::class, self::KANJI =&gt; \chillerlan\QRCode\Data\Kanji::class, self::HANZI =&gt; \chillerlan\QRCode\Data\Hanzi::class, self::BYTE =&gt; \chillerlan\QRCode\Data\Byte::class]                            </span>
 </dt>
 <dd>Map of data mode =&gt; interface (detection order)</dd>
 
@@ -188,7 +195,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_LENGTH_BITS">LENGTH_BITS</a>
     <span>
-        &nbsp;= [self::NUMBER =&gt; [10, 12, 14], self::ALPHANUM =&gt; [9, 11, 13], self::BYTE =&gt; [8, 16, 16], self::KANJI =&gt; [8, 10, 12]]                            </span>
+        &nbsp;= [self::NUMBER =&gt; [10, 12, 14], self::ALPHANUM =&gt; [9, 11, 13], self::BYTE =&gt; [8, 16, 16], self::KANJI =&gt; [8, 10, 12], self::HANZI =&gt; [8, 10, 12]]                            </span>
 </dt>
 <dd>mode length bits for the version breakpoints 1-9, 10-26 and 27-40</dd>
 
@@ -300,7 +307,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">42</span>
 
     </aside>
 
@@ -327,7 +334,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 
     </aside>
 
@@ -354,7 +361,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">38</span>
+    <span class="phpdocumentor-element-found-in__line">40</span>
 
     </aside>
 
@@ -373,6 +380,33 @@
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_HANZI">
+        HANZI
+        <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_HANZI" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">34</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">HANZI</span>
+    = <span class="phpdocumentor-signature__default-value">0b1101</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+                    <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_INTERFACES">
         INTERFACES
         <a href="classes/chillerlan-QRCode-Common-Mode.html#constant_INTERFACES" class="headerlink"><i class="fas fa-link"></i></a>
@@ -381,7 +415,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">59</span>
+    <span class="phpdocumentor-element-found-in__line">62</span>
 
     </aside>
 
@@ -391,7 +425,7 @@
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">array&lt;string|int, string&gt;</span>
     <span class="phpdocumentor-signature__name">INTERFACES</span>
-    = <span class="phpdocumentor-signature__default-value">[self::NUMBER =&gt; \chillerlan\QRCode\Data\Number::class, self::ALPHANUM =&gt; \chillerlan\QRCode\Data\AlphaNum::class, self::KANJI =&gt; \chillerlan\QRCode\Data\Kanji::class, self::BYTE =&gt; \chillerlan\QRCode\Data\Byte::class]</span>
+    = <span class="phpdocumentor-signature__default-value">[self::NUMBER =&gt; \chillerlan\QRCode\Data\Number::class, self::ALPHANUM =&gt; \chillerlan\QRCode\Data\AlphaNum::class, self::KANJI =&gt; \chillerlan\QRCode\Data\Kanji::class, self::HANZI =&gt; \chillerlan\QRCode\Data\Hanzi::class, self::BYTE =&gt; \chillerlan\QRCode\Data\Byte::class]</span>
 </code>
 
 
@@ -436,7 +470,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">47</span>
+    <span class="phpdocumentor-element-found-in__line">49</span>
 
     </aside>
 
@@ -446,7 +480,7 @@
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">LENGTH_BITS</span>
-    = <span class="phpdocumentor-signature__default-value">[self::NUMBER =&gt; [10, 12, 14], self::ALPHANUM =&gt; [9, 11, 13], self::BYTE =&gt; [8, 16, 16], self::KANJI =&gt; [8, 10, 12]]</span>
+    = <span class="phpdocumentor-signature__default-value">[self::NUMBER =&gt; [10, 12, 14], self::ALPHANUM =&gt; [9, 11, 13], self::BYTE =&gt; [8, 16, 16], self::KANJI =&gt; [8, 10, 12], self::HANZI =&gt; [8, 10, 12]]</span>
 </code>
 
 
@@ -494,7 +528,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">34</span>
+    <span class="phpdocumentor-element-found-in__line">36</span>
 
     </aside>
 
@@ -561,7 +595,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">96</span>
+    <span class="phpdocumentor-element-found-in__line">100</span>
 
     </aside>
 
@@ -619,7 +653,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/Mode.php"><a href="files/src-common-mode.html"><abbr title="src/Common/Mode.php">Mode.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">71</span>
+    <span class="phpdocumentor-element-found-in__line">75</span>
 
     </aside>
 
