@@ -346,7 +346,7 @@ class QRCode{
 	 * ISO/IEC 18004:2000 8.3.6 - Mixing modes
 	 * ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length
 	 */
-	protected function addSegment(QRDataModeInterface $segment):void{
+	public function addSegment(QRDataModeInterface $segment):void{
 		$this->dataSegments[] = $segment;
 	}
 
