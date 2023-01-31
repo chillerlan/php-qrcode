@@ -80,14 +80,12 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 	/**
 	 * @dataProvider kanjiProvider
 	 */
-	public function testValidateSJIS(string $kanji):void{
-
+	public function testValidateSJIS(string $chr):void{
 		// we may run into several issues due to encoding detection failures
 		try{
-			$this::assertTrue(Kanji::validateString($kanji));
+			$this::assertTrue(Kanji::validateString($chr));
 		}
 		catch(Throwable $e){
-
 			/** @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist */
 			if(defined('TEST_IS_CI') && TEST_IS_CI === true){
 				$this::markTestSkipped();
@@ -95,8 +93,8 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 
 			$this::markTestSkipped(sprintf(
 				'invalid glyph: %s => %s',
-				bin2hex($kanji),
-				mb_convert_encoding($kanji, Kanji::ENCODING, mb_internal_encoding())
+				bin2hex($chr),
+				mb_convert_encoding($chr, Kanji::ENCODING, mb_internal_encoding())
 			));
 		}
 	}
