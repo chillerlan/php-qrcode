@@ -159,8 +159,16 @@ final class BitBuffer{
 	 * Clears the buffer and resets the stats
 	 */
 	public function clear():self{
-		$this->buffer    = [];
-		$this->length    = 0;
+		$this->buffer = [];
+		$this->length = 0;
+
+		return $this->rewind();
+	}
+
+	/**
+	 * Resets the read-counters
+	 */
+	public function rewind():self{
 		$this->bytesRead = 0;
 		$this->bitsRead  = 0;
 
