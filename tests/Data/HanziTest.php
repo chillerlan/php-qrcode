@@ -33,7 +33,8 @@ class HanziTest extends DataInterfaceTestAbstract{
 			['ABC', false],
 			['123', false],
 			['无可奈何燃花作香', true], // https://genshin-impact.fandom.com/wiki/Floral_Incense
-			['꽃잎 향초의 기도', false], // same as above in korean
+			['無可奈何燃花作香', false], // same as above in traditional Chinese
+			['꽃잎 향초의 기도', false], // same as above in Korean
 		];
 	}
 
