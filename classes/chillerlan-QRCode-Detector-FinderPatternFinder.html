@@ -234,7 +234,7 @@ finder pattern to see if the same proportion is detected.</dd>
 </dt>
 <dd>Like #crossCheckVertical(int, int, int, int), and in fact is basically identical,
 except it reads horizontally instead of vertically. This is used to cross-cross
-check a vertical cross check and locate the real center of the alignment pattern.</dd>
+check a vertical cross-check and locate the real center of the alignment pattern.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossCheckVertical">crossCheckVertical()</a>
@@ -300,7 +300,7 @@ finder pattern to see if the same proportion is detected.</dd>
                                 &nbsp;: bool    </span>
 </dt>
 <dd>This is called when a horizontal scan finds a possible alignment pattern. It will
-cross check with a vertical scan, and if successful, will, ah, cross-cross-check
+cross-check with a vertical scan, and if successful, will, ah, cross-cross-check
 with another horizontal scan. This is needed primarily to locate the real horizontal
 center of the pattern in cases of extreme skew.</dd>
 
@@ -690,26 +690,26 @@ finder pattern to see if the same proportion is detected.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">crossCheckDiagonal</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href=""><abbr title=""></abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$centerI</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href=""><abbr title=""></abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$centerJ</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+                    <span class="phpdocumentor-signature__name">crossCheckDiagonal</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$centerI</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$centerJ</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$centerI</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href=""><abbr title=""></abbr></a></span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>;  row where a finder pattern was detected</p>
+                    <section class="phpdocumentor-description"><p>row where a finder pattern was detected</p>
 </section>
 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$centerJ</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href=""><abbr title=""></abbr></a></span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>; center of the section that appears to cross a finder pattern</p>
+                    <section class="phpdocumentor-description"><p>center of the section that appears to cross a finder pattern</p>
 </section>
 
             </dd>
@@ -744,7 +744,7 @@ finder pattern to see if the same proportion is detected.</p>
 
         <p class="phpdocumentor-summary">Like #crossCheckVertical(int, int, int, int), and in fact is basically identical,
 except it reads horizontally instead of vertically. This is used to cross-cross
-check a vertical cross check and locate the real center of the alignment pattern.</p>
+check a vertical cross-check and locate the real center of the alignment pattern.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -843,7 +843,7 @@ finder pattern to see if the same proportion is detected.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>;  row where a finder pattern was detected</p>
+                    <section class="phpdocumentor-description"><p>row where a finder pattern was detected</p>
 </section>
 
             </dd>
@@ -852,7 +852,7 @@ finder pattern to see if the same proportion is detected.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>; center of the section that appears to cross a finder pattern</p>
+                    <section class="phpdocumentor-description"><p>center of the section that appears to cross a finder pattern</p>
 </section>
 
             </dd>
@@ -861,7 +861,7 @@ finder pattern to see if the same proportion is detected.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>; maximum reasonable number of modules that should be
+                    <section class="phpdocumentor-description"><p>maximum reasonable number of modules that should be
 observed in any reading state, based on the results of the horizontal scan</p>
 </section>
 
@@ -1228,7 +1228,7 @@ used by finder patterns to be considered a match</p>
     </aside>
 
         <p class="phpdocumentor-summary">This is called when a horizontal scan finds a possible alignment pattern. It will
-cross check with a vertical scan, and if successful, will, ah, cross-cross-check
+cross-check with a vertical scan, and if successful, will, ah, cross-cross-check
 with another horizontal scan. This is needed primarily to locate the real horizontal
 center of the pattern in cases of extreme skew.</p>
 

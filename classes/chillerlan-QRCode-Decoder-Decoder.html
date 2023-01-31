@@ -185,7 +185,7 @@ the QR Code from an image.</p>
     <span>
                                 &nbsp;: <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html"><abbr title="\chillerlan\QRCode\Decoder\DecoderResult">DecoderResult</abbr></a>    </span>
 </dt>
-<dd></dd>
+<dd>Decode the contents of that stream of bytes</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Decoder-Decoder.html#method_decodeMatrix">decodeMatrix()</a>
@@ -193,13 +193,6 @@ the QR Code from an image.</p>
                                 &nbsp;: <a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html"><abbr title="\chillerlan\QRCode\Decoder\DecoderResult">DecoderResult</abbr></a>    </span>
 </dt>
 <dd></dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Decoder.html#method_getDataBlocks">getDataBlocks()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
-</dt>
-<dd>When QR Codes use multiple data blocks, they are actually interleaved.</dd>
 
         </dl>
 
@@ -229,7 +222,7 @@ the QR Code from an image.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Decoder.php"><a href="files/src-decoder-decoder.html"><abbr title="src/Decoder/Decoder.php">Decoder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
@@ -263,7 +256,7 @@ the QR Code from an image.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Decoder.php"><a href="files/src-decoder-decoder.html"><abbr title="src/Decoder/Decoder.php">Decoder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
@@ -297,7 +290,7 @@ the QR Code from an image.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Decoder.php"><a href="files/src-decoder-decoder.html"><abbr title="src/Decoder/Decoder.php">Decoder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
@@ -335,7 +328,7 @@ the QR Code from an image.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Decoder.php"><a href="files/src-decoder-decoder.html"><abbr title="src/Decoder/Decoder.php">Decoder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">43</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 
     </aside>
 
@@ -355,7 +348,8 @@ the QR Code from an image.</p>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html"><abbr title="\chillerlan\QRCode\Decoder\LuminanceSourceInterface">LuminanceSourceInterface</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"></section>
+
             </dd>
             </dl>
 
@@ -371,18 +365,14 @@ the QR Code from an image.</p>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><abbr title="\Throwable">Throwable</abbr>|<a href="classes/chillerlan-QRCode-Decoder-QRCodeDecoderException.html"><abbr title="\chillerlan\QRCode\Decoder\QRCodeDecoderException">QRCodeDecoderException</abbr></a></span>
                                                             
-                                                 <section class="phpdocumentor-description"><p>if the QR Code cannot be decoded</p>
-</section>
-
+                                             
                                     </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html"><abbr title="\chillerlan\QRCode\Decoder\DecoderResult">DecoderResult</abbr></a></span>
             &mdash;
-            <section class="phpdocumentor-description"><p>text and bytes encoded within the QR Code</p>
-</section>
-
+        
     
 </article>
                     <article
@@ -398,21 +388,22 @@ the QR Code from an image.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Decoder.php"><a href="files/src-decoder-decoder.html"><abbr title="src/Decoder/Decoder.php">Decoder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">171</span>
+    <span class="phpdocumentor-element-found-in__line">91</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Decode the contents of that stream of bytes</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">decodeBitStream</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bytes</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html"><abbr title="\chillerlan\QRCode\Decoder\DecoderResult">DecoderResult</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">decodeBitStream</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-BitBuffer.html"><abbr title="\chillerlan\QRCode\Common\BitBuffer">BitBuffer</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bitBuffer</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html"><abbr title="\chillerlan\QRCode\Decoder\DecoderResult">DecoderResult</abbr></a></span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$bytes</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                <span class="phpdocumentor-signature__argument__name">$bitBuffer</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-BitBuffer.html"><abbr title="\chillerlan\QRCode\Common\BitBuffer">BitBuffer</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                     <section class="phpdocumentor-description"></section>
@@ -455,7 +446,7 @@ the QR Code from an image.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Decoder.php"><a href="files/src-decoder-decoder.html"><abbr title="src/Decoder/Decoder.php">Decoder.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">75</span>
+    <span class="phpdocumentor-element-found-in__line">70</span>
 
     </aside>
 
@@ -497,70 +488,6 @@ the QR Code from an image.</p>
     <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html"><abbr title="\chillerlan\QRCode\Decoder\DecoderResult">DecoderResult</abbr></a></span>
             &mdash;
         
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getDataBlocks">
-        getDataBlocks()
-        <a href="classes/chillerlan-QRCode-Decoder-Decoder.html#method_getDataBlocks" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Decoder.php"><a href="files/src-decoder-decoder.html"><abbr title="src/Decoder/Decoder.php">Decoder.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">101</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">When QR Codes use multiple data blocks, they are actually interleaved.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">getDataBlocks</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$rawCodewords</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
-
-        <section class="phpdocumentor-description"><p>That is, the first byte of data block 1 to n is written, then the second bytes, and so on. This
-method will separate the data into original blocks.</p>
-</section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$rawCodewords</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>bytes as read directly from the QR Code</p>
-</section>
-
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Decoder-QRCodeDecoderException.html"><abbr title="\chillerlan\QRCode\Decoder\QRCodeDecoderException">QRCodeDecoderException</abbr></a></span>
-                                                            
-                                             
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>DataBlocks containing original bytes, &quot;de-interleaved&quot; from representation in the QR Code</p>
-</section>
-
     
 </article>
             </section>

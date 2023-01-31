@@ -117,14 +117,13 @@ GlobalHistogramBinarizer, is fairly efficient for what it does. It is designed f
 high frequency images of barcodes with black data on white backgrounds. For this application,
 it does a much better job than a global blackpoint with severe shadows and gradients.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></dt>
-        <dd>Holds a numerical representation of the final QR Code;
-maps the ECC coded binary data and applies the mask pattern</dd>
+        <dd>Extended QRMatrix to map read data from the Binarizer</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Decoder-Decoder.html"><abbr title="\chillerlan\QRCode\Decoder\Decoder">Decoder</abbr></a></dt>
         <dd>The main class which implements QR Code decoding -- as opposed to locating and extracting
 the QR Code from an image.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Decoder-DecoderResult.html"><abbr title="\chillerlan\QRCode\Decoder\DecoderResult">DecoderResult</abbr></a></dt>
         <dd>Encapsulates the result of decoding a matrix of bits. This typically
-applies to 2D barcode formats. For now it contains the raw bytes obtained,
+applies to 2D barcode formats. For now, it contains the raw bytes obtained
 as well as a String interpretation of those bytes, if applicable.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Decoder-GDLuminanceSource.html"><abbr title="\chillerlan\QRCode\Decoder\GDLuminanceSource">GDLuminanceSource</abbr></a></dt>
         <dd>This class is used to help decode images from files which arrive as GD Resource
