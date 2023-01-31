@@ -99,6 +99,36 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	}
 
 	/**
+	 * returns versions within the version breakpoints 1-9, 10-26 and 27-40
+	 */
+	public function versionBreakpointProvider():array{
+		return ['1-9' => [7], '10-26' => [15], '27-40' => [30]];
+	}
+
+	/**
+	 * Tests decoding a data segment from a given BitBuffer
+	 *
+	 * @dataProvider versionBreakpointProvider
+	 */
+	public function testDecodeSegment(int $version):void{
+		$options = new QROptions;
+		$options->version = $version;
+
+		// invoke a datamode interface
+		/** @var \chillerlan\QRCode\Data\QRDataModeInterface $datamodeInterface */
+		$datamodeInterface = new $this->FQN($this->testdata);
+		// invoke a QRData instance and write data
+		$this->QRData = new QRData($options, [$datamodeInterface]);
+		// get the filled bitbuffer
+		$bitBuffer = $this->QRData->getBitBuffer();
+		// read the first 4 bits
+		$this::assertTrue($bitBuffer->read(4) === $datamodeInterface->getDataMode());
+		// decode the data
+		/** @noinspection PhpUndefinedMethodInspection */
+		$this::assertSame($this->testdata, $this->FQN::decodeSegment($bitBuffer, $options->version));
+	}
+
+	/**
 	 * Tests if an exception is thrown when the data exceeds the maximum version while auto detecting
 	 */
 	public function testGetMinimumVersionException():void{
