@@ -33,15 +33,15 @@ namespaced, cleaned up, improved and other stuff. It also features a QR Code rea
 - Generation of [Model 2 QR Codes](https://www.qrcode.com/en/codes/model12.html), [Version 1 to 40](https://www.qrcode.com/en/about/version.html)
 - [ECC Levels](https://www.qrcode.com/en/about/error_correction.html) L/M/Q/H supported
 - Mixed mode support (encoding modes can be mixed as needed within a QR symbol)
-  - Supported modes: numeric, alphanumeric, 8-bit binary as well as the double-byte modes kanji (Japanese, Shift-JIS) and hanzi (simplified Chinese, GB2312/GB18030)
+  - Supported modes: numeric, alphanumeric, 8-bit binary as well as the 13-bit double-byte modes kanji (Japanese, Shift-JIS) and hanzi (simplified Chinese, GB2312/GB18030)
 - Flexible, easily extensible output modules
-- Built-in support for the following output formats:
-  - [GdImage](https://www.php.net/manual/book.image)
-  - [ImageMagick](https://www.php.net/manual/book.imagick)
-  - Markup types: SVG, HTML, etc.
-  - String types: JSON, plain text, etc.
-  - Encapsulated Postscript (EPS)
-  - PDF via [FPDF](https://github.com/setasign/fpdf)
+  - Built-in support for the following output formats:
+    - [GdImage](https://www.php.net/manual/book.image)
+    - [ImageMagick](https://www.php.net/manual/book.imagick)
+    - Markup types: SVG, HTML, etc.
+    - String types: JSON, plain text, etc.
+    - Encapsulated Postscript (EPS)
+    - PDF via [FPDF](https://github.com/setasign/fpdf)
 - QR Code reader (via GD and ImageMagick)
 
 ## Documentation

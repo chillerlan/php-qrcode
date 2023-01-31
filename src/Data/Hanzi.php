@@ -16,7 +16,7 @@ use function chr, implode, is_string, mb_convert_encoding, mb_detect_encoding,
 	mb_detect_order, mb_internal_encoding, mb_strlen, ord, sprintf, strlen;
 
 /**
- * Hanzi (simplified Chinese) mode, GBT18284-2000: double-byte characters from the GB2312/GB18030 character set
+ * Hanzi (simplified Chinese) mode, GBT18284-2000: 13-bit double-byte characters from the GB2312/GB18030 character set
  *
  * Please note that this is not part of the QR Code specification and may not be supported by all readers (ZXing-based ones do).
  *

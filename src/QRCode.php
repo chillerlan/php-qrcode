@@ -382,7 +382,7 @@ class QRCode{
 	}
 
 	/**
-	 * Adds a Kanji data segment (Japanese double-byte characters, Shift-JIS)
+	 * Adds a Kanji data segment (Japanese 13-bit double-byte characters, Shift-JIS)
 	 *
 	 * ISO/IEC 18004:2000 8.3.5 - Kanji Mode
 	 */
@@ -393,7 +393,7 @@ class QRCode{
 	}
 
 	/**
-	 * Adds a Hanzi data segment (simplified Chinese double-byte characters, GB2312/GB18030)
+	 * Adds a Hanzi data segment (simplified Chinese 13-bit double-byte characters, GB2312/GB18030)
 	 *
 	 * GBT18284-2000 Hanzi Mode
 	 */

@@ -16,7 +16,7 @@ use function chr, implode, is_string, mb_convert_encoding, mb_detect_encoding,
 	mb_detect_order, mb_internal_encoding, mb_strlen, ord, sprintf, strlen;
 
 /**
- * Kanji mode: double-byte characters from the Shift-JIS character set
+ * Kanji mode: 13-bit double-byte characters from the Shift-JIS character set
  *
  * ISO/IEC 18004:2000 Section 8.3.5
  * ISO/IEC 18004:2000 Section 8.4.5
