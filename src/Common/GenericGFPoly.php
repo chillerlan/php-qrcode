@@ -30,7 +30,7 @@ final class GenericGFPoly{
 
 	/**
 	 * @param array      $coefficients array coefficients as ints representing elements of GF(size), arranged
-	 *                                 from most significant (highest-power term) coefficient to least significant
+	 *                                 from most significant (highest-power term) coefficient to the least significant
 	 * @param int|null   $degree
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException if argument is null or empty, or if leading coefficient is 0 and this

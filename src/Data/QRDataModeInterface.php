@@ -28,6 +28,13 @@ interface QRDataModeInterface{
 	public function getLengthInBits():int;
 
 	/**
+	 * encoding conversion helper
+	 *
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
+	 */
+	public static function convertEncoding(string $string):string;
+
+	/**
 	 * checks if the given string qualifies for the encoder module
 	 */
 	public static function validateString(string $string):bool;

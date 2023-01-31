@@ -15,7 +15,7 @@ use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, Mode, ReedSolomo
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Hanzi, Kanji, Number};
 use chillerlan\QRCode\Detector\Detector;
 use Throwable;
-use function array_fill, chr, count, mb_convert_encoding, mb_detect_encoding, mb_internal_encoding, str_replace;
+use function chr, mb_convert_encoding, mb_detect_encoding, mb_internal_encoding, str_replace;
 
 /**
  * The main class which implements QR Code decoding -- as opposed to locating and extracting

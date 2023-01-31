@@ -122,7 +122,7 @@ class QREps extends QROutputAbstract{
 		$outputX = $x * $this->scale;
 		// Actual size - one block = Topmost y pos.
 		$top     = $this->length - $this->scale;
-		// Apparently y-axis is inverted (y0 is at bottom and not top) in EPS so we have to switch the y-axis here
+		// Apparently y-axis is inverted (y0 is at bottom and not top) in EPS, so we have to switch the y-axis here
 		$outputY = $top - ($y * $this->scale);
 
 		return sprintf('%d %d %d %d F', $outputX, $outputY, $this->scale, $this->scale);

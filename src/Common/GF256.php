@@ -99,7 +99,7 @@ final class GF256{
 	}
 
 	/**
-	 * @return int 2 to the power of a in GF(size)
+	 * @return int 2 to the power of $a in GF(size)
 	 */
 	public static function exp(int $a):int{
 
@@ -114,7 +114,7 @@ final class GF256{
 	}
 
 	/**
-	 * @return int base 2 log of a in GF(size)
+	 * @return int base 2 log of $a in GF(size)
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public static function log(int $a):int{

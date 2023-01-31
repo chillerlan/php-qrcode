@@ -13,10 +13,17 @@ namespace chillerlan\QRCode\Common;
 use chillerlan\QRCode\QRCodeException;
 
 /**
- *
+ * Version related tables and methods
  */
 final class Version{
 
+	/**
+	 * Enable version auto detection
+	 *
+	 * @see \chillerlan\QRCode\QROptionsTrait::$version
+	 *
+	 * @var int
+	 */
 	public const AUTO = -1;
 
 	/**
@@ -114,7 +121,7 @@ final class Version{
 	];
 
 	/**
-	 * ISO/IEC 18004:2000 Tables 13-22
+	 * ISO/IEC 18004:2000 Tables 13-22 - Error correction characteristics
 	 *
 	 * @see http://www.thonky.com/qr-code-tutorial/error-correction-table
 	 */
@@ -161,6 +168,9 @@ final class Version{
 		40 => [[30, [[19, 118], [ 6, 119]]], [28, [[18, 47], [31, 48]]], [30, [[34, 24], [34, 25]]], [30, [[20, 15], [61, 16]]]],
 	];
 
+	/**
+	 * ISO/IEC 18004:2000 Table 1 - Data capacity of all versions of QR Code
+	 */
 	private const TOTAL_CODEWORDS = [
 		1  => 26,
 		2  => 44,

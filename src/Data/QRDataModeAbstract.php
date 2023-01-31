@@ -13,11 +13,12 @@ namespace chillerlan\QRCode\Data;
 use chillerlan\QRCode\Common\Mode;
 
 /**
+ * abstract methods for the several data modes
  */
 abstract class QRDataModeAbstract implements QRDataModeInterface{
 
 	/**
-	 * the current data mode: Num, Alphanum, Kanji, Byte
+	 * the current data mode: Num, Alphanum, Kanji, Hanzi, Byte
 	 */
 	protected static int $datamode;
 
@@ -56,19 +57,17 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public static function convertEncoding(string $string):string{
+		return $string;
+	}
+
+	/**
 	 * shortcut
 	 */
 	protected static function getLengthBits(int $versionNumber):int{
 		return Mode::getLengthBitsForVersion(static::$datamode, $versionNumber);
-	}
-
-	/**
-	 * encoding conversion helper
-	 *
-	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
-	 */
-	public static function convertEncoding(string $string):string{
-		return $string;
 	}
 
 }

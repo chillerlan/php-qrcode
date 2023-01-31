@@ -188,7 +188,7 @@ final class FinderPatternFinder{
 	 * @param int[] $stateCount
 	 */
 	private function centerFromEnd(array $stateCount, int $end):float{
-		return (float)(($end - $stateCount[4] - $stateCount[3]) - $stateCount[2] / 2.0);
+		return (float)(($end - $stateCount[4] - $stateCount[3]) - $stateCount[2] / 2);
 	}
 
 	/**
@@ -246,8 +246,8 @@ final class FinderPatternFinder{
 	 * "cross-cross-cross-checks" by scanning down diagonally through the center of the possible
 	 * finder pattern to see if the same proportion is detected.
 	 *
-	 * @param $centerI ;  row where a finder pattern was detected
-	 * @param $centerJ ; center of the section that appears to cross a finder pattern
+	 * @param int $centerI row where a finder pattern was detected
+	 * @param int $centerJ center of the section that appears to cross a finder pattern
 	 *
 	 * @return bool true if proportions are withing expected limits
 	 */
@@ -321,9 +321,9 @@ final class FinderPatternFinder{
 	 * "cross-checks" by scanning down vertically through the center of the possible
 	 * finder pattern to see if the same proportion is detected.
 	 *
-	 * @param int $startI   ;  row where a finder pattern was detected
-	 * @param int $centerJ  ; center of the section that appears to cross a finder pattern
-	 * @param int $maxCount ; maximum reasonable number of modules that should be
+	 * @param int $startI   row where a finder pattern was detected
+	 * @param int $centerJ  center of the section that appears to cross a finder pattern
+	 * @param int $maxCount maximum reasonable number of modules that should be
 	 *                      observed in any reading state, based on the results of the horizontal scan
 	 * @param int $originalStateCountTotal
 	 *
@@ -393,7 +393,7 @@ final class FinderPatternFinder{
 			return null;
 		}
 
-		// If we found a finder-pattern-like section, but its size is more than 40% different than
+		// If we found a finder-pattern-like section, but its size is more than 40% different from
 		// the original, assume it's a false positive
 		$stateCountTotal = $stateCount[0] + $stateCount[1] + $stateCount[2] + $stateCount[3] + $stateCount[4];
 
@@ -411,7 +411,7 @@ final class FinderPatternFinder{
 	/**
 	 * Like #crossCheckVertical(int, int, int, int), and in fact is basically identical,
 	 * except it reads horizontally instead of vertically. This is used to cross-cross
-	 * check a vertical cross check and locate the real center of the alignment pattern.
+	 * check a vertical cross-check and locate the real center of the alignment pattern.
 	 * @noinspection DuplicatedCode
 	 */
 	private function crossCheckHorizontal(int $startJ, int $centerI, int $maxCount, int $originalStateCountTotal):?float{
@@ -474,7 +474,7 @@ final class FinderPatternFinder{
 			return null;
 		}
 
-		// If we found a finder-pattern-like section, but its size is significantly different than
+		// If we found a finder-pattern-like section, but its size is significantly different from
 		// the original, assume it's a false positive
 		$stateCountTotal = $stateCount[0] + $stateCount[1] + $stateCount[2] + $stateCount[3] + $stateCount[4];
 
@@ -491,7 +491,7 @@ final class FinderPatternFinder{
 
 	/**
 	 * This is called when a horizontal scan finds a possible alignment pattern. It will
-	 * cross check with a vertical scan, and if successful, will, ah, cross-cross-check
+	 * cross-check with a vertical scan, and if successful, will, ah, cross-cross-check
 	 * with another horizontal scan. This is needed primarily to locate the real horizontal
 	 * center of the pattern in cases of extreme skew.
 	 * And then we cross-cross-cross check with another diagonal scan.

@@ -14,7 +14,7 @@ use chillerlan\QRCode\QRCodeException;
 use function array_key_exists;
 
 /**
- *
+ * ISO/IEC 18004:2000 - 8.4.1 Extended Channel Interpretation (ECI) Mode
  */
 final class ECICharset{
 

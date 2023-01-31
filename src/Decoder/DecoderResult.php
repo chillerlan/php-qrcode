@@ -17,10 +17,10 @@ use function property_exists;
 
 /**
  * Encapsulates the result of decoding a matrix of bits. This typically
- * applies to 2D barcode formats. For now it contains the raw bytes obtained,
+ * applies to 2D barcode formats. For now, it contains the raw bytes obtained
  * as well as a String interpretation of those bytes, if applicable.
  *
- * @property int[]                                 $rawBytes
+ * @property \chillerlan\QRCode\Common\BitBuffer   $rawBytes
  * @property string                                $data
  * @property \chillerlan\QRCode\Common\Version     $version
  * @property \chillerlan\QRCode\Common\EccLevel    $eccLevel
@@ -31,10 +31,10 @@ use function property_exists;
 final class DecoderResult{
 
 	private BitBuffer   $rawBytes;
-	private string      $data;
 	private Version     $version;
 	private EccLevel    $eccLevel;
 	private MaskPattern $maskPattern;
+	private string      $data = '';
 	private int         $structuredAppendParity = -1;
 	private int         $structuredAppendSequence = -1;
 

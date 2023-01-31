@@ -19,7 +19,7 @@ use function array_fill, count, max;
  * GlobalHistogramBinarizer, is fairly efficient for what it does. It is designed for
  * high frequency images of barcodes with black data on white backgrounds. For this application,
  * it does a much better job than a global blackpoint with severe shadows and gradients.
- * However it tends to produce artifacts on lower frequency images and is therefore not
+ * However, it tends to produce artifacts on lower frequency images and is therefore not
  * a good general purpose binarizer for uses outside ZXing.
  *
  * This class extends GlobalHistogramBinarizer, using the older histogram approach for 1D readers,
@@ -295,7 +295,7 @@ final class Binarizer{
 
 	/**
 	 * For each block in the image, calculate the average black point using a 5x5 grid
-	 * of the blocks around it. Also handles the corner cases (fractional blocks are computed based
+	 * of the surrounding blocks. Also handles the corner cases (fractional blocks are computed based
 	 * on the last pixels in the row/column which are also used in the previous block).
 	 */
 	private function calculateThresholdForBlock(int $subWidth, int $subHeight, int $width, int $height):BitMatrix{

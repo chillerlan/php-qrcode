@@ -25,6 +25,11 @@ use function abs, array_search, count, min;
  */
 final class MaskPattern{
 
+	/**
+	 * @see \chillerlan\QRCode\QROptionsTrait::$maskPattern
+	 *
+	 * @var int
+	 */
 	public const AUTO = -1;
 
 	public const PATTERN_000 = 0b000;
@@ -84,8 +89,8 @@ final class MaskPattern{
 	 * including areas used for finder patterns, timing patterns, etc. These areas should be unused
 	 * after the point they are unmasked anyway.
 	 *
-	 * Note that the diagram in section 6.8.1 is misleading since it indicates that i is column position
-	 * and j is row position. In fact, as the text says, i is row position and j is column position.
+	 * Note that the diagram in section 6.8.1 is misleading since it indicates that $i is column position
+	 * and $j is row position. In fact, as the text says, $i is row position and $j is column position.
 	 *
 	 * @see https://www.thonky.com/qr-code-tutorial/mask-patterns
 	 * @see https://github.com/zxing/zxing/blob/e9e2bd280bcaeabd59d0f955798384fe6c018a6c/core/src/main/java/com/google/zxing/qrcode/decoder/DataMask.java#L32-L117

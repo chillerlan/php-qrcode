@@ -185,7 +185,7 @@ class QRCode{
 	public function __construct(SettingsContainerInterface $options = null){
 		$this->options = $options ?? new QROptions;
 
-		// i hate this less
+		// I hate this less
 		if($this->options->readerUseImagickIfAvailable){
 			$this->luminanceSourceFQN = IMagickLuminanceSource::class;
 		}
@@ -432,7 +432,7 @@ class QRCode{
 	 *
 	 * The given string will be encoded from mb_internal_encoding() to the given ECI character set
 	 *
-	 * i hate this somehow but i'll leave it for now
+	 * I hate this somehow, but I'll leave it for now
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */

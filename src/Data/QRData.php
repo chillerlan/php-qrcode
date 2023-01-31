@@ -16,7 +16,7 @@ use chillerlan\Settings\SettingsContainerInterface;
 use function sprintf;
 
 /**
- * Processes the binary data and maps it on a matrix which is then being returned
+ * Processes the binary data and maps it on a QRMatrix which is then being returned
  */
 final class QRData{
 
@@ -99,7 +99,7 @@ final class QRData{
 	/**
 	 * Sets a BitBuffer object
 	 *
-	 * This can be used instead of setData(), however, the version auto detection is not available in this case.
+	 * This can be used instead of setData(), however, the version auto-detection is not available in this case.
 	 * The version needs match the length bits range for the data mode the data has been encoded with,
 	 * additionally the bit array needs to contain enough pad bits.
 	 *

@@ -42,9 +42,9 @@ final class AlignmentPatternFinder{
 	 * @param float                                $moduleSize estimated module size so far
 	 */
 	public function __construct(BitMatrix $matrix, float $moduleSize){
-		$this->matrix     = $matrix;
-		$this->moduleSize = $moduleSize;
-		$this->possibleCenters      = [];
+		$this->matrix          = $matrix;
+		$this->moduleSize      = $moduleSize;
+		$this->possibleCenters = [];
 	}
 
 	/**
@@ -164,7 +164,7 @@ final class AlignmentPatternFinder{
 
 	/**
 	 * This is called when a horizontal scan finds a possible alignment pattern. It will
-	 * cross check with a vertical scan, and if successful, will see if this pattern had been
+	 * cross-check with a vertical scan, and if successful, will see if this pattern had been
 	 * found on a previous horizontal scan. If so, we consider it confirmed and conclude we have
 	 * found the alignment pattern.
 	 *
@@ -207,7 +207,7 @@ final class AlignmentPatternFinder{
 	 * @return float
 	 */
 	private function centerFromEnd(array $stateCount, int $end):float{
-		return (float)(($end - $stateCount[2]) - $stateCount[1] / 2.0);
+		return (float)(($end - $stateCount[2]) - $stateCount[1] / 2);
 	}
 
 	/**
