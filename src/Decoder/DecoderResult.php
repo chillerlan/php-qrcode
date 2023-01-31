@@ -30,7 +30,7 @@ use function property_exists;
  */
 final class DecoderResult{
 
-	private array       $rawBytes;
+	private BitBuffer   $rawBytes;
 	private string      $data;
 	private Version     $version;
 	private EccLevel    $eccLevel;
@@ -90,7 +90,7 @@ final class DecoderResult{
 	public function getMatrix():QRMatrix{
 		return (new QRMatrix($this->version, $this->eccLevel, $this->maskPattern))
 			->initFunctionalPatterns()
-			->writeCodewords(new BitBuffer($this->rawBytes))
+			->writeCodewords($this->rawBytes)
 			->mask()
 		;
 	}

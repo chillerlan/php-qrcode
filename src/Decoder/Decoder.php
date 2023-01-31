@@ -255,7 +255,7 @@ final class Decoder{
 		}
 
 		return new DecoderResult([
-			'rawBytes'                 => $bytes,
+			'rawBytes'                 => $bitBuffer,
 			'data'                     => $result,
 			'version'                  => $this->version,
 			'eccLevel'                 => $this->eccLevel,
