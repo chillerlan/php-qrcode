@@ -11,7 +11,9 @@
 namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Common\{EccLevel, ECICharset, MaskPattern, Mode, Version};
-use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Kanji, Number, QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
+use chillerlan\QRCode\Data\{
+	AlphaNum, Byte, ECI, Hanzi, Kanji, Number, QRCodeDataException, QRData, QRDataModeInterface, QRMatrix
+};
 use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, GDLuminanceSource, IMagickLuminanceSource, LuminanceSourceInterface};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
@@ -380,12 +382,23 @@ class QRCode{
 	}
 
 	/**
-	 * Adds a Kanji data segment
+	 * Adds a Kanji data segment (Japanese double-byte characters, Shift-JIS)
 	 *
 	 * ISO/IEC 18004:2000 8.3.5 - Kanji Mode
 	 */
 	public function addKanjiSegment(string $data):self{
 		$this->addSegment(new Kanji($data));
+
+		return $this;
+	}
+
+	/**
+	 * Adds a Hanzi data segment (simplified Chinese double-byte characters, GB2312/GB18030)
+	 *
+	 * GBT18284-2000 Hanzi Mode
+	 */
+	public function addHanziSegment(string $data):self{
+		$this->addSegment(new Hanzi($data));
 
 		return $this;
 	}

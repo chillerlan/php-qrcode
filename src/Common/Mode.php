@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCode\Common;
 
-use chillerlan\QRCode\Data\{AlphaNum, Byte, Kanji, Number};
+use chillerlan\QRCode\Data\{AlphaNum, Byte, Hanzi, Kanji, Number};
 use chillerlan\QRCode\QRCodeException;
 
 /**
@@ -31,6 +31,8 @@ final class Mode{
 	/** @var int */
 	public const KANJI            = 0b1000;
 	/** @var int */
+	public const HANZI            = 0b1101;
+	/** @var int */
 	public const STRCTURED_APPEND = 0b0011;
 	/** @var int */
 	public const FNC1_FIRST       = 0b0101;
@@ -49,6 +51,7 @@ final class Mode{
 		self::ALPHANUM => [9, 11, 13],
 		self::BYTE     => [8, 16, 16],
 		self::KANJI    => [8, 10, 12],
+		self::HANZI    => [8, 10, 12],
 	];
 
 	/**
@@ -60,6 +63,7 @@ final class Mode{
 		self::NUMBER   => Number::class,
 		self::ALPHANUM => AlphaNum::class,
 		self::KANJI    => Kanji::class,
+		self::HANZI    => Hanzi::class,
 		self::BYTE     => Byte::class,
 	];
 
