@@ -595,7 +595,7 @@ class QRMatrix{
 	 * Maps the interleaved binary $data on the matrix
 	 */
 	public function writeCodewords(BitBuffer $bitBuffer):self{
-		$data      = (new ReedSolomonEncoder)->interleaveEcBytes($bitBuffer, $this->version, $this->eccLevel);
+		$data      = (new ReedSolomonEncoder($this->version, $this->eccLevel))->interleaveEcBytes($bitBuffer);
 		$byteCount = count($data);
 		$iByte     = 0;
 		$iBit      = 7;

@@ -19,16 +19,27 @@ use function array_fill, array_merge, count, max;
  */
 final class ReedSolomonEncoder{
 
+	private Version  $version;
+	private EccLevel $eccLevel;
+
 	private array $interleavedData;
 	private int   $interleavedDataIndex;
+
+	/**
+	 * ReedSolomonDecoder constructor
+	 */
+	public function __construct(Version $version, EccLevel $eccLevel){
+		$this->version  = $version;
+		$this->eccLevel = $eccLevel;
+	}
 
 	/**
 	 * ECC interleaving
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	public function interleaveEcBytes(BitBuffer $bitBuffer, Version $version, EccLevel $eccLevel):array{
-		[$numEccCodewords, [[$l1, $b1], [$l2, $b2]]] = $version->getRSBlocks($eccLevel);
+	public function interleaveEcBytes(BitBuffer $bitBuffer):array{
+		[$numEccCodewords, [[$l1, $b1], [$l2, $b2]]] = $this->version->getRSBlocks($this->eccLevel);
 
 		$rsBlocks = array_fill(0, $l1, [$numEccCodewords + $b1, $b1]);
 
@@ -53,13 +64,13 @@ final class ReedSolomonEncoder{
 			}
 
 			$ecByteCount    = $rsBlockTotal - $dataByteCount;
-			$ecBytes[$key]  = $this->generateEcBytes($dataBytes[$key], $ecByteCount);
+			$ecBytes[$key]  = $this->encode($dataBytes[$key], $ecByteCount);
 			$maxDataBytes   = max($maxDataBytes, $dataByteCount);
 			$maxEcBytes     = max($maxEcBytes, $ecByteCount);
 			$dataByteOffset += $dataByteCount;
 		}
 
-		$this->interleavedData      = array_fill(0, $version->getTotalCodewords(), 0);
+		$this->interleavedData      = array_fill(0, $this->version->getTotalCodewords(), 0);
 		$this->interleavedDataIndex = 0;
 		$numRsBlocks                = $l1 + $l2;
 
@@ -72,7 +83,7 @@ final class ReedSolomonEncoder{
 	/**
 	 *
 	 */
-	private function generateEcBytes(array $dataBytes, int $ecByteCount):array{
+	private function encode(array $dataBytes, int $ecByteCount):array{
 		$rsPoly = new GenericGFPoly([1]);
 
 		for($i = 0; $i < $ecByteCount; $i++){
