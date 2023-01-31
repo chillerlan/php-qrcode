@@ -13,7 +13,7 @@ namespace chillerlan\QRCodeTest\Data;
 use chillerlan\QRCode\Common\{MaskPattern, Version};
 use chillerlan\QRCode\QROptions;
 use PHPUnit\Framework\TestCase;
-use chillerlan\QRCode\Data\{QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
+use chillerlan\QRCode\Data\{Hanzi, QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
 use ReflectionClass;
 
 use function str_repeat;
@@ -123,6 +123,10 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$bitBuffer = $this->QRData->getBitBuffer();
 		// read the first 4 bits
 		$this::assertTrue($bitBuffer->read(4) === $datamodeInterface->getDataMode());
+		// hanzi mode starts with a subset indicator
+		if($datamodeInterface instanceof Hanzi){
+			$this::assertTrue($bitBuffer->read(4) === Hanzi::GB2312_SUBSET);
+		}
 		// decode the data
 		/** @noinspection PhpUndefinedMethodInspection */
 		$this::assertSame($this->testdata, $this->FQN::decodeSegment($bitBuffer, $options->version));
