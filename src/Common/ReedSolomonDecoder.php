@@ -34,11 +34,23 @@ use function array_fill, array_reverse, count;
  */
 final class ReedSolomonDecoder{
 
+	private Version  $version;
+	private EccLevel $eccLevel;
+
+	/**
+	 * ReedSolomonDecoder constructor
+	 */
+	public function __construct(Version $version, EccLevel $eccLevel){
+		$this->version  = $version;
+		$this->eccLevel = $eccLevel;
+	}
+
 	/**
 	 * Error-correct and copy data blocks together into a stream of bytes
 	 */
-	public function decode(array $dataBlocks):array{
-		$resultBytes = [];
+	public function decode(array $rawCodewords):BitBuffer{
+		$dataBlocks  = $this->deinterleaveRawBytes($rawCodewords);
+		$dataBytes   = [];
 
 		foreach($dataBlocks as $dataBlock){
 			[$numDataCodewords, $codewordBytes] = $dataBlock;
@@ -46,11 +58,84 @@ final class ReedSolomonDecoder{
 			$corrected = $this->correctErrors($codewordBytes, $numDataCodewords);
 
 			for($i = 0; $i < $numDataCodewords; $i++){
-				$resultBytes[] = $corrected[$i];
+				$dataBytes[] = $corrected[$i];
 			}
 		}
 
-		return $resultBytes;
+		return new BitBuffer($dataBytes);
+	}
+
+	/**
+	 * When QR Codes use multiple data blocks, they are actually interleaved.
+	 * That is, the first byte of data block 1 to n is written, then the second bytes, and so on. This
+	 * method will separate the data into original blocks.
+	 *
+	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
+	 */
+	private function deinterleaveRawBytes(array $rawCodewords):array{
+		// Figure out the number and size of data blocks used by this version and
+		// error correction level
+		[$numEccCodewords, $eccBlocks] = $this->version->getRSBlocks($this->eccLevel);
+
+		// Now establish DataBlocks of the appropriate size and number of data codewords
+		$result          = [];//new DataBlock[$totalBlocks];
+		$numResultBlocks = 0;
+
+		foreach($eccBlocks as $blockData){
+			[$numEccBlocks, $eccPerBlock] = $blockData;
+
+			for($i = 0; $i < $numEccBlocks; $i++, $numResultBlocks++){
+				$result[$numResultBlocks] = [$eccPerBlock, array_fill(0, $numEccCodewords + $eccPerBlock, 0)];
+			}
+		}
+
+		// All blocks have the same amount of data, except that the last n
+		// (where n may be 0) have 1 more byte. Figure out where these start.
+		/** @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset */
+		$shorterBlocksTotalCodewords = count($result[0][1]);
+		$longerBlocksStartAt         = count($result) - 1;
+
+		while($longerBlocksStartAt >= 0){
+			$numCodewords = count($result[$longerBlocksStartAt][1]);
+
+			if($numCodewords == $shorterBlocksTotalCodewords){
+				break;
+			}
+
+			$longerBlocksStartAt--;
+		}
+
+		$longerBlocksStartAt++;
+
+		$shorterBlocksNumDataCodewords = $shorterBlocksTotalCodewords - $numEccCodewords;
+		// The last elements of result may be 1 element longer;
+		// first fill out as many elements as all of them have
+		$rawCodewordsOffset = 0;
+
+		for($i = 0; $i < $shorterBlocksNumDataCodewords; $i++){
+			for($j = 0; $j < $numResultBlocks; $j++){
+				$result[$j][1][$i] = $rawCodewords[$rawCodewordsOffset++];
+			}
+		}
+
+		// Fill out the last data block in the longer ones
+		for($j = $longerBlocksStartAt; $j < $numResultBlocks; $j++){
+			$result[$j][1][$shorterBlocksNumDataCodewords] = $rawCodewords[$rawCodewordsOffset++];
+		}
+
+		// Now add in error correction blocks
+		/** @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset */
+		$max = count($result[0][1]);
+
+		for($i = $shorterBlocksNumDataCodewords; $i < $max; $i++){
+			for($j = 0; $j < $numResultBlocks; $j++){
+				$iOffset                 = $j < $longerBlocksStartAt ? $i : $i + 1;
+				$result[$j][1][$iOffset] = $rawCodewords[$rawCodewordsOffset++];
+			}
+		}
+
+		// DataBlocks containing original bytes, "de-interleaved" from representation in the QR Code
+		return $result;
 	}
 
 	/**
