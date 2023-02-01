@@ -100,22 +100,6 @@ final class Kanji extends QRDataModeAbstract{
 				return false;
 			}
 
-			// byte 1 is even, second byte in range 0x9f - 0xfc
-			if(($byte1 % 2) === 0){
-				if($byte2 < 0x9f){
-					return false;
-				}
-			}
-			// byte 1 is odd, second byte in range 0x40 - 0x9e (technically)
-			// now this is weird: according to spec, the second byte should be lower than 0x9e.
-			// however, converting encodings back and forth seems to mess with the string somehow.
-			// someone please riddle me this
-#			else{
-#				if($byte2 > 0x9e){
-#					return false;
-#				}
-#			}
-
 		}
 
 		return true;
