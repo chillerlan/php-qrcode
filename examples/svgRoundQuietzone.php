@@ -13,7 +13,7 @@
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QROutputInterface, QRMarkupSVG};
-use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -22,7 +22,8 @@ require_once __DIR__.'/../vendor/autoload.php';
  */
 
 /**
- * the extended SVG output module
+ * Create SVG QR Codes with embedded logos (that are also SVG),
+ * randomly colored dots and a round quiet zone with added circle
  */
 class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 
@@ -42,6 +43,11 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 		// color the quiet zone
 		$this->colorQuietzone($quietzoneSize, $diameter / 2);
 
+		// calculate the logo space
+		$logoSpaceSize = (int)ceil($this->moduleCount * $this->options->svgLogoScale);
+		// we're calling QRMatrix::setLogoSpace() manually, so QROptions::$addLogoSpace has no effect here
+		$this->matrix->setLogoSpace($logoSpaceSize);
+
 		// start SVG output
 		$svg = $this->header();
 
@@ -50,6 +56,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 		}
 
 		$svg .= $this->paths();
+		$svg .= $this->getLogo();
 		$svg .= $this->addCircle($diameter / 2);
 
 		// close svg
@@ -143,6 +150,66 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 		);
 	}
 
+	/**
+	 * returns a <g> element that contains the SVG logo and positions it properly within the QR Code
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g
+	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform
+	 */
+	protected function getLogo():string{
+		// @todo: customize the <g> element to your liking (css class, style...)
+		return sprintf(
+			'%5$s<g transform="translate(%1$s %1$s) scale(%2$s)" class="%3$s">%5$s	%4$s%5$s</g>',
+			($this->moduleCount - ($this->moduleCount * $this->options->svgLogoScale)) / 2,
+			$this->options->svgLogoScale,
+			$this->options->svgLogoCssClass,
+			file_get_contents($this->options->svgLogo),
+			$this->options->eol
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function collectModules(Closure $transform):array{
+		$paths = [];
+
+		// collect the modules for each type
+		foreach($this->matrix->matrix() as $y => $row){
+			foreach($row as $x => $M_TYPE){
+				$M_TYPE_LAYER = $M_TYPE;
+
+				if($this->matrix->checkTypeNotIn($x, $y, $this->options->excludeFromConnect)){
+					// to connect paths we'll redeclare the $M_TYPE_LAYER to data only
+					$M_TYPE_LAYER = QRMatrix::M_DATA;
+
+					if($this->matrix->check($x, $y)){
+						$M_TYPE_LAYER |= QRMatrix::IS_DARK;
+					}
+				}
+
+				// randomly assign another $M_TYPE_LAYER for the given types
+				// note that the layer id has to be an integer value,
+				// ideally outside the several bitmask values
+				if($M_TYPE_LAYER === (QRMatrix::M_DATA | QRMatrix::IS_DARK)){
+					$M_TYPE_LAYER = array_rand($this->options->dotColors);
+				}
+
+				// collect the modules per $M_TYPE
+				$module = $transform($x, $y, $M_TYPE, $M_TYPE_LAYER);
+
+				if(!empty($module)){
+					$paths[$M_TYPE_LAYER][] = $module;
+				}
+			}
+		}
+
+		// beautify output
+		ksort($paths);
+
+		return $paths;
+	}
+
 }
 
 /**
@@ -164,6 +231,37 @@ class RoundQuietzoneOptions extends QROptions{
 	 */
 	protected int $additionalModules = 0;
 
+	/**
+	 * a map of $M_TYPE_LAYER => color
+	 *
+	 * @see \array_rand()
+	 */
+	protected array $dotColors = [];
+
+	// path to svg logo
+	protected string $svgLogo;
+	// logo scale in % of QR Code size, clamped to 10%-30%
+	protected float $svgLogoScale = 0.20;
+	// css class for the logo (defined in $svgDefs)
+	protected string $svgLogoCssClass = '';
+
+	// check logo
+	protected function set_svgLogo(string $svgLogo):void{
+
+		if(!file_exists($svgLogo) || !is_readable($svgLogo)){
+			throw new QRCodeException('invalid svg logo');
+		}
+
+		// @todo: validate svg
+
+		$this->svgLogo = $svgLogo;
+	}
+
+	// clamp logo scale
+	protected function set_svgLogoScale(float $svgLogoScale):void{
+		$this->svgLogoScale = max(0.05, min(0.3, $svgLogoScale));
+	}
+
 }
 
 
@@ -171,34 +269,24 @@ class RoundQuietzoneOptions extends QROptions{
  * Runtime
  */
 
-$options = new RoundQuietzoneOptions([
-	'additionalModules'   => 5,
+$dotColors = [
+	111 => '#e2453c',
+	222 => '#e07e39',
+	333 => '#e5d667',
+	444 => '#51b95b',
+	555 => '#1e72b7',
+	666 => '#6f5ba7',
+];
 
-	'version'             => 7,
-	'eccLevel'            => EccLevel::H, // maximum error correction capacity, esp. for print
-	'addQuietzone'        => false, // we're not adding a quiet zone, this is done internally in our own module
-	'imageBase64'         => false, // avoid base64 URI output
-	'outputType'          => QROutputInterface::CUSTOM,
-	'outputInterface'     => RoundQuietzoneSVGoutput::class, // load our own output class
-	'drawLightModules'    => false, // set to true to add the light modules
+$layerColors = '';
 
-	'connectPaths'        => true,
-	'excludeFromConnect'  => [
-		 QRMatrix::M_FINDER|QRMatrix::IS_DARK,
-		 QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK,
-		 QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK,
-		 QRMatrix::M_QUIETZONE|QRMatrix::IS_DARK
-	],
+foreach($dotColors as $layer => $color){
+	$layerColors .= sprintf("\n\t\t.qr-%s{ fill: %s; }", $layer, $color);
+}
 
-	'drawCircularModules' => true,
-	'circleRadius'        => 0.4,
-	'keepAsSquare'        => [
-		 QRMatrix::M_FINDER|QRMatrix::IS_DARK,
-		 QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK,
-		 QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK,
-	],
-	// https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient
-	'svgDefs'             => '
+// https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient
+// please forgive me for I have committed colorful crimes
+$svgDefs = '
 	<linearGradient id="blurple" x1="100%" y2="100%">
 		<stop stop-color="#D70071" offset="0"/>
 		<stop stop-color="#9C4E97" offset="0.5"/>
@@ -213,11 +301,48 @@ $options = new RoundQuietzoneOptions([
 		<stop stop-color="#6f5ba7" offset="97.5%"/>
 	</linearGradient>
 	<style><![CDATA[
-		.dark{ fill: url(#rainbow); }
 		.light{ fill: #dedede; }
-		.qr-2304{ fill: url(#blurple); }
+		.dark{ fill: url(#rainbow); }
+		.logo{ fill: url(#blurple); }
 		#circle{ fill: none; stroke: url(#blurple); }
-	]]></style>',
+		'.$layerColors.'
+	]]></style>';
+
+$options = new RoundQuietzoneOptions([
+	// custom dot options
+	'additionalModules'   => 5,
+	'dotColors'           => $dotColors,
+
+	// custom SVG logo options (see extended class below)
+	'svgLogo'             => __DIR__.'/github.svg', // logo from: https://github.com/simple-icons/simple-icons
+	'svgLogoScale'        => 0.2,
+	'svgLogoCssClass'     => 'logo',
+
+	// common QRCode options
+	'version'             => 7,
+	'eccLevel'            => EccLevel::H, // maximum error correction capacity, esp. for print
+	'addQuietzone'        => false, // we're not adding a quiet zone, this is done internally in our own module
+	'imageBase64'         => false, // avoid base64 URI output
+	'outputType'          => QROutputInterface::CUSTOM,
+	'outputInterface'     => RoundQuietzoneSVGoutput::class, // load our own output class
+	'drawLightModules'    => false, // set to true to add the light modules
+
+	// common SVG options
+	'svgDefs'             => $svgDefs,
+//	'connectPaths'        => true, // this has been set to "always on" internally
+	'excludeFromConnect'  => [
+		QRMatrix::M_FINDER|QRMatrix::IS_DARK,
+		QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK,
+		QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK,
+		QRMatrix::M_QUIETZONE|QRMatrix::IS_DARK
+	],
+	'drawCircularModules' => true,
+	'circleRadius'        => 0.4,
+	'keepAsSquare'        => [
+		QRMatrix::M_FINDER|QRMatrix::IS_DARK,
+		QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK,
+		QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK,
+	],
 ]);
 
 $qrcode = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
