@@ -9,7 +9,8 @@
 - [FPDF](./fpdf.php): PDF output via [FPDF](http://www.fpdf.org/)
 - [EPS](./eps.php): Encapsulated PostScript
 - [String](./text.php): String output
-- [QRCode Reader](./reader.php): a simple reader example
+- [Multi mode](./multimode.php): a demostration of multi mode usage
+- [QRCode reader](./reader.php): a simple reader example
 
 
 ## Advanced output examples
