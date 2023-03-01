@@ -3486,6 +3486,11 @@ Search.appendIndex(
             "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020an\u0020invalid\u0020character\u0020is\u0020encountered",
             "url": "classes/chillerlan-QRCodeTest-Data-ByteTest.html#method_testInvalidDataException"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ByteTest\u003A\u003AtestBinaryStringInvalid\u0028\u0029",
+            "name": "testBinaryStringInvalid",
+            "summary": "Tests\u0020if\u0020a\u0020binary\u0020string\u0020is\u0020properly\u0020validated\u0020as\u0020false",
+            "url": "classes/chillerlan-QRCodeTest-Data-ByteTest.html#method_testBinaryStringInvalid"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ByteTest\u003A\u003A\u0024FQN",
             "name": "FQN",
             "summary": "",
@@ -3540,6 +3545,11 @@ Search.appendIndex(
             "name": "testValidateString",
             "summary": "Tests\u0020if\u0020a\u0020string\u0020is\u0020properly\u0020validated\u0020for\u0020the\u0020respective\u0020data\u0020mode",
             "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testValidateString"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestBinaryStringInvalid\u0028\u0029",
+            "name": "testBinaryStringInvalid",
+            "summary": "Tests\u0020if\u0020a\u0020binary\u0020string\u0020is\u0020properly\u0020validated\u0020as\u0020false",
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testBinaryStringInvalid"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AversionBreakpointProvider\u0028\u0029",
             "name": "versionBreakpointProvider",
