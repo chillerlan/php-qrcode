@@ -16,6 +16,7 @@ use PHPUnit\Framework\TestCase;
 use chillerlan\QRCode\Data\{Hanzi, QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
 use ReflectionClass;
 
+use function hex2bin;
 use function str_repeat;
 
 /**
@@ -96,6 +97,16 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	public function testValidateString(string $string, bool $expected):void{
 		/** @noinspection PhpUndefinedMethodInspection */
 		$this::assertSame($expected, $this->FQN::validateString($string));
+	}
+
+	/**
+	 * Tests if a binary string is properly validated as false
+	 *
+	 * @see https://github.com/chillerlan/php-qrcode/issues/182
+	 */
+	public function testBinaryStringInvalid():void{
+		/** @noinspection PhpUndefinedMethodInspection */
+		$this::assertFalse($this->FQN::validateString(hex2bin('01015989f47dff8e852122117e04c90b9f15defc1c36477b1fe1')));
 	}
 
 	/**

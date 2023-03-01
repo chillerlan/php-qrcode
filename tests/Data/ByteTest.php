@@ -40,4 +40,12 @@ final class ByteTest extends DataInterfaceTestAbstract{
 		$this::markTestSkipped('N/A (binary mode)');
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	public function testBinaryStringInvalid():void{
+		/** @noinspection PhpUnitTestFailedLineInspection */
+		$this::markTestSkipped('N/A (binary mode)');
+	}
+
 }

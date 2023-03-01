@@ -12,6 +12,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
 
+use Throwable;
 use function chr, implode, is_string, mb_convert_encoding, mb_detect_encoding,
 	mb_detect_order, mb_internal_encoding, mb_strlen, ord, sprintf, strlen;
 
@@ -79,8 +80,15 @@ final class Kanji extends QRDataModeAbstract{
 	 * checks if a string qualifies as SJIS Kanji
 	 */
 	public static function validateString(string $string):bool{
-		$string = self::convertEncoding($string);
-		$len    = strlen($string);
+
+		try{
+			$string = self::convertEncoding($string);
+		}
+		catch(Throwable $e){
+			return false;
+		}
+
+		$len = strlen($string);
 
 		if($len < 2 || $len % 2 !== 0){
 			return false;
