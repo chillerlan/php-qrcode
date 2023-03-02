@@ -210,7 +210,16 @@ class QRCode{
 			}
 		}
 
-		return $this->initOutputInterface()->dump($file);
+		return $this->renderMatrix($this->getMatrix(), $file);
+	}
+
+	/**
+	 * Renders a QR Code for the given QRMatrix and QROptions, saves $file optionally
+	 *
+	 * @return mixed
+	 */
+	public function renderMatrix(QRMatrix $matrix, string $file = null){
+		return $this->initOutputInterface($matrix)->dump($file);
 	}
 
 	/**
@@ -258,42 +267,33 @@ class QRCode{
 	}
 
 	/**
-	 * returns a fresh (built-in) QROutputInterface
+	 * initializes a fresh built-in or custom QROutputInterface
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function initOutputInterface():QROutputInterface{
+	protected function initOutputInterface(QRMatrix $matrix):QROutputInterface{
 
 		if($this->options->outputType === QROutputInterface::CUSTOM){
-			return $this->initCustomOutputInterface();
+
+			if(!class_exists($this->options->outputInterface)){
+				throw new QRCodeOutputException('invalid custom output module');
+			}
+
+			if(!in_array(QROutputInterface::class, class_implements($this->options->outputInterface))){
+				throw new QRCodeOutputException('custom output module does not implement QROutputInterface');
+			}
+
+			/** @phan-suppress-next-line PhanTypeExpectedObjectOrClassName */
+			return new $this->options->outputInterface($this->options, $matrix);
 		}
 
 		$outputInterface = QROutputInterface::MODES[$this->options->outputType] ?? false;
 
 		if($outputInterface){
-			return new $outputInterface($this->options, $this->getMatrix());
+			return new $outputInterface($this->options, $matrix);
 		}
 
 		throw new QRCodeOutputException('invalid output type');
-	}
-
-	/**
-	 * initializes a custom output module after checking the existence of the class and if it implemnts the required interface
-	 *
-	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
-	 */
-	protected function initCustomOutputInterface():QROutputInterface{
-
-		if(!class_exists($this->options->outputInterface)){
-			throw new QRCodeOutputException('invalid custom output module');
-		}
-
-		if(!in_array(QROutputInterface::class, class_implements($this->options->outputInterface))){
-			throw new QRCodeOutputException('custom output module does not implement QROutputInterface');
-		}
-
-		/** @phan-suppress-next-line PhanTypeExpectedObjectOrClassName */
-		return new $this->options->outputInterface($this->options, $this->getMatrix());
 	}
 
 	/**
