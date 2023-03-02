@@ -24,14 +24,12 @@ use function str_repeat;
  */
 abstract class DataInterfaceTestAbstract extends TestCase{
 
-	protected ReflectionClass $reflection;
-	protected QRData          $QRData;
-	protected string          $FQN;
-	protected string          $testdata;
+	protected QRData $QRData;
+	protected string $FQN;
+	protected string $testdata;
 
 	protected function setUp():void{
-		$this->QRData     = new QRData(new QROptions);
-		$this->reflection = new ReflectionClass($this->QRData);
+		$this->QRData = new QRData(new QROptions);
 	}
 
 	/**
@@ -78,7 +76,8 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	public function testGetMinimumVersion():void{
 		$this->QRData->setData([new $this->FQN($this->testdata)]);
 
-		$getMinimumVersion = $this->reflection->getMethod('getMinimumVersion');
+		$reflection        = new ReflectionClass(QRData::class);
+		$getMinimumVersion = $reflection->getMethod('getMinimumVersion');
 		$getMinimumVersion->setAccessible(true);
 		/** @var \chillerlan\QRCode\Common\Version $version */
 		$version = $getMinimumVersion->invoke($this->QRData);
@@ -133,10 +132,10 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		// get the filled bitbuffer
 		$bitBuffer = $this->QRData->getBitBuffer();
 		// read the first 4 bits
-		$this::assertTrue($bitBuffer->read(4) === $datamodeInterface->getDataMode());
+		$this::assertSame($datamodeInterface->getDataMode(), $bitBuffer->read(4));
 		// hanzi mode starts with a subset indicator
 		if($datamodeInterface instanceof Hanzi){
-			$this::assertTrue($bitBuffer->read(4) === Hanzi::GB2312_SUBSET);
+			$this::assertSame(Hanzi::GB2312_SUBSET, $bitBuffer->read(4));
 		}
 		// decode the data
 		/** @noinspection PhpUndefinedMethodInspection */
@@ -144,7 +143,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	}
 
 	/**
-	 * Tests if an exception is thrown when the data exceeds the maximum version while auto detecting
+	 * Tests if an exception is thrown when the data exceeds the maximum version while auto-detecting
 	 */
 	public function testGetMinimumVersionException():void{
 		$this->expectException(QRCodeDataException::class);

@@ -56,9 +56,6 @@ final class QRData{
 
 	/**
 	 * QRData constructor.
-	 *
-	 * @param \chillerlan\Settings\SettingsContainerInterface    $options
-	 * @param \chillerlan\QRCode\Data\QRDataModeInterface[]|null $dataSegments
 	 */
 	public function __construct(SettingsContainerInterface $options, array $dataSegments = []){
 		$this->options       = $options;
@@ -73,6 +70,8 @@ final class QRData{
 	 * Sets the data string (internally called by the constructor)
 	 *
 	 * Subsequent calls will overwrite the current state - use the QRCode::add*Segement() method instead
+	 *
+	 * @param \chillerlan\QRCode\Data\QRDataModeInterface[] $dataSegments
 	 */
 	public function setData(array $dataSegments):self{
 		$this->dataSegments = $dataSegments;

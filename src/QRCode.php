@@ -166,8 +166,6 @@ class QRCode{
 	/**
 	 * A collection of one or more data segments of [classname, data] to write
 	 *
-	 * @see \chillerlan\QRCode\Data\QRDataModeInterface
-	 *
 	 * @var \chillerlan\QRCode\Data\QRDataModeInterface[]
 	 */
 	protected array $dataSegments = [];
@@ -179,8 +177,6 @@ class QRCode{
 
 	/**
 	 * QRCode constructor.
-	 *
-	 * Sets the options instance
 	 */
 	public function __construct(SettingsContainerInterface $options = null){
 		$this->setOptions($options ?? new QROptions);
@@ -347,6 +343,8 @@ class QRCode{
 
 	/**
 	 * Clears the data segments array
+	 *
+	 * @codeCoverageIgnore
 	 */
 	public function clearSegments():self{
 		$this->dataSegments = [];
@@ -439,9 +437,10 @@ class QRCode{
 		// convert the string to the given charset
 		if($eciCharsetName !== null){
 			$data = mb_convert_encoding($data, $eciCharsetName, mb_internal_encoding());
-			// add ECI designator
-			$this->addSegment(new ECI($eciCharset->getID()));
-			$this->addSegment(new Byte($data));
+			$this
+				->addEciDesignator($eciCharset->getID())
+				->addByteSegment($data)
+			;
 
 			return $this;
 		}
