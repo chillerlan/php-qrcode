@@ -267,28 +267,20 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function initOutputInterface(QRMatrix $matrix):QROutputInterface{
+		$outputInterface = QROutputInterface::MODES[$this->options->outputType] ?? null;
 
 		if($this->options->outputType === QROutputInterface::CUSTOM){
-
-			if(!class_exists($this->options->outputInterface)){
-				throw new QRCodeOutputException('invalid custom output module');
-			}
-
-			if(!in_array(QROutputInterface::class, class_implements($this->options->outputInterface))){
-				throw new QRCodeOutputException('custom output module does not implement QROutputInterface');
-			}
-
-			/** @phan-suppress-next-line PhanTypeExpectedObjectOrClassName */
-			return new $this->options->outputInterface($this->options, $matrix);
+			$outputInterface = $this->options->outputInterface;
 		}
 
-		$outputInterface = QROutputInterface::MODES[$this->options->outputType] ?? false;
-
-		if($outputInterface){
-			return new $outputInterface($this->options, $matrix);
+		if(!$outputInterface || !class_exists($outputInterface)){
+			throw new QRCodeOutputException('invalid output module');
 		}
 
-		throw new QRCodeOutputException('invalid output type');
+		if(!in_array(QROutputInterface::class, class_implements($outputInterface))){
+			throw new QRCodeOutputException('output module does not implement QROutputInterface');
+		}
+		return new $outputInterface($this->options, $matrix);
 	}
 
 	/**
