@@ -12,7 +12,7 @@ namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Common\{EccLevel, ECICharset, MaskPattern, Mode, Version};
 use chillerlan\QRCode\Data\{
-	AlphaNum, Byte, ECI, Hanzi, Kanji, Number, QRCodeDataException, QRData, QRDataModeInterface, QRMatrix
+	AlphaNum, Byte, ECI, Hanzi, Kanji, Number, QRData, QRDataModeInterface, QRMatrix
 };
 use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, GDLuminanceSource, IMagickLuminanceSource, LuminanceSourceInterface};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
@@ -228,11 +228,6 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function getMatrix():QRMatrix{
-
-		if(empty($this->dataSegments)){
-			throw new QRCodeDataException('QRCode::getMatrix() No data given.');
-		}
-
 		$dataInterface = new QRData($this->options, $this->dataSegments);
 		$maskPattern   = $this->options->maskPattern === MaskPattern::AUTO
 			? MaskPattern::getBestPattern($dataInterface)

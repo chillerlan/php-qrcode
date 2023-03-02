@@ -60,16 +60,13 @@ final class QRData{
 	 * @param \chillerlan\Settings\SettingsContainerInterface    $options
 	 * @param \chillerlan\QRCode\Data\QRDataModeInterface[]|null $dataSegments
 	 */
-	public function __construct(SettingsContainerInterface $options, array $dataSegments = null){
+	public function __construct(SettingsContainerInterface $options, array $dataSegments = []){
 		$this->options       = $options;
 		$this->bitBuffer     = new BitBuffer;
 		$this->eccLevel      = new EccLevel($this->options->eccLevel);
 		$this->maxBitsForEcc = $this->eccLevel->getMaxBits();
 
-		if(!empty($dataSegments)){
-			$this->setData($dataSegments);
-		}
-
+		$this->setData($dataSegments);
 	}
 
 	/**

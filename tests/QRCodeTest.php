@@ -43,14 +43,4 @@ final class QRCodeTest extends TestCase{
 		(new QRCode($this->options))->render('test');
 	}
 
-	/**
-	 * tests if an exception is thrown when trying to call getMatrix() without data (empty string, no data set)
-	 */
-	public function testGetMatrixException():void{
-		$this->expectException(QRCodeDataException::class);
-		$this->expectExceptionMessage('QRCode::getMatrix() No data given.');
-
-		$this->qrcode->getMatrix();
-	}
-
 }
