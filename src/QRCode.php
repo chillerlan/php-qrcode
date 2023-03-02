@@ -183,12 +183,20 @@ class QRCode{
 	 * Sets the options instance
 	 */
 	public function __construct(SettingsContainerInterface $options = null){
-		$this->options = $options ?? new QROptions;
+		$this->setOptions($options ?? new QROptions);
+	}
 
-		// I hate this less
+	/**
+	 * Sets an options instance
+	 */
+	public function setOptions(SettingsContainerInterface $options):self{
+		$this->options = $options;
+
 		if($this->options->readerUseImagickIfAvailable){
 			$this->luminanceSourceFQN = IMagickLuminanceSource::class;
 		}
+
+		return $this;
 	}
 
 	/**

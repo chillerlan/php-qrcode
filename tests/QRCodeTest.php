@@ -40,7 +40,7 @@ final class QRCodeTest extends TestCase{
 
 		$this->options->outputType = 'foo';
 
-		(new QRCode($this->options))->render('test');
+		$this->qrcode->setOptions($this->options)->render('test');
 	}
 
 	/**
@@ -52,7 +52,7 @@ final class QRCodeTest extends TestCase{
 
 		$this->options->outputType = QROutputInterface::CUSTOM;
 
-		(new QRCode($this->options))->render('test');
+		$this->qrcode->setOptions($this->options)->render('test');
 	}
 
 	/**
@@ -65,7 +65,7 @@ final class QRCodeTest extends TestCase{
 		$this->options->outputType      = QROutputInterface::CUSTOM;
 		$this->options->outputInterface = stdClass::class;
 
-		(new QRCode($this->options))->render('test');
+		$this->qrcode->setOptions($this->options)->render('test');
 	}
 
 }
