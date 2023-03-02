@@ -171,7 +171,7 @@ final class Hanzi extends QRDataModeAbstract{
 		while($length > 0){
 			// Each 13 bits encodes a 2-byte character
 			$twoBytes          = $bitBuffer->read(13);
-			$assembledTwoBytes = (($twoBytes / 0x060) << 8) | ($twoBytes % 0x060);
+			$assembledTwoBytes = (((int)($twoBytes / 0x060)) << 8) | ($twoBytes % 0x060);
 
 			$assembledTwoBytes += ($assembledTwoBytes < 0x00a00) // 0x003BF
 				? 0x0a1a1  // In the 0xA1A1 to 0xAAFE range
