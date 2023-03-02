@@ -89,25 +89,27 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		$this::assertSame($expected, (string)$result);
 	}
 
-	public function testReaderMultiSegment():void{
+	public function testReaderMultiMode():void{
 		$this->options->outputType  = QROutputInterface::GDIMAGE_PNG;
 		$this->options->imageBase64 = false;
 
 		$numeric  = '123456789012345678901234567890';
 		$alphanum = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:';
-		$kanji    = '茗荷茗荷茗荷茗荷';
+		$kanji    = '漂う花の香り';
+		$hanzi    = '无可奈何燃花作香';
 		$byte     = 'https://smiley.codes/qrcode/';
 
 		$qrcode = (new QRCode($this->options))
 			->addNumericSegment($numeric)
 			->addAlphaNumSegment($alphanum)
 			->addKanjiSegment($kanji)
+			->addHanziSegment($hanzi)
 			->addByteSegment($byte)
 		;
 
 		$result = $qrcode->readFromBlob($qrcode->render());
 
-		$this::assertSame($numeric.$alphanum.$kanji.$byte, $result->data);
+		$this::assertSame($numeric.$alphanum.$kanji.$hanzi.$byte, $result->data);
 	}
 
 	public function dataTestProvider():Generator{
