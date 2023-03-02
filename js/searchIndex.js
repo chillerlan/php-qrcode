@@ -2716,10 +2716,20 @@ Search.appendIndex(
             "summary": "QRCode\u0020constructor.",
             "url": "classes/chillerlan-QRCode-QRCode.html#method___construct"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AsetOptions\u0028\u0029",
+            "name": "setOptions",
+            "summary": "Sets\u0020an\u0020options\u0020instance",
+            "url": "classes/chillerlan-QRCode-QRCode.html#method_setOptions"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003Arender\u0028\u0029",
             "name": "render",
             "summary": "Renders\u0020a\u0020QR\u0020Code\u0020for\u0020the\u0020given\u0020\u0024data\u0020and\u0020QROptions,\u0020saves\u0020\u0024file\u0020optionally",
             "url": "classes/chillerlan-QRCode-QRCode.html#method_render"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003ArenderMatrix\u0028\u0029",
+            "name": "renderMatrix",
+            "summary": "Renders\u0020a\u0020QR\u0020Code\u0020for\u0020the\u0020given\u0020QRMatrix\u0020and\u0020QROptions,\u0020saves\u0020\u0024file\u0020optionally",
+            "url": "classes/chillerlan-QRCode-QRCode.html#method_renderMatrix"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AgetMatrix\u0028\u0029",
             "name": "getMatrix",
@@ -2728,13 +2738,8 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AinitOutputInterface\u0028\u0029",
             "name": "initOutputInterface",
-            "summary": "returns\u0020a\u0020fresh\u0020\u0028built\u002Din\u0029\u0020QROutputInterface",
+            "summary": "initializes\u0020a\u0020fresh\u0020built\u002Din\u0020or\u0020custom\u0020QROutputInterface",
             "url": "classes/chillerlan-QRCode-QRCode.html#method_initOutputInterface"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AinitCustomOutputInterface\u0028\u0029",
-            "name": "initCustomOutputInterface",
-            "summary": "initializes\u0020a\u0020custom\u0020output\u0020module\u0020after\u0020checking\u0020the\u0020existence\u0020of\u0020the\u0020class\u0020and\u0020if\u0020it\u0020implemnts\u0020the\u0020required\u0020interface",
-            "url": "classes/chillerlan-QRCode-QRCode.html#method_initCustomOutputInterface"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AisNumber\u0028\u0029",
             "name": "isNumber",
@@ -3563,7 +3568,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestGetMinimumVersionException\u0028\u0029",
             "name": "testGetMinimumVersionException",
-            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020the\u0020data\u0020exceeds\u0020the\u0020maximum\u0020version\u0020while\u0020auto\u0020detecting",
+            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020the\u0020data\u0020exceeds\u0020the\u0020maximum\u0020version\u0020while\u0020auto\u002Ddetecting",
             "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testGetMinimumVersionException"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestCodeLengthOverflowException\u0028\u0029",
@@ -3580,11 +3585,6 @@ Search.appendIndex(
             "name": "testInvalidDataOnEmptyException",
             "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020if\u0020the\u0020given\u0020string\u0020is\u0020empty",
             "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testInvalidDataOnEmptyException"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003A\u0024reflection",
-            "name": "reflection",
-            "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#property_reflection"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003A\u0024QRData",
             "name": "QRData",
@@ -4161,10 +4161,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTestAbstract.html#method_testReader"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTestAbstract\u003A\u003AtestReaderMultiSegment\u0028\u0029",
-            "name": "testReaderMultiSegment",
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTestAbstract\u003A\u003AtestReaderMultiMode\u0028\u0029",
+            "name": "testReaderMultiMode",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTestAbstract.html#method_testReaderMultiSegment"
+            "url": "classes/chillerlan-QRCodeTest-QRCodeReaderTestAbstract.html#method_testReaderMultiMode"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderTestAbstract\u003A\u003AdataTestProvider\u0028\u0029",
             "name": "dataTestProvider",
@@ -4206,10 +4206,15 @@ Search.appendIndex(
             "summary": "tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020an\u0020invalid\u0020\u0028built\u002Din\u0029\u0020output\u0020type\u0020is\u0020specified",
             "url": "classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testInitOutputInterfaceException"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeTest\u003A\u003AtestGetMatrixException\u0028\u0029",
-            "name": "testGetMatrixException",
-            "summary": "tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020trying\u0020to\u0020call\u0020getMatrix\u0028\u0029\u0020without\u0020data\u0020\u0028empty\u0020string,\u0020no\u0020data\u0020set\u0029",
-            "url": "classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testGetMatrixException"
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeTest\u003A\u003AtestInitCustomOutputInterfaceNotExistsException\u0028\u0029",
+            "name": "testInitCustomOutputInterfaceNotExistsException",
+            "summary": "tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020if\u0020the\u0020given\u0020output\u0020class\u0020does\u0020not\u0020exist",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testInitCustomOutputInterfaceNotExistsException"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeTest\u003A\u003AtestInitCustomOutputInterfaceNotImplementsException\u0028\u0029",
+            "name": "testInitCustomOutputInterfaceNotImplementsException",
+            "summary": "tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020if\u0020the\u0020given\u0020output\u0020class\u0020does\u0020not\u0020implement\u0020QROutputInterface",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testInitCustomOutputInterfaceNotImplementsException"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeTest\u003A\u003A\u0024qrcode",
             "name": "qrcode",
