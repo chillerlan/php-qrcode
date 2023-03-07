@@ -89,6 +89,12 @@ interface QROutputInterface{
 	/**
 	 * generates the output, optionally dumps it to a file, and returns it
 	 *
+	 * please note that the value of QROptions::$cachefile is already evaluated at this point.
+	 * if the output module is invoked manually, it has no effect at all.
+	 * you need to supply the $file parameter here in that case (or handle the option value in your custom output module).
+	 *
+	 * @see \chillerlan\QRCode\QRCode::renderMatrix()
+	 *
 	 * @return mixed
 	 */
 	public function dump(string $file = null);

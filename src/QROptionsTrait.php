@@ -93,6 +93,8 @@ trait QROptionsTrait{
 
 	/**
 	 * /path/to/cache.file
+	 *
+	 * please note that the $file parameter in QRCode::render*() takes precedence over the $cachefile value
 	 */
 	protected ?string $cachefile = null;
 

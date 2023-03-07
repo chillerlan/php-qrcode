@@ -63,9 +63,8 @@ abstract class QROutputTestAbstract extends TestCase{
 		$this->expectException(QRCodeOutputException::class);
 		$this->expectExceptionMessage('Cannot write data to cache file: /foo/bar.test');
 
-		$this->options->cachefile = '/foo/bar.test';
 		$this->outputInterface = new $this->FQN($this->options, $this->matrix);
-		$this->outputInterface->dump();
+		$this->outputInterface->dump('/foo/bar.test');
 	}
 
 	/**
@@ -81,12 +80,13 @@ abstract class QROutputTestAbstract extends TestCase{
 	 * coverage of the built-in output modules
 	 */
 	public function testRenderToCacheFile():void{
-		$this->options->cachefile   = $this->builddir.'/test.'.$this->type;
 		$this->options->imageBase64 = false;
 		$this->outputInterface      = new $this->FQN($this->options, $this->matrix);
-		$data                       = $this->outputInterface->dump(); // creates the cache file
+		// create the cache file
+		$file = $this->builddir.'/test.output.'.$this->type;
+		$data = $this->outputInterface->dump($file);
 
-		$this::assertSame($data, file_get_contents($this->options->cachefile));
+		$this::assertSame($data, file_get_contents($file));
 	}
 
 }

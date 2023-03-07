@@ -39,9 +39,7 @@ class QRImageWithText extends QRGdImage{
 
 		$imageData = $this->dumpImage();
 
-		if($file !== null){
-			$this->saveToFile($imageData, $file);
-		}
+		$this->saveToFile($imageData, $file);
 
 		if($this->options->imageBase64){
 			$imageData = $this->toBase64DataURI($imageData, 'image/'.$this->options->outputType);

@@ -90,7 +90,6 @@ class QRFpdf extends QROutputAbstract{
 	 * @return string|\FPDF
 	 */
 	public function dump(string $file = null){
-		$file ??= $this->options->cachefile;
 
 		$fpdf = new FPDF('P', $this->options->fpdfMeasureUnit, [$this->length, $this->length]);
 		$fpdf->AddPage();
@@ -132,9 +131,7 @@ class QRFpdf extends QROutputAbstract{
 
 		$pdfData = $fpdf->Output('S');
 
-		if($file !== null){
-			$this->saveToFile($pdfData, $file);
-		}
+		$this->saveToFile($pdfData, $file);
 
 		if($this->options->imageBase64){
 			$pdfData = $this->toBase64DataURI($pdfData, 'application/pdf');

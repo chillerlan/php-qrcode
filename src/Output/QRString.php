@@ -45,7 +45,6 @@ class QRString extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	public function dump(string $file = null):string{
-		$file ??= $this->options->cachefile;
 
 		switch($this->options->outputType){
 			case QROutputInterface::STRING_TEXT:
@@ -56,9 +55,7 @@ class QRString extends QROutputAbstract{
 				$data = $this->json();
 		}
 
-		if($file !== null){
-			$this->saveToFile($data, $file);
-		}
+		$this->saveToFile($data, $file);
 
 		return $data;
 	}

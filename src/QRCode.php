@@ -223,7 +223,7 @@ class QRCode{
 	 * @return mixed
 	 */
 	public function renderMatrix(QRMatrix $matrix, string $file = null){
-		return $this->initOutputInterface($matrix)->dump($file);
+		return $this->initOutputInterface($matrix)->dump($file ?? $this->options->cachefile);
 	}
 
 	/**
@@ -284,6 +284,7 @@ class QRCode{
 		if(!in_array(QROutputInterface::class, class_implements($outputInterface))){
 			throw new QRCodeOutputException('output module does not implement QROutputInterface');
 		}
+
 		return new $outputInterface($this->options, $matrix);
 	}
 

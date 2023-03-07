@@ -70,7 +70,6 @@ class QRImagick extends QROutputAbstract{
 	 * @return string|\Imagick
 	 */
 	public function dump(string $file = null){
-		$file          ??= $this->options->cachefile;
 		$this->imagick = new Imagick;
 
 		$bgColor = $this->options->imageTransparent ? 'transparent' : 'white';
@@ -92,9 +91,7 @@ class QRImagick extends QROutputAbstract{
 
 		$this->imagick->destroy();
 
-		if($file !== null){
-			$this->saveToFile($imageData, $file);
-		}
+		$this->saveToFile($imageData, $file);
 
 		return $imageData;
 	}

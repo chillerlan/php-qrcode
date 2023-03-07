@@ -104,8 +104,6 @@ class QRGdImage extends QROutputAbstract{
 			throw new ErrorException($msg, 0, $severity, $file, $line);
 		});
 
-		$file ??= $this->options->cachefile;
-
 		// we're scaling the image up in order to draw crisp round circles, otherwise they appear square-y on small scales
 		if($this->options->drawCircularModules && $this->options->scale <= 20){
 			$this->length  = ($this->length + 2) * 10;
@@ -156,9 +154,7 @@ class QRGdImage extends QROutputAbstract{
 
 		$imageData = $this->dumpImage();
 
-		if($file !== null){
-			$this->saveToFile($imageData, $file);
-		}
+		$this->saveToFile($imageData, $file);
 
 		if($this->options->imageBase64){
 			$imageData = $this->toBase64DataURI($imageData, 'image/'.$this->options->outputType);

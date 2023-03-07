@@ -122,14 +122,18 @@ abstract class QROutputAbstract implements QROutputInterface{
 	}
 
 	/**
-	 * saves the qr data to a file
+	 * Saves the qr $data to a $file. If $file is null, nothing happens.
 	 *
 	 * @see file_put_contents()
-	 * @see \chillerlan\QRCode\QROptions::cachefile
+	 * @see \chillerlan\QRCode\QROptions::$cachefile
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function saveToFile(string $data, string $file):void{
+	protected function saveToFile(string $data, string $file = null):void{
+
+		if($file === null){
+			return;
+		}
 
 		if(!is_writable(dirname($file))){
 			throw new QRCodeOutputException(sprintf('Cannot write data to cache file: %s', $file));
