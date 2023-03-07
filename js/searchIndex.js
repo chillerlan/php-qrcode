@@ -2558,7 +2558,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AsaveToFile\u0028\u0029",
             "name": "saveToFile",
-            "summary": "saves\u0020the\u0020qr\u0020data\u0020to\u0020a\u0020file",
+            "summary": "Saves\u0020the\u0020qr\u0020\u0024data\u0020to\u0020a\u0020\u0024file.\u0020If\u0020\u0024file\u0020is\u0020null,\u0020nothing\u0020happens.",
             "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_saveToFile"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AcollectModules\u0028\u0029",
@@ -4216,6 +4216,16 @@ Search.appendIndex(
             "summary": "tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020if\u0020the\u0020given\u0020output\u0020class\u0020does\u0020not\u0020implement\u0020QROutputInterface",
             "url": "classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testInitCustomOutputInterfaceNotImplementsException"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeTest\u003A\u003AtestSaveException\u0028\u0029",
+            "name": "testSaveException",
+            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020trying\u0020to\u0020write\u0020a\u0020cache\u0020file\u0020to\u0020an\u0020invalid\u0020destination",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testSaveException"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeTest\u003A\u003AtestRenderToCacheFile\u0028\u0029",
+            "name": "testRenderToCacheFile",
+            "summary": "Tests\u0020if\u0020a\u0020cache\u0020file\u0020is\u0020properly\u0020saved\u0020in\u0020the\u0020given\u0020path",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testRenderToCacheFile"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeTest\u003A\u003A\u0024qrcode",
             "name": "qrcode",
             "summary": "",
@@ -4225,6 +4235,11 @@ Search.appendIndex(
             "name": "options",
             "summary": "",
             "url": "classes/chillerlan-QRCodeTest-QRCodeTest.html#property_options"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeTest\u003A\u003A\u0024builddir",
+            "name": "builddir",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-QRCodeTest.html#property_builddir"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRMaxLengthTrait",
             "name": "QRMaxLengthTrait",
