@@ -85,6 +85,7 @@ trait QRMaxLengthTrait{
 			Mode::ALPHANUM => 1,
 			Mode::BYTE     => 2,
 			Mode::KANJI    => 3,
+			Mode::HANZI    => 3, // similar to kanji mode
 		];
 
 		if(!isset($dataModes[$mode])){
