@@ -29,8 +29,8 @@
 		"chillerlan/php-settings-container": "^2.1.4"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^9.5",
-		"phan/phan": "^5.3",
+		"phpunit/phpunit": "^9.6",
+		"phan/phan": "^5.4",
 		"setasign/fpdf": "^1.8.2"
 	},
 	"suggest": {
