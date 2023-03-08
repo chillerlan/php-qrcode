@@ -13,7 +13,7 @@
 namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCode\{QRCodeException, QROptions};
-use chillerlan\QRCode\Common\{MaskPattern, Version};
+use chillerlan\QRCode\Common\Version;
 use PHPUnit\Framework\TestCase;
 
 /**

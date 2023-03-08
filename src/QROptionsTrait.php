@@ -14,7 +14,7 @@ namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
-use function array_values, count, extension_loaded, in_array, is_numeric, max, min, sprintf, strtolower;
+use function array_values, count, extension_loaded, in_array, is_numeric, max, min, strtolower;
 
 /**
  * The QRCode plug-in settings & setter functionality
