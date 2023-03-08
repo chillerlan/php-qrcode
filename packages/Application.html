@@ -128,17 +128,17 @@ the Galois Fields. Operations use a given primitive polynomial in calculations.<
         <dd>ISO/IEC 18004:2000 Section 8.8.1
 ISO/IEC 18004:2000 Section 8.8.2 - Evaluation of masking results</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Common-Mode.html"><abbr title="\chillerlan\QRCode\Common\Mode">Mode</abbr></a></dt>
-        <dd>ISO 18004:2006, 6.4.1, Tables 2 and 3</dd>
+        <dd>Data mode information - ISO 18004:2006, 6.4.1, Tables 2 and 3</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Common-ReedSolomonDecoder.html"><abbr title="\chillerlan\QRCode\Common\ReedSolomonDecoder">ReedSolomonDecoder</abbr></a></dt>
-        <dd>Implements Reed-Solomon decoding, as the name implies.</dd>
+        <dd>Implements Reed-Solomon decoding</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Common-ReedSolomonEncoder.html"><abbr title="\chillerlan\QRCode\Common\ReedSolomonEncoder">ReedSolomonEncoder</abbr></a></dt>
-        <dd>ISO/IEC 18004:2000 Section 8.5 ff</dd>
+        <dd>Reed-Solomon encoding - ISO/IEC 18004:2000 Section 8.5 ff</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a></dt>
         <dd>Version related tables and methods</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Data-AlphaNum.html"><abbr title="\chillerlan\QRCode\Data\AlphaNum">AlphaNum</abbr></a></dt>
         <dd>Alphanumeric mode: 0 to 9, A to Z, space, $ % * + - . / :</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Data-Byte.html"><abbr title="\chillerlan\QRCode\Data\Byte">Byte</abbr></a></dt>
-        <dd>Byte mode, ISO-8859-1 or UTF-8</dd>
+        <dd>8-bit Byte mode, ISO-8859-1 or UTF-8</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Data-ECI.html"><abbr title="\chillerlan\QRCode\Data\ECI">ECI</abbr></a></dt>
         <dd>Adds an ECI Designator</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Data-Hanzi.html"><abbr title="\chillerlan\QRCode\Data\Hanzi">Hanzi</abbr></a></dt>
@@ -154,7 +154,7 @@ ISO/IEC 18004:2000 Section 8.8.2 - Evaluation of masking results</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Data-QRDataModeAbstract.html"><abbr title="\chillerlan\QRCode\Data\QRDataModeAbstract">QRDataModeAbstract</abbr></a></dt>
         <dd>abstract methods for the several data modes</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></dt>
-        <dd>Holds a numerical representation of the final QR Code;
+        <dd>Holds an array representation of the final QR Code that contains numerical values for later output modifications;
 maps the ECC coded binary data and applies the mask pattern</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html"><abbr title="\chillerlan\QRCode\Decoder\Binarizer">Binarizer</abbr></a></dt>
         <dd>This class implements a local thresholding algorithm, which while slower than the
@@ -178,10 +178,7 @@ It does not support rotation.</dd>
 It does not support rotation.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceAbstract.html"><abbr title="\chillerlan\QRCode\Decoder\LuminanceSourceAbstract">LuminanceSourceAbstract</abbr></a></dt>
         <dd>The purpose of this class hierarchy is to abstract different bitmap implementations across
-platforms into a standard interface for requesting greyscale luminance values. The interface
-only provides immutable methods; therefore crop and rotation create copies. This is to ensure
-that one Reader does not modify the original luminance source and leave it in an unknown state
-for other Readers in the chain.</dd>
+platforms into a standard interface for requesting greyscale luminance values.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Decoder-QRCodeDecoderException.html"><abbr title="\chillerlan\QRCode\Decoder\QRCodeDecoderException">QRCodeDecoderException</abbr></a></dt>
         <dd>An exception container</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/chillerlan-QRCode-Detector-AlignmentPattern.html"><abbr title="\chillerlan\QRCode\Detector\AlignmentPattern">AlignmentPattern</abbr></a></dt>

@@ -548,7 +548,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\Mode",
             "name": "Mode",
-            "summary": "ISO\u002018004\u003A2006,\u00206.4.1,\u0020Tables\u00202\u0020and\u00203",
+            "summary": "Data\u0020mode\u0020information\u0020\u002D\u0020ISO\u002018004\u003A2006,\u00206.4.1,\u0020Tables\u00202\u0020and\u00203",
             "url": "classes/chillerlan-QRCode-Common-Mode.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\Mode\u003A\u003AgetLengthBitsForVersion\u0028\u0029",
@@ -623,7 +623,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\ReedSolomonDecoder",
             "name": "ReedSolomonDecoder",
-            "summary": "Implements\u0020Reed\u002DSolomon\u0020decoding,\u0020as\u0020the\u0020name\u0020implies.",
+            "summary": "Implements\u0020Reed\u002DSolomon\u0020decoding",
             "url": "classes/chillerlan-QRCode-Common-ReedSolomonDecoder.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\ReedSolomonDecoder\u003A\u003A__construct\u0028\u0029",
@@ -678,7 +678,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\ReedSolomonEncoder",
             "name": "ReedSolomonEncoder",
-            "summary": "ISO\/IEC\u002018004\u003A2000\u0020Section\u00208.5\u0020ff",
+            "summary": "Reed\u002DSolomon\u0020encoding\u0020\u002D\u0020ISO\/IEC\u002018004\u003A2000\u0020Section\u00208.5\u0020ff",
             "url": "classes/chillerlan-QRCode-Common-ReedSolomonEncoder.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\ReedSolomonEncoder\u003A\u003A__construct\u0028\u0029",
@@ -833,7 +833,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Byte",
             "name": "Byte",
-            "summary": "Byte\u0020mode,\u0020ISO\u002D8859\u002D1\u0020or\u0020UTF\u002D8",
+            "summary": "8\u002Dbit\u0020Byte\u0020mode,\u0020ISO\u002D8859\u002D1\u0020or\u0020UTF\u002D8",
             "url": "classes/chillerlan-QRCode-Data-Byte.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Byte\u003A\u003AgetLengthInBits\u0028\u0029",
@@ -1198,7 +1198,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix",
             "name": "QRMatrix",
-            "summary": "Holds\u0020a\u0020numerical\u0020representation\u0020of\u0020the\u0020final\u0020QR\u0020Code\u003B\nmaps\u0020the\u0020ECC\u0020coded\u0020binary\u0020data\u0020and\u0020applies\u0020the\u0020mask\u0020pattern",
+            "summary": "Holds\u0020an\u0020array\u0020representation\u0020of\u0020the\u0020final\u0020QR\u0020Code\u0020that\u0020contains\u0020numerical\u0020values\u0020for\u0020later\u0020output\u0020modifications\u003B\nmaps\u0020the\u0020ECC\u0020coded\u0020binary\u0020data\u0020and\u0020applies\u0020the\u0020mask\u0020pattern",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003A__construct\u0028\u0029",
@@ -1738,7 +1738,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\LuminanceSourceAbstract",
             "name": "LuminanceSourceAbstract",
-            "summary": "The\u0020purpose\u0020of\u0020this\u0020class\u0020hierarchy\u0020is\u0020to\u0020abstract\u0020different\u0020bitmap\u0020implementations\u0020across\nplatforms\u0020into\u0020a\u0020standard\u0020interface\u0020for\u0020requesting\u0020greyscale\u0020luminance\u0020values.\u0020The\u0020interface\nonly\u0020provides\u0020immutable\u0020methods\u003B\u0020therefore\u0020crop\u0020and\u0020rotation\u0020create\u0020copies.\u0020This\u0020is\u0020to\u0020ensure\nthat\u0020one\u0020Reader\u0020does\u0020not\u0020modify\u0020the\u0020original\u0020luminance\u0020source\u0020and\u0020leave\u0020it\u0020in\u0020an\u0020unknown\u0020state\nfor\u0020other\u0020Readers\u0020in\u0020the\u0020chain.",
+            "summary": "The\u0020purpose\u0020of\u0020this\u0020class\u0020hierarchy\u0020is\u0020to\u0020abstract\u0020different\u0020bitmap\u0020implementations\u0020across\nplatforms\u0020into\u0020a\u0020standard\u0020interface\u0020for\u0020requesting\u0020greyscale\u0020luminance\u0020values.",
             "url": "classes/chillerlan-QRCode-Decoder-LuminanceSourceAbstract.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\LuminanceSourceAbstract\u003A\u003A__construct\u0028\u0029",
@@ -2918,7 +2918,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003A\u0024dataSegments",
             "name": "dataSegments",
-            "summary": "A\u0020collection\u0020of\u0020one\u0020or\u0020more\u0020data\u0020segments\u0020of\u0020\u005Bclassname,\u0020data\u005D\u0020to\u0020write",
+            "summary": "A\u0020collection\u0020of\u0020one\u0020or\u0020more\u0020data\u0020segments\u0020of\u0020QRDataModeInterface\u0020instances\u0020to\u0020write",
             "url": "classes/chillerlan-QRCode-QRCode.html#property_dataSegments"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003A\u0024luminanceSourceFQN",
@@ -2960,16 +2960,6 @@ Search.appendIndex(
             "name": "set_version",
             "summary": "sets\/clamps\u0020the\u0020version\u0020number",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_version"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_eccLevel\u0028\u0029",
-            "name": "set_eccLevel",
-            "summary": "sets\u0020the\u0020error\u0020correction\u0020level",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_eccLevel"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_maskPattern\u0028\u0029",
-            "name": "set_maskPattern",
-            "summary": "sets\/clamps\u0020the\u0020mask\u0020pattern",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_maskPattern"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_quietzoneSize\u0028\u0029",
             "name": "set_quietzoneSize",
@@ -3608,7 +3598,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\HanziTest\u003A\u003AstringValidateProvider\u0028\u0029",
             "name": "stringValidateProvider",
-            "summary": "isGB2312\u0028\u0029\u0020should\u0020pass\u0020on\u0020Hanzi\/Hanzi\u0020characters\u0020and\u0020fail\u0020on\u0020everything\u0020else",
+            "summary": "isGB2312\u0028\u0029\u0020should\u0020pass\u0020on\u0020Hanzi\/GB2312\u0020characters\u0020and\u0020fail\u0020on\u0020everything\u0020else",
             "url": "classes/chillerlan-QRCodeTest-Data-HanziTest.html#method_stringValidateProvider"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\HanziTest\u003A\u003AhanziProvider\u0028\u0029",
@@ -3643,7 +3633,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\KanjiTest\u003A\u003AkanjiProvider\u0028\u0029",
             "name": "kanjiProvider",
-            "summary": "lists\u0020the\u0020valid\u0020SJIS\u0020kanj",
+            "summary": "lists\u0020the\u0020valid\u0020SJIS\u0020kanji",
             "url": "classes/chillerlan-QRCodeTest-Data-KanjiTest.html#method_kanjiProvider"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\KanjiTest\u003A\u003AtestValidateSJIS\u0028\u0029",
@@ -4280,21 +4270,6 @@ Search.appendIndex(
             "name": "testVersionMinMaxClamp",
             "summary": "Tests\u0020the\u0020\u0024versionMin\/\u0024versionMax\u0020clamping",
             "url": "classes/chillerlan-QRCodeTest-QROptionsTest.html#method_testVersionMinMaxClamp"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QROptionsTest\u003A\u003AMaskPatternProvider\u0028\u0029",
-            "name": "MaskPatternProvider",
-            "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-QROptionsTest.html#method_MaskPatternProvider"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QROptionsTest\u003A\u003AtestMaskPatternClamp\u0028\u0029",
-            "name": "testMaskPatternClamp",
-            "summary": "Tests\u0020the\u0020\u0024maskPattern\u0020clamping",
-            "url": "classes/chillerlan-QRCodeTest-QROptionsTest.html#method_testMaskPatternClamp"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QROptionsTest\u003A\u003AtestInvalidEccLevelException\u0028\u0029",
-            "name": "testInvalidEccLevelException",
-            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020on\u0020an\u0020incorrect\u0020ECC\u0020level",
-            "url": "classes/chillerlan-QRCodeTest-QROptionsTest.html#method_testInvalidEccLevelException"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QROptionsTest\u003A\u003ARGBProvider\u0028\u0029",
             "name": "RGBProvider",
