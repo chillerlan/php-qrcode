@@ -47,7 +47,7 @@ jobs:
         uses: ramsey/composer-install@v2
 
       - name: "Run phan"
-        run: php vendor/bin/phan
+        run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
 
 
   build-docs:
