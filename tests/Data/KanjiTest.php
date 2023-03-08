@@ -11,8 +11,8 @@
 namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\Data\Kanji;
-use Throwable;
-use function array_map, bin2hex, chr, defined, mb_internal_encoding, sprintf;
+use Generator, Throwable;
+use function bin2hex, chr, defined, sprintf;
 
 /**
  * Tests the Kanji class
@@ -37,12 +37,13 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 	}
 
 	/**
-	 * lists the valid SJIS kanj
+	 * lists the valid SJIS kanji
 	 */
-	public function kanjiProvider():array{
-		$list = [];
+	public function kanjiProvider():Generator{
+		$key = fn(int $byte1, int $byte2):string => sprintf('0x%X', ($byte1 << 8 | $byte2));
+		$val = fn(int $byte1, int $byte2):string => mb_convert_encoding(chr($byte1).chr($byte2), 'UTF-8', Kanji::ENCODING);
 
-		for($byte1 = 0x81; $byte1 < 0xeb; $byte1 += 0x1){
+		for($byte1 = 0x81; $byte1 < 0xeb; $byte1++){
 
 			// skip invalid/vendor ranges
 			if(($byte1 > 0x84 && $byte1 < 0x88) || ($byte1 > 0x9f && $byte1 < 0xe0)){
@@ -58,7 +59,7 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 						continue;
 					}
 
-					$list[] = [chr($byte1).chr($byte2)];
+					yield $key($byte1, $byte2) => [$val($byte1, $byte2)];
 				}
 
 			}
@@ -66,15 +67,13 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 			else{
 
 				for($byte2 = 0x9f; $byte2 < 0xfd; $byte2++){
-					$list[] = [chr($byte1).chr($byte2)];
+					yield $key($byte1, $byte2) => [$val($byte1, $byte2)];
 				}
 
 			}
 
 		}
 
-		// we need to put the joined byte sequence in a proper encoding
-		return array_map(fn($chr) => mb_convert_encoding($chr, Kanji::ENCODING, Kanji::ENCODING), $list);
 	}
 
 	/**
@@ -93,8 +92,8 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 
 			$this::markTestSkipped(sprintf(
 				'invalid glyph: %s => %s',
-				bin2hex($chr),
-				mb_convert_encoding($chr, Kanji::ENCODING, mb_internal_encoding())
+				bin2hex(mb_convert_encoding($chr, Kanji::ENCODING, 'UTF-8')),
+				$chr
 			));
 		}
 	}
