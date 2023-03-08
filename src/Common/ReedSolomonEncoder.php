@@ -13,7 +13,7 @@ namespace chillerlan\QRCode\Common;
 use function array_fill, array_merge, count, max;
 
 /**
- * ISO/IEC 18004:2000 Section 8.5 ff
+ * Reed-Solomon encoding - ISO/IEC 18004:2000 Section 8.5 ff
  *
  * @see http://www.thonky.com/qr-code-tutorial/error-correction-coding
  */

@@ -18,10 +18,7 @@ use function array_slice, array_splice, file_exists, is_file, is_readable, realp
 
 /**
  * The purpose of this class hierarchy is to abstract different bitmap implementations across
- * platforms into a standard interface for requesting greyscale luminance values. The interface
- * only provides immutable methods; therefore crop and rotation create copies. This is to ensure
- * that one Reader does not modify the original luminance source and leave it in an unknown state
- * for other Readers in the chain.
+ * platforms into a standard interface for requesting greyscale luminance values.
  *
  * @author dswitkin@google.com (Daniel Switkin)
  */

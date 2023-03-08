@@ -3,9 +3,10 @@
  * Class ECICharset
  *
  * @created      21.01.2021
+ * @author       ZXing Authors
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2021 smiley
- * @license      MIT
+ * @license      Apache-2.0
  */
 
 namespace chillerlan\QRCode\Common;

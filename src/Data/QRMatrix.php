@@ -14,7 +14,7 @@ use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, ReedSolomonEncod
 use function array_fill, count, floor, range;
 
 /**
- * Holds a numerical representation of the final QR Code;
+ * Holds an array representation of the final QR Code that contains numerical values for later output modifications;
  * maps the ECC coded binary data and applies the mask pattern
  *
  * @see http://www.thonky.com/qr-code-tutorial/format-version-information

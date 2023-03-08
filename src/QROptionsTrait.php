@@ -49,6 +49,9 @@ trait QROptionsTrait{
 	 *   - M => 15%
 	 *   - Q => 25%
 	 *   - H => 30%
+	 *
+	 * @todo: accept string values (PHP8+)
+	 * @see https://github.com/chillerlan/php-qrcode/discussions/160
 	 */
 	protected int $eccLevel = EccLevel::L;
 

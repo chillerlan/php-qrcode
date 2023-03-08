@@ -164,7 +164,7 @@ class QRCode{
 	protected SettingsContainerInterface $options;
 
 	/**
-	 * A collection of one or more data segments of [classname, data] to write
+	 * A collection of one or more data segments of QRDataModeInterface instances to write
 	 *
 	 * @var \chillerlan\QRCode\Data\QRDataModeInterface[]
 	 */
@@ -338,8 +338,10 @@ class QRCode{
 	 * ISO/IEC 18004:2000 8.3.6 - Mixing modes
 	 * ISO/IEC 18004:2000 Annex H - Optimisation of bit stream length
 	 */
-	public function addSegment(QRDataModeInterface $segment):void{
+	public function addSegment(QRDataModeInterface $segment):self{
 		$this->dataSegments[] = $segment;
+
+		return $this;
 	}
 
 	/**
@@ -359,9 +361,7 @@ class QRCode{
 	 * ISO/IEC 18004:2000 8.3.2 - Numeric Mode
 	 */
 	public function addNumericSegment(string $data):self{
-		$this->addSegment(new Number($data));
-
-		return $this;
+		return $this->addSegment(new Number($data));
 	}
 
 	/**
@@ -370,9 +370,7 @@ class QRCode{
 	 * ISO/IEC 18004:2000 8.3.3 - Alphanumeric Mode
 	 */
 	public function addAlphaNumSegment(string $data):self{
-		$this->addSegment(new AlphaNum($data));
-
-		return $this;
+		return $this->addSegment(new AlphaNum($data));
 	}
 
 	/**
@@ -381,9 +379,7 @@ class QRCode{
 	 * ISO/IEC 18004:2000 8.3.5 - Kanji Mode
 	 */
 	public function addKanjiSegment(string $data):self{
-		$this->addSegment(new Kanji($data));
-
-		return $this;
+		return $this->addSegment(new Kanji($data));
 	}
 
 	/**
@@ -392,9 +388,7 @@ class QRCode{
 	 * GBT18284-2000 Hanzi Mode
 	 */
 	public function addHanziSegment(string $data):self{
-		$this->addSegment(new Hanzi($data));
-
-		return $this;
+		return $this->addSegment(new Hanzi($data));
 	}
 
 	/**
@@ -403,9 +397,7 @@ class QRCode{
 	 * ISO/IEC 18004:2000 8.3.4 - 8-bit Byte Mode
 	 */
 	public function addByteSegment(string $data):self{
-		$this->addSegment(new Byte($data));
-
-		return $this;
+		return $this->addSegment(new Byte($data));
 	}
 
 	/**
@@ -416,9 +408,7 @@ class QRCode{
 	 * ISO/IEC 18004:2000 8.3.1 - Extended Channel Interpretation (ECI) Mode
 	 */
 	public function addEciDesignator(int $encoding):self{
-		$this->addSegment(new ECI($encoding));
-
-		return $this;
+		return $this->addSegment(new ECI($encoding));
 	}
 
 	/**
@@ -438,12 +428,11 @@ class QRCode{
 		// convert the string to the given charset
 		if($eciCharsetName !== null){
 			$data = mb_convert_encoding($data, $eciCharsetName, mb_internal_encoding());
-			$this
+
+			return $this
 				->addEciDesignator($eciCharset->getID())
 				->addByteSegment($data)
 			;
-
-			return $this;
 		}
 
 		throw new QRCodeException('unable to add ECI segment');

@@ -96,7 +96,7 @@ final class QRData{
 	 * Sets a BitBuffer object
 	 *
 	 * This can be used instead of setData(), however, the version auto-detection is not available in this case.
-	 * The version needs match the length bits range for the data mode the data has been encoded with,
+	 * The version needs to match the length bits range for the data mode the data has been encoded with,
 	 * additionally the bit array needs to contain enough pad bits.
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException

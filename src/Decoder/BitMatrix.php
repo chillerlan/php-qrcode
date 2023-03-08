@@ -61,7 +61,7 @@ final class BitMatrix extends QRMatrix{
 		0x2BED, // 0010101111101101
 	];
 
-	private const FORMAT_INFO_MASK_QR = 0x5412;
+	private const FORMAT_INFO_MASK_QR = 0x5412; // 0101010000010010
 
 	private bool $mirror = false;
 

@@ -15,7 +15,7 @@ use chillerlan\QRCode\QRCodeException;
 use function array_fill, array_reverse, count;
 
 /**
- * Implements Reed-Solomon decoding, as the name implies.
+ * Implements Reed-Solomon decoding
  *
  * The algorithm will not be explained here, but the following references were helpful
  * in creating this implementation:

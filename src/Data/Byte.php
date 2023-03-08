@@ -15,7 +15,7 @@ use chillerlan\QRCode\Common\{BitBuffer, Mode};
 use function chr, ord;
 
 /**
- * Byte mode, ISO-8859-1 or UTF-8
+ * 8-bit Byte mode, ISO-8859-1 or UTF-8
  *
  * ISO/IEC 18004:2000 Section 8.3.4
  * ISO/IEC 18004:2000 Section 8.4.4
