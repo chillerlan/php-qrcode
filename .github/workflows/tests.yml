@@ -18,6 +18,15 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      fail-fast: true
+      matrix:
+        php-version:
+          - "7.4"
+          - "8.0"
+          - "8.1"
+          - "8.2"
+
     env:
       PHAN_ALLOW_XDEBUG: 0
       PHAN_DISABLE_XDEBUG_WARN: 1
@@ -29,19 +38,21 @@ jobs:
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "7.4"
+          php-version: ${{ matrix.php-version }}
           coverage: none
           tools: pecl
           extensions: ast, gd, imagick, json, mbstring
 
       - name: "Update dependencies with composer"
-        run: composer update --no-interaction --no-ansi --no-progress --no-suggest
+        uses: ramsey/composer-install@v2
 
       - name: "Run phan"
-        run: php vendor/bin/phan
+        run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
 
   tests:
     name: "Unit Tests"
+
+    needs: static-code-analysis
 
     runs-on: ${{ matrix.os }}
 
@@ -58,10 +69,6 @@ jobs:
           - "8.2"
 
     steps:
-#      - name: "Configure git to avoid issues with line endings"
-#        if: matrix.os == 'windows-latest'
-#        run: git config --global core.autocrlf false
-
       - name: "Checkout"
         uses: actions/checkout@v3
 
@@ -74,7 +81,7 @@ jobs:
           extensions: gd, imagick, json, mbstring
 
       - name: "Install dependencies with composer"
-        run: composer update --no-ansi --no-interaction --no-progress --no-suggest
+        uses: ramsey/composer-install@v2
 
       - name: "Run tests with phpunit"
         run: php vendor/bin/phpunit --configuration=phpunit.xml
