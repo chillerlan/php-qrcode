@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         php-version:
           - "7.4"
@@ -48,6 +48,7 @@ jobs:
 
       - name: "Run phan"
         run: php vendor/bin/phan
+
 
   build-docs:
     name: "Build and publish Docs"
@@ -78,8 +79,11 @@ jobs:
           folder: docs
           clean: true
 
+
   tests:
     name: "Unit Tests"
+
+    needs: static-code-analysis
 
     runs-on: ${{ matrix.os }}
 
