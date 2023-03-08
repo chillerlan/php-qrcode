@@ -390,34 +390,6 @@ trait QROptionsTrait{
 	}
 
 	/**
-	 * sets the error correction level
-	 *
-	 * @todo: accept string values (PHP8+)
-	 * @see https://github.com/chillerlan/php-qrcode/discussions/160
-	 *
-	 * @throws \chillerlan\QRCode\QRCodeException
-	 */
-	protected function set_eccLevel(int $eccLevel):void{
-
-		if((0b11 & $eccLevel) !== $eccLevel){
-			throw new QRCodeException(sprintf('Invalid error correct level: %s', $eccLevel));
-		}
-
-		$this->eccLevel = $eccLevel;
-	}
-
-	/**
-	 * sets/clamps the mask pattern
-	 */
-	protected function set_maskPattern(int $maskPattern):void{
-
-		if($maskPattern !== MaskPattern::AUTO){
-			$this->maskPattern = max(0, min(7, $maskPattern));
-		}
-
-	}
-
-	/**
 	 * sets/clamps the quiet zone size
 	 */
 	protected function set_quietzoneSize(int $quietzoneSize):void{

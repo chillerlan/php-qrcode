@@ -69,38 +69,6 @@ final class QROptionsTest extends TestCase{
 	}
 
 	/**
-	 * @return int[][]
-	 */
-	public function MaskPatternProvider():array{
-		return [
-			'exceed max'   => [42, 7,],
-			'exceed min'   => [-42, 0],
-			'default (-1)' => [MaskPattern::AUTO, -1],
-		];
-	}
-
-	/**
-	 * Tests the $maskPattern clamping
-	 *
-	 * @dataProvider MaskPatternProvider
-	 */
-	public function testMaskPatternClamp(int $maskPattern, int $expected):void{
-		$o = new QROptions(['maskPattern' => $maskPattern]);
-
-		$this::assertSame($expected, $o->maskPattern);
-	}
-
-	/**
-	 * Tests if an exception is thrown on an incorrect ECC level
-	 */
-	public function testInvalidEccLevelException():void{
-		$this->expectException(QRCodeException::class);
-		$this->expectExceptionMessage('Invalid error correct level: 42');
-
-		$o = new QROptions(['eccLevel' => 42]);
-	}
-
-	/**
 	 * @return int[][][]
 	 */
 	public function RGBProvider():array{
