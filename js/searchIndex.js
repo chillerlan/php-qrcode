@@ -1261,10 +1261,10 @@ Search.appendIndex(
             "summary": "Checks\u0020whether\u0020a\u0020module\u0020is\u0020of\u0020the\u0020given\u0020\u0024M_TYPE",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkType"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AcheckTypeNotIn\u0028\u0029",
-            "name": "checkTypeNotIn",
-            "summary": "checks\u0020whether\u0020the\u0020module\u0020at\u0020\u0028\u0024x,\u0020\u0024y\u0029\u0020is\u0020not\u0020in\u0020the\u0020given\u0020array\u0020of\u0020\u0024M_TYPES,\nreturns\u0020true\u0020if\u0020no\u0020matches\u0020are\u0020found,\u0020otherwise\u0020false.",
-            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkTypeNotIn"
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AcheckTypeIn\u0028\u0029",
+            "name": "checkTypeIn",
+            "summary": "checks\u0020whether\u0020the\u0020module\u0020at\u0020\u0028\u0024x,\u0020\u0024y\u0029\u0020is\u0020in\u0020the\u0020given\u0020array\u0020of\u0020\u0024M_TYPES,\nreturns\u0020true\u0020if\u0020a\u0020match\u0020is\u0020found,\u0020otherwise\u0020false.",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkTypeIn"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003Acheck\u0028\u0029",
             "name": "check",
@@ -3816,10 +3816,10 @@ Search.appendIndex(
             "summary": "Tests\u0020flipping\u0020the\u0020value\u0020of\u0020a\u0020module",
             "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testFlip"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AtestCheckTypeNotIn\u0028\u0029",
-            "name": "testCheckTypeNotIn",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AtestCheckTypeIn\u0028\u0029",
+            "name": "testCheckTypeIn",
             "summary": "Tests\u0020checking\u0020whether\u0020the\u0020M_TYPE\u0020of\u0020a\u0020module\u0020is\u0020not\u0020one\u0020of\u0020an\u0020array\u0020of\u0020M_TYPES",
-            "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testCheckTypeNotIn"
+            "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testCheckTypeIn"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AtestCheckNeighbours\u0028\u0029",
             "name": "testCheckNeighbours",
