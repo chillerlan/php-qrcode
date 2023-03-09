@@ -244,7 +244,7 @@ final class QRMatrixTest extends TestCase{
 		foreach($alignmentPattern as $py){
 			foreach($alignmentPattern as $px){
 				// skip finder pattern
-				if($matrix->checkTypeNotIn($px, $py, [QRMatrix::M_FINDER, QRMatrix::M_FINDER_DOT])){
+				if(!$matrix->checkTypeIn($px, $py, [QRMatrix::M_FINDER, QRMatrix::M_FINDER_DOT])){
 					$this::assertSame(QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK, $matrix->get($px, $py));
 				}
 			}
@@ -272,7 +272,7 @@ final class QRMatrixTest extends TestCase{
 		for($i = 7; $i < $size - 7; $i++){
 			if($i % 2 === 0){
 				// skip alignment pattern
-				if($matrix->checkTypeNotIn(6, $i, [QRMatrix::M_ALIGNMENT])){
+				if(!$matrix->checkTypeIn(6, $i, [QRMatrix::M_ALIGNMENT])){
 					$this::assertSame(QRMatrix::M_TIMING | QRMatrix::IS_DARK, $matrix->get(6, $i));
 					$this::assertSame(QRMatrix::M_TIMING | QRMatrix::IS_DARK, $matrix->get($i, 6));
 				}
@@ -499,11 +499,11 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests checking whether the M_TYPE of a module is not one of an array of M_TYPES
 	 */
-	public function testCheckTypeNotIn():void{
+	public function testCheckTypeIn():void{
 		$this->matrix->set(10, 10, true, QRMatrix::M_QUIETZONE);
 
-		$this::assertTrue($this->matrix->checkTypeNotIn(10, 10, [QRMatrix::M_DATA, QRMatrix::M_FINDER]));
-		$this::assertFalse($this->matrix->checkTypeNotIn(10, 10, [QRMatrix::M_QUIETZONE, QRMatrix::M_FINDER]));
+		$this::assertFalse($this->matrix->checkTypeIn(10, 10, [QRMatrix::M_DATA, QRMatrix::M_FINDER]));
+		$this::assertTrue($this->matrix->checkTypeIn(10, 10, [QRMatrix::M_QUIETZONE, QRMatrix::M_FINDER]));
 	}
 
 	/**

@@ -137,7 +137,7 @@ class QRMarkupSVG extends QRMarkup{
 			return '';
 		}
 
-		if($this->options->drawCircularModules && $this->matrix->checkTypeNotIn($x, $y, $this->options->keepAsSquare)){
+		if($this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)){
 			$r = $this->options->circleRadius;
 
 			return sprintf(

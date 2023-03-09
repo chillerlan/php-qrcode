@@ -179,7 +179,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 			foreach($row as $x => $M_TYPE){
 				$M_TYPE_LAYER = $M_TYPE;
 
-				if($this->matrix->checkTypeNotIn($x, $y, $this->options->excludeFromConnect)){
+				if(!$this->matrix->checkTypeIn($x, $y, $this->options->excludeFromConnect)){
 					// to connect paths we'll redeclare the $M_TYPE_LAYER to data only
 					$M_TYPE_LAYER = QRMatrix::M_DATA;
 
