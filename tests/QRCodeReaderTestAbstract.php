@@ -19,7 +19,7 @@ use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\Settings\SettingsContainerInterface;
 use PHPUnit\Framework\TestCase;
 use Exception, Generator;
-use function array_map, range, sprintf, str_repeat, substr;
+use function array_map, sprintf, str_repeat, substr;
 
 /**
  * Tests the QR Code reader
@@ -116,7 +116,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		$str       = str_repeat($this::loremipsum, 5);
 		$eccLevels = array_map(fn(int $ecc):EccLevel => new EccLevel($ecc), [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H]);
 
-		foreach(range(1, 40) as $v){
+		for($v = 1; $v <= 40; $v++){
 			$version = new Version($v);
 
 			foreach($eccLevels as $eccLevel){
