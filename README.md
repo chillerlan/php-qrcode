@@ -1,13 +1,12 @@
 # chillerlan/php-qrcode
 
-A PHP QR Code library based on the [implementation by Kazuhiko Arase](https://github.com/kazuhikoarase/qrcode-generator),
-namespaced, cleaned up, improved and other stuff. It also features a QR Code reader which is based on the [ZXing library](https://github.com/zxing/zxing).
+A PHP QR Code generator based on the [implementation by Kazuhiko Arase](https://github.com/kazuhikoarase/qrcode-generator),
+namespaced, cleaned up, improved and other stuff. It also features a QR Code reader based on a [PHP port](https://github.com/khanamiryan/php-qrcode-detector-decoder) of the [ZXing library](https://github.com/zxing/zxing).
 
 **Attention:** there is now also a javascript port: [chillerlan/js-qrcode](https://github.com/chillerlan/js-qrcode).
 
 [![PHP Version Support][php-badge]][php]
 [![Packagist version][packagist-badge]][packagist]
-[![License][license-badge]][license]
 [![Continuous Integration][gh-action-badge]][gh-action]
 [![CodeCov][coverage-badge]][coverage]
 [![Scrunitizer CI][scrutinizer-badge]][scrutinizer]
@@ -17,8 +16,6 @@ namespaced, cleaned up, improved and other stuff. It also features a QR Code rea
 [php]: https://www.php.net/supported-versions.php
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?logo=packagist
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
-[license-badge]: https://img.shields.io/badge/license-MIT-green.svg
-[license]: https://github.com/chillerlan/php-qrcode/blob/main/LICENSE-MIT
 [coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode.svg?logo=codecov
 [coverage]: https://codecov.io/github/chillerlan/php-qrcode
 [scrutinizer-badge]: https://img.shields.io/scrutinizer/g/chillerlan/php-qrcode.svg?logo=scrutinizer
@@ -142,7 +139,7 @@ Hi, please check out my other projects that are way cooler than qrcodes!
 I don't take responsibility for molten CPUs, misled applications, failed log-ins etc.. Use at your own risk!
 
 #### License notice
-Parts of this code are [ported to php](https://github.com/khanamiryan/php-qrcode-detector-decoder) from the [ZXing project](https://github.com/zxing/zxing) and licensed under the [Apache License, Version 2.0](./NOTICE).
+Parts of this code are [ported to PHP](https://github.com/codemasher/php-qrcode-decoder) from the [ZXing project](https://github.com/zxing/zxing) and licensed under the [Apache License, Version 2.0](./NOTICE).
 
 #### Trademark Notice
 
