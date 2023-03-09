@@ -14,9 +14,9 @@ namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
-use Imagick, ImagickDraw, ImagickPixel;
-
+use finfo, Imagick, ImagickDraw, ImagickPixel;
 use function extension_loaded, is_string;
+use const FILEINFO_MIME_TYPE;
 
 /**
  * ImageMagick output module (requires ext-imagick)
@@ -92,6 +92,10 @@ class QRImagick extends QROutputAbstract{
 		$this->imagick->destroy();
 
 		$this->saveToFile($imageData, $file);
+
+		if($this->options->imageBase64){
+			$imageData = $this->toBase64DataURI($imageData, (new finfo(FILEINFO_MIME_TYPE))->buffer($imageData));
+		}
 
 		return $imageData;
 	}
