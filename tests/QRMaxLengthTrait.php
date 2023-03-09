@@ -78,7 +78,7 @@ trait QRMaxLengthTrait{
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 * @codeCoverageIgnore
 	 */
-	public function getMaxLengthForMode(int $mode, Version $version, EccLevel $eccLevel):?int{
+	public static function getMaxLengthForMode(int $mode, Version $version, EccLevel $eccLevel):?int{
 
 		$dataModes = [
 			Mode::NUMBER   => 0,

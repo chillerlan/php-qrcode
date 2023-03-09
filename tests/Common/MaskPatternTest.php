@@ -22,7 +22,7 @@ use PHPUnit\Framework\TestCase;
 final class MaskPatternTest extends TestCase{
 
 	// See mask patterns on the page 43 of JISX0510:2004.
-	public function maskPatternProvider():array{
+	public static function maskPatternProvider():array{
 		return [
 			'PATTERN_000' => [MaskPattern::PATTERN_000, [
 				[1, 0, 1, 0, 1, 0],

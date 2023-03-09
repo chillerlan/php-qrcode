@@ -52,7 +52,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	 * @see testInitMatrix()
 	 * @return int[][]
 	 */
-	public function maskPatternProvider():array{
+	public static function maskPatternProvider():array{
 		return [[0], [1], [2], [3], [4], [5], [6], [7]];
 	}
 
@@ -86,7 +86,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$this::assertSame(1, $version->getVersionNumber());
 	}
 
-	abstract public function stringValidateProvider():array;
+	abstract public static function stringValidateProvider():array;
 
 	/**
 	 * Tests if a string is properly validated for the respective data mode
@@ -111,7 +111,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	/**
 	 * returns versions within the version breakpoints 1-9, 10-26 and 27-40
 	 */
-	public function versionBreakpointProvider():array{
+	public static function versionBreakpointProvider():array{
 		return ['1-9' => [7], '10-26' => [15], '27-40' => [30]];
 	}
 

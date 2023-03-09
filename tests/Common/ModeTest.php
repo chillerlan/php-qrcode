@@ -22,7 +22,7 @@ final class ModeTest extends TestCase{
 	/**
 	 * version breakpoints for numeric mode
 	 */
-	public function versionProvider():array{
+	public static function versionProvider():array{
 		return [
 			[ 1, 10],
 			[ 9, 10],

@@ -167,7 +167,7 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Version data provider for several pattern tests
 	 */
-	public function matrixProvider():Generator{
+	public static function matrixProvider():Generator{
 		$ecc  = new EccLevel(EccLevel::L);
 		$mask = new MaskPattern(MaskPattern::PATTERN_000);
 

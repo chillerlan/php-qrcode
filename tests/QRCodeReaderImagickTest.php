@@ -33,7 +33,7 @@ final class QRCodeReaderImagickTest extends QRCodeReaderTestAbstract{
 		$this->options->readerUseImagickIfAvailable = true;
 	}
 
-	public function vectorQRCodeProvider():array{
+	public static function vectorQRCodeProvider():array{
 		return [
 			// SVG convert only works on windows (Warning: Option --export-png= is deprecated)
 			'SVG' => ['vector_sample.svg', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'],

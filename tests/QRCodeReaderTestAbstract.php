@@ -44,7 +44,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		$this->options->readerUseImagickIfAvailable = false;
 	}
 
-	public function qrCodeProvider():array{
+	public static function qrCodeProvider():array{
 		return [
 			'helloworld' => ['hello_world.png', 'Hello world!', false],
 			// covers mirroring
@@ -112,8 +112,8 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		$this::assertSame($numeric.$alphanum.$kanji.$hanzi.$byte, $result->data);
 	}
 
-	public function dataTestProvider():Generator{
-		$str       = str_repeat($this::loremipsum, 5);
+	public static function dataTestProvider():Generator{
+		$str       = str_repeat(self::loremipsum, 5);
 		$eccLevels = array_map(fn(int $ecc):EccLevel => new EccLevel($ecc), [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H]);
 
 		for($v = 1; $v <= 40; $v++){
@@ -123,7 +123,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 				yield 'version: '.$version.$eccLevel => [
 					$version,
 					$eccLevel,
-					substr($str, 0, $this->getMaxLengthForMode(Mode::BYTE, $version, $eccLevel) ?? '')
+					substr($str, 0, self::getMaxLengthForMode(Mode::BYTE, $version, $eccLevel) ?? '')
 				];
 			}
 		}

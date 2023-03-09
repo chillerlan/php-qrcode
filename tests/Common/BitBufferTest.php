@@ -25,7 +25,7 @@ final class BitBufferTest extends TestCase{
 		$this->bitBuffer = new BitBuffer;
 	}
 
-	public function bitProvider():array{
+	public static function bitProvider():array{
 		return [
 			'number'   => [Mode::NUMBER, 16],
 			'alphanum' => [Mode::ALPHANUM, 32],

@@ -25,7 +25,7 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 	/**
 	 * isKanji() should pass on Kanji/SJIS characters and fail on everything else
 	 */
-	public function stringValidateProvider():array{
+	public static function stringValidateProvider():array{
 		return [
 			['茗荷', true],
 			['Ã', false], // this will fail in SJIS-2004
@@ -39,7 +39,7 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 	/**
 	 * lists the valid SJIS kanji
 	 */
-	public function kanjiProvider():Generator{
+	public static function kanjiProvider():Generator{
 		$key = fn(int $byte1, int $byte2):string => sprintf('0x%X', ($byte1 << 8 | $byte2));
 		$val = fn(int $byte1, int $byte2):string => mb_convert_encoding(chr($byte1).chr($byte2), 'UTF-8', Kanji::ENCODING);
 

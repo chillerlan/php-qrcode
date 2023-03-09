@@ -23,7 +23,7 @@ final class AlphaNumTest extends DataInterfaceTestAbstract{
 	/**
 	 * isAlphaNum() should pass on the 45 defined characters and fail on anything else (e.g. lowercase)
 	 */
-	public function stringValidateProvider():array{
+	public static function stringValidateProvider():array{
 		return [
 			['ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:', true],
 			['abc', false],

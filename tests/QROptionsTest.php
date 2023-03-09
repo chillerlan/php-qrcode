@@ -24,7 +24,7 @@ final class QROptionsTest extends TestCase{
 	/**
 	 * @return int[][]
 	 */
-	public function VersionProvider():array{
+	public static function VersionProvider():array{
 		return [
 			'values > 40 should be clamped to 40'        => [42, 40],
 			'values < 1 should be clamped to 1'          => [-42, 1],
@@ -47,7 +47,7 @@ final class QROptionsTest extends TestCase{
 	/**
 	 * @return int[][]
 	 */
-	public function VersionMinMaxProvider():array{
+	public static function VersionMinMaxProvider():array{
 		return [
 			'normal clamp'         => [5, 10, 5, 10],
 			'exceeding values'     => [-42, 42, 1, 40],
@@ -71,7 +71,7 @@ final class QROptionsTest extends TestCase{
 	/**
 	 * @return int[][][]
 	 */
-	public function RGBProvider():array{
+	public static function RGBProvider():array{
 		return [
 			'exceeding values' => [[-1, 0, 999], [0, 0 ,255]],
 			'too few values'   => [[1, 2], [255, 255, 255]],
@@ -103,7 +103,7 @@ final class QROptionsTest extends TestCase{
 	/**
 	 * @return int[][]
 	 */
-	public function logoSpaceValueProvider():array{
+	public static function logoSpaceValueProvider():array{
 		return [
 			'negative' => [ -1,   0],
 			'zero'     => [  0,   0],
@@ -150,7 +150,7 @@ final class QROptionsTest extends TestCase{
 	/**
 	 * @return float[][]
 	 */
-	public function circleRadiusProvider():array{
+	public static function circleRadiusProvider():array{
 		return [
 			[0.0, 0.1],
 			[0.5, 0.5],

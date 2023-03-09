@@ -25,7 +25,7 @@ class HanziTest extends DataInterfaceTestAbstract{
 	/**
 	 * isGB2312() should pass on Hanzi/GB2312 characters and fail on everything else
 	 */
-	public function stringValidateProvider():array{
+	public static function stringValidateProvider():array{
 		return [
 			['原神', true],
 			['ABC', false],
@@ -39,7 +39,7 @@ class HanziTest extends DataInterfaceTestAbstract{
 	/**
 	 * lists all characters in the valid GB2312 range
 	 */
-	public function hanziProvider():Generator{
+	public static function hanziProvider():Generator{
 
 		for($byte1 = 0xa1; $byte1 < 0xf8; $byte1++){
 

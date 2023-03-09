@@ -23,7 +23,7 @@ final class ByteTest extends DataInterfaceTestAbstract{
 	/**
 	 * isByte() passses any binary string and only fails on empty strings
 	 */
-	public function stringValidateProvider():array{
+	public static function stringValidateProvider():array{
 		return [
 			["\x01\x02\x03", true],
 			['            ', true], // not empty!
