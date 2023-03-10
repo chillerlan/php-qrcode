@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<ruleset name="php-qrcode-cs"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+	<description>php-qrcode rules for phpcs</description>
+
+	<file>src</file>
+	<file>tests</file>
+
+	<arg name="basepath" value="."/>
+	<arg name="tab-width" value="4"/>
+
+	<rule ref="Internal.Tokenizer.Exception">
+		<type>error</type>
+	</rule>
+
+
+	<rule ref="Generic">
+		<exclude name="Generic.Arrays.DisallowShortArraySyntax" />
+		<exclude name="Generic.CodeAnalysis.EmptyStatement" />
+		<exclude name="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop" />
+		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter" />
+		<exclude name="Generic.Commenting.Todo" />
+		<exclude name="Generic.Debug" />
+		<exclude name="Generic.Files.EndFileNoNewline" />
+		<exclude name="Generic.Files.LowercasedFilename" />
+		<exclude name="Generic.Formatting.SpaceBeforeCast" />
+		<exclude name="Generic.Functions.OpeningFunctionBraceBsdAllman" />
+		<exclude name="Generic.NamingConventions.AbstractClassNamePrefix" />
+		<exclude name="Generic.NamingConventions.CamelCapsFunctionName" />
+		<exclude name="Generic.PHP.ClosingPHPTag" />
+		<exclude name="Generic.PHP.RequireStrictTypes" />
+		<exclude name="Generic.PHP.UpperCaseConstant" />
+		<exclude name="Generic.VersionControl" />
+		<exclude name="Generic.WhiteSpace.DisallowTabIndent" />
+		<exclude name="Generic." />
+	</rule>
+
+	<rule ref="Generic.ControlStructures.InlineControlStructure">
+		<properties>
+			<property name="error" value="true"/>
+		</properties>
+	</rule>
+
+	<rule ref="Generic.Files.LineLength">
+		<properties>
+			<property name="lineLimit" value="130" />
+			<property name="absoluteLineLimit" value="160" />
+			<property name="ignoreComments" value="true" />
+		</properties>
+	</rule>
+
+	<rule ref="Generic.PHP.ForbiddenFunctions">
+		<properties>
+			<property name="forbiddenFunctions" type="array">
+				<element key="die" value="exit"/>
+				<element key="sizeof" value="count"/>
+				<element key="delete" value="unset"/>
+				<element key="print" value="echo"/>
+				<element key="is_null" value="null"/>
+				<element key="create_function" value="null"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="Generic.Formatting.SpaceAfterCast">
+		<properties>
+			<property name="spacing" value="0" />
+		</properties>
+	</rule>
+
+	<rule ref="Generic.Formatting.SpaceAfterNot">
+		<properties>
+			<property name="spacing" value="0" />
+		</properties>
+	</rule>
+
+	<rule ref="Generic.WhiteSpace.ScopeIndent">
+		<properties>
+			<property name="tabIndent" value="true" />
+		</properties>
+	</rule>
+
+
+	<rule ref="PEAR">
+		<exclude name="PEAR.Commenting.FileComment" />
+		<exclude name="PEAR.Commenting.InlineComment" />
+		<exclude name="PEAR.Functions.FunctionCallSignature" />
+		<exclude name="PEAR.NamingConventions" />
+	</rule>
+
+	<rule ref="PEAR.Commenting.FunctionComment">
+		<properties>
+			<property name="minimumVisibility" value="public" />
+		</properties>
+	</rule>
+
+
+	<rule ref="PSR2" />
+
+	<rule ref="PSR2.Methods.MethodDeclaration.Underscore">
+		<type>error</type>
+	</rule>
+
+	<rule ref="PSR2.Classes.PropertyDeclaration.Underscore">
+		<type>error</type>
+	</rule>
+
+
+	<rule ref="PSR12">
+		<exclude name="PSR12." />
+		<exclude name="PSR12.Classes.ClassInstantiation" />
+		<exclude name="PSR12.Classes.OpeningBraceSpace" />
+		<exclude name="PSR12.ControlStructures.BooleanOperatorPlacement" />
+		<exclude name="PSR12.Functions.ReturnTypeDeclaration" />
+	</rule>
+
+	<rule ref="PSR12.Namespaces.CompoundNamespaceDepth">
+		<properties>
+			<property name="maxDepth" value="1" />
+		</properties>
+	</rule>
+
+
+	<rule ref="Squiz.Arrays" />
+	<rule ref="Squiz.Classes.LowercaseClassKeywords" />
+	<rule ref="Squiz.Classes.SelfMemberReference" />
+	<rule ref="Squiz.Commenting.EmptyCatchComment" />
+	<rule ref="Squiz.Commenting.FunctionCommentThrowTag" />
+	<rule ref="Squiz.Formatting" />
+	<rule ref="Squiz.Objects" />
+	<rule ref="Squiz.Operators" />
+	<rule ref="Squiz.PHP.DisallowBooleanStatement" />
+	<rule ref="Squiz.PHP.DisallowComparisonAssignment" />
+	<rule ref="Squiz.PHP.DisallowInlineIf" />
+	<rule ref="Squiz.PHP.DisallowMultipleAssignments" />
+	<rule ref="Squiz.PHP.DiscouragedFunctions" />
+	<rule ref="Squiz.PHP.EmbeddedPhp" />
+	<rule ref="Squiz.PHP.Eval" />
+	<rule ref="Squiz.PHP.Heredoc" />
+	<rule ref="Squiz.PHP.LowercasePHPFunctions" />
+	<rule ref="Squiz.PHP.NonExecutableCode" />
+	<rule ref="Squiz.Scope.MemberVarScope" />
+	<rule ref="Squiz.Scope.MethodScope" />
+	<rule ref="Squiz.Strings.DoubleQuoteUsage" />
+	<rule ref="Squiz.Strings.EchoedStrings" />
+
+</ruleset>
