@@ -119,3 +119,9 @@ jobs:
 
       - name: "Send code coverage report to Codecov.io"
         uses: codecov/codecov-action@v3
+
+      - name: "Send code coverage report to Codacy"
+        uses: codacy/codacy-coverage-reporter-action@v1
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: .build/coverage/clover.xml
