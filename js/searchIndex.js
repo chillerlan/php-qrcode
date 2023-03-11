@@ -1243,7 +1243,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003Aget\u0028\u0029",
             "name": "get",
-            "summary": "Returns\u0020the\u0020value\u0020of\u0020the\u0020module\u0020at\u0020position\u0020\u005B\u0024x,\u0020\u0024y\u005D\u0020or\u0020\u002D1\u0020if\u0020the\u0020coordinate\u0020is\u0020outside\u0020of\u0020the\u0020matrix",
+            "summary": "Returns\u0020the\u0020value\u0020of\u0020the\u0020module\u0020at\u0020position\u0020\u005B\u0024x,\u0020\u0024y\u005D\u0020or\u0020\u002D1\u0020if\u0020the\u0020coordinate\u0020is\u0020outside\u0020the\u0020matrix",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_get"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003Aset\u0028\u0029",
@@ -1596,6 +1596,16 @@ Search.appendIndex(
             "summary": "Decode\u0020the\u0020contents\u0020of\u0020that\u0020stream\u0020of\u0020bytes",
             "url": "classes/chillerlan-QRCode-Decoder-Decoder.html#method_decodeBitStream"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Decoder\\Decoder\u003A\u003AdecodeAlphanumSegment\u0028\u0029",
+            "name": "decodeAlphanumSegment",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Decoder-Decoder.html#method_decodeAlphanumSegment"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Decoder\\Decoder\u003A\u003AdecodeByteSegment\u0028\u0029",
+            "name": "decodeByteSegment",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Decoder-Decoder.html#method_decodeByteSegment"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\Decoder\u003A\u003A\u0024version",
             "name": "version",
             "summary": "",
@@ -1610,6 +1620,16 @@ Search.appendIndex(
             "name": "maskPattern",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Decoder-Decoder.html#property_maskPattern"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Decoder\\Decoder\u003A\u003A\u0024bitBuffer",
+            "name": "bitBuffer",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Decoder-Decoder.html#property_bitBuffer"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Decoder\\Decoder\u003A\u003A\u0024eciCharset",
+            "name": "eciCharset",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Decoder-Decoder.html#property_eciCharset"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\DecoderResult",
             "name": "DecoderResult",
