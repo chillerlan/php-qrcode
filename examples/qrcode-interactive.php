@@ -5,9 +5,9 @@
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT
+ *
+ * @noinspection PhpComposerExtensionStubsInspection
  */
-
-namespace chillerlan\QRCodePublic;
 
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;

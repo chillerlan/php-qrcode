@@ -16,8 +16,6 @@
  * @noinspection PhpComposerExtensionStubsInspection
  */
 
-namespace chillerlan\QRCodeExamples;
-
 use chillerlan\QRCode\Output\QRImage;
 
 use function base64_encode, imagechar, imagecolorallocate, imagecolortransparent, imagecopymerge, imagecreatetruecolor,

@@ -8,8 +8,6 @@
  * @license      MIT
  */
 
-namespace chillerlan\QRCodeExamples;
-
 use chillerlan\QRCode\{QRCode, QROptions};
 
 require_once '../vendor/autoload.php';

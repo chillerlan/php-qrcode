@@ -8,18 +8,15 @@
  * @license      MIT
  */
 
-namespace chillerlan\QRCodeExamples;
-
 use chillerlan\QRCode\{QRCode, QROptions};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
 $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
+
 /**
  * @property int $logoSpaceWidth
  * @property int $logoSpaceHeight
- *
- * @noinspection PhpIllegalPsrClassPathInspection
  */
 class LogoOptions extends QROptions{
 	// size in QR modules, multiply with QROptions::$scale for pixel size
