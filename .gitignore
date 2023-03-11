@@ -15,4 +15,6 @@
 docs/*
 vendor/*
 composer.lock
+phpcs.xml
+phpmd.xml
 phpunit.xml
