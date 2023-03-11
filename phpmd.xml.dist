@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!-- https://github.com/phpmd/phpmd_-->
+<ruleset name="My first PHPMD rule set"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+	<description>codemasher/php-qrcode PMD ruleset</description>
+	<exclude-pattern>*/examples/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+	<exclude-pattern>*/tests/*</exclude-pattern>
+	<rule ref="rulesets/cleancode.xml">
+		<exclude name="ElseExpression"/>
+		<exclude name="StaticAccess"/>
+	</rule>
+	<rule ref="rulesets/codesize.xml" />
+	<rule ref="rulesets/codesize.xml/CyclomaticComplexity">
+		<priority>1</priority>
+		<properties>
+			<property name="reportLevel" value="50"/>
+		</properties>
+	</rule>
+	<rule ref="rulesets/codesize.xml/NPathComplexity">
+		<priority>1</priority>
+		<properties>
+			<property name="minimum" value="1000"/>
+		</properties>
+	</rule>
+	<rule ref="rulesets/codesize.xml/ExcessiveClassComplexity">
+		<priority>1</priority>
+		<properties>
+			<property name="maximum" value="150"/>
+		</properties>
+	</rule>
+	<rule ref="rulesets/controversial.xml">
+		<!-- superglobals are only used in examples -->
+		<exclude name="Superglobals"/>
+		<exclude name="CamelCaseMethodName"/>
+		<exclude name="CamelCaseParameterName"/>
+		<exclude name="CamelCasePropertyName"/>
+		<exclude name="CamelCaseVariableName"/>
+	</rule>
+	<rule ref="rulesets/design.xml">
+		<!-- exits are only used in examples -->
+		<exclude name="ExitExpression"/>
+	</rule>
+	<rule ref="rulesets/naming.xml">
+		<exclude name="LongVariable"/>
+		<exclude name="ShortVariable"/>
+		<exclude name="ConstantNamingConventions"/>
+	</rule>
+	<rule ref="rulesets/unusedcode.xml">
+		<exclude name="UnusedFormalParameter"/>
+	</rule>
+</ruleset>
