@@ -9,7 +9,7 @@ namespaced, cleaned up, improved and other stuff. It also features a QR Code rea
 [![Packagist version][packagist-badge]][packagist]
 [![Continuous Integration][gh-action-badge]][gh-action]
 [![CodeCov][coverage-badge]][coverage]
-[![Scrunitizer CI][scrutinizer-badge]][scrutinizer]
+[![Codacy][codacy-badge]][codacy]
 [![Packagist downloads][downloads-badge]][downloads]
 
 [php-badge]: https://img.shields.io/packagist/php-v/chillerlan/php-qrcode?logo=php&color=8892BF
@@ -18,8 +18,8 @@ namespaced, cleaned up, improved and other stuff. It also features a QR Code rea
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
 [coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode.svg?logo=codecov
 [coverage]: https://codecov.io/github/chillerlan/php-qrcode
-[scrutinizer-badge]: https://img.shields.io/scrutinizer/g/chillerlan/php-qrcode.svg?logo=scrutinizer
-[scrutinizer]: https://scrutinizer-ci.com/g/chillerlan/php-qrcode
+[codacy-badge]: https://img.shields.io/codacy/grade/edccfc4fe5a34b74b1c53ee03f097b8d?logo=codacy
+[codacy]: https://www.codacy.com/gh/chillerlan/php-qrcode/dashboard
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?logo=packagist
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 [gh-action-badge]: https://img.shields.io/github/actions/workflow/status/chillerlan/php-qrcode/tests.yml?branch=main&logo=github
@@ -51,6 +51,7 @@ An API documentation created with [phpDocumentor](https://www.phpdoc.org/) can b
 ### Requirements
 - PHP 7.4+
   - [`ext-mbstring`](https://www.php.net/manual/book.mbstring.php)
+  - [`ext-fileinfo`](https://www.php.net/manual/book.fileinfo.php)
   - optional:
     - [`ext-gd`](https://www.php.net/manual/book.image)
     - [`ext-imagick`](https://github.com/Imagick/imagick) with [ImageMagick](https://imagemagick.org) installed
