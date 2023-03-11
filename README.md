@@ -17,7 +17,7 @@ namespaced, cleaned up, improved and other stuff. It also features a QR Code rea
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?logo=packagist
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
 [coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode.svg?logo=codecov
-[coverage]: https://codecov.io/github/chillerlan/php-qrcode
+[coverage]: https://app.codecov.io/gh/chillerlan/php-qrcode/tree/main
 [codacy-badge]: https://img.shields.io/codacy/grade/edccfc4fe5a34b74b1c53ee03f097b8d?logo=codacy
 [codacy]: https://www.codacy.com/gh/chillerlan/php-qrcode/dashboard
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?logo=packagist
