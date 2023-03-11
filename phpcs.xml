@@ -164,4 +164,25 @@
 
 	<rule ref="Squiz.Commenting.EmptyCatchComment" />
 
+	<!-- exclude some checks for the examples-->
+	<rule ref="PSR1.Classes.ClassDeclaration.MissingNamespace">
+		<exclude-pattern>examples</exclude-pattern>
+	</rule>
+
+	<rule ref="PSR1.Classes.ClassDeclaration.MultipleClasses">
+		<exclude-pattern>examples</exclude-pattern>
+	</rule>
+
+	<rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+		<exclude-pattern>examples</exclude-pattern>
+	</rule>
+
+	<rule ref="Squiz.Classes.ClassFileName.NoMatch">
+		<exclude-pattern>examples</exclude-pattern>
+	</rule>
+
+	<rule ref="Squiz.PHP.DiscouragedFunctions.Discouraged">
+		<exclude-pattern>examples</exclude-pattern>
+	</rule>
+
 </ruleset>
