@@ -134,15 +134,15 @@ final class GridSampler{
 		}
 
 		$bits   = new BitMatrix($dimension);
-		$points = array_fill(0, 2 * $dimension, 0.0);
+		$points = array_fill(0, (2 * $dimension), 0.0);
 
 		for($y = 0; $y < $dimension; $y++){
 			$max    = count($points);
-			$iValue = $y + 0.5;
+			$iValue = ($y + 0.5);
 
 			for($x = 0; $x < $max; $x += 2){
-				$points[$x]     = ($x / 2) + 0.5;
-				$points[$x + 1] = $iValue;
+				$points[$x]       = (($x / 2) + 0.5);
+				$points[($x + 1)] = $iValue;
 			}
 
 			$transform->transformPoints($points);
@@ -153,7 +153,7 @@ final class GridSampler{
 			try{
 				for($x = 0; $x < $max; $x += 2){
 					// Black(-ish) pixel
-					$bits->set($x / 2, $y, $matrix->check((int)$points[$x], (int)$points[$x + 1]), QRMatrix::M_DATA);
+					$bits->set(($x / 2), $y, $matrix->check((int)$points[$x], (int)$points[($x + 1)]), QRMatrix::M_DATA);
 				}
 			}
 			// @codeCoverageIgnoreStart

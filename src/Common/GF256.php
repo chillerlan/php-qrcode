@@ -136,7 +136,7 @@ final class GF256{
 			throw new QRCodeException('$a === 0');
 		}
 
-		return self::expTable[256 - self::logTable[$a] - 1];
+		return self::expTable[(256 - self::logTable[$a] - 1)];
 	}
 
 	/**
@@ -148,7 +148,7 @@ final class GF256{
 			return 0;
 		}
 
-		return self::expTable[(self::logTable[$a] + self::logTable[$b]) % 255];
+		return self::expTable[((self::logTable[$a] + self::logTable[$b]) % 255)];
 	}
 
 }

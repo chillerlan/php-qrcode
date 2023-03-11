@@ -78,8 +78,8 @@ final class AlphaNum extends QRDataModeAbstract{
 		;
 
 		// encode 2 characters in 11 bits
-		for($i = 0; $i + 1 < $len; $i += 2){
-			$bitBuffer->put(self::CHAR_TO_ORD[$this->data[$i]] * 45 + self::CHAR_TO_ORD[$this->data[$i + 1]], 11);
+		for($i = 0; ($i + 1) < $len; $i += 2){
+			$bitBuffer->put((self::CHAR_TO_ORD[$this->data[$i]] * 45 + self::CHAR_TO_ORD[$this->data[($i + 1)]]), 11);
 		}
 
 		// encode a remaining character in 6 bits

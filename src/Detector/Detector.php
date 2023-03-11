@@ -329,14 +329,22 @@ final class Detector{
 		}
 
 		return (new PerspectiveTransform)->quadrilateralToQuadrilateral(
-			3.5, 3.5,
-			$dimMinusThree, 3.5,
-			$sourceBottomRightX, $sourceBottomRightY,
-			3.5, $dimMinusThree,
-			$nw->getX(), $nw->getY(),
-			$ne->getX(), $ne->getY(),
-			$bottomRightX, $bottomRightY,
-			$sw->getX(), $sw->getY()
+			3.5,
+			3.5,
+			$dimMinusThree,
+			3.5,
+			$sourceBottomRightX,
+			$sourceBottomRightY,
+			3.5,
+			$dimMinusThree,
+			$nw->getX(),
+			$nw->getY(),
+			$ne->getX(),
+			$ne->getY(),
+			$bottomRightX,
+			$bottomRightY,
+			$sw->getX(),
+			$sw->getY()
 		);
 	}
 

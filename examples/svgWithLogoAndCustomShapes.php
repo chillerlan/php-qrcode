@@ -79,7 +79,7 @@ class QRSvgWithLogoAndCustomShapes extends QRMarkupSVG{
 	 */
 	protected function getFinderPatterns():string{
 
-		$qz  = $this->options->addQuietzone ? $this->options->quietzoneSize : 0;
+		$qz  = ($this->options->addQuietzone) ? $this->options->quietzoneSize : 0;
 		// the positions for the finder patterns (top left corner)
 		// $this->moduleCount includes 2* the quiet zone size already, so we need to take this into account
 		$pos = [
