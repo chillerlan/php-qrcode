@@ -204,16 +204,12 @@ final class Binarizer{
 	 * @see http://groups.google.com/group/zxing/browse_thread/thread/d06efa2c35a7ddc0
 	 */
 	private function calculateBlackPoints(int $subWidth, int $subHeight, int $width, int $height):array{
-		$blackPoints = array_fill(0, $subHeight, 0);
-
-		/** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
-		foreach($blackPoints as $key => $point){
-			$blackPoints[$key] = array_fill(0, $subWidth, 0);
-		}
+		$blackPoints = [];
 
 		for($y = 0; $y < $subHeight; $y++){
-			$yoffset    = ($y << self::BLOCK_SIZE_POWER);
-			$maxYOffset = ($height - self::BLOCK_SIZE);
+			$yoffset         = ($y << self::BLOCK_SIZE_POWER);
+			$maxYOffset      = ($height - self::BLOCK_SIZE);
+			$blackPoints[$y] = [];
 
 			if($yoffset > $maxYOffset){
 				$yoffset = $maxYOffset;
