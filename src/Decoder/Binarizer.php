@@ -206,6 +206,7 @@ final class Binarizer{
 	private function calculateBlackPoints(int $subWidth, int $subHeight, int $width, int $height):array{
 		$blackPoints = array_fill(0, $subHeight, 0);
 
+		/** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
 		foreach($blackPoints as $key => $point){
 			$blackPoints[$key] = array_fill(0, $subWidth, 0);
 		}

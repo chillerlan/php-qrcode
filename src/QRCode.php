@@ -6,6 +6,8 @@
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
+ *
+ * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 
 namespace chillerlan\QRCode;

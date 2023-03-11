@@ -579,6 +579,7 @@ class QRMatrix{
 
 		// clear the space
 		foreach($this->matrix as $y => $row){
+			/** @SuppressWarnings(PHPMD.UnusedLocalVariable) */
 			foreach($row as $x => $val){
 				// out of bounds, skip
 				if($x < $start || $y < $start ||$x >= $end || $y >= $end){
