@@ -7,26 +7,23 @@ namespaced, cleaned up, improved and other stuff.
 
 [![PHP Version Support][php-badge]][php]
 [![Packagist version][packagist-badge]][packagist]
-[![License][license-badge]][license]
 [![CodeCov][coverage-badge]][coverage]
-[![Scrunitizer CI][scrutinizer-badge]][scrutinizer]
-[![Packagist downloads][downloads-badge]][downloads]<br/>
+[![Codacy][codacy-badge]][codacy]
+[![Packagist downloads][downloads-badge]][downloads]
 [![Continuous Integration][gh-action-badge]][gh-action]
 
 [php-badge]: https://img.shields.io/packagist/php-v/chillerlan/php-qrcode?logo=php&color=8892BF
 [php]: https://www.php.net/supported-versions.php
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?logo=packagist
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
-[license-badge]: https://img.shields.io/github/license/chillerlan/php-qrcode.svg
-[license]: https://github.com/chillerlan/php-qrcode/blob/main/LICENSE
-[coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode.svg?logo=codecov
-[coverage]: https://codecov.io/github/chillerlan/php-qrcode
-[scrutinizer-badge]: https://img.shields.io/scrutinizer/g/chillerlan/php-qrcode.svg?logo=scrutinizer
-[scrutinizer]: https://scrutinizer-ci.com/g/chillerlan/php-qrcode
+[coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode/v4.3.x?logo=codecov
+[coverage]: https://app.codecov.io/gh/chillerlan/php-qrcode/tree/v4.3.x
+[codacy-badge]: https://img.shields.io/codacy/grade/edccfc4fe5a34b74b1c53ee03f097b8d/v4.3.x?logo=codacy
+[codacy]: https://www.codacy.com/gh/chillerlan/php-qrcode/dashboard?branch=v4.3.x
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?logo=packagist
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
-[gh-action-badge]: https://github.com/chillerlan/php-qrcode/workflows/Continuous%20Integration/badge.svg
-[gh-action]: https://github.com/chillerlan/php-qrcode/actions?query=workflow%3A%22Continuous+Integration%22+branch%3Av4.3.x
+[gh-action-badge]: https://img.shields.io/github/actions/workflow/status/chillerlan/php-qrcode/tests.yml?branch=v4.3.x&logo=github
+[gh-action]: https://github.com/chillerlan/php-qrcode/actions/workflows/tests.yml?query=branch%3Av4.3.x
 
 # Documentation
 
@@ -48,7 +45,7 @@ via terminal: `composer require chillerlan/php-qrcode`
 {
 	"require": {
 		"php": "^7.4 || ^8.0",
-		"chillerlan/php-qrcode": "v4.3.x-dev"
+		"chillerlan/php-qrcode": "v4.3.x-dev#<commit_hash>"
 	}
 }
 ```
@@ -62,7 +59,7 @@ For PHP version ...
 
 In case you want to keep using `v4.3.x-dev`, specify the hash of a commit to avoid running into unforseen issues like so: `v4.3.x-dev#c115f7bc51d466ccb24c544e88329804aad8c2a0`
 
-PSA: [PHP 7.0 - 7.3 are EOL](https://www.php.net/supported-versions.php) and therefore the respective `QRCode` versions are also no longer supported!
+PSA: [PHP 7.0 - 7.4 are EOL](https://www.php.net/supported-versions.php) and therefore the respective `QRCode` versions are also no longer supported!
 
 ## Quickstart
 We want to encode this URI for a mobile authenticator into a QRcode image:
