@@ -41,7 +41,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
           coverage: none
           tools: pecl
-          extensions: ast, gd, imagick, json, mbstring
+          extensions: ast, fileinfo, gd, imagick, json, mbstring
 
       - name: "Update dependencies with composer"
         uses: ramsey/composer-install@v2
@@ -67,7 +67,7 @@ jobs:
           php-version: "8.1"
           coverage: none
           tools: phpDocumentor
-          extensions: gd, imagick, json, mbstring
+          extensions: fileinfo, gd, imagick, json, mbstring
 
       - name: "Build Docs"
         run: phpdoc --config=phpdoc.xml
@@ -109,7 +109,7 @@ jobs:
           php-version: ${{ matrix.php-version }}
           coverage: pcov
           tools: pecl
-          extensions: gd, imagick, json, mbstring
+          extensions: fileinfo, gd, imagick, json, mbstring
 
       - name: "Install dependencies with composer"
         uses: ramsey/composer-install@v2
