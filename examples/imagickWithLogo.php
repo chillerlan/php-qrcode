@@ -35,10 +35,10 @@ class QRImagickWithLogo extends QRImagick{
 		parent::dump($file);
 
 		// set new logo size, leave a border of 1 module (no proportional resize/centering)
-		$size = ($this->options->logoSpaceWidth - 2) * $this->options->scale;
+		$size = (($this->options->logoSpaceWidth - 2) * $this->options->scale);
 
 		// logo position: the top left corner of the logo space
-		$pos  = ($this->moduleCount * $this->options->scale - $size) / 2;
+		$pos  = (($this->moduleCount * $this->options->scale - $size) / 2);
 
 		// invoke logo instance
 		$imLogo = new Imagick($this->options->pngLogo);
@@ -72,7 +72,7 @@ class ImagickWithLogoOptions extends QROptions{
 	/**
 	 * check logo
 	 *
-	 * of course we could accept other formats too.
+	 * of course, we could accept other formats too.
 	 * we're not checking for the file type either for simplicity reasons (assuming PNG)
 	 */
 	protected function set_pngLogo(string $pngLogo):void{
@@ -109,7 +109,11 @@ $options = new ImagickWithLogoOptions([
 	'drawLightModules'    => false,
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.4,
-	'keepAsSquare'        => [QRMatrix::M_FINDER|QRMatrix::IS_DARK, QRMatrix::M_FINDER_DOT, QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK],
+	'keepAsSquare'        => [
+		(QRMatrix::M_FINDER|QRMatrix::IS_DARK),
+		QRMatrix::M_FINDER_DOT,
+		(QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK),
+	],
 ]);
 
 

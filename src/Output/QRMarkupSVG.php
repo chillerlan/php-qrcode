@@ -50,15 +50,15 @@ class QRMarkupSVG extends QRMarkup{
 	 * returns the <svg> header with the given options parsed
 	 */
 	protected function header():string{
-		$width  = $this->options->svgWidth !== null ? sprintf(' width="%s"', $this->options->svgWidth) : '';
-		$height = $this->options->svgHeight !== null ? sprintf(' height="%s"', $this->options->svgHeight) : '';
+		$width  = ($this->options->svgWidth !== null) ? sprintf(' width="%s"', $this->options->svgWidth) : '';
+		$height = ($this->options->svgHeight !== null) ? sprintf(' height="%s"', $this->options->svgHeight) : '';
 
 		/** @noinspection HtmlUnknownAttribute */
 		return sprintf(
 			'<?xml version="1.0" encoding="UTF-8"?>%6$s'.
 			'<svg xmlns="http://www.w3.org/2000/svg" class="qr-svg %1$s" viewBox="0 0 %2$s %2$s" preserveAspectRatio="%3$s"%4$s%5$s>%6$s',
 			$this->options->cssClass,
-			$this->options->svgViewBoxSize ?? $this->moduleCount,
+			($this->options->svgViewBoxSize ?? $this->moduleCount),
 			$this->options->svgPreserveAspectRatio,
 			$width,
 			$height,
@@ -110,7 +110,7 @@ class QRMarkupSVG extends QRMarkup{
 			$format,
 			$this->getCssClass($M_TYPE),
 			$path,
-			$this->moduleValues[$M_TYPE] ?? '', // value may or may not exist
+			($this->moduleValues[$M_TYPE] ?? ''), // value may or may not exist
 			$this->options->svgOpacity
 		);
 	}
@@ -121,7 +121,7 @@ class QRMarkupSVG extends QRMarkup{
 	protected function getCssClass(int $M_TYPE):string{
 		return implode(' ', [
 			'qr-'.$M_TYPE,
-			($M_TYPE & QRMatrix::IS_DARK) === QRMatrix::IS_DARK ? 'dark' : 'light',
+			(($M_TYPE & QRMatrix::IS_DARK) === QRMatrix::IS_DARK) ? 'dark' : 'light',
 			$this->options->cssClass,
 		]);
 	}

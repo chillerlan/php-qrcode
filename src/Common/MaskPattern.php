@@ -103,7 +103,7 @@ final class MaskPattern{
 			self::PATTERN_010 => fn(int $x, int $y):bool => ($x % 3) === 0,
 			self::PATTERN_011 => fn(int $x, int $y):bool => (($x + $y) % 3) === 0,
 			self::PATTERN_100 => fn(int $x, int $y):bool => (((int)($y / 2) + (int)($x / 3)) % 2) === 0,
-			self::PATTERN_101 => fn(int $x, int $y):bool => ($x * $y) % 6 === 0, // ((($x * $y) % 2) + (($x * $y) % 3)) === 0,
+			self::PATTERN_101 => fn(int $x, int $y):bool => (($x * $y) % 6) === 0, // ((($x * $y) % 2) + (($x * $y) % 3)) === 0,
 			self::PATTERN_110 => fn(int $x, int $y):bool => (($x * $y) % 6) < 3, // (((($x * $y) % 2) + (($x * $y) % 3)) % 2) === 0,
 			self::PATTERN_111 => fn(int $x, int $y):bool => (($x + $y + (($x * $y) % 3)) % 2) === 0, // (((($x * $y) % 3) + (($x + $y) % 2)) % 2) === 0,
 		][$this->maskPattern];
@@ -134,7 +134,7 @@ final class MaskPattern{
 	 * give penalty to them. Example: 00000 or 11111.
 	 */
 	public static function testRule1(array $matrix, int $height, int $width):int{
-		return self::applyRule1($matrix, $height, $width, true) + self::applyRule1($matrix, $height, $width, false);
+		return (self::applyRule1($matrix, $height, $width, true) + self::applyRule1($matrix, $height, $width, false));
 	}
 
 	/**
@@ -142,15 +142,15 @@ final class MaskPattern{
 	 */
 	private static function applyRule1(array $matrix, int $height, int $width, bool $isHorizontal):int{
 		$penalty = 0;
-		$yLimit  = $isHorizontal ? $height : $width;
-		$xLimit  = $isHorizontal ? $width : $height;
+		$yLimit  = ($isHorizontal) ? $height : $width;
+		$xLimit  = ($isHorizontal) ? $width : $height;
 
 		for($y = 0; $y < $yLimit; $y++){
 			$numSameBitCells = 0;
 			$prevBit         = null;
 
 			for($x = 0; $x < $xLimit; $x++){
-				$bit = $isHorizontal ? $matrix[$y][$x] : $matrix[$x][$y];
+				$bit = ($isHorizontal) ? $matrix[$y][$x] : $matrix[$x][$y];
 
 				if($bit === $prevBit){
 					$numSameBitCells++;
@@ -158,7 +158,7 @@ final class MaskPattern{
 				else{
 
 					if($numSameBitCells >= 5){
-						$penalty += 3 + ($numSameBitCells - 5);
+						$penalty += (3 + ($numSameBitCells - 5));
 					}
 
 					$numSameBitCells = 1;  // Include the cell itself.
@@ -166,7 +166,7 @@ final class MaskPattern{
 				}
 			}
 			if($numSameBitCells >= 5){
-				$penalty += 3 + ($numSameBitCells - 5);
+				$penalty += (3 + ($numSameBitCells - 5));
 			}
 		}
 
@@ -183,27 +183,27 @@ final class MaskPattern{
 
 		foreach($matrix as $y => $row){
 
-			if($y > $height - 2){
+			if($y > ($height - 2)){
 				break;
 			}
 
 			foreach($row as $x => $val){
 
-				if($x > $width - 2){
+				if($x > ($width - 2)){
 					break;
 				}
 
 				if(
-					$val === $row[$x + 1]
-					&& $val === $matrix[$y + 1][$x]
-					&& $val === $matrix[$y + 1][$x + 1]
+					$val === $row[($x + 1)]
+					&& $val === $matrix[($y + 1)][$x]
+					&& $val === $matrix[($y + 1)][($x + 1)]
 				){
 					$penalty++;
 				}
 			}
 		}
 
-		return 3 * $penalty;
+		return (3 * $penalty);
 	}
 
 	/**
@@ -218,34 +218,34 @@ final class MaskPattern{
 			foreach($row as $x => $val){
 
 				if(
-					$x + 6 < $width
+					($x + 6) < $width
 					&&  $val
-					&& !$row[$x + 1]
-					&&  $row[$x + 2]
-					&&  $row[$x + 3]
-					&&  $row[$x + 4]
-					&& !$row[$x + 5]
-					&&  $row[$x + 6]
+					&& !$row[($x + 1)]
+					&&  $row[($x + 2)]
+					&&  $row[($x + 3)]
+					&&  $row[($x + 4)]
+					&& !$row[($x + 5)]
+					&&  $row[($x + 6)]
 					&& (
-						   self::isWhiteHorizontal($row, $width, $x - 4, $x)
-						|| self::isWhiteHorizontal($row, $width, $x + 7, $x + 11)
+						   self::isWhiteHorizontal($row, $width, ($x - 4), $x)
+						|| self::isWhiteHorizontal($row, $width, ($x + 7), ($x + 11))
 					)
 				){
 					$penalties++;
 				}
 
 				if(
-					$y + 6 < $height
+					($y + 6) < $height
 					&&  $val
-					&& !$matrix[$y + 1][$x]
-					&&  $matrix[$y + 2][$x]
-					&&  $matrix[$y + 3][$x]
-					&&  $matrix[$y + 4][$x]
-					&& !$matrix[$y + 5][$x]
-					&&  $matrix[$y + 6][$x]
+					&& !$matrix[($y + 1)][$x]
+					&&  $matrix[($y + 2)][$x]
+					&&  $matrix[($y + 3)][$x]
+					&&  $matrix[($y + 4)][$x]
+					&& !$matrix[($y + 5)][$x]
+					&&  $matrix[($y + 6)][$x]
 					&& (
-						   self::isWhiteVertical($matrix, $height, $x, $y - 4, $y)
-						|| self::isWhiteVertical($matrix, $height, $x, $y + 7, $y + 11)
+						   self::isWhiteVertical($matrix, $height, $x, ($y - 4), $y)
+						|| self::isWhiteVertical($matrix, $height, $x, ($y + 7), ($y + 11))
 					)
 				){
 					$penalties++;
@@ -254,7 +254,7 @@ final class MaskPattern{
 			}
 		}
 
-		return $penalties * 40;
+		return ($penalties * 40);
 	}
 
 	/**
@@ -299,7 +299,7 @@ final class MaskPattern{
 	 */
 	public static function testRule4(array $matrix, int $height, int $width):int{
 		$darkCells  = 0;
-		$totalCells = $height * $width;
+		$totalCells = ($height * $width);
 
 		foreach($matrix as $row){
 			foreach($row as $val){
@@ -309,7 +309,7 @@ final class MaskPattern{
 			}
 		}
 
-		return (int)(abs($darkCells * 2 - $totalCells) * 10 / $totalCells) * 10;
+		return ((int)(abs($darkCells * 2 - $totalCells) * 10 / $totalCells) * 10);
 	}
 
 }

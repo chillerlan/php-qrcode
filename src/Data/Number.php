@@ -73,7 +73,7 @@ final class Number extends QRDataModeAbstract{
 		$i = 0;
 
 		// encode numeric triplets in 10 bits
-		while($i + 2 < $len){
+		while(($i + 2) < $len){
 			$bitBuffer->put($this->parseInt(substr($this->data, $i, 3)), 10);
 			$i += 3;
 		}
@@ -81,11 +81,11 @@ final class Number extends QRDataModeAbstract{
 		if($i < $len){
 
 			// encode 2 remaining numbers in 7 bits
-			if($len - $i === 2){
+			if(($len - $i) === 2){
 				$bitBuffer->put($this->parseInt(substr($this->data, $i, 2)), 7);
 			}
 			// encode one remaining number in 4 bits
-			elseif($len - $i === 1){
+			elseif(($len - $i) === 1){
 				$bitBuffer->put($this->parseInt(substr($this->data, $i, 1)), 4);
 			}
 
@@ -100,7 +100,7 @@ final class Number extends QRDataModeAbstract{
 		$num = 0;
 
 		foreach(str_split($string) as $chr){
-			$num = $num * 10 + ord($chr) - 48;
+			$num = ($num * 10 + ord($chr) - 48);
 		}
 
 		return $num;

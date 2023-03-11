@@ -40,6 +40,10 @@ class QRImagick extends QROutputAbstract{
 			throw new QRCodeOutputException('ext-imagick not loaded'); // @codeCoverageIgnore
 		}
 
+		if(!extension_loaded('fileinfo')){
+			throw new QRCodeOutputException('ext-fileinfo not loaded'); // @codeCoverageIgnore
+		}
+
 		parent::__construct($options, $matrix);
 	}
 
@@ -61,7 +65,7 @@ class QRImagick extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	protected function getDefaultModuleValue(bool $isDark):ImagickPixel{
-		return new ImagickPixel($isDark ? $this->options->markupDark : $this->options->markupLight);
+		return new ImagickPixel(($isDark) ? $this->options->markupDark : $this->options->markupLight);
 	}
 
 	/**
@@ -72,11 +76,11 @@ class QRImagick extends QROutputAbstract{
 	public function dump(string $file = null){
 		$this->imagick = new Imagick;
 
-		$bgColor = $this->options->imageTransparent ? 'transparent' : 'white';
+		$bgColor = ($this->options->imageTransparent) ? 'transparent' : 'white';
 
 		// keep the imagickBG property for now (until v6)
 		if($this->moduleValueIsValid($this->options->bgColor ?? $this->options->imagickBG)){
-			$bgColor = $this->options->bgColor ?? $this->options->imagickBG;
+			$bgColor = ($this->options->bgColor ?? $this->options->imagickBG);
 		}
 
 		$this->imagick->newImage($this->length, $this->length, new ImagickPixel($bgColor), $this->options->imagickFormat);
@@ -129,16 +133,16 @@ class QRImagick extends QROutputAbstract{
 
 		$this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)
 			? $this->imagickDraw->circle(
-				($x + 0.5) * $this->scale,
-				($y + 0.5) * $this->scale,
-				($x + 0.5 + $this->options->circleRadius) * $this->scale,
-				($y + 0.5) * $this->scale
+				(($x + 0.5) * $this->scale),
+				(($y + 0.5) * $this->scale),
+				(($x + 0.5 + $this->options->circleRadius) * $this->scale),
+				(($y + 0.5) * $this->scale)
 			)
 			: $this->imagickDraw->rectangle(
-				$x * $this->scale,
-				$y * $this->scale,
-				($x + 1) * $this->scale,
-				($y + 1) * $this->scale
+				($x * $this->scale),
+				($y * $this->scale),
+				(($x + 1) * $this->scale),
+				(($y + 1) * $this->scale)
 			);
 	}
 

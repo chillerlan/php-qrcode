@@ -48,9 +48,6 @@ class QRImageWithText extends QRGdImage{
 		return $imageData;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function addText(string $text):void{
 		// save the qrcode image
 		$qrcode = $this->image;
@@ -61,7 +58,7 @@ class QRImageWithText extends QRGdImage{
 		$textColor = [50, 50, 50];
 
 		$bgWidth  = $this->length;
-		$bgHeight = $bgWidth + 20; // 20px extra space
+		$bgHeight = ($bgWidth + 20); // 20px extra space
 
 		// create a new image with additional space
 		$this->image = imagecreatetruecolor($bgWidth, $bgHeight);
@@ -97,10 +94,10 @@ class QRImageWithText extends QRGdImage{
  */
 
 $options = new QROptions([
-	'version'      => 7,
-	'outputType'   => QROutputInterface::GDIMAGE_PNG,
-	'scale'        => 3,
-	'imageBase64'  => false,
+	'version'     => 7,
+	'outputType'  => QROutputInterface::GDIMAGE_PNG,
+	'scale'       => 3,
+	'imageBase64' => false,
 ]);
 
 $qrcode = new QRCode($options);

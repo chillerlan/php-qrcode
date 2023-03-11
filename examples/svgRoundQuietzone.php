@@ -32,16 +32,16 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 	 */
 	protected function createMarkup(bool $saveToFile):string{
 		// some Pythagorean magick
-		$diameter      = sqrt(2 * pow($this->moduleCount + $this->options->additionalModules, 2));
+		$diameter      = sqrt(2 * pow(($this->moduleCount + $this->options->additionalModules), 2));
 		// calculate the quiet zone size, add 1 to it as the outer circle stroke may go outside of it
-		$quietzoneSize = (int)ceil(($diameter - $this->moduleCount) / 2) + 1;
+		$quietzoneSize = ((int)ceil(($diameter - $this->moduleCount) / 2) + 1);
 		// add the quiet zone to fill the circle
 		$this->matrix->setQuietZone($quietzoneSize);
 		// update the matrix dimensions to avoid errors in subsequent calculations
 		// the moduleCount is now QR Code matrix + 2x quiet zone
 		$this->setMatrixDimensions();
 		// color the quiet zone
-		$this->colorQuietzone($quietzoneSize, $diameter / 2);
+		$this->colorQuietzone($quietzoneSize, ($diameter / 2));
 
 		// calculate the logo space
 		$logoSpaceSize = (int)ceil($this->moduleCount * $this->options->svgLogoScale);
@@ -82,10 +82,10 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 	 * Sets random modules of the quiet zone to dark
 	 */
 	protected function colorQuietzone(int $quietzoneSize, float $radius):void{
-		$l1 = $quietzoneSize - 1;
-		$l2 = $this->moduleCount - $quietzoneSize;
+		$l1 = ($quietzoneSize - 1);
+		$l2 = ($this->moduleCount - $quietzoneSize);
 		// substract 1/2 stroke width and module radius from the circle radius to not cut off modules
-		$r  = $radius - $this->options->circleRadius * 2;
+		$r  = ($radius - $this->options->circleRadius * 2);
 
 		foreach($this->matrix->matrix() as $y => $row){
 			foreach($row as $x => $value){
@@ -107,7 +107,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 
 				// we need to add 0.5 units to the check values since we're calculating the element centers
 				// ($x/$y is the element's assumed top left corner)
-				if($this->checkIfInsideCircle($x + 0.5, $y + 0.5, $r)){
+				if($this->checkIfInsideCircle(($x + 0.5), ($y + 0.5), $r)){
 					$this->matrix->set($x, $y, (bool)rand(0, 1), QRMatrix::M_QUIETZONE);
 				}
 			}
@@ -122,7 +122,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 		$dx = abs($x - $this->moduleCount / 2);
 		$dy = abs($y - $this->moduleCount / 2);
 
-		if($dx + $dy <= $radius){
+		if(($dx + $dy) <= $radius){
 			return true;
 		}
 
@@ -130,7 +130,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 			return false;
 		}
 
-		if(pow($dx, 2) + pow($dy, 2) <= pow($radius, 2)){
+		if((pow($dx, 2) + pow($dy, 2)) <= pow($radius, 2)){
 			return true;
 		}
 
@@ -143,9 +143,9 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 	protected function addCircle(float $radius):string{
 		return sprintf(
 			'%4$s<circle id="circle" cx="%1$s" cy="%1$s" r="%2$s" stroke-width="%3$s"/>',
-			$this->moduleCount / 2,
+			($this->moduleCount / 2),
 			round($radius, 5),
-			$this->options->circleRadius * 2,
+			($this->options->circleRadius * 2),
 			$this->options->eol
 		);
 	}
@@ -160,7 +160,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 		// @todo: customize the <g> element to your liking (css class, style...)
 		return sprintf(
 			'%5$s<g transform="translate(%1$s %1$s) scale(%2$s)" class="%3$s">%5$s	%4$s%5$s</g>',
-			($this->moduleCount - ($this->moduleCount * $this->options->svgLogoScale)) / 2,
+			(($this->moduleCount - ($this->moduleCount * $this->options->svgLogoScale)) / 2),
 			$this->options->svgLogoScale,
 			$this->options->svgLogoCssClass,
 			file_get_contents($this->options->svgLogo),
@@ -227,7 +227,7 @@ class RoundQuietzoneOptions extends QROptions{
 	 *
 	 * - a value of -1 would go through the center of the outer corner modules of the finder patterns
 	 * - a value of 0 would go through the corner of the outer modules of the finder patterns
-	 * - a value of 3 would go through the center of the module outside next to the finder patterns, in a 45 degree angle
+	 * - a value of 3 would go through the center of the module outside next to the finder patterns, in a 45-degree angle
 	 */
 	protected int $additionalModules = 0;
 
@@ -331,17 +331,17 @@ $options = new RoundQuietzoneOptions([
 	'svgDefs'             => $svgDefs,
 //	'connectPaths'        => true, // this has been set to "always on" internally
 	'excludeFromConnect'  => [
-		QRMatrix::M_FINDER|QRMatrix::IS_DARK,
-		QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK,
-		QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK,
-		QRMatrix::M_QUIETZONE|QRMatrix::IS_DARK
+		(QRMatrix::M_FINDER|QRMatrix::IS_DARK),
+		(QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK),
+		(QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK),
+		(QRMatrix::M_QUIETZONE|QRMatrix::IS_DARK),
 	],
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.4,
 	'keepAsSquare'        => [
-		QRMatrix::M_FINDER|QRMatrix::IS_DARK,
-		QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK,
-		QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK,
+		(QRMatrix::M_FINDER|QRMatrix::IS_DARK),
+		(QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK),
+		(QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK),
 	],
 ]);
 

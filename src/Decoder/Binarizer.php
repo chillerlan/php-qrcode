@@ -83,9 +83,9 @@ final class Binarizer{
 		$secondPeakScore = 0;
 
 		for($x = 0; $x < $numBuckets; $x++){
-			$distanceToBiggest = $x - $firstPeak;
+			$distanceToBiggest = ($x - $firstPeak);
 			// Encourage more distant second peaks by multiplying by square of distance.
-			$score = $buckets[$x] * $distanceToBiggest * $distanceToBiggest;
+			$score = ($buckets[$x] * $distanceToBiggest * $distanceToBiggest);
 
 			if($score > $secondPeakScore){
 				$secondPeak      = $x;
@@ -102,17 +102,17 @@ final class Binarizer{
 
 		// If there is too little contrast in the image to pick a meaningful black point, throw rather
 		// than waste time trying to decode the image, and risk false positives.
-		if($secondPeak - $firstPeak <= $numBuckets / 16){
+		if(($secondPeak - $firstPeak) <= ($numBuckets / 16)){
 			throw new QRCodeDecoderException('no meaningful dark point found'); // @codeCoverageIgnore
 		}
 
 		// Find a valley between them that is low and closer to the white peak.
-		$bestValley      = $secondPeak - 1;
+		$bestValley      = ($secondPeak - 1);
 		$bestValleyScore = -1;
 
-		for($x = $secondPeak - 1; $x > $firstPeak; $x--){
-			$fromFirst = $x - $firstPeak;
-			$score     = $fromFirst * $fromFirst * ($secondPeak - $x) * ($maxBucketCount - $buckets[$x]);
+		for($x = ($secondPeak - 1); $x > $firstPeak; $x--){
+			$fromFirst = ($x - $firstPeak);
+			$score     = ($fromFirst * $fromFirst * ($secondPeak - $x) * ($maxBucketCount - $buckets[$x]));
 
 			if($score > $bestValleyScore){
 				$bestValley      = $x;
@@ -120,7 +120,7 @@ final class Binarizer{
 			}
 		}
 
-		return $bestValley << self::LUMINANCE_SHIFT;
+		return ($bestValley << self::LUMINANCE_SHIFT);
 	}
 
 	/**
@@ -140,13 +140,13 @@ final class Binarizer{
 		$height = $this->source->getHeight();
 
 		if($width >= self::MINIMUM_DIMENSION && $height >= self::MINIMUM_DIMENSION){
-			$subWidth = $width >> self::BLOCK_SIZE_POWER;
+			$subWidth = ($width >> self::BLOCK_SIZE_POWER);
 
 			if(($width & self::BLOCK_SIZE_MASK) !== 0){
 				$subWidth++;
 			}
 
-			$subHeight = $height >> self::BLOCK_SIZE_POWER;
+			$subHeight = ($height >> self::BLOCK_SIZE_POWER);
 
 			if(($height & self::BLOCK_SIZE_MASK) !== 0){
 				$subHeight++;
@@ -174,8 +174,8 @@ final class Binarizer{
 			$right           = (int)(($width * 4) / 5);
 
 			for($x = (int)($width / 5); $x < $right; $x++){
-				$pixel = $localLuminances[$x] & 0xff;
-				$buckets[$pixel >> self::LUMINANCE_SHIFT]++;
+				$pixel = ($localLuminances[$x] & 0xff);
+				$buckets[($pixel >> self::LUMINANCE_SHIFT)]++;
 			}
 		}
 
@@ -187,10 +187,10 @@ final class Binarizer{
 		$matrix = new BitMatrix(max($width, $height));
 
 		for($y = 0; $y < $height; $y++){
-			$offset = $y * $width;
+			$offset = ($y * $width);
 
 			for($x = 0; $x < $width; $x++){
-				$matrix->set($x, $y, (($this->luminances[$offset + $x] & 0xff) < $blackPoint), QRMatrix::M_DATA);
+				$matrix->set($x, $y, (($this->luminances[($offset + $x)] & 0xff) < $blackPoint), QRMatrix::M_DATA);
 			}
 		}
 
@@ -212,7 +212,7 @@ final class Binarizer{
 
 		for($y = 0; $y < $subHeight; $y++){
 			$yoffset    = ($y << self::BLOCK_SIZE_POWER);
-			$maxYOffset = $height - self::BLOCK_SIZE;
+			$maxYOffset = ($height - self::BLOCK_SIZE);
 
 			if($yoffset > $maxYOffset){
 				$yoffset = $maxYOffset;
@@ -220,7 +220,7 @@ final class Binarizer{
 
 			for($x = 0; $x < $subWidth; $x++){
 				$xoffset    = ($x << self::BLOCK_SIZE_POWER);
-				$maxXOffset = $width - self::BLOCK_SIZE;
+				$maxXOffset = ($width - self::BLOCK_SIZE);
 
 				if($xoffset > $maxXOffset){
 					$xoffset = $maxXOffset;
@@ -230,10 +230,10 @@ final class Binarizer{
 				$min = 255;
 				$max = 0;
 
-				for($yy = 0, $offset = $yoffset * $width + $xoffset; $yy < self::BLOCK_SIZE; $yy++, $offset += $width){
+				for($yy = 0, $offset = ($yoffset * $width + $xoffset); $yy < self::BLOCK_SIZE; $yy++, $offset += $width){
 
 					for($xx = 0; $xx < self::BLOCK_SIZE; $xx++){
-						$pixel = (int)($this->luminances[(int)($offset + $xx)]) & 0xff;
+						$pixel = ((int)($this->luminances[(int)($offset + $xx)]) & 0xff);
 						$sum   += $pixel;
 						// still looking for good contrast
 						if($pixel < $min){
@@ -246,20 +246,20 @@ final class Binarizer{
 					}
 
 					// short-circuit min/max tests once dynamic range is met
-					if($max - $min > self::MIN_DYNAMIC_RANGE){
+					if(($max - $min) > self::MIN_DYNAMIC_RANGE){
 						// finish the rest of the rows quickly
 						for($yy++, $offset += $width; $yy < self::BLOCK_SIZE; $yy++, $offset += $width){
 							for($xx = 0; $xx < self::BLOCK_SIZE; $xx++){
-								$sum += (int)($this->luminances[(int)($offset + $xx)]) & 0xff;
+								$sum += ((int)($this->luminances[(int)($offset + $xx)]) & 0xff);
 							}
 						}
 					}
 				}
 
 				// The default estimate is the average of the values in the block.
-				$average = $sum >> (self::BLOCK_SIZE_POWER * 2);
+				$average = ($sum >> (self::BLOCK_SIZE_POWER * 2));
 
-				if($max - $min <= self::MIN_DYNAMIC_RANGE){
+				if(($max - $min) <= self::MIN_DYNAMIC_RANGE){
 					// If variation within the block is low, assume this is a block with only light or only
 					// dark pixels. In that case we do not want to use the average, as it would divide this
 					// low contrast area into black and white pixels, essentially creating data out of noise.
@@ -277,7 +277,7 @@ final class Binarizer{
 
 						// The (min < bp) is arbitrary but works better than other heuristics that were tried.
 						$averageNeighborBlackPoint = (int)(
-							($blackPoints[$y - 1][$x] + (2 * $blackPoints[$y][$x - 1]) + $blackPoints[$y - 1][$x - 1]) / 4
+							($blackPoints[($y - 1)][$x] + (2 * $blackPoints[$y][($x - 1)]) + $blackPoints[($y - 1)][($x - 1)]) / 4
 						);
 
 						if($min < $averageNeighborBlackPoint){
@@ -304,7 +304,7 @@ final class Binarizer{
 
 		for($y = 0; $y < $subHeight; $y++){
 			$yoffset    = ($y << self::BLOCK_SIZE_POWER);
-			$maxYOffset = $height - self::BLOCK_SIZE;
+			$maxYOffset = ($height - self::BLOCK_SIZE);
 
 			if($yoffset > $maxYOffset){
 				$yoffset = $maxYOffset;
@@ -312,30 +312,30 @@ final class Binarizer{
 
 			for($x = 0; $x < $subWidth; $x++){
 				$xoffset    = ($x << self::BLOCK_SIZE_POWER);
-				$maxXOffset = $width - self::BLOCK_SIZE;
+				$maxXOffset = ($width - self::BLOCK_SIZE);
 
 				if($xoffset > $maxXOffset){
 					$xoffset = $maxXOffset;
 				}
 
-				$left = $this->cap($x, 2, $subWidth - 3);
-				$top  = $this->cap($y, 2, $subHeight - 3);
+				$left = $this->cap($x, 2, ($subWidth - 3));
+				$top  = $this->cap($y, 2, ($subHeight - 3));
 				$sum  = 0;
 
 				for($z = -2; $z <= 2; $z++){
-					$br   = $blackPoints[$top + $z];
-					$sum += $br[$left - 2] + $br[$left - 1] + $br[$left] + $br[$left + 1] + $br[$left + 2];
+					$br   = $blackPoints[($top + $z)];
+					$sum += ($br[($left - 2)] + $br[($left - 1)] + $br[$left] + $br[($left + 1)] + $br[($left + 2)]);
 				}
 
 				$average = (int)($sum / 25);
 
 				// Applies a single threshold to a block of pixels.
-				for($j = 0, $o = $yoffset * $width + $xoffset; $j < self::BLOCK_SIZE; $j++, $o += $width){
+				for($j = 0, $o = ($yoffset * $width + $xoffset); $j < self::BLOCK_SIZE; $j++, $o += $width){
 					for($i = 0; $i < self::BLOCK_SIZE; $i++){
 						// Comparison needs to be <= so that black == 0 pixels are black even if the threshold is 0.
-						$v = (((int)($this->luminances[$o + $i]) & 0xff) <= $average);
+						$v = (((int)($this->luminances[($o + $i)]) & 0xff) <= $average);
 
-						$matrix->set($xoffset + $i, $yoffset + $j, $v, QRMatrix::M_DATA);
+						$matrix->set(($xoffset + $i), ($yoffset + $j), $v, QRMatrix::M_DATA);
 					}
 				}
 			}

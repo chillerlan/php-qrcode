@@ -18,32 +18,32 @@ try{
 
 	$moduleValues = [
 		// finder
-		QRMatrix::M_FINDER | QRMatrix::IS_DARK     => $_POST['m_finder_dark'],
-		QRMatrix::M_FINDER                         => $_POST['m_finder_light'],
-		QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK => $_POST['m_finder_dot_dark'],
+		(QRMatrix::M_FINDER | QRMatrix::IS_DARK)     => $_POST['m_finder_dark'],
+		QRMatrix::M_FINDER                           => $_POST['m_finder_light'],
+		(QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK) => $_POST['m_finder_dot_dark'],
 		// alignment
-		QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK  => $_POST['m_alignment_dark'],
-		QRMatrix::M_ALIGNMENT                      => $_POST['m_alignment_light'],
+		(QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK)  => $_POST['m_alignment_dark'],
+		QRMatrix::M_ALIGNMENT                        => $_POST['m_alignment_light'],
 		// timing
-		QRMatrix::M_TIMING | QRMatrix::IS_DARK     => $_POST['m_timing_dark'],
-		QRMatrix::M_TIMING                         => $_POST['m_timing_light'],
+		(QRMatrix::M_TIMING | QRMatrix::IS_DARK)     => $_POST['m_timing_dark'],
+		QRMatrix::M_TIMING                           => $_POST['m_timing_light'],
 		// format
-		QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => $_POST['m_format_dark'],
-		QRMatrix::M_FORMAT                         => $_POST['m_format_light'],
+		(QRMatrix::M_FORMAT | QRMatrix::IS_DARK)     => $_POST['m_format_dark'],
+		QRMatrix::M_FORMAT                           => $_POST['m_format_light'],
 		// version
-		QRMatrix::M_VERSION | QRMatrix::IS_DARK    => $_POST['m_version_dark'],
-		QRMatrix::M_VERSION                        => $_POST['m_version_light'],
+		(QRMatrix::M_VERSION | QRMatrix::IS_DARK)    => $_POST['m_version_dark'],
+		QRMatrix::M_VERSION                          => $_POST['m_version_light'],
 		// data
-		QRMatrix::M_DATA | QRMatrix::IS_DARK       => $_POST['m_data_dark'],
-		QRMatrix::M_DATA                           => $_POST['m_data_light'],
+		(QRMatrix::M_DATA | QRMatrix::IS_DARK)       => $_POST['m_data_dark'],
+		QRMatrix::M_DATA                             => $_POST['m_data_light'],
 		// darkmodule
-		QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK => $_POST['m_darkmodule_dark'],
+		(QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK) => $_POST['m_darkmodule_dark'],
 		// separator
-		QRMatrix::M_SEPARATOR                      => $_POST['m_separator_light'],
+		QRMatrix::M_SEPARATOR                        => $_POST['m_separator_light'],
 		// quietzone
-		QRMatrix::M_QUIETZONE                      => $_POST['m_quietzone_light'],
+		QRMatrix::M_QUIETZONE                        => $_POST['m_quietzone_light'],
 		// logo
-		QRMatrix::M_LOGO                           => $_POST['m_logo_light'],
+		QRMatrix::M_LOGO                             => $_POST['m_logo_light'],
 	];
 
 	$moduleValues = array_map(function($v){
@@ -83,12 +83,12 @@ try{
 		$qrcode = '<pre style="font-size: 75%; overflow-x: auto;">'.$qrcode.'</pre>';
 	}
 
-	send_response(['qrcode' => $qrcode]);
+	sendResponse(['qrcode' => $qrcode]);
 }
 // Pokémon exception handler
 catch(Throwable $e){
 	header('HTTP/1.1 500 Internal Server Error');
-	send_response(['error' => $e->getMessage()]);
+	sendResponse(['error' => $e->getMessage()]);
 }
 
 exit;
@@ -96,7 +96,7 @@ exit;
 /**
  * @param array $response
  */
-function send_response(array $response){
+function sendResponse(array $response){
 	header('Content-type: application/json;charset=utf-8;');
 	echo json_encode($response);
 	exit;

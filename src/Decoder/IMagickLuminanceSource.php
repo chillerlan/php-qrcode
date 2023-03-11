@@ -55,7 +55,7 @@ class IMagickLuminanceSource extends LuminanceSourceAbstract{
 		$count  = count($pixels);
 
 		for($i = 0; $i < $count; $i += 3){
-			$this->setLuminancePixel($pixels[$i] & 0xff, $pixels[$i + 1] & 0xff, $pixels[$i + 2] & 0xff);
+			$this->setLuminancePixel(($pixels[$i] & 0xff), ($pixels[($i + 1)] & 0xff), ($pixels[($i + 2)] & 0xff));
 		}
 	}
 

@@ -85,7 +85,7 @@ final class ReedSolomonDecoder{
 			[$numEccBlocks, $eccPerBlock] = $blockData;
 
 			for($i = 0; $i < $numEccBlocks; $i++, $numResultBlocks++){
-				$result[$numResultBlocks] = [$eccPerBlock, array_fill(0, $numEccCodewords + $eccPerBlock, 0)];
+				$result[$numResultBlocks] = [$eccPerBlock, array_fill(0, ($numEccCodewords + $eccPerBlock), 0)];
 			}
 		}
 
@@ -93,7 +93,7 @@ final class ReedSolomonDecoder{
 		// (where n may be 0) have 1 more byte. Figure out where these start.
 		/** @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset */
 		$shorterBlocksTotalCodewords = count($result[0][1]);
-		$longerBlocksStartAt         = count($result) - 1;
+		$longerBlocksStartAt         = (count($result) - 1);
 
 		while($longerBlocksStartAt >= 0){
 			$numCodewords = count($result[$longerBlocksStartAt][1]);
@@ -107,7 +107,7 @@ final class ReedSolomonDecoder{
 
 		$longerBlocksStartAt++;
 
-		$shorterBlocksNumDataCodewords = $shorterBlocksTotalCodewords - $numEccCodewords;
+		$shorterBlocksNumDataCodewords = ($shorterBlocksTotalCodewords - $numEccCodewords);
 		// The last elements of result may be 1 element longer;
 		// first fill out as many elements as all of them have
 		$rawCodewordsOffset = 0;
@@ -129,7 +129,7 @@ final class ReedSolomonDecoder{
 
 		for($i = $shorterBlocksNumDataCodewords; $i < $max; $i++){
 			for($j = 0; $j < $numResultBlocks; $j++){
-				$iOffset                 = $j < $longerBlocksStartAt ? $i : $i + 1;
+				$iOffset                 = ($j < $longerBlocksStartAt) ? $i : ($i + 1);
 				$result[$j][1][$iOffset] = $rawCodewords[$rawCodewordsOffset++];
 			}
 		}
@@ -147,7 +147,7 @@ final class ReedSolomonDecoder{
 		$codewordsInts = [];
 
 		foreach($codewordBytes as $codewordByte){
-			$codewordsInts[] = $codewordByte & 0xFF;
+			$codewordsInts[] = ($codewordByte & 0xFF);
 		}
 
 		$decoded = $this->decodeWords($codewordsInts, (count($codewordBytes) - $numDataCodewords));
@@ -201,7 +201,7 @@ final class ReedSolomonDecoder{
 		$receivedCount       = count($received);
 
 		for($i = 0; $i < $errorLocationsCount; $i++){
-			$position = $receivedCount - 1 - GF256::log($errorLocations[$i]);
+			$position = ($receivedCount - 1 - GF256::log($errorLocations[$i]));
 
 			if($position < 0){
 				throw new QRCodeException('Bad error location');
@@ -217,7 +217,7 @@ final class ReedSolomonDecoder{
 	 * @return \chillerlan\QRCode\Common\GenericGFPoly[] [sigma, omega]
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
-	private function runEuclideanAlgorithm(GenericGFPoly $a, GenericGFPoly $b, int $R):array{
+	private function runEuclideanAlgorithm(GenericGFPoly $a, GenericGFPoly $b, int $z):array{
 		// Assume a's degree is >= b's
 		if($a->getDegree() < $b->getDegree()){
 			$temp = $a;
@@ -230,8 +230,8 @@ final class ReedSolomonDecoder{
 		$tLast = new GenericGFPoly([0]);
 		$t     = new GenericGFPoly([1]);
 
-		// Run Euclidean algorithm until r's degree is less than R/2
-		while(2 * $r->getDegree() >= $R){
+		// Run Euclidean algorithm until r's degree is less than z/2
+		while((2 * $r->getDegree()) >= $z){
 			$rLastLast = $rLast;
 			$tLastLast = $tLast;
 			$rLast     = $r;
@@ -304,7 +304,7 @@ final class ReedSolomonDecoder{
 					// Above should work but fails on some Apple and Linux JDKs due to a Hotspot bug.
 					// Below is a funny-looking workaround from Steven Parkes
 					$term        = GF256::multiply($errorLocations[$j], $xiInverse);
-					$denominator = GF256::multiply($denominator, (($term & 0x1) === 0 ? $term | 1 : $term & ~1));
+					$denominator = GF256::multiply($denominator, ((($term & 0x1) === 0) ? ($term | 1) : ($term & ~1)));
 				}
 			}
 

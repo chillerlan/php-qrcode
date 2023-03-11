@@ -57,7 +57,7 @@ class QRSvgWithLogo extends QRMarkupSVG{
 		// @todo: customize the <g> element to your liking (css class, style...)
 		return sprintf(
 			'%5$s<g transform="translate(%1$s %1$s) scale(%2$s)" class="%3$s">%5$s	%4$s%5$s</g>',
-			($this->moduleCount - ($this->moduleCount * $this->options->svgLogoScale)) / 2,
+			(($this->moduleCount - ($this->moduleCount * $this->options->svgLogoScale)) / 2),
 			$this->options->svgLogoScale,
 			$this->options->svgLogoCssClass,
 			file_get_contents($this->options->svgLogo),
@@ -122,12 +122,12 @@ $options = new SVGWithLogoOptions([
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.45,
 	// connect paths
-	'connectPaths'     => true,
+	'connectPaths'        => true,
 	// keep modules of thhese types as square
 	'keepAsSquare'        => [
-		QRMatrix::M_FINDER|QRMatrix::IS_DARK,
+		(QRMatrix::M_FINDER|QRMatrix::IS_DARK),
 		QRMatrix::M_FINDER_DOT,
-		QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK,
+		(QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK),
 	],
 	// https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient
 	'svgDefs'             => '

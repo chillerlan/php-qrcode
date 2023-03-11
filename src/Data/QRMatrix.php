@@ -65,7 +65,7 @@ class QRMatrix{
 		0b00010000 => [ 1,  1],
 		0b00100000 => [ 0,  1],
 		0b01000000 => [-1,  1],
-		0b10000000 => [-1,  0]
+		0b10000000 => [-1,  0],
 	];
 
 	/**
@@ -133,7 +133,7 @@ class QRMatrix{
 	 *
 	 * @return int[][]|bool[][]
 	 */
-	public function matrix(bool $boolean = false):array{
+	public function matrix(bool $boolean = null):array{
 
 		if(!$boolean){
 			return $this->matrix;
@@ -183,7 +183,7 @@ class QRMatrix{
 	}
 
 	/**
-	 * Returns the value of the module at position [$x, $y] or -1 if the coordinate is outside of the matrix
+	 * Returns the value of the module at position [$x, $y] or -1 if the coordinate is outside the matrix
 	 */
 	public function get(int $x, int $y):int{
 
@@ -203,7 +203,7 @@ class QRMatrix{
 	public function set(int $x, int $y, bool $value, int $M_TYPE):self{
 
 		if(isset($this->matrix[$y][$x])){
-			$this->matrix[$y][$x] = $M_TYPE | ($value ? $this::IS_DARK : 0);
+			$this->matrix[$y][$x] = ($M_TYPE | (($value) ? $this::IS_DARK : 0));
 		}
 
 		return $this;
@@ -274,11 +274,14 @@ class QRMatrix{
 			[$ix, $iy] = $coord;
 
 			// check if the field is the same type
-			if($M_TYPE_VALUE !== null && ($this->get($x + $ix, $y + $iy) | $this::IS_DARK) !== ($M_TYPE_VALUE | $this::IS_DARK)){
+			if(
+				$M_TYPE_VALUE !== null
+				&& ($this->get(($x + $ix), ($y + $iy)) | $this::IS_DARK) !== ($M_TYPE_VALUE | $this::IS_DARK)
+			){
 				continue;
 			}
 
-			if($this->checkType($x + $ix, $y + $iy, $this::IS_DARK)){
+			if($this->checkType(($x + $ix), ($y + $iy), $this::IS_DARK)){
 				$bits |= $bit;
 			}
 		}
@@ -292,7 +295,7 @@ class QRMatrix{
 	 * 4 * version + 9 or moduleCount - 8
 	 */
 	public function setDarkModule():self{
-		$this->set(8, $this->moduleCount - 8, true, $this::M_DARKMODULE);
+		$this->set(8, ($this->moduleCount - 8), true, $this::M_DARKMODULE);
 
 		return $this;
 	}
@@ -306,8 +309,8 @@ class QRMatrix{
 
 		$pos = [
 			[0, 0], // top left
-			[$this->moduleCount - 7, 0], // top right
-			[0, $this->moduleCount - 7], // bottom left
+			[($this->moduleCount - 7), 0], // top right
+			[0, ($this->moduleCount - 7)], // bottom left
 		];
 
 		foreach($pos as $c){
@@ -315,15 +318,15 @@ class QRMatrix{
 				for($x = 0; $x < 7; $x++){
 					// outer (dark) 7*7 square
 					if($x === 0 || $x === 6 || $y === 0 || $y === 6){
-						$this->set($c[0] + $y, $c[1] + $x, true, $this::M_FINDER);
+						$this->set(($c[0] + $y), ($c[1] + $x), true, $this::M_FINDER);
 					}
 					// inner (light) 5*5 square
 					elseif($x === 1 || $x === 5 || $y === 1 || $y === 5){
-						$this->set($c[0] + $y, $c[1] + $x, false, $this::M_FINDER);
+						$this->set(($c[0] + $y), ($c[1] + $x), false, $this::M_FINDER);
 					}
 					// 3*3 dot
 					else{
-						$this->set($c[0] + $y, $c[1] + $x, true, $this::M_FINDER_DOT);
+						$this->set(($c[0] + $y), ($c[1] + $x), true, $this::M_FINDER_DOT);
 					}
 				}
 			}
@@ -341,20 +344,20 @@ class QRMatrix{
 
 		$h = [
 			[7, 0],
-			[$this->moduleCount - 8, 0],
-			[7, $this->moduleCount - 8],
+			[($this->moduleCount - 8), 0],
+			[7, ($this->moduleCount - 8)],
 		];
 
 		$v = [
 			[7, 7],
-			[$this->moduleCount - 1, 7],
-			[7, $this->moduleCount - 8],
+			[($this->moduleCount - 1), 7],
+			[7, ($this->moduleCount - 8)],
 		];
 
 		for($c = 0; $c < 3; $c++){
 			for($i = 0; $i < 8; $i++){
-				$this->set($h[$c][0]     , $h[$c][1] + $i, false, $this::M_SEPARATOR);
-				$this->set($v[$c][0] - $i, $v[$c][1]     , false, $this::M_SEPARATOR);
+				$this->set($h[$c][0]     , ($h[$c][1] + $i), false, $this::M_SEPARATOR);
+				$this->set(($v[$c][0] - $i), $v[$c][1]     , false, $this::M_SEPARATOR);
 			}
 		}
 
@@ -382,7 +385,7 @@ class QRMatrix{
 					for($rx = -2; $rx <= 2; $rx++){
 						$v = ($ry === 0 && $rx === 0) || $ry === 2 || $ry === -2 || $rx === 2 || $rx === -2;
 
-						$this->set($x + $rx, $y + $ry, $v, $this::M_ALIGNMENT);
+						$this->set(($x + $rx), ($y + $ry), $v, $this::M_ALIGNMENT);
 					}
 				}
 
@@ -400,13 +403,13 @@ class QRMatrix{
 	 */
 	public function setTimingPattern():self{
 
-		foreach(range(8, $this->moduleCount - 8 - 1) as $i){
+		foreach(range(8, ($this->moduleCount - 8 - 1)) as $i){
 
 			if($this->matrix[6][$i] !== $this::M_NULL || $this->matrix[$i][6] !== $this::M_NULL){
 				continue;
 			}
 
-			$v = $i % 2 === 0;
+			$v = ($i % 2) === 0;
 
 			$this->set($i, 6, $v, $this::M_TIMING); // h
 			$this->set(6, $i, $v, $this::M_TIMING); // v
@@ -427,7 +430,7 @@ class QRMatrix{
 
 			for($i = 0; $i < 18; $i++){
 				$a = (int)($i / 3);
-				$b = $i % 3 + $this->moduleCount - 8 - 3;
+				$b = (($i % 3) + ($this->moduleCount - 8 - 3));
 				$v = (($bits >> $i) & 1) === 1;
 
 				$this->set($b, $a, $v, $this::M_VERSION); // ne
@@ -454,20 +457,20 @@ class QRMatrix{
 				$this->set(8, $i, $v, $this::M_FORMAT);
 			}
 			elseif($i < 8){
-				$this->set(8, $i + 1, $v, $this::M_FORMAT);
+				$this->set(8, ($i + 1), $v, $this::M_FORMAT);
 			}
 			else{
-				$this->set(8, $this->moduleCount - 15 + $i, $v, $this::M_FORMAT);
+				$this->set(8, ($this->moduleCount - 15 + $i), $v, $this::M_FORMAT);
 			}
 
 			if($i < 8){
-				$this->set($this->moduleCount - $i - 1, 8, $v, $this::M_FORMAT);
+				$this->set(($this->moduleCount - $i - 1), 8, $v, $this::M_FORMAT);
 			}
 			elseif($i < 9){
-				$this->set(15 - $i, 8, $v, $this::M_FORMAT);
+				$this->set(((15 - $i)), 8, $v, $this::M_FORMAT);
 			}
 			else{
-				$this->set(15 - $i - 1, 8, $v, $this::M_FORMAT);
+				$this->set((15 - $i - 1), 8, $v, $this::M_FORMAT);
 			}
 
 		}
@@ -484,18 +487,18 @@ class QRMatrix{
 	 */
 	public function setQuietZone(int $quietZoneSize):self{
 
-		if($this->matrix[$this->moduleCount - 1][$this->moduleCount - 1] === $this::M_NULL){
+		if($this->matrix[($this->moduleCount - 1)][($this->moduleCount - 1)] === $this::M_NULL){
 			throw new QRCodeDataException('use only after writing data');
 		}
 
 		// create a matrix with the new size
-		$newSize   = $this->moduleCount + ($quietZoneSize * 2);
+		$newSize   = ($this->moduleCount + ($quietZoneSize * 2));
 		$newMatrix = $this->createMatrix($newSize, $this::M_QUIETZONE);
 
 		// copy over the current matrix
 		for($y = 0; $y < $this->moduleCount; $y++){
 			for($x = 0; $x < $this->moduleCount; $x++){
-				$newMatrix[$y + $quietZoneSize][$x + $quietZoneSize] = $this->matrix[$y][$x];
+				$newMatrix[($y + $quietZoneSize)][($x + $quietZoneSize)] = $this->matrix[$y][$x];
 			}
 		}
 
@@ -527,7 +530,7 @@ class QRMatrix{
 	 */
 	public function setLogoSpace(int $width, int $height = null, int $startX = null, int $startY = null):self{
 
-		// for logos we operate in ECC H (30%) only
+		// for logos, we operate in ECC H (30%) only
 		if($this->eccLevel->getLevel() !== EccLevel::H){
 			throw new QRCodeDataException('ECC level "H" required to add logo space');
 		}
@@ -559,20 +562,20 @@ class QRMatrix{
 		}
 
 		// throw if the logo space exceeds the maximum error correction capacity
-		if($width * $height > floor($length * $length * 0.2)){
+		if(($width * $height) > floor($length * $length * 0.2)){
 			throw new QRCodeDataException('logo space exceeds the maximum error correction capacity');
 		}
 
 		// quiet zone size
-		$qz    = ($this->moduleCount - $length) / 2;
+		$qz    = (($this->moduleCount - $length) / 2);
 		// skip quiet zone and the first 9 rows/columns (finder-, mode-, version- and timing patterns)
-		$start = $qz + 9;
+		$start = ($qz + 9);
 		// skip quiet zone
-		$end   = $this->moduleCount - $qz;
+		$end   = ($this->moduleCount - $qz);
 
 		// determine start coordinates
-		$startX = ($startX !== null ? $startX : ($length - $width) / 2) + $qz;
-		$startY = ($startY !== null ? $startY : ($length - $height) / 2) + $qz;
+		$startX = ((($startX !== null) ? $startX : ($length - $width) / 2) + $qz);
+		$startY = ((($startY !== null) ? $startY : ($length - $height) / 2) + $qz);
 
 		// clear the space
 		foreach($this->matrix as $y => $row){
@@ -601,7 +604,7 @@ class QRMatrix{
 		$iBit      = 7;
 		$direction = true;
 
-		for($i = $this->moduleCount - 1; $i > 0; $i -= 2){
+		for($i = ($this->moduleCount - 1); $i > 0; $i -= 2){
 
 			// skip vertical alignment pattern
 			if($i === 6){
@@ -609,10 +612,10 @@ class QRMatrix{
 			}
 
 			for($count = 0; $count < $this->moduleCount; $count++){
-				$y = $direction ? $this->moduleCount - 1 - $count : $count;
+				$y = ($direction) ? ($this->moduleCount - 1 - $count) : $count;
 
 				for($col = 0; $col < 2; $col++){
-					$x = $i - $col;
+					$x = ($i - $col);
 
 					// skip functional patterns
 					if($this->get($x, $y) !== $this::M_NULL){

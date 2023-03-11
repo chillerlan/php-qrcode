@@ -179,7 +179,7 @@ class QRCode{
 	 * QRCode constructor.
 	 */
 	public function __construct(SettingsContainerInterface $options = null){
-		$this->setOptions($options ?? new QROptions);
+		$this->setOptions(($options ?? new QROptions));
 	}
 
 	/**
@@ -246,7 +246,7 @@ class QRCode{
 
 			// check whether one of the dimensions was omitted
 			if($logoSpaceWidth === null || $logoSpaceHeight === null){
-				$logoSpaceWidth  = $logoSpaceWidth ?? $logoSpaceHeight ?? 0;
+				$logoSpaceWidth  = ($logoSpaceWidth ?? $logoSpaceHeight ?? 0);
 				$logoSpaceHeight = null;
 			}
 
@@ -271,7 +271,7 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function initOutputInterface(QRMatrix $matrix):QROutputInterface{
-		$outputInterface = QROutputInterface::MODES[$this->options->outputType] ?? null;
+		$outputInterface =( QROutputInterface::MODES[$this->options->outputType] ?? null);
 
 		if($this->options->outputType === QROutputInterface::CUSTOM){
 			$outputInterface = $this->options->outputInterface;

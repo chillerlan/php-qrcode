@@ -389,7 +389,7 @@ trait QROptionsTrait{
 	 * sets/clamps the version number
 	 */
 	protected function set_version(int $version):void{
-		$this->version = $version !== Version::AUTO ? max(1, min(40, $version)) : Version::AUTO;
+		$this->version = ($version !== Version::AUTO) ? max(1, min(40, $version)) : Version::AUTO;
 	}
 
 	/**
@@ -451,7 +451,7 @@ trait QROptionsTrait{
 	 * enables Imagick for the QR Code reader if the extension is available
 	 */
 	protected function set_readerUseImagickIfAvailable(bool $useImagickIfAvailable):void{
-		$this->readerUseImagickIfAvailable = $useImagickIfAvailable && extension_loaded('imagick');
+		$this->readerUseImagickIfAvailable = ($useImagickIfAvailable && extension_loaded('imagick'));
 	}
 
 	/**

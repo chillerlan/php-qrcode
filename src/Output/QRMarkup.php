@@ -35,7 +35,7 @@ abstract class QRMarkup extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	protected function getDefaultModuleValue(bool $isDark):string{
-		return $isDark ? $this->options->markupDark : $this->options->markupLight;
+		return ($isDark) ? $this->options->markupDark : $this->options->markupLight;
 	}
 
 	/**

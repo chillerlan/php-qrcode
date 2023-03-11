@@ -72,8 +72,8 @@ $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 
 // invoke the QROutputInterface manually
 $options = new QROptions([
-	'version'      => 5,
-	'eccLevel'     => EccLevel::L,
+	'version'  => 5,
+	'eccLevel' => EccLevel::L,
 ]);
 
 $qrcode = new QRCode($options);

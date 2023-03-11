@@ -144,7 +144,7 @@ final class QRData{
 
 			if(!$segment instanceof ECI){
 				// mode length bits margin to the next breakpoint
-				$margin += ($segment instanceof Byte ? 8 : 2);
+				$margin += ($segment instanceof Byte) ? 8 : 2;
 			}
 		}
 
@@ -208,7 +208,7 @@ final class QRData{
 		}
 
 		// add terminator (ISO/IEC 18004:2000 Table 2)
-		if($this->bitBuffer->getLength() + 4 <= $MAX_BITS){
+		if(($this->bitBuffer->getLength() + 4) <= $MAX_BITS){
 			$this->bitBuffer->put(0, 4);
 		}
 
@@ -216,7 +216,7 @@ final class QRData{
 
 		// if the final codeword is not exactly 8 bits in length, it shall be made 8 bits long
 		// by the addition of padding bits with binary value 0
-		while($this->bitBuffer->getLength() % 8 !== 0){
+		while(($this->bitBuffer->getLength() % 8) !== 0){
 			$this->bitBuffer->putBit(false);
 		}
 
@@ -226,7 +226,7 @@ final class QRData{
 		$alternate = false;
 
 		while($this->bitBuffer->getLength() <= $MAX_BITS){
-			$this->bitBuffer->put($alternate ? 0b00010001 : 0b11101100, 8);
+			$this->bitBuffer->put(($alternate) ? 0b00010001 : 0b11101100, 8);
 
 			$alternate = !$alternate;
 		}

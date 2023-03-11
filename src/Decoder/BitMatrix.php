@@ -94,7 +94,7 @@ final class BitMatrix extends QRMatrix{
 	public function mirror():self{
 
 		for($x = 0; $x < $this->moduleCount; $x++){
-			for($y = $x + 1; $y < $this->moduleCount; $y++){
+			for($y = ($x + 1); $y < $this->moduleCount; $y++){
 				if($this->get($x, $y) !== $this->get($y, $x)){
 					$this->flip($y, $x);
 					$this->flip($x, $y);
@@ -128,7 +128,7 @@ final class BitMatrix extends QRMatrix{
 		$direction = true;
 
 		// Read columns in pairs, from right to left
-		for($i = $this->moduleCount - 1; $i > 0; $i -= 2){
+		for($i = ($this->moduleCount - 1); $i > 0; $i -= 2){
 
 			// Skip whole column with vertical alignment pattern;
 			// saves time and makes the other code proceed more cleanly
@@ -137,10 +137,10 @@ final class BitMatrix extends QRMatrix{
 			}
 			// Read alternatingly from bottom to top then top to bottom
 			for($count = 0; $count < $this->moduleCount; $count++){
-				$y = $direction ? $this->moduleCount - 1 - $count : $count;
+				$y = ($direction) ? ($this->moduleCount - 1 - $count) : $count;
 
 				for($col = 0; $col < 2; $col++){
-					$x = $i - $col;
+					$x = ($i - $col);
 
 					// Ignore bits covered by the function pattern
 					if($fp->get($x, $y) !== $this::M_NULL){
@@ -203,13 +203,13 @@ final class BitMatrix extends QRMatrix{
 
 		// Read the top-right/bottom-left pattern too
 		$formatInfoBits2 = 0;
-		$jMin            = $this->moduleCount - 7;
+		$jMin            = ($this->moduleCount - 7);
 
-		for($j = $this->moduleCount - 1; $j >= $jMin; $j--){
+		for($j = ($this->moduleCount - 1); $j >= $jMin; $j--){
 			$formatInfoBits2 = $this->copyVersionBit(8, $j, $formatInfoBits2);
 		}
 
-		for($i = $this->moduleCount - 8; $i < $this->moduleCount; $i++){
+		for($i = ($this->moduleCount - 8); $i < $this->moduleCount; $i++){
 			$formatInfoBits2 = $this->copyVersionBit($i, 8, $formatInfoBits2);
 		}
 
@@ -220,8 +220,8 @@ final class BitMatrix extends QRMatrix{
 			// Should return null, but, some QR codes apparently do not mask this info.
 			// Try again by actually masking the pattern first.
 			$formatInfo = $this->doDecodeFormatInformation(
-				$formatInfoBits1 ^ $this::FORMAT_INFO_MASK_QR,
-				$formatInfoBits2 ^ $this::FORMAT_INFO_MASK_QR
+				($formatInfoBits1 ^ $this::FORMAT_INFO_MASK_QR),
+				($formatInfoBits2 ^ $this::FORMAT_INFO_MASK_QR)
 			);
 
 			// still nothing???
@@ -246,7 +246,7 @@ final class BitMatrix extends QRMatrix{
 			? $this->check($j, $i)
 			: $this->check($i, $j);
 
-		return $bit ? ($versionBits << 1) | 0x1 : $versionBits << 1;
+		return ($bit) ? (($versionBits << 1) | 0x1) : ($versionBits << 1);
 	}
 
 	/**
@@ -302,7 +302,7 @@ final class BitMatrix extends QRMatrix{
 			return $this;
 		}
 
-		$provisionalVersion = ($this->moduleCount - 17) / 4;
+		$provisionalVersion = (($this->moduleCount - 17) / 4);
 
 		// no version info if v < 7
 		if($provisionalVersion < 7){
@@ -313,10 +313,10 @@ final class BitMatrix extends QRMatrix{
 
 		// Read top-right version info: 3 wide by 6 tall
 		$versionBits = 0;
-		$ijMin       = $this->moduleCount - 11;
+		$ijMin       = ($this->moduleCount - 11);
 
 		for($y = 5; $y >= 0; $y--){
-			for($x = $this->moduleCount - 9; $x >= $ijMin; $x--){
+			for($x = ($this->moduleCount - 9); $x >= $ijMin; $x--){
 				$versionBits = $this->copyVersionBit($x, $y, $versionBits);
 			}
 		}
@@ -331,7 +331,7 @@ final class BitMatrix extends QRMatrix{
 		$versionBits = 0;
 
 		for($x = 5; $x >= 0; $x--){
-			for($y = $this->moduleCount - 9; $y >= $ijMin; $y--){
+			for($y = ($this->moduleCount - 9); $y >= $ijMin; $y--){
 				$versionBits = $this->copyVersionBit($x, $y, $versionBits);
 			}
 		}
@@ -390,7 +390,7 @@ final class BitMatrix extends QRMatrix{
 			return $a;
 		}
 
-		return ($a >> $b) & ~((1 << (8 * PHP_INT_SIZE - 1)) >> ($b - 1));
+		return (($a >> $b) & ~((1 << (8 * PHP_INT_SIZE - 1)) >> ($b - 1)));
 	}
 
 	/**
@@ -405,7 +405,7 @@ final class BitMatrix extends QRMatrix{
 		$count = 0;
 
 		for($i = 0; $i < 32; $i += 4){
-			$count += $BITS_SET_IN_HALF_BYTE[$this->uRShift($a, $i) & 0x0F];
+			$count += $BITS_SET_IN_HALF_BYTE[($this->uRShift($a, $i) & 0x0F)];
 		}
 
 		return $count;

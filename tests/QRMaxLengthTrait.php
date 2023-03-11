@@ -91,8 +91,8 @@ trait QRMaxLengthTrait{
 		if(!isset($dataModes[$mode])){
 			throw new QRCodeException('invalid $mode');
 		}
-
-		return self::$MAX_LENGTH[$version->getVersionNumber()][$dataModes[$mode]][$eccLevel->getOrdinal()] ?? null;
+		/** @SuppressWarnings(PHPMD.UndefinedVariable) */
+		return (static::$MAX_LENGTH[$version->getVersionNumber()][$dataModes[$mode]][$eccLevel->getOrdinal()] ?? null);
 	}
 
 }

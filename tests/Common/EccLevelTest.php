@@ -23,8 +23,8 @@ final class EccLevelTest extends TestCase{
 	public function testConstructInvalidEccException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('invalid ECC level');
-
-		$ecc = new EccLevel(69);
+		/** @phan-suppress-next-line PhanNoopNew */
+		new EccLevel(69);
 	}
 
 	public function testToString():void{

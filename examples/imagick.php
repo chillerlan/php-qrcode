@@ -23,33 +23,37 @@ $options = new QROptions([
 	'drawLightModules'    => true,
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.4,
-	'keepAsSquare'        => [QRMatrix::M_FINDER|QRMatrix::IS_DARK, QRMatrix::M_FINDER_DOT, QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK],
+	'keepAsSquare'        => [
+		(QRMatrix::M_FINDER|QRMatrix::IS_DARK),
+		QRMatrix::M_FINDER_DOT,
+		(QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK),
+	],
 	'moduleValues'        => [
 		// finder
-		QRMatrix::M_FINDER | QRMatrix::IS_DARK     => '#A71111', // dark (true)
-		QRMatrix::M_FINDER                         => '#FFBFBF', // light (false)
-		QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK => '#A71111', // finder dot, dark (true)
+		(QRMatrix::M_FINDER | QRMatrix::IS_DARK)     => '#A71111', // dark (true)
+		QRMatrix::M_FINDER                           => '#FFBFBF', // light (false)
+		(QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK) => '#A71111', // finder dot, dark (true)
 		// alignment
-		QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK  => '#A70364',
-		QRMatrix::M_ALIGNMENT                      => '#FFC9C9',
+		(QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK)  => '#A70364',
+		QRMatrix::M_ALIGNMENT                        => '#FFC9C9',
 		// timing
-		QRMatrix::M_TIMING | QRMatrix::IS_DARK     => '#98005D',
-		QRMatrix::M_TIMING                         => '#FFB8E9',
+		(QRMatrix::M_TIMING | QRMatrix::IS_DARK)     => '#98005D',
+		QRMatrix::M_TIMING                           => '#FFB8E9',
 		// format
-		QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => '#003804',
-		QRMatrix::M_FORMAT                         => '#CCFB12',
+		(QRMatrix::M_FORMAT | QRMatrix::IS_DARK)     => '#003804',
+		QRMatrix::M_FORMAT                           => '#CCFB12',
 		// version
-		QRMatrix::M_VERSION | QRMatrix::IS_DARK    => '#650098',
-		QRMatrix::M_VERSION                        => '#E0B8FF',
+		(QRMatrix::M_VERSION | QRMatrix::IS_DARK)    => '#650098',
+		QRMatrix::M_VERSION                          => '#E0B8FF',
 		// data
-		QRMatrix::M_DATA | QRMatrix::IS_DARK       => '#4A6000',
-		QRMatrix::M_DATA                           => '#ECF9BE',
+		(QRMatrix::M_DATA | QRMatrix::IS_DARK)       => '#4A6000',
+		QRMatrix::M_DATA                             => '#ECF9BE',
 		// darkmodule
-		QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK => '#080063',
+		(QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK) => '#080063',
 		// separator
-		QRMatrix::M_SEPARATOR                      => '#DDDDDD',
+		QRMatrix::M_SEPARATOR                        => '#DDDDDD',
 		// quietzone
-		QRMatrix::M_QUIETZONE                      => '#DDDDDD',
+		QRMatrix::M_QUIETZONE                        => '#DDDDDD',
 	],
 ]);
 

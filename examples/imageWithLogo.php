@@ -32,8 +32,8 @@ class QRImageWithLogo extends QRGdImage{
 		// set returnResource to true to skip further processing for now
 		$this->options->returnResource = true;
 
-		// of course you could accept other formats too (such as resource or Imagick)
-		// i'm not checking for the file type either for simplicity reasons (assuming PNG)
+		// of course, you could accept other formats too (such as resource or Imagick)
+		// I'm not checking for the file type either for simplicity reasons (assuming PNG)
 		if(!is_file($logo) || !is_readable($logo)){
 			throw new QRCodeOutputException('invalid logo');
 		}
@@ -48,14 +48,14 @@ class QRImageWithLogo extends QRGdImage{
 		$h = imagesy($im);
 
 		// set new logo size, leave a border of 1 module (no proportional resize/centering)
-		$lw = ($this->options->logoSpaceWidth - 2) * $this->options->scale;
-		$lh = ($this->options->logoSpaceHeight - 2) * $this->options->scale;
+		$lw = (($this->options->logoSpaceWidth - 2) * $this->options->scale);
+		$lh = (($this->options->logoSpaceHeight - 2) * $this->options->scale);
 
 		// get the qrcode size
-		$ql = $this->matrix->size() * $this->options->scale;
+		$ql = ($this->matrix->size() * $this->options->scale);
 
 		// scale the logo and copy it over. done!
-		imagecopyresampled($this->image, $im, ($ql - $lw) / 2, ($ql - $lh) / 2, 0, 0, $lw, $lh, $w, $h);
+		imagecopyresampled($this->image, $im, (($ql - $lw) / 2), (($ql - $lh) / 2), 0, 0, $lw, $lh, $w, $h);
 
 		$imageData = $this->dumpImage();
 

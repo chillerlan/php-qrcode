@@ -18,34 +18,34 @@ use chillerlan\QRCode\Data\QRMatrix;
 interface QROutputInterface{
 
 	/** @var string */
-	const MARKUP_HTML = 'html';
+	public const MARKUP_HTML = 'html';
 	/** @var string */
-	const MARKUP_SVG  = 'svg';
+	public const MARKUP_SVG  = 'svg';
 	/** @var string */
-	const GDIMAGE_PNG = 'png';
+	public const GDIMAGE_PNG = 'png';
 	/** @var string */
-	const GDIMAGE_JPG = 'jpg';
+	public const GDIMAGE_JPG = 'jpg';
 	/** @var string */
-	const GDIMAGE_GIF = 'gif';
+	public const GDIMAGE_GIF = 'gif';
 	/** @var string */
-	const STRING_JSON = 'json';
+	public const STRING_JSON = 'json';
 	/** @var string */
-	const STRING_TEXT = 'text';
+	public const STRING_TEXT = 'text';
 	/** @var string */
-	const IMAGICK     = 'imagick';
+	public const IMAGICK     = 'imagick';
 	/** @var string */
-	const FPDF        = 'fpdf';
+	public const FPDF        = 'fpdf';
 	/** @var string */
-	const EPS         = 'eps';
+	public const EPS         = 'eps';
 	/** @var string */
-	const CUSTOM      = 'custom';
+	public const CUSTOM      = 'custom';
 
 	/**
 	 * Map of built-in output modes => modules
 	 *
 	 * @var string[]
 	 */
-	const MODES = [
+	public const MODES = [
 		self::MARKUP_SVG  => QRMarkupSVG::class,
 		self::MARKUP_HTML => QRMarkupHTML::class,
 		self::GDIMAGE_PNG => QRGdImage::class,
@@ -61,29 +61,29 @@ interface QROutputInterface{
 	/**
 	 * @var bool[]
 	 */
-	const DEFAULT_MODULE_VALUES = [
+	public const DEFAULT_MODULE_VALUES = [
 		// light
-		QRMatrix::M_NULL                           => false,
-		QRMatrix::M_DATA                           => false,
-		QRMatrix::M_FINDER                         => false,
-		QRMatrix::M_SEPARATOR                      => false,
-		QRMatrix::M_ALIGNMENT                      => false,
-		QRMatrix::M_TIMING                         => false,
-		QRMatrix::M_FORMAT                         => false,
-		QRMatrix::M_VERSION                        => false,
-		QRMatrix::M_QUIETZONE                      => false,
-		QRMatrix::M_LOGO                           => false,
-		QRMatrix::M_TEST                           => false,
+		QRMatrix::M_NULL                             => false,
+		QRMatrix::M_DATA                             => false,
+		QRMatrix::M_FINDER                           => false,
+		QRMatrix::M_SEPARATOR                        => false,
+		QRMatrix::M_ALIGNMENT                        => false,
+		QRMatrix::M_TIMING                           => false,
+		QRMatrix::M_FORMAT                           => false,
+		QRMatrix::M_VERSION                          => false,
+		QRMatrix::M_QUIETZONE                        => false,
+		QRMatrix::M_LOGO                             => false,
+		QRMatrix::M_TEST                             => false,
 		// dark
-		QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK => true,
-		QRMatrix::M_DATA | QRMatrix::IS_DARK       => true,
-		QRMatrix::M_FINDER | QRMatrix::IS_DARK     => true,
-		QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK  => true,
-		QRMatrix::M_TIMING | QRMatrix::IS_DARK     => true,
-		QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => true,
-		QRMatrix::M_VERSION | QRMatrix::IS_DARK    => true,
-		QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK => true,
-		QRMatrix::M_TEST | QRMatrix::IS_DARK       => true,
+		(QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK) => true,
+		(QRMatrix::M_DATA | QRMatrix::IS_DARK)       => true,
+		(QRMatrix::M_FINDER | QRMatrix::IS_DARK)     => true,
+		(QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK)  => true,
+		(QRMatrix::M_TIMING | QRMatrix::IS_DARK)     => true,
+		(QRMatrix::M_FORMAT | QRMatrix::IS_DARK)     => true,
+		(QRMatrix::M_VERSION | QRMatrix::IS_DARK)    => true,
+		(QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK) => true,
+		(QRMatrix::M_TEST | QRMatrix::IS_DARK)       => true,
 	];
 
 	/**

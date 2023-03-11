@@ -46,7 +46,7 @@ final class BitBuffer{
 	 * @param int[]|null $bytes
 	 */
 	public function __construct(array $bytes = null){
-		$this->buffer = $bytes ?? [];
+		$this->buffer = ($bytes ?? []);
 		$this->length = count($this->buffer);
 	}
 
@@ -99,7 +99,7 @@ final class BitBuffer{
 	 * @return int number of bits that can be read successfully
 	 */
 	public function available():int{
-		return 8 * ($this->length - $this->bytesRead) - $this->bitsRead;
+		return ((8 * ($this->length - $this->bytesRead)) - $this->bitsRead);
 	}
 
 	/**
@@ -120,11 +120,11 @@ final class BitBuffer{
 
 		// First, read remainder from current byte
 		if($this->bitsRead > 0){
-			$bitsLeft       = 8 - $this->bitsRead;
+			$bitsLeft       = (8 - $this->bitsRead);
 			$toRead         = min($numBits, $bitsLeft);
-			$bitsToNotRead  = $bitsLeft - $toRead;
-			$mask           = (0xff >> (8 - $toRead)) << $bitsToNotRead;
-			$result         = ($this->buffer[$this->bytesRead] & $mask) >> $bitsToNotRead;
+			$bitsToNotRead  = ($bitsLeft - $toRead);
+			$mask           = ((0xff >> (8 - $toRead)) << $bitsToNotRead);
+			$result         = (($this->buffer[$this->bytesRead] & $mask) >> $bitsToNotRead);
 			$numBits        -= $toRead;
 			$this->bitsRead += $toRead;
 
@@ -138,16 +138,16 @@ final class BitBuffer{
 		if($numBits > 0){
 
 			while($numBits >= 8){
-				$result = ($result << 8) | ($this->buffer[$this->bytesRead] & 0xff);
+				$result = (($result << 8) | ($this->buffer[$this->bytesRead] & 0xff));
 				$this->bytesRead++;
 				$numBits -= 8;
 			}
 
 			// Finally read a partial byte
 			if($numBits > 0){
-				$bitsToNotRead  = 8 - $numBits;
-				$mask           = (0xff >> $bitsToNotRead) << $bitsToNotRead;
-				$result         = ($result << $numBits) | (($this->buffer[$this->bytesRead] & $mask) >> $bitsToNotRead);
+				$bitsToNotRead  = (8 - $numBits);
+				$mask           = ((0xff >> $bitsToNotRead) << $bitsToNotRead);
+				$result         = (($result << $numBits) | (($this->buffer[$this->bytesRead] & $mask) >> $bitsToNotRead));
 				$this->bitsRead += $numBits;
 			}
 		}

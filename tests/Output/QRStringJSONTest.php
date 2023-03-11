@@ -34,6 +34,7 @@ final class QRStringJSONTest extends QRStringTestAbstract{
 
 
 	public function testSetModuleValues():void{
+		/** @noinspection PhpUnitTestFailedLineInspection */
 		$this::markTestSkipped('N/A (JSON test)');
 	}
 

@@ -96,8 +96,8 @@ final class QROptionsTest extends TestCase{
 	public function testInvalidRGBValueException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('Invalid RGB value.');
-
-		$o = new QROptions(['imageTransparencyBG' => ['r', 'g', 'b']]);
+		/** @phan-suppress-next-line PhanNoopNew */
+		new QROptions(['imageTransparencyBG' => ['r', 'g', 'b']]);
 	}
 
 	/**

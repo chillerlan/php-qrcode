@@ -22,30 +22,30 @@ header('Content-Type: text/html; charset=utf-8');
 		'cssClass'     => 'qrcode',
 		'moduleValues' => [
 			// finder
-			QRMatrix::M_FINDER | QRMatrix::IS_DARK     => '#A71111', // dark (true)
-			QRMatrix::M_FINDER                         => '#FFBFBF', // light (false)
-			QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK => '#A71111', // finder dot, dark (true)
+			(QRMatrix::M_FINDER | QRMatrix::IS_DARK)     => '#A71111', // dark (true)
+			QRMatrix::M_FINDER                           => '#FFBFBF', // light (false)
+			(QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK) => '#A71111', // finder dot, dark (true)
 			// alignment
-			QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK  => '#A70364',
-			QRMatrix::M_ALIGNMENT                      => '#FFC9C9',
+			(QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK)  => '#A70364',
+			QRMatrix::M_ALIGNMENT                        => '#FFC9C9',
 			// timing
-			QRMatrix::M_TIMING | QRMatrix::IS_DARK     => '#98005D',
-			QRMatrix::M_TIMING                         => '#FFB8E9',
+			(QRMatrix::M_TIMING | QRMatrix::IS_DARK)     => '#98005D',
+			QRMatrix::M_TIMING                           => '#FFB8E9',
 			// format
-			QRMatrix::M_FORMAT | QRMatrix::IS_DARK     => '#003804',
-			QRMatrix::M_FORMAT                         => '#00FB12',
+			(QRMatrix::M_FORMAT | QRMatrix::IS_DARK)     => '#003804',
+			QRMatrix::M_FORMAT                           => '#00FB12',
 			// version
-			QRMatrix::M_VERSION | QRMatrix::IS_DARK    => '#650098',
-			QRMatrix::M_VERSION                        => '#E0B8FF',
+			(QRMatrix::M_VERSION | QRMatrix::IS_DARK)    => '#650098',
+			QRMatrix::M_VERSION                          => '#E0B8FF',
 			// data
-			QRMatrix::M_DATA | QRMatrix::IS_DARK       => '#4A6000',
-			QRMatrix::M_DATA                           => '#ECF9BE',
+			(QRMatrix::M_DATA | QRMatrix::IS_DARK)       => '#4A6000',
+			QRMatrix::M_DATA                             => '#ECF9BE',
 			// darkmodule
-			QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK => '#080063',
+			(QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK) => '#080063',
 			// separator
-			QRMatrix::M_SEPARATOR                      => '#AFBFBF',
+			QRMatrix::M_SEPARATOR                        => '#AFBFBF',
 			// quietzone
-			QRMatrix::M_QUIETZONE                      => '#DDDDDD',
+			QRMatrix::M_QUIETZONE                        => '#DDDDDD',
 		],
 	]);
 
@@ -82,6 +82,3 @@ echo (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ
 ?>
 </body>
 </html>
-
-
-

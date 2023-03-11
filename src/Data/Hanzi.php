@@ -50,7 +50,7 @@ final class Hanzi extends QRDataModeAbstract{
 	 * @inheritDoc
 	 */
 	public function getLengthInBits():int{
-		return $this->getCharCount() * 13;
+		return ($this->getCharCount() * 13);
 	}
 
 	/**
@@ -92,13 +92,13 @@ final class Hanzi extends QRDataModeAbstract{
 
 		$len = strlen($string);
 
-		if($len < 2 || $len % 2 !== 0){
+		if($len < 2 || ($len % 2) !== 0){
 			return false;
 		}
 
 		for($i = 0; $i < $len; $i += 2){
 			$byte1 = ord($string[$i]);
-			$byte2 = ord($string[$i + 1]);
+			$byte2 = ord($string[($i + 1)]);
 
 			// byte 1 unused ranges
 			if($byte1 < 0xa1 || ($byte1 > 0xa9 && $byte1 < 0xb0) || $byte1 > 0xf7){
@@ -130,8 +130,8 @@ final class Hanzi extends QRDataModeAbstract{
 
 		$len = strlen($this->data);
 
-		for($i = 0; $i + 1 < $len; $i += 2){
-			$c = ((0xff & ord($this->data[$i])) << 8) | (0xff & ord($this->data[$i + 1]));
+		for($i = 0; ($i + 1) < $len; $i += 2){
+			$c = (((0xff & ord($this->data[$i])) << 8) | (0xff & ord($this->data[($i + 1)])));
 
 			if($c >= 0xa1a1 && $c <= 0xaafe){
 				$c -= 0x0a1a1;
@@ -140,14 +140,14 @@ final class Hanzi extends QRDataModeAbstract{
 				$c -= 0x0a6a1;
 			}
 			else{
-				throw new QRCodeDataException(sprintf('illegal char at %d [%d]', $i + 1, $c));
+				throw new QRCodeDataException(sprintf('illegal char at %d [%d]', ($i + 1), $c));
 			}
 
-			$bitBuffer->put(((($c >> 8) & 0xff) * 0x060) + ($c & 0xff), 13);
+			$bitBuffer->put((((($c >> 8) & 0xff) * 0x060) + ($c & 0xff)), 13);
 		}
 
 		if($i < $len){
-			throw new QRCodeDataException(sprintf('illegal char at %d', $i + 1));
+			throw new QRCodeDataException(sprintf('illegal char at %d', ($i + 1)));
 		}
 
 	}
@@ -158,9 +158,15 @@ final class Hanzi extends QRDataModeAbstract{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
+
+		// Hanzi mode contains a subset indicator right after mode indicator
+		if($bitBuffer->read(4) !== self::GB2312_SUBSET){
+			throw new QRCodeDataException('ecpected subset indicator for Hanzi mode');
+		}
+
 		$length = $bitBuffer->read(self::getLengthBits($versionNumber));
 
-		if($bitBuffer->available() < $length * 13){
+		if($bitBuffer->available() < ($length * 13)){
 			throw new QRCodeDataException('not enough bits available');
 		}
 
@@ -171,15 +177,15 @@ final class Hanzi extends QRDataModeAbstract{
 		while($length > 0){
 			// Each 13 bits encodes a 2-byte character
 			$twoBytes          = $bitBuffer->read(13);
-			$assembledTwoBytes = (((int)($twoBytes / 0x060)) << 8) | ($twoBytes % 0x060);
+			$assembledTwoBytes = ((((int)($twoBytes / 0x060)) << 8) | ($twoBytes % 0x060));
 
 			$assembledTwoBytes += ($assembledTwoBytes < 0x00a00) // 0x003BF
 				? 0x0a1a1  // In the 0xA1A1 to 0xAAFE range
 				: 0x0a6a1; // In the 0xB0A1 to 0xFAFE range
 
-			$buffer[$offset]     = chr(0xff & ($assembledTwoBytes >> 8));
-			$buffer[$offset + 1] = chr(0xff & $assembledTwoBytes);
-			$offset              += 2;
+			$buffer[$offset]       = chr(0xff & ($assembledTwoBytes >> 8));
+			$buffer[($offset + 1)] = chr(0xff & $assembledTwoBytes);
+			$offset                += 2;
 			$length--;
 		}
 

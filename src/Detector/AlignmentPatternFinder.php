@@ -59,15 +59,15 @@ final class AlignmentPatternFinder{
 	 * @return \chillerlan\QRCode\Detector\AlignmentPattern|null
 	 */
 	public function find(int $startX, int $startY, int $width, int $height):?AlignmentPattern{
-		$maxJ       = $startX + $width;
-		$middleI    = $startY + ($height / 2);
+		$maxJ       = ($startX + $width);
+		$middleI    = ($startY + ($height / 2));
 		$stateCount = [];
 
 		// We are looking for black/white/black modules in 1:1:1 ratio;
 		// this tracks the number of black/white/black modules seen so far
 		for($iGen = 0; $iGen < $height; $iGen++){
 			// Search from middle outwards
-			$i             = (int)($middleI + (($iGen & 0x01) === 0 ? ($iGen + 1) / 2 : -(($iGen + 1) / 2)));
+			$i             = (int)($middleI + ((($iGen & 0x01) === 0) ? ($iGen + 1) / 2 : -(($iGen + 1) / 2)));
 			$stateCount[0] = 0;
 			$stateCount[1] = 0;
 			$stateCount[2] = 0;
@@ -150,11 +150,10 @@ final class AlignmentPatternFinder{
 	 *         used by alignment patterns to be considered a match
 	 */
 	private function foundPatternCross(array $stateCount):bool{
-		$moduleSize  = $this->moduleSize;
-		$maxVariance = $moduleSize / 2.0;
+		$maxVariance = ($this->moduleSize / 2.0);
 
 		for($i = 0; $i < 3; $i++){
-			if(abs($moduleSize - $stateCount[$i]) >= $maxVariance){
+			if(abs($this->moduleSize - $stateCount[$i]) >= $maxVariance){
 				return false;
 			}
 		}
@@ -175,12 +174,12 @@ final class AlignmentPatternFinder{
 	 * @return \chillerlan\QRCode\Detector\AlignmentPattern|null if we have found the same pattern twice, or null if not
 	 */
 	private function handlePossibleCenter(array $stateCount, int $i, int $j):?AlignmentPattern{
-		$stateCountTotal = $stateCount[0] + $stateCount[1] + $stateCount[2];
+		$stateCountTotal = ($stateCount[0] + $stateCount[1] + $stateCount[2]);
 		$centerJ         = $this->centerFromEnd($stateCount, $j);
-		$centerI         = $this->crossCheckVertical($i, (int)$centerJ, 2 * $stateCount[1], $stateCountTotal);
+		$centerI         = $this->crossCheckVertical($i, (int)$centerJ, (2 * $stateCount[1]), $stateCountTotal);
 
 		if($centerI !== null){
-			$estimatedModuleSize = (float)($stateCount[0] + $stateCount[1] + $stateCount[2]) / 3.0;
+			$estimatedModuleSize = (($stateCount[0] + $stateCount[1] + $stateCount[2]) / 3.0);
 
 			foreach($this->possibleCenters as $center){
 				// Look for about the same center and module size:
@@ -251,7 +250,7 @@ final class AlignmentPatternFinder{
 		}
 
 		// Now also count down from center
-		$i = $startI + 1;
+		$i = ($startI + 1);
 		while($i < $maxI && $this->matrix->check($centerJ, $i) && $stateCount[1] <= $maxCount){
 			$stateCount[1]++;
 			$i++;
@@ -270,7 +269,7 @@ final class AlignmentPatternFinder{
 			return null;
 		}
 
-		if(5 * abs(($stateCount[0] + $stateCount[1] + $stateCount[2]) - $originalStateCountTotal) >= 2 * $originalStateCountTotal){
+		if((5 * abs(($stateCount[0] + $stateCount[1] + $stateCount[2]) - $originalStateCountTotal)) >= (2 * $originalStateCountTotal)){
 			return null;
 		}
 

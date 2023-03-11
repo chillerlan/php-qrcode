@@ -49,7 +49,7 @@ class QREps extends QROutputAbstract{
 
 		for($i = 0; $i < 3; $i++){
 			// clamp value and convert from 0-255 to 0-1 RGB range
-			$val[] = round(max(0, min(255, $value[$i])) / 255, 6);
+			$val[] = round((max(0, min(255, $value[$i])) / 255), 6);
 		}
 
 		return $val;
@@ -59,7 +59,7 @@ class QREps extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	protected function getDefaultModuleValue(bool $isDark):array{
-		return $isDark ? [0.0, 0.0, 0.0] : [1.0, 1.0, 1.0];
+		return ($isDark) ? [0.0, 0.0, 0.0] : [1.0, 1.0, 1.0];
 	}
 
 	/**
@@ -81,7 +81,7 @@ class QREps extends QROutputAbstract{
 			'%%BeginProlog',
 			'/F { rectfill } def',
 			'/S { setrgbcolor } def',
-			'%%EndProlog'
+			'%%EndProlog',
 		];
 
 		// create the path elements
@@ -116,11 +116,11 @@ class QREps extends QROutputAbstract{
 			return '';
 		}
 
-		$outputX = $x * $this->scale;
+		$outputX = ($x * $this->scale);
 		// Actual size - one block = Topmost y pos.
-		$top     = $this->length - $this->scale;
+		$top     = ($this->length - $this->scale);
 		// Apparently y-axis is inverted (y0 is at bottom and not top) in EPS, so we have to switch the y-axis here
-		$outputY = $top - ($y * $this->scale);
+		$outputY = ($top - ($y * $this->scale));
 
 		return sprintf('%d %d %d %d F', $outputX, $outputY, $this->scale, $this->scale);
 	}

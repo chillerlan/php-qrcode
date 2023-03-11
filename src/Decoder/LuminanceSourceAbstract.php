@@ -36,7 +36,7 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 	public function __construct(int $width, int $height, SettingsContainerInterface $options = null){
 		$this->width   = $width;
 		$this->height  = $height;
-		$this->options = $options ?? new QROptions;
+		$this->options = ($options ?? new QROptions);
 
 		$this->luminances = [];
 	}
@@ -65,7 +65,7 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 
 		$arr = [];
 
-		array_splice($arr, 0, $this->width, array_slice($this->luminances, $y * $this->width, $this->width));
+		array_splice($arr, 0, $this->width, array_slice($this->luminances, ($y * $this->width), $this->width));
 
 		return $arr;
 	}
@@ -74,11 +74,11 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 	 *
 	 */
 	protected function setLuminancePixel(int $r, int $g, int $b):void{
-		$this->luminances[] = $r === $g && $g === $b
+		$this->luminances[] = ($r === $g && $g === $b)
 			// Image is already greyscale, so pick any channel.
 			? $r // (($r + 128) % 256) - 128;
 			// Calculate luminance cheaply, favoring green.
-			: ($r + 2 * $g + $b) / 4; // (((($r + 2 * $g + $b) / 4) + 128) % 256) - 128;
+			: (($r + 2 * $g + $b) / 4); // (((($r + 2 * $g + $b) / 4) + 128) % 256) - 128;
 	}
 
 	/**

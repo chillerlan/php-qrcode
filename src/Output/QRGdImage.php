@@ -86,7 +86,7 @@ class QRGdImage extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	protected function getDefaultModuleValue(bool $isDark):array{
-		return $isDark ? [0, 0, 0] : [255, 255, 255];
+		return ($isDark) ? [0, 0, 0] : [255, 255, 255];
 	}
 
 	/**
@@ -106,7 +106,7 @@ class QRGdImage extends QROutputAbstract{
 
 		// we're scaling the image up in order to draw crisp round circles, otherwise they appear square-y on small scales
 		if($this->options->drawCircularModules && $this->options->scale <= 20){
-			$this->length  = ($this->length + 2) * 10;
+			$this->length  = (($this->length + 2) * 10);
 			$this->scale  *= 10;
 		}
 
@@ -143,7 +143,7 @@ class QRGdImage extends QROutputAbstract{
 
 		// scale down to the expected size
 		if($this->options->drawCircularModules && $this->options->scale <= 20){
-			$this->image = imagescale($this->image, $this->length/10, $this->length/10, IMG_BILINEAR_FIXED);
+			$this->image = imagescale($this->image, ($this->length / 10), ($this->length / 10), IMG_BILINEAR_FIXED);
 		}
 
 		if($this->options->returnResource){
@@ -183,10 +183,10 @@ class QRGdImage extends QROutputAbstract{
 			)
 			: imagefilledrectangle(
 				$this->image,
-				$x * $this->scale,
-				$y * $this->scale,
-				($x + 1) * $this->scale,
-				($y + 1) * $this->scale,
+				($x * $this->scale),
+				($y * $this->scale),
+				(($x + 1) * $this->scale),
+				(($y + 1) * $this->scale),
 				$color
 			);
 	}

@@ -41,10 +41,10 @@ final class ReedSolomonEncoder{
 	public function interleaveEcBytes(BitBuffer $bitBuffer):array{
 		[$numEccCodewords, [[$l1, $b1], [$l2, $b2]]] = $this->version->getRSBlocks($this->eccLevel);
 
-		$rsBlocks = array_fill(0, $l1, [$numEccCodewords + $b1, $b1]);
+		$rsBlocks = array_fill(0, $l1, [($numEccCodewords + $b1), $b1]);
 
 		if($l2 > 0){
-			$rsBlocks = array_merge($rsBlocks, array_fill(0, $l2, [$numEccCodewords + $b2, $b2]));
+			$rsBlocks = array_merge($rsBlocks, array_fill(0, $l2, [($numEccCodewords + $b2), $b2]));
 		}
 
 		$bitBufferData  = $bitBuffer->getBuffer();
@@ -60,10 +60,10 @@ final class ReedSolomonEncoder{
 			$dataBytes[$key] = [];
 
 			for($i = 0; $i < $dataByteCount; $i++){
-				$dataBytes[$key][$i] = $bitBufferData[$i + $dataByteOffset] & 0xff;
+				$dataBytes[$key][$i] = ($bitBufferData[($i + $dataByteOffset)] & 0xff);
 			}
 
-			$ecByteCount    = $rsBlockTotal - $dataByteCount;
+			$ecByteCount    = ($rsBlockTotal - $dataByteCount);
 			$ecBytes[$key]  = $this->encode($dataBytes[$key], $ecByteCount);
 			$maxDataBytes   = max($maxDataBytes, $dataByteCount);
 			$maxEcBytes     = max($maxEcBytes, $ecByteCount);
@@ -72,7 +72,7 @@ final class ReedSolomonEncoder{
 
 		$this->interleavedData      = array_fill(0, $this->version->getTotalCodewords(), 0);
 		$this->interleavedDataIndex = 0;
-		$numRsBlocks                = $l1 + $l2;
+		$numRsBlocks                = ($l1 + $l2);
 
 		$this->interleave($dataBytes, $maxDataBytes, $numRsBlocks);
 		$this->interleave($ecBytes, $maxEcBytes, $numRsBlocks);
@@ -98,11 +98,11 @@ final class ReedSolomonEncoder{
 		;
 
 		$ecBytes = array_fill(0, $rsPolyDegree, 0);
-		$count   = count($modCoefficients) - $rsPolyDegree;
+		$count   = (count($modCoefficients) - $rsPolyDegree);
 
 		foreach($ecBytes as $i => &$val){
-			$modIndex = $i + $count;
-			$val      = $modIndex >= 0 ? $modCoefficients[$modIndex] : 0;
+			$modIndex = ($i + $count);
+			$val      = ($modIndex >= 0) ? $modCoefficients[$modIndex] : 0;
 		}
 
 		return $ecBytes;

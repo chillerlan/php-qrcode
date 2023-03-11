@@ -81,11 +81,11 @@ class QRSvgWithLogoAndCustomShapes extends QRMarkupSVG{
 
 		$qz  = $this->options->addQuietzone ? $this->options->quietzoneSize : 0;
 		// the positions for the finder patterns (top left corner)
-		// $this->moduleCount includes 2* the quiet zone size already so we need to take this into account
+		// $this->moduleCount includes 2* the quiet zone size already, so we need to take this into account
 		$pos = [
-			[0 + $qz, 0 + $qz],
-			[0 + $qz, $this->moduleCount - $qz - 7],
-			[$this->moduleCount - $qz - 7, 0 + $qz],
+			[(0 + $qz), (0 + $qz)],
+			[(0 + $qz), ($this->moduleCount - $qz - 7)],
+			[($this->moduleCount - $qz - 7), (0 + $qz)],
 		];
 
 		// the custom path for one finder pattern - the first move (M) is parametrized, the rest are relative coordinates
@@ -111,7 +111,7 @@ class QRSvgWithLogoAndCustomShapes extends QRMarkupSVG{
 		// @todo: customize the <g> element to your liking (css class, style...)
 		return sprintf(
 			'%5$s<g transform="translate(%1$s %1$s) scale(%2$s)" class="%3$s">%5$s	%4$s%5$s</g>',
-			($this->moduleCount - ($this->moduleCount * $this->options->svgLogoScale)) / 2,
+			(($this->moduleCount - ($this->moduleCount * $this->options->svgLogoScale)) / 2),
 			$this->options->svgLogoScale,
 			$this->options->svgLogoCssClass,
 			file_get_contents($this->options->svgLogo),

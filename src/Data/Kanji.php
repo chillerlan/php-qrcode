@@ -48,7 +48,7 @@ final class Kanji extends QRDataModeAbstract{
 	 * @inheritDoc
 	 */
 	public function getLengthInBits():int{
-		return $this->getCharCount() * 13;
+		return ($this->getCharCount() * 13);
 	}
 
 	/**
@@ -90,13 +90,13 @@ final class Kanji extends QRDataModeAbstract{
 
 		$len = strlen($string);
 
-		if($len < 2 || $len % 2 !== 0){
+		if($len < 2 || ($len % 2) !== 0){
 			return false;
 		}
 
 		for($i = 0; $i < $len; $i += 2){
 			$byte1 = ord($string[$i]);
-			$byte2 = ord($string[$i + 1]);
+			$byte2 = ord($string[($i + 1)]);
 
 			// byte 1 unused and vendor ranges
 			if($byte1 < 0x81 || ($byte1 > 0x84 && $byte1 < 0x88) || ($byte1 > 0x9f && $byte1 < 0xe0) ||  $byte1 > 0xea){
@@ -127,8 +127,8 @@ final class Kanji extends QRDataModeAbstract{
 
 		$len = strlen($this->data);
 
-		for($i = 0; $i + 1 < $len; $i += 2){
-			$c = ((0xff & ord($this->data[$i])) << 8) | (0xff & ord($this->data[$i + 1]));
+		for($i = 0; ($i + 1) < $len; $i += 2){
+			$c = (((0xff & ord($this->data[$i])) << 8) | (0xff & ord($this->data[($i + 1)])));
 
 			if($c >= 0x8140 && $c <= 0x9ffc){
 				$c -= 0x8140;
@@ -137,14 +137,14 @@ final class Kanji extends QRDataModeAbstract{
 				$c -= 0xc140;
 			}
 			else{
-				throw new QRCodeDataException(sprintf('illegal char at %d [%d]', $i + 1, $c));
+				throw new QRCodeDataException(sprintf('illegal char at %d [%d]', ($i + 1), $c));
 			}
 
-			$bitBuffer->put(((($c >> 8) & 0xff) * 0xc0) + ($c & 0xff), 13);
+			$bitBuffer->put((((($c >> 8) & 0xff) * 0xc0) + ($c & 0xff)), 13);
 		}
 
 		if($i < $len){
-			throw new QRCodeDataException(sprintf('illegal char at %d', $i + 1));
+			throw new QRCodeDataException(sprintf('illegal char at %d', ($i + 1)));
 		}
 
 	}
@@ -157,7 +157,7 @@ final class Kanji extends QRDataModeAbstract{
 	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
 		$length = $bitBuffer->read(self::getLengthBits($versionNumber));
 
-		if($bitBuffer->available() < $length * 13){
+		if($bitBuffer->available() < ($length * 13)){
 			throw new QRCodeDataException('not enough bits available');  // @codeCoverageIgnore
 		}
 
@@ -168,15 +168,15 @@ final class Kanji extends QRDataModeAbstract{
 		while($length > 0){
 			// Each 13 bits encodes a 2-byte character
 			$twoBytes          = $bitBuffer->read(13);
-			$assembledTwoBytes = (((int)($twoBytes / 0x0c0)) << 8) | ($twoBytes % 0x0c0);
+			$assembledTwoBytes = ((((int)($twoBytes / 0x0c0)) << 8) | ($twoBytes % 0x0c0));
 
 			$assembledTwoBytes += ($assembledTwoBytes < 0x01f00)
 				? 0x08140  // In the 0x8140 to 0x9FFC range
 				: 0x0c140; // In the 0xE040 to 0xEBBF range
 
-			$buffer[$offset]     = chr(0xff & ($assembledTwoBytes >> 8));
-			$buffer[$offset + 1] = chr(0xff & $assembledTwoBytes);
-			$offset              += 2;
+			$buffer[$offset]       = chr(0xff & ($assembledTwoBytes >> 8));
+			$buffer[($offset + 1)] = chr(0xff & $assembledTwoBytes);
+			$offset                += 2;
 			$length--;
 		}
 

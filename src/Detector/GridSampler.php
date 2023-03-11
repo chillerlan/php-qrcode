@@ -55,7 +55,7 @@ final class GridSampler{
 		// Check and nudge points from start until we see some that are OK:
 		for($offset = 0; $offset < $max && $nudged; $offset += 2){
 			$x = (int)$points[$offset];
-			$y = (int)$points[$offset + 1];
+			$y = (int)$points[($offset + 1)];
 
 			if($x < -1 || $x > $dimension || $y < -1 || $y > $dimension){
 				throw new QRCodeDetectorException(sprintf('checkAndNudgePoints 1, x: %s, y: %s, d: %s', $x, $y, $dimension));
@@ -68,24 +68,27 @@ final class GridSampler{
 				$nudged          = true;
 			}
 			elseif($x === $dimension){
-				$points[$offset] = $dimension - 1;
+				$points[$offset] = ($dimension - 1);
 				$nudged          = true;
 			}
+
 			if($y === -1){
-				$points[$offset + 1] = 0.0;
-				$nudged              = true;
+				$points[($offset + 1)] = 0.0;
+				$nudged                = true;
 			}
 			elseif($y === $dimension){
-				$points[$offset + 1] = $dimension - 1;
-				$nudged              = true;
+				$points[($offset + 1)] = ($dimension - 1);
+				$nudged                = true;
 			}
+
 		}
 		// Check and nudge points from end:
 		$nudged = true;
+		$offset = (count($points) - 2);
 
-		for($offset = count($points) - 2; $offset >= 0 && $nudged; $offset -= 2){
+		for(; $offset >= 0 && $nudged; $offset -= 2){
 			$x = (int)$points[$offset];
-			$y = (int)$points[$offset + 1];
+			$y = (int)$points[($offset + 1)];
 
 			if($x < -1 || $x > $dimension || $y < -1 || $y > $dimension){
 				throw new QRCodeDetectorException(sprintf('checkAndNudgePoints 2, x: %s, y: %s, d: %s', $x, $y, $dimension));
@@ -98,17 +101,19 @@ final class GridSampler{
 				$nudged          = true;
 			}
 			elseif($x === $dimension){
-				$points[$offset] = $dimension - 1;
+				$points[$offset] = ($dimension - 1);
 				$nudged          = true;
 			}
+
 			if($y === -1){
-				$points[$offset + 1] = 0.0;
-				$nudged              = true;
+				$points[($offset + 1)] = 0.0;
+				$nudged                = true;
 			}
 			elseif($y === $dimension){
-				$points[$offset + 1] = $dimension - 1;
-				$nudged              = true;
+				$points[($offset + 1)] = ($dimension - 1);
+				$nudged                = true;
 			}
+
 		}
 	}
 

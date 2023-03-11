@@ -7,6 +7,8 @@
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2021 smiley
  * @license      Apache-2.0
+ *
+ * @codingStandardsIgnoreFile Squiz.Arrays.ArrayDeclaration.NoCommaAfterLast
  */
 
 namespace chillerlan\QRCodeTest\Common;
@@ -121,8 +123,8 @@ final class MaskPatternTest extends TestCase{
 	public function testInvalidMaskPatternException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('invalid mask pattern');
-
-		$maskPattern = new MaskPattern(42);
+		/** @phan-suppress-next-line PhanNoopNew */
+		new MaskPattern(42);
 	}
 
 	public function testPenaltyRule1():void{

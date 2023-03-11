@@ -11,7 +11,7 @@
 
 namespace chillerlan\QRCode\Decoder;
 
-use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, Mode, ReedSolomonDecoder, Version};
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, ECICharset, MaskPattern, Mode, ReedSolomonDecoder, Version};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Hanzi, Kanji, Number};
 use chillerlan\QRCode\Detector\Detector;
 use Throwable;
@@ -28,6 +28,8 @@ final class Decoder{
 	private ?Version     $version = null;
 	private ?EccLevel    $eccLevel = null;
 	private ?MaskPattern $maskPattern = null;
+	private BitBuffer    $bitBuffer;
+	private ?ECICharset  $eciCharset = null;
 
 	/**
 	 * Decodes a QR Code represented as a BitMatrix.
@@ -89,23 +91,24 @@ final class Decoder{
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	private function decodeBitStream(BitBuffer $bitBuffer):DecoderResult{
-		$versionNumber  = $this->version->getVersionNumber();
-		$symbolSequence = -1;
-		$parityData     = -1;
-		$eciCharset     = null;
-		$fc1InEffect    = false;
-		$result         = '';
+		$this->bitBuffer  = $bitBuffer;
+		$this->eciCharset = null;
+		$versionNumber    = $this->version->getVersionNumber();
+		$symbolSequence   = -1;
+		$parityData       = -1;
+		$fc1InEffect      = false;
+		$result           = '';
 
 		// While still another segment to read...
-		while($bitBuffer->available() >= 4){
-			$datamode = $bitBuffer->read(4); // mode is encoded by 4 bits
+		while($this->bitBuffer->available() >= 4){
+			$datamode = $this->bitBuffer->read(4); // mode is encoded by 4 bits
 
 			// OK, assume we're done. Really, a TERMINATOR mode should have been recorded here
 			if($datamode === Mode::TERMINATOR){
 				break;
 			}
 			elseif($datamode === Mode::ECI){
-				$eciCharset = ECI::parseValue($bitBuffer);
+				$this->eciCharset = ECI::parseValue($this->bitBuffer);
 			}
 			elseif($datamode === Mode::FNC1_FIRST || $datamode === Mode::FNC1_SECOND){
 				// We do little with FNC1 except alter the parsed result a bit according to the spec
@@ -113,64 +116,28 @@ final class Decoder{
 			}
 			elseif($datamode === Mode::STRCTURED_APPEND){
 
-				if($bitBuffer->available() < 16){
+				if($this->bitBuffer->available() < 16){
 					throw new QRCodeDecoderException('structured append: not enough bits left');
 				}
 				// sequence number and parity is added later to the result metadata
 				// Read next 8 bits (symbol sequence #) and 8 bits (parity data), then continue
-				$symbolSequence = $bitBuffer->read(8);
-				$parityData     = $bitBuffer->read(8);
+				$symbolSequence = $this->bitBuffer->read(8);
+				$parityData     = $this->bitBuffer->read(8);
 			}
 			elseif($datamode === Mode::NUMBER){
-				$result .= Number::decodeSegment($bitBuffer, $versionNumber);
+				$result .= Number::decodeSegment($this->bitBuffer, $versionNumber);
 			}
 			elseif($datamode === Mode::ALPHANUM){
-				$str = AlphaNum::decodeSegment($bitBuffer, $versionNumber);
-
-				// See section 6.4.8.1, 6.4.8.2
-				if($fc1InEffect){ // ???
-					// We need to massage the result a bit if in an FNC1 mode:
-					$str = str_replace(chr(0x1d), '%', $str);
-					$str = str_replace('%%', '%', $str);
-				}
-
-				$result .= $str;
+				$result .= $this->decodeAlphanumSegment($versionNumber, $fc1InEffect);
 			}
 			elseif($datamode === Mode::BYTE){
-				$str = Byte::decodeSegment($bitBuffer, $versionNumber);
-
-				if($eciCharset !== null){
-					$encoding = $eciCharset->getName();
-
-					if($encoding === null){
-						// The spec isn't clear on this mode; see
-						// section 6.4.5: t does not say which encoding to assuming
-						// upon decoding. I have seen ISO-8859-1 used as well as
-						// Shift_JIS -- without anything like an ECI designator to
-						// give a hint.
-						$encoding = mb_detect_encoding($str, ['ISO-8859-1', 'Windows-1252', 'SJIS', 'UTF-8'], true);
-
-						if($encoding === false){
-							throw new QRCodeDecoderException('could not determine encoding in ECI mode');
-						}
-					}
-
-					$eciCharset = null;
-					$str = mb_convert_encoding($str, mb_internal_encoding(), $encoding);
-				}
-
-				$result .= $str;
+				$result .= $this->decodeByteSegment($versionNumber);
 			}
 			elseif($datamode === Mode::KANJI){
-				$result .= Kanji::decodeSegment($bitBuffer, $versionNumber);
+				$result .= Kanji::decodeSegment($this->bitBuffer, $versionNumber);
 			}
 			elseif($datamode === Mode::HANZI){
-				// Hanzi mode contains a subset indicator right after mode indicator
-				if($bitBuffer->read(4) !== Hanzi::GB2312_SUBSET){
-					throw new QRCodeDecoderException('ecpected subset indicator for Hanzi mode');
-				}
-
-				$result .= Hanzi::decodeSegment($bitBuffer, $versionNumber);
+				$result .= Hanzi::decodeSegment($this->bitBuffer, $versionNumber);
 			}
 			else{
 				throw new QRCodeDecoderException('invalid data mode');
@@ -179,14 +146,60 @@ final class Decoder{
 		}
 
 		return new DecoderResult([
-			'rawBytes'                 => $bitBuffer,
+			'rawBytes'                 => $this->bitBuffer,
 			'data'                     => $result,
 			'version'                  => $this->version,
 			'eccLevel'                 => $this->eccLevel,
 			'maskPattern'              => $this->maskPattern,
 			'structuredAppendParity'   => $parityData,
-			'structuredAppendSequence' => $symbolSequence
+			'structuredAppendSequence' => $symbolSequence,
 		]);
+	}
+
+	/**
+	 *
+	 */
+	private function decodeAlphanumSegment(int $versionNumber, bool $fc1InEffect):string{
+		$str = AlphaNum::decodeSegment($this->bitBuffer, $versionNumber);
+
+		// See section 6.4.8.1, 6.4.8.2
+		if($fc1InEffect){ // ???
+			// We need to massage the result a bit if in an FNC1 mode:
+			$str = str_replace(chr(0x1d), '%', $str);
+			$str = str_replace('%%', '%', $str);
+		}
+
+		return $str;
+	}
+
+	/**
+	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
+	 */
+	private function decodeByteSegment(int $versionNumber):string{
+		$str = Byte::decodeSegment($this->bitBuffer, $versionNumber);
+
+		if($this->eciCharset === null){
+			return $str;
+		}
+
+		$encoding = $this->eciCharset->getName();
+
+		if($encoding === null){
+			// The spec isn't clear on this mode; see
+			// section 6.4.5: t does not say which encoding to assuming
+			// upon decoding. I have seen ISO-8859-1 used as well as
+			// Shift_JIS -- without anything like an ECI designator to
+			// give a hint.
+			$encoding = mb_detect_encoding($str, ['ISO-8859-1', 'Windows-1252', 'SJIS', 'UTF-8'], true);
+
+			if($encoding === false){
+				throw new QRCodeDecoderException('could not determine encoding in ECI mode');
+			}
+		}
+
+		$this->eciCharset = null;
+
+		return mb_convert_encoding($str, mb_internal_encoding(), $encoding);
 	}
 
 }

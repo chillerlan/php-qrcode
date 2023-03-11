@@ -81,7 +81,7 @@ class QRFpdf extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	protected function getDefaultModuleValue(bool $isDark):array{
-		return $isDark ? [0, 0, 0] : [255, 255, 255];
+		return ($isDark) ? [0, 0, 0] : [255, 255, 255];
 	}
 
 	/**
@@ -120,7 +120,7 @@ class QRFpdf extends QROutputAbstract{
 					$prevColor = $color;
 				}
 
-				$fpdf->Rect($x * $this->scale, $y * $this->scale, $this->scale, $this->scale, 'F');
+				$fpdf->Rect(($x * $this->scale), ($y * $this->scale), $this->scale, $this->scale, 'F');
 			}
 
 		}

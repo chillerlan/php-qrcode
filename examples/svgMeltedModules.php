@@ -85,7 +85,7 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 
 		$r = $this->options->meltRadius;
 
-		return sprintf($template, $x, $y, $r, 1 - $r, 1 - 2 * $r);
+		return sprintf($template, $x, $y, $r, (1 - $r), (1 - 2 * $r));
 	}
 
 	/**
@@ -244,26 +244,26 @@ class MeltedOutputOptions extends QROptions{
  */
 
 $options = new MeltedOutputOptions([
-	'melt'            => true,
-	'inverseMelt'     => true,
-	'meltRadius'      => 0.4,
+	'melt'               => true,
+	'inverseMelt'        => true,
+	'meltRadius'         => 0.4,
 
-	'version'         => 7,
-	'eccLevel'        => EccLevel::H,
-	'addQuietzone'    => true,
-	'addLogoSpace'    => true,
-	'logoSpaceWidth'  => 13,
-	'logoSpaceHeight' => 13,
-	'connectPaths'    => true,
-	'imageBase64'     => false,
+	'version'            => 7,
+	'eccLevel'           => EccLevel::H,
+	'addQuietzone'       => true,
+	'addLogoSpace'       => true,
+	'logoSpaceWidth'     => 13,
+	'logoSpaceHeight'    => 13,
+	'connectPaths'       => true,
+	'imageBase64'        => false,
 
-	'outputType'      => QROutputInterface::CUSTOM,
-	'outputInterface' => MeltedSVGQRCodeOutput::class,
-	'excludeFromConnect'        => [
-		QRMatrix::M_FINDER|QRMatrix::IS_DARK,
-		QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK,
+	'outputType'         => QROutputInterface::CUSTOM,
+	'outputInterface'    => MeltedSVGQRCodeOutput::class,
+	'excludeFromConnect' => [
+		(QRMatrix::M_FINDER|QRMatrix::IS_DARK),
+		(QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK),
 	],
-	'svgDefs'             => '
+	'svgDefs'            => '
 	<linearGradient id="rainbow" x1="100%" y2="100%">
 		<stop stop-color="#e2453c" offset="2.5%"/>
 		<stop stop-color="#e07e39" offset="21.5%"/>

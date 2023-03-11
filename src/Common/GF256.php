@@ -79,7 +79,7 @@ final class GF256{
 	 * @return int sum/difference of a and b
 	 */
 	public static function addOrSubtract(int $a, int $b):int{
-		return $a ^ $b;
+		return ($a ^ $b);
 	}
 
 	/**
@@ -92,7 +92,7 @@ final class GF256{
 			throw new QRCodeException('degree < 0');
 		}
 
-		$coefficients    = array_fill(0, $degree + 1, 0);
+		$coefficients    = array_fill(0, ($degree + 1), 0);
 		$coefficients[0] = $coefficient;
 
 		return new GenericGFPoly($coefficients);

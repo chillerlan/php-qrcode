@@ -251,14 +251,14 @@ final class Version{
 	 * the matrix size for the given version
 	 */
 	public function getDimension():int{
-		return $this->version * 4 + 17;
+		return (($this->version * 4) + 17);
 	}
 
 	/**
 	 * the version pattern for the given version
 	 */
 	public function getVersionPattern():?int{
-		return self::VERSION_PATTERN[$this->version] ?? null;
+		return (self::VERSION_PATTERN[$this->version] ?? null);
 	}
 
 	/**

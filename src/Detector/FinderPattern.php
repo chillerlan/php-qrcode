@@ -30,7 +30,7 @@ final class FinderPattern extends ResultPoint{
 	public function __construct(float $posX, float $posY, float $estimatedModuleSize, int $count = null){
 		parent::__construct($posX, $posY, $estimatedModuleSize);
 
-		$this->count = $count ?? 1;
+		$this->count = ($count ?? 1);
 	}
 
 	/**
@@ -62,7 +62,7 @@ final class FinderPattern extends ResultPoint{
 	 * based on count.
 	 */
 	public function combineEstimate(float $i, float $j, float $newModuleSize):self{
-		$combinedCount = $this->count + 1;
+		$combinedCount = ($this->count + 1);
 
 		return new self(
 			($this->count * $this->x + $j) / $combinedCount,
@@ -76,10 +76,10 @@ final class FinderPattern extends ResultPoint{
 	 *
 	 */
 	private static function squaredDistance(float $aX, float $aY, float $bX, float $bY):float{
-		$xDiff = $aX - $bX;
-		$yDiff = $aY - $bY;
+		$xDiff = ($aX - $bX);
+		$yDiff = ($aY - $bY);
 
-		return $xDiff * $xDiff + $yDiff * $yDiff;
+		return ($xDiff * $xDiff + $yDiff * $yDiff);
 	}
 
 	/**

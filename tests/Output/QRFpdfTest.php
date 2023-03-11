@@ -43,8 +43,8 @@ final class QRFpdfTest extends QROutputTestAbstract{
 
 		$this->options->moduleValues = [
 			// data
-			QRMatrix::M_DATA | QRMatrix::IS_DARK => [0, 0, 0],
-			QRMatrix::M_DATA                     => [255, 255, 255],
+			(QRMatrix::M_DATA | QRMatrix::IS_DARK) => [0, 0, 0],
+			QRMatrix::M_DATA                       => [255, 255, 255],
 		];
 
 		$this->outputInterface = new $this->FQN($this->options, $this->matrix);

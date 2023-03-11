@@ -73,7 +73,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	protected function setMatrixDimensions():void{
 		$this->moduleCount = $this->matrix->size();
 		$this->scale       = $this->options->scale;
-		$this->length      = $this->moduleCount * $this->scale;
+		$this->length      = ($this->moduleCount * $this->scale);
 	}
 
 	/**
@@ -82,7 +82,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	protected function setModuleValues():void{
 
 		foreach($this::DEFAULT_MODULE_VALUES as $M_TYPE => $defaultValue){
-			$value = $this->options->moduleValues[$M_TYPE] ?? null;
+			$value = ($this->options->moduleValues[$M_TYPE] ?? null);
 
 			$this->moduleValues[$M_TYPE] = $this->moduleValueIsValid($value)
 				? $this->getModuleValue($value)
