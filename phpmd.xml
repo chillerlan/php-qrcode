@@ -7,8 +7,10 @@
          xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
 	<description>codemasher/php-qrcode PMD ruleset</description>
 	<exclude-pattern>*/examples/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
 	<exclude-pattern>*/tests/*</exclude-pattern>
 	<rule ref="rulesets/cleancode.xml">
+		<exclude name="ElseExpression"/>
 		<exclude name="StaticAccess"/>
 	</rule>
 	<rule ref="rulesets/codesize.xml" />
@@ -21,6 +23,10 @@
 	<rule ref="rulesets/controversial.xml">
 		<!-- superglobals are only used in examples -->
 		<exclude name="Superglobals"/>
+		<exclude name="CamelCaseMethodName"/>
+		<exclude name="CamelCaseParameterName"/>
+		<exclude name="CamelCasePropertyName"/>
+		<exclude name="CamelCaseVariableName"/>
 	</rule>
 	<rule ref="rulesets/design.xml">
 		<!-- exits are only used in examples -->
@@ -29,6 +35,7 @@
 	<rule ref="rulesets/naming.xml">
 		<exclude name="LongVariable"/>
 		<exclude name="ShortVariable"/>
+		<exclude name="ConstantNamingConventions"/>
 	</rule>
 	<rule ref="rulesets/unusedcode.xml">
 		<exclude name="UnusedFormalParameter"/>

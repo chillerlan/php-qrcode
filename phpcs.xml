@@ -4,6 +4,7 @@
          xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
 	<description>php-qrcode rules for phpcs</description>
 
+	<file>examples</file>
 	<file>src</file>
 	<file>tests</file>
 
@@ -21,6 +22,7 @@
 		<exclude name="Generic.CodeAnalysis.ForLoopShouldBeWhileLoop" />
 		<exclude name="Generic.CodeAnalysis.UnusedFunctionParameter" />
 		<exclude name="Generic.Commenting.Todo" />
+		<exclude name="Generic.ControlStructures.InlineControlStructure" />
 		<exclude name="Generic.Debug" />
 		<exclude name="Generic.Files.EndFileNoNewline" />
 		<exclude name="Generic.Files.LowercasedFilename" />
@@ -83,10 +85,13 @@
 
 
 	<rule ref="PEAR">
-		<exclude name="PEAR.Commenting.FileComment" />
-		<exclude name="PEAR.Commenting.InlineComment" />
+		<exclude name="PEAR.Classes" />
+		<exclude name="PEAR.Commenting" />
+		<exclude name="PEAR.ControlStructures" />
 		<exclude name="PEAR.Functions.FunctionCallSignature" />
+		<exclude name="PEAR.Functions.FunctionDeclaration" />
 		<exclude name="PEAR.NamingConventions" />
+		<exclude name="PEAR.WhiteSpace.ScopeIndent" />
 	</rule>
 
 	<rule ref="PEAR.Commenting.FunctionComment">
@@ -96,7 +101,15 @@
 	</rule>
 
 
-	<rule ref="PSR2" />
+	<rule ref="PSR2">
+		<exclude name="PSR1.Methods.CamelCapsMethodName.NotCamelCaps" />
+
+		<exclude name="PSR2.Classes.ClassDeclaration" />
+		<exclude name="PSR2.ControlStructures.ControlStructureSpacing" />
+		<exclude name="PSR2.ControlStructures.SwitchDeclaration" />
+		<exclude name="PSR2.Methods.FunctionClosingBrace" />
+		<exclude name="PSR2.Namespaces.UseDeclaration.MultipleDeclarations" />
+	</rule>
 
 	<rule ref="PSR2.Methods.MethodDeclaration.Underscore">
 		<type>error</type>
@@ -108,11 +121,13 @@
 
 
 	<rule ref="PSR12">
-		<exclude name="PSR12." />
 		<exclude name="PSR12.Classes.ClassInstantiation" />
 		<exclude name="PSR12.Classes.OpeningBraceSpace" />
-		<exclude name="PSR12.ControlStructures.BooleanOperatorPlacement" />
+		<exclude name="PSR12.ControlStructures" />
+		<exclude name="PSR12.Files.FileHeader.SpacingInsideBlock" />
+		<exclude name="PSR12.Files.FileHeader.SpacingAfterBlock" />
 		<exclude name="PSR12.Functions.ReturnTypeDeclaration" />
+		<exclude name="PSR12.Operators.OperatorSpacing" />
 	</rule>
 
 	<rule ref="PSR12.Namespaces.CompoundNamespaceDepth">
@@ -121,28 +136,32 @@
 		</properties>
 	</rule>
 
+	<rule ref="Squiz">
+		<exclude name="Squiz.Arrays.ArrayDeclaration.IndexNoNewline" />
+		<exclude name="Squiz.Arrays.ArrayDeclaration.SingleLineNotAllowed" />
+		<exclude name="Squiz.Arrays.ArrayDeclaration.ValueNoNewline" />
+		<exclude name="Squiz.Classes.ClassDeclaration" />
+		<exclude name="Squiz.Commenting" />
+		<exclude name="Squiz.ControlStructures.ControlSignature" />
+		<exclude name="Squiz.ControlStructures.ElseIfDeclaration" />
+		<exclude name="Squiz.ControlStructures.InlineIfDeclaration.NotSingleLine" />
+		<exclude name="Squiz.ControlStructures.SwitchDeclaration" />
+		<exclude name="Squiz.Files" />
+		<exclude name="Squiz.Functions" />
+		<exclude name="Squiz.NamingConventions.ValidVariableName.NotCamelCaps" />
+		<exclude name="Squiz.NamingConventions.ValidVariableName.MemberNotCamelCaps" />
+		<exclude name="Squiz.NamingConventions.ValidFunctionName.ScopeNotCamelCaps" />
+		<exclude name="Squiz.Objects.ObjectInstantiation.NotAssigned" />
+		<exclude name="Squiz.Operators.ComparisonOperatorUsage" />
+		<exclude name="Squiz.PHP.CommentedOutCode" />
+		<exclude name="Squiz.PHP.DisallowBooleanStatement" />
+		<exclude name="Squiz.PHP.DisallowComparisonAssignment" />
+		<exclude name="Squiz.PHP.DisallowInlineIf" />
+		<exclude name="Squiz.PHP.EmbeddedPhp" />
+		<exclude name="Squiz.Strings.ConcatenationSpacing" />
+		<exclude name="Squiz.WhiteSpace" />
+	</rule>
 
-	<rule ref="Squiz.Arrays" />
-	<rule ref="Squiz.Classes.LowercaseClassKeywords" />
-	<rule ref="Squiz.Classes.SelfMemberReference" />
 	<rule ref="Squiz.Commenting.EmptyCatchComment" />
-	<rule ref="Squiz.Commenting.FunctionCommentThrowTag" />
-	<rule ref="Squiz.Formatting" />
-	<rule ref="Squiz.Objects" />
-	<rule ref="Squiz.Operators" />
-	<rule ref="Squiz.PHP.DisallowBooleanStatement" />
-	<rule ref="Squiz.PHP.DisallowComparisonAssignment" />
-	<rule ref="Squiz.PHP.DisallowInlineIf" />
-	<rule ref="Squiz.PHP.DisallowMultipleAssignments" />
-	<rule ref="Squiz.PHP.DiscouragedFunctions" />
-	<rule ref="Squiz.PHP.EmbeddedPhp" />
-	<rule ref="Squiz.PHP.Eval" />
-	<rule ref="Squiz.PHP.Heredoc" />
-	<rule ref="Squiz.PHP.LowercasePHPFunctions" />
-	<rule ref="Squiz.PHP.NonExecutableCode" />
-	<rule ref="Squiz.Scope.MemberVarScope" />
-	<rule ref="Squiz.Scope.MethodScope" />
-	<rule ref="Squiz.Strings.DoubleQuoteUsage" />
-	<rule ref="Squiz.Strings.EchoedStrings" />
 
 </ruleset>
