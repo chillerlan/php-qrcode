@@ -70,7 +70,7 @@ jobs:
           extensions: fileinfo, gd, imagick, json, mbstring
 
       - name: "Build Docs"
-        run: phpdoc --config=phpdoc.xml
+        run: phpdoc --config=phpdoc.xml.dist
 
       - name: "Publish Docs to gh-pages"
         uses: JamesIves/github-pages-deploy-action@v4
