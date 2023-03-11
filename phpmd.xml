@@ -17,7 +17,19 @@
 	<rule ref="rulesets/codesize.xml/CyclomaticComplexity">
 		<priority>1</priority>
 		<properties>
-			<property name="reportLevel" value="20"/>
+			<property name="reportLevel" value="50"/>
+		</properties>
+	</rule>
+	<rule ref="rulesets/codesize.xml/NPathComplexity">
+		<priority>1</priority>
+		<properties>
+			<property name="minimum" value="1000"/>
+		</properties>
+	</rule>
+	<rule ref="rulesets/codesize.xml/ExcessiveClassComplexity">
+		<priority>1</priority>
+		<properties>
+			<property name="maximum" value="150"/>
 		</properties>
 	</rule>
 	<rule ref="rulesets/controversial.xml">
