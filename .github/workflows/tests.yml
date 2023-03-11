@@ -84,7 +84,13 @@ jobs:
         uses: ramsey/composer-install@v2
 
       - name: "Run tests with phpunit"
-        run: php vendor/bin/phpunit --configuration=phpunit.xml
+        run: php vendor/bin/phpunit --configuration=phpunit.xml.dist
 
       - name: "Send code coverage report to Codecov.io"
         uses: codecov/codecov-action@v3
+
+      - name: "Send code coverage report to Codacy"
+        uses: codacy/codacy-coverage-reporter-action@v1
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: .build/coverage/clover.xml
