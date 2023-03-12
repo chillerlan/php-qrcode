@@ -39,8 +39,8 @@ class MyCustomOutput extends QROutputAbstract{
 
 // invoke the QROutputInterface manually
 $options = new QROptions([
-	'version'      => 5,
-	'eccLevel'     => QRCode::ECC_L,
+	'version'  => 5,
+	'eccLevel' => QRCode::ECC_L,
 ]);
 
 $qrOutputInterface = new MyCustomOutput($options, (new QRCode($options))->getMatrix('https://www.youtube.com/watch?v=dQw4w9WgXcQ'));

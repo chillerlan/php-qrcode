@@ -16,14 +16,14 @@ require_once __DIR__.'/../vendor/autoload.php';
 $gzip = true;
 
 $options = new QROptions([
-	'version'      => 7,
-	'outputType'   => QRCode::OUTPUT_MARKUP_SVG,
-	'imageBase64'  => false,
-	'eccLevel'     => QRCode::ECC_L,
+	'version'        => 7,
+	'outputType'     => QRCode::OUTPUT_MARKUP_SVG,
+	'imageBase64'    => false,
+	'eccLevel'       => QRCode::ECC_L,
 	'svgViewBoxSize' => 530,
-	'addQuietzone' => true,
-	'svgOpacity'   => 1.0,
-	'svgDefs'      => '
+	'addQuietzone'   => true,
+	'svgOpacity'     => 1.0,
+	'svgDefs'        => '
 		<linearGradient id="g2">
 			<stop offset="0%" stop-color="#39F" />
 			<stop offset="100%" stop-color="#F3F" />
@@ -33,7 +33,7 @@ $options = new QROptions([
 			<stop offset="100%" stop-color="#39F" />
 		</linearGradient>
 		<style>rect{shape-rendering:crispEdges}</style>',
-	'moduleValues' => [
+	'moduleValues'   => [
 		// finder
 		(QRMatrix::M_FINDER << 8)     => 'url(#g1)', // dark (true)
 		(QRMatrix::M_FINDER_DOT << 8) => 'url(#g1)',

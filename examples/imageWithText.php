@@ -94,10 +94,10 @@ class QRImageWithText extends QRImage{
 
 
 $options = new QROptions([
-	'version'      => 7,
-	'outputType'   => QRCode::OUTPUT_IMAGE_PNG,
-	'scale'        => 3,
-	'imageBase64'  => false,
+	'version'     => 7,
+	'outputType'  => QRCode::OUTPUT_IMAGE_PNG,
+	'scale'       => 3,
+	'imageBase64' => false,
 ]);
 
 

@@ -79,18 +79,18 @@ try{
 		$qrcode = '<pre style="font-size: 75%; overflow-x: auto;">'.$qrcode.'</pre>';
 	}
 
-	send_response(['qrcode' => $qrcode]);
+	sendResponse(['qrcode' => $qrcode]);
 }
 // Pokémon exception handler
-catch(\Exception $e){
+catch(Exception $e){
 	header('HTTP/1.1 500 Internal Server Error');
-	send_response(['error' => $e->getMessage()]);
+	sendResponse(['error' => $e->getMessage()]);
 }
 
 /**
  * @param array $response
  */
-function send_response(array $response){
+function sendResponse(array $response){
 	header('Content-type: application/json;charset=utf-8;');
 	echo json_encode($response);
 	exit;

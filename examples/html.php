@@ -12,10 +12,10 @@ use chillerlan\QRCode\Data\QRMatrix;
 require_once '../vendor/autoload.php';
 
 $options = new QROptions([
-	'version' => 5,
-	'outputType' => QRCode::OUTPUT_MARKUP_HTML,
-	'cssClass' => 'qrcode',
-	'eccLevel' => QRCode::ECC_L,
+	'version'      => 5,
+	'outputType'   => QRCode::OUTPUT_MARKUP_HTML,
+	'cssClass'     => 'qrcode',
+	'eccLevel'     => QRCode::ECC_L,
 	'moduleValues' => [
 		// finder
 		(QRMatrix::M_FINDER << 8)     => '#A71111', // dark (true)
