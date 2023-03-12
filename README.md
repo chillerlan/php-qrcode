@@ -7,10 +7,10 @@ namespaced, cleaned up, improved and other stuff.
 
 [![PHP Version Support][php-badge]][php]
 [![Packagist version][packagist-badge]][packagist]
+[![Continuous Integration][gh-action-badge]][gh-action]
 [![CodeCov][coverage-badge]][coverage]
 [![Codacy][codacy-badge]][codacy]
 [![Packagist downloads][downloads-badge]][downloads]
-[![Continuous Integration][gh-action-badge]][gh-action]
 
 [php-badge]: https://img.shields.io/packagist/php-v/chillerlan/php-qrcode?logo=php&color=8892BF
 [php]: https://www.php.net/supported-versions.php
@@ -291,100 +291,98 @@ $options->moduleValues = [
 ## Public API
 
 ### `QRCode` API
-####  Methods
-method | return | description
------- | ------ | -----------
-`__construct(QROptions $options = null)` | - | see [`SettingsContainerInterface`](https://github.com/chillerlan/php-settings-container/blob/main/src/SettingsContainerInterface.php)
-`render(string $data, string $file = null)` | mixed, `QROutputInterface::dump()` | renders a QR Code for the given `$data` and `QROptions`, saves `$file` optional
-`getMatrix(string $data)` | `QRMatrix` | returns a `QRMatrix` object for the given `$data` and current `QROptions`
-`initDataInterface(string $data)` | `QRDataInterface` | returns a fresh `QRDataInterface` for the given `$data`
-`isNumber(string $string)` | bool | checks if a string qualifies for `Number`
-`isAlphaNum(string $string)` | bool | checks if a string qualifies for `AlphaNum`
-`isKanji(string $string)` | bool | checks if a string qualifies for `Kanji`
-`isByte(string $string)` | bool | checks if a string is non-empty
+#### Methods
+| method                                      | return                             | description                                                                                                                           |
+|---------------------------------------------|------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| `__construct(QROptions $options = null)`    | -                                  | see [`SettingsContainerInterface`](https://github.com/chillerlan/php-settings-container/blob/main/src/SettingsContainerInterface.php) |
+| `render(string $data, string $file = null)` | mixed, `QROutputInterface::dump()` | renders a QR Code for the given `$data` and `QROptions`, saves `$file` optional                                                       |
+| `getMatrix(string $data)`                   | `QRMatrix`                         | returns a `QRMatrix` object for the given `$data` and current `QROptions`                                                             |
+| `initDataInterface(string $data)`           | `QRDataInterface`                  | returns a fresh `QRDataInterface` for the given `$data`                                                                               |
+| `isNumber(string $string)`                  | bool                               | checks if a string qualifies for `Number`                                                                                             |
+| `isAlphaNum(string $string)`                | bool                               | checks if a string qualifies for `AlphaNum`                                                                                           |
+| `isKanji(string $string)`                   | bool                               | checks if a string qualifies for `Kanji`                                                                                              |
+| `isByte(string $string)`                    | bool                               | checks if a string is non-empty                                                                                                       |
 
-####  Constants
-name | description
----- | -----------
-`VERSION_AUTO` | `QROptions::$version`
-`MASK_PATTERN_AUTO` | `QROptions::$maskPattern`
-`OUTPUT_MARKUP_SVG`, `OUTPUT_MARKUP_HTML` | `QROptions::$outputType` markup
-`OUTPUT_IMAGE_PNG`, `OUTPUT_IMAGE_JPG`, `OUTPUT_IMAGE_GIF` | `QROptions::$outputType` image
-`OUTPUT_STRING_JSON`, `OUTPUT_STRING_TEXT` | `QROptions::$outputType` string
-`OUTPUT_IMAGICK` | `QROptions::$outputType` ImageMagick
-`OUTPUT_FPDF` | `QROptions::$outputType` PDF, using [FPDF](https://github.com/setasign/fpdf)
-`OUTPUT_CUSTOM` | `QROptions::$outputType`, requires `QROptions::$outputInterface`
-`ECC_L`, `ECC_M`, `ECC_Q`, `ECC_H`, | ECC-Level: 7%, 15%, 25%, 30%  in `QROptions::$eccLevel`
-`DATA_NUMBER`, `DATA_ALPHANUM`, `DATA_BYTE`, `DATA_KANJI` | `QRDataInterface::$datamode`
-
+#### Constants
+| name                                                       | description                                                                  |
+|------------------------------------------------------------|------------------------------------------------------------------------------|
+| `VERSION_AUTO`                                             | `QROptions::$version`                                                        |
+| `MASK_PATTERN_AUTO`                                        | `QROptions::$maskPattern`                                                    |
+| `OUTPUT_MARKUP_SVG`, `OUTPUT_MARKUP_HTML`                  | `QROptions::$outputType` markup                                              |
+| `OUTPUT_IMAGE_PNG`, `OUTPUT_IMAGE_JPG`, `OUTPUT_IMAGE_GIF` | `QROptions::$outputType` image                                               |
+| `OUTPUT_STRING_JSON`, `OUTPUT_STRING_TEXT`                 | `QROptions::$outputType` string                                              |
+| `OUTPUT_IMAGICK`                                           | `QROptions::$outputType` ImageMagick                                         |
+| `OUTPUT_FPDF`                                              | `QROptions::$outputType` PDF, using [FPDF](https://github.com/setasign/fpdf) |
+| `OUTPUT_CUSTOM`                                            | `QROptions::$outputType`, requires `QROptions::$outputInterface`             |
+| `ECC_L`, `ECC_M`, `ECC_Q`, `ECC_H`,                        | ECC-Level: 7%, 15%, 25%, 30%  in `QROptions::$eccLevel`                      |
+| `DATA_NUMBER`, `DATA_ALPHANUM`, `DATA_BYTE`, `DATA_KANJI`  | `QRDataInterface::$datamode`                                                 |
 
 ### `QRMatrix` API
 
 #### Methods
-method | return | description
------- | ------ | -----------
-`__construct(int $version, int $eclevel)` | - | -
-`init(int $maskPattern, bool $test = null)` | `QRMatrix` |
-`matrix()` | array | the internal matrix representation as a 2 dimensional array
-`version()` | int | the current QR Code version
-`eccLevel()` | int | current ECC level
-`maskPattern()` | int | the used mask pattern
-`size()` | int | the absoulute size of the matrix, including quiet zone (if set). `$version * 4 + 17 + 2 * $quietzone`
-`get(int $x, int $y)` | int | returns the value of the module
-`set(int $x, int $y, bool $value, int $M_TYPE)` | `QRMatrix` | sets the `$M_TYPE` value for the module
-`check(int $x, int $y)` | bool | checks whether a module is true (dark) or false (light)
+| method                                          | return     | description                                                                                           |
+|-------------------------------------------------|------------|-------------------------------------------------------------------------------------------------------|
+| `__construct(int $version, int $eclevel)`       | -          | -                                                                                                     |
+| `init(int $maskPattern, bool $test = null)`     | `QRMatrix` |                                                                                                       |
+| `matrix()`                                      | array      | the internal matrix representation as a 2 dimensional array                                           |
+| `version()`                                     | int        | the current QR Code version                                                                           |
+| `eccLevel()`                                    | int        | current ECC level                                                                                     |
+| `maskPattern()`                                 | int        | the used mask pattern                                                                                 |
+| `size()`                                        | int        | the absoulute size of the matrix, including quiet zone (if set). `$version * 4 + 17 + 2 * $quietzone` |
+| `get(int $x, int $y)`                           | int        | returns the value of the module                                                                       |
+| `set(int $x, int $y, bool $value, int $M_TYPE)` | `QRMatrix` | sets the `$M_TYPE` value for the module                                                               |
+| `check(int $x, int $y)`                         | bool       | checks whether a module is true (dark) or false (light)                                               |
 
 #### Constants
-name | light (false) | dark (true) | description
----- | ------------- | ----------- | -----------
-`M_NULL` | 0 | - | module not set (should never appear. if so, there's an error)
-`M_DARKMODULE` | - | 512 | once per matrix at `$xy = [8, 4 * $version + 9]`
-`M_DATA` | 4 | 1024 | the actual encoded data
-`M_FINDER` | 6 | 1536 | the 7x7 finder patterns
-`M_SEPARATOR` | 8 | - | separator lines around the finder patterns
-`M_ALIGNMENT` | 10 | 2560 | the 5x5 alignment patterns
-`M_TIMING` | 12 | 3072 | the timing pattern lines
-`M_FORMAT` | 14 | 3584 | format information pattern
-`M_VERSION` | 16 | 4096 | version information pattern
-`M_QUIETZONE` | 18 | - | margin around the QR Code
-`M_LOGO` | 20 | - | space for a logo image (not used yet)
-`M_TEST` | 255 | 65280 | test value
+| name           | light (false) | dark (true) | description                                                   |
+|----------------|---------------|-------------|---------------------------------------------------------------|
+| `M_NULL`       | 0             | -           | module not set (should never appear. if so, there's an error) |
+| `M_DARKMODULE` | -             | 512         | once per matrix at `$xy = [8, 4 * $version + 9]`              |
+| `M_DATA`       | 4             | 1024        | the actual encoded data                                       |
+| `M_FINDER`     | 6             | 1536        | the 7x7 finder patterns                                       |
+| `M_SEPARATOR`  | 8             | -           | separator lines around the finder patterns                    |
+| `M_ALIGNMENT`  | 10            | 2560        | the 5x5 alignment patterns                                    |
+| `M_TIMING`     | 12            | 3072        | the timing pattern lines                                      |
+| `M_FORMAT`     | 14            | 3584        | format information pattern                                    |
+| `M_VERSION`    | 16            | 4096        | version information pattern                                   |
+| `M_QUIETZONE`  | 18            | -           | margin around the QR Code                                     |
+| `M_LOGO`       | 20            | -           | space for a logo image (not used yet)                         |
+| `M_TEST`       | 255           | 65280       | test value                                                    |
 
 ### `QROptions` API
 
 #### Properties
-property | type | default | allowed | description
--------- | ---- | ------- | ------- | -----------
-`$version` | int | `QRCode::VERSION_AUTO` | 1...40 | the [QR Code version number](http://www.qrcode.com/en/about/version.html)
-`$versionMin` | int | 1 | 1...40 | Minimum QR version (if `$version = QRCode::VERSION_AUTO`)
-`$versionMax` | int | 40 | 1...40 | Maximum QR version (if `$version = QRCode::VERSION_AUTO`)
-`$eccLevel` | int | `QRCode::ECC_L` | `QRCode::ECC_X` | Error correct level, where X = L (7%), M (15%), Q (25%), H (30%)
-`$maskPattern` | int | `QRCode::MASK_PATTERN_AUTO` | 0...7 | Mask Pattern to use
-`$addQuietzone` | bool | `true` | - | Add a "quiet zone" (margin) according to the QR code spec
-`$quietzoneSize` | int | 4 | clamped to 0 ... `$matrixSize / 2` | Size of the quiet zone
-`$dataModeOverride` | string | `null` | `Number`, `AlphaNum`, `Kanji`, `Byte` | allows overriding the data type detection
-`$outputType` | string | `QRCode::OUTPUT_IMAGE_PNG` | `QRCode::OUTPUT_*` | built-in output type
-`$outputInterface` | string | `null` | * | FQCN of the custom `QROutputInterface` if `QROptions::$outputType` is set to `QRCode::OUTPUT_CUSTOM`
-`$cachefile` | string | `null` | * | optional cache file path
-`$eol` | string | `PHP_EOL` | * | newline string (HTML, SVG, TEXT)
-`$scale` | int | 5 | * | size of a QR code pixel (SVG, IMAGE_*), HTML -> via CSS
-`$cssClass` | string | `null` | * | a common css class
-`$svgOpacity` | float | 1.0 | 0...1 |
-`$svgDefs` | string | * | * | anything between [`<defs>`](https://developer.mozilla.org/docs/Web/SVG/Element/defs)
-`$svgViewBoxSize` | int | `null` | * | a positive integer which defines width/height of the [viewBox attribute](https://css-tricks.com/scale-svg/#article-header-id-3)
-`$textDark` | string | '🔴' | * | string substitute for dark
-`$textLight` | string | '⭕' | * | string substitute for light
-`$markupDark` | string | '#000' | * | markup substitute for dark (CSS value)
-`$markupLight` | string | '#fff' | * | markup substitute for light (CSS value)
-`$imageBase64` | bool | `true` | - | whether to return the image data as base64 or raw like from `file_get_contents()`
-`$imageTransparent` | bool | `true` | - | toggle transparency (no jpeg support)
-`$imageTransparencyBG` | array | `[255, 255, 255]` | `[R, G, B]` | the RGB values for the transparent color, see [`imagecolortransparent()`](http://php.net/manual/function.imagecolortransparent.php)
-`$pngCompression` | int | -1 | -1 ... 9 | `imagepng()` compression level, -1 = auto
-`$jpegQuality` | int | 85 | 0 - 100 | `imagejpeg()` quality
-`$imagickFormat` | string | 'png' | * | ImageMagick output type, see `Imagick::setType()`
-`$imagickBG` | string | `null` | * | ImageMagick background color, see `ImagickPixel::__construct()`
-`$moduleValues` | array | `null` | * | Module values map, see [[Custom output interface]] and `QROutputInterface::DEFAULT_MODULE_VALUES`
-
+| property               | type   | default                     | allowed                               | description                                                                                                                         |
+|------------------------|--------|-----------------------------|---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| `$version`             | int    | `QRCode::VERSION_AUTO`      | 1...40                                | the [QR Code version number](http://www.qrcode.com/en/about/version.html)                                                           |
+| `$versionMin`          | int    | 1                           | 1...40                                | Minimum QR version (if `$version = QRCode::VERSION_AUTO`)                                                                           |
+| `$versionMax`          | int    | 40                          | 1...40                                | Maximum QR version (if `$version = QRCode::VERSION_AUTO`)                                                                           |
+| `$eccLevel`            | int    | `QRCode::ECC_L`             | `QRCode::ECC_X`                       | Error correct level, where X = L (7%), M (15%), Q (25%), H (30%)                                                                    |
+| `$maskPattern`         | int    | `QRCode::MASK_PATTERN_AUTO` | 0...7                                 | Mask Pattern to use                                                                                                                 |
+| `$addQuietzone`        | bool   | `true`                      | -                                     | Add a "quiet zone" (margin) according to the QR code spec                                                                           |
+| `$quietzoneSize`       | int    | 4                           | clamped to 0 ... `$matrixSize / 2`    | Size of the quiet zone                                                                                                              |
+| `$dataModeOverride`    | string | `null`                      | `Number`, `AlphaNum`, `Kanji`, `Byte` | allows overriding the data type detection                                                                                           |
+| `$outputType`          | string | `QRCode::OUTPUT_IMAGE_PNG`  | `QRCode::OUTPUT_*`                    | built-in output type                                                                                                                |
+| `$outputInterface`     | string | `null`                      | *                                     | FQCN of the custom `QROutputInterface` if `QROptions::$outputType` is set to `QRCode::OUTPUT_CUSTOM`                                |
+| `$cachefile`           | string | `null`                      | *                                     | optional cache file path                                                                                                            |
+| `$eol`                 | string | `PHP_EOL`                   | *                                     | newline string (HTML, SVG, TEXT)                                                                                                    |
+| `$scale`               | int    | 5                           | *                                     | size of a QR code pixel (SVG, IMAGE_*), HTML -> via CSS                                                                             |
+| `$cssClass`            | string | `null`                      | *                                     | a common css class                                                                                                                  |
+| `$svgOpacity`          | float  | 1.0                         | 0...1                                 |                                                                                                                                     |
+| `$svgDefs`             | string | *                           | *                                     | anything between [`<defs>`](https://developer.mozilla.org/docs/Web/SVG/Element/defs)                                                |
+| `$svgViewBoxSize`      | int    | `null`                      | *                                     | a positive integer which defines width/height of the [viewBox attribute](https://css-tricks.com/scale-svg/#article-header-id-3)     |
+| `$textDark`            | string | '🔴'                        | *                                     | string substitute for dark                                                                                                          |
+| `$textLight`           | string | '⭕'                         | *                                     | string substitute for light                                                                                                         |
+| `$markupDark`          | string | '#000'                      | *                                     | markup substitute for dark (CSS value)                                                                                              |
+| `$markupLight`         | string | '#fff'                      | *                                     | markup substitute for light (CSS value)                                                                                             |
+| `$imageBase64`         | bool   | `true`                      | -                                     | whether to return the image data as base64 or raw like from `file_get_contents()`                                                   |
+| `$imageTransparent`    | bool   | `true`                      | -                                     | toggle transparency (no jpeg support)                                                                                               |
+| `$imageTransparencyBG` | array  | `[255, 255, 255]`           | `[R, G, B]`                           | the RGB values for the transparent color, see [`imagecolortransparent()`](http://php.net/manual/function.imagecolortransparent.php) |
+| `$pngCompression`      | int    | -1                          | -1 ... 9                              | `imagepng()` compression level, -1 = auto                                                                                           |
+| `$jpegQuality`         | int    | 85                          | 0 - 100                               | `imagejpeg()` quality                                                                                                               |
+| `$imagickFormat`       | string | 'png'                       | *                                     | ImageMagick output type, see `Imagick::setType()`                                                                                   |
+| `$imagickBG`           | string | `null`                      | *                                     | ImageMagick background color, see `ImagickPixel::__construct()`                                                                     |
+| `$moduleValues`        | array  | `null`                      | *                                     | Module values map, see [[Custom output interface]] and `QROutputInterface::DEFAULT_MODULE_VALUES`                                   |
 
 ## Framework Integration
 - Drupal:
