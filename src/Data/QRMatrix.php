@@ -26,43 +26,43 @@ class QRMatrix{
 	/** @var int */
 	public const M_NULL           = 0b000000000000;
 	/** @var int */
-	public const M_DARKMODULE     = 0b000000000001 | self::IS_DARK;
+	public const M_DARKMODULE     = (0b000000000001 | self::IS_DARK);
 	/** @var int */
 	public const M_DATA           = 0b000000000010;
 	/** @var int */
-	public const M_DATA_DARK      = 0b000000000010 | self::IS_DARK;
+	public const M_DATA_DARK      = (self::M_DATA | self::IS_DARK);
 	/** @var int */
 	public const M_FINDER         = 0b000000000100;
 	/** @var int */
-	public const M_FINDER_DARK    = 0b000000000100 | self::IS_DARK;
+	public const M_FINDER_DARK    = (self::M_FINDER | self::IS_DARK);
 	/** @var int */
 	public const M_SEPARATOR      = 0b000000001000;
 	/** @var int */
 	public const M_ALIGNMENT      = 0b000000010000;
 	/** @var int */
-	public const M_ALIGNMENT_DARK = 0b000000010000 | self::IS_DARK;
+	public const M_ALIGNMENT_DARK = (self::M_ALIGNMENT | self::IS_DARK);
 	/** @var int */
 	public const M_TIMING         = 0b000000100000;
 	/** @var int */
-	public const M_TIMING_DARK    = 0b000000100000 | self::IS_DARK;
+	public const M_TIMING_DARK    = (self::M_TIMING | self::IS_DARK);
 	/** @var int */
 	public const M_FORMAT         = 0b000001000000;
 	/** @var int */
-	public const M_FORMAT_DARK    = 0b000001000000 | self::IS_DARK;
+	public const M_FORMAT_DARK    = (self::M_FORMAT | self::IS_DARK);
 	/** @var int */
 	public const M_VERSION        = 0b000010000000;
 	/** @var int */
-	public const M_VERSION_DARK   = 0b000010000000 | self::IS_DARK;
+	public const M_VERSION_DARK   = (self::M_VERSION | self::IS_DARK);
 	/** @var int */
 	public const M_QUIETZONE      = 0b000100000000;
 	/** @var int */
 	public const M_LOGO           = 0b001000000000;
 	/** @var int */
-	public const M_FINDER_DOT     = 0b010000000000 | self::IS_DARK;
+	public const M_FINDER_DOT     = (0b010000000000 | self::IS_DARK);
 	/** @var int */
 	public const M_TEST           = 0b011111111111;
 	/** @var int */
-	public const M_TEST_DARK      = 0b011111111111 | self::IS_DARK;
+	public const M_TEST_DARK      = (self::M_TEST | self::IS_DARK);
 
 	/**
 	 * Map of flag => coord
