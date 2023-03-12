@@ -1253,12 +1253,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003Aflip\u0028\u0029",
             "name": "flip",
-            "summary": "Flips\u0020the\u0020value\u0020of\u0020the\u0020module",
+            "summary": "Flips\u0020the\u0020value\u0020of\u0020the\u0020module\u0020at\u0020\u0028\u0024x,\u0020\u0024y\u0029",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_flip"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AcheckType\u0028\u0029",
             "name": "checkType",
-            "summary": "Checks\u0020whether\u0020a\u0020module\u0020is\u0020of\u0020the\u0020given\u0020\u0024M_TYPE",
+            "summary": "Checks\u0020whether\u0020the\u0020module\u0020at\u0020\u0028\u0024x,\u0020\u0024y\u0029\u0020is\u0020of\u0020the\u0020given\u0020\u0024M_TYPE",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkType"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AcheckTypeIn\u0028\u0029",
@@ -1268,12 +1268,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003Acheck\u0028\u0029",
             "name": "check",
-            "summary": "Checks\u0020whether\u0020a\u0020module\u0020is\u0020true\u0020\u0028dark\u0029\u0020or\u0020false\u0020\u0028light\u0029",
+            "summary": "Checks\u0020whether\u0020the\u0020module\u0020at\u0020\u0028\u0024x,\u0020\u0024y\u0029\u0020is\u0020true\u0020\u0028dark\u0029\u0020or\u0020false\u0020\u0028light\u0029",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_check"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AcheckNeighbours\u0028\u0029",
             "name": "checkNeighbours",
-            "summary": "Checks\u0020the\u0020status\u0020neighbouring\u0020modules\u0020of\u0020the\u0020given\u0020module\u0020at\u0020\u0028\u0024x,\u0020\u0024y\u0029\u0020and\u0020returns\u0020a\u0020bitmask\u0020with\u0020the\u0020results.",
+            "summary": "Checks\u0020the\u0020status\u0020of\u0020the\u0020neighbouring\u0020modules\u0020for\u0020the\u0020module\u0020at\u0020\u0028\u0024x,\u0020\u0024y\u0029\u0020and\u0020returns\u0020a\u0020bitmask\u0020with\u0020the\u0020results.",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkNeighbours"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AsetDarkModule\u0028\u0029",
@@ -1331,6 +1331,11 @@ Search.appendIndex(
             "summary": "Applies\/reverses\u0020the\u0020mask\u0020pattern",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_mask"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AIS_DARK",
+            "name": "IS_DARK",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_IS_DARK"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_NULL",
             "name": "M_NULL",
             "summary": "",
@@ -1346,10 +1351,20 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DATA"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_DATA_DARK",
+            "name": "M_DATA_DARK",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DATA_DARK"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_FINDER",
             "name": "M_FINDER",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_FINDER_DARK",
+            "name": "M_FINDER_DARK",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER_DARK"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_SEPARATOR",
             "name": "M_SEPARATOR",
@@ -1361,20 +1376,40 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_ALIGNMENT"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_ALIGNMENT_DARK",
+            "name": "M_ALIGNMENT_DARK",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_ALIGNMENT_DARK"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_TIMING",
             "name": "M_TIMING",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TIMING"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_TIMING_DARK",
+            "name": "M_TIMING_DARK",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TIMING_DARK"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_FORMAT",
             "name": "M_FORMAT",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FORMAT"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_FORMAT_DARK",
+            "name": "M_FORMAT_DARK",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FORMAT_DARK"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_VERSION",
             "name": "M_VERSION",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_VERSION"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_VERSION_DARK",
+            "name": "M_VERSION_DARK",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_VERSION_DARK"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_QUIETZONE",
             "name": "M_QUIETZONE",
@@ -1396,10 +1431,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TEST"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AIS_DARK",
-            "name": "IS_DARK",
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_TEST_DARK",
+            "name": "M_TEST_DARK",
             "summary": "",
-            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_IS_DARK"
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TEST_DARK"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003Aneighbours",
             "name": "neighbours",
@@ -3703,7 +3738,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest",
             "name": "QRMatrixTest",
-            "summary": "Tests\u0020the\u0020QRMatix\u0020class",
+            "summary": "Tests\u0020the\u0020QRMatrix\u0020class",
             "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AsetUp\u0028\u0029",
@@ -3718,7 +3753,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003Adm\u0028\u0029",
             "name": "dm",
-            "summary": "debugging\u0020shortcut\u0020qirth\u0020limit\u0020to\u0020a\u0020single\u0020version\u0020when\u0020using\u0020with\u0020matrixProvider",
+            "summary": "debugging\u0020shortcut\u0020\u002D\u0020limit\u0020to\u0020a\u0020single\u0020version\u0020when\u0020using\u0020with\u0020matrixProvider",
             "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_dm"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AtestInstance\u0028\u0029",
