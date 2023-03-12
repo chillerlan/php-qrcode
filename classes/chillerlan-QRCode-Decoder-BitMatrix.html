@@ -156,7 +156,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_ALIGNMENT_DARK">M_ALIGNMENT_DARK</a>
     <span>
-        &nbsp;= 0b10000 | self::IS_DARK                            </span>
+        &nbsp;= self::M_ALIGNMENT | self::IS_DARK                            </span>
 </dt>
 <dd></dd>
 
@@ -177,7 +177,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DATA_DARK">M_DATA_DARK</a>
     <span>
-        &nbsp;= 0b10 | self::IS_DARK                            </span>
+        &nbsp;= self::M_DATA | self::IS_DARK                            </span>
 </dt>
 <dd></dd>
 
@@ -191,7 +191,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER_DARK">M_FINDER_DARK</a>
     <span>
-        &nbsp;= 0b100 | self::IS_DARK                            </span>
+        &nbsp;= self::M_FINDER | self::IS_DARK                            </span>
 </dt>
 <dd></dd>
 
@@ -212,7 +212,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FORMAT_DARK">M_FORMAT_DARK</a>
     <span>
-        &nbsp;= 0b1000000 | self::IS_DARK                            </span>
+        &nbsp;= self::M_FORMAT | self::IS_DARK                            </span>
 </dt>
 <dd></dd>
 
@@ -254,7 +254,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TEST_DARK">M_TEST_DARK</a>
     <span>
-        &nbsp;= 0b11111111111 | self::IS_DARK                            </span>
+        &nbsp;= self::M_TEST | self::IS_DARK                            </span>
 </dt>
 <dd></dd>
 
@@ -268,7 +268,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TIMING_DARK">M_TIMING_DARK</a>
     <span>
-        &nbsp;= 0b100000 | self::IS_DARK                            </span>
+        &nbsp;= self::M_TIMING | self::IS_DARK                            </span>
 </dt>
 <dd></dd>
 
@@ -282,7 +282,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_VERSION_DARK">M_VERSION_DARK</a>
     <span>
-        &nbsp;= 0b10000000 | self::IS_DARK                            </span>
+        &nbsp;= self::M_VERSION | self::IS_DARK                            </span>
 </dt>
 <dd></dd>
 
@@ -750,7 +750,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">M_ALIGNMENT_DARK</span>
-    = <span class="phpdocumentor-signature__default-value">0b10000 | self::IS_DARK</span>
+    = <span class="phpdocumentor-signature__default-value">self::M_ALIGNMENT | self::IS_DARK</span>
 </code>
 
 
@@ -831,7 +831,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">M_DATA_DARK</span>
-    = <span class="phpdocumentor-signature__default-value">0b10 | self::IS_DARK</span>
+    = <span class="phpdocumentor-signature__default-value">self::M_DATA | self::IS_DARK</span>
 </code>
 
 
@@ -885,7 +885,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">M_FINDER_DARK</span>
-    = <span class="phpdocumentor-signature__default-value">0b100 | self::IS_DARK</span>
+    = <span class="phpdocumentor-signature__default-value">self::M_FINDER | self::IS_DARK</span>
 </code>
 
 
@@ -966,7 +966,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">M_FORMAT_DARK</span>
-    = <span class="phpdocumentor-signature__default-value">0b1000000 | self::IS_DARK</span>
+    = <span class="phpdocumentor-signature__default-value">self::M_FORMAT | self::IS_DARK</span>
 </code>
 
 
@@ -1128,7 +1128,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">M_TEST_DARK</span>
-    = <span class="phpdocumentor-signature__default-value">0b11111111111 | self::IS_DARK</span>
+    = <span class="phpdocumentor-signature__default-value">self::M_TEST | self::IS_DARK</span>
 </code>
 
 
@@ -1182,7 +1182,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">M_TIMING_DARK</span>
-    = <span class="phpdocumentor-signature__default-value">0b100000 | self::IS_DARK</span>
+    = <span class="phpdocumentor-signature__default-value">self::M_TIMING | self::IS_DARK</span>
 </code>
 
 
@@ -1236,7 +1236,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">M_VERSION_DARK</span>
-    = <span class="phpdocumentor-signature__default-value">0b10000000 | self::IS_DARK</span>
+    = <span class="phpdocumentor-signature__default-value">self::M_VERSION | self::IS_DARK</span>
 </code>
 
 
