@@ -148,6 +148,7 @@
 		<exclude name="Squiz.ControlStructures.SwitchDeclaration" />
 		<exclude name="Squiz.Files" />
 		<exclude name="Squiz.Functions" />
+		<exclude name="Squiz.Formatting.OperatorBracket" /><!-- wontfix for 4.x -->
 		<exclude name="Squiz.NamingConventions.ValidVariableName.NotCamelCaps" />
 		<exclude name="Squiz.NamingConventions.ValidVariableName.MemberNotCamelCaps" />
 		<exclude name="Squiz.NamingConventions.ValidFunctionName.ScopeNotCamelCaps" />
