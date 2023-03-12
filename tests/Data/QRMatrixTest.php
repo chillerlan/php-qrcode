@@ -19,7 +19,7 @@ use Generator;
 use function defined;
 
 /**
- * Tests the QRMatix class
+ * Tests the QRMatrix class
  */
 final class QRMatrixTest extends TestCase{
 
@@ -55,37 +55,37 @@ final class QRMatrixTest extends TestCase{
 			// 🔴 🟠 🟡 🟢 🔵 🟣 ⚫️ ⚪️ 🟤
 			// 🟥 🟧 🟨 🟩 🟦 🟪 ⬛ ⬜ 🟫
 			// finder
-			(QRMatrix::M_FINDER | QRMatrix::IS_DARK)     => '🟥', // dark (true)
-			QRMatrix::M_FINDER                           => '🔴', // light (false)
-			(QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK) => '🟥', // finder dot, dark (true)
+			QRMatrix::M_FINDER_DARK    => '🟥', // dark (true)
+			QRMatrix::M_FINDER         => '🔴', // light (false)
+			QRMatrix::M_FINDER_DOT     => '🟥', // finder dot, dark (true)
 			// alignment
-			(QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK)  => '🟧',
-			QRMatrix::M_ALIGNMENT                        => '🟠',
+			QRMatrix::M_ALIGNMENT_DARK => '🟧',
+			QRMatrix::M_ALIGNMENT      => '🟠',
 			// timing
-			(QRMatrix::M_TIMING | QRMatrix::IS_DARK)     => '🟨',
-			QRMatrix::M_TIMING                           => '🟡',
+			QRMatrix::M_TIMING_DARK    => '🟨',
+			QRMatrix::M_TIMING         => '🟡',
 			// format
-			(QRMatrix::M_FORMAT | QRMatrix::IS_DARK)     => '🟪',
-			QRMatrix::M_FORMAT                           => '🟣',
+			QRMatrix::M_FORMAT_DARK    => '🟪',
+			QRMatrix::M_FORMAT         => '🟣',
 			// version
-			(QRMatrix::M_VERSION | QRMatrix::IS_DARK)    => '🟩',
-			QRMatrix::M_VERSION                          => '🟢',
+			QRMatrix::M_VERSION_DARK   => '🟩',
+			QRMatrix::M_VERSION        => '🟢',
 			// data
-			(QRMatrix::M_DATA | QRMatrix::IS_DARK)       => '🟦',
-			QRMatrix::M_DATA                             => '🔵',
-			// darkmodule
-			(QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK) => '🟫',
+			QRMatrix::M_DATA_DARK      => '🟦',
+			QRMatrix::M_DATA           => '🔵',
+			// dark module
+			QRMatrix::M_DARKMODULE     => '🟫',
 			// separator
-			QRMatrix::M_SEPARATOR                        => '⚪️',
-			// quietzone
-			QRMatrix::M_QUIETZONE                        => '⬜',
+			QRMatrix::M_SEPARATOR      => '⚪️',
+			// quiet zone
+			QRMatrix::M_QUIETZONE      => '⬜',
 			// logo space
-			QRMatrix::M_LOGO                             => '⬜',
+			QRMatrix::M_LOGO           => '⬜',
 			// empty
-			QRMatrix::M_NULL                             => '🟤',
+			QRMatrix::M_NULL           => '🟤',
 			// data
-			(QRMatrix::M_TEST | QRMatrix::IS_DARK)       => '⬛',
-			QRMatrix::M_TEST                             => '⚫️',
+			QRMatrix::M_TEST_DARK      => '⬛',
+			QRMatrix::M_TEST           => '⚫️',
 		];
 
 		$out = (new QRString($opt, $matrix))->dump();
@@ -94,7 +94,7 @@ final class QRMatrixTest extends TestCase{
 	}
 
 	/**
-	 * debugging shortcut qirth limit to a single version when using with matrixProvider
+	 * debugging shortcut - limit to a single version when using with matrixProvider
 	 *
 	 * @see QRMatrixTest::matrixProvider()
 	 */
@@ -152,12 +152,19 @@ final class QRMatrixTest extends TestCase{
 	 */
 	public function testGetSetCheck():void{
 		$this->matrix->set(10, 10, true, QRMatrix::M_TEST);
-		$this::assertSame((QRMatrix::M_TEST | QRMatrix::IS_DARK), $this->matrix->get(10, 10));
+		$this::assertSame(QRMatrix::M_TEST_DARK, $this->matrix->get(10, 10));
 		$this::assertTrue($this->matrix->check(10, 10));
 
 		$this->matrix->set(20, 20, false, QRMatrix::M_TEST);
 		$this::assertSame(QRMatrix::M_TEST, $this->matrix->get(20, 20));
 		$this::assertFalse($this->matrix->check(20, 20));
+
+		// get proper results when using a *_DARK constant
+		$this->matrix->set(30, 30, true, QRMatrix::M_TEST_DARK);
+		$this::assertSame(QRMatrix::M_TEST_DARK, $this->matrix->get(30, 30));
+
+		$this->matrix->set(40, 40, false, QRMatrix::M_TEST_DARK);
+		$this::assertSame(QRMatrix::M_TEST, $this->matrix->get(40, 40));
 
 		// out of range
 		$this::assertFalse($this->matrix->check(-1, -1));
@@ -186,7 +193,7 @@ final class QRMatrixTest extends TestCase{
 
 		$this->dm($matrix);
 
-		$this::assertSame((QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK), $matrix->get(8, ($matrix->size() - 8)));
+		$this::assertSame(QRMatrix::M_DARKMODULE, $matrix->get(8, ($matrix->size() - 8)));
 	}
 
 	/**
@@ -199,9 +206,9 @@ final class QRMatrixTest extends TestCase{
 
 		$this->dm($matrix);
 
-		$this::assertSame((QRMatrix::M_FINDER | QRMatrix::IS_DARK), $matrix->get(0, 0));
-		$this::assertSame((QRMatrix::M_FINDER | QRMatrix::IS_DARK), $matrix->get(0, ($matrix->size() - 1)));
-		$this::assertSame((QRMatrix::M_FINDER | QRMatrix::IS_DARK), $matrix->get(($matrix->size() - 1), 0));
+		$this::assertSame(QRMatrix::M_FINDER_DARK, $matrix->get(0, 0));
+		$this::assertSame(QRMatrix::M_FINDER_DARK, $matrix->get(0, ($matrix->size() - 1)));
+		$this::assertSame(QRMatrix::M_FINDER_DARK, $matrix->get(($matrix->size() - 1), 0));
 	}
 
 	/**
@@ -245,7 +252,7 @@ final class QRMatrixTest extends TestCase{
 			foreach($alignmentPattern as $px){
 				// skip finder pattern
 				if(!$matrix->checkTypeIn($px, $py, [QRMatrix::M_FINDER, QRMatrix::M_FINDER_DOT])){
-					$this::assertSame((QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK), $matrix->get($px, $py));
+					$this::assertSame(QRMatrix::M_ALIGNMENT_DARK, $matrix->get($px, $py));
 				}
 			}
 		}
@@ -273,8 +280,8 @@ final class QRMatrixTest extends TestCase{
 			if(($i % 2) === 0){
 				// skip alignment pattern
 				if(!$matrix->checkTypeIn(6, $i, [QRMatrix::M_ALIGNMENT])){
-					$this::assertSame((QRMatrix::M_TIMING | QRMatrix::IS_DARK), $matrix->get(6, $i));
-					$this::assertSame((QRMatrix::M_TIMING | QRMatrix::IS_DARK), $matrix->get($i, 6));
+					$this::assertSame(QRMatrix::M_TIMING_DARK, $matrix->get(6, $i));
+					$this::assertSame(QRMatrix::M_TIMING_DARK, $matrix->get($i, 6));
 				}
 			}
 		}
@@ -346,8 +353,8 @@ final class QRMatrixTest extends TestCase{
 
 		$s = ($size - 1 - $quietZoneSize);
 
-		$this::assertSame((QRMatrix::M_TEST | QRMatrix::IS_DARK), $matrix->get($quietZoneSize, $quietZoneSize));
-		$this::assertSame((QRMatrix::M_TEST | QRMatrix::IS_DARK), $matrix->get($s, $s));
+		$this::assertSame(QRMatrix::M_TEST_DARK, $matrix->get($quietZoneSize, $quietZoneSize));
+		$this::assertSame(QRMatrix::M_TEST_DARK, $matrix->get($s, $s));
 	}
 
 	/**
@@ -423,16 +430,16 @@ final class QRMatrixTest extends TestCase{
 		// logo space should not overwrite quiet zone & function patterns
 		$matrix->setLogoSpace(21, 21, -10, -10);
 		$this::assertSame(QRMatrix::M_QUIETZONE, $matrix->get(9, 9));
-		$this::assertSame((QRMatrix::M_FINDER | QRMatrix::IS_DARK), $matrix->get(10, 10));
-		$this::assertSame((QRMatrix::M_FINDER | QRMatrix::IS_DARK), $matrix->get(16, 16));
+		$this::assertSame(QRMatrix::M_FINDER_DARK, $matrix->get(10, 10));
+		$this::assertSame(QRMatrix::M_FINDER_DARK, $matrix->get(16, 16));
 		$this::assertSame(QRMatrix::M_SEPARATOR, $matrix->get(17, 17));
-		$this::assertSame((QRMatrix::M_FORMAT | QRMatrix::IS_DARK), $matrix->get(18, 18));
+		$this::assertSame(QRMatrix::M_FORMAT_DARK, $matrix->get(18, 18));
 		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(19, 19));
 		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(20, 20));
 		$this::assertNotSame(QRMatrix::M_LOGO, $matrix->get(21, 21));
 
-		// i just realized that setLogoSpace() could be called multiple times
-		// on the same instance and i'm not going to do anything about it :P
+		// Ii just realized that setLogoSpace() could be called multiple times
+		// on the same instance, and I'm not going to do anything about it :P
 		$matrix->setLogoSpace(21, 21, 45, 45);
 		$this::assertNotSame(QRMatrix::M_LOGO, $matrix->get(54, 54));
 		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(55, 55));
@@ -481,23 +488,20 @@ final class QRMatrixTest extends TestCase{
 	 * Tests flipping the value of a module
 	 */
 	public function testFlip():void{
-		// using the dark module here because i'm lazy
-		$this->matrix->setDarkModule();
-		$x = 8;
-		$y = ($this->matrix->size() - 8);
+		$this->matrix->set(20, 20, true, QRMatrix::M_TEST);
 
 		// cover checkType()
-		$this::assertTrue($this->matrix->checkType($x, $y, QRMatrix::M_DARKMODULE));
+		$this::assertTrue($this->matrix->checkType(20, 20, QRMatrix::M_TEST));
 		// verify the current state (dark)
-		$this::assertSame((QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK), $this->matrix->get($x, $y));
+		$this::assertSame(QRMatrix::M_TEST_DARK, $this->matrix->get(20, 20));
 		// flip
-		$this->matrix->flip($x, $y);
+		$this->matrix->flip(20, 20);
 		// verify flip
-		$this::assertSame(QRMatrix::M_DARKMODULE, $this->matrix->get($x, $y));
+		$this::assertSame(QRMatrix::M_TEST, $this->matrix->get(20, 20));
 		// flip again
-		$this->matrix->flip($x, $y);
+		$this->matrix->flip(20, 20);
 		// verify flip
-		$this::assertSame((QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK), $this->matrix->get($x, $y));
+		$this::assertSame(QRMatrix::M_TEST_DARK, $this->matrix->get(20, 20));
 	}
 
 	/**

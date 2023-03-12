@@ -44,8 +44,8 @@ final class QRImagickTest extends QROutputTestAbstract{
 
 		$this->options->moduleValues = [
 			// data
-			(QRMatrix::M_DATA | QRMatrix::IS_DARK) => '#4A6000',
-			QRMatrix::M_DATA                       => '#ECF9BE',
+			QRMatrix::M_DATA_DARK => '#4A6000',
+			QRMatrix::M_DATA      => '#ECF9BE',
 		];
 
 		$this->outputInterface = new $this->FQN($this->options, $this->matrix);

@@ -27,8 +27,8 @@ final class QRStringTEXTTest extends QRStringTestAbstract{
 
 		$this->options->moduleValues = [
 			// data
-			(QRMatrix::M_DATA | QRMatrix::IS_DARK) => 'A',
-			QRMatrix::M_DATA                       => 'B',
+			QRMatrix::M_DATA_DARK => 'A',
+			QRMatrix::M_DATA      => 'B',
 		];
 
 		$this->outputInterface = new $this->FQN($this->options, $this->matrix);

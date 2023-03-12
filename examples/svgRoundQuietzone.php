@@ -191,7 +191,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 				// randomly assign another $M_TYPE_LAYER for the given types
 				// note that the layer id has to be an integer value,
 				// ideally outside the several bitmask values
-				if($M_TYPE_LAYER === (QRMatrix::M_DATA | QRMatrix::IS_DARK)){
+				if($M_TYPE_LAYER === QRMatrix::M_DATA_DARK){
 					$M_TYPE_LAYER = array_rand($this->options->dotColors);
 				}
 
@@ -331,17 +331,17 @@ $options = new RoundQuietzoneOptions([
 	'svgDefs'             => $svgDefs,
 //	'connectPaths'        => true, // this has been set to "always on" internally
 	'excludeFromConnect'  => [
-		(QRMatrix::M_FINDER|QRMatrix::IS_DARK),
-		(QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK),
-		(QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK),
-		(QRMatrix::M_QUIETZONE|QRMatrix::IS_DARK),
+		QRMatrix::M_FINDER_DARK,
+		QRMatrix::M_FINDER_DOT,
+		QRMatrix::M_ALIGNMENT_DARK,
+		(QRMatrix::M_QUIETZONE | QRMatrix::IS_DARK),
 	],
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.4,
 	'keepAsSquare'        => [
-		(QRMatrix::M_FINDER|QRMatrix::IS_DARK),
-		(QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK),
-		(QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK),
+		QRMatrix::M_FINDER_DARK,
+		QRMatrix::M_FINDER_DOT,
+		QRMatrix::M_ALIGNMENT_DARK,
 	],
 ]);
 

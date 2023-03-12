@@ -22,33 +22,47 @@ use function array_fill, count, floor, range;
 class QRMatrix{
 
 	/** @var int */
-	public const M_NULL       = 0b000000000000;
+	public const IS_DARK          = 0b100000000000;
 	/** @var int */
-	public const M_DARKMODULE = 0b000000000001;
+	public const M_NULL           = 0b000000000000;
 	/** @var int */
-	public const M_DATA       = 0b000000000010;
+	public const M_DARKMODULE     = 0b000000000001 | self::IS_DARK;
 	/** @var int */
-	public const M_FINDER     = 0b000000000100;
+	public const M_DATA           = 0b000000000010;
 	/** @var int */
-	public const M_SEPARATOR  = 0b000000001000;
+	public const M_DATA_DARK      = 0b000000000010 | self::IS_DARK;
 	/** @var int */
-	public const M_ALIGNMENT  = 0b000000010000;
+	public const M_FINDER         = 0b000000000100;
 	/** @var int */
-	public const M_TIMING     = 0b000000100000;
+	public const M_FINDER_DARK    = 0b000000000100 | self::IS_DARK;
 	/** @var int */
-	public const M_FORMAT     = 0b000001000000;
+	public const M_SEPARATOR      = 0b000000001000;
 	/** @var int */
-	public const M_VERSION    = 0b000010000000;
+	public const M_ALIGNMENT      = 0b000000010000;
 	/** @var int */
-	public const M_QUIETZONE  = 0b000100000000;
+	public const M_ALIGNMENT_DARK = 0b000000010000 | self::IS_DARK;
 	/** @var int */
-	public const M_LOGO       = 0b001000000000;
+	public const M_TIMING         = 0b000000100000;
 	/** @var int */
-	public const M_FINDER_DOT = 0b010000000000;
+	public const M_TIMING_DARK    = 0b000000100000 | self::IS_DARK;
 	/** @var int */
-	public const M_TEST       = 0b011111111111;
+	public const M_FORMAT         = 0b000001000000;
 	/** @var int */
-	public const IS_DARK      = 0b100000000000;
+	public const M_FORMAT_DARK    = 0b000001000000 | self::IS_DARK;
+	/** @var int */
+	public const M_VERSION        = 0b000010000000;
+	/** @var int */
+	public const M_VERSION_DARK   = 0b000010000000 | self::IS_DARK;
+	/** @var int */
+	public const M_QUIETZONE      = 0b000100000000;
+	/** @var int */
+	public const M_LOGO           = 0b001000000000;
+	/** @var int */
+	public const M_FINDER_DOT     = 0b010000000000 | self::IS_DARK;
+	/** @var int */
+	public const M_TEST           = 0b011111111111;
+	/** @var int */
+	public const M_TEST_DARK      = 0b011111111111 | self::IS_DARK;
 
 	/**
 	 * Map of flag => coord
@@ -203,14 +217,14 @@ class QRMatrix{
 	public function set(int $x, int $y, bool $value, int $M_TYPE):self{
 
 		if(isset($this->matrix[$y][$x])){
-			$this->matrix[$y][$x] = ($M_TYPE | (($value) ? $this::IS_DARK : 0));
+			$this->matrix[$y][$x] = (($M_TYPE & ~$this::IS_DARK) | (($value) ? $this::IS_DARK : 0));
 		}
 
 		return $this;
 	}
 
 	/**
-	 * Flips the value of the module
+	 * Flips the value of the module at ($x, $y)
 	 */
 	public function flip(int $x, int $y):self{
 
@@ -222,7 +236,7 @@ class QRMatrix{
 	}
 
 	/**
-	 * Checks whether a module is of the given $M_TYPE
+	 * Checks whether the module at ($x, $y) is of the given $M_TYPE
 	 *
 	 *   true => $value & $M_TYPE === $M_TYPE
 	 */
@@ -251,14 +265,14 @@ class QRMatrix{
 	}
 
 	/**
-	 * Checks whether a module is true (dark) or false (light)
+	 * Checks whether the module at ($x, $y) is true (dark) or false (light)
 	 */
 	public function check(int $x, int $y):bool{
 		return $this->checkType($x, $y, $this::IS_DARK);
 	}
 
 	/**
-	 * Checks the status neighbouring modules of the given module at ($x, $y) and returns a bitmask with the results.
+	 * Checks the status of the neighbouring modules for the module at ($x, $y) and returns a bitmask with the results.
 	 *
 	 * The 8 flags of the bitmask represent the status of each of the neighbouring fields,
 	 * starting with the lowest bit for top left, going clockwise:

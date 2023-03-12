@@ -10,9 +10,8 @@
 
 use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
-use chillerlan\QRCode\Output\QRImagick;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\{QRImagick, QROutputInterface};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -110,9 +109,9 @@ $options = new ImagickWithLogoOptions([
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.4,
 	'keepAsSquare'        => [
-		(QRMatrix::M_FINDER|QRMatrix::IS_DARK),
+		QRMatrix::M_FINDER_DARK,
 		QRMatrix::M_FINDER_DOT,
-		(QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK),
+		QRMatrix::M_ALIGNMENT_DARK,
 	],
 ]);
 

@@ -125,9 +125,9 @@ $options = new SVGWithLogoOptions([
 	'connectPaths'        => true,
 	// keep modules of thhese types as square
 	'keepAsSquare'        => [
-		(QRMatrix::M_FINDER|QRMatrix::IS_DARK),
+		QRMatrix::M_FINDER_DARK,
 		QRMatrix::M_FINDER_DOT,
-		(QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK),
+		QRMatrix::M_ALIGNMENT_DARK,
 	],
 	// https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient
 	'svgDefs'             => '

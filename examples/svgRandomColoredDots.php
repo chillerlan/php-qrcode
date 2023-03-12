@@ -10,10 +10,10 @@
  * @noinspection PhpIllegalPsrClassPathInspection
  */
 
+use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QROutputInterface, QRMarkupSVG};
-use chillerlan\QRCode\{QRCode, QROptions};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -59,7 +59,7 @@ class RandomDotsSVGOutput extends QRMarkupSVG{
 				// randomly assign another $M_TYPE_LAYER for the given types
 				// note that the layer id has to be an integer value,
 				// ideally outside the several bitmask values
-				if($M_TYPE_LAYER === (QRMatrix::M_DATA | QRMatrix::IS_DARK)){
+				if($M_TYPE_LAYER === QRMatrix::M_DATA_DARK){
 					$M_TYPE_LAYER = array_rand($this->options->dotColors);
 				}
 
@@ -134,17 +134,17 @@ $options = new RandomDotsOptions([
 
 	'connectPaths'        => true,
 	'excludeFromConnect'  => [
-		(QRMatrix::M_FINDER|QRMatrix::IS_DARK),
-		(QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK),
-		(QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK),
+		QRMatrix::M_FINDER_DARK,
+		QRMatrix::M_FINDER_DOT,
+		QRMatrix::M_ALIGNMENT_DARK,
 	],
 
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.4,
 	'keepAsSquare'        => [
-		(QRMatrix::M_FINDER|QRMatrix::IS_DARK),
-		(QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK),
-		(QRMatrix::M_ALIGNMENT|QRMatrix::IS_DARK),
+		QRMatrix::M_FINDER_DARK,
+		QRMatrix::M_FINDER_DOT,
+		QRMatrix::M_ALIGNMENT_DARK,
 	],
 
 ]);

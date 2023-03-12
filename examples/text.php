@@ -23,37 +23,37 @@ $options = new QROptions([
 	'eol'          => Color::colorize('reset', "\x00\n"),
 	'moduleValues' => [
 		// finder
-		(QRMatrix::M_FINDER | QRMatrix::IS_DARK)     => Color::colorize('fg-black', '🔴'), // dark (true)
-		QRMatrix::M_FINDER                           => Color::colorize('fg-black', '⭕'), // light (false)
-		(QRMatrix::M_FINDER_DOT | QRMatrix::IS_DARK) => Color::colorize('fg-black', '🔴'), // finder dot, dark (true)
+		QRMatrix::M_FINDER_DARK    => Color::colorize('fg-black', '🔴'), // dark (true)
+		QRMatrix::M_FINDER         => Color::colorize('fg-black', '⭕'), // light (false)
+		QRMatrix::M_FINDER_DOT     => Color::colorize('fg-black', '🔴'), // finder dot, dark (true)
 		// alignment
-		(QRMatrix::M_ALIGNMENT | QRMatrix::IS_DARK)  => Color::colorize('fg-blue', '🔴'),
-		QRMatrix::M_ALIGNMENT                        => Color::colorize('fg-blue', '⭕'),
+		QRMatrix::M_ALIGNMENT_DARK => Color::colorize('fg-blue', '🔴'),
+		QRMatrix::M_ALIGNMENT      => Color::colorize('fg-blue', '⭕'),
 		// timing
-		(QRMatrix::M_TIMING | QRMatrix::IS_DARK)     => Color::colorize('fg-red', '🔴'),
-		QRMatrix::M_TIMING                           => Color::colorize('fg-red', '⭕'),
+		QRMatrix::M_TIMING_DARK    => Color::colorize('fg-red', '🔴'),
+		QRMatrix::M_TIMING         => Color::colorize('fg-red', '⭕'),
 		// format
-		(QRMatrix::M_FORMAT | QRMatrix::IS_DARK)     => Color::colorize('fg-magenta', '🔴'),
-		QRMatrix::M_FORMAT                           => Color::colorize('fg-magenta', '⭕'),
+		QRMatrix::M_FORMAT_DARK    => Color::colorize('fg-magenta', '🔴'),
+		QRMatrix::M_FORMAT         => Color::colorize('fg-magenta', '⭕'),
 		// version
-		(QRMatrix::M_VERSION | QRMatrix::IS_DARK)    => Color::colorize('fg-green', '🔴'),
-		QRMatrix::M_VERSION                          => Color::colorize('fg-green', '⭕'),
+		QRMatrix::M_VERSION_DARK   => Color::colorize('fg-green', '🔴'),
+		QRMatrix::M_VERSION        => Color::colorize('fg-green', '⭕'),
 		// data
-		(QRMatrix::M_DATA | QRMatrix::IS_DARK)       => Color::colorize('fg-white', '🔴'),
-		QRMatrix::M_DATA                             => Color::colorize('fg-white', '⭕'),
+		QRMatrix::M_DATA_DARK      => Color::colorize('fg-white', '🔴'),
+		QRMatrix::M_DATA           => Color::colorize('fg-white', '⭕'),
 		// darkmodule
-		(QRMatrix::M_DARKMODULE | QRMatrix::IS_DARK) => Color::colorize('fg-black', '🔴'),
+		QRMatrix::M_DARKMODULE     => Color::colorize('fg-black', '🔴'),
 		// separator
-		QRMatrix::M_SEPARATOR                        => Color::colorize('fg-cyan', '⭕'),
+		QRMatrix::M_SEPARATOR      => Color::colorize('fg-cyan', '⭕'),
 		// quietzone
-		QRMatrix::M_QUIETZONE                        => Color::colorize('fg-cyan', '⭕'),
+		QRMatrix::M_QUIETZONE      => Color::colorize('fg-cyan', '⭕'),
 		// logo space
-		QRMatrix::M_LOGO                             => Color::colorize('fg-yellow', '⭕'),
+		QRMatrix::M_LOGO           => Color::colorize('fg-yellow', '⭕'),
 		// empty
-		QRMatrix::M_NULL                             => Color::colorize('fg-black', '⭕'),
+		QRMatrix::M_NULL           => Color::colorize('fg-black', '⭕'),
 		// data
-		(QRMatrix::M_TEST | QRMatrix::IS_DARK)       => Color::colorize('fg-white', '🔴'),
-		QRMatrix::M_TEST                             => Color::colorize('fg-black', '⭕'),
+		QRMatrix::M_TEST_DARK      => Color::colorize('fg-white', '🔴'),
+		QRMatrix::M_TEST           => Color::colorize('fg-black', '⭕'),
 	],
 ]);
 

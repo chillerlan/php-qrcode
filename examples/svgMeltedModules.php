@@ -7,10 +7,10 @@
  * @see https://github.com/chillerlan/php-qrcode/issues/127
  */
 
+use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QROutputInterface, QRMarkupSVG};
-use chillerlan\QRCode\{QRCode, QROptions};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -260,8 +260,8 @@ $options = new MeltedOutputOptions([
 	'outputType'         => QROutputInterface::CUSTOM,
 	'outputInterface'    => MeltedSVGQRCodeOutput::class,
 	'excludeFromConnect' => [
-		(QRMatrix::M_FINDER|QRMatrix::IS_DARK),
-		(QRMatrix::M_FINDER_DOT|QRMatrix::IS_DARK),
+		QRMatrix::M_FINDER_DARK,
+		QRMatrix::M_FINDER_DOT,
 	],
 	'svgDefs'            => '
 	<linearGradient id="rainbow" x1="100%" y2="100%">
