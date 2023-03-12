@@ -249,40 +249,41 @@ $options = new QROptions;
 // for HTML, SVG and ImageMagick
 $options->moduleValues = [
 	// finder
-	1536 => '#A71111', // dark (true)
-	6    => '#FFBFBF', // light (false)
+	(QRMatrix::M_FINDER << 8)     => '#A71111', // dark (true)
+	(QRMatrix::M_FINDER_DOT << 8) => '#A71111', // dark (true)
+	QRMatrix::M_FINDER            => '#FFBFBF', // light (false)
 	// alignment
-	2560 => '#A70364',
-	10   => '#FFC9C9',
+	(QRMatrix::M_ALIGNMENT << 8)  => '#A70364',
+	QRMatrix::M_ALIGNMENT         => '#FFC9C9',
 	// timing
-	3072 => '#98005D',
-	12   => '#FFB8E9',
+	(QRMatrix::M_TIMING << 8)     => '#98005D',
+	QRMatrix::M_TIMING            => '#FFB8E9',
 	// format
-	3584 => '#003804',
-	14   => '#00FB12',
+	(QRMatrix::M_FORMAT << 8)     => '#003804',
+	QRMatrix::M_FORMAT            => '#00FB12',
 	// version
-	4096 => '#650098',
-	16   => '#E0B8FF',
+	(QRMatrix::M_VERSION << 8)    => '#650098',
+	QRMatrix::M_VERSION           => '#E0B8FF',
 	// data
-	1024 => '#4A6000',
-	4    => '#ECF9BE',
+	(QRMatrix::M_DATA << 8)       => '#4A6000',
+	QRMatrix::M_DATA              => '#ECF9BE',
 	// darkmodule
-	512  => '#080063',
+	(QRMatrix::M_DARKMODULE << 8) => '#080063',
 	// separator
-	8    => '#AFBFBF',
+	QRMatrix::M_SEPARATOR         => '#AFBFBF',
 	// quietzone
-	18   => '#FFFFFF',
+	QRMatrix::M_QUIETZONE         => '#FFFFFF',
 ];
 
 // for the image output types
 $options->moduleValues = [
-	512  => [0, 0, 0],
+	(QRMatrix::M_DATA << 8) => [0, 0, 0],
 	// ...
 ];
 
 // for string/text output
 $options->moduleValues = [
-	512  => '#',
+	(QRMatrix::M_DATA << 8) => '#',
 	// ...
 ];
 ```
@@ -388,7 +389,7 @@ $options->moduleValues = [
 - Drupal:
   - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
 - Symfony
-	- [phpqrcode-bundle](https://github.com/jonasarts/phpqrcode-bundle)
+  - [phpqrcode-bundle](https://github.com/jonasarts/phpqrcode-bundle)
 - WordPress:
   - [`wp-two-factor-auth`](https://github.com/sjinks/wp-two-factor-auth)
   - [`simple-2fa`](https://wordpress.org/plugins/simple-2fa/)
