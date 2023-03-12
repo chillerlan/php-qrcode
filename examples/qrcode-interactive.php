@@ -1,6 +1,5 @@
 <?php
 /**
- * @filesource   qrcode.php
  * @created      18.11.2017
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
@@ -9,8 +8,8 @@
  * @noinspection PhpComposerExtensionStubsInspection
  */
 
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Data\QRMatrix;
 
 require_once '../vendor/autoload.php';
 
@@ -18,29 +17,30 @@ try{
 
 	$moduleValues = [
 		// finder
-		1536 => $_POST['m_finder_dark'],
-		6    => $_POST['m_finder_light'],
+		(QRMatrix::M_FINDER << 8)     => $_POST['m_finder_dark'],
+		(QRMatrix::M_FINDER_DOT << 8) => $_POST['m_finder_dark'],
+		QRMatrix::M_FINDER            => $_POST['m_finder_light'],
 		// alignment
-		2560 => $_POST['m_alignment_dark'],
-		10   => $_POST['m_alignment_light'],
+		(QRMatrix::M_ALIGNMENT << 8)  => $_POST['m_alignment_dark'],
+		QRMatrix::M_ALIGNMENT         => $_POST['m_alignment_light'],
 		// timing
-		3072 => $_POST['m_timing_dark'],
-		12   => $_POST['m_timing_light'],
+		(QRMatrix::M_TIMING << 8)     => $_POST['m_timing_dark'],
+		QRMatrix::M_TIMING            => $_POST['m_timing_light'],
 		// format
-		3584 => $_POST['m_format_dark'],
-		14   => $_POST['m_format_light'],
+		(QRMatrix::M_FORMAT << 8)     => $_POST['m_format_dark'],
+		QRMatrix::M_FORMAT            => $_POST['m_format_light'],
 		// version
-		4096 => $_POST['m_version_dark'],
-		16   => $_POST['m_version_light'],
+		(QRMatrix::M_VERSION << 8)    => $_POST['m_version_dark'],
+		QRMatrix::M_VERSION           => $_POST['m_version_light'],
 		// data
-		1024 => $_POST['m_data_dark'],
-		4    => $_POST['m_data_light'],
+		(QRMatrix::M_DATA << 8)       => $_POST['m_data_dark'],
+		QRMatrix::M_DATA              => $_POST['m_data_light'],
 		// darkmodule
-		512  => $_POST['m_darkmodule_dark'],
+		(QRMatrix::M_DARKMODULE << 8) => $_POST['m_darkmodule_dark'],
 		// separator
-		8    => $_POST['m_separator_light'],
+		QRMatrix::M_SEPARATOR         => $_POST['m_separator_light'],
 		// quietzone
-		18   => $_POST['m_quietzone_light'],
+		QRMatrix::M_QUIETZONE         => $_POST['m_quietzone_light'],
 	];
 
 	$moduleValues = array_map(function($v){

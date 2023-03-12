@@ -1,45 +1,51 @@
 <?php
+/**
+ * @created      03.06.2020
+ * @author       Maximilian Kresse
+ * @license      MIT
+ */
 
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Data\QRMatrix;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
-
 $options = new QROptions([
-    'version'      => 7,
-    'outputType'   => QRCode::OUTPUT_FPDF,
-    'eccLevel'     => QRCode::ECC_L,
-    'scale'        => 5,
-    'imageBase64'  => false,
-    'moduleValues' => [
-        // finder
-        1536 => [0, 63, 255], // dark (true)
-        6    => [255, 255, 255], // light (false), white is the transparency color and is enabled by default
-        // alignment
-        2560 => [255, 0, 255],
-        10   => [255, 255, 255],
-        // timing
-        3072 => [255, 0, 0],
-        12   => [255, 255, 255],
-        // format
-        3584 => [67, 191, 84],
-        14   => [255, 255, 255],
-        // version
-        4096 => [62, 174, 190],
-        16   => [255, 255, 255],
-        // data
-        1024 => [0, 0, 0],
-        4    => [255, 255, 255],
-        // darkmodule
-        512  => [0, 0, 0],
-        // separator
-        8    => [255, 255, 255],
-        // quietzone
-        18   => [255, 255, 255],
-    ],
+	'version'      => 7,
+	'outputType'   => QRCode::OUTPUT_FPDF,
+	'eccLevel'     => QRCode::ECC_L,
+	'scale'        => 5,
+	'imageBase64'  => false,
+	'moduleValues' => [
+		// finder
+		(QRMatrix::M_FINDER << 8)     => [0, 63, 255],    // dark (true)
+		(QRMatrix::M_FINDER_DOT << 8) => [0, 63, 255],
+		QRMatrix::M_FINDER            => [255, 255, 255], // light (false), white is the transparency color and is enabled by default
+		// alignment
+		(QRMatrix::M_ALIGNMENT << 8)  => [255, 0, 255],
+		QRMatrix::M_ALIGNMENT         => [255, 255, 255],
+		// timing
+		(QRMatrix::M_TIMING << 8)     => [255, 0, 0],
+		QRMatrix::M_TIMING            => [255, 255, 255],
+		// format
+		(QRMatrix::M_FORMAT << 8)     => [67, 191, 84],
+		QRMatrix::M_FORMAT            => [255, 255, 255],
+		// version
+		(QRMatrix::M_VERSION << 8)    => [62, 174, 190],
+		QRMatrix::M_VERSION           => [255, 255, 255],
+		// data
+		(QRMatrix::M_DATA << 8)       => [0, 0, 0],
+		QRMatrix::M_DATA              => [255, 255, 255],
+		// darkmodule
+		(QRMatrix::M_DARKMODULE << 8) => [0, 0, 0],
+		// separator
+		QRMatrix::M_SEPARATOR         => [255, 255, 255],
+		// quietzone
+		QRMatrix::M_QUIETZONE         => [255, 255, 255],
+	],
 ]);
 
-\header('Content-type: application/pdf');
 
-echo (new QRCode($options))->render($data);
+header('Content-type: application/pdf');
+
+echo (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');

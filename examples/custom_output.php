@@ -9,10 +9,33 @@
  */
 
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Output\QROutputAbstract;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
+class MyCustomOutput extends QROutputAbstract{
+
+	protected function setModuleValues():void{
+		// TODO: Implement setModuleValues() method.
+	}
+
+	public function dump(string $file = null){
+
+		$output = '';
+
+		for($row = 0; $row < $this->moduleCount; $row++){
+			for($col = 0; $col < $this->moduleCount; $col++){
+				$output .= (int)$this->matrix->check($col, $row);
+			}
+
+			$output .= PHP_EOL;
+		}
+
+		return $output;
+	}
+
+}
+
 
 // invoke the QROutputInterface manually
 $options = new QROptions([
@@ -20,9 +43,9 @@ $options = new QROptions([
 	'eccLevel'     => QRCode::ECC_L,
 ]);
 
-$qrOutputInterface = new MyCustomOutput($options, (new QRCode($options))->getMatrix($data));
+$qrOutputInterface = new MyCustomOutput($options, (new QRCode($options))->getMatrix('https://www.youtube.com/watch?v=dQw4w9WgXcQ'));
 
-var_dump($qrOutputInterface->dump());
+echo '<pre>'.$qrOutputInterface->dump().'</pre>';
 
 
 // or just
@@ -33,4 +56,4 @@ $options = new QROptions([
 	'outputInterface' => MyCustomOutput::class,
 ]);
 
-var_dump((new QRCode($options))->render($data));
+echo '<pre>'.(new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ').'</pre>';
