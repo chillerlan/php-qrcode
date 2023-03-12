@@ -21,7 +21,7 @@ interface QRDataInterface{
 	/**
 	 * @var int[]
 	 */
-	const CHAR_MAP_NUMBER = [
+	public const CHAR_MAP_NUMBER = [
 		'0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9,
 	];
 
@@ -30,7 +30,7 @@ interface QRDataInterface{
 	 *
 	 * @var int[]
 	 */
-	const CHAR_MAP_ALPHANUM = [
+	public const CHAR_MAP_ALPHANUM = [
 		'0' =>  0, '1' =>  1, '2' =>  2, '3' =>  3, '4' =>  4, '5' =>  5, '6' =>  6, '7' =>  7,
 		'8' =>  8, '9' =>  9, 'A' => 10, 'B' => 11, 'C' => 12, 'D' => 13, 'E' => 14, 'F' => 15,
 		'G' => 16, 'H' => 17, 'I' => 18, 'J' => 19, 'K' => 20, 'L' => 21, 'M' => 22, 'N' => 23,
@@ -46,7 +46,7 @@ interface QRDataInterface{
 	 *
 	 * @var int [][][]
 	 */
-	const MAX_LENGTH =[
+	public const MAX_LENGTH =[
 	//	v  => [NUMERIC => [L, M, Q, H ], ALPHANUM => [L, M, Q, H], BINARY => [L, M, Q, H  ], KANJI => [L, M, Q, H   ]]  // modules
 		1  => [[  41,   34,   27,   17], [  25,   20,   16,   10], [  17,   14,   11,    7], [  10,    8,    7,    4]], //  21
 		2  => [[  77,   63,   48,   34], [  47,   38,   29,   20], [  32,   26,   20,   14], [  20,   16,   12,    8]], //  25
@@ -95,7 +95,7 @@ interface QRDataInterface{
 	 *
 	 * @var int [][]
 	 */
-	const MAX_BITS = [
+	public const MAX_BITS = [
 		// version => [L, M, Q, H ]
 		1  => [  152,   128,   104,    72],
 		2  => [  272,   224,   176,   128],
@@ -144,7 +144,7 @@ interface QRDataInterface{
 	 *
 	 * @var int [][][]
 	 */
-	const RSBLOCKS = [
+	public const RSBLOCKS = [
 		1  => [[ 1,  0,  26,  19], [ 1,  0, 26, 16], [ 1,  0, 26, 13], [ 1,  0, 26,  9]],
 		2  => [[ 1,  0,  44,  34], [ 1,  0, 44, 28], [ 1,  0, 44, 22], [ 1,  0, 44, 16]],
 		3  => [[ 1,  0,  70,  55], [ 1,  0, 70, 44], [ 2,  0, 35, 17], [ 2,  0, 35, 13]],

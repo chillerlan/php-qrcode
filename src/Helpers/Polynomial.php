@@ -157,7 +157,7 @@ final class Polynomial{
 			throw new QRCodeException(sprintf('log(%s)', $n));
 		}
 
-		return Polynomial::table[$n][1];
+		return self::table[$n][1];
 	}
 
 	/**
@@ -172,7 +172,7 @@ final class Polynomial{
 			$n -= 255;
 		}
 
-		return Polynomial::table[$n][0];
+		return self::table[$n][0];
 	}
 
 }

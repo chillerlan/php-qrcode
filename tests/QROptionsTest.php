@@ -80,7 +80,7 @@ class QROptionsTest extends TestCase{
 	 */
 	public function MaskPatternProvider():array{
 		return [
-			'exceed max'   => [42, 7,],
+			'exceed max'   => [42, 7],
 			'exceed min'   => [-42, 0],
 			'default (-1)' => [QRCode::MASK_PATTERN_AUTO, -1],
 		];

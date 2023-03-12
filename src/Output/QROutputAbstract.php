@@ -12,7 +12,8 @@
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\{Data\QRMatrix, QRCode};
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 
 use function call_user_func_array, dirname, file_put_contents, get_called_class, in_array, is_writable, sprintf;

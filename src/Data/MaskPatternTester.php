@@ -130,7 +130,7 @@ final class MaskPatternTester{
 				}
 
 				if(
-					   $val === $m[$y][$x + 1]
+					   $val === $row[$x + 1]
 					&& $val === $m[$y + 1][$x]
 					&& $val === $m[$y + 1][$x + 1]
 				){
@@ -154,12 +154,12 @@ final class MaskPatternTester{
 				if(
 					$x + 6 < $size
 					&&  $val
-					&& !$m[$y][$x + 1]
-					&&  $m[$y][$x + 2]
-					&&  $m[$y][$x + 3]
-					&&  $m[$y][$x + 4]
-					&& !$m[$y][$x + 5]
-					&&  $m[$y][$x + 6]
+					&& !$row[$x + 1]
+					&&  $row[$x + 2]
+					&&  $row[$x + 3]
+					&&  $row[$x + 4]
+					&& !$row[$x + 5]
+					&&  $row[$x + 6]
 				){
 					$penalties++;
 				}
@@ -189,8 +189,8 @@ final class MaskPatternTester{
 	protected function testLevel4(array $m, int $size):float{
 		$count = 0;
 
-		foreach($m as $y => $row){
-			foreach($row as $x => $val){
+		foreach($m as $row){
+			foreach($row as $val){
 				if($val){
 					$count++;
 				}

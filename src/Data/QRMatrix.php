@@ -624,8 +624,8 @@ final class QRMatrix{
 		$startY = ($startY !== null ? $startY : ($length - $height) / 2) + $qz;
 
 		// clear the space
-		foreach($this->matrix as $y => $row){
-			foreach($row as $x => $val){
+		for($y = 0; $y < $this->moduleCount; $y++){
+			for($x = 0; $x < $this->moduleCount; $x++){
 				// out of bounds, skip
 				if($x < $start || $y < $start ||$x >= $end || $y >= $end){
 					continue;

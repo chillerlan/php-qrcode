@@ -19,7 +19,7 @@ use chillerlan\QRCode\Data\QRMatrix;
  */
 interface QROutputInterface{
 
-	const DEFAULT_MODULE_VALUES = [
+	public const DEFAULT_MODULE_VALUES = [
 		// light
 		QRMatrix::M_NULL            => false, // 0
 		QRMatrix::M_DATA            => false, // 4
