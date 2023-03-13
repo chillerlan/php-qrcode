@@ -119,13 +119,14 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/ECI.php"><a href="files/src-data-eci.html"><abbr title="src/Data/ECI.php">ECI.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
             <p class="phpdocumentor-summary">Adds an ECI Designator</p>
 
-    <section class="phpdocumentor-description"><p>Please note that you have to take care for the correct data encoding when adding with QRCode::add*Segment()</p>
+    <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 8.4.1.1</p>
+<p>Please note that you have to take care for the correct data encoding when adding with QRCode::add*Segment()</p>
 </section>
 
 
@@ -181,7 +182,7 @@
     <span>
                                 &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>Reads and decodes the ECI designator including the following byte sequence</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-QRDataModeAbstract.html#method_getDataMode">getDataMode()</a>
@@ -202,7 +203,7 @@
     <span>
                                 &nbsp;: <a href="classes/chillerlan-QRCode-Common-ECICharset.html"><abbr title="\chillerlan\QRCode\Common\ECICharset">ECICharset</abbr></a>    </span>
 </dt>
-<dd></dd>
+<dd>Reads and parses the value of an ECI designator</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-ECI.html#method_validateString">validateString()</a>
@@ -214,9 +215,9 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-ECI.html#method_write">write()</a>
     <span>
-                                &nbsp;: void    </span>
+                                &nbsp;: <a href="classes/chillerlan-QRCode-Data-QRDataModeInterface.html"><abbr title="\chillerlan\QRCode\Data\QRDataModeInterface">QRDataModeInterface</abbr></a>    </span>
 </dt>
-<dd></dd>
+<dd>Writes an ECI designator to the bitbuffer</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Data-QRDataModeAbstract.html#method_getCharCount">getCharCount()</a>
@@ -294,7 +295,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/ECI.php"><a href="files/src-data-eci.html"><abbr title="src/Data/ECI.php">ECI.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
@@ -341,7 +342,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/ECI.php"><a href="files/src-data-eci.html"><abbr title="src/Data/ECI.php">ECI.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
@@ -379,7 +380,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/ECI.php"><a href="files/src-data-eci.html"><abbr title="src/Data/ECI.php">ECI.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
@@ -502,11 +503,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/ECI.php"><a href="files/src-data-eci.html"><abbr title="src/Data/ECI.php">ECI.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">91</span>
+    <span class="phpdocumentor-element-found-in__line">124</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Reads and decodes the ECI designator including the following byte sequence</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
             <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">decodeSegment</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-BitBuffer.html"><abbr title="\chillerlan\QRCode\Common\BitBuffer">BitBuffer</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bitBuffer</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$versionNumber</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
@@ -539,13 +541,12 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
+                    <span class="phpdocumentor-tag__name">throws</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>Unused, but required as per interface</p>
-</section>
-
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Data-QRCodeDataException.html"><abbr title="\chillerlan\QRCode\Data\QRCodeDataException">QRCodeDataException</abbr></a></span>
+                                                            
+                                             
                                     </dd>
                         </dl>
 
@@ -614,7 +615,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/ECI.php"><a href="files/src-data-eci.html"><abbr title="src/Data/ECI.php">ECI.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">43</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
@@ -659,11 +660,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/ECI.php"><a href="files/src-data-eci.html"><abbr title="src/Data/ECI.php">ECI.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">60</span>
+    <span class="phpdocumentor-element-found-in__line">90</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Reads and parses the value of an ECI designator</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
             <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">parseValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-BitBuffer.html"><abbr title="\chillerlan\QRCode\Common\BitBuffer">BitBuffer</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bitBuffer</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-ECICharset.html"><abbr title="\chillerlan\QRCode\Common\ECICharset">ECICharset</abbr></a></span></code>
@@ -716,7 +718,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/ECI.php"><a href="files/src-data-eci.html"><abbr title="src/Data/ECI.php">ECI.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">84</span>
+    <span class="phpdocumentor-element-found-in__line">115</span>
 
     </aside>
 
@@ -774,14 +776,15 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/ECI.php"><a href="files/src-data-eci.html"><abbr title="src/Data/ECI.php">ECI.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">50</span>
+    <span class="phpdocumentor-element-found-in__line">69</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Writes an ECI designator to the bitbuffer</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">write</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-BitBuffer.html"><abbr title="\chillerlan\QRCode\Common\BitBuffer">BitBuffer</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bitBuffer</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$versionNumber</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">write</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-BitBuffer.html"><abbr title="\chillerlan\QRCode\Common\BitBuffer">BitBuffer</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bitBuffer</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$versionNumber</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Data-QRDataModeInterface.html"><abbr title="\chillerlan\QRCode\Data\QRDataModeInterface">QRDataModeInterface</abbr></a></span></code>
 
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
@@ -820,7 +823,7 @@
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
+    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Data-QRDataModeInterface.html"><abbr title="\chillerlan\QRCode\Data\QRDataModeInterface">QRDataModeInterface</abbr></a></span>
             &mdash;
         
     
