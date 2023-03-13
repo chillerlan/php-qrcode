@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCode\Common;
 
-use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Hanzi, Kanji, Number};
+use chillerlan\QRCode\Data\{AlphaNum, Byte, Hanzi, Kanji, Number};
 use chillerlan\QRCode\QRCodeException;
 
 /**

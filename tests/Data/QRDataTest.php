@@ -21,7 +21,7 @@ use PHPUnit\Framework\TestCase;
 /**
  *
  */
-class QRDataTest extends TestCase{
+final class QRDataTest extends TestCase{
 
 	/**
 	 * tests setting the BitBuffer object directly

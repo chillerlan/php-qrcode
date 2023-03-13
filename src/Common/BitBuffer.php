@@ -90,6 +90,8 @@ final class BitBuffer{
 
 	/**
 	 * returns the buffer content
+	 *
+	 * to debug: array_map(fn($v) => sprintf('%08b', $v), $bitBuffer->getBuffer())
 	 */
 	public function getBuffer():array{
 		return $this->buffer;

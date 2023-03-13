@@ -14,7 +14,7 @@ use chillerlan\QRCode\Common\ECICharset;
 use chillerlan\QRCode\QRCodeException;
 use PHPUnit\Framework\TestCase;
 
-class ECICharsetTest extends TestCase{
+final class ECICharsetTest extends TestCase{
 
 	public static function invalidIdProvider():array{
 		return [[-1], [1000000]];

@@ -105,23 +105,6 @@ final class Decoder{
 			if($datamode === Mode::TERMINATOR){
 				break;
 			}
-			elseif($datamode === Mode::ECI){
-				$result .= ECI::decodeSegment($this->bitBuffer, $versionNumber);
-			}
-			elseif($datamode === Mode::FNC1_FIRST || $datamode === Mode::FNC1_SECOND){
-				// We do little with FNC1 except alter the parsed result a bit according to the spec
-				$fc1InEffect = true;
-			}
-			elseif($datamode === Mode::STRCTURED_APPEND){
-
-				if($this->bitBuffer->available() < 16){
-					throw new QRCodeDecoderException('structured append: not enough bits left');
-				}
-				// sequence number and parity is added later to the result metadata
-				// Read next 8 bits (symbol sequence #) and 8 bits (parity data), then continue
-				$symbolSequence = $this->bitBuffer->read(8);
-				$parityData     = $this->bitBuffer->read(8);
-			}
 			elseif($datamode === Mode::NUMBER){
 				$result .= Number::decodeSegment($this->bitBuffer, $versionNumber);
 			}
@@ -133,6 +116,23 @@ final class Decoder{
 			}
 			elseif($datamode === Mode::KANJI){
 				$result .= Kanji::decodeSegment($this->bitBuffer, $versionNumber);
+			}
+			elseif($datamode === Mode::STRCTURED_APPEND){
+
+				if($this->bitBuffer->available() < 16){
+					throw new QRCodeDecoderException('structured append: not enough bits left');
+				}
+				// sequence number and parity is added later to the result metadata
+				// Read next 8 bits (symbol sequence #) and 8 bits (parity data), then continue
+				$symbolSequence = $this->bitBuffer->read(8);
+				$parityData     = $this->bitBuffer->read(8);
+			}
+			elseif($datamode === Mode::FNC1_FIRST || $datamode === Mode::FNC1_SECOND){
+				// We do little with FNC1 except alter the parsed result a bit according to the spec
+				$fc1InEffect = true;
+			}
+			elseif($datamode === Mode::ECI){
+				$result .= ECI::decodeSegment($this->bitBuffer, $versionNumber);
 			}
 			elseif($datamode === Mode::HANZI){
 				$result .= Hanzi::decodeSegment($this->bitBuffer, $versionNumber);

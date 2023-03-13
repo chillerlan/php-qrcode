@@ -17,7 +17,7 @@ use function bin2hex, chr, defined, sprintf;
 /**
  * Tests the Hanzi/GB2312 class
  */
-class HanziTest extends DataInterfaceTestAbstract{
+final class HanziTest extends DataInterfaceTestAbstract{
 
 	protected string $FQN      = Hanzi::class;
 	protected string $testdata = '无可奈何燃花作香';
