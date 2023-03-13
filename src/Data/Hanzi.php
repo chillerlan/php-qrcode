@@ -120,7 +120,7 @@ final class Hanzi extends QRDataModeAbstract{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException on an illegal character occurence
 	 */
-	public function write(BitBuffer $bitBuffer, int $versionNumber):void{
+	public function write(BitBuffer $bitBuffer, int $versionNumber):QRDataModeInterface{
 
 		$bitBuffer
 			->put($this::$datamode, 4)
@@ -150,6 +150,7 @@ final class Hanzi extends QRDataModeAbstract{
 			throw new QRCodeDataException(sprintf('illegal char at %d', ($i + 1)));
 		}
 
+		return $this;
 	}
 
 	/**

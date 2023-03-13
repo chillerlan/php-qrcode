@@ -44,7 +44,7 @@ final class Byte extends QRDataModeAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	public function write(BitBuffer $bitBuffer, int $versionNumber):void{
+	public function write(BitBuffer $bitBuffer, int $versionNumber):QRDataModeInterface{
 		$len = $this->getCharCount();
 
 		$bitBuffer
@@ -59,6 +59,7 @@ final class Byte extends QRDataModeAbstract{
 			$i++;
 		}
 
+		return $this;
 	}
 
 	/**

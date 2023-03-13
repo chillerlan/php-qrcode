@@ -44,7 +44,7 @@ interface QRDataModeInterface{
 	 *
 	 * @see \chillerlan\QRCode\Data\QRData::writeBitBuffer()
 	 */
-	public function write(BitBuffer $bitBuffer, int $versionNumber):void;
+	public function write(BitBuffer $bitBuffer, int $versionNumber):QRDataModeInterface;
 
 	/**
 	 * reads a segment from the BitBuffer and decodes in the current data mode

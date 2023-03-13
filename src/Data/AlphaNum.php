@@ -69,7 +69,7 @@ final class AlphaNum extends QRDataModeAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	public function write(BitBuffer $bitBuffer, int $versionNumber):void{
+	public function write(BitBuffer $bitBuffer, int $versionNumber):QRDataModeInterface{
 		$len = $this->getCharCount();
 
 		$bitBuffer
@@ -87,6 +87,7 @@ final class AlphaNum extends QRDataModeAbstract{
 			$bitBuffer->put(self::CHAR_TO_ORD[$this->data[$i]], 6);
 		}
 
+		return $this;
 	}
 
 	/**
