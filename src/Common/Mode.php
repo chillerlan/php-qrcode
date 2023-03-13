@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCode\Common;
 
-use chillerlan\QRCode\Data\{AlphaNum, Byte, Hanzi, Kanji, Number};
+use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Hanzi, Kanji, Number};
 use chillerlan\QRCode\QRCodeException;
 
 /**
@@ -48,10 +48,11 @@ final class Mode{
 	 */
 	public const LENGTH_BITS = [
 		self::NUMBER   => [10, 12, 14],
-		self::ALPHANUM => [9, 11, 13],
-		self::BYTE     => [8, 16, 16],
-		self::KANJI    => [8, 10, 12],
-		self::HANZI    => [8, 10, 12],
+		self::ALPHANUM => [ 9, 11, 13],
+		self::BYTE     => [ 8, 16, 16],
+		self::KANJI    => [ 8, 10, 12],
+		self::HANZI    => [ 8, 10, 12],
+		self::ECI      => [ 0,  0,  0],
 	];
 
 	/**
