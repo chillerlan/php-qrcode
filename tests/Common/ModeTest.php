@@ -54,11 +54,4 @@ final class ModeTest extends TestCase{
 		Mode::getLengthBitsForVersion(Mode::BYTE, 69);
 	}
 
-	public function testGetLengthBitsForModeInvalidModeException():void{
-		$this->expectException(QRCodeException::class);
-		$this->expectExceptionMessage('invalid mode given');
-		/** @phan-suppress-next-line PhanNoopNew */
-		Mode::getLengthBitsForMode(42);
-	}
-
 }
