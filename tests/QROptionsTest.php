@@ -12,7 +12,7 @@
 
 namespace chillerlan\QRCodeTest;
 
-use chillerlan\QRCode\{QRCodeException, QROptions};
+use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Common\Version;
 use PHPUnit\Framework\TestCase;
 
