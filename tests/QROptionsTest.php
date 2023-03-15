@@ -80,27 +80,6 @@ final class QROptionsTest extends TestCase{
 	}
 
 	/**
-	 * Tests clamping of the RGB values for $imageTransparencyBG
-	 *
-	 * @dataProvider RGBProvider
-	 */
-	public function testClampRGBValues(array $rgb, array $expected):void{
-		$o = new QROptions(['imageTransparencyBG' => $rgb]);
-
-		$this::assertSame($expected, $o->imageTransparencyBG);
-	}
-
-	/**
-	 * Tests if an exception is thrown when a non-numeric RGB value was encoutered
-	 */
-	public function testInvalidRGBValueException():void{
-		$this->expectException(QRCodeException::class);
-		$this->expectExceptionMessage('Invalid RGB value.');
-		/** @phan-suppress-next-line PhanNoopNew */
-		new QROptions(['imageTransparencyBG' => ['r', 'g', 'b']]);
-	}
-
-	/**
 	 * @return int[][]
 	 */
 	public static function logoSpaceValueProvider():array{

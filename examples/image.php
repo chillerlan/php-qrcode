@@ -20,8 +20,10 @@ $options = new QROptions([
 	'scale'               => 20,
 	'imageBase64'         => false,
 	'bgColor'             => [200, 150, 200],
-	'imageTransparent'    => false,
+	'imageTransparent'    => true,
+#	'transparencyColor'   => [233, 233, 233],
 	'drawCircularModules' => true,
+	'drawLightModules'    => true,
 	'circleRadius'        => 0.4,
 	'keepAsSquare'        => [
 		QRMatrix::M_FINDER_DARK,

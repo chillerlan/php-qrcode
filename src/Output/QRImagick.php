@@ -26,8 +26,20 @@ use const FILEINFO_MIME_TYPE;
  */
 class QRImagick extends QROutputAbstract{
 
+	/**
+	 * The main image instance
+	 */
 	protected Imagick $imagick;
+
+	/**
+	 * The main draw instance
+	 */
 	protected ImagickDraw $imagickDraw;
+
+	/**
+	 * The allocated background color
+	 */
+	protected ImagickPixel $background;
 
 	/**
 	 * @inheritDoc
@@ -48,6 +60,8 @@ class QRImagick extends QROutputAbstract{
 	}
 
 	/**
+	 * @todo: check/validate possible values
+	 * @see https://www.php.net/manual/imagickpixel.construct.php
 	 * @inheritDoc
 	 */
 	protected function moduleValueIsValid($value):bool{
@@ -65,7 +79,7 @@ class QRImagick extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	protected function getDefaultModuleValue(bool $isDark):ImagickPixel{
-		return new ImagickPixel(($isDark) ? $this->options->markupDark : $this->options->markupLight);
+		return $this->getModuleValue(($isDark) ? $this->options->markupDark : $this->options->markupLight);
 	}
 
 	/**
@@ -76,16 +90,13 @@ class QRImagick extends QROutputAbstract{
 	public function dump(string $file = null){
 		$this->imagick = new Imagick;
 
-		$bgColor = ($this->options->imageTransparent) ? 'transparent' : 'white';
+		$this->setBgColor();
 
-		// keep the imagickBG property for now (until v6)
-		if($this->moduleValueIsValid($this->options->bgColor ?? $this->options->imagickBG)){
-			$bgColor = ($this->options->bgColor ?? $this->options->imagickBG);
-		}
-
-		$this->imagick->newImage($this->length, $this->length, new ImagickPixel($bgColor), $this->options->imagickFormat);
+		$this->imagick->newImage($this->length, $this->length, $this->background, $this->options->imagickFormat);
 
 		$this->drawImage();
+		// set transparency color after all operations
+		$this->setTransparencyColor();
 
 		if($this->options->returnResource){
 			return $this->imagick;
@@ -102,6 +113,42 @@ class QRImagick extends QROutputAbstract{
 		}
 
 		return $imageData;
+	}
+
+	/**
+	 * Sets the background color
+	 */
+	protected function setBgColor():void{
+
+		if(isset($this->background)){
+			return;
+		}
+
+		if($this->moduleValueIsValid($this->options->bgColor)){
+			$this->background = $this->getModuleValue($this->options->bgColor);
+
+			return;
+		}
+
+		$this->background = $this->getModuleValue('white');
+	}
+
+	/**
+	 * Sets the transparency color
+	 */
+	protected function setTransparencyColor():void{
+
+		if(!$this->options->imageTransparent){
+			return;
+		}
+
+		$transparencyColor = $this->background;
+
+		if($this->moduleValueIsValid($this->options->transparencyColor)){
+			$transparencyColor = $this->getModuleValue($this->options->transparencyColor);
+		}
+
+		$this->imagick->transparentPaintImage($transparencyColor, 0.0, 10, false);
 	}
 
 	/**

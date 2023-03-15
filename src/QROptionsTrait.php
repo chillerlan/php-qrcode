@@ -174,9 +174,8 @@ trait QROptionsTrait{
 	 *
 	 * a note for GDImage output:
 	 *
-	 * if QROptions::$scale is less or equal than 20, the image will be upscaled internally, then the modules will be drawn
-	 * using imagefilledellipse() and then scaled back to the expected size using IMG_BICUBIC which in turn produces
-	 * unexpected outcomes in combination with transparency - to avoid this, set scale to a value greater than 20.
+	 * if QROptions::$scale is less than 20, the image will be upscaled internally, then the modules will be drawn
+	 * using imagefilledellipse() and then scaled back to the expected size
 	 *
 	 * @see https://github.com/chillerlan/php-qrcode/issues/23
 	 * @see https://github.com/chillerlan/php-qrcode/discussions/122
@@ -235,11 +234,9 @@ trait QROptionsTrait{
 	protected bool $imageBase64 = true;
 
 	/**
-	 * toggle background transparency
+	 * toggle transparency
 	 *
-	 * - GdImage: (png, gif) it sets imagecolortransparent() with {@see \chillerlan\QRCode\QROptions::$imageTransparencyBG}
-	 *
-	 *
+	 * @see \chillerlan\QRCode\QROptions::$transparencyColor
 	 * @see https://github.com/chillerlan/php-qrcode/discussions/121
  	 */
 	protected bool $imageTransparent = true;
@@ -252,21 +249,21 @@ trait QROptionsTrait{
 	protected bool $drawLightModules = true;
 
 	/**
-	 * Sets the background color in GD mode: [R, G, B].
+	 * Sets a transparency color for when {@see \chillerlan\QRCode\QROptions::$imageTransparent QROptions::$imageTransparent} is set to true.
+	 * Defaults to {@see \chillerlan\QRCode\QROptions::$bgColor QROptions::$bgColor}.
 	 *
-	 * When $imageTransparent is set to true, this color is set as transparent in imagecolortransparent()
+	 * - QRGdImage: [R, G, B], this color is set as transparent in {@see imagecolortransparent()}
+	 * - QRImagick: "color_str", this color is set in {@see Imagick::transparentPaintImage()}
 	 *
-	 * @see \chillerlan\QRCode\Output\QRGdImage
-	 * @see \chillerlan\QRCode\QROptions::$imageTransparent
-	 * @see imagecolortransparent()
+	 * @var mixed|null
 	 */
-	protected array $imageTransparencyBG = [255, 255, 255];
+	protected $transparencyColor = null;
 
 	/**
 	 * Sets the image background color (if applicable)
 	 *
-	 * - Imagick: defaults to "transparent" or "white", depending on $imageTransparent, {@see \ImagickPixel::__construct()}
-	 * - GdImage: defaults to $imageTransparencyBG, {@see \chillerlan\QRCode\QROptions::$imageTransparencyBG}
+	 * - QRGdImage: defaults to "white"
+	 * - QRImagick: defaults to [255, 255, 255]
 	 *
 	 * @var mixed|null
 	 */
@@ -289,15 +286,6 @@ trait QROptionsTrait{
 	 * @see https://www.imagemagick.org/script/formats.php
 	 */
 	protected string $imagickFormat = 'png32';
-
-	/**
-	 * Imagick background color
-	 *
-	 * @deprecated 5.0.0 use QROptions::$bgColor instead
-	 * @see \chillerlan\QRCode\QROptions::$bgColor
-	 * @see \ImagickPixel::__construct()
-	 */
-	protected ?string $imagickBG = null;
 
 	/**
 	 * Measurement unit for FPDF output: pt, mm, cm, in (defaults to "pt")
@@ -397,39 +385,6 @@ trait QROptionsTrait{
 	 */
 	protected function set_quietzoneSize(int $quietzoneSize):void{
 		$this->quietzoneSize = max(0, min($quietzoneSize, 75));
-	}
-
-	/**
-	 * sets the transparency background color
-	 *
-	 * @throws \chillerlan\QRCode\QRCodeException
-	 */
-	protected function set_imageTransparencyBG(array $imageTransparencyBG):void{
-
-		// invalid value - set to white as default
-		if(count($imageTransparencyBG) < 3){
-			$this->imageTransparencyBG = [255, 255, 255];
-
-			return;
-		}
-
-		foreach($imageTransparencyBG as $k => $v){
-
-			// cut off exceeding items
-			if($k > 2){
-				break;
-			}
-
-			if(!is_numeric($v)){
-				throw new QRCodeException('Invalid RGB value.');
-			}
-
-			// clamp the values
-			$this->imageTransparencyBG[$k] = max(0, min(255, (int)$v));
-		}
-
-		// use the array values to not run into errors with the spread operator (...$arr)
-		$this->imageTransparencyBG = array_values($this->imageTransparencyBG);
 	}
 
 	/**
