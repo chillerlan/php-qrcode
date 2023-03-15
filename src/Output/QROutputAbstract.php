@@ -58,8 +58,8 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 * QROutputAbstract constructor.
 	 */
 	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
-		$this->options     = $options;
-		$this->matrix      = $matrix;
+		$this->options = $options;
+		$this->matrix  = $matrix;
 
 		$this->setMatrixDimensions();
 		$this->setModuleValues();

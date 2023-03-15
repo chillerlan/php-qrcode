@@ -71,6 +71,8 @@ class MyCustomOutput extends QROutputAbstract{
 $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 
 // invoke the QROutputInterface manually
+// please note that an QROutputInterface invoked this way might become unusable after calling dump().
+// the clean way would be to extend the QRCode class to ensure a new QROutputInterface instance on each call to render().
 $options = new QROptions([
 	'version'  => 5,
 	'eccLevel' => EccLevel::L,
