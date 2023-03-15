@@ -37,7 +37,6 @@
 	"require": {
 		"php": "^7.4 || ^8.0",
 		"ext-mbstring": "*",
-		"ext-fileinfo": "*",
 		"chillerlan/php-settings-container": "^2.1.4"
 	},
 	"require-dev": {
