@@ -47,12 +47,13 @@ namespaced, cleaned up, improved and other stuff. It also features a QR Code rea
 
 See [the wiki](https://github.com/chillerlan/php-qrcode/wiki) for advanced documentation.
 An API documentation created with [phpDocumentor](https://www.phpdoc.org/) can be found at https://chillerlan.github.io/php-qrcode/ (WIP).
+The documentation for `QROptions` container can be found here: [chillerlan/php-settings-container](https://github.com/chillerlan/php-settings-container#readme).
 
 ### Requirements
 - PHP 7.4+
   - [`ext-mbstring`](https://www.php.net/manual/book.mbstring.php)
-  - [`ext-fileinfo`](https://www.php.net/manual/book.fileinfo.php)
   - optional:
+    - [`ext-fileinfo`](https://www.php.net/manual/book.fileinfo.php) (required by `QRImagick` output)
     - [`ext-gd`](https://www.php.net/manual/book.image)
     - [`ext-imagick`](https://github.com/Imagick/imagick) with [ImageMagick](https://imagemagick.org) installed
     - [`setasign/fpdf`](https://github.com/setasign/fpdf) for the PDF output module
