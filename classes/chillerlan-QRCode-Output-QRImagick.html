@@ -162,18 +162,25 @@
 
 <dl class="phpdocumentor-table-of-contents">
                     <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/chillerlan-QRCode-Output-QRImagick.html#property_background">$background</a>
+    <span>
+                        &nbsp;: <abbr title="\ImagickPixel">ImagickPixel</abbr>            </span>
+</dt>
+<dd>The allocated background color</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-Output-QRImagick.html#property_imagick">$imagick</a>
     <span>
                         &nbsp;: <abbr title="\Imagick">Imagick</abbr>            </span>
 </dt>
-<dd></dd>
+<dd>The main image instance</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-Output-QRImagick.html#property_imagickDraw">$imagickDraw</a>
     <span>
                         &nbsp;: <abbr title="\ImagickDraw">ImagickDraw</abbr>            </span>
 </dt>
-<dd></dd>
+<dd>The main draw instance</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_length">$length</a>
@@ -275,6 +282,13 @@ returns an array with the transformed modules</dd>
 <dd>Saves the qr $data to a $file. If $file is null, nothing happens.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_setBgColor">setBgColor()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Sets the background color</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_setMatrixDimensions">setMatrixDimensions()</a>
     <span>
                                 &nbsp;: void    </span>
@@ -294,6 +308,13 @@ returns an array with the transformed modules</dd>
                                 &nbsp;: void    </span>
 </dt>
 <dd>draws a single pixel at the given position</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_setTransparencyColor">setTransparencyColor()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Sets the transparency color</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_toBase64DataURI">toBase64DataURI()</a>
@@ -321,6 +342,40 @@ returns an array with the transformed modules</dd>
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="property_background">
+        $background
+        <a href="classes/chillerlan-QRCode-Output-QRImagick.html#property_background" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">42</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">The allocated background color</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type"><abbr title="\ImagickPixel">ImagickPixel</abbr></span>
+    <span class="phpdocumentor-signature__name">$background</span>
+    </code>
+
+    
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="property_imagick">
         $imagick
         <a href="classes/chillerlan-QRCode-Output-QRImagick.html#property_imagick" class="headerlink"><i class="fas fa-link"></i></a>
@@ -330,19 +385,19 @@ returns an array with the transformed modules</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The main image instance</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type"><abbr title="\Imagick">Imagick</abbr></span>
     <span class="phpdocumentor-signature__name">$imagick</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <section class="phpdocumentor-description"></section>
 
     
@@ -364,19 +419,19 @@ returns an array with the transformed modules</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">The main draw instance</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type"><abbr title="\ImagickDraw">ImagickDraw</abbr></span>
     <span class="phpdocumentor-signature__name">$imagickDraw</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <section class="phpdocumentor-description"></section>
 
     
@@ -632,7 +687,7 @@ returns an array with the transformed modules</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">49</span>
 
     </aside>
 
@@ -705,7 +760,7 @@ returns an array with the transformed modules</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">76</span>
+    <span class="phpdocumentor-element-found-in__line">90</span>
 
     </aside>
 
@@ -812,7 +867,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">110</span>
+    <span class="phpdocumentor-element-found-in__line">157</span>
 
     </aside>
 
@@ -845,7 +900,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">67</span>
+    <span class="phpdocumentor-element-found-in__line">81</span>
 
     </aside>
 
@@ -902,7 +957,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">60</span>
+    <span class="phpdocumentor-element-found-in__line">74</span>
 
     </aside>
 
@@ -958,7 +1013,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">53</span>
+    <span class="phpdocumentor-element-found-in__line">67</span>
 
     </aside>
 
@@ -987,6 +1042,23 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">todo:</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>check/validate possible values</p>
+</section>
+
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="https://www.php.net/manual/imagickpixel.construct.php"><abbr title="https://www.php.net/manual/imagickpixel.construct.php">https://www.php.net/manual/imagickpixel.construct.php</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">inheritDoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1089,6 +1161,39 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_setBgColor">
+        setBgColor()
+        <a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_setBgColor" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">121</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Sets the background color</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">setBgColor</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_setMatrixDimensions">
         setMatrixDimensions()
         <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_setMatrixDimensions" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1164,7 +1269,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">126</span>
+    <span class="phpdocumentor-element-found-in__line">173</span>
 
     </aside>
 
@@ -1203,6 +1308,39 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
             </dd>
             </dl>
 
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setTransparencyColor">
+        setTransparencyColor()
+        <a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_setTransparencyColor" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">139</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Sets the transparency color</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">setTransparencyColor</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+    
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>

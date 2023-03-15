@@ -216,7 +216,7 @@
     <span>
                         &nbsp;: string            </span>
 </dt>
-<dd>newline string [HTML, SVG, TEXT]</dd>
+<dd>newline string</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_excludeFromConnect">$excludeFromConnect</a>
@@ -237,28 +237,14 @@
     <span>
                         &nbsp;: bool            </span>
 </dt>
-<dd>toggle base64 or raw image data</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparencyBG">$imageTransparencyBG</a>
-    <span>
-                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
-</dt>
-<dd>Sets the background color in GD mode: [R, G, B].</dd>
+<dd>toggle base64 or raw image data (if applicable)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparent">$imageTransparent</a>
     <span>
                         &nbsp;: bool            </span>
 </dt>
-<dd>toggle background transparency</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickBG">$imagickBG</a>
-    <span>
-                        &nbsp;: string|null            </span>
-</dt>
-<dd>Imagick background color</dd>
+<dd>toggle transparency</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickFormat">$imagickFormat</a>
@@ -398,7 +384,7 @@
     <span>
                         &nbsp;: int            </span>
 </dt>
-<dd>size of a QR code pixel [SVG, IMAGE_*], HTML via CSS</dd>
+<dd>pixel size of a QR code module</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_svgDefs">$svgDefs</a>
@@ -457,6 +443,13 @@
 <dd>string substitute for light</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_transparencyColor">$transparencyColor</a>
+    <span>
+                        &nbsp;: mixed|null            </span>
+</dt>
+<dd>Sets a transparency color for when {@see \chillerlan\QRCode\QROptions::$imageTransparent QROptions::$imageTransparent} is set to true.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_version">$version</a>
     <span>
                         &nbsp;: int            </span>
@@ -497,13 +490,6 @@
                                 &nbsp;: void    </span>
 </dt>
 <dd>sets the FPDF measurement unit</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imageTransparencyBG">set_imageTransparencyBG()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-<dd>sets the transparency background color</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_logoSpaceHeight">set_logoSpaceHeight()</a>
@@ -603,7 +589,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">337</span>
+    <span class="phpdocumentor-element-found-in__line">197</span>
 
     </aside>
 
@@ -637,7 +623,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">70</span>
+    <span class="phpdocumentor-element-found-in__line">74</span>
 
     </aside>
 
@@ -685,7 +671,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">273</span>
+    <span class="phpdocumentor-element-found-in__line">152</span>
 
     </aside>
 
@@ -698,10 +684,9 @@
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
         <section class="phpdocumentor-description"><ul>
-<li>Imagick: defaults to &quot;transparent&quot; or &quot;white&quot;, depending on $imageTransparent, <abbr title="\ImagickPixel::__construct()">ImagickPixel::__construct()</abbr>
-</li>
-<li>GdImage: defaults to $imageTransparencyBG, <abbr title="\chillerlan\QRCode\QROptions::$imageTransparencyBG">QROptions::$imageTransparencyBG</abbr>
-</li>
+<li>QRGdImage: defaults to &quot;white&quot;</li>
+<li>QRImagick: defaults to [255, 255, 255]</li>
+<li>QRFpdf: defaults to blank internally (white page)</li>
 </ul>
 </section>
 
@@ -725,7 +710,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">102</span>
+    <span class="phpdocumentor-element-found-in__line">127</span>
 
     </aside>
 
@@ -761,7 +746,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">189</span>
+    <span class="phpdocumentor-element-found-in__line">179</span>
 
     </aside>
 
@@ -795,7 +780,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">165</span>
+    <span class="phpdocumentor-element-found-in__line">352</span>
 
     </aside>
 
@@ -843,7 +828,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">117</span>
+    <span class="phpdocumentor-element-found-in__line">289</span>
 
     </aside>
 
@@ -877,7 +862,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">184</span>
+    <span class="phpdocumentor-element-found-in__line">174</span>
 
     </aside>
 
@@ -890,9 +875,9 @@
      = <span class="phpdocumentor-signature__default-value">false</span></code>
 
         <section class="phpdocumentor-description"><p>a note for GDImage output:</p>
-<p>if QROptions::$scale is less or equal than 20, the image will be upscaled internally, then the modules will be drawn
-using imagefilledellipse() and then scaled back to the expected size using IMG_BICUBIC which in turn produces
-unexpected outcomes in combination with transparency - to avoid this, set scale to a value greater than 20.</p>
+<p>if QROptions::$scale is less than 20, the image will be upscaled internally, then the modules will be drawn
+using imagefilledellipse() and then scaled back to the expected size</p>
+<p>No effect in: QREps, QRFpdf, QRMarkupHTML</p>
 </section>
 
         <section class="phpdocumentor-description"></section>
@@ -938,7 +923,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">252</span>
+    <span class="phpdocumentor-element-found-in__line">159</span>
 
     </aside>
 
@@ -971,7 +956,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">56</span>
+    <span class="phpdocumentor-element-found-in__line">60</span>
 
     </aside>
 
@@ -1036,11 +1021,11 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">107</span>
+    <span class="phpdocumentor-element-found-in__line">137</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">newline string [HTML, SVG, TEXT]</p>
+        <p class="phpdocumentor-summary">newline string</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1070,7 +1055,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">170</span>
+    <span class="phpdocumentor-element-found-in__line">357</span>
 
     </aside>
 
@@ -1104,7 +1089,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">307</span>
+    <span class="phpdocumentor-element-found-in__line">384</span>
 
     </aside>
 
@@ -1152,11 +1137,11 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">235</span>
+    <span class="phpdocumentor-element-found-in__line">132</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">toggle base64 or raw image data</p>
+        <p class="phpdocumentor-summary">toggle base64 or raw image data (if applicable)</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1177,72 +1162,6 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_imageTransparencyBG">
-        $imageTransparencyBG
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparencyBG" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">263</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Sets the background color in GD mode: [R, G, B].</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
-    <span class="phpdocumentor-signature__name">$imageTransparencyBG</span>
-     = <span class="phpdocumentor-signature__default-value">[255, 255, 255]</span></code>
-
-        <section class="phpdocumentor-description"><p>When $imageTransparent is set to true, this color is set as transparent in imagecolortransparent()</p>
-</section>
-
-        <section class="phpdocumentor-description"></section>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QRGdImage.html"><abbr title="\chillerlan\QRCode\Output\QRGdImage">QRGdImage</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$imageTransparent">QROptions::$imageTransparent</abbr></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\imagecolortransparent()">imagecolortransparent()</abbr></span>
-                                        
-                                             
-                                    </dd>
-                        </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="property_imageTransparent">
         $imageTransparent
         <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparent" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1252,11 +1171,11 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">245</span>
+    <span class="phpdocumentor-element-found-in__line">240</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">toggle background transparency</p>
+        <p class="phpdocumentor-summary">toggle transparency</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -1265,8 +1184,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
      = <span class="phpdocumentor-signature__default-value">true</span></code>
 
         <section class="phpdocumentor-description"><ul>
-<li>GdImage: (png, gif) it sets imagecolortransparent() with <abbr title="\chillerlan\QRCode\QROptions::$imageTransparencyBG">QROptions::$imageTransparencyBG</abbr>
-</li>
+<li>QRGdImage and QRImagick: the given <abbr title="\chillerlan\QRCode\QROptions::$transparencyColor">QROptions::$transparencyColor</abbr> is set as transparent</li>
 </ul>
 </section>
 
@@ -1294,72 +1212,6 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
             phpdocumentor-element
             -property
             -protected
-                        -deprecated                                "
->
-    <h4 class="phpdocumentor-element__name" id="property_imagickBG">
-        $imagickBG
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickBG" class="headerlink"><i class="fas fa-link"></i></a>
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">300</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Imagick background color</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">string|null</span>
-    <span class="phpdocumentor-signature__name">$imagickBG</span>
-     = <span class="phpdocumentor-signature__default-value">null</span></code>
-
-    
-        <section class="phpdocumentor-description"></section>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$bgColor instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$bgColor">QROptions::$bgColor</abbr></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\ImagickPixel::__construct()">ImagickPixel::__construct()</abbr></span>
-                                        
-                                             
-                                    </dd>
-                        </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="property_imagickFormat">
@@ -1371,7 +1223,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">291</span>
+    <span class="phpdocumentor-element-found-in__line">279</span>
 
     </aside>
 
@@ -1427,7 +1279,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">283</span>
+    <span class="phpdocumentor-element-found-in__line">266</span>
 
     </aside>
 
@@ -1474,7 +1326,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">194</span>
+    <span class="phpdocumentor-element-found-in__line">184</span>
 
     </aside>
 
@@ -1508,7 +1360,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">351</span>
+    <span class="phpdocumentor-element-found-in__line">211</span>
 
     </aside>
 
@@ -1544,7 +1396,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">356</span>
+    <span class="phpdocumentor-element-found-in__line">216</span>
 
     </aside>
 
@@ -1578,7 +1430,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">361</span>
+    <span class="phpdocumentor-element-found-in__line">221</span>
 
     </aside>
 
@@ -1612,7 +1464,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">344</span>
+    <span class="phpdocumentor-element-found-in__line">204</span>
 
     </aside>
 
@@ -1648,7 +1500,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">209</span>
+    <span class="phpdocumentor-element-found-in__line">294</span>
 
     </aside>
 
@@ -1682,7 +1534,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">214</span>
+    <span class="phpdocumentor-element-found-in__line">299</span>
 
     </aside>
 
@@ -1716,7 +1568,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">63</span>
+    <span class="phpdocumentor-element-found-in__line">67</span>
 
     </aside>
 
@@ -1752,7 +1604,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">315</span>
+    <span class="phpdocumentor-element-found-in__line">192</span>
 
     </aside>
 
@@ -1765,8 +1617,8 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
         <section class="phpdocumentor-description"><ul>
-<li>HTML, IMAGICK: #ABCDEF, cssname, rgb(), rgba()...</li>
-<li>IMAGE: [63, 127, 255] // R, G, B</li>
+<li>QRImagick, QRMarkupHTML, QRMarkupSVG: #ABCDEF, cssname, rgb(), rgba()...</li>
+<li>QREps, QRFpdf, QRGdImage: [63, 127, 255] // R, G, B</li>
 </ul>
 </section>
 
@@ -1791,7 +1643,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">95</span>
+    <span class="phpdocumentor-element-found-in__line">104</span>
 
     </aside>
 
@@ -1825,7 +1677,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">90</span>
+    <span class="phpdocumentor-element-found-in__line">99</span>
 
     </aside>
 
@@ -1869,7 +1721,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">278</span>
+    <span class="phpdocumentor-element-found-in__line">261</span>
 
     </aside>
 
@@ -1916,7 +1768,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">77</span>
+    <span class="phpdocumentor-element-found-in__line">81</span>
 
     </aside>
 
@@ -1952,7 +1804,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">325</span>
+    <span class="phpdocumentor-element-found-in__line">399</span>
 
     </aside>
 
@@ -1986,7 +1838,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">332</span>
+    <span class="phpdocumentor-element-found-in__line">406</span>
 
     </aside>
 
@@ -2022,7 +1874,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">320</span>
+    <span class="phpdocumentor-element-found-in__line">394</span>
 
     </aside>
 
@@ -2056,7 +1908,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">230</span>
+    <span class="phpdocumentor-element-found-in__line">120</span>
 
     </aside>
 
@@ -2071,7 +1923,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
         <section class="phpdocumentor-description"><p>This option overrides other output options, such as $cachefile and $imageBase64.</p>
 <p>Supported by the following modules:</p>
 <ul>
-<li>QRImage:   resource (PHP &lt; 8), GdImage</li>
+<li>QRGdImage: resource (PHP &lt; 8), GdImage</li>
 <li>QRImagick: Imagick</li>
 <li>QRFpdf:    FPDF</li>
 </ul>
@@ -2111,11 +1963,11 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">112</span>
+    <span class="phpdocumentor-element-found-in__line">231</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">size of a QR code pixel [SVG, IMAGE_*], HTML via CSS</p>
+        <p class="phpdocumentor-summary">pixel size of a QR code module</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
@@ -2145,7 +1997,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">129</span>
+    <span class="phpdocumentor-element-found-in__line">316</span>
 
     </aside>
 
@@ -2193,7 +2045,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">158</span>
+    <span class="phpdocumentor-element-found-in__line">345</span>
 
     </aside>
 
@@ -2241,7 +2093,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">122</span>
+    <span class="phpdocumentor-element-found-in__line">309</span>
 
     </aside>
 
@@ -2275,7 +2127,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">144</span>
+    <span class="phpdocumentor-element-found-in__line">331</span>
 
     </aside>
 
@@ -2322,7 +2174,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">139</span>
+    <span class="phpdocumentor-element-found-in__line">326</span>
 
     </aside>
 
@@ -2380,7 +2232,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">151</span>
+    <span class="phpdocumentor-element-found-in__line">338</span>
 
     </aside>
 
@@ -2428,7 +2280,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">199</span>
+    <span class="phpdocumentor-element-found-in__line">367</span>
 
     </aside>
 
@@ -2462,7 +2314,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">204</span>
+    <span class="phpdocumentor-element-found-in__line">372</span>
 
     </aside>
 
@@ -2487,6 +2339,47 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="property_transparencyColor">
+        $transparencyColor
+        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_transparencyColor" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">251</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Sets a transparency color for when {@see \chillerlan\QRCode\QROptions::$imageTransparent QROptions::$imageTransparent} is set to true.</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed|null</span>
+    <span class="phpdocumentor-signature__name">$transparencyColor</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+        <section class="phpdocumentor-description"><p>Defaults to <abbr title="\chillerlan\QRCode\QROptions::$bgColor">QROptions::$bgColor</abbr>.</p>
+<ul>
+<li>QRGdImage: [R, G, B], this color is set as transparent in <abbr title="\chillerlan\QRCode\imagecolortransparent()">imagecolortransparent()</abbr>
+</li>
+<li>QRImagick: &quot;color_str&quot;, this color is set in <abbr title="\chillerlan\QRCode\Imagick::transparentPaintImage()">Imagick::transparentPaintImage()</abbr>
+</li>
+</ul>
+</section>
+
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="property_version">
         $version
         <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_version" class="headerlink"><i class="fas fa-link"></i></a>
@@ -2496,7 +2389,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
@@ -2532,7 +2425,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">41</span>
+    <span class="phpdocumentor-element-found-in__line">45</span>
 
     </aside>
 
@@ -2566,7 +2459,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">40</span>
 
     </aside>
 
@@ -2606,7 +2499,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">460</span>
+    <span class="phpdocumentor-element-found-in__line">473</span>
 
     </aside>
 
@@ -2650,7 +2543,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">500</span>
+    <span class="phpdocumentor-element-found-in__line">513</span>
 
     </aside>
 
@@ -2694,7 +2587,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">440</span>
+    <span class="phpdocumentor-element-found-in__line">453</span>
 
     </aside>
 
@@ -2744,64 +2637,6 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_set_imageTransparencyBG">
-        set_imageTransparencyBG()
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imageTransparencyBG" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">407</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">sets the transparency background color</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">set_imageTransparencyBG</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$imageTransparencyBG</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$imageTransparencyBG</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-QRCodeException.html"><abbr title="\chillerlan\QRCode\QRCodeException">QRCodeException</abbr></a></span>
-                                                            
-                                             
-                                    </dd>
-                        </dl>
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">void</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_set_logoSpaceHeight">
         set_logoSpaceHeight()
         <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_logoSpaceHeight" class="headerlink"><i class="fas fa-link"></i></a>
@@ -2809,7 +2644,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">479</span>
+    <span class="phpdocumentor-element-found-in__line">492</span>
 
     </aside>
 
@@ -2853,7 +2688,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">486</span>
+    <span class="phpdocumentor-element-found-in__line">499</span>
 
     </aside>
 
@@ -2897,7 +2732,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">493</span>
+    <span class="phpdocumentor-element-found-in__line">506</span>
 
     </aside>
 
@@ -2941,7 +2776,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">472</span>
+    <span class="phpdocumentor-element-found-in__line">485</span>
 
     </aside>
 
@@ -2985,7 +2820,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">398</span>
+    <span class="phpdocumentor-element-found-in__line">444</span>
 
     </aside>
 
@@ -3029,7 +2864,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">453</span>
+    <span class="phpdocumentor-element-found-in__line">466</span>
 
     </aside>
 
@@ -3073,7 +2908,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">391</span>
+    <span class="phpdocumentor-element-found-in__line">437</span>
 
     </aside>
 
@@ -3117,7 +2952,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">384</span>
+    <span class="phpdocumentor-element-found-in__line">430</span>
 
     </aside>
 
@@ -3161,7 +2996,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">377</span>
+    <span class="phpdocumentor-element-found-in__line">423</span>
 
     </aside>
 
@@ -3205,7 +3040,7 @@ unexpected outcomes in combination with transparency - to avoid this, set scale 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">366</span>
+    <span class="phpdocumentor-element-found-in__line">412</span>
 
     </aside>
 

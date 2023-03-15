@@ -2401,6 +2401,21 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_dump"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AsetBgColor\u0028\u0029",
+            "name": "setBgColor",
+            "summary": "Sets\u0020the\u0020background\u0020color",
+            "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_setBgColor"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AsetTransparencyColor\u0028\u0029",
+            "name": "setTransparencyColor",
+            "summary": "Sets\u0020the\u0020transparency\u0020color",
+            "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_setTransparencyColor"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AdrawImage\u0028\u0029",
+            "name": "drawImage",
+            "summary": "Creates\u0020the\u0020QR\u0020image",
+            "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_drawImage"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AsetPixel\u0028\u0029",
             "name": "setPixel",
             "summary": "Creates\u0020a\u0020single\u0020QR\u0020pixel\u0020with\u0020the\u0020given\u0020settings",
@@ -2415,6 +2430,16 @@ Search.appendIndex(
             "name": "image",
             "summary": "The\u0020GD\u0020image\u0020resource",
             "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#property_image"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003A\u0024background",
+            "name": "background",
+            "summary": "The\u0020allocated\u0020background\u0020color",
+            "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#property_background"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003A\u0024upscaled",
+            "name": "upscaled",
+            "summary": "Whether\u0020we\u0027re\u0020running\u0020in\u0020upscale\u0020mode\u0020\u0028scale\u0020\u003C\u002020\u0029",
+            "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#property_upscaled"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRImage",
             "name": "QRImage",
@@ -2451,6 +2476,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QRImagick.html#method_dump"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003AsetBgColor\u0028\u0029",
+            "name": "setBgColor",
+            "summary": "Sets\u0020the\u0020background\u0020color",
+            "url": "classes/chillerlan-QRCode-Output-QRImagick.html#method_setBgColor"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003AsetTransparencyColor\u0028\u0029",
+            "name": "setTransparencyColor",
+            "summary": "Sets\u0020the\u0020transparency\u0020color",
+            "url": "classes/chillerlan-QRCode-Output-QRImagick.html#method_setTransparencyColor"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003AdrawImage\u0028\u0029",
             "name": "drawImage",
             "summary": "Creates\u0020the\u0020QR\u0020image\u0020via\u0020ImagickDraw",
@@ -2463,13 +2498,18 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003A\u0024imagick",
             "name": "imagick",
-            "summary": "",
+            "summary": "The\u0020main\u0020image\u0020instance",
             "url": "classes/chillerlan-QRCode-Output-QRImagick.html#property_imagick"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003A\u0024imagickDraw",
             "name": "imagickDraw",
-            "summary": "",
+            "summary": "The\u0020main\u0020draw\u0020instance",
             "url": "classes/chillerlan-QRCode-Output-QRImagick.html#property_imagickDraw"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003A\u0024background",
+            "name": "background",
+            "summary": "The\u0020allocated\u0020background\u0020color",
+            "url": "classes/chillerlan-QRCode-Output-QRImagick.html#property_background"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup",
             "name": "QRMarkup",
@@ -3006,11 +3046,6 @@ Search.appendIndex(
             "summary": "sets\/clamps\u0020the\u0020quiet\u0020zone\u0020size",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_quietzoneSize"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_imageTransparencyBG\u0028\u0029",
-            "name": "set_imageTransparencyBG",
-            "summary": "sets\u0020the\u0020transparency\u0020background\u0020color",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imageTransparencyBG"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_fpdfMeasureUnit\u0028\u0029",
             "name": "set_fpdfMeasureUnit",
             "summary": "sets\u0020the\u0020FPDF\u0020measurement\u0020unit",
@@ -3096,25 +3131,125 @@ Search.appendIndex(
             "summary": "the\u0020FQCN\u0020of\u0020the\u0020custom\u0020QROutputInterface\u0020if\u0020\u0024outputType\u0020is\u0020set\u0020to\u0020QRCode\u003A\u003AOUTPUT_CUSTOM",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_outputInterface"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024returnResource",
+            "name": "returnResource",
+            "summary": "Return\u0020the\u0020image\u0020resource\u0020instead\u0020of\u0020a\u0020render\u0020if\u0020applicable.",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_returnResource"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024cachefile",
             "name": "cachefile",
             "summary": "\/path\/to\/cache.file",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_cachefile"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imageBase64",
+            "name": "imageBase64",
+            "summary": "toggle\u0020base64\u0020or\u0020raw\u0020image\u0020data\u0020\u0028if\u0020applicable\u0029",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imageBase64"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024eol",
             "name": "eol",
-            "summary": "newline\u0020string\u0020\u005BHTML,\u0020SVG,\u0020TEXT\u005D",
+            "summary": "newline\u0020string",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_eol"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024bgColor",
+            "name": "bgColor",
+            "summary": "Sets\u0020the\u0020image\u0020background\u0020color\u0020\u0028if\u0020applicable\u0029",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_bgColor"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024drawLightModules",
+            "name": "drawLightModules",
+            "summary": "whether\u0020to\u0020draw\u0020the\u0020light\u0020\u0028false\u0029\u0020modules",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_drawLightModules"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024drawCircularModules",
+            "name": "drawCircularModules",
+            "summary": "specify\u0020whether\u0020to\u0020draw\u0020the\u0020modules\u0020as\u0020filled\u0020circles",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_drawCircularModules"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024circleRadius",
+            "name": "circleRadius",
+            "summary": "specifies\u0020the\u0020radius\u0020of\u0020the\u0020modules\u0020when\u0020\u0024svgDrawCircularModules\u0020is\u0020set\u0020to\u0020true",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_circleRadius"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024keepAsSquare",
+            "name": "keepAsSquare",
+            "summary": "specifies\u0020which\u0020module\u0020types\u0020to\u0020exclude\u0020when\u0020\u0024svgDrawCircularModules\u0020is\u0020set\u0020to\u0020true",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_keepAsSquare"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024moduleValues",
+            "name": "moduleValues",
+            "summary": "Module\u0020values\u0020map",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_moduleValues"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024addLogoSpace",
+            "name": "addLogoSpace",
+            "summary": "Toggles\u0020logo\u0020space\u0020creation",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_addLogoSpace"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024logoSpaceWidth",
+            "name": "logoSpaceWidth",
+            "summary": "width\u0020of\u0020the\u0020logo\u0020space",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_logoSpaceWidth"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024logoSpaceHeight",
+            "name": "logoSpaceHeight",
+            "summary": "height\u0020of\u0020the\u0020logo\u0020space",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_logoSpaceHeight"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024logoSpaceStartX",
+            "name": "logoSpaceStartX",
+            "summary": "optional\u0020horizontal\u0020start\u0020position\u0020of\u0020the\u0020logo\u0020space\u0020\u0028top\u0020left\u0020corner\u0029",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_logoSpaceStartX"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024logoSpaceStartY",
+            "name": "logoSpaceStartY",
+            "summary": "optional\u0020vertical\u0020start\u0020position\u0020of\u0020the\u0020logo\u0020space\u0020\u0028top\u0020left\u0020corner\u0029",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_logoSpaceStartY"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024scale",
             "name": "scale",
-            "summary": "size\u0020of\u0020a\u0020QR\u0020code\u0020pixel\u0020\u005BSVG,\u0020IMAGE_\u002A\u005D,\u0020HTML\u0020via\u0020CSS",
+            "summary": "pixel\u0020size\u0020of\u0020a\u0020QR\u0020code\u0020module",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_scale"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imageTransparent",
+            "name": "imageTransparent",
+            "summary": "toggle\u0020transparency",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparent"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024transparencyColor",
+            "name": "transparencyColor",
+            "summary": "Sets\u0020a\u0020transparency\u0020color\u0020for\u0020when\u0020\u007B\u0040see\u0020\\chillerlan\\QRCode\\QROptions\u003A\u003A\u0024imageTransparent\u0020QROptions\u003A\u003A\u0024imageTransparent\u007D\u0020is\u0020set\u0020to\u0020true.",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_transparencyColor"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024pngCompression",
+            "name": "pngCompression",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_pngCompression"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024jpegQuality",
+            "name": "jpegQuality",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_jpegQuality"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imagickFormat",
+            "name": "imagickFormat",
+            "summary": "Imagick\u0020output\u0020format",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickFormat"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024cssClass",
             "name": "cssClass",
             "summary": "a\u0020common\u0020css\u0020class",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_cssClass"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024markupDark",
+            "name": "markupDark",
+            "summary": "markup\u0020substitute\u0020for\u0020dark\u0020\u0028CSS\u0020value\u0029",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_markupDark"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024markupLight",
+            "name": "markupLight",
+            "summary": "markup\u0020substitute\u0020for\u0020light\u0020\u0028CSS\u0020value\u0029",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_markupLight"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgOpacity",
             "name": "svgOpacity",
@@ -3156,21 +3291,6 @@ Search.appendIndex(
             "summary": "specify\u0020which\u0020paths\/patterns\u0020to\u0020exclude\u0020from\u0020connecting\u0020if\u0020\u0024svgConnectPaths\u0020is\u0020set\u0020to\u0020true",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_excludeFromConnect"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024drawCircularModules",
-            "name": "drawCircularModules",
-            "summary": "specify\u0020whether\u0020to\u0020draw\u0020the\u0020modules\u0020as\u0020filled\u0020circles",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_drawCircularModules"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024circleRadius",
-            "name": "circleRadius",
-            "summary": "specifies\u0020the\u0020radius\u0020of\u0020the\u0020modules\u0020when\u0020\u0024svgDrawCircularModules\u0020is\u0020set\u0020to\u0020true",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_circleRadius"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024keepAsSquare",
-            "name": "keepAsSquare",
-            "summary": "specifies\u0020which\u0020module\u0020types\u0020to\u0020exclude\u0020when\u0020\u0024svgDrawCircularModules\u0020is\u0020set\u0020to\u0020true",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_keepAsSquare"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024textDark",
             "name": "textDark",
             "summary": "string\u0020substitute\u0020for\u0020dark",
@@ -3181,75 +3301,10 @@ Search.appendIndex(
             "summary": "string\u0020substitute\u0020for\u0020light",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_textLight"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024markupDark",
-            "name": "markupDark",
-            "summary": "markup\u0020substitute\u0020for\u0020dark\u0020\u0028CSS\u0020value\u0029",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_markupDark"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024markupLight",
-            "name": "markupLight",
-            "summary": "markup\u0020substitute\u0020for\u0020light\u0020\u0028CSS\u0020value\u0029",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_markupLight"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024returnResource",
-            "name": "returnResource",
-            "summary": "Return\u0020the\u0020image\u0020resource\u0020instead\u0020of\u0020a\u0020render\u0020if\u0020applicable.",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_returnResource"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imageBase64",
-            "name": "imageBase64",
-            "summary": "toggle\u0020base64\u0020or\u0020raw\u0020image\u0020data",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imageBase64"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imageTransparent",
-            "name": "imageTransparent",
-            "summary": "toggle\u0020background\u0020transparency",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparent"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024drawLightModules",
-            "name": "drawLightModules",
-            "summary": "whether\u0020to\u0020draw\u0020the\u0020light\u0020\u0028false\u0029\u0020modules",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_drawLightModules"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imageTransparencyBG",
-            "name": "imageTransparencyBG",
-            "summary": "Sets\u0020the\u0020background\u0020color\u0020in\u0020GD\u0020mode\u003A\u0020\u005BR,\u0020G,\u0020B\u005D.",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparencyBG"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024bgColor",
-            "name": "bgColor",
-            "summary": "Sets\u0020the\u0020image\u0020background\u0020color\u0020\u0028if\u0020applicable\u0029",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_bgColor"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024pngCompression",
-            "name": "pngCompression",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_pngCompression"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024jpegQuality",
-            "name": "jpegQuality",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_jpegQuality"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imagickFormat",
-            "name": "imagickFormat",
-            "summary": "Imagick\u0020output\u0020format",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickFormat"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imagickBG",
-            "name": "imagickBG",
-            "summary": "Imagick\u0020background\u0020color",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickBG"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024fpdfMeasureUnit",
             "name": "fpdfMeasureUnit",
             "summary": "Measurement\u0020unit\u0020for\u0020FPDF\u0020output\u003A\u0020pt,\u0020mm,\u0020cm,\u0020in\u0020\u0028defaults\u0020to\u0020\u0022pt\u0022\u0029",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_fpdfMeasureUnit"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024moduleValues",
-            "name": "moduleValues",
-            "summary": "Module\u0020values\u0020map",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_moduleValues"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024readerUseImagickIfAvailable",
             "name": "readerUseImagickIfAvailable",
@@ -3265,31 +3320,6 @@ Search.appendIndex(
             "name": "readerIncreaseContrast",
             "summary": "increase\u0020the\u0020contrast\u0020before\u0020reading",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_readerIncreaseContrast"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024addLogoSpace",
-            "name": "addLogoSpace",
-            "summary": "Toggles\u0020logo\u0020space\u0020creation",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_addLogoSpace"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024logoSpaceWidth",
-            "name": "logoSpaceWidth",
-            "summary": "width\u0020of\u0020the\u0020logo\u0020space",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_logoSpaceWidth"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024logoSpaceHeight",
-            "name": "logoSpaceHeight",
-            "summary": "height\u0020of\u0020the\u0020logo\u0020space",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_logoSpaceHeight"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024logoSpaceStartX",
-            "name": "logoSpaceStartX",
-            "summary": "optional\u0020horizontal\u0020start\u0020position\u0020of\u0020the\u0020logo\u0020space\u0020\u0028top\u0020left\u0020corner\u0029",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_logoSpaceStartX"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024logoSpaceStartY",
-            "name": "logoSpaceStartY",
-            "summary": "optional\u0020vertical\u0020start\u0020position\u0020of\u0020the\u0020logo\u0020space\u0020\u0028top\u0020left\u0020corner\u0029",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_logoSpaceStartY"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Common\\BitBufferTest",
             "name": "BitBufferTest",
@@ -4435,16 +4465,6 @@ Search.appendIndex(
             "name": "RGBProvider",
             "summary": "",
             "url": "classes/chillerlan-QRCodeTest-QROptionsTest.html#method_RGBProvider"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QROptionsTest\u003A\u003AtestClampRGBValues\u0028\u0029",
-            "name": "testClampRGBValues",
-            "summary": "Tests\u0020clamping\u0020of\u0020the\u0020RGB\u0020values\u0020for\u0020\u0024imageTransparencyBG",
-            "url": "classes/chillerlan-QRCodeTest-QROptionsTest.html#method_testClampRGBValues"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QROptionsTest\u003A\u003AtestInvalidRGBValueException\u0028\u0029",
-            "name": "testInvalidRGBValueException",
-            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020a\u0020non\u002Dnumeric\u0020RGB\u0020value\u0020was\u0020encoutered",
-            "url": "classes/chillerlan-QRCodeTest-QROptionsTest.html#method_testInvalidRGBValueException"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QROptionsTest\u003A\u003AlogoSpaceValueProvider\u0028\u0029",
             "name": "logoSpaceValueProvider",

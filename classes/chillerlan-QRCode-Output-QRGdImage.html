@@ -119,7 +119,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 
     </aside>
 
@@ -154,6 +154,13 @@
 
 <dl class="phpdocumentor-table-of-contents">
                     <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#property_background">$background</a>
+    <span>
+                        &nbsp;: int            </span>
+</dt>
+<dd>The allocated background color</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#property_image">$image</a>
     <span>
                         &nbsp;: resource|<abbr title="\GdImage">GdImage</abbr>            </span>
@@ -202,6 +209,13 @@
 </dt>
 <dd>the current scaling for a QR pixel</dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#property_upscaled">$upscaled</a>
+    <span>
+                        &nbsp;: bool            </span>
+</dt>
+<dd>Whether we&#039;re running in upscale mode (scale &lt; 20)</dd>
+
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method___construct">__construct()</a>
     <span>
@@ -223,6 +237,13 @@
 </dt>
 <dd>collects the modules per QRMatrix::M_* type and runs a $transform function on each module and
 returns an array with the transformed modules</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_drawImage">drawImage()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Creates the QR image</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_dumpImage">dumpImage()</a>
@@ -260,6 +281,13 @@ returns an array with the transformed modules</dd>
 <dd>Saves the qr $data to a $file. If $file is null, nothing happens.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_setBgColor">setBgColor()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Sets the background color</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_setMatrixDimensions">setMatrixDimensions()</a>
     <span>
                                 &nbsp;: void    </span>
@@ -279,6 +307,13 @@ returns an array with the transformed modules</dd>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Creates a single QR pixel with the given settings</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_setTransparencyColor">setTransparencyColor()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Sets the transparency color</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_toBase64DataURI">toBase64DataURI()</a>
@@ -306,6 +341,54 @@ returns an array with the transformed modules</dd>
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="property_background">
+        $background
+        <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#property_background" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">42</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">The allocated background color</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$background</span>
+    </code>
+
+    
+        <section class="phpdocumentor-description"></section>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\imagecolorallocate()">imagecolorallocate()</abbr></span>
+                                        
+                                             
+                                    </dd>
+                        </dl>
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="property_image">
         $image
         <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#property_image" class="headerlink"><i class="fas fa-link"></i></a>
@@ -315,7 +398,7 @@ returns an array with the transformed modules</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">36</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 
     </aside>
 
@@ -576,6 +659,54 @@ returns an array with the transformed modules</dd>
                         </dl>
 
 </article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_upscaled">
+        $upscaled
+        <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#property_upscaled" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">49</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Whether we&#039;re running in upscale mode (scale &lt; 20)</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">bool</span>
+    <span class="phpdocumentor-signature__name">$upscaled</span>
+     = <span class="phpdocumentor-signature__default-value">false</span></code>
+
+    
+        <section class="phpdocumentor-description"></section>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$drawCircularModules">QROptions::$drawCircularModules</abbr></span>
+                                        
+                                             
+                                    </dd>
+                        </dl>
+
+</article>
             </section>
 
             <section class="phpdocumentor-methods">
@@ -596,7 +727,7 @@ returns an array with the transformed modules</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">43</span>
+    <span class="phpdocumentor-element-found-in__line">57</span>
 
     </aside>
 
@@ -648,6 +779,15 @@ returns an array with the transformed modules</dd>
                                                             
                                              
                                     </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">noinspection</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"><p>PhpMissingParentConstructorInspection</p>
+</section>
+
+                                    </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -669,7 +809,7 @@ returns an array with the transformed modules</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">100</span>
+    <span class="phpdocumentor-element-found-in__line">138</span>
 
     </aside>
 
@@ -786,6 +926,39 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_drawImage">
+        drawImage()
+        <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_drawImage" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">218</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Creates the QR image</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">drawImage</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_dumpImage">
         dumpImage()
         <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_dumpImage" class="headerlink"><i class="fas fa-link"></i></a>
@@ -793,7 +966,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">199</span>
+    <span class="phpdocumentor-element-found-in__line">259</span>
 
     </aside>
 
@@ -840,7 +1013,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">88</span>
+    <span class="phpdocumentor-element-found-in__line">126</span>
 
     </aside>
 
@@ -897,7 +1070,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">74</span>
+    <span class="phpdocumentor-element-found-in__line">105</span>
 
     </aside>
 
@@ -932,6 +1105,14 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
                                                                                 
                                              
                                     </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QRCodeOutputException.html"><abbr title="\chillerlan\QRCode\Output\QRCodeOutputException">QRCodeOutputException</abbr></a></span>
+                                                            
+                                             
+                                    </dd>
                         </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -953,7 +1134,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">55</span>
+    <span class="phpdocumentor-element-found-in__line">85</span>
 
     </aside>
 
@@ -1084,6 +1265,39 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_setBgColor">
+        setBgColor()
+        <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_setBgColor" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">182</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Sets the background color</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">setBgColor</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_setMatrixDimensions">
         setMatrixDimensions()
         <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_setMatrixDimensions" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1159,7 +1373,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">171</span>
+    <span class="phpdocumentor-element-found-in__line">229</span>
 
     </aside>
 
@@ -1198,6 +1412,39 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
             </dd>
             </dl>
 
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setTransparencyColor">
+        setTransparencyColor()
+        <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_setTransparencyColor" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">200</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Sets the transparency color</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">setTransparencyColor</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    
+    
     
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
