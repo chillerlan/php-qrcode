@@ -15,7 +15,6 @@ jobs:
 
   static-code-analysis:
     name: "Static Code Analysis"
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -52,9 +51,7 @@ jobs:
 
   build-docs:
     name: "Build and publish Docs"
-
     if: github.ref_name == 'main'
-
     runs-on: ubuntu-latest
 
     steps:
@@ -82,9 +79,7 @@ jobs:
 
   tests:
     name: "Unit Tests"
-
     needs: static-code-analysis
-
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -119,6 +114,8 @@ jobs:
 
       - name: "Send code coverage report to Codecov.io"
         uses: codecov/codecov-action@v3
+        with:
+         files: .build/coverage/clover.xml
 
       - name: "Send code coverage report to Codacy"
         uses: codacy/codacy-coverage-reporter-action@v1
