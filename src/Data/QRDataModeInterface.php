@@ -20,7 +20,11 @@ interface QRDataModeInterface{
 	/**
 	 * the current data mode: Number, Alphanum, Kanji, Hanzi, Byte, ECI
 	 *
+	 * tbh I hate this constant here, but it's part of the interface, so I can't just declare it in the abstract class.
+	 * phan will complain about a PhanAccessOverridesFinalConstant.
+	 *
 	 * @var int
+	 * @see \chillerlan\QRCode\Common\Mode
 	 */
 	public const DATAMODE = -1;
 

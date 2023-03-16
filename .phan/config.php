@@ -55,5 +55,6 @@ return [
 	],
 	'suppress_issue_types' => [
 		'PhanAccessMethodInternal',
+		'PhanAccessOverridesFinalConstant',
 	],
 ];
