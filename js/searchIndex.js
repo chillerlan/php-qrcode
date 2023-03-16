@@ -821,10 +821,10 @@ Search.appendIndex(
             "summary": "ISO\/IEC\u002018004\u003A2000\u0020Table\u00205",
             "url": "classes/chillerlan-QRCode-Data-AlphaNum.html#constant_CHAR_TO_ORD"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\AlphaNum\u003A\u003A\u0024datamode",
-            "name": "datamode",
-            "summary": "the\u0020current\u0020data\u0020mode\u003A\u0020Num,\u0020Alphanum,\u0020Kanji,\u0020Hanzi,\u0020Byte",
-            "url": "classes/chillerlan-QRCode-Data-AlphaNum.html#property_datamode"
+            "fqsen": "\\chillerlan\\QRCode\\Data\\AlphaNum\u003A\u003ADATAMODE",
+            "name": "DATAMODE",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-AlphaNum.html#constant_DATAMODE"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Byte",
             "name": "Byte",
@@ -851,10 +851,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-Byte.html#method_decodeSegment"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\Byte\u003A\u003A\u0024datamode",
-            "name": "datamode",
-            "summary": "the\u0020current\u0020data\u0020mode\u003A\u0020Num,\u0020Alphanum,\u0020Kanji,\u0020Hanzi,\u0020Byte",
-            "url": "classes/chillerlan-QRCode-Data-Byte.html#property_datamode"
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Byte\u003A\u003ADATAMODE",
+            "name": "DATAMODE",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-Byte.html#constant_DATAMODE"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\ECI",
             "name": "ECI",
@@ -891,10 +891,10 @@ Search.appendIndex(
             "summary": "Reads\u0020and\u0020decodes\u0020the\u0020ECI\u0020designator\u0020including\u0020the\u0020following\u0020byte\u0020sequence",
             "url": "classes/chillerlan-QRCode-Data-ECI.html#method_decodeSegment"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\ECI\u003A\u003A\u0024datamode",
-            "name": "datamode",
-            "summary": "the\u0020current\u0020data\u0020mode\u003A\u0020Num,\u0020Alphanum,\u0020Kanji,\u0020Hanzi,\u0020Byte",
-            "url": "classes/chillerlan-QRCode-Data-ECI.html#property_datamode"
+            "fqsen": "\\chillerlan\\QRCode\\Data\\ECI\u003A\u003ADATAMODE",
+            "name": "DATAMODE",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-ECI.html#constant_DATAMODE"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\ECI\u003A\u003A\u0024encoding",
             "name": "encoding",
@@ -938,7 +938,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Hanzi\u003A\u003AENCODING",
             "name": "ENCODING",
-            "summary": "",
+            "summary": "possible\u0020values\u003A\u0020GB2312,\u0020GB18030",
             "url": "classes/chillerlan-QRCode-Data-Hanzi.html#constant_ENCODING"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Hanzi\u003A\u003AGB2312_SUBSET",
@@ -946,10 +946,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-Hanzi.html#constant_GB2312_SUBSET"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\Hanzi\u003A\u003A\u0024datamode",
-            "name": "datamode",
-            "summary": "the\u0020current\u0020data\u0020mode\u003A\u0020Num,\u0020Alphanum,\u0020Kanji,\u0020Hanzi,\u0020Byte",
-            "url": "classes/chillerlan-QRCode-Data-Hanzi.html#property_datamode"
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Hanzi\u003A\u003ADATAMODE",
+            "name": "DATAMODE",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-Hanzi.html#constant_DATAMODE"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji",
             "name": "Kanji",
@@ -988,13 +988,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji\u003A\u003AENCODING",
             "name": "ENCODING",
-            "summary": "",
+            "summary": "possible\u0020values\u003A\u0020SJIS,\u0020SJIS\u002D2004",
             "url": "classes/chillerlan-QRCode-Data-Kanji.html#constant_ENCODING"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji\u003A\u003A\u0024datamode",
-            "name": "datamode",
-            "summary": "the\u0020current\u0020data\u0020mode\u003A\u0020Num,\u0020Alphanum,\u0020Kanji,\u0020Hanzi,\u0020Byte",
-            "url": "classes/chillerlan-QRCode-Data-Kanji.html#property_datamode"
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Kanji\u003A\u003ADATAMODE",
+            "name": "DATAMODE",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-Kanji.html#constant_DATAMODE"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Number",
             "name": "Number",
@@ -1031,10 +1031,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-Number.html#constant_NUMBER_TO_ORD"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\Number\u003A\u003A\u0024datamode",
-            "name": "datamode",
-            "summary": "the\u0020current\u0020data\u0020mode\u003A\u0020Num,\u0020Alphanum,\u0020Kanji,\u0020Hanzi,\u0020Byte",
-            "url": "classes/chillerlan-QRCode-Data-Number.html#property_datamode"
+            "fqsen": "\\chillerlan\\QRCode\\Data\\Number\u003A\u003ADATAMODE",
+            "name": "DATAMODE",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-Number.html#constant_DATAMODE"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRCodeDataException",
             "name": "QRCodeDataException",
@@ -1131,11 +1131,6 @@ Search.appendIndex(
             "summary": "returns\u0020the\u0020character\u0020count\u0020of\u0020the\u0020\u0024data\u0020string",
             "url": "classes/chillerlan-QRCode-Data-QRDataModeAbstract.html#method_getCharCount"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\QRDataModeAbstract\u003A\u003AgetDataMode\u0028\u0029",
-            "name": "getDataMode",
-            "summary": "returns\u0020the\u0020current\u0020data\u0020mode\u0020constant",
-            "url": "classes/chillerlan-QRCode-Data-QRDataModeAbstract.html#method_getDataMode"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRDataModeAbstract\u003A\u003AconvertEncoding\u0028\u0029",
             "name": "convertEncoding",
             "summary": "encoding\u0020conversion\u0020helper",
@@ -1146,11 +1141,6 @@ Search.appendIndex(
             "summary": "shortcut",
             "url": "classes/chillerlan-QRCode-Data-QRDataModeAbstract.html#method_getLengthBits"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\QRDataModeAbstract\u003A\u003A\u0024datamode",
-            "name": "datamode",
-            "summary": "the\u0020current\u0020data\u0020mode\u003A\u0020Num,\u0020Alphanum,\u0020Kanji,\u0020Hanzi,\u0020Byte",
-            "url": "classes/chillerlan-QRCode-Data-QRDataModeAbstract.html#property_datamode"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRDataModeAbstract\u003A\u003A\u0024data",
             "name": "data",
             "summary": "The\u0020data\u0020to\u0020write",
@@ -1160,11 +1150,6 @@ Search.appendIndex(
             "name": "QRDataModeInterface",
             "summary": "Specifies\u0020the\u0020methods\u0020reqired\u0020for\u0020the\u0020data\u0020modules\u0020\u0028Number,\u0020Alphanum,\u0020Byte\u0020and\u0020Kanji\u0029",
             "url": "classes/chillerlan-QRCode-Data-QRDataModeInterface.html"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\QRDataModeInterface\u003A\u003AgetDataMode\u0028\u0029",
-            "name": "getDataMode",
-            "summary": "returns\u0020the\u0020current\u0020data\u0020mode\u0020constant",
-            "url": "classes/chillerlan-QRCode-Data-QRDataModeInterface.html#method_getDataMode"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRDataModeInterface\u003A\u003AgetLengthInBits\u0028\u0029",
             "name": "getLengthInBits",
@@ -1190,6 +1175,11 @@ Search.appendIndex(
             "name": "decodeSegment",
             "summary": "reads\u0020a\u0020segment\u0020from\u0020the\u0020BitBuffer\u0020and\u0020decodes\u0020in\u0020the\u0020current\u0020data\u0020mode",
             "url": "classes/chillerlan-QRCode-Data-QRDataModeInterface.html#method_decodeSegment"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRDataModeInterface\u003A\u003ADATAMODE",
+            "name": "DATAMODE",
+            "summary": "the\u0020current\u0020data\u0020mode\u003A\u0020Number,\u0020Alphanum,\u0020Kanji,\u0020Hanzi,\u0020Byte,\u0020ECI",
+            "url": "classes/chillerlan-QRCode-Data-QRDataModeInterface.html#constant_DATAMODE"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix",
             "name": "QRMatrix",
