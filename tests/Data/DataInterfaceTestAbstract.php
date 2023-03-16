@@ -132,7 +132,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		// get the filled bitbuffer
 		$bitBuffer = $this->QRData->getBitBuffer();
 		// read the first 4 bits
-		$this::assertSame($datamodeInterface->getDataMode(), $bitBuffer->read(4));
+		$this::assertSame($datamodeInterface::DATAMODE, $bitBuffer->read(4));
 		// decode the data
 		/** @noinspection PhpUndefinedMethodInspection */
 		$this::assertSame($this->testdata, $this->FQN::decodeSegment($bitBuffer, $options->version));

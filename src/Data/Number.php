@@ -32,7 +32,7 @@ final class Number extends QRDataModeAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected static int $datamode = Mode::NUMBER;
+	public const DATAMODE = Mode::NUMBER;
 
 	/**
 	 * @inheritDoc
@@ -66,7 +66,7 @@ final class Number extends QRDataModeAbstract{
 		$len = $this->getCharCount();
 
 		$bitBuffer
-			->put($this::$datamode, 4)
+			->put(self::DATAMODE, 4)
 			->put($len, $this::getLengthBits($versionNumber))
 		;
 

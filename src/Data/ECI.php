@@ -25,7 +25,7 @@ final class ECI extends QRDataModeAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected static int $datamode = Mode::ECI;
+	public const DATAMODE = Mode::ECI;
 
 	/**
 	 * The current ECI encoding id
@@ -67,7 +67,7 @@ final class ECI extends QRDataModeAbstract{
 	 * @inheritDoc
 	 */
 	public function write(BitBuffer $bitBuffer, int $versionNumber):QRDataModeInterface{
-		$bitBuffer->put($this::$datamode, 4);
+		$bitBuffer->put(self::DATAMODE, 4);
 
 		if($this->encoding < 128){
 			$bitBuffer->put($this->encoding, 8);

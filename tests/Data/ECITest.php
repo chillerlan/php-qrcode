@@ -84,7 +84,7 @@ final class ECITest extends DataInterfaceTestAbstract{
 		// get the filled bitbuffer
 		$bitBuffer = $this->QRData->getBitBuffer();
 		// read the first 4 bits
-		$this::assertSame($segments[0]->getDataMode(), $bitBuffer->read(4));
+		$this::assertSame($segments[0]::DATAMODE, $bitBuffer->read(4));
 		// decode the data
 		/** @noinspection PhpUndefinedMethodInspection */
 		$this::assertSame($this->testdata, $this->FQN::decodeSegment($bitBuffer, $options->version));

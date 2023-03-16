@@ -25,7 +25,7 @@ final class Byte extends QRDataModeAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected static int $datamode = Mode::BYTE;
+	public const DATAMODE = Mode::BYTE;
 
 	/**
 	 * @inheritDoc
@@ -48,7 +48,7 @@ final class Byte extends QRDataModeAbstract{
 		$len = $this->getCharCount();
 
 		$bitBuffer
-			->put($this::$datamode, 4)
+			->put(self::DATAMODE, 4)
 			->put($len, $this::getLengthBits($versionNumber))
 		;
 

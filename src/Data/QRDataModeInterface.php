@@ -18,9 +18,11 @@ use chillerlan\QRCode\Common\BitBuffer;
 interface QRDataModeInterface{
 
 	/**
-	 * returns the current data mode constant
+	 * the current data mode: Number, Alphanum, Kanji, Hanzi, Byte, ECI
+	 *
+	 * @var int
 	 */
-	public function getDataMode():int;
+	public const DATAMODE = -1;
 
 	/**
 	 * retruns the length in bits of the data string

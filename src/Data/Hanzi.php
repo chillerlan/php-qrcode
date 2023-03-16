@@ -30,14 +30,24 @@ use function chr, implode, is_string, mb_convert_encoding, mb_detect_encoding,
  */
 final class Hanzi extends QRDataModeAbstract{
 
-	// GB2312, GB18030
-	public const ENCODING      = 'GB18030';
-	public const GB2312_SUBSET = 0b0001; // other subsets???
+	/**
+	 * possible values: GB2312, GB18030
+	 *
+	 * @var string
+	 */
+	public const ENCODING = 'GB18030';
+
+	/**
+	 * @todo: other subsets???
+	 *
+	 * @var int
+	 */
+	public const GB2312_SUBSET = 0b0001;
 
 	/**
 	 * @inheritDoc
 	 */
-	protected static int $datamode = Mode::HANZI;
+	public const DATAMODE = Mode::HANZI;
 
 	/**
 	 * @inheritDoc
@@ -123,7 +133,7 @@ final class Hanzi extends QRDataModeAbstract{
 	public function write(BitBuffer $bitBuffer, int $versionNumber):QRDataModeInterface{
 
 		$bitBuffer
-			->put($this::$datamode, 4)
+			->put(self::DATAMODE, 4)
 			->put($this::GB2312_SUBSET, 4)
 			->put($this->getCharCount(), $this::getLengthBits($versionNumber))
 		;

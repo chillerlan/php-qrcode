@@ -28,14 +28,19 @@ use function chr, implode, is_string, mb_convert_encoding, mb_detect_encoding,
  */
 final class Kanji extends QRDataModeAbstract{
 
-	// SJIS, SJIS-2004
-	// SJIS-2004 may produce errors in PHP < 8
+	/**
+	 * possible values: SJIS, SJIS-2004
+	 *
+	 * SJIS-2004 may produce errors in PHP < 8
+	 *
+	 * @var string
+	 */
 	public const ENCODING = 'SJIS';
 
 	/**
 	 * @inheritDoc
 	 */
-	protected static int $datamode = Mode::KANJI;
+	public const DATAMODE = Mode::KANJI;
 
 	/**
 	 * @inheritDoc
@@ -121,7 +126,7 @@ final class Kanji extends QRDataModeAbstract{
 	public function write(BitBuffer $bitBuffer, int $versionNumber):QRDataModeInterface{
 
 		$bitBuffer
-			->put($this::$datamode, 4)
+			->put(self::DATAMODE, 4)
 			->put($this->getCharCount(), $this::getLengthBits($versionNumber))
 		;
 

@@ -39,7 +39,7 @@ final class AlphaNum extends QRDataModeAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected static int $datamode = Mode::ALPHANUM;
+	public const DATAMODE = Mode::ALPHANUM;
 
 	/**
 	 * @inheritDoc
@@ -73,7 +73,7 @@ final class AlphaNum extends QRDataModeAbstract{
 		$len = $this->getCharCount();
 
 		$bitBuffer
-			->put($this::$datamode, 4)
+			->put(self::DATAMODE, 4)
 			->put($len, $this::getLengthBits($versionNumber))
 		;
 

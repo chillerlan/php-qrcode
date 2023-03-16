@@ -140,7 +140,7 @@ final class QRData{
 
 		foreach($this->dataSegments as $segment){
 			// data length in bits of the current segment +4 bits for each mode descriptor
-			$length += ($segment->getLengthInBits() + Mode::getLengthBitsForVersion($segment->getDataMode(), 1) + 4);
+			$length += ($segment->getLengthInBits() + Mode::getLengthBitsForVersion($segment::DATAMODE, 1) + 4);
 
 			if(!$segment instanceof ECI){
 				// mode length bits margin to the next breakpoint

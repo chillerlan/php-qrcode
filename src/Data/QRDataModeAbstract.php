@@ -18,11 +18,6 @@ use chillerlan\QRCode\Common\Mode;
 abstract class QRDataModeAbstract implements QRDataModeInterface{
 
 	/**
-	 * the current data mode: Num, Alphanum, Kanji, Hanzi, Byte
-	 */
-	protected static int $datamode;
-
-	/**
 	 * The data to write
 	 */
 	protected string $data;
@@ -52,13 +47,6 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 	/**
 	 * @inheritDoc
 	 */
-	public function getDataMode():int{
-		return $this::$datamode;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	public static function convertEncoding(string $string):string{
 		return $string;
 	}
@@ -67,7 +55,7 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 	 * shortcut
 	 */
 	protected static function getLengthBits(int $versionNumber):int{
-		return Mode::getLengthBitsForVersion(static::$datamode, $versionNumber);
+		return Mode::getLengthBitsForVersion(static::DATAMODE, $versionNumber);
 	}
 
 }
