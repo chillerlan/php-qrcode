@@ -77,6 +77,7 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 	}
 
 	/**
+	 * @group slow
 	 * @dataProvider kanjiProvider
 	 */
 	public function testValidateSJIS(string $chr):void{

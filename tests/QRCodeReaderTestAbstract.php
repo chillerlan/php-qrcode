@@ -72,6 +72,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 	}
 
 	/**
+	 * @group slow
 	 * @dataProvider qrCodeProvider
 	 */
 	public function testReader(string $img, string $expected, bool $grayscale):void{
@@ -131,6 +132,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 	}
 
 	/**
+	 * @group slow
 	 * @dataProvider dataTestProvider
 	 */
 	public function testReadData(Version $version, EccLevel $ecc, string $expected):void{

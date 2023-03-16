@@ -6,6 +6,11 @@
 		 colors="true"
 		 verbose="true"
 >
+	<testsuites>
+		<testsuite name="php-qrcode test suite">
+			<directory suffix=".php">./tests/</directory>
+		</testsuite>
+	</testsuites>
 	<coverage processUncoveredFiles="true">
 		<include>
 			<directory suffix=".php">./src</directory>
@@ -15,16 +20,18 @@
 			<xml outputDirectory=".build/coverage/coverage-xml"/>
 		</report>
 	</coverage>
-	<testsuites>
-		<testsuite name="php-qrcode test suite">
-			<directory suffix=".php">./tests/</directory>
-		</testsuite>
-	</testsuites>
 	<logging>
 		<junit outputFile=".build/logs/junit.xml"/>
 	</logging>
+	<!--
+	<groups>
+		<exclude>
+			<group>slow</group>
+		</exclude>
+	</groups>
+	-->
 	<php>
-		<!-- whether the test runs on CI or not - set to false to allow debug output -->
+		<!-- whether the test runs on CI - set to false to allow debug output -->
 		<const name="TEST_IS_CI" value="true"/>
 	</php>
 </phpunit>

@@ -58,6 +58,7 @@ final class HanziTest extends DataInterfaceTestAbstract{
 	}
 
 	/**
+	 * @group slow
 	 * @dataProvider hanziProvider
 	 */
 	public function testValidateGB2312(string $chr):void{
