@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCode\Output;
 
-use function count, date, implode, is_array, is_numeric, max, min, round, sprintf;
+use function array_values, count, date, implode, is_array, is_numeric, max, min, round, sprintf;
 
 /**
  * Encapsulated Postscript (EPS) output
@@ -31,28 +31,41 @@ class QREps extends QROutputAbstract{
 			return false;
 		}
 
-		// check the first 3 values of the array
-		for($i = 0; $i < 3; $i++){
-			if(!is_numeric($value[$i])){
+		// check the first values of the array
+		foreach($value as $i => $val){
+
+			if($i > 3){
+				break;
+			}
+
+			if(!is_numeric($val)){
 				return false;
 			}
+
 		}
 
 		return true;
 	}
 
 	/**
+	 * @param array $value
+	 *
 	 * @inheritDoc
 	 */
 	protected function getModuleValue($value):array{
-		$val = [];
+		$values = [];
 
-		for($i = 0; $i < 3; $i++){
-			// clamp value and convert from 0-255 to 0-1 RGB range
-			$val[] = round((max(0, min(255, $value[$i])) / 255), 6);
+		foreach(array_values($value) as $i => $val){
+
+			if($i > 3){
+				break;
+			}
+
+			// clamp value and convert from 0-255 to 0-1 RGB/CMYK range
+			$values[] = round((max(0, min(255, $val)) / 255), 6);
 		}
 
-		return $val;
+		return $values;
 	}
 
 	/**
@@ -80,7 +93,8 @@ class QREps extends QROutputAbstract{
 			// function definitions
 			'%%BeginProlog',
 			'/F { rectfill } def',
-			'/S { setrgbcolor } def',
+			'/R { setrgbcolor } def',
+			'/C { setcmykcolor } def',
 			'%%EndProlog',
 		];
 
@@ -93,7 +107,9 @@ class QREps extends QROutputAbstract{
 				continue;
 			}
 
-			$eps[] = sprintf('%f %f %f S', ...$this->moduleValues[$M_TYPE]);
+			// 4 values will be interpreted as CMYK, 3 as RGB
+			$format = (count($this->moduleValues[$M_TYPE]) === 4) ? '%f %f %f %f C' : '%f %f %f R';
+			$eps[] = sprintf($format, ...$this->moduleValues[$M_TYPE]);
 			$eps[] = implode("\n", $path);
 		}
 
