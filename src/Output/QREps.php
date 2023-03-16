@@ -25,7 +25,7 @@ class QREps extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function moduleValueIsValid($value):bool{
+	public static function moduleValueIsValid($value):bool{
 
 		if(!is_array($value) || count($value) < 3){
 			return false;

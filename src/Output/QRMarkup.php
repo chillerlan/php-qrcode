@@ -20,7 +20,7 @@ abstract class QRMarkup extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function moduleValueIsValid($value):bool{
+	public static function moduleValueIsValid($value):bool{
 		return is_string($value);
 	}
 

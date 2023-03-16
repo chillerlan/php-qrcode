@@ -47,7 +47,7 @@ class QRFpdf extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function moduleValueIsValid($value):bool{
+	public static function moduleValueIsValid($value):bool{
 
 		if(!is_array($value) || count($value) < 3){
 			return false;
@@ -94,7 +94,7 @@ class QRFpdf extends QROutputAbstract{
 		$fpdf = new FPDF('P', $this->options->fpdfMeasureUnit, [$this->length, $this->length]);
 		$fpdf->AddPage();
 
-		if($this->moduleValueIsValid($this->options->bgColor)){
+		if($this::moduleValueIsValid($this->options->bgColor)){
 			$bgColor = $this->getModuleValue($this->options->bgColor);
 			/** @phan-suppress-next-line PhanParamTooFewUnpack */
 			$fpdf->SetFillColor(...$bgColor);

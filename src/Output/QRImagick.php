@@ -64,7 +64,7 @@ class QRImagick extends QROutputAbstract{
 	 * @see https://www.php.net/manual/imagickpixel.construct.php
 	 * @inheritDoc
 	 */
-	protected function moduleValueIsValid($value):bool{
+	public static function moduleValueIsValid($value):bool{
 		return is_string($value);
 	}
 
@@ -124,7 +124,7 @@ class QRImagick extends QROutputAbstract{
 			return;
 		}
 
-		if($this->moduleValueIsValid($this->options->bgColor)){
+		if($this::moduleValueIsValid($this->options->bgColor)){
 			$this->background = $this->getModuleValue($this->options->bgColor);
 
 			return;
@@ -144,7 +144,7 @@ class QRImagick extends QROutputAbstract{
 
 		$transparencyColor = $this->background;
 
-		if($this->moduleValueIsValid($this->options->transparencyColor)){
+		if($this::moduleValueIsValid($this->options->transparencyColor)){
 			$transparencyColor = $this->getModuleValue($this->options->transparencyColor);
 		}
 

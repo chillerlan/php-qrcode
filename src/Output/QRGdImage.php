@@ -82,7 +82,7 @@ class QRGdImage extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function moduleValueIsValid($value):bool{
+	public static function moduleValueIsValid($value):bool{
 
 		if(!is_array($value) || count($value) < 3){
 			return false;
@@ -185,7 +185,7 @@ class QRGdImage extends QROutputAbstract{
 			return;
 		}
 
-		if($this->moduleValueIsValid($this->options->bgColor)){
+		if($this::moduleValueIsValid($this->options->bgColor)){
 			$this->background = $this->getModuleValue($this->options->bgColor);
 
 			return;
@@ -205,7 +205,7 @@ class QRGdImage extends QROutputAbstract{
 
 		$transparencyColor = $this->background;
 
-		if($this->moduleValueIsValid($this->options->transparencyColor)){
+		if($this::moduleValueIsValid($this->options->transparencyColor)){
 			$transparencyColor = $this->getModuleValue($this->options->transparencyColor);
 		}
 

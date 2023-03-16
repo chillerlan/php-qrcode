@@ -23,7 +23,7 @@ class MyCustomOutput extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function moduleValueIsValid($value):bool{
+	public static function moduleValueIsValid($value):bool{
 		// TODO: Implement moduleValueIsValid() method. (abstract)
 		return false;
 	}

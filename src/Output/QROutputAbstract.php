@@ -84,19 +84,12 @@ abstract class QROutputAbstract implements QROutputInterface{
 		foreach($this::DEFAULT_MODULE_VALUES as $M_TYPE => $defaultValue){
 			$value = ($this->options->moduleValues[$M_TYPE] ?? null);
 
-			$this->moduleValues[$M_TYPE] = $this->moduleValueIsValid($value)
+			$this->moduleValues[$M_TYPE] = $this::moduleValueIsValid($value)
 				? $this->getModuleValue($value)
 				: $this->getDefaultModuleValue($defaultValue);
 		}
 
 	}
-
-	/**
-	 * Determines whether the given value is valid
-	 *
-	 * @param mixed|null $value
-	 */
-	abstract protected function moduleValueIsValid($value):bool;
 
 	/**
 	 * Returns the final value for the given input (return value depends on the output module)
