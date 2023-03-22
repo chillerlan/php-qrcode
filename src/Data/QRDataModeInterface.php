@@ -21,10 +21,13 @@ interface QRDataModeInterface{
 	 * the current data mode: Number, Alphanum, Kanji, Hanzi, Byte, ECI
 	 *
 	 * tbh I hate this constant here, but it's part of the interface, so I can't just declare it in the abstract class.
-	 * phan will complain about a PhanAccessOverridesFinalConstant.
+	 * (phan will complain about a PhanAccessOverridesFinalConstant)
+	 *
+	 * @see https://wiki.php.net/rfc/final_class_const
 	 *
 	 * @var int
 	 * @see \chillerlan\QRCode\Common\Mode
+	 * @internal do not call this constant from the interface, but rather from one of the child classes
 	 */
 	public const DATAMODE = -1;
 
