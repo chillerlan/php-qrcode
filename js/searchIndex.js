@@ -2308,7 +2308,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QREps\u003A\u003AmoduleValueIsValid\u0028\u0029",
             "name": "moduleValueIsValid",
-            "summary": "Determines\u0020whether\u0020the\u0020given\u0020value\u0020is\u0020valid",
+            "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QREps.html#method_moduleValueIsValid"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QREps\u003A\u003AgetModuleValue\u0028\u0029",
@@ -2343,7 +2343,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRFpdf\u003A\u003AmoduleValueIsValid\u0028\u0029",
             "name": "moduleValueIsValid",
-            "summary": "Determines\u0020whether\u0020the\u0020given\u0020value\u0020is\u0020valid",
+            "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QRFpdf.html#method_moduleValueIsValid"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRFpdf\u003A\u003AgetModuleValue\u0028\u0029",
@@ -2373,7 +2373,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AmoduleValueIsValid\u0028\u0029",
             "name": "moduleValueIsValid",
-            "summary": "Determines\u0020whether\u0020the\u0020given\u0020value\u0020is\u0020valid",
+            "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_moduleValueIsValid"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AgetModuleValue\u0028\u0029",
@@ -2448,7 +2448,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003AmoduleValueIsValid\u0028\u0029",
             "name": "moduleValueIsValid",
-            "summary": "Determines\u0020whether\u0020the\u0020given\u0020value\u0020is\u0020valid",
+            "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QRImagick.html#method_moduleValueIsValid"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003AgetModuleValue\u0028\u0029",
@@ -2508,7 +2508,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup\u003A\u003AmoduleValueIsValid\u0028\u0029",
             "name": "moduleValueIsValid",
-            "summary": "Determines\u0020whether\u0020the\u0020given\u0020value\u0020is\u0020valid",
+            "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QRMarkup.html#method_moduleValueIsValid"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup\u003A\u003AgetModuleValue\u0028\u0029",
@@ -2606,11 +2606,6 @@ Search.appendIndex(
             "summary": "Sets\u0020the\u0020initial\u0020module\u0020values",
             "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_setModuleValues"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AmoduleValueIsValid\u0028\u0029",
-            "name": "moduleValueIsValid",
-            "summary": "Determines\u0020whether\u0020the\u0020given\u0020value\u0020is\u0020valid",
-            "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_moduleValueIsValid"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AgetModuleValue\u0028\u0029",
             "name": "getModuleValue",
             "summary": "Returns\u0020the\u0020final\u0020value\u0020for\u0020the\u0020given\u0020input\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020module\u0029",
@@ -2670,6 +2665,11 @@ Search.appendIndex(
             "name": "QROutputInterface",
             "summary": "Converts\u0020the\u0020data\u0020matrix\u0020into\u0020readable\u0020output",
             "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AmoduleValueIsValid\u0028\u0029",
+            "name": "moduleValueIsValid",
+            "summary": "Determines\u0020whether\u0020the\u0020given\u0020value\u0020is\u0020valid",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#method_moduleValueIsValid"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003Adump\u0028\u0029",
             "name": "dump",
@@ -2748,7 +2748,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRString\u003A\u003AmoduleValueIsValid\u0028\u0029",
             "name": "moduleValueIsValid",
-            "summary": "Determines\u0020whether\u0020the\u0020given\u0020value\u0020is\u0020valid",
+            "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QRString.html#method_moduleValueIsValid"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRString\u003A\u003AgetModuleValue\u0028\u0029",
