@@ -19,4 +19,13 @@ abstract class QRStringTestAbstract extends QROutputTestAbstract{
 
 	protected string $FQN  = QRString::class;
 
+	public static function moduleValueProvider():array{
+		return [
+			'invalid: wrong type'       => [[], false],
+			'valid: string'             => ['abc', true],
+			'valid: zero length string' => ['', true],
+			'valid: empty string'       => [' ', true],
+		];
+	}
+
 }

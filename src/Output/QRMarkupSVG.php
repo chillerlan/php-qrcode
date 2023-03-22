@@ -11,7 +11,7 @@
 namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use function array_chunk, implode, sprintf;
+use function array_chunk, implode, is_string, preg_match, sprintf, trim;
 
 /**
  * SVG output
@@ -22,6 +22,27 @@ use function array_chunk, implode, sprintf;
  * @see http://apex.infogridpacific.com/SVG/svg-tutorial-contents.html
  */
 class QRMarkupSVG extends QRMarkup{
+
+	/**
+	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill
+	 * @inheritDoc
+	 */
+	public static function moduleValueIsValid($value):bool{
+
+		if(!is_string($value)){
+			return false;
+		}
+
+		$value = trim($value);
+
+		// url(...)
+		if(preg_match('~^url\([-/#a-z\d]+\)$~i', $value)){
+			return true;
+		}
+
+		// otherwise check for standard css notation
+		return parent::moduleValueIsValid($value);
+	}
 
 	/**
 	 * @inheritDoc

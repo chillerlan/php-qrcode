@@ -67,14 +67,27 @@ abstract class QROutputTestAbstract extends TestCase{
 		$this->outputInterface->dump('/foo/bar.test');
 	}
 
+	abstract public static function moduleValueProvider():array;
+
 	/**
-	 * covers the module values settings
+	 * @param mixed $value
+	 * @param bool  $expected
+	 *
+	 * @dataProvider moduleValueProvider
 	 */
-	abstract public function testSetModuleValues():void;
+	public function testValidateModuleValues($value, bool $expected):void{
+		/** @noinspection PhpUndefinedMethodInspection */
+		$this::assertSame($expected, $this->FQN::moduleValueIsValid($value));
+	}
 
 	/*
 	 * additional, non-essential, potentially inaccurate coverage tests
 	 */
+
+	/**
+	 * covers the module values settings
+	 */
+	abstract public function testSetModuleValues():void;
 
 	/**
 	 * coverage of the built-in output modules

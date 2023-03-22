@@ -15,7 +15,7 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use finfo, Imagick, ImagickDraw, ImagickPixel;
-use function extension_loaded, is_string;
+use function extension_loaded, in_array, is_string, preg_match, strlen;
 use const FILEINFO_MIME_TYPE;
 
 /**
@@ -60,16 +60,44 @@ class QRImagick extends QROutputAbstract{
 	}
 
 	/**
-	 * @todo: check/validate possible values
+	 * note: we're not necessarily validating the several values, just checking the general syntax
+	 *
 	 * @see https://www.php.net/manual/imagickpixel.construct.php
 	 * @inheritDoc
 	 */
 	public static function moduleValueIsValid($value):bool{
-		return is_string($value);
+
+		if(!is_string($value)){
+			return false;
+		}
+
+		$value = trim($value);
+
+		// hex notation
+		// #rgb(a)
+		// #rrggbb(aa)
+		// #rrrrggggbbbb(aaaa)
+		// ...
+		if(preg_match('/^#[a-f]+$/i', $value) && in_array((strlen($value) - 1), [3, 4, 6, 8, 9, 12, 16, 24, 32], true)){
+			return true;
+		}
+
+		// css (-like) func(...values)
+		if(preg_match('#^(graya?|hs(b|la?)|rgba?)\([\d .,%]+\)$#i', $value)){
+			return true;
+		}
+
+		// predefined css color
+		if(preg_match('/^[a-z]+$/i', $value)){
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
 	 * @inheritDoc
+	 * @throws \ImagickPixelException
 	 */
 	protected function getModuleValue($value):ImagickPixel{
 		return new ImagickPixel($value);

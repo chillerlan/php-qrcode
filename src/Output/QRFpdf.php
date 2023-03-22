@@ -15,7 +15,7 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use FPDF;
 
-use function class_exists, count, is_array, is_numeric, max, min;
+use function array_values, class_exists, count, intval, is_array, is_numeric, max, min;
 
 /**
  * QRFpdf output module (requires fpdf)
@@ -54,27 +54,39 @@ class QRFpdf extends QROutputAbstract{
 		}
 
 		// check the first 3 values of the array
-		for($i = 0; $i < 3; $i++){
-			if(!is_numeric($value[$i])){
+		foreach(array_values($value) as $i => $val){
+
+			if($i > 2){
+				break;
+			}
+
+			if(!is_numeric($val)){
 				return false;
 			}
+
 		}
 
 		return true;
 	}
 
 	/**
+	 * @param array $value
+	 *
 	 * @inheritDoc
 	 */
 	protected function getModuleValue($value):array{
-		$v = [];
+		$values = [];
 
-		for($i = 0; $i < 3; $i++){
-			// clamp value
-			$v[] = (int)max(0, min(255, $value[$i]));
+		foreach(array_values($value) as $i => $val){
+
+			if($i > 2){
+				break;
+			}
+
+			$values[] = max(0, min(255, intval($val)));
 		}
 
-		return $v;
+		return $values;
 	}
 
 	/**

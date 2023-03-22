@@ -32,7 +32,7 @@ class QREps extends QROutputAbstract{
 		}
 
 		// check the first values of the array
-		foreach($value as $i => $val){
+		foreach(array_values($value) as $i => $val){
 
 			if($i > 3){
 				break;
@@ -61,8 +61,8 @@ class QREps extends QROutputAbstract{
 				break;
 			}
 
-			// clamp value and convert from 0-255 to 0-1 RGB/CMYK range
-			$values[] = round((max(0, min(255, $val)) / 255), 6);
+			// clamp value and convert from int 0-255 to float 0-1 RGB/CMYK range
+			$values[] = round((max(0, min(255, intval($val))) / 255), 6);
 		}
 
 		return $values;

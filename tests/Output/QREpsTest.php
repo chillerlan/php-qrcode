@@ -19,6 +19,18 @@ class QREpsTest extends QROutputTestAbstract{
 	protected string $FQN  = QREps::class;
 	protected string $type = QROutputInterface::EPS;
 
+	public static function moduleValueProvider():array{
+		return [
+			'valid: 3 int'                   => [[123, 123, 123], true],
+			'valid: 4 int'                   => [[123, 123, 123, 123], true],
+			'valid: w/invalid extra element' => [[123, 123, 123, 123, 'abc'], true],
+			'valid: numeric string'          => [['123', '123', '123'], true],
+			'invalid: wrong type'            => ['foo', false],
+			'invalid: array too short'       => [[1, 2], false],
+			'invalid: contains non-number'   => [[1, 'b', 3], false],
+		];
+	}
+
 	/**
 	 * @inheritDoc
 	 */

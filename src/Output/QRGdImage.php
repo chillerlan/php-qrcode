@@ -15,9 +15,9 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use ErrorException, Throwable;
-use function count, extension_loaded, imagecolorallocate, imagecolortransparent, imagecreatetruecolor,
-	imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng, imagescale, is_array, is_numeric,
-	max, min, ob_end_clean, ob_get_contents, ob_start, restore_error_handler, set_error_handler;
+use function array_values, count, extension_loaded, imagecolorallocate, imagecolortransparent, imagecreatetruecolor,
+	imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng, imagescale, intval,
+	is_array, is_numeric, max, min, ob_end_clean, ob_get_contents, ob_start, restore_error_handler, set_error_handler;
 
 /**
  * Converts the matrix into GD images, raw or base64 output (requires ext-gd)
@@ -89,29 +89,41 @@ class QRGdImage extends QROutputAbstract{
 		}
 
 		// check the first 3 values of the array
-		for($i = 0; $i < 3; $i++){
-			if(!is_numeric($value[$i])){
+		foreach(array_values($value) as $i => $val){
+
+			if($i > 2){
+				break;
+			}
+
+			if(!is_numeric($val)){
 				return false;
 			}
+
 		}
 
 		return true;
 	}
 
 	/**
+	 * @param array $value
+	 *
 	 * @inheritDoc
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function getModuleValue($value):int{
-		$v = [];
+		$values = [];
 
-		for($i = 0; $i < 3; $i++){
-			// clamp value
-			$v[] = (int)max(0, min(255, $value[$i]));
+		foreach(array_values($value) as $i => $val){
+
+			if($i > 2){
+				break;
+			}
+
+			$values[] = max(0, min(255, intval($val)));
 		}
 
 		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
-		$color = imagecolorallocate($this->image, ...$v);
+		$color = imagecolorallocate($this->image, ...$values);
 
 		if($color === false){
 			throw new QRCodeOutputException('could not set color: imagecolorallocate() error');

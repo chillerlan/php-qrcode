@@ -89,7 +89,7 @@ interface QROutputInterface{
 	/**
 	 * Determines whether the given value is valid
 	 *
-	 * @param mixed|null $value
+	 * @param mixed $value
 	 */
 	public static function moduleValueIsValid($value):bool;
 

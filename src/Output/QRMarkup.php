@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCode\Output;
 
-use function is_string, strip_tags, trim;
+use function is_string, preg_match, strip_tags, trim;
 
 /**
  * Abstract for markup types: HTML, SVG, ... XML anyone?
@@ -18,10 +18,38 @@ use function is_string, strip_tags, trim;
 abstract class QRMarkup extends QROutputAbstract{
 
 	/**
+	 * note: we're not necessarily validating the several values, just checking the general syntax
+	 * note: css4 colors are not included
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
 	 * @inheritDoc
 	 */
 	public static function moduleValueIsValid($value):bool{
-		return is_string($value);
+
+		if(!is_string($value)){
+			return false;
+		}
+
+		$value = trim(strip_tags($value), " '\"\r\n\t");
+
+		// hex notation
+		// #rgb(a)
+		// #rrggbb(aa)
+		if(preg_match('/^#([\da-f]{3}){1,2}$|^#([\da-f]{4}){1,2}$/i', $value)){
+			return true;
+		}
+
+		// css: hsla/rgba(...values)
+		if(preg_match('#^(hsla?|rgba?)\([\d .,%/]+\)$#i', $value)){
+			return true;
+		}
+
+		// predefined css color
+		if(preg_match('/^[a-z]+$/i', $value)){
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
