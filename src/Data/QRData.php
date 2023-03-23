@@ -134,8 +134,8 @@ final class QRData{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	private function estimateTotalBitLength():int{
-		$length = 0;
+	public function estimateTotalBitLength():int{
+		$length = 4; // 4 bits for the terminator
 		$margin = 0;
 
 		foreach($this->dataSegments as $segment){
@@ -146,6 +146,12 @@ final class QRData{
 				// mode length bits margin to the next breakpoint
 				$margin += ($segment instanceof Byte) ? 8 : 2;
 			}
+
+			if($segment instanceof Hanzi){
+				// Hanzi mode sets an additional 4 bit long subset identifier
+				$length += 4;
+			}
+
 		}
 
 		foreach([9, 26, 40] as $breakpoint){
@@ -168,7 +174,7 @@ final class QRData{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	private function getMinimumVersion():Version{
+	public function getMinimumVersion():Version{
 
 		if($this->options->version !== Version::AUTO){
 			return new Version($this->options->version);
