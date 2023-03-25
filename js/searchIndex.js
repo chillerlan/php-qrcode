@@ -106,6 +106,11 @@ Search.appendIndex(
             "summary": "returns\u0020an\u0020array\u0020with\u0020the\u0020max\u0020bit\u0020lengths\u0020for\u0020version\u00201\u002D40\u0020and\u0020the\u0020current\u0020ECC\u0020level",
             "url": "classes/chillerlan-QRCode-Common-EccLevel.html#method_getMaxBits"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Common\\EccLevel\u003A\u003AgetMaxBitsForVersion\u0028\u0029",
+            "name": "getMaxBitsForVersion",
+            "summary": "Returns\u0020the\u0020maximum\u0020bit\u0020length\u0020for\u0020the\u0020given\u0020version\u0020and\u0020current\u0020ECC\u0020level",
+            "url": "classes/chillerlan-QRCode-Common-EccLevel.html#method_getMaxBitsForVersion"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\EccLevel\u003A\u003AL",
             "name": "L",
             "summary": "",
@@ -3606,11 +3611,6 @@ Search.appendIndex(
             "summary": "Tests\u0020initializing\u0020the\u0020data\u0020matrix",
             "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testInitMatrix"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestGetMinimumVersion\u0028\u0029",
-            "name": "testGetMinimumVersion",
-            "summary": "Tests\u0020getting\u0020the\u0020minimum\u0020QR\u0020version\u0020for\u0020the\u0020given\u0020data",
-            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testGetMinimumVersion"
-        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AstringValidateProvider\u0028\u0029",
             "name": "stringValidateProvider",
             "summary": "",
@@ -3636,15 +3636,30 @@ Search.appendIndex(
             "summary": "Tests\u0020decoding\u0020a\u0020data\u0020segment\u0020from\u0020a\u0020given\u0020BitBuffer",
             "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testDecodeSegment"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AmaxLengthProvider\u0028\u0029",
+            "name": "maxLengthProvider",
+            "summary": "Generates\u0020test\u0020data\u0020for\u0020each\u0020data\u0020mode\u003A",
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_maxLengthProvider"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestMaxLength\u0028\u0029",
+            "name": "testMaxLength",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testMaxLength"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestGetMinimumVersion\u0028\u0029",
+            "name": "testGetMinimumVersion",
+            "summary": "Tests\u0020getting\u0020the\u0020minimum\u0020QR\u0020version\u0020for\u0020the\u0020given\u0020data",
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testGetMinimumVersion"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestMaxLengthOverflowException\u0028\u0029",
+            "name": "testMaxLengthOverflowException",
+            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020on\u0020data\u0020overflow",
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testMaxLengthOverflowException"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestGetMinimumVersionException\u0028\u0029",
             "name": "testGetMinimumVersionException",
             "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020the\u0020data\u0020exceeds\u0020the\u0020maximum\u0020version\u0020while\u0020auto\u002Ddetecting",
             "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testGetMinimumVersionException"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestCodeLengthOverflowException\u0028\u0029",
-            "name": "testCodeLengthOverflowException",
-            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020on\u0020data\u0020overflow",
-            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#method_testCodeLengthOverflowException"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003AtestInvalidDataException\u0028\u0029",
             "name": "testInvalidDataException",
@@ -3661,6 +3676,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#property_QRData"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003A\u0024dataMode",
+            "name": "dataMode",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-DataInterfaceTestAbstract.html#property_dataMode"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\DataInterfaceTestAbstract\u003A\u003A\u0024FQN",
             "name": "FQN",
             "summary": "",
@@ -3676,54 +3696,34 @@ Search.appendIndex(
             "summary": "Tests\u0020the\u0020ECI\u0020class",
             "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003AsetUp\u0028\u0029",
+            "name": "setUp",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#method_setUp"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003AgetDataSegments\u0028\u0029",
             "name": "getDataSegments",
             "summary": "",
             "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#method_getDataSegments"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003AstringValidateProvider\u0028\u0029",
-            "name": "stringValidateProvider",
-            "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#method_stringValidateProvider"
-        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003AtestDataModeInstance\u0028\u0029",
             "name": "testDataModeInstance",
-            "summary": "Verifies\u0020the\u0020QRDataModeInterface\u0020instance",
+            "summary": "",
             "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testDataModeInstance"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003AtestInitMatrix\u0028\u0029",
-            "name": "testInitMatrix",
-            "summary": "Tests\u0020initializing\u0020the\u0020data\u0020matrix",
-            "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testInitMatrix"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003AtestGetMinimumVersion\u0028\u0029",
-            "name": "testGetMinimumVersion",
-            "summary": "Tests\u0020getting\u0020the\u0020minimum\u0020QR\u0020version\u0020for\u0020the\u0020given\u0020data",
-            "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testGetMinimumVersion"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003AtestBinaryStringInvalid\u0028\u0029",
-            "name": "testBinaryStringInvalid",
-            "summary": "Tests\u0020if\u0020a\u0020binary\u0020string\u0020is\u0020properly\u0020validated\u0020as\u0020false",
-            "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testBinaryStringInvalid"
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003AversionBreakpointProvider\u0028\u0029",
+            "name": "versionBreakpointProvider",
+            "summary": "returns\u0020versions\u0020within\u0020the\u0020version\u0020breakpoints\u00201\u002D9,\u002010\u002D26\u0020and\u002027\u002D40",
+            "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#method_versionBreakpointProvider"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003AtestDecodeSegment\u0028\u0029",
             "name": "testDecodeSegment",
-            "summary": "Tests\u0020decoding\u0020a\u0020data\u0020segment\u0020from\u0020a\u0020given\u0020BitBuffer",
+            "summary": "",
             "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testDecodeSegment"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003AtestGetMinimumVersionException\u0028\u0029",
-            "name": "testGetMinimumVersionException",
-            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020the\u0020data\u0020exceeds\u0020the\u0020maximum\u0020version\u0020while\u0020auto\u002Ddetecting",
-            "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testGetMinimumVersionException"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003AtestCodeLengthOverflowException\u0028\u0029",
-            "name": "testCodeLengthOverflowException",
-            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020on\u0020data\u0020overflow",
-            "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testCodeLengthOverflowException"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003AtestInvalidDataException\u0028\u0029",
             "name": "testInvalidDataException",
-            "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020an\u0020invalid\u0020character\u0020is\u0020encountered",
+            "summary": "",
             "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testInvalidDataException"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003AtestInvalidDataOnEmptyException\u0028\u0029",
@@ -3756,10 +3756,10 @@ Search.appendIndex(
             "summary": "Tests\u0020detection\u0020of\u0020an\u0020unknown\u0020character\u0020set",
             "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testConvertUnknownEncoding"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003A\u0024FQN",
-            "name": "FQN",
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003A\u0024QRData",
+            "name": "QRData",
             "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#property_FQN"
+            "url": "classes/chillerlan-QRCodeTest-Data-ECITest.html#property_QRData"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\ECITest\u003A\u003A\u0024testdata",
             "name": "testdata",
