@@ -207,7 +207,18 @@ final class EccLevel{
 	 * @return int[]
 	 */
 	public function getMaxBits():array{
-		return array_column(self::MAX_BITS, $this->getOrdinal());
+		$col = array_column(self::MAX_BITS, $this->getOrdinal());
+
+		unset($col[0]); // remove the inavlid index 0
+
+		return $col;
+	}
+
+	/**
+	 * Returns the maximum bit length for the given version and current ECC level
+	 */
+	public function getMaxBitsForVersion(Version $version):int{
+		return self::MAX_BITS[$version->getVersionNumber()][$this->getOrdinal()];
 	}
 
 }

@@ -78,21 +78,40 @@ trait QRMaxLengthTrait{
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 * @codeCoverageIgnore
 	 */
-	public static function getMaxLengthForMode(int $mode, Version $version, EccLevel $eccLevel):?int{
+	public static function getMaxLengthForMode(int $mode, Version $version, EccLevel $eccLevel):int{
 
-		$dataModes = [
+		$dataMode = ([
 			Mode::NUMBER   => 0,
 			Mode::ALPHANUM => 1,
 			Mode::BYTE     => 2,
 			Mode::KANJI    => 3,
 			Mode::HANZI    => 3, // similar to kanji mode
-		];
+		][$mode] ?? false);
 
-		if(!isset($dataModes[$mode])){
+		if($dataMode === false){
 			throw new QRCodeException('invalid $mode');
 		}
+
+		$ver = $version->getVersionNumber();
+		$ecc = $eccLevel->getOrdinal();
+
+		if(!isset(static::$MAX_LENGTH[$ver])){
+			throw new QRCodeException('invalid $version');
+		}
+
+		if(!isset(static::$MAX_LENGTH[$ver][$dataMode][$ecc])){
+			throw new QRCodeException('invalid $ecc');
+		}
+
 		/** @SuppressWarnings(PHPMD.UndefinedVariable) */
-		return (static::$MAX_LENGTH[$version->getVersionNumber()][$dataModes[$mode]][$eccLevel->getOrdinal()] ?? null);
+		$maxlength = static::$MAX_LENGTH[$ver][$dataMode][$ecc];
+
+		// Hanzi mode sets an additional 4 bit long subset identifier
+		if($mode === Mode::HANZI){
+			return ($maxlength - 1);
+		}
+
+		return $maxlength;
 	}
 
 }

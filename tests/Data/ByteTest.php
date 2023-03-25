@@ -17,8 +17,8 @@ use chillerlan\QRCode\Data\Byte;
  */
 final class ByteTest extends DataInterfaceTestAbstract{
 
-	protected string $FQN      = Byte::class;
-	protected string $testdata = '[¯\_(ツ)_/¯]';
+	protected static string $FQN      = Byte::class;
+	protected static string $testdata = '[¯\_(ツ)_/¯]';
 
 	/**
 	 * isByte() passses any binary string and only fails on empty strings
