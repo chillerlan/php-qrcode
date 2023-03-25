@@ -37,7 +37,7 @@ final class EccLevel{
 	 */
 	private const MAX_BITS = [
 	//	[    L,     M,     Q,     H]  // v  => modules
-		[ null,  null,  null,  null], // 0  =>  will be ignored, index starts at 1
+		[    0,     0,     0,     0], // 0  =>  will be ignored, index starts at 1
 		[  152,   128,   104,    72], // 1  =>  21
 		[  272,   224,   176,   128], // 2  =>  25
 		[  440,   352,   272,   208], // 3  =>  29
