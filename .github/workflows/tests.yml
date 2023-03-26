@@ -66,6 +66,9 @@ jobs:
           tools: phpDocumentor
           extensions: fileinfo, gd, imagick, json, mbstring
 
+      - name: "Delete Markdown files"
+        run: rm ./docs/*.md
+
       - name: "Build Docs"
         run: phpdoc --config=phpdoc.xml.dist
 
