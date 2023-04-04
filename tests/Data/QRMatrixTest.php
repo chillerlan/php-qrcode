@@ -234,6 +234,7 @@ final class QRMatrixTest extends TestCase{
 		$version = $matrix->getVersion();
 
 		if($version->getVersionNumber() === 1){
+			/** @noinspection PhpUnitTestFailedLineInspection */
 			$this::markTestSkipped('N/A (Version 1 has no alignment pattern)');
 		}
 
@@ -294,6 +295,7 @@ final class QRMatrixTest extends TestCase{
 	public function testSetVersionNumber(QRMatrix $matrix):void{
 
 		if($matrix->getVersion()->getVersionNumber() < 7){
+			/** @noinspection PhpUnitTestFailedLineInspection */
 			$this::markTestSkipped('N/A (Version < 7)');
 		}
 

@@ -24,6 +24,8 @@ use function array_chunk, implode, is_string, preg_match, sprintf, trim;
 class QRMarkupSVG extends QRMarkup{
 
 	/**
+	 * @todo: XSS proof
+	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill
 	 * @inheritDoc
 	 */

@@ -167,6 +167,7 @@ class QRGdImage extends QROutputAbstract{
 		}
 
 		// set transparency after scaling, otherwise it would be undone
+		// @see https://www.php.net/manual/en/function.imagecolortransparent.php#77099
 		$this->setTransparencyColor();
 
 		if($this->options->returnResource){

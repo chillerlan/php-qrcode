@@ -21,6 +21,8 @@ abstract class QRMarkup extends QROutputAbstract{
 	 * note: we're not necessarily validating the several values, just checking the general syntax
 	 * note: css4 colors are not included
 	 *
+	 * @todo: XSS proof
+	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
 	 * @inheritDoc
 	 */

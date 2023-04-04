@@ -25,10 +25,10 @@ use function class_exists, class_implements, in_array, mb_convert_encoding, mb_i
  * Turns a text string into a Model 2 QR Code
  *
  * @see https://github.com/kazuhikoarase/qrcode-generator/tree/master/php
- * @see http://www.qrcode.com/en/codes/model12.html
+ * @see https://www.qrcode.com/en/codes/model12.html
  * @see https://www.swisseduc.ch/informatik/theoretische_informatik/qr_codes/docs/qr_standard.pdf
  * @see https://en.wikipedia.org/wiki/QR_code
- * @see http://www.thonky.com/qr-code-tutorial/
+ * @see https://www.thonky.com/qr-code-tutorial/
  */
 class QRCode{
 
@@ -179,6 +179,8 @@ class QRCode{
 
 	/**
 	 * QRCode constructor.
+	 *
+	 * PHP8: accept iterable
 	 */
 	public function __construct(SettingsContainerInterface $options = null){
 		$this->setOptions(($options ?? new QROptions));

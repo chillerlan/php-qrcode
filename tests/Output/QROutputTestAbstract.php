@@ -10,9 +10,9 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
+use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
-use chillerlan\QRCode\Common\MaskPattern;
-use chillerlan\QRCode\Data\{Byte, QRData, QRMatrix};
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use PHPUnit\Framework\TestCase;
 
