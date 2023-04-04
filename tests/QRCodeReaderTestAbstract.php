@@ -85,7 +85,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		/** @noinspection PhpUndefinedMethodInspection */
 		$result = (new QRCode)->readFromSource($this->FQN::fromFile(__DIR__.'/samples/'.$img, $this->options));
 
-		QRMatrixTest::debugMatrix($result->getMatrix());
+		QRMatrixTest::debugMatrix($result->getQRMatrix());
 
 		$this::assertSame($expected, (string)$result);
 	}

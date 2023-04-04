@@ -216,7 +216,7 @@ class QRCode{
 			}
 		}
 
-		return $this->renderMatrix($this->getMatrix(), $file);
+		return $this->renderMatrix($this->getQRMatrix(), $file);
 	}
 
 	/**
@@ -233,7 +233,7 @@ class QRCode{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function getMatrix():QRMatrix{
+	public function getQRMatrix():QRMatrix{
 		$dataInterface = new QRData($this->options, $this->dataSegments);
 		$maskPattern   = $this->options->maskPattern === MaskPattern::AUTO
 			? MaskPattern::getBestPattern($dataInterface)
@@ -265,6 +265,15 @@ class QRCode{
 		}
 
 		return $matrix;
+	}
+
+	/**
+	 * @deprecated 5.0.0 use QRCode::getQRMatrix() instead
+	 * @see \chillerlan\QRCode\QRCode::getQRMatrix()
+	 * @codeCoverageIgnore
+	 */
+	public function getMatrix():QRMatrix{
+		return $this->getQRMatrix();
 	}
 
 	/**

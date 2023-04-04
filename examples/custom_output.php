@@ -81,7 +81,7 @@ $options = new QROptions([
 $qrcode = new QRCode($options);
 $qrcode->addByteSegment($data);
 
-$qrOutputInterface = new MyCustomOutput($options, $qrcode->getMatrix());
+$qrOutputInterface = new MyCustomOutput($options, $qrcode->getQRMatrix());
 
 var_dump($qrOutputInterface->dump());
 

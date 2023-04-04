@@ -93,7 +93,7 @@ $qrcode->addByteSegment('https://github.com');
 
 header('Content-type: image/png');
 
-$qrOutputInterface = new QRImageWithLogo($options, $qrcode->getMatrix());
+$qrOutputInterface = new QRImageWithLogo($options, $qrcode->getQRMatrix());
 
 // dump the output, with an additional logo
 // the logo could also be supplied via the options, see the svgWithLogo example

@@ -141,7 +141,7 @@ final class QRMatrixTest extends TestCase{
 	 */
 	public function testMaskPattern():void{
 		// set via matrix evaluation
-		$matrix = (new QRCode)->addByteSegment('testdata')->getMatrix();
+		$matrix = (new QRCode)->addByteSegment('testdata')->getQRMatrix();
 
 		$this::assertInstanceOf(MaskPattern::class, $matrix->getMaskPattern());
 		$this::assertSame(MaskPattern::PATTERN_100, $matrix->getMaskPattern()->getPattern());
@@ -378,7 +378,7 @@ final class QRMatrixTest extends TestCase{
 		$o->addLogoSpace    = true;
 		$o->logoSpaceHeight = 5;
 
-		$matrix = (new QRCode($o))->addByteSegment('testdata')->getMatrix();
+		$matrix = (new QRCode($o))->addByteSegment('testdata')->getQRMatrix();
 
 		self::debugMatrix($matrix);
 
@@ -398,7 +398,7 @@ final class QRMatrixTest extends TestCase{
 		$o->eccLevel     = EccLevel::H;
 		$o->addQuietzone = false;
 
-		$matrix = (new QRCode($o))->addByteSegment('testdata')->getMatrix();
+		$matrix = (new QRCode($o))->addByteSegment('testdata')->getQRMatrix();
 		// also testing size adjustment to uneven numbers
 		$matrix->setLogoSpace(20, 14);
 
@@ -423,7 +423,7 @@ final class QRMatrixTest extends TestCase{
 		$o->addQuietzone  = true;
 		$o->quietzoneSize = 10;
 
-		$matrix = (new QRCode($o))->addByteSegment('testdata')->getMatrix();
+		$matrix = (new QRCode($o))->addByteSegment('testdata')->getQRMatrix();
 
 		self::debugMatrix($matrix);
 
@@ -453,7 +453,7 @@ final class QRMatrixTest extends TestCase{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('ECC level "H" required to add logo space');
 
-		(new QRCode)->addByteSegment('testdata')->getMatrix()->setLogoSpace(50, 50);
+		(new QRCode)->addByteSegment('testdata')->getQRMatrix()->setLogoSpace(50, 50);
 	}
 
 	/**
@@ -467,7 +467,7 @@ final class QRMatrixTest extends TestCase{
 		$o->version  = 5;
 		$o->eccLevel = EccLevel::H;
 
-		(new QRCode($o))->addByteSegment('testdata')->getMatrix()->setLogoSpace(69, 1);
+		(new QRCode($o))->addByteSegment('testdata')->getQRMatrix()->setLogoSpace(69, 1);
 	}
 
 	/**
@@ -481,7 +481,7 @@ final class QRMatrixTest extends TestCase{
 		$o->version  = 5;
 		$o->eccLevel = EccLevel::H;
 
-		(new QRCode($o))->addByteSegment('testdata')->getMatrix()->setLogoSpace(37, 37);
+		(new QRCode($o))->addByteSegment('testdata')->getQRMatrix()->setLogoSpace(37, 37);
 	}
 
 	/**

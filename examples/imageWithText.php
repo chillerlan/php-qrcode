@@ -105,7 +105,7 @@ $qrcode->addByteSegment('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 header('Content-type: image/png');
 
-$qrOutputInterface = new QRImageWithText($options, $qrcode->getMatrix());
+$qrOutputInterface = new QRImageWithText($options, $qrcode->getQRMatrix());
 
 // dump the output, with additional text
 // the text could also be supplied via the options, see the svgWithLogo example
