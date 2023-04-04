@@ -73,7 +73,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$matrix = $this->QRData->writeMatrix(new MaskPattern($maskPattern));
 
 		$this::assertInstanceOf(QRMatrix::class, $matrix);
-		$this::assertSame($maskPattern, $matrix->maskPattern()->getPattern());
+		$this::assertSame($maskPattern, $matrix->getMaskPattern()->getPattern());
 	}
 
 	abstract public static function stringValidateProvider():array;

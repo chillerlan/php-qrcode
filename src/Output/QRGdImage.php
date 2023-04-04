@@ -228,7 +228,7 @@ class QRGdImage extends QROutputAbstract{
 	 * Creates the QR image
 	 */
 	protected function drawImage():void{
-		foreach($this->matrix->matrix() as $y => $row){
+		foreach($this->matrix->getMatrix() as $y => $row){
 			foreach($row as $x => $M_TYPE){
 				$this->setPixel($x, $y, $M_TYPE);
 			}

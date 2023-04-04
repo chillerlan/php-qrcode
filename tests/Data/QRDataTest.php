@@ -46,7 +46,7 @@ final class QRDataTest extends TestCase{
 		$maskPattern = MaskPattern::getBestPattern($QRData);
 		$matrix      = $QRData->writeMatrix($maskPattern);
 
-		$this::assertSame(3, $matrix->version()->getVersionNumber());
+		$this::assertSame(3, $matrix->getVersion()->getVersionNumber());
 
 		// attempt to read
 		$options->imageBase64                 = false;

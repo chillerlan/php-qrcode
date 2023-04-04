@@ -38,7 +38,7 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 		$paths = [];
 
 		// collect the modules for each type
-		foreach($this->matrix->matrix() as $y => $row){
+		foreach($this->matrix->getMatrix() as $y => $row){
 			foreach($row as $x => $M_TYPE){
 				$M_TYPE_LAYER = $M_TYPE;
 

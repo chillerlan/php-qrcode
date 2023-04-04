@@ -147,7 +147,7 @@ class QRMatrix{
 	 *
 	 * @return int[][]|bool[][]
 	 */
-	public function matrix(bool $boolean = null):array{
+	public function getMatrix(bool $boolean = null):array{
 
 		if(!$boolean){
 			return $this->matrix;
@@ -169,21 +169,21 @@ class QRMatrix{
 	/**
 	 * Returns the current version number
 	 */
-	public function version():?Version{
+	public function getVersion():?Version{
 		return $this->version;
 	}
 
 	/**
 	 * Returns the current ECC level
 	 */
-	public function eccLevel():?EccLevel{
+	public function getEccLevel():?EccLevel{
 		return $this->eccLevel;
 	}
 
 	/**
 	 * Returns the current mask pattern
 	 */
-	public function maskPattern():?MaskPattern{
+	public function getMaskPattern():?MaskPattern{
 		return $this->maskPattern;
 	}
 
@@ -192,7 +192,7 @@ class QRMatrix{
 	 *
 	 * size = version * 4 + 17 [ + 2 * quietzone size]
 	 */
-	public function size():int{
+	public function getSize():int{
 		return $this->moduleCount;
 	}
 

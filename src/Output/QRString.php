@@ -66,7 +66,7 @@ class QRString extends QROutputAbstract{
 	protected function text():string{
 		$str = [];
 
-		foreach($this->matrix->matrix() as $row){
+		foreach($this->matrix->getMatrix() as $row){
 			$r = [];
 
 			foreach($row as $M_TYPE){
@@ -83,7 +83,7 @@ class QRString extends QROutputAbstract{
 	 * JSON output
 	 */
 	protected function json():string{
-		return json_encode($this->matrix->matrix());
+		return json_encode($this->matrix->getMatrix());
 	}
 
 }

@@ -116,7 +116,7 @@ final class MaskPattern{
 		$penalties = [];
 
 		foreach(self::PATTERNS as $pattern){
-			$matrix  = $dataInterface->writeMatrix(new self($pattern))->matrix(true);
+			$matrix  = $dataInterface->writeMatrix(new self($pattern))->getMatrix(true);
 			$penalty = 0;
 
 			for($level = 1; $level <= 4; $level++){

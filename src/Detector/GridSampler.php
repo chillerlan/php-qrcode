@@ -48,7 +48,7 @@ final class GridSampler{
 	 * @throws \chillerlan\QRCode\Detector\QRCodeDetectorException if an endpoint is lies outside the image boundaries
 	 */
 	private function checkAndNudgePoints(BitMatrix $matrix, array $points):void{
-		$dimension = $matrix->size();
+		$dimension = $matrix->getSize();
 		$nudged    = true;
 		$max       = count($points);
 

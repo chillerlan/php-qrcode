@@ -27,7 +27,7 @@ class QRMarkupHTML extends QRMarkup{
 
 		$html .= $this->options->eol;
 
-		foreach($this->matrix->matrix() as $row){
+		foreach($this->matrix->getMatrix() as $row){
 			$html .= '<div>';
 
 			foreach($row as $M_TYPE){

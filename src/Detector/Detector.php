@@ -124,7 +124,7 @@ final class Detector{
 	 */
 	private function sizeOfBlackWhiteBlackRunBothWays(float $fromX, float $fromY, float $toX, float $toY):float{
 		$result    = $this->sizeOfBlackWhiteBlackRun((int)$fromX, (int)$fromY, (int)$toX, (int)$toY);
-		$dimension = $this->matrix->size();
+		$dimension = $this->matrix->getSize();
 		// Now count other way -- don't run off image though of course
 		$scale     = 1.0;
 		$otherToX  = ($fromX - ($toX - $fromX));
@@ -278,7 +278,7 @@ final class Detector{
 		float $allowanceFactor
 	):?AlignmentPattern{
 		// Look for an alignment pattern (3 modules in size) around where it should be
-		$dimension           = $this->matrix->size();
+		$dimension           = $this->matrix->getSize();
 		$allowance           = (int)($allowanceFactor * $overallEstModuleSize);
 		$alignmentAreaLeftX  = max(0, ($estAlignmentX - $allowance));
 		$alignmentAreaRightX = min(($dimension - 1), ($estAlignmentX + $allowance));

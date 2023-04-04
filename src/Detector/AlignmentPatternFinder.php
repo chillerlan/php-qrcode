@@ -223,7 +223,7 @@ final class AlignmentPatternFinder{
 	 * @return float|null vertical center of alignment pattern, or null if not found
 	 */
 	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):?float{
-		$maxI          = $this->matrix->size();
+		$maxI          = $this->matrix->getSize();
 		$stateCount    = [];
 		$stateCount[0] = 0;
 		$stateCount[1] = 0;

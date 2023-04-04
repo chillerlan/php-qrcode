@@ -115,7 +115,7 @@ class QRFpdf extends QROutputAbstract{
 
 		$prevColor = null;
 
-		foreach($this->matrix->matrix() as $y => $row){
+		foreach($this->matrix->getMatrix() as $y => $row){
 
 			foreach($row as $x => $M_TYPE){
 

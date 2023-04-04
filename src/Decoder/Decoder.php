@@ -71,9 +71,9 @@ final class Decoder{
 	private function decodeMatrix(BitMatrix $matrix):DecoderResult{
 		// Read raw codewords
 		$rawCodewords      = $matrix->readCodewords();
-		$this->version     = $matrix->version();
-		$this->eccLevel    = $matrix->eccLevel();
-		$this->maskPattern = $matrix->maskPattern();
+		$this->version     = $matrix->getVersion();
+		$this->eccLevel    = $matrix->getEccLevel();
+		$this->maskPattern = $matrix->getMaskPattern();
 
 		if($this->version === null || $this->eccLevel === null || $this->maskPattern === null){
 			throw new QRCodeDecoderException('unable to read version or format info'); // @codeCoverageIgnore

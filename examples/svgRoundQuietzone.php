@@ -87,7 +87,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 		// substract 1/2 stroke width and module radius from the circle radius to not cut off modules
 		$r  = ($radius - $this->options->circleRadius * 2);
 
-		foreach($this->matrix->matrix() as $y => $row){
+		foreach($this->matrix->getMatrix() as $y => $row){
 			foreach($row as $x => $value){
 
 				// skip anything that's not quiet zone
@@ -175,7 +175,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 		$paths = [];
 
 		// collect the modules for each type
-		foreach($this->matrix->matrix() as $y => $row){
+		foreach($this->matrix->getMatrix() as $y => $row){
 			foreach($row as $x => $M_TYPE){
 				$M_TYPE_LAYER = $M_TYPE;
 
