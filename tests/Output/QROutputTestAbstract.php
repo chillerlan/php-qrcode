@@ -43,9 +43,7 @@ abstract class QROutputTestAbstract extends TestCase{
 
 		$this->options             = new QROptions;
 		$this->options->outputType = $this->type;
-
-		$this->matrix              = (new QRData($this->options, [new Byte('testdata')]))
-			->writeMatrix(new MaskPattern(MaskPattern::PATTERN_010));
+		$this->matrix              = (new QRCode($this->options))->addByteSegment('testdata')->getQRMatrix();
 		$this->outputInterface     = new $this->FQN($this->options, $this->matrix);
 	}
 

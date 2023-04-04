@@ -117,11 +117,15 @@ final class BitMatrix extends QRMatrix{
 		$this
 			->readFormatInformation()
 			->readVersion()
-			->mask() // reverse the mask pattern
+			->mask($this->maskPattern) // reverse the mask pattern
 		;
 
 		// invoke a fresh matrix with only the function & format patterns to compare against
-		$fp        = (new QRMatrix($this->version, $this->eccLevel, $this->maskPattern))->initFunctionalPatterns();
+		$matrix = (new QRMatrix($this->version, $this->eccLevel))
+			->initFunctionalPatterns()
+			->setFormatInfo($this->maskPattern)
+		;
+
 		$result    = [];
 		$byte      = 0;
 		$bitsRead  = 0;
@@ -143,7 +147,7 @@ final class BitMatrix extends QRMatrix{
 					$x = ($i - $col);
 
 					// Ignore bits covered by the function pattern
-					if($fp->get($x, $y) !== $this::M_NULL){
+					if($matrix->get($x, $y) !== $this::M_NULL){
 						continue;
 					}
 

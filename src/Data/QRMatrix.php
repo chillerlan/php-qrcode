@@ -83,19 +83,23 @@ class QRMatrix{
 	];
 
 	/**
-	 * the used mask pattern, set via QRMatrix::mask()
+	 * the matrix version - always set in QRMatrix, may be null in BitMatrix
 	 */
-	protected ?MaskPattern $maskPattern = null;
+	protected ?Version $version = null;
 
 	/**
-	 * the current ECC level
+	 * the current ECC level - always set in QRMatrix, may be null in BitMatrix
 	 */
 	protected ?EccLevel $eccLevel = null;
 
 	/**
-	 * a Version instance
+	 * the mask pattern that was used in the most recent operation, set via:
+	 *
+	 * - QRMatrix::setFormatInfo()
+	 * - QRMatrix::mask()
+	 * - BitMatrix::readFormatInformation()
 	 */
-	protected ?Version $version = null;
+	protected ?MaskPattern $maskPattern = null;
 
 	/**
 	 * the size (side length) of the matrix, including quiet zone (if created)
@@ -112,10 +116,9 @@ class QRMatrix{
 	/**
 	 * QRMatrix constructor.
 	 */
-	public function __construct(Version $version, EccLevel $eccLevel, MaskPattern $maskPattern){
+	public function __construct(Version $version, EccLevel $eccLevel){
 		$this->version     = $version;
 		$this->eccLevel    = $eccLevel;
-		$this->maskPattern = $maskPattern;
 		$this->moduleCount = $this->version->getDimension();
 		$this->matrix      = $this->createMatrix($this->moduleCount, $this::M_NULL);
 	}
@@ -502,12 +505,16 @@ class QRMatrix{
 	}
 
 	/**
-	 * Draws the format info along the finder patterns
+	 * Draws the format info along the finder patterns. If no $maskPattern, all format info modules will be set to false.
 	 *
 	 * ISO/IEC 18004:2000 Section 8.9
 	 */
-	public function setFormatInfo():self{
-		$bits = $this->eccLevel->getformatPattern($this->maskPattern);
+	public function setFormatInfo(MaskPattern $maskPattern = null):self{
+		$this->maskPattern = $maskPattern;
+
+		$bits = ($this->maskPattern instanceof MaskPattern)
+			? $this->eccLevel->getformatPattern($this->maskPattern)
+			: 0; // sets all format fields to false (test mode)
 
 		for($i = 0; $i < 15; $i++){
 			$v = (($bits >> $i) & 1) === 1;
@@ -703,8 +710,9 @@ class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 8.8.1
 	 */
-	public function mask():self{
-		$mask = $this->maskPattern->getMask();
+	public function mask(MaskPattern $maskPattern):self{
+		$this->maskPattern = $maskPattern;
+		$mask              = $this->maskPattern->getMask();
 
 		foreach($this->matrix as $y => $row){
 			foreach($row as $x => $val){

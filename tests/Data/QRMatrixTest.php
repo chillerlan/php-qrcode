@@ -32,8 +32,7 @@ final class QRMatrixTest extends TestCase{
 	protected function setUp():void{
 		$this->matrix = new QRMatrix(
 			new Version($this::version),
-			new EccLevel(EccLevel::L),
-			new MaskPattern(MaskPattern::PATTERN_000)
+			new EccLevel(EccLevel::L)
 		);
 	}
 
@@ -175,11 +174,10 @@ final class QRMatrixTest extends TestCase{
 	 * Version data provider for several pattern tests
 	 */
 	public static function matrixProvider():Generator{
-		$ecc  = new EccLevel(EccLevel::L);
-		$mask = new MaskPattern(MaskPattern::PATTERN_000);
+		$ecc = new EccLevel(EccLevel::L);
 
 		foreach(range(1, 40) as $i){
-			yield 'version: '.$i => [new QRMatrix(new Version($i), $ecc, $mask)];
+			yield 'version: '.$i => [new QRMatrix(new Version($i), $ecc)];
 		}
 	}
 
@@ -315,7 +313,7 @@ final class QRMatrixTest extends TestCase{
 	 * @dataProvider matrixProvider
 	 */
 	public function testSetFormatInfo(QRMatrix $matrix):void{
-		$matrix->setFormatInfo();
+		$matrix->setFormatInfo(new MaskPattern(MaskPattern::PATTERN_000));
 
 		$this->dm($matrix);
 
