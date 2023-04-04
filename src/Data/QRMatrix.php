@@ -167,10 +167,28 @@ class QRMatrix{
 	}
 
 	/**
+	 * @deprecated 5.0.0 use QRMatrix::getMatrix() instead
+	 * @see \chillerlan\QRCode\Data\QRMatrix::getMatrix()
+	 * @codeCoverageIgnore
+	 */
+	public function matrix(bool $boolean = null):array{
+		return $this->getMatrix($boolean);
+	}
+
+	/**
 	 * Returns the current version number
 	 */
 	public function getVersion():?Version{
 		return $this->version;
+	}
+
+	/**
+	 * @deprecated 5.0.0 use QRMatrix::getVersion() instead
+	 * @see \chillerlan\QRCode\Data\QRMatrix::getVersion()
+	 * @codeCoverageIgnore
+	 */
+	public function version():?Version{
+		return $this->getVersion();
 	}
 
 	/**
@@ -181,10 +199,28 @@ class QRMatrix{
 	}
 
 	/**
+	 * @deprecated 5.0.0 use QRMatrix::getEccLevel() instead
+	 * @see \chillerlan\QRCode\Data\QRMatrix::getEccLevel()
+	 * @codeCoverageIgnore
+	 */
+	public function eccLevel():?EccLevel{
+		return $this->getEccLevel();
+	}
+
+	/**
 	 * Returns the current mask pattern
 	 */
 	public function getMaskPattern():?MaskPattern{
 		return $this->maskPattern;
+	}
+
+	/**
+	 * @deprecated 5.0.0 use QRMatrix::getMaskPattern() instead
+	 * @see \chillerlan\QRCode\Data\QRMatrix::getMaskPattern()
+	 * @codeCoverageIgnore
+	 */
+	public function maskPattern():?MaskPattern{
+		return $this->getMaskPattern();
 	}
 
 	/**
@@ -194,6 +230,15 @@ class QRMatrix{
 	 */
 	public function getSize():int{
 		return $this->moduleCount;
+	}
+
+	/**
+	 * @deprecated 5.0.0 use QRMatrix::getSize() instead
+	 * @see \chillerlan\QRCode\Data\QRMatrix::getSize()
+	 * @codeCoverageIgnore
+	 */
+	public function size():int{
+		return $this->getSize();
 	}
 
 	/**
