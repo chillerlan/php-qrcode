@@ -1201,29 +1201,54 @@ Search.appendIndex(
             "summary": "shortcut\u0020to\u0020initialize\u0020the\u0020functional\u0020patterns",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_initFunctionalPatterns"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AgetMatrix\u0028\u0029",
+            "name": "getMatrix",
+            "summary": "Returns\u0020the\u0020data\u0020matrix,\u0020returns\u0020a\u0020pure\u0020boolean\u0020representation\u0020if\u0020\u0024boolean\u0020is\u0020set\u0020to\u0020true",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_getMatrix"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003A\u0024matrix",
             "name": "matrix",
             "summary": "the\u0020actual\u0020matrix\u0020data\u0020array",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#property_matrix"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AgetVersion\u0028\u0029",
+            "name": "getVersion",
+            "summary": "Returns\u0020the\u0020current\u0020version\u0020number",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_getVersion"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003A\u0024version",
             "name": "version",
-            "summary": "a\u0020Version\u0020instance",
+            "summary": "the\u0020matrix\u0020version\u0020\u002D\u0020always\u0020set\u0020in\u0020QRMatrix,\u0020may\u0020be\u0020null\u0020in\u0020BitMatrix",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#property_version"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AgetEccLevel\u0028\u0029",
+            "name": "getEccLevel",
+            "summary": "Returns\u0020the\u0020current\u0020ECC\u0020level",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_getEccLevel"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003A\u0024eccLevel",
             "name": "eccLevel",
-            "summary": "the\u0020current\u0020ECC\u0020level",
+            "summary": "the\u0020current\u0020ECC\u0020level\u0020\u002D\u0020always\u0020set\u0020in\u0020QRMatrix,\u0020may\u0020be\u0020null\u0020in\u0020BitMatrix",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#property_eccLevel"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AgetMaskPattern\u0028\u0029",
+            "name": "getMaskPattern",
+            "summary": "Returns\u0020the\u0020current\u0020mask\u0020pattern",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_getMaskPattern"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003A\u0024maskPattern",
             "name": "maskPattern",
-            "summary": "the\u0020used\u0020mask\u0020pattern,\u0020set\u0020via\u0020QRMatrix\u003A\u003Amask\u0028\u0029",
+            "summary": "the\u0020mask\u0020pattern\u0020that\u0020was\u0020used\u0020in\u0020the\u0020most\u0020recent\u0020operation,\u0020set\u0020via\u003A",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#property_maskPattern"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AgetSize\u0028\u0029",
+            "name": "getSize",
+            "summary": "Returns\u0020the\u0020absoulute\u0020size\u0020of\u0020the\u0020matrix,\u0020including\u0020quiet\u0020zone\u0020\u0028after\u0020setting\u0020it\u0029.",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_getSize"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003Asize\u0028\u0029",
             "name": "size",
-            "summary": "Returns\u0020the\u0020absoulute\u0020size\u0020of\u0020the\u0020matrix,\u0020including\u0020quiet\u0020zone\u0020\u0028after\u0020setting\u0020it\u0029.",
+            "summary": "",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_size"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003Aget\u0028\u0029",
@@ -1293,7 +1318,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AsetFormatInfo\u0028\u0029",
             "name": "setFormatInfo",
-            "summary": "Draws\u0020the\u0020format\u0020info\u0020along\u0020the\u0020finder\u0020patterns",
+            "summary": "Draws\u0020the\u0020format\u0020info\u0020along\u0020the\u0020finder\u0020patterns.\u0020If\u0020no\u0020\u0024maskPattern,\u0020all\u0020format\u0020info\u0020modules\u0020will\u0020be\u0020set\u0020to\u0020false.",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_setFormatInfo"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AsetQuietZone\u0028\u0029",
@@ -1666,10 +1691,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_hasStructuredAppend"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Decoder\\DecoderResult\u003A\u003AgetMatrix\u0028\u0029",
-            "name": "getMatrix",
+            "fqsen": "\\chillerlan\\QRCode\\Decoder\\DecoderResult\u003A\u003AgetQRMatrix\u0028\u0029",
+            "name": "getQRMatrix",
             "summary": "Returns\u0020a\u0020QRMatrix\u0020instance\u0020with\u0020thesettings\u0020and\u0020data\u0020of\u0020the\u0020reader\u0020result",
-            "url": "classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_getMatrix"
+            "url": "classes/chillerlan-QRCode-Decoder-DecoderResult.html#method_getQRMatrix"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\DecoderResult\u003A\u003A\u0024rawBytes",
             "name": "rawBytes",
@@ -2806,9 +2831,19 @@ Search.appendIndex(
             "summary": "Renders\u0020a\u0020QR\u0020Code\u0020for\u0020the\u0020given\u0020QRMatrix\u0020and\u0020QROptions,\u0020saves\u0020\u0024file\u0020optionally",
             "url": "classes/chillerlan-QRCode-QRCode.html#method_renderMatrix"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AgetQRMatrix\u0028\u0029",
+            "name": "getQRMatrix",
+            "summary": "Returns\u0020a\u0020QRMatrix\u0020object\u0020for\u0020the\u0020given\u0020\u0024data\u0020and\u0020current\u0020QROptions",
+            "url": "classes/chillerlan-QRCode-QRCode.html#method_getQRMatrix"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AaddMatrixModifications\u0028\u0029",
+            "name": "addMatrixModifications",
+            "summary": "add\u0020matrix\u0020modifications\u0020after\u0020mask\u0020pattern\u0020evaluation\u0020and\u0020before\u0020handing\u0020over\u0020to\u0020output",
+            "url": "classes/chillerlan-QRCode-QRCode.html#method_addMatrixModifications"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AgetMatrix\u0028\u0029",
             "name": "getMatrix",
-            "summary": "Returns\u0020a\u0020QRMatrix\u0020object\u0020for\u0020the\u0020given\u0020\u0024data\u0020and\u0020current\u0020QROptions",
+            "summary": "",
             "url": "classes/chillerlan-QRCode-QRCode.html#method_getMatrix"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode\u003A\u003AinitOutputInterface\u0028\u0029",
