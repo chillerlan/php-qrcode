@@ -11,7 +11,7 @@
 
 namespace chillerlan\QRCode\Common;
 
-use chillerlan\QRCode\Data\QRData;
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\QRCodeException;
 use Closure;
 use function abs, array_search, count, min;
@@ -112,11 +112,12 @@ final class MaskPattern{
 	/**
 	 * Evaluates the matrix of the given data interface and returns a new mask pattern instance for the best result
 	 */
-	public static function getBestPattern(QRData $dataInterface):self{
+	public static function getBestPattern(QRMatrix $QRMatrix):self{
 		$penalties = [];
 
 		foreach(self::PATTERNS as $pattern){
-			$matrix  = $dataInterface->writeMatrix(new self($pattern))->getMatrix(true);
+			$mp      = new self($pattern);
+			$matrix  = (clone $QRMatrix)->setFormatInfo($mp)->mask($mp)->getMatrix(true);
 			$penalty = 0;
 
 			for($level = 1; $level <= 4; $level++){

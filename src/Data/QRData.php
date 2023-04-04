@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, Mode, Version};
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, Mode, Version};
 use chillerlan\Settings\SettingsContainerInterface;
 
 use function count;
@@ -122,12 +122,10 @@ final class QRData{
 	/**
 	 * returns a fresh matrix object with the data written and masked with the given $maskPattern
 	 */
-	public function writeMatrix(MaskPattern $maskPattern):QRMatrix{
+	public function writeMatrix():QRMatrix{
 		return (new QRMatrix($this->version, $this->eccLevel))
 			->initFunctionalPatterns()
 			->writeCodewords($this->bitBuffer)
-			->setFormatInfo($maskPattern)
-			->mask($maskPattern)
 		;
 	}
 

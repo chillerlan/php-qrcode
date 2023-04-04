@@ -42,9 +42,10 @@ final class QRDataTest extends TestCase{
 
 		$options     = new QROptions(['version' => 3]);
 		$bitBuffer   = new BitBuffer($rawBytes);
-		$QRData      = (new QRData($options))->setBitBuffer($bitBuffer);
-		$maskPattern = MaskPattern::getBestPattern($QRData);
-		$matrix      = $QRData->writeMatrix($maskPattern);
+		$matrix      = (new QRData($options))->setBitBuffer($bitBuffer)->writeMatrix();
+		$maskPattern = MaskPattern::getBestPattern($matrix);
+
+		$matrix->setFormatInfo($maskPattern)->mask($maskPattern);
 
 		$this::assertSame(3, $matrix->getVersion()->getVersionNumber());
 

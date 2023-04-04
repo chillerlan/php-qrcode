@@ -236,14 +236,22 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function getQRMatrix():QRMatrix{
-		$dataInterface = new QRData($this->options, $this->dataSegments);
-		$maskPattern   = $this->options->maskPattern === MaskPattern::AUTO
-			? MaskPattern::getBestPattern($dataInterface)
+		$matrix = (new QRData($this->options, $this->dataSegments))->writeMatrix();
+
+		$maskPattern = $this->options->maskPattern === MaskPattern::AUTO
+			? MaskPattern::getBestPattern($matrix)
 			: new MaskPattern($this->options->maskPattern);
 
-		$matrix = $dataInterface->writeMatrix($maskPattern);
+		$matrix->setFormatInfo($maskPattern)->mask($maskPattern);
 
-		// add matrix modifications after mask pattern evaluation and before handing over to output
+		return $this->addMatrixModifications($matrix);
+	}
+
+	/**
+	 * add matrix modifications after mask pattern evaluation and before handing over to output
+	 */
+	protected function addMatrixModifications(QRMatrix $matrix):QRMatrix{
+
 		if($this->options->addLogoSpace){
 			$logoSpaceWidth  = $this->options->logoSpaceWidth;
 			$logoSpaceHeight = $this->options->logoSpaceHeight;
