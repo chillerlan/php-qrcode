@@ -74,7 +74,7 @@ class QRFpdf extends QROutputAbstract{
 	 *
 	 * @inheritDoc
 	 */
-	protected function getModuleValue($value):array{
+	protected function prepareModuleValue($value):array{
 		$values = [];
 
 		foreach(array_values($value) as $i => $val){
@@ -107,7 +107,7 @@ class QRFpdf extends QROutputAbstract{
 		$fpdf->AddPage();
 
 		if($this::moduleValueIsValid($this->options->bgColor)){
-			$bgColor = $this->getModuleValue($this->options->bgColor);
+			$bgColor = $this->prepareModuleValue($this->options->bgColor);
 			/** @phan-suppress-next-line PhanParamTooFewUnpack */
 			$fpdf->SetFillColor(...$bgColor);
 			$fpdf->Rect(0, 0, $this->length, $this->length, 'F');

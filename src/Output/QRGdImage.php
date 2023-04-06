@@ -110,7 +110,7 @@ class QRGdImage extends QROutputAbstract{
 	 * @inheritDoc
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function getModuleValue($value):int{
+	protected function prepareModuleValue($value):int{
 		$values = [];
 
 		foreach(array_values($value) as $i => $val){
@@ -136,7 +136,7 @@ class QRGdImage extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	protected function getDefaultModuleValue(bool $isDark):int{
-		return $this->getModuleValue(($isDark) ? [0, 0, 0] : [255, 255, 255]);
+		return $this->prepareModuleValue(($isDark) ? [0, 0, 0] : [255, 255, 255]);
 	}
 
 	/**
@@ -199,12 +199,12 @@ class QRGdImage extends QROutputAbstract{
 		}
 
 		if($this::moduleValueIsValid($this->options->bgColor)){
-			$this->background = $this->getModuleValue($this->options->bgColor);
+			$this->background = $this->prepareModuleValue($this->options->bgColor);
 
 			return;
 		}
 
-		$this->background = $this->getModuleValue([255, 255, 255]);
+		$this->background = $this->prepareModuleValue([255, 255, 255]);
 	}
 
 	/**
@@ -219,7 +219,7 @@ class QRGdImage extends QROutputAbstract{
 		$transparencyColor = $this->background;
 
 		if($this::moduleValueIsValid($this->options->transparencyColor)){
-			$transparencyColor = $this->getModuleValue($this->options->transparencyColor);
+			$transparencyColor = $this->prepareModuleValue($this->options->transparencyColor);
 		}
 
 		imagecolortransparent($this->image, $transparencyColor);

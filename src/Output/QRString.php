@@ -30,7 +30,7 @@ class QRString extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function getModuleValue($value):string{
+	protected function prepareModuleValue($value):string{
 		return $value;
 	}
 

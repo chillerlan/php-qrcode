@@ -31,8 +31,8 @@ class MyCustomOutput extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function getModuleValue($value){
-		// TODO: Implement getModuleValue() method. (abstract)
+	protected function prepareModuleValue($value){
+		// TODO: Implement prepareModuleValue() method. (abstract)
 		return null;
 	}
 

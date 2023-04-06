@@ -52,7 +52,7 @@ class QREps extends QROutputAbstract{
 	 *
 	 * @inheritDoc
 	 */
-	protected function getModuleValue($value):array{
+	protected function prepareModuleValue($value):array{
 		$values = [];
 
 		foreach(array_values($value) as $i => $val){

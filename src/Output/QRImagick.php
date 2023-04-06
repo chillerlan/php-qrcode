@@ -99,7 +99,7 @@ class QRImagick extends QROutputAbstract{
 	 * @inheritDoc
 	 * @throws \ImagickPixelException
 	 */
-	protected function getModuleValue($value):ImagickPixel{
+	protected function prepareModuleValue($value):ImagickPixel{
 		return new ImagickPixel($value);
 	}
 
@@ -107,7 +107,7 @@ class QRImagick extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	protected function getDefaultModuleValue(bool $isDark):ImagickPixel{
-		return $this->getModuleValue(($isDark) ? $this->options->markupDark : $this->options->markupLight);
+		return $this->prepareModuleValue(($isDark) ? $this->options->markupDark : $this->options->markupLight);
 	}
 
 	/**
@@ -153,12 +153,12 @@ class QRImagick extends QROutputAbstract{
 		}
 
 		if($this::moduleValueIsValid($this->options->bgColor)){
-			$this->background = $this->getModuleValue($this->options->bgColor);
+			$this->background = $this->prepareModuleValue($this->options->bgColor);
 
 			return;
 		}
 
-		$this->background = $this->getModuleValue('white');
+		$this->background = $this->prepareModuleValue('white');
 	}
 
 	/**
@@ -173,7 +173,7 @@ class QRImagick extends QROutputAbstract{
 		$transparencyColor = $this->background;
 
 		if($this::moduleValueIsValid($this->options->transparencyColor)){
-			$transparencyColor = $this->getModuleValue($this->options->transparencyColor);
+			$transparencyColor = $this->prepareModuleValue($this->options->transparencyColor);
 		}
 
 		$this->imagick->transparentPaintImage($transparencyColor, 0.0, 10, false);

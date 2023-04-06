@@ -57,7 +57,7 @@ abstract class QRMarkup extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function getModuleValue($value):string{
+	protected function prepareModuleValue($value):string{
 		return trim(strip_tags($value), " '\"\r\n\t");
 	}
 
