@@ -92,7 +92,16 @@ abstract class QROutputAbstract implements QROutputInterface{
 	}
 
 	/**
-	 * Returns the final value for the given input (return value depends on the output module)
+	 * Returns the prepared value for the given $M_TYPE (return value depends on the output class)
+	 *
+	 * @return mixed|null
+	 */
+	protected function getModuleValue(int $M_TYPE){
+		return ($this->moduleValues[$M_TYPE] ?? null);
+	}
+
+	/**
+	 * Prepares the value for the given input (return value depends on the output class)
 	 *
 	 * @param mixed $value
 	 *
@@ -101,7 +110,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	abstract protected function prepareModuleValue($value);
 
 	/**
-	 * Returns a default value for either dark or light modules (return value depends on the output module)
+	 * Returns a default value for either dark or light modules (return value depends on the output class)
 	 *
 	 * @return mixed
 	 */

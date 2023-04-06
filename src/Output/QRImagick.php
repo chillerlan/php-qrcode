@@ -204,7 +204,7 @@ class QRImagick extends QROutputAbstract{
 			return;
 		}
 
-		$this->imagickDraw->setFillColor($this->moduleValues[$M_TYPE]);
+		$this->imagickDraw->setFillColor($this->getModuleValue($M_TYPE));
 
 		$this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)
 			? $this->imagickDraw->circle(

@@ -70,7 +70,7 @@ class QRString extends QROutputAbstract{
 			$r = [];
 
 			foreach($row as $M_TYPE){
-				$r[] = $this->moduleValues[$M_TYPE];
+				$r[] = $this->getModuleValue($M_TYPE);
 			}
 
 			$str[] = implode('', $r);

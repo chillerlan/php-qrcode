@@ -123,8 +123,7 @@ class QRFpdf extends QROutputAbstract{
 					continue;
 				}
 
-				/** @var int $M_TYPE */
-				$color = $this->moduleValues[$M_TYPE];
+				$color = $this->getModuleValue($M_TYPE);
 
 				if($prevColor !== $color){
 					/** @phan-suppress-next-line PhanParamTooFewUnpack */

@@ -108,9 +108,10 @@ class QREps extends QROutputAbstract{
 			}
 
 			// 4 values will be interpreted as CMYK, 3 as RGB
-			$format = (count($this->moduleValues[$M_TYPE]) === 4) ? '%f %f %f %f C' : '%f %f %f R';
-			$eps[] = sprintf($format, ...$this->moduleValues[$M_TYPE]);
-			$eps[] = implode("\n", $path);
+			$val    = $this->getModuleValue($M_TYPE);
+			$format = (count($val) === 4) ? '%f %f %f %f C' : '%f %f %f R';
+			$eps[]  = sprintf($format, ...$val);
+			$eps[]  = implode("\n", $path);
 		}
 
 		// end file

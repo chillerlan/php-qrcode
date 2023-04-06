@@ -252,7 +252,7 @@ class QRGdImage extends QROutputAbstract{
 				(int)(($y * $this->scale) + ($this->scale / 2)),
 				(int)(2 * $this->options->circleRadius * $this->scale),
 				(int)(2 * $this->options->circleRadius * $this->scale),
-				$this->moduleValues[$M_TYPE]
+				$this->getModuleValue($M_TYPE)
 			)
 			: imagefilledrectangle(
 				$this->image,
@@ -260,7 +260,7 @@ class QRGdImage extends QROutputAbstract{
 				($y * $this->scale),
 				(($x + 1) * $this->scale),
 				(($y + 1) * $this->scale),
-				$this->moduleValues[$M_TYPE]
+				$this->getModuleValue($M_TYPE)
 			);
 	}
 
