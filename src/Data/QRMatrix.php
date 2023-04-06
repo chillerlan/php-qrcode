@@ -26,43 +26,43 @@ class QRMatrix{
 	/** @var int */
 	public const M_NULL           = 0b000000000000;
 	/** @var int */
-	public const M_DARKMODULE     = (0b000000000001 | self::IS_DARK);
+	public const M_DARKMODULE     = 0b100000000001;
 	/** @var int */
 	public const M_DATA           = 0b000000000010;
 	/** @var int */
-	public const M_DATA_DARK      = (self::M_DATA | self::IS_DARK);
+	public const M_DATA_DARK      = 0b100000000010;
 	/** @var int */
 	public const M_FINDER         = 0b000000000100;
 	/** @var int */
-	public const M_FINDER_DARK    = (self::M_FINDER | self::IS_DARK);
+	public const M_FINDER_DARK    = 0b100000000100;
 	/** @var int */
 	public const M_SEPARATOR      = 0b000000001000;
 	/** @var int */
 	public const M_ALIGNMENT      = 0b000000010000;
 	/** @var int */
-	public const M_ALIGNMENT_DARK = (self::M_ALIGNMENT | self::IS_DARK);
+	public const M_ALIGNMENT_DARK = 0b100000010000;
 	/** @var int */
 	public const M_TIMING         = 0b000000100000;
 	/** @var int */
-	public const M_TIMING_DARK    = (self::M_TIMING | self::IS_DARK);
+	public const M_TIMING_DARK    = 0b100000100000;
 	/** @var int */
 	public const M_FORMAT         = 0b000001000000;
 	/** @var int */
-	public const M_FORMAT_DARK    = (self::M_FORMAT | self::IS_DARK);
+	public const M_FORMAT_DARK    = 0b100001000000;
 	/** @var int */
 	public const M_VERSION        = 0b000010000000;
 	/** @var int */
-	public const M_VERSION_DARK   = (self::M_VERSION | self::IS_DARK);
+	public const M_VERSION_DARK   = 0b100010000000;
 	/** @var int */
 	public const M_QUIETZONE      = 0b000100000000;
 	/** @var int */
 	public const M_LOGO           = 0b001000000000;
 	/** @var int */
-	public const M_FINDER_DOT     = (0b010000000000 | self::IS_DARK);
+	public const M_FINDER_DOT     = 0b110000000000;
 	/** @var int */
 	public const M_TEST           = 0b011111111111;
 	/** @var int */
-	public const M_TEST_DARK      = (self::M_TEST | self::IS_DARK);
+	public const M_TEST_DARK      = 0b111111111111;
 
 	/**
 	 * Map of flag => coord
@@ -584,6 +584,9 @@ class QRMatrix{
 	 * using $startX and $startY. If either of these are null, the logo space will be centered in that direction.
 	 * ECC level "H" (30%) is required.
 	 *
+	 * The coordinates of $startX and $startY do not include the quiet zone:
+	 * [0, 0] is always the top left module of the top left finder pattern, negative values go into the quiet zone top and left.
+	 *
 	 * Please note that adding a logo space minimizes the error correction capacity of the QR Code and
 	 * created images may become unreadable, especially when printed with a chance to receive damage.
 	 * Please test thoroughly before using this feature in production.
@@ -643,18 +646,18 @@ class QRMatrix{
 		// determine start coordinates
 		$startX = ((($startX !== null) ? $startX : ($length - $width) / 2) + $qz);
 		$startY = ((($startY !== null) ? $startY : ($length - $height) / 2) + $qz);
+		$endX   = ($startX + $width);
+		$endY   = ($startY + $height);
 
 		// clear the space
-		for($y = 0; $y < $this->moduleCount; $y++){
-			for($x = 0; $x < $this->moduleCount; $x++){
+		for($y = $startY; $y < $endY; $y++){
+			for($x = $startX; $x < $endX; $x++){
 				// out of bounds, skip
 				if($x < $start || $y < $start ||$x >= $end || $y >= $end){
 					continue;
 				}
-				// a match
-				if($x >= $startX && $x < ($startX + $width) && $y >= $startY && $y < ($startY + $height)){
-					$this->set($x, $y, false, $this::M_LOGO);
-				}
+
+				$this->set($x, $y, false, $this::M_LOGO);
 			}
 		}
 
