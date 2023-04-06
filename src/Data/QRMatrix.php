@@ -272,6 +272,20 @@ class QRMatrix{
 	}
 
 	/**
+	 * Fills an area of $width * $height, from the given starting point [$startX, $startY] (top left) with $value for $M_TYPE.
+	 */
+	public function setArea(int $startX, int $startY, int $width, int $height, bool $value, int $M_TYPE):self{
+
+		for($y = $startY; $y < ($startY + $height); $y++){
+			for($x = $startX; $x < ($startX + $width); $x++){
+				$this->set($x, $y, $value, $M_TYPE);
+			}
+		}
+
+		return $this;
+	}
+
+	/**
 	 * Flips the value of the module at ($x, $y)
 	 */
 	public function flip(int $x, int $y):self{
@@ -376,22 +390,11 @@ class QRMatrix{
 		];
 
 		foreach($pos as $c){
-			for($y = 0; $y < 7; $y++){
-				for($x = 0; $x < 7; $x++){
-					// outer (dark) 7*7 square
-					if($x === 0 || $x === 6 || $y === 0 || $y === 6){
-						$this->set(($c[0] + $y), ($c[1] + $x), true, $this::M_FINDER);
-					}
-					// inner (light) 5*5 square
-					elseif($x === 1 || $x === 5 || $y === 1 || $y === 5){
-						$this->set(($c[0] + $y), ($c[1] + $x), false, $this::M_FINDER);
-					}
-					// 3*3 dot
-					else{
-						$this->set(($c[0] + $y), ($c[1] + $x), true, $this::M_FINDER_DOT);
-					}
-				}
-			}
+			$this
+				->setArea($c[0], $c[1], 7, 7, true, $this::M_FINDER)
+				->setArea(($c[0] + 1), ($c[1] + 1), 5, 5, false, $this::M_FINDER)
+				->setArea(($c[0] + 2), ($c[1] + 2), 3, 3, true, $this::M_FINDER_DOT)
+			;
 		}
 
 		return $this;
@@ -443,13 +446,11 @@ class QRMatrix{
 					continue;
 				}
 
-				for($ry = -2; $ry <= 2; $ry++){
-					for($rx = -2; $rx <= 2; $rx++){
-						$v = ($ry === 0 && $rx === 0) || $ry === 2 || $ry === -2 || $rx === 2 || $rx === -2;
-
-						$this->set(($x + $rx), ($y + $ry), $v, $this::M_ALIGNMENT);
-					}
-				}
+				$this
+					->setArea(($x - 2), ($y - 2), 5, 5, true, $this::M_ALIGNMENT)
+					->setArea(($x - 1), ($y - 1), 3, 3, false, $this::M_ALIGNMENT)
+					->set($x, $y, true, $this::M_ALIGNMENT)
+				;
 
 			}
 		}
