@@ -229,9 +229,9 @@ class QRGdImage extends QROutputAbstract{
 	 * Creates the QR image
 	 */
 	protected function drawImage():void{
-		foreach($this->matrix->getMatrix() as $y => $row){
-			foreach($row as $x => $M_TYPE){
-				$this->setPixel($x, $y, $M_TYPE);
+		for($y = 0; $y < $this->moduleCount; $y++){
+			for($x = 0; $x < $this->moduleCount; $x++){
+				$this->setPixel($x, $y);
 			}
 		}
 	}
@@ -239,11 +239,13 @@ class QRGdImage extends QROutputAbstract{
 	/**
 	 * Creates a single QR pixel with the given settings
 	 */
-	protected function setPixel(int $x, int $y, int $M_TYPE):void{
+	protected function setPixel(int $x, int $y):void{
 
 		if(!$this->options->drawLightModules && !$this->matrix->check($x, $y)){
 			return;
 		}
+
+		$color = $this->getModuleValueAt($x, $y);
 
 		$this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)
 			? imagefilledellipse(
@@ -252,7 +254,7 @@ class QRGdImage extends QROutputAbstract{
 				(int)(($y * $this->scale) + ($this->scale / 2)),
 				(int)(2 * $this->options->circleRadius * $this->scale),
 				(int)(2 * $this->options->circleRadius * $this->scale),
-				$this->getModuleValue($M_TYPE)
+				$color
 			)
 			: imagefilledrectangle(
 				$this->image,
@@ -260,7 +262,7 @@ class QRGdImage extends QROutputAbstract{
 				($y * $this->scale),
 				(($x + 1) * $this->scale),
 				(($y + 1) * $this->scale),
-				$this->getModuleValue($M_TYPE)
+				$color
 			);
 	}
 

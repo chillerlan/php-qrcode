@@ -27,11 +27,11 @@ class QRMarkupHTML extends QRMarkup{
 
 		$html .= $this->options->eol;
 
-		foreach($this->matrix->getMatrix() as $row){
+		for($y = 0; $y < $this->moduleCount; $y++){
 			$html .= '<div>';
 
-			foreach($row as $M_TYPE){
-				$html .= sprintf('<span style="background: %s;"></span>', $this->getModuleValue($M_TYPE));
+			for($x = 0; $x < $this->moduleCount; $x++){
+				$html .= sprintf('<span style="background: %s;"></span>', $this->getModuleValueAt($x, $y));
 			}
 
 			$html .= '</div>'.$this->options->eol;

@@ -92,27 +92,36 @@ abstract class QROutputAbstract implements QROutputInterface{
 	}
 
 	/**
-	 * Returns the prepared value for the given $M_TYPE (return value depends on the output class)
+	 * Returns the prepared value for the given $M_TYPE
 	 *
-	 * @return mixed|null
+	 * @return mixed|null return value depends on the output class
 	 */
 	protected function getModuleValue(int $M_TYPE){
 		return ($this->moduleValues[$M_TYPE] ?? null);
 	}
 
 	/**
-	 * Prepares the value for the given input (return value depends on the output class)
+	 * Returns the prepared module value at the given coordinate [$x, $y] (convenience)
+	 *
+	 * @return mixed|null
+	 */
+	protected function getModuleValueAt(int $x, int $y){
+		return $this->getModuleValue($this->matrix->get($x, $y));
+	}
+
+	/**
+	 * Prepares the value for the given input ()
 	 *
 	 * @param mixed $value
 	 *
-	 * @return mixed
+	 * @return mixed|null return value depends on the output class
 	 */
 	abstract protected function prepareModuleValue($value);
 
 	/**
-	 * Returns a default value for either dark or light modules (return value depends on the output class)
+	 * Returns a default value for either dark or light modules
 	 *
-	 * @return mixed
+	 * @return mixed|null return value depends on the output class
 	 */
 	abstract protected function getDefaultModuleValue(bool $isDark);
 
@@ -161,8 +170,9 @@ abstract class QROutputAbstract implements QROutputInterface{
 		$paths = [];
 
 		// collect the modules for each type
-		foreach($this->matrix->getMatrix() as $y => $row){
-			foreach($row as $x => $M_TYPE){
+		for($y = 0; $y < $this->moduleCount; $y++){
+			for($x = 0; $x < $this->moduleCount; $x++){
+				$M_TYPE       = $this->matrix->get($x, $y);
 				$M_TYPE_LAYER = $M_TYPE;
 
 				if($this->options->connectPaths && !$this->matrix->checkTypeIn($x, $y, $this->options->excludeFromConnect)){

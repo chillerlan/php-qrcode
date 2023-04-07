@@ -66,11 +66,11 @@ class QRString extends QROutputAbstract{
 	protected function text():string{
 		$str = [];
 
-		foreach($this->matrix->getMatrix() as $row){
+		for($y = 0; $y < $this->moduleCount; $y++){
 			$r = [];
 
-			foreach($row as $M_TYPE){
-				$r[] = $this->getModuleValue($M_TYPE);
+			for($x = 0; $x < $this->moduleCount; $x++){
+				$r[] = $this->getModuleValueAt($x, $y);
 			}
 
 			$str[] = implode('', $r);

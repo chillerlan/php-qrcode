@@ -115,15 +115,14 @@ class QRFpdf extends QROutputAbstract{
 
 		$prevColor = null;
 
-		foreach($this->matrix->getMatrix() as $y => $row){
-
-			foreach($row as $x => $M_TYPE){
+		for($y = 0; $y < $this->moduleCount; $y++){
+			for($x = 0; $x < $this->moduleCount; $x++){
 
 				if(!$this->options->drawLightModules && !$this->matrix->check($x, $y)){
 					continue;
 				}
 
-				$color = $this->getModuleValue($M_TYPE);
+				$color = $this->getModuleValueAt($x, $y);
 
 				if($prevColor !== $color){
 					/** @phan-suppress-next-line PhanParamTooFewUnpack */
