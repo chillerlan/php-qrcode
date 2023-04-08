@@ -151,18 +151,15 @@ class QRMatrix{
 	 * @return int[][]|bool[][]
 	 */
 	public function getMatrix(bool $boolean = null):array{
-
-		if(!$boolean){
-			return $this->matrix;
-		}
-
 		$matrix = [];
 
 		foreach($this->matrix as $y => $row){
 			$matrix[$y] = [];
 
 			foreach($row as $x => $val){
-				$matrix[$y][$x] = ($val & $this::IS_DARK) === $this::IS_DARK;
+				$matrix[$y][$x] = $boolean === true
+					? $this->checkType($x, $y, $this::IS_DARK)
+					: $this->get($x, $y);
 			}
 		}
 
@@ -303,12 +300,13 @@ class QRMatrix{
 	 *   true => $value & $M_TYPE === $M_TYPE
 	 */
 	public function checkType(int $x, int $y, int $M_TYPE):bool{
+		$val = $this->get($x, $y);
 
-		if(!isset($this->matrix[$y][$x])){
+		if($val === -1){
 			return false;
 		}
 
-		return ($this->matrix[$y][$x] & $M_TYPE) === $M_TYPE;
+		return ($val & $M_TYPE) === $M_TYPE;
 	}
 
 	/**
@@ -343,21 +341,21 @@ class QRMatrix{
 	 *   8 # 4
 	 *   7 6 5
 	 */
-	public function checkNeighbours(int $x, int $y, int $M_TYPE_VALUE = null):int{
+	public function checkNeighbours(int $x, int $y, int $M_TYPE = null):int{
 		$bits = 0;
 
 		foreach($this::neighbours as $bit => $coord){
 			[$ix, $iy] = $coord;
 
-			// check if the field is the same type
-			if(
-				$M_TYPE_VALUE !== null
-				&& ($this->get(($x + $ix), ($y + $iy)) | $this::IS_DARK) !== ($M_TYPE_VALUE | $this::IS_DARK)
-			){
+			$ix += $x;
+			$iy += $y;
+
+			// $M_TYPE is given, skip if the field is not the same type
+			if($M_TYPE !== null && !$this->checkType($ix, $iy, $M_TYPE)){
 				continue;
 			}
 
-			if($this->checkType(($x + $ix), ($y + $iy), $this::IS_DARK)){
+			if($this->checkType($ix, $iy, $this::IS_DARK)){
 				$bits |= $bit;
 			}
 		}

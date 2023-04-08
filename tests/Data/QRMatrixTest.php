@@ -118,7 +118,7 @@ final class QRMatrixTest extends TestCase{
 	 * Tests if size() returns the actual matrix size/count
 	 */
 	public function testSize():void{
-		$this::assertCount($this->matrix->getSize(), $this->matrix->getMatrix());
+		$this::assertCount($this->matrix->getSize(), $this->matrix->getMatrix(true));
 	}
 
 	/**
@@ -341,8 +341,8 @@ final class QRMatrixTest extends TestCase{
 
 		$s = ($size + 2 * $quietZoneSize);
 
-		$this::assertCount($s, $matrix->getMatrix());
-		$this::assertCount($s, $matrix->getMatrix()[($size - 1)]);
+		$this::assertCount($s, $matrix->getMatrix(true));
+		$this::assertCount($s, $matrix->getMatrix(true)[($size - 1)]);
 
 		$size = $matrix->getSize();
 
