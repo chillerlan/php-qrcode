@@ -174,14 +174,26 @@ trait QROptionsTrait{
 	protected bool $drawCircularModules = false;
 
 	/**
-	 * specifies the radius of the modules when $svgDrawCircularModules is set to true
+	 * specifies the radius of the modules when $drawCircularModules is set to true
 	 */
 	protected float $circleRadius = 0.45;
 
 	/**
-	 * specifies which module types to exclude when $svgDrawCircularModules is set to true
+	 * specifies which module types to exclude when $drawCircularModules is set to true
 	 */
 	protected array $keepAsSquare = [];
+
+	/**
+	 * whether to connect the paths for the several module types to avoid weird glitches when using gradients etc.
+	 *
+	 * @see https://github.com/chillerlan/php-qrcode/issues/57
+	 */
+	protected bool $connectPaths = false;
+
+	/**
+	 * specify which paths/patterns to exclude from connecting if $connectPaths is set to true
+	 */
+	protected array $excludeFromConnect = [];
 
 	/**
 	 * Module values map
@@ -343,18 +355,6 @@ trait QROptionsTrait{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/height
 	 */
 	protected ?string $svgHeight = null;
-
-	/**
-	 * whether to connect the paths for the several module types to avoid weird glitches when using gradients etc.
-	 *
-	 * @see https://github.com/chillerlan/php-qrcode/issues/57
-	 */
-	protected bool $connectPaths = false;
-
-	/**
-	 * specify which paths/patterns to exclude from connecting if $svgConnectPaths is set to true
-	 */
-	protected array $excludeFromConnect = [];
 
 
 	/*
