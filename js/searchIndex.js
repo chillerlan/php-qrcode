@@ -1556,15 +1556,15 @@ Search.appendIndex(
             "summary": "QRMatrix\u0020constructor.",
             "url": "classes/chillerlan-QRCode-Decoder-BitMatrix.html#method___construct"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003AsetMirror\u0028\u0029",
-            "name": "setMirror",
-            "summary": "Prepare\u0020the\u0020parser\u0020for\u0020a\u0020mirrored\u0020operation.",
-            "url": "classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_setMirror"
+            "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003AresetVersionInfo\u0028\u0029",
+            "name": "resetVersionInfo",
+            "summary": "Resets\u0020the\u0020current\u0020version\u0020info\u0020in\u0020order\u0020to\u0020attempt\u0020another\u0020reading",
+            "url": "classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_resetVersionInfo"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003A\u0024mirror",
-            "name": "mirror",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-Decoder-BitMatrix.html#property_mirror"
+            "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003AmirrorDiagonal\u0028\u0029",
+            "name": "mirrorDiagonal",
+            "summary": "Mirror\u0020the\u0020bit\u0020matrix\u0020diagonally\u0020in\u0020order\u0020to\u0020attempt\u0020a\u0020second\u0020reading.",
+            "url": "classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_mirrorDiagonal"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003AreadCodewords\u0028\u0029",
             "name": "readCodewords",
@@ -1625,6 +1625,11 @@ Search.appendIndex(
             "name": "FORMAT_INFO_MASK_QR",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Decoder-BitMatrix.html#constant_FORMAT_INFO_MASK_QR"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Decoder\\BitMatrix\u003A\u003A\u0024mirror",
+            "name": "mirror",
+            "summary": "This\u0020flag\u0020has\u0020effect\u0020only\u0020on\u0020the\u0020copyVersionBit\u0028\u0029\u0020method.",
+            "url": "classes/chillerlan-QRCode-Decoder-BitMatrix.html#property_mirror"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\Decoder",
             "name": "Decoder",

@@ -411,7 +411,7 @@
     <span>
                         &nbsp;: bool            </span>
 </dt>
-<dd></dd>
+<dd>This flag has effect only on the copyVersionBit() method.</dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method___construct">__construct()</a>
@@ -534,11 +534,11 @@ returns true if a match is found, otherwise false.</dd>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_mirror">mirror()</a>
+    <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_mirrorDiagonal">mirrorDiagonal()</a>
     <span>
                                 &nbsp;: self    </span>
 </dt>
-<dd>Mirror the bit matrix in order to attempt a second reading.</dd>
+<dd>Mirror the bit matrix diagonally in order to attempt a second reading.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_readCodewords">readCodewords()</a>
@@ -548,6 +548,13 @@ returns true if a match is found, otherwise false.</dd>
 <dd>Reads the bits in the BitMatrix representing the finder pattern in the
 correct order in order to reconstruct the codewords bytes contained within the
 QR Code. Throws if the exact number of bytes expected is not read.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_resetVersionInfo">resetVersionInfo()</a>
+    <span>
+                                &nbsp;: self    </span>
+</dt>
+<dd>Resets the current version info in order to attempt another reading</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_set">set()</a>
@@ -597,13 +604,6 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
                                 &nbsp;: self    </span>
 </dt>
 <dd>Clears a space of $width * $height in order to add a logo or text.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_setMirror">setMirror()</a>
-    <span>
-                                &nbsp;: self    </span>
-</dt>
-<dd>Prepare the parser for a mirrored operation.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_setQuietZone">setQuietZone()</a>
@@ -1652,18 +1652,20 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">66</span>
+    <span class="phpdocumentor-element-found-in__line">70</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">This flag has effect only on the copyVersionBit() method.</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">bool</span>
     <span class="phpdocumentor-signature__name">$mirror</span>
      = <span class="phpdocumentor-signature__default-value">false</span></code>
 
-        <section class="phpdocumentor-description"></section>
+        <section class="phpdocumentor-description"><p>Before proceeding with readCodewords() the resetInfo() method should be called.</p>
+</section>
 
         <section class="phpdocumentor-description"></section>
 
@@ -1690,7 +1692,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">71</span>
+    <span class="phpdocumentor-element-found-in__line">75</span>
 
     </aside>
 
@@ -2544,9 +2546,9 @@ returns true if a match is found, otherwise false.</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_mirror">
-        mirror()
-        <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_mirror" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_mirrorDiagonal">
+        mirrorDiagonal()
+        <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_mirrorDiagonal" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
@@ -2555,11 +2557,11 @@ returns true if a match is found, otherwise false.</p>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Mirror the bit matrix in order to attempt a second reading.</p>
+        <p class="phpdocumentor-summary">Mirror the bit matrix diagonally in order to attempt a second reading.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">mirror</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+                    <span class="phpdocumentor-signature__name">mirrorDiagonal</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
     
     
@@ -2584,7 +2586,7 @@ returns true if a match is found, otherwise false.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">115</span>
+    <span class="phpdocumentor-element-found-in__line">112</span>
 
     </aside>
 
@@ -2616,6 +2618,39 @@ QR Code. Throws if the exact number of bytes expected is not read.</p>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            &mdash;
+        
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_resetVersionInfo">
+        resetVersionInfo()
+        <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_resetVersionInfo" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">83</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Resets the current version info in order to attempt another reading</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">resetVersionInfo</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+
+    
+    
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">self</span>
             &mdash;
         
     
@@ -2939,7 +2974,7 @@ false =&gt; $M_TYPE</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">430</span>
+    <span class="phpdocumentor-element-found-in__line">427</span>
 
     </aside>
 
@@ -3021,54 +3056,6 @@ false =&gt; $M_TYPE</p>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_setMirror">
-        setMirror()
-        <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_setMirror" class="headerlink"><i class="fas fa-link"></i></a>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">82</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Prepare the parser for a mirrored operation.</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">setMirror</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$mirror</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
-
-        <section class="phpdocumentor-description"><p>This flag has effect only on the readFormatInformation() and the
-readVersion() methods. Before proceeding with readCodewords() the
-mirror() method should be called.</p>
-</section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$mirror</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
-            </dd>
-            </dl>
-
-    
-
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_setQuietZone">
         setQuietZone()
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_setQuietZone" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3076,7 +3063,7 @@ mirror() method should be called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">422</span>
+    <span class="phpdocumentor-element-found-in__line">419</span>
 
     </aside>
 
@@ -3468,7 +3455,7 @@ mirror() method should be called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">247</span>
+    <span class="phpdocumentor-element-found-in__line">244</span>
 
     </aside>
 
@@ -3527,7 +3514,7 @@ mirror() method should be called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">355</span>
+    <span class="phpdocumentor-element-found-in__line">352</span>
 
     </aside>
 
@@ -3571,7 +3558,7 @@ mirror() method should be called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">259</span>
+    <span class="phpdocumentor-element-found-in__line">256</span>
 
     </aside>
 
@@ -3623,7 +3610,7 @@ mirror() method should be called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">403</span>
+    <span class="phpdocumentor-element-found-in__line">400</span>
 
     </aside>
 
@@ -3674,7 +3661,7 @@ mirror() method should be called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">186</span>
+    <span class="phpdocumentor-element-found-in__line">183</span>
 
     </aside>
 
@@ -3723,7 +3710,7 @@ mirror() method should be called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">303</span>
+    <span class="phpdocumentor-element-found-in__line">300</span>
 
     </aside>
 
@@ -3781,7 +3768,7 @@ mirror() method should be called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">391</span>
+    <span class="phpdocumentor-element-found-in__line">388</span>
 
     </aside>
 
