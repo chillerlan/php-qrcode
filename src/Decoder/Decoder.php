@@ -54,7 +54,7 @@ final class Decoder{
 				 * that the QR code may be mirrored, and we should try once more with a
 				 * mirrored content.
 				 */
-				return $this->decodeMatrix($matrix->setMirror(true)->mirror());
+				return $this->decodeMatrix($matrix->resetVersionInfo()->mirrorDiagonal());
 			}
 			catch(Throwable $f){
 				// Throw the exception from the original reading

@@ -13,7 +13,7 @@ namespace chillerlan\QRCode\Decoder;
 
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
-use function array_fill, count;
+use function array_fill, array_map, array_reverse, count;
 use const PHP_INT_MAX, PHP_INT_SIZE;
 
 /**
@@ -63,6 +63,10 @@ final class BitMatrix extends QRMatrix{
 
 	private const FORMAT_INFO_MASK_QR = 0x5412; // 0101010000010010
 
+	/**
+	 * This flag has effect only on the copyVersionBit() method.
+	 * Before proceeding with readCodewords() the resetInfo() method should be called.
+	 */
 	private bool $mirror = false;
 
 	/**
@@ -74,33 +78,26 @@ final class BitMatrix extends QRMatrix{
 	}
 
 	/**
-	 * Prepare the parser for a mirrored operation.
-	 * This flag has effect only on the readFormatInformation() and the
-	 * readVersion() methods. Before proceeding with readCodewords() the
-	 * mirror() method should be called.
+	 * Resets the current version info in order to attempt another reading
 	 */
-	public function setMirror(bool $mirror):self{
+	public function resetVersionInfo():self{
 		$this->version     = null;
 		$this->eccLevel    = null;
 		$this->maskPattern = null;
-		$this->mirror      = $mirror;
 
 		return $this;
 	}
 
 	/**
-	 * Mirror the bit matrix in order to attempt a second reading.
+	 * Mirror the bit matrix diagonally in order to attempt a second reading.
 	 */
-	public function mirror():self{
+	public function mirrorDiagonal():self{
+		$this->mirror = !$this->mirror;
 
-		for($x = 0; $x < $this->moduleCount; $x++){
-			for($y = ($x + 1); $y < $this->moduleCount; $y++){
-				if($this->get($x, $y) !== $this->get($y, $x)){
-					$this->flip($y, $x);
-					$this->flip($x, $y);
-				}
-			}
-		}
+		// mirror vertically
+		$matrix = array_reverse($this->matrix);
+		// rotate by 90 degrees clockwise
+		$this->matrix = array_map(fn(...$a) => array_reverse($a), ...$matrix);
 
 		return $this;
 	}
