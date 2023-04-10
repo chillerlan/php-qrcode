@@ -19,7 +19,7 @@ use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\Settings\SettingsContainerInterface;
 use PHPUnit\Framework\TestCase;
 use Exception, Generator;
-use function array_map, sprintf, str_repeat, substr;
+use function array_map, defined, sprintf, str_repeat, substr;
 
 /**
  * Tests the QR Code reader
@@ -40,6 +40,11 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 	protected string                     $FQN;
 
 	protected function setUp():void{
+
+		if(!defined('READER_TEST_MAX_VERSION')){
+			$this::markTestSkipped('READER_TEST_MAX_VERSION not defined (see phpunit.xml.dist)');
+		}
+
 		$this->options = new QROptions;
 		$this->options->readerUseImagickIfAvailable = false;
 	}
@@ -117,7 +122,8 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		$str       = str_repeat(self::loremipsum, 5);
 		$eccLevels = array_map(fn(int $ecc):EccLevel => new EccLevel($ecc), [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H]);
 
-		for($v = 1; $v <= 40; $v++){
+		/** @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist */
+		for($v = 1; $v <= READER_TEST_MAX_VERSION; $v++){
 			$version = new Version($v);
 
 			foreach($eccLevels as $eccLevel){

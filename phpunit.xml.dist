@@ -33,5 +33,7 @@
 	<php>
 		<!-- whether the test runs on CI - set to false to allow debug output -->
 		<const name="TEST_IS_CI" value="true"/>
+		<!-- limit the maximum version for the reader test to speed up things -->
+		<const name="READER_TEST_MAX_VERSION" value="40"/>
 	</php>
 </phpunit>
