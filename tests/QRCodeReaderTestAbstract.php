@@ -122,7 +122,10 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		$str       = str_repeat(self::loremipsum, 5);
 		$eccLevels = array_map(fn(int $ecc):EccLevel => new EccLevel($ecc), [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H]);
 
-		/** @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist */
+		/**
+		 * @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist
+		 * @phan-suppress-next-next-line PhanUndeclaredConstant
+		 */
 		for($v = 1; $v <= READER_TEST_MAX_VERSION; $v++){
 			$version = new Version($v);
 
