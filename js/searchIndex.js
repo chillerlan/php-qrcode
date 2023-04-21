@@ -1266,11 +1266,6 @@ Search.appendIndex(
             "summary": "Fills\u0020an\u0020area\u0020of\u0020\u0024width\u0020\u002A\u0020\u0024height,\u0020from\u0020the\u0020given\u0020starting\u0020point\u0020\u005B\u0024startX,\u0020\u0024startY\u005D\u0020\u0028top\u0020left\u0029\u0020with\u0020\u0024value\u0020for\u0020\u0024M_TYPE.",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_setArea"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003Aflip\u0028\u0029",
-            "name": "flip",
-            "summary": "Flips\u0020the\u0020value\u0020of\u0020the\u0020module\u0020at\u0020\u0028\u0024x,\u0020\u0024y\u0029",
-            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_flip"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AcheckType\u0028\u0029",
             "name": "checkType",
             "summary": "Checks\u0020whether\u0020the\u0020module\u0020at\u0020\u0028\u0024x,\u0020\u0024y\u0029\u0020is\u0020of\u0020the\u0020given\u0020\u0024M_TYPE",
@@ -4045,11 +4040,6 @@ Search.appendIndex(
             "name": "testSetLogoSpaceMaxSizeException",
             "summary": "Tests\u0020whether\u0020an\u0020exception\u0020is\u0020thrown\u0020when\u0020the\u0020logo\u0020space\u0020size\u0020exceeds\u0020the\u0020maximum\u0020ECC\u0020capacity",
             "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetLogoSpaceMaxSizeException"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AtestFlip\u0028\u0029",
-            "name": "testFlip",
-            "summary": "Tests\u0020flipping\u0020the\u0020value\u0020of\u0020a\u0020module",
-            "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testFlip"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AtestCheckTypeIn\u0028\u0029",
             "name": "testCheckTypeIn",
