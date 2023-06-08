@@ -185,14 +185,14 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 					$M_TYPE_LAYER = QRMatrix::M_DATA;
 
 					if($this->matrix->check($x, $y)){
-						$M_TYPE_LAYER |= QRMatrix::IS_DARK;
+						$M_TYPE_LAYER = QRMatrix::M_DATA_DARK;
 					}
 				}
 
 				// randomly assign another $M_TYPE_LAYER for the given types
-				// note that the layer id has to be an integer value,
-				// ideally outside the several bitmask values
-				if($M_TYPE_LAYER === QRMatrix::M_DATA_DARK){
+				if($this->matrix->checkType($x, $y, QRMatrix::M_QUIETZONE_DARK)){
+					// note that the layer id has to be an integer value,
+					// ideally outside the several bitmask values
 					$M_TYPE_LAYER = array_rand($this->options->dotColors);
 				}
 
@@ -330,20 +330,11 @@ $options = new RoundQuietzoneOptions([
 
 	// common SVG options
 	'svgDefs'             => $svgDefs,
-//	'connectPaths'        => true, // this has been set to "always on" internally
-	'excludeFromConnect'  => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-		QRMatrix::M_ALIGNMENT_DARK,
-		(QRMatrix::M_QUIETZONE | QRMatrix::IS_DARK),
-	],
+#	'connectPaths'        => true, // this has been set to "always on" internally
+#	'excludeFromConnect'  => (QRMatrix::M_TIMING_DARK | QRMatrix::M_FORMAT_DARK),
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.4,
-	'keepAsSquare'        => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-		QRMatrix::M_ALIGNMENT_DARK,
-	],
+	'keepAsSquare'        => (QRMatrix::M_FINDER | QRMatrix::M_FINDER_DOT | QRMatrix::M_ALIGNMENT),
 ]);
 
 $qrcode = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');

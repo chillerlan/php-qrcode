@@ -46,21 +46,19 @@ class RandomDotsSVGOutput extends QRMarkupSVG{
 				$M_TYPE       = $this->matrix->get($x, $y);
 				$M_TYPE_LAYER = $M_TYPE;
 
-				if($this->options->connectPaths
-				   && !$this->matrix->checkTypeIn($x, $y, $this->options->excludeFromConnect)
-				){
+				if($this->options->connectPaths && !$this->matrix->checkTypeIn($x, $y, $this->options->excludeFromConnect)){
 					// to connect paths we'll redeclare the $M_TYPE_LAYER to data only
 					$M_TYPE_LAYER = QRMatrix::M_DATA;
 
 					if($this->matrix->check($x, $y)){
-						$M_TYPE_LAYER |= QRMatrix::IS_DARK;
+						$M_TYPE_LAYER = QRMatrix::M_DATA_DARK;
 					}
 				}
 
 				// randomly assign another $M_TYPE_LAYER for the given types
-				// note that the layer id has to be an integer value,
-				// ideally outside the several bitmask values
 				if($M_TYPE_LAYER === QRMatrix::M_DATA_DARK){
+					// note that the layer id has to be an integer value,
+					// ideally outside the several bitmask values
 					$M_TYPE_LAYER = array_rand($this->options->dotColors);
 				}
 
@@ -100,12 +98,12 @@ class RandomDotsOptions extends QROptions{
 
 // our custom dot colors
 $dotColors = [
-	111 => '#e2453c',
-	222 => '#e07e39',
-	333 => '#e5d667',
-	444 => '#51b95b',
-	555 => '#1e72b7',
-	666 => '#6f5ba7',
+	(111 | QRMatrix::IS_DARK) => '#e2453c',
+	(222 | QRMatrix::IS_DARK) => '#e07e39',
+	(333 | QRMatrix::IS_DARK) => '#e5d667',
+	(444 | QRMatrix::IS_DARK) => '#51b95b',
+	(555 | QRMatrix::IS_DARK) => '#1e72b7',
+	(666 | QRMatrix::IS_DARK) => '#6f5ba7',
 ];
 
 // generate the CSS for the several colored layers
@@ -134,20 +132,11 @@ $options = new RandomDotsOptions([
 	'drawLightModules'    => false,
 
 	'connectPaths'        => true,
-	'excludeFromConnect'  => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-		QRMatrix::M_ALIGNMENT_DARK,
-	],
+	'excludeFromConnect'  => (QRMatrix::M_FINDER | QRMatrix::M_FINDER_DOT | QRMatrix::M_ALIGNMENT),
 
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.4,
-	'keepAsSquare'        => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-		QRMatrix::M_ALIGNMENT_DARK,
-	],
-
+	'keepAsSquare'        => (QRMatrix::M_FINDER | QRMatrix::M_FINDER_DOT | QRMatrix::M_ALIGNMENT),
 ]);
 
 // dump the output

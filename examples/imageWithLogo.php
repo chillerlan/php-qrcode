@@ -85,7 +85,7 @@ $options = new QROptions([
 	'imageTransparent'    => false,
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.45,
-	'keepAsSquare'        => [QRMatrix::M_FINDER, QRMatrix::M_FINDER_DOT],
+	'keepAsSquare'        => (QRMatrix::M_FINDER | QRMatrix::M_FINDER_DOT),
 ]);
 
 $qrcode = new QRCode($options);

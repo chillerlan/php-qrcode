@@ -48,7 +48,7 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 					$M_TYPE_LAYER = QRMatrix::M_DATA;
 
 					if($this->matrix->check($x, $y)){
-						$M_TYPE_LAYER |= QRMatrix::IS_DARK;
+						$M_TYPE_LAYER = QRMatrix::M_DATA_DARK;
 					}
 				}
 
@@ -251,19 +251,16 @@ $options = new MeltedOutputOptions([
 
 	'version'            => 7,
 	'eccLevel'           => EccLevel::H,
+	'imageBase64'        => false,
 	'addQuietzone'       => true,
 	'addLogoSpace'       => true,
 	'logoSpaceWidth'     => 13,
 	'logoSpaceHeight'    => 13,
 	'connectPaths'       => true,
-	'imageBase64'        => false,
+	'excludeFromConnect' => (QRMatrix::M_FINDER | QRMatrix::M_FINDER_DOT),
 
 	'outputType'         => QROutputInterface::CUSTOM,
 	'outputInterface'    => MeltedSVGQRCodeOutput::class,
-	'excludeFromConnect' => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-	],
 	'svgDefs'            => '
 	<linearGradient id="rainbow" x1="100%" y2="100%">
 		<stop stop-color="#e2453c" offset="2.5%"/>

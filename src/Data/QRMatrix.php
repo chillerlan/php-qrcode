@@ -22,47 +22,51 @@ use function array_fill, count, floor, range;
 class QRMatrix{
 
 	/** @var int */
-	public const IS_DARK          = 0b100000000000;
+	public const IS_DARK          = 0b100000000000000000000000;
 	/** @var int */
-	public const M_NULL           = 0b000000000000;
+	public const M_NULL           = 0b000000000000000000000000;
 	/** @var int */
-	public const M_DARKMODULE     = 0b100000000001;
+	public const M_DARKMODULE     = 0b100000000001000000000001;
 	/** @var int */
-	public const M_DATA           = 0b000000000010;
+	public const M_DATA           = 0b000000000000000000000010;
 	/** @var int */
-	public const M_DATA_DARK      = 0b100000000010;
+	public const M_DATA_DARK      = 0b100000000010000000000010;
 	/** @var int */
-	public const M_FINDER         = 0b000000000100;
+	public const M_FINDER         = 0b000000000000000000000100;
 	/** @var int */
-	public const M_FINDER_DARK    = 0b100000000100;
+	public const M_FINDER_DARK    = 0b100000000100000000000100;
 	/** @var int */
-	public const M_SEPARATOR      = 0b000000001000;
+	public const M_SEPARATOR      = 0b000000000000000000001000;
 	/** @var int */
-	public const M_ALIGNMENT      = 0b000000010000;
+	public const M_ALIGNMENT      = 0b000000000000000000010000;
 	/** @var int */
-	public const M_ALIGNMENT_DARK = 0b100000010000;
+	public const M_ALIGNMENT_DARK = 0b100000010000000000010000;
 	/** @var int */
-	public const M_TIMING         = 0b000000100000;
+	public const M_TIMING         = 0b000000000000000000100000;
 	/** @var int */
-	public const M_TIMING_DARK    = 0b100000100000;
+	public const M_TIMING_DARK    = 0b100000100000000000100000;
 	/** @var int */
-	public const M_FORMAT         = 0b000001000000;
+	public const M_FORMAT         = 0b000000000000000001000000;
 	/** @var int */
-	public const M_FORMAT_DARK    = 0b100001000000;
+	public const M_FORMAT_DARK    = 0b100001000000000001000000;
 	/** @var int */
-	public const M_VERSION        = 0b000010000000;
+	public const M_VERSION        = 0b000000000000000010000000;
 	/** @var int */
-	public const M_VERSION_DARK   = 0b100010000000;
+	public const M_VERSION_DARK   = 0b100010000000000010000000;
 	/** @var int */
-	public const M_QUIETZONE      = 0b000100000000;
+	public const M_QUIETZONE      = 0b000000000000000100000000;
 	/** @var int */
-	public const M_LOGO           = 0b001000000000;
+	public const M_QUIETZONE_DARK = 0b100100000000000100000000;
 	/** @var int */
-	public const M_FINDER_DOT     = 0b110000000000;
+	public const M_LOGO           = 0b000000000000001000000000;
 	/** @var int */
-	public const M_TEST           = 0b011111111111;
+	public const M_LOGO_DARK      = 0b101000000000001000000000;
 	/** @var int */
-	public const M_TEST_DARK      = 0b111111111111;
+	public const M_FINDER_DOT     = 0b110000000000010000000000;
+	/** @var int */
+	public const M_TEST           = 0b000000000000011111111111;
+	/** @var int */
+	public const M_TEST_DARK      = 0b111111111111011111111111;
 
 	/**
 	 * Map of flag => coord
@@ -256,14 +260,23 @@ class QRMatrix{
 	/**
 	 * Sets the $M_TYPE value for the module at position [$x, $y]
 	 *
-	 *   true  => $M_TYPE | 0x800
+	 *   true  => (self::IS_DARK | ($M_TYPE << 12) | $M_TYPE)
 	 *   false => $M_TYPE
 	 */
 	public function set(int $x, int $y, bool $value, int $M_TYPE):self{
 
-		if(isset($this->matrix[$y][$x])){
-			$this->matrix[$y][$x] = (($M_TYPE & ~$this::IS_DARK) | (($value) ? $this::IS_DARK : 0));
+		if(!isset($this->matrix[$y][$x])){
+			return $this;
 		}
+
+		// we'll convert to the basic light value (lowest 11 bits), in case we get passed a dark $M_TYPE value
+		$val = ($M_TYPE & 0x7ff);
+
+		if($value === true){
+			$val = ($this::IS_DARK | ($val << 12) | $val);
+		}
+
+		$this->matrix[$y][$x] = $val;
 
 		return $this;
 	}
@@ -301,15 +314,16 @@ class QRMatrix{
 	 * checks whether the module at ($x, $y) is in the given array of $M_TYPES,
 	 * returns true if a match is found, otherwise false.
 	 */
-	public function checkTypeIn(int $x, int $y, array $M_TYPES):bool{
+	public function checkTypeIn(int $x, int $y, int $M_TYPES):bool{
+		$val = $this->get($x, $y);
 
-		foreach($M_TYPES as $type){
-			if($this->checkType($x, $y, $type)){
-				return true;
-			}
+		if($val === -1){
+			return false;
 		}
 
-		return false;
+#		printf("%024b\n%024b\n%024b\n\n", $M_TYPES, $val, (($val & $M_TYPES)));
+
+		return ($val & $M_TYPES & 0x7fffff) > 0;
 	}
 
 	/**
