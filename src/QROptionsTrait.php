@@ -181,7 +181,7 @@ trait QROptionsTrait{
 	/**
 	 * specifies which module types to exclude when $drawCircularModules is set to true
 	 */
-	protected array $keepAsSquare = [];
+	protected int $keepAsSquare = 0;
 
 	/**
 	 * whether to connect the paths for the several module types to avoid weird glitches when using gradients etc.
@@ -193,7 +193,7 @@ trait QROptionsTrait{
 	/**
 	 * specify which paths/patterns to exclude from connecting if $connectPaths is set to true
 	 */
-	protected array $excludeFromConnect = [];
+	protected int $excludeFromConnect = 0;
 
 	/**
 	 * Module values map

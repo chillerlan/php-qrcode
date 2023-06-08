@@ -124,11 +124,7 @@ $options = new SVGWithLogoOptions([
 	// connect paths
 	'connectPaths'        => true,
 	// keep modules of thhese types as square
-	'keepAsSquare'        => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-		QRMatrix::M_ALIGNMENT_DARK,
-	],
+	'keepAsSquare'        => ((QRMatrix::M_FINDER | QRMatrix::M_FINDER_DOT | QRMatrix::M_ALIGNMENT) << 12),
 	// https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient
 	'svgDefs'             => '
 	<linearGradient id="gradient" x1="100%" y2="100%">

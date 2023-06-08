@@ -33,11 +33,8 @@ $options = new QROptions([
 	// connect paths
 	'connectPaths'        => true,
 	// keep modules of these types as square
-	'keepAsSquare'        => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-		QRMatrix::M_ALIGNMENT_DARK,
-	],
+	'keepAsSquare'        => ((QRMatrix::M_FINDER | QRMatrix::M_FINDER_DOT | QRMatrix::M_ALIGNMENT) << 12),
+#	'keepAsSquare'        => 0b110000010100010000000000,
 	// https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient
 	'svgDefs'             => '
 	<linearGradient id="rainbow" x1="100%" y2="100%">

@@ -25,11 +25,7 @@ $options = new QROptions([
 	'drawLightModules'    => true,
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.4,
-	'keepAsSquare'        => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-		QRMatrix::M_ALIGNMENT_DARK,
-	],
+	'keepAsSquare'        => ((QRMatrix::M_FINDER | QRMatrix::M_FINDER_DOT | QRMatrix::M_ALIGNMENT) << 12),
 	'moduleValues'        => [
 		// finder
 		QRMatrix::M_FINDER_DARK    => '#A71111', // dark (true)
