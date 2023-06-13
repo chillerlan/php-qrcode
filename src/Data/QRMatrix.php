@@ -56,7 +56,11 @@ class QRMatrix{
 	/** @var int */
 	public const M_QUIETZONE      = 0b000100000000;
 	/** @var int */
+	public const M_QUIETZONE_DARK = 0b100100000000;
+	/** @var int */
 	public const M_LOGO           = 0b001000000000;
+	/** @var int */
+	public const M_LOGO_DARK      = 0b101000000000;
 	/** @var int */
 	public const M_FINDER_DOT     = 0b110000000000;
 	/** @var int */

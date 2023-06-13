@@ -82,6 +82,8 @@ interface QROutputInterface{
 		QRMatrix::M_TIMING_DARK    => true,
 		QRMatrix::M_FORMAT_DARK    => true,
 		QRMatrix::M_VERSION_DARK   => true,
+		QRMatrix::M_QUIETZONE_DARK => true,
+		QRMatrix::M_LOGO_DARK      => true,
 		QRMatrix::M_FINDER_DOT     => true,
 		QRMatrix::M_TEST_DARK      => true,
 	];
