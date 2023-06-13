@@ -124,7 +124,7 @@ class QRFpdf extends QROutputAbstract{
 
 				$color = $this->getModuleValueAt($x, $y);
 
-				if($prevColor !== $color){
+				if($color !== null && $color !== $prevColor){
 					/** @phan-suppress-next-line PhanParamTooFewUnpack */
 					$fpdf->SetFillColor(...$color);
 					$prevColor = $color;
