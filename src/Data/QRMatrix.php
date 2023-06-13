@@ -11,7 +11,7 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, ReedSolomonEncoder, Version};
-use function array_fill, count, floor, range;
+use function array_fill, count, floor;
 
 /**
  * Holds an array representation of the final QR Code that contains numerical values for later output modifications;
@@ -459,7 +459,7 @@ class QRMatrix{
 	 */
 	public function setTimingPattern():self{
 
-		foreach(range(8, ($this->moduleCount - 8 - 1)) as $i){
+		for($i = 8; $i < ($this->moduleCount - 8); $i++){
 
 			if($this->matrix[6][$i] !== $this::M_NULL || $this->matrix[$i][6] !== $this::M_NULL){
 				continue;
