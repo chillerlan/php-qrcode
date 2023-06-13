@@ -89,6 +89,36 @@ interface QROutputInterface{
 	];
 
 	/**
+	 * @var string[]
+	 */
+	public const LAYERNAMES = [
+		// light
+		QRMatrix::M_NULL           => 'null',
+		QRMatrix::M_DATA           => 'data',
+		QRMatrix::M_FINDER         => 'finder',
+		QRMatrix::M_SEPARATOR      => 'separator',
+		QRMatrix::M_ALIGNMENT      => 'alignment',
+		QRMatrix::M_TIMING         => 'timing',
+		QRMatrix::M_FORMAT         => 'format',
+		QRMatrix::M_VERSION        => 'version',
+		QRMatrix::M_QUIETZONE      => 'quietzone',
+		QRMatrix::M_LOGO           => 'logo',
+		QRMatrix::M_TEST           => 'test',
+		// dark
+		QRMatrix::M_DARKMODULE     => 'darkmodule',
+		QRMatrix::M_DATA_DARK      => 'data-dark',
+		QRMatrix::M_FINDER_DARK    => 'finder-dark',
+		QRMatrix::M_ALIGNMENT_DARK => 'alignment-dark',
+		QRMatrix::M_TIMING_DARK    => 'timing-dark',
+		QRMatrix::M_FORMAT_DARK    => 'format-dark',
+		QRMatrix::M_VERSION_DARK   => 'version-dark',
+		QRMatrix::M_QUIETZONE_DARK => 'quietzone-dark',
+		QRMatrix::M_LOGO_DARK      => 'logo-dark',
+		QRMatrix::M_FINDER_DOT     => 'finder-dot',
+		QRMatrix::M_TEST_DARK      => 'test-dark',
+	];
+
+	/**
 	 * Determines whether the given value is valid
 	 *
 	 * @param mixed $value

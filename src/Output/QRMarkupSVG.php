@@ -144,7 +144,7 @@ class QRMarkupSVG extends QRMarkup{
 	 */
 	protected function getCssClass(int $M_TYPE):string{
 		return implode(' ', [
-			'qr-'.$M_TYPE,
+			'qr-'.($this::LAYERNAMES[$M_TYPE] ?? $M_TYPE),
 			(($M_TYPE & QRMatrix::IS_DARK) === QRMatrix::IS_DARK) ? 'dark' : 'light',
 			$this->options->cssClass,
 		]);
