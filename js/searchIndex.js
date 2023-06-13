@@ -1426,10 +1426,20 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_QUIETZONE"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_QUIETZONE_DARK",
+            "name": "M_QUIETZONE_DARK",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_QUIETZONE_DARK"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_LOGO",
             "name": "M_LOGO",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_LOGO"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_LOGO_DARK",
+            "name": "M_LOGO_DARK",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_LOGO_DARK"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_FINDER_DOT",
             "name": "M_FINDER_DOT",
@@ -2576,11 +2586,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QRMarkupHTML.html#method_createMarkup"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupHTML\u003A\u003AgetCssClass\u0028\u0029",
-            "name": "getCssClass",
-            "summary": "returns\u0020a\u0020string\u0020with\u0020all\u0020css\u0020classes\u0020for\u0020the\u0020current\u0020element",
-            "url": "classes/chillerlan-QRCode-Output-QRMarkupHTML.html#method_getCssClass"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG",
             "name": "QRMarkupSVG",
             "summary": "SVG\u0020output",
@@ -2785,6 +2790,11 @@ Search.appendIndex(
             "name": "DEFAULT_MODULE_VALUES",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_DEFAULT_MODULE_VALUES"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003ALAYERNAMES",
+            "name": "LAYERNAMES",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_LAYERNAMES"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRString",
             "name": "QRString",
