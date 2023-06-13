@@ -94,10 +94,17 @@ abstract class QROutputAbstract implements QROutputInterface{
 	/**
 	 * Returns the prepared value for the given $M_TYPE
 	 *
-	 * @return mixed|null return value depends on the output class
+	 * @return mixed|null return value depends on the output class, null if $moduleValues[$M_TYPE] doesn't exist
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function getModuleValue(int $M_TYPE){
-		return ($this->moduleValues[$M_TYPE] ?? null);
+
+		if(!isset($this->moduleValues[$M_TYPE])){
+			return null;
+#			throw new QRCodeOutputException(sprintf('invalid M_TYPE: %024b', $M_TYPE));
+		}
+
+		return $this->moduleValues[$M_TYPE];
 	}
 
 	/**
