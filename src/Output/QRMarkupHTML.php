@@ -50,11 +50,4 @@ class QRMarkupHTML extends QRMarkup{
 		return $html;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
-	protected function getCssClass(int $M_TYPE):string{
-		return $this->options->cssClass;
-	}
-
 }
