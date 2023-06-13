@@ -113,7 +113,8 @@ It's generally a good idea to wrap the reading in a try/catch block to handle an
 
 ### Framework Integration
 - Drupal:
-  - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login)
+  - [Two-factor Authentication `tfa`](https://www.drupal.org/project/tfa) (Drupal 8+)
+  - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login) (deprecated, Drupal 7)
 - Symfony
   - [phpqrcode-bundle](https://github.com/jonasarts/phpqrcode-bundle)
 - WordPress:
@@ -129,8 +130,9 @@ It's generally a good idea to wrap the reading in a try/catch block to handle an
   - [GÉANT CAT](https://github.com/GEANT/CAT)
   - [openITCOCKPIT](https://github.com/it-novum/openITCOCKPIT)
   - [twill](https://github.com/area17/twill)
+  - [Elefant CMS](https://github.com/jbroadway/elefant)
 - Articles:
-  - https://www.twilio.com/blog/create-qr-code-in-php
+  - https://www.twilio.com/blog/create-qr-code-in-php (featuring v4.3.x)
 
 ### Shameless advertising
 Hi, please check out my other projects that are way cooler than qrcodes!
