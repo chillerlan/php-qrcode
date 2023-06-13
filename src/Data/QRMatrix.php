@@ -155,15 +155,18 @@ class QRMatrix{
 	 * @return int[][]|bool[][]
 	 */
 	public function getMatrix(bool $boolean = null):array{
+
+		if($boolean !== true){
+			return $this->matrix;
+		}
+
 		$matrix = [];
 
-		foreach($this->matrix as $y => $row){
+		for($y = 0; $y < $this->moduleCount; $y++){
 			$matrix[$y] = [];
 
-			foreach($row as $x => $val){
-				$matrix[$y][$x] = $boolean === true
-					? $this->checkType($x, $y, $this::IS_DARK)
-					: $this->get($x, $y);
+			for($x = 0; $x < $this->moduleCount; $x++){
+				$matrix[$y][$x] = $this->checkType($x, $y, $this::IS_DARK);
 			}
 		}
 
