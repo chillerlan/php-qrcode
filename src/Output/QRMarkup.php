@@ -82,7 +82,7 @@ abstract class QRMarkup extends QROutputAbstract{
 	/**
 	 * returns a string with all css classes for the current element
 	 */
-	protected function getCssClass(int $M_TYPE):string{
+	protected function getCssClass(int $M_TYPE = 0):string{
 		return $this->options->cssClass;
 	}
 
