@@ -13,7 +13,7 @@ namespace chillerlan\QRCode\Decoder;
 
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
-use function array_fill, array_map, array_reverse, count;
+use function array_fill, array_reverse, count;
 use const PHP_INT_MAX, PHP_INT_SIZE;
 
 /**
@@ -95,12 +95,10 @@ final class BitMatrix extends QRMatrix{
 		$this->mirror = !$this->mirror;
 
 		// mirror vertically
-		$matrix = array_reverse($this->matrix);
+		$this->matrix = array_reverse($this->matrix);
 		// rotate by 90 degrees clockwise
-		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
-		$this->matrix = array_map(fn(...$a):array => array_reverse($a), ...$matrix);
-
-		return $this;
+		/** @phan-suppress-next-line PhanTypeMismatchReturnSuperType */
+		return $this->rotate90();
 	}
 
 	/**

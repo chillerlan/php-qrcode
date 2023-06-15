@@ -368,6 +368,43 @@ final class QRMatrixTest extends TestCase{
 	}
 
 	/**
+	 * Tests rotating the matrix by 90 degrees CW
+	 *
+	 * @dataProvider matrixProvider
+	 */
+	public function testRotate90(QRMatrix $matrix):void{
+		$matrix->initFunctionalPatterns();
+
+		// matrix size
+		$size = $matrix->getSize();
+		// quiet zone size
+		$qz   = (($size - $matrix->getVersion()->getDimension()) / 2);
+
+		// initial dark module position
+		$this::assertSame(QRMatrix::M_DARKMODULE, $matrix->get((8 + $qz), ($size - 8 - $qz)));
+
+		// first rotation
+		$matrix->rotate90();
+		$this->dm($matrix);
+		$this::assertSame(QRMatrix::M_DARKMODULE, $matrix->get((7 + $qz), (8 + $qz)));
+
+		// second rotation
+		$matrix->rotate90();
+		$this->dm($matrix);
+		$this::assertSame(QRMatrix::M_DARKMODULE, $matrix->get(($size - 9 - $qz), (7 + $qz)));
+
+		// third rotation
+		$matrix->rotate90();
+		$this->dm($matrix);
+		$this::assertSame(QRMatrix::M_DARKMODULE, $matrix->get(($size - 8 - $qz), ($size - 9 - $qz)));
+
+		// fourth rotation
+		$matrix->rotate90();
+		$this->dm($matrix);
+		$this::assertSame(QRMatrix::M_DARKMODULE, $matrix->get((8 + $qz), ($size - 8 - $qz)));
+	}
+
+	/**
 	 * Tests if the logo space is drawn square if one of the dimensions is omitted
 	 */
 	public function testSetLogoSpaceOmitHeight():void{

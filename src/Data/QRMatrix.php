@@ -11,7 +11,7 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, ReedSolomonEncoder, Version};
-use function array_fill, count, floor;
+use function array_fill, array_map, array_reverse, count, floor;
 
 /**
  * Holds an array representation of the final QR Code that contains numerical values for later output modifications;
@@ -565,6 +565,16 @@ class QRMatrix{
 		// set the new values
 		$this->moduleCount = $newSize;
 		$this->matrix      = $newMatrix;
+
+		return $this;
+	}
+
+	/**
+	 * Rotates the matrix by 90 degrees clock wise
+	 */
+	public function rotate90():self{
+		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
+		$this->matrix = array_map((fn(int ...$a):array => array_reverse($a)), ...$this->matrix);
 
 		return $this;
 	}
