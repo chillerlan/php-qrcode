@@ -1326,6 +1326,11 @@ Search.appendIndex(
             "summary": "Draws\u0020the\u0020\u0022quiet\u0020zone\u0022\u0020of\u0020\u0024size\u0020around\u0020the\u0020matrix",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_setQuietZone"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003Arotate90\u0028\u0029",
+            "name": "rotate90",
+            "summary": "Rotates\u0020the\u0020matrix\u0020by\u002090\u0020degrees\u0020clock\u0020wise",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_rotate90"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AsetLogoSpace\u0028\u0029",
             "name": "setLogoSpace",
             "summary": "Clears\u0020a\u0020space\u0020of\u0020\u0024width\u0020\u002A\u0020\u0024height\u0020in\u0020order\u0020to\u0020add\u0020a\u0020logo\u0020or\u0020text.",
@@ -2573,7 +2578,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup\u003A\u003AcreateMarkup\u0028\u0029",
             "name": "createMarkup",
-            "summary": "",
+            "summary": "returns\u0020the\u0020fully\u0020parsed\u0020and\u0020rendered\u0020markup\u0020string\u0020for\u0020the\u0020given\u0020input",
             "url": "classes/chillerlan-QRCode-Output-QRMarkup.html#method_createMarkup"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupHTML",
@@ -2583,7 +2588,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupHTML\u003A\u003AcreateMarkup\u0028\u0029",
             "name": "createMarkup",
-            "summary": "",
+            "summary": "returns\u0020the\u0020fully\u0020parsed\u0020and\u0020rendered\u0020markup\u0020string\u0020for\u0020the\u0020given\u0020input",
             "url": "classes/chillerlan-QRCode-Output-QRMarkupHTML.html#method_createMarkup"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG",
@@ -2598,7 +2603,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG\u003A\u003AcreateMarkup\u0028\u0029",
             "name": "createMarkup",
-            "summary": "",
+            "summary": "returns\u0020the\u0020fully\u0020parsed\u0020and\u0020rendered\u0020markup\u0020string\u0020for\u0020the\u0020given\u0020input",
             "url": "classes/chillerlan-QRCode-Output-QRMarkupSVG.html#method_createMarkup"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG\u003A\u003Aheader\u0028\u0029",
@@ -4020,6 +4025,11 @@ Search.appendIndex(
             "name": "testSetQuietZoneException",
             "summary": "Tests\u0020if\u0020an\u0020exception\u0020is\u0020thrown\u0020in\u0020an\u0020attempt\u0020to\u0020create\u0020the\u0020quiet\u0020zone\u0020before\u0020data\u0020was\u0020written",
             "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetQuietZoneException"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AtestRotate90\u0028\u0029",
+            "name": "testRotate90",
+            "summary": "Tests\u0020rotating\u0020the\u0020matrix\u0020by\u002090\u0020degrees\u0020CW",
+            "url": "classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testRotate90"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest\u003A\u003AtestSetLogoSpaceOmitHeight\u0028\u0029",
             "name": "testSetLogoSpaceOmitHeight",
