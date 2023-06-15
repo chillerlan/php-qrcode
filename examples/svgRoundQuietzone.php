@@ -44,7 +44,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 		$this->colorQuietzone($quietzoneSize, ($diameter / 2));
 
 		// calculate the logo space
-		$logoSpaceSize = (int)ceil($this->moduleCount * $this->options->svgLogoScale);
+		$logoSpaceSize = (int)(ceil($this->moduleCount * $this->options->svgLogoScale) + 1);
 		// we're calling QRMatrix::setLogoSpace() manually, so QROptions::$addLogoSpace has no effect here
 		$this->matrix->setLogoSpace($logoSpaceSize);
 
@@ -185,7 +185,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 					$M_TYPE_LAYER = QRMatrix::M_DATA;
 
 					if($this->matrix->check($x, $y)){
-						$M_TYPE_LAYER |= QRMatrix::IS_DARK;
+						$M_TYPE_LAYER = QRMatrix::M_DATA_DARK;
 					}
 				}
 
@@ -335,7 +335,7 @@ $options = new RoundQuietzoneOptions([
 		QRMatrix::M_FINDER_DARK,
 		QRMatrix::M_FINDER_DOT,
 		QRMatrix::M_ALIGNMENT_DARK,
-		(QRMatrix::M_QUIETZONE | QRMatrix::IS_DARK),
+		QRMatrix::M_QUIETZONE_DARK,
 	],
 	'drawCircularModules' => true,
 	'circleRadius'        => 0.4,

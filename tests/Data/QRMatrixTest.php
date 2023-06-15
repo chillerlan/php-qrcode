@@ -176,7 +176,7 @@ final class QRMatrixTest extends TestCase{
 	public static function matrixProvider():Generator{
 		$ecc = new EccLevel(EccLevel::L);
 
-		foreach(range(1, 40) as $i){
+		for($i = 1; $i <= 40; $i++){
 			yield 'version: '.$i => [new QRMatrix(new Version($i), $ecc)];
 		}
 	}

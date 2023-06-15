@@ -5,6 +5,7 @@
  * eliminate hairline antialias "cracks" that tend to appear when two SVG paths are exactly adjacent to each other.
  *
  * @see https://github.com/chillerlan/php-qrcode/issues/127
+ * @see ./shapes.svg
  */
 
 use chillerlan\QRCode\{QRCode, QROptions};
@@ -48,7 +49,7 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 					$M_TYPE_LAYER = QRMatrix::M_DATA;
 
 					if($this->matrix->check($x, $y)){
-						$M_TYPE_LAYER |= QRMatrix::IS_DARK;
+						$M_TYPE_LAYER = QRMatrix::M_DATA_DARK;
 					}
 				}
 

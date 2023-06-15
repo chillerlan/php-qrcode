@@ -53,7 +53,7 @@ class RandomDotsSVGOutput extends QRMarkupSVG{
 					$M_TYPE_LAYER = QRMatrix::M_DATA;
 
 					if($this->matrix->check($x, $y)){
-						$M_TYPE_LAYER |= QRMatrix::IS_DARK;
+						$M_TYPE_LAYER = QRMatrix::M_DATA_DARK;
 					}
 				}
 

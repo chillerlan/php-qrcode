@@ -87,7 +87,8 @@ abstract class QRMarkup extends QROutputAbstract{
 	}
 
 	/**
-	 *
+	 * returns the fully parsed and rendered markup string for the given input
 	 */
 	abstract protected function createMarkup(bool $saveToFile):string;
+
 }
