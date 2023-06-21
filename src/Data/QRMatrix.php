@@ -339,9 +339,7 @@ class QRMatrix{
 	public function checkNeighbours(int $x, int $y, int $M_TYPE = null):int{
 		$bits = 0;
 
-		foreach($this::neighbours as $bit => $coord){
-			[$ix, $iy] = $coord;
-
+		foreach($this::neighbours as $bit => [$ix, $iy]){
 			$ix += $x;
 			$iy += $y;
 

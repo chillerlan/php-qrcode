@@ -93,9 +93,8 @@ class QRSvgWithLogoAndCustomShapes extends QRMarkupSVG{
 		          'q0,1 1,1 h3 q1,0 1,-1 v-3 q0,-1 -1,-1z m0,2.5 a1.5,1.5 0 1 0 3,0 a1.5,1.5 0 1 0 -3,0Z';
 		$finder = [];
 
-		foreach($pos as $coord){
-			[$ix, $iy] = $coord;
-			$finder[]  = sprintf($path, $ix, $iy);
+		foreach($pos as [$ix, $iy]){
+			$finder[] = sprintf($path, $ix, $iy);
 		}
 
 		return implode(' ', $finder);
