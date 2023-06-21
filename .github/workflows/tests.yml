@@ -115,7 +115,7 @@ jobs:
         uses: ramsey/composer-install@v2
 
       - name: "Run tests with phpunit"
-        run: php vendor/bin/phpunit --configuration=phpunit.xml.dist
+        run: php vendor/bin/phpunit --colors=always --configuration=phpunit.xml.dist
 
       - name: "Send code coverage report to Codecov.io"
         uses: codecov/codecov-action@v3
