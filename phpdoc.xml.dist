@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <phpdoc>
 	<parser>
-		<target>docs</target>
+		<target>.build/phpdocs</target>
 		<encoding>utf8</encoding>
 		<markers>
 			<item>TODO</item>
 		</markers>
 	</parser>
 	<transformer>
-		<target>docs</target>
+		<target>.build/phpdocs</target>
 	</transformer>
 	<files>
 		<directory>src</directory>

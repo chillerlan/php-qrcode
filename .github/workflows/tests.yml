@@ -67,9 +67,6 @@ jobs:
           tools: phpDocumentor
           extensions: fileinfo, gd, imagick, json, mbstring
 
-      - name: "Delete Markdown files"
-        run: rm ./docs/*.md
-
       - name: "Build Docs"
         run: phpdoc --config=phpdoc.xml.dist
 
@@ -77,7 +74,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
-          folder: docs
+          folder: .build/phpdocs
           clean: true
 
 
