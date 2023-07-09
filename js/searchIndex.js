@@ -3321,6 +3321,11 @@ Search.appendIndex(
             "summary": "markup\u0020substitute\u0020for\u0020light\u0020\u0028CSS\u0020value\u0029",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_markupLight"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgAddXmlHeader",
+            "name": "svgAddXmlHeader",
+            "summary": "Whether\u0020to\u0020add\u0020an\u0020XML\u0020header\u0020line\u0020or\u0020not,\u0020e.g.\u0020to\u0020embed\u0020the\u0020SVG\u0020directly\u0020in\u0020HTML",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgAddXmlHeader"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgOpacity",
             "name": "svgOpacity",
             "summary": "SVG\u0020opacity",
