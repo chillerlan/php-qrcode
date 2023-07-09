@@ -27,5 +27,6 @@
 
 ## Other examples
 
+- [Authenticator](./authenticator.php): create a QR Code that displays an URI for a mobile authenticator (featuring [`chillerlan/php-authenticator`](https://github.com/chillerlan/php-authenticator))
 - [Interactive output](./qrcode-interactive.php): interactive demo (via [index.html](./index.html))
 - [Custom module shapes](./shapes.svg): SVG paths to customize the module shapes ([#150](https://github.com/chillerlan/php-qrcode/discussions/150))
