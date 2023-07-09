@@ -316,6 +316,13 @@ trait QROptionsTrait{
 	 */
 
 	/**
+	 * Whether to add an XML header line or not, e.g. to embed the SVG directly in HTML
+	 *
+	 * `<?xml version="1.0" encoding="UTF-8"?>`
+	 */
+	protected bool $svgAddXmlHeader = true;
+
+	/**
 	 * SVG opacity
 	 */
 	protected float $svgOpacity = 1.0;
