@@ -18,8 +18,8 @@ namespaced, cleaned up, improved and other stuff. It also features a QR Code rea
 [php]: https://www.php.net/supported-versions.php
 [packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?logo=packagist
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
-[gh-action-badge]: https://img.shields.io/github/actions/workflow/status/chillerlan/php-qrcode/tests.yml?branch=main&logo=github
-[gh-action]: https://github.com/chillerlan/php-qrcode/actions/workflows/tests.yml?query=branch%3Amain
+[gh-action-badge]: https://img.shields.io/github/actions/workflow/status/chillerlan/php-qrcode/ci.yml?branch=main&logo=github
+[gh-action]: https://github.com/chillerlan/php-qrcode/actions/workflows/ci.yml?query=branch%3Amain
 [coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode/main?logo=codecov
 [coverage]: https://app.codecov.io/gh/chillerlan/php-qrcode/tree/main
 [codacy-badge]: https://img.shields.io/codacy/grade/edccfc4fe5a34b74b1c53ee03f097b8d/main?logo=codacy
