@@ -1,0 +1,65 @@
+# Documentation
+
+## Sources
+
+The markdown sources for the [Read the Docs online manual](https://php-qrcode.readthedocs.io) can of course be browsed on GitHub too!
+
+
+### Usage
+- [Overview](./Usage-Overview.md)
+- [Installation](./Usage-Installation.md)
+- [Quickstart](./Usage-Quickstart.md)
+- [Advanced usage](./Usage-Advanced-usage.md)
+
+### Appendix
+- [License](./Appendix-License.rst)
+
+## Auto generated documentation
+
+### User manual via Sphinx
+
+[![Documentation Status](https://readthedocs.org/projects/php-qrcode/badge/?version=latest)](https://php-qrcode.readthedocs.io/en/latest/?badge=latest)
+
+The user manual can be auto generated with [Sphinx](https://www.sphinx-doc.org) from the markdown sources contained in this directory, in order to upload it to [Read the Docs](https://readthedocs.org).
+The online documentation can be found at [php-qrcode.readthedocs.io](https://php-qrcode.readthedocs.io) ([project page](https://readthedocs.org/projects/php-qrcode/))
+
+
+#### Run Sphinx locally
+
+Requirements:
+
+- [Python](https://www.python.org/downloads/) >= v3.10
+  - [Sphinx](https://www.sphinx-doc.org/en/master/usage/installation.html) >= v7.0
+  - [Sphinx RTD theme](https://pypi.org/project/sphinx-rtd-theme/) >= 1.2
+  - [MyST Parser](https://myst-parser.readthedocs.io/en/latest/intro.html) >= 2.0 (see [Sphinx Markdown configuration](https://www.sphinx-doc.org/en/master/usage/markdown.html#markdown))
+
+
+- to install all in one go, run: `pip install sphinx myst-parser sphinx-rtd-theme`
+- run in the `/docs` (this) directory:
+  - on Windows: `.\make.bat html` (make sure `sphinx-build.exe` is in `PATH`)
+  - on Linux: `make html`
+- open [../.build/sphinx/html/index.html](../.build/sphinx/html/index.html) in a browser
+- yay!
+
+
+### API docs via phpDocumentor
+[![pages-build-deployment](https://github.com/chillerlan/php-qrcode/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages)](https://github.com/chillerlan/php-qrcode/actions/workflows/pages/pages-build-deployment)
+
+The API documentation can be auto generated with [phpDocumentor](https://www.phpdoc.org/).
+There is an [online version available](https://chillerlan.github.io/php-qrcode/) via the [gh-pages branch](https://github.com/chillerlan/php-qrcode/tree/gh-pages) that is [automatically deployed](https://github.com/chillerlan/php-qrcode/deployments) on each push to main.
+
+
+#### Run phpDocumentor locally
+If you'd like to create local docs, please follow these steps:
+
+- [download phpDocumentor](https://github.com/phpDocumentor/phpDocumentor/releases) v3+ as .phar archive
+- run it in the repository root directory:
+  - on Windows `c:\path\to\php.exe c:\path\to\phpDocumentor.phar --config=phpdoc.xml`
+  - on Linux just `php /path/to/phpDocumentor.phar --config=phpdoc.xml`
+- open [../.build/phpdocs/index.html](../.build/phpdocs/index.html) in a browser
+- profit!
+
+
+## License
+
+The documentation is licensed under the [Creative Commons Attribution 4.0 International (CC BY 4.0) License](https://creativecommons.org/licenses/by/4.0/).
