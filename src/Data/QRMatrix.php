@@ -38,6 +38,8 @@ class QRMatrix{
 	/** @var int */
 	public const M_SEPARATOR      = 0b000000001000;
 	/** @var int */
+	public const M_SEPARATOR_DARK = 0b100000001000;
+	/** @var int */
 	public const M_ALIGNMENT      = 0b000000010000;
 	/** @var int */
 	public const M_ALIGNMENT_DARK = 0b100000010000;
@@ -305,7 +307,7 @@ class QRMatrix{
 	}
 
 	/**
-	 * checks whether the module at ($x, $y) is in the given array of $M_TYPES,
+	 * Checks whether the module at ($x, $y) is in the given array of $M_TYPES,
 	 * returns true if a match is found, otherwise false.
 	 */
 	public function checkTypeIn(int $x, int $y, array $M_TYPES):bool{

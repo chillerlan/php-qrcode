@@ -41,7 +41,7 @@ interface QROutputInterface{
 	public const CUSTOM      = 'custom';
 
 	/**
-	 * Map of built-in output modes => modules
+	 * Map of built-in output modes => class FQN
 	 *
 	 * @var string[]
 	 */
@@ -59,6 +59,8 @@ interface QROutputInterface{
 	];
 
 	/**
+	 * Map of module type => default value
+	 *
 	 * @var bool[]
 	 */
 	public const DEFAULT_MODULE_VALUES = [
@@ -78,6 +80,7 @@ interface QROutputInterface{
 		QRMatrix::M_DARKMODULE     => true,
 		QRMatrix::M_DATA_DARK      => true,
 		QRMatrix::M_FINDER_DARK    => true,
+		QRMatrix::M_SEPARATOR_DARK => true,
 		QRMatrix::M_ALIGNMENT_DARK => true,
 		QRMatrix::M_TIMING_DARK    => true,
 		QRMatrix::M_FORMAT_DARK    => true,
@@ -89,6 +92,8 @@ interface QROutputInterface{
 	];
 
 	/**
+	 * Map of module type => readable name (for CSS etc.)
+	 *
 	 * @var string[]
 	 */
 	public const LAYERNAMES = [
@@ -108,6 +113,7 @@ interface QROutputInterface{
 		QRMatrix::M_DARKMODULE     => 'darkmodule',
 		QRMatrix::M_DATA_DARK      => 'data-dark',
 		QRMatrix::M_FINDER_DARK    => 'finder-dark',
+		QRMatrix::M_SEPARATOR_DARK => 'separator-dark',
 		QRMatrix::M_ALIGNMENT_DARK => 'alignment-dark',
 		QRMatrix::M_TIMING_DARK    => 'timing-dark',
 		QRMatrix::M_FORMAT_DARK    => 'format-dark',
