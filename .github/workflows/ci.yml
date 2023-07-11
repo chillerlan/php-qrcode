@@ -141,7 +141,7 @@ jobs:
       - name: "Build manual"
         run: |
           cd docs
-          make
+          make html
 
       - name: "Publish user manual to branch readthedocs"
         uses: JamesIves/github-pages-deploy-action@v4

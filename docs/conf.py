@@ -15,10 +15,10 @@ import sys
 from subprocess import Popen, PIPE
 
 def get_version():
-    if os.environ.get('READTHEDOCS') == True:
+    if os.environ.get('READTHEDOCS') == 'True':
         return os.environ.get('READTHEDOCS_VERSION')
 
-    if os.environ.get('GITHUB_ACTIONS') == True:
+    if os.environ.get('GITHUB_ACTIONS') == 'True':
         return os.environ.get('GITHUB_REF_NAME')
 
     grep = 'git branch | findstr \*' if platform.system() == 'Windows' else 'git branch | grep \*'
