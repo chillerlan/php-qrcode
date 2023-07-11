@@ -86,7 +86,7 @@ trait QROptionsTrait{
 	 */
 
 	/**
-	 * The output type
+	 * The built-in output type
 	 *
 	 *   - QROutputInterface::MARKUP_XXXX where XXXX = HTML, SVG
 	 *   - QROutputInterface::GDIMAGE_XXX where XXX = PNG, GIF, JPG
@@ -99,7 +99,7 @@ trait QROptionsTrait{
 	protected string $outputType = QROutputInterface::MARKUP_SVG;
 
 	/**
-	 * the FQCN of the custom QROutputInterface if $outputType is set to QRCode::OUTPUT_CUSTOM
+	 * The FQCN of the custom QROutputInterface if $outputType is set to QRCode::OUTPUT_CUSTOM
 	 */
 	protected ?string $outputInterface = null;
 
@@ -120,19 +120,19 @@ trait QROptionsTrait{
 	protected bool $returnResource = false;
 
 	/**
-	 * /path/to/cache.file
+	 * Optional cache file path `/path/to/cache.file`
 	 *
 	 * please note that the $file parameter in QRCode::render*() takes precedence over the $cachefile value
 	 */
 	protected ?string $cachefile = null;
 
 	/**
-	 * toggle base64 or raw image data (if applicable)
+	 * Toggle base64 or raw image data (if applicable)
 	 */
 	protected bool $imageBase64 = true;
 
 	/**
-	 * newline string
+	 * Newline string
 	 */
 	protected string $eol = PHP_EOL;
 
@@ -143,8 +143,8 @@ trait QROptionsTrait{
 	/**
 	 * Sets the image background color (if applicable)
 	 *
-	 * - QRGdImage: defaults to "white"
-	 * - QRImagick: defaults to [255, 255, 255]
+	 * - QRImagick: defaults to "white"
+	 * - QRGdImage: defaults to [255, 255, 255]
 	 * - QRFpdf: defaults to blank internally (white page)
 	 *
 	 * @var mixed|null
@@ -152,14 +152,14 @@ trait QROptionsTrait{
 	protected $bgColor = null;
 
 	/**
-	 * whether to draw the light (false) modules
+	 * Whether to draw the light (false) modules
 	 *
 	 * @var bool
 	 */
 	protected bool $drawLightModules = true;
 
 	/**
-	 * specify whether to draw the modules as filled circles
+	 * Specify whether to draw the modules as filled circles
 	 *
 	 * a note for GDImage output:
 	 *
@@ -174,24 +174,24 @@ trait QROptionsTrait{
 	protected bool $drawCircularModules = false;
 
 	/**
-	 * specifies the radius of the modules when $drawCircularModules is set to true
+	 * Specifies the radius of the modules when $drawCircularModules is set to true
 	 */
 	protected float $circleRadius = 0.45;
 
 	/**
-	 * specifies which module types to exclude when $drawCircularModules is set to true
+	 * Specifies which module types to exclude when $drawCircularModules is set to true
 	 */
 	protected array $keepAsSquare = [];
 
 	/**
-	 * whether to connect the paths for the several module types to avoid weird glitches when using gradients etc.
+	 * Whether to connect the paths for the several module types to avoid weird glitches when using gradients etc.
 	 *
 	 * @see https://github.com/chillerlan/php-qrcode/issues/57
 	 */
 	protected bool $connectPaths = false;
 
 	/**
-	 * specify which paths/patterns to exclude from connecting if $connectPaths is set to true
+	 * Specify which paths/patterns to exclude from connecting if $connectPaths is set to true
 	 */
 	protected array $excludeFromConnect = [];
 
@@ -209,26 +209,26 @@ trait QROptionsTrait{
 	protected bool $addLogoSpace = false;
 
 	/**
-	 * width of the logo space
+	 * Width of the logo space
 	 *
 	 * if only either $logoSpaceWidth or $logoSpaceHeight is given, the logo space is assumed a square of that size
 	 */
 	protected ?int $logoSpaceWidth = null;
 
 	/**
-	 * height of the logo space
+	 * Height of the logo space
 	 *
 	 * if only either $logoSpaceWidth or $logoSpaceHeight is given, the logo space is assumed a square of that size
 	 */
 	protected ?int $logoSpaceHeight = null;
 
 	/**
-	 * optional horizontal start position of the logo space (top left corner)
+	 * Optional horizontal start position of the logo space (top left corner)
 	 */
 	protected ?int $logoSpaceStartX = null;
 
 	/**
-	 * optional vertical start position of the logo space (top left corner)
+	 * Optional vertical start position of the logo space (top left corner)
 	 */
 	protected ?int $logoSpaceStartY = null;
 
@@ -238,12 +238,12 @@ trait QROptionsTrait{
 	 */
 
 	/**
-	 * pixel size of a QR code module
+	 * Pixel size of a QR code module
 	 */
 	protected int $scale = 5;
 
 	/**
-	 * toggle transparency
+	 * Toggle transparency
 	 *
 	 * - QRGdImage and QRImagick: the given {@see \chillerlan\QRCode\QROptions::$transparencyColor $transparencyColor} is set as transparent
 	 *
@@ -296,17 +296,17 @@ trait QROptionsTrait{
 	 */
 
 	/**
-	 * a common css class
+	 * A common css class
 	 */
 	protected string $cssClass = 'qrcode';
 
 	/**
-	 * markup substitute for dark (CSS value)
+	 * Markup substitute for dark (CSS value)
 	 */
 	protected string $markupDark = '#000';
 
 	/**
-	 * markup substitute for light (CSS value)
+	 * Markup substitute for light (CSS value)
 	 */
 	protected string $markupLight = '#fff';
 
@@ -328,14 +328,14 @@ trait QROptionsTrait{
 	protected float $svgOpacity = 1.0;
 
 	/**
-	 * anything between <defs>
+	 * Anything in the <defs> tag
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/defs
 	 */
 	protected string $svgDefs = '';
 
 	/**
-	 * SVG viewBox size. a single integer number which defines width/height of the viewBox attribute.
+	 * SVG viewBox size. A single integer number which defines width/height of the viewBox attribute.
 	 *
 	 * viewBox="0 0 x x"
 	 *
@@ -350,14 +350,14 @@ trait QROptionsTrait{
 	protected string $svgPreserveAspectRatio = 'xMidYMid';
 
 	/**
-	 * optional "width" attribute with the specified value (note that the value is not checked!)
+	 * Optional "width" attribute with the specified value (note that the value is not checked!)
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/width
 	 */
 	protected ?string $svgWidth = null;
 
 	/**
-	 * optional "height" attribute with the specified value (note that the value is not checked!)
+	 * Optional "height" attribute with the specified value (note that the value is not checked!)
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/height
 	 */
@@ -369,12 +369,12 @@ trait QROptionsTrait{
 	 */
 
 	/**
-	 * string substitute for dark
+	 * String substitute for dark
 	 */
 	protected string $textDark = '🔴';
 
 	/**
-	 * string substitute for light
+	 * String substitute for light
 	 */
 	protected string $textLight = '⭕';
 
@@ -396,17 +396,17 @@ trait QROptionsTrait{
 	 */
 
 	/**
-	 * use Imagick (if available) when reading QR Codes
+	 * Use Imagick (if available) when reading QR Codes
 	 */
 	protected bool $readerUseImagickIfAvailable = false;
 
 	/**
-	 * grayscale the image before reading
+	 * Grayscale the image before reading
 	 */
 	protected bool $readerGrayscale = false;
 
 	/**
-	 * increase the contrast before reading
+	 * Increase the contrast before reading
 	 *
 	 * note that applying contrast works different in GD and Imagick, so mileage may vary
 	 */
