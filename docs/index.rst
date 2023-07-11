@@ -4,7 +4,7 @@
 PHP-QRCode Manual
 =================
 
-Edition for ``chillerlan/php-qrcode`` [|version|]. Updated on |today|.
+Edition for `chillerlan/php-qrcode <https://github.com/chillerlan/php-qrcode/>`__  [|version|]. Updated on |today|.
 
 This work is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License.
 

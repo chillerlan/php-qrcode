@@ -15,8 +15,11 @@ import sys
 from subprocess import Popen, PIPE
 
 def get_version():
-    if os.environ.get('READTHEDOCS') == 'True':
+    if os.environ.get('READTHEDOCS') == True:
         return os.environ.get('READTHEDOCS_VERSION')
+
+    if os.environ.get('GITHUB_ACTIONS') == True:
+        return os.environ.get('GITHUB_REF_NAME')
 
     grep = 'git branch | findstr \*' if platform.system() == 'Windows' else 'git branch | grep \*'
     pipe = Popen(grep, stdout=PIPE, shell=True, universal_newlines=True)
@@ -65,7 +68,7 @@ release = version
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 # If your documentation needs a minimal Sphinx version, state it here.
-needs_sphinx = '5.3.0'
+needs_sphinx = '6.0.0'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
