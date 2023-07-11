@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Advanced usage &mdash; PHP-QRCode main
+ Manual</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="License" href="Appendix-License.html" />
+    <link rel="prev" title="Quickstart" href="Usage-Quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PHP-QRCode
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Usage-Overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Overview.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Overview.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Overview.html#framework-integration">Framework Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Usage-Installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#installation-with-composer">Installation with Composer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Installation.html#composer-json">composer.json</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Usage-Installation.html#version-switch">Version switch</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Installation.html#terminal">Terminal</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#manual-installation">Manual installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Installation.html#can-i-use-this-library-without-using-composer">Can i use this library without using composer?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#supported-php-versions-extension-requirements">Supported PHP versions &amp; extension requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#imagemagick">ImageMagick</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Usage-Quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#import-the-library">Import the library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#create-your-first-qr-code">Create your first QR Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Quickstart.html#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#reading-qr-codes">Reading QR Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-via-qroptions">Configuration via <code class="docutils literal notranslate"><span class="pre">QROptions</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#supply-an-iterable-of-options">Supply an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#load-and-save-json">Load and save JSON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extending-the-qroptions-class">Extending the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#qrcode-methods"><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#save-to-file">Save to file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#render-a-qrmatrix-instance">Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mixed-mode">Mixed mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qr-code-reader">QR Code reader</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Appendix-License.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PHP-QRCode</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Advanced usage</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/chillerlan/php-qrcode/blob/main/docs/Usage-Advanced-usage.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="advanced-usage">
+<h1>Advanced usage<a class="headerlink" href="#advanced-usage" title="Permalink to this heading"></a></h1>
+<section id="configuration-via-qroptions">
+<h2>Configuration via <code class="docutils literal notranslate"><span class="pre">QROptions</span></code><a class="headerlink" href="#configuration-via-qroptions" title="Permalink to this heading"></a></h2>
+<p>The <a class="reference external" href="https://github.com/chillerlan/php-qrcode/blob/main/src/QROptions.php"><code class="docutils literal notranslate"><span class="pre">QROptions</span></code></a> class is a container based on <a class="reference external" href="https://github.com/chillerlan/php-settings-container">chillerlan/php-settings-container</a> that behaves similar to a <a class="reference external" href="https://www.php.net/manual/class.stdclass"><code class="docutils literal notranslate"><span class="pre">\stdClass</span></code></a> object, but with fixed properties.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QROptions</span><span class="p">;</span>
+
+<span class="c1">// set some values</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">version</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>     <span class="c1">// property &quot;version&quot; exists</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">foo</span>     <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">;</span> <span class="c1">// property &quot;foo&quot; does not exist (and will not be created)</span>
+
+<span class="c1">// retrieve values</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">version</span><span class="p">);</span> <span class="c1">// -&gt; 7</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">foo</span><span class="p">);</span>     <span class="c1">// -&gt; null (no error will be thrown)</span>
+</pre></div>
+</div>
+<section id="supply-an-iterable-of-options">
+<h3>Supply an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options<a class="headerlink" href="#supply-an-iterable-of-options" title="Permalink to this heading"></a></h3>
+<p>The constructor takes an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of <code class="docutils literal notranslate"><span class="pre">$key</span> <span class="pre">=&gt;</span> <span class="pre">$value</span></code> pairs. For each setting an optional setter will be called if present.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$myOptions</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="s1">&#39;version&#39;</span>    <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>
+	<span class="s1">&#39;outputType&#39;</span> <span class="o">=&gt;</span> <span class="nx">QROutputInterface</span><span class="o">::</span><span class="na">GDIMAGE_PNG</span><span class="p">,</span>
+	<span class="s1">&#39;eccLevel&#39;</span>   <span class="o">=&gt;</span> <span class="nx">EccLevel</span><span class="o">::</span><span class="na">M</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="nv">$options</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QROptions</span><span class="p">(</span><span class="nv">$myOptions</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can also set an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options on an existing QROptions instance:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">fromIterable</span><span class="p">(</span><span class="nv">$myOptions</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="load-and-save-json">
+<h3>Load and save JSON<a class="headerlink" href="#load-and-save-json" title="Permalink to this heading"></a></h3>
+<p>The settings can be saved to and loaded from JSON, e.g. to store them in a database:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$json</span> <span class="o">=</span> <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">toJSON</span><span class="p">(</span><span class="nx">JSON_THROW_ON_ERROR</span><span class="p">);</span>
+<span class="c1">// via JsonSerializable interface</span>
+<span class="nv">$json</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$options</span><span class="p">,</span> <span class="nx">JSON_THROW_ON_ERROR</span><span class="p">);</span>
+<span class="c1">// via __toString()</span>
+<span class="nv">$json</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span><span class="nv">$options</span><span class="p">;</span>
+
+<span class="nv">$options</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QROptions</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">fromJSON</span><span class="p">(</span><span class="nv">$json</span><span class="p">);</span>
+<span class="c1">// on an existing instance - properties will be overwriten</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">fromJSON</span><span class="p">(</span><span class="nv">$json</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="extending-the-qroptions-class">
+<h3>Extending the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> class<a class="headerlink" href="#extending-the-qroptions-class" title="Permalink to this heading"></a></h3>
+<p>In case you need additional settings for your output module, just extend <code class="docutils literal notranslate"><span class="pre">QROptions</span></code>…</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyCustomOptions</span> <span class="k">extends</span> <span class="nx">QROptions</span><span class="p">{</span>
+	<span class="k">protected</span> <span class="nx">string</span> <span class="nv">$myParam</span> <span class="o">=</span> <span class="s1">&#39;defaultValue&#39;</span><span class="p">;</span>
+	<span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>…or use the <a class="reference external" href="https://github.com/chillerlan/php-settings-container/blob/main/src/SettingsContainerInterface.php"><code class="docutils literal notranslate"><span class="pre">SettingsContainerInterface</span></code></a>, which is the more flexible approach.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">trait</span> <span class="nx">MyCustomOptionsTrait</span><span class="p">{</span>
+	<span class="k">protected</span> <span class="nx">string</span> <span class="nv">$myParam</span> <span class="o">=</span> <span class="s1">&#39;defaultValue&#39;</span><span class="p">;</span>
+	<span class="c1">// ...</span>
+
+	<span class="c1">// an optional magic setter, named &quot;set_&quot; + property name</span>
+	<span class="k">protected</span> <span class="k">function</span> <span class="nf">set_myParam</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$myParam</span><span class="p">)</span><span class="o">:</span><span class="nx">void</span><span class="p">{</span>
+		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">myParam</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$myParam</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="c1">// an optional magic getter, named &quot;get_&quot; + property name</span>
+	<span class="k">protected</span> <span class="k">function</span> <span class="nf">get_myParam</span><span class="p">()</span><span class="o">:</span><span class="nx">string</span><span class="p">{</span>
+		<span class="k">return</span> <span class="nb">strtoupper</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">myParam</span><span class="p">);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">MyCustomOptions</span> <span class="k">extends</span> <span class="nx">SettingsContainerAbstract</span><span class="p">{</span>
+	<span class="k">use</span> <span class="nx">QROptionsTrait</span><span class="p">,</span> <span class="nx">MyCustomOptionsTrait</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// set the options</span>
+<span class="nv">$myCustomOptions</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyCustomOptions</span><span class="p">;</span>
+<span class="nv">$myCustomOptions</span><span class="o">-&gt;</span><span class="na">myParam</span> <span class="o">=</span> <span class="s1">&#39;whatever value&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Extend the <code class="docutils literal notranslate"><span class="pre">SettingsContainerInterface</span></code> on-the-fly:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$myOptions</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="s1">&#39;myParam&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;whatever value&#39;</span><span class="p">,</span>
+	<span class="c1">// ...</span>
+<span class="p">];</span>
+
+<span class="nv">$myCustomOptions</span> <span class="o">=</span> <span class="k">new</span> <span class="k">class</span><span class="p">(</span><span class="nv">$myOptions</span><span class="p">)</span> <span class="k">extends</span> <span class="nx">SettingsContainerAbstract</span><span class="p">{</span>
+	<span class="k">use</span> <span class="nx">QROptionsTrait</span><span class="p">,</span> <span class="nx">MyCustomOptionsTrait</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="qrcode-methods">
+<h2><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods<a class="headerlink" href="#qrcode-methods" title="Permalink to this heading"></a></h2>
+<p>Aside of invoking a <code class="docutils literal notranslate"><span class="pre">QRCode</span></code> instance with an optional <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> object as parameter, you can also set the options instance after invocation.
+After invocation of the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> instance, values can be set without calling <code class="docutils literal notranslate"><span class="pre">QRCode::setOptions()</span></code> again (instance is backreferenced), however, this may create side effects.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// instance will be invoked with default settings</span>
+<span class="nv">$qrcode</span>  <span class="o">=</span> <span class="k">new</span> <span class="nx">QRCode</span><span class="p">;</span>
+
+<span class="c1">// set options after QRCode invocation</span>
+<span class="nv">$options</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QROptions</span><span class="p">;</span>
+
+<span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">setOptions</span><span class="p">(</span><span class="nv">$options</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="save-to-file">
+<h3>Save to file<a class="headerlink" href="#save-to-file" title="Permalink to this heading"></a></h3>
+<p>Save the QR Code output to <code class="docutils literal notranslate"><span class="pre">/path/to/qrcode.svg</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">imageBase64</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">cachefile</span>   <span class="o">=</span> <span class="s1">&#39;/path/to/qrcode.svg&#39;</span><span class="p">;</span>
+
+<span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Alternatively, you can specify an output path, which will override the <code class="docutils literal notranslate"><span class="pre">QROptions::$cachefile</span></code> setting:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="s1">&#39;/other/path/to/qrcode.svg&#39;</span><span class="p">);</span>
+
+<span class="nb">printf</span><span class="p">(</span><span class="s1">&#39;&lt;img src=&quot;%s&quot; alt=&quot;QR Code&quot; /&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;/other/path/to/qrcode.svg&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="render-a-qrmatrix-instance">
+<h3>Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance<a class="headerlink" href="#render-a-qrmatrix-instance" title="Permalink to this heading"></a></h3>
+<p>You can render a <a class="reference external" href="https://github.com/chillerlan/php-qrcode/blob/main/src/Data/QRMatrix.php"><code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code></a> instance directly:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// a matrix from the current data segments</span>
+<span class="nv">$matrix</span> <span class="o">=</span> <span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">getQRMatrix</span><span class="p">();</span>
+<span class="c1">// from the QR Code reader</span>
+<span class="nv">$matrix</span> <span class="o">=</span> <span class="nv">$readerResult</span><span class="o">-&gt;</span><span class="na">getQRMatrix</span><span class="p">();</span>
+<span class="c1">// manually invoked</span>
+<span class="nv">$matrix</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRMatrix</span><span class="p">(</span><span class="k">new</span> <span class="nx">Version</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span> <span class="k">new</span> <span class="nx">EccLevel</span><span class="p">(</span><span class="nx">EccLevel</span><span class="o">::</span><span class="na">M</span><span class="p">)))</span><span class="o">-&gt;</span><span class="na">initFunctionalPatterns</span><span class="p">();</span>
+
+<span class="nv">$output</span> <span class="o">=</span> <span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">renderMatrix</span><span class="p">(</span><span class="nv">$matrix</span><span class="p">);</span>
+<span class="c1">// save to file</span>
+<span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">renderMatrix</span><span class="p">(</span><span class="nv">$matrix</span><span class="p">,</span> <span class="s1">&#39;/path/to/qrcode.svg&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Manual invocation of a <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code> to render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyCustomOutput</span> <span class="k">extends</span> <span class="nx">QRMarkupSVG</span><span class="p">{</span>
+	<span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="nv">$qrOutputInterface</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MyCustomOutput</span><span class="p">(</span><span class="nv">$options</span><span class="p">,</span> <span class="nv">$matrix</span><span class="p">);</span>
+
+<span class="nv">$output</span> <span class="o">=</span> <span class="nv">$qrOutputInterface</span><span class="o">-&gt;</span><span class="na">dump</span><span class="p">()</span>
+<span class="c1">// render to file</span>
+<span class="nv">$qrOutputInterface</span><span class="o">-&gt;</span><span class="na">dump</span><span class="p">(</span><span class="s1">&#39;/path/to/qrcode.svg&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="mixed-mode">
+<h3>Mixed mode<a class="headerlink" href="#mixed-mode" title="Permalink to this heading"></a></h3>
+<p>Mixed mode QR Codes can be generated by adding several data segments:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// make sure to set a proper internal encoding character set</span>
+<span class="c1">// ideally, this should be set in php.ini internal_encoding,</span>
+<span class="c1">// default_charset or mbstring.internal_encoding</span>
+<span class="nb">mb_internal_encoding</span><span class="p">(</span><span class="s1">&#39;UTF-8&#39;</span><span class="p">);</span>
+
+<span class="c1">// clear any existing data segments</span>
+<span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">clearSegments</span><span class="p">();</span>
+
+<span class="nv">$qrcode</span>
+	<span class="o">-&gt;</span><span class="na">addNumericSegment</span><span class="p">(</span><span class="nv">$numericData</span><span class="p">)</span>
+	<span class="o">-&gt;</span><span class="na">addAlphaNumSegment</span><span class="p">(</span><span class="nv">$alphaNumData</span><span class="p">)</span>
+	<span class="o">-&gt;</span><span class="na">addKanjiSegment</span><span class="p">(</span><span class="nv">$kanjiData</span><span class="p">)</span>
+	<span class="o">-&gt;</span><span class="na">addHanziSegment</span><span class="p">(</span><span class="nv">$hanziData</span><span class="p">)</span>
+	<span class="o">-&gt;</span><span class="na">addByteSegment</span><span class="p">(</span><span class="nv">$binaryData</span><span class="p">)</span>
+	<span class="o">-&gt;</span><span class="na">addEciSegment</span><span class="p">(</span><span class="nx">ECICharset</span><span class="o">::</span><span class="na">GB18030</span><span class="p">,</span> <span class="nv">$encodedEciData</span><span class="p">)</span>
+<span class="p">;</span>
+
+<span class="nv">$output</span> <span class="o">=</span> <span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">();</span>
+<span class="c1">// render to file</span>
+<span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="s1">&#39;/path/to/qrcode.svg&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="https://github.com/chillerlan/php-qrcode/blob/main/src/Data/QRDataModeInterface.php"><code class="docutils literal notranslate"><span class="pre">QRDataModeInterface</span></code></a> offers the <code class="docutils literal notranslate"><span class="pre">validateString()</span></code> method (implemended for <code class="docutils literal notranslate"><span class="pre">AlphaNum</span></code>, <code class="docutils literal notranslate"><span class="pre">Byte</span></code>, <code class="docutils literal notranslate"><span class="pre">Hanzi</span></code>, <code class="docutils literal notranslate"><span class="pre">Kanji</span></code> and <code class="docutils literal notranslate"><span class="pre">Number</span></code>).
+This method is used internally when a data mode is invoked, but it can come in handy if you need to check input data beforehand.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nx">Hanzi</span><span class="o">::</span><span class="na">validateString</span><span class="p">(</span><span class="nv">$data</span><span class="p">)){</span>
+	<span class="k">throw</span> <span class="k">new</span> <span class="nx">Exception</span><span class="p">(</span><span class="s1">&#39;invalid GB2312 data&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">addHanziSegment</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="qr-code-reader">
+<h3>QR Code reader<a class="headerlink" href="#qr-code-reader" title="Permalink to this heading"></a></h3>
+<p>In some cases it might be necessary to increase the contrast of a QR Code image:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">readerUseImagickIfAvailable</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">readerIncreaseContrast</span>      <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">readerGrayscale</span>             <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+<span class="nv">$result</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">readFromFile</span><span class="p">(</span><span class="s1">&#39;path/to/qrcode.png&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> object from the <a class="reference external" href="https://github.com/chillerlan/php-qrcode/blob/main/src/Decoder/DecoderResult.php"><code class="docutils literal notranslate"><span class="pre">DecoderResult</span></code></a> can be reused:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$matrix</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">getQRMatrix</span><span class="p">();</span>
+
+<span class="c1">// ...matrix modification...</span>
+
+<span class="nv">$output</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">renderMatrix</span><span class="p">(</span><span class="nv">$matrix</span><span class="p">);</span>
+
+<span class="c1">// ...output</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Usage-Quickstart.html" class="btn btn-neutral float-left" title="Quickstart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Appendix-License.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, smiley.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

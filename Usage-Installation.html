@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installation &mdash; PHP-QRCode main
+ Manual</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quickstart" href="Usage-Quickstart.html" />
+    <link rel="prev" title="Overview" href="Usage-Overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PHP-QRCode
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Usage-Overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Overview.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Overview.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Overview.html#framework-integration">Framework Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation-with-composer">Installation with Composer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#composer-json">composer.json</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#version-switch">Version switch</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#terminal">Terminal</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#manual-installation">Manual installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#can-i-use-this-library-without-using-composer">Can i use this library without using composer?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-php-versions-extension-requirements">Supported PHP versions &amp; extension requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#imagemagick">ImageMagick</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Usage-Quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#import-the-library">Import the library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#create-your-first-qr-code">Create your first QR Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Quickstart.html#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#reading-qr-codes">Reading QR Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Usage-Advanced-usage.html">Advanced usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Advanced-usage.html#configuration-via-qroptions">Configuration via <code class="docutils literal notranslate"><span class="pre">QROptions</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#supply-an-iterable-of-options">Supply an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#load-and-save-json">Load and save JSON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#extending-the-qroptions-class">Extending the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Advanced-usage.html#qrcode-methods"><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#save-to-file">Save to file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#render-a-qrmatrix-instance">Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#mixed-mode">Mixed mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#qr-code-reader">QR Code reader</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Appendix-License.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PHP-QRCode</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Installation</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/chillerlan/php-qrcode/blob/main/docs/Usage-Installation.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
+<section id="installation-with-composer">
+<h2>Installation with Composer<a class="headerlink" href="#installation-with-composer" title="Permalink to this heading"></a></h2>
+<p><strong><a class="reference external" href="https://getcomposer.org">Composer</a> is required to install this package. Please do not open an issue to complain about “monopolizing the implementation” or similar - we’ve been there before.</strong></p>
+<section id="composer-json">
+<h3>composer.json<a class="headerlink" href="#composer-json" title="Permalink to this heading"></a></h3>
+<p>Installation via <a class="reference external" href="https://getcomposer.org/doc/04-schema.md"><code class="docutils literal notranslate"><span class="pre">composer.json</span></code></a>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">	</span><span class="nt">&quot;require&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">		</span><span class="nt">&quot;php&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^7.4&quot;</span><span class="p">,</span>
+<span class="w">		</span><span class="nt">&quot;chillerlan/php-qrcode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dev-main&quot;</span>
+<span class="w">	</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Note: replace <code class="docutils literal notranslate"><span class="pre">dev-main</span></code> with a <a class="reference external" href="https://getcomposer.org/doc/articles/versions.md#writing-version-constraints">version constraint</a>, e.g. <code class="docutils literal notranslate"><span class="pre">^4.3</span></code> - see <a class="reference external" href="https://github.com/chillerlan/php-qrcode/releases">releases</a> for valid versions.
+In case you want to keep using <code class="docutils literal notranslate"><span class="pre">dev-main</span></code>, specify the hash of a commit to avoid running into unforseen issues, like so: <code class="docutils literal notranslate"><span class="pre">dev-main#cb69751c3bc090a7fdd2f2601bbe10f28d225f10</span></code></p>
+<section id="version-switch">
+<h4>Version switch<a class="headerlink" href="#version-switch" title="Permalink to this heading"></a></h4>
+<p>If your application supports older PHP versions and uses the basic <code class="docutils literal notranslate"><span class="pre">QRCode</span></code> syntax <code class="docutils literal notranslate"><span class="pre">(new</span> <span class="pre">QRCode)-&gt;render($data)</span></code>, then you can add a version switch to your <code class="docutils literal notranslate"><span class="pre">composer.json</span></code> to allow installing a <code class="docutils literal notranslate"><span class="pre">php-qrcode</span></code> version that suits the platform it runs on:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">	</span><span class="nt">&quot;require&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">		</span><span class="nt">&quot;php&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^7.0 || ^8.0&quot;</span><span class="p">,</span>
+<span class="w">		</span><span class="nt">&quot;chillerlan/php-qrcode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^2.0 || ^3.4 || ^4.3 || ^5.0&quot;</span>
+<span class="w">	</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Most of the v2.0 API remains unchanged throughout the several versions up to v5.x, however, please test and verify the expected output before you deploy such a switch.</p>
+</section>
+</section>
+<section id="terminal">
+<h3>Terminal<a class="headerlink" href="#terminal" title="Permalink to this heading"></a></h3>
+<p>To install <code class="docutils literal notranslate"><span class="pre">php-qrcode</span></code> on the terminal, use:</p>
+<p><code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">require</span> <span class="pre">chillerlan/php-qrcode</span></code></p>
+<p>If you want to install the package from a specific tag or commit, do as follows:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">require</span> <span class="pre">chillerlan/php-qrcode:4.3.4</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">require</span> <span class="pre">chillerlan/php-qrcode:dev-main#f15b0afe9d4128bf734c3bf1bcffae72bf7b3e53</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="manual-installation">
+<h2>Manual installation<a class="headerlink" href="#manual-installation" title="Permalink to this heading"></a></h2>
+<p>Download the desired version of the package from <a class="reference external" href="https://github.com/chillerlan/php-qrcode/archive/refs/heads/main.zip">main</a> or
+<a class="reference external" href="https://github.com/chillerlan/php-qrcode/releases">release</a> and extract the contents to your project folder.
+After that, run <code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">install</span></code> in the package root directory to install the required dependencies and generate <code class="docutils literal notranslate"><span class="pre">./vendor/autoload.php</span></code>.</p>
+<p>Profit!</p>
+<section id="can-i-use-this-library-without-using-composer">
+<h3>Can i use this library without using composer?<a class="headerlink" href="#can-i-use-this-library-without-using-composer" title="Permalink to this heading"></a></h3>
+<p>You can, but it’s absolutely not recommended, nor supported.</p>
+<p>With that said, I’ll leave you with this info:</p>
+<ul class="simple">
+<li><p>download the .zip for a version of your choice and also all required dependencies listed in the <code class="docutils literal notranslate"><span class="pre">composer.json</span></code> for that version (you can find links to the respective repos <a class="reference external" href="https://packagist.org/packages/chillerlan/php-qrcode">on packagist</a>)</p></li>
+<li><p>extract the files into your library folder</p></li>
+<li><p>include the files manually or with whatever autoloader you are using</p></li>
+</ul>
+<p>Good luck!</p>
+</section>
+</section>
+<section id="supported-php-versions-extension-requirements">
+<h2>Supported PHP versions &amp; extension requirements<a class="headerlink" href="#supported-php-versions-extension-requirements" title="Permalink to this heading"></a></h2>
+<p>The PHP built-in extensions <a class="reference external" href="https://www.php.net/manual/book.image.php">GdImage</a> and <a class="reference external" href="https://www.php.net/manual/book.mbstring.php">mbstring</a> are used across all versions, <a class="reference external" href="https://www.php.net/manual/book.imagick.php">ImageMagick</a> is optional since v3.x.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>version</p></th>
+<th class="head"><p>branch/tag</p></th>
+<th class="head"><p>PHP</p></th>
+<th class="head"><p>supported</p></th>
+<th class="head"><p>required extensions</p></th>
+<th class="head"><p>optional extensions</p></th>
+<th class="head"><p>info</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>v5</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/main"><code class="docutils literal notranslate"><span class="pre">dev-main</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">^7.4 || ^8.0</span></code></p></td>
+<td><p>yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code> or <code class="docutils literal notranslate"><span class="pre">imagick</span></code> required for reading QR Codes, <code class="docutils literal notranslate"><span class="pre">fileinfo</span></code> is used in <code class="docutils literal notranslate"><span class="pre">QRImagick</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>v4</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v4.3.x"><code class="docutils literal notranslate"><span class="pre">4.3.4</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">^7.4 || ^8.0</span></code></p></td>
+<td><p>yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code>, <code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">imagick</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>v3</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v3.2.x"><code class="docutils literal notranslate"><span class="pre">3.4.1</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">^7.2</span></code></p></td>
+<td><p>no</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code>, <code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">imagick</span></code></p></td>
+<td><p>v3.4.1 also supports PHP8</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>v2</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v2.0.x"><code class="docutils literal notranslate"><span class="pre">2.0.8</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;=7.0.3</span></code></p></td>
+<td><p>no</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code>, <code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>v1</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v2.0.x-php5"><code class="docutils literal notranslate"><span class="pre">1.0.9</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;=5.6</span></code></p></td>
+<td><p>no</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code>, <code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
+<td><p></p></td>
+<td><p>please let PHP 5 die!</p></td>
+</tr>
+</tbody>
+</table>
+<p>PSA: <a class="reference external" href="https://www.php.net/supported-versions.php">PHP versions &lt; 8.0 are EOL</a> and therefore the respective <code class="docutils literal notranslate"><span class="pre">QRCode</span></code> versions are also no longer supported!</p>
+</section>
+<section id="imagemagick">
+<h2>ImageMagick<a class="headerlink" href="#imagemagick" title="Permalink to this heading"></a></h2>
+<p>Please follow the installation guides for your operating system:</p>
+<ul class="simple">
+<li><p>ImageMagick: <a class="reference external" href="https://imagemagick.org/script/download.php">imagemagick.org/script/download.php</a></p></li>
+<li><p>PHP <code class="docutils literal notranslate"><span class="pre">ext-imagick</span></code>: <a class="reference external" href="https://github.com/Imagick/imagick">github.com/Imagick/imagick</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Usage-Overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Usage-Quickstart.html" class="btn btn-neutral float-right" title="Quickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, smiley.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

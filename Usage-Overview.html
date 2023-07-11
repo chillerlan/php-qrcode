@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview &mdash; PHP-QRCode main
+ Manual</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="Usage-Installation.html" />
+    <link rel="prev" title="PHP-QRCode Manual" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PHP-QRCode
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#framework-integration">Framework Integration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Usage-Installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#installation-with-composer">Installation with Composer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Installation.html#composer-json">composer.json</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Usage-Installation.html#version-switch">Version switch</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Installation.html#terminal">Terminal</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#manual-installation">Manual installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Installation.html#can-i-use-this-library-without-using-composer">Can i use this library without using composer?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#supported-php-versions-extension-requirements">Supported PHP versions &amp; extension requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#imagemagick">ImageMagick</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Usage-Quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#import-the-library">Import the library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#create-your-first-qr-code">Create your first QR Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Quickstart.html#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#reading-qr-codes">Reading QR Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Usage-Advanced-usage.html">Advanced usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Advanced-usage.html#configuration-via-qroptions">Configuration via <code class="docutils literal notranslate"><span class="pre">QROptions</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#supply-an-iterable-of-options">Supply an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#load-and-save-json">Load and save JSON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#extending-the-qroptions-class">Extending the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Advanced-usage.html#qrcode-methods"><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#save-to-file">Save to file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#render-a-qrmatrix-instance">Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#mixed-mode">Mixed mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#qr-code-reader">QR Code reader</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Appendix-License.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PHP-QRCode</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Overview</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/chillerlan/php-qrcode/blob/main/docs/Usage-Overview.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h1>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Creation of <a class="reference external" href="https://www.qrcode.com/en/codes/model12.html">Model 2 QR Codes</a>, <a class="reference external" href="https://www.qrcode.com/en/about/version.html">Version 1 to 40</a></p></li>
+<li><p><a class="reference external" href="https://www.qrcode.com/en/about/error_correction.html">ECC Levels</a> L/M/Q/H supported</p></li>
+<li><p>Mixed mode support (encoding modes can be combined within a QR symbol). Supported modes:</p>
+<ul>
+<li><p>numeric</p></li>
+<li><p>alphanumeric</p></li>
+<li><p>8-bit binary</p></li>
+<li><p>13-bit double-byte kanji (Japanese, Shift-JIS) and hanzi (simplified Chinese, GB2312/GB18030) as <a class="reference external" href="https://www.chinesestandard.net/PDF/English.aspx/GBT18284-2000">defined in GBT18284-2000</a></p></li>
+</ul>
+</li>
+<li><p>Flexible, easily extensible output modules, built-in support for the following output formats:</p>
+<ul>
+<li><p><a class="reference external" href="https://www.php.net/manual/book.image">GdImage</a></p></li>
+<li><p><a class="reference external" href="https://www.php.net/manual/book.imagick">ImageMagick</a></p></li>
+<li><p>Markup types: SVG, HTML, etc.</p></li>
+<li><p>String types: JSON, plain text, etc.</p></li>
+<li><p>Encapsulated Postscript (EPS)</p></li>
+<li><p>PDF via <a class="reference external" href="https://github.com/setasign/fpdf">FPDF</a></p></li>
+</ul>
+</li>
+<li><p>QR Code reader (via GD and ImageMagick)</p></li>
+</ul>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>PHP 7.4+</p>
+<ul>
+<li><p><a class="reference external" href="https://www.php.net/manual/book.mbstring.php"><code class="docutils literal notranslate"><span class="pre">ext-mbstring</span></code></a></p></li>
+<li><p>optional:</p>
+<ul>
+<li><p><a class="reference external" href="https://www.php.net/manual/book.fileinfo.php"><code class="docutils literal notranslate"><span class="pre">ext-fileinfo</span></code></a> (required by <code class="docutils literal notranslate"><span class="pre">QRImagick</span></code> output)</p></li>
+<li><p><a class="reference external" href="https://www.php.net/manual/book.image"><code class="docutils literal notranslate"><span class="pre">ext-gd</span></code></a></p></li>
+<li><p><a class="reference external" href="https://github.com/Imagick/imagick"><code class="docutils literal notranslate"><span class="pre">ext-imagick</span></code></a> with <a class="reference external" href="https://imagemagick.org">ImageMagick</a> installed</p></li>
+<li><p><a class="reference external" href="https://github.com/setasign/fpdf"><code class="docutils literal notranslate"><span class="pre">setasign/fpdf</span></code></a> for the PDF output module</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>For the QR Code reader, either <code class="docutils literal notranslate"><span class="pre">ext-gd</span></code> or <code class="docutils literal notranslate"><span class="pre">ext-imagick</span></code> is required!</p>
+</section>
+<section id="framework-integration">
+<h2>Framework Integration<a class="headerlink" href="#framework-integration" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Drupal:</p>
+<ul>
+<li><p><a class="reference external" href="https://www.drupal.org/project/tfa">Two-factor Authentication <code class="docutils literal notranslate"><span class="pre">tfa</span></code></a> (Drupal 8+)</p></li>
+<li><p><a class="reference external" href="https://www.drupal.org/project/ga_login">Google Authenticator Login <code class="docutils literal notranslate"><span class="pre">ga_login</span></code></a> (deprecated, Drupal 7)</p></li>
+</ul>
+</li>
+<li><p>Symfony</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/jonasarts/phpqrcode-bundle">phpqrcode-bundle</a></p></li>
+</ul>
+</li>
+<li><p>WordPress:</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/sjinks/wp-two-factor-auth">wp-two-factor-auth</a></p></li>
+<li><p><a class="reference external" href="https://wordpress.org/plugins/simple-2fa/">simple-2fa</a></p></li>
+<li><p><a class="reference external" href="https://github.com/qriouslad/floating-share-button">floating-share-button</a></p></li>
+</ul>
+</li>
+<li><p>WoltLab Suite</p>
+<ul>
+<li><p><a class="reference external" href="http://pluginstore.woltlab.com/file/3007-two-step-verification/">two-step-verification</a></p></li>
+</ul>
+</li>
+<li><p>other uses:</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/network/dependents">dependents</a> / <a class="reference external" href="https://github.com/chillerlan/php-qrcode/network/dependents?dependent_type=PACKAGE">packages</a></p></li>
+<li><p><a class="reference external" href="https://github.com/appwrite/appwrite">Appwrite</a></p></li>
+<li><p><a class="reference external" href="https://github.com/CachetHQ/Cachet">Cachet</a></p></li>
+<li><p><a class="reference external" href="https://github.com/GEANT/CAT">GÉANT CAT</a></p></li>
+<li><p><a class="reference external" href="https://github.com/it-novum/openITCOCKPIT">openITCOCKPIT</a></p></li>
+<li><p><a class="reference external" href="https://github.com/area17/twill">twill</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jbroadway/elefant">Elefant CMS</a></p></li>
+</ul>
+</li>
+<li><p>Articles:</p>
+<ul>
+<li><p><a class="reference external" href="https://www.twilio.com/blog/create-qr-code-in-php">Twilio: How to Create a QR Code in PHP</a> (featuring v4.3.x)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="PHP-QRCode Manual" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Usage-Installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, smiley.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
