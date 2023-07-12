@@ -16,7 +16,7 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use ErrorException, Throwable;
 use function array_values, count, extension_loaded, imagecolorallocate, imagecolortransparent, imagecreatetruecolor,
-	imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng, imagescale, intval,
+	imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng, imagescale, intdiv, intval,
 	is_array, is_numeric, max, min, ob_end_clean, ob_get_contents, ob_start, restore_error_handler, set_error_handler;
 
 /**
@@ -250,8 +250,8 @@ class QRGdImage extends QROutputAbstract{
 		$this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)
 			? imagefilledellipse(
 				$this->image,
-				(int)(($x * $this->scale) + ($this->scale / 2)),
-				(int)(($y * $this->scale) + ($this->scale / 2)),
+				(($x * $this->scale) + intdiv($this->scale, 2)),
+				(($y * $this->scale) + intdiv($this->scale, 2)),
 				(int)(2 * $this->options->circleRadius * $this->scale),
 				(int)(2 * $this->options->circleRadius * $this->scale),
 				$color

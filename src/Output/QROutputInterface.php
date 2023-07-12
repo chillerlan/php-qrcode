@@ -132,7 +132,7 @@ interface QROutputInterface{
 	public static function moduleValueIsValid($value):bool;
 
 	/**
-	 * generates the output, optionally dumps it to a file, and returns it
+	 * Generates the output, optionally dumps it to a file, and returns it
 	 *
 	 * please note that the value of QROptions::$cachefile is already evaluated at this point.
 	 * if the output module is invoked manually, it has no effect at all.

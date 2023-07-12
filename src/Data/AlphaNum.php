@@ -12,7 +12,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
 
-use function array_flip, ceil, str_split;
+use function array_flip, ceil, intdiv, str_split;
 
 /**
  * Alphanumeric mode: 0 to 9, A to Z, space, $ % * + - . / :
@@ -118,7 +118,7 @@ final class AlphaNum extends QRDataModeAbstract{
 			}
 
 			$nextTwoCharsBits = $bitBuffer->read(11);
-			$result           .= $toAlphaNumericChar((int)($nextTwoCharsBits / 45));
+			$result           .= $toAlphaNumericChar(intdiv($nextTwoCharsBits, 45));
 			$result           .= $toAlphaNumericChar($nextTwoCharsBits % 45);
 			$length           -= 2;
 		}

@@ -14,7 +14,7 @@
 namespace chillerlan\QRCode\Detector;
 
 use chillerlan\QRCode\Decoder\BitMatrix;
-use function abs, count, usort;
+use function abs, count, intdiv, usort;
 use const PHP_FLOAT_MAX;
 
 /**
@@ -56,7 +56,7 @@ final class FinderPatternFinder{
 		// Let's assume that the maximum version QR Code we support takes up 1/4 the height of the
 		// image, and then account for the center being 3 modules in size. This gives the smallest
 		// number of pixels the center could be, so skip this often.
-		$iSkip = (int)((3 * $dimension) / (4 * self::MAX_MODULES));
+		$iSkip = intdiv((3 * $dimension), (4 * self::MAX_MODULES));
 
 		if($iSkip < self::MIN_SKIP){
 			$iSkip = self::MIN_SKIP;

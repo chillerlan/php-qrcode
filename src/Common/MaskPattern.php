@@ -14,7 +14,7 @@ namespace chillerlan\QRCode\Common;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\QRCodeException;
 use Closure;
-use function abs, array_search, count, min;
+use function abs, array_search, count, intdiv, min;
 
 /**
  * ISO/IEC 18004:2000 Section 8.8.1
@@ -102,10 +102,10 @@ final class MaskPattern{
 			self::PATTERN_001 => fn(int $x, int $y):bool => ($y % 2) === 0,
 			self::PATTERN_010 => fn(int $x, int $y):bool => ($x % 3) === 0,
 			self::PATTERN_011 => fn(int $x, int $y):bool => (($x + $y) % 3) === 0,
-			self::PATTERN_100 => fn(int $x, int $y):bool => (((int)($y / 2) + (int)($x / 3)) % 2) === 0,
-			self::PATTERN_101 => fn(int $x, int $y):bool => (($x * $y) % 6) === 0, // ((($x * $y) % 2) + (($x * $y) % 3)) === 0,
-			self::PATTERN_110 => fn(int $x, int $y):bool => (($x * $y) % 6) < 3, // (((($x * $y) % 2) + (($x * $y) % 3)) % 2) === 0,
-			self::PATTERN_111 => fn(int $x, int $y):bool => (($x + $y + (($x * $y) % 3)) % 2) === 0, // (((($x * $y) % 3) + (($x + $y) % 2)) % 2) === 0,
+			self::PATTERN_100 => fn(int $x, int $y):bool => ((intdiv($y, 2) + intdiv($x, 3)) % 2) === 0,
+			self::PATTERN_101 => fn(int $x, int $y):bool => (($x * $y) % 6) === 0,
+			self::PATTERN_110 => fn(int $x, int $y):bool => (($x * $y) % 6) < 3,
+			self::PATTERN_111 => fn(int $x, int $y):bool => (($x + $y + (($x * $y) % 3)) % 2) === 0,
 		][$this->maskPattern];
 	}
 
@@ -310,7 +310,7 @@ final class MaskPattern{
 			}
 		}
 
-		return ((int)(abs($darkCells * 2 - $totalCells) * 10 / $totalCells) * 10);
+		return (intdiv((abs($darkCells * 2 - $totalCells) * 10), $totalCells) * 10);
 	}
 
 }

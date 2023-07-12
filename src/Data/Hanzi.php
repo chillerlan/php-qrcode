@@ -13,7 +13,7 @@ namespace chillerlan\QRCode\Data;
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
 
 use Throwable;
-use function chr, implode, is_string, mb_convert_encoding, mb_detect_encoding,
+use function chr, implode, intdiv, is_string, mb_convert_encoding, mb_detect_encoding,
 	mb_detect_order, mb_internal_encoding, mb_strlen, ord, sprintf, strlen;
 
 /**
@@ -188,7 +188,7 @@ final class Hanzi extends QRDataModeAbstract{
 		while($length > 0){
 			// Each 13 bits encodes a 2-byte character
 			$twoBytes          = $bitBuffer->read(13);
-			$assembledTwoBytes = ((((int)($twoBytes / 0x060)) << 8) | ($twoBytes % 0x060));
+			$assembledTwoBytes = ((intdiv($twoBytes, 0x060) << 8) | ($twoBytes % 0x060));
 
 			$assembledTwoBytes += ($assembledTwoBytes < 0x00a00) // 0x003BF
 				? 0x0a1a1  // In the 0xA1A1 to 0xAAFE range

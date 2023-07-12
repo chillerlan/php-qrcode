@@ -13,7 +13,7 @@ namespace chillerlan\QRCode\Data;
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
 
 use Throwable;
-use function chr, implode, is_string, mb_convert_encoding, mb_detect_encoding,
+use function chr, implode, intdiv, is_string, mb_convert_encoding, mb_detect_encoding,
 	mb_detect_order, mb_internal_encoding, mb_strlen, ord, sprintf, strlen;
 
 /**
@@ -174,7 +174,7 @@ final class Kanji extends QRDataModeAbstract{
 		while($length > 0){
 			// Each 13 bits encodes a 2-byte character
 			$twoBytes          = $bitBuffer->read(13);
-			$assembledTwoBytes = ((((int)($twoBytes / 0x0c0)) << 8) | ($twoBytes % 0x0c0));
+			$assembledTwoBytes = ((intdiv($twoBytes, 0x0c0) << 8) | ($twoBytes % 0x0c0));
 
 			$assembledTwoBytes += ($assembledTwoBytes < 0x01f00)
 				? 0x08140  // In the 0x8140 to 0x9FFC range

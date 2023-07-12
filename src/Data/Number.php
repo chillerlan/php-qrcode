@@ -12,7 +12,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
 
-use function array_flip, ceil, str_split, substr, unpack;
+use function array_flip, ceil, intdiv, str_split, substr, unpack;
 
 /**
  * Numeric mode: decimal digits 0 to 9
@@ -140,8 +140,8 @@ final class Number extends QRDataModeAbstract{
 				throw new QRCodeDataException('error decoding numeric value');
 			}
 
-			$result .= $toNumericChar((int)($threeDigitsBits / 100));
-			$result .= $toNumericChar((int)($threeDigitsBits / 10) % 10);
+			$result .= $toNumericChar(intdiv($threeDigitsBits, 100));
+			$result .= $toNumericChar(intdiv($threeDigitsBits, 10) % 10);
 			$result .= $toNumericChar($threeDigitsBits % 10);
 
 			$length -= 3;
@@ -159,7 +159,7 @@ final class Number extends QRDataModeAbstract{
 				throw new QRCodeDataException('error decoding numeric value');
 			}
 
-			$result .= $toNumericChar((int)($twoDigitsBits / 10));
+			$result .= $toNumericChar(intdiv($twoDigitsBits, 10));
 			$result .= $toNumericChar($twoDigitsBits % 10);
 		}
 		elseif($length === 1){

@@ -14,7 +14,7 @@ namespace chillerlan\QRCode\Detector;
 use chillerlan\QRCode\Decoder\{Binarizer, LuminanceSourceInterface};
 use chillerlan\QRCode\Common\Version;
 use chillerlan\QRCode\Decoder\BitMatrix;
-use function abs, is_nan, max, min, round;
+use function abs, intdiv, is_nan, max, min, round;
 use const NAN;
 
 /**
@@ -42,7 +42,7 @@ final class Detector{
 
 		$moduleSize         = $this->calculateModuleSize($topLeft, $topRight, $bottomLeft);
 		$dimension          = $this->computeDimension($topLeft, $topRight, $bottomLeft, $moduleSize);
-		$provisionalVersion = new Version((int)(($dimension - 17) / 4));
+		$provisionalVersion = new Version(intdiv(($dimension - 17), 4));
 		$alignmentPattern   = null;
 
 		// Anything above version 1 has an alignment pattern

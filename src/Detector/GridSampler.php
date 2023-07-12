@@ -14,7 +14,7 @@ namespace chillerlan\QRCode\Detector;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Decoder\BitMatrix;
 use Throwable;
-use function array_fill, count, sprintf;
+use function array_fill, count, intdiv, sprintf;
 
 /**
  * Implementations of this class can, given locations of finder patterns for a QR code in an
@@ -31,6 +31,8 @@ use function array_fill, count, sprintf;
  */
 final class GridSampler{
 
+	private array $points;
+
 	/**
 	 * Checks a set of points that have been transformed to sample points on an image against
 	 * the image's dimensions to see if the point are even within the image.
@@ -42,20 +44,18 @@ final class GridSampler{
 	 * For efficiency, the method will check points from either end of the line until one is found
 	 * to be within the image. Because the set of points are assumed to be linear, this is valid.
 	 *
-	 * @param \chillerlan\QRCode\Decoder\BitMatrix $matrix image into which the points should map
-	 * @param float[]                              $points actual points in x1,y1,...,xn,yn form
+	 * @param int $dimension matrix width/height
 	 *
 	 * @throws \chillerlan\QRCode\Detector\QRCodeDetectorException if an endpoint is lies outside the image boundaries
 	 */
-	private function checkAndNudgePoints(BitMatrix $matrix, array $points):void{
-		$dimension = $matrix->getSize();
-		$nudged    = true;
-		$max       = count($points);
+	private function checkAndNudgePoints(int $dimension):void{
+		$nudged = true;
+		$max    = count($this->points);
 
 		// Check and nudge points from start until we see some that are OK:
 		for($offset = 0; $offset < $max && $nudged; $offset += 2){
-			$x = (int)$points[$offset];
-			$y = (int)$points[($offset + 1)];
+			$x = (int)$this->points[$offset];
+			$y = (int)$this->points[($offset + 1)];
 
 			if($x < -1 || $x > $dimension || $y < -1 || $y > $dimension){
 				throw new QRCodeDetectorException(sprintf('checkAndNudgePoints 1, x: %s, y: %s, d: %s', $x, $y, $dimension));
@@ -64,31 +64,31 @@ final class GridSampler{
 			$nudged = false;
 
 			if($x === -1){
-				$points[$offset] = 0.0;
-				$nudged          = true;
+				$this->points[$offset] = 0.0;
+				$nudged                = true;
 			}
 			elseif($x === $dimension){
-				$points[$offset] = ($dimension - 1);
-				$nudged          = true;
+				$this->points[$offset] = ($dimension - 1);
+				$nudged                = true;
 			}
 
 			if($y === -1){
-				$points[($offset + 1)] = 0.0;
-				$nudged                = true;
+				$this->points[($offset + 1)] = 0.0;
+				$nudged                      = true;
 			}
 			elseif($y === $dimension){
-				$points[($offset + 1)] = ($dimension - 1);
-				$nudged                = true;
+				$this->points[($offset + 1)] = ($dimension - 1);
+				$nudged                      = true;
 			}
 
 		}
+
 		// Check and nudge points from end:
 		$nudged = true;
-		$offset = (count($points) - 2);
 
-		for(; $offset >= 0 && $nudged; $offset -= 2){
-			$x = (int)$points[$offset];
-			$y = (int)$points[($offset + 1)];
+		for($offset = ($max - 2); $offset >= 0 && $nudged; $offset -= 2){
+			$x = (int)$this->points[$offset];
+			$y = (int)$this->points[($offset + 1)];
 
 			if($x < -1 || $x > $dimension || $y < -1 || $y > $dimension){
 				throw new QRCodeDetectorException(sprintf('checkAndNudgePoints 2, x: %s, y: %s, d: %s', $x, $y, $dimension));
@@ -97,24 +97,25 @@ final class GridSampler{
 			$nudged = false;
 
 			if($x === -1){
-				$points[$offset] = 0.0;
-				$nudged          = true;
+				$this->points[$offset] = 0.0;
+				$nudged                = true;
 			}
 			elseif($x === $dimension){
-				$points[$offset] = ($dimension - 1);
-				$nudged          = true;
+				$this->points[$offset] = ($dimension - 1);
+				$nudged                = true;
 			}
 
 			if($y === -1){
-				$points[($offset + 1)] = 0.0;
-				$nudged                = true;
+				$this->points[($offset + 1)] = 0.0;
+				$nudged                      = true;
 			}
 			elseif($y === $dimension){
-				$points[($offset + 1)] = ($dimension - 1);
-				$nudged                = true;
+				$this->points[($offset + 1)] = ($dimension - 1);
+				$nudged                      = true;
 			}
 
 		}
+
 	}
 
 	/**
@@ -133,31 +134,36 @@ final class GridSampler{
 			throw new QRCodeDetectorException('invalid matrix size');
 		}
 
-		$bits   = new BitMatrix($dimension);
-		$points = array_fill(0, (2 * $dimension), 0.0);
+		$bits         = new BitMatrix($dimension);
+		$this->points = array_fill(0, (2 * $dimension), 0.0);
 
 		for($y = 0; $y < $dimension; $y++){
-			$max    = count($points);
+			$max    = count($this->points);
 			$iValue = ($y + 0.5);
 
 			for($x = 0; $x < $max; $x += 2){
-				$points[$x]       = (($x / 2) + 0.5);
-				$points[($x + 1)] = $iValue;
+				$this->points[$x]       = (($x / 2) + 0.5);
+				$this->points[($x + 1)] = $iValue;
 			}
-
-			$transform->transformPoints($points);
+			// phpcs:ignore
+			[$this->points, ] = $transform->transformPoints($this->points);
 			// Quick check to see if points transformed to something inside the image;
 			// sufficient to check the endpoints
-			$this->checkAndNudgePoints($matrix, $points);
+			$this->checkAndNudgePoints($matrix->getSize());
 
-			try{
+			// no need to try/catch as QRMatrix::set() will silently discard out of bounds values
+#			try{
 				for($x = 0; $x < $max; $x += 2){
 					// Black(-ish) pixel
-					$bits->set(($x / 2), $y, $matrix->check((int)$points[$x], (int)$points[($x + 1)]), QRMatrix::M_DATA);
+					$bits->set(
+						intdiv($x, 2),
+						$y,
+						$matrix->check((int)$this->points[$x], (int)$this->points[($x + 1)]),
+						QRMatrix::M_DATA
+					);
 				}
-			}
-			// @codeCoverageIgnoreStart
-			catch(Throwable $aioobe){//ArrayIndexOutOfBoundsException
+#			}
+#			catch(Throwable $aioobe){//ArrayIndexOutOfBoundsException
 				// This feels wrong, but, sometimes if the finder patterns are misidentified, the resulting
 				// transform gets "twisted" such that it maps a straight line of points to a set of points
 				// whose endpoints are in bounds, but others are not. There is probably some mathematical
@@ -165,9 +171,8 @@ final class GridSampler{
 				// This results in an ugly runtime exception despite our clever checks above -- can't have
 				// that. We could check each point's coordinates but that feels duplicative. We settle for
 				// catching and wrapping ArrayIndexOutOfBoundsException.
-				throw new QRCodeDetectorException('ArrayIndexOutOfBoundsException');
-			}
-			// @codeCoverageIgnoreEnd
+#				throw new QRCodeDetectorException('ArrayIndexOutOfBoundsException');
+#			}
 
 		}
 

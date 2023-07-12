@@ -11,7 +11,7 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, ReedSolomonEncoder, Version};
-use function array_fill, array_map, array_reverse, count, floor;
+use function array_fill, array_map, array_reverse, count, floor, intdiv;
 
 /**
  * Holds an array representation of the final QR Code that contains numerical values for later output modifications;
@@ -485,7 +485,7 @@ class QRMatrix{
 		if($bits !== null){
 
 			for($i = 0; $i < 18; $i++){
-				$a = (int)($i / 3);
+				$a = intdiv($i, 3);
 				$b = (($i % 3) + ($this->moduleCount - 8 - 3));
 				$v = (($bits >> $i) & 1) === 1;
 
