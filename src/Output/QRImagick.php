@@ -78,7 +78,7 @@ class QRImagick extends QROutputAbstract{
 		// #rrggbb(aa)
 		// #rrrrggggbbbb(aaaa)
 		// ...
-		if(preg_match('/^#[a-f]+$/i', $value) && in_array((strlen($value) - 1), [3, 4, 6, 8, 9, 12, 16, 24, 32], true)){
+		if(preg_match('/^#[a-f\d]+$/i', $value) && in_array((strlen($value) - 1), [3, 4, 6, 8, 9, 12, 16, 24, 32], true)){
 			return true;
 		}
 
