@@ -150,7 +150,7 @@ final class PerspectiveTransform{
 	}
 
 	/**
-	 * @return array[] [$xValues, $yValues|null]
+	 * @return array[] [$xValues, $yValues]
 	 */
 	public function transformPoints(array $xValues, array $yValues = null):array{
 		$max = count($xValues);
@@ -176,7 +176,7 @@ final class PerspectiveTransform{
 			$xValues[($i + 1)] = (($this->a12 * $x + $this->a22 * $y + $this->a32) / $denominator);
 		}
 
-		return [$xValues, $yValues];
+		return [$xValues, []];
 	}
 
 }
