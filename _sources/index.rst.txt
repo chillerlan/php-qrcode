@@ -19,7 +19,18 @@ This work is licensed under the Creative Commons Attribution 4.0 International (
 
 .. toctree::
    :maxdepth: 3
+   :caption: Public API
+
+   API-QRCode
+   API-QROptions
+   API-QROutputInterface
+   API-QRMatrix
+   API-DecoderResult
+
+.. toctree::
+   :maxdepth: 3
    :caption: Appendix
 
+   Appendix-Glossary
    Appendix-License
 
