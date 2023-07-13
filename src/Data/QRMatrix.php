@@ -21,54 +21,77 @@ use function array_fill, array_map, array_reverse, count, floor, intdiv;
  */
 class QRMatrix{
 
+	/*
+	 * special values
+	 */
+
 	/** @var int */
-	public const IS_DARK          = 0b100000000000;
+	public const IS_DARK            = 0b100000000000;
 	/** @var int */
-	public const M_NULL           = 0b000000000000;
+	public const M_NULL             = 0b000000000000;
 	/** @var int */
-	public const M_DARKMODULE     = 0b100000000001;
+	public const M_LOGO             = 0b001000000000;
 	/** @var int */
-	public const M_DATA           = 0b000000000010;
+	public const M_LOGO_DARK        = 0b101000000000;
 	/** @var int */
-	public const M_DATA_DARK      = 0b100000000010;
+	public const M_TEST             = 0b011111111111;
 	/** @var int */
-	public const M_FINDER         = 0b000000000100;
+	public const M_TEST_DARK        = 0b111111111111;
+
+	/*
+	 * light values
+	 */
+
 	/** @var int */
-	public const M_FINDER_DARK    = 0b100000000100;
+	public const M_DATA             = 0b000000000010;
 	/** @var int */
-	public const M_SEPARATOR      = 0b000000001000;
+	public const M_FINDER           = 0b000000000100;
 	/** @var int */
-	public const M_SEPARATOR_DARK = 0b100000001000;
+	public const M_SEPARATOR        = 0b000000001000;
 	/** @var int */
-	public const M_ALIGNMENT      = 0b000000010000;
+	public const M_ALIGNMENT        = 0b000000010000;
 	/** @var int */
-	public const M_ALIGNMENT_DARK = 0b100000010000;
+	public const M_TIMING           = 0b000000100000;
 	/** @var int */
-	public const M_TIMING         = 0b000000100000;
+	public const M_FORMAT           = 0b000001000000;
 	/** @var int */
-	public const M_TIMING_DARK    = 0b100000100000;
+	public const M_VERSION          = 0b000010000000;
 	/** @var int */
-	public const M_FORMAT         = 0b000001000000;
+	public const M_QUIETZONE        = 0b000100000000;
+
+	/*
+	 * dark values
+	 */
+
 	/** @var int */
-	public const M_FORMAT_DARK    = 0b100001000000;
+	public const M_DARKMODULE       = 0b100000000001;
 	/** @var int */
-	public const M_VERSION        = 0b000010000000;
+	public const M_DATA_DARK        = 0b100000000010;
 	/** @var int */
-	public const M_VERSION_DARK   = 0b100010000000;
+	public const M_FINDER_DARK      = 0b100000000100;
 	/** @var int */
-	public const M_QUIETZONE      = 0b000100000000;
+	public const M_ALIGNMENT_DARK   = 0b100000010000;
 	/** @var int */
-	public const M_QUIETZONE_DARK = 0b100100000000;
+	public const M_TIMING_DARK      = 0b100000100000;
 	/** @var int */
-	public const M_LOGO           = 0b001000000000;
+	public const M_FORMAT_DARK      = 0b100001000000;
 	/** @var int */
-	public const M_LOGO_DARK      = 0b101000000000;
+	public const M_VERSION_DARK     = 0b100010000000;
 	/** @var int */
-	public const M_FINDER_DOT     = 0b110000000000;
+	public const M_FINDER_DOT       = 0b110000000000;
+
+	/*
+	 * values used for reversed reflectance
+	 */
+
 	/** @var int */
-	public const M_TEST           = 0b011111111111;
+	public const M_DARKMODULE_LIGHT = 0b000000000001;
 	/** @var int */
-	public const M_TEST_DARK      = 0b111111111111;
+	public const M_FINDER_DOT_LIGHT = 0b010000000000;
+	/** @var int */
+	public const M_SEPARATOR_DARK   = 0b100000001000;
+	/** @var int */
+	public const M_QUIETZONE_DARK   = 0b100100000000;
 
 	/**
 	 * Map of flag => coord
@@ -575,6 +598,28 @@ class QRMatrix{
 	public function rotate90():self{
 		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
 		$this->matrix = array_map((fn(int ...$a):array => array_reverse($a)), ...$this->matrix);
+
+		return $this;
+	}
+
+	/**
+	 * Inverts the values of the whole matrix
+	 *
+	 * ISO/IEC 18004:2015 Section 6.2 - Reflectance reversal
+	 */
+	public function invert():self{
+
+		foreach($this->matrix as $y => $row){
+			foreach($row as $x => $val){
+
+				// skip null fields
+				if($val === $this::M_NULL){
+					continue;
+				}
+
+				$this->set($x, $y, ($val & $this::IS_DARK) !== $this::IS_DARK, $val);
+			}
+		}
 
 		return $this;
 	}
