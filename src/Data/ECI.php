@@ -65,6 +65,7 @@ final class ECI extends QRDataModeAbstract{
 	 * Writes an ECI designator to the bitbuffer
 	 *
 	 * @inheritDoc
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function write(BitBuffer $bitBuffer, int $versionNumber):QRDataModeInterface{
 		$bitBuffer->put(self::DATAMODE, 4);
@@ -77,6 +78,9 @@ final class ECI extends QRDataModeAbstract{
 		}
 		elseif($this->encoding < 1000000){
 			$bitBuffer->put(($this->encoding | 0xC00000), 24);
+		}
+		else{
+			throw new QRCodeDataException('invalid ECI ID');
 		}
 
 		return $this;
