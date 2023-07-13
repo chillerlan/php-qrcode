@@ -10,6 +10,7 @@
 - [EPS](./eps.php): Encapsulated PostScript
 - [String](./text.php): String output
 - [Multi mode](./multimode.php): a demostration of multi mode usage
+- [Reflectance](./reflectance.php): demonstrates reflectance reversal
 - [QRCode reader](./reader.php): a simple reader example
 
 
