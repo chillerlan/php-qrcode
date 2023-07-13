@@ -174,7 +174,14 @@ with an instance of a class which implements this interface.</p>
 </h3>
 
 <dl class="phpdocumentor-table-of-contents">
-                        <dt class="phpdocumentor-table-of-contents__entry -method -public">
+                    <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/chillerlan-QRCode-Detector-GridSampler.html#property_points">$points</a>
+    <span>
+                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
+</dt>
+<dd></dd>
+
+                <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Detector-GridSampler.html#method_sampleGrid">sampleGrid()</a>
     <span>
                                 &nbsp;: <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a>    </span>
@@ -198,6 +205,46 @@ the image&#039;s dimensions to see if the point are even within the image.</dd>
         
 
         
+    <section class="phpdocumentor-properties">
+        <h3 class="phpdocumentor-elements__header" id="properties">
+            Properties
+            <a href="classes/chillerlan-QRCode-Detector-GridSampler.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+        </h3>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_points">
+        $points
+        <a href="classes/chillerlan-QRCode-Detector-GridSampler.html#property_points" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/GridSampler.php"><a href="files/src-detector-gridsampler.html"><abbr title="src/Detector/GridSampler.php">GridSampler.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">34</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
+    <span class="phpdocumentor-signature__name">$points</span>
+    </code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+            </section>
 
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
@@ -217,7 +264,7 @@ the image&#039;s dimensions to see if the point are even within the image.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/GridSampler.php"><a href="files/src-detector-gridsampler.html"><abbr title="src/Detector/GridSampler.php">GridSampler.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">130</span>
+    <span class="phpdocumentor-element-found-in__line">131</span>
 
     </aside>
 
@@ -299,7 +346,7 @@ defined by the &quot;from&quot; parameters</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/GridSampler.php"><a href="files/src-detector-gridsampler.html"><abbr title="src/Detector/GridSampler.php">GridSampler.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">50</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
@@ -308,7 +355,7 @@ the image&#039;s dimensions to see if the point are even within the image.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">checkAndNudgePoints</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, float&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$points</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">checkAndNudgePoints</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$dimension</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
         <section class="phpdocumentor-description"><p>This method will actually &quot;nudge&quot; the endpoints back onto the image if they are found to be
 barely (less than 1 pixel) off the image. This accounts for imperfect detection of finder
@@ -320,20 +367,11 @@ to be within the image. Because the set of points are assumed to be linear, this
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$matrix</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span>
+                <span class="phpdocumentor-signature__argument__name">$dimension</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>image into which the points should map</p>
-</section>
-
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$points</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, float&gt;</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>actual points in x1,y1,...,xn,yn form</p>
+                    <section class="phpdocumentor-description"><p>matrix width/height</p>
 </section>
 
             </dd>

@@ -160,6 +160,7 @@
         &nbsp;= [
     // light
     \chillerlan\QRCode\Data\QRMatrix::M_NULL =&gt; false,
+    \chillerlan\QRCode\Data\QRMatrix::M_DARKMODULE_LIGHT =&gt; false,
     \chillerlan\QRCode\Data\QRMatrix::M_DATA =&gt; false,
     \chillerlan\QRCode\Data\QRMatrix::M_FINDER =&gt; false,
     \chillerlan\QRCode\Data\QRMatrix::M_SEPARATOR =&gt; false,
@@ -169,11 +170,13 @@
     \chillerlan\QRCode\Data\QRMatrix::M_VERSION =&gt; false,
     \chillerlan\QRCode\Data\QRMatrix::M_QUIETZONE =&gt; false,
     \chillerlan\QRCode\Data\QRMatrix::M_LOGO =&gt; false,
+    \chillerlan\QRCode\Data\QRMatrix::M_FINDER_DOT_LIGHT =&gt; false,
     \chillerlan\QRCode\Data\QRMatrix::M_TEST =&gt; false,
     // dark
     \chillerlan\QRCode\Data\QRMatrix::M_DARKMODULE =&gt; true,
     \chillerlan\QRCode\Data\QRMatrix::M_DATA_DARK =&gt; true,
     \chillerlan\QRCode\Data\QRMatrix::M_FINDER_DARK =&gt; true,
+    \chillerlan\QRCode\Data\QRMatrix::M_SEPARATOR_DARK =&gt; true,
     \chillerlan\QRCode\Data\QRMatrix::M_ALIGNMENT_DARK =&gt; true,
     \chillerlan\QRCode\Data\QRMatrix::M_TIMING_DARK =&gt; true,
     \chillerlan\QRCode\Data\QRMatrix::M_FORMAT_DARK =&gt; true,
@@ -184,7 +187,7 @@
     \chillerlan\QRCode\Data\QRMatrix::M_TEST_DARK =&gt; true,
 ]                            </span>
 </dt>
-<dd></dd>
+<dd>Map of module type =&gt; default value</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_EPS">EPS</a>
@@ -234,6 +237,7 @@
         &nbsp;= [
     // light
     \chillerlan\QRCode\Data\QRMatrix::M_NULL =&gt; &#039;null&#039;,
+    \chillerlan\QRCode\Data\QRMatrix::M_DARKMODULE_LIGHT =&gt; &#039;darkmodule-light&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_DATA =&gt; &#039;data&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_FINDER =&gt; &#039;finder&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_SEPARATOR =&gt; &#039;separator&#039;,
@@ -243,11 +247,13 @@
     \chillerlan\QRCode\Data\QRMatrix::M_VERSION =&gt; &#039;version&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_QUIETZONE =&gt; &#039;quietzone&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_LOGO =&gt; &#039;logo&#039;,
+    \chillerlan\QRCode\Data\QRMatrix::M_FINDER_DOT_LIGHT =&gt; &#039;finder-dot-light&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_TEST =&gt; &#039;test&#039;,
     // dark
     \chillerlan\QRCode\Data\QRMatrix::M_DARKMODULE =&gt; &#039;darkmodule&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_DATA_DARK =&gt; &#039;data-dark&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_FINDER_DARK =&gt; &#039;finder-dark&#039;,
+    \chillerlan\QRCode\Data\QRMatrix::M_SEPARATOR_DARK =&gt; &#039;separator-dark&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_ALIGNMENT_DARK =&gt; &#039;alignment-dark&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_TIMING_DARK =&gt; &#039;timing-dark&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_FORMAT_DARK =&gt; &#039;format-dark&#039;,
@@ -258,7 +264,7 @@
     \chillerlan\QRCode\Data\QRMatrix::M_TEST_DARK =&gt; &#039;test-dark&#039;,
 ]                            </span>
 </dt>
-<dd></dd>
+<dd>Map of module type =&gt; readable name (for CSS etc.)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MARKUP_HTML">MARKUP_HTML</a>
@@ -279,7 +285,7 @@
     <span>
         &nbsp;= [self::MARKUP_SVG =&gt; \chillerlan\QRCode\Output\QRMarkupSVG::class, self::MARKUP_HTML =&gt; \chillerlan\QRCode\Output\QRMarkupHTML::class, self::GDIMAGE_PNG =&gt; \chillerlan\QRCode\Output\QRGdImage::class, self::GDIMAGE_GIF =&gt; \chillerlan\QRCode\Output\QRGdImage::class, self::GDIMAGE_JPG =&gt; \chillerlan\QRCode\Output\QRGdImage::class, self::STRING_JSON =&gt; \chillerlan\QRCode\Output\QRString::class, self::STRING_TEXT =&gt; \chillerlan\QRCode\Output\QRString::class, self::IMAGICK =&gt; \chillerlan\QRCode\Output\QRImagick::class, self::FPDF =&gt; \chillerlan\QRCode\Output\QRFpdf::class, self::EPS =&gt; \chillerlan\QRCode\Output\QREps::class]                            </span>
 </dt>
-<dd>Map of built-in output modes =&gt; modules</dd>
+<dd>Map of built-in output modes =&gt; class FQN</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_STRING_JSON">STRING_JSON</a>
@@ -300,7 +306,7 @@
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>generates the output, optionally dumps it to a file, and returns it</dd>
+<dd>Generates the output, optionally dumps it to a file, and returns it</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#method_moduleValueIsValid">moduleValueIsValid()</a>
@@ -355,11 +361,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">64</span>
+    <span class="phpdocumentor-element-found-in__line">66</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Map of module type =&gt; default value</p>
+
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">array&lt;string|int, bool&gt;</span>
@@ -367,6 +374,7 @@
     = <span class="phpdocumentor-signature__default-value">[
     // light
     \chillerlan\QRCode\Data\QRMatrix::M_NULL =&gt; false,
+    \chillerlan\QRCode\Data\QRMatrix::M_DARKMODULE_LIGHT =&gt; false,
     \chillerlan\QRCode\Data\QRMatrix::M_DATA =&gt; false,
     \chillerlan\QRCode\Data\QRMatrix::M_FINDER =&gt; false,
     \chillerlan\QRCode\Data\QRMatrix::M_SEPARATOR =&gt; false,
@@ -376,11 +384,13 @@
     \chillerlan\QRCode\Data\QRMatrix::M_VERSION =&gt; false,
     \chillerlan\QRCode\Data\QRMatrix::M_QUIETZONE =&gt; false,
     \chillerlan\QRCode\Data\QRMatrix::M_LOGO =&gt; false,
+    \chillerlan\QRCode\Data\QRMatrix::M_FINDER_DOT_LIGHT =&gt; false,
     \chillerlan\QRCode\Data\QRMatrix::M_TEST =&gt; false,
     // dark
     \chillerlan\QRCode\Data\QRMatrix::M_DARKMODULE =&gt; true,
     \chillerlan\QRCode\Data\QRMatrix::M_DATA_DARK =&gt; true,
     \chillerlan\QRCode\Data\QRMatrix::M_FINDER_DARK =&gt; true,
+    \chillerlan\QRCode\Data\QRMatrix::M_SEPARATOR_DARK =&gt; true,
     \chillerlan\QRCode\Data\QRMatrix::M_ALIGNMENT_DARK =&gt; true,
     \chillerlan\QRCode\Data\QRMatrix::M_TIMING_DARK =&gt; true,
     \chillerlan\QRCode\Data\QRMatrix::M_FORMAT_DARK =&gt; true,
@@ -569,11 +579,12 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">94</span>
+    <span class="phpdocumentor-element-found-in__line">101</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Map of module type =&gt; readable name (for CSS etc.)</p>
+
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">array&lt;string|int, string&gt;</span>
@@ -581,6 +592,7 @@
     = <span class="phpdocumentor-signature__default-value">[
     // light
     \chillerlan\QRCode\Data\QRMatrix::M_NULL =&gt; &#039;null&#039;,
+    \chillerlan\QRCode\Data\QRMatrix::M_DARKMODULE_LIGHT =&gt; &#039;darkmodule-light&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_DATA =&gt; &#039;data&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_FINDER =&gt; &#039;finder&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_SEPARATOR =&gt; &#039;separator&#039;,
@@ -590,11 +602,13 @@
     \chillerlan\QRCode\Data\QRMatrix::M_VERSION =&gt; &#039;version&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_QUIETZONE =&gt; &#039;quietzone&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_LOGO =&gt; &#039;logo&#039;,
+    \chillerlan\QRCode\Data\QRMatrix::M_FINDER_DOT_LIGHT =&gt; &#039;finder-dot-light&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_TEST =&gt; &#039;test&#039;,
     // dark
     \chillerlan\QRCode\Data\QRMatrix::M_DARKMODULE =&gt; &#039;darkmodule&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_DATA_DARK =&gt; &#039;data-dark&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_FINDER_DARK =&gt; &#039;finder-dark&#039;,
+    \chillerlan\QRCode\Data\QRMatrix::M_SEPARATOR_DARK =&gt; &#039;separator-dark&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_ALIGNMENT_DARK =&gt; &#039;alignment-dark&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_TIMING_DARK =&gt; &#039;timing-dark&#039;,
     \chillerlan\QRCode\Data\QRMatrix::M_FORMAT_DARK =&gt; &#039;format-dark&#039;,
@@ -679,7 +693,7 @@
 
     </aside>
 
-        <p class="phpdocumentor-summary">Map of built-in output modes =&gt; modules</p>
+        <p class="phpdocumentor-summary">Map of built-in output modes =&gt; class FQN</p>
 
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -768,11 +782,11 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">139</span>
+    <span class="phpdocumentor-element-found-in__line">149</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">generates the output, optionally dumps it to a file, and returns it</p>
+        <p class="phpdocumentor-summary">Generates the output, optionally dumps it to a file, and returns it</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -830,7 +844,7 @@ you need to supply the $file parameter here in that case (or handle the option v
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">126</span>
+    <span class="phpdocumentor-element-found-in__line">136</span>
 
     </aside>
 
