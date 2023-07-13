@@ -2608,7 +2608,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupHTML",
             "name": "QRMarkupHTML",
-            "summary": "HTML\u0020output",
+            "summary": "HTML\u0020output\u0020\u0028a\u0020cheap\u0020markup\u0020substitute\u0020when\u0020SVG\u0020is\u0020not\u0020available\u0020or\u0020not\u0020an\u0020option\u0029",
             "url": "classes/chillerlan-QRCode-Output-QRMarkupHTML.html"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupHTML\u003A\u003AcreateMarkup\u0028\u0029",
