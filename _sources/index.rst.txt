@@ -12,25 +12,37 @@ This work is licensed under the Creative Commons Attribution 4.0 International (
    :maxdepth: 3
    :caption: Usage
 
-   Usage-Overview
-   Usage-Installation
-   Usage-Quickstart
-   Usage-Advanced-usage
+   Usage-Overview.md
+   Usage-Installation.md
+   Usage-Quickstart.md
+   Usage-Advanced-usage.md
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Built-In Output Modules
+
+   Built-In-Output-QREps.md
+   Built-In-Output-QRFpdf.md
+   Built-In-Output-QRGdImage.md
+   Built-In-Output-QRImagick.md
+   Built-In-Output-QRMarkupHTML.md
+   Built-In-Output-QRMarkupSVG.md
+   Built-In-Output-QRString.md
 
 .. toctree::
    :maxdepth: 3
    :caption: Public API
 
-   API-QRCode
-   API-QROptions
-   API-QROutputInterface
-   API-QRMatrix
-   API-DecoderResult
+   API-QRCode.md
+   API-QROptions.md
+   API-QROutputInterface.md
+   API-QRMatrix.md
+   API-DecoderResult.md
 
 .. toctree::
    :maxdepth: 3
    :caption: Appendix
 
-   Appendix-Glossary
-   Appendix-License
+   Appendix-Terminology.md
+   Appendix-License.md
 

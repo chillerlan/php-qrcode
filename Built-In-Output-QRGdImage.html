@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installation &mdash; PHP-QRCode main
+  <title>QRGdImage &mdash; PHP-QRCode main
  Manual</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
@@ -20,8 +20,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Quickstart" href="Usage-Quickstart.html" />
-    <link rel="prev" title="Overview" href="Usage-Overview.html" /> 
+    <link rel="next" title="QRImagick" href="Built-In-Output-QRImagick.html" />
+    <link rel="prev" title="QRFpdf" href="Built-In-Output-QRFpdf.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,7 +44,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="Usage-Overview.html">Overview</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Usage-Overview.html#features">Features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Usage-Overview.html#requirements">Requirements</a></li>
@@ -52,21 +52,21 @@
 <li class="toctree-l2"><a class="reference internal" href="Usage-Overview.html#shameless-advertising">Shameless advertising</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#installation-with-composer">Installation with Composer</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#composer-json">composer.json</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#version-switch">Version switch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Usage-Installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#installation-with-composer">Installation with Composer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Installation.html#composer-json">composer.json</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Usage-Installation.html#version-switch">Version switch</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#terminal">Terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Installation.html#terminal">Terminal</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#manual-installation">Manual installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#can-i-use-this-library-without-using-composer">Can i use this library without using composer?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#manual-installation">Manual installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Installation.html#can-i-use-this-library-without-using-composer">Can i use this library without using composer?</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#supported-php-versions-extension-requirements">Supported PHP versions &amp; extension requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#imagemagick">ImageMagick</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#supported-php-versions-extension-requirements">Supported PHP versions &amp; extension requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#imagemagick">ImageMagick</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Usage-Quickstart.html">Quickstart</a><ul>
@@ -97,7 +97,7 @@
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Built-In Output Modules</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QREps.html">QREps</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QREps.html#options-that-affect-this-module">Options that affect this module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QREps.html#options-that-have-no-effect">Options that have no effect</a></li>
@@ -112,9 +112,9 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QRGdImage.html">QRGdImage</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRGdImage.html#options-that-affect-this-module">Options that affect this module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QRGdImage.html#options-that-have-no-effect">Options that have no effect</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">QRGdImage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#options-that-have-no-effect">Options that have no effect</a></li>
 </ul>
 </li>
 </ul>
@@ -245,9 +245,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Installation</li>
+      <li class="breadcrumb-item active">QRGdImage</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/chillerlan/php-qrcode/blob/main/docs/Usage-Installation.md" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/chillerlan/php-qrcode/blob/main/docs/Built-In-Output-QRGdImage.md" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -255,133 +255,74 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
-<section id="installation-with-composer">
-<h2>Installation with Composer<a class="headerlink" href="#installation-with-composer" title="Permalink to this heading"></a></h2>
-<p><strong><a class="reference external" href="https://getcomposer.org">Composer</a> is required to install this package. Please do not open an issue to complain about “monopolizing the implementation” or similar - we’ve been there before.</strong></p>
-<section id="composer-json">
-<h3>composer.json<a class="headerlink" href="#composer-json" title="Permalink to this heading"></a></h3>
-<p>Installation via <a class="reference external" href="https://getcomposer.org/doc/04-schema.md"><code class="docutils literal notranslate"><span class="pre">composer.json</span></code></a>:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">	</span><span class="nt">&quot;require&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">		</span><span class="nt">&quot;php&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^7.4&quot;</span><span class="p">,</span>
-<span class="w">		</span><span class="nt">&quot;chillerlan/php-qrcode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dev-main&quot;</span>
-<span class="w">	</span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Note: replace <code class="docutils literal notranslate"><span class="pre">dev-main</span></code> with a <a class="reference external" href="https://getcomposer.org/doc/articles/versions.md#writing-version-constraints">version constraint</a>, e.g. <code class="docutils literal notranslate"><span class="pre">^4.3</span></code> - see <a class="reference external" href="https://github.com/chillerlan/php-qrcode/releases">releases</a> for valid versions.
-In case you want to keep using <code class="docutils literal notranslate"><span class="pre">dev-main</span></code>, specify the hash of a commit to avoid running into unforseen issues, like so: <code class="docutils literal notranslate"><span class="pre">dev-main#cb69751c3bc090a7fdd2f2601bbe10f28d225f10</span></code></p>
-<section id="version-switch">
-<h4>Version switch<a class="headerlink" href="#version-switch" title="Permalink to this heading"></a></h4>
-<p>If your application supports older PHP versions and uses the basic <code class="docutils literal notranslate"><span class="pre">QRCode</span></code> syntax <code class="docutils literal notranslate"><span class="pre">(new</span> <span class="pre">QRCode)-&gt;render($data)</span></code>, then you can add a version switch to your <code class="docutils literal notranslate"><span class="pre">composer.json</span></code> to allow installing a <code class="docutils literal notranslate"><span class="pre">php-qrcode</span></code> version that suits the platform it runs on:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="w">	</span><span class="nt">&quot;require&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">		</span><span class="nt">&quot;php&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^7.0 || ^8.0&quot;</span><span class="p">,</span>
-<span class="w">		</span><span class="nt">&quot;chillerlan/php-qrcode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^2.0 || ^3.4 || ^4.3 || ^5.0&quot;</span>
-<span class="w">	</span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Most of the v2.0 API remains unchanged throughout the several versions up to v5.x, however, please test and verify the expected output before you deploy such a switch.</p>
-</section>
-</section>
-<section id="terminal">
-<h3>Terminal<a class="headerlink" href="#terminal" title="Permalink to this heading"></a></h3>
-<p>To install <code class="docutils literal notranslate"><span class="pre">php-qrcode</span></code> on the terminal, use:</p>
-<p><code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">require</span> <span class="pre">chillerlan/php-qrcode</span></code></p>
-<p>If you want to install the package from a specific tag or commit, do as follows:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">require</span> <span class="pre">chillerlan/php-qrcode:4.3.4</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">require</span> <span class="pre">chillerlan/php-qrcode:dev-main#f15b0afe9d4128bf734c3bf1bcffae72bf7b3e53</span></code></p></li>
-</ul>
-</section>
-</section>
-<section id="manual-installation">
-<h2>Manual installation<a class="headerlink" href="#manual-installation" title="Permalink to this heading"></a></h2>
-<p>Download the desired version of the package from <a class="reference external" href="https://github.com/chillerlan/php-qrcode/archive/refs/heads/main.zip">main</a> or
-<a class="reference external" href="https://github.com/chillerlan/php-qrcode/releases">release</a> and extract the contents to your project folder.
-After that, run <code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">install</span></code> in the package root directory to install the required dependencies and generate <code class="docutils literal notranslate"><span class="pre">./vendor/autoload.php</span></code>.</p>
-<p>Profit!</p>
-<section id="can-i-use-this-library-without-using-composer">
-<h3>Can i use this library without using composer?<a class="headerlink" href="#can-i-use-this-library-without-using-composer" title="Permalink to this heading"></a></h3>
-<p>You can, but it’s absolutely not recommended, nor supported.</p>
-<p>With that said, I’ll leave you with this info:</p>
-<ul class="simple">
-<li><p>download the .zip for a version of your choice and also all required dependencies listed in the <code class="docutils literal notranslate"><span class="pre">composer.json</span></code> for that version (you can find links to the respective repos <a class="reference external" href="https://packagist.org/packages/chillerlan/php-qrcode">on packagist</a>)</p></li>
-<li><p>extract the files into your library folder</p></li>
-<li><p>include the files manually or with whatever autoloader you are using</p></li>
-</ul>
-<p>Good luck!</p>
-</section>
-</section>
-<section id="supported-php-versions-extension-requirements">
-<h2>Supported PHP versions &amp; extension requirements<a class="headerlink" href="#supported-php-versions-extension-requirements" title="Permalink to this heading"></a></h2>
-<p>The PHP built-in extensions <a class="reference external" href="https://www.php.net/manual/book.image.php">GdImage</a> and <a class="reference external" href="https://www.php.net/manual/book.mbstring.php">mbstring</a> are used across all versions, <a class="reference external" href="https://www.php.net/manual/book.imagick.php">ImageMagick</a> is optional since v3.x.</p>
+  <section id="qrgdimage">
+<h1>QRGdImage<a class="headerlink" href="#qrgdimage" title="Permalink to this heading"></a></h1>
+<p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRGdImage.php">Class <code class="docutils literal notranslate"><span class="pre">QRGdImage</span></code></a>: <a class="reference external" href="https://www.php.net/manual/book.image">GdImage</a> raster graphic output (GIF, JPG, PNG)</p>
+<section id="options-that-affect-this-module">
+<h2>Options that affect this module<a class="headerlink" href="#options-that-affect-this-module" title="Permalink to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
-<tr class="row-odd"><th class="head"><p>version</p></th>
-<th class="head"><p>branch/tag</p></th>
-<th class="head"><p>PHP</p></th>
-<th class="head"><p>supported</p></th>
-<th class="head"><p>required extensions</p></th>
-<th class="head"><p>optional extensions</p></th>
-<th class="head"><p>info</p></th>
+<tr class="row-odd"><th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>v5</strong></p></td>
-<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/main"><code class="docutils literal notranslate"><span class="pre">dev-main</span></code></a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">^7.4 || ^8.0</span></code></p></td>
-<td><p>yes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code> or <code class="docutils literal notranslate"><span class="pre">imagick</span></code> required for reading QR Codes, <code class="docutils literal notranslate"><span class="pre">fileinfo</span></code> is used in <code class="docutils literal notranslate"><span class="pre">QRImagick</span></code></p></td>
-<td><p></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$returnResource</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>v4</strong></p></td>
-<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v4.3.x"><code class="docutils literal notranslate"><span class="pre">4.3.4</span></code></a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">^7.4 || ^8.0</span></code></p></td>
-<td><p>yes</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code>, <code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">imagick</span></code></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$imageBase64</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>v3</strong></p></td>
-<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v3.2.x"><code class="docutils literal notranslate"><span class="pre">3.4.1</span></code></a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">^7.2</span></code></p></td>
-<td><p>no</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code>, <code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">imagick</span></code></p></td>
-<td><p>v3.4.1 also supports PHP8</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$bgColor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mixed</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>v2</strong></p></td>
-<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v2.0.x"><code class="docutils literal notranslate"><span class="pre">2.0.8</span></code></a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&gt;=7.0.3</span></code></p></td>
-<td><p>no</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code>, <code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
-<td><p></p></td>
-<td><p></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$drawLightModules</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>v1</strong></p></td>
-<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v2.0.x-php5"><code class="docutils literal notranslate"><span class="pre">1.0.9</span></code></a></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">&gt;=5.6</span></code></p></td>
-<td><p>no</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code>, <code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
-<td><p></p></td>
-<td><p>please let PHP 5 die!</p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$drawCircularModules</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$circleRadius</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$keepAsSquare</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">array</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$scale</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$imageTransparent</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$transparencyColor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mixed</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$pngCompression</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$jpegQuality</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
 </tr>
 </tbody>
 </table>
-<p>PSA: <a class="reference external" href="https://www.php.net/supported-versions.php">PHP versions &lt; 8.0 are EOL</a> and therefore the respective <code class="docutils literal notranslate"><span class="pre">QRCode</span></code> versions are also no longer supported!</p>
+<section id="options-that-have-no-effect">
+<h3>Options that have no effect<a class="headerlink" href="#options-that-have-no-effect" title="Permalink to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>property</p></th>
+<th class="head"><p>reason</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$connectPaths</span></code></p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$excludeFromConnect</span></code></p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="imagemagick">
-<h2>ImageMagick<a class="headerlink" href="#imagemagick" title="Permalink to this heading"></a></h2>
-<p>Please follow the installation guides for your operating system:</p>
-<ul class="simple">
-<li><p>ImageMagick: <a class="reference external" href="https://imagemagick.org/script/download.php">imagemagick.org/script/download.php</a></p></li>
-<li><p>PHP <code class="docutils literal notranslate"><span class="pre">ext-imagick</span></code>: <a class="reference external" href="https://github.com/Imagick/imagick">github.com/Imagick/imagick</a> (<a class="reference external" href="https://mlocati.github.io/articles/php-windows-imagick.html">Windows downloads</a>)</p></li>
-</ul>
 </section>
 </section>
 
@@ -389,8 +330,8 @@ After that, run <code class="docutils literal notranslate"><span class="pre">com
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Usage-Overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Usage-Quickstart.html" class="btn btn-neutral float-right" title="Quickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Built-In-Output-QRFpdf.html" class="btn btn-neutral float-left" title="QRFpdf" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Built-In-Output-QRImagick.html" class="btn btn-neutral float-right" title="QRImagick" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

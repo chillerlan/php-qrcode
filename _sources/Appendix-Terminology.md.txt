@@ -206,7 +206,7 @@ alternate character encoding for the following Byte segment (by default, ISO-885
 An ECI segment starts with the 4 bit indicator `0111` followed by the ECI Assignment number (8, 16 or 24 bits),
 followed by a Byte segment (`0100` ...) where the contents are encoded according to the preceding ECI ID.
 
-The lenght of the ECI Assignment number depends on the given encoding ID:
+The length of the ECI Assignment number depends on the given encoding ID:
 
 | ID             | length (bits) |
 |----------------|---------------|

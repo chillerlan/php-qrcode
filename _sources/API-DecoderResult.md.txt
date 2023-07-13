@@ -1,6 +1,7 @@
-# `DecoderResult`
+# DecoderResult
 
 The full phpDocumentor API documentation can be found at [chillerlan.github.io/php-qrcode](https://chillerlan.github.io/php-qrcode/classes/chillerlan-QRCode-Decoder-DecoderResult.html).
+
 
 ## Methods
 
@@ -10,6 +11,7 @@ The full phpDocumentor API documentation can be found at [chillerlan.github.io/p
 | `__toString()`                             | `string`   | returns the data contained in the QR symbol                                                                |
 | `hasStructuredAppend()`                    | `bool`     |                                                                                                            |
 | `getQRMatrix()`                            | `QRMatrix` |                                                                                                            |
+
 
 ## Magic Properties (read-only)
 
