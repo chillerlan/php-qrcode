@@ -13,7 +13,7 @@ namespace chillerlan\QRCode\Output;
 use function sprintf;
 
 /**
- * HTML output
+ * HTML output (a cheap markup substitute when SVG is not available or not an option)
  */
 class QRMarkupHTML extends QRMarkup{
 

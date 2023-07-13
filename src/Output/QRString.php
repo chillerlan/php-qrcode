@@ -14,6 +14,7 @@
 namespace chillerlan\QRCode\Output;
 
 use function implode, is_string, json_encode;
+use const JSON_THROW_ON_ERROR;
 
 /**
  * Converts the matrix data into string types

@@ -13,7 +13,6 @@ namespace chillerlan\QRCode\Detector;
 
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Decoder\BitMatrix;
-use Throwable;
 use function array_fill, count, intdiv, sprintf;
 
 /**
@@ -163,7 +162,7 @@ final class GridSampler{
 					);
 				}
 #			}
-#			catch(Throwable $aioobe){//ArrayIndexOutOfBoundsException
+#			catch(\Throwable $aioobe){//ArrayIndexOutOfBoundsException
 				// This feels wrong, but, sometimes if the finder patterns are misidentified, the resulting
 				// transform gets "twisted" such that it maps a straight line of points to a set of points
 				// whose endpoints are in bounds, but others are not. There is probably some mathematical
