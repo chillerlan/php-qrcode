@@ -91,4 +91,4 @@ PSA: [PHP versions < 8.0 are EOL](https://www.php.net/supported-versions.php) an
 
 Please follow the installation guides for your operating system:
 - ImageMagick: [imagemagick.org/script/download.php](https://imagemagick.org/script/download.php)
-- PHP `ext-imagick`: [github.com/Imagick/imagick](https://github.com/Imagick/imagick)
+- PHP `ext-imagick`: [github.com/Imagick/imagick](https://github.com/Imagick/imagick) ([Windows downloads](https://mlocati.github.io/articles/php-windows-imagick.html))

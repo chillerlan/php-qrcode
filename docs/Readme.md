@@ -60,7 +60,17 @@ The markdown sources for the [Read the Docs online manual](https://php-qrcode.re
 - [Quickstart](./Usage-Quickstart.md)
 - [Advanced usage](./Usage-Advanced-usage.md)
 
+### Built-In Output Modules
 
+- [QREps](./Built-In-Output-QREps.md)
+- [QRFpdf](./Built-In-Output-QRFpdf.md)
+- [QRGdImage](./Built-In-Output-QRGdImage.md)
+- [QRImagick](./Built-In-Output-QRImagick.md)
+- [QRMarkupHTML](./Built-In-Output-QRMarkupHTML.md)
+- [QRMarkupSVG](./Built-In-Output-QRMarkupSVG.md)
+- [QRString](./Built-In-Output-QRString.md)
+
+<!--
 ### Customizing output
 - [Module values](./Customizing-Module-Values.md)
 - [Custom output interface](./Customizing-Custom-output-interface.md)
@@ -69,7 +79,7 @@ The markdown sources for the [Read the Docs online manual](https://php-qrcode.re
 
 ### Examples
 - [Built-in Output Interfaces](./Examples-Built-in.md)
-
+  -->
 
 ### Public API
 - [`QRCode`](./API-QRCode.md)
@@ -80,7 +90,7 @@ The markdown sources for the [Read the Docs online manual](https://php-qrcode.re
 
 
 ### Appendix
-- [Glossary](./Appendix-Glossary.md)
+- [Glossary](./Appendix-Terminology.md)
 - [License](./Appendix-License.rst)
 
 

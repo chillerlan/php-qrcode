@@ -1,4 +1,4 @@
-# `QRCode`
+# QRCode
 
 The full phpDocumentor API documentation can be found at [chillerlan.github.io/php-qrcode](https://chillerlan.github.io/php-qrcode/classes/chillerlan-QRCode-QRCode.html).
 
