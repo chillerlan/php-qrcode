@@ -19,8 +19,9 @@ Requirements:
   - [Sphinx RTD theme](https://pypi.org/project/sphinx-rtd-theme/) >= 1.2
   - [MyST Parser](https://myst-parser.readthedocs.io/en/latest/intro.html) >= 2.0 (see [Sphinx Markdown configuration](https://www.sphinx-doc.org/en/master/usage/markdown.html#markdown))
 
+Follow these steps to create the user manual:
 
-- to install all in one go, run: `pip install sphinx myst-parser sphinx-rtd-theme`
+- install Sphinx: `pip install sphinx myst-parser sphinx-rtd-theme`
 - run in the `/docs` (this) directory:
   - on Windows: `.\make.bat html` (make sure `sphinx-build.exe` is in `PATH`)
   - on Linux: `make html`
@@ -75,6 +76,7 @@ The markdown sources for the [Read the Docs online manual](https://php-qrcode.re
 - [`QROptions`](./API-QROptions.md)
 - [`QROutputInterface`](./API-QROutputInterface.md)
 - [`QRMatrix`](./API-QRMatrix.md)
+- [`DecoderResult`](./API-DecoderResult.md)
 
 
 ### Appendix
