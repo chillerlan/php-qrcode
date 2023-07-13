@@ -84,7 +84,7 @@ class QRString extends QROutputAbstract{
 	 * JSON output
 	 */
 	protected function json():string{
-		return json_encode($this->matrix->getMatrix());
+		return json_encode($this->matrix->getMatrix(), JSON_THROW_ON_ERROR);
 	}
 
 }
