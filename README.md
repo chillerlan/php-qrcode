@@ -1,5 +1,8 @@
 # chillerlan/php-qrcode
 
+A PHP QR Code generator based on the [implementation by Kazuhiko Arase](https://github.com/kazuhikoarase/qrcode-generator), namespaced, cleaned up, improved and other stuff. <br>
+It also features a QR Code reader based on a [PHP port](https://github.com/khanamiryan/php-qrcode-detector-decoder) of the [ZXing library](https://github.com/zxing/zxing).
+
 **Hi! Please check out the [v5.0-beta release](https://github.com/chillerlan/php-qrcode/releases/tag/5.0-beta) and leave your feedback in [this discussion thread](https://github.com/chillerlan/php-qrcode/discussions/188). Thanks!**
 
 [![PHP Version Support][php-badge]][php]
@@ -24,10 +27,6 @@
 
 
 ## Overview
-
-A PHP QR Code generator based on the [implementation by Kazuhiko Arase](https://github.com/kazuhikoarase/qrcode-generator), namespaced, cleaned up, improved and other stuff. <br>
-It also features a QR Code reader based on a [PHP port](https://github.com/khanamiryan/php-qrcode-detector-decoder) of the [ZXing library](https://github.com/zxing/zxing).
-
 
 **Attention:** there is now also a javascript port: [chillerlan/js-qrcode](https://github.com/chillerlan/js-qrcode).
 
