@@ -90,6 +90,7 @@ The markdown sources for the [Read the Docs online manual](https://php-qrcode.re
 
 
 ### Appendix
+- [Glossary](./Appendix-Appendix-URI-Content.md)
 - [Glossary](./Appendix-Terminology.md)
 - [License](./Appendix-License.rst)
 
