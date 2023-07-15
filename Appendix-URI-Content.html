@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Popular content and URI schemes &mdash; PHP-QRCode main
+ Manual</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="License" href="Appendix-License.html" />
+    <link rel="prev" title="Terminology" href="Appendix-Terminology.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            PHP-QRCode
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Usage-Overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Overview.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Overview.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Overview.html#framework-integration">Framework Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Overview.html#shameless-advertising">Shameless advertising</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Usage-Installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#installation-with-composer">Installation with Composer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Installation.html#composer-json">composer.json</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Usage-Installation.html#version-switch">Version switch</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Installation.html#terminal">Terminal</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#manual-installation">Manual installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Installation.html#can-i-use-this-library-without-using-composer">Can i use this library without using composer?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#supported-php-versions-extension-requirements">Supported PHP versions &amp; extension requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Installation.html#imagemagick">ImageMagick</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Usage-Quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#import-the-library">Import the library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#create-your-first-qr-code">Create your first QR Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Quickstart.html#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#reading-qr-codes">Reading QR Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Quickstart.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Usage-Advanced-usage.html">Advanced usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Advanced-usage.html#configuration-via-qroptions">Configuration via <code class="docutils literal notranslate"><span class="pre">QROptions</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#supply-an-iterable-of-options">Supply an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#load-and-save-json">Load and save JSON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#extending-the-qroptions-class">Extending the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Usage-Advanced-usage.html#qrcode-methods"><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#save-to-file">Save to file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#render-a-qrmatrix-instance">Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#mixed-mode">Mixed mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Usage-Advanced-usage.html#qr-code-reader">QR Code reader</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Built-In Output Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QREps.html">QREps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QREps.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QREps.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QRFpdf.html">QRFpdf</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRFpdf.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QRFpdf.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QRGdImage.html">QRGdImage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRGdImage.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QRGdImage.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QRImagick.html">QRImagick</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRImagick.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QRImagick.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QRMarkupHTML.html">QRMarkupHTML</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRMarkupHTML.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QRMarkupHTML.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QRMarkupSVG.html">QRMarkupSVG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRMarkupSVG.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QRMarkupSVG.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QRString.html">QRString</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRString.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QRString.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Public API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="API-QRCode.html">QRCode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API-QRCode.html#methods">Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API-QRCode.html#deprecated-methods">Deprecated methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API-QRCode.html#constants">Constants</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API-QRCode.html#deprecated-constants">Deprecated constants</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API-QROptions.html">QROptions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API-QROptions.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API-QROptions.html#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API-QROutputInterface.html">QROutputInterface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API-QROutputInterface.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API-QROutputInterface.html#constants">Constants</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API-QRMatrix.html">QRMatrix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API-QRMatrix.html#methods">Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="API-QRMatrix.html#deprecated-methods">Deprecated methods</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="API-QRMatrix.html#constants">Constants</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="API-DecoderResult.html">DecoderResult</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="API-DecoderResult.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="API-DecoderResult.html#magic-properties-read-only">Magic Properties (read-only)</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Appendix-Terminology.html">Terminology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Appendix-Terminology.html#qr-code">QR Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Appendix-Terminology.html#matrix">Matrix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#module">Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#version">Version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Appendix-Terminology.html#function-patterns">Function Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#finder-pattern">Finder Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#alignment-pattern">Alignment Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#timing-pattern">Timing Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#separators">Separators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#quiet-zone">Quiet Zone</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Appendix-Terminology.html#encoding-region">Encoding Region</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#data">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#version-information">Version Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#format-information">Format Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#darkmodule">Darkmodule</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Appendix-Terminology.html#mode">Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#segment">Segment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#extended-channel-interpretation-eci">Extended Channel Interpretation (ECI)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#mixed-mode">Mixed Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Appendix-Terminology.html#ecc-error-correction-coding">ECC (Error Correction Coding)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#ecc-level">ECC Level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#maximum-data-capacity">Maximum data capacity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Appendix-Terminology.html#data-masking">Data masking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#evaluation">Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Appendix-Terminology.html#mask-pattern">Mask pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Appendix-Terminology.html#reflectance">Reflectance</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Popular content and URI schemes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#url-https">URL <code class="docutils literal notranslate"><span class="pre">https</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#e-mail-mailto">E-Mail <code class="docutils literal notranslate"><span class="pre">mailto</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#phone-numbers-tel">Phone numbers <code class="docutils literal notranslate"><span class="pre">tel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#geo-coordinates-geo">Geo Coordinates <code class="docutils literal notranslate"><span class="pre">geo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mobile-authenticators-otpauth">Mobile Authenticators <code class="docutils literal notranslate"><span class="pre">otpauth</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wireless-network-configuration">Wireless Network configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contact-information-vcard">Contact information: vCard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#calendar-events-vcalendar-and-icalendar">Calendar Events: vCalendar and iCalendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#see-also">See also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Appendix-License.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PHP-QRCode</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Popular content and URI schemes</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/chillerlan/php-qrcode/blob/main/docs/Appendix-URI-Content.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="popular-content-and-uri-schemes">
+<h1>Popular content and URI schemes<a class="headerlink" href="#popular-content-and-uri-schemes" title="Permalink to this heading"></a></h1>
+<p><strong>A brief summary of popular use cases for QR codes.</strong></p>
+<section id="url-https">
+<h2>URL <code class="docutils literal notranslate"><span class="pre">https</span></code><a class="headerlink" href="#url-https" title="Permalink to this heading"></a></h2>
+<p>Perhaps the most common use for QR Codes is to share URLs: simply encode the (URL-encoded) string value
+and make sure to include the scheme <code class="docutils literal notranslate"><span class="pre">http(s)://</span></code> so that it can be properly identified by the reader application:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>https://en.m.wikipedia.org/wiki/URL
+</pre></div>
+</div>
+<p>Some URLs may open a vendor specific application, for example the following URL may open the YouTube app:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>https://www.youtube.com/watch?v=dQw4w9WgXcQ
+</pre></div>
+</div>
+<p><strong>See also:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL">What is a URL? (Mozilla MDN)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/URL">URL (Wikipedia)</a></p></li>
+</ul>
+</section>
+<section id="e-mail-mailto">
+<h2>E-Mail <code class="docutils literal notranslate"><span class="pre">mailto</span></code><a class="headerlink" href="#e-mail-mailto" title="Permalink to this heading"></a></h2>
+<p>E-Mail links are encoded similar to URLs, preceded by the <code class="docutils literal notranslate"><span class="pre">mailto:</span></code> scheme to ensure they are properly identified and the default mail application can be opened.
+Parameters may be added as a <a class="reference external" href="https://en.wikipedia.org/wiki/Query_string">URL query string</a>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mailto:&lt;ADDR&gt;[,...?to=&lt;ADDR&gt;,...&amp;cc=&lt;ADDR&gt;,...&amp;bcc=&lt;ADDR&gt;,...&amp;subject=&lt;SUBJECT&gt;&amp;body=&lt;BODY&gt;]
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Query parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">to</span></code></p></td>
+<td><p>Alternative to add a recipient address: <code class="docutils literal notranslate"><span class="pre">mailto:&lt;ADDR&gt;?to=&lt;ADDR&gt;</span></code> is equivalent to<br/><code class="docutils literal notranslate"><span class="pre">mailto:&lt;ADDR&gt;,&lt;ADDR&gt;</span></code> and <code class="docutils literal notranslate"><span class="pre">mailto:?to=&lt;ADDR&gt;,&lt;ADDR&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">subject</span></code></p></td>
+<td><p>Subject text: <code class="docutils literal notranslate"><span class="pre">mailto:&lt;ADDR&gt;?subject=Hello%20World%21</span></code> would open the e-mail app<br/>and create a messagewith the subject <code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">World!</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">body</span></code></p></td>
+<td><p>Message body: <code class="docutils literal notranslate"><span class="pre">mailto:&lt;ADDR&gt;?body=This%20is%20the%20message%20body.</span></code><br/>creates a message with the contents <code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">is</span> <span class="pre">the</span> <span class="pre">message</span> <span class="pre">body.</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">cc</span></code></p></td>
+<td><p>“Carbon copy” to add one or more <code class="docutils literal notranslate"><span class="pre">cc</span></code> recipients</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bcc</span></code></p></td>
+<td><p>“Blind carbon copy” to add one or more <code class="docutils literal notranslate"><span class="pre">bcc</span></code> recipients</p></td>
+</tr>
+</tbody>
+</table>
+<p>The fields for recipient adresses (<code class="docutils literal notranslate"><span class="pre">mailto:</span></code>, <code class="docutils literal notranslate"><span class="pre">to</span></code>, <code class="docutils literal notranslate"><span class="pre">cc</span></code>, <code class="docutils literal notranslate"><span class="pre">bcc</span></code>) may contain one or more elements separated by a comma <code class="docutils literal notranslate"><span class="pre">,</span></code>; the values of all fields shall be URL-encoded according to <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc3986">RFC 3986</a>.</p>
+<p><strong>Examples:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mailto:?to=addr1&#64;example.com</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mailto:addr1&#64;example.com,addr2&#64;example.com</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mailto:addr1&#64;example.com?cc=addr2&#64;example.com&amp;subject=Hello%21</span></code></p></li>
+</ul>
+<p><strong>See also:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6068">RFC 6068 - The ‘mailto’ URI Scheme</a></p></li>
+<li><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Creating_hyperlinks#email_links">Email links (Mozilla MDN)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Email">Email (Wikipedia)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Mailto">mailto (Wikipedia)</a></p></li>
+</ul>
+</section>
+<section id="phone-numbers-tel">
+<h2>Phone numbers <code class="docutils literal notranslate"><span class="pre">tel</span></code><a class="headerlink" href="#phone-numbers-tel" title="Permalink to this heading"></a></h2>
+<p>A phone number should be prefixed with the <code class="docutils literal notranslate"><span class="pre">tel:</span></code> scheme so that a device’s dialer can be invoked properly:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tel:+999-123-456-7890
+</pre></div>
+</div>
+<p>Generally, the most complete version of a telephone number possible sould be used, e.g. <code class="docutils literal notranslate"><span class="pre">+&lt;country code&gt;&lt;area code&gt;&lt;number&gt;</span></code>, spaces or hyphens may be used to separate blocks.
+Some devices may also support the <code class="docutils literal notranslate"><span class="pre">sms</span></code> and <code class="docutils literal notranslate"><span class="pre">fax</span></code> schemes, which are deprecated in favor of <code class="docutils literal notranslate"><span class="pre">tel</span></code>.</p>
+<p><strong>See also:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc3966">RFC 3966 - The ‘tel’ URI for Telephone Numbers</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_country_calling_codes">List of country calling codes (Wikipedia)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/National_conventions_for_writing_telephone_numbers">National conventions for writing telephone numbers (Wikipedia)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/google/libphonenumber">google/libphonenumber (GitHub)</a> (<a class="reference external" href="https://github.com/giggsey/libphonenumber-for-php">PHP port (GitHub)</a>)</p></li>
+</ul>
+</section>
+<section id="geo-coordinates-geo">
+<h2>Geo Coordinates <code class="docutils literal notranslate"><span class="pre">geo</span></code><a class="headerlink" href="#geo-coordinates-geo" title="Permalink to this heading"></a></h2>
+<p>A geographical coordinate, including altitude can be encoded using the <code class="docutils literal notranslate"><span class="pre">geo:</span></code> URI scheme so that it can be opened with a map application.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geo:&lt;latitude&gt;,&lt;longitude&gt;[,&lt;altitude&gt;;crs=&lt;crs&gt;;u=&lt;num&gt;]
+</pre></div>
+</div>
+<p>The default coordinate system is WGS-84, for which latitude and longitude should be supplied as decimal degrees, the optional altitude in meters.
+Te parameter <code class="docutils literal notranslate"><span class="pre">u</span></code> can be used to specify an <em>uncertainty</em> value (in meters), a different <em>coordinate reference system</em> may be supplied with <code class="docutils literal notranslate"><span class="pre">crs</span></code>.</p>
+<p>Some applications support an additional query string with values of <code class="docutils literal notranslate"><span class="pre">z</span></code> for <em>zoom</em> level and <code class="docutils literal notranslate"><span class="pre">q</span></code> for a local search <em>query</em> (URL-encoded):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geo:&lt;latitude&gt;,&lt;longitude&gt;?z=&lt;zoom&gt;&amp;q=&lt;search&gt;
+</pre></div>
+</div>
+<p><strong>Examples:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">geo:47.620521,-122.349293</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geo:27.988056,86.925278,8848</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geo:11.373333,142.591667,-10920;u=10</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geo:37.786971,-122.399677;crs=Moon-2011;u=35</span></code></p></li>
+</ul>
+<p><strong>See also:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc5870">RFC 5870 - A Uniform Resource Identifier for Geographic Locations (‘geo’ URI)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Geo_URI_scheme">geo URI scheme (Wikipedia)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Coordinate_reference_system">Coordinate reference system (Wikipedia)</a></p></li>
+</ul>
+</section>
+<section id="mobile-authenticators-otpauth">
+<h2>Mobile Authenticators <code class="docutils literal notranslate"><span class="pre">otpauth</span></code><a class="headerlink" href="#mobile-authenticators-otpauth" title="Permalink to this heading"></a></h2>
+<p>Mobile authenticators can be added with the <code class="docutils literal notranslate"><span class="pre">otpauth</span></code> scheme:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>otpauth://&lt;MODE&gt;/&lt;LABEL&gt;?secret=&lt;SECRET&gt;[&amp;issuer=&lt;ISSUER&gt;&amp;params...]
+</pre></div>
+</div>
+<p>The path elemets <code class="docutils literal notranslate"><span class="pre">MODE</span></code> and <code class="docutils literal notranslate"><span class="pre">LABEL</span></code> as well as the query parameter <code class="docutils literal notranslate"><span class="pre">secret</span></code> are mandatory, other query parameters are optional,
+however, it is strongy advised to add the <code class="docutils literal notranslate"><span class="pre">issuer</span></code> parameter to ease identification.
+The <code class="docutils literal notranslate"><span class="pre">LABEL</span></code>, as well as the <code class="docutils literal notranslate"><span class="pre">issuer</span></code> values shall be URL-encoded according to <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc3986">RFC 3986</a>.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Path element</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">MODE</span></code></p></td>
+<td><p>Authenticator mode, either <code class="docutils literal notranslate"><span class="pre">totp</span></code> (time based) or <code class="docutils literal notranslate"><span class="pre">hotp</span></code> (counter based)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LABEL</span></code></p></td>
+<td><p>The label is used to identify which account a key is associated with.<br/>It may be prefixed with the issuer name, separated by a colon: <code class="docutils literal notranslate"><span class="pre">&lt;issuer&gt;:&lt;account&gt;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Query parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">secret</span></code></p></td>
+<td><p>Secret key (required), a cryptographically random string, encoded in Base32<br/>according to <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc3548">RFC 3548</a> (without padding).<br/>Some authenticators may support Base64 and hexadecimal values as well.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">issuer</span></code></p></td>
+<td><p>A string value indicating the provider or service this account is associated with.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">algorithm</span></code></p></td>
+<td><p>Hash algorithm, may be one of <code class="docutils literal notranslate"><span class="pre">SHA1</span></code> (default), <code class="docutils literal notranslate"><span class="pre">SHA256</span></code> or <code class="docutils literal notranslate"><span class="pre">SHA512</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">digits</span></code></p></td>
+<td><p>Length of the OTP code: <code class="docutils literal notranslate"><span class="pre">6</span></code> or <code class="docutils literal notranslate"><span class="pre">8</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">counter</span></code></p></td>
+<td><p>(<code class="docutils literal notranslate"><span class="pre">hotp</span></code> only, required) The initial counter value</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">period</span></code></p></td>
+<td><p>(<code class="docutils literal notranslate"><span class="pre">totp</span></code> only) The period of time in seconds a code will be valid for (default: 30)</p></td>
+</tr>
+</tbody>
+</table>
+<p>The parameters <code class="docutils literal notranslate"><span class="pre">algorithm</span></code>, <code class="docutils literal notranslate"><span class="pre">digits</span></code> and <code class="docutils literal notranslate"><span class="pre">period</span></code> may not be supported by some devices/apps.</p>
+<p><strong>Examples:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">otpauth://hotp/example.com:counter-based?secret=JBSWY3DPEHPK3PXP&amp;counter=42</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">otpauth://hotp/counter-based?secret=JBSWY3DPEHPK3PXP&amp;issuer=example.com&amp;digits=6&amp;algorithm=SHA256&amp;counter=42</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">otpauth://totp/example.com%3Atime-based?secret=JBSWY3DPEHPK3PXP</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">otpauth://totp/time-based?secret=JBSWY3DPEHPK3PXP&amp;issuer=example.com&amp;digits=8&amp;algorithm=SHA512&amp;period=60</span></code></p></li>
+</ul>
+<p><strong>See also:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc4226">RFC 4226 - An HMAC-Based One-Time Password Algorithm</a></p></li>
+<li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6238">RFC 6238 - Time-Based One-Time Password Algorithm</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Google_Authenticator">Google Authenticator (Wikipedia)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/google/google-authenticator/wiki/Key-Uri-Format">google-authenticator: Key Uri Format (GitHub)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/blob/main/examples/authenticator.php">php-qrcode: Authenticator example (GitHub)</a></p></li>
+</ul>
+</section>
+<section id="wireless-network-configuration">
+<h2>Wireless Network configuration<a class="headerlink" href="#wireless-network-configuration" title="Permalink to this heading"></a></h2>
+<p>Wi-Fi configuration general syntax looks as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>WIFI:S:&lt;SSID&gt;[;T:&lt;TYPE&gt;;P:&lt;PASSWORD&gt;;H:&lt;HIDDEN&gt;;];
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">S</span></code><sup>*</sup></p></td>
+<td><p>Network SSID (required)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">T</span></code></p></td>
+<td><p>Authentication type: can be one of <code class="docutils literal notranslate"><span class="pre">WEP</span></code>, <code class="docutils literal notranslate"><span class="pre">WPA</span></code>, <code class="docutils literal notranslate"><span class="pre">WPA2-EAP</span></code><br/>or <code class="docutils literal notranslate"><span class="pre">nopass</span></code> for no password (in which case you can omit the parameter)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">P</span></code><sup>*</sup></p></td>
+<td><p>Password, ignored if parameter <code class="docutils literal notranslate"><span class="pre">T</span></code> is set to <code class="docutils literal notranslate"><span class="pre">nopass</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">H</span></code></p></td>
+<td><p>Set to <code class="docutils literal notranslate"><span class="pre">true</span></code> the network SSID is hidden.</p></td>
+</tr>
+</tbody>
+</table>
+<p><sup>*</sup> the value shall be enclosed in double quotes <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> if it is an ASCII string that can be interpreted as hex, e.g. <code class="docutils literal notranslate"><span class="pre">&quot;ABCD1234&quot;</span></code>,
+special characters <code class="docutils literal notranslate"><span class="pre">\ ; , &quot; :</span></code> shall be escaped with a backslash <code class="docutils literal notranslate"><span class="pre">\</span></code>.</p>
+<p>Additional parameters for WPA2 and WPA3 (please note that these parameters may not be supported by some devices):</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">A</span></code></p></td>
+<td><p>WPA2-EAP: Anonymous identity</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">E</span></code></p></td>
+<td><p>WPA2-EAP: EAP method, like <code class="docutils literal notranslate"><span class="pre">TTLS</span></code> or <code class="docutils literal notranslate"><span class="pre">PWD</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PH2</span></code></p></td>
+<td><p>WPA2-EAP: Phase 2 method, like <code class="docutils literal notranslate"><span class="pre">MSCHAPV2</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">I</span></code></p></td>
+<td><p>WPA2-EAP, WPA3: UTF-8 encoded password identifier, present if<br/>the password has an SAE password identifier</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">K</span></code></p></td>
+<td><p>WPA3: DER of ASN.1 SubjectPublicKeyInfo in compressed form<br/>and encoded in “base64”, present when the network supports SAE-PK</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">R</span></code></p></td>
+<td><p>WPA3: Transition Disable value</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Examples:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">WIFI:S:MyNetworkWihoutPassword;;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WIFI:S:MyNetworkWihoutPassword;T:nopass;P:;;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WIFI:S:MyHiddenWpaNetwork;T:WPA;P:&quot;PASSWORD123&quot;;H:true;;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">WIFI:S:MyHiddenWpa2Network;T:WPA2-EAP;P:&quot;PASSWORD123&quot;;H:true;;</span></code></p></li>
+</ul>
+<p><strong>See also:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.wi-fi.org/download.php?file=/sites/default/files/private/WPA3%20Specification%20v3.1.pdf">WPA3 Specification, Section 7.1</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Wi-Fi_Protected_Access">Wi-Fi Protected Access (Wikipedia)</a></p></li>
+</ul>
+</section>
+<section id="contact-information-vcard">
+<h2>Contact information: vCard<a class="headerlink" href="#contact-information-vcard" title="Permalink to this heading"></a></h2>
+<p>The vCard is the most commonly used format to exchange contact details. It’s too complex to fully explain here, instead just a bare minimum example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BEGIN:VCARD
+VERSION:4.0
+N:&lt;NAME&gt;
+FN:&lt;FULL NAME&gt;
+GENDER:O
+EMAIL;type=(WORK|HOME):&lt;EMAIL&gt;
+TEL;type=(WORK|CELL|HOME):&lt;PHONE&gt;
+ADR;type=WORK:&lt;LINE1&gt;;&lt;LINE2&gt;;&lt;STREET&gt;;&lt;CITY&gt;;&lt;STATE&gt;;&lt;ZIP&gt;;&lt;COUNTRY&gt;
+TZ:&lt;CITY/COUNTRY&gt;
+URL:&lt;URL&gt;
+PHOTO;JPEG:&lt;LINK&gt;
+LOGO;JPEG:&lt;LINK&gt;
+NOTE:&lt;TEXT&gt;
+CATEGORIES:&lt;LIST&gt;
+END:VCARD
+</pre></div>
+</div>
+<p><strong>See also:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6350">RFC 6350 - vCard Format Specification</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/VCard">vCard (Wikipedia)</a></p></li>
+<li><p><a class="reference external" href="https://www.w3.org/TR/vcard-rdf/">vCard Ontology - for describing People and Organizations (W3C)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/sabre-io/vobject">vobject library for PHP (GitHub)</a></p></li>
+</ul>
+</section>
+<section id="calendar-events-vcalendar-and-icalendar">
+<h2>Calendar Events: vCalendar and iCalendar<a class="headerlink" href="#calendar-events-vcalendar-and-icalendar" title="Permalink to this heading"></a></h2>
+<p>Calendar events can be shared via the iCalendar (formerly vCalendar) object (example from <a class="reference external" href="https://github.com/spatie/icalendar-generator">icalendar-generator</a>):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:spatie/icalendar-generator
+NAME:Laracon online
+X-WR-CALNAME:Laracon online
+BEGIN:VEVENT
+UID:5ef5c3f64cb2c
+DTSTAMP;TZID=UTC:20200626T094630
+SUMMARY:Creating calendar feeds
+DTSTART:20190306T150000Z
+DTEND:20190306T160000Z
+DTSTAMP:20190419T135034Z
+END:VEVENT
+END:VCALENDAR
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc5545">RFC 5545 - Internet Calendaring and Scheduling Core Object Specification (iCalendar)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/ICalendar">iCalendar (Wikipedia)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/sabre-io/vobject">vobject library for PHP (GitHub)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/spatie/icalendar-generator">iCalendar generator for PHP (GitHub)</a></p></li>
+</ul>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc3986">RFC 3986 - Uniform Resource Identifier (URI): Generic Syntax</a></p></li>
+<li><p><a class="reference external" href="https://en.m.wikipedia.org/wiki/Uniform_Resource_Identifier">Uniform Resource Identifier (Wikipedia)</a></p></li>
+<li><p><a class="reference external" href="https://en.m.wikipedia.org/wiki/List_of_URI_schemes">List of URI schemes (Wikipedia)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/zxing/zxing/wiki/Barcode-Contents">zxing: Barcode Contents (GitHub)</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Appendix-Terminology.html" class="btn btn-neutral float-left" title="Terminology" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Appendix-License.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, smiley.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
