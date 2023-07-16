@@ -52,7 +52,7 @@ class QREps extends QROutputAbstract{
 	 *
 	 * @inheritDoc
 	 */
-	protected function prepareModuleValue($value):array{
+	protected function prepareModuleValue($value):string{
 		$values = [];
 
 		foreach(array_values($value) as $i => $val){
@@ -65,14 +65,37 @@ class QREps extends QROutputAbstract{
 			$values[] = round((max(0, min(255, intval($val))) / 255), 6);
 		}
 
-		return $values;
+		return $this->formatColor($values);
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	protected function getDefaultModuleValue(bool $isDark):array{
-		return ($isDark) ? [0.0, 0.0, 0.0] : [1.0, 1.0, 1.0];
+	protected function getDefaultModuleValue(bool $isDark):string{
+		return $this->formatColor(($isDark) ? [0.0, 0.0, 0.0] : [1.0, 1.0, 1.0]);
+	}
+
+	/**
+	 * Set the color format
+	 *
+	 * 4 values in the color array will be interpreted as CMYK, 3 as RGB
+	 *
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
+	protected function formatColor(array $values):string{
+		$count = count($values);
+
+		if($count < 3){
+			throw new QRCodeOutputException('invalid color value');
+		}
+
+		$format = ($count === 4)
+			// CMYK
+			? '%f %f %f %f C'
+			// RGB
+			:'%f %f %f R';
+
+		return sprintf($format, ...$values);
 	}
 
 	/**
@@ -98,6 +121,11 @@ class QREps extends QROutputAbstract{
 			'%%EndProlog',
 		];
 
+		if($this->options->bgColor !== null && self::moduleValueIsValid($this->options->bgColor)){
+			$eps[] = $this->prepareModuleValue($this->options->bgColor);
+			$eps[] = sprintf('0 0 %1$s %1$s F', $this->length);
+		}
+
 		// create the path elements
 		$paths = $this->collectModules(fn(int $x, int $y):string => $this->module($x, $y));
 
@@ -107,11 +135,8 @@ class QREps extends QROutputAbstract{
 				continue;
 			}
 
-			// 4 values will be interpreted as CMYK, 3 as RGB
-			$val    = $this->getModuleValue($M_TYPE);
-			$format = (count($val) === 4) ? '%f %f %f %f C' : '%f %f %f R';
-			$eps[]  = sprintf($format, ...$val);
-			$eps[]  = implode("\n", $path);
+			$eps[] = $this->getModuleValue($M_TYPE);
+			$eps[] = implode("\n", $path);
 		}
 
 		// end file
