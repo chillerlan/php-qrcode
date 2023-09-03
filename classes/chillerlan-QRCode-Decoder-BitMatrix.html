@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
             <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/template.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
                 <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
         <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="js/template.js"></script>
         <script src="js/search.js"></script>
         <script defer src="js/searchIndex.js"></script>
     </head>
@@ -67,7 +68,7 @@
 <label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
     Menu
 </label>
-<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
+<aside class="phpdocumentor-column -three phpdocumentor-sidebar">
                     <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
@@ -106,8 +107,9 @@
     </section>
 </aside>
 
-            <div class="phpdocumentor-column -eight phpdocumentor-content">
-                    <ul class="phpdocumentor-breadcrumbs">
+            <div class="phpdocumentor-column -nine phpdocumentor-content">
+                                <section>
+                                        <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/chillerlan.html">chillerlan</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/chillerlan-qrcode.html">QRCode</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/chillerlan-qrcode-decoder.html">Decoder</a></li>
@@ -131,6 +133,13 @@
     
     </h2>
 
+<div class="phpdocumentor-label-line">
+
+    <div class="phpdocumentor-label phpdocumentor-label--success"><span>Final</span><span>Yes</span></div>
+
+
+</div>
+
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
     :
@@ -145,196 +154,179 @@
 
 
 
-
-
-
 <h3 id="toc">
     Table of Contents
-    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+
 </h3>
 
+
+
+
+
+
+
+<h4 id="toc-constants">
+    Constants
+    <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#toc-constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_IS_DARK">IS_DARK</a>
     <span>
         &nbsp;= 0b100000000000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_ALIGNMENT">M_ALIGNMENT</a>
     <span>
         &nbsp;= 0b10000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_ALIGNMENT_DARK">M_ALIGNMENT_DARK</a>
     <span>
         &nbsp;= 0b100000010000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DARKMODULE">M_DARKMODULE</a>
     <span>
         &nbsp;= 0b100000000001                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DARKMODULE_LIGHT">M_DARKMODULE_LIGHT</a>
     <span>
         &nbsp;= 0b1                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DATA">M_DATA</a>
     <span>
         &nbsp;= 0b10                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DATA_DARK">M_DATA_DARK</a>
     <span>
         &nbsp;= 0b100000000010                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER">M_FINDER</a>
     <span>
         &nbsp;= 0b100                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER_DARK">M_FINDER_DARK</a>
     <span>
         &nbsp;= 0b100000000100                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER_DOT">M_FINDER_DOT</a>
     <span>
         &nbsp;= 0b110000000000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER_DOT_LIGHT">M_FINDER_DOT_LIGHT</a>
     <span>
         &nbsp;= 0b10000000000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FORMAT">M_FORMAT</a>
     <span>
         &nbsp;= 0b1000000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FORMAT_DARK">M_FORMAT_DARK</a>
     <span>
         &nbsp;= 0b100001000000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_LOGO">M_LOGO</a>
     <span>
         &nbsp;= 0b1000000000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_LOGO_DARK">M_LOGO_DARK</a>
     <span>
         &nbsp;= 0b101000000000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_NULL">M_NULL</a>
     <span>
         &nbsp;= 0b0                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_QUIETZONE">M_QUIETZONE</a>
     <span>
         &nbsp;= 0b100000000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_QUIETZONE_DARK">M_QUIETZONE_DARK</a>
     <span>
         &nbsp;= 0b100100000000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_SEPARATOR">M_SEPARATOR</a>
     <span>
         &nbsp;= 0b1000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_SEPARATOR_DARK">M_SEPARATOR_DARK</a>
     <span>
         &nbsp;= 0b100000001000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TEST">M_TEST</a>
     <span>
         &nbsp;= 0b11111111111                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TEST_DARK">M_TEST_DARK</a>
     <span>
         &nbsp;= 0b111111111111                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TIMING">M_TIMING</a>
     <span>
         &nbsp;= 0b100000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TIMING_DARK">M_TIMING_DARK</a>
     <span>
         &nbsp;= 0b100000100000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_VERSION">M_VERSION</a>
     <span>
         &nbsp;= 0b10000000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_VERSION_DARK">M_VERSION_DARK</a>
     <span>
         &nbsp;= 0b100010000000                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -protected">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_neighbours">neighbours</a>
@@ -419,9 +411,17 @@
     <span>
         &nbsp;= 0x5412                            </span>
 </dt>
-<dd></dd>
 
-                    <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    </dl>
+
+
+<h4 id="toc-properties">
+    Properties
+    <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#property_eccLevel">$eccLevel</a>
     <span>
                         &nbsp;: <a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>|null            </span>
@@ -438,7 +438,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#property_matrix">$matrix</a>
     <span>
-                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
+                        &nbsp;: array&lt;string|int, array&lt;string|int, int&gt;&gt;            </span>
 </dt>
 <dd>the actual matrix data array</dd>
 
@@ -463,7 +463,15 @@
 </dt>
 <dd>This flag has effect only on the copyVersionBit() method.</dd>
 
-                <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    </dl>
+
+<h4 id="toc-methods">
+    Methods
+    <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method___construct">__construct()</a>
     <span>
                                 &nbsp;: mixed    </span>
@@ -504,7 +512,6 @@ returns true if a match is found, otherwise false.</dd>
     <span>
                                 &nbsp;: <a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>|null    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_get">get()</a>
@@ -574,14 +581,12 @@ returns true if a match is found, otherwise false.</dd>
     <span>
                                 &nbsp;: <a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>|null    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_matrix">matrix()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_mirrorDiagonal">mirrorDiagonal()</a>
@@ -695,14 +700,12 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <span>
                                 &nbsp;: int    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_version">version()</a>
     <span>
                                 &nbsp;: <a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>|null    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_writeCodewords">writeCodewords()</a>
@@ -723,7 +726,6 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <span>
                                 &nbsp;: int    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_decodeVersionInformation">decodeVersionInformation()</a>
@@ -744,7 +746,6 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <span>
                                 &nbsp;: int    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_readFormatInformation">readFormatInformation()</a>
@@ -765,9 +766,9 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <span>
                                 &nbsp;: int    </span>
 </dt>
-<dd></dd>
 
-        </dl>
+    </dl>
+
 
 
 
@@ -776,11 +777,13 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
         <h3 class="phpdocumentor-elements__header" id="constants">
             Constants
             <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
                     <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_IS_DARK">
         IS_DARK
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_IS_DARK" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -808,6 +811,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_ALIGNMENT">
         M_ALIGNMENT
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_ALIGNMENT" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -835,6 +839,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_ALIGNMENT_DARK">
         M_ALIGNMENT_DARK
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_ALIGNMENT_DARK" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -862,6 +867,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_DARKMODULE">
         M_DARKMODULE
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DARKMODULE" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -889,6 +895,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_DARKMODULE_LIGHT">
         M_DARKMODULE_LIGHT
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DARKMODULE_LIGHT" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -916,6 +923,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_DATA">
         M_DATA
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DATA" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -943,6 +951,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_DATA_DARK">
         M_DATA_DARK
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DATA_DARK" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -970,6 +979,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_FINDER">
         M_FINDER
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -997,6 +1007,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_FINDER_DARK">
         M_FINDER_DARK
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER_DARK" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1024,6 +1035,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_FINDER_DOT">
         M_FINDER_DOT
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER_DOT" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1051,6 +1063,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_FINDER_DOT_LIGHT">
         M_FINDER_DOT_LIGHT
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER_DOT_LIGHT" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1078,6 +1091,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_FORMAT">
         M_FORMAT
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FORMAT" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1105,6 +1119,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_FORMAT_DARK">
         M_FORMAT_DARK
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FORMAT_DARK" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1132,6 +1147,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_LOGO">
         M_LOGO
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_LOGO" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1159,6 +1175,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_LOGO_DARK">
         M_LOGO_DARK
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_LOGO_DARK" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1186,6 +1203,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_NULL">
         M_NULL
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_NULL" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1213,6 +1231,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_QUIETZONE">
         M_QUIETZONE
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_QUIETZONE" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1240,6 +1259,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_QUIETZONE_DARK">
         M_QUIETZONE_DARK
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_QUIETZONE_DARK" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1267,6 +1287,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_SEPARATOR">
         M_SEPARATOR
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_SEPARATOR" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1294,6 +1315,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_SEPARATOR_DARK">
         M_SEPARATOR_DARK
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_SEPARATOR_DARK" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1321,6 +1343,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_TEST">
         M_TEST
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TEST" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1348,6 +1371,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_TEST_DARK">
         M_TEST_DARK
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TEST_DARK" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1375,6 +1399,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_TIMING">
         M_TIMING
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TIMING" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1402,6 +1427,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_TIMING_DARK">
         M_TIMING_DARK
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TIMING_DARK" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1429,6 +1455,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_VERSION">
         M_VERSION
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_VERSION" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1456,6 +1483,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_M_VERSION_DARK">
         M_VERSION_DARK
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_VERSION_DARK" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1483,6 +1511,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_neighbours">
         neighbours
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_neighbours" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1507,7 +1536,8 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_neighbours#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -1518,13 +1548,14 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
                                         
                                              
                                     </dd>
-                        </dl>
+                                            </dl>
 
 </article>
                     <article class="phpdocumentor-element -constant -private ">
     <h4 class="phpdocumentor-element__name" id="constant_DECODE_LOOKUP">
         DECODE_LOOKUP
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#constant_DECODE_LOOKUP" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1611,8 +1642,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
         <section class="phpdocumentor-description"><p>[data bits, sequence after masking]</p>
 </section>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -1620,6 +1650,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="constant_FORMAT_INFO_MASK_QR">
         FORMAT_INFO_MASK_QR
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#constant_FORMAT_INFO_MASK_QR" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -1638,10 +1669,8 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -1652,6 +1681,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
             <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
                     <article
         class="
@@ -1663,6 +1693,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="property_eccLevel">
         $eccLevel
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#property_eccLevel" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -1682,8 +1713,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
     
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -1697,6 +1727,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="property_maskPattern">
         $maskPattern
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#property_maskPattern" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -1722,8 +1753,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
 </ul>
 </section>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -1737,6 +1767,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="property_matrix">
         $matrix
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#property_matrix" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -1751,7 +1782,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, array&lt;string|int, int&gt;&gt;</span>
     <span class="phpdocumentor-signature__name">$matrix</span>
     </code>
 
@@ -1770,6 +1801,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="property_moduleCount">
         $moduleCount
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#property_moduleCount" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -1789,8 +1821,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     </code>
 
     
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -1804,6 +1835,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="property_version">
         $version
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#property_version" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -1823,8 +1855,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
     
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -1838,6 +1869,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="property_mirror">
         $mirror
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#property_mirror" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -1859,8 +1891,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
         <section class="phpdocumentor-description"><p>Before proceeding with readCodewords() the resetInfo() method should be called.</p>
 </section>
 
-        <section class="phpdocumentor-description"></section>
-
+    
     
 
 </article>
@@ -1870,6 +1901,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
             <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
                     <article
         class="phpdocumentor-element
@@ -1880,6 +1912,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="method___construct">
         __construct()
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
@@ -1894,6 +1927,8 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$dimension</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -1902,15 +1937,15 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method___construct#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -1922,12 +1957,8 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
 </section>
 
                                     </dd>
-                        </dl>
+                                            </dl>
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
     
 </article>
                     <article
@@ -1939,6 +1970,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="method_check">
         check()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_check" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -1953,6 +1985,8 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">check</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$x</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$y</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -1961,26 +1995,24 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$y</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">bool</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -1991,6 +2023,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <h4 class="phpdocumentor-element__name" id="method_checkNeighbours">
         checkNeighbours()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkNeighbours" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2005,6 +2038,8 @@ QR Code. Throws if the exact number of bytes expected is not read.</dd>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">checkNeighbours</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$x</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$y</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$M_TYPE</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>The 8 flags of the bitmask represent the status of each of the neighbouring fields,
 starting with the lowest bit for top left, going clockwise:</p>
 <p>1 2 3
@@ -2019,34 +2054,31 @@ starting with the lowest bit for top left, going clockwise:</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$y</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$M_TYPE</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2057,6 +2089,7 @@ starting with the lowest bit for top left, going clockwise:</p>
     <h4 class="phpdocumentor-element__name" id="method_checkType">
         checkType()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkType" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2071,6 +2104,8 @@ starting with the lowest bit for top left, going clockwise:</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">checkType</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$x</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$y</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$M_TYPE</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>true =&gt; $value &amp; $M_TYPE === $M_TYPE</p>
 </section>
 
@@ -2081,34 +2116,31 @@ starting with the lowest bit for top left, going clockwise:</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$y</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$M_TYPE</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">bool</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2119,6 +2151,7 @@ starting with the lowest bit for top left, going clockwise:</p>
     <h4 class="phpdocumentor-element__name" id="method_checkTypeIn">
         checkTypeIn()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkTypeIn" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2134,6 +2167,8 @@ returns true if a match is found, otherwise false.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">checkTypeIn</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$x</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$y</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$M_TYPES</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -2142,34 +2177,31 @@ returns true if a match is found, otherwise false.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$y</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$M_TYPES</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">bool</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2180,6 +2212,7 @@ returns true if a match is found, otherwise false.</p>
     <h4 class="phpdocumentor-element__name" id="method_eccLevel">
         eccLevel()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_eccLevel" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2193,12 +2226,15 @@ returns true if a match is found, otherwise false.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">eccLevel</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>|null</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_eccLevel#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -2228,11 +2264,11 @@ returns true if a match is found, otherwise false.</p>
                                     </dd>
                         </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>|null</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>|null</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2243,6 +2279,7 @@ returns true if a match is found, otherwise false.</p>
     <h4 class="phpdocumentor-element__name" id="method_get">
         get()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_get" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2257,6 +2294,8 @@ returns true if a match is found, otherwise false.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">get</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$x</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$y</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -2265,26 +2304,24 @@ returns true if a match is found, otherwise false.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$y</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2295,6 +2332,7 @@ returns true if a match is found, otherwise false.</p>
     <h4 class="phpdocumentor-element__name" id="method_getEccLevel">
         getEccLevel()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_getEccLevel" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2309,15 +2347,17 @@ returns true if a match is found, otherwise false.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getEccLevel</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>|null</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>|null</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-EccLevel.html"><abbr title="\chillerlan\QRCode\Common\EccLevel">EccLevel</abbr></a>|null</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2328,6 +2368,7 @@ returns true if a match is found, otherwise false.</p>
     <h4 class="phpdocumentor-element__name" id="method_getMaskPattern">
         getMaskPattern()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_getMaskPattern" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2342,15 +2383,17 @@ returns true if a match is found, otherwise false.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getMaskPattern</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>|null</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>|null</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>|null</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2361,6 +2404,7 @@ returns true if a match is found, otherwise false.</p>
     <h4 class="phpdocumentor-element__name" id="method_getMatrix">
         getMatrix()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_getMatrix" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2375,6 +2419,8 @@ returns true if a match is found, otherwise false.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getMatrix</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$boolean</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, array&lt;string|int, int&gt;&gt;|array&lt;string|int, array&lt;string|int, bool&gt;&gt;</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -2383,18 +2429,17 @@ returns true if a match is found, otherwise false.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, array&lt;string|int, int&gt;&gt;|array&lt;string|int, array&lt;string|int, bool&gt;&gt;</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, array&lt;string|int, int&gt;&gt;|array&lt;string|int, array&lt;string|int, bool&gt;&gt;</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2405,6 +2450,7 @@ returns true if a match is found, otherwise false.</p>
     <h4 class="phpdocumentor-element__name" id="method_getSize">
         getSize()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_getSize" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2419,17 +2465,19 @@ returns true if a match is found, otherwise false.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getSize</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>size = version * 4 + 17 [ + 2 * quietzone size]</p>
 </section>
 
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2440,6 +2488,7 @@ returns true if a match is found, otherwise false.</p>
     <h4 class="phpdocumentor-element__name" id="method_getVersion">
         getVersion()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_getVersion" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2454,15 +2503,17 @@ returns true if a match is found, otherwise false.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getVersion</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>|null</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>|null</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>|null</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2473,6 +2524,7 @@ returns true if a match is found, otherwise false.</p>
     <h4 class="phpdocumentor-element__name" id="method_initFunctionalPatterns">
         initFunctionalPatterns()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_initFunctionalPatterns" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2487,15 +2539,17 @@ returns true if a match is found, otherwise false.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">initFunctionalPatterns</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2506,6 +2560,7 @@ returns true if a match is found, otherwise false.</p>
     <h4 class="phpdocumentor-element__name" id="method_invert">
         invert()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_invert" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2520,17 +2575,19 @@ returns true if a match is found, otherwise false.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">invert</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>ISO/IEC 18004:2015 Section 6.2 - Reflectance reversal</p>
 </section>
 
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2541,6 +2598,7 @@ returns true if a match is found, otherwise false.</p>
     <h4 class="phpdocumentor-element__name" id="method_mask">
         mask()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_mask" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2555,6 +2613,8 @@ returns true if a match is found, otherwise false.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">mask</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$maskPattern</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 Section 8.8.1</p>
 </section>
 
@@ -2565,18 +2625,17 @@ returns true if a match is found, otherwise false.</p>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2587,6 +2646,7 @@ returns true if a match is found, otherwise false.</p>
     <h4 class="phpdocumentor-element__name" id="method_maskPattern">
         maskPattern()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_maskPattern" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2600,12 +2660,15 @@ returns true if a match is found, otherwise false.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">maskPattern</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>|null</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_maskPattern#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -2635,11 +2698,11 @@ returns true if a match is found, otherwise false.</p>
                                     </dd>
                         </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>|null</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>|null</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2650,6 +2713,7 @@ returns true if a match is found, otherwise false.</p>
     <h4 class="phpdocumentor-element__name" id="method_matrix">
         matrix()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_matrix" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2663,6 +2727,8 @@ returns true if a match is found, otherwise false.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">matrix</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$boolean</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -2671,15 +2737,15 @@ returns true if a match is found, otherwise false.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_matrix#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -2709,11 +2775,11 @@ returns true if a match is found, otherwise false.</p>
                                     </dd>
                         </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2724,6 +2790,7 @@ returns true if a match is found, otherwise false.</p>
     <h4 class="phpdocumentor-element__name" id="method_mirrorDiagonal">
         mirrorDiagonal()
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_mirrorDiagonal" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
@@ -2738,15 +2805,17 @@ returns true if a match is found, otherwise false.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">mirrorDiagonal</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2757,6 +2826,7 @@ returns true if a match is found, otherwise false.</p>
     <h4 class="phpdocumentor-element__name" id="method_readCodewords">
         readCodewords()
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_readCodewords" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
@@ -2773,12 +2843,15 @@ QR Code. Throws if the exact number of bytes expected is not read.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">readCodewords</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_readCodewords#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -2789,13 +2862,13 @@ QR Code. Throws if the exact number of bytes expected is not read.</p>
                                                             
                                              
                                     </dd>
-                        </dl>
+                                            </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2806,6 +2879,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</p>
     <h4 class="phpdocumentor-element__name" id="method_resetVersionInfo">
         resetVersionInfo()
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_resetVersionInfo" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
@@ -2820,15 +2894,17 @@ QR Code. Throws if the exact number of bytes expected is not read.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">resetVersionInfo</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2839,6 +2915,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</p>
     <h4 class="phpdocumentor-element__name" id="method_rotate90">
         rotate90()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_rotate90" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2853,15 +2930,17 @@ QR Code. Throws if the exact number of bytes expected is not read.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">rotate90</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2872,6 +2951,7 @@ QR Code. Throws if the exact number of bytes expected is not read.</p>
     <h4 class="phpdocumentor-element__name" id="method_set">
         set()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_set" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2886,6 +2966,8 @@ QR Code. Throws if the exact number of bytes expected is not read.</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">set</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$x</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$y</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$M_TYPE</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>true  =&gt; $M_TYPE | 0x800
 false =&gt; $M_TYPE</p>
 </section>
@@ -2897,42 +2979,38 @@ false =&gt; $M_TYPE</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$y</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$value</span>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$M_TYPE</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2943,6 +3021,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_setAlignmentPattern">
         setAlignmentPattern()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setAlignmentPattern" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2957,17 +3036,19 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">setAlignmentPattern</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 Section 7.3.5</p>
 </section>
 
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2978,6 +3059,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_setArea">
         setArea()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setArea" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -2992,6 +3074,8 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">setArea</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$startX</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$startY</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$width</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$height</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$M_TYPE</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -3000,58 +3084,52 @@ false =&gt; $M_TYPE</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$startY</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$width</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$height</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$value</span>
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$M_TYPE</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3062,6 +3140,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_setDarkModule">
         setDarkModule()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setDarkModule" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -3076,17 +3155,19 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">setDarkModule</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>4 * version + 9 or moduleCount - 8</p>
 </section>
 
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3097,6 +3178,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_setFinderPattern">
         setFinderPattern()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setFinderPattern" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -3111,17 +3193,19 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">setFinderPattern</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 Section 7.3.2</p>
 </section>
 
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3132,6 +3216,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_setFormatInfo">
         setFormatInfo()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setFormatInfo" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -3146,6 +3231,8 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">setFormatInfo</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$maskPattern</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 Section 8.9</p>
 </section>
 
@@ -3156,18 +3243,17 @@ false =&gt; $M_TYPE</p>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-MaskPattern.html"><abbr title="\chillerlan\QRCode\Common\MaskPattern">MaskPattern</abbr></a></span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3178,6 +3264,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_setLogoSpace">
         setLogoSpace()
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_setLogoSpace" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
@@ -3192,6 +3279,8 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">setLogoSpace</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$width</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$height</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$startX</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$startY</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -3200,39 +3289,36 @@ false =&gt; $M_TYPE</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$height</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$startX</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$startY</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_setLogoSpace#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -3250,13 +3336,13 @@ false =&gt; $M_TYPE</p>
                                                             
                                              
                                     </dd>
-                        </dl>
+                                            </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3267,6 +3353,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_setQuietZone">
         setQuietZone()
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_setQuietZone" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
@@ -3281,6 +3368,8 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">setQuietZone</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$quietZoneSize</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -3289,15 +3378,15 @@ false =&gt; $M_TYPE</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_setQuietZone#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -3315,13 +3404,13 @@ false =&gt; $M_TYPE</p>
                                                             
                                              
                                     </dd>
-                        </dl>
+                                            </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3332,6 +3421,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_setSeparators">
         setSeparators()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setSeparators" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -3346,17 +3436,19 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">setSeparators</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 Section 7.3.3</p>
 </section>
 
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3367,6 +3459,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_setTimingPattern">
         setTimingPattern()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setTimingPattern" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -3381,17 +3474,19 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">setTimingPattern</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 Section 7.3.4</p>
 </section>
 
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3402,6 +3497,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_setVersionNumber">
         setVersionNumber()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setVersionNumber" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -3416,17 +3512,19 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">setVersionNumber</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 Section 8.10</p>
 </section>
 
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3437,6 +3535,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_size">
         size()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_size" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -3450,12 +3549,15 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">size</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_size#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -3483,13 +3585,13 @@ false =&gt; $M_TYPE</p>
                                                                                 
                                              
                                     </dd>
-                        </dl>
+                                            </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3500,6 +3602,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_version">
         version()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_version" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -3513,12 +3616,15 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">version</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>|null</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_version#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -3548,11 +3654,11 @@ false =&gt; $M_TYPE</p>
                                     </dd>
                         </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>|null</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>|null</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3563,6 +3669,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_writeCodewords">
         writeCodewords()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_writeCodewords" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -3577,6 +3684,8 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">writeCodewords</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-BitBuffer.html"><abbr title="\chillerlan\QRCode\Common\BitBuffer">BitBuffer</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bitBuffer</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -3585,18 +3694,17 @@ false =&gt; $M_TYPE</p>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-BitBuffer.html"><abbr title="\chillerlan\QRCode\Common\BitBuffer">BitBuffer</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3607,6 +3715,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_createMatrix">
         createMatrix()
         <a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_createMatrix" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Data/QRMatrix.php"><a href="files/src-data-qrmatrix.html"><abbr title="src/Data/QRMatrix.php">QRMatrix.php</abbr></a></abbr>
@@ -3621,6 +3730,8 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">protected</span>
                     <span class="phpdocumentor-signature__name">createMatrix</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$size</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -3629,26 +3740,24 @@ false =&gt; $M_TYPE</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$value</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3659,6 +3768,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_copyVersionBit">
         copyVersionBit()
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_copyVersionBit" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
@@ -3672,6 +3782,8 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">copyVersionBit</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$i</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$j</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$versionBits</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -3680,34 +3792,31 @@ false =&gt; $M_TYPE</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$j</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$versionBits</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3718,6 +3827,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_decodeVersionInformation">
         decodeVersionInformation()
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_decodeVersionInformation" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
@@ -3732,6 +3842,8 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">decodeVersionInformation</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$versionBits</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>|null</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -3740,18 +3852,17 @@ false =&gt; $M_TYPE</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>|null</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-Version.html"><abbr title="\chillerlan\QRCode\Common\Version">Version</abbr></a>|null</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3762,6 +3873,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_doDecodeFormatInformation">
         doDecodeFormatInformation()
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_doDecodeFormatInformation" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
@@ -3776,6 +3888,8 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">doDecodeFormatInformation</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$maskedFormatInfo1</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$maskedFormatInfo2</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int|null</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -3784,26 +3898,24 @@ false =&gt; $M_TYPE</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$maskedFormatInfo2</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int|null</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">int|null</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3814,6 +3926,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_numBitsDiffering">
         numBitsDiffering()
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_numBitsDiffering" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
@@ -3827,6 +3940,8 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">numBitsDiffering</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$a</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$b</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -3835,26 +3950,24 @@ false =&gt; $M_TYPE</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$b</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3865,6 +3978,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_readFormatInformation">
         readFormatInformation()
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_readFormatInformation" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
@@ -3879,6 +3993,8 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">readFormatInformation</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>Throws if both format information locations cannot be parsed as the valid encoding of format information.</p>
 </section>
 
@@ -3886,7 +4002,8 @@ false =&gt; $M_TYPE</p>
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_readFormatInformation#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -3897,13 +4014,13 @@ false =&gt; $M_TYPE</p>
                                                             
                                              
                                     </dd>
-                        </dl>
+                                            </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3914,6 +4031,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_readVersion">
         readVersion()
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_readVersion" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
@@ -3928,6 +4046,8 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">readVersion</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>Throws if both version information locations cannot be parsed as the valid encoding of version information.</p>
 </section>
 
@@ -3935,7 +4055,8 @@ false =&gt; $M_TYPE</p>
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_readVersion#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -3955,13 +4076,13 @@ false =&gt; $M_TYPE</p>
 </section>
 
                                     </dd>
-                        </dl>
+                                            </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">self</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">self</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -3972,6 +4093,7 @@ false =&gt; $M_TYPE</p>
     <h4 class="phpdocumentor-element__name" id="method_uRShift">
         uRShift()
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_uRShift" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/BitMatrix.php"><a href="files/src-decoder-bitmatrix.html"><abbr title="src/Decoder/BitMatrix.php">BitMatrix.php</abbr></a></abbr>
@@ -3985,6 +4107,8 @@ false =&gt; $M_TYPE</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">uRShift</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$a</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$b</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -3993,93 +4117,236 @@ false =&gt; $M_TYPE</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$b</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
 </article>
             </section>
 
-        
+        <div class="phpdocumentor-modal" id="source-view">
+    <div class="phpdocumentor-modal-bg" data-exit-button></div>
+    <div class="phpdocumentor-modal-container">
+        <div class="phpdocumentor-modal-content">
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Decoder/BitMatrix.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+        </div>
+        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
+    </div>
+</div>
+
     <script type="text/javascript">
-        function loadExternalCodeSnippets(line) {
-            Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach((pre) => {
-                var src = pre.getAttribute('data-src').replace( /\\/g, '/');
-                var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
-                var language = 'php';
+        (function () {
+            function loadExternalCodeSnippet(el, url, line) {
+                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
+                    const language = 'php';
 
-                var code = document.createElement('code');
-                code.className = 'language-' + language;
+                    const code = document.createElement('code');
+                    code.className = 'language-' + language;
+                    pre.textContent = '';
+                    pre.setAttribute('data-line', line)
+                    code.textContent = 'Loading…';
+                    pre.appendChild(code);
 
-                pre.textContent = '';
+                    var xhr = new XMLHttpRequest();
 
-                pre.setAttribute('data-line', line)
-                code.textContent = 'Loading…';
+                    xhr.open('GET', src, true);
 
-                pre.appendChild(code);
-
-                var xhr = new XMLHttpRequest();
-
-                xhr.open('GET', src, true);
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4) {
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState !== 4) {
+                            return;
+                        }
 
                         if (xhr.status < 400 && xhr.responseText) {
                             code.textContent = xhr.responseText;
-
                             Prism.highlightElement(code);
+                            return;
                         }
-                        else if (xhr.status >= 400) {
+
+                        if (xhr.status === 404) {
+                            code.textContent = '✖ Error: File could not be found';
+                            return;
+                        }
+
+                        if (xhr.status >= 400) {
                             code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                            return;
                         }
-                        else {
-                            code.textContent = '✖ Error: File does not exist, is empty or trying to view from localhost';
-                        }
+
+                        code.textContent = '✖ Error: An unknown error occurred';
+                    };
+
+                    xhr.send(null);
+                });
+            }
+
+            const modalButtons = document.querySelectorAll("[data-modal]");
+            const openedAsLocalFile = window.location.protocol === 'file:';
+            if (modalButtons.length > 0 && openedAsLocalFile) {
+                console.warn(
+                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
+                    'browsers block XHR requests when a page is opened this way'
+                );
+            }
+
+            modalButtons.forEach(function (trigger) {
+                if (openedAsLocalFile) {
+                    trigger.setAttribute("hidden", "hidden");
+                }
+
+                trigger.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const modal = document.getElementById(trigger.dataset.modal);
+                    if (!modal) {
+                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
+                        return;
                     }
-                };
+                    modal.classList.add("phpdocumentor-modal__open");
 
-                xhr.send(null);
-            });
-        }
-
-        var modals = document.querySelectorAll("[data-modal]");
-
-        modals.forEach(function (trigger) {
-            trigger.addEventListener("click", function (event) {
-                //event.preventDefault();
-                const modal = document.getElementById(trigger.dataset.modal);
-                modal.classList.add("phpdocumentor-modal__open");
-                loadExternalCodeSnippets(trigger.dataset.line)
-                const exits = modal.querySelectorAll("[data-exit-button]");
-                exits.forEach(function (exit) {
-                    exit.addEventListener("click", function (event) {
-                        event.preventDefault();
-                        modal.classList.remove("phpdocumentor-modal__open");
+                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
+                    const exits = modal.querySelectorAll("[data-exit-button]");
+                    exits.forEach(function (exit) {
+                        exit.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            modal.classList.remove("phpdocumentor-modal__open");
+                        });
                     });
                 });
             });
-        });
+        })();
     </script>
 
     </article>
-                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+                                </section>
+                <section class="phpdocumentor-on-this-page__sidebar">
+                                
+    <section class="phpdocumentor-on-this-page__content">
+        <strong class="phpdocumentor-on-this-page__title">On this page</strong>
+
+        <ul class="phpdocumentor-list -clean">
+            <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                        <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#toc-constants">Constants</a></li>
+                                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#toc-methods">Methods</a></li>
+                                    </ul>
+            </li>
+                            <li class="phpdocumentor-on-this-page-section__title">Constants</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_IS_DARK">IS_DARK</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_ALIGNMENT">M_ALIGNMENT</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_ALIGNMENT_DARK">M_ALIGNMENT_DARK</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DARKMODULE">M_DARKMODULE</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DARKMODULE_LIGHT">M_DARKMODULE_LIGHT</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DATA">M_DATA</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_DATA_DARK">M_DATA_DARK</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER">M_FINDER</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER_DARK">M_FINDER_DARK</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER_DOT">M_FINDER_DOT</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FINDER_DOT_LIGHT">M_FINDER_DOT_LIGHT</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FORMAT">M_FORMAT</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_FORMAT_DARK">M_FORMAT_DARK</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_LOGO">M_LOGO</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_LOGO_DARK">M_LOGO_DARK</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_NULL">M_NULL</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_QUIETZONE">M_QUIETZONE</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_QUIETZONE_DARK">M_QUIETZONE_DARK</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_SEPARATOR">M_SEPARATOR</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_SEPARATOR_DARK">M_SEPARATOR_DARK</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TEST">M_TEST</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TEST_DARK">M_TEST_DARK</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TIMING">M_TIMING</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TIMING_DARK">M_TIMING_DARK</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_VERSION">M_VERSION</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_VERSION_DARK">M_VERSION_DARK</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#constant_neighbours">neighbours</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#constant_DECODE_LOOKUP">DECODE_LOOKUP</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#constant_FORMAT_INFO_MASK_QR">FORMAT_INFO_MASK_QR</a></li>
+                                            </ul>
+                </li>
+            
+                            <li class="phpdocumentor-on-this-page-section__title">Properties</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#property_eccLevel">$eccLevel<a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#property_maskPattern">$maskPattern<a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#property_matrix">$matrix<a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#property_moduleCount">$moduleCount<a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#property_version">$version<a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#property_mirror">$mirror<a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"></li>
+                                            </ul>
+                </li>
+            
+                        <li class="phpdocumentor-on-this-page-section__title">Methods</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method___construct">__construct()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_check">check()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkNeighbours">checkNeighbours()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkType">checkType()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_checkTypeIn">checkTypeIn()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_eccLevel">eccLevel()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_get">get()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_getEccLevel">getEccLevel()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_getMaskPattern">getMaskPattern()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_getMatrix">getMatrix()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_getSize">getSize()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_getVersion">getVersion()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_initFunctionalPatterns">initFunctionalPatterns()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_invert">invert()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_mask">mask()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_maskPattern">maskPattern()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_matrix">matrix()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_mirrorDiagonal">mirrorDiagonal()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_readCodewords">readCodewords()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_resetVersionInfo">resetVersionInfo()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_rotate90">rotate90()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_set">set()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setAlignmentPattern">setAlignmentPattern()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setArea">setArea()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setDarkModule">setDarkModule()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setFinderPattern">setFinderPattern()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setFormatInfo">setFormatInfo()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_setLogoSpace">setLogoSpace()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_setQuietZone">setQuietZone()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setSeparators">setSeparators()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setTimingPattern">setTimingPattern()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_setVersionNumber">setVersionNumber()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_size">size()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_version">version()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_writeCodewords">writeCodewords()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Data-QRMatrix.html#method_createMatrix">createMatrix()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_copyVersionBit">copyVersionBit()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_decodeVersionInformation">decodeVersionInformation()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_doDecodeFormatInformation">doDecodeFormatInformation()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_numBitsDiffering">numBitsDiffering()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_readFormatInformation">readFormatInformation()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_readVersion">readVersion()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#method_uRShift">uRShift()</a></li>
+                                    </ul>
+            </li>
+                    </ul>
+    </section>
+
+                </section>
+                            </div>
+            <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
     <section class="phpdocumentor-search-results__dialog">
         <header class="phpdocumentor-search-results__header">
             <h2 class="phpdocumentor-search-results__title">Search results</h2>
@@ -4090,7 +4357,6 @@ false =&gt; $M_TYPE</p>
         </section>
     </section>
 </section>
-            </div>
         </div>
         <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 

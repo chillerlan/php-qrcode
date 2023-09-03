@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
             <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/template.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
                 <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
         <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="js/template.js"></script>
         <script src="js/search.js"></script>
         <script defer src="js/searchIndex.js"></script>
     </head>
@@ -67,7 +68,7 @@
 <label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
     Menu
 </label>
-<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
+<aside class="phpdocumentor-column -three phpdocumentor-sidebar">
                     <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
@@ -106,8 +107,9 @@
     </section>
 </aside>
 
-            <div class="phpdocumentor-column -eight phpdocumentor-content">
-                    <ul class="phpdocumentor-breadcrumbs">
+            <div class="phpdocumentor-column -nine phpdocumentor-content">
+                                <section>
+                                        <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/chillerlan.html">chillerlan</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/chillerlan-qrcode.html">QRCode</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/chillerlan-qrcode-detector.html">Detector</a></li>
@@ -128,6 +130,13 @@
     
     </h2>
 
+<div class="phpdocumentor-label-line">
+
+    <div class="phpdocumentor-label phpdocumentor-label--success"><span>Final</span><span>Yes</span></div>
+
+
+</div>
+
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
     :
@@ -144,7 +153,8 @@ markers at three corners of a QR Code.</p>
 
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -156,62 +166,82 @@ markers at three corners of a QR Code.</p>
 </section>
 
                                     </dd>
-                        </dl>
-
-
-
+                                            </dl>
 
 
 
 <h3 id="toc">
     Table of Contents
-    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+
 </h3>
 
+
+
+
+
+
+
+<h4 id="toc-constants">
+    Constants
+    <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#toc-constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#constant_CENTER_QUORUM">CENTER_QUORUM</a>
     <span>
         &nbsp;= 2                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#constant_MAX_MODULES">MAX_MODULES</a>
     <span>
         &nbsp;= 177                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#constant_MIN_SKIP">MIN_SKIP</a>
     <span>
         &nbsp;= 2                            </span>
 </dt>
-<dd></dd>
 
-                    <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    </dl>
+
+
+<h4 id="toc-properties">
+    Properties
+    <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#property_hasSkipped">$hasSkipped</a>
     <span>
                         &nbsp;: bool            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#property_matrix">$matrix</a>
     <span>
                         &nbsp;: <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a>            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#property_possibleCenters">$possibleCenters</a>
     <span>
-                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
+                        &nbsp;: array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;            </span>
 </dt>
-<dd></dd>
 
-                <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    </dl>
+
+<h4 id="toc-methods">
+    Methods
+    <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method___construct">__construct()</a>
     <span>
                                 &nbsp;: mixed    </span>
@@ -223,7 +253,6 @@ markers at three corners of a QR Code.</p>
     <span>
                                 &nbsp;: array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_centerFromEnd">centerFromEnd()</a>
@@ -272,42 +301,36 @@ finder pattern to see if the same proportion is detected.</dd>
     <span>
                                 &nbsp;: array&lt;string|int, int&gt;    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_findRowSkip">findRowSkip()</a>
     <span>
                                 &nbsp;: int    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_foundPatternCross">foundPatternCross()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_foundPatternDiagonal">foundPatternDiagonal()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_foundPatternVariance">foundPatternVariance()</a>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_getCrossCheckStateCount">getCrossCheckStateCount()</a>
     <span>
                                 &nbsp;: array&lt;string|int, int&gt;    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_handlePossibleCenter">handlePossibleCenter()</a>
@@ -324,7 +347,6 @@ center of the pattern in cases of extreme skew.</dd>
     <span>
                                 &nbsp;: bool    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_orderBestPatterns">orderBestPatterns()</a>
@@ -339,9 +361,9 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <span>
                                 &nbsp;: array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;    </span>
 </dt>
-<dd></dd>
 
-        </dl>
+    </dl>
+
 
 
 
@@ -350,11 +372,13 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
         <h3 class="phpdocumentor-elements__header" id="constants">
             Constants
             <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
                     <article class="phpdocumentor-element -constant -private ">
     <h4 class="phpdocumentor-element__name" id="constant_CENTER_QUORUM">
         CENTER_QUORUM
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#constant_CENTER_QUORUM" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -373,10 +397,8 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -384,6 +406,7 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <h4 class="phpdocumentor-element__name" id="constant_MAX_MODULES">
         MAX_MODULES
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#constant_MAX_MODULES" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -402,10 +425,8 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -413,6 +434,7 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <h4 class="phpdocumentor-element__name" id="constant_MIN_SKIP">
         MIN_SKIP
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#constant_MIN_SKIP" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -431,10 +453,8 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -445,6 +465,7 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
             <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
                     <article
         class="
@@ -456,6 +477,7 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <h4 class="phpdocumentor-element__name" id="property_hasSkipped">
         $hasSkipped
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#property_hasSkipped" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -473,10 +495,8 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <span class="phpdocumentor-signature__name">$hasSkipped</span>
      = <span class="phpdocumentor-signature__default-value">false</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -490,6 +510,7 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <h4 class="phpdocumentor-element__name" id="property_matrix">
         $matrix
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#property_matrix" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -507,10 +528,8 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <span class="phpdocumentor-signature__name">$matrix</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -524,6 +543,7 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <h4 class="phpdocumentor-element__name" id="property_possibleCenters">
         $possibleCenters
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#property_possibleCenters" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -537,7 +557,7 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;</span>
     <span class="phpdocumentor-signature__name">$possibleCenters</span>
     </code>
 
@@ -552,6 +572,7 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
             <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
                     <article
         class="phpdocumentor-element
@@ -562,6 +583,7 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <h4 class="phpdocumentor-element__name" id="method___construct">
         __construct()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -576,6 +598,8 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -592,10 +616,6 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
 
     
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
     
 </article>
                     <article
@@ -607,6 +627,7 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <h4 class="phpdocumentor-element__name" id="method_find">
         find()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_find" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -620,15 +641,17 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">find</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -639,6 +662,7 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <h4 class="phpdocumentor-element__name" id="method_centerFromEnd">
         centerFromEnd()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_centerFromEnd" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -654,6 +678,8 @@ figures the location of the center of this run.</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">centerFromEnd</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$stateCount</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$end</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -669,18 +695,17 @@ figures the location of the center of this run.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">float</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">float</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -691,6 +716,7 @@ figures the location of the center of this run.</p>
     <h4 class="phpdocumentor-element__name" id="method_crossCheckDiagonal">
         crossCheckDiagonal()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossCheckDiagonal" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -707,6 +733,8 @@ finder pattern to see if the same proportion is detected.</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">crossCheckDiagonal</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$centerI</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$centerJ</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -732,13 +760,15 @@ finder pattern to see if the same proportion is detected.</p>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">bool</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>true if proportions are withing expected limits</p>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>true if proportions are withing expected limits</p>
 </section>
 
-    
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -749,6 +779,7 @@ finder pattern to see if the same proportion is detected.</p>
     <h4 class="phpdocumentor-element__name" id="method_crossCheckHorizontal">
         crossCheckHorizontal()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossCheckHorizontal" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -765,6 +796,8 @@ check a vertical cross-check and locate the real center of the alignment pattern
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">crossCheckHorizontal</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$startJ</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$centerI</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$maxCount</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$originalStateCountTotal</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float|null</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -773,39 +806,36 @@ check a vertical cross-check and locate the real center of the alignment pattern
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$centerI</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$maxCount</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$originalStateCountTotal</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossCheckHorizontal#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -817,13 +847,13 @@ check a vertical cross-check and locate the real center of the alignment pattern
 </section>
 
                                     </dd>
-                        </dl>
+                                            </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">float|null</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">float|null</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -834,6 +864,7 @@ check a vertical cross-check and locate the real center of the alignment pattern
     <h4 class="phpdocumentor-element__name" id="method_crossCheckVertical">
         crossCheckVertical()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossCheckVertical" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -850,6 +881,8 @@ finder pattern to see if the same proportion is detected.</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">crossCheckVertical</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$startI</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$centerJ</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$maxCount</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$originalStateCountTotal</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float|null</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -893,7 +926,8 @@ observed in any reading state, based on the results of the horizontal scan</p>
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossCheckVertical#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -905,15 +939,17 @@ observed in any reading state, based on the results of the horizontal scan</p>
 </section>
 
                                     </dd>
-                        </dl>
+                                            </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">float|null</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>vertical center of finder pattern, or null if not found</p>
+        <span class="phpdocumentor-signature__response_type">float|null</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>vertical center of finder pattern, or null if not found</p>
 </section>
 
-    
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -924,6 +960,7 @@ observed in any reading state, based on the results of the horizontal scan</p>
     <h4 class="phpdocumentor-element__name" id="method_crossProductZ">
         crossProductZ()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossProductZ" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -938,6 +975,8 @@ observed in any reading state, based on the results of the horizontal scan</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">crossProductZ</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pointA</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pointB</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pointC</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">float</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -946,34 +985,31 @@ observed in any reading state, based on the results of the horizontal scan</p>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$pointB</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$pointC</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">float</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">float</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -984,6 +1020,7 @@ observed in any reading state, based on the results of the horizontal scan</p>
     <h4 class="phpdocumentor-element__name" id="method_doShiftCounts2">
         doShiftCounts2()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_doShiftCounts2" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -997,6 +1034,8 @@ observed in any reading state, based on the results of the horizontal scan</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">doShiftCounts2</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$stateCount</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -1011,11 +1050,11 @@ observed in any reading state, based on the results of the horizontal scan</p>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -1026,6 +1065,7 @@ observed in any reading state, based on the results of the horizontal scan</p>
     <h4 class="phpdocumentor-element__name" id="method_findRowSkip">
         findRowSkip()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_findRowSkip" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -1039,20 +1079,24 @@ observed in any reading state, based on the results of the horizontal scan</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">findRowSkip</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>number of rows we could safely skip during scanning, based on the first
+        <span class="phpdocumentor-signature__response_type">int</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>number of rows we could safely skip during scanning, based on the first
 two finder patterns that have been located. In some cases their position will
 allow us to infer that the third pattern must lie below a certain point farther
 down in the image.</p>
 </section>
 
-    
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -1063,6 +1107,7 @@ down in the image.</p>
     <h4 class="phpdocumentor-element__name" id="method_foundPatternCross">
         foundPatternCross()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_foundPatternCross" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -1076,6 +1121,8 @@ down in the image.</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">foundPatternCross</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$stateCount</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -1090,11 +1137,11 @@ down in the image.</p>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">bool</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -1105,6 +1152,7 @@ down in the image.</p>
     <h4 class="phpdocumentor-element__name" id="method_foundPatternDiagonal">
         foundPatternDiagonal()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_foundPatternDiagonal" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -1118,6 +1166,8 @@ down in the image.</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">foundPatternDiagonal</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$stateCount</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -1132,11 +1182,11 @@ down in the image.</p>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">bool</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">bool</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -1147,6 +1197,7 @@ down in the image.</p>
     <h4 class="phpdocumentor-element__name" id="method_foundPatternVariance">
         foundPatternVariance()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_foundPatternVariance" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -1160,6 +1211,8 @@ down in the image.</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">foundPatternVariance</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$stateCount</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">float&nbsp;</span><span class="phpdocumentor-signature__argument__name">$variance</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -1177,21 +1230,22 @@ down in the image.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">float</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">bool</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>true if the proportions of the counts is close enough to the 1/1/3/1/1 ratios
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>true if the proportions of the counts is close enough to the 1/1/3/1/1 ratios
 used by finder patterns to be considered a match</p>
 </section>
 
-    
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -1202,6 +1256,7 @@ used by finder patterns to be considered a match</p>
     <h4 class="phpdocumentor-element__name" id="method_getCrossCheckStateCount">
         getCrossCheckStateCount()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_getCrossCheckStateCount" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -1215,15 +1270,17 @@ used by finder patterns to be considered a match</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">getCrossCheckStateCount</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -1234,6 +1291,7 @@ used by finder patterns to be considered a match</p>
     <h4 class="phpdocumentor-element__name" id="method_handlePossibleCenter">
         handlePossibleCenter()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_handlePossibleCenter" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -1251,6 +1309,8 @@ center of the pattern in cases of extreme skew.</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">handlePossibleCenter</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, int&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$stateCount</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$i</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$j</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>And then we cross-cross-cross check with another diagonal scan.</p>
 <p>If that succeeds the finder pattern location is added to a list that tracks
 the number of times each location has been nearly-matched as a finder pattern.
@@ -1291,13 +1351,15 @@ pattern center</p>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">bool</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>if a finder pattern candidate was found this time</p>
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>if a finder pattern candidate was found this time</p>
 </section>
 
-    
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -1308,6 +1370,7 @@ pattern center</p>
     <h4 class="phpdocumentor-element__name" id="method_haveMultiplyConfirmedCenters">
         haveMultiplyConfirmedCenters()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_haveMultiplyConfirmedCenters" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -1321,19 +1384,23 @@ pattern center</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">haveMultiplyConfirmedCenters</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">bool</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>true if we have found at least 3 finder patterns that have been detected
+        <span class="phpdocumentor-signature__response_type">bool</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>true if we have found at least 3 finder patterns that have been detected
 at least #CENTER_QUORUM times each, and, the estimated module size of the
 candidates is &quot;pretty similar&quot;</p>
 </section>
 
-    
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -1344,6 +1411,7 @@ candidates is &quot;pretty similar&quot;</p>
     <h4 class="phpdocumentor-element__name" id="method_orderBestPatterns">
         orderBestPatterns()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_orderBestPatterns" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -1359,6 +1427,8 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">orderBestPatterns</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$patterns</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -1375,11 +1445,11 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -1390,6 +1460,7 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <h4 class="phpdocumentor-element__name" id="method_selectBestPatterns">
         selectBestPatterns()
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_selectBestPatterns" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Detector/FinderPatternFinder.php"><a href="files/src-detector-finderpatternfinder.html"><abbr title="src/Detector/FinderPatternFinder.php">FinderPatternFinder.php</abbr></a></abbr>
@@ -1403,12 +1474,15 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">selectBestPatterns</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
     
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_selectBestPatterns#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -1421,84 +1495,176 @@ and BC is less than AC, and the angle between BC and BA is less than 180 degrees
 </section>
 
                                     </dd>
-                        </dl>
+                                            </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;</span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>the 3 best FinderPatterns from our list of candidates. The &quot;best&quot; are
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, <a href="classes/chillerlan-QRCode-Detector-FinderPattern.html"><abbr title="\chillerlan\QRCode\Detector\FinderPattern">FinderPattern</abbr></a>&gt;</span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>the 3 best FinderPatterns from our list of candidates. The &quot;best&quot; are
 those that have been detected at least #CENTER_QUORUM times, and whose module
 size differs from the average among those patterns the least</p>
 </section>
 
-    
+            </section>
+
 </article>
             </section>
 
-        
+        <div class="phpdocumentor-modal" id="source-view">
+    <div class="phpdocumentor-modal-bg" data-exit-button></div>
+    <div class="phpdocumentor-modal-container">
+        <div class="phpdocumentor-modal-content">
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Detector/FinderPatternFinder.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+        </div>
+        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
+    </div>
+</div>
+
     <script type="text/javascript">
-        function loadExternalCodeSnippets(line) {
-            Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach((pre) => {
-                var src = pre.getAttribute('data-src').replace( /\\/g, '/');
-                var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
-                var language = 'php';
+        (function () {
+            function loadExternalCodeSnippet(el, url, line) {
+                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
+                    const language = 'php';
 
-                var code = document.createElement('code');
-                code.className = 'language-' + language;
+                    const code = document.createElement('code');
+                    code.className = 'language-' + language;
+                    pre.textContent = '';
+                    pre.setAttribute('data-line', line)
+                    code.textContent = 'Loading…';
+                    pre.appendChild(code);
 
-                pre.textContent = '';
+                    var xhr = new XMLHttpRequest();
 
-                pre.setAttribute('data-line', line)
-                code.textContent = 'Loading…';
+                    xhr.open('GET', src, true);
 
-                pre.appendChild(code);
-
-                var xhr = new XMLHttpRequest();
-
-                xhr.open('GET', src, true);
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4) {
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState !== 4) {
+                            return;
+                        }
 
                         if (xhr.status < 400 && xhr.responseText) {
                             code.textContent = xhr.responseText;
-
                             Prism.highlightElement(code);
+                            return;
                         }
-                        else if (xhr.status >= 400) {
+
+                        if (xhr.status === 404) {
+                            code.textContent = '✖ Error: File could not be found';
+                            return;
+                        }
+
+                        if (xhr.status >= 400) {
                             code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                            return;
                         }
-                        else {
-                            code.textContent = '✖ Error: File does not exist, is empty or trying to view from localhost';
-                        }
+
+                        code.textContent = '✖ Error: An unknown error occurred';
+                    };
+
+                    xhr.send(null);
+                });
+            }
+
+            const modalButtons = document.querySelectorAll("[data-modal]");
+            const openedAsLocalFile = window.location.protocol === 'file:';
+            if (modalButtons.length > 0 && openedAsLocalFile) {
+                console.warn(
+                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
+                    'browsers block XHR requests when a page is opened this way'
+                );
+            }
+
+            modalButtons.forEach(function (trigger) {
+                if (openedAsLocalFile) {
+                    trigger.setAttribute("hidden", "hidden");
+                }
+
+                trigger.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const modal = document.getElementById(trigger.dataset.modal);
+                    if (!modal) {
+                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
+                        return;
                     }
-                };
+                    modal.classList.add("phpdocumentor-modal__open");
 
-                xhr.send(null);
-            });
-        }
-
-        var modals = document.querySelectorAll("[data-modal]");
-
-        modals.forEach(function (trigger) {
-            trigger.addEventListener("click", function (event) {
-                //event.preventDefault();
-                const modal = document.getElementById(trigger.dataset.modal);
-                modal.classList.add("phpdocumentor-modal__open");
-                loadExternalCodeSnippets(trigger.dataset.line)
-                const exits = modal.querySelectorAll("[data-exit-button]");
-                exits.forEach(function (exit) {
-                    exit.addEventListener("click", function (event) {
-                        event.preventDefault();
-                        modal.classList.remove("phpdocumentor-modal__open");
+                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
+                    const exits = modal.querySelectorAll("[data-exit-button]");
+                    exits.forEach(function (exit) {
+                        exit.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            modal.classList.remove("phpdocumentor-modal__open");
+                        });
                     });
                 });
             });
-        });
+        })();
     </script>
 
     </article>
-                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+                                </section>
+                <section class="phpdocumentor-on-this-page__sidebar">
+                                
+    <section class="phpdocumentor-on-this-page__content">
+        <strong class="phpdocumentor-on-this-page__title">On this page</strong>
+
+        <ul class="phpdocumentor-list -clean">
+            <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                        <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#toc-constants">Constants</a></li>
+                                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#toc-methods">Methods</a></li>
+                                    </ul>
+            </li>
+                            <li class="phpdocumentor-on-this-page-section__title">Constants</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#constant_CENTER_QUORUM">CENTER_QUORUM</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#constant_MAX_MODULES">MAX_MODULES</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#constant_MIN_SKIP">MIN_SKIP</a></li>
+                                            </ul>
+                </li>
+            
+                            <li class="phpdocumentor-on-this-page-section__title">Properties</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#property_hasSkipped">$hasSkipped<a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#property_matrix">$matrix<a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#property_possibleCenters">$possibleCenters<a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html"></li>
+                                            </ul>
+                </li>
+            
+                        <li class="phpdocumentor-on-this-page-section__title">Methods</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method___construct">__construct()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_find">find()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_centerFromEnd">centerFromEnd()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossCheckDiagonal">crossCheckDiagonal()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossCheckHorizontal">crossCheckHorizontal()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossCheckVertical">crossCheckVertical()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_crossProductZ">crossProductZ()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_doShiftCounts2">doShiftCounts2()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_findRowSkip">findRowSkip()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_foundPatternCross">foundPatternCross()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_foundPatternDiagonal">foundPatternDiagonal()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_foundPatternVariance">foundPatternVariance()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_getCrossCheckStateCount">getCrossCheckStateCount()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_handlePossibleCenter">handlePossibleCenter()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_haveMultiplyConfirmedCenters">haveMultiplyConfirmedCenters()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_orderBestPatterns">orderBestPatterns()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_selectBestPatterns">selectBestPatterns()</a></li>
+                                    </ul>
+            </li>
+                    </ul>
+    </section>
+
+                </section>
+                            </div>
+            <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
     <section class="phpdocumentor-search-results__dialog">
         <header class="phpdocumentor-search-results__header">
             <h2 class="phpdocumentor-search-results__title">Search results</h2>
@@ -1509,7 +1675,6 @@ size differs from the average among those patterns the least</p>
         </section>
     </section>
 </section>
-            </div>
         </div>
         <a href="classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
             <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/template.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
                 <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
         <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="js/template.js"></script>
         <script src="js/search.js"></script>
         <script defer src="js/searchIndex.js"></script>
     </head>
@@ -67,7 +68,7 @@
 <label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
     Menu
 </label>
-<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
+<aside class="phpdocumentor-column -three phpdocumentor-sidebar">
                     <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
@@ -106,8 +107,9 @@
     </section>
 </aside>
 
-            <div class="phpdocumentor-column -eight phpdocumentor-content">
-                    <ul class="phpdocumentor-breadcrumbs">
+            <div class="phpdocumentor-column -nine phpdocumentor-content">
+                                <section>
+                                        <ul class="phpdocumentor-breadcrumbs">
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/chillerlan.html">chillerlan</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/chillerlan-qrcode.html">QRCode</a></li>
             <li class="phpdocumentor-breadcrumb"><a href="namespaces/chillerlan-qrcode-decoder.html">Decoder</a></li>
@@ -127,6 +129,13 @@
     
     
     </h2>
+
+<div class="phpdocumentor-label-line">
+
+    <div class="phpdocumentor-label phpdocumentor-label--success"><span>Final</span><span>Yes</span></div>
+
+
+</div>
 
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Binarizer.php"><a href="files/src-decoder-binarizer.html"><abbr title="src/Decoder/Binarizer.php">Binarizer.php</abbr></a></abbr>
@@ -152,7 +161,8 @@ but for now it was not a win to use local blocks for 1D.</p>
 
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -164,88 +174,104 @@ but for now it was not a win to use local blocks for 1D.</p>
 </section>
 
                                     </dd>
-                        </dl>
-
-
-
+                                            </dl>
 
 
 
 <h3 id="toc">
     Table of Contents
-    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+
 </h3>
 
+
+
+
+
+
+
+<h4 id="toc-constants">
+    Constants
+    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#toc-constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE">BLOCK_SIZE</a>
     <span>
         &nbsp;= 8                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE_MASK">BLOCK_SIZE_MASK</a>
     <span>
         &nbsp;= 7                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE_POWER">BLOCK_SIZE_POWER</a>
     <span>
         &nbsp;= 3                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_LUMINANCE_BUCKETS">LUMINANCE_BUCKETS</a>
     <span>
         &nbsp;= 32                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_LUMINANCE_SHIFT">LUMINANCE_SHIFT</a>
     <span>
         &nbsp;= 3                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_MIN_DYNAMIC_RANGE">MIN_DYNAMIC_RANGE</a>
     <span>
         &nbsp;= 24                            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_MINIMUM_DIMENSION">MINIMUM_DIMENSION</a>
     <span>
         &nbsp;= 40                            </span>
 </dt>
-<dd></dd>
 
-                    <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    </dl>
+
+
+<h4 id="toc-properties">
+    Properties
+    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#property_luminances">$luminances</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#property_source">$source</a>
     <span>
                         &nbsp;: <a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html"><abbr title="\chillerlan\QRCode\Decoder\LuminanceSourceInterface">LuminanceSourceInterface</abbr></a>            </span>
 </dt>
-<dd></dd>
 
-                <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    </dl>
+
+<h4 id="toc-methods">
+    Methods
+    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method___construct">__construct()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getBlackMatrix">getBlackMatrix()</a>
@@ -277,23 +303,21 @@ on the last pixels in the row/column which are also used in the previous block).
     <span>
                                 &nbsp;: int    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_estimateBlackPoint">estimateBlackPoint()</a>
     <span>
                                 &nbsp;: int    </span>
 </dt>
-<dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getHistogramBlackMatrix">getHistogramBlackMatrix()</a>
     <span>
                                 &nbsp;: <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a>    </span>
 </dt>
-<dd></dd>
 
-        </dl>
+    </dl>
+
 
 
 
@@ -302,11 +326,13 @@ on the last pixels in the row/column which are also used in the previous block).
         <h3 class="phpdocumentor-elements__header" id="constants">
             Constants
             <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
                     <article class="phpdocumentor-element -constant -private ">
     <h4 class="phpdocumentor-element__name" id="constant_BLOCK_SIZE">
         BLOCK_SIZE
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -325,10 +351,8 @@ on the last pixels in the row/column which are also used in the previous block).
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -336,6 +360,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <h4 class="phpdocumentor-element__name" id="constant_BLOCK_SIZE_MASK">
         BLOCK_SIZE_MASK
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE_MASK" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -354,10 +379,8 @@ on the last pixels in the row/column which are also used in the previous block).
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -365,6 +388,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <h4 class="phpdocumentor-element__name" id="constant_BLOCK_SIZE_POWER">
         BLOCK_SIZE_POWER
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE_POWER" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -383,10 +407,8 @@ on the last pixels in the row/column which are also used in the previous block).
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -394,6 +416,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <h4 class="phpdocumentor-element__name" id="constant_LUMINANCE_BUCKETS">
         LUMINANCE_BUCKETS
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_LUMINANCE_BUCKETS" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -412,10 +435,8 @@ on the last pixels in the row/column which are also used in the previous block).
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -423,6 +444,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <h4 class="phpdocumentor-element__name" id="constant_LUMINANCE_SHIFT">
         LUMINANCE_SHIFT
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_LUMINANCE_SHIFT" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -441,10 +463,8 @@ on the last pixels in the row/column which are also used in the previous block).
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -452,6 +472,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <h4 class="phpdocumentor-element__name" id="constant_MIN_DYNAMIC_RANGE">
         MIN_DYNAMIC_RANGE
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_MIN_DYNAMIC_RANGE" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -470,10 +491,8 @@ on the last pixels in the row/column which are also used in the previous block).
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -481,6 +500,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <h4 class="phpdocumentor-element__name" id="constant_MINIMUM_DIMENSION">
         MINIMUM_DIMENSION
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_MINIMUM_DIMENSION" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
@@ -499,10 +519,8 @@ on the last pixels in the row/column which are also used in the previous block).
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -513,6 +531,7 @@ on the last pixels in the row/column which are also used in the previous block).
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
             <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
                     <article
         class="
@@ -524,6 +543,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <h4 class="phpdocumentor-element__name" id="property_luminances">
         $luminances
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#property_luminances" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -541,10 +561,8 @@ on the last pixels in the row/column which are also used in the previous block).
     <span class="phpdocumentor-signature__name">$luminances</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -558,6 +576,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <h4 class="phpdocumentor-element__name" id="property_source">
         $source
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#property_source" class="headerlink"><i class="fas fa-link"></i></a>
+
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
@@ -575,10 +594,8 @@ on the last pixels in the row/column which are also used in the previous block).
     <span class="phpdocumentor-signature__name">$source</span>
     </code>
 
-        <section class="phpdocumentor-description"></section>
-
-        <section class="phpdocumentor-description"></section>
-
+    
+    
     
 
 </article>
@@ -588,6 +605,7 @@ on the last pixels in the row/column which are also used in the previous block).
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
             <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+
         </h3>
                     <article
         class="phpdocumentor-element
@@ -598,6 +616,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <h4 class="phpdocumentor-element__name" id="method___construct">
         __construct()
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Binarizer.php"><a href="files/src-decoder-binarizer.html"><abbr title="src/Decoder/Binarizer.php">Binarizer.php</abbr></a></abbr>
@@ -611,6 +630,8 @@ on the last pixels in the row/column which are also used in the previous block).
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html"><abbr title="\chillerlan\QRCode\Decoder\LuminanceSourceInterface">LuminanceSourceInterface</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$source</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -619,17 +640,12 @@ on the last pixels in the row/column which are also used in the previous block).
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Decoder-LuminanceSourceInterface.html"><abbr title="\chillerlan\QRCode\Decoder\LuminanceSourceInterface">LuminanceSourceInterface</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">mixed</span>
-            &mdash;
-        
     
 </article>
                     <article
@@ -641,6 +657,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <h4 class="phpdocumentor-element__name" id="method_getBlackMatrix">
         getBlackMatrix()
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getBlackMatrix" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Binarizer.php"><a href="files/src-decoder-binarizer.html"><abbr title="src/Decoder/Binarizer.php">Binarizer.php</abbr></a></abbr>
@@ -657,6 +674,8 @@ profiling easier, and not doing heavy lifting when callers don&#039;t expect it.
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getBlackMatrix</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>Converts a 2D array of luminance data to 1 bit data. As above, assume this method is expensive
 and do not call it repeatedly. This method is intended for decoding 2D barcodes and may or
 may not apply sharpening. Therefore, a row from this matrix may not be identical to one
@@ -666,13 +685,15 @@ fetched using getBlackRow(), so don't mix and match between them.</p>
     
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span>
-            &mdash;
-            <section class="phpdocumentor-description"><p>The 2D array of bits for the image (true means black).</p>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span>
+                    &mdash;
+                <section class="phpdocumentor-description"><p>The 2D array of bits for the image (true means black).</p>
 </section>
 
-    
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -683,6 +704,7 @@ fetched using getBlackRow(), so don't mix and match between them.</p>
     <h4 class="phpdocumentor-element__name" id="method_calculateBlackPoints">
         calculateBlackPoints()
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_calculateBlackPoints" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Binarizer.php"><a href="files/src-decoder-binarizer.html"><abbr title="src/Decoder/Binarizer.php">Binarizer.php</abbr></a></abbr>
@@ -697,6 +719,8 @@ fetched using getBlackRow(), so don't mix and match between them.</p>
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">calculateBlackPoints</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$subWidth</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$subHeight</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$width</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$height</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
         <section class="phpdocumentor-description"><p>See the following thread for a discussion of this algorithm:</p>
 </section>
 
@@ -707,56 +731,53 @@ fetched using getBlackRow(), so don't mix and match between them.</p>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$subHeight</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$width</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$height</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_calculateBlackPoints#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="http://groups.google.com/group/zxing/browse_thread/thread/d06efa2c35a7ddc0"><abbr title="http://groups.google.com/group/zxing/browse_thread/thread/d06efa2c35a7ddc0">http://groups.google.com/group/zxing/browse_thread/thread/d06efa2c35a7ddc0</abbr></a></span>
+                                                                                    <span class="phpdocumentor-tag-link"><a href="http://groups.google.com/group/zxing/browse_thread/thread/d06efa2c35a7ddc0">http://groups.google.com/group/zxing/browse_thread/thread/d06efa2c35a7ddc0</a></span>
                                         
                                              
                                     </dd>
-                        </dl>
+                                            </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -767,6 +788,7 @@ fetched using getBlackRow(), so don't mix and match between them.</p>
     <h4 class="phpdocumentor-element__name" id="method_calculateThresholdForBlock">
         calculateThresholdForBlock()
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_calculateThresholdForBlock" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Binarizer.php"><a href="files/src-decoder-binarizer.html"><abbr title="src/Decoder/Binarizer.php">Binarizer.php</abbr></a></abbr>
@@ -783,6 +805,8 @@ on the last pixels in the row/column which are also used in the previous block).
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">calculateThresholdForBlock</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$subWidth</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$subHeight</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$width</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$height</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -791,42 +815,38 @@ on the last pixels in the row/column which are also used in the previous block).
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$subHeight</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$width</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$height</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -837,6 +857,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <h4 class="phpdocumentor-element__name" id="method_cap">
         cap()
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_cap" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Binarizer.php"><a href="files/src-decoder-binarizer.html"><abbr title="src/Decoder/Binarizer.php">Binarizer.php</abbr></a></abbr>
@@ -850,6 +871,8 @@ on the last pixels in the row/column which are also used in the previous block).
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">cap</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$min</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$max</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -858,31 +881,29 @@ on the last pixels in the row/column which are also used in the previous block).
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$min</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$max</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_cap#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -894,13 +915,13 @@ on the last pixels in the row/column which are also used in the previous block).
 </section>
 
                                     </dd>
-                        </dl>
+                                            </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -911,6 +932,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <h4 class="phpdocumentor-element__name" id="method_estimateBlackPoint">
         estimateBlackPoint()
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_estimateBlackPoint" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Binarizer.php"><a href="files/src-decoder-binarizer.html"><abbr title="src/Decoder/Binarizer.php">Binarizer.php</abbr></a></abbr>
@@ -924,6 +946,8 @@ on the last pixels in the row/column which are also used in the previous block).
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">estimateBlackPoint</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$buckets</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -932,15 +956,15 @@ on the last pixels in the row/column which are also used in the previous block).
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_estimateBlackPoint#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
@@ -951,13 +975,13 @@ on the last pixels in the row/column which are also used in the previous block).
                                                             
                                              
                                     </dd>
-                        </dl>
+                                            </dl>
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type">int</span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -968,6 +992,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <h4 class="phpdocumentor-element__name" id="method_getHistogramBlackMatrix">
         getHistogramBlackMatrix()
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getHistogramBlackMatrix" class="headerlink"><i class="fas fa-link"></i></a>
+
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Decoder/Binarizer.php"><a href="files/src-decoder-binarizer.html"><abbr title="src/Decoder/Binarizer.php">Binarizer.php</abbr></a></abbr>
@@ -981,6 +1006,8 @@ on the last pixels in the row/column which are also used in the previous block).
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">getHistogramBlackMatrix</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$width</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$height</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span></code>
 
+    <div class="phpdocumentor-label-line">
+        </div>
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -989,93 +1016,174 @@ on the last pixels in the row/column which are also used in the previous block).
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$height</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
 
+            <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-    <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span>
-            &mdash;
-        
-    
+        <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a></span>
+            </section>
+
 </article>
             </section>
 
-        
+        <div class="phpdocumentor-modal" id="source-view">
+    <div class="phpdocumentor-modal-bg" data-exit-button></div>
+    <div class="phpdocumentor-modal-container">
+        <div class="phpdocumentor-modal-content">
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Decoder/Binarizer.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+        </div>
+        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
+    </div>
+</div>
+
     <script type="text/javascript">
-        function loadExternalCodeSnippets(line) {
-            Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach((pre) => {
-                var src = pre.getAttribute('data-src').replace( /\\/g, '/');
-                var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
-                var language = 'php';
+        (function () {
+            function loadExternalCodeSnippet(el, url, line) {
+                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
+                    const language = 'php';
 
-                var code = document.createElement('code');
-                code.className = 'language-' + language;
+                    const code = document.createElement('code');
+                    code.className = 'language-' + language;
+                    pre.textContent = '';
+                    pre.setAttribute('data-line', line)
+                    code.textContent = 'Loading…';
+                    pre.appendChild(code);
 
-                pre.textContent = '';
+                    var xhr = new XMLHttpRequest();
 
-                pre.setAttribute('data-line', line)
-                code.textContent = 'Loading…';
+                    xhr.open('GET', src, true);
 
-                pre.appendChild(code);
-
-                var xhr = new XMLHttpRequest();
-
-                xhr.open('GET', src, true);
-
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4) {
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState !== 4) {
+                            return;
+                        }
 
                         if (xhr.status < 400 && xhr.responseText) {
                             code.textContent = xhr.responseText;
-
                             Prism.highlightElement(code);
+                            return;
                         }
-                        else if (xhr.status >= 400) {
+
+                        if (xhr.status === 404) {
+                            code.textContent = '✖ Error: File could not be found';
+                            return;
+                        }
+
+                        if (xhr.status >= 400) {
                             code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                            return;
                         }
-                        else {
-                            code.textContent = '✖ Error: File does not exist, is empty or trying to view from localhost';
-                        }
+
+                        code.textContent = '✖ Error: An unknown error occurred';
+                    };
+
+                    xhr.send(null);
+                });
+            }
+
+            const modalButtons = document.querySelectorAll("[data-modal]");
+            const openedAsLocalFile = window.location.protocol === 'file:';
+            if (modalButtons.length > 0 && openedAsLocalFile) {
+                console.warn(
+                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
+                    'browsers block XHR requests when a page is opened this way'
+                );
+            }
+
+            modalButtons.forEach(function (trigger) {
+                if (openedAsLocalFile) {
+                    trigger.setAttribute("hidden", "hidden");
+                }
+
+                trigger.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const modal = document.getElementById(trigger.dataset.modal);
+                    if (!modal) {
+                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
+                        return;
                     }
-                };
+                    modal.classList.add("phpdocumentor-modal__open");
 
-                xhr.send(null);
-            });
-        }
-
-        var modals = document.querySelectorAll("[data-modal]");
-
-        modals.forEach(function (trigger) {
-            trigger.addEventListener("click", function (event) {
-                //event.preventDefault();
-                const modal = document.getElementById(trigger.dataset.modal);
-                modal.classList.add("phpdocumentor-modal__open");
-                loadExternalCodeSnippets(trigger.dataset.line)
-                const exits = modal.querySelectorAll("[data-exit-button]");
-                exits.forEach(function (exit) {
-                    exit.addEventListener("click", function (event) {
-                        event.preventDefault();
-                        modal.classList.remove("phpdocumentor-modal__open");
+                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
+                    const exits = modal.querySelectorAll("[data-exit-button]");
+                    exits.forEach(function (exit) {
+                        exit.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            modal.classList.remove("phpdocumentor-modal__open");
+                        });
                     });
                 });
             });
-        });
+        })();
     </script>
 
     </article>
-                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+                                </section>
+                <section class="phpdocumentor-on-this-page__sidebar">
+                                
+    <section class="phpdocumentor-on-this-page__content">
+        <strong class="phpdocumentor-on-this-page__title">On this page</strong>
+
+        <ul class="phpdocumentor-list -clean">
+            <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                        <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#toc-constants">Constants</a></li>
+                                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#toc-methods">Methods</a></li>
+                                    </ul>
+            </li>
+                            <li class="phpdocumentor-on-this-page-section__title">Constants</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE">BLOCK_SIZE</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE_MASK">BLOCK_SIZE_MASK</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE_POWER">BLOCK_SIZE_POWER</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_LUMINANCE_BUCKETS">LUMINANCE_BUCKETS</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_LUMINANCE_SHIFT">LUMINANCE_SHIFT</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_MIN_DYNAMIC_RANGE">MIN_DYNAMIC_RANGE</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_MINIMUM_DIMENSION">MINIMUM_DIMENSION</a></li>
+                                            </ul>
+                </li>
+            
+                            <li class="phpdocumentor-on-this-page-section__title">Properties</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#property_luminances">$luminances<a href="classes/chillerlan-QRCode-Decoder-Binarizer.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#property_source">$source<a href="classes/chillerlan-QRCode-Decoder-Binarizer.html"></li>
+                                            </ul>
+                </li>
+            
+                        <li class="phpdocumentor-on-this-page-section__title">Methods</li>
+            <li>
+                <ul class="phpdocumentor-list -clean">
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method___construct">__construct()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getBlackMatrix">getBlackMatrix()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_calculateBlackPoints">calculateBlackPoints()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_calculateThresholdForBlock">calculateThresholdForBlock()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_cap">cap()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_estimateBlackPoint">estimateBlackPoint()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getHistogramBlackMatrix">getHistogramBlackMatrix()</a></li>
+                                    </ul>
+            </li>
+                    </ul>
+    </section>
+
+                </section>
+                            </div>
+            <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
     <section class="phpdocumentor-search-results__dialog">
         <header class="phpdocumentor-search-results__header">
             <h2 class="phpdocumentor-search-results__title">Search results</h2>
@@ -1086,7 +1194,6 @@ on the last pixels in the row/column which are also used in the previous block).
         </section>
     </section>
 </section>
-            </div>
         </div>
         <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
