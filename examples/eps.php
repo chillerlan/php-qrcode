@@ -1,5 +1,7 @@
 <?php
 /**
+ * EPS output example
+ *
  * @created      10.05.2022
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2022 Smiley
@@ -18,6 +20,7 @@ $options->version          = 7;
 $options->outputType       = QROutputInterface::EPS;
 $options->scale            = 5;
 $options->drawLightModules = false;
+// colors can be specified either as [R, G, B] or [C, M, Y, K] (0-255)
 $options->bgColor          = [222, 222, 222];
 $options->moduleValues     = [
 	// finder
@@ -45,10 +48,12 @@ $options->moduleValues     = [
 	QRMatrix::M_SEPARATOR      => [233, 233, 233],
 	// quietzone
 	QRMatrix::M_QUIETZONE      => [233, 233, 233],
-	// logo (requires a call to QRMatrix::setLogoSpace()), see QRImageWithLogo
+	// logo space (requires a call to QRMatrix::setLogoSpace()), see imageWithLogo example
 	QRMatrix::M_LOGO           => [233, 233, 233],
 ];
 
+
+$out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ', __DIR__.'/qrcode.eps');
 
 if(php_sapi_name() !== 'cli'){
 	// if viewed in the browser, we should push it as file download as EPS isn't usually supported
@@ -56,6 +61,6 @@ if(php_sapi_name() !== 'cli'){
 	header('Content-Disposition: filename="qrcode.eps"');
 }
 
-echo (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ', __DIR__.'/test.eps');
+echo $out;
 
 exit;

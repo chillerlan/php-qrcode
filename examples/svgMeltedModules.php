@@ -1,5 +1,7 @@
 <?php
 /**
+ * "melted" modules example
+ *
  * This code generates an SVG QR code with rounded corners. It uses a round rect for each square and then additional
  * paths to fill in the gap where squares are next to each other. Adjacent squares overlap - to almost completely
  * eliminate hairline antialias "cracks" that tend to appear when two SVG paths are exactly adjacent to each other.
@@ -244,28 +246,28 @@ class MeltedOutputOptions extends QROptions{
 /*
  * Runtime
  */
+$options = new MeltedOutputOptions;
 
-$options = new MeltedOutputOptions([
-	'melt'               => true,
-	'inverseMelt'        => true,
-	'meltRadius'         => 0.4,
+// settings from the custom options class
+$options->melt               = true;
+$options->inverseMelt        = true;
+$options->meltRadius         = 0.4;
 
-	'version'            => 7,
-	'eccLevel'           => EccLevel::H,
-	'addQuietzone'       => true,
-	'addLogoSpace'       => true,
-	'logoSpaceWidth'     => 13,
-	'logoSpaceHeight'    => 13,
-	'connectPaths'       => true,
-	'imageBase64'        => false,
-
-	'outputType'         => QROutputInterface::CUSTOM,
-	'outputInterface'    => MeltedSVGQRCodeOutput::class,
-	'excludeFromConnect' => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-	],
-	'svgDefs'            => '
+$options->version            = 7;
+$options->outputType         = QROutputInterface::CUSTOM;
+$options->outputInterface    = MeltedSVGQRCodeOutput::class;
+$options->imageBase64        = false;
+$options->addQuietzone       = true;
+$options->eccLevel           = EccLevel::H;
+$options->addLogoSpace       = true;
+$options->logoSpaceWidth     = 13;
+$options->logoSpaceHeight    = 13;
+$options->connectPaths       = true;
+$options->excludeFromConnect = [
+	QRMatrix::M_FINDER_DARK,
+	QRMatrix::M_FINDER_DOT,
+];
+$options->svgDefs            = '
 	<linearGradient id="rainbow" x1="100%" y2="100%">
 		<stop stop-color="#e2453c" offset="2.5%"/>
 		<stop stop-color="#e07e39" offset="21.5%"/>
@@ -276,11 +278,11 @@ $options = new MeltedOutputOptions([
 	</linearGradient>
 	<style><![CDATA[
 		.light, .dark{fill: url(#rainbow);}
-	]]></style>',
-]);
+	]]></style>';
 
 
-$qrcode = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+$out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+
 
 if(php_sapi_name() !== 'cli'){
 	header('Content-type: image/svg+xml');
@@ -288,10 +290,10 @@ if(php_sapi_name() !== 'cli'){
 	if(extension_loaded('zlib')){
 		header('Vary: Accept-Encoding');
 		header('Content-Encoding: gzip');
-		$qrcode = gzencode($qrcode, 9);
+		$out = gzencode($out, 9);
 	}
 }
 
-echo $qrcode;
+echo $out;
 
 exit;

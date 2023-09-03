@@ -1,5 +1,7 @@
 <?php
 /**
+ * custom output example
+ *
  * @created      24.12.2017
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
@@ -24,7 +26,7 @@ class MyCustomOutput extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	public static function moduleValueIsValid($value):bool{
-		// TODO: Implement moduleValueIsValid() method. (abstract)
+		// TODO: Implement moduleValueIsValid() method. (interface)
 		return false;
 	}
 
@@ -68,15 +70,16 @@ class MyCustomOutput extends QROutputAbstract{
  * Runtime
  */
 
+$options = new QROptions;
+
+$options->version  = 5;
+$options->eccLevel = EccLevel::L;
+
 $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 
 // invoke the QROutputInterface manually
 // please note that an QROutputInterface invoked this way might become unusable after calling dump().
 // the clean way would be to extend the QRCode class to ensure a new QROutputInterface instance on each call to render().
-$options = new QROptions([
-	'version'  => 5,
-	'eccLevel' => EccLevel::L,
-]);
 
 $qrcode = new QRCode($options);
 $qrcode->addByteSegment($data);
@@ -85,14 +88,9 @@ $qrOutputInterface = new MyCustomOutput($options, $qrcode->getQRMatrix());
 
 var_dump($qrOutputInterface->dump());
 
-
 // or just via the options
-$options = new QROptions([
-	'version'         => 5,
-	'eccLevel'        => EccLevel::L,
-	'outputType'      => QROutputInterface::CUSTOM,
-	'outputInterface' => MyCustomOutput::class,
-]);
+$options->outputType      = QROutputInterface::CUSTOM;
+$options->outputInterface = MyCustomOutput::class;
 
 var_dump((new QRCode($options))->render($data));
 

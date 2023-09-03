@@ -1,5 +1,7 @@
 <?php
 /**
+ * SVG with logo and custom shapes example
+ *
  * @see https://github.com/chillerlan/php-qrcode/discussions/150
  *
  * @created      05.03.2022
@@ -185,7 +187,8 @@ $options->svgDefs         = '
 		.light{fill: #eaeaea;}
 	]]></style>';
 
-$qrcode = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+
+$out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 
 if(php_sapi_name() !== 'cli'){
@@ -194,10 +197,10 @@ if(php_sapi_name() !== 'cli'){
 	if(extension_loaded('zlib')){
 		header('Vary: Accept-Encoding');
 		header('Content-Encoding: gzip');
-		$qrcode = gzencode($qrcode, 9);
+		$out = gzencode($out, 9);
 	}
 }
 
-echo $qrcode;
+echo $out;
 
 exit;

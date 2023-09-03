@@ -1,6 +1,6 @@
 <?php
 /**
- * authenticator.php
+ * authenticator excample
  *
  * @created      09.07.2023
  * @author       smiley <smiley@chillerlan.net>
@@ -16,48 +16,46 @@ use chillerlan\QRCode\Data\QRMatrix;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-// the options array
-$optionsArray = [
-	/*
-	 * AuthenticatorOptionsTrait
-	 *
-	 * @see https://github.com/chillerlan/php-authenticator
-	 */
-	'mode'                => AuthenticatorInterface::TOTP,
-	'digits'              => 8,
-	'algorithm'           => AuthenticatorInterface::ALGO_SHA512,
+// create a new options container on the fly that hosts both, authenticator and qrcode
+$options = new class extends SettingsContainerAbstract{
+	use AuthenticatorOptionsTrait, QROptionsTrait;
+};
 
-	/*
-	 * QROptionsTrait
-	 */
-	'version'             => 7,
-	'addQuietzone'        => false,
-	'imageBase64'         => false,
-	'svgAddXmlHeader'     => false,
-	'cssClass'            => 'my-qrcode',
-	'drawLightModules'    => false,
-	'markupDark'          => '',
-	'markupLight'         => '',
-	'drawCircularModules' => true,
-	'circleRadius'        => 0.4,
-	'connectPaths'        => true,
-	'keepAsSquare'        => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-		QRMatrix::M_ALIGNMENT_DARK,
-	],
-	'svgDefs'             => '
+/*
+ * AuthenticatorOptionsTrait
+ *
+ * @see https://github.com/chillerlan/php-authenticator
+ */
+$options->mode                = AuthenticatorInterface::TOTP;
+$options->digits              = 8;
+$options->algorithm           = AuthenticatorInterface::ALGO_SHA512;
+
+/*
+ * QROptionsTrait
+ */
+$options->version             = 7;
+$options->addQuietzone        = false;
+$options->imageBase64         = false;
+$options->svgAddXmlHeader     = false;
+$options->cssClass            = 'my-qrcode';
+$options->drawLightModules    = false;
+$options->markupDark          = '';
+$options->markupLight         = '';
+$options->drawCircularModules = true;
+$options->circleRadius        = 0.4;
+$options->connectPaths        = true;
+$options->keepAsSquare        = [
+	QRMatrix::M_FINDER_DARK,
+	QRMatrix::M_FINDER_DOT,
+	QRMatrix::M_ALIGNMENT_DARK,
+];
+$options->svgDefs             = '
 	<linearGradient id="gradient" x1="1" y2="1">
 		<stop id="stop1" offset="0" />
 		<stop id="stop2" offset="0.5"/>
 		<stop id="stop3" offset="1"/>
-	</linearGradient>',
-];
+	</linearGradient>';
 
-// create a new options container on the fly that hosts both, authenticator and qrcode
-$options = new class($optionsArray) extends SettingsContainerAbstract{
-	use AuthenticatorOptionsTrait, QROptionsTrait;
-};
 
 // invoke the worker instances
 $authenticator = new Authenticator($options);

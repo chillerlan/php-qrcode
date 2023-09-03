@@ -1,5 +1,7 @@
 <?php
 /**
+ * Randomly colored modules example
+ *
  * @see https://github.com/chillerlan/php-qrcode/discussions/136
  *
  * @created      09.07.2022
@@ -98,8 +100,11 @@ class RandomDotsOptions extends QROptions{
  * Runtime
  */
 
+// prepare the options
+$options = new RandomDotsOptions;
+
 // our custom dot colors
-$dotColors = [
+$options->dotColors = [
 	111 => '#e2453c',
 	222 => '#e07e39',
 	333 => '#e5d667',
@@ -111,50 +116,51 @@ $dotColors = [
 // generate the CSS for the several colored layers
 $layerColors = '';
 
-foreach($dotColors as $layer => $color){
+foreach($options->dotColors as $layer => $color){
 	$layerColors .= sprintf("\n\t\t.qr-%s{ fill: %s; }", $layer, $color);
 }
 
-// prepare the options
-$options = new RandomDotsOptions([
-	'dotColors'           => $dotColors,
-	'svgDefs'             => '
+$options->svgDefs = '
 	<style><![CDATA[
 		.light{ fill: #dedede; }
 		.dark{ fill: #424242; }
 		'.$layerColors.'
-	]]></style>',
+	]]></style>';
 
-	'version'             => 5,
-	'eccLevel'            => EccLevel::H,
-	'addQuietzone'        => true,
-	'imageBase64'         => false,
-	'outputType'          => QROutputInterface::CUSTOM,
-	'outputInterface'     => RandomDotsSVGOutput::class,
-	'drawLightModules'    => false,
+// set the custom output interface
+$options->outputType          = QROutputInterface::CUSTOM;
+$options->outputInterface     = RandomDotsSVGOutput::class;
 
-	'connectPaths'        => true,
-	'excludeFromConnect'  => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-		QRMatrix::M_ALIGNMENT_DARK,
-	],
+// common qrcode options
+$options->version             = 5;
+$options->eccLevel            = EccLevel::H;
+$options->addQuietzone        = true;
+$options->imageBase64         = false;
+$options->drawLightModules    = false;
+$options->connectPaths        = true;
+$options->excludeFromConnect  = [
+	QRMatrix::M_FINDER_DARK,
+	QRMatrix::M_FINDER_DOT,
+	QRMatrix::M_ALIGNMENT_DARK,
+];
+$options->drawCircularModules = true;
+$options->circleRadius        = 0.4;
+$options->keepAsSquare        = [
+	QRMatrix::M_FINDER_DARK,
+	QRMatrix::M_FINDER_DOT,
+	QRMatrix::M_ALIGNMENT_DARK,
+];
 
-	'drawCircularModules' => true,
-	'circleRadius'        => 0.4,
-	'keepAsSquare'        => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-		QRMatrix::M_ALIGNMENT_DARK,
-	],
 
-]);
+
+$out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+
 
 // dump the output
 if(php_sapi_name() !== 'cli'){
 	header('content-type: image/svg+xml');
 }
 
-echo (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+echo $out;
 
 exit;

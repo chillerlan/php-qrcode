@@ -1,5 +1,7 @@
 <?php
 /**
+ * ImageMagick with logo output example
+ *
  * @created      28.02.2023
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2023 Smiley
@@ -92,33 +94,36 @@ class ImagickWithLogoOptions extends QROptions{
  * Runtime
  */
 
-$options = new ImagickWithLogoOptions([
-	'pngLogo'             => __DIR__.'/octocat.png', // setting from the augmented options
-	'version'             => 5,
-	'outputType'          => QROutputInterface::CUSTOM,
-	'outputInterface'     => QRImagickWithLogo::class, // use the custom output class
-	'eccLevel'            => EccLevel::H,
-	'imageBase64'         => false,
-	'addLogoSpace'        => true,
-	'logoSpaceWidth'      => 15,
-	'logoSpaceHeight'     => 15,
-	'bgColor'             => '#eee',
-	'imageTransparent'    => true,
-	'scale'               => 20,
-	'drawLightModules'    => false,
-	'drawCircularModules' => true,
-	'circleRadius'        => 0.4,
-	'keepAsSquare'        => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-		QRMatrix::M_ALIGNMENT_DARK,
-	],
-]);
+$options = new ImagickWithLogoOptions;
+
+$options->pngLogo             = __DIR__.'/octocat.png'; // setting from the augmented options
+$options->version             = 5;
+$options->outputType          = QROutputInterface::CUSTOM;
+$options->outputInterface     = QRImagickWithLogo::class; // use the custom output class
+$options->eccLevel            = EccLevel::H;
+$options->imageBase64         = false;
+$options->addLogoSpace        = true;
+$options->logoSpaceWidth      = 15;
+$options->logoSpaceHeight     = 15;
+$options->bgColor             = '#eee';
+$options->imageTransparent    = true;
+$options->scale               = 20;
+$options->drawLightModules    = false;
+$options->drawCircularModules = true;
+$options->circleRadius        = 0.4;
+$options->keepAsSquare        = [
+	QRMatrix::M_FINDER_DARK,
+	QRMatrix::M_FINDER_DOT,
+	QRMatrix::M_ALIGNMENT_DARK,
+];
+
+
+// dump the output, with an additional logo
+$out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 
 header('Content-type: image/png');
 
-// dump the output, with an additional logo
-echo (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+echo $out;
 
 exit;

@@ -1,5 +1,7 @@
 <?php
 /**
+ * SVG with logo example
+ *
  * @created      05.03.2022
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2022 smiley
@@ -103,34 +105,30 @@ class SVGWithLogoOptions extends QROptions{
  * Runtime
  */
 
-$options = new SVGWithLogoOptions([
-	// SVG logo options (see extended class below)
-	'svgLogo'             => __DIR__.'/github.svg', // logo from: https://github.com/simple-icons/simple-icons
-	'svgLogoScale'        => 0.25,
-	'svgLogoCssClass'     => 'dark',
-	// QROptions
-	'version'             => 5,
-	'outputType'          => QROutputInterface::CUSTOM,
-	'outputInterface'     => QRSvgWithLogo::class,
-	'imageBase64'         => false,
-	// ECC level H is necessary when using logos
-	'eccLevel'            => EccLevel::H,
-	'addQuietzone'        => true,
-	// if set to true, the light modules won't be rendered
-	'drawLightModules'    => true,
-	// draw the modules as circles isntead of squares
-	'drawCircularModules' => true,
-	'circleRadius'        => 0.45,
-	// connect paths
-	'connectPaths'        => true,
-	// keep modules of thhese types as square
-	'keepAsSquare'        => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-		QRMatrix::M_ALIGNMENT_DARK,
-	],
-	// https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient
-	'svgDefs'             => '
+$options = new SVGWithLogoOptions;
+
+// SVG logo options (see extended class)
+$options->svgLogo             = __DIR__.'/github.svg'; // logo from: https://github.com/simple-icons/simple-icons
+$options->svgLogoScale        = 0.25;
+$options->svgLogoCssClass     = 'dark';
+// QROptions
+$options->version             = 5;
+$options->outputType          = QROutputInterface::CUSTOM;
+$options->outputInterface     = QRSvgWithLogo::class;
+$options->imageBase64         = false;
+$options->eccLevel            = EccLevel::H; // ECC level H is necessary when using logos
+$options->addQuietzone        = true;
+$options->drawLightModules    = true;
+$options->connectPaths        = true;
+$options->drawCircularModules = true;
+$options->circleRadius        = 0.45;
+$options->keepAsSquare        = [
+	QRMatrix::M_FINDER_DARK,
+	QRMatrix::M_FINDER_DOT,
+	QRMatrix::M_ALIGNMENT_DARK,
+];
+// https://developer.mozilla.org/en-US/docs/Web/SVG/Element/linearGradient
+$options->svgDefs = '
 	<linearGradient id="gradient" x1="100%" y2="100%">
 		<stop stop-color="#D70071" offset="0"/>
 		<stop stop-color="#9C4E97" offset="0.5"/>
@@ -139,10 +137,10 @@ $options = new SVGWithLogoOptions([
 	<style><![CDATA[
 		.dark{fill: url(#gradient);}
 		.light{fill: #eaeaea;}
-	]]></style>',
-]);
+	]]></style>';
 
-$qrcode = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+
+$out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 
 if(php_sapi_name() !== 'cli'){
@@ -151,10 +149,10 @@ if(php_sapi_name() !== 'cli'){
 	if(extension_loaded('zlib')){
 		header('Vary: Accept-Encoding');
 		header('Content-Encoding: gzip');
-		$qrcode = gzencode($qrcode, 9);
+		$out = gzencode($out, 9);
 	}
 }
 
-echo $qrcode;
+echo $out;
 
 exit;

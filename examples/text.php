@@ -9,54 +9,57 @@
  */
 
 use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\QROutputInterface;
-use PHPUnit\Util\Color;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
-$options = new QROptions([
-	'version'      => 7,
-	'outputType'   => QROutputInterface::STRING_TEXT,
-	'eccLevel'     => EccLevel::L,
-	'eol'          => Color::colorize('reset', "\x00\n"),
-	'moduleValues' => [
-		// finder
-		QRMatrix::M_FINDER_DARK    => Color::colorize('fg-black', '🔴'), // dark (true)
-		QRMatrix::M_FINDER         => Color::colorize('fg-black', '⭕'), // light (false)
-		QRMatrix::M_FINDER_DOT     => Color::colorize('fg-black', '🔴'), // finder dot, dark (true)
-		// alignment
-		QRMatrix::M_ALIGNMENT_DARK => Color::colorize('fg-blue', '🔴'),
-		QRMatrix::M_ALIGNMENT      => Color::colorize('fg-blue', '⭕'),
-		// timing
-		QRMatrix::M_TIMING_DARK    => Color::colorize('fg-red', '🔴'),
-		QRMatrix::M_TIMING         => Color::colorize('fg-red', '⭕'),
-		// format
-		QRMatrix::M_FORMAT_DARK    => Color::colorize('fg-magenta', '🔴'),
-		QRMatrix::M_FORMAT         => Color::colorize('fg-magenta', '⭕'),
-		// version
-		QRMatrix::M_VERSION_DARK   => Color::colorize('fg-green', '🔴'),
-		QRMatrix::M_VERSION        => Color::colorize('fg-green', '⭕'),
-		// data
-		QRMatrix::M_DATA_DARK      => Color::colorize('fg-white', '🔴'),
-		QRMatrix::M_DATA           => Color::colorize('fg-white', '⭕'),
-		// darkmodule
-		QRMatrix::M_DARKMODULE     => Color::colorize('fg-black', '🔴'),
-		// separator
-		QRMatrix::M_SEPARATOR      => Color::colorize('fg-cyan', '⭕'),
-		// quietzone
-		QRMatrix::M_QUIETZONE      => Color::colorize('fg-cyan', '⭕'),
-		// logo space
-		QRMatrix::M_LOGO           => Color::colorize('fg-yellow', '⭕'),
-		// empty
-		QRMatrix::M_NULL           => Color::colorize('fg-black', '⭕'),
-		// data
-		QRMatrix::M_TEST_DARK      => Color::colorize('fg-white', '🔴'),
-		QRMatrix::M_TEST           => Color::colorize('fg-black', '⭕'),
-	],
-]);
+$options = new QROptions;
 
-echo (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+$options->version       = 3;
+$options->quietzoneSize = 2;
+$options->outputType    = QROutputInterface::STRING_TEXT;
+$options->eol           = "\n";
+$options->textLineStart = str_repeat(' ', 6);
+$options->textDark      = ansi8('██', 253);
+$options->textLight     = ansi8('░░', 253);
+$options->moduleValues  = [
+	// finder
+	QRMatrix::M_FINDER_DARK    => ansi8('██', 124),
+	QRMatrix::M_FINDER         => ansi8('░░', 124),
+	QRMatrix::M_FINDER_DOT     => ansi8('██', 124),
+	// alignment
+	QRMatrix::M_ALIGNMENT_DARK => ansi8('██', 2),
+	QRMatrix::M_ALIGNMENT      => ansi8('░░', 2),
+	// timing
+	QRMatrix::M_TIMING_DARK    => ansi8('██', 184),
+	QRMatrix::M_TIMING         => ansi8('░░', 184),
+	// format
+	QRMatrix::M_FORMAT_DARK    => ansi8('██', 200),
+	QRMatrix::M_FORMAT         => ansi8('░░', 200),
+	// version
+	QRMatrix::M_VERSION_DARK   => ansi8('██', 21),
+	QRMatrix::M_VERSION        => ansi8('░░', 21),
+	// dark module
+	QRMatrix::M_DARKMODULE     => ansi8('██', 53),
+	// data
+	QRMatrix::M_DATA_DARK      => ansi8('██', 166),
+	QRMatrix::M_DATA           => ansi8('░░', 166),
+];
+
+
+$out  = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+
+
+echo "\n\n\n$out\n\n\n";
 
 exit;
+
+
+// a little helper to a create proper ANSI 8-bit color escape sequence
+function ansi8(string $str, int $color, bool $background = false):string{
+	$color      = max(0, min($color, 255));
+	$background = ($background ? 48 : 38);
+
+	return sprintf("\x1b[%s;5;%sm%s\x1b[0m", $background, $color, $str);
+}
