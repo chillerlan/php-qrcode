@@ -371,13 +371,22 @@ trait QROptionsTrait{
 	/**
 	 * String substitute for dark
 	 */
-	protected string $textDark = '🔴';
+	protected string $textDark = '██';
 
 	/**
 	 * String substitute for light
 	 */
-	protected string $textLight = '⭕';
+	protected string $textLight = '░░';
 
+	/**
+	 * An optional line prefix, e.g. empty space to align the QR Code in a console
+	 */
+	protected string $textLineStart = '';
+
+	/**
+	 * Whether to return matrix values in JSON as booleans or $M_TYPE integers
+	 */
+	protected bool $jsonAsBooleans = false;
 
 	/*
 	 * QRFpdf settings

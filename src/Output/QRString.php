@@ -7,7 +7,6 @@
  * @copyright    2015 Smiley
  * @license      MIT
  *
- * @noinspection PhpUnusedParameterInspection
  * @noinspection PhpComposerExtensionStubsInspection
  */
 
@@ -65,7 +64,7 @@ class QRString extends QROutputAbstract{
 	 * string output
 	 */
 	protected function text():string{
-		$str = [];
+		$lines = [];
 
 		for($y = 0; $y < $this->moduleCount; $y++){
 			$r = [];
@@ -74,17 +73,19 @@ class QRString extends QROutputAbstract{
 				$r[] = $this->getModuleValueAt($x, $y);
 			}
 
-			$str[] = implode('', $r);
+			$lines[] = $this->options->textLineStart.implode('', $r);
 		}
 
-		return implode($this->options->eol, $str);
+		return implode($this->options->eol, $lines);
 	}
 
 	/**
 	 * JSON output
+	 *
+	 * @throws \JsonException
 	 */
 	protected function json():string{
-		return json_encode($this->matrix->getMatrix(), JSON_THROW_ON_ERROR);
+		return json_encode($this->matrix->getMatrix($this->options->jsonAsBooleans), JSON_THROW_ON_ERROR);
 	}
 
 	//
