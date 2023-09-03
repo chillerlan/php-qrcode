@@ -149,9 +149,8 @@ class QRGdImage extends QROutputAbstract{
 	 */
 	public function dump(string $file = null){
 
-		/** @phan-suppress-next-line PhanTypeMismatchArgumentInternal */
-		set_error_handler(function(int $severity, string $msg, string $file, int $line):void{
-			throw new ErrorException($msg, 0, $severity, $file, $line);
+		set_error_handler(function(int $errno, string $errstr):bool{
+			throw new ErrorException($errstr, $errno);
 		});
 
 		$this->setBgColor();
@@ -272,6 +271,8 @@ class QRGdImage extends QROutputAbstract{
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function dumpImage():string{
+		$exception = null;
+
 		ob_start();
 
 		try{
@@ -289,18 +290,22 @@ class QRGdImage extends QROutputAbstract{
 					imagepng($this->image, null, max(-1, min(9, $this->options->pngCompression)));
 			}
 
+			$imageData = ob_get_contents();
+			imagedestroy($this->image);
 		}
 		// not going to cover edge cases
 		// @codeCoverageIgnoreStart
 		catch(Throwable $e){
-			throw new QRCodeOutputException($e->getMessage());
+			$exception = $e;
 		}
 		// @codeCoverageIgnoreEnd
 
-		$imageData = ob_get_contents();
-		imagedestroy($this->image);
-
 		ob_end_clean();
+
+		// throw here in case an exception happened within the output buffer
+		if($exception instanceof Throwable){
+			throw new QRCodeOutputException($exception->getMessage());
+		}
 
 		return $imageData;
 	}
