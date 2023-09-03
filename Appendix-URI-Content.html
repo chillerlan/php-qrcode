@@ -12,11 +12,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=a8da1a53"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -268,10 +268,10 @@
            <div itemprop="articleBody">
              
   <section id="popular-content-and-uri-schemes">
-<h1>Popular content and URI schemes<a class="headerlink" href="#popular-content-and-uri-schemes" title="Permalink to this heading"></a></h1>
+<h1>Popular content and URI schemes<a class="headerlink" href="#popular-content-and-uri-schemes" title="Link to this heading"></a></h1>
 <p><strong>A brief summary of popular use cases for QR codes.</strong></p>
 <section id="url-https">
-<h2>URL <code class="docutils literal notranslate"><span class="pre">https</span></code><a class="headerlink" href="#url-https" title="Permalink to this heading"></a></h2>
+<h2>URL <code class="docutils literal notranslate"><span class="pre">https</span></code><a class="headerlink" href="#url-https" title="Link to this heading"></a></h2>
 <p>Perhaps the most common use for QR Codes is to share URLs: simply encode the (URL-encoded) string value
 and make sure to include the scheme <code class="docutils literal notranslate"><span class="pre">http(s)://</span></code> so that it can be properly identified by the reader application:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>https://en.m.wikipedia.org/wiki/URL
@@ -288,7 +288,7 @@ and make sure to include the scheme <code class="docutils literal notranslate"><
 </ul>
 </section>
 <section id="e-mail-mailto">
-<h2>E-Mail <code class="docutils literal notranslate"><span class="pre">mailto</span></code><a class="headerlink" href="#e-mail-mailto" title="Permalink to this heading"></a></h2>
+<h2>E-Mail <code class="docutils literal notranslate"><span class="pre">mailto</span></code><a class="headerlink" href="#e-mail-mailto" title="Link to this heading"></a></h2>
 <p>E-Mail links are encoded similar to URLs, preceded by the <code class="docutils literal notranslate"><span class="pre">mailto:</span></code> scheme to ensure they are properly identified and the default mail application can be opened.
 Parameters may be added as a <a class="reference external" href="https://en.wikipedia.org/wiki/Query_string">URL query string</a>:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mailto:&lt;ADDR&gt;[,...?to=&lt;ADDR&gt;,...&amp;cc=&lt;ADDR&gt;,...&amp;bcc=&lt;ADDR&gt;,...&amp;subject=&lt;SUBJECT&gt;&amp;body=&lt;BODY&gt;]
@@ -334,7 +334,7 @@ Parameters may be added as a <a class="reference external" href="https://en.wiki
 </ul>
 </section>
 <section id="phone-numbers-tel">
-<h2>Phone numbers <code class="docutils literal notranslate"><span class="pre">tel</span></code><a class="headerlink" href="#phone-numbers-tel" title="Permalink to this heading"></a></h2>
+<h2>Phone numbers <code class="docutils literal notranslate"><span class="pre">tel</span></code><a class="headerlink" href="#phone-numbers-tel" title="Link to this heading"></a></h2>
 <p>A phone number should be prefixed with the <code class="docutils literal notranslate"><span class="pre">tel:</span></code> scheme so that a device’s dialer can be invoked properly:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>tel:+999-123-456-7890
 </pre></div>
@@ -350,13 +350,13 @@ Some devices may also support the <code class="docutils literal notranslate"><sp
 </ul>
 </section>
 <section id="geo-coordinates-geo">
-<h2>Geo Coordinates <code class="docutils literal notranslate"><span class="pre">geo</span></code><a class="headerlink" href="#geo-coordinates-geo" title="Permalink to this heading"></a></h2>
+<h2>Geo Coordinates <code class="docutils literal notranslate"><span class="pre">geo</span></code><a class="headerlink" href="#geo-coordinates-geo" title="Link to this heading"></a></h2>
 <p>A geographical coordinate, including altitude can be encoded using the <code class="docutils literal notranslate"><span class="pre">geo:</span></code> URI scheme so that it can be opened with a map application.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geo:&lt;latitude&gt;,&lt;longitude&gt;[,&lt;altitude&gt;;crs=&lt;crs&gt;;u=&lt;num&gt;]
 </pre></div>
 </div>
 <p>The default coordinate system is WGS-84, for which latitude and longitude should be supplied as decimal degrees, the optional altitude in meters.
-Te parameter <code class="docutils literal notranslate"><span class="pre">u</span></code> can be used to specify an <em>uncertainty</em> value (in meters), a different <em>coordinate reference system</em> may be supplied with <code class="docutils literal notranslate"><span class="pre">crs</span></code>.</p>
+The parameter <code class="docutils literal notranslate"><span class="pre">u</span></code> can be used to specify an <em>uncertainty</em> value (in meters), a different <em>coordinate reference system</em> may be supplied with <code class="docutils literal notranslate"><span class="pre">crs</span></code>.</p>
 <p>Some applications support an additional query string with values of <code class="docutils literal notranslate"><span class="pre">z</span></code> for <em>zoom</em> level and <code class="docutils literal notranslate"><span class="pre">q</span></code> for a local search <em>query</em> (URL-encoded):</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>geo:&lt;latitude&gt;,&lt;longitude&gt;?z=&lt;zoom&gt;&amp;q=&lt;search&gt;
 </pre></div>
@@ -376,7 +376,7 @@ Te parameter <code class="docutils literal notranslate"><span class="pre">u</spa
 </ul>
 </section>
 <section id="mobile-authenticators-otpauth">
-<h2>Mobile Authenticators <code class="docutils literal notranslate"><span class="pre">otpauth</span></code><a class="headerlink" href="#mobile-authenticators-otpauth" title="Permalink to this heading"></a></h2>
+<h2>Mobile Authenticators <code class="docutils literal notranslate"><span class="pre">otpauth</span></code><a class="headerlink" href="#mobile-authenticators-otpauth" title="Link to this heading"></a></h2>
 <p>Mobile authenticators can be added with the <code class="docutils literal notranslate"><span class="pre">otpauth</span></code> scheme:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>otpauth://&lt;MODE&gt;/&lt;LABEL&gt;?secret=&lt;SECRET&gt;[&amp;issuer=&lt;ISSUER&gt;&amp;params...]
 </pre></div>
@@ -444,7 +444,7 @@ The <code class="docutils literal notranslate"><span class="pre">LABEL</span></c
 </ul>
 </section>
 <section id="wireless-network-configuration">
-<h2>Wireless Network configuration<a class="headerlink" href="#wireless-network-configuration" title="Permalink to this heading"></a></h2>
+<h2>Wireless Network configuration<a class="headerlink" href="#wireless-network-configuration" title="Link to this heading"></a></h2>
 <p>Wi-Fi configuration general syntax looks as follows:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>WIFI:S:&lt;SSID&gt;[;T:&lt;TYPE&gt;;P:&lt;PASSWORD&gt;;H:&lt;HIDDEN&gt;;];
 </pre></div>
@@ -514,7 +514,7 @@ special characters <code class="docutils literal notranslate"><span class="pre">
 </ul>
 </section>
 <section id="contact-information-vcard">
-<h2>Contact information: vCard<a class="headerlink" href="#contact-information-vcard" title="Permalink to this heading"></a></h2>
+<h2>Contact information: vCard<a class="headerlink" href="#contact-information-vcard" title="Link to this heading"></a></h2>
 <p>The vCard is the most commonly used format to exchange contact details. It’s too complex to fully explain here, instead just a bare minimum example:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BEGIN:VCARD
 VERSION:4.0
@@ -542,7 +542,7 @@ END:VCARD
 </ul>
 </section>
 <section id="calendar-events-vcalendar-and-icalendar">
-<h2>Calendar Events: vCalendar and iCalendar<a class="headerlink" href="#calendar-events-vcalendar-and-icalendar" title="Permalink to this heading"></a></h2>
+<h2>Calendar Events: vCalendar and iCalendar<a class="headerlink" href="#calendar-events-vcalendar-and-icalendar" title="Link to this heading"></a></h2>
 <p>Calendar events can be shared via the iCalendar (formerly vCalendar) object (example from <a class="reference external" href="https://github.com/spatie/icalendar-generator">icalendar-generator</a>):</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>BEGIN:VCALENDAR
 VERSION:2.0
@@ -560,6 +560,7 @@ END:VEVENT
 END:VCALENDAR
 </pre></div>
 </div>
+<p><strong>See also:</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc5545">RFC 5545 - Internet Calendaring and Scheduling Core Object Specification (iCalendar)</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/ICalendar">iCalendar (Wikipedia)</a></p></li>
@@ -568,7 +569,7 @@ END:VCALENDAR
 </ul>
 </section>
 <section id="see-also">
-<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this heading"></a></h2>
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc3986">RFC 3986 - Uniform Resource Identifier (URI): Generic Syntax</a></p></li>
 <li><p><a class="reference external" href="https://en.m.wikipedia.org/wiki/Uniform_Resource_Identifier">Uniform Resource Identifier (Wikipedia)</a></p></li>

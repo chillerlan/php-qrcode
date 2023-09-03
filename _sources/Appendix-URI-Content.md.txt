@@ -20,8 +20,8 @@ https://www.youtube.com/watch?v=dQw4w9WgXcQ
 
 **See also:**
 
-  - [What is a URL? (Mozilla MDN)](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL)
-  - [URL (Wikipedia)](https://en.wikipedia.org/wiki/URL)
+- [What is a URL? (Mozilla MDN)](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL)
+- [URL (Wikipedia)](https://en.wikipedia.org/wiki/URL)
 
 
 ## E-Mail `mailto`
@@ -84,7 +84,7 @@ geo:<latitude>,<longitude>[,<altitude>;crs=<crs>;u=<num>]
 ```
 
 The default coordinate system is WGS-84, for which latitude and longitude should be supplied as decimal degrees, the optional altitude in meters.
-Te parameter `u` can be used to specify an *uncertainty* value (in meters), a different *coordinate reference system* may be supplied with `crs`.
+The parameter `u` can be used to specify an *uncertainty* value (in meters), a different *coordinate reference system* may be supplied with `crs`.
 
 Some applications support an additional query string with values of `z` for *zoom* level and `q` for a local search *query* (URL-encoded):
 ```
@@ -242,6 +242,8 @@ DTSTAMP:20190419T135034Z
 END:VEVENT
 END:VCALENDAR
 ```
+
+**See also:**
 
 - [RFC 5545 - Internet Calendaring and Scheduling Core Object Specification (iCalendar)](https://datatracker.ietf.org/doc/html/rfc5545)
 - [iCalendar (Wikipedia)](https://en.wikipedia.org/wiki/ICalendar)

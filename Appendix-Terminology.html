@@ -12,11 +12,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=a8da1a53"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -268,9 +268,9 @@
            <div itemprop="articleBody">
              
   <section id="terminology">
-<h1>Terminology<a class="headerlink" href="#terminology" title="Permalink to this heading"></a></h1>
+<h1>Terminology<a class="headerlink" href="#terminology" title="Link to this heading"></a></h1>
 <section id="qr-code">
-<h2>QR Code<a class="headerlink" href="#qr-code" title="Permalink to this heading"></a></h2>
+<h2>QR Code<a class="headerlink" href="#qr-code" title="Link to this heading"></a></h2>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/QR_code"><em>QR code</em></a> (quick-response code) is a type of two-dimensional matrix barcode, invented
 in 1994 by Japanese company <a class="reference external" href="https://www.qrcode.com/en/faq.html#patentH2Title">Denso Wave</a> for labelling automobile parts.
 The QR labelling system was applied beyond the automobile industry due to its fast readability and greater storage capacity
@@ -278,18 +278,18 @@ compared to standard UPC barcodes.
 QR Codes, more specifically, the popular <em>Model 2</em>, are internationally standardized in the ISO/IEC 18004.</p>
 </section>
 <section id="matrix">
-<h2>Matrix<a class="headerlink" href="#matrix" title="Permalink to this heading"></a></h2>
+<h2>Matrix<a class="headerlink" href="#matrix" title="Link to this heading"></a></h2>
 <p>A QR symbol is arranged in a <em>matrix</em> consisting of an array of nominally square modules arranged in an overall square pattern.</p>
 <p>For ease of reference, module positions are defined by their row and column coordinates in the symbol, in the form <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code>
 where <code class="docutils literal notranslate"><span class="pre">x</span></code> designates the column (counting from left to right) and <code class="docutils literal notranslate"><span class="pre">y</span></code> the row (counting from the top downwards) in which
 the module is located, with counting commencing at 0. Module <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code> is therefore located in the upper left corner of the symbol.</p>
 <section id="module">
-<h3>Module<a class="headerlink" href="#module" title="Permalink to this heading"></a></h3>
+<h3>Module<a class="headerlink" href="#module" title="Link to this heading"></a></h3>
 <p>A <em>module</em> represents a single square “pixel” (not to confuse with pixels in a raster image or screen) in the matrix.
 A dark module is a binary one and a light module is a binary zero.</p>
 </section>
 <section id="version">
-<h3>Version<a class="headerlink" href="#version" title="Permalink to this heading"></a></h3>
+<h3>Version<a class="headerlink" href="#version" title="Link to this heading"></a></h3>
 <p>The <em>version</em> of a QR symbol determines the side length of the matrix (and therefore the maximum capacity of code words),
 ranging from 21×21 modules at version 1 to 177×177 modules at version 40; the module count increases in steps of 4 and can
 be calculated by <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">*</span> <span class="pre">version</span> <span class="pre">+</span> <span class="pre">17</span></code>.</p>
@@ -297,9 +297,9 @@ be calculated by <code class="docutils literal notranslate"><span class="pre">4<
 </section>
 </section>
 <section id="function-patterns">
-<h2>Function Patterns<a class="headerlink" href="#function-patterns" title="Permalink to this heading"></a></h2>
+<h2>Function Patterns<a class="headerlink" href="#function-patterns" title="Link to this heading"></a></h2>
 <section id="finder-pattern">
-<h3>Finder Pattern<a class="headerlink" href="#finder-pattern" title="Permalink to this heading"></a></h3>
+<h3>Finder Pattern<a class="headerlink" href="#finder-pattern" title="Link to this heading"></a></h3>
 <p>The <em>Finder Pattern</em> shall consist of three identical Position Detection Patterns located at the upper left, upper right
 and lower left corners of the symbol.</p>
 <p>Each Position Detection Pattern may be viewed as three superimposed concentric squares and is constructed of dark 7×7 modules,
@@ -312,7 +312,7 @@ Patterns comprising the finder pattern then unambiguously defines the location a
 </p>
 </section>
 <section id="alignment-pattern">
-<h3>Alignment Pattern<a class="headerlink" href="#alignment-pattern" title="Permalink to this heading"></a></h3>
+<h3>Alignment Pattern<a class="headerlink" href="#alignment-pattern" title="Link to this heading"></a></h3>
 <p>The <em>Alignment Pattern</em> is a fixed reference pattern in defined positions, which enables the decode software to
 resynchronise the coordinate mapping of the modules in the event of moderate amounts of distortion of the image.</p>
 <p>Each Alignment Pattern may be viewed as three superimposed concentric squares and is constructed of dark 5×5
@@ -324,7 +324,7 @@ version 2 or larger in positions defined in the specification.</p>
 </p>
 </section>
 <section id="timing-pattern">
-<h3>Timing Pattern<a class="headerlink" href="#timing-pattern" title="Permalink to this heading"></a></h3>
+<h3>Timing Pattern<a class="headerlink" href="#timing-pattern" title="Link to this heading"></a></h3>
 <p>The horizontal and vertical Timing Patterns respectively consist of a one module wide row or column of alternating
 dark and light modules, commencing and ending with a dark module. The horizontal Timing Pattern runs across
 row 6 of the symbol between the separators for the upper Position Detection Patterns; the vertical Timing Pattern
@@ -336,14 +336,14 @@ coordinates.</p>
 </p>
 </section>
 <section id="separators">
-<h3>Separators<a class="headerlink" href="#separators" title="Permalink to this heading"></a></h3>
+<h3>Separators<a class="headerlink" href="#separators" title="Link to this heading"></a></h3>
 <p>A pattern of all light modules, one module wide, separating the Position Detection Patterns from the rest of the symbol.</p>
 <p align="center">
 	<img alt="Separators" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQkAAAEJCAYAAACHaNJkAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAFCklEQVR42u3dy1EkRxRAUaGQA2OLfMEEXMAGXGgTxpaSLZiAdtpQutRMFvU9Z0kghk5V3HjxIrt5mqbp4w+A//Hn3r8AcGwiASSRAJJIAEkkgCQSQBIJIIkEkEQCSCIBJJEAkkgASSSAJBJAEgkgiQSQRAJIIgEkkQDSX2v/wLe3t71f039+vrx8+trz4/Hpa6+vr3v/qhzU3PO89Lnay9rPs0kCSCIBJJEAkkgAafXF5ZwtFoNHWphyTnPP0Oyz+/6+6Odd5bk3SQBJJIAkEkASCSBtsricM7JwcUOSszrjc2+SAJJIAEkkgCQSQNptcQlnsPSt4ldmkgCSSABJJIAkEkC63eLybrc1t3gr8RnP1EcLLGeSAJJIAEkkgCQSQNptcbnXsmvx5xhe2MjrvcrCb+j/+cLPuFz9392JSQJIIgEkkQCSSABpk8XlGZddSxecR/++tV/v2j/vjN+39K3iZ3zu55gkgCQSQBIJIIkEkJ6mafpY8wf+PXAbbQv//Pix96+wqaMvOM/obs+4SQJIIgEkkQCSSABp9RuXz4/Hou9buuw6419hPrqr3ATcy9LF4MitzhFrP/cmCSCJBJBEAkgiAaTVb1wC12KSAJJIAEkkgCQSQLrMXxX3Fmb4HiYJIIkEkEQCSCIBJDcugWSSAJJIAEkkgCQSQHLjEkgmCSCJBJBEAkgiASQ3LoFkkgCSSABJJIAkEkBy4xJIJgkgiQSQRAJIIgEkNy6BZJIAkkgASSSAJBJAcuMSSCYJIIkEkEQCSCIBJDcugWSSAJJIAEkkgCQSQHLjEkgmCSCJBJBEAkgiASQ3LoFkkgCSSABJJIAkEkA6/I3LuZuUa7vyzUznN8b5mSSAL4gEkEQCSCIBpMMvLueMLHq2WEQdnfMbc7fzM0kASSSAJBJAEgkgnXJxOcdnXI5xfmOufH4mCSCJBJBEAkgiAaTLLC6vsiTai/Mbc+XzM0kASSSAJBJAEgkgnXJxeca32x6J8xtzt/MzSQBJJIAkEkASCSD5q+JAMkkASSSAJBJAEgkgnfLG5Zwrf8Yg7MkkASSRAJJIAEkkgOTGJZBMEkASCSCJBJBEAkhuXALJJAEkkQCSSABJJIDkxiWQTBJAEgkgiQSQRAJIblwCySQBJJEAkkgASSSA5MYlkEwSQBIJIIkEkEQCSG5cAskkASSRAJJIAEkkgOTGJZBMEkASCSCJBJBEAkiHv3G59CalG5fwPUwSQBIJIIkEkEQCSJssLueWimuzpITvYZIAkkgASSSAJBJAWn1xOXLzcWTB6cblPEvjMc7PJAF8QSSAJBJAEgkgrb64/Pny8vmL7++//9/Omfl5S//d58fj09eOvjha28jr3WKRd3R3Oz+TBJBEAkgiASSRANLqi8u5xeBe5paZd1tSLuXG6pgrn59JAkgiASSRAJJIAGmTz7jcYoGz9CbblRdMI5zBmCufn0kCSCIBJJEAkkgAabe/Kj7yltkrL4m2cMa3Kx/J3c7PJAEkkQCSSABJJIC02+JyL3dbet7t9a7N+ZkkgC+IBJBEAkgiASSRAJJIAEkkgCQSQBIJIO1243Kvm2w+4xJ+jUkCSCIBJJEAkkgAaZPF5d0+ExCuxCQBJJEAkkgASSSA9DRN08fevwRwXCYJIIkEkEQCSCIBJJEAkkgASSSAJBJAEgkgiQSQRAJIIgEkkQCSSABJJIAkEkASCSCJBJBEAkj/AmllMZTO3DMoAAAAAElFTkSuQmCC">
 </p>
 </section>
 <section id="quiet-zone">
-<h3>Quiet Zone<a class="headerlink" href="#quiet-zone" title="Permalink to this heading"></a></h3>
+<h3>Quiet Zone<a class="headerlink" href="#quiet-zone" title="Link to this heading"></a></h3>
 <p>This is a region 4 modules wide which shall be free of all other markings, surrounding the symbol on all four sides.
 Its nominal reflectance value shall be equal to that of the light modules.</p>
 <p align="center">
@@ -352,11 +352,11 @@ Its nominal reflectance value shall be equal to that of the light modules.</p>
 </section>
 </section>
 <section id="encoding-region">
-<h2>Encoding Region<a class="headerlink" href="#encoding-region" title="Permalink to this heading"></a></h2>
+<h2>Encoding Region<a class="headerlink" href="#encoding-region" title="Link to this heading"></a></h2>
 <p>This region shall contain the symbol characters representing data, those representing error correction codewords,
 the Version Information and Format Information.</p>
 <section id="data">
-<h3>Data<a class="headerlink" href="#data" title="Permalink to this heading"></a></h3>
+<h3>Data<a class="headerlink" href="#data" title="Link to this heading"></a></h3>
 <p>This region contains the encoded data and error correction code blocks. Data bits are placed starting at the bottom-right of
 the matrix and proceeding upward in a column that is 2 modules wide. When the column reaches the top, the next 2-module column
 starts immediately to the left of the previous column and continues downward. Whenever the current column reaches the edge of
@@ -368,7 +368,7 @@ the data bit is placed in the next unused module.
 </p>
 </section>
 <section id="version-information">
-<h3>Version Information<a class="headerlink" href="#version-information" title="Permalink to this heading"></a></h3>
+<h3>Version Information<a class="headerlink" href="#version-information" title="Link to this heading"></a></h3>
 <p>The Version Information is an 18 bit sequence containing 6 data bits, with 12 error correction bits calculated using the (18, 6)
 <a class="reference external" href="https://en.wikipedia.org/wiki/BCH_code">BCH code</a> which contains the version number.</p>
 <p align="center">
@@ -376,7 +376,7 @@ the data bit is placed in the next unused module.
 </p>
 </section>
 <section id="format-information">
-<h3>Format Information<a class="headerlink" href="#format-information" title="Permalink to this heading"></a></h3>
+<h3>Format Information<a class="headerlink" href="#format-information" title="Link to this heading"></a></h3>
 <p>The Format Information is a 15 bit sequence containing 5 data bits, with 10 error correction bits calculated using the (15, 5) BCH code.
 It contains information on the error correction level applied to the symbol and on the masking pattern used,
 essential to enable the remainder of the encoding region to be decoded.</p>
@@ -385,7 +385,7 @@ essential to enable the remainder of the encoding region to be decoded.</p>
 </p>
 </section>
 <section id="darkmodule">
-<h3>Darkmodule<a class="headerlink" href="#darkmodule" title="Permalink to this heading"></a></h3>
+<h3>Darkmodule<a class="headerlink" href="#darkmodule" title="Link to this heading"></a></h3>
 <p>The module in position <code class="docutils literal notranslate"><span class="pre">(4</span> <span class="pre">*</span> <span class="pre">version</span> <span class="pre">+</span> <span class="pre">9,</span> <span class="pre">8)</span></code> shall always be dark and does not form part of the Format Information.</p>
 <p align="center">
 	<img alt="Darkmodule" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQkAAAEJCAYAAACHaNJkAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAEuklEQVR42u3dS27UUBBA0QSxI9hb1pC9mTWFGRPM7UbP7c/zOUMUUGJaV6VSpft9WZavN4B/+Hb0NwCcm0gASSSAJBJAEgkgiQSQRAJIIgEkkQCSSABJJIAkEkASCSCJBJBEAkgiASSRAJJIAEkkgPR963/w8/Pz6J/pj4+Pj6e+v7Wvg7e3518vZ3/djzBJAEkkgCQSQBIJIG2+uFyzx2LwTIsjrmnrpfYsr3uTBJBEAkgiASSRANIui8s1IwsXF5Jc1RVf9yYJIIkEkEQCSCIBpMMWl3AF3lrAJAE8IBJAEgkgiQSQbre4vNvSaY9fJb7iM/XWAs8zSQBJJIAkEkASCSAdtrg8atnlgm7s551l4XfU//kVX2smCSCJBJBEAkgiAaRdFpdXXHaNfJr0mb5u6593639vlq979hlckUkCSCIBJJEAkkgA6X1Zlq+jvwle5+wLTs7PJAEkkQCSSABJJIC0+cXls1dme1ytWaitm+US8OxGrjpHbP26N0kASSSAJBJAEgkgubgEkkkCSCIBJJEAkkgAaZpPFfcrzPAaJgkgiQSQRAJIIgEkF5dAMkkASSSAJBJAEgkgubgEkkkCSCIBJJEAkkgAycUlkEwSQBIJIIkEkEQCSC4ugWSSAJJIAEkkgCQSQHJxCSSTBJBEAkgiASSRAJKLSyCZJIAkEkASCSCJBJBcXALJJAEkkQCSSABJJIDk4hJIJgkgiQSQRAJIIgEkF5dAMkkASSSAJBJAEgkgnf7icu2ScmszX2Z6fmM8P5ME8IBIAEkkgCQSQDr94nLNyKJnj0XU2Xl+Y+72/EwSQBIJIIkEkEQCSJdcXK7xHpdjPL8xMz8/kwSQRAJIIgEkkQDSNIvLWZZER/H8xsz8/EwSQBIJIIkEkEQCSJdcXF7x123PxPMbc7fnZ5IAkkgASSSAJBJA8qniQDJJAEkkgCQSQBIJIF3y4nLNzO8xCEcySQBJJIAkEkASCSC5uASSSQJIIgEkkQCSSADJxSWQTBJAEgkgiQSQRAJILi6BZJIAkkgASSSAJBJAcnEJJJMEkEQCSCIBJJEAkotLIJkkgCQSQBIJIIkEkFxcAskkASSRAJJIAEkkgOTiEkgmCSCJBJBEAkgiAaTTX1w+e0np4hJewyQBJJEAkkgASSSAtMvicm2puDVLSngNkwSQRAJIIgEkkQDS5ovLkcvHkQWni8t1lsZjPD+TBPCASABJJIAkEkDafHE5soTZ4+/++Pnzrz/7tSxbP4ZTG3nOeyzyzu5uz88kASSRAJJIAEkkgLTLxeVR1hZMd1tSPsvF6piZn59JAkgiASSRAJJIAGmX97jcY4Hz7MJ05gXTCM9gzMzPzyQBJJEAkkgASSSAdNinio9cZs68JNrDma5ir+huz88kASSRAJJIAEkkgHTY4vIod1t63u3n3ZrnZ5IAHhAJIIkEkEQCSCIBJJEAkkgASSSAJBJAOuzi8qhLNu9xCf/HJAEkkQCSSABJJIC0y+Lybu8JCDMxSQBJJIAkEkASCSC9L8vydfQ3AZyXSQJIIgEkkQCSSABJJIAkEkASCSCJBJBEAkgiASSRAJJIAEkkgCQSQBIJIIkEkEQCSCIBJJEA0m+uYiIceAR3NQAAAABJRU5ErkJggg==">
@@ -393,7 +393,7 @@ essential to enable the remainder of the encoding region to be decoded.</p>
 </section>
 </section>
 <section id="mode">
-<h2>Mode<a class="headerlink" href="#mode" title="Permalink to this heading"></a></h2>
+<h2>Mode<a class="headerlink" href="#mode" title="Link to this heading"></a></h2>
 <p>The <em>mode</em> is the method of representing a defined character set as a bit string, with a <em>mode indicator</em>, a four-bit identifier indicating in which mode the next data sequence is encoded.</p>
 <table class="docutils align-default">
 <thead>
@@ -447,7 +447,7 @@ essential to enable the remainder of the encoding region to be decoded.</p>
 </table>
 <p><sup>*</sup> Hanzi mode is not part of the ISO specification, but the Chinese standard <a class="reference external" href="https://www.chinesestandard.net/PDF/English.aspx/GBT18284-2000">GB/T 18284</a></p>
 <section id="segment">
-<h3>Segment<a class="headerlink" href="#segment" title="Permalink to this heading"></a></h3>
+<h3>Segment<a class="headerlink" href="#segment" title="Link to this heading"></a></h3>
 <p>Each segment consists of the 4 bit mode indicator followed by the data bit stream, where the content of the bit stream can vary depending on the mode:</p>
 <table class="docutils align-default">
 <thead>
@@ -522,7 +522,7 @@ essential to enable the remainder of the encoding region to be decoded.</p>
 </table>
 </section>
 <section id="extended-channel-interpretation-eci">
-<h3>Extended Channel Interpretation (ECI)<a class="headerlink" href="#extended-channel-interpretation-eci" title="Permalink to this heading"></a></h3>
+<h3>Extended Channel Interpretation (ECI)<a class="headerlink" href="#extended-channel-interpretation-eci" title="Link to this heading"></a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Extended_Channel_Interpretation">Extended Channel Interpretation</a> can be used to indicate an
 alternate character encoding for the following Byte segment (by default, ISO-8859-1 “Latin-1”).</p>
 <p>An ECI segment starts with the 4 bit indicator <code class="docutils literal notranslate"><span class="pre">0111</span></code> followed by the ECI Assignment number (8, 16 or 24 bits),
@@ -548,7 +548,7 @@ followed by a Byte segment (<code class="docutils literal notranslate"><span cla
 </table>
 </section>
 <section id="mixed-mode">
-<h3>Mixed Mode<a class="headerlink" href="#mixed-mode" title="Permalink to this heading"></a></h3>
+<h3>Mixed Mode<a class="headerlink" href="#mixed-mode" title="Link to this heading"></a></h3>
 <p>Encoding modes can be mixed as needed within a QR symbol in order to optimize data usage.
 Each segment of data is encoded in the appropriate mode, with the basic structure
 <em>Mode Indicator / Character Count Indicator / Data</em> and followed immediately by the Mode Indicator commencing the next segment.</p>
@@ -560,11 +560,11 @@ Each segment of data is encoded in the appropriate mode, with the basic structur
 </section>
 </section>
 <section id="ecc-error-correction-coding">
-<h2>ECC (Error Correction Coding)<a class="headerlink" href="#ecc-error-correction-coding" title="Permalink to this heading"></a></h2>
+<h2>ECC (Error Correction Coding)<a class="headerlink" href="#ecc-error-correction-coding" title="Link to this heading"></a></h2>
 <p>QR codes use <a class="reference external" href="https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction">Reed–Solomon error correction</a> that allow QR code readers to detect and correct errors.
 A detailed breakdown of the process can be found at <a class="reference external" href="https://www.thonky.com/qr-code-tutorial/error-correction-coding">thonky.com - QR Code Tutorial</a>.</p>
 <section id="ecc-level">
-<h3>ECC Level<a class="headerlink" href="#ecc-level" title="Permalink to this heading"></a></h3>
+<h3>ECC Level<a class="headerlink" href="#ecc-level" title="Link to this heading"></a></h3>
 <p>The number of data versus error correction bytes within each block depends on the version of the QR symbol and the error
 correction level. The higher the error correction level, the less storage capacity. The following table lists the approximate
 error correction capability at each of the four levels:</p>
@@ -601,7 +601,7 @@ error correction capability at each of the four levels:</p>
 </table>
 </section>
 <section id="maximum-data-capacity">
-<h3>Maximum data capacity<a class="headerlink" href="#maximum-data-capacity" title="Permalink to this heading"></a></h3>
+<h3>Maximum data capacity<a class="headerlink" href="#maximum-data-capacity" title="Link to this heading"></a></h3>
 <p>The maximum data capacity of a QR Code at version 40 for each ECC level and mode is shown in the following table:</p>
 <table class="docutils align-default">
 <thead>
@@ -648,11 +648,11 @@ error correction capability at each of the four levels:</p>
 </section>
 </section>
 <section id="data-masking">
-<h2>Data masking<a class="headerlink" href="#data-masking" title="Permalink to this heading"></a></h2>
+<h2>Data masking<a class="headerlink" href="#data-masking" title="Link to this heading"></a></h2>
 <p>Masking is the process of XORing the bit pattern in the encoding region with a masking pattern to provide a symbol with more
 evenly balanced numbers of dark and light modules and reduced occurrence of patterns which would interfere with fast processing of the image.</p>
 <section id="evaluation">
-<h3>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading"></a></h3>
+<h3>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading"></a></h3>
 <p>The mask pattern evaluation is done for each of the 8 mask patterns, the pattern with the lowest penalty score shall be used for the final output.
 During the evaluation, 4 rules are applied to get the penalty score:</p>
 <ul class="simple">
@@ -663,7 +663,7 @@ During the evaluation, 4 rules are applied to get the penalty score:</p>
 </ul>
 </section>
 <section id="mask-pattern">
-<h3>Mask pattern<a class="headerlink" href="#mask-pattern" title="Permalink to this heading"></a></h3>
+<h3>Mask pattern<a class="headerlink" href="#mask-pattern" title="Link to this heading"></a></h3>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Pattern</p></th>
@@ -710,7 +710,7 @@ During the evaluation, 4 rules are applied to get the penalty score:</p>
 </section>
 </section>
 <section id="reflectance">
-<h2>Reflectance<a class="headerlink" href="#reflectance" title="Permalink to this heading"></a></h2>
+<h2>Reflectance<a class="headerlink" href="#reflectance" title="Link to this heading"></a></h2>
 <p>Symbols are intended to be read when either dark on light or light on dark.
 The International Standard (ISO/IEC 18004) is based on dark images on a light background (example on the left),
 reflectance reversal therefore means a light image on dark background (example on the right).</p>

@@ -12,11 +12,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=a8da1a53"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -268,9 +268,9 @@
            <div itemprop="articleBody">
              
   <section id="quickstart">
-<h1>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this heading"></a></h1>
+<h1>Quickstart<a class="headerlink" href="#quickstart" title="Link to this heading"></a></h1>
 <section id="import-the-library">
-<h2>Import the library<a class="headerlink" href="#import-the-library" title="Permalink to this heading"></a></h2>
+<h2>Import the library<a class="headerlink" href="#import-the-library" title="Link to this heading"></a></h2>
 <p>Import the main class(es) and include the autoloader (if necessary):</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">chillerlan\QRCode\</span><span class="p">{</span><span class="nx">QRCode</span><span class="p">,</span> <span class="nx">QROptions</span><span class="p">};</span>
 
@@ -279,7 +279,7 @@
 </div>
 </section>
 <section id="create-your-first-qr-code">
-<h2>Create your first QR Code<a class="headerlink" href="#create-your-first-qr-code" title="Permalink to this heading"></a></h2>
+<h2>Create your first QR Code<a class="headerlink" href="#create-your-first-qr-code" title="Link to this heading"></a></h2>
 <p>We want to encode this URI for a mobile authenticator into a QRcode image:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$data</span>   <span class="o">=</span> <span class="s1">&#39;otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&amp;issuer=chillerlan.net&#39;</span><span class="p">;</span>
 <span class="nv">$qrcode</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
@@ -288,7 +288,7 @@
 </pre></div>
 </div>
 <section id="configuration">
-<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading"></a></h3>
+<h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h3>
 <p>Configuration using <code class="docutils literal notranslate"><span class="pre">QROptions</span></code>:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QROptions</span><span class="p">;</span>
 <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">version</span>     <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
@@ -304,7 +304,7 @@ Also, have a look <a class="reference external" href="https://github.com/chiller
 </section>
 </section>
 <section id="reading-qr-codes">
-<h2>Reading QR Codes<a class="headerlink" href="#reading-qr-codes" title="Permalink to this heading"></a></h2>
+<h2>Reading QR Codes<a class="headerlink" href="#reading-qr-codes" title="Link to this heading"></a></h2>
 <p>Using the built-in QR Code reader is pretty straight-forward:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">{</span>
 	<span class="nv">$result</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">readFromFile</span><span class="p">(</span><span class="s1">&#39;path/to/file.png&#39;</span><span class="p">);</span> <span class="c1">// -&gt; DecoderResult</span>
@@ -324,7 +324,7 @@ Also, have a look <a class="reference external" href="https://github.com/chiller
 <p>It’s generally a good idea to wrap the reading in a try/catch block to handle any errors that may occur in the process.</p>
 </section>
 <section id="notes">
-<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this heading"></a></h2>
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
 <p>The QR encoder, especially the subroutines for mask pattern testing, can cause high CPU load on increased matrix size.
 You can avoid a part of this load by choosing a fast output module, like SVG.
 Oh hey and don’t forget to sanitize any user input!</p>

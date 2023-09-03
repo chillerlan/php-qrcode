@@ -12,11 +12,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=a8da1a53"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -268,12 +268,12 @@
            <div itemprop="articleBody">
              
   <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
 <section id="installation-with-composer">
-<h2>Installation with Composer<a class="headerlink" href="#installation-with-composer" title="Permalink to this heading"></a></h2>
+<h2>Installation with Composer<a class="headerlink" href="#installation-with-composer" title="Link to this heading"></a></h2>
 <p><strong><a class="reference external" href="https://getcomposer.org">Composer</a> is required to install this package. Please do not open an issue to complain about “monopolizing the implementation” or similar - we’ve been there before.</strong></p>
 <section id="composer-json">
-<h3>composer.json<a class="headerlink" href="#composer-json" title="Permalink to this heading"></a></h3>
+<h3>composer.json<a class="headerlink" href="#composer-json" title="Link to this heading"></a></h3>
 <p>Installation via <a class="reference external" href="https://getcomposer.org/doc/04-schema.md"><code class="docutils literal notranslate"><span class="pre">composer.json</span></code></a>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">	</span><span class="nt">&quot;require&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -286,7 +286,7 @@
 <p>Note: replace <code class="docutils literal notranslate"><span class="pre">dev-main</span></code> with a <a class="reference external" href="https://getcomposer.org/doc/articles/versions.md#writing-version-constraints">version constraint</a>, e.g. <code class="docutils literal notranslate"><span class="pre">^4.3</span></code> - see <a class="reference external" href="https://github.com/chillerlan/php-qrcode/releases">releases</a> for valid versions.
 In case you want to keep using <code class="docutils literal notranslate"><span class="pre">dev-main</span></code>, specify the hash of a commit to avoid running into unforseen issues, like so: <code class="docutils literal notranslate"><span class="pre">dev-main#cb69751c3bc090a7fdd2f2601bbe10f28d225f10</span></code></p>
 <section id="version-switch">
-<h4>Version switch<a class="headerlink" href="#version-switch" title="Permalink to this heading"></a></h4>
+<h4>Version switch<a class="headerlink" href="#version-switch" title="Link to this heading"></a></h4>
 <p>If your application supports older PHP versions and uses the basic <code class="docutils literal notranslate"><span class="pre">QRCode</span></code> syntax <code class="docutils literal notranslate"><span class="pre">(new</span> <span class="pre">QRCode)-&gt;render($data)</span></code>, then you can add a version switch to your <code class="docutils literal notranslate"><span class="pre">composer.json</span></code> to allow installing a <code class="docutils literal notranslate"><span class="pre">php-qrcode</span></code> version that suits the platform it runs on:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">	</span><span class="nt">&quot;require&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -300,7 +300,7 @@ In case you want to keep using <code class="docutils literal notranslate"><span 
 </section>
 </section>
 <section id="terminal">
-<h3>Terminal<a class="headerlink" href="#terminal" title="Permalink to this heading"></a></h3>
+<h3>Terminal<a class="headerlink" href="#terminal" title="Link to this heading"></a></h3>
 <p>To install <code class="docutils literal notranslate"><span class="pre">php-qrcode</span></code> on the terminal, use:</p>
 <p><code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">require</span> <span class="pre">chillerlan/php-qrcode</span></code></p>
 <p>If you want to install the package from a specific tag or commit, do as follows:</p>
@@ -311,13 +311,13 @@ In case you want to keep using <code class="docutils literal notranslate"><span 
 </section>
 </section>
 <section id="manual-installation">
-<h2>Manual installation<a class="headerlink" href="#manual-installation" title="Permalink to this heading"></a></h2>
+<h2>Manual installation<a class="headerlink" href="#manual-installation" title="Link to this heading"></a></h2>
 <p>Download the desired version of the package from <a class="reference external" href="https://github.com/chillerlan/php-qrcode/archive/refs/heads/main.zip">main</a> or
 <a class="reference external" href="https://github.com/chillerlan/php-qrcode/releases">release</a> and extract the contents to your project folder.
 After that, run <code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">install</span></code> in the package root directory to install the required dependencies and generate <code class="docutils literal notranslate"><span class="pre">./vendor/autoload.php</span></code>.</p>
 <p>Profit!</p>
 <section id="can-i-use-this-library-without-using-composer">
-<h3>Can i use this library without using composer?<a class="headerlink" href="#can-i-use-this-library-without-using-composer" title="Permalink to this heading"></a></h3>
+<h3>Can i use this library without using composer?<a class="headerlink" href="#can-i-use-this-library-without-using-composer" title="Link to this heading"></a></h3>
 <p>You can, but it’s absolutely not recommended, nor supported.</p>
 <p>With that said, I’ll leave you with this info:</p>
 <ul class="simple">
@@ -329,7 +329,7 @@ After that, run <code class="docutils literal notranslate"><span class="pre">com
 </section>
 </section>
 <section id="supported-php-versions-extension-requirements">
-<h2>Supported PHP versions &amp; extension requirements<a class="headerlink" href="#supported-php-versions-extension-requirements" title="Permalink to this heading"></a></h2>
+<h2>Supported PHP versions &amp; extension requirements<a class="headerlink" href="#supported-php-versions-extension-requirements" title="Link to this heading"></a></h2>
 <p>The PHP built-in extensions <a class="reference external" href="https://www.php.net/manual/book.image.php">GdImage</a> and <a class="reference external" href="https://www.php.net/manual/book.mbstring.php">mbstring</a> are used across all versions, <a class="reference external" href="https://www.php.net/manual/book.imagick.php">ImageMagick</a> is optional since v3.x.</p>
 <table class="docutils align-default">
 <thead>
@@ -388,7 +388,7 @@ After that, run <code class="docutils literal notranslate"><span class="pre">com
 <p>PSA: <a class="reference external" href="https://www.php.net/supported-versions.php">PHP versions &lt; 8.0 are EOL</a> and therefore the respective <code class="docutils literal notranslate"><span class="pre">QRCode</span></code> versions are also no longer supported!</p>
 </section>
 <section id="imagemagick">
-<h2>ImageMagick<a class="headerlink" href="#imagemagick" title="Permalink to this heading"></a></h2>
+<h2>ImageMagick<a class="headerlink" href="#imagemagick" title="Link to this heading"></a></h2>
 <p>Please follow the installation guides for your operating system:</p>
 <ul class="simple">
 <li><p>ImageMagick: <a class="reference external" href="https://imagemagick.org/script/download.php">imagemagick.org/script/download.php</a></p></li>

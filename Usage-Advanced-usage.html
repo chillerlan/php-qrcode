@@ -12,11 +12,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="_static/jquery.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=a8da1a53"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -268,9 +268,9 @@
            <div itemprop="articleBody">
              
   <section id="advanced-usage">
-<h1>Advanced usage<a class="headerlink" href="#advanced-usage" title="Permalink to this heading"></a></h1>
+<h1>Advanced usage<a class="headerlink" href="#advanced-usage" title="Link to this heading"></a></h1>
 <section id="configuration-via-qroptions">
-<h2>Configuration via <code class="docutils literal notranslate"><span class="pre">QROptions</span></code><a class="headerlink" href="#configuration-via-qroptions" title="Permalink to this heading"></a></h2>
+<h2>Configuration via <code class="docutils literal notranslate"><span class="pre">QROptions</span></code><a class="headerlink" href="#configuration-via-qroptions" title="Link to this heading"></a></h2>
 <p>The <a class="reference external" href="https://github.com/chillerlan/php-qrcode/blob/main/src/QROptions.php"><code class="docutils literal notranslate"><span class="pre">QROptions</span></code></a> class is a container based on <a class="reference external" href="https://github.com/chillerlan/php-settings-container">chillerlan/php-settings-container</a> that behaves similar to a <a class="reference external" href="https://www.php.net/manual/class.stdclass"><code class="docutils literal notranslate"><span class="pre">\stdClass</span></code></a> object, but with fixed properties.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QROptions</span><span class="p">;</span>
 
@@ -284,7 +284,7 @@
 </pre></div>
 </div>
 <section id="supply-an-iterable-of-options">
-<h3>Supply an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options<a class="headerlink" href="#supply-an-iterable-of-options" title="Permalink to this heading"></a></h3>
+<h3>Supply an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options<a class="headerlink" href="#supply-an-iterable-of-options" title="Link to this heading"></a></h3>
 <p>The constructor takes an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of <code class="docutils literal notranslate"><span class="pre">$key</span> <span class="pre">=&gt;</span> <span class="pre">$value</span></code> pairs. For each setting an optional setter will be called if present.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$myOptions</span> <span class="o">=</span> <span class="p">[</span>
 	<span class="s1">&#39;version&#39;</span>    <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>
@@ -301,7 +301,7 @@
 </div>
 </section>
 <section id="load-and-save-json">
-<h3>Load and save JSON<a class="headerlink" href="#load-and-save-json" title="Permalink to this heading"></a></h3>
+<h3>Load and save JSON<a class="headerlink" href="#load-and-save-json" title="Link to this heading"></a></h3>
 <p>The settings can be saved to and loaded from JSON, e.g. to store them in a database:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$json</span> <span class="o">=</span> <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">toJSON</span><span class="p">(</span><span class="nx">JSON_THROW_ON_ERROR</span><span class="p">);</span>
 <span class="c1">// via JsonSerializable interface</span>
@@ -316,7 +316,7 @@
 </div>
 </section>
 <section id="extending-the-qroptions-class">
-<h3>Extending the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> class<a class="headerlink" href="#extending-the-qroptions-class" title="Permalink to this heading"></a></h3>
+<h3>Extending the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> class<a class="headerlink" href="#extending-the-qroptions-class" title="Link to this heading"></a></h3>
 <p>In case you need additional settings for your output module, just extend <code class="docutils literal notranslate"><span class="pre">QROptions</span></code>…</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyCustomOptions</span> <span class="k">extends</span> <span class="nx">QROptions</span><span class="p">{</span>
 	<span class="k">protected</span> <span class="nx">string</span> <span class="nv">$myParam</span> <span class="o">=</span> <span class="s1">&#39;defaultValue&#39;</span><span class="p">;</span>
@@ -363,7 +363,7 @@
 </section>
 </section>
 <section id="qrcode-methods">
-<h2><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods<a class="headerlink" href="#qrcode-methods" title="Permalink to this heading"></a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods<a class="headerlink" href="#qrcode-methods" title="Link to this heading"></a></h2>
 <p>Aside of invoking a <code class="docutils literal notranslate"><span class="pre">QRCode</span></code> instance with an optional <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> object as parameter, you can also set the options instance after invocation.
 After invocation of the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> instance, values can be set without calling <code class="docutils literal notranslate"><span class="pre">QRCode::setOptions()</span></code> again (instance is backreferenced), however, this may create side effects.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// instance will be invoked with default settings</span>
@@ -376,7 +376,7 @@ After invocation of the <code class="docutils literal notranslate"><span class="
 </pre></div>
 </div>
 <section id="save-to-file">
-<h3>Save to file<a class="headerlink" href="#save-to-file" title="Permalink to this heading"></a></h3>
+<h3>Save to file<a class="headerlink" href="#save-to-file" title="Link to this heading"></a></h3>
 <p>Save the QR Code output to <code class="docutils literal notranslate"><span class="pre">/path/to/qrcode.svg</span></code>:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">imageBase64</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
 <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">cachefile</span>   <span class="o">=</span> <span class="s1">&#39;/path/to/qrcode.svg&#39;</span><span class="p">;</span>
@@ -392,7 +392,7 @@ After invocation of the <code class="docutils literal notranslate"><span class="
 </div>
 </section>
 <section id="render-a-qrmatrix-instance">
-<h3>Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance<a class="headerlink" href="#render-a-qrmatrix-instance" title="Permalink to this heading"></a></h3>
+<h3>Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance<a class="headerlink" href="#render-a-qrmatrix-instance" title="Link to this heading"></a></h3>
 <p>You can render a <a class="reference external" href="https://github.com/chillerlan/php-qrcode/blob/main/src/Data/QRMatrix.php"><code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code></a> instance directly:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// a matrix from the current data segments</span>
 <span class="nv">$matrix</span> <span class="o">=</span> <span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">getQRMatrix</span><span class="p">();</span>
@@ -420,7 +420,7 @@ After invocation of the <code class="docutils literal notranslate"><span class="
 </div>
 </section>
 <section id="mixed-mode">
-<h3>Mixed mode<a class="headerlink" href="#mixed-mode" title="Permalink to this heading"></a></h3>
+<h3>Mixed mode<a class="headerlink" href="#mixed-mode" title="Link to this heading"></a></h3>
 <p>Mixed mode QR Codes can be generated by adding several data segments:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// make sure to set a proper internal encoding character set</span>
 <span class="c1">// ideally, this should be set in php.ini internal_encoding,</span>
@@ -455,7 +455,7 @@ This method is used internally when a data mode is invoked, but it can come in h
 </div>
 </section>
 <section id="qr-code-reader">
-<h3>QR Code reader<a class="headerlink" href="#qr-code-reader" title="Permalink to this heading"></a></h3>
+<h3>QR Code reader<a class="headerlink" href="#qr-code-reader" title="Link to this heading"></a></h3>
 <p>In some cases it might be necessary to increase the contrast of a QR Code image:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">readerUseImagickIfAvailable</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
 <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">readerIncreaseContrast</span>      <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
