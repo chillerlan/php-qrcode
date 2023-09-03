@@ -67,7 +67,7 @@ try{
 		'moduleValues'     => $moduleValues,
 		'outputType'       => $_POST['output_type'],
 		'scale'            => (int)$_POST['scale'],
-		'imageBase64'      => true,
+		'outputBase64'     => true,
 		'imageTransparent' => false,
 	]);
 

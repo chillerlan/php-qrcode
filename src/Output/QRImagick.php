@@ -135,7 +135,7 @@ class QRImagick extends QROutputAbstract{
 
 		$this->saveToFile($imageData, $file);
 
-		if($this->options->imageBase64){
+		if($this->options->outputBase64){
 			$imageData = $this->toBase64DataURI($imageData, (new finfo(FILEINFO_MIME_TYPE))->buffer($imageData));
 		}
 

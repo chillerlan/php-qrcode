@@ -179,7 +179,7 @@ class QRGdImage extends QROutputAbstract{
 
 		$this->saveToFile($imageData, $file);
 
-		if($this->options->imageBase64){
+		if($this->options->outputBase64){
 			$imageData = $this->toBase64DataURI($imageData, 'image/'.$this->options->outputType);
 		}
 

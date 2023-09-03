@@ -50,7 +50,7 @@ final class QRDataTest extends TestCase{
 		$this::assertSame(3, $matrix->getVersion()->getVersionNumber());
 
 		// attempt to read
-		$options->imageBase64                 = false;
+		$options->outputBase64                = false;
 		$options->readerUseImagickIfAvailable = false;
 
 		$output       = new QRGdImage($options, $matrix);

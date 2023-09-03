@@ -86,8 +86,8 @@ final class QRCodeTest extends TestCase{
 	 * Tests if a cache file is properly saved in the given path
 	 */
 	public function testRenderToCacheFile():void{
-		$this->options->cachefile   = $this->builddir.'/test.cache.svg';
-		$this->options->imageBase64 = false;
+		$this->options->cachefile    = $this->builddir.'/test.cache.svg';
+		$this->options->outputBase64 = false;
 		// create the cache file
 		$data = $this->qrcode->setOptions($this->options)->render('test');
 

@@ -20,7 +20,7 @@ $options = new QROptions;
 
 $options->version             = 7;
 $options->outputType          = QROutputInterface::MARKUP_SVG;
-$options->imageBase64         = false;
+$options->outputBase64        = false;
 // if set to false, the light modules won't be rendered
 $options->drawLightModules    = true;
 // empty the default value to remove the fill* and opacity* attributes from the <path> elements

@@ -42,7 +42,7 @@ class QRImageWithText extends QRGdImage{
 
 		$this->saveToFile($imageData, $file);
 
-		if($this->options->imageBase64){
+		if($this->options->outputBase64){
 			$imageData = $this->toBase64DataURI($imageData, 'image/'.$this->options->outputType);
 		}
 
@@ -96,10 +96,10 @@ class QRImageWithText extends QRGdImage{
 
 $options = new QROptions;
 
-$options->version     = 7;
-$options->outputType  = QROutputInterface::GDIMAGE_PNG;
-$options->scale       = 3;
-$options->imageBase64 = false;
+$options->version      = 7;
+$options->outputType   = QROutputInterface::GDIMAGE_PNG;
+$options->scale        = 3;
+$options->outputBase64 = false;
 
 
 $qrcode = new QRCode($options);

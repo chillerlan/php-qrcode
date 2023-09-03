@@ -21,7 +21,7 @@ $options->scale            = 5;
 $options->fpdfMeasureUnit  = 'mm';
 $options->bgColor          = [222, 222, 222];
 $options->drawLightModules = false;
-$options->imageBase64      = false;
+$options->outputBase64     = false;
 $options->moduleValues     = [
 	// finder
 	QRMatrix::M_FINDER_DARK    => [0, 63, 255],    // dark (true)

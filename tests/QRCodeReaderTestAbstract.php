@@ -96,8 +96,8 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 	}
 
 	public function testReaderMultiMode():void{
-		$this->options->outputType  = QROutputInterface::GDIMAGE_PNG;
-		$this->options->imageBase64 = false;
+		$this->options->outputType   = QROutputInterface::GDIMAGE_PNG;
+		$this->options->outputBase64 = false;
 
 		$numeric  = '123456789012345678901234567890';
 		$alphanum = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:';
@@ -149,7 +149,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		$this->options->imageTransparent = false;
 		$this->options->eccLevel         = $ecc->getLevel();
 		$this->options->version          = $version->getVersionNumber();
-		$this->options->imageBase64      = false;
+		$this->options->outputBase64     = false;
 		// what's interesting is that a smaller scale seems to produce fewer reader errors???
 		// usually from version 20 up, independend of the luminance source
 		// scale 1-2 produces none, scale 3: 1 error, scale 4: 6 errors, scale 5: 5 errors, scale 10: 10 errors

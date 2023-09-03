@@ -171,7 +171,7 @@ $options->version         = 5;
 $options->quietzoneSize   = 4;
 $options->outputType      = QROutputInterface::CUSTOM;
 $options->outputInterface = QRSvgWithLogoAndCustomShapes::class;
-$options->imageBase64     = false;
+$options->outputBase64    = false;
 $options->eccLevel        = EccLevel::H; // ECC level H is required when using logos
 $options->addQuietzone    = true;
 

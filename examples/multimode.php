@@ -19,7 +19,7 @@ mb_internal_encoding('UTF-8');
 
 // please excuse the IDE yelling https://youtrack.jetbrains.com/issue/WI-66549
 $options = new QROptions;
-$options->imageBase64  = false;
+$options->outputBase64 = false;
 $options->connectPaths = true;
 
 $qrcode = (new QRCode($options))

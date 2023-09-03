@@ -63,7 +63,7 @@ class QRImageWithLogo extends QRGdImage{
 
 		$this->saveToFile($imageData, $file);
 
-		if($this->options->imageBase64){
+		if($this->options->outputBase64){
 			$imageData = $this->toBase64DataURI($imageData, 'image/'.$this->options->outputType);
 		}
 
@@ -80,7 +80,7 @@ class QRImageWithLogo extends QRGdImage{
 $options = new QROptions;
 
 $options->version             = 5;
-$options->imageBase64         = false;
+$options->outputBase64        = false;
 $options->scale               = 6;
 $options->imageTransparent    = false;
 $options->drawCircularModules = true;

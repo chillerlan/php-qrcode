@@ -65,7 +65,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 		$svg .= sprintf('%1$s</svg>%1$s', $this->options->eol);
 
 		// transform to data URI only when not saving to file
-		if(!$saveToFile && $this->options->imageBase64){
+		if(!$saveToFile && $this->options->outputBase64){
 			$svg = $this->toBase64DataURI($svg, 'image/svg+xml');
 		}
 
@@ -325,7 +325,7 @@ $options->svgLogoCssClass     = 'logo';
 $options->version             = 7;
 $options->eccLevel            = EccLevel::H;
 $options->addQuietzone        = false; // we're not adding a quiet zone, this is done internally in our own module
-$options->imageBase64         = false; // avoid base64 URI output for the example
+$options->outputBase64        = false; // avoid base64 URI output for the example
 $options->outputType          = QROutputInterface::CUSTOM;
 $options->outputInterface     = RoundQuietzoneSVGoutput::class; // load our own output class
 $options->drawLightModules    = false; // set to true to add the light modules

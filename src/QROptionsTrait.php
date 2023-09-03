@@ -105,7 +105,7 @@ trait QROptionsTrait{
 
 	/**
 	 * Return the image resource instead of a render if applicable.
-	 * This option overrides other output options, such as $cachefile and $imageBase64.
+	 * This option overrides/ignores other output options, such as $cachefile and $outputBase64.
 	 *
 	 * Supported by the following modules:
 	 *
@@ -127,9 +127,15 @@ trait QROptionsTrait{
 	protected ?string $cachefile = null;
 
 	/**
-	 * Toggle base64 or raw image data (if applicable)
+	 * @deprecated 5.0.0 use QROptions::$outputBase64 instead
+	 * @see        \chillerlan\QRCode\QROptions::$outputBase64
 	 */
 	protected bool $imageBase64 = true;
+
+	/**
+	 * Toggle base64 data URI or raw data output (if applicable)
+	 */
+	protected bool $outputBase64 = true;
 
 	/**
 	 * Newline string
@@ -528,6 +534,26 @@ trait QROptionsTrait{
 	 */
 	protected function set_circleRadius(float $circleRadius):void{
 		$this->circleRadius = max(0.1, min(0.75, $circleRadius));
+	}
+
+	/**
+	 * redirect call to the new variable
+	 *
+	 * @deprecated 5.0.0 use QROptions::$outputBase64 instead
+	 * @see        \chillerlan\QRCode\QROptions::$outputBase64
+	 */
+	protected function set_imageBase64(bool $imageBase64):void{
+		$this->outputBase64 = $imageBase64;
+	}
+
+	/**
+	 * redirect call to the new variable
+	 *
+	 * @deprecated 5.0.0 use QROptions::$outputBase64 instead
+	 * @see        \chillerlan\QRCode\QROptions::$outputBase64
+	 */
+	protected function get_imageBase64():bool{
+		return $this->outputBase64;
 	}
 
 }

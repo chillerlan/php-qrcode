@@ -27,8 +27,8 @@ Configuration using `QROptions`:
 
 ```php
 $options = new QROptions;
-$options->version     = 7;
-$options->imageBase64 = false; // output raw image instead of base64 data URI
+$options->version      = 7;
+$options->outputBase64 = false; // output raw image instead of base64 data URI
 
 header('Content-type: image/svg+xml'); // the image type is SVG by default
 

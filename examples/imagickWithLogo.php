@@ -54,7 +54,7 @@ class QRImagickWithLogo extends QRImagick{
 		$this->imagick->destroy();
 		$this->saveToFile($imageData, $file);
 
-		if($this->options->imageBase64){
+		if($this->options->outputBase64){
 			$imageData = $this->toBase64DataURI($imageData, (new finfo(FILEINFO_MIME_TYPE))->buffer($imageData));
 		}
 
@@ -101,7 +101,7 @@ $options->version             = 5;
 $options->outputType          = QROutputInterface::CUSTOM;
 $options->outputInterface     = QRImagickWithLogo::class; // use the custom output class
 $options->eccLevel            = EccLevel::H;
-$options->imageBase64         = false;
+$options->outputBase64        = false;
 $options->addLogoSpace        = true;
 $options->logoSpaceWidth      = 15;
 $options->logoSpaceHeight     = 15;

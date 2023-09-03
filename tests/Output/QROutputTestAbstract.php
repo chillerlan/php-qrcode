@@ -91,8 +91,8 @@ abstract class QROutputTestAbstract extends TestCase{
 	 * coverage of the built-in output modules
 	 */
 	public function testRenderToCacheFile():void{
-		$this->options->imageBase64 = false;
-		$this->outputInterface      = new $this->FQN($this->options, $this->matrix);
+		$this->options->outputBase64 = false;
+		$this->outputInterface       = new $this->FQN($this->options, $this->matrix);
 		// create the cache file
 		$file = $this->builddir.'/test.output.'.$this->type;
 		$data = $this->outputInterface->dump($file);

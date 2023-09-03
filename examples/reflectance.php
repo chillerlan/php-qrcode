@@ -19,7 +19,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 $options = new QROptions;
 
 $options->outputType          = QROutputInterface::MARKUP_SVG;
-$options->imageBase64         = false;
+$options->outputBase64        = false;
 $options->svgAddXmlHeader     = false;
 $options->connectPaths        = true;
 $options->drawCircularModules = false;

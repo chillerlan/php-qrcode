@@ -35,7 +35,7 @@ $options->algorithm           = AuthenticatorInterface::ALGO_SHA512;
  */
 $options->version             = 7;
 $options->addQuietzone        = false;
-$options->imageBase64         = false;
+$options->outputBase64        = false;
 $options->svgAddXmlHeader     = false;
 $options->cssClass            = 'my-qrcode';
 $options->drawLightModules    = false;
