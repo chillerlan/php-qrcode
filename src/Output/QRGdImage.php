@@ -22,7 +22,7 @@ use function array_values, count, extension_loaded, imagecolorallocate, imagecol
 /**
  * Converts the matrix into GD images, raw or base64 output (requires ext-gd)
  *
- * @see http://php.net/manual/book.image.php
+ * @see https://php.net/manual/book.image.php
  */
 class QRGdImage extends QROutputAbstract{
 
@@ -228,9 +228,9 @@ class QRGdImage extends QROutputAbstract{
 	 * Creates the QR image
 	 */
 	protected function drawImage():void{
-		for($y = 0; $y < $this->moduleCount; $y++){
-			for($x = 0; $x < $this->moduleCount; $x++){
-				$this->setPixel($x, $y);
+		foreach($this->matrix->getMatrix() as $y => $row){
+			foreach($row as $x => $M_TYPE){
+				$this->module($x, $y, $M_TYPE);
 			}
 		}
 	}
@@ -238,31 +238,35 @@ class QRGdImage extends QROutputAbstract{
 	/**
 	 * Creates a single QR pixel with the given settings
 	 */
-	protected function setPixel(int $x, int $y):void{
+	protected function module(int $x, int $y, int $M_TYPE):void{
 
 		if(!$this->options->drawLightModules && !$this->matrix->check($x, $y)){
 			return;
 		}
 
-		$color = $this->getModuleValueAt($x, $y);
+		$color = $this->getModuleValue($M_TYPE);
 
-		$this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)
-			? imagefilledellipse(
+		if($this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)){
+			imagefilledellipse(
 				$this->image,
 				(($x * $this->scale) + intdiv($this->scale, 2)),
 				(($y * $this->scale) + intdiv($this->scale, 2)),
 				(int)(2 * $this->options->circleRadius * $this->scale),
 				(int)(2 * $this->options->circleRadius * $this->scale),
 				$color
-			)
-			: imagefilledrectangle(
-				$this->image,
-				($x * $this->scale),
-				($y * $this->scale),
-				(($x + 1) * $this->scale),
-				(($y + 1) * $this->scale),
-				$color
 			);
+
+			return;
+		}
+
+		imagefilledrectangle(
+			$this->image,
+			($x * $this->scale),
+			($y * $this->scale),
+			(($x + 1) * $this->scale),
+			(($y + 1) * $this->scale),
+			$color
+		);
 	}
 
 	/**

@@ -76,7 +76,7 @@ class QREps extends QROutputAbstract{
 	}
 
 	/**
-	 * Set the color format
+	 * Set the color format string
 	 *
 	 * 4 values in the color array will be interpreted as CMYK, 3 as RGB
 	 *
@@ -121,13 +121,13 @@ class QREps extends QROutputAbstract{
 			'%%EndProlog',
 		];
 
-		if($this->options->bgColor !== null && self::moduleValueIsValid($this->options->bgColor)){
+		if($this::moduleValueIsValid($this->options->bgColor)){
 			$eps[] = $this->prepareModuleValue($this->options->bgColor);
 			$eps[] = sprintf('0 0 %1$s %1$s F', $this->length);
 		}
 
 		// create the path elements
-		$paths = $this->collectModules(fn(int $x, int $y):string => $this->module($x, $y));
+		$paths = $this->collectModules(fn(int $x, int $y, int $M_TYPE):string => $this->module($x, $y, $M_TYPE));
 
 		foreach($paths as $M_TYPE => $path){
 
@@ -150,9 +150,9 @@ class QREps extends QROutputAbstract{
 	}
 
 	/**
-	 * returns a path segment for a single module
+	 * Returns a path segment for a single module
 	 */
-	protected function module(int $x, int $y):string{
+	protected function module(int $x, int $y, int $M_TYPE):string{
 
 		if(!$this->options->drawLightModules && !$this->matrix->check($x, $y)){
 			return '';

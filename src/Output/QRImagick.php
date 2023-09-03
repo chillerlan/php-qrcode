@@ -21,8 +21,8 @@ use const FILEINFO_MIME_TYPE;
 /**
  * ImageMagick output module (requires ext-imagick)
  *
- * @see http://php.net/manual/book.imagick.php
- * @see http://phpimagick.com
+ * @see https://php.net/manual/book.imagick.php
+ * @see https://phpimagick.com
  */
 class QRImagick extends QROutputAbstract{
 
@@ -97,7 +97,6 @@ class QRImagick extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @throws \ImagickPixelException
 	 */
 	protected function prepareModuleValue($value):ImagickPixel{
 		return new ImagickPixel($value);
@@ -186,9 +185,9 @@ class QRImagick extends QROutputAbstract{
 		$this->imagickDraw = new ImagickDraw;
 		$this->imagickDraw->setStrokeWidth(0);
 
-		for($y = 0; $y < $this->moduleCount; $y++){
-			for($x = 0; $x < $this->moduleCount; $x++){
-				$this->setPixel($x, $y);
+		foreach($this->matrix->getMatrix() as $y => $row){
+			foreach($row as $x => $M_TYPE){
+				$this->module($x, $y, $M_TYPE);
 			}
 		}
 
@@ -198,27 +197,31 @@ class QRImagick extends QROutputAbstract{
 	/**
 	 * draws a single pixel at the given position
 	 */
-	protected function setPixel(int $x, int $y):void{
+	protected function module(int $x, int $y, int $M_TYPE):void{
 
 		if(!$this->options->drawLightModules && !$this->matrix->check($x, $y)){
 			return;
 		}
 
-		$this->imagickDraw->setFillColor($this->getModuleValueAt($x, $y));
+		$this->imagickDraw->setFillColor($this->getModuleValue($M_TYPE));
 
-		$this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)
-			? $this->imagickDraw->circle(
+		if($this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)){
+			$this->imagickDraw->circle(
 				(($x + 0.5) * $this->scale),
 				(($y + 0.5) * $this->scale),
 				(($x + 0.5 + $this->options->circleRadius) * $this->scale),
 				(($y + 0.5) * $this->scale)
-			)
-			: $this->imagickDraw->rectangle(
-				($x * $this->scale),
-				($y * $this->scale),
-				(($x + 1) * $this->scale),
-				(($y + 1) * $this->scale)
 			);
+
+			return;
+		}
+
+		$this->imagickDraw->rectangle(
+			($x * $this->scale),
+			($y * $this->scale),
+			(($x + 1) * $this->scale),
+			(($y + 1) * $this->scale)
+		);
 	}
 
 }

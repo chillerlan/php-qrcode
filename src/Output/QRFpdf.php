@@ -25,6 +25,9 @@ use function array_values, class_exists, count, intval, is_array, is_numeric, ma
  */
 class QRFpdf extends QROutputAbstract{
 
+	protected FPDF   $fpdf;
+	protected ?array $prevColor = null;
+
 	/**
 	 * QRFpdf constructor.
 	 *
@@ -73,6 +76,7 @@ class QRFpdf extends QROutputAbstract{
 	 * @param array $value
 	 *
 	 * @inheritDoc
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function prepareModuleValue($value):array{
 		$values = [];
@@ -86,6 +90,10 @@ class QRFpdf extends QROutputAbstract{
 			$values[] = max(0, min(255, intval($val)));
 		}
 
+		if(count($values) !== 3){
+			throw new QRCodeOutputException('invalid color value');
+		}
+
 		return $values;
 	}
 
@@ -97,49 +105,41 @@ class QRFpdf extends QROutputAbstract{
 	}
 
 	/**
+	 * Initializes an FPDF instance
+	 */
+	protected function initFPDF():FPDF{
+		return new FPDF('P', $this->options->fpdfMeasureUnit, [$this->length, $this->length]);
+	}
+
+	/**
 	 * @inheritDoc
 	 *
 	 * @return string|\FPDF
 	 */
 	public function dump(string $file = null){
-
-		$fpdf = new FPDF('P', $this->options->fpdfMeasureUnit, [$this->length, $this->length]);
-		$fpdf->AddPage();
+		$this->fpdf = $this->initFPDF();
+		$this->fpdf->AddPage();
 
 		if($this::moduleValueIsValid($this->options->bgColor)){
 			$bgColor = $this->prepareModuleValue($this->options->bgColor);
 			/** @phan-suppress-next-line PhanParamTooFewUnpack */
-			$fpdf->SetFillColor(...$bgColor);
-			$fpdf->Rect(0, 0, $this->length, $this->length, 'F');
+			$this->fpdf->SetFillColor(...$bgColor);
+			$this->fpdf->Rect(0, 0, $this->length, $this->length, 'F');
 		}
 
-		$prevColor = null;
+		$this->prevColor = null;
 
-		for($y = 0; $y < $this->moduleCount; $y++){
-			for($x = 0; $x < $this->moduleCount; $x++){
-
-				if(!$this->options->drawLightModules && !$this->matrix->check($x, $y)){
-					continue;
-				}
-
-				$color = $this->getModuleValueAt($x, $y);
-
-				if($color !== null && $color !== $prevColor){
-					/** @phan-suppress-next-line PhanParamTooFewUnpack */
-					$fpdf->SetFillColor(...$color);
-					$prevColor = $color;
-				}
-
-				$fpdf->Rect(($x * $this->scale), ($y * $this->scale), $this->scale, $this->scale, 'F');
+		foreach($this->matrix->getMatrix() as $y => $row){
+			foreach($row as $x => $M_TYPE){
+				$this->module($x, $y, $M_TYPE);
 			}
-
 		}
 
 		if($this->options->returnResource){
-			return $fpdf;
+			return $this->fpdf;
 		}
 
-		$pdfData = $fpdf->Output('S');
+		$pdfData = $this->fpdf->Output('S');
 
 		$this->saveToFile($pdfData, $file);
 
@@ -148,6 +148,26 @@ class QRFpdf extends QROutputAbstract{
 		}
 
 		return $pdfData;
+	}
+
+	/**
+	 * Renders a single module
+	 */
+	protected function module(int $x, int $y, int $M_TYPE):void{
+
+		if(!$this->options->drawLightModules && !$this->matrix->check($x, $y)){
+			return;
+		}
+
+		$color = $this->getModuleValue($M_TYPE);
+
+		if($color !== null && $color !== $this->prevColor){
+			/** @phan-suppress-next-line PhanParamTooFewUnpack */
+			$this->fpdf->SetFillColor(...$color);
+			$this->prevColor = $color;
+		}
+
+		$this->fpdf->Rect(($x * $this->scale), ($y * $this->scale), $this->scale, $this->scale, 'F');
 	}
 
 }
