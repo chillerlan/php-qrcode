@@ -11,6 +11,7 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
 [![CodeCov][coverage-badge]][coverage]
 [![Codacy][codacy-badge]][codacy]
 [![Packagist downloads][downloads-badge]][downloads]
+[![Documentation][readthedocs-badge]][readthedocs]
 
 [php-badge]: https://img.shields.io/packagist/php-v/chillerlan/php-qrcode?logo=php&color=8892BF
 [php]: https://www.php.net/supported-versions.php
@@ -24,7 +25,8 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
 [codacy]: https://www.codacy.com/gh/chillerlan/php-qrcode/dashboard?branch=main
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode?logo=packagist
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
-
+[readthedocs-badge]: https://img.shields.io/readthedocs/php-qrcode/main?logo=readthedocs
+[readthedocs]: https://php-qrcode.readthedocs.io/en/main/
 
 ## Overview
 
