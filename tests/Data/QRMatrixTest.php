@@ -50,41 +50,38 @@ final class QRMatrixTest extends TestCase{
 		$opt->outputType  = QROutputInterface::STRING_TEXT;
 		$opt->eol         = "\n";
 		$opt->moduleValues = [
-			// this is not ideal but it seems it's not possible anymore to colorize emoji via ansi codes
-			// 🔴 🟠 🟡 🟢 🔵 🟣 ⚫️ ⚪️ 🟤
-			// 🟥 🟧 🟨 🟩 🟦 🟪 ⬛ ⬜ 🟫
 			// finder
-			QRMatrix::M_FINDER_DARK    => '🟥', // dark (true)
-			QRMatrix::M_FINDER         => '🔴', // light (false)
-			QRMatrix::M_FINDER_DOT     => '🟥', // finder dot, dark (true)
+			QRMatrix::M_FINDER_DARK    => QRString::ansi8('██', 124), // dark (true)
+			QRMatrix::M_FINDER         => QRString::ansi8('░░', 124), // light (false)
+			QRMatrix::M_FINDER_DOT     => QRString::ansi8('██', 124), // finder dot, dark (true)
 			// alignment
-			QRMatrix::M_ALIGNMENT_DARK => '🟧',
-			QRMatrix::M_ALIGNMENT      => '🟠',
+			QRMatrix::M_ALIGNMENT_DARK => QRString::ansi8('██', 2),
+			QRMatrix::M_ALIGNMENT      => QRString::ansi8('░░', 2),
 			// timing
-			QRMatrix::M_TIMING_DARK    => '🟨',
-			QRMatrix::M_TIMING         => '🟡',
+			QRMatrix::M_TIMING_DARK    => QRString::ansi8('██', 184),
+			QRMatrix::M_TIMING         => QRString::ansi8('░░', 184),
 			// format
-			QRMatrix::M_FORMAT_DARK    => '🟪',
-			QRMatrix::M_FORMAT         => '🟣',
+			QRMatrix::M_FORMAT_DARK    => QRString::ansi8('██', 200),
+			QRMatrix::M_FORMAT         => QRString::ansi8('░░', 200),
 			// version
-			QRMatrix::M_VERSION_DARK   => '🟩',
-			QRMatrix::M_VERSION        => '🟢',
+			QRMatrix::M_VERSION_DARK   => QRString::ansi8('██', 21),
+			QRMatrix::M_VERSION        => QRString::ansi8('░░', 21),
 			// data
-			QRMatrix::M_DATA_DARK      => '🟦',
-			QRMatrix::M_DATA           => '🔵',
+			QRMatrix::M_DATA_DARK      => QRString::ansi8('██', 166),
+			QRMatrix::M_DATA           => QRString::ansi8('░░', 166),
 			// dark module
-			QRMatrix::M_DARKMODULE     => '🟫',
+			QRMatrix::M_DARKMODULE     => QRString::ansi8('██', 53),
 			// separator
-			QRMatrix::M_SEPARATOR      => '⚪️',
+			QRMatrix::M_SEPARATOR      => QRString::ansi8('░░', 219),
 			// quiet zone
-			QRMatrix::M_QUIETZONE      => '⬜',
+			QRMatrix::M_QUIETZONE      => QRString::ansi8('░░', 195),
 			// logo space
-			QRMatrix::M_LOGO           => '⬜',
+			QRMatrix::M_LOGO           => QRString::ansi8('░░', 105),
 			// empty
-			QRMatrix::M_NULL           => '🟤',
+			QRMatrix::M_NULL           => QRString::ansi8('░░', 231),
 			// data
-			QRMatrix::M_TEST_DARK      => '⬛',
-			QRMatrix::M_TEST           => '⚫️',
+			QRMatrix::M_TEST_DARK      => QRString::ansi8('██', 127),
+			QRMatrix::M_TEST           => QRString::ansi8('░░', 127),
 		];
 
 		$out = (new QRString($opt, $matrix))->dump();

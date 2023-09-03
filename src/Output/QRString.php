@@ -13,7 +13,7 @@
 
 namespace chillerlan\QRCode\Output;
 
-use function implode, is_string, json_encode;
+use function implode, is_string, json_encode, max, min, sprintf;
 use const JSON_THROW_ON_ERROR;
 
 /**
@@ -85,6 +85,23 @@ class QRString extends QROutputAbstract{
 	 */
 	protected function json():string{
 		return json_encode($this->matrix->getMatrix(), JSON_THROW_ON_ERROR);
+	}
+
+	//
+
+	/**
+	 * a little helper to create a proper ANSI 8-bit color escape sequence
+	 *
+	 * @see https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
+	 * @see https://en.wikipedia.org/wiki/Block_Elements
+	 *
+	 * @codeCoverageIgnore
+	 */
+	public static function ansi8(string $str, int $color, bool $background = null):string{
+		$color      = max(0, min($color, 255));
+		$background = ($background === true) ? 48 : 38;
+
+		return sprintf("\x1b[%s;5;%sm%s\x1b[0m", $background, $color, $str);
 	}
 
 }
