@@ -99,6 +99,8 @@
 <p class="caption" role="heading"><span class="caption-text">Built-In Output Modules</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QREps.html">QREps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QREps.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QREps.html#additional-methods">Additional methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QREps.html#options-that-affect-this-module">Options that affect this module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QREps.html#options-that-have-no-effect">Options that have no effect</a></li>
 </ul>
@@ -106,6 +108,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QRFpdf.html">QRFpdf</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRFpdf.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRFpdf.html#additional-methods">Additional methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRFpdf.html#options-that-affect-this-module">Options that affect this module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QRFpdf.html#options-that-have-no-effect">Options that have no effect</a></li>
 </ul>
@@ -113,6 +117,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QRGdImage.html">QRGdImage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRGdImage.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRGdImage.html#additional-methods">Additional methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRGdImage.html#options-that-affect-this-module">Options that affect this module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QRGdImage.html#options-that-have-no-effect">Options that have no effect</a></li>
 </ul>
@@ -120,6 +126,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QRImagick.html">QRImagick</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRImagick.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRImagick.html#additional-methods">Additional methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRImagick.html#options-that-affect-this-module">Options that affect this module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QRImagick.html#options-that-have-no-effect">Options that have no effect</a></li>
 </ul>
@@ -127,6 +135,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QRMarkupHTML.html">QRMarkupHTML</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRMarkupHTML.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRMarkupHTML.html#additional-methods">Additional methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRMarkupHTML.html#options-that-affect-this-module">Options that affect this module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QRMarkupHTML.html#options-that-have-no-effect">Options that have no effect</a></li>
 </ul>
@@ -134,6 +144,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QRMarkupSVG.html">QRMarkupSVG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRMarkupSVG.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRMarkupSVG.html#additional-methods">Additional methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRMarkupSVG.html#options-that-affect-this-module">Options that affect this module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QRMarkupSVG.html#options-that-have-no-effect">Options that have no effect</a></li>
 </ul>
@@ -141,6 +153,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Built-In-Output-QRString.html">QRString</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRString.html#plain-text">Plain text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRString.html#json">JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRString.html#additional-methods">Additional methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Built-In-Output-QRString.html#options-that-affect-this-module">Options that affect this module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QRString.html#options-that-have-no-effect">Options that have no effect</a></li>
 </ul>
@@ -520,127 +535,121 @@
 <td><p>a valid GD or Imagick color value</p></td>
 <td><p>Sets a transparency color for when <code class="docutils literal notranslate"><span class="pre">QROptions::$imageTransparent</span></code> is set to true. Defaults to <code class="docutils literal notranslate"><span class="pre">QROptions::$bgColor</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$pngCompression</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$quality</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">-1</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">-1...9</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">imagepng()</span></code> compression level, -1 = auto</p></td>
+<td><p>*</p></td>
+<td><p>compression quality setting for <code class="docutils literal notranslate"><span class="pre">imagejpeg()</span></code>, <code class="docutils literal notranslate"><span class="pre">imagepng()</span></code>, <code class="docutils literal notranslate"><span class="pre">imagewebp()</span></code>, <code class="docutils literal notranslate"><span class="pre">Imagick::setImageCompressionQuality()</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$jpegQuality</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">85</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">0...100</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">imagejpeg()</span></code> quality</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$imagickFormat</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$imagickFormat</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">'png'</span></code></p></td>
 <td><p>*</p></td>
 <td><p>ImageMagick output type, see <code class="docutils literal notranslate"><span class="pre">Imagick::setType()</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$cssClass</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$cssClass</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">'qrcode'</span></code></p></td>
 <td><p>*</p></td>
 <td><p>A common css class</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$markupDark</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$markupDark</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">'#000'</span></code></p></td>
 <td><p>*</p></td>
 <td><p>Markup substitute for dark (CSS value)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$markupLight</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$markupLight</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">'#fff'</span></code></p></td>
 <td><p>*</p></td>
 <td><p>Markup substitute for light (CSS value)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$svgAddXmlHeader</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$svgAddXmlHeader</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><p>*</p></td>
 <td><p>Whether to add an XML header line or not, e.g. to embed the SVG directly in HTML</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$svgOpacity</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$svgOpacity</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1.0</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0...1</span></code></p></td>
 <td><p>SVG opacity</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$svgDefs</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$svgDefs</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">''</span></code></p></td>
 <td><p>*</p></td>
 <td><p>Anything in the <a class="reference external" href="https://developer.mozilla.org/docs/Web/SVG/Element/defs"><code class="docutils literal notranslate"><span class="pre">&lt;defs&gt;</span></code></a> tag</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$svgViewBoxSize</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$svgViewBoxSize</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">int|null</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">null</span></code></p></td>
 <td><p>*</p></td>
 <td><p>SVG viewBox size. A single integer number which defines width/height of the <a class="reference external" href="https://css-tricks.com/scale-svg/#article-header-id-3">viewBox attribute</a> <code class="docutils literal notranslate"><span class="pre">viewBox=&quot;0</span> <span class="pre">0</span> <span class="pre">x</span> <span class="pre">x&quot;</span></code>.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$svgPreserveAspectRatio</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$svgPreserveAspectRatio</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">'xMidYMid'</span></code></p></td>
 <td><p>*</p></td>
 <td><p>See <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio">preserveAspectRatio on MDN</a></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$svgWidth</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$svgWidth</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string|null</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">null</span></code></p></td>
 <td><p>*</p></td>
 <td><p>Optional “width” attribute with the specified value (note that the value is not checked!)</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$svgHeight</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$svgHeight</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string|null</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">null</span></code></p></td>
 <td><p>*</p></td>
 <td><p>Optional “height” attribute with the specified value (note that the value is not checked!)</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$textDark</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$textDark</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">'██'</span></code></p></td>
 <td><p>*</p></td>
 <td><p>String substitute for dark</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$textLight</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$textLight</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">'░░'</span></code></p></td>
 <td><p>*</p></td>
 <td><p>String substitute for light</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$textLineStart</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$textLineStart</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">''</span></code></p></td>
 <td><p>*</p></td>
 <td><p>An optional line prefix, e.g. empty space to align the QR Code in a console</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$jsonAsBooleans</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$jsonAsBooleans</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><p>*</p></td>
 <td><p>Whether to return matrix values in JSON as booleans or $M_TYPE integers</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$fpdfMeasureUnit</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$fpdfMeasureUnit</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">'pt'</span></code></p></td>
 <td><p>*</p></td>
 <td><p>Measurement unit for FPDF output: pt, mm, cm, in</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$readerUseImagickIfAvailable</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$readerUseImagickIfAvailable</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><p>*</p></td>
 <td><p>Use Imagick (if available) when reading QR Codes</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$readerGrayscale</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$readerGrayscale</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><p>*</p></td>
 <td><p>Grayscale the image before reading</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$readerIncreaseContrast</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$readerIncreaseContrast</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><p>*</p></td>
