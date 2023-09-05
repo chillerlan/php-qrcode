@@ -580,7 +580,7 @@ trait QROptionsTrait{
 	 * @see        \chillerlan\QRCode\QROptions::$quality
 	 * @codeCoverageIgnore
 	 */
-	protected function set_jpegQuality(bool $jpegQuality):void{
+	protected function set_jpegQuality(int $jpegQuality):void{
 		$this->quality = $jpegQuality;
 	}
 
@@ -591,7 +591,7 @@ trait QROptionsTrait{
 	 * @see        \chillerlan\QRCode\QROptions::$quality
 	 * @codeCoverageIgnore
 	 */
-	protected function get_jpegQuality():bool{
+	protected function get_jpegQuality():int{
 		return $this->quality;
 	}
 
@@ -602,7 +602,7 @@ trait QROptionsTrait{
 	 * @see        \chillerlan\QRCode\QROptions::$quality
 	 * @codeCoverageIgnore
 	 */
-	protected function set_pngCompression(bool $pngCompression):void{
+	protected function set_pngCompression(int $pngCompression):void{
 		$this->quality = $pngCompression;
 	}
 
@@ -613,7 +613,7 @@ trait QROptionsTrait{
 	 * @see        \chillerlan\QRCode\QROptions::$quality
 	 * @codeCoverageIgnore
 	 */
-	protected function get_pngCompression():bool{
+	protected function get_pngCompression():int{
 		return $this->quality;
 	}
 
