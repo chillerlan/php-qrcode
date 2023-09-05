@@ -274,10 +274,11 @@ trait QROptionsTrait{
 	 *
 	 * The given value depends on the used output type:
 	 *
-	 * @see \imagejpeg()
-	 * @see \imagepng()
-	 * @see \imagewebp()
-	 * @see \Imagick::setImageCompressionQuality()
+	 * - GDIMAGE_BMP {@see \imagebmp()}  [0-1]
+	 * - GDIMAGE_JPG {@see \imagejpeg()} [0-100]
+	 * - GDIMAGE_WEBP {@see \imagepng()}  [0-9]
+	 * - GDIMAGE_PNG {@see \imagewebp()} [0-100]
+	 * - IMAGICK {@see \Imagick::setImageCompressionQuality()} [0-100]
 	 */
 	protected int $quality = -1;
 

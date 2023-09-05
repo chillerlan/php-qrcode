@@ -321,7 +321,7 @@ class QRGdImage extends QROutputAbstract{
 
 			switch($this->options->outputType){
 				case QROutputInterface::GDIMAGE_BMP:
-					imagebmp($this->image);
+					imagebmp($this->image, null, ($this->options->quality > 0));
 					break;
 				case QROutputInterface::GDIMAGE_GIF:
 					imagegif($this->image);
