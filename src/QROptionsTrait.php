@@ -557,7 +557,7 @@ trait QROptionsTrait{
 	}
 
 	/*
-	 * redirect calls to new/renamed variables
+	 * redirect calls of deprecated variables to new/renamed property
 	 */
 
 	/**
@@ -594,6 +594,42 @@ trait QROptionsTrait{
 	 */
 	protected function get_pngCompression():int{
 		return $this->quality;
+	}
+
+	/**
+	 * @deprecated 5.0.0 use QROptions::$transparencyColor instead
+	 * @see        \chillerlan\QRCode\QROptions::$transparencyColor
+	 * @codeCoverageIgnore
+	 */
+	protected function set_imageTransparencyBG(array $imageTransparencyBG):void{
+		$this->transparencyColor = $imageTransparencyBG;
+	}
+
+	/**
+	 * @deprecated 5.0.0 use QROptions::$transparencyColor instead
+	 * @see        \chillerlan\QRCode\QROptions::$transparencyColor
+	 * @codeCoverageIgnore
+	 */
+	protected function get_imageTransparencyBG(){
+		return $this->transparencyColor;
+	}
+
+	/**
+	 * @deprecated 5.0.0 use QROptions::$bgColor instead
+	 * @see        \chillerlan\QRCode\QROptions::$bgColor
+	 * @codeCoverageIgnore
+	 */
+	protected function set_imagickBG(string $imagickBG):void{
+		$this->bgColor = $imagickBG;
+	}
+
+	/**
+	 * @deprecated 5.0.0 use QROptions::$bgColor instead
+	 * @see        \chillerlan\QRCode\QROptions::$bgColor
+	 * @codeCoverageIgnore
+	 */
+	protected function get_imagickBG(){
+		return $this->bgColor;
 	}
 
 }
