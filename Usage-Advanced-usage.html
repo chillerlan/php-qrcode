@@ -378,8 +378,8 @@ After invocation of the <code class="docutils literal notranslate"><span class="
 <section id="save-to-file">
 <h3>Save to file<a class="headerlink" href="#save-to-file" title="Link to this heading"></a></h3>
 <p>Save the QR Code output to <code class="docutils literal notranslate"><span class="pre">/path/to/qrcode.svg</span></code>:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">imageBase64</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">cachefile</span>   <span class="o">=</span> <span class="s1">&#39;/path/to/qrcode.svg&#39;</span><span class="p">;</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">outputBase64</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">cachefile</span>    <span class="o">=</span> <span class="s1">&#39;/path/to/qrcode.svg&#39;</span><span class="p">;</span>
 
 <span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
 </pre></div>

@@ -126,8 +126,8 @@ $qrcode->setOptions($options);
 Save the QR Code output to `/path/to/qrcode.svg`:
 
 ```php
-$options->imageBase64 = false;
-$options->cachefile   = '/path/to/qrcode.svg';
+$options->outputBase64 = false;
+$options->cachefile    = '/path/to/qrcode.svg';
 
 $qrcode->render($data);
 ```

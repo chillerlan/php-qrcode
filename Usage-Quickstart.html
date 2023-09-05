@@ -291,8 +291,8 @@
 <h3>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h3>
 <p>Configuration using <code class="docutils literal notranslate"><span class="pre">QROptions</span></code>:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QROptions</span><span class="p">;</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">version</span>     <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">imageBase64</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span> <span class="c1">// output raw image instead of base64 data URI</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">version</span>      <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">outputBase64</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span> <span class="c1">// output raw image instead of base64 data URI</span>
 
 <span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Content-type: image/svg+xml&#39;</span><span class="p">);</span> <span class="c1">// the image type is SVG by default</span>
 
