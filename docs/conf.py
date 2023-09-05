@@ -240,3 +240,6 @@ html_show_sphinx = False
 
 # Output file base name for HTML help builder.
 #htmlhelp_basename = ''
+
+# https://myst-parser.readthedocs.io/en/latest/syntax/cross-referencing.html#handling-invalid-references
+suppress_warnings = ["myst.xref_missing"]
