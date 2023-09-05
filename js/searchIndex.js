@@ -2466,6 +2466,16 @@ Search.appendIndex(
             "summary": "QROutputAbstract\u0020constructor.",
             "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method___construct"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AcheckGD\u0028\u0029",
+            "name": "checkGD",
+            "summary": "Checks\u0020whether\u0020GD\u0020is\u0020installed\u0020and\u0020if\u0020the\u0020given\u0020mode\u0020is\u0020supported",
+            "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_checkGD"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AcreateImage\u0028\u0029",
+            "name": "createImage",
+            "summary": "Creates\u0020a\u0020new\u0020GdImage\u0020resource\u0020and\u0020scales\u0020it\u0020if\u0020necessary",
+            "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_createImage"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AmoduleValueIsValid\u0028\u0029",
             "name": "moduleValueIsValid",
             "summary": "",
@@ -2498,7 +2508,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AdrawImage\u0028\u0029",
             "name": "drawImage",
-            "summary": "Creates\u0020the\u0020QR\u0020image",
+            "summary": "Draws\u0020the\u0020QR\u0020image",
             "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_drawImage"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003Amodule\u0028\u0029",
@@ -2791,20 +2801,30 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MARKUP_SVG"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AGDIMAGE_PNG",
-            "name": "GDIMAGE_PNG",
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AGDIMAGE_BMP",
+            "name": "GDIMAGE_BMP",
             "summary": "",
-            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_PNG"
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_BMP"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AGDIMAGE_GIF",
+            "name": "GDIMAGE_GIF",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_GIF"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AGDIMAGE_JPG",
             "name": "GDIMAGE_JPG",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_JPG"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AGDIMAGE_GIF",
-            "name": "GDIMAGE_GIF",
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AGDIMAGE_PNG",
+            "name": "GDIMAGE_PNG",
             "summary": "",
-            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_GIF"
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_PNG"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003AGDIMAGE_WEBP",
+            "name": "GDIMAGE_WEBP",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_WEBP"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputInterface\u003A\u003ASTRING_JSON",
             "name": "STRING_JSON",
@@ -3201,6 +3221,36 @@ Search.appendIndex(
             "summary": "clamp\/set\u0020SVG\u0020circle\u0020radius",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_circleRadius"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_imageBase64\u0028\u0029",
+            "name": "set_imageBase64",
+            "summary": "redirect\u0020call\u0020to\u0020the\u0020new\u0020variable",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imageBase64"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aget_imageBase64\u0028\u0029",
+            "name": "get_imageBase64",
+            "summary": "redirect\u0020call\u0020to\u0020the\u0020new\u0020variable",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imageBase64"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_jpegQuality\u0028\u0029",
+            "name": "set_jpegQuality",
+            "summary": "redirect\u0020call\u0020to\u0020the\u0020new\u0020variable",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_jpegQuality"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aget_jpegQuality\u0028\u0029",
+            "name": "get_jpegQuality",
+            "summary": "redirect\u0020call\u0020to\u0020the\u0020new\u0020variable",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_get_jpegQuality"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_pngCompression\u0028\u0029",
+            "name": "set_pngCompression",
+            "summary": "redirect\u0020call\u0020to\u0020the\u0020new\u0020variable",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_pngCompression"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aget_pngCompression\u0028\u0029",
+            "name": "get_pngCompression",
+            "summary": "redirect\u0020call\u0020to\u0020the\u0020new\u0020variable",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_get_pngCompression"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024version",
             "name": "version",
             "summary": "QR\u0020Code\u0020version\u0020number",
@@ -3258,8 +3308,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imageBase64",
             "name": "imageBase64",
-            "summary": "Toggle\u0020base64\u0020or\u0020raw\u0020image\u0020data\u0020\u0028if\u0020applicable\u0029",
+            "summary": "",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imageBase64"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024outputBase64",
+            "name": "outputBase64",
+            "summary": "Toggle\u0020base64\u0020data\u0020URI\u0020or\u0020raw\u0020data\u0020output\u0020\u0028if\u0020applicable\u0029",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_outputBase64"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024eol",
             "name": "eol",
@@ -3345,6 +3400,11 @@ Search.appendIndex(
             "name": "transparencyColor",
             "summary": "Sets\u0020a\u0020transparency\u0020color\u0020for\u0020when\u0020\u007B\u0040see\u0020\\chillerlan\\QRCode\\QROptions\u003A\u003A\u0024imageTransparent\u0020QROptions\u003A\u003A\u0024imageTransparent\u007D\u0020is\u0020set\u0020to\u0020true.",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_transparencyColor"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024quality",
+            "name": "quality",
+            "summary": "Compression\u0020quality",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_quality"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024pngCompression",
             "name": "pngCompression",
@@ -4211,6 +4271,16 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCodeTest-Output-QRFpdfTest.html#property_type"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Output\\QRGdImageBMPTest",
+            "name": "QRGdImageBMPTest",
+            "summary": "Tests\u0020the\u0020QRGdImage\u0020output\u0020module",
+            "url": "classes/chillerlan-QRCodeTest-Output-QRGdImageBMPTest.html"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Output\\QRGdImageBMPTest\u003A\u003A\u0024type",
+            "name": "type",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Output-QRGdImageBMPTest.html#property_type"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Output\\QRGdImageGIFTest",
             "name": "QRGdImageGIFTest",
             "summary": "Tests\u0020the\u0020QRGdImage\u0020output\u0020module",
@@ -4270,6 +4340,16 @@ Search.appendIndex(
             "name": "FQN",
             "summary": "",
             "url": "classes/chillerlan-QRCodeTest-Output-QRGdImageTestAbstract.html#property_FQN"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Output\\QRGdImageWEBPTest",
+            "name": "QRGdImageWEBPTest",
+            "summary": "Tests\u0020the\u0020QRGdImage\u0020output\u0020module",
+            "url": "classes/chillerlan-QRCodeTest-Output-QRGdImageWEBPTest.html"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Output\\QRGdImageWEBPTest\u003A\u003A\u0024type",
+            "name": "type",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Output-QRGdImageWEBPTest.html#property_type"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Output\\QRImagickTest",
             "name": "QRImagickTest",
