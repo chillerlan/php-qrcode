@@ -26,8 +26,12 @@
 - [SVG with a round shape and randomly filled quiet zone](./svgRoundQuietzone.php): example similar to the QR Codes of a certain vendor ([#137](https://github.com/chillerlan/php-qrcode/discussions/137))
 - [SVG with logo, custom module shapes and custom finder patterns](./svgWithLogoAndCustomShapes.php): module- and finder pattern customization ([#150](https://github.com/chillerlan/php-qrcode/discussions/150))
 
+
 ## Other examples
 
 - [Authenticator](./authenticator.php): create a QR Code that displays an URI for a mobile authenticator (featuring [`chillerlan/php-authenticator`](https://github.com/chillerlan/php-authenticator))
 - [Interactive output](./qrcode-interactive.php): interactive demo (via [index.html](./index.html))
 - [Custom module shapes](./shapes.svg): SVG paths to customize the module shapes ([#150](https://github.com/chillerlan/php-qrcode/discussions/150))
+
+
+Please note that the examples are self-contained, meaning that all custom classes are defined in an example file, so they don't necessarily respect the PSR-4 one file = one class principle.

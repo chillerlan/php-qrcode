@@ -14,6 +14,7 @@ use chillerlan\QRCode\Common\BitBuffer;
 use chillerlan\QRCode\Common\MaskPattern;
 use chillerlan\QRCode\Data\QRData;
 use chillerlan\QRCode\Output\QRGdImage;
+use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 use PHPUnit\Framework\TestCase;
@@ -50,6 +51,7 @@ final class QRDataTest extends TestCase{
 		$this::assertSame(3, $matrix->getVersion()->getVersionNumber());
 
 		// attempt to read
+		$options->outputType                  = QROutputInterface::GDIMAGE_PNG;
 		$options->outputBase64                = false;
 		$options->readerUseImagickIfAvailable = false;
 

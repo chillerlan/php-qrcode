@@ -205,7 +205,8 @@ trait QROptionsTrait{
 	 * Module values map
 	 *
 	 *   - QRImagick, QRMarkupHTML, QRMarkupSVG: #ABCDEF, cssname, rgb(), rgba()...
-	 *   - QREps, QRFpdf, QRGdImage: [63, 127, 255] // R, G, B
+	 *   - QREps, QRFpdf, QRGdImage: [R, G, B] // 0-255
+	 *   - QREps: [C, M, Y, K] // 0-255
 	 */
 	protected ?array $moduleValues = null;
 
