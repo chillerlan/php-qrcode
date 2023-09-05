@@ -3233,23 +3233,43 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_jpegQuality\u0028\u0029",
             "name": "set_jpegQuality",
-            "summary": "redirect\u0020call\u0020to\u0020the\u0020new\u0020variable",
+            "summary": "",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_jpegQuality"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aget_jpegQuality\u0028\u0029",
             "name": "get_jpegQuality",
-            "summary": "redirect\u0020call\u0020to\u0020the\u0020new\u0020variable",
+            "summary": "",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_get_jpegQuality"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_pngCompression\u0028\u0029",
             "name": "set_pngCompression",
-            "summary": "redirect\u0020call\u0020to\u0020the\u0020new\u0020variable",
+            "summary": "",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_pngCompression"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aget_pngCompression\u0028\u0029",
             "name": "get_pngCompression",
-            "summary": "redirect\u0020call\u0020to\u0020the\u0020new\u0020variable",
+            "summary": "",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_get_pngCompression"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_imageTransparencyBG\u0028\u0029",
+            "name": "set_imageTransparencyBG",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imageTransparencyBG"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aget_imageTransparencyBG\u0028\u0029",
+            "name": "get_imageTransparencyBG",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imageTransparencyBG"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_imagickBG\u0028\u0029",
+            "name": "set_imagickBG",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imagickBG"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aget_imagickBG\u0028\u0029",
+            "name": "get_imagickBG",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imagickBG"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024version",
             "name": "version",
@@ -3405,16 +3425,6 @@ Search.appendIndex(
             "name": "quality",
             "summary": "Compression\u0020quality",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_quality"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024pngCompression",
-            "name": "pngCompression",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_pngCompression"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024jpegQuality",
-            "name": "jpegQuality",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_jpegQuality"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imagickFormat",
             "name": "imagickFormat",
