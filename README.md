@@ -5,6 +5,8 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
 
 **Hi! Please check out the [v5.0-beta release](https://github.com/chillerlan/php-qrcode/releases/tag/5.0-beta) and leave your feedback in [this discussion thread](https://github.com/chillerlan/php-qrcode/discussions/188). Thanks!**
 
+**Attention:** there is now also a javascript port: [chillerlan/js-qrcode](https://github.com/chillerlan/js-qrcode).
+
 [![PHP Version Support][php-badge]][php]
 [![Packagist version][packagist-badge]][packagist]
 [![Continuous Integration][gh-action-badge]][gh-action]
@@ -29,8 +31,6 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
 [readthedocs]: https://php-qrcode.readthedocs.io/en/main/
 
 ## Overview
-
-**Attention:** there is now also a javascript port: [chillerlan/js-qrcode](https://github.com/chillerlan/js-qrcode).
 
 ### Features
 
