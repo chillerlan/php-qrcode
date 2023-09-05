@@ -283,23 +283,6 @@ trait QROptionsTrait{
 
 
 	/*
-	 * QRGdImage settings
-	 */
-
-	/**
-	 * @deprecated 5.0.0 use QROptions::$quality instead
-	 * @see        \chillerlan\QRCode\QROptions::$quality
-	 */
-	protected int $pngCompression = -1;
-
-	/**
-	 * @deprecated 5.0.0 use QROptions::$quality instead
-	 * @see        \chillerlan\QRCode\QROptions::$quality
-	 */
-	protected int $jpegQuality = 85;
-
-
-	/*
 	 * QRImagick settings
 	 */
 
@@ -573,9 +556,11 @@ trait QROptionsTrait{
 		return $this->outputBase64;
 	}
 
+	/*
+	 * redirect calls to new/renamed variables
+	 */
+
 	/**
-	 * redirect call to the new variable
-	 *
 	 * @deprecated 5.0.0 use QROptions::$quality instead
 	 * @see        \chillerlan\QRCode\QROptions::$quality
 	 * @codeCoverageIgnore
@@ -585,8 +570,6 @@ trait QROptionsTrait{
 	}
 
 	/**
-	 * redirect call to the new variable
-	 *
 	 * @deprecated 5.0.0 use QROptions::$quality instead
 	 * @see        \chillerlan\QRCode\QROptions::$quality
 	 * @codeCoverageIgnore
@@ -596,8 +579,6 @@ trait QROptionsTrait{
 	}
 
 	/**
-	 * redirect call to the new variable
-	 *
 	 * @deprecated 5.0.0 use QROptions::$quality instead
 	 * @see        \chillerlan\QRCode\QROptions::$quality
 	 * @codeCoverageIgnore
@@ -607,8 +588,6 @@ trait QROptionsTrait{
 	}
 
 	/**
-	 * redirect call to the new variable
-	 *
 	 * @deprecated 5.0.0 use QROptions::$quality instead
 	 * @see        \chillerlan\QRCode\QROptions::$quality
 	 * @codeCoverageIgnore
