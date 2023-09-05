@@ -18,27 +18,31 @@ use chillerlan\QRCode\Data\QRMatrix;
 interface QROutputInterface{
 
 	/** @var string */
-	public const MARKUP_HTML = 'html';
+	public const MARKUP_HTML  = 'html';
 	/** @var string */
-	public const MARKUP_SVG  = 'svg';
+	public const MARKUP_SVG   = 'svg';
 	/** @var string */
-	public const GDIMAGE_PNG = 'png';
+	public const GDIMAGE_BMP  = 'bmp';
 	/** @var string */
-	public const GDIMAGE_JPG = 'jpg';
+	public const GDIMAGE_GIF  = 'gif';
 	/** @var string */
-	public const GDIMAGE_GIF = 'gif';
+	public const GDIMAGE_JPG  = 'jpg';
 	/** @var string */
-	public const STRING_JSON = 'json';
+	public const GDIMAGE_PNG  = 'png';
 	/** @var string */
-	public const STRING_TEXT = 'text';
+	public const GDIMAGE_WEBP = 'webp';
 	/** @var string */
-	public const IMAGICK     = 'imagick';
+	public const STRING_JSON  = 'json';
 	/** @var string */
-	public const FPDF        = 'fpdf';
+	public const STRING_TEXT  = 'text';
 	/** @var string */
-	public const EPS         = 'eps';
+	public const IMAGICK      = 'imagick';
 	/** @var string */
-	public const CUSTOM      = 'custom';
+	public const FPDF         = 'fpdf';
+	/** @var string */
+	public const EPS          = 'eps';
+	/** @var string */
+	public const CUSTOM       = 'custom';
 
 	/**
 	 * Map of built-in output modes => class FQN
@@ -46,16 +50,18 @@ interface QROutputInterface{
 	 * @var string[]
 	 */
 	public const MODES = [
-		self::MARKUP_SVG  => QRMarkupSVG::class,
-		self::MARKUP_HTML => QRMarkupHTML::class,
-		self::GDIMAGE_PNG => QRGdImage::class,
-		self::GDIMAGE_GIF => QRGdImage::class,
-		self::GDIMAGE_JPG => QRGdImage::class,
-		self::STRING_JSON => QRString::class,
-		self::STRING_TEXT => QRString::class,
-		self::IMAGICK     => QRImagick::class,
-		self::FPDF        => QRFpdf::class,
-		self::EPS         => QREps::class,
+		self::MARKUP_SVG   => QRMarkupSVG::class,
+		self::MARKUP_HTML  => QRMarkupHTML::class,
+		self::GDIMAGE_BMP  => QRGdImage::class,
+		self::GDIMAGE_GIF  => QRGdImage::class,
+		self::GDIMAGE_JPG  => QRGdImage::class,
+		self::GDIMAGE_PNG  => QRGdImage::class,
+		self::GDIMAGE_WEBP => QRGdImage::class,
+		self::STRING_JSON  => QRString::class,
+		self::STRING_TEXT  => QRString::class,
+		self::IMAGICK      => QRImagick::class,
+		self::FPDF         => QRFpdf::class,
+		self::EPS          => QREps::class,
 	];
 
 	/**

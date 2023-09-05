@@ -14,10 +14,12 @@ namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
-use ErrorException, Throwable;
-use function array_values, count, extension_loaded, imagecolorallocate, imagecolortransparent, imagecreatetruecolor,
-	imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng, imagescale, intdiv, intval,
-	is_array, is_numeric, max, min, ob_end_clean, ob_get_contents, ob_start, restore_error_handler, set_error_handler;
+use ErrorException;
+use Throwable;
+use function array_values, count, extension_loaded, gd_info, imagebmp, imagecolorallocate, imagecolortransparent,
+	imagecreatetruecolor, imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng,
+	imagescale, imagewebp, intdiv, intval, is_array, is_numeric, max, min, ob_end_clean, ob_get_contents, ob_start,
+	restore_error_handler, set_error_handler, sprintf;
 
 /**
  * Converts the matrix into GD images, raw or base64 output (requires ext-gd)
@@ -55,18 +57,56 @@ class QRGdImage extends QROutputAbstract{
 	 * @noinspection PhpMissingParentConstructorInspection
 	 */
 	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
-
-		if(!extension_loaded('gd')){
-			throw new QRCodeOutputException('ext-gd not loaded'); // @codeCoverageIgnore
-		}
-
 		$this->options = $options;
 		$this->matrix  = $matrix;
 
+		$this->checkGD();
 		$this->setMatrixDimensions();
 
-		// we're scaling the image up in order to draw crisp round circles, otherwise they appear square-y on small scales
-		// @see https://github.com/chillerlan/php-qrcode/issues/23
+		$this->image = $this->createImage();
+		// set module values after image creation because we need the GdImage instance
+		$this->setModuleValues();
+	}
+
+	/**
+	 * Checks whether GD is installed and if the given mode is supported
+	 *
+	 * @return void
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 * @codeCoverageIgnore
+	 */
+	protected function checkGD():void{
+
+		if(!extension_loaded('gd')){
+			throw new QRCodeOutputException('ext-gd not loaded');
+		}
+
+		$info = gd_info();
+		$mode = [
+			        self::GDIMAGE_BMP  => 'BMP Support',
+			        self::GDIMAGE_GIF  => 'GIF Create Support',
+			        self::GDIMAGE_JPG  => 'JPEG Support',
+			        self::GDIMAGE_PNG  => 'PNG Support',
+			        self::GDIMAGE_WEBP => 'WebP Support',
+		        ][$this->options->outputType];
+
+		if(!isset($info[$mode]) || $info[$mode] !== true){
+			throw new QRCodeOutputException(sprintf('output mode "%s" not supported', $this->options->outputType));
+		}
+
+	}
+
+	/**
+	 * Creates a new GdImage resource and scales it if necessary
+	 *
+	 * we're scaling the image up in order to draw crisp round circles, otherwise they appear square-y on small scales
+	 *
+	 * @see https://github.com/chillerlan/php-qrcode/issues/23
+	 *
+	 * @return \GdImage|resource
+	 */
+	protected function createImage(){
+
 		if($this->options->drawCircularModules && $this->options->scale < 20){
 			// increase the initial image size by 10
 			$this->length    = (($this->length + 2) * 10);
@@ -74,9 +114,7 @@ class QRGdImage extends QROutputAbstract{
 			$this->upscaled  = true;
 		}
 
-		$this->image = imagecreatetruecolor($this->length, $this->length);
-		// set module values after image creation because we need the GdImage instance
-		$this->setModuleValues();
+		return imagecreatetruecolor($this->length, $this->length);
 	}
 
 	/**
@@ -225,7 +263,7 @@ class QRGdImage extends QROutputAbstract{
 	}
 
 	/**
-	 * Creates the QR image
+	 * Draws the QR image
 	 */
 	protected function drawImage():void{
 		foreach($this->matrix->getMatrix() as $y => $row){
@@ -282,16 +320,22 @@ class QRGdImage extends QROutputAbstract{
 		try{
 
 			switch($this->options->outputType){
+				case QROutputInterface::GDIMAGE_BMP:
+					imagebmp($this->image);
+					break;
 				case QROutputInterface::GDIMAGE_GIF:
 					imagegif($this->image);
 					break;
 				case QROutputInterface::GDIMAGE_JPG:
-					imagejpeg($this->image, null, max(0, min(100, $this->options->jpegQuality)));
+					imagejpeg($this->image, null, max(-1, min(100, $this->options->quality)));
+					break;
+				case QROutputInterface::GDIMAGE_WEBP:
+					imagewebp($this->image, null, max(-1, min(100, $this->options->quality)));
 					break;
 				// silently default to png output
 				case QROutputInterface::GDIMAGE_PNG:
 				default:
-					imagepng($this->image, null, max(-1, min(9, $this->options->pngCompression)));
+					imagepng($this->image, null, max(-1, min(9, $this->options->quality)));
 			}
 
 			$imageData = ob_get_contents();

@@ -89,7 +89,7 @@ trait QROptionsTrait{
 	 * The built-in output type
 	 *
 	 *   - QROutputInterface::MARKUP_XXXX where XXXX = HTML, SVG
-	 *   - QROutputInterface::GDIMAGE_XXX where XXX = PNG, GIF, JPG
+	 *   - QROutputInterface::GDIMAGE_XXX where XXX = BMP, GIF, JPG, PNG, WEBP
 	 *   - QROutputInterface::STRING_XXXX where XXXX = TEXT, JSON
 	 *   - QROutputInterface::IMAGICK
 	 *   - QROutputInterface::EPS
@@ -268,18 +268,32 @@ trait QROptionsTrait{
 	 */
 	protected $transparencyColor = null;
 
+	/**
+	 * Compression quality
+	 *
+	 * The given value depends on the used output type:
+	 *
+	 * @see \imagejpeg()
+	 * @see \imagepng()
+	 * @see \imagewebp()
+	 * @see \Imagick::setImageCompressionQuality()
+	 */
+	protected int $quality = -1;
+
 
 	/*
 	 * QRGdImage settings
 	 */
 
 	/**
-	 * @see imagepng()
+	 * @deprecated 5.0.0 use QROptions::$quality instead
+	 * @see        \chillerlan\QRCode\QROptions::$quality
 	 */
 	protected int $pngCompression = -1;
 
 	/**
-	 * @see imagejpeg()
+	 * @deprecated 5.0.0 use QROptions::$quality instead
+	 * @see        \chillerlan\QRCode\QROptions::$quality
 	 */
 	protected int $jpegQuality = 85;
 
@@ -541,6 +555,7 @@ trait QROptionsTrait{
 	 *
 	 * @deprecated 5.0.0 use QROptions::$outputBase64 instead
 	 * @see        \chillerlan\QRCode\QROptions::$outputBase64
+	 * @codeCoverageIgnore
 	 */
 	protected function set_imageBase64(bool $imageBase64):void{
 		$this->outputBase64 = $imageBase64;
@@ -551,9 +566,54 @@ trait QROptionsTrait{
 	 *
 	 * @deprecated 5.0.0 use QROptions::$outputBase64 instead
 	 * @see        \chillerlan\QRCode\QROptions::$outputBase64
+	 * @codeCoverageIgnore
 	 */
 	protected function get_imageBase64():bool{
 		return $this->outputBase64;
+	}
+
+	/**
+	 * redirect call to the new variable
+	 *
+	 * @deprecated 5.0.0 use QROptions::$quality instead
+	 * @see        \chillerlan\QRCode\QROptions::$quality
+	 * @codeCoverageIgnore
+	 */
+	protected function set_jpegQuality(bool $jpegQuality):void{
+		$this->quality = $jpegQuality;
+	}
+
+	/**
+	 * redirect call to the new variable
+	 *
+	 * @deprecated 5.0.0 use QROptions::$quality instead
+	 * @see        \chillerlan\QRCode\QROptions::$quality
+	 * @codeCoverageIgnore
+	 */
+	protected function get_jpegQuality():bool{
+		return $this->quality;
+	}
+
+	/**
+	 * redirect call to the new variable
+	 *
+	 * @deprecated 5.0.0 use QROptions::$quality instead
+	 * @see        \chillerlan\QRCode\QROptions::$quality
+	 * @codeCoverageIgnore
+	 */
+	protected function set_pngCompression(bool $pngCompression):void{
+		$this->quality = $pngCompression;
+	}
+
+	/**
+	 * redirect call to the new variable
+	 *
+	 * @deprecated 5.0.0 use QROptions::$quality instead
+	 * @see        \chillerlan\QRCode\QROptions::$quality
+	 * @codeCoverageIgnore
+	 */
+	protected function get_pngCompression():bool{
+		return $this->quality;
 	}
 
 }
