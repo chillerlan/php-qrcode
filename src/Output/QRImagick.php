@@ -15,7 +15,7 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use finfo, Imagick, ImagickDraw, ImagickPixel;
-use function extension_loaded, in_array, is_string, preg_match, strlen;
+use function extension_loaded, in_array, is_string, max, min, preg_match, strlen;
 use const FILEINFO_MIME_TYPE;
 
 /**
@@ -120,6 +120,10 @@ class QRImagick extends QROutputAbstract{
 		$this->setBgColor();
 
 		$this->imagick->newImage($this->length, $this->length, $this->background, $this->options->imagickFormat);
+
+		if($this->options->quality > -1){
+			$this->imagick->setImageCompressionQuality(max(0, min(100, $this->options->quality)));
+		}
 
 		$this->drawImage();
 		// set transparency color after all operations

@@ -18,11 +18,13 @@ $options = new QROptions;
 
 $options->version             = 7;
 $options->outputType          = QROutputInterface::IMAGICK;
+$options->imagickFormat       = 'webp';
+$options->quality             = 90;
 $options->scale               = 20;
 $options->outputBase64        = false;
 $options->bgColor             = '#ccccaa';
 $options->imageTransparent    = true;
-#$options->transparencyColor   = '#ECF9BE';
+$options->transparencyColor   = '#ccccaa';
 $options->drawLightModules    = true;
 $options->drawCircularModules = true;
 $options->circleRadius        = 0.4;
@@ -63,7 +65,7 @@ $options->moduleValues        = [
 $out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 
-header('Content-type: image/png');
+header('Content-type: image/webp');
 
 echo $out;
 
