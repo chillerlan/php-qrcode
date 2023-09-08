@@ -81,14 +81,21 @@ class QRGdImage extends QROutputAbstract{
 			throw new QRCodeOutputException('ext-gd not loaded');
 		}
 
+		$modes = [
+			self::GDIMAGE_BMP  => 'BMP Support',
+			self::GDIMAGE_GIF  => 'GIF Create Support',
+			self::GDIMAGE_JPG  => 'JPEG Support',
+			self::GDIMAGE_PNG  => 'PNG Support',
+			self::GDIMAGE_WEBP => 'WebP Support',
+		];
+
+		// likely using default or custom output
+		if(!isset($modes[$this->options->outputType])){
+			return;
+		}
+
 		$info = gd_info();
-		$mode = [
-			        self::GDIMAGE_BMP  => 'BMP Support',
-			        self::GDIMAGE_GIF  => 'GIF Create Support',
-			        self::GDIMAGE_JPG  => 'JPEG Support',
-			        self::GDIMAGE_PNG  => 'PNG Support',
-			        self::GDIMAGE_WEBP => 'WebP Support',
-		        ][$this->options->outputType];
+		$mode = $modes[$this->options->outputType];
 
 		if(!isset($info[$mode]) || $info[$mode] !== true){
 			throw new QRCodeOutputException(sprintf('output mode "%s" not supported', $this->options->outputType));
