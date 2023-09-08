@@ -519,6 +519,26 @@ final class QRMatrixTest extends TestCase{
 	}
 
 	/**
+	 * Tests flipping the value of a module
+	 */
+	public function testFlip():void{
+		$this->matrix->set(20, 20, true, QRMatrix::M_TEST);
+
+		// cover checkType()
+		$this::assertTrue($this->matrix->checkType(20, 20, QRMatrix::M_TEST));
+		// verify the current state (dark)
+		$this::assertSame(QRMatrix::M_TEST_DARK, $this->matrix->get(20, 20));
+		// flip
+		$this->matrix->flip(20, 20);
+		// verify flip
+		$this::assertSame(QRMatrix::M_TEST, $this->matrix->get(20, 20));
+		// flip again
+		$this->matrix->flip(20, 20);
+		// verify flip
+		$this::assertSame(QRMatrix::M_TEST_DARK, $this->matrix->get(20, 20));
+	}
+
+	/**
 	 * Tests checking whether the M_TYPE of a module is not one of an array of M_TYPES
 	 */
 	public function testCheckTypeIn():void{

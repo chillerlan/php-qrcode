@@ -315,6 +315,18 @@ class QRMatrix{
 	}
 
 	/**
+	 * Flips the value of the module at ($x, $y)
+	 */
+	public function flip(int $x, int $y):self{
+
+		if(isset($this->matrix[$y][$x])){
+			$this->matrix[$y][$x] ^= $this::IS_DARK;
+		}
+
+		return $this;
+	}
+
+	/**
 	 * Checks whether the module at ($x, $y) is of the given $M_TYPE
 	 *
 	 *   true => $value & $M_TYPE === $M_TYPE
@@ -617,7 +629,7 @@ class QRMatrix{
 					continue;
 				}
 
-				$this->set($x, $y, ($val & $this::IS_DARK) !== $this::IS_DARK, $val);
+				$this->flip($x, $y);
 			}
 		}
 
@@ -774,7 +786,7 @@ class QRMatrix{
 				}
 
 				if($mask($x, $y)){
-					$this->set($x, $y, ($val & $this::IS_DARK) !== $this::IS_DARK, $val);
+					$this->flip($x, $y);
 				}
 			}
 		}
