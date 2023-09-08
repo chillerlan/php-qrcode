@@ -158,9 +158,12 @@ trait QROptionsTrait{
 	protected $bgColor = null;
 
 	/**
+	 * Whether to invert the matrix (reflectance reversal)
+	 */
+	protected bool $invertMatrix = false;
+
+	/**
 	 * Whether to draw the light (false) modules
-	 *
-	 * @var bool
 	 */
 	protected bool $drawLightModules = true;
 

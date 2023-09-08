@@ -61,6 +61,10 @@ abstract class QROutputAbstract implements QROutputInterface{
 		$this->options = $options;
 		$this->matrix  = $matrix;
 
+		if($this->options->invertMatrix){
+			$this->matrix->invert();
+		}
+
 		$this->setMatrixDimensions();
 		$this->setModuleValues();
 	}
