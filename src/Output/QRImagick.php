@@ -223,8 +223,8 @@ class QRImagick extends QROutputAbstract{
 		$this->imagickDraw->rectangle(
 			($x * $this->scale),
 			($y * $this->scale),
-			(($x + 1) * $this->scale),
-			(($y + 1) * $this->scale)
+			((($x + 1) * $this->scale) - 1),
+			((($y + 1) * $this->scale) - 1)
 		);
 	}
 
