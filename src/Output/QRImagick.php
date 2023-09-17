@@ -39,7 +39,7 @@ class QRImagick extends QROutputAbstract{
 	/**
 	 * The allocated background color
 	 */
-	protected ImagickPixel $background;
+	protected ImagickPixel $backgroundColor;
 
 	/**
 	 * @inheritDoc
@@ -115,15 +115,9 @@ class QRImagick extends QROutputAbstract{
 	 * @return string|\Imagick
 	 */
 	public function dump(string $file = null){
-		$this->imagick = new Imagick;
-
 		$this->setBgColor();
 
-		$this->imagick->newImage($this->length, $this->length, $this->background, $this->options->imagickFormat);
-
-		if($this->options->quality > -1){
-			$this->imagick->setImageCompressionQuality(max(0, min(100, $this->options->quality)));
-		}
+		$this->imagick = $this->createImage();
 
 		$this->drawImage();
 		// set transparency color after all operations
@@ -151,17 +145,29 @@ class QRImagick extends QROutputAbstract{
 	 */
 	protected function setBgColor():void{
 
-		if(isset($this->background)){
-			return;
-		}
-
 		if($this::moduleValueIsValid($this->options->bgColor)){
-			$this->background = $this->prepareModuleValue($this->options->bgColor);
+			$this->backgroundColor = $this->prepareModuleValue($this->options->bgColor);
 
 			return;
 		}
 
-		$this->background = $this->prepareModuleValue('white');
+		$this->backgroundColor = $this->prepareModuleValue('white');
+	}
+
+	/**
+	 * Creates a new Imagick instance
+	 */
+	protected function createImage():Imagick{
+		$imagick          = new Imagick;
+		[$width, $height] = $this->getOutputDimensions();
+
+		$imagick->newImage($width, $height, $this->backgroundColor, $this->options->imagickFormat);
+
+		if($this->options->quality > -1){
+			$imagick->setImageCompressionQuality(max(0, min(100, $this->options->quality)));
+		}
+
+		return $imagick;
 	}
 
 	/**
@@ -173,7 +179,7 @@ class QRImagick extends QROutputAbstract{
 			return;
 		}
 
-		$transparencyColor = $this->background;
+		$transparencyColor = $this->backgroundColor;
 
 		if($this::moduleValueIsValid($this->options->transparencyColor)){
 			$transparencyColor = $this->prepareModuleValue($this->options->transparencyColor);

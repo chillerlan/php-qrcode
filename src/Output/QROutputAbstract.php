@@ -81,6 +81,15 @@ abstract class QROutputAbstract implements QROutputInterface{
 	}
 
 	/**
+	 * Returns a 2 element array with the current output width and height
+	 *
+	 * The type and units of the values depend on the output class. The default value is the current module count * scale.
+	 */
+	protected function getOutputDimensions():array{
+		return [$this->length, $this->length];
+	}
+
+	/**
 	 * Sets the initial module values
 	 */
 	protected function setModuleValues():void{

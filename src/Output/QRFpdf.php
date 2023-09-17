@@ -108,7 +108,7 @@ class QRFpdf extends QROutputAbstract{
 	 * Initializes an FPDF instance
 	 */
 	protected function initFPDF():FPDF{
-		return new FPDF('P', $this->options->fpdfMeasureUnit, [$this->length, $this->length]);
+		return new FPDF('P', $this->options->fpdfMeasureUnit, $this->getOutputDimensions());
 	}
 
 	/**
@@ -121,10 +121,12 @@ class QRFpdf extends QROutputAbstract{
 		$this->fpdf->AddPage();
 
 		if($this::moduleValueIsValid($this->options->bgColor)){
-			$bgColor = $this->prepareModuleValue($this->options->bgColor);
+			$bgColor          = $this->prepareModuleValue($this->options->bgColor);
+			[$width, $height] = $this->getOutputDimensions();
+
 			/** @phan-suppress-next-line PhanParamTooFewUnpack */
 			$this->fpdf->SetFillColor(...$bgColor);
-			$this->fpdf->Rect(0, 0, $this->length, $this->length, 'F');
+			$this->fpdf->Rect(0, 0, $width, $height, 'F');
 		}
 
 		$this->prevColor = null;

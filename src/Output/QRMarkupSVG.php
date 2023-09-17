@@ -17,7 +17,7 @@ use function array_chunk, implode, is_string, preg_match, sprintf, trim;
  * SVG output
  *
  * @see https://github.com/codemasher/php-qrcode/pull/5
- * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg
+ * @see https://developer.mozilla.org/en-US/docs/Web/SVG
  * @see https://www.sarasoueidan.com/demos/interactive-svg-coordinate-system/
  * @see http://apex.infogridpacific.com/SVG/svg-tutorial-contents.html
  */
@@ -49,6 +49,13 @@ class QRMarkupSVG extends QRMarkup{
 	/**
 	 * @inheritDoc
 	 */
+	protected function getOutputDimensions():array{
+		return [$this->moduleCount, $this->moduleCount];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function createMarkup(bool $saveToFile):string{
 		$svg = $this->header();
 
@@ -70,14 +77,28 @@ class QRMarkupSVG extends QRMarkup{
 	}
 
 	/**
+	 * returns the value for the SVG viewBox attribute
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
+	 * @see https://css-tricks.com/scale-svg/#article-header-id-3
+	 */
+	protected function getViewBox():string{
+		[$width, $height] = $this->getOutputDimensions();
+
+		return sprintf('0 0 %s %s', ($this->options->svgViewBoxSize ?? $width), ($this->options->svgViewBoxSize ?? $height));
+	}
+
+	/**
 	 * returns the <svg> header with the given options parsed
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg
 	 */
 	protected function header():string{
 
 		$header = sprintf(
 			'<svg xmlns="http://www.w3.org/2000/svg" class="qr-svg %1$s" viewBox="%2$s" preserveAspectRatio="%3$s">%4$s',
 			$this->options->cssClass,
-			($this->options->svgViewBoxSize ?? $this->moduleCount),
+			$this->getViewBox(),
 			$this->options->svgPreserveAspectRatio,
 			$this->options->eol
 		);

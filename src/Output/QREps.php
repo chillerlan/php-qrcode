@@ -102,6 +102,7 @@ class QREps extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	public function dump(string $file = null):string{
+		[$width, $height] = $this->getOutputDimensions();
 
 		$eps = [
 			// main header
@@ -111,7 +112,7 @@ class QREps extends QROutputAbstract{
 			sprintf('%%%%CreationDate: %1$s', date('c')),
 			'%%DocumentData: Clean7Bit',
 			'%%LanguageLevel: 3',
-			sprintf('%%%%BoundingBox: 0 0 %1$s %1$s', $this->length),
+			sprintf('%%%%BoundingBox: 0 0 %s %s', $width, $height),
 			'%%EndComments',
 			// function definitions
 			'%%BeginProlog',
@@ -123,7 +124,7 @@ class QREps extends QROutputAbstract{
 
 		if($this::moduleValueIsValid($this->options->bgColor)){
 			$eps[] = $this->prepareModuleValue($this->options->bgColor);
-			$eps[] = sprintf('0 0 %1$s %1$s F', $this->length);
+			$eps[] = sprintf('0 0 %s %s F', $width, $height);
 		}
 
 		// create the path elements
