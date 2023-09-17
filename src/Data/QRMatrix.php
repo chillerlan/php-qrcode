@@ -369,9 +369,9 @@ class QRMatrix{
 	 * The 8 flags of the bitmask represent the status of each of the neighbouring fields,
 	 * starting with the lowest bit for top left, going clockwise:
 	 *
-	 *   1 2 3
-	 *   8 # 4
-	 *   7 6 5
+	 *   0 1 2
+	 *   7 # 3
+	 *   6 5 4
 	 */
 	public function checkNeighbours(int $x, int $y, int $M_TYPE = null):int{
 		$bits = 0;
