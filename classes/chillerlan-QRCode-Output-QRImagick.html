@@ -196,7 +196,7 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/chillerlan-QRCode-Output-QRImagick.html#property_background">$background</a>
+    <a href="classes/chillerlan-QRCode-Output-QRImagick.html#property_backgroundColor">$backgroundColor</a>
     <span>
                         &nbsp;: <abbr title="\ImagickPixel">ImagickPixel</abbr>            </span>
 </dt>
@@ -294,6 +294,13 @@
 returns an array with the transformed modules</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_createImage">createImage()</a>
+    <span>
+                                &nbsp;: <abbr title="\Imagick">Imagick</abbr>    </span>
+</dt>
+<dd>Creates a new Imagick instance</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_drawImage">drawImage()</a>
     <span>
                                 &nbsp;: void    </span>
@@ -320,6 +327,13 @@ returns an array with the transformed modules</dd>
                                 &nbsp;: mixed|null    </span>
 </dt>
 <dd>Returns the prepared module value at the given coordinate [$x, $y] (convenience)</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getOutputDimensions">getOutputDimensions()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Returns a 2 element array with the current output width and height</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_module">module()</a>
@@ -398,9 +412,9 @@ returns an array with the transformed modules</dd>
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_background">
-        $background
-        <a href="classes/chillerlan-QRCode-Output-QRImagick.html#property_background" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_backgroundColor">
+        $backgroundColor
+        <a href="classes/chillerlan-QRCode-Output-QRImagick.html#property_backgroundColor" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
@@ -417,7 +431,7 @@ returns an array with the transformed modules</dd>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type"><abbr title="\ImagickPixel">ImagickPixel</abbr></span>
-    <span class="phpdocumentor-signature__name">$background</span>
+    <span class="phpdocumentor-signature__name">$backgroundColor</span>
     </code>
 
     
@@ -946,7 +960,7 @@ returns an array with the transformed modules</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputAbstract.php"><a href="files/src-output-qroutputabstract.html"><abbr title="src/Output/QROutputAbstract.php">QROutputAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">180</span>
+    <span class="phpdocumentor-element-found-in__line">189</span>
 
     </aside>
 
@@ -991,6 +1005,42 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_createImage">
+        createImage()
+        <a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_createImage" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">160</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Creates a new Imagick instance</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">createImage</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><abbr title="\Imagick">Imagick</abbr></span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><abbr title="\Imagick">Imagick</abbr></span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_drawImage">
         drawImage()
         <a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_drawImage" class="headerlink"><i class="fas fa-link"></i></a>
@@ -999,7 +1049,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">188</span>
+    <span class="phpdocumentor-element-found-in__line">194</span>
 
     </aside>
 
@@ -1095,7 +1145,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputAbstract.php"><a href="files/src-output-qroutputabstract.html"><abbr title="src/Output/QROutputAbstract.php">QROutputAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">104</span>
+    <span class="phpdocumentor-element-found-in__line">113</span>
 
     </aside>
 
@@ -1160,7 +1210,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputAbstract.php"><a href="files/src-output-qroutputabstract.html"><abbr title="src/Output/QROutputAbstract.php">QROutputAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">119</span>
+    <span class="phpdocumentor-element-found-in__line">128</span>
 
     </aside>
 
@@ -1205,6 +1255,44 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getOutputDimensions">
+        getOutputDimensions()
+        <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getOutputDimensions" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputAbstract.php"><a href="files/src-output-qroutputabstract.html"><abbr title="src/Output/QROutputAbstract.php">QROutputAbstract.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">88</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Returns a 2 element array with the current output width and height</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">getOutputDimensions</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+        <section class="phpdocumentor-description"><p>The type and units of the values depend on the output class. The default value is the current module count * scale.</p>
+</section>
+
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_module">
         module()
         <a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_module" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1213,7 +1301,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">204</span>
+    <span class="phpdocumentor-element-found-in__line">210</span>
 
     </aside>
 
@@ -1333,7 +1421,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputAbstract.php"><a href="files/src-output-qroutputabstract.html"><abbr title="src/Output/QROutputAbstract.php">QROutputAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">154</span>
+    <span class="phpdocumentor-element-found-in__line">163</span>
 
     </aside>
 
@@ -1413,7 +1501,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">152</span>
+    <span class="phpdocumentor-element-found-in__line">146</span>
 
     </aside>
 
@@ -1479,7 +1567,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputAbstract.php"><a href="files/src-output-qroutputabstract.html"><abbr title="src/Output/QROutputAbstract.php">QROutputAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">86</span>
+    <span class="phpdocumentor-element-found-in__line">95</span>
 
     </aside>
 
@@ -1511,7 +1599,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImagick.php"><a href="files/src-output-qrimagick.html"><abbr title="src/Output/QRImagick.php">QRImagick.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">170</span>
+    <span class="phpdocumentor-element-found-in__line">176</span>
 
     </aside>
 
@@ -1543,7 +1631,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputAbstract.php"><a href="files/src-output-qroutputabstract.html"><abbr title="src/Output/QROutputAbstract.php">QROutputAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">142</span>
+    <span class="phpdocumentor-element-found-in__line">151</span>
 
     </aside>
 
@@ -1695,7 +1783,7 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QRImagick.html#property_background">$background<a href="classes/chillerlan-QRCode-Output-QRImagick.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QRImagick.html#property_backgroundColor">$backgroundColor<a href="classes/chillerlan-QRCode-Output-QRImagick.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-Output-QRImagick.html#property_imagick">$imagick<a href="classes/chillerlan-QRCode-Output-QRImagick.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-Output-QRImagick.html#property_imagickDraw">$imagickDraw<a href="classes/chillerlan-QRCode-Output-QRImagick.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_length">$length<a href="classes/chillerlan-QRCode-Output-QRImagick.html"></li>
@@ -1714,10 +1802,12 @@ $M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
                                             <li><a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_dump">dump()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_moduleValueIsValid">moduleValueIsValid()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_collectModules">collectModules()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_createImage">createImage()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_drawImage">drawImage()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_getDefaultModuleValue">getDefaultModuleValue()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getModuleValue">getModuleValue()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getModuleValueAt">getModuleValueAt()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getOutputDimensions">getOutputDimensions()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_module">module()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QRImagick.html#method_prepareModuleValue">prepareModuleValue()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_saveToFile">saveToFile()</a></li>

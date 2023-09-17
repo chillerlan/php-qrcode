@@ -2476,11 +2476,6 @@ Search.appendIndex(
             "summary": "Checks\u0020whether\u0020GD\u0020is\u0020installed\u0020and\u0020if\u0020the\u0020given\u0020mode\u0020is\u0020supported",
             "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_checkGD"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AcreateImage\u0028\u0029",
-            "name": "createImage",
-            "summary": "Creates\u0020a\u0020new\u0020GdImage\u0020resource\u0020and\u0020scales\u0020it\u0020if\u0020necessary",
-            "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_createImage"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AmoduleValueIsValid\u0028\u0029",
             "name": "moduleValueIsValid",
             "summary": "",
@@ -2500,6 +2495,11 @@ Search.appendIndex(
             "name": "dump",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_dump"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AcreateImage\u0028\u0029",
+            "name": "createImage",
+            "summary": "Creates\u0020a\u0020new\u0020GdImage\u0020resource\u0020and\u0020scales\u0020it\u0020if\u0020necessary",
+            "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_createImage"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AsetBgColor\u0028\u0029",
             "name": "setBgColor",
@@ -2581,6 +2581,11 @@ Search.appendIndex(
             "summary": "Sets\u0020the\u0020background\u0020color",
             "url": "classes/chillerlan-QRCode-Output-QRImagick.html#method_setBgColor"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003AcreateImage\u0028\u0029",
+            "name": "createImage",
+            "summary": "Creates\u0020a\u0020new\u0020Imagick\u0020instance",
+            "url": "classes/chillerlan-QRCode-Output-QRImagick.html#method_createImage"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003AsetTransparencyColor\u0028\u0029",
             "name": "setTransparencyColor",
             "summary": "Sets\u0020the\u0020transparency\u0020color",
@@ -2606,10 +2611,10 @@ Search.appendIndex(
             "summary": "The\u0020main\u0020draw\u0020instance",
             "url": "classes/chillerlan-QRCode-Output-QRImagick.html#property_imagickDraw"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003A\u0024background",
-            "name": "background",
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003A\u0024backgroundColor",
+            "name": "backgroundColor",
             "summary": "The\u0020allocated\u0020background\u0020color",
-            "url": "classes/chillerlan-QRCode-Output-QRImagick.html#property_background"
+            "url": "classes/chillerlan-QRCode-Output-QRImagick.html#property_backgroundColor"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkup",
             "name": "QRMarkup",
@@ -2666,10 +2671,20 @@ Search.appendIndex(
             "summary": "note\u003A\u0020we\u0027re\u0020not\u0020necessarily\u0020validating\u0020the\u0020several\u0020values,\u0020just\u0020checking\u0020the\u0020general\u0020syntax\nnote\u003A\u0020css4\u0020colors\u0020are\u0020not\u0020included",
             "url": "classes/chillerlan-QRCode-Output-QRMarkupSVG.html#method_moduleValueIsValid"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG\u003A\u003AgetOutputDimensions\u0028\u0029",
+            "name": "getOutputDimensions",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QRMarkupSVG.html#method_getOutputDimensions"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG\u003A\u003AcreateMarkup\u0028\u0029",
             "name": "createMarkup",
             "summary": "returns\u0020the\u0020fully\u0020parsed\u0020and\u0020rendered\u0020markup\u0020string\u0020for\u0020the\u0020given\u0020input",
             "url": "classes/chillerlan-QRCode-Output-QRMarkupSVG.html#method_createMarkup"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG\u003A\u003AgetViewBox\u0028\u0029",
+            "name": "getViewBox",
+            "summary": "returns\u0020the\u0020value\u0020for\u0020the\u0020SVG\u0020viewBox\u0020attribute",
+            "url": "classes/chillerlan-QRCode-Output-QRMarkupSVG.html#method_getViewBox"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG\u003A\u003Aheader\u0028\u0029",
             "name": "header",
@@ -2710,6 +2725,11 @@ Search.appendIndex(
             "name": "setMatrixDimensions",
             "summary": "Sets\/updates\u0020the\u0020matrix\u0020dimensions",
             "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_setMatrixDimensions"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AgetOutputDimensions\u0028\u0029",
+            "name": "getOutputDimensions",
+            "summary": "Returns\u0020a\u00202\u0020element\u0020array\u0020with\u0020the\u0020current\u0020output\u0020width\u0020and\u0020height",
+            "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getOutputDimensions"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AsetModuleValues\u0028\u0029",
             "name": "setModuleValues",
@@ -3331,11 +3351,6 @@ Search.appendIndex(
             "summary": "Optional\u0020cache\u0020file\u0020path\u0020\u0060\/path\/to\/cache.file\u0060",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_cachefile"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imageBase64",
-            "name": "imageBase64",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imageBase64"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024outputBase64",
             "name": "outputBase64",
             "summary": "Toggle\u0020base64\u0020data\u0020URI\u0020or\u0020raw\u0020data\u0020output\u0020\u0028if\u0020applicable\u0029",
@@ -3481,16 +3496,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgPreserveAspectRatio"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgWidth",
-            "name": "svgWidth",
-            "summary": "Optional\u0020\u0022width\u0022\u0020attribute\u0020with\u0020the\u0020specified\u0020value\u0020\u0028note\u0020that\u0020the\u0020value\u0020is\u0020not\u0020checked\u0021\u0029",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgWidth"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgHeight",
-            "name": "svgHeight",
-            "summary": "Optional\u0020\u0022height\u0022\u0020attribute\u0020with\u0020the\u0020specified\u0020value\u0020\u0028note\u0020that\u0020the\u0020value\u0020is\u0020not\u0020checked\u0021\u0029",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgHeight"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024textDark",
             "name": "textDark",
             "summary": "String\u0020substitute\u0020for\u0020dark",
@@ -3530,6 +3535,31 @@ Search.appendIndex(
             "name": "readerIncreaseContrast",
             "summary": "Increase\u0020the\u0020contrast\u0020before\u0020reading",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_readerIncreaseContrast"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imageBase64",
+            "name": "imageBase64",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imageBase64"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024jpegQuality",
+            "name": "jpegQuality",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_jpegQuality"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024pngCompression",
+            "name": "pngCompression",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_pngCompression"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imageTransparencyBG",
+            "name": "imageTransparencyBG",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparencyBG"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024imagickBG",
+            "name": "imagickBG",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickBG"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Common\\BitBufferTest",
             "name": "BitBufferTest",
