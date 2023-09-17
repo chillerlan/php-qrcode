@@ -127,12 +127,6 @@ trait QROptionsTrait{
 	protected ?string $cachefile = null;
 
 	/**
-	 * @deprecated 5.0.0 use QROptions::$outputBase64 instead
-	 * @see        \chillerlan\QRCode\QROptions::$outputBase64
-	 */
-	protected bool $imageBase64 = true;
-
-	/**
 	 * Toggle base64 data URI or raw data output (if applicable)
 	 */
 	protected bool $outputBase64 = true;
@@ -538,6 +532,16 @@ trait QROptionsTrait{
 		$this->circleRadius = max(0.1, min(0.75, $circleRadius));
 	}
 
+	/*
+	 * redirect calls of deprecated variables to new/renamed property
+	 */
+
+	/**
+	 * @deprecated 5.0.0 use QROptions::$outputBase64 instead
+	 * @see        \chillerlan\QRCode\QROptions::$outputBase64
+	 */
+	protected bool $imageBase64;
+
 	/**
 	 * redirect call to the new variable
 	 *
@@ -560,9 +564,11 @@ trait QROptionsTrait{
 		return $this->outputBase64;
 	}
 
-	/*
-	 * redirect calls of deprecated variables to new/renamed property
+	/**
+	 * @deprecated 5.0.0 use QROptions::$quality instead
+	 * @see        \chillerlan\QRCode\QROptions::$quality
 	 */
+	protected int $jpegQuality;
 
 	/**
 	 * @deprecated 5.0.0 use QROptions::$quality instead
@@ -585,6 +591,12 @@ trait QROptionsTrait{
 	/**
 	 * @deprecated 5.0.0 use QROptions::$quality instead
 	 * @see        \chillerlan\QRCode\QROptions::$quality
+	 */
+	protected int $pngCompression;
+
+	/**
+	 * @deprecated 5.0.0 use QROptions::$quality instead
+	 * @see        \chillerlan\QRCode\QROptions::$quality
 	 * @codeCoverageIgnore
 	 */
 	protected function set_pngCompression(int $pngCompression):void{
@@ -603,9 +615,15 @@ trait QROptionsTrait{
 	/**
 	 * @deprecated 5.0.0 use QROptions::$transparencyColor instead
 	 * @see        \chillerlan\QRCode\QROptions::$transparencyColor
+	 */
+	protected array $imageTransparencyBG;
+
+	/**
+	 * @deprecated 5.0.0 use QROptions::$transparencyColor instead
+	 * @see        \chillerlan\QRCode\QROptions::$transparencyColor
 	 * @codeCoverageIgnore
 	 */
-	protected function set_imageTransparencyBG(array $imageTransparencyBG):void{
+	protected function set_imageTransparencyBG(?array $imageTransparencyBG):void{
 		$this->transparencyColor = $imageTransparencyBG;
 	}
 
@@ -614,16 +632,22 @@ trait QROptionsTrait{
 	 * @see        \chillerlan\QRCode\QROptions::$transparencyColor
 	 * @codeCoverageIgnore
 	 */
-	protected function get_imageTransparencyBG(){
+	protected function get_imageTransparencyBG():?array{
 		return $this->transparencyColor;
 	}
 
 	/**
 	 * @deprecated 5.0.0 use QROptions::$bgColor instead
 	 * @see        \chillerlan\QRCode\QROptions::$bgColor
+	 */
+	protected string $imagickBG;
+
+	/**
+	 * @deprecated 5.0.0 use QROptions::$bgColor instead
+	 * @see        \chillerlan\QRCode\QROptions::$bgColor
 	 * @codeCoverageIgnore
 	 */
-	protected function set_imagickBG(string $imagickBG):void{
+	protected function set_imagickBG(?string $imagickBG):void{
 		$this->bgColor = $imagickBG;
 	}
 
@@ -632,7 +656,7 @@ trait QROptionsTrait{
 	 * @see        \chillerlan\QRCode\QROptions::$bgColor
 	 * @codeCoverageIgnore
 	 */
-	protected function get_imagickBG(){
+	protected function get_imagickBG():?string{
 		return $this->bgColor;
 	}
 
