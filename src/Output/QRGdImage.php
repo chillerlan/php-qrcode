@@ -61,11 +61,12 @@ class QRGdImage extends QROutputAbstract{
 		$this->matrix  = $matrix;
 
 		$this->checkGD();
-		$this->setMatrixDimensions();
 
-		$this->image = $this->createImage();
-		// set module values after image creation because we need the GdImage instance
-		$this->setModuleValues();
+		if($this->options->invertMatrix){
+			$this->matrix->invert();
+		}
+
+		$this->setMatrixDimensions();
 	}
 
 	/**
@@ -101,27 +102,6 @@ class QRGdImage extends QROutputAbstract{
 			throw new QRCodeOutputException(sprintf('output mode "%s" not supported', $this->options->outputType));
 		}
 
-	}
-
-	/**
-	 * Creates a new GdImage resource and scales it if necessary
-	 *
-	 * we're scaling the image up in order to draw crisp round circles, otherwise they appear square-y on small scales
-	 *
-	 * @see https://github.com/chillerlan/php-qrcode/issues/23
-	 *
-	 * @return \GdImage|resource
-	 */
-	protected function createImage(){
-
-		if($this->options->drawCircularModules && $this->options->scale < 20){
-			// increase the initial image size by 10
-			$this->length    = (($this->length + 2) * 10);
-			$this->scale    *= 10;
-			$this->upscaled  = true;
-		}
-
-		return imagecreatetruecolor($this->length, $this->length);
 	}
 
 	/**
@@ -198,6 +178,9 @@ class QRGdImage extends QROutputAbstract{
 			throw new ErrorException($errstr, $errno);
 		});
 
+		$this->image = $this->createImage();
+		// set module values after image creation because we need the GdImage instance
+		$this->setModuleValues();
 		$this->setBgColor();
 
 		imagefilledrectangle($this->image, 0, 0, $this->length, $this->length, $this->background);
@@ -231,6 +214,27 @@ class QRGdImage extends QROutputAbstract{
 		restore_error_handler();
 
 		return $imageData;
+	}
+
+	/**
+	 * Creates a new GdImage resource and scales it if necessary
+	 *
+	 * we're scaling the image up in order to draw crisp round circles, otherwise they appear square-y on small scales
+	 *
+	 * @see https://github.com/chillerlan/php-qrcode/issues/23
+	 *
+	 * @return \GdImage|resource
+	 */
+	protected function createImage(){
+
+		if($this->options->drawCircularModules && $this->options->scale < 20){
+			// increase the initial image size by 10
+			$this->length   *= 10;
+			$this->scale    *= 10;
+			$this->upscaled  = true;
+		}
+
+		return imagecreatetruecolor($this->length, $this->length);
 	}
 
 	/**
