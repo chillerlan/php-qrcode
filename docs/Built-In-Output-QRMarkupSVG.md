@@ -87,11 +87,9 @@ printf('<img alt="%s" src="%s" />', $alt, $out);
 | `$outputBase64`           | `bool`         |
 | `$svgAddXmlHeader`        | `bool`         |
 | `$svgDefs`                | `string`       |
-| `$svgHeight`              | `string\|null` |
 | `$svgOpacity`             | `float`        |
 | `$svgPreserveAspectRatio` | `string`       |
 | `$svgViewBoxSize`         | `int\|null`    |
-| `$svgWidth`               | `string\|null` |
 
 
 ### Options that have no effect

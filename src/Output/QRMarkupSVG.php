@@ -73,17 +73,12 @@ class QRMarkupSVG extends QRMarkup{
 	 * returns the <svg> header with the given options parsed
 	 */
 	protected function header():string{
-		$width  = ($this->options->svgWidth !== null) ? sprintf(' width="%s"', $this->options->svgWidth) : '';
-		$height = ($this->options->svgHeight !== null) ? sprintf(' height="%s"', $this->options->svgHeight) : '';
 
-		/** @noinspection HtmlUnknownAttribute */
 		$header = sprintf(
-			'<svg xmlns="http://www.w3.org/2000/svg" class="qr-svg %1$s" viewBox="0 0 %2$s %2$s" preserveAspectRatio="%3$s"%4$s%5$s>%6$s',
+			'<svg xmlns="http://www.w3.org/2000/svg" class="qr-svg %1$s" viewBox="%2$s" preserveAspectRatio="%3$s">%4$s',
 			$this->options->cssClass,
 			($this->options->svgViewBoxSize ?? $this->moduleCount),
 			$this->options->svgPreserveAspectRatio,
-			$width,
-			$height,
 			$this->options->eol
 		);
 

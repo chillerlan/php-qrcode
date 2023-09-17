@@ -351,20 +351,6 @@ trait QROptionsTrait{
 	 */
 	protected string $svgPreserveAspectRatio = 'xMidYMid';
 
-	/**
-	 * Optional "width" attribute with the specified value (note that the value is not checked!)
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/width
-	 */
-	protected ?string $svgWidth = null;
-
-	/**
-	 * Optional "height" attribute with the specified value (note that the value is not checked!)
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/height
-	 */
-	protected ?string $svgHeight = null;
-
 
 	/*
 	 * QRString settings
