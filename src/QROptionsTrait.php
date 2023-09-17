@@ -341,6 +341,9 @@ trait QROptionsTrait{
 	 *
 	 * viewBox="0 0 x x"
 	 *
+	 * @deprecated 5.0.0 use QRMarkupSVG::getViewBox() instead
+	 * @see        \chillerlan\QRCode\Output\QRMarkupSVG::getViewBox()
+	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
 	 * @see https://css-tricks.com/scale-svg/#article-header-id-3
 	 */
