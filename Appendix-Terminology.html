@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Popular content and URI schemes" href="Appendix-URI-Content.html" />
-    <link rel="prev" title="DecoderResult" href="API-DecoderResult.html" /> 
+    <link rel="prev" title="QRString" href="Built-In-Output-QRString.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -160,43 +160,6 @@
 <li class="toctree-l3"><a class="reference internal" href="Built-In-Output-QRString.html#options-that-have-no-effect">Options that have no effect</a></li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Public API</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="API-QRCode.html">QRCode</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="API-QRCode.html#methods">Methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="API-QRCode.html#deprecated-methods">Deprecated methods</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="API-QRCode.html#constants">Constants</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="API-QRCode.html#deprecated-constants">Deprecated constants</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="API-QROptions.html">QROptions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="API-QROptions.html#methods">Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API-QROptions.html#properties">Properties</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="API-QROutputInterface.html">QROutputInterface</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="API-QROutputInterface.html#methods">Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API-QROutputInterface.html#constants">Constants</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="API-QRMatrix.html">QRMatrix</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="API-QRMatrix.html#methods">Methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="API-QRMatrix.html#deprecated-methods">Deprecated methods</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="API-QRMatrix.html#constants">Constants</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="API-DecoderResult.html">DecoderResult</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="API-DecoderResult.html#methods">Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="API-DecoderResult.html#magic-properties-read-only">Magic Properties (read-only)</a></li>
 </ul>
 </li>
 </ul>
@@ -484,7 +447,7 @@ essential to enable the remainder of the encoding region to be decoded.</p>
 <td><p>[ <code class="docutils literal notranslate"><span class="pre">1000</span></code> : 4 ] [ Character Count Indicator : variable ] [ Data Bit Stream : 13 × charcount ]</p></td>
 </tr>
 <tr class="row-even"><td><p>Hanzi</p></td>
-<td><p>[ <code class="docutils literal notranslate"><span class="pre">1101</span></code> : 4 ] [ Character Count Indicator : variable ] [ Data Bit Stream : 13 × charcount ]</p></td>
+<td><p>[ <code class="docutils literal notranslate"><span class="pre">1101</span></code> : 4 ] [ Subset Indicator : 4 ] [ Character Count Indicator : variable ] [ Data Bit Stream : 13 × charcount ]</p></td>
 </tr>
 <tr class="row-odd"><td><p>Structured append</p></td>
 <td><p>[ <code class="docutils literal notranslate"><span class="pre">0011</span></code> : 4 ] [ Symbol Position : 4 ] [ Total Symbols : 4 ] [ Parity : 8 ]</p></td>
@@ -740,7 +703,7 @@ reflectance reversal therefore means a light image on dark background (example o
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="API-DecoderResult.html" class="btn btn-neutral float-left" title="DecoderResult" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Built-In-Output-QRString.html" class="btn btn-neutral float-left" title="QRString" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="Appendix-URI-Content.html" class="btn btn-neutral float-right" title="Popular content and URI schemes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
