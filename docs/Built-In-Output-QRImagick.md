@@ -96,6 +96,8 @@ echo $imagick->getImageBlob();
 | `$imageTransparent`    | `bool`   |
 | `$imagickFormat`       | `string` |
 | `$keepAsSquare`        | `array`  |
+| `$markupDark`          | `string` |
+| `$markupLight`         | `string` |
 | `$outputBase64`        | `bool`   |
 | `$quality`             | `int`    |
 | `$returnResource`      | `bool`   |
@@ -105,7 +107,7 @@ echo $imagick->getImageBlob();
 
 ### Options that have no effect
 
-| property              | reason            |
-|-----------------------|-------------------|
-| `$connectPaths`       | N/A               |
-| `$excludeFromConnect` | N/A               |
+| property              | reason |
+|-----------------------|--------|
+| `$connectPaths`       | N/A    |
+| `$excludeFromConnect` | N/A    |

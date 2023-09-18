@@ -175,18 +175,18 @@ The *mode* is the method of representing a defined character set as a bit string
 
 Each segment consists of the 4 bit mode indicator followed by the data bit stream, where the content of the bit stream can vary depending on the mode:
 
-| Mode                    | Bit stream contents                                                                                          |
-|-------------------------|--------------------------------------------------------------------------------------------------------------|
-| Numeric                 | \[ `0001` : 4 ] \[ Character Count Indicator : variable ] \[ Data Bit Stream : 3 1⁄3 × charcount ]           |
-| Alphanumeric            | \[ `0010` : 4 ] \[ Character Count Indicator : variable ] \[ Data Bit Stream : 5 1⁄2 × charcount ]           |
-| Byte                    | \[ `0100` : 4 ] \[ Character Count Indicator : variable ] \[ Data Bit Stream : 8 × charcount ]               |
-| Kanji                   | \[ `1000` : 4 ] \[ Character Count Indicator : variable ] \[ Data Bit Stream : 13 × charcount ]              |
-| Hanzi                   | \[ `1101` : 4 ] \[ Character Count Indicator : variable ] \[ Data Bit Stream : 13 × charcount ]              |
-| Structured append       | \[ `0011` : 4 ] \[ Symbol Position : 4 ] \[ Total Symbols : 4 ] \[ Parity : 8 ]                              |
-| ECI                     | \[ `0111` : 4 ] \[ ECI Assignment number : variable ]                                                        |
-| FNC1 in first position  | \[ `0101` : 4 ] \[ Numeric/Alphanumeric/Byte/Kanji/Hanzi payload : variable ]                                |
-| FNC1 in second position | \[ `1001` : 4 ] \[ Application Indicator : 8 ] \[ Numeric/Alphanumeric/Byte/Kanji/Hanzi payload : variable ] |
-| Terminator              | \[ `0000` : 4 ]                                                                                              |
+| Mode                    | Bit stream contents                                                                                                       |
+|-------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| Numeric                 | \[ `0001` : 4 ] \[ Character Count Indicator : variable ] \[ Data Bit Stream : 3 1⁄3 × charcount ]                        |
+| Alphanumeric            | \[ `0010` : 4 ] \[ Character Count Indicator : variable ] \[ Data Bit Stream : 5 1⁄2 × charcount ]                        |
+| Byte                    | \[ `0100` : 4 ] \[ Character Count Indicator : variable ] \[ Data Bit Stream : 8 × charcount ]                            |
+| Kanji                   | \[ `1000` : 4 ] \[ Character Count Indicator : variable ] \[ Data Bit Stream : 13 × charcount ]                           |
+| Hanzi                   | \[ `1101` : 4 ] \[ Subset Indicator : 4 ] \[ Character Count Indicator : variable ] \[ Data Bit Stream : 13 × charcount ] |
+| Structured append       | \[ `0011` : 4 ] \[ Symbol Position : 4 ] \[ Total Symbols : 4 ] \[ Parity : 8 ]                                           |
+| ECI                     | \[ `0111` : 4 ] \[ ECI Assignment number : variable ]                                                                     |
+| FNC1 in first position  | \[ `0101` : 4 ] \[ Numeric/Alphanumeric/Byte/Kanji/Hanzi payload : variable ]                                             |
+| FNC1 in second position | \[ `1001` : 4 ] \[ Application Indicator : 8 ] \[ Numeric/Alphanumeric/Byte/Kanji/Hanzi payload : variable ]              |
+| Terminator              | \[ `0000` : 4 ]                                                                                                           |
 
 The lenght of the Character Count Indicator for Numeric/Alphanumeric/Byte/Kanji/Hanzi varies, depending on the version:
 
