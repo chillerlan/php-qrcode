@@ -19,8 +19,8 @@ use function bin2hex, chr, defined, sprintf;
  */
 final class HanziTest extends DataInterfaceTestAbstract{
 
-	protected string $FQN      = Hanzi::class;
-	protected string $testdata = '无可奈何燃花作香';
+	protected static string $FQN      = Hanzi::class;
+	protected static string $testdata = '无可奈何燃花作香';
 
 	/**
 	 * isGB2312() should pass on Hanzi/GB2312 characters and fail on everything else

@@ -19,7 +19,7 @@ use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\Settings\SettingsContainerInterface;
 use PHPUnit\Framework\TestCase;
 use Exception, Generator;
-use function array_map, sprintf, str_repeat, substr;
+use function array_map, defined, sprintf, str_repeat, substr;
 
 /**
  * Tests the QR Code reader
@@ -40,6 +40,11 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 	protected string                     $FQN;
 
 	protected function setUp():void{
+
+		if(!defined('READER_TEST_MAX_VERSION')){
+			$this::markTestSkipped('READER_TEST_MAX_VERSION not defined (see phpunit.xml.dist)');
+		}
+
 		$this->options = new QROptions;
 		$this->options->readerUseImagickIfAvailable = false;
 	}
@@ -85,14 +90,14 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		/** @noinspection PhpUndefinedMethodInspection */
 		$result = (new QRCode)->readFromSource($this->FQN::fromFile(__DIR__.'/samples/'.$img, $this->options));
 
-		QRMatrixTest::debugMatrix($result->getMatrix());
+		QRMatrixTest::debugMatrix($result->getQRMatrix());
 
 		$this::assertSame($expected, (string)$result);
 	}
 
 	public function testReaderMultiMode():void{
-		$this->options->outputType  = QROutputInterface::GDIMAGE_PNG;
-		$this->options->imageBase64 = false;
+		$this->options->outputType   = QROutputInterface::GDIMAGE_PNG;
+		$this->options->outputBase64 = false;
 
 		$numeric  = '123456789012345678901234567890';
 		$alphanum = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:';
@@ -117,7 +122,11 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		$str       = str_repeat(self::loremipsum, 5);
 		$eccLevels = array_map(fn(int $ecc):EccLevel => new EccLevel($ecc), [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H]);
 
-		for($v = 1; $v <= 40; $v++){
+		/**
+		 * @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist
+		 * @phan-suppress-next-next-line PhanUndeclaredConstant
+		 */
+		for($v = 1; $v <= READER_TEST_MAX_VERSION; $v++){
 			$version = new Version($v);
 
 			foreach($eccLevels as $eccLevel){
@@ -140,7 +149,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		$this->options->imageTransparent = false;
 		$this->options->eccLevel         = $ecc->getLevel();
 		$this->options->version          = $version->getVersionNumber();
-		$this->options->imageBase64      = false;
+		$this->options->outputBase64     = false;
 		// what's interesting is that a smaller scale seems to produce fewer reader errors???
 		// usually from version 20 up, independend of the luminance source
 		// scale 1-2 produces none, scale 3: 1 error, scale 4: 6 errors, scale 5: 5 errors, scale 10: 10 errors

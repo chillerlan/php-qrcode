@@ -10,10 +10,10 @@
 
 namespace chillerlan\QRCode\Output;
 
-use function sprintf;
+use function implode, sprintf;
 
 /**
- * HTML output
+ * HTML output (a cheap markup substitute when SVG is not available or not an option)
  */
 class QRMarkupHTML extends QRMarkup{
 
@@ -21,40 +21,33 @@ class QRMarkupHTML extends QRMarkup{
 	 * @inheritDoc
 	 */
 	protected function createMarkup(bool $saveToFile):string{
-		$html = empty($this->options->cssClass)
-			? '<div>'
-			: sprintf('<div class="%s">', $this->getCssClass(0)); // @todo $M_TYPE
+		$rows = [];
 
-		$html .= $this->options->eol;
+		foreach($this->matrix->getMatrix() as $row){
+			$element = '<span style="background: %s;"></span>';
+			$modules = array_map(fn(int $M_TYPE):string => sprintf($element, $this->getModuleValue($M_TYPE)), $row);
 
-		foreach($this->matrix->matrix() as $row){
-			$html .= '<div>';
-
-			foreach($row as $M_TYPE){
-				$html .= sprintf('<span style="background: %s;"></span>', $this->moduleValues[$M_TYPE]);
-			}
-
-			$html .= '</div>'.$this->options->eol;
+			$rows[]  = sprintf('<div>%s</div>%s', implode('', $modules), $this->options->eol);
 		}
 
-		$html .= '</div>'.$this->options->eol;
+		$html = sprintf(
+			'<div class="%1$s">%3$s%2$s</div>%3$s',
+			$this->getCssClass(),
+			implode('', $rows),
+			$this->options->eol
+		);
 
 		// wrap the snippet into a body when saving to file
 		if($saveToFile){
 			$html = sprintf(
-				'<!DOCTYPE html><html lang=""><head><meta charset="UTF-8"><title>QR Code</title></head><body>%s</body></html>',
-				$this->options->eol.$html
+				'<!DOCTYPE html><html lang="none">%2$s<head>%2$s<meta charset="UTF-8">%2$s'.
+					'<title>QR Code</title></head>%2$s<body>%1$s</body>%2$s</html>',
+				$html,
+				$this->options->eol
 			);
 		}
 
 		return $html;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function getCssClass(int $M_TYPE):string{
-		return $this->options->cssClass;
 	}
 
 }

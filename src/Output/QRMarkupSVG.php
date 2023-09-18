@@ -24,6 +24,8 @@ use function array_chunk, implode, is_string, preg_match, sprintf, trim;
 class QRMarkupSVG extends QRMarkup{
 
 	/**
+	 * @todo: XSS proof
+	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill
 	 * @inheritDoc
 	 */
@@ -60,7 +62,7 @@ class QRMarkupSVG extends QRMarkup{
 		$svg .= sprintf('%1$s</svg>%1$s', $this->options->eol);
 
 		// transform to data URI only when not saving to file
-		if(!$saveToFile && $this->options->imageBase64){
+		if(!$saveToFile && $this->options->outputBase64){
 			$svg = $this->toBase64DataURI($svg, 'image/svg+xml');
 		}
 
@@ -75,8 +77,7 @@ class QRMarkupSVG extends QRMarkup{
 		$height = ($this->options->svgHeight !== null) ? sprintf(' height="%s"', $this->options->svgHeight) : '';
 
 		/** @noinspection HtmlUnknownAttribute */
-		return sprintf(
-			'<?xml version="1.0" encoding="UTF-8"?>%6$s'.
+		$header = sprintf(
 			'<svg xmlns="http://www.w3.org/2000/svg" class="qr-svg %1$s" viewBox="0 0 %2$s %2$s" preserveAspectRatio="%3$s"%4$s%5$s>%6$s',
 			$this->options->cssClass,
 			($this->options->svgViewBoxSize ?? $this->moduleCount),
@@ -85,6 +86,12 @@ class QRMarkupSVG extends QRMarkup{
 			$height,
 			$this->options->eol
 		);
+
+		if($this->options->svgAddXmlHeader){
+			$header = sprintf('<?xml version="1.0" encoding="UTF-8"?>%s%s', $this->options->eol, $header);
+		}
+
+		return $header;
 	}
 
 	/**
@@ -122,8 +129,9 @@ class QRMarkupSVG extends QRMarkup{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path
 	 */
 	protected function path(string $path, int $M_TYPE):string{
+		$val = $this->getModuleValue($M_TYPE);
 		// ignore non-existent module values
-		$format = !isset($this->moduleValues[$M_TYPE]) || empty($this->moduleValues[$M_TYPE])
+		$format = empty($val)
 			? '<path class="%1$s" d="%2$s"/>'
 			: '<path class="%1$s" fill="%3$s" fill-opacity="%4$s" d="%2$s"/>';
 
@@ -131,7 +139,7 @@ class QRMarkupSVG extends QRMarkup{
 			$format,
 			$this->getCssClass($M_TYPE),
 			$path,
-			($this->moduleValues[$M_TYPE] ?? ''), // value may or may not exist
+			($val ?? ''), // value may or may not exist
 			$this->options->svgOpacity
 		);
 	}
@@ -139,9 +147,9 @@ class QRMarkupSVG extends QRMarkup{
 	/**
 	 * @inheritDoc
 	 */
-	protected function getCssClass(int $M_TYPE):string{
+	protected function getCssClass(int $M_TYPE = 0):string{
 		return implode(' ', [
-			'qr-'.$M_TYPE,
+			'qr-'.($this::LAYERNAMES[$M_TYPE] ?? $M_TYPE),
 			(($M_TYPE & QRMatrix::IS_DARK) === QRMatrix::IS_DARK) ? 'dark' : 'light',
 			$this->options->cssClass,
 		]);

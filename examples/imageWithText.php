@@ -1,6 +1,7 @@
 <?php
 /**
- * example for additional text
+ * GdImage example for displaying additional text under the QR Code
+ *
  * @link https://github.com/chillerlan/php-qrcode/issues/35
  *
  * @created      22.06.2019
@@ -41,7 +42,7 @@ class QRImageWithText extends QRGdImage{
 
 		$this->saveToFile($imageData, $file);
 
-		if($this->options->imageBase64){
+		if($this->options->outputBase64){
 			$imageData = $this->toBase64DataURI($imageData, 'image/'.$this->options->outputType);
 		}
 
@@ -93,22 +94,27 @@ class QRImageWithText extends QRGdImage{
  * Runtime
  */
 
-$options = new QROptions([
-	'version'     => 7,
-	'outputType'  => QROutputInterface::GDIMAGE_PNG,
-	'scale'       => 3,
-	'imageBase64' => false,
-]);
+$options = new QROptions;
+
+$options->version      = 7;
+$options->outputType   = QROutputInterface::GDIMAGE_PNG;
+$options->scale        = 3;
+$options->outputBase64 = false;
+
 
 $qrcode = new QRCode($options);
 $qrcode->addByteSegment('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
-header('Content-type: image/png');
-
-$qrOutputInterface = new QRImageWithText($options, $qrcode->getMatrix());
+// invoke the custom output interface manually
+$qrOutputInterface = new QRImageWithText($options, $qrcode->getQRMatrix());
 
 // dump the output, with additional text
 // the text could also be supplied via the options, see the svgWithLogo example
-echo $qrOutputInterface->dump(null, 'example text');
+$out = $qrOutputInterface->dump(null, 'example text');
+
+
+header('Content-type: image/png');
+
+echo $out;
 
 exit;

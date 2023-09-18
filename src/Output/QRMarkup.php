@@ -21,6 +21,8 @@ abstract class QRMarkup extends QROutputAbstract{
 	 * note: we're not necessarily validating the several values, just checking the general syntax
 	 * note: css4 colors are not included
 	 *
+	 * @todo: XSS proof
+	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
 	 * @inheritDoc
 	 */
@@ -55,7 +57,7 @@ abstract class QRMarkup extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function getModuleValue($value):string{
+	protected function prepareModuleValue($value):string{
 		return trim(strip_tags($value), " '\"\r\n\t");
 	}
 
@@ -80,10 +82,13 @@ abstract class QRMarkup extends QROutputAbstract{
 	/**
 	 * returns a string with all css classes for the current element
 	 */
-	abstract protected function getCssClass(int $M_TYPE):string;
+	protected function getCssClass(int $M_TYPE = 0):string{
+		return $this->options->cssClass;
+	}
 
 	/**
-	 *
+	 * returns the fully parsed and rendered markup string for the given input
 	 */
 	abstract protected function createMarkup(bool $saveToFile):string;
+
 }

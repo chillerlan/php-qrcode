@@ -14,6 +14,7 @@ use chillerlan\QRCode\Common\BitBuffer;
 use chillerlan\QRCode\Common\MaskPattern;
 use chillerlan\QRCode\Data\QRData;
 use chillerlan\QRCode\Output\QRGdImage;
+use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 use PHPUnit\Framework\TestCase;
@@ -42,14 +43,16 @@ final class QRDataTest extends TestCase{
 
 		$options     = new QROptions(['version' => 3]);
 		$bitBuffer   = new BitBuffer($rawBytes);
-		$QRData      = (new QRData($options))->setBitBuffer($bitBuffer);
-		$maskPattern = MaskPattern::getBestPattern($QRData);
-		$matrix      = $QRData->writeMatrix($maskPattern);
+		$matrix      = (new QRData($options))->setBitBuffer($bitBuffer)->writeMatrix();
+		$maskPattern = MaskPattern::getBestPattern($matrix);
 
-		$this::assertSame(3, $matrix->version()->getVersionNumber());
+		$matrix->setFormatInfo($maskPattern)->mask($maskPattern);
+
+		$this::assertSame(3, $matrix->getVersion()->getVersionNumber());
 
 		// attempt to read
-		$options->imageBase64                 = false;
+		$options->outputType                  = QROutputInterface::GDIMAGE_PNG;
+		$options->outputBase64                = false;
 		$options->readerUseImagickIfAvailable = false;
 
 		$output       = new QRGdImage($options, $matrix);

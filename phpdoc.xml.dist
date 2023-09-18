@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<phpdoc>
-	<parser>
-		<target>docs</target>
-		<encoding>utf8</encoding>
-		<markers>
-			<item>TODO</item>
-		</markers>
-	</parser>
-	<transformer>
-		<target>docs</target>
-	</transformer>
-	<files>
-		<directory>src</directory>
-		<directory>tests</directory>
-	</files>
-	<transformations>
-		<template name="responsive-twig"/>
-	</transformations>
-</phpdoc>
+<phpdocumentor xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xmlns="https://www.phpdoc.org"
+               xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/phpDocumentor/phpDocumentor/master/data/xsd/phpdoc.xsd"
+               configVersion="3"
+>
+	<!-- https://docs.phpdoc.org/3.0/guide/references/configuration.html#configuration -->
+	<paths>
+		<output>.build/phpdocs</output>
+		<cache>.build/phpdocs-cache</cache>
+	</paths>
+	<version number="3.0.0">
+		<api>
+			<source dsn=".">
+				<path>src</path>
+				<path>tests</path>
+			</source>
+			<extensions>
+				<extension>php</extension>
+			</extensions>
+		</api>
+	</version>
+	<setting name="template.color" value="deep-purple"/>
+	<template name="default" />
+</phpdocumentor>

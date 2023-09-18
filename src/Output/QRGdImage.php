@@ -14,15 +14,17 @@ namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
-use ErrorException, Throwable;
-use function array_values, count, extension_loaded, imagecolorallocate, imagecolortransparent, imagecreatetruecolor,
-	imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng, imagescale, intval,
-	is_array, is_numeric, max, min, ob_end_clean, ob_get_contents, ob_start, restore_error_handler, set_error_handler;
+use ErrorException;
+use Throwable;
+use function array_values, count, extension_loaded, gd_info, imagebmp, imagecolorallocate, imagecolortransparent,
+	imagecreatetruecolor, imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng,
+	imagescale, imagewebp, intdiv, intval, is_array, is_numeric, max, min, ob_end_clean, ob_get_contents, ob_start,
+	restore_error_handler, set_error_handler, sprintf;
 
 /**
  * Converts the matrix into GD images, raw or base64 output (requires ext-gd)
  *
- * @see http://php.net/manual/book.image.php
+ * @see https://php.net/manual/book.image.php
  */
 class QRGdImage extends QROutputAbstract{
 
@@ -55,18 +57,63 @@ class QRGdImage extends QROutputAbstract{
 	 * @noinspection PhpMissingParentConstructorInspection
 	 */
 	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
-
-		if(!extension_loaded('gd')){
-			throw new QRCodeOutputException('ext-gd not loaded'); // @codeCoverageIgnore
-		}
-
 		$this->options = $options;
 		$this->matrix  = $matrix;
 
+		$this->checkGD();
 		$this->setMatrixDimensions();
 
-		// we're scaling the image up in order to draw crisp round circles, otherwise they appear square-y on small scales
-		// @see https://github.com/chillerlan/php-qrcode/issues/23
+		$this->image = $this->createImage();
+		// set module values after image creation because we need the GdImage instance
+		$this->setModuleValues();
+	}
+
+	/**
+	 * Checks whether GD is installed and if the given mode is supported
+	 *
+	 * @return void
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 * @codeCoverageIgnore
+	 */
+	protected function checkGD():void{
+
+		if(!extension_loaded('gd')){
+			throw new QRCodeOutputException('ext-gd not loaded');
+		}
+
+		$modes = [
+			self::GDIMAGE_BMP  => 'BMP Support',
+			self::GDIMAGE_GIF  => 'GIF Create Support',
+			self::GDIMAGE_JPG  => 'JPEG Support',
+			self::GDIMAGE_PNG  => 'PNG Support',
+			self::GDIMAGE_WEBP => 'WebP Support',
+		];
+
+		// likely using default or custom output
+		if(!isset($modes[$this->options->outputType])){
+			return;
+		}
+
+		$info = gd_info();
+		$mode = $modes[$this->options->outputType];
+
+		if(!isset($info[$mode]) || $info[$mode] !== true){
+			throw new QRCodeOutputException(sprintf('output mode "%s" not supported', $this->options->outputType));
+		}
+
+	}
+
+	/**
+	 * Creates a new GdImage resource and scales it if necessary
+	 *
+	 * we're scaling the image up in order to draw crisp round circles, otherwise they appear square-y on small scales
+	 *
+	 * @see https://github.com/chillerlan/php-qrcode/issues/23
+	 *
+	 * @return \GdImage|resource
+	 */
+	protected function createImage(){
+
 		if($this->options->drawCircularModules && $this->options->scale < 20){
 			// increase the initial image size by 10
 			$this->length    = (($this->length + 2) * 10);
@@ -74,9 +121,7 @@ class QRGdImage extends QROutputAbstract{
 			$this->upscaled  = true;
 		}
 
-		$this->image = imagecreatetruecolor($this->length, $this->length);
-		// set module values after image creation because we need the GdImage instance
-		$this->setModuleValues();
+		return imagecreatetruecolor($this->length, $this->length);
 	}
 
 	/**
@@ -110,7 +155,7 @@ class QRGdImage extends QROutputAbstract{
 	 * @inheritDoc
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function getModuleValue($value):int{
+	protected function prepareModuleValue($value):int{
 		$values = [];
 
 		foreach(array_values($value) as $i => $val){
@@ -136,7 +181,7 @@ class QRGdImage extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	protected function getDefaultModuleValue(bool $isDark):int{
-		return $this->getModuleValue(($isDark) ? [0, 0, 0] : [255, 255, 255]);
+		return $this->prepareModuleValue(($isDark) ? [0, 0, 0] : [255, 255, 255]);
 	}
 
 	/**
@@ -149,9 +194,8 @@ class QRGdImage extends QROutputAbstract{
 	 */
 	public function dump(string $file = null){
 
-		/** @phan-suppress-next-line PhanTypeMismatchArgumentInternal */
-		set_error_handler(function(int $severity, string $msg, string $file, int $line):void{
-			throw new ErrorException($msg, 0, $severity, $file, $line);
+		set_error_handler(function(int $errno, string $errstr):bool{
+			throw new ErrorException($errstr, $errno);
 		});
 
 		$this->setBgColor();
@@ -167,6 +211,7 @@ class QRGdImage extends QROutputAbstract{
 		}
 
 		// set transparency after scaling, otherwise it would be undone
+		// @see https://www.php.net/manual/en/function.imagecolortransparent.php#77099
 		$this->setTransparencyColor();
 
 		if($this->options->returnResource){
@@ -179,7 +224,7 @@ class QRGdImage extends QROutputAbstract{
 
 		$this->saveToFile($imageData, $file);
 
-		if($this->options->imageBase64){
+		if($this->options->outputBase64){
 			$imageData = $this->toBase64DataURI($imageData, 'image/'.$this->options->outputType);
 		}
 
@@ -198,12 +243,12 @@ class QRGdImage extends QROutputAbstract{
 		}
 
 		if($this::moduleValueIsValid($this->options->bgColor)){
-			$this->background = $this->getModuleValue($this->options->bgColor);
+			$this->background = $this->prepareModuleValue($this->options->bgColor);
 
 			return;
 		}
 
-		$this->background = $this->getModuleValue([255, 255, 255]);
+		$this->background = $this->prepareModuleValue([255, 255, 255]);
 	}
 
 	/**
@@ -218,19 +263,19 @@ class QRGdImage extends QROutputAbstract{
 		$transparencyColor = $this->background;
 
 		if($this::moduleValueIsValid($this->options->transparencyColor)){
-			$transparencyColor = $this->getModuleValue($this->options->transparencyColor);
+			$transparencyColor = $this->prepareModuleValue($this->options->transparencyColor);
 		}
 
 		imagecolortransparent($this->image, $transparencyColor);
 	}
 
 	/**
-	 * Creates the QR image
+	 * Draws the QR image
 	 */
 	protected function drawImage():void{
-		foreach($this->matrix->matrix() as $y => $row){
+		foreach($this->matrix->getMatrix() as $y => $row){
 			foreach($row as $x => $M_TYPE){
-				$this->setPixel($x, $y, $M_TYPE);
+				$this->module($x, $y, $M_TYPE);
 			}
 		}
 	}
@@ -238,29 +283,35 @@ class QRGdImage extends QROutputAbstract{
 	/**
 	 * Creates a single QR pixel with the given settings
 	 */
-	protected function setPixel(int $x, int $y, int $M_TYPE):void{
+	protected function module(int $x, int $y, int $M_TYPE):void{
 
 		if(!$this->options->drawLightModules && !$this->matrix->check($x, $y)){
 			return;
 		}
 
-		$this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)
-			? imagefilledellipse(
+		$color = $this->getModuleValue($M_TYPE);
+
+		if($this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)){
+			imagefilledellipse(
 				$this->image,
-				(int)(($x * $this->scale) + ($this->scale / 2)),
-				(int)(($y * $this->scale) + ($this->scale / 2)),
+				(($x * $this->scale) + intdiv($this->scale, 2)),
+				(($y * $this->scale) + intdiv($this->scale, 2)),
 				(int)(2 * $this->options->circleRadius * $this->scale),
 				(int)(2 * $this->options->circleRadius * $this->scale),
-				$this->moduleValues[$M_TYPE]
-			)
-			: imagefilledrectangle(
-				$this->image,
-				($x * $this->scale),
-				($y * $this->scale),
-				(($x + 1) * $this->scale),
-				(($y + 1) * $this->scale),
-				$this->moduleValues[$M_TYPE]
+				$color
 			);
+
+			return;
+		}
+
+		imagefilledrectangle(
+			$this->image,
+			($x * $this->scale),
+			($y * $this->scale),
+			(($x + 1) * $this->scale),
+			(($y + 1) * $this->scale),
+			$color
+		);
 	}
 
 	/**
@@ -269,35 +320,47 @@ class QRGdImage extends QROutputAbstract{
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function dumpImage():string{
+		$exception = null;
+
 		ob_start();
 
 		try{
 
 			switch($this->options->outputType){
+				case QROutputInterface::GDIMAGE_BMP:
+					imagebmp($this->image, null, ($this->options->quality > 0));
+					break;
 				case QROutputInterface::GDIMAGE_GIF:
 					imagegif($this->image);
 					break;
 				case QROutputInterface::GDIMAGE_JPG:
-					imagejpeg($this->image, null, max(0, min(100, $this->options->jpegQuality)));
+					imagejpeg($this->image, null, max(-1, min(100, $this->options->quality)));
+					break;
+				case QROutputInterface::GDIMAGE_WEBP:
+					imagewebp($this->image, null, max(-1, min(100, $this->options->quality)));
 					break;
 				// silently default to png output
 				case QROutputInterface::GDIMAGE_PNG:
 				default:
-					imagepng($this->image, null, max(-1, min(9, $this->options->pngCompression)));
+					imagepng($this->image, null, max(-1, min(9, $this->options->quality)));
 			}
 
+			$imageData = ob_get_contents();
+			imagedestroy($this->image);
 		}
 		// not going to cover edge cases
 		// @codeCoverageIgnoreStart
 		catch(Throwable $e){
-			throw new QRCodeOutputException($e->getMessage());
+			$exception = $e;
 		}
 		// @codeCoverageIgnoreEnd
 
-		$imageData = ob_get_contents();
-		imagedestroy($this->image);
-
 		ob_end_clean();
+
+		// throw here in case an exception happened within the output buffer
+		if($exception instanceof Throwable){
+			throw new QRCodeOutputException($exception->getMessage());
+		}
 
 		return $imageData;
 	}

@@ -54,9 +54,7 @@ final class ReedSolomonEncoder{
 		$maxEcBytes     = 0;
 		$dataByteOffset = 0;
 
-		foreach($rsBlocks as $key => $block){
-			[$rsBlockTotal, $dataByteCount] = $block;
-
+		foreach($rsBlocks as $key => [$rsBlockTotal, $dataByteCount]){
 			$dataBytes[$key] = [];
 
 			for($i = 0; $i < $dataByteCount; $i++){

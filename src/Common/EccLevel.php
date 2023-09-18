@@ -37,7 +37,7 @@ final class EccLevel{
 	 */
 	private const MAX_BITS = [
 	//	[    L,     M,     Q,     H]  // v  => modules
-		[ null,  null,  null,  null], // 0  =>  will be ignored, index starts at 1
+		[    0,     0,     0,     0], // 0  =>  will be ignored, index starts at 1
 		[  152,   128,   104,    72], // 1  =>  21
 		[  272,   224,   176,   128], // 2  =>  25
 		[  440,   352,   272,   208], // 3  =>  29
@@ -207,7 +207,18 @@ final class EccLevel{
 	 * @return int[]
 	 */
 	public function getMaxBits():array{
-		return array_column(self::MAX_BITS, $this->getOrdinal());
+		$col = array_column(self::MAX_BITS, $this->getOrdinal());
+
+		unset($col[0]); // remove the inavlid index 0
+
+		return $col;
+	}
+
+	/**
+	 * Returns the maximum bit length for the given version and current ECC level
+	 */
+	public function getMaxBitsForVersion(Version $version):int{
+		return self::MAX_BITS[$version->getVersionNumber()][$this->getOrdinal()];
 	}
 
 }

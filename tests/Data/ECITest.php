@@ -11,61 +11,42 @@
 namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\QROptions;
-use chillerlan\QRCode\Common\{BitBuffer, ECICharset, MaskPattern, Mode};
-use chillerlan\QRCode\Data\{Byte, ECI, Number, QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
+use chillerlan\QRCode\Common\{BitBuffer, ECICharset, Mode};
+use chillerlan\QRCode\Data\{Byte, ECI, Number, QRCodeDataException, QRData, QRDataModeInterface};
+use PHPUnit\Framework\TestCase;
 
 /**
  * Tests the ECI class
  */
-final class ECITest extends DataInterfaceTestAbstract{
+final class ECITest extends TestCase{
 
-	protected string $FQN         = ECI::class;
+	protected QRData $QRData;
 	protected string $testdata    = '无可奈何燃花作香';
 	private int      $testCharset = ECICharset::GB18030;
 
+	protected function setUp():void{
+		$this->QRData = new QRData(new QROptions);
+	}
+
 	private function getDataSegments():array{
 		return [
-			new $this->FQN($this->testCharset),
+			new ECI($this->testCharset),
 			new Byte(mb_convert_encoding($this->testdata, ECICharset::MB_ENCODINGS[$this->testCharset], mb_internal_encoding())),
 		];
 	}
 
-	public static function stringValidateProvider():array{
-		return [];
-	}
-
 	/** @inheritDoc */
 	public function testDataModeInstance():void{
-		$datamode = new $this->FQN($this->testCharset);
+		$datamode = new ECI($this->testCharset);
 
 		$this::assertInstanceOf(QRDataModeInterface::class, $datamode);
 	}
 
 	/**
-	 * @inheritDoc
-	 * @dataProvider maskPatternProvider
+	 * returns versions within the version breakpoints 1-9, 10-26 and 27-40
 	 */
-	public function testInitMatrix(int $maskPattern):void{
-		$segments = $this->getDataSegments();
-
-		$this->QRData->setData($segments);
-
-		$matrix = $this->QRData->writeMatrix(new MaskPattern($maskPattern));
-
-		$this::assertInstanceOf(QRMatrix::class, $matrix);
-		$this::assertSame($maskPattern, $matrix->maskPattern()->getPattern());
-	}
-
-	/** @inheritDoc */
-	public function testGetMinimumVersion():void{
-		/** @noinspection PhpUnitTestFailedLineInspection */
-		$this::markTestSkipped('N/A (ECI mode)');
-	}
-
-	/** @inheritDoc */
-	public function testBinaryStringInvalid():void{
-		/** @noinspection PhpUnitTestFailedLineInspection */
-		$this::markTestSkipped('N/A (ECI mode)');
+	public static function versionBreakpointProvider():array{
+		return ['1-9' => [7], '10-26' => [15], '27-40' => [30]];
 	}
 
 	/**
@@ -86,20 +67,7 @@ final class ECITest extends DataInterfaceTestAbstract{
 		// read the first 4 bits
 		$this::assertSame($segments[0]::DATAMODE, $bitBuffer->read(4));
 		// decode the data
-		/** @noinspection PhpUndefinedMethodInspection */
-		$this::assertSame($this->testdata, $this->FQN::decodeSegment($bitBuffer, $options->version));
-	}
-
-	/** @inheritDoc */
-	public function testGetMinimumVersionException():void{
-		/** @noinspection PhpUnitTestFailedLineInspection */
-		$this::markTestSkipped('N/A (ECI mode)');
-	}
-
-	/** @inheritDoc */
-	public function testCodeLengthOverflowException():void{
-		/** @noinspection PhpUnitTestFailedLineInspection */
-		$this::markTestSkipped('N/A (ECI mode)');
+		$this::assertSame($this->testdata, ECI::decodeSegment($bitBuffer, $options->version));
 	}
 
 	/** @inheritDoc */
@@ -107,7 +75,7 @@ final class ECITest extends DataInterfaceTestAbstract{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid encoding id:');
 		/** @phan-suppress-next-line PhanNoopNew */
-		new $this->FQN(-1);
+		new ECI(-1);
 	}
 
 	/**
@@ -120,7 +88,7 @@ final class ECITest extends DataInterfaceTestAbstract{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid encoding id:');
 		/** @phan-suppress-next-line PhanNoopNew */
-		new $this->FQN(1000000);
+		new ECI(1000000);
 	}
 
 	public static function eciCharsetIdProvider():array{
@@ -139,12 +107,11 @@ final class ECITest extends DataInterfaceTestAbstract{
 	 */
 	public function testReadWrite(int $id, int $lengthInBits):void{
 		$bitBuffer = new BitBuffer;
-		$eci       = (new $this->FQN($id))->write($bitBuffer, 1);
+		$eci       = (new ECI($id))->write($bitBuffer, 1);
 
 		$this::assertSame($lengthInBits, $eci->getLengthInBits());
 		$this::assertSame(Mode::ECI, $bitBuffer->read(4));
-		/** @noinspection PhpUndefinedMethodInspection */
-		$this::assertSame($id, $this->FQN::parseValue($bitBuffer)->getID());
+		$this::assertSame($id, ECI::parseValue($bitBuffer)->getID());
 	}
 
 	/**
@@ -163,8 +130,7 @@ final class ECITest extends DataInterfaceTestAbstract{
 		$segments[1] = new Number('1');
 		$bitBuffer   = (new QRData($options, $segments))->getBitBuffer();
 		$this::assertSame(Mode::ECI, $bitBuffer->read(4));
-		/** @noinspection PhpUndefinedMethodInspection */
-		$this->FQN::decodeSegment($bitBuffer, $options->version);
+		ECI::decodeSegment($bitBuffer, $options->version);
 	}
 
 	public function unknownEncodingDataProvider():array{
@@ -183,11 +149,10 @@ final class ECITest extends DataInterfaceTestAbstract{
 		$options          = new QROptions;
 		$options->version = 5;
 
-		$segments  = [new $this->FQN($id), new Byte($data)];
+		$segments  = [new ECI($id), new Byte($data)];
 		$bitBuffer = (new QRData($options, $segments))->getBitBuffer();
 		$this::assertSame(Mode::ECI, $bitBuffer->read(4));
-		/** @noinspection PhpUndefinedMethodInspection */
-		$this::assertSame($data, $this->FQN::decodeSegment($bitBuffer, $options->version));
+		$this::assertSame($data, ECI::decodeSegment($bitBuffer, $options->version));
 	}
 
 }

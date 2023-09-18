@@ -1,10 +1,13 @@
 <?php
 /**
+ * "melted" modules example
+ *
  * This code generates an SVG QR code with rounded corners. It uses a round rect for each square and then additional
  * paths to fill in the gap where squares are next to each other. Adjacent squares overlap - to almost completely
  * eliminate hairline antialias "cracks" that tend to appear when two SVG paths are exactly adjacent to each other.
  *
  * @see https://github.com/chillerlan/php-qrcode/issues/127
+ * @see ./shapes.svg
  */
 
 use chillerlan\QRCode\{QRCode, QROptions};
@@ -38,8 +41,9 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 		$paths = [];
 
 		// collect the modules for each type
-		foreach($this->matrix->matrix() as $y => $row){
-			foreach($row as $x => $M_TYPE){
+		for($y = 0; $y < $this->moduleCount; $y++){
+			for($x = 0; $x < $this->moduleCount; $x++){
+				$M_TYPE       = $this->matrix->get($x, $y);
 				$M_TYPE_LAYER = $M_TYPE;
 
 				if($this->options->connectPaths && !$this->matrix->checkTypeIn($x, $y, $this->options->excludeFromConnect)){
@@ -47,7 +51,7 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 					$M_TYPE_LAYER = QRMatrix::M_DATA;
 
 					if($this->matrix->check($x, $y)){
-						$M_TYPE_LAYER |= QRMatrix::IS_DARK;
+						$M_TYPE_LAYER = QRMatrix::M_DATA_DARK;
 					}
 				}
 
@@ -242,28 +246,28 @@ class MeltedOutputOptions extends QROptions{
 /*
  * Runtime
  */
+$options = new MeltedOutputOptions;
 
-$options = new MeltedOutputOptions([
-	'melt'               => true,
-	'inverseMelt'        => true,
-	'meltRadius'         => 0.4,
+// settings from the custom options class
+$options->melt               = true;
+$options->inverseMelt        = true;
+$options->meltRadius         = 0.4;
 
-	'version'            => 7,
-	'eccLevel'           => EccLevel::H,
-	'addQuietzone'       => true,
-	'addLogoSpace'       => true,
-	'logoSpaceWidth'     => 13,
-	'logoSpaceHeight'    => 13,
-	'connectPaths'       => true,
-	'imageBase64'        => false,
-
-	'outputType'         => QROutputInterface::CUSTOM,
-	'outputInterface'    => MeltedSVGQRCodeOutput::class,
-	'excludeFromConnect' => [
-		QRMatrix::M_FINDER_DARK,
-		QRMatrix::M_FINDER_DOT,
-	],
-	'svgDefs'            => '
+$options->version            = 7;
+$options->outputType         = QROutputInterface::CUSTOM;
+$options->outputInterface    = MeltedSVGQRCodeOutput::class;
+$options->outputBase64       = false;
+$options->addQuietzone       = true;
+$options->eccLevel           = EccLevel::H;
+$options->addLogoSpace       = true;
+$options->logoSpaceWidth     = 13;
+$options->logoSpaceHeight    = 13;
+$options->connectPaths       = true;
+$options->excludeFromConnect = [
+	QRMatrix::M_FINDER_DARK,
+	QRMatrix::M_FINDER_DOT,
+];
+$options->svgDefs            = '
 	<linearGradient id="rainbow" x1="100%" y2="100%">
 		<stop stop-color="#e2453c" offset="2.5%"/>
 		<stop stop-color="#e07e39" offset="21.5%"/>
@@ -274,11 +278,11 @@ $options = new MeltedOutputOptions([
 	</linearGradient>
 	<style><![CDATA[
 		.light, .dark{fill: url(#rainbow);}
-	]]></style>',
-]);
+	]]></style>';
 
 
-$qrcode = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+$out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+
 
 if(php_sapi_name() !== 'cli'){
 	header('Content-type: image/svg+xml');
@@ -286,10 +290,10 @@ if(php_sapi_name() !== 'cli'){
 	if(extension_loaded('zlib')){
 		header('Vary: Accept-Encoding');
 		header('Content-Encoding: gzip');
-		$qrcode = gzencode($qrcode, 9);
+		$out = gzencode($out, 9);
 	}
 }
 
-echo $qrcode;
+echo $out;
 
 exit;

@@ -25,10 +25,10 @@ use function class_exists, class_implements, in_array, mb_convert_encoding, mb_i
  * Turns a text string into a Model 2 QR Code
  *
  * @see https://github.com/kazuhikoarase/qrcode-generator/tree/master/php
- * @see http://www.qrcode.com/en/codes/model12.html
+ * @see https://www.qrcode.com/en/codes/model12.html
  * @see https://www.swisseduc.ch/informatik/theoretische_informatik/qr_codes/docs/qr_standard.pdf
  * @see https://en.wikipedia.org/wiki/QR_code
- * @see http://www.thonky.com/qr-code-tutorial/
+ * @see https://www.thonky.com/qr-code-tutorial/
  */
 class QRCode{
 
@@ -179,6 +179,8 @@ class QRCode{
 
 	/**
 	 * QRCode constructor.
+	 *
+	 * PHP8: accept iterable
 	 */
 	public function __construct(SettingsContainerInterface $options = null){
 		$this->setOptions(($options ?? new QROptions));
@@ -216,7 +218,7 @@ class QRCode{
 			}
 		}
 
-		return $this->renderMatrix($this->getMatrix(), $file);
+		return $this->renderMatrix($this->getQRMatrix(), $file);
 	}
 
 	/**
@@ -233,15 +235,23 @@ class QRCode{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function getMatrix():QRMatrix{
-		$dataInterface = new QRData($this->options, $this->dataSegments);
-		$maskPattern   = $this->options->maskPattern === MaskPattern::AUTO
-			? MaskPattern::getBestPattern($dataInterface)
+	public function getQRMatrix():QRMatrix{
+		$matrix = (new QRData($this->options, $this->dataSegments))->writeMatrix();
+
+		$maskPattern = $this->options->maskPattern === MaskPattern::AUTO
+			? MaskPattern::getBestPattern($matrix)
 			: new MaskPattern($this->options->maskPattern);
 
-		$matrix = $dataInterface->writeMatrix($maskPattern);
+		$matrix->setFormatInfo($maskPattern)->mask($maskPattern);
 
-		// add matrix modifications after mask pattern evaluation and before handing over to output
+		return $this->addMatrixModifications($matrix);
+	}
+
+	/**
+	 * add matrix modifications after mask pattern evaluation and before handing over to output
+	 */
+	protected function addMatrixModifications(QRMatrix $matrix):QRMatrix{
+
 		if($this->options->addLogoSpace){
 			$logoSpaceWidth  = $this->options->logoSpaceWidth;
 			$logoSpaceHeight = $this->options->logoSpaceHeight;
@@ -265,6 +275,15 @@ class QRCode{
 		}
 
 		return $matrix;
+	}
+
+	/**
+	 * @deprecated 5.0.0 use QRCode::getQRMatrix() instead
+	 * @see \chillerlan\QRCode\QRCode::getQRMatrix()
+	 * @codeCoverageIgnore
+	 */
+	public function getMatrix():QRMatrix{
+		return $this->getQRMatrix();
 	}
 
 	/**

@@ -17,8 +17,8 @@ use chillerlan\QRCode\Data\Number;
  */
 final class NumberTest extends DataInterfaceTestAbstract{
 
-	protected string $FQN      = Number::class;
-	protected string $testdata = '0123456789';
+	protected static string $FQN      = Number::class;
+	protected static string $testdata = '0123456789';
 
 	/**
 	 * isNumber() should pass on any number and fail on anything else

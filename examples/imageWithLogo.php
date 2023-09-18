@@ -1,5 +1,7 @@
 <?php
 /**
+ * GdImage with logo output example
+ *
  * @created      18.11.2020
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2020 smiley
@@ -52,7 +54,7 @@ class QRImageWithLogo extends QRGdImage{
 		$lh = (($this->options->logoSpaceHeight - 2) * $this->options->scale);
 
 		// get the qrcode size
-		$ql = ($this->matrix->size() * $this->options->scale);
+		$ql = ($this->matrix->getSize() * $this->options->scale);
 
 		// scale the logo and copy it over. done!
 		imagecopyresampled($this->image, $im, (($ql - $lw) / 2), (($ql - $lh) / 2), 0, 0, $lw, $lh, $w, $h);
@@ -61,7 +63,7 @@ class QRImageWithLogo extends QRGdImage{
 
 		$this->saveToFile($imageData, $file);
 
-		if($this->options->imageBase64){
+		if($this->options->outputBase64){
 			$imageData = $this->toBase64DataURI($imageData, 'image/'.$this->options->outputType);
 		}
 
@@ -70,33 +72,42 @@ class QRImageWithLogo extends QRGdImage{
 
 }
 
+
 /*
  * Runtime
  */
 
-$options = new QROptions([
-	'version'             => 5,
-	'eccLevel'            => EccLevel::H,
-	'imageBase64'         => false,
-	'addLogoSpace'        => true,
-	'logoSpaceWidth'      => 13,
-	'logoSpaceHeight'     => 13,
-	'scale'               => 6,
-	'imageTransparent'    => false,
-	'drawCircularModules' => true,
-	'circleRadius'        => 0.45,
-	'keepAsSquare'        => [QRMatrix::M_FINDER, QRMatrix::M_FINDER_DOT],
-]);
+$options = new QROptions;
+
+$options->version             = 5;
+$options->outputBase64        = false;
+$options->scale               = 6;
+$options->imageTransparent    = false;
+$options->drawCircularModules = true;
+$options->circleRadius        = 0.45;
+$options->keepAsSquare        = [
+	QRMatrix::M_FINDER,
+	QRMatrix::M_FINDER_DOT,
+];
+// ecc level H is required for logo space
+$options->eccLevel            = EccLevel::H;
+$options->addLogoSpace        = true;
+$options->logoSpaceWidth      = 13;
+$options->logoSpaceHeight     = 13;
+
 
 $qrcode = new QRCode($options);
 $qrcode->addByteSegment('https://github.com');
 
-header('Content-type: image/png');
-
-$qrOutputInterface = new QRImageWithLogo($options, $qrcode->getMatrix());
+$qrOutputInterface = new QRImageWithLogo($options, $qrcode->getQRMatrix());
 
 // dump the output, with an additional logo
 // the logo could also be supplied via the options, see the svgWithLogo example
-echo $qrOutputInterface->dump(null, __DIR__.'/octocat.png');
+$out = $qrOutputInterface->dump(null, __DIR__.'/octocat.png');
+
+
+header('Content-type: image/png');
+
+echo $out;
 
 exit;

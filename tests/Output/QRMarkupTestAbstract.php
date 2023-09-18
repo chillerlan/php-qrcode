@@ -43,7 +43,7 @@ abstract class QRMarkupTestAbstract extends QROutputTestAbstract{
 	 * @inheritDoc
 	 */
 	public function testSetModuleValues():void{
-		$this->options->imageBase64      = false;
+		$this->options->outputBase64     = false;
 		$this->options->drawLightModules = true;
 		$this->options->moduleValues     = [
 			// data

@@ -1,6 +1,6 @@
 <?php
 /**
- * multimode.php
+ * multi/mixed mode example
  *
  * @created      31.01.2023
  * @author       smiley <smiley@chillerlan.net>
@@ -19,7 +19,7 @@ mb_internal_encoding('UTF-8');
 
 // please excuse the IDE yelling https://youtrack.jetbrains.com/issue/WI-66549
 $options = new QROptions;
-$options->imageBase64  = false;
+$options->outputBase64 = false;
 $options->connectPaths = true;
 
 $qrcode = (new QRCode($options))
@@ -34,7 +34,9 @@ $qrcode = (new QRCode($options))
 	->addByteSegment('https://www.bundesverfassungsgericht.de/SharedDocs/Pressemitteilungen/DE/2016/bvg16-036.html')
 ;
 
-$render = $qrcode->render();
+
+$out = $qrcode->render();
+
 
 if(PHP_SAPI !== 'cli'){
 	header('Content-type: image/svg+xml');
@@ -42,10 +44,10 @@ if(PHP_SAPI !== 'cli'){
 	if(extension_loaded('zlib')){
 		header('Vary: Accept-Encoding');
 		header('Content-Encoding: gzip');
-		$render = gzencode($render, 9);
+		$out = gzencode($out, 9);
 	}
 }
 
-echo $render;
+echo $out;
 
 exit;

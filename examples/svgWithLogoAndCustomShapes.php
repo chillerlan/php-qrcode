@@ -1,5 +1,7 @@
 <?php
 /**
+ * SVG with logo and custom shapes example
+ *
  * @see https://github.com/chillerlan/php-qrcode/discussions/150
  *
  * @created      05.03.2022
@@ -93,9 +95,8 @@ class QRSvgWithLogoAndCustomShapes extends QRMarkupSVG{
 		          'q0,1 1,1 h3 q1,0 1,-1 v-3 q0,-1 -1,-1z m0,2.5 a1.5,1.5 0 1 0 3,0 a1.5,1.5 0 1 0 -3,0Z';
 		$finder = [];
 
-		foreach($pos as $coord){
-			[$ix, $iy] = $coord;
-			$finder[]  = sprintf($path, $ix, $iy);
+		foreach($pos as [$ix, $iy]){
+			$finder[] = sprintf($path, $ix, $iy);
 		}
 
 		return implode(' ', $finder);
@@ -170,7 +171,7 @@ $options->version         = 5;
 $options->quietzoneSize   = 4;
 $options->outputType      = QROutputInterface::CUSTOM;
 $options->outputInterface = QRSvgWithLogoAndCustomShapes::class;
-$options->imageBase64     = false;
+$options->outputBase64    = false;
 $options->eccLevel        = EccLevel::H; // ECC level H is required when using logos
 $options->addQuietzone    = true;
 
@@ -186,7 +187,8 @@ $options->svgDefs         = '
 		.light{fill: #eaeaea;}
 	]]></style>';
 
-$qrcode = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+
+$out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 
 if(php_sapi_name() !== 'cli'){
@@ -195,10 +197,10 @@ if(php_sapi_name() !== 'cli'){
 	if(extension_loaded('zlib')){
 		header('Vary: Accept-Encoding');
 		header('Content-Encoding: gzip');
-		$qrcode = gzencode($qrcode, 9);
+		$out = gzencode($out, 9);
 	}
 }
 
-echo $qrcode;
+echo $out;
 
 exit;

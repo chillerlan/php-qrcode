@@ -14,7 +14,7 @@
 namespace chillerlan\QRCode\Detector;
 
 use chillerlan\QRCode\Decoder\BitMatrix;
-use function abs, count, usort;
+use function abs, count, intdiv, usort;
 use const PHP_FLOAT_MAX;
 
 /**
@@ -49,14 +49,14 @@ final class FinderPatternFinder{
 	 * @return \chillerlan\QRCode\Detector\FinderPattern[]
 	 */
 	public function find():array{
-		$dimension = $this->matrix->size();
+		$dimension = $this->matrix->getSize();
 
 		// We are looking for black/white/black/white/black modules in
 		// 1:1:3:1:1 ratio; this tracks the number of such modules seen so far
 		// Let's assume that the maximum version QR Code we support takes up 1/4 the height of the
 		// image, and then account for the center being 3 modules in size. This gives the smallest
 		// number of pixels the center could be, so skip this often.
-		$iSkip = (int)((3 * $dimension) / (4 * self::MAX_MODULES));
+		$iSkip = intdiv((3 * $dimension), (4 * self::MAX_MODULES));
 
 		if($iSkip < self::MIN_SKIP){
 			$iSkip = self::MIN_SKIP;
@@ -286,7 +286,7 @@ final class FinderPatternFinder{
 			return false;
 		}
 
-		$dimension = $this->matrix->size();
+		$dimension = $this->matrix->getSize();
 
 		// Now also count down, right from center
 		$i = 1;
@@ -331,7 +331,7 @@ final class FinderPatternFinder{
 	 * @noinspection DuplicatedCode
 	 */
 	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):?float{
-		$maxI       = $this->matrix->size();
+		$maxI       = $this->matrix->getSize();
 		$stateCount = $this->getCrossCheckStateCount();
 
 		// Start counting up from center
@@ -415,7 +415,7 @@ final class FinderPatternFinder{
 	 * @noinspection DuplicatedCode
 	 */
 	private function crossCheckHorizontal(int $startJ, int $centerI, int $maxCount, int $originalStateCountTotal):?float{
-		$maxJ       = $this->matrix->size();
+		$maxJ       = $this->matrix->getSize();
 		$stateCount = $this->getCrossCheckStateCount();
 
 		$j = $startJ;

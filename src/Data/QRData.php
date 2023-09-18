@@ -10,9 +10,10 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, Mode, Version};
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, Mode, Version};
 use chillerlan\Settings\SettingsContainerInterface;
 
+use function count;
 use function sprintf;
 
 /**
@@ -121,11 +122,10 @@ final class QRData{
 	/**
 	 * returns a fresh matrix object with the data written and masked with the given $maskPattern
 	 */
-	public function writeMatrix(MaskPattern $maskPattern):QRMatrix{
-		return (new QRMatrix($this->version, $this->eccLevel, $maskPattern))
+	public function writeMatrix():QRMatrix{
+		return (new QRMatrix($this->version, $this->eccLevel))
 			->initFunctionalPatterns()
 			->writeCodewords($this->bitBuffer)
-			->mask()
 		;
 	}
 
@@ -134,30 +134,49 @@ final class QRData{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	private function estimateTotalBitLength():int{
+	public function estimateTotalBitLength():int{
 		$length = 0;
-		$margin = 0;
 
 		foreach($this->dataSegments as $segment){
-			// data length in bits of the current segment +4 bits for each mode descriptor
-			$length += ($segment->getLengthInBits() + Mode::getLengthBitsForVersion($segment::DATAMODE, 1) + 4);
-
-			if(!$segment instanceof ECI){
-				// mode length bits margin to the next breakpoint
-				$margin += ($segment instanceof Byte) ? 8 : 2;
+			// data length of the current segment
+			$length += $segment->getLengthInBits();
+			// +4 bits for the mode descriptor
+			$length += 4;
+			// Hanzi mode sets an additional 4 bit long subset identifier
+			if($segment instanceof Hanzi){
+				$length += 4;
 			}
 		}
 
-		foreach([9, 26, 40] as $breakpoint){
+		$provisionalVersion = null;
 
-			// length bits for the first breakpoint have already been added
-			if($breakpoint > 9){
-				$length += $margin;
+		foreach($this->maxBitsForEcc as $version => $maxBits){
+
+			if($length <= $maxBits){
+				$provisionalVersion = $version;
 			}
 
-			if($length < $this->maxBitsForEcc[$breakpoint]){
+		}
+
+		if($provisionalVersion !== null){
+
+			// add character count indicator bits for the provisional version
+			foreach($this->dataSegments as $segment){
+				$length += Mode::getLengthBitsForVersion($segment::DATAMODE, $provisionalVersion);
+			}
+
+			// it seems that in some cases the estimated total length is not 100% accurate,
+			// so we substract 4 bits from the total when not in mixed mode
+			if(count($this->dataSegments) <= 1){
+				$length -= 4;
+			}
+
+			// we've got a match!
+			// or let's see if there's a higher version number available
+			if($length <= $this->maxBitsForEcc[$provisionalVersion] || isset($this->maxBitsForEcc[($provisionalVersion + 1)])){
 				return $length;
 			}
+
 		}
 
 		throw new QRCodeDataException(sprintf('estimated data exceeds %d bits', $length));
@@ -168,7 +187,7 @@ final class QRData{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	private function getMinimumVersion():Version{
+	public function getMinimumVersion():Version{
 
 		if($this->options->version !== Version::AUTO){
 			return new Version($this->options->version);
@@ -193,11 +212,10 @@ final class QRData{
 	 * @throws \chillerlan\QRCode\QRCodeException on data overflow
 	 */
 	private function writeBitBuffer():void{
-		$version  = $this->version->getVersionNumber();
-		$MAX_BITS = $this->maxBitsForEcc[$version];
+		$MAX_BITS = $this->eccLevel->getMaxBitsForVersion($this->version);
 
 		foreach($this->dataSegments as $segment){
-			$segment->write($this->bitBuffer, $version);
+			$segment->write($this->bitBuffer, $this->version->getVersionNumber());
 		}
 
 		// overflow, likely caused due to invalid version setting
@@ -209,7 +227,7 @@ final class QRData{
 
 		// add terminator (ISO/IEC 18004:2000 Table 2)
 		if(($this->bitBuffer->getLength() + 4) <= $MAX_BITS){
-			$this->bitBuffer->put(0, 4);
+			$this->bitBuffer->put(Mode::TERMINATOR, 4);
 		}
 
 		// Padding: ISO/IEC 18004:2000 8.4.9 Bit stream to codeword conversion
@@ -217,6 +235,11 @@ final class QRData{
 		// if the final codeword is not exactly 8 bits in length, it shall be made 8 bits long
 		// by the addition of padding bits with binary value 0
 		while(($this->bitBuffer->getLength() % 8) !== 0){
+
+			if($this->bitBuffer->getLength() === $MAX_BITS){
+				break;
+			}
+
 			$this->bitBuffer->putBit(false);
 		}
 
@@ -225,10 +248,16 @@ final class QRData{
 		// Codewords 11101100 and 00010001 alternately.
 		$alternate = false;
 
-		while($this->bitBuffer->getLength() <= $MAX_BITS){
+		while(($this->bitBuffer->getLength() + 8) <= $MAX_BITS){
 			$this->bitBuffer->put(($alternate) ? 0b00010001 : 0b11101100, 8);
 
 			$alternate = !$alternate;
+		}
+
+		// In certain versions of symbol, it may be necessary to add 3, 4 or 7 Remainder Bits (all zeros)
+		// to the end of the message in order exactly to fill the symbol capacity
+		while($this->bitBuffer->getLength() <= $MAX_BITS){
+			$this->bitBuffer->putBit(false);
 		}
 
 	}

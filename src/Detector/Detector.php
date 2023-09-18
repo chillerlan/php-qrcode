@@ -14,7 +14,7 @@ namespace chillerlan\QRCode\Detector;
 use chillerlan\QRCode\Decoder\{Binarizer, LuminanceSourceInterface};
 use chillerlan\QRCode\Common\Version;
 use chillerlan\QRCode\Decoder\BitMatrix;
-use function abs, is_nan, max, min, round;
+use function abs, intdiv, is_nan, max, min, round;
 use const NAN;
 
 /**
@@ -42,7 +42,7 @@ final class Detector{
 
 		$moduleSize         = $this->calculateModuleSize($topLeft, $topRight, $bottomLeft);
 		$dimension          = $this->computeDimension($topLeft, $topRight, $bottomLeft, $moduleSize);
-		$provisionalVersion = new Version((int)(($dimension - 17) / 4));
+		$provisionalVersion = new Version(intdiv(($dimension - 17), 4));
 		$alignmentPattern   = null;
 
 		// Anything above version 1 has an alignment pattern
@@ -124,7 +124,7 @@ final class Detector{
 	 */
 	private function sizeOfBlackWhiteBlackRunBothWays(float $fromX, float $fromY, float $toX, float $toY):float{
 		$result    = $this->sizeOfBlackWhiteBlackRun((int)$fromX, (int)$fromY, (int)$toX, (int)$toY);
-		$dimension = $this->matrix->size();
+		$dimension = $this->matrix->getSize();
 		// Now count other way -- don't run off image though of course
 		$scale     = 1.0;
 		$otherToX  = ($fromX - ($toX - $fromX));
@@ -278,7 +278,7 @@ final class Detector{
 		float $allowanceFactor
 	):?AlignmentPattern{
 		// Look for an alignment pattern (3 modules in size) around where it should be
-		$dimension           = $this->matrix->size();
+		$dimension           = $this->matrix->getSize();
 		$allowance           = (int)($allowanceFactor * $overallEstModuleSize);
 		$alignmentAreaLeftX  = max(0, ($estAlignmentX - $allowance));
 		$alignmentAreaRightX = min(($dimension - 1), ($estAlignmentX + $allowance));

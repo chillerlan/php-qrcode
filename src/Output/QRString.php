@@ -7,13 +7,13 @@
  * @copyright    2015 Smiley
  * @license      MIT
  *
- * @noinspection PhpUnusedParameterInspection
  * @noinspection PhpComposerExtensionStubsInspection
  */
 
 namespace chillerlan\QRCode\Output;
 
-use function implode, is_string, json_encode;
+use function implode, is_string, json_encode, max, min, sprintf;
+use const JSON_THROW_ON_ERROR;
 
 /**
  * Converts the matrix data into string types
@@ -30,7 +30,7 @@ class QRString extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function getModuleValue($value):string{
+	protected function prepareModuleValue($value):string{
 		return $value;
 	}
 
@@ -64,26 +64,45 @@ class QRString extends QROutputAbstract{
 	 * string output
 	 */
 	protected function text():string{
-		$str = [];
+		$lines = [];
 
-		foreach($this->matrix->matrix() as $row){
+		for($y = 0; $y < $this->moduleCount; $y++){
 			$r = [];
 
-			foreach($row as $M_TYPE){
-				$r[] = $this->moduleValues[$M_TYPE];
+			for($x = 0; $x < $this->moduleCount; $x++){
+				$r[] = $this->getModuleValueAt($x, $y);
 			}
 
-			$str[] = implode('', $r);
+			$lines[] = $this->options->textLineStart.implode('', $r);
 		}
 
-		return implode($this->options->eol, $str);
+		return implode($this->options->eol, $lines);
 	}
 
 	/**
 	 * JSON output
+	 *
+	 * @throws \JsonException
 	 */
 	protected function json():string{
-		return json_encode($this->matrix->matrix());
+		return json_encode($this->matrix->getMatrix($this->options->jsonAsBooleans), JSON_THROW_ON_ERROR);
+	}
+
+	//
+
+	/**
+	 * a little helper to create a proper ANSI 8-bit color escape sequence
+	 *
+	 * @see https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
+	 * @see https://en.wikipedia.org/wiki/Block_Elements
+	 *
+	 * @codeCoverageIgnore
+	 */
+	public static function ansi8(string $str, int $color, bool $background = null):string{
+		$color      = max(0, min($color, 255));
+		$background = ($background === true) ? 48 : 38;
+
+		return sprintf("\x1b[%s;5;%sm%s\x1b[0m", $background, $color, $str);
 	}
 
 }

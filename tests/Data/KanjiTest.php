@@ -19,8 +19,8 @@ use function bin2hex, chr, defined, sprintf;
  */
 final class KanjiTest extends DataInterfaceTestAbstract{
 
-	protected string $FQN      = Kanji::class;
-	protected string $testdata = '漂う花の香り';
+	protected static string $FQN      = Kanji::class;
+	protected static string $testdata = '漂う花の香り';
 
 	/**
 	 * isKanji() should pass on Kanji/SJIS characters and fail on everything else

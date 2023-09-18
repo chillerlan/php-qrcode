@@ -109,6 +109,7 @@
 		<exclude name="PSR2.ControlStructures.SwitchDeclaration" />
 		<exclude name="PSR2.Methods.FunctionClosingBrace" />
 		<exclude name="PSR2.Namespaces.UseDeclaration.MultipleDeclarations" />
+		<exclude name="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse" />
 	</rule>
 
 	<rule ref="PSR2.Methods.MethodDeclaration.Underscore">
@@ -121,6 +122,7 @@
 
 
 	<rule ref="PSR12">
+		<exclude name="PSR12.Classes.AnonClassDeclaration.SpaceAfterKeyword" />
 		<exclude name="PSR12.Classes.ClassInstantiation" />
 		<exclude name="PSR12.Classes.OpeningBraceSpace" />
 		<exclude name="PSR12.ControlStructures" />
@@ -128,6 +130,7 @@
 		<exclude name="PSR12.Files.FileHeader.SpacingAfterBlock" />
 		<exclude name="PSR12.Functions.ReturnTypeDeclaration" />
 		<exclude name="PSR12.Operators.OperatorSpacing" />
+		<exclude name="PSR12.Traits.UseDeclaration.MultipleImport" />
 	</rule>
 
 	<rule ref="PSR12.Namespaces.CompoundNamespaceDepth">

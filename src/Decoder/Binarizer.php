@@ -12,7 +12,7 @@
 namespace chillerlan\QRCode\Decoder;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use function array_fill, count, max;
+use function array_fill, count, intdiv, max;
 
 /**
  * This class implements a local thresholding algorithm, which while slower than the
@@ -167,13 +167,14 @@ final class Binarizer{
 		// Quickly calculates the histogram by sampling four rows from the image. This proved to be
 		// more robust on the blackbox tests than sampling a diagonal as we used to do.
 		$buckets = array_fill(0, self::LUMINANCE_BUCKETS, 0);
+		$right   = intdiv(($width * 4), 5);
+		$x       = intdiv($width, 5);
 
 		for($y = 1; $y < 5; $y++){
-			$row             = (int)($height * $y / 5);
+			$row             = intdiv(($height * $y), 5);
 			$localLuminances = $this->source->getRow($row);
-			$right           = (int)(($width * 4) / 5);
 
-			for($x = (int)($width / 5); $x < $right; $x++){
+			for(; $x < $right; $x++){
 				$pixel = ($localLuminances[$x] & 0xff);
 				$buckets[($pixel >> self::LUMINANCE_SHIFT)]++;
 			}
@@ -262,7 +263,7 @@ final class Binarizer{
 					//
 					// The default assumption is that the block is light/background. Since no estimate for
 					// the level of dark pixels exists locally, use half the min for the block.
-					$average = (int)($min / 2);
+					$average = ($min / 2);
 
 					if($y > 0 && $x > 0){
 						// Correct the "white background" assumption for blocks that have neighbors by comparing
@@ -272,7 +273,7 @@ final class Binarizer{
 						// the boundaries is used for the interior.
 
 						// The (min < bp) is arbitrary but works better than other heuristics that were tried.
-						$averageNeighborBlackPoint = (int)(
+						$averageNeighborBlackPoint = (
 							($blackPoints[($y - 1)][$x] + (2 * $blackPoints[$y][($x - 1)]) + $blackPoints[($y - 1)][($x - 1)]) / 4
 						);
 

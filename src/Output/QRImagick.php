@@ -15,14 +15,14 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use finfo, Imagick, ImagickDraw, ImagickPixel;
-use function extension_loaded, in_array, is_string, preg_match, strlen;
+use function extension_loaded, in_array, is_string, max, min, preg_match, strlen;
 use const FILEINFO_MIME_TYPE;
 
 /**
  * ImageMagick output module (requires ext-imagick)
  *
- * @see http://php.net/manual/book.imagick.php
- * @see http://phpimagick.com
+ * @see https://php.net/manual/book.imagick.php
+ * @see https://phpimagick.com
  */
 class QRImagick extends QROutputAbstract{
 
@@ -78,7 +78,7 @@ class QRImagick extends QROutputAbstract{
 		// #rrggbb(aa)
 		// #rrrrggggbbbb(aaaa)
 		// ...
-		if(preg_match('/^#[a-f]+$/i', $value) && in_array((strlen($value) - 1), [3, 4, 6, 8, 9, 12, 16, 24, 32], true)){
+		if(preg_match('/^#[a-f\d]+$/i', $value) && in_array((strlen($value) - 1), [3, 4, 6, 8, 9, 12, 16, 24, 32], true)){
 			return true;
 		}
 
@@ -97,9 +97,8 @@ class QRImagick extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
-	 * @throws \ImagickPixelException
 	 */
-	protected function getModuleValue($value):ImagickPixel{
+	protected function prepareModuleValue($value):ImagickPixel{
 		return new ImagickPixel($value);
 	}
 
@@ -107,7 +106,7 @@ class QRImagick extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	protected function getDefaultModuleValue(bool $isDark):ImagickPixel{
-		return $this->getModuleValue(($isDark) ? $this->options->markupDark : $this->options->markupLight);
+		return $this->prepareModuleValue(($isDark) ? $this->options->markupDark : $this->options->markupLight);
 	}
 
 	/**
@@ -121,6 +120,10 @@ class QRImagick extends QROutputAbstract{
 		$this->setBgColor();
 
 		$this->imagick->newImage($this->length, $this->length, $this->background, $this->options->imagickFormat);
+
+		if($this->options->quality > -1){
+			$this->imagick->setImageCompressionQuality(max(0, min(100, $this->options->quality)));
+		}
 
 		$this->drawImage();
 		// set transparency color after all operations
@@ -136,7 +139,7 @@ class QRImagick extends QROutputAbstract{
 
 		$this->saveToFile($imageData, $file);
 
-		if($this->options->imageBase64){
+		if($this->options->outputBase64){
 			$imageData = $this->toBase64DataURI($imageData, (new finfo(FILEINFO_MIME_TYPE))->buffer($imageData));
 		}
 
@@ -153,12 +156,12 @@ class QRImagick extends QROutputAbstract{
 		}
 
 		if($this::moduleValueIsValid($this->options->bgColor)){
-			$this->background = $this->getModuleValue($this->options->bgColor);
+			$this->background = $this->prepareModuleValue($this->options->bgColor);
 
 			return;
 		}
 
-		$this->background = $this->getModuleValue('white');
+		$this->background = $this->prepareModuleValue('white');
 	}
 
 	/**
@@ -173,7 +176,7 @@ class QRImagick extends QROutputAbstract{
 		$transparencyColor = $this->background;
 
 		if($this::moduleValueIsValid($this->options->transparencyColor)){
-			$transparencyColor = $this->getModuleValue($this->options->transparencyColor);
+			$transparencyColor = $this->prepareModuleValue($this->options->transparencyColor);
 		}
 
 		$this->imagick->transparentPaintImage($transparencyColor, 0.0, 10, false);
@@ -186,9 +189,9 @@ class QRImagick extends QROutputAbstract{
 		$this->imagickDraw = new ImagickDraw;
 		$this->imagickDraw->setStrokeWidth(0);
 
-		foreach($this->matrix->matrix() as $y => $row){
+		foreach($this->matrix->getMatrix() as $y => $row){
 			foreach($row as $x => $M_TYPE){
-				$this->setPixel($x, $y, $M_TYPE);
+				$this->module($x, $y, $M_TYPE);
 			}
 		}
 
@@ -198,27 +201,31 @@ class QRImagick extends QROutputAbstract{
 	/**
 	 * draws a single pixel at the given position
 	 */
-	protected function setPixel(int $x, int $y, int $M_TYPE):void{
+	protected function module(int $x, int $y, int $M_TYPE):void{
 
 		if(!$this->options->drawLightModules && !$this->matrix->check($x, $y)){
 			return;
 		}
 
-		$this->imagickDraw->setFillColor($this->moduleValues[$M_TYPE]);
+		$this->imagickDraw->setFillColor($this->getModuleValue($M_TYPE));
 
-		$this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)
-			? $this->imagickDraw->circle(
+		if($this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)){
+			$this->imagickDraw->circle(
 				(($x + 0.5) * $this->scale),
 				(($y + 0.5) * $this->scale),
 				(($x + 0.5 + $this->options->circleRadius) * $this->scale),
 				(($y + 0.5) * $this->scale)
-			)
-			: $this->imagickDraw->rectangle(
-				($x * $this->scale),
-				($y * $this->scale),
-				(($x + 1) * $this->scale),
-				(($y + 1) * $this->scale)
 			);
+
+			return;
+		}
+
+		$this->imagickDraw->rectangle(
+			($x * $this->scale),
+			($y * $this->scale),
+			((($x + 1) * $this->scale) - 1),
+			((($y + 1) * $this->scale) - 1)
+		);
 	}
 
 }

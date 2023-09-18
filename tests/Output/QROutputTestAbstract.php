@@ -10,9 +10,9 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
+use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
-use chillerlan\QRCode\Common\MaskPattern;
-use chillerlan\QRCode\Data\{Byte, QRData, QRMatrix};
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use PHPUnit\Framework\TestCase;
 
@@ -43,9 +43,7 @@ abstract class QROutputTestAbstract extends TestCase{
 
 		$this->options             = new QROptions;
 		$this->options->outputType = $this->type;
-
-		$this->matrix              = (new QRData($this->options, [new Byte('testdata')]))
-			->writeMatrix(new MaskPattern(MaskPattern::PATTERN_010));
+		$this->matrix              = (new QRCode($this->options))->addByteSegment('testdata')->getQRMatrix();
 		$this->outputInterface     = new $this->FQN($this->options, $this->matrix);
 	}
 
@@ -93,8 +91,8 @@ abstract class QROutputTestAbstract extends TestCase{
 	 * coverage of the built-in output modules
 	 */
 	public function testRenderToCacheFile():void{
-		$this->options->imageBase64 = false;
-		$this->outputInterface      = new $this->FQN($this->options, $this->matrix);
+		$this->options->outputBase64 = false;
+		$this->outputInterface       = new $this->FQN($this->options, $this->matrix);
 		// create the cache file
 		$file = $this->builddir.'/test.output.'.$this->type;
 		$data = $this->outputInterface->dump($file);

@@ -3,10 +3,8 @@
 	"description": "A QR code generator and reader with a user friendly API. PHP 7.4+",
 	"homepage": "https://github.com/chillerlan/php-qrcode",
 	"license": [
-		"MIT",
-		"Apache-2.0"
+		"MIT", "Apache-2.0"
 	],
-	"minimum-stability": "stable",
 	"type": "library",
 	"keywords": [
 		"QR code", "qrcode", "qr", "qrcode-generator", "phpqrcode", "qrcode-reader", "qr-reader"
@@ -34,12 +32,21 @@
 			"homepage":"https://github.com/chillerlan/php-qrcode/graphs/contributors"
 		}
 	],
+	"support": {
+		"docs": "https://chillerlan.github.io/php-qrcode",
+		"issues": "https://github.com/chillerlan/php-qrcode/issues",
+		"source": "https://github.com/chillerlan/php-qrcode",
+		"wiki": "https://github.com/chillerlan/php-qrcode/wiki"
+	},
+	"minimum-stability": "stable",
+	"prefer-stable": true,
 	"require": {
 		"php": "^7.4 || ^8.0",
 		"ext-mbstring": "*",
-		"chillerlan/php-settings-container": "^2.1.4"
+		"chillerlan/php-settings-container": "^2.1.4 || ^3.0"
 	},
 	"require-dev": {
+		"chillerlan/php-authenticator": "^4.0 || ^5.0",
 		"phan/phan": "^5.4",
 		"phpunit/phpunit": "^9.6",
 		"phpmd/phpmd": "^2.13",

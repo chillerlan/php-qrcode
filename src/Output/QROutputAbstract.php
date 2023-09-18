@@ -23,7 +23,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	/**
 	 * the current size of the QR matrix
 	 *
-	 * @see \chillerlan\QRCode\Data\QRMatrix::size()
+	 * @see \chillerlan\QRCode\Data\QRMatrix::getSize()
 	 */
 	protected int $moduleCount;
 
@@ -61,6 +61,10 @@ abstract class QROutputAbstract implements QROutputInterface{
 		$this->options = $options;
 		$this->matrix  = $matrix;
 
+		if($this->options->invertMatrix){
+			$this->matrix->invert();
+		}
+
 		$this->setMatrixDimensions();
 		$this->setModuleValues();
 	}
@@ -71,7 +75,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 * Call this method if you modify the matrix from within your custom module in case the dimensions have been changed
 	 */
 	protected function setMatrixDimensions():void{
-		$this->moduleCount = $this->matrix->size();
+		$this->moduleCount = $this->matrix->getSize();
 		$this->scale       = $this->options->scale;
 		$this->length      = ($this->moduleCount * $this->scale);
 	}
@@ -85,25 +89,50 @@ abstract class QROutputAbstract implements QROutputInterface{
 			$value = ($this->options->moduleValues[$M_TYPE] ?? null);
 
 			$this->moduleValues[$M_TYPE] = $this::moduleValueIsValid($value)
-				? $this->getModuleValue($value)
+				? $this->prepareModuleValue($value)
 				: $this->getDefaultModuleValue($defaultValue);
 		}
 
 	}
 
 	/**
-	 * Returns the final value for the given input (return value depends on the output module)
+	 * Returns the prepared value for the given $M_TYPE
+	 *
+	 * @return mixed|null return value depends on the output class, null if $moduleValues[$M_TYPE] doesn't exist
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
+	protected function getModuleValue(int $M_TYPE){
+
+		if(!isset($this->moduleValues[$M_TYPE])){
+			return null;
+#			throw new QRCodeOutputException(sprintf('invalid M_TYPE: %024b', $M_TYPE));
+		}
+
+		return $this->moduleValues[$M_TYPE];
+	}
+
+	/**
+	 * Returns the prepared module value at the given coordinate [$x, $y] (convenience)
+	 *
+	 * @return mixed|null
+	 */
+	protected function getModuleValueAt(int $x, int $y){
+		return $this->getModuleValue($this->matrix->get($x, $y));
+	}
+
+	/**
+	 * Prepares the value for the given input ()
 	 *
 	 * @param mixed $value
 	 *
-	 * @return mixed
+	 * @return mixed|null return value depends on the output class
 	 */
-	abstract protected function getModuleValue($value);
+	abstract protected function prepareModuleValue($value);
 
 	/**
-	 * Returns a default value for either dark or light modules (return value depends on the output module)
+	 * Returns a default value for either dark or light modules
 	 *
-	 * @return mixed
+	 * @return mixed|null return value depends on the output class
 	 */
 	abstract protected function getDefaultModuleValue(bool $isDark);
 
@@ -152,8 +181,9 @@ abstract class QROutputAbstract implements QROutputInterface{
 		$paths = [];
 
 		// collect the modules for each type
-		foreach($this->matrix->matrix() as $y => $row){
-			foreach($row as $x => $M_TYPE){
+		for($y = 0; $y < $this->moduleCount; $y++){
+			for($x = 0; $x < $this->moduleCount; $x++){
+				$M_TYPE       = $this->matrix->get($x, $y);
 				$M_TYPE_LAYER = $M_TYPE;
 
 				if($this->options->connectPaths && !$this->matrix->checkTypeIn($x, $y, $this->options->excludeFromConnect)){
@@ -161,7 +191,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 					$M_TYPE_LAYER = QRMatrix::M_DATA;
 
 					if($this->matrix->check($x, $y)){
-						$M_TYPE_LAYER |= QRMatrix::IS_DARK;
+						$M_TYPE_LAYER = QRMatrix::M_DATA_DARK;
 					}
 				}
 

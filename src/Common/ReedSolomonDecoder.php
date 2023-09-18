@@ -52,9 +52,7 @@ final class ReedSolomonDecoder{
 		$dataBlocks  = $this->deinterleaveRawBytes($rawCodewords);
 		$dataBytes   = [];
 
-		foreach($dataBlocks as $dataBlock){
-			[$numDataCodewords, $codewordBytes] = $dataBlock;
-
+		foreach($dataBlocks as [$numDataCodewords, $codewordBytes]){
 			$corrected = $this->correctErrors($codewordBytes, $numDataCodewords);
 
 			for($i = 0; $i < $numDataCodewords; $i++){
@@ -81,9 +79,7 @@ final class ReedSolomonDecoder{
 		$result          = [];//new DataBlock[$totalBlocks];
 		$numResultBlocks = 0;
 
-		foreach($eccBlocks as $blockData){
-			[$numEccBlocks, $eccPerBlock] = $blockData;
-
+		foreach($eccBlocks as [$numEccBlocks, $eccPerBlock]){
 			for($i = 0; $i < $numEccBlocks; $i++, $numResultBlocks++){
 				$result[$numResultBlocks] = [$eccPerBlock, array_fill(0, ($numEccCodewords + $eccPerBlock), 0)];
 			}

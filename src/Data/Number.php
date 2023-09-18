@@ -12,7 +12,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
 
-use function array_flip, ceil, ord, str_split, substr;
+use function array_flip, ceil, intdiv, str_split, substr, unpack;
 
 /**
  * Numeric mode: decimal digits 0 to 9
@@ -100,8 +100,8 @@ final class Number extends QRDataModeAbstract{
 	private function parseInt(string $string):int{
 		$num = 0;
 
-		foreach(str_split($string) as $chr){
-			$num = ($num * 10 + ord($chr) - 48);
+		foreach(unpack('C*', $string) as $chr){
+			$num = ($num * 10 + $chr - 48);
 		}
 
 		return $num;
@@ -140,8 +140,8 @@ final class Number extends QRDataModeAbstract{
 				throw new QRCodeDataException('error decoding numeric value');
 			}
 
-			$result .= $toNumericChar((int)($threeDigitsBits / 100));
-			$result .= $toNumericChar((int)($threeDigitsBits / 10) % 10);
+			$result .= $toNumericChar(intdiv($threeDigitsBits, 100));
+			$result .= $toNumericChar(intdiv($threeDigitsBits, 10) % 10);
 			$result .= $toNumericChar($threeDigitsBits % 10);
 
 			$length -= 3;
@@ -159,7 +159,7 @@ final class Number extends QRDataModeAbstract{
 				throw new QRCodeDataException('error decoding numeric value');
 			}
 
-			$result .= $toNumericChar($twoDigitsBits / 10);
+			$result .= $toNumericChar(intdiv($twoDigitsBits, 10));
 			$result .= $toNumericChar($twoDigitsBits % 10);
 		}
 		elseif($length === 1){
