@@ -145,10 +145,11 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 			case !$invert && $check(0b00001010, 0b01010101): // 7
 			case  $invert && $check(0b00000000, 0b00011111):
 				return 'M%1$s,%2$s v%4$s q0,%3$s %3$s,%3$s h%4$s v-1Z';
+			default:
+				// full square
+				return 'M%1$s,%2$s h1 v1 h-1Z';
 		}
 
-		// full square
-		return 'M%1$s,%2$s h1 v1 h-1Z';
 	}
 
 	/**
@@ -204,10 +205,11 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 			case !$invert && $check(0b11100000, 0b00011111): // 7
 			case  $invert && $check(0b10100000, 0b01010101):
 				return 'M%1$s,%2$s m0,1 v-%3$s q0,%3$s %3$s,%3$sZ';
+			default:
+				// empty block
+				return '';
 		}
 
-		// empty block
-		return '';
 	}
 
 }

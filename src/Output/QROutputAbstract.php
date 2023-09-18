@@ -197,11 +197,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 
 				if($this->options->connectPaths && !$this->matrix->checkTypeIn($x, $y, $this->options->excludeFromConnect)){
 					// to connect paths we'll redeclare the $M_TYPE_LAYER to data only
-					$M_TYPE_LAYER = QRMatrix::M_DATA;
-
-					if($this->matrix->check($x, $y)){
-						$M_TYPE_LAYER = QRMatrix::M_DATA_DARK;
-					}
+					$M_TYPE_LAYER = $this->matrix->check($x, $y) ? QRMatrix::M_DATA_DARK : QRMatrix::M_DATA;
 				}
 
 				// collect the modules per $M_TYPE
