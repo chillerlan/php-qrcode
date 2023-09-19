@@ -135,12 +135,15 @@ class QRGdRounded extends QRGdImage{
 // --------------------
 
 $options = new QROptions([
-    'outputType'       => QROutputInterface::CUSTOM,
-    'outputInterface'  => QRGdRounded::class,
-    'eccLevel'         => EccLevel::M,
-    'imageTransparent' => false,
-    'outputBase64'     => false,
-    'scale'            => 30,
+    'version'         => 7,
+    'eccLevel'        => EccLevel::H,
+    'outputType'      => QROutputInterface::CUSTOM,
+    'outputInterface' => QRGdRounded::class,
+    'outputBase64'    => false,
+    'scale'           => 30,
+    'addLogoSpace'    => true,
+    'logoSpaceWidth'  => 13,
+    'logoSpaceHeight' => 13,
 ]);
 
 
