@@ -22,6 +22,7 @@
 - [GD Image with rounded modules](./imageWithRoundedShapes.php): similar to the SVG "melted" modules example ([#215](https://github.com/chillerlan/php-qrcode/pull/215))
 - [ImageMagick with logo](./imagickWithLogo.php): a logo on top of the QR Code
 - [ImageMagick with image as background](./imagickImageAsBackground.php): an image as full size background of the QR Code
+- [ImageMagick SVG to raster conversion](./imagickConvertSVGtoPNG.php): use ImageMagick to convert SVG output to a raster image, e.g. PNG
 - [SVG with logo](./svgWithLogo.php): an SVG QR Code with embedded logo (that is also SVG)
 - [SVG with "melted" modules](./svgMeltedModules.php): an effect where the matrix appears to be like melted wax ([#127](https://github.com/chillerlan/php-qrcode/issues/127))
 - [SVG with randomly colored modules](./svgRandomColoredDots.php): a visual effect using multiple colors for the matrix modules ([#136](https://github.com/chillerlan/php-qrcode/discussions/136))

@@ -2,6 +2,14 @@
 /**
  * SVG to raster conversion example using ImageMagick
  *
+ * Please note that conversion via ImageMagick may not always produce ideal results,
+ * especially when using CSS styling (external or via <defs>), also it depends on OS and Imagick version.
+ *
+ * Using the Inkscape command line may be the better option:
+ *
+ * @see https://wiki.inkscape.org/wiki/Using_the_Command_Line
+ * @see https://github.com/chillerlan/php-qrcode/discussions/216
+ *
  * @created      19.09.2023
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2023 smiley
@@ -22,14 +30,15 @@ class SVGConvert extends QRMarkupSVG{
 	protected function header():string{
 		[$width, $height] = $this->getOutputDimensions();
 
+		// we need to specify the "width" and "height" attributes so that Imagick knows the output size
 		$header = sprintf(
-			'<svg xmlns="http://www.w3.org/2000/svg" class="qr-svg %1$s" viewBox="%2$s" preserveAspectRatio="%3$s" width="%4$s" height="%5$s">%6$s',
+			'<svg xmlns="http://www.w3.org/2000/svg" class="qr-svg %1$s" viewBox="%2$s" preserveAspectRatio="%3$s" width="%5$s" height="%6$s">%4$s',
 			$this->options->cssClass,
 			$this->getViewBox(),
 			$this->options->svgPreserveAspectRatio,
-			($width * $this->scale),
-			($height *  $this->scale),
-			$this->options->eol
+			$this->options->eol,
+			($width * $this->scale), // use the scale option to modify the size
+			($height * $this->scale)
 		);
 
 		if($this->options->svgAddXmlHeader){
@@ -52,8 +61,13 @@ class SVGConvert extends QRMarkupSVG{
 		$im->readImageBlob($svg);
 		$im->setImageFormat($this->options->imagickFormat);
 
+		if($this->options->quality > -1){
+			$im->setImageCompressionQuality(max(0, min(100, $this->options->quality)));
+		}
+
 		$imageData = $im->getImageBlob();
 
+		$im->destroy();
 		$this->saveToFile($imageData, $file);
 
 		if($base64){
