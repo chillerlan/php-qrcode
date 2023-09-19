@@ -253,7 +253,7 @@ trait QROptionsTrait{
 	 *
 	 * @see https://github.com/chillerlan/php-qrcode/discussions/121
 	 */
-	protected bool $imageTransparent = true;
+	protected bool $imageTransparent = false;
 
 	/**
 	 * Sets a transparency color for when {@see \chillerlan\QRCode\QROptions::$imageTransparent QROptions::$imageTransparent} is set to true.
