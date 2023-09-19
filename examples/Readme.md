@@ -19,7 +19,7 @@
 - [Custom output](./custom_output.php): a simple example that demonstrates the usage of custom output classes
 - [GD Image with logo](./imageWithLogo.php): a logo on top of the QR Code
 - [GD image with text](./imageWithText.php): description text under the QR Code ([#35](https://github.com/chillerlan/php-qrcode/issues/35))
-- [GD Image with rounded modules](./pngWithRoundedShapes.php): Similar to "melted" modules, but more rounded ([#127](https://github.com/chillerlan/php-qrcode/issues/127))
+- [GD Image with rounded modules](./imageWithRoundedShapes.php): similar to the SVG "melted" modules example ([#215](https://github.com/chillerlan/php-qrcode/pull/215))
 - [ImageMagick with logo](./imagickWithLogo.php): a logo on top of the QR Code
 - [ImageMagick with image as background](./imagickImageAsBackground.php): an image as full size background of the QR Code
 - [SVG with logo](./svgWithLogo.php): an SVG QR Code with embedded logo (that is also SVG)
