@@ -1,10 +1,8 @@
 ---
 name: Bug report
 about: You have found a bug? Does the library not behave as expected? That's great (ok, not that great)! Please help us to improve!
-title: ''
-labels: ''
-assignees: ''
-
+title: '[BUG]'
+labels: 'bug'
 ---
 
 <!--

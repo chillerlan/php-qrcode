@@ -1,10 +1,6 @@
 ---
 name: General issue
 about: An issue that is not a bug - please use the discussions instead! Thanks!
-title: ''
-labels: ''
-assignees: ''
-
 ---
 
 <!--

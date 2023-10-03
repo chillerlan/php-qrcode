@@ -1,10 +1,8 @@
 ---
 name: Feature request
 about: You have an idea for a new feature (or improve an existing one)? Great!
-title: ''
-labels: ''
-assignees: ''
-
+title: '[ENHANCEMENT]'
+labels: 'enhancement'
 ---
 
 <!--
