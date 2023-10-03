@@ -22,7 +22,6 @@
 - [GD Image with rounded modules](./imageWithRoundedShapes.php): similar to the SVG "melted" modules example ([#215](https://github.com/chillerlan/php-qrcode/pull/215))
 - [ImageMagick with logo](./imagickWithLogo.php): a logo on top of the QR Code
 - [ImageMagick with image as background](./imagickImageAsBackground.php): an image as full size background of the QR Code
-- [ImageMagick SVG to raster conversion](./imagickConvertSVGtoPNG.php): use ImageMagick to convert SVG output to a raster image, e.g. PNG
 - [SVG with logo](./svgWithLogo.php): an SVG QR Code with embedded logo (that is also SVG)
 - [SVG with "melted" modules](./svgMeltedModules.php): an effect where the matrix appears to be like melted wax ([#127](https://github.com/chillerlan/php-qrcode/issues/127))
 - [SVG with randomly colored modules](./svgRandomColoredDots.php): a visual effect using multiple colors for the matrix modules ([#136](https://github.com/chillerlan/php-qrcode/discussions/136))
@@ -35,6 +34,8 @@
 - [Authenticator](./authenticator.php): create a QR Code that displays an URI for a mobile authenticator (featuring [`chillerlan/php-authenticator`](https://github.com/chillerlan/php-authenticator))
 - [Interactive output](./qrcode-interactive.php): interactive demo (via [index.html](./index.html))
 - [Custom module shapes](./shapes.svg): SVG paths to customize the module shapes ([#150](https://github.com/chillerlan/php-qrcode/discussions/150))
+- [ImageMagick SVG to raster conversion](./imagickConvertSVGtoPNG.php): uses ImageMagick to convert SVG output to a raster image, e.g. PNG ([#216](https://github.com/chillerlan/php-qrcode/discussions/216))
+- [HTML canvas SVG to PNG conversion](./svgConvertViaCanvas.php): converts an SVG element or a data URI fom and image element to a PNG image via the [HTML canvas element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/canvas), includes [a javascript class](./SVGConvert.js) which handles the conversion.
 
 
 Please note that the examples are self-contained, meaning that all custom classes are defined in an example file, so they don't necessarily respect the PSR-4 one file = one class principle.
