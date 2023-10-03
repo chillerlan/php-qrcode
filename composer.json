@@ -43,7 +43,7 @@
 	"require": {
 		"php": "^7.4 || ^8.0",
 		"ext-mbstring": "*",
-		"chillerlan/php-settings-container": "^2.1.4 || ^3.0"
+		"chillerlan/php-settings-container": "^2.1.4 || ^3.1"
 	},
 	"require-dev": {
 		"chillerlan/php-authenticator": "^4.0 || ^5.0",
