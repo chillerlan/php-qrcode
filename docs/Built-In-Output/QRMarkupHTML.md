@@ -3,7 +3,7 @@
 [Class `QRMarkupHTML`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRMarkupHTML.php): HTML output
 
 This class is a cheap markup substitute for when SVG is not available or not an option (which was an issue before ca 2012).
-As a general rule: if you plan to display the QR Code in a web browser, you should be using the [SVG output](./Built-In-Output-QRMarkupSVG.md).
+As a general rule: if you plan to display the QR Code in a web browser, you should be using the [SVG output](../Built-In-Output/QRMarkupSVG.md).
 
 
 ## Example

@@ -3,6 +3,7 @@
 ## Configuration via `QROptions`
 
 The [`QROptions`](https://github.com/chillerlan/php-qrcode/blob/main/src/QROptions.php) class is a container based on [chillerlan/php-settings-container](https://github.com/chillerlan/php-settings-container) that behaves similar to a [`\stdClass`](https://www.php.net/manual/class.stdclass) object, but with fixed properties.
+A list with all available `QROptions` can be found under [cnfiguration settings](../Usage/Configuration-settings.md).
 
 ```php
 $options = new QROptions;
@@ -123,21 +124,13 @@ $qrcode->setOptions($options);
 
 ### Save to file
 
-Save the QR Code output to `/path/to/qrcode.svg`:
+You can specify an output file path in which the QR Code content is stored (this will override the `QROptions::$cachefile`
+setting, see [common output options](../Customizing/Common.md#save-to-file)):
 
 ```php
-$options->outputBase64 = false;
-$options->cachefile    = '/path/to/qrcode.svg';
+$qrcode->render($data, '/path/to/qrcode.svg');
 
-$qrcode->render($data);
-```
-
-Alternatively, you can specify an output path, which will override the `QROptions::$cachefile` setting:
-
-```php
-$qrcode->render($data, '/other/path/to/qrcode.svg');
-
-printf('<img src="%s" alt="QR Code" />', '/other/path/to/qrcode.svg');
+printf('<img src="%s" alt="QR Code" />', '/path/to/qrcode.svg');
 ```
 
 
@@ -157,21 +150,6 @@ $output = $qrcode->renderMatrix($matrix);
 // save to file
 $qrcode->renderMatrix($matrix, '/path/to/qrcode.svg');
 ```
-
-Manual invocation of a `QROutputInterface` to render a `QRMatrix` instance:
-
-```php
-class MyCustomOutput extends QRMarkupSVG{
-	// ...
-}
-
-$qrOutputInterface = new MyCustomOutput($options, $matrix);
-
-$output = $qrOutputInterface->dump()
-// render to file
-$qrOutputInterface->dump('/path/to/qrcode.svg');
-```
-
 
 ### Mixed mode
 

@@ -35,7 +35,7 @@ header('Content-type: image/svg+xml'); // the image type is SVG by default
 echo (new QRCode($options))->render($data);
 ```
 
-See [Advanced usage](./Usage-Advanced-usage.md) for a more in-depth usage guide.
+See [Advanced usage](../Usage/Advanced-usage.md) for a more in-depth usage guide.
 Also, have a look [in the examples folder](https://github.com/chillerlan/php-qrcode/tree/main/examples) for some more usage examples.
 
 

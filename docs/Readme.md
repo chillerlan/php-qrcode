@@ -34,7 +34,8 @@ Follow these steps to create the user manual:
 [![pages-build-deployment](https://github.com/chillerlan/php-qrcode/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages)](https://github.com/chillerlan/php-qrcode/actions/workflows/pages/pages-build-deployment)
 
 The API documentation can be auto generated with [phpDocumentor](https://www.phpdoc.org/).
-There is an [online version available](https://chillerlan.github.io/php-qrcode/) via the [`gh-pages` branch](https://github.com/chillerlan/php-qrcode/tree/gh-pages) that is [automatically deployed](https://github.com/chillerlan/php-qrcode/deployments) on each push to main.
+There is an [online version available](https://chillerlan.github.io/php-qrcode/) via the [`gh-pages` branch](https://github.com/chillerlan/php-qrcode/tree/gh-pages)
+that is [automatically deployed](https://github.com/chillerlan/php-qrcode/deployments) on each push to main.
 
 
 #### Run phpDocumentor locally
@@ -55,44 +56,31 @@ The markdown sources for the [Read the Docs online manual](https://php-qrcode.re
 
 
 ### Usage
-- [Overview](./Usage-Overview.md)
-- [Installation](./Usage-Installation.md)
-- [Quickstart](./Usage-Quickstart.md)
-- [Advanced usage](./Usage-Advanced-usage.md)
+
+- [Overview](./Usage/Overview.md)
+- [Installation](./Usage/Installation.md)
+- [Quickstart](./Usage/Quickstart.md)
+- [Advanced usage](./Usage/Advanced-usage.md)
+- [Configuration settings](./Usage/Configuration-settings.md)
+
 
 ### Built-In Output Modules
 
-- [QREps](./Built-In-Output-QREps.md)
-- [QRFpdf](./Built-In-Output-QRFpdf.md)
-- [QRGdImage](./Built-In-Output-QRGdImage.md)
-- [QRImagick](./Built-In-Output-QRImagick.md)
-- [QRMarkupHTML](./Built-In-Output-QRMarkupHTML.md)
-- [QRMarkupSVG](./Built-In-Output-QRMarkupSVG.md)
-- [QRString](./Built-In-Output-QRString.md)
-
-<!--
-### Customizing output
-- [Module values](./Customizing-Module-Values.md)
-- [Custom output interface](./Customizing-Custom-output-interface.md)
-- [QROutputAbstract](./Customizing-QROutputAbstract.md)
-
-
-### Examples
-- [Built-in Output Interfaces](./Examples-Built-in.md)
-  -->
-
-### Public API
-- [`QRCode`](./API-QRCode.md)
-- [`QROptions`](./API-QROptions.md)
-- [`QROutputInterface`](./API-QROutputInterface.md)
-- [`QRMatrix`](./API-QRMatrix.md)
-- [`DecoderResult`](./API-DecoderResult.md)
+- [QREps](./Built-In-Output/QREps.md)
+- [QRFpdf](./Built-In-Output/QRFpdf.md)
+- [QRGdImage](./Built-In-Output/QRGdImage.md)
+- [QRImagick](./Built-In-Output/QRImagick.md)
+- [QRMarkupHTML](./Built-In-Output/QRMarkupHTML.md)
+- [QRMarkupSVG](./Built-In-Output/QRMarkupSVG.md)
+- [QRString](./Built-In-Output/QRString.md)
 
 
 ### Appendix
-- [Glossary](./Appendix-Appendix-URI-Content.md)
-- [Glossary](./Appendix-Terminology.md)
-- [License](./Appendix-License.rst)
+
+- [How to contribute](./Appendix/Contribute.md)
+- [Terminology](./Appendix/Terminology.md)
+- [Popular content and URI schemes](./Appendix/URI-Content.md)
+- [License](./Appendix/License.rst)
 
 
 ## License
