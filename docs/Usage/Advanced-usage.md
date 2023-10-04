@@ -3,7 +3,7 @@
 ## Configuration via `QROptions`
 
 The [`QROptions`](https://github.com/chillerlan/php-qrcode/blob/main/src/QROptions.php) class is a container based on [chillerlan/php-settings-container](https://github.com/chillerlan/php-settings-container) that behaves similar to a [`\stdClass`](https://www.php.net/manual/class.stdclass) object, but with fixed properties.
-A list with all available `QROptions` can be found under [cnfiguration settings](../Usage/Configuration-settings.md).
+A list with all available `QROptions` can be found under [configuration settings](../Usage/Configuration-settings.md).
 
 ```php
 $options = new QROptions;

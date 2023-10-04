@@ -427,6 +427,9 @@ trait QROptionsTrait{
 
 	/**
 	 * String substitute for dark
+	 *
+	 * @see https://en.wikipedia.org/wiki/Block_Elements
+	 * @see https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
 	 */
 	protected string $textDark = '██';
 
@@ -450,7 +453,7 @@ trait QROptionsTrait{
 	 */
 
 	/**
-	 * Measurement unit for `FPDF` output: pt, mm, cm, in (defaults to "pt")
+	 * Measurement unit for `FPDF` output: `pt`, `mm`, `cm`, `in` (default: `pt`)
 	 *
 	 * @see FPDF::__construct()
 	 */

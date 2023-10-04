@@ -24,6 +24,12 @@ This work is licensed under the Creative Commons Attribution 4.0 International (
 
 .. toctree::
    :maxdepth: 3
+   :caption: Customizing output
+
+   Customizing/Module-Values.md
+
+.. toctree::
+   :maxdepth: 3
    :caption: Built-In Output Modules
 
    Built-In-Output/QREps.md

@@ -64,6 +64,11 @@ The markdown sources for the [Read the Docs online manual](https://php-qrcode.re
 - [Configuration settings](./Usage/Configuration-settings.md)
 
 
+### Customizing output
+
+- [Module values](./Customizing/Module-Values.md)
+
+
 ### Built-In Output Modules
 
 - [QREps](./Built-In-Output/QREps.md)
