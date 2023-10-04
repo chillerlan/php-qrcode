@@ -70,7 +70,7 @@ For the QRCode reader, either `ext-gd` or `ext-imagick` is required!
 
 - The user manual is at https://php-qrcode.readthedocs.io/ ([sources](https://github.com/chillerlan/php-qrcode/tree/main/docs))
 - An API documentation created with [phpDocumentor](https://www.phpdoc.org/) can be found at https://chillerlan.github.io/php-qrcode/
-- The documentation for `QROptions` container can be found here: [chillerlan/php-settings-container](https://github.com/chillerlan/php-settings-container#readme)
+- The documentation for the `QROptions` container can be found here: [chillerlan/php-settings-container](https://github.com/chillerlan/php-settings-container#readme)
 
 
 ## Installation with [composer](https://getcomposer.org)
