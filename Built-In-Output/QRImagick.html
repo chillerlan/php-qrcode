@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QRImagick &mdash; PHP-QRCode main
+ Manual</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=a8da1a53"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QRMarkupHTML" href="QRMarkupHTML.html" />
+    <link rel="prev" title="QRGdImage" href="QRGdImage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PHP-QRCode
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Usage/Overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Overview.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Overview.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Overview.html#framework-integration">Framework Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Overview.html#shameless-advertising">Shameless advertising</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Usage/Installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Installation.html#installation-with-composer">Installation with Composer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Installation.html#composer-json">composer.json</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Usage/Installation.html#version-switch">Version switch</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Installation.html#terminal">Terminal</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Installation.html#manual-installation">Manual installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Installation.html#can-i-use-this-library-without-using-composer">Can i use this library without using composer?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Installation.html#supported-php-versions-extension-requirements">Supported PHP versions &amp; extension requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Installation.html#imagemagick">ImageMagick</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Usage/Quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Quickstart.html#import-the-library">Import the library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Quickstart.html#create-your-first-qr-code">Create your first QR Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Quickstart.html#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Quickstart.html#reading-qr-codes">Reading QR Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Quickstart.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Usage/Advanced-usage.html">Advanced usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Advanced-usage.html#configuration-via-qroptions">Configuration via <code class="docutils literal notranslate"><span class="pre">QROptions</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#supply-an-iterable-of-options">Supply an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#load-and-save-json">Load and save JSON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#extending-the-qroptions-class">Extending the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Advanced-usage.html#qrcode-methods"><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#save-to-file">Save to file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#render-a-qrmatrix-instance">Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#mixed-mode">Mixed mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#qr-code-reader">QR Code reader</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Usage/Configuration-settings.html">Configuration settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#version">version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#versionmin">versionMin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#versionmax">versionMax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#ecclevel">eccLevel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#maskpattern">maskPattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#addquietzone">addQuietzone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#quietzonesize">quietzoneSize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputtype">outputType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputinterface">outputInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#returnresource">returnResource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#cachefile">cachefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputbase64">outputBase64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#eol">eol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#bgcolor">bgColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#invertmatrix">invertMatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#drawlightmodules">drawLightModules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#drawcircularmodules">drawCircularModules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#circleradius">circleRadius</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#keepassquare">keepAsSquare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#connectpaths">connectPaths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#excludefromconnect">excludeFromConnect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#modulevalues">moduleValues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#addlogospace">addLogoSpace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#logospacewidth">logoSpaceWidth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#logospaceheight">logoSpaceHeight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#logospacestartx">logoSpaceStartX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#logospacestarty">logoSpaceStartY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#scale">scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagetransparent">imageTransparent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#transparencycolor">transparencyColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#quality">quality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagickformat">imagickFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#cssclass">cssClass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#markupdark">markupDark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#markuplight">markupLight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#svgaddxmlheader">svgAddXmlHeader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#svgopacity">svgOpacity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#svgdefs">svgDefs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#svgpreserveaspectratio">svgPreserveAspectRatio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#textdark">textDark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#textlight">textLight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#textlinestart">textLineStart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#jsonasbooleans">jsonAsBooleans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#fpdfmeasureunit">fpdfMeasureUnit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readeruseimagickifavailable">readerUseImagickIfAvailable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readergrayscale">readerGrayscale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readerincreasecontrast">readerIncreaseContrast</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Built-In Output Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="QREps.html">QREps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="QREps.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QREps.html#additional-methods">Additional methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QREps.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="QREps.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="QRFpdf.html">QRFpdf</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="QRFpdf.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QRFpdf.html#additional-methods">Additional methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QRFpdf.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="QRFpdf.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="QRGdImage.html">QRGdImage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="QRGdImage.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QRGdImage.html#additional-methods">Additional methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QRGdImage.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="QRGdImage.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">QRImagick</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#additional-methods">Additional methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="QRMarkupHTML.html">QRMarkupHTML</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="QRMarkupHTML.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QRMarkupHTML.html#additional-methods">Additional methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QRMarkupHTML.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="QRMarkupHTML.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="QRMarkupSVG.html">QRMarkupSVG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="QRMarkupSVG.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QRMarkupSVG.html#additional-methods">Additional methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QRMarkupSVG.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="QRMarkupSVG.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="QRString.html">QRString</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="QRString.html#plain-text">Plain text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QRString.html#json">JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QRString.html#additional-methods">Additional methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QRString.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="QRString.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/Contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#questions-and-issues">Questions and issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#bug-reports">Bug reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#pull-requests-and-bug-fixes">Pull requests and bug fixes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/Terminology.html">Terminology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#qr-code">QR Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#matrix">Matrix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#module">Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#version">Version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#function-patterns">Function Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#finder-pattern">Finder Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#alignment-pattern">Alignment Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#timing-pattern">Timing Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#separators">Separators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#quiet-zone">Quiet Zone</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#encoding-region">Encoding Region</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#data">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#version-information">Version Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#format-information">Format Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#darkmodule">Darkmodule</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#mode">Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#segment">Segment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#extended-channel-interpretation-eci">Extended Channel Interpretation (ECI)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#mixed-mode">Mixed Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#ecc-error-correction-coding">ECC (Error Correction Coding)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#ecc-level">ECC Level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#maximum-data-capacity">Maximum data capacity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#data-masking">Data masking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#evaluation">Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#mask-pattern">Mask pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#reflectance">Reflectance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/URI-Content.html">Popular content and URI schemes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#url-https">URL <code class="docutils literal notranslate"><span class="pre">https</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#e-mail-mailto">E-Mail <code class="docutils literal notranslate"><span class="pre">mailto</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#phone-numbers-tel">Phone numbers <code class="docutils literal notranslate"><span class="pre">tel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#geo-coordinates-geo">Geo Coordinates <code class="docutils literal notranslate"><span class="pre">geo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#mobile-authenticators-otpauth">Mobile Authenticators <code class="docutils literal notranslate"><span class="pre">otpauth</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#wireless-network-configuration">Wireless Network configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#contact-information-vcard">Contact information: vCard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#calendar-events-vcalendar-and-icalendar">Calendar Events: vCalendar and iCalendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#see-also">See also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/License.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PHP-QRCode</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">QRImagick</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/chillerlan/php-qrcode/blob/main/docs/Built-In-Output/QRImagick.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="qrimagick">
+<h1>QRImagick<a class="headerlink" href="#qrimagick" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRImagick.php">Class <code class="docutils literal notranslate"><span class="pre">QRImagick</span></code></a>: <a class="reference external" href="https://www.php.net/manual/book.imagick">ImageMagick</a> output, <a class="reference external" href="https://imagemagick.org/script/formats.php">multiple supported image formats</a></p>
+<p>Please follow the installation guides for your operating system:</p>
+<ul class="simple">
+<li><p>ImageMagick: <a class="reference external" href="https://imagemagick.org/script/download.php">imagemagick.org/script/download.php</a></p></li>
+<li><p>PHP <code class="docutils literal notranslate"><span class="pre">ext-imagick</span></code>: <a class="reference external" href="https://github.com/Imagick/imagick">github.com/Imagick/imagick</a> (<a class="reference external" href="https://mlocati.github.io/articles/php-windows-imagick.html">Windows downloads</a>)</p></li>
+<li><p><a class="reference external" href="https://phpimagick.com/">PHP Imagick by Example</a> (<a class="reference external" href="https://github.com/Imagick/ImagickDemos">github.com/Imagick/ImagickDemos</a>)</p></li>
+</ul>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h2>
+<p>See: <a class="reference external" href="https://github.com/chillerlan/php-qrcode/blob/main/examples/imagick.php">ImageMagick example</a></p>
+<p>Set the options:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QROptions</span><span class="p">;</span>
+
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">outputType</span>          <span class="o">=</span> <span class="nx">QROutputInterface</span><span class="o">::</span><span class="na">IMAGICK</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">imagickFormat</span>       <span class="o">=</span> <span class="s1">&#39;webp&#39;</span><span class="p">;</span> <span class="c1">// e.g. png32, jpeg, webp</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">quality</span>             <span class="o">=</span> <span class="mi">90</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">scale</span>               <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">bgColor</span>             <span class="o">=</span> <span class="s1">&#39;#ccccaa&#39;</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">imageTransparent</span>    <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">transparencyColor</span>   <span class="o">=</span> <span class="s1">&#39;#ccccaa&#39;</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">drawLightModules</span>    <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">drawCircularModules</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">circleRadius</span>        <span class="o">=</span> <span class="mf">0.4</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">keepAsSquare</span>        <span class="o">=</span> <span class="p">[</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DARK</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DOT</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_ALIGNMENT_DARK</span><span class="p">,</span>
+<span class="p">];</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">moduleValues</span>        <span class="o">=</span> <span class="p">[</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DARK</span>    <span class="o">=&gt;</span> <span class="s1">&#39;#A71111&#39;</span><span class="p">,</span> <span class="c1">// dark (true)</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DOT</span>     <span class="o">=&gt;</span> <span class="s1">&#39;#A71111&#39;</span><span class="p">,</span> <span class="c1">// finder dot, dark (true)</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER</span>         <span class="o">=&gt;</span> <span class="s1">&#39;#FFBFBF&#39;</span><span class="p">,</span> <span class="c1">// light (false)</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_ALIGNMENT_DARK</span> <span class="o">=&gt;</span> <span class="s1">&#39;#A70364&#39;</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_ALIGNMENT</span>      <span class="o">=&gt;</span> <span class="s1">&#39;#FFC9C9&#39;</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_VERSION_DARK</span>   <span class="o">=&gt;</span> <span class="s1">&#39;#650098&#39;</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_VERSION</span>        <span class="o">=&gt;</span> <span class="s1">&#39;#E0B8FF&#39;</span><span class="p">,</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+<p>Render the output:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$data</span> <span class="o">=</span> <span class="s1">&#39;https://www.youtube.com/watch?v=dQw4w9WgXcQ&#39;</span><span class="p">;</span>
+<span class="nv">$out</span>  <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span> <span class="c1">// -&gt; data:image/webp;base64,...</span>
+
+<span class="nb">printf</span><span class="p">(</span><span class="s1">&#39;&lt;img alt=&quot;%s&quot; src=&quot;%s&quot; /&gt;&#39;</span><span class="p">,</span> <span class="nv">$alt</span><span class="p">,</span> <span class="nv">$out</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Return the <code class="docutils literal notranslate"><span class="pre">Imagick</span></code> instance (will ignore other output options):</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">returnResource</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+<span class="sd">/** @var \Imagick $imagick */</span>
+<span class="nv">$imagick</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+
+<span class="c1">// do stuff with the Imagick instance...</span>
+<span class="nv">$imagick</span><span class="o">-&gt;</span><span class="na">scaleImage</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="c1">// ...</span>
+
+<span class="c1">// ...dump output</span>
+<span class="nv">$imagick</span><span class="o">-&gt;</span><span class="na">setImageFormat</span><span class="p">(</span><span class="s1">&#39;png32&#39;</span><span class="p">);</span>
+
+<span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Content-type: image/png&#39;</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$imagick</span><span class="o">-&gt;</span><span class="na">getImageBlob</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="additional-methods">
+<h2>Additional methods<a class="headerlink" href="#additional-methods" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>method</p></th>
+<th class="head"><p>return</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>(protected) <code class="docutils literal notranslate"><span class="pre">drawImage()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void</span></code></p></td>
+<td><p>Creates the QR image via ImagickDraw</p></td>
+</tr>
+<tr class="row-odd"><td><p>(protected) <code class="docutils literal notranslate"><span class="pre">module()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void</span></code></p></td>
+<td><p>Draws a single pixel at the given position</p></td>
+</tr>
+<tr class="row-even"><td><p>(protected) <code class="docutils literal notranslate"><span class="pre">setBgColor()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void</span></code></p></td>
+<td><p>Sets the background color</p></td>
+</tr>
+<tr class="row-odd"><td><p>(protected) <code class="docutils literal notranslate"><span class="pre">setTransparencyColor()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">void</span></code></p></td>
+<td><p>Sets the transparency color</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="options-that-affect-this-module">
+<h2>Options that affect this module<a class="headerlink" href="#options-that-affect-this-module" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$bgColor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mixed</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$circleRadius</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$drawCircularModules</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$drawLightModules</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$imageTransparent</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$imagickFormat</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$keepAsSquare</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">array</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$markupDark</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$markupLight</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$outputBase64</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$quality</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$returnResource</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$scale</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">int</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$transparencyColor</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mixed</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<section id="options-that-have-no-effect">
+<h3>Options that have no effect<a class="headerlink" href="#options-that-have-no-effect" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>property</p></th>
+<th class="head"><p>reason</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$connectPaths</span></code></p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$excludeFromConnect</span></code></p></td>
+<td><p>N/A</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="QRGdImage.html" class="btn btn-neutral float-left" title="QRGdImage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="QRMarkupHTML.html" class="btn btn-neutral float-right" title="QRMarkupHTML" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, smiley.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
