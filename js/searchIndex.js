@@ -3518,7 +3518,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024fpdfMeasureUnit",
             "name": "fpdfMeasureUnit",
-            "summary": "Measurement\u0020unit\u0020for\u0020\u0060FPDF\u0060\u0020output\u003A\u0020pt,\u0020mm,\u0020cm,\u0020in\u0020\u0028defaults\u0020to\u0020\u0022pt\u0022\u0029",
+            "summary": "Measurement\u0020unit\u0020for\u0020\u0060FPDF\u0060\u0020output\u003A\u0020\u0060pt\u0060,\u0020\u0060mm\u0060,\u0020\u0060cm\u0060,\u0020\u0060in\u0060\u0020\u0028default\u003A\u0020\u0060pt\u0060\u0029",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_fpdfMeasureUnit"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024readerUseImagickIfAvailable",
