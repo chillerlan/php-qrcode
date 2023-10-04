@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module values &mdash; PHP-QRCode main
+ Manual</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=a8da1a53"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QREps" href="../Built-In-Output/QREps.html" />
+    <link rel="prev" title="Configuration settings" href="../Usage/Configuration-settings.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            PHP-QRCode
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Usage</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Usage/Overview.html">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Overview.html#features">Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Overview.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Overview.html#framework-integration">Framework Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Overview.html#shameless-advertising">Shameless advertising</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Usage/Installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Installation.html#installation-with-composer">Installation with Composer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Installation.html#composer-json">composer.json</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Usage/Installation.html#version-switch">Version switch</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Installation.html#terminal">Terminal</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Installation.html#manual-installation">Manual installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Installation.html#can-i-use-this-library-without-using-composer">Can i use this library without using composer?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Installation.html#supported-php-versions-extension-requirements">Supported PHP versions &amp; extension requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Installation.html#imagemagick">ImageMagick</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Usage/Quickstart.html">Quickstart</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Quickstart.html#import-the-library">Import the library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Quickstart.html#create-your-first-qr-code">Create your first QR Code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Quickstart.html#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Quickstart.html#reading-qr-codes">Reading QR Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Quickstart.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Usage/Advanced-usage.html">Advanced usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Advanced-usage.html#configuration-via-qroptions">Configuration via <code class="docutils literal notranslate"><span class="pre">QROptions</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#supply-an-iterable-of-options">Supply an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#load-and-save-json">Load and save JSON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#extending-the-qroptions-class">Extending the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Advanced-usage.html#qrcode-methods"><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#save-to-file">Save to file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#render-a-qrmatrix-instance">Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#mixed-mode">Mixed mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#qr-code-reader">QR Code reader</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Usage/Configuration-settings.html">Configuration settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#version">version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#versionmin">versionMin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#versionmax">versionMax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#ecclevel">eccLevel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#maskpattern">maskPattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#addquietzone">addQuietzone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#quietzonesize">quietzoneSize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputtype">outputType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputinterface">outputInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#returnresource">returnResource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#cachefile">cachefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputbase64">outputBase64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#eol">eol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#bgcolor">bgColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#invertmatrix">invertMatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#drawlightmodules">drawLightModules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#drawcircularmodules">drawCircularModules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#circleradius">circleRadius</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#keepassquare">keepAsSquare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#connectpaths">connectPaths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#excludefromconnect">excludeFromConnect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#modulevalues">moduleValues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#addlogospace">addLogoSpace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#logospacewidth">logoSpaceWidth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#logospaceheight">logoSpaceHeight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#logospacestartx">logoSpaceStartX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#logospacestarty">logoSpaceStartY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#scale">scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagetransparent">imageTransparent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#transparencycolor">transparencyColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#quality">quality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagickformat">imagickFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#cssclass">cssClass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#markupdark">markupDark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#markuplight">markupLight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#svgaddxmlheader">svgAddXmlHeader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#svgopacity">svgOpacity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#svgdefs">svgDefs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#svgpreserveaspectratio">svgPreserveAspectRatio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#textdark">textDark</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#textlight">textLight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#textlinestart">textLineStart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#jsonasbooleans">jsonAsBooleans</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#fpdfmeasureunit">fpdfMeasureUnit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readeruseimagickifavailable">readerUseImagickIfAvailable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readergrayscale">readerGrayscale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readerincreasecontrast">readerIncreaseContrast</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Customizing output</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Module values</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#assigning-values">Assigning values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#handling-in-your-own-qroutputinterface">Handling in your own <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-module-values">Setting module values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-module-values">Using the module values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Built-In Output Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Built-In-Output/QREps.html">QREps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QREps.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QREps.html#additional-methods">Additional methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QREps.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Built-In-Output/QREps.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Built-In-Output/QRFpdf.html">QRFpdf</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRFpdf.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRFpdf.html#additional-methods">Additional methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRFpdf.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Built-In-Output/QRFpdf.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Built-In-Output/QRGdImage.html">QRGdImage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRGdImage.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRGdImage.html#additional-methods">Additional methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRGdImage.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Built-In-Output/QRGdImage.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Built-In-Output/QRImagick.html">QRImagick</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRImagick.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRImagick.html#additional-methods">Additional methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRImagick.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Built-In-Output/QRImagick.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Built-In-Output/QRMarkupHTML.html">QRMarkupHTML</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRMarkupHTML.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRMarkupHTML.html#additional-methods">Additional methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRMarkupHTML.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Built-In-Output/QRMarkupHTML.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Built-In-Output/QRMarkupSVG.html">QRMarkupSVG</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRMarkupSVG.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRMarkupSVG.html#additional-methods">Additional methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRMarkupSVG.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Built-In-Output/QRMarkupSVG.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Built-In-Output/QRString.html">QRString</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRString.html#plain-text">Plain text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRString.html#json">JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRString.html#additional-methods">Additional methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Built-In-Output/QRString.html#options-that-affect-this-module">Options that affect this module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Built-In-Output/QRString.html#options-that-have-no-effect">Options that have no effect</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/Contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#questions-and-issues">Questions and issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#bug-reports">Bug reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#pull-requests-and-bug-fixes">Pull requests and bug fixes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#documentation">Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/Terminology.html">Terminology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#qr-code">QR Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#matrix">Matrix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#module">Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#version">Version</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#function-patterns">Function Patterns</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#finder-pattern">Finder Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#alignment-pattern">Alignment Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#timing-pattern">Timing Pattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#separators">Separators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#quiet-zone">Quiet Zone</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#encoding-region">Encoding Region</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#data">Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#version-information">Version Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#format-information">Format Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#darkmodule">Darkmodule</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#mode">Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#segment">Segment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#extended-channel-interpretation-eci">Extended Channel Interpretation (ECI)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#mixed-mode">Mixed Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#ecc-error-correction-coding">ECC (Error Correction Coding)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#ecc-level">ECC Level</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#maximum-data-capacity">Maximum data capacity</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#data-masking">Data masking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#evaluation">Evaluation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Appendix/Terminology.html#mask-pattern">Mask pattern</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#reflectance">Reflectance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/URI-Content.html">Popular content and URI schemes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#url-https">URL <code class="docutils literal notranslate"><span class="pre">https</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#e-mail-mailto">E-Mail <code class="docutils literal notranslate"><span class="pre">mailto</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#phone-numbers-tel">Phone numbers <code class="docutils literal notranslate"><span class="pre">tel</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#geo-coordinates-geo">Geo Coordinates <code class="docutils literal notranslate"><span class="pre">geo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#mobile-authenticators-otpauth">Mobile Authenticators <code class="docutils literal notranslate"><span class="pre">otpauth</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#wireless-network-configuration">Wireless Network configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#contact-information-vcard">Contact information: vCard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#calendar-events-vcalendar-and-icalendar">Calendar Events: vCalendar and iCalendar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#see-also">See also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/License.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">PHP-QRCode</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Module values</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/chillerlan/php-qrcode/blob/main/docs/Customizing/Module-Values.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-values">
+<h1>Module values<a class="headerlink" href="#module-values" title="Link to this heading"></a></h1>
+<section id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Link to this heading"></a></h2>
+<p>The QR Code matrix is a 2-dimensional array of numerical values that hold a bit mask for
+each QR pixel (“module” as per specification), the so-called “module type” or <code class="docutils literal notranslate"><span class="pre">$M_TYPE</span></code>, which is represented by
+<a class="reference external" href="https://chillerlan.github.io/php-qrcode/classes/chillerlan-QRCode-Data-QRMatrix.html#toc-constants">the <code class="docutils literal notranslate"><span class="pre">QRMatrix::M_*</span></code> constants</a>.
+You can assign different values for the several <a class="reference internal" href="../Appendix/Terminology.html#function-patterns"><span class="std std-ref">function patterns</span></a> to colorize them or even draw pixel-art.</p>
+</section>
+<section id="assigning-values">
+<h2>Assigning values<a class="headerlink" href="#assigning-values" title="Link to this heading"></a></h2>
+<p>To map the values and properly render the modules for the given <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code>, it may be necessary to overwrite the
+<a class="reference external" href="https://chillerlan.github.io/php-qrcode/classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_DEFAULT_MODULE_VALUES">default values</a>,
+that are replaced by the user defined values in <code class="docutils literal notranslate"><span class="pre">QROptions::$moduleValues</span></code> during the render process.</p>
+<p>The map of <code class="docutils literal notranslate"><span class="pre">QRMatrix::M_*</span></code> constants =&gt; default values looks similar to the following:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">moduleValues</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="c1">// light</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_NULL</span>             <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DARKMODULE_LIGHT</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA</span>             <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER</span>           <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_SEPARATOR</span>        <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_ALIGNMENT</span>        <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_TIMING</span>           <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FORMAT</span>           <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_VERSION</span>          <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_QUIETZONE</span>        <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_LOGO</span>             <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DOT_LIGHT</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_TEST</span>             <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+	<span class="c1">// dark</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DARKMODULE</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA_DARK</span>        <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DARK</span>      <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_SEPARATOR_DARK</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_ALIGNMENT_DARK</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_TIMING_DARK</span>      <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FORMAT_DARK</span>      <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_VERSION_DARK</span>     <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_QUIETZONE_DARK</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_LOGO_DARK</span>        <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DOT</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_TEST_DARK</span>        <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+<p>Not all the module values need to be specified - missing values will be filled with the internal default values
+for <code class="docutils literal notranslate"><span class="pre">true</span></code> (dark) and <code class="docutils literal notranslate"><span class="pre">false</span></code> (light) respectively. The <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code> inheritors implement a <code class="docutils literal notranslate"><span class="pre">moduleValueIsValid()</span></code>
+method that checks if the given value is valid for that particular class:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// set an initial value that acts as default</span>
+<span class="nv">$dark</span> <span class="o">=</span> <span class="s1">&#39;rgba(0, 0, 0, 0.5)&#39;</span><span class="p">;</span>
+
+<span class="c1">// try to receive user input</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">QRMarkupSVG</span><span class="o">::</span><span class="na">moduleValueIsValid</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;qr_dark&#39;</span><span class="p">])){</span>
+	<span class="c1">// module values for HTML, SVG and other markup may need special treatment,</span>
+	<span class="c1">// e.g. only accept hexadecimal values from user input</span>
+	<span class="c1">// as moduleValueIsValid() just checks for the general syntax</span>
+	<span class="nv">$dark</span> <span class="o">=</span> <span class="nx">sanitize_user_input</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;qr_dark&#39;</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">moduleValues</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA_DARK</span>      <span class="o">=&gt;</span> <span class="nv">$dark</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DARK</span>    <span class="o">=&gt;</span> <span class="nv">$dark</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_ALIGNMENT_DARK</span> <span class="o">=&gt;</span> <span class="nv">$dark</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DOT</span>     <span class="o">=&gt;</span> <span class="nv">$dark</span><span class="p">,</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+<p>The several output classes may need different substitute values (you can find examples <a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/main/tests/Output">in the test <code class="docutils literal notranslate"><span class="pre">moduleValueProvider()</span></code> for each output class</a>):</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// for HTML, SVG and ImageMagick</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">moduleValues</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA</span>      <span class="o">=&gt;</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA_DARK</span> <span class="o">=&gt;</span> <span class="s1">&#39;#000000&#39;</span><span class="p">,</span>
+	<span class="c1">// ...</span>
+<span class="p">];</span>
+
+<span class="c1">// for the GdImage, EPS and FPDF output types</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">moduleValues</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA</span>      <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA_DARK</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+	<span class="c1">// ...</span>
+<span class="p">];</span>
+
+<span class="c1">// for string/text output</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">moduleValues</span> <span class="o">=</span> <span class="p">[</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA</span>      <span class="o">=&gt;</span> <span class="s1">&#39;░░&#39;</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA_DARK</span> <span class="o">=&gt;</span> <span class="s1">&#39;██&#39;</span><span class="p">,</span>
+	<span class="c1">// ...</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+</section>
+<section id="handling-in-your-own-qroutputinterface">
+<h2>Handling in your own <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code><a class="headerlink" href="#handling-in-your-own-qroutputinterface" title="Link to this heading"></a></h2>
+<section id="setting-module-values">
+<h3>Setting module values<a class="headerlink" href="#setting-module-values" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://chillerlan.github.io/php-qrcode/classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_setModuleValues"><code class="docutils literal notranslate"><span class="pre">QROutputAbstract::setModuleValues()</span></code></a>
+calls the 3 abstract methods <code class="docutils literal notranslate"><span class="pre">moduleValueIsValid()</span></code>, <code class="docutils literal notranslate"><span class="pre">getModuleValue()</span></code> and <code class="docutils literal notranslate"><span class="pre">getDefaultModuleValue()</span></code> to fill the internal
+module value map with the values given via <code class="docutils literal notranslate"><span class="pre">QROptions::$moduleValues</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">protected</span> <span class="k">function</span> <span class="nf">setModuleValues</span><span class="p">()</span><span class="o">:</span><span class="nx">void</span><span class="p">{</span>
+
+	<span class="k">foreach</span><span class="p">(</span><span class="nv">$this</span><span class="o">::</span><span class="na">DEFAULT_MODULE_VALUES</span> <span class="k">as</span> <span class="nv">$M_TYPE</span> <span class="o">=&gt;</span> <span class="nv">$defaultValue</span><span class="p">){</span>
+		<span class="nv">$value</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span><span class="o">-&gt;</span><span class="na">moduleValues</span><span class="p">[</span><span class="nv">$M_TYPE</span><span class="p">]</span> <span class="o">??</span> <span class="k">null</span><span class="p">);</span>
+
+		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">moduleValues</span><span class="p">[</span><span class="nv">$M_TYPE</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">moduleValueIsValid</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span>
+			<span class="o">?</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getModuleValue</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span>
+			<span class="o">:</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDefaultModuleValue</span><span class="p">(</span><span class="nv">$defaultValue</span><span class="p">);</span>
+	<span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the following example we’ll create these methods for the <code class="docutils literal notranslate"><span class="pre">GdImage</span></code> output.
+Since <a class="reference external" href="https://www.php.net/manual/function.imagecolorallocate"><code class="docutils literal notranslate"><span class="pre">imagecolorallocate()</span></code></a> and other GD functions accept 3 values
+for RGB color (or 4 in case of RGBA), we’ll supply these as a array where each value is an integer between 0 and 255 (<code class="docutils literal notranslate"><span class="pre">[RRR,</span> <span class="pre">GGG,</span> <span class="pre">BBB,</span> <span class="pre">(,</span> <span class="pre">AAA)]</span></code>).</p>
+<p>First we need to validate the input:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">protected</span> <span class="k">function</span> <span class="nf">moduleValueIsValid</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span><span class="o">:</span><span class="nx">bool</span><span class="p">{</span>
+
+	<span class="c1">// nowhere near valid</span>
+	<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">is_array</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="o">||</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="o">!==</span> <span class="mi">3</span><span class="p">){</span>
+		<span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="c1">// now iterate over the values</span>
+	<span class="k">foreach</span><span class="p">(</span><span class="nv">$value</span> <span class="k">as</span> <span class="nv">$color</span><span class="p">){</span>
+
+		<span class="c1">// non-integers won&#39;t work</span>
+		<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">is_int</span><span class="p">(</span><span class="nv">$color</span><span class="p">)){</span>
+			<span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+		<span class="p">}</span>
+
+		<span class="c1">// a strict check - we could also just ignore outliers and clamp the values instead</span>
+		<span class="k">if</span><span class="p">(</span><span class="nv">$color</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nv">$color</span> <span class="o">&gt;</span> <span class="mi">255</span><span class="p">){</span>
+			<span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// yay!</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now we can prepare the value:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">protected</span> <span class="k">function</span> <span class="nf">getModuleValue</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span><span class="o">:</span><span class="k">array</span><span class="p">{</span>
+	<span class="c1">// we call array_values() so we don&#39;t run into string-key related issues</span>
+	<span class="k">return</span> <span class="nb">array_map</span><span class="p">(</span><span class="nx">fn</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$val</span><span class="p">)</span><span class="o">:</span><span class="nx">int</span> <span class="o">=&gt;</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="nv">$val</span><span class="p">)),</span> <span class="nb">array_values</span><span class="p">(</span><span class="nv">$value</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>And finally we need to provide default values:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">protected</span> <span class="k">function</span> <span class="nf">getDefaultModuleValue</span><span class="p">(</span><span class="nx">bool</span> <span class="nv">$isDark</span><span class="p">)</span><span class="o">:</span><span class="k">array</span><span class="p">{</span>
+	<span class="k">return</span> <span class="nv">$isDark</span> <span class="o">?</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now that everything is ready and set, we can use the values in our GD functions:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$color</span> <span class="o">=</span> <span class="nb">imagecolorallocate</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">,</span> <span class="o">...</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">moduleValues</span><span class="p">[</span><span class="nv">$M_TYPE</span><span class="p">]);</span>
+</pre></div>
+</div>
+</section>
+<section id="using-the-module-values">
+<h3>Using the module values<a class="headerlink" href="#using-the-module-values" title="Link to this heading"></a></h3>
+<p>The state of the <code class="docutils literal notranslate"><span class="pre">$M_TYPE</span></code> is set with the <code class="docutils literal notranslate"><span class="pre">QRMatrix::IS_DARK</span></code> constant:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// set to dark (true) with bitwise OR:</span>
+<span class="nv">$M_TYPE</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$M_TYPE</span> <span class="o">|</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">IS_DARK</span><span class="p">);</span>
+
+<span class="c1">// set to light (false) with bitwise AND NOT</span>
+<span class="nv">$M_TYPE</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$M_TYPE</span> <span class="o">&amp;</span> <span class="o">~</span><span class="nx">QRMatrix</span><span class="o">::</span><span class="na">IS_DARK</span><span class="p">);</span>
+
+<span class="c1">// toggle the opposite state with bitwise XOR</span>
+<span class="nv">$M_TYPE</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$M_TYPE</span> <span class="o">^</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">IS_DARK</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can manually check whether the module is dark:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">$value</span> <span class="o">&amp;</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">IS_DARK</span><span class="p">)</span> <span class="o">===</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">IS_DARK</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>However it is much more convenient to use the <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> methods for that:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="nv">$y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$y</span> <span class="o">&lt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">moduleCount</span><span class="p">;</span> <span class="nv">$y</span><span class="o">++</span><span class="p">){</span> <span class="c1">// rows</span>
+	<span class="k">for</span><span class="p">(</span><span class="nv">$x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$x</span> <span class="o">&lt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">moduleCount</span><span class="p">;</span> <span class="nv">$x</span><span class="o">++</span><span class="p">){</span> <span class="c1">// columns</span>
+		<span class="c1">// sets current module as dark (true) with the M_DATA type</span>
+		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matrix</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA</span><span class="p">);</span>
+
+		<span class="c1">// -&gt; true (shortcut for checkType($x, $y, QRMatrix::IS_DARK))</span>
+		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matrix</span><span class="o">-&gt;</span><span class="na">check</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">);</span>
+
+		<span class="c1">// -&gt; true (current module is of type M_DATA)</span>
+		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matrix</span><span class="o">-&gt;</span><span class="na">checkType</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">,</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA</span><span class="p">);</span>
+
+		<span class="c1">// -&gt; true (current module is of type IS_DARK)</span>
+		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matrix</span><span class="o">-&gt;</span><span class="na">checkType</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">,</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">IS_DARK</span><span class="p">);</span>
+
+		<span class="c1">// -&gt; false, type is M_DATA</span>
+		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matrix</span><span class="o">-&gt;</span><span class="na">checkTypeIn</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">,</span> <span class="p">[</span><span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DARK</span><span class="p">,</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_ALIGNMENT</span><span class="p">]);</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../Usage/Configuration-settings.html" class="btn btn-neutral float-left" title="Configuration settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Built-In-Output/QREps.html" class="btn btn-neutral float-right" title="QREps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, smiley.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

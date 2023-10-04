@@ -389,6 +389,11 @@ Sets the value for the "preserveAspectRatio" on the `<svg>` element
 
 String substitute for dark
 
+**See also:**
+
+- [en.wikipedia.org/wiki/Block_Elements](https://en.wikipedia.org/wiki/Block_Elements)
+- [en.wikipedia.org/wiki/ANSI_escape_code#8-bit](https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit)
+
 
 ## textLight
 
@@ -407,7 +412,7 @@ Whether to return matrix values in JSON as booleans or `$M_TYPE` integers
 
 ## fpdfMeasureUnit
 
-Measurement unit for `FPDF` output: pt, mm, cm, in (defaults to "pt")
+Measurement unit for `FPDF` output: `pt`, `mm`, `cm`, `in` (default: `pt`)
 
 **See also:**
 
