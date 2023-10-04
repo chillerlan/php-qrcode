@@ -3338,7 +3338,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024outputInterface",
             "name": "outputInterface",
-            "summary": "The\u0020FQCN\u0020of\u0020the\u0020custom\u0020QROutputInterface\u0020if\u0020\u0024outputType\u0020is\u0020set\u0020to\u0020QRCode\u003A\u003AOUTPUT_CUSTOM",
+            "summary": "The\u0020FQCN\u0020of\u0020the\u0020custom\u0020\u0060QROutputInterface\u0060",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_outputInterface"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024returnResource",
@@ -3383,12 +3383,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024circleRadius",
             "name": "circleRadius",
-            "summary": "Specifies\u0020the\u0020radius\u0020of\u0020the\u0020modules\u0020when\u0020\u0024drawCircularModules\u0020is\u0020set\u0020to\u0020true",
+            "summary": "Specifies\u0020the\u0020radius\u0020of\u0020the\u0020modules\u0020when\u0020\u0060QROptions\u003A\u003A\u0024drawCircularModules\u0060\u0020is\u0020set\u0020to\u0020\u0060true\u0060",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_circleRadius"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024keepAsSquare",
             "name": "keepAsSquare",
-            "summary": "Specifies\u0020which\u0020module\u0020types\u0020to\u0020exclude\u0020when\u0020\u0024drawCircularModules\u0020is\u0020set\u0020to\u0020true",
+            "summary": "Specifies\u0020which\u0020module\u0020types\u0020to\u0020exclude\u0020when\u0020\u0060QROptions\u003A\u003A\u0024drawCircularModules\u0060\u0020is\u0020set\u0020to\u0020\u0060true\u0060",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_keepAsSquare"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024connectPaths",
@@ -3398,7 +3398,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024excludeFromConnect",
             "name": "excludeFromConnect",
-            "summary": "Specify\u0020which\u0020paths\/patterns\u0020to\u0020exclude\u0020from\u0020connecting\u0020if\u0020\u0024connectPaths\u0020is\u0020set\u0020to\u0020true",
+            "summary": "Specify\u0020which\u0020paths\/patterns\u0020to\u0020exclude\u0020from\u0020connecting\u0020if\u0020\u0060QROptions\u003A\u003A\u0024connectPaths\u0060\u0020is\u0020set\u0020to\u0020\u0060true\u0060",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_excludeFromConnect"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024moduleValues",
@@ -3443,7 +3443,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024transparencyColor",
             "name": "transparencyColor",
-            "summary": "Sets\u0020a\u0020transparency\u0020color\u0020for\u0020when\u0020\u007B\u0040see\u0020\\chillerlan\\QRCode\\QROptions\u003A\u003A\u0024imageTransparent\u0020QROptions\u003A\u003A\u0024imageTransparent\u007D\u0020is\u0020set\u0020to\u0020true.",
+            "summary": "Sets\u0020a\u0020transparency\u0020color\u0020for\u0020when\u0020\u0060QROptions\u003A\u003A\u0024imageTransparent\u0060\u0020is\u0020set\u0020to\u0020\u0060true\u0060.",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_transparencyColor"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024quality",
@@ -3478,12 +3478,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgOpacity",
             "name": "svgOpacity",
-            "summary": "SVG\u0020opacity",
+            "summary": "SVG\u0020path\u0020opacity",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgOpacity"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgDefs",
             "name": "svgDefs",
-            "summary": "Anything\u0020in\u0020the\u0020\u003Cdefs\u003E\u0020tag",
+            "summary": "Anything\u0020in\u0020the\u0020SVG\u0020\u0060\u003Cdefs\u003E\u0060\u0020tag",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgDefs"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgViewBoxSize",
@@ -3493,7 +3493,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgPreserveAspectRatio",
             "name": "svgPreserveAspectRatio",
-            "summary": "",
+            "summary": "Sets\u0020the\u0020value\u0020for\u0020the\u0020\u0022preserveAspectRatio\u0022\u0020on\u0020the\u0020\u0060\u003Csvg\u003E\u0060\u0020element",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgPreserveAspectRatio"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024textDark",
@@ -3513,12 +3513,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024jsonAsBooleans",
             "name": "jsonAsBooleans",
-            "summary": "Whether\u0020to\u0020return\u0020matrix\u0020values\u0020in\u0020JSON\u0020as\u0020booleans\u0020or\u0020\u0024M_TYPE\u0020integers",
+            "summary": "Whether\u0020to\u0020return\u0020matrix\u0020values\u0020in\u0020JSON\u0020as\u0020booleans\u0020or\u0020\u0060\u0024M_TYPE\u0060\u0020integers",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_jsonAsBooleans"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024fpdfMeasureUnit",
             "name": "fpdfMeasureUnit",
-            "summary": "Measurement\u0020unit\u0020for\u0020FPDF\u0020output\u003A\u0020pt,\u0020mm,\u0020cm,\u0020in\u0020\u0028defaults\u0020to\u0020\u0022pt\u0022\u0029",
+            "summary": "Measurement\u0020unit\u0020for\u0020\u0060FPDF\u0060\u0020output\u003A\u0020pt,\u0020mm,\u0020cm,\u0020in\u0020\u0028defaults\u0020to\u0020\u0022pt\u0022\u0029",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_fpdfMeasureUnit"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024readerUseImagickIfAvailable",
