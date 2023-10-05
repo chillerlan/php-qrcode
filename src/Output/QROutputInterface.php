@@ -83,7 +83,6 @@ interface QROutputInterface{
 		QRMatrix::M_QUIETZONE        => false,
 		QRMatrix::M_LOGO             => false,
 		QRMatrix::M_FINDER_DOT_LIGHT => false,
-		QRMatrix::M_TEST             => false,
 		// dark
 		QRMatrix::M_DARKMODULE       => true,
 		QRMatrix::M_DATA_DARK        => true,
@@ -96,7 +95,6 @@ interface QROutputInterface{
 		QRMatrix::M_QUIETZONE_DARK   => true,
 		QRMatrix::M_LOGO_DARK        => true,
 		QRMatrix::M_FINDER_DOT       => true,
-		QRMatrix::M_TEST_DARK        => true,
 	];
 
 	/**
@@ -118,7 +116,6 @@ interface QROutputInterface{
 		QRMatrix::M_QUIETZONE        => 'quietzone',
 		QRMatrix::M_LOGO             => 'logo',
 		QRMatrix::M_FINDER_DOT_LIGHT => 'finder-dot-light',
-		QRMatrix::M_TEST             => 'test',
 		// dark
 		QRMatrix::M_DARKMODULE       => 'darkmodule',
 		QRMatrix::M_DATA_DARK        => 'data-dark',
@@ -131,7 +128,6 @@ interface QROutputInterface{
 		QRMatrix::M_QUIETZONE_DARK   => 'quietzone-dark',
 		QRMatrix::M_LOGO_DARK        => 'logo-dark',
 		QRMatrix::M_FINDER_DOT       => 'finder-dot',
-		QRMatrix::M_TEST_DARK        => 'test-dark',
 	];
 
 	/**

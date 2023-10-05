@@ -79,9 +79,6 @@ final class QRMatrixTest extends TestCase{
 			QRMatrix::M_LOGO           => QRString::ansi8('░░', 105),
 			// empty
 			QRMatrix::M_NULL           => QRString::ansi8('░░', 231),
-			// data
-			QRMatrix::M_TEST_DARK      => QRString::ansi8('██', 127),
-			QRMatrix::M_TEST           => QRString::ansi8('░░', 127),
 		];
 
 		$out = (new QRString($opt, $matrix))->dump();
@@ -147,20 +144,20 @@ final class QRMatrixTest extends TestCase{
 	 * Tests the set(), get() and check() methods
 	 */
 	public function testGetSetCheck():void{
-		$this->matrix->set(10, 10, true, QRMatrix::M_TEST);
-		$this::assertSame(QRMatrix::M_TEST_DARK, $this->matrix->get(10, 10));
+		$this->matrix->set(10, 10, true, QRMatrix::M_LOGO);
+		$this::assertSame(QRMatrix::M_LOGO_DARK, $this->matrix->get(10, 10));
 		$this::assertTrue($this->matrix->check(10, 10));
 
-		$this->matrix->set(20, 20, false, QRMatrix::M_TEST);
-		$this::assertSame(QRMatrix::M_TEST, $this->matrix->get(20, 20));
+		$this->matrix->set(20, 20, false, QRMatrix::M_LOGO);
+		$this::assertSame(QRMatrix::M_LOGO, $this->matrix->get(20, 20));
 		$this::assertFalse($this->matrix->check(20, 20));
 
 		// get proper results when using a *_DARK constant
-		$this->matrix->set(30, 30, true, QRMatrix::M_TEST_DARK);
-		$this::assertSame(QRMatrix::M_TEST_DARK, $this->matrix->get(30, 30));
+		$this->matrix->set(30, 30, true, QRMatrix::M_LOGO_DARK);
+		$this::assertSame(QRMatrix::M_LOGO_DARK, $this->matrix->get(30, 30));
 
-		$this->matrix->set(40, 40, false, QRMatrix::M_TEST_DARK);
-		$this::assertSame(QRMatrix::M_TEST, $this->matrix->get(40, 40));
+		$this->matrix->set(40, 40, false, QRMatrix::M_LOGO_DARK);
+		$this::assertSame(QRMatrix::M_LOGO, $this->matrix->get(40, 40));
 
 		// out of range
 		$this::assertFalse($this->matrix->check(-1, -1));
@@ -331,8 +328,8 @@ final class QRMatrixTest extends TestCase{
 		$size          = $matrix->getSize();
 		$quietZoneSize = 5;
 
-		$matrix->set(0, 0, true, QRMatrix::M_TEST);
-		$matrix->set(($size - 1), ($size - 1), true, QRMatrix::M_TEST);
+		$matrix->set(0, 0, true, QRMatrix::M_LOGO);
+		$matrix->set(($size - 1), ($size - 1), true, QRMatrix::M_LOGO);
 
 		$matrix->setQuietZone($quietZoneSize);
 
@@ -350,8 +347,8 @@ final class QRMatrixTest extends TestCase{
 
 		$s = ($size - 1 - $quietZoneSize);
 
-		$this::assertSame(QRMatrix::M_TEST_DARK, $matrix->get($quietZoneSize, $quietZoneSize));
-		$this::assertSame(QRMatrix::M_TEST_DARK, $matrix->get($s, $s));
+		$this::assertSame(QRMatrix::M_LOGO_DARK, $matrix->get($quietZoneSize, $quietZoneSize));
+		$this::assertSame(QRMatrix::M_LOGO_DARK, $matrix->get($s, $s));
 	}
 
 	/**
@@ -522,20 +519,20 @@ final class QRMatrixTest extends TestCase{
 	 * Tests flipping the value of a module
 	 */
 	public function testFlip():void{
-		$this->matrix->set(20, 20, true, QRMatrix::M_TEST);
+		$this->matrix->set(20, 20, true, QRMatrix::M_LOGO);
 
 		// cover checkType()
-		$this::assertTrue($this->matrix->checkType(20, 20, QRMatrix::M_TEST));
+		$this::assertTrue($this->matrix->checkType(20, 20, QRMatrix::M_LOGO));
 		// verify the current state (dark)
-		$this::assertSame(QRMatrix::M_TEST_DARK, $this->matrix->get(20, 20));
+		$this::assertSame(QRMatrix::M_LOGO_DARK, $this->matrix->get(20, 20));
 		// flip
 		$this->matrix->flip(20, 20);
 		// verify flip
-		$this::assertSame(QRMatrix::M_TEST, $this->matrix->get(20, 20));
+		$this::assertSame(QRMatrix::M_LOGO, $this->matrix->get(20, 20));
 		// flip again
 		$this->matrix->flip(20, 20);
 		// verify flip
-		$this::assertSame(QRMatrix::M_TEST_DARK, $this->matrix->get(20, 20));
+		$this::assertSame(QRMatrix::M_LOGO_DARK, $this->matrix->get(20, 20));
 	}
 
 	/**

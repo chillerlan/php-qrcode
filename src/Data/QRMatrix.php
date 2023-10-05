@@ -33,10 +33,6 @@ class QRMatrix{
 	public const M_LOGO             = 0b001000000000;
 	/** @var int */
 	public const M_LOGO_DARK        = 0b101000000000;
-	/** @var int */
-	public const M_TEST             = 0b011111111111;
-	/** @var int */
-	public const M_TEST_DARK        = 0b111111111111;
 
 	/*
 	 * light values
