@@ -98,7 +98,7 @@ final class QRMatrixTest extends TestCase{
 			return;
 		}
 
-		self::debugMatrix($matrix);
+		$this::debugMatrix($matrix);
 	}
 
 	/**
@@ -411,7 +411,7 @@ final class QRMatrixTest extends TestCase{
 
 		$matrix = (new QRCode($o))->addByteSegment('testdata')->getQRMatrix();
 
-		self::debugMatrix($matrix);
+		$this::debugMatrix($matrix);
 
 		$this::assertFalse($matrix->checkType(9, 9, QRMatrix::M_LOGO));
 		$this::assertTrue($matrix->checkType(10, 10, QRMatrix::M_LOGO));
@@ -433,7 +433,7 @@ final class QRMatrixTest extends TestCase{
 		// also testing size adjustment to uneven numbers
 		$matrix->setLogoSpace(20, 14);
 
-		self::debugMatrix($matrix);
+		$this::debugMatrix($matrix);
 
 		// NW corner
 		$this::assertFalse($matrix->checkType(17, 20, QRMatrix::M_LOGO));
@@ -456,22 +456,17 @@ final class QRMatrixTest extends TestCase{
 
 		$matrix = (new QRCode($o))->addByteSegment('testdata')->getQRMatrix();
 
-		self::debugMatrix($matrix);
-
-		// logo space should not overwrite quiet zone & function patterns
 		$matrix->setLogoSpace(21, 21, -10, -10);
+		$this::debugMatrix($matrix);
 		$this::assertSame(QRMatrix::M_QUIETZONE, $matrix->get(9, 9));
-		$this::assertSame(QRMatrix::M_FINDER_DARK, $matrix->get(10, 10));
-		$this::assertSame(QRMatrix::M_FINDER_DARK, $matrix->get(16, 16));
-		$this::assertSame(QRMatrix::M_SEPARATOR, $matrix->get(17, 17));
-		$this::assertSame(QRMatrix::M_FORMAT_DARK, $matrix->get(18, 18));
-		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(19, 19));
+		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(10, 10));
 		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(20, 20));
 		$this::assertNotSame(QRMatrix::M_LOGO, $matrix->get(21, 21));
 
-		// Ii just realized that setLogoSpace() could be called multiple times
+		// I just realized that setLogoSpace() could be called multiple times
 		// on the same instance, and I'm not going to do anything about it :P
 		$matrix->setLogoSpace(21, 21, 45, 45);
+		$this::debugMatrix($matrix);
 		$this::assertNotSame(QRMatrix::M_LOGO, $matrix->get(54, 54));
 		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(55, 55));
 		$this::assertSame(QRMatrix::M_QUIETZONE, $matrix->get(67, 67));

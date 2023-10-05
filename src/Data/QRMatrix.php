@@ -11,7 +11,7 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, ReedSolomonEncoder, Version};
-use function array_fill, array_map, array_reverse, count, floor, intdiv;
+use function array_fill, array_map, array_reverse, count, intdiv;
 
 /**
  * Holds an array representation of the final QR Code that contains numerical values for later output modifications;
@@ -636,8 +636,8 @@ class QRMatrix{
 	 * Clears a space of $width * $height in order to add a logo or text.
 	 * If no $height is given, the space will be assumed a square of $width.
 	 *
-	 * Additionally, the logo space can be positioned within the QR Code - respecting the main functional patterns -
-	 * using $startX and $startY. If either of these are null, the logo space will be centered in that direction.
+	 * Additionally, the logo space can be positioned within the QR Code using $startX and $startY.
+	 * If either of these are null, the logo space will be centered in that direction.
 	 * ECC level "H" (30%) is required.
 	 *
 	 * The coordinates of $startX and $startY do not include the quiet zone:
@@ -661,9 +661,7 @@ class QRMatrix{
 			throw new QRCodeDataException('ECC level "H" required to add logo space');
 		}
 
-		if($height === null){
-			$height = $width;
-		}
+		$height ??= $width;
 
 		// if width and height happen to be negative or 0 (default value), just return - nothing to do
 		if($width <= 0 || $height <= 0){
@@ -671,10 +669,10 @@ class QRMatrix{
 		}
 
 		// $this->moduleCount includes the quiet zone (if created), we need the QR size here
-		$length = $this->version->getDimension();
+		$dimension = $this->version->getDimension();
 
-		// throw if the size is exceeds the qrcode size
-		if($width > $length || $height > $length){
+		// throw if the size exceeds the qrcode size
+		if($width > $dimension || $height > $dimension){
 			throw new QRCodeDataException('logo dimensions exceed matrix size');
 		}
 
@@ -688,28 +686,24 @@ class QRMatrix{
 		}
 
 		// throw if the logo space exceeds the maximum error correction capacity
-		if(($width * $height) > floor($length * $length * 0.2)){
+		if(($width * $height) > (int)($dimension * $dimension * 0.25)){
 			throw new QRCodeDataException('logo space exceeds the maximum error correction capacity');
 		}
 
-		// quiet zone size
-		$qz    = (($this->moduleCount - $length) / 2);
-		// skip quiet zone and the first 9 rows/columns (finder-, mode-, version- and timing patterns)
-		$start = ($qz + 9);
-		// skip quiet zone
-		$end   = ($this->moduleCount - $qz);
+		$quietzone = (($this->moduleCount - $dimension) / 2);
+		$end       = ($this->moduleCount - $quietzone);
 
 		// determine start coordinates
-		$startX = ((($startX !== null) ? $startX : ($length - $width) / 2) + $qz);
-		$startY = ((($startY !== null) ? $startY : ($length - $height) / 2) + $qz);
-		$endX   = ($startX + $width);
-		$endY   = ($startY + $height);
+		$startX ??= (($dimension - $width) / 2);
+		$startY ??= (($dimension - $height) / 2);
+		$endX     = ($quietzone + $startX + $width);
+		$endY     = ($quietzone + $startY + $height);
 
 		// clear the space
-		for($y = $startY; $y < $endY; $y++){
-			for($x = $startX; $x < $endX; $x++){
+		for($y = ($quietzone + $startY); $y < $endY; $y++){
+			for($x = ($quietzone + $startX); $x < $endX; $x++){
 				// out of bounds, skip
-				if($x < $start || $y < $start ||$x >= $end || $y >= $end){
+				if($x < $quietzone || $y < $quietzone ||$x >= $end || $y >= $end){
 					continue;
 				}
 
