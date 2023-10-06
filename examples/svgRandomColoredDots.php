@@ -52,11 +52,7 @@ class RandomDotsSVGOutput extends QRMarkupSVG{
 				   && !$this->matrix->checkTypeIn($x, $y, $this->options->excludeFromConnect)
 				){
 					// to connect paths we'll redeclare the $M_TYPE_LAYER to data only
-					$M_TYPE_LAYER = QRMatrix::M_DATA;
-
-					if($this->matrix->check($x, $y)){
-						$M_TYPE_LAYER = QRMatrix::M_DATA_DARK;
-					}
+					$M_TYPE_LAYER = $this->matrix->check($x, $y) ? QRMatrix::M_DATA_DARK : QRMatrix::M_DATA;
 				}
 
 				// randomly assign another $M_TYPE_LAYER for the given types
@@ -104,13 +100,14 @@ class RandomDotsOptions extends QROptions{
 $options = new RandomDotsOptions;
 
 // our custom dot colors
+// adding the IS_DARK flag so that the proper layer css class is assigned
 $options->dotColors = [
-	111 => '#e2453c',
-	222 => '#e07e39',
-	333 => '#e5d667',
-	444 => '#51b95b',
-	555 => '#1e72b7',
-	666 => '#6f5ba7',
+	(111 | QRMatrix::IS_DARK) => '#e2453c',
+	(222 | QRMatrix::IS_DARK) => '#e07e39',
+	(333 | QRMatrix::IS_DARK) => '#e5d667',
+	(444 | QRMatrix::IS_DARK) => '#51b95b',
+	(555 | QRMatrix::IS_DARK) => '#1e72b7',
+	(666 | QRMatrix::IS_DARK) => '#6f5ba7',
 ];
 
 // generate the CSS for the several colored layers
@@ -122,7 +119,6 @@ foreach($options->dotColors as $layer => $color){
 
 $options->svgDefs = '
 	<style><![CDATA[
-		.light{ fill: #dedede; }
 		.dark{ fill: #424242; }
 		'.$layerColors.'
 	]]></style>';
