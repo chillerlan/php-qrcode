@@ -169,7 +169,7 @@ $options = new SVGWithLogoAndCustomShapesOptions;
 // SVG logo options (see extended class below)
 $options->svgLogo         = __DIR__.'/github.svg'; // logo from: https://github.com/simple-icons/simple-icons
 $options->svgLogoScale    = 0.25;
-$options->svgLogoCssClass = 'dark';
+$options->svgLogoCssClass = 'qr-logo dark';
 
 // QROptions
 $options->version         = 5;
@@ -189,7 +189,7 @@ $options->svgDefs         = '
 	</linearGradient>
 	<style><![CDATA[
 		.dark{fill: url(#gradient);}
-		.light{fill: #eaeaea;}
+		.qr-logo{fill: #424242;}
 	]]></style>';
 
 
