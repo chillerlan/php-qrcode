@@ -40,8 +40,8 @@ class QRSvgWithLogoAndCustomShapes extends QRMarkupSVG{
 
 		// generate the path element(s) - in this case it's just one element as we've "disabled" several options
 		$svg = parent::paths();
-		// now we're lazy modifying the generated path to add the custom shapes for the finder patterns
-		$svg = str_replace('"/>', $this->getFinderPatterns().'"/>', $svg);
+		// add the custom shapes for the finder patterns
+		$svg .= $this->getFinderPatterns();
 		// and add the custom logo
 		$svg .= $this->getLogo();
 
@@ -99,7 +99,12 @@ class QRSvgWithLogoAndCustomShapes extends QRMarkupSVG{
 			$finder[] = sprintf($path, $ix, $iy);
 		}
 
-		return implode(' ', $finder);
+		return sprintf(
+			'%s<path class="%s" d="%s"/>',
+			$this->options->eol,
+			$this->getCssClass(QRMatrix::M_FINDER_DARK),
+			implode(' ', $finder)
+		);
 	}
 
 	/**
