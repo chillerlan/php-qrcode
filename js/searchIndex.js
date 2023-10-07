@@ -1376,16 +1376,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_LOGO_DARK"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_TEST",
-            "name": "M_TEST",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TEST"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_TEST_DARK",
-            "name": "M_TEST_DARK",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#constant_M_TEST_DARK"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AM_DATA",
             "name": "M_DATA",
             "summary": "",
