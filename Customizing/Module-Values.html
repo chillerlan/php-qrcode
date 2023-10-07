@@ -82,15 +82,21 @@
 <li class="toctree-l1"><a class="reference internal" href="../Usage/Advanced-usage.html">Advanced usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Advanced-usage.html#configuration-via-qroptions">Configuration via <code class="docutils literal notranslate"><span class="pre">QROptions</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#supply-an-iterable-of-options">Supply an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#load-and-save-json">Load and save JSON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#load-and-save-options-from-to-json">Load and save options from/to JSON</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#extending-the-qroptions-class">Extending the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> class</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Advanced-usage.html#qrcode-methods"><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#save-to-file">Save to file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#render-a-qrmatrix-instance">Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#mixed-mode">Mixed mode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#qr-code-reader">QR Code reader</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Advanced-usage.html#common-output-options">Common output options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#save-to-file">Save to file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#base64-uri-output">Base64 URI output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#return-the-image-resource">Return the image resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#add-a-logo-space">Add a logo space</a></li>
 </ul>
 </li>
 </ul>
@@ -319,9 +325,10 @@
 <h1>Module values<a class="headerlink" href="#module-values" title="Link to this heading"></a></h1>
 <section id="basics">
 <h2>Basics<a class="headerlink" href="#basics" title="Link to this heading"></a></h2>
-<p>The QR Code matrix is a 2-dimensional array of numerical values that hold a bit mask for
+<p>The QR Code matrix is a 2-dimensional array of numerical values that hold a bitmask for
 each QR pixel (“module” as per specification), the so-called “module type” or <code class="docutils literal notranslate"><span class="pre">$M_TYPE</span></code>, which is represented by
 <a class="reference external" href="https://chillerlan.github.io/php-qrcode/classes/chillerlan-QRCode-Data-QRMatrix.html#toc-constants">the <code class="docutils literal notranslate"><span class="pre">QRMatrix::M_*</span></code> constants</a>.
+The bitmask is 12 bits wide; the first 11 bits stand for the pattern type, the highest bit designates whether the module is dark or light.
 You can assign different values for the several <a class="reference internal" href="../Appendix/Terminology.html#function-patterns"><span class="std std-ref">function patterns</span></a> to colorize them or even draw pixel-art.</p>
 </section>
 <section id="assigning-values">
@@ -329,11 +336,12 @@ You can assign different values for the several <a class="reference internal" hr
 <p>To map the values and properly render the modules for the given <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code>, it may be necessary to overwrite the
 <a class="reference external" href="https://chillerlan.github.io/php-qrcode/classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_DEFAULT_MODULE_VALUES">default values</a>,
 that are replaced by the user defined values in <code class="docutils literal notranslate"><span class="pre">QROptions::$moduleValues</span></code> during the render process.</p>
-<p>The map of <code class="docutils literal notranslate"><span class="pre">QRMatrix::M_*</span></code> constants =&gt; default values looks similar to the following:</p>
+<p>The map of <code class="docutils literal notranslate"><span class="pre">QRMatrix::M_*</span></code> constants =&gt; default values looks similar to the following
+(values with “_DARK” and “_LIGHT” suffix are for convenience):</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">moduleValues</span> <span class="o">=</span> <span class="p">[</span>
 	<span class="c1">// light</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_NULL</span>             <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DARKMODULE_LIGHT</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_NULL</span>             <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span> <span class="c1">// special value - always 0</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DARKMODULE_LIGHT</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span> <span class="c1">// key equivalent to (QRMatrix::M_DARKMODULE &amp; ~QRMatrix::IS_DARK)</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA</span>             <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER</span>           <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_SEPARATOR</span>        <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
@@ -344,10 +352,9 @@ that are replaced by the user defined values in <code class="docutils literal no
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_QUIETZONE</span>        <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_LOGO</span>             <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DOT_LIGHT</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_TEST</span>             <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
 	<span class="c1">// dark</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DARKMODULE</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA_DARK</span>        <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA_DARK</span>        <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="c1">// key equivalent to (QRMatrix::M_DATA | QRMatrix::IS_DARK)</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DARK</span>      <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_SEPARATOR_DARK</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_ALIGNMENT_DARK</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
@@ -357,7 +364,6 @@ that are replaced by the user defined values in <code class="docutils literal no
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_QUIETZONE_DARK</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_LOGO_DARK</span>        <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DOT</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_TEST_DARK</span>        <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
 <span class="p">];</span>
 </pre></div>
 </div>

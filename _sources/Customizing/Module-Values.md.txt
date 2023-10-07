@@ -2,9 +2,10 @@
 
 ## Basics
 
-The QR Code matrix is a 2-dimensional array of numerical values that hold a bit mask for
+The QR Code matrix is a 2-dimensional array of numerical values that hold a bitmask for
 each QR pixel ("module" as per specification), the so-called "module type" or `$M_TYPE`, which is represented by
 [the `QRMatrix::M_*` constants](https://chillerlan.github.io/php-qrcode/classes/chillerlan-QRCode-Data-QRMatrix.html#toc-constants).
+The bitmask is 12 bits wide; the first 11 bits stand for the pattern type, the highest bit designates whether the module is dark or light.
 You can assign different values for the several [function patterns](../Appendix/Terminology.md#function-patterns) to colorize them or even draw pixel-art.
 
 
@@ -14,13 +15,14 @@ To map the values and properly render the modules for the given `QROutputInterfa
 [default values](https://chillerlan.github.io/php-qrcode/classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_DEFAULT_MODULE_VALUES),
 that are replaced by the user defined values in `QROptions::$moduleValues` during the render process.
 
-The map of `QRMatrix::M_*` constants => default values looks similar to the following:
+The map of `QRMatrix::M_*` constants => default values looks similar to the following
+(values with "_DARK" and "_LIGHT" suffix are for convenience):
 
 ```php
 $options->moduleValues = [
 	// light
-	QRMatrix::M_NULL             => false,
-	QRMatrix::M_DARKMODULE_LIGHT => false,
+	QRMatrix::M_NULL             => false, // special value - always 0
+	QRMatrix::M_DARKMODULE_LIGHT => false, // key equivalent to (QRMatrix::M_DARKMODULE & ~QRMatrix::IS_DARK)
 	QRMatrix::M_DATA             => false,
 	QRMatrix::M_FINDER           => false,
 	QRMatrix::M_SEPARATOR        => false,
@@ -31,10 +33,9 @@ $options->moduleValues = [
 	QRMatrix::M_QUIETZONE        => false,
 	QRMatrix::M_LOGO             => false,
 	QRMatrix::M_FINDER_DOT_LIGHT => false,
-	QRMatrix::M_TEST             => false,
 	// dark
 	QRMatrix::M_DARKMODULE       => true,
-	QRMatrix::M_DATA_DARK        => true,
+	QRMatrix::M_DATA_DARK        => true, // key equivalent to (QRMatrix::M_DATA | QRMatrix::IS_DARK)
 	QRMatrix::M_FINDER_DARK      => true,
 	QRMatrix::M_SEPARATOR_DARK   => true,
 	QRMatrix::M_ALIGNMENT_DARK   => true,
@@ -44,7 +45,6 @@ $options->moduleValues = [
 	QRMatrix::M_QUIETZONE_DARK   => true,
 	QRMatrix::M_LOGO_DARK        => true,
 	QRMatrix::M_FINDER_DOT       => true,
-	QRMatrix::M_TEST_DARK        => true,
 ];
 ```
 

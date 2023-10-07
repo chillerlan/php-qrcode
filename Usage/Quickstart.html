@@ -82,15 +82,21 @@
 <li class="toctree-l1"><a class="reference internal" href="Advanced-usage.html">Advanced usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Advanced-usage.html#configuration-via-qroptions">Configuration via <code class="docutils literal notranslate"><span class="pre">QROptions</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#supply-an-iterable-of-options">Supply an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#load-and-save-json">Load and save JSON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#load-and-save-options-from-to-json">Load and save options from/to JSON</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#extending-the-qroptions-class">Extending the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> class</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Advanced-usage.html#qrcode-methods"><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#save-to-file">Save to file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#render-a-qrmatrix-instance">Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#mixed-mode">Mixed mode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#qr-code-reader">QR Code reader</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Advanced-usage.html#common-output-options">Common output options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#save-to-file">Save to file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#base64-uri-output">Base64 URI output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#return-the-image-resource">Return the image resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#add-a-logo-space">Add a logo space</a></li>
 </ul>
 </li>
 </ul>
@@ -332,6 +338,7 @@
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$data</span>   <span class="o">=</span> <span class="s1">&#39;otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&amp;issuer=chillerlan.net&#39;</span><span class="p">;</span>
 <span class="nv">$qrcode</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
 
+<span class="c1">// default output is a base64 encoded data URI</span>
 <span class="nb">printf</span><span class="p">(</span><span class="s1">&#39;&lt;img src=&quot;%s&quot; alt=&quot;QR Code&quot; /&gt;&#39;</span><span class="p">,</span> <span class="nv">$qrcode</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -347,7 +354,8 @@
 <span class="k">echo</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>See <a class="reference internal" href="Advanced-usage.html"><span class="std std-doc">Advanced usage</span></a> for a more in-depth usage guide.
+<p>See <a class="reference internal" href="Advanced-usage.html"><span class="std std-doc">Advanced usage</span></a> for a more in-depth usage guide
+and <a class="reference internal" href="Configuration-settings.html"><span class="std std-doc">configuration settings</span></a> for a list of available options.
 Also, have a look <a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/main/examples">in the examples folder</a> for some more usage examples.</p>
 </section>
 </section>
@@ -356,17 +364,16 @@ Also, have a look <a class="reference external" href="https://github.com/chiller
 <p>Using the built-in QR Code reader is pretty straight-forward:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">{</span>
 	<span class="nv">$result</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">readFromFile</span><span class="p">(</span><span class="s1">&#39;path/to/file.png&#39;</span><span class="p">);</span> <span class="c1">// -&gt; DecoderResult</span>
+
+	<span class="c1">// you can now use the result instance...</span>
+	<span class="nv">$content</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">;</span>
+
+	<span class="c1">// ...or simply cast the result instance to string to get the content</span>
+	<span class="nv">$content</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span><span class="nv">$result</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="k">catch</span><span class="p">(</span><span class="nx">Throwable</span> <span class="nv">$exception</span><span class="p">){</span>
 	<span class="c1">// handle exception...</span>
-	<span class="c1">// throw ...</span>
 <span class="p">}</span>
-
-<span class="c1">// you can now use the result instance...</span>
-<span class="nv">$content</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">;</span>
-
-<span class="c1">// ...or simply cast the result instance to string to get the content</span>
-<span class="nv">$content</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span><span class="nv">$result</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>It’s generally a good idea to wrap the reading in a try/catch block to handle any errors that may occur in the process.</p>

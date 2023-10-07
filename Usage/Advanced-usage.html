@@ -82,15 +82,21 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configuration-via-qroptions">Configuration via <code class="docutils literal notranslate"><span class="pre">QROptions</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#supply-an-iterable-of-options">Supply an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#load-and-save-json">Load and save JSON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#load-and-save-options-from-to-json">Load and save options from/to JSON</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#extending-the-qroptions-class">Extending the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> class</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#qrcode-methods"><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#save-to-file">Save to file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#render-a-qrmatrix-instance">Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#mixed-mode">Mixed mode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#qr-code-reader">QR Code reader</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#common-output-options">Common output options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#save-to-file">Save to file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#base64-uri-output">Base64 URI output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#return-the-image-resource">Return the image resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-a-logo-space">Add a logo space</a></li>
 </ul>
 </li>
 </ul>
@@ -349,8 +355,8 @@ A list with all available <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </section>
-<section id="load-and-save-json">
-<h3>Load and save JSON<a class="headerlink" href="#load-and-save-json" title="Link to this heading"></a></h3>
+<section id="load-and-save-options-from-to-json">
+<h3>Load and save options from/to JSON<a class="headerlink" href="#load-and-save-options-from-to-json" title="Link to this heading"></a></h3>
 <p>The settings can be saved to and loaded from JSON, e.g. to store them in a database:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$json</span> <span class="o">=</span> <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">toJSON</span><span class="p">(</span><span class="nx">JSON_THROW_ON_ERROR</span><span class="p">);</span>
 <span class="c1">// via JsonSerializable interface</span>
@@ -424,16 +430,6 @@ After invocation of the <code class="docutils literal notranslate"><span class="
 <span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">setOptions</span><span class="p">(</span><span class="nv">$options</span><span class="p">);</span>
 </pre></div>
 </div>
-<section id="save-to-file">
-<h3>Save to file<a class="headerlink" href="#save-to-file" title="Link to this heading"></a></h3>
-<p>You can specify an output file path in which the QR Code content is stored (this will override the <code class="docutils literal notranslate"><span class="pre">QROptions::$cachefile</span></code>
-setting, see <a class="reference internal" href="#../Customizing/Common.md#save-to-file"><span class="xref myst">common output options</span></a>):</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="s1">&#39;/path/to/qrcode.svg&#39;</span><span class="p">);</span>
-
-<span class="nb">printf</span><span class="p">(</span><span class="s1">&#39;&lt;img src=&quot;%s&quot; alt=&quot;QR Code&quot; /&gt;&#39;</span><span class="p">,</span> <span class="s1">&#39;/path/to/qrcode.svg&#39;</span><span class="p">);</span>
-</pre></div>
-</div>
-</section>
 <section id="render-a-qrmatrix-instance">
 <h3>Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance<a class="headerlink" href="#render-a-qrmatrix-instance" title="Link to this heading"></a></h3>
 <p>You can render a <a class="reference external" href="https://github.com/chillerlan/php-qrcode/blob/main/src/Data/QRMatrix.php"><code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code></a> instance directly:</p>
@@ -492,7 +488,10 @@ This method is used internally when a data mode is invoked, but it can come in h
 <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">readerIncreaseContrast</span>      <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
 <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">readerGrayscale</span>             <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
 
-<span class="nv">$result</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">readFromFile</span><span class="p">(</span><span class="s1">&#39;path/to/qrcode.png&#39;</span><span class="p">);</span>
+<span class="nv">$qrcode</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">);</span>
+
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">readFromFile</span><span class="p">(</span><span class="s1">&#39;path/to/qrcode.png&#39;</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">readFromBlob</span><span class="p">(</span><span class="nv">$imagedata</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> object from the <a class="reference external" href="https://github.com/chillerlan/php-qrcode/blob/main/src/Decoder/DecoderResult.php"><code class="docutils literal notranslate"><span class="pre">DecoderResult</span></code></a> can be reused:</p>
@@ -503,6 +502,63 @@ This method is used internally when a data mode is invoked, but it can come in h
 <span class="nv">$output</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">renderMatrix</span><span class="p">(</span><span class="nv">$matrix</span><span class="p">);</span>
 
 <span class="c1">// ...output</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="common-output-options">
+<h2>Common output options<a class="headerlink" href="#common-output-options" title="Link to this heading"></a></h2>
+<section id="save-to-file">
+<h3>Save to file<a class="headerlink" href="#save-to-file" title="Link to this heading"></a></h3>
+<p>You can specify an output file path in which the QR Code content is stored:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">outputBase64</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">cachefile</span>    <span class="o">=</span> <span class="s1">&#39;/path/to/qrcode.svg&#39;</span><span class="p">;</span>
+
+<span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+
+<span class="nb">printf</span><span class="p">(</span><span class="s1">&#39;&lt;img src=&quot;%s&quot; alt=&quot;QR Code&quot; /&gt;&#39;</span><span class="p">,</span> <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">cachefile</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The file path can also be supplied as second parameter to the render methods (this will override the <code class="docutils literal notranslate"><span class="pre">QROptions::$cachefile</span></code> setting):</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="s1">&#39;/path/to/qrcode.svg&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="base64-uri-output">
+<h3>Base64 URI output<a class="headerlink" href="#base64-uri-output" title="Link to this heading"></a></h3>
+<p>By default, a <a class="reference external" href="https://en.wikipedia.org/wiki/Data_URI_scheme">Base64 encoded data URI</a> will be returned (where applicable):</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">echo</span> <span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span> <span class="c1">// -&gt; data:image/png;base64,...</span>
+</pre></div>
+</div>
+<p>Disable Base64 output:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">outputBase64</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+<span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Content-type: image/png&#39;</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="return-the-image-resource">
+<h3>Return the image resource<a class="headerlink" href="#return-the-image-resource" title="Link to this heading"></a></h3>
+<p>In some cases you might want to modify the QR image after creation (without crating a custom output class), in which case you want the internal image resource rather than the final output.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">outputType</span>     <span class="o">=</span> <span class="nx">QROutputInterface</span><span class="o">::</span><span class="na">IMAGICK</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">returnResource</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+<span class="sd">/** @var Imagick $imagick */</span>
+<span class="nv">$imagick</span> <span class="o">=</span> <span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$imagick</span><span class="o">-&gt;</span><span class="na">getImageBlob</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="add-a-logo-space">
+<h3>Add a logo space<a class="headerlink" href="#add-a-logo-space" title="Link to this heading"></a></h3>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">addLogoSpace</span>    <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">logoSpaceWidth</span>  <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">logoSpaceHeight</span> <span class="o">=</span> <span class="mi">9</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">logoSpaceStartX</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">logoSpaceStartY</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
 </pre></div>
 </div>
 </section>

@@ -42,12 +42,16 @@ Most of the v2.0 API remains unchanged throughout the several versions up to v5.
 
 To install `php-qrcode` on the terminal, use:
 
-`composer require chillerlan/php-qrcode`
+```shell
+composer require chillerlan/php-qrcode
+```
 
 If you want to install the package from a specific tag or commit, do as follows:
 
-- `composer require chillerlan/php-qrcode:4.3.4`
-- `composer require chillerlan/php-qrcode:dev-main#f15b0afe9d4128bf734c3bf1bcffae72bf7b3e53`
+```shell
+composer require chillerlan/php-qrcode:4.3.4
+composer require chillerlan/php-qrcode:dev-main#f15b0afe9d4128bf734c3bf1bcffae72bf7b3e53
+```
 
 
 ## Manual installation

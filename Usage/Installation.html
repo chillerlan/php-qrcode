@@ -82,15 +82,21 @@
 <li class="toctree-l1"><a class="reference internal" href="Advanced-usage.html">Advanced usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Advanced-usage.html#configuration-via-qroptions">Configuration via <code class="docutils literal notranslate"><span class="pre">QROptions</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#supply-an-iterable-of-options">Supply an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#load-and-save-json">Load and save JSON</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#load-and-save-options-from-to-json">Load and save options from/to JSON</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#extending-the-qroptions-class">Extending the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> class</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Advanced-usage.html#qrcode-methods"><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#save-to-file">Save to file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#render-a-qrmatrix-instance">Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#mixed-mode">Mixed mode</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#qr-code-reader">QR Code reader</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Advanced-usage.html#common-output-options">Common output options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#save-to-file">Save to file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#base64-uri-output">Base64 URI output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#return-the-image-resource">Return the image resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#add-a-logo-space">Add a logo space</a></li>
 </ul>
 </li>
 </ul>
@@ -350,12 +356,14 @@ In case you want to keep using <code class="docutils literal notranslate"><span 
 <section id="terminal">
 <h3>Terminal<a class="headerlink" href="#terminal" title="Link to this heading"></a></h3>
 <p>To install <code class="docutils literal notranslate"><span class="pre">php-qrcode</span></code> on the terminal, use:</p>
-<p><code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">require</span> <span class="pre">chillerlan/php-qrcode</span></code></p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>composer<span class="w"> </span>require<span class="w"> </span>chillerlan/php-qrcode
+</pre></div>
+</div>
 <p>If you want to install the package from a specific tag or commit, do as follows:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">require</span> <span class="pre">chillerlan/php-qrcode:4.3.4</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">require</span> <span class="pre">chillerlan/php-qrcode:dev-main#f15b0afe9d4128bf734c3bf1bcffae72bf7b3e53</span></code></p></li>
-</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>composer<span class="w"> </span>require<span class="w"> </span>chillerlan/php-qrcode:4.3.4
+composer<span class="w"> </span>require<span class="w"> </span>chillerlan/php-qrcode:dev-main#f15b0afe9d4128bf734c3bf1bcffae72bf7b3e53
+</pre></div>
+</div>
 </section>
 </section>
 <section id="manual-installation">
