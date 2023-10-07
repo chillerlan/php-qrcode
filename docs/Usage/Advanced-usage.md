@@ -39,7 +39,7 @@ $options->fromIterable($myOptions);
 ```
 
 
-### Load and save JSON
+### Load and save options from/to JSON
 
 The settings can be saved to and loaded from JSON, e.g. to store them in a database:
 
@@ -122,18 +122,6 @@ $qrcode->setOptions($options);
 ```
 
 
-### Save to file
-
-You can specify an output file path in which the QR Code content is stored (this will override the `QROptions::$cachefile`
-setting, see [common output options](../Customizing/Common.md#save-to-file)):
-
-```php
-$qrcode->render($data, '/path/to/qrcode.svg');
-
-printf('<img src="%s" alt="QR Code" />', '/path/to/qrcode.svg');
-```
-
-
 ### Render a `QRMatrix` instance
 
 You can render a [`QRMatrix`](https://github.com/chillerlan/php-qrcode/blob/main/src/Data/QRMatrix.php) instance directly:
@@ -150,6 +138,7 @@ $output = $qrcode->renderMatrix($matrix);
 // save to file
 $qrcode->renderMatrix($matrix, '/path/to/qrcode.svg');
 ```
+
 
 ### Mixed mode
 
@@ -199,7 +188,10 @@ $options->readerUseImagickIfAvailable = true;
 $options->readerIncreaseContrast      = true;
 $options->readerGrayscale             = true;
 
-$result = (new QRCode($options))->readFromFile('path/to/qrcode.png');
+$qrcode = new QRCode($options);
+
+$result = $qrcode->readFromFile('path/to/qrcode.png');
+$result = $qrcode->readFromBlob($imagedata);
 ```
 
 The `QRMatrix` object from the [`DecoderResult`](https://github.com/chillerlan/php-qrcode/blob/main/src/Decoder/DecoderResult.php) can be reused:
@@ -212,4 +204,72 @@ $matrix = $result->getQRMatrix();
 $output = (new QRCode($options))->renderMatrix($matrix);
 
 // ...output
+```
+
+## Common output options
+
+### Save to file
+
+You can specify an output file path in which the QR Code content is stored:
+
+```php
+$options->outputBase64 = false;
+$options->cachefile    = '/path/to/qrcode.svg';
+
+$qrcode->render($data);
+
+printf('<img src="%s" alt="QR Code" />', $options->cachefile);
+```
+
+The file path can also be supplied as second parameter to the render methods (this will override the `QROptions::$cachefile` setting):
+
+```php
+$qrcode->render($data, '/path/to/qrcode.svg');
+```
+
+
+### Base64 URI output
+
+By default, a [Base64 encoded data URI](https://en.wikipedia.org/wiki/Data_URI_scheme) will be returned (where applicable):
+
+```php
+echo $qrcode->render($data); // -> data:image/png;base64,...
+```
+
+Disable Base64 output:
+
+```php
+$options->outputBase64 = false;
+
+header('Content-type: image/png');
+
+echo $qrcode->render($data);
+```
+
+
+### Return the image resource
+
+In some cases you might want to modify the QR image after creation (without crating a custom output class), in which case you want the internal image resource rather than the final output.
+
+```php
+$options->outputType     = QROutputInterface::IMAGICK;
+$options->returnResource = true;
+
+/** @var Imagick $imagick */
+$imagick = $qrcode->render($data);
+
+echo $imagick->getImageBlob();
+```
+
+
+### Add a logo space
+
+
+```php
+$options->addLogoSpace    = true;
+$options->logoSpaceWidth  = 9;
+$options->logoSpaceHeight = 9;
+$options->logoSpaceStartX = 10;
+$options->logoSpaceStartY = 10;
+
 ```
