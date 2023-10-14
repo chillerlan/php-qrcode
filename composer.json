@@ -33,10 +33,9 @@
 		}
 	],
 	"support": {
-		"docs": "https://chillerlan.github.io/php-qrcode",
+		"docs": "https://php-qrcode.readthedocs.io",
 		"issues": "https://github.com/chillerlan/php-qrcode/issues",
-		"source": "https://github.com/chillerlan/php-qrcode",
-		"wiki": "https://github.com/chillerlan/php-qrcode/wiki"
+		"source": "https://github.com/chillerlan/php-qrcode"
 	},
 	"minimum-stability": "stable",
 	"prefer-stable": true,
