@@ -94,12 +94,16 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 */
 	protected function setModuleValues():void{
 
+		// first fill the map with the default values
 		foreach($this::DEFAULT_MODULE_VALUES as $M_TYPE => $defaultValue){
-			$value = ($this->options->moduleValues[$M_TYPE] ?? null);
+			$this->moduleValues[$M_TYPE] = $this->getDefaultModuleValue($defaultValue);
+		}
 
-			$this->moduleValues[$M_TYPE] = $this::moduleValueIsValid($value)
-				? $this->prepareModuleValue($value)
-				: $this->getDefaultModuleValue($defaultValue);
+		// now loop over the options values to replace defaults and add extra values
+		foreach($this->options->moduleValues as $M_TYPE => $value){
+			if($this::moduleValueIsValid($value)){
+				$this->moduleValues[$M_TYPE] = $this->prepareModuleValue($value);
+			}
 		}
 
 	}
