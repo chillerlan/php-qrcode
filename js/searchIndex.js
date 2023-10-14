@@ -3451,25 +3451,10 @@ Search.appendIndex(
             "summary": "A\u0020common\u0020css\u0020class",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_cssClass"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024markupDark",
-            "name": "markupDark",
-            "summary": "Markup\u0020substitute\u0020for\u0020dark\u0020\u0028CSS\u0020value\u0029",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_markupDark"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024markupLight",
-            "name": "markupLight",
-            "summary": "Markup\u0020substitute\u0020for\u0020light\u0020\u0028CSS\u0020value\u0029",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_markupLight"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgAddXmlHeader",
             "name": "svgAddXmlHeader",
             "summary": "Whether\u0020to\u0020add\u0020an\u0020XML\u0020header\u0020line\u0020or\u0020not,\u0020e.g.\u0020to\u0020embed\u0020the\u0020SVG\u0020directly\u0020in\u0020HTML",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgAddXmlHeader"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgOpacity",
-            "name": "svgOpacity",
-            "summary": "SVG\u0020path\u0020opacity",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgOpacity"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgDefs",
             "name": "svgDefs",
@@ -3486,15 +3471,10 @@ Search.appendIndex(
             "summary": "Sets\u0020the\u0020value\u0020for\u0020the\u0020\u0022preserveAspectRatio\u0022\u0020on\u0020the\u0020\u0060\u003Csvg\u003E\u0060\u0020element",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgPreserveAspectRatio"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024textDark",
-            "name": "textDark",
-            "summary": "String\u0020substitute\u0020for\u0020dark",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_textDark"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024textLight",
-            "name": "textLight",
-            "summary": "String\u0020substitute\u0020for\u0020light",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_textLight"
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgUseFillAttributes",
+            "name": "svgUseFillAttributes",
+            "summary": "Whether\u0020to\u0020use\u0020the\u0020SVG\u0020\u0060fill\u0060\u0020attributes",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgUseFillAttributes"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024textLineStart",
             "name": "textLineStart",
