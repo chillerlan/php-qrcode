@@ -426,19 +426,6 @@ trait QROptionsTrait{
 	 */
 
 	/**
-	 * String substitute for dark
-	 *
-	 * @see https://en.wikipedia.org/wiki/Block_Elements
-	 * @see https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit
-	 */
-	protected string $textDark = '██';
-
-	/**
-	 * String substitute for light
-	 */
-	protected string $textLight = '░░';
-
-	/**
 	 * An optional line prefix, e.g. empty space to align the QR Code in a console
 	 */
 	protected string $textLineStart = '';

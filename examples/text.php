@@ -21,30 +21,23 @@ $options->quietzoneSize = 2;
 $options->outputType    = QROutputInterface::STRING_TEXT;
 $options->eol           = "\n";
 $options->textLineStart = str_repeat(' ', 6);
-$options->textDark      = QRString::ansi8('██', 253);
-$options->textLight     = QRString::ansi8('░░', 253);
 $options->moduleValues  = [
-	// finder
 	QRMatrix::M_FINDER_DARK    => QRString::ansi8('██', 124),
 	QRMatrix::M_FINDER         => QRString::ansi8('░░', 124),
 	QRMatrix::M_FINDER_DOT     => QRString::ansi8('██', 124),
-	// alignment
 	QRMatrix::M_ALIGNMENT_DARK => QRString::ansi8('██', 2),
 	QRMatrix::M_ALIGNMENT      => QRString::ansi8('░░', 2),
-	// timing
 	QRMatrix::M_TIMING_DARK    => QRString::ansi8('██', 184),
 	QRMatrix::M_TIMING         => QRString::ansi8('░░', 184),
-	// format
 	QRMatrix::M_FORMAT_DARK    => QRString::ansi8('██', 200),
 	QRMatrix::M_FORMAT         => QRString::ansi8('░░', 200),
-	// version
 	QRMatrix::M_VERSION_DARK   => QRString::ansi8('██', 21),
 	QRMatrix::M_VERSION        => QRString::ansi8('░░', 21),
-	// dark module
 	QRMatrix::M_DARKMODULE     => QRString::ansi8('██', 53),
-	// data
 	QRMatrix::M_DATA_DARK      => QRString::ansi8('██', 166),
 	QRMatrix::M_DATA           => QRString::ansi8('░░', 166),
+	QRMatrix::M_QUIETZONE      => QRString::ansi8('░░', 253),
+	QRMatrix::M_SEPARATOR      => QRString::ansi8('░░', 253),
 ];
 
 
