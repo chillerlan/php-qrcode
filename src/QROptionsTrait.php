@@ -362,17 +362,6 @@ trait QROptionsTrait{
 	 */
 	protected string $cssClass = 'qrcode';
 
-	/**
-	 * Markup substitute for dark (CSS value)
-	 */
-	protected string $markupDark = '#000';
-
-	/**
-	 * Markup substitute for light (CSS value)
-	 */
-	protected string $markupLight = '#fff';
-
-
 	/*
 	 * QRMarkupSVG settings
 	 */
@@ -383,15 +372,6 @@ trait QROptionsTrait{
 	 * `<?xml version="1.0" encoding="UTF-8"?>`
 	 */
 	protected bool $svgAddXmlHeader = true;
-
-	/**
-	 * SVG path opacity
-	 *
-	 * Sets the value for the SVG "fill-opacity" on a `<path>` element. Only in effect when non-empty values
-	 * for `QROptions::$markupDark` and `QROptions::$markupLight` are given.
-	 * The opacity value is the same for all paths - please use CSS for more sophisticated implementations.
-	 */
-	protected float $svgOpacity = 1.0;
 
 	/**
 	 * Anything in the SVG `<defs>` tag
@@ -420,6 +400,10 @@ trait QROptionsTrait{
 	 */
 	protected string $svgPreserveAspectRatio = 'xMidYMid';
 
+	/**
+	 * Whether to use the SVG `fill` attributes and set them with the given module values
+	 */
+	protected bool $svgUseFillAttributes = true;
 
 	/*
 	 * QRString settings

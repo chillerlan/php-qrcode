@@ -26,30 +26,29 @@ $options = new class extends SettingsContainerAbstract{
  *
  * @see https://github.com/chillerlan/php-authenticator
  */
-$options->mode                = AuthenticatorInterface::TOTP;
-$options->digits              = 8;
-$options->algorithm           = AuthenticatorInterface::ALGO_SHA512;
+$options->mode                 = AuthenticatorInterface::TOTP;
+$options->digits               = 8;
+$options->algorithm            = AuthenticatorInterface::ALGO_SHA512;
 
 /*
  * QROptionsTrait
  */
-$options->version             = 7;
-$options->addQuietzone        = false;
-$options->outputBase64        = false;
-$options->svgAddXmlHeader     = false;
-$options->cssClass            = 'my-qrcode';
-$options->drawLightModules    = false;
-$options->markupDark          = '';
-$options->markupLight         = '';
-$options->drawCircularModules = true;
-$options->circleRadius        = 0.4;
-$options->connectPaths        = true;
-$options->keepAsSquare        = [
+$options->version              = 7;
+$options->addQuietzone         = false;
+$options->outputBase64         = false;
+$options->svgAddXmlHeader      = false;
+$options->cssClass             = 'my-qrcode';
+$options->drawLightModules     = false;
+$options->svgUseFillAttributes = false;
+$options->drawCircularModules  = true;
+$options->circleRadius         = 0.4;
+$options->connectPaths         = true;
+$options->keepAsSquare         = [
 	QRMatrix::M_FINDER_DARK,
 	QRMatrix::M_FINDER_DOT,
 	QRMatrix::M_ALIGNMENT_DARK,
 ];
-$options->svgDefs             = '
+$options->svgDefs              = '
 	<linearGradient id="gradient" x1="1" y2="1">
 		<stop id="stop1" offset="0" />
 		<stop id="stop2" offset="0.5"/>

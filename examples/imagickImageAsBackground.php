@@ -22,6 +22,14 @@ class QRImagickImageAsBackground extends QRImagick{
 	/**
 	 * @inheritDoc
 	 */
+	protected function getDefaultModuleValue(bool $isDark):ImagickPixel{
+		// RGBA, adjust opacity to increase contrast
+		return $this->prepareModuleValue(($isDark) ? '#00000040' : '#ffffffa0');
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function createImage():Imagick{
 		$imagick = new Imagick($this->options->background);
 		$width   = $imagick->getImageWidth();
@@ -81,18 +89,17 @@ class ImageAsBackgroundOptions extends QROptions{
 
 $options = new ImageAsBackgroundOptions;
 
-$options->background       = __DIR__.'/background.jpg'; // setting from the augmented options
-$options->version          = 5;
-$options->outputType       = QROutputInterface::CUSTOM;
-$options->outputInterface  = QRImagickImageAsBackground::class; // use the custom output class
-$options->eccLevel         = EccLevel::H;
-$options->outputBase64     = false;
-$options->scale            = 10;
-$options->drawLightModules = true;
-$options->markupDark       = '#00000040'; // RGBA, adjust opacity to increase contrast
-$options->markupLight      = '#ffffffa0';
-$options->invertMatrix     = false;
-$options->quietzoneSize    = 1;
+$options->background           = __DIR__.'/background.jpg'; // setting from the augmented options
+$options->version              = 5;
+$options->outputType           = QROutputInterface::CUSTOM;
+$options->outputInterface      = QRImagickImageAsBackground::class; // use the custom output class
+$options->eccLevel             = EccLevel::H;
+$options->outputBase64         = false;
+$options->scale                = 10;
+$options->drawLightModules     = true;
+$options->svgUseFillAttributes = false;
+$options->invertMatrix         = false;
+$options->quietzoneSize        = 1;
 
 
 // dump the output, with an additional logo

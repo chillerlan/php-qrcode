@@ -106,7 +106,7 @@ class QRImagick extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	protected function getDefaultModuleValue(bool $isDark):ImagickPixel{
-		return $this->prepareModuleValue(($isDark) ? $this->options->markupDark : $this->options->markupLight);
+		return $this->prepareModuleValue(($isDark) ? '#000' : '#fff');
 	}
 
 	/**

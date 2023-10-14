@@ -84,24 +84,23 @@ class SVGConvert extends QRMarkupSVG{
 // SVG from the basic example
 $options = new QROptions;
 
-$options->version             = 7;
-$options->outputType          = QROutputInterface::CUSTOM;
-$options->outputInterface     = SVGConvert::class;
-$options->imagickFormat       = 'png32';
-$options->scale               = 20;
-$options->outputBase64        = false;
-$options->drawLightModules    = true;
-$options->markupDark          = '';
-$options->markupLight         = '';
-$options->drawCircularModules = true;
-$options->circleRadius        = 0.4;
-$options->connectPaths        = true;
-$options->keepAsSquare        = [
+$options->version              = 7;
+$options->outputType           = QROutputInterface::CUSTOM;
+$options->outputInterface      = SVGConvert::class;
+$options->imagickFormat        = 'png32';
+$options->scale                = 20;
+$options->outputBase64         = false;
+$options->drawLightModules     = true;
+$options->svgUseFillAttributes = false;
+$options->drawCircularModules  = true;
+$options->circleRadius         = 0.4;
+$options->connectPaths         = true;
+$options->keepAsSquare         = [
 	QRMatrix::M_FINDER_DARK,
 	QRMatrix::M_FINDER_DOT,
 	QRMatrix::M_ALIGNMENT_DARK,
 ];
-$options->svgDefs             = '
+$options->svgDefs              = '
 	<linearGradient id="rainbow" x1="1" y2="1">
 		<stop stop-color="#e2453c" offset="0"/>
 		<stop stop-color="#e07e39" offset="0.2"/>

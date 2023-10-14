@@ -19,8 +19,6 @@ $options = new QROptions;
 $options->version      = 5;
 $options->outputType   = QROutputInterface::MARKUP_HTML;
 $options->cssClass     = 'qrcode';
-$options->markupDark   = '#555';
-$options->markupLight  = '#CCC';
 $options->moduleValues = [
 	// finder
 	QRMatrix::M_FINDER_DARK    => '#A71111', // dark (true)

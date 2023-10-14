@@ -18,18 +18,17 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 $options = new QROptions;
 
-$options->version             = 7;
-$options->outputType          = QROutputInterface::MARKUP_SVG;
-$options->outputBase64        = false;
-$options->svgAddXmlHeader     = false;
-$options->drawLightModules    = false;
-$options->markupDark          = '';
-$options->markupLight         = '';
-$options->drawCircularModules = true;
-$options->circleRadius        = 0.4;
-$options->connectPaths        = true;
+$options->version              = 7;
+$options->outputType           = QROutputInterface::MARKUP_SVG;
+$options->outputBase64         = false;
+$options->svgAddXmlHeader      = false;
+$options->svgUseFillAttributes = false;
+$options->drawLightModules     = false;
+$options->drawCircularModules  = true;
+$options->circleRadius         = 0.4;
+$options->connectPaths         = true;
 
-$options->keepAsSquare        = [
+$options->keepAsSquare         = [
 	QRMatrix::M_FINDER_DARK,
 	QRMatrix::M_FINDER_DOT,
 	QRMatrix::M_ALIGNMENT_DARK,

@@ -145,6 +145,16 @@ class QRMarkupSVG extends QRMarkup{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path
 	 */
 	protected function path(string $path, int $M_TYPE):string{
+
+		if($this->options->svgUseFillAttributes){
+			return sprintf(
+				'<path class="%s" fill="%s" d="%s"/>',
+				$this->getCssClass($M_TYPE),
+				$this->getModuleValue($M_TYPE),
+				$path
+			);
+		}
+
 		return sprintf('<path class="%s" d="%s"/>', $this->getCssClass($M_TYPE), $path);
 	}
 
