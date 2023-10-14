@@ -401,7 +401,12 @@ trait QROptionsTrait{
 	protected string $svgPreserveAspectRatio = 'xMidYMid';
 
 	/**
-	 * Whether to use the SVG `fill` attributes and set them with the given module values
+	 * Whether to use the SVG `fill` attributes
+	 *
+	 * If set to `true` (default), the `fill` attribute will be set with the module value for the `<path>` element's `$M_TYPE`.
+	 * When set to `false`, the module values map will be ignored and the QR Code may be styled via CSS.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill
 	 */
 	protected bool $svgUseFillAttributes = true;
 
