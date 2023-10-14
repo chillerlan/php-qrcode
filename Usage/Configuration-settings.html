@@ -135,14 +135,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#quality">quality</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#imagickformat">imagickFormat</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cssclass">cssClass</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#markupdark">markupDark</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#markuplight">markupLight</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#svgaddxmlheader">svgAddXmlHeader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#svgopacity">svgOpacity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#svgdefs">svgDefs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#svgpreserveaspectratio">svgPreserveAspectRatio</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#textdark">textDark</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#textlight">textLight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#svgusefillattributes">svgUseFillAttributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#textlinestart">textLineStart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#jsonasbooleans">jsonAsBooleans</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fpdfmeasureunit">fpdfMeasureUnit</a></li>
@@ -616,25 +612,10 @@ using <code class="docutils literal notranslate"><span class="pre">imagefilledel
 <h2>cssClass<a class="headerlink" href="#cssclass" title="Link to this heading"></a></h2>
 <p>A common css class</p>
 </section>
-<section id="markupdark">
-<h2>markupDark<a class="headerlink" href="#markupdark" title="Link to this heading"></a></h2>
-<p>Markup substitute for dark (CSS value)</p>
-</section>
-<section id="markuplight">
-<h2>markupLight<a class="headerlink" href="#markuplight" title="Link to this heading"></a></h2>
-<p>Markup substitute for light (CSS value)</p>
-</section>
 <section id="svgaddxmlheader">
 <h2>svgAddXmlHeader<a class="headerlink" href="#svgaddxmlheader" title="Link to this heading"></a></h2>
 <p>Whether to add an XML header line or not, e.g. to embed the SVG directly in HTML</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;?xml</span> <span class="pre">version=&quot;1.0&quot;</span> <span class="pre">encoding=&quot;UTF-8&quot;?&gt;</span></code></p>
-</section>
-<section id="svgopacity">
-<h2>svgOpacity<a class="headerlink" href="#svgopacity" title="Link to this heading"></a></h2>
-<p>SVG path opacity</p>
-<p>Sets the value for the SVG “fill-opacity” on a <code class="docutils literal notranslate"><span class="pre">&lt;path&gt;</span></code> element. Only in effect when non-empty values
-for <code class="docutils literal notranslate"><span class="pre">QROptions::$markupDark</span></code> and <code class="docutils literal notranslate"><span class="pre">QROptions::$markupLight</span></code> are given.
-The opacity value is the same for all paths - please use CSS for more sophisticated implementations.</p>
 </section>
 <section id="svgdefs">
 <h2>svgDefs<a class="headerlink" href="#svgdefs" title="Link to this heading"></a></h2>
@@ -652,18 +633,15 @@ The opacity value is the same for all paths - please use CSS for more sophistica
 <li><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio">developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio</a></p></li>
 </ul>
 </section>
-<section id="textdark">
-<h2>textDark<a class="headerlink" href="#textdark" title="Link to this heading"></a></h2>
-<p>String substitute for dark</p>
+<section id="svgusefillattributes">
+<h2>svgUseFillAttributes<a class="headerlink" href="#svgusefillattributes" title="Link to this heading"></a></h2>
+<p>Whether to use the SVG <code class="docutils literal notranslate"><span class="pre">fill</span></code> attributes</p>
+<p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code> (default), the <code class="docutils literal notranslate"><span class="pre">fill</span></code> attribute will be set with the module value for the <code class="docutils literal notranslate"><span class="pre">&lt;path&gt;</span></code> element’s <code class="docutils literal notranslate"><span class="pre">$M_TYPE</span></code>.
+When set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, the module values map will be ignored and the QR Code may be styled via CSS.</p>
 <p><strong>See also:</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Block_Elements">en.wikipedia.org/wiki/Block_Elements</a></p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit">en.wikipedia.org/wiki/ANSI_escape_code#8-bit</a></p></li>
+<li><p><a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill">developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill</a></p></li>
 </ul>
-</section>
-<section id="textlight">
-<h2>textLight<a class="headerlink" href="#textlight" title="Link to this heading"></a></h2>
-<p>String substitute for light</p>
 </section>
 <section id="textlinestart">
 <h2>textLineStart<a class="headerlink" href="#textlinestart" title="Link to this heading"></a></h2>
