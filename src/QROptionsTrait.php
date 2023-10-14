@@ -252,7 +252,7 @@ trait QROptionsTrait{
 	 *
 	 * @see \chillerlan\QRCode\Output\QROutputAbstract::setModuleValues()
 	 */
-	protected ?array $moduleValues = null;
+	protected array $moduleValues = [];
 
 	/**
 	 * Toggles logo space creation
