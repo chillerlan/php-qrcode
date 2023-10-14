@@ -145,19 +145,7 @@ class QRMarkupSVG extends QRMarkup{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path
 	 */
 	protected function path(string $path, int $M_TYPE):string{
-		$val = $this->getModuleValue($M_TYPE);
-		// ignore non-existent module values
-		$format = empty($val)
-			? '<path class="%1$s" d="%2$s"/>'
-			: '<path class="%1$s" fill="%3$s" fill-opacity="%4$s" d="%2$s"/>';
-
-		return sprintf(
-			$format,
-			$this->getCssClass($M_TYPE),
-			$path,
-			($val ?? ''), // value may or may not exist
-			$this->options->svgOpacity
-		);
+		return sprintf('<path class="%s" d="%s"/>', $this->getCssClass($M_TYPE), $path);
 	}
 
 	/**
