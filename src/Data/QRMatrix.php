@@ -536,10 +536,11 @@ class QRMatrix{
 	 */
 	public function setFormatInfo(MaskPattern $maskPattern = null):self{
 		$this->maskPattern = $maskPattern;
+		$bits              = 0; // sets all format fields to false (test mode)
 
-		$bits = ($this->maskPattern instanceof MaskPattern)
-			? $this->eccLevel->getformatPattern($this->maskPattern)
-			: 0; // sets all format fields to false (test mode)
+		if($this->maskPattern instanceof MaskPattern){
+			$bits = $this->eccLevel->getformatPattern($this->maskPattern);
+		}
 
 		for($i = 0; $i < 15; $i++){
 			$v = (($bits >> $i) & 1) === 1;
@@ -577,6 +578,11 @@ class QRMatrix{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function setQuietZone(int $quietZoneSize):self{
+
+		// early exit if there's nothing to add
+		if($quietZoneSize < 1){
+			return $this;
+		}
 
 		if($this->matrix[($this->moduleCount - 1)][($this->moduleCount - 1)] === $this::M_NULL){
 			throw new QRCodeDataException('use only after writing data');
@@ -655,17 +661,16 @@ class QRMatrix{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function setLogoSpace(int $width, int $height = null, int $startX = null, int $startY = null):self{
-
-		// for logos, we operate in ECC H (30%) only
-		if($this->eccLevel->getLevel() !== EccLevel::H){
-			throw new QRCodeDataException('ECC level "H" required to add logo space');
-		}
-
 		$height ??= $width;
 
 		// if width and height happen to be negative or 0 (default value), just return - nothing to do
 		if($width <= 0 || $height <= 0){
 			return $this; // @codeCoverageIgnore
+		}
+
+		// for logos, we operate in ECC H (30%) only
+		if($this->eccLevel->getLevel() !== EccLevel::H){
+			throw new QRCodeDataException('ECC level "H" required to add logo space');
 		}
 
 		// $this->moduleCount includes the quiet zone (if created), we need the QR size here
