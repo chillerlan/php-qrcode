@@ -39,25 +39,25 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 	 */
 	protected function collectModules(Closure $transform):array{
 		$paths = [];
+		$melt  = $this->options->melt; // avoid magic getter in long loops
 
 		// collect the modules for each type
-		for($y = 0; $y < $this->moduleCount; $y++){
-			for($x = 0; $x < $this->moduleCount; $x++){
-				$M_TYPE       = $this->matrix->get($x, $y);
+		foreach($this->matrix->getMatrix() as $y => $row){
+			foreach($row as $x => $M_TYPE){
 				$M_TYPE_LAYER = $M_TYPE;
 
-				if($this->options->connectPaths && !$this->matrix->checkTypeIn($x, $y, $this->options->excludeFromConnect)){
+				if($this->connectPaths && !$this->matrix->checkTypeIn($x, $y, $this->excludeFromConnect)){
 					// to connect paths we'll redeclare the $M_TYPE_LAYER to data only
 					$M_TYPE_LAYER = QRMatrix::M_DATA;
 
-					if($this->matrix->check($x, $y)){
+					if($this->matrix->isDark($M_TYPE)){
 						$M_TYPE_LAYER = QRMatrix::M_DATA_DARK;
 					}
 				}
 
 				// if we're going to "melt" the matrix, we'll declare *all* modules as dark,
 				// so that light modules with dark parts are rendered in the same path
-				if($this->options->melt){
+				if($melt){
 					$M_TYPE_LAYER |= QRMatrix::IS_DARK;
 				}
 

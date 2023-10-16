@@ -28,13 +28,6 @@ abstract class QROutputAbstract implements QROutputInterface{
 	protected int $moduleCount;
 
 	/**
-	 * the current scaling for a QR pixel
-	 *
-	 * @see \chillerlan\QRCode\QROptions::$scale
-	 */
-	protected int $scale;
-
-	/**
 	 * the side length of the QR image (modules * scale)
 	 */
 	protected int $length;
@@ -54,6 +47,23 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 */
 	protected SettingsContainerInterface $options;
 
+	/** @see \chillerlan\QRCode\QROptions::$scale */
+	protected int $scale;
+	/** @see \chillerlan\QRCode\QROptions::$connectPaths */
+	protected bool $connectPaths;
+	/** @see \chillerlan\QRCode\QROptions::$excludeFromConnect */
+	protected array $excludeFromConnect;
+	/** @see \chillerlan\QRCode\QROptions::$eol */
+	protected string $eol;
+	/** @see \chillerlan\QRCode\QROptions::$drawLightModules */
+	protected bool $drawLightModules;
+	/** @see \chillerlan\QRCode\QROptions::$drawCircularModules */
+	protected bool $drawCircularModules;
+	/** @see \chillerlan\QRCode\QROptions::$keepAsSquare */
+	protected array $keepAsSquare;
+	/** @see \chillerlan\QRCode\QROptions::$circleRadius */
+	protected float $circleRadius;
+
 	/**
 	 * QROutputAbstract constructor.
 	 */
@@ -65,8 +75,33 @@ abstract class QROutputAbstract implements QROutputInterface{
 			$this->matrix->invert();
 		}
 
+		$this->copyVars();
 		$this->setMatrixDimensions();
 		$this->setModuleValues();
+	}
+
+	/**
+	 * Creates copies of several QROptions values to avoid calling the magic getters
+	 * in long loops for a significant performance increase.
+	 *
+	 * These variables are usually used in the "module" methods and are called up to 31329 times (at version 40).
+	 */
+	protected function copyVars():void{
+
+		$vars = [
+			'connectPaths',
+			'excludeFromConnect',
+			'eol',
+			'drawLightModules',
+			'drawCircularModules',
+			'keepAsSquare',
+			'circleRadius',
+		];
+
+		foreach($vars as $property){
+			$this->{$property} = $this->options->{$property};
+		}
+
 	}
 
 	/**
@@ -193,14 +228,17 @@ abstract class QROutputAbstract implements QROutputInterface{
 		$paths = [];
 
 		// collect the modules for each type
-		for($y = 0; $y < $this->moduleCount; $y++){
-			for($x = 0; $x < $this->moduleCount; $x++){
-				$M_TYPE       = $this->matrix->get($x, $y);
+		foreach($this->matrix->getMatrix() as $y => $row){
+			foreach($row as $x => $M_TYPE){
 				$M_TYPE_LAYER = $M_TYPE;
 
-				if($this->options->connectPaths && !$this->matrix->checkTypeIn($x, $y, $this->options->excludeFromConnect)){
+				if($this->connectPaths && !$this->matrix->checkTypeIn($x, $y, $this->excludeFromConnect)){
 					// to connect paths we'll redeclare the $M_TYPE_LAYER to data only
-					$M_TYPE_LAYER = $this->matrix->check($x, $y) ? QRMatrix::M_DATA_DARK : QRMatrix::M_DATA;
+					$M_TYPE_LAYER = QRMatrix::M_DATA;
+
+					if($this->matrix->isDark($M_TYPE)){
+						$M_TYPE_LAYER = QRMatrix::M_DATA_DARK;
+					}
 				}
 
 				// collect the modules per $M_TYPE

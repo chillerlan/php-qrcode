@@ -40,26 +40,28 @@ class RandomDotsSVGOutput extends QRMarkupSVG{
 	 * @inheritDoc
 	 */
 	protected function collectModules(Closure $transform):array{
-		$paths = [];
+		$paths     = [];
+		$dotColors = $this->options->dotColors; // avoid magic getter in long loops
 
 		// collect the modules for each type
-		for($y = 0; $y < $this->moduleCount; $y++){
-			for($x = 0; $x < $this->moduleCount; $x++){
-				$M_TYPE       = $this->matrix->get($x, $y);
+		foreach($this->matrix->getMatrix() as $y => $row){
+			foreach($row as $x => $M_TYPE){
 				$M_TYPE_LAYER = $M_TYPE;
 
-				if($this->options->connectPaths
-				   && !$this->matrix->checkTypeIn($x, $y, $this->options->excludeFromConnect)
-				){
+				if($this->connectPaths && !$this->matrix->checkTypeIn($x, $y, $this->excludeFromConnect)){
 					// to connect paths we'll redeclare the $M_TYPE_LAYER to data only
-					$M_TYPE_LAYER = $this->matrix->check($x, $y) ? QRMatrix::M_DATA_DARK : QRMatrix::M_DATA;
+					$M_TYPE_LAYER = QRMatrix::M_DATA;
+
+					if($this->matrix->isDark($M_TYPE)){
+						$M_TYPE_LAYER = QRMatrix::M_DATA_DARK;
+					}
 				}
 
 				// randomly assign another $M_TYPE_LAYER for the given types
 				// note that the layer id has to be an integer value,
 				// ideally outside the several bitmask values
 				if($M_TYPE_LAYER === QRMatrix::M_DATA_DARK){
-					$M_TYPE_LAYER = array_rand($this->options->dotColors);
+					$M_TYPE_LAYER = array_rand($dotColors);
 				}
 
 				// collect the modules per $M_TYPE

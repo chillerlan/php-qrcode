@@ -64,7 +64,8 @@ class QRString extends QROutputAbstract{
 	 * string output
 	 */
 	protected function text():string{
-		$lines = [];
+		$lines     = [];
+		$linestart = $this->options->textLineStart;
 
 		for($y = 0; $y < $this->moduleCount; $y++){
 			$r = [];
@@ -73,10 +74,10 @@ class QRString extends QROutputAbstract{
 				$r[] = $this->getModuleValueAt($x, $y);
 			}
 
-			$lines[] = $this->options->textLineStart.implode('', $r);
+			$lines[] = $linestart.implode('', $r);
 		}
 
-		return implode($this->options->eol, $lines);
+		return implode($this->eol, $lines);
 	}
 
 	/**

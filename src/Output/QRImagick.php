@@ -209,17 +209,17 @@ class QRImagick extends QROutputAbstract{
 	 */
 	protected function module(int $x, int $y, int $M_TYPE):void{
 
-		if(!$this->options->drawLightModules && !$this->matrix->check($x, $y)){
+		if(!$this->drawLightModules && !$this->matrix->isDark($M_TYPE)){
 			return;
 		}
 
 		$this->imagickDraw->setFillColor($this->getModuleValue($M_TYPE));
 
-		if($this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)){
+		if($this->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->keepAsSquare)){
 			$this->imagickDraw->circle(
 				(($x + 0.5) * $this->scale),
 				(($y + 0.5) * $this->scale),
-				(($x + 0.5 + $this->options->circleRadius) * $this->scale),
+				(($x + 0.5 + $this->circleRadius) * $this->scale),
 				(($y + 0.5) * $this->scale)
 			);
 

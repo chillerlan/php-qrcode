@@ -27,14 +27,14 @@ class QRMarkupHTML extends QRMarkup{
 			$element = '<span style="background: %s;"></span>';
 			$modules = array_map(fn(int $M_TYPE):string => sprintf($element, $this->getModuleValue($M_TYPE)), $row);
 
-			$rows[]  = sprintf('<div>%s</div>%s', implode('', $modules), $this->options->eol);
+			$rows[]  = sprintf('<div>%s</div>%s', implode('', $modules), $this->eol);
 		}
 
 		$html = sprintf(
 			'<div class="%1$s">%3$s%2$s</div>%3$s',
 			$this->getCssClass(),
 			implode('', $rows),
-			$this->options->eol
+			$this->eol
 		);
 
 		// wrap the snippet into a body when saving to file
@@ -43,7 +43,7 @@ class QRMarkupHTML extends QRMarkup{
 				'<!DOCTYPE html><html lang="none">%2$s<head>%2$s<meta charset="UTF-8">%2$s'.
 					'<title>QR Code</title></head>%2$s<body>%1$s</body>%2$s</html>',
 				$html,
-				$this->options->eol
+				$this->eol
 			);
 		}
 

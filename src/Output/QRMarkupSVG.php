@@ -60,13 +60,13 @@ class QRMarkupSVG extends QRMarkup{
 		$svg = $this->header();
 
 		if(!empty($this->options->svgDefs)){
-			$svg .= sprintf('<defs>%1$s%2$s</defs>%2$s', $this->options->svgDefs, $this->options->eol);
+			$svg .= sprintf('<defs>%1$s%2$s</defs>%2$s', $this->options->svgDefs, $this->eol);
 		}
 
 		$svg .= $this->paths();
 
 		// close svg
-		$svg .= sprintf('%1$s</svg>%1$s', $this->options->eol);
+		$svg .= sprintf('%1$s</svg>%1$s', $this->eol);
 
 		// transform to data URI only when not saving to file
 		if(!$saveToFile && $this->options->outputBase64){
@@ -100,11 +100,11 @@ class QRMarkupSVG extends QRMarkup{
 			$this->options->cssClass,
 			$this->getViewBox(),
 			$this->options->svgPreserveAspectRatio,
-			$this->options->eol
+			$this->eol
 		);
 
 		if($this->options->svgAddXmlHeader){
-			$header = sprintf('<?xml version="1.0" encoding="UTF-8"?>%s%s', $this->options->eol, $header);
+			$header = sprintf('<?xml version="1.0" encoding="UTF-8"?>%s%s', $this->eol, $header);
 		}
 
 		return $header;
@@ -127,7 +127,7 @@ class QRMarkupSVG extends QRMarkup{
 				$chonks[] = implode(' ', $chunk);
 			}
 
-			$path = implode($this->options->eol, $chonks);
+			$path = implode($this->eol, $chonks);
 
 			if(empty($path)){
 				continue;
@@ -136,7 +136,7 @@ class QRMarkupSVG extends QRMarkup{
 			$svg[] = $this->path($path, $M_TYPE);
 		}
 
-		return implode($this->options->eol, $svg);
+		return implode($this->eol, $svg);
 	}
 
 	/**
@@ -164,7 +164,7 @@ class QRMarkupSVG extends QRMarkup{
 	protected function getCssClass(int $M_TYPE = 0):string{
 		return implode(' ', [
 			'qr-'.($this::LAYERNAMES[$M_TYPE] ?? $M_TYPE),
-			(($M_TYPE & QRMatrix::IS_DARK) === QRMatrix::IS_DARK) ? 'dark' : 'light',
+			$this->matrix->isDark($M_TYPE) ? 'dark' : 'light',
 			$this->options->cssClass,
 		]);
 	}
@@ -176,12 +176,12 @@ class QRMarkupSVG extends QRMarkup{
 	 */
 	protected function module(int $x, int $y, int $M_TYPE):string{
 
-		if(!$this->options->drawLightModules && !$this->matrix->check($x, $y)){
+		if(!$this->drawLightModules && !$this->matrix->isDark($M_TYPE)){
 			return '';
 		}
 
-		if($this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)){
-			$r = $this->options->circleRadius;
+		if($this->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->keepAsSquare)){
+			$r = $this->circleRadius;
 
 			return sprintf(
 				'M%1$s %2$s a%3$s %3$s 0 1 0 %4$s 0 a%3$s %3$s 0 1 0 -%4$s 0Z',

@@ -64,7 +64,7 @@ class QRSvgWithLogoAndCustomShapes extends QRMarkupSVG{
 	protected function module(int $x, int $y, int $M_TYPE):string{
 
 		if(
-			!$this->matrix->check($x, $y)
+			!$this->matrix->isDark($M_TYPE)
 			// we're skipping the finder patterns here
 			|| $this->matrix->checkType($x, $y, QRMatrix::M_FINDER)
 			|| $this->matrix->checkType($x, $y, QRMatrix::M_FINDER_DOT)
