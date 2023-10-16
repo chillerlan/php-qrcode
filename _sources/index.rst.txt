@@ -27,6 +27,7 @@ This work is licensed under the Creative Commons Attribution 4.0 International (
    :caption: Customizing output
 
    Customizing/Module-Values.md
+   Customizing/QROutputAbstract.md
 
 .. toctree::
    :maxdepth: 3
