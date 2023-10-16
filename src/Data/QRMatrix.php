@@ -361,7 +361,7 @@ class QRMatrix{
 			return false;
 		}
 
-		return $this->isDark($this->get($x, $y));
+		return $this->isDark($this->matrix[$y][$x]);
 	}
 
 	/**
