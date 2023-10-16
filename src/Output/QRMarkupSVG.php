@@ -10,7 +10,6 @@
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\Data\QRMatrix;
 use function array_chunk, implode, is_string, preg_match, sprintf, trim;
 
 /**
