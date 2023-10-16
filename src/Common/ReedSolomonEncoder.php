@@ -100,7 +100,11 @@ final class ReedSolomonEncoder{
 
 		foreach($ecBytes as $i => &$val){
 			$modIndex = ($i + $count);
-			$val      = ($modIndex >= 0) ? $modCoefficients[$modIndex] : 0;
+			$val      = 0;
+
+			if($modIndex >= 0){
+				$val = $modCoefficients[$modIndex];
+			}
 		}
 
 		return $ecBytes;

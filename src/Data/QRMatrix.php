@@ -749,19 +749,27 @@ class QRMatrix{
 			}
 
 			for($count = 0; $count < $this->moduleCount; $count++){
-				$y = ($direction) ? ($this->moduleCount - 1 - $count) : $count;
+				$y = $count;
+
+				if($direction){
+					$y = ($this->moduleCount - 1 - $count);
+				}
 
 				for($col = 0; $col < 2; $col++){
 					$x = ($i - $col);
 
 					// skip functional patterns
-					if($this->get($x, $y) !== $this::M_NULL){
+					if($this->matrix[$y][$x] !== $this::M_NULL){
 						continue;
 					}
 
-					$v = $iByte < $byteCount && (($data[$iByte] >> $iBit--) & 1) === 1;
+					$value = 0;
 
-					$this->set($x, $y, $v, $this::M_DATA);
+					if($iByte < $byteCount && (($data[$iByte] >> $iBit--) & 1) === 1){
+						$value = $this::IS_DARK;
+					}
+
+					$this->matrix[$y][$x] = ($this::M_DATA | $value);
 
 					if($iBit === -1){
 						$iByte++;
