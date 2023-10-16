@@ -341,30 +341,11 @@ Imagick output format
 A common css class
 
 
-## markupDark
-
-Markup substitute for dark (CSS value)
-
-
-## markupLight
-
-Markup substitute for light (CSS value)
-
-
 ## svgAddXmlHeader
 
 Whether to add an XML header line or not, e.g. to embed the SVG directly in HTML
 
 `<?xml version="1.0" encoding="UTF-8"?>`
-
-
-## svgOpacity
-
-SVG path opacity
-
-Sets the value for the SVG "fill-opacity" on a `<path>` element. Only in effect when non-empty values
-for `QROptions::$markupDark` and `QROptions::$markupLight` are given.
-The opacity value is the same for all paths - please use CSS for more sophisticated implementations.
 
 
 ## svgDefs
@@ -385,19 +366,16 @@ Sets the value for the "preserveAspectRatio" on the `<svg>` element
 - [developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio)
 
 
-## textDark
+## svgUseFillAttributes
 
-String substitute for dark
+Whether to use the SVG `fill` attributes
+
+If set to `true` (default), the `fill` attribute will be set with the module value for the `<path>` element's `$M_TYPE`.
+When set to `false`, the module values map will be ignored and the QR Code may be styled via CSS.
 
 **See also:**
 
-- [en.wikipedia.org/wiki/Block_Elements](https://en.wikipedia.org/wiki/Block_Elements)
-- [en.wikipedia.org/wiki/ANSI_escape_code#8-bit](https://en.wikipedia.org/wiki/ANSI_escape_code#8-bit)
-
-
-## textLight
-
-String substitute for light
+- [developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill)
 
 
 ## textLineStart

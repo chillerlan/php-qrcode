@@ -67,6 +67,7 @@ The markdown sources for the [Read the Docs online manual](https://php-qrcode.re
 ### Customizing output
 
 - [Module values](./Customizing/Module-Values.md)
+- [`QROutputAbstract`](./Customizing/QROutputAbstract.md)
 
 
 ### Built-In Output Modules
