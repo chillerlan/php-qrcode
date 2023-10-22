@@ -423,7 +423,7 @@ class QRMatrix{
 
 		foreach($pos as $c){
 			$this
-				->setArea($c[0], $c[1], 7, 7, true, $this::M_FINDER)
+				->setArea( $c[0]     ,  $c[1]     , 7, 7, true, $this::M_FINDER)
 				->setArea(($c[0] + 1), ($c[1] + 1), 5, 5, false, $this::M_FINDER)
 				->setArea(($c[0] + 2), ($c[1] + 2), 3, 3, true, $this::M_FINDER_DOT)
 			;
@@ -453,8 +453,8 @@ class QRMatrix{
 
 		for($c = 0; $c < 3; $c++){
 			for($i = 0; $i < 8; $i++){
-				$this->set($h[$c][0]     , ($h[$c][1] + $i), false, $this::M_SEPARATOR);
-				$this->set(($v[$c][0] - $i), $v[$c][1]     , false, $this::M_SEPARATOR);
+				$this->set( $h[$c][0]      , ($h[$c][1] + $i), false, $this::M_SEPARATOR);
+				$this->set(($v[$c][0] - $i),  $v[$c][1]      , false, $this::M_SEPARATOR);
 			}
 		}
 
@@ -601,9 +601,9 @@ class QRMatrix{
 		$newMatrix = $this->createMatrix($newSize, $this::M_QUIETZONE);
 
 		// copy over the current matrix
-		for($y = 0; $y < $this->moduleCount; $y++){
-			for($x = 0; $x < $this->moduleCount; $x++){
-				$newMatrix[($y + $quietZoneSize)][($x + $quietZoneSize)] = $this->matrix[$y][$x];
+		foreach($this->matrix as $y => $row){
+			foreach($row as $x => $val){
+				$newMatrix[($y + $quietZoneSize)][($x + $quietZoneSize)] = $val;
 			}
 		}
 
