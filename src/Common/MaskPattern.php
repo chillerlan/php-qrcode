@@ -14,7 +14,7 @@ namespace chillerlan\QRCode\Common;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\QRCodeException;
 use Closure;
-use function abs, array_search, count, intdiv, min;
+use function abs, array_column, array_search, intdiv, min;
 
 /**
  * ISO/IEC 18004:2000 Section 8.8.1
@@ -54,6 +54,16 @@ final class MaskPattern{
 		self::PATTERN_110,
 		self::PATTERN_111,
 	];
+
+	/*
+	 * Penalty scores
+	 *
+	 * ISO/IEC 18004:2000 Section 8.8.1 - Table 24
+	 */
+	private const PENALTY_N1 = 3;
+	private const PENALTY_N2 = 3;
+	private const PENALTY_N3 = 40;
+	private const PENALTY_N4 = 10;
 
 	/**
 	 * The current mask pattern value (0-7)
@@ -114,6 +124,7 @@ final class MaskPattern{
 	 */
 	public static function getBestPattern(QRMatrix $QRMatrix):self{
 		$penalties = [];
+		$size      = $QRMatrix->getSize();
 
 		foreach(self::PATTERNS as $pattern){
 			$mp      = new self($pattern);
@@ -121,7 +132,7 @@ final class MaskPattern{
 			$penalty = 0;
 
 			for($level = 1; $level <= 4; $level++){
-				$penalty += self::{'testRule'.$level}($matrix, count($matrix), count($matrix[0]));
+				$penalty += self::{'testRule'.$level}($matrix, $size, $size);
 			}
 
 			$penalties[$pattern] = (int)$penalty;
@@ -135,40 +146,47 @@ final class MaskPattern{
 	 * give penalty to them. Example: 00000 or 11111.
 	 */
 	public static function testRule1(array $matrix, int $height, int $width):int{
-		return (self::applyRule1($matrix, $height, $width, true) + self::applyRule1($matrix, $height, $width, false));
+		$penalty = 0;
+
+		// horizontal
+		foreach($matrix as $row){
+			$penalty += self::applyRule1($row);
+		}
+
+		// vertical
+		for($x = 0; $x < $width; $x++){
+			$penalty += self::applyRule1(array_column($matrix, $x));
+		}
+
+		return $penalty;
 	}
 
 	/**
 	 *
 	 */
-	private static function applyRule1(array $matrix, int $height, int $width, bool $isHorizontal):int{
-		$penalty = 0;
-		$yLimit  = ($isHorizontal) ? $height : $width;
-		$xLimit  = ($isHorizontal) ? $width : $height;
+	private static function applyRule1(array $rc):int{
+		$penalty         = 0;
+		$numSameBitCells = 0;
+		$prevBit         = null;
 
-		for($y = 0; $y < $yLimit; $y++){
-			$numSameBitCells = 0;
-			$prevBit         = null;
+		foreach($rc as $val){
 
-			for($x = 0; $x < $xLimit; $x++){
-				$bit = ($isHorizontal) ? $matrix[$y][$x] : $matrix[$x][$y];
-
-				if($bit === $prevBit){
-					$numSameBitCells++;
-				}
-				else{
-
-					if($numSameBitCells >= 5){
-						$penalty += (3 + ($numSameBitCells - 5));
-					}
-
-					$numSameBitCells = 1;  // Include the cell itself.
-					$prevBit         = $bit;
-				}
+			if($val === $prevBit){
+				$numSameBitCells++;
 			}
-			if($numSameBitCells >= 5){
-				$penalty += (3 + ($numSameBitCells - 5));
+			else{
+
+				if($numSameBitCells >= 5){
+					$penalty += (self::PENALTY_N1 + $numSameBitCells - 5);
+				}
+
+				$numSameBitCells = 1;  // Include the cell itself.
+				$prevBit         = $val;
 			}
+		}
+
+		if($numSameBitCells >= 5){
+			$penalty += (self::PENALTY_N1 + $numSameBitCells - 5);
 		}
 
 		return $penalty;
@@ -195,7 +213,7 @@ final class MaskPattern{
 				}
 
 				if(
-					$val === $row[($x + 1)]
+					   $val === $row[($x + 1)]
 					&& $val === $matrix[($y + 1)][$x]
 					&& $val === $matrix[($y + 1)][($x + 1)]
 				){
@@ -204,7 +222,7 @@ final class MaskPattern{
 			}
 		}
 
-		return (3 * $penalty);
+		return (self::PENALTY_N2 * $penalty);
 	}
 
 	/**
@@ -255,7 +273,7 @@ final class MaskPattern{
 			}
 		}
 
-		return ($penalties * 40);
+		return ($penalties * self::PENALTY_N3);
 	}
 
 	/**
@@ -310,7 +328,7 @@ final class MaskPattern{
 			}
 		}
 
-		return (intdiv((abs($darkCells * 2 - $totalCells) * 10), $totalCells) * 10);
+		return (intdiv((abs($darkCells * 2 - $totalCells) * 10), $totalCells) * self::PENALTY_N4);
 	}
 
 }

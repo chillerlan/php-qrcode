@@ -181,14 +181,10 @@ class QRMatrix{
 			return $this->matrix;
 		}
 
-		$matrix = [];
+		$matrix = $this->matrix;
 
-		for($y = 0; $y < $this->moduleCount; $y++){
-			$matrix[$y] = [];
-
-			for($x = 0; $x < $this->moduleCount; $x++){
-				$matrix[$y][$x] = $this->checkType($x, $y, $this::IS_DARK);
-			}
+		foreach($matrix as &$row){
+			$row = array_map([$this, 'isDark'], $row);
 		}
 
 		return $matrix;
