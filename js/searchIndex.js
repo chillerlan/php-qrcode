@@ -546,6 +546,26 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Common-MaskPattern.html#constant_PATTERNS"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Common\\MaskPattern\u003A\u003APENALTY_N1",
+            "name": "PENALTY_N1",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Common-MaskPattern.html#constant_PENALTY_N1"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Common\\MaskPattern\u003A\u003APENALTY_N2",
+            "name": "PENALTY_N2",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Common-MaskPattern.html#constant_PENALTY_N2"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Common\\MaskPattern\u003A\u003APENALTY_N3",
+            "name": "PENALTY_N3",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Common-MaskPattern.html#constant_PENALTY_N3"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Common\\MaskPattern\u003A\u003APENALTY_N4",
+            "name": "PENALTY_N4",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Common-MaskPattern.html#constant_PENALTY_N4"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Common\\MaskPattern\u003A\u003A\u0024maskPattern",
             "name": "maskPattern",
             "summary": "The\u0020current\u0020mask\u0020pattern\u0020value\u0020\u00280\u002D7\u0029",
