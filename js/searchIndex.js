@@ -3526,11 +3526,6 @@ Search.appendIndex(
             "summary": "Anything\u0020in\u0020the\u0020SVG\u0020\u0060\u003Cdefs\u003E\u0060\u0020tag",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgDefs"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgViewBoxSize",
-            "name": "svgViewBoxSize",
-            "summary": "SVG\u0020viewBox\u0020size.\u0020A\u0020single\u0020integer\u0020number\u0020which\u0020defines\u0020width\/height\u0020of\u0020the\u0020viewBox\u0020attribute.",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_svgViewBoxSize"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024svgPreserveAspectRatio",
             "name": "svgPreserveAspectRatio",
             "summary": "Sets\u0020the\u0020value\u0020for\u0020the\u0020\u0022preserveAspectRatio\u0022\u0020on\u0020the\u0020\u0060\u003Csvg\u003E\u0060\u0020element",
