@@ -228,7 +228,7 @@ class QRGdImage extends QROutputAbstract{
 	 */
 	protected function createImage(){
 
-		if($this->drawCircularModules && $this->options->scale < 20){
+		if($this->drawCircularModules && $this->options->gdImageUseUpscale && $this->options->scale < 20){
 			// increase the initial image size by 10
 			$this->length   *= 10;
 			$this->scale    *= 10;

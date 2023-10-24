@@ -339,6 +339,18 @@ trait QROptionsTrait{
 	 */
 	protected int $quality = -1;
 
+	/*
+	 * QRGdImage settings
+	 */
+
+	/**
+	 * Toggles the usage of internal upscaling when `QROptions::$drawCircularModules` is set to `true` and
+	 * `QROptions::$scale` is less than 20
+	 *
+	 * @see \chillerlan\QRCode\Output\QRGdImage::createImage()
+	 * @see https://github.com/chillerlan/php-qrcode/issues/23
+	 */
+	protected bool $gdImageUseUpscale = true;
 
 	/*
 	 * QRImagick settings
