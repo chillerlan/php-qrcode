@@ -84,7 +84,7 @@ class QRMarkupSVG extends QRMarkup{
 	protected function getViewBox():string{
 		[$width, $height] = $this->getOutputDimensions();
 
-		return sprintf('0 0 %s %s', ($this->options->svgViewBoxSize ?? $width), ($this->options->svgViewBoxSize ?? $height));
+		return sprintf('0 0 %s %s', $width, $height);
 	}
 
 	/**

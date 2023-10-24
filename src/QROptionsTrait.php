@@ -381,19 +381,6 @@ trait QROptionsTrait{
 	protected string $svgDefs = '';
 
 	/**
-	 * SVG viewBox size. A single integer number which defines width/height of the viewBox attribute.
-	 *
-	 * viewBox="0 0 x x"
-	 *
-	 * @deprecated 5.0.0 use QRMarkupSVG::getViewBox() instead
-	 * @see        \chillerlan\QRCode\Output\QRMarkupSVG::getViewBox()
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/viewBox
-	 * @see https://css-tricks.com/scale-svg/#article-header-id-3
-	 */
-	protected ?int $svgViewBoxSize = null;
-
-	/**
 	 * Sets the value for the "preserveAspectRatio" on the `<svg>` element
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio
