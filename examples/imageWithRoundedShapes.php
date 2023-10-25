@@ -62,28 +62,28 @@ class QRGdRounded extends QRGdImagePNG{
 		// Outer rounding
 		// ------------------
 
-		if($neighbours & (1 << 7)){ // neighbour left
+		if(($neighbours & (1 << 7))){ // neighbour left
 			// top left
 			imagefilledrectangle($this->image, $x1, $y1, ($x1 + $rectsize), ($y1 + $rectsize), $light);
 			// bottom left
 			imagefilledrectangle($this->image, $x1, ($y2 - $rectsize), ($x1 + $rectsize), $y2, $light);
 		}
 
-		if($neighbours & (1 << 3)){ // neighbour right
+		if(($neighbours & (1 << 3))){ // neighbour right
 			// top right
 			imagefilledrectangle($this->image, ($x2 - $rectsize), $y1, $x2, ($y1 + $rectsize), $light);
 			// bottom right
 			imagefilledrectangle($this->image, ($x2 - $rectsize), ($y2 - $rectsize), $x2, $y2, $light);
 		}
 
-		if($neighbours & (1 << 1)){ // neighbour top
+		if(($neighbours & (1 << 1))){ // neighbour top
 			// top left
 			imagefilledrectangle($this->image, $x1, $y1, ($x1 + $rectsize), ($y1 + $rectsize), $light);
 			// top right
 			imagefilledrectangle($this->image, ($x2 - $rectsize), $y1, $x2, ($y1 + $rectsize), $light);
 		}
 
-		if($neighbours & (1 << 5)){ // neighbour bottom
+		if(($neighbours & (1 << 5))){ // neighbour bottom
 			// bottom left
 			imagefilledrectangle($this->image, $x1, ($y2 - $rectsize), ($x1 + $rectsize), $y2, $light);
 			// bottom right

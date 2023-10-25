@@ -44,6 +44,6 @@ $options->moduleValues  = [
 $out  = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 
-echo "\n\n\n$out\n\n\n";
+printf("\n\n\n%s\n\n\n", $out);
 
 exit;

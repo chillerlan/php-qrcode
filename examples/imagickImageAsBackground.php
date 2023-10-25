@@ -112,5 +112,3 @@ if(PHP_SAPI !== 'cli'){
 }
 
 exit;
-
-
