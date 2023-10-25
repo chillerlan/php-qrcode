@@ -24,7 +24,7 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
 [coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode/main?logo=codecov
 [coverage]: https://app.codecov.io/gh/chillerlan/php-qrcode/tree/main
 [codacy-badge]: https://img.shields.io/codacy/grade/edccfc4fe5a34b74b1c53ee03f097b8d/main?logo=codacy
-[codacy]: https://www.codacy.com/gh/chillerlan/php-qrcode/dashboard?branch=main
+[codacy]: https://app.codacy.com/gh/chillerlan/php-qrcode/dashboard?branch=main
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode?logo=packagist
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 [readthedocs-badge]: https://img.shields.io/readthedocs/php-qrcode/main?logo=readthedocs
