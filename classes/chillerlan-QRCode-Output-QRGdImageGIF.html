@@ -117,7 +117,7 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    QRImage
+    QRGdImageGIF
 
         <span class="phpdocumentor-element__extends">
         extends <a href="classes/chillerlan-QRCode-Output-QRGdImage.html"><abbr title="\chillerlan\QRCode\Output\QRGdImage">QRGdImage</abbr></a>
@@ -139,37 +139,27 @@
 </div>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRImage.php"><a href="files/src-output-qrimage.html"><abbr title="src/Output/QRImage.php">QRImage.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImageGIF.php"><a href="files/src-output-qrgdimagegif.html"><abbr title="src/Output/QRGdImageGIF.php">QRGdImageGIF.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">17</span>
+    <span class="phpdocumentor-element-found-in__line">22</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Converts the matrix into GD images, raw or base64 output (requires ext-gd)</p>
+            <p class="phpdocumentor-summary">GdImage gif output</p>
 
 
 
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="classes/chillerlan-QRCode-Output-QRImage.html#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>backward compatibility, use QRGdImage instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QRGdImage.html"><abbr title="\chillerlan\QRCode\Output\QRGdImage">QRGdImage</abbr></a></span>
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\imagegif()">imagegif()</abbr></span>
                                         
                                              
                                     </dd>
@@ -179,7 +169,7 @@
 
 <h3 id="toc">
     Table of Contents
-    <a href="classes/chillerlan-QRCode-Output-QRImage.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -189,11 +179,24 @@
 
 
 
+<h4 id="toc-constants">
+    Constants
+    <a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#toc-constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+</h4>
+<dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
+    <a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#constant_MIME_TYPE">MIME_TYPE</a>
+    <span>
+        &nbsp;= &#039;image/gif&#039;                            </span>
+</dt>
+
+    </dl>
 
 
 <h4 id="toc-properties">
     Properties
-    <a href="classes/chillerlan-QRCode-Output-QRImage.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
@@ -310,7 +313,7 @@
 
 <h4 id="toc-methods">
     Methods
-    <a href="classes/chillerlan-QRCode-Output-QRImage.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
@@ -420,7 +423,7 @@ in long loops for a significant performance increase.</dd>
 <dd>Prepares the value for the given input ()</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_renderImage">renderImage()</a>
+    <a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#method_renderImage">renderImage()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
@@ -474,12 +477,47 @@ in long loops for a significant performance increase.</dd>
 
 
         
+    <section class="phpdocumentor-constants">
+        <h3 class="phpdocumentor-elements__header" id="constants">
+            Constants
+            <a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h3>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_MIME_TYPE">
+        MIME_TYPE
+        <a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#constant_MIME_TYPE" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImageGIF.php"><a href="files/src-output-qrgdimagegif.html"><abbr title="src/Output/QRGdImageGIF.php">QRGdImageGIF.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">24</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">MIME_TYPE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;image/gif&#039;</span>
+</code>
+
+
+    
+    
+    
+
+</article>
+            </section>
 
         
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/chillerlan-QRCode-Output-QRImage.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -1244,7 +1282,7 @@ in long loops for a significant performance increase.</dd>
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/chillerlan-QRCode-Output-QRImage.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -2031,13 +2069,13 @@ in long loops for a significant performance increase.</p>
 >
     <h4 class="phpdocumentor-element__name" id="method_renderImage">
         renderImage()
-        <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_renderImage" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#method_renderImage" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImageGIF.php"><a href="files/src-output-qrgdimagegif.html"><abbr title="src/Output/QRGdImageGIF.php">QRGdImageGIF.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">343</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
@@ -2054,69 +2092,12 @@ in long loops for a significant performance increase.</p>
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_renderImage#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#method_renderImage#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\imagebmp()">imagebmp()</abbr></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\imagegif()">imagegif()</abbr></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\imagejpeg()">imagejpeg()</abbr></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\imagepng()">imagepng()</abbr></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\imagewebp()">imagewebp()</abbr></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
-                                        
-                                             
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">todo:</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>v6.0: make abstract and call from child classes</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
+                    <span class="phpdocumentor-tag__name">inheritDoc</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
                                                                                 
@@ -2395,7 +2376,7 @@ in long loops for a significant performance increase.</p>
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Output/QRImage.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Output/QRGdImageGIF.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -2494,31 +2475,38 @@ in long loops for a significant performance increase.</p>
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                            <li><a href="classes/chillerlan-QRCode-Output-QRImage.html#toc-properties">Properties</a></li>
-                                                            <li><a href="classes/chillerlan-QRCode-Output-QRImage.html#toc-methods">Methods</a></li>
+                                        <li><a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#toc-constants">Constants</a></li>
+                                                            <li><a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#toc-methods">Methods</a></li>
                                     </ul>
             </li>
+                            <li class="phpdocumentor-on-this-page-section__title">Constants</li>
+                <li>
+                    <ul class="phpdocumentor-list -clean">
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#constant_MIME_TYPE">MIME_TYPE</a></li>
+                                            </ul>
+                </li>
             
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#property_background">$background<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_circleDiameter">$circleDiameter<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_circleRadius">$circleRadius<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_connectPaths">$connectPaths<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_drawCircularModules">$drawCircularModules<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_drawLightModules">$drawLightModules<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_eol">$eol<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_excludeFromConnect">$excludeFromConnect<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#property_image">$image<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_keepAsSquare">$keepAsSquare<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_length">$length<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_matrix">$matrix<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_moduleCount">$moduleCount<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_moduleValues">$moduleValues<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_options">$options<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_scale">$scale<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#property_upscaled">$upscaled<a href="classes/chillerlan-QRCode-Output-QRImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#property_background">$background<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_circleDiameter">$circleDiameter<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_circleRadius">$circleRadius<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_connectPaths">$connectPaths<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_drawCircularModules">$drawCircularModules<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_drawLightModules">$drawLightModules<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_eol">$eol<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_excludeFromConnect">$excludeFromConnect<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#property_image">$image<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_keepAsSquare">$keepAsSquare<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_length">$length<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_matrix">$matrix<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_moduleCount">$moduleCount<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_moduleValues">$moduleValues<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_options">$options<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_scale">$scale<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#property_upscaled">$upscaled<a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html"></li>
                                             </ul>
                 </li>
             
@@ -2540,7 +2528,7 @@ in long loops for a significant performance increase.</p>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getOutputDimensions">getOutputDimensions()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_module">module()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_prepareModuleValue">prepareModuleValue()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_renderImage">renderImage()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#method_renderImage">renderImage()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_saveToFile">saveToFile()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_setBgColor">setBgColor()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_setMatrixDimensions">setMatrixDimensions()</a></li>
@@ -2566,7 +2554,7 @@ in long loops for a significant performance increase.</p>
     </section>
 </section>
         </div>
-        <a href="classes/chillerlan-QRCode-Output-QRImage.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/chillerlan-QRCode-Output-QRGdImageGIF.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
