@@ -12,13 +12,24 @@ namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\QRStringText;
 
 /**
  *
  */
-final class QRStringTEXTTest extends QRStringTestAbstract{
+final class QRStringTEXTTest extends QROutputTestAbstract{
 
 	protected string $type = QROutputInterface::STRING_TEXT;
+	protected string $FQN  = QRStringText::class;
+
+	public static function moduleValueProvider():array{
+		return [
+			'invalid: wrong type'       => [[], false],
+			'valid: string'             => ['abc', true],
+			'valid: zero length string' => ['', true],
+			'valid: empty string'       => [' ', true],
+		];
+	}
 
 	/**
 	 * @inheritDoc

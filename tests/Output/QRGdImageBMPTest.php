@@ -10,6 +10,7 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
+use chillerlan\QRCode\Output\QRGdImageBMP;
 use chillerlan\QRCode\Output\QROutputInterface;
 
 /**
@@ -18,5 +19,6 @@ use chillerlan\QRCode\Output\QROutputInterface;
 final class QRGdImageBMPTest extends QRGdImageTestAbstract{
 
 	protected string $type = QROutputInterface::GDIMAGE_BMP;
+	protected string $FQN  = QRGdImageBMP::class;
 
 }

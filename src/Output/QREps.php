@@ -22,6 +22,8 @@ use function array_values, count, date, implode, is_array, is_numeric, max, min,
  */
 class QREps extends QROutputAbstract{
 
+	public const MIME_TYPE = 'application/postscript';
+
 	/**
 	 * @inheritDoc
 	 */

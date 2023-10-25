@@ -13,7 +13,7 @@
  */
 
 use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Output\{QROutputInterface, QRGdImage};
+use chillerlan\QRCode\Output\{QROutputInterface, QRGdImagePNG};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -21,7 +21,7 @@ require_once __DIR__.'/../vendor/autoload.php';
  * Class definition
  */
 
-class QRImageWithText extends QRGdImage{
+class QRImageWithText extends QRGdImagePNG{
 
 	/**
 	 * @inheritDoc
@@ -43,7 +43,7 @@ class QRImageWithText extends QRGdImage{
 		$this->saveToFile($imageData, $file);
 
 		if($this->options->outputBase64){
-			$imageData = $this->toBase64DataURI($imageData, 'image/'.$this->options->outputType);
+			$imageData = $this->toBase64DataURI($imageData);
 		}
 
 		return $imageData;
@@ -97,7 +97,6 @@ class QRImageWithText extends QRGdImage{
 $options = new QROptions;
 
 $options->version      = 7;
-$options->outputType   = QROutputInterface::GDIMAGE_PNG;
 $options->scale        = 3;
 $options->outputBase64 = false;
 

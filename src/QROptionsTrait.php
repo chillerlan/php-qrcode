@@ -9,7 +9,7 @@
  * @copyright    2018 smiley
  * @license      MIT
  *
- * @noinspection PhpUnused
+ * @noinspection PhpUnused, PhpComposerExtensionStubsInspection
  */
 
 namespace chillerlan\QRCode;
@@ -17,7 +17,7 @@ namespace chillerlan\QRCode;
 use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use function extension_loaded, in_array, max, min, strtolower;
-use const PHP_EOL;
+use const JSON_THROW_ON_ERROR, PHP_EOL;
 
 /**
  * The QRCode plug-in settings & setter functionality
@@ -119,6 +119,9 @@ trait QROptionsTrait{
 	 * @see \chillerlan\QRCode\Output\QRMarkupHTML
 	 * @see \chillerlan\QRCode\Output\QRMarkupSVG
 	 * @see \chillerlan\QRCode\Output\QRString
+	 *
+	 * @deprecated 5.0.0 use `QROptions::$outputInterface` instead
+	 * @see        https://github.com/chillerlan/php-qrcode/issues/223
 	 */
 	protected string $outputType = QROutputInterface::MARKUP_SVG;
 
@@ -126,6 +129,9 @@ trait QROptionsTrait{
 	 * The FQCN of the custom `QROutputInterface`
 	 *
 	 * if `QROptions::$outputType` is set to `QROutputInterface::CUSTOM` (default: `null`)
+	 *
+	 * @deprecated 5.0.0 the nullable type will be removed in future versions
+	 *                   and the default value will be set to `QRMarkupSVG::class`
 	 */
 	protected ?string $outputInterface = null;
 
@@ -325,11 +331,11 @@ trait QROptionsTrait{
 	 *
 	 * The given value depends on the used output type:
 	 *
-	 * - `QROutputInterface::GDIMAGE_BMP`:  `[0...1]`
-	 * - `QROutputInterface::GDIMAGE_JPG`:  `[0...100]`
-	 * - `QROutputInterface::GDIMAGE_WEBP`: `[0...9]`
-	 * - `QROutputInterface::GDIMAGE_PNG`:  `[0...100]`
-	 * - `QROutputInterface::IMAGICK`:      `[0...100]`
+	 * - `QRGdImageBMP`:  `[0...1]`
+	 * - `QRGdImageJPEG`: `[0...100]`
+	 * - `QRGdImageWEBP`: `[0...9]`
+	 * - `QRGdImagePNG`:  `[0...100]`
+	 * - `QRImagick`:     `[0...100]`
 	 *
 	 * @see \imagebmp()
 	 * @see \imagejpeg()
@@ -410,13 +416,24 @@ trait QROptionsTrait{
 	protected bool $svgUseFillAttributes = true;
 
 	/*
-	 * QRString settings
+	 * QRStringText settings
 	 */
 
 	/**
 	 * An optional line prefix, e.g. empty space to align the QR Code in a console
 	 */
 	protected string $textLineStart = '';
+
+	/*
+	 * QRStringJSON settings
+	 */
+
+	/**
+	 * Sets the flags to use for the `json_encode()` call
+	 *
+	 * @see https://www.php.net/manual/json.constants.php
+	 */
+	protected int $jsonFlags = JSON_THROW_ON_ERROR;
 
 	/**
 	 * Whether to return matrix values in JSON as booleans or `$M_TYPE` integers

@@ -1,26 +1,27 @@
 <?php
 /**
- * Class QRString
+ * Class QRStringText
  *
- * @created      05.12.2015
- * @author       Smiley <smiley@chillerlan.net>
- * @copyright    2015 Smiley
+ * @created      25.10.2023
+ * @author       smiley <smiley@chillerlan.net>
+ * @copyright    2023 smiley
  * @license      MIT
- *
- * @noinspection PhpComposerExtensionStubsInspection
  */
 
 namespace chillerlan\QRCode\Output;
 
-use function implode, is_string, json_encode, max, min, sprintf;
-use const JSON_THROW_ON_ERROR;
+use function implode;
+use function is_string;
+use function max;
+use function min;
+use function sprintf;
 
 /**
- * Converts the matrix data into string types
  *
- * @deprecated 5.0.0 this class will be removed in future versions, use one of QRStringText or QRStringJSON instead
  */
-class QRString extends QROutputAbstract{
+class QRStringText extends QROutputAbstract{
+
+	public const MIME_TYPE = 'text/plain';
 
 	/**
 	 * @inheritDoc
@@ -47,25 +48,6 @@ class QRString extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	public function dump(string $file = null):string{
-
-		switch($this->options->outputType){
-			case QROutputInterface::STRING_TEXT:
-				$data = $this->text();
-				break;
-			case QROutputInterface::STRING_JSON:
-			default:
-				$data = $this->json();
-		}
-
-		$this->saveToFile($data, $file);
-
-		return $data;
-	}
-
-	/**
-	 * string output
-	 */
-	protected function text():string{
 		$lines     = [];
 		$linestart = $this->options->textLineStart;
 
@@ -79,19 +61,12 @@ class QRString extends QROutputAbstract{
 			$lines[] = $linestart.implode('', $r);
 		}
 
-		return implode($this->eol, $lines);
-	}
+		$data = implode($this->eol, $lines);
 
-	/**
-	 * JSON output
-	 *
-	 * @throws \JsonException
-	 */
-	protected function json():string{
-		return json_encode($this->matrix->getMatrix($this->options->jsonAsBooleans), JSON_THROW_ON_ERROR);
-	}
+		$this->saveToFile($data, $file);
 
-	//
+		return $data;
+	}
 
 	/**
 	 * a little helper to create a proper ANSI 8-bit color escape sequence

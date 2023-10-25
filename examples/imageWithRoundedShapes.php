@@ -15,7 +15,7 @@
 
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QRGdImage;
+use chillerlan\QRCode\Output\QRGdImagePNG;
 use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
@@ -27,7 +27,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 // Class definition
 // --------------------
 
-class QRGdRounded extends QRGdImage{
+class QRGdRounded extends QRGdImagePNG{
 
 	/** @inheritDoc */
 	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){

@@ -17,48 +17,114 @@ use chillerlan\QRCode\Data\QRMatrix;
  */
 interface QROutputInterface{
 
-	/** @var string */
+	/**
+	 * @var string
+	 * @deprecated 5.0.0 <no replacement>
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
+	 */
 	public const MARKUP_HTML  = 'html';
-	/** @var string */
+
+	/**
+	 * @var string
+	 * @deprecated 5.0.0 <no replacement>
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
+	 */
 	public const MARKUP_SVG   = 'svg';
-	/** @var string */
+
+	/**
+	 * @var string
+	 * @deprecated 5.0.0 <no replacement>
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
+	 */
 	public const GDIMAGE_BMP  = 'bmp';
-	/** @var string */
+
+	/**
+	 * @var string
+	 * @deprecated 5.0.0 <no replacement>
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
+	 */
 	public const GDIMAGE_GIF  = 'gif';
-	/** @var string */
+
+	/**
+	 * @var string
+	 * @deprecated 5.0.0 <no replacement>
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
+	 */
 	public const GDIMAGE_JPG  = 'jpg';
-	/** @var string */
+
+	/**
+	 * @var string
+	 * @deprecated 5.0.0 <no replacement>
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
+	 */
 	public const GDIMAGE_PNG  = 'png';
-	/** @var string */
+
+	/**
+	 * @var string
+	 * @deprecated 5.0.0 <no replacement>
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
+	 */
 	public const GDIMAGE_WEBP = 'webp';
-	/** @var string */
+
+	/**
+	 * @var string
+	 * @deprecated 5.0.0 <no replacement>
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
+	 */
 	public const STRING_JSON  = 'json';
-	/** @var string */
+
+	/**
+	 * @var string
+	 * @deprecated 5.0.0 <no replacement>
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
+	 */
 	public const STRING_TEXT  = 'text';
-	/** @var string */
+
+	/**
+	 * @var string
+	 * @deprecated 5.0.0 <no replacement>
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
+	 */
 	public const IMAGICK      = 'imagick';
-	/** @var string */
+
+	/**
+	 * @var string
+	 * @deprecated 5.0.0 <no replacement>
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
+	 */
 	public const FPDF         = 'fpdf';
-	/** @var string */
+
+	/**
+	 * @var string
+	 * @deprecated 5.0.0 <no replacement>
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
+	 */
 	public const EPS          = 'eps';
-	/** @var string */
+
+	/**
+	 * @var string
+	 * @deprecated 5.0.0 <no replacement>
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
+	 */
 	public const CUSTOM       = 'custom';
 
 	/**
 	 * Map of built-in output modes => class FQN
 	 *
 	 * @var string[]
+	 * @deprecated 5.0.0 <no replacement>
+	 * @see        https://github.com/chillerlan/php-qrcode/issues/223
 	 */
 	public const MODES = [
 		self::MARKUP_SVG   => QRMarkupSVG::class,
 		self::MARKUP_HTML  => QRMarkupHTML::class,
-		self::GDIMAGE_BMP  => QRGdImage::class,
-		self::GDIMAGE_GIF  => QRGdImage::class,
-		self::GDIMAGE_JPG  => QRGdImage::class,
-		self::GDIMAGE_PNG  => QRGdImage::class,
-		self::GDIMAGE_WEBP => QRGdImage::class,
-		self::STRING_JSON  => QRString::class,
-		self::STRING_TEXT  => QRString::class,
+		self::GDIMAGE_BMP  => QRGdImageBMP::class,
+		self::GDIMAGE_GIF  => QRGdImageGIF::class,
+		self::GDIMAGE_JPG  => QRGdImageJPEG::class,
+		self::GDIMAGE_PNG  => QRGdImagePNG::class,
+		self::GDIMAGE_WEBP => QRGdImageWEBP::class,
+		self::STRING_JSON  => QRStringJSON::class,
+		self::STRING_TEXT  => QRStringText::class,
 		self::IMAGICK      => QRImagick::class,
 		self::FPDF         => QRFpdf::class,
 		self::EPS          => QREps::class,
@@ -129,6 +195,13 @@ interface QROutputInterface{
 		QRMatrix::M_LOGO_DARK        => 'logo-dark',
 		QRMatrix::M_FINDER_DOT       => 'finder-dot',
 	];
+
+	/**
+	 * @var      string
+	 * @see      \chillerlan\QRCode\Output\QROutputAbstract::toBase64DataURI()
+	 * @internal do not call this constant from the interface, but rather from one of the child classes
+	 */
+	public const MIME_TYPE = '';
 
 	/**
 	 * Determines whether the given value is valid

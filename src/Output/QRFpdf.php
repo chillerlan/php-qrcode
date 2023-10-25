@@ -25,6 +25,8 @@ use function array_values, class_exists, count, intval, is_array, is_numeric, ma
  */
 class QRFpdf extends QROutputAbstract{
 
+	public const MIME_TYPE = 'application/pdf';
+
 	protected FPDF   $fpdf;
 	protected ?array $prevColor = null;
 
@@ -146,7 +148,7 @@ class QRFpdf extends QROutputAbstract{
 		$this->saveToFile($pdfData, $file);
 
 		if($this->options->outputBase64){
-			$pdfData = $this->toBase64DataURI($pdfData, 'application/pdf');
+			$pdfData = $this->toBase64DataURI($pdfData);
 		}
 
 		return $pdfData;

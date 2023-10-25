@@ -11,15 +11,12 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QRGdImage;
 use const PHP_MAJOR_VERSION;
 
 /**
  * Tests the QRGdImage output module
  */
 abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
-
-	protected string $FQN  = QRGdImage::class;
 
 	/**
 	 * @inheritDoc
@@ -62,7 +59,7 @@ abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
 	}
 
 	/**
-	 *
+	 * @todo: remove php version check in v6
 	 */
 	public function testOutputGetResource():void{
 		$this->options->returnResource = true;
@@ -74,6 +71,13 @@ abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
 		PHP_MAJOR_VERSION >= 8
 			? $this::assertInstanceOf(\GdImage::class, $actual)
 			: $this::assertIsResource($actual);
+	}
+
+	public function testBase64MimeType():void{
+		$this->options->outputBase64 = true;
+		$this->outputInterface       = new $this->FQN($this->options, $this->matrix);
+
+		$this::assertStringContainsString($this->outputInterface::MIME_TYPE, $this->outputInterface->dump());
 	}
 
 }

@@ -22,6 +22,8 @@ use function array_chunk, implode, is_string, preg_match, sprintf, trim;
  */
 class QRMarkupSVG extends QRMarkup{
 
+	public const MIME_TYPE = 'image/svg+xml';
+
 	/**
 	 * @todo: XSS proof
 	 *
@@ -69,7 +71,7 @@ class QRMarkupSVG extends QRMarkup{
 
 		// transform to data URI only when not saving to file
 		if(!$saveToFile && $this->options->outputBase64){
-			$svg = $this->toBase64DataURI($svg, 'image/svg+xml');
+			$svg = $this->toBase64DataURI($svg);
 		}
 
 		return $svg;

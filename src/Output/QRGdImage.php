@@ -25,6 +25,10 @@ use function array_values, count, extension_loaded, gd_info, imagebmp, imagecolo
  * Converts the matrix into GD images, raw or base64 output (requires ext-gd)
  *
  * @see https://php.net/manual/book.image.php
+ *
+ * @deprecated 5.0.0 this class will be made abstract in future versions,
+ *                   calling it directly is deprecated - use one of the child classes instead
+ * @see https://github.com/chillerlan/php-qrcode/issues/223
  */
 class QRGdImage extends QROutputAbstract{
 
@@ -33,6 +37,8 @@ class QRGdImage extends QROutputAbstract{
 	 *
 	 * @see imagecreatetruecolor()
 	 * @var resource|\GdImage
+	 *
+	 * @todo: add \GdImage type in v6
 	 */
 	protected $image;
 
@@ -209,6 +215,7 @@ class QRGdImage extends QROutputAbstract{
 		$this->saveToFile($imageData, $file);
 
 		if($this->options->outputBase64){
+			// @todo: remove mime parameter in v6
 			$imageData = $this->toBase64DataURI($imageData, 'image/'.$this->options->outputType);
 		}
 
@@ -261,6 +268,7 @@ class QRGdImage extends QROutputAbstract{
 	 */
 	protected function setTransparencyColor():void{
 
+		// @todo: the jpg skip can be removed in v6
 		if($this->options->outputType === QROutputInterface::GDIMAGE_JPG || !$this->options->imageTransparent){
 			return;
 		}
@@ -320,35 +328,54 @@ class QRGdImage extends QROutputAbstract{
 	}
 
 	/**
+	 * Renders the image with the gdimage function for the desired output
+	 *
+	 * @see \imagebmp()
+	 * @see \imagegif()
+	 * @see \imagejpeg()
+	 * @see \imagepng()
+	 * @see \imagewebp()
+	 *
+	 * @todo: v6.0: make abstract and call from child classes
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
+	 * @codeCoverageIgnore
+	 */
+	protected function renderImage():void{
+
+		switch($this->options->outputType){
+			case QROutputInterface::GDIMAGE_BMP:
+				imagebmp($this->image, null, ($this->options->quality > 0));
+				break;
+			case QROutputInterface::GDIMAGE_GIF:
+				imagegif($this->image);
+				break;
+			case QROutputInterface::GDIMAGE_JPG:
+				imagejpeg($this->image, null, max(-1, min(100, $this->options->quality)));
+				break;
+			case QROutputInterface::GDIMAGE_WEBP:
+				imagewebp($this->image, null, max(-1, min(100, $this->options->quality)));
+				break;
+			// silently default to png output
+			case QROutputInterface::GDIMAGE_PNG:
+			default:
+				imagepng($this->image, null, max(-1, min(9, $this->options->quality)));
+		}
+
+	}
+
+	/**
 	 * Creates the final image by calling the desired GD output function
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function dumpImage():string{
 		$exception = null;
+		$imageData = null;
 
 		ob_start();
 
 		try{
-
-			switch($this->options->outputType){
-				case QROutputInterface::GDIMAGE_BMP:
-					imagebmp($this->image, null, ($this->options->quality > 0));
-					break;
-				case QROutputInterface::GDIMAGE_GIF:
-					imagegif($this->image);
-					break;
-				case QROutputInterface::GDIMAGE_JPG:
-					imagejpeg($this->image, null, max(-1, min(100, $this->options->quality)));
-					break;
-				case QROutputInterface::GDIMAGE_WEBP:
-					imagewebp($this->image, null, max(-1, min(100, $this->options->quality)));
-					break;
-				// silently default to png output
-				case QROutputInterface::GDIMAGE_PNG:
-				default:
-					imagepng($this->image, null, max(-1, min(9, $this->options->quality)));
-			}
+			$this->renderImage();
 
 			$imageData = ob_get_contents();
 			imagedestroy($this->image);

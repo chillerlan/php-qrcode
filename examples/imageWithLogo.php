@@ -13,7 +13,7 @@
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\{QRGdImage, QRCodeOutputException};
+use chillerlan\QRCode\Output\{QRGdImagePNG, QRCodeOutputException};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -21,7 +21,7 @@ require_once __DIR__.'/../vendor/autoload.php';
  * Class definition
  */
 
-class QRImageWithLogo extends QRGdImage{
+class QRImageWithLogo extends QRGdImagePNG{
 
 	/**
 	 * @param string|null $file
@@ -64,7 +64,7 @@ class QRImageWithLogo extends QRGdImage{
 		$this->saveToFile($imageData, $file);
 
 		if($this->options->outputBase64){
-			$imageData = $this->toBase64DataURI($imageData, 'image/'.$this->options->outputType);
+			$imageData = $this->toBase64DataURI($imageData);
 		}
 
 		return $imageData;

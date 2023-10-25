@@ -10,7 +10,7 @@
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\{QROutputInterface, QRString};
+use chillerlan\QRCode\Output\{QROutputInterface, QRStringText};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -22,22 +22,22 @@ $options->outputType    = QROutputInterface::STRING_TEXT;
 $options->eol           = "\n";
 $options->textLineStart = str_repeat(' ', 6);
 $options->moduleValues  = [
-	QRMatrix::M_FINDER_DARK    => QRString::ansi8('██', 124),
-	QRMatrix::M_FINDER         => QRString::ansi8('░░', 124),
-	QRMatrix::M_FINDER_DOT     => QRString::ansi8('██', 124),
-	QRMatrix::M_ALIGNMENT_DARK => QRString::ansi8('██', 2),
-	QRMatrix::M_ALIGNMENT      => QRString::ansi8('░░', 2),
-	QRMatrix::M_TIMING_DARK    => QRString::ansi8('██', 184),
-	QRMatrix::M_TIMING         => QRString::ansi8('░░', 184),
-	QRMatrix::M_FORMAT_DARK    => QRString::ansi8('██', 200),
-	QRMatrix::M_FORMAT         => QRString::ansi8('░░', 200),
-	QRMatrix::M_VERSION_DARK   => QRString::ansi8('██', 21),
-	QRMatrix::M_VERSION        => QRString::ansi8('░░', 21),
-	QRMatrix::M_DARKMODULE     => QRString::ansi8('██', 53),
-	QRMatrix::M_DATA_DARK      => QRString::ansi8('██', 166),
-	QRMatrix::M_DATA           => QRString::ansi8('░░', 166),
-	QRMatrix::M_QUIETZONE      => QRString::ansi8('░░', 253),
-	QRMatrix::M_SEPARATOR      => QRString::ansi8('░░', 253),
+	QRMatrix::M_FINDER_DARK    => QRStringText::ansi8('██', 124),
+	QRMatrix::M_FINDER         => QRStringText::ansi8('░░', 124),
+	QRMatrix::M_FINDER_DOT     => QRStringText::ansi8('██', 124),
+	QRMatrix::M_ALIGNMENT_DARK => QRStringText::ansi8('██', 2),
+	QRMatrix::M_ALIGNMENT      => QRStringText::ansi8('░░', 2),
+	QRMatrix::M_TIMING_DARK    => QRStringText::ansi8('██', 184),
+	QRMatrix::M_TIMING         => QRStringText::ansi8('░░', 184),
+	QRMatrix::M_FORMAT_DARK    => QRStringText::ansi8('██', 200),
+	QRMatrix::M_FORMAT         => QRStringText::ansi8('░░', 200),
+	QRMatrix::M_VERSION_DARK   => QRStringText::ansi8('██', 21),
+	QRMatrix::M_VERSION        => QRStringText::ansi8('░░', 21),
+	QRMatrix::M_DARKMODULE     => QRStringText::ansi8('██', 53),
+	QRMatrix::M_DATA_DARK      => QRStringText::ansi8('██', 166),
+	QRMatrix::M_DATA           => QRStringText::ansi8('░░', 166),
+	QRMatrix::M_QUIETZONE      => QRStringText::ansi8('░░', 253),
+	QRMatrix::M_SEPARATOR      => QRStringText::ansi8('░░', 253),
 ];
 
 
