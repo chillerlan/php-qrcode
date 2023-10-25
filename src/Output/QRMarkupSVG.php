@@ -180,19 +180,16 @@ class QRMarkupSVG extends QRMarkup{
 		}
 
 		if($this->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->keepAsSquare)){
-			$r = $this->circleRadius;
+			// string interpolation: ugly and fast
+			$ix = ($x + 0.5 - $this->circleRadius);
+			$iy = ($y + 0.5);
 
-			return sprintf(
-				'M%1$s %2$s a%3$s %3$s 0 1 0 %4$s 0 a%3$s %3$s 0 1 0 -%4$s 0Z',
-				($x + 0.5 - $r),
-				($y + 0.5),
-				$r,
-				($r * 2)
-			);
-
+			// phpcs:ignore
+			return "M$ix $iy a$this->circleRadius $this->circleRadius 0 1 0 $this->circleDiameter 0 a$this->circleRadius $this->circleRadius 0 1 0 -$this->circleDiameter 0Z";
 		}
 
-		return sprintf('M%1$s %2$s h1 v1 h-1Z', $x, $y);
+		// phpcs:ignore
+		return "M$x $y h1 v1 h-1Z";
 	}
 
 }

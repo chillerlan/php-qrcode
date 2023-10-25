@@ -63,6 +63,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	protected array $keepAsSquare;
 	/** @see \chillerlan\QRCode\QROptions::$circleRadius */
 	protected float $circleRadius;
+	protected float $circleDiameter;
 
 	/**
 	 * QROutputAbstract constructor.
@@ -102,6 +103,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 			$this->{$property} = $this->options->{$property};
 		}
 
+		$this->circleDiameter = ($this->circleRadius * 2);
 	}
 
 	/**

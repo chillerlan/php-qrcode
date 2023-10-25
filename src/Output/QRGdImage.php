@@ -301,8 +301,8 @@ class QRGdImage extends QROutputAbstract{
 				$this->image,
 				(($x * $this->scale) + intdiv($this->scale, 2)),
 				(($y * $this->scale) + intdiv($this->scale, 2)),
-				(int)(2 * $this->circleRadius * $this->scale),
-				(int)(2 * $this->circleRadius * $this->scale),
+				(int)($this->circleDiameter * $this->scale),
+				(int)($this->circleDiameter * $this->scale),
 				$color
 			);
 
