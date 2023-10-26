@@ -3746,6 +3746,11 @@ Search.appendIndex(
             "summary": "Grayscale\u0020the\u0020image\u0020before\u0020reading",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_readerGrayscale"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024readerInvertColors",
+            "name": "readerInvertColors",
+            "summary": "Invert\u0020the\u0020colors\u0020of\u0020the\u0020image",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_readerInvertColors"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024readerIncreaseContrast",
             "name": "readerIncreaseContrast",
             "summary": "Increase\u0020the\u0020contrast\u0020before\u0020reading",
