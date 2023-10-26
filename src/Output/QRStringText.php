@@ -10,6 +10,7 @@
 
 namespace chillerlan\QRCode\Output;
 
+use function array_map;
 use function implode;
 use function is_string;
 use function max;
@@ -51,14 +52,8 @@ class QRStringText extends QROutputAbstract{
 		$lines     = [];
 		$linestart = $this->options->textLineStart;
 
-		for($y = 0; $y < $this->moduleCount; $y++){
-			$r = [];
-
-			for($x = 0; $x < $this->moduleCount; $x++){
-				$r[] = $this->getModuleValueAt($x, $y);
-			}
-
-			$lines[] = $linestart.implode('', $r);
+		foreach($this->matrix->getMatrix() as $row){
+			$lines[] = $linestart.implode('', array_map([$this, 'getModuleValue'], $row));
 		}
 
 		$data = implode($this->eol, $lines);

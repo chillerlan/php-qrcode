@@ -23,7 +23,8 @@ class QRMarkupHTML extends QRMarkup{
 	 * @inheritDoc
 	 */
 	protected function createMarkup(bool $saveToFile):string{
-		$rows = [];
+		$rows     = [];
+		$cssClass = $this->getCssClass();
 
 		foreach($this->matrix->getMatrix() as $row){
 			$element = '<span style="background: %s;"></span>';
@@ -32,12 +33,7 @@ class QRMarkupHTML extends QRMarkup{
 			$rows[]  = sprintf('<div>%s</div>%s', implode('', $modules), $this->eol);
 		}
 
-		$html = sprintf(
-			'<div class="%1$s">%3$s%2$s</div>%3$s',
-			$this->getCssClass(),
-			implode('', $rows),
-			$this->eol
-		);
+		$html = sprintf('<div class="%1$s">%3$s%2$s</div>%3$s', $cssClass, implode('', $rows), $this->eol);
 
 		// wrap the snippet into a body when saving to file
 		if($saveToFile){
