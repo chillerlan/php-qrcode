@@ -16,7 +16,7 @@ namespace chillerlan\QRCode\Decoder;
 use chillerlan\Settings\SettingsContainerInterface;
 use function file_get_contents, get_resource_type, imagecolorat, imagecolorsforindex,
 	imagecreatefromstring, imagefilter, imagesx, imagesy, is_resource;
-use const IMG_FILTER_BRIGHTNESS, IMG_FILTER_CONTRAST, IMG_FILTER_GRAYSCALE, PHP_MAJOR_VERSION;
+use const IMG_FILTER_BRIGHTNESS, IMG_FILTER_CONTRAST, IMG_FILTER_GRAYSCALE, IMG_FILTER_NEGATE, PHP_MAJOR_VERSION;
 
 /**
  * This class is used to help decode images from files which arrive as GD Resource
@@ -41,7 +41,7 @@ class GDLuminanceSource extends LuminanceSourceAbstract{
 
 		/** @noinspection PhpFullyQualifiedNameUsageInspection */
 		if(
-			(PHP_MAJOR_VERSION >= 8 && !$gdImage instanceof \GdImage)
+			(PHP_MAJOR_VERSION >= 8 && !$gdImage instanceof \GdImage) // @todo: remove version check in v6
 			|| (PHP_MAJOR_VERSION < 8 && (!is_resource($gdImage) || get_resource_type($gdImage) !== 'gd'))
 		){
 			throw new QRCodeDecoderException('Invalid GD image source.'); // @codeCoverageIgnore
@@ -51,6 +51,19 @@ class GDLuminanceSource extends LuminanceSourceAbstract{
 
 		$this->gdImage = $gdImage;
 
+		if($this->options->readerGrayscale){
+			imagefilter($this->gdImage,  IMG_FILTER_GRAYSCALE);
+		}
+
+		if($this->options->readerInvertColors){
+			imagefilter($this->gdImage, IMG_FILTER_NEGATE);
+		}
+
+		if($this->options->readerIncreaseContrast){
+			imagefilter($this->gdImage, IMG_FILTER_BRIGHTNESS, -100);
+			imagefilter($this->gdImage, IMG_FILTER_CONTRAST, -100);
+		}
+
 		$this->setLuminancePixels();
 	}
 
@@ -58,15 +71,6 @@ class GDLuminanceSource extends LuminanceSourceAbstract{
 	 *
 	 */
 	protected function setLuminancePixels():void{
-
-		if($this->options->readerGrayscale){
-			imagefilter($this->gdImage,  IMG_FILTER_GRAYSCALE);
-		}
-
-		if($this->options->readerIncreaseContrast){
-			imagefilter($this->gdImage, IMG_FILTER_BRIGHTNESS, -100);
-			imagefilter($this->gdImage, IMG_FILTER_CONTRAST, -100);
-		}
 
 		for($j = 0; $j < $this->height; $j++){
 			for($i = 0; $i < $this->width; $i++){

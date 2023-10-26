@@ -33,16 +33,12 @@ class IMagickLuminanceSource extends LuminanceSourceAbstract{
 
 		$this->imagick = $imagick;
 
-		$this->setLuminancePixels();
-	}
-
-	/**
-	 *
-	 */
-	protected function setLuminancePixels():void{
-
 		if($this->options->readerGrayscale){
 			$this->imagick->setImageColorspace(Imagick::COLORSPACE_GRAY);
+		}
+
+		if($this->options->readerInvertColors){
+			$this->imagick->negateImage($this->options->readerGrayscale);
 		}
 
 		if($this->options->readerIncreaseContrast){
@@ -51,6 +47,13 @@ class IMagickLuminanceSource extends LuminanceSourceAbstract{
 			}
 		}
 
+		$this->setLuminancePixels();
+	}
+
+	/**
+	 *
+	 */
+	protected function setLuminancePixels():void{
 		$pixels = $this->imagick->exportImagePixels(1, 1, $this->width, $this->height, 'RGB', Imagick::PIXEL_CHAR);
 		$count  = count($pixels);
 

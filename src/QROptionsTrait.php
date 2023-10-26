@@ -467,6 +467,11 @@ trait QROptionsTrait{
 	protected bool $readerGrayscale = false;
 
 	/**
+	 * Invert the colors of the image
+	 */
+	protected bool $readerInvertColors = false;
+
+	/**
 	 * Increase the contrast before reading
 	 *
 	 * note that applying contrast works different in GD and Imagick, so mileage may vary
