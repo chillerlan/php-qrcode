@@ -391,6 +391,11 @@ Use Imagick (if available) when reading QR Codes
 Grayscale the image before reading
 
 
+## readerInvertColors
+
+Invert the colors of the image
+
+
 ## readerIncreaseContrast
 
 Increase the contrast before reading
