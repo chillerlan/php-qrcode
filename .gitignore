@@ -18,3 +18,4 @@ phpcs.xml
 phpdoc.xml
 phpmd.xml
 phpunit.xml
+tests/Performance/*.json

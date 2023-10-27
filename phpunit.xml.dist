@@ -9,6 +9,7 @@
 	<testsuites>
 		<testsuite name="php-qrcode test suite">
 			<directory suffix=".php">./tests/</directory>
+			<exclude>./tests/Performance</exclude>
 		</testsuite>
 	</testsuites>
 	<coverage processUncoveredFiles="true">
