@@ -11,6 +11,7 @@
 
 namespace chillerlan\QRCode\Decoder;
 
+use chillerlan\QRCode\Common\LuminanceSourceInterface;
 use chillerlan\QRCode\Data\QRMatrix;
 use function array_fill, count, intdiv, max;
 

@@ -22,13 +22,13 @@ List of affected files:
 src/Common/ECICharset.php
 src/Common/GenericGFPoly.php
 src/Common/GF256.php
+src/Common/LuminanceSourceAbstract.php
 src/Common/MaskPattern.php
-src/Common/ReedSolomonDecoder.php
 src/Decoder/Binarizer.php
 src/Decoder/BitMatrix.php
 src/Decoder/Decoder.php
 src/Decoder/DecoderResult.php
-src/Decoder/LuminanceSourceAbstract.php
+src/Decoder/ReedSolomonDecoder.php
 src/Detector/AlignmentPattern.php
 src/Detector/AlignmentPatternFinder.php
 src/Detector/Detector.php

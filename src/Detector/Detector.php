@@ -11,8 +11,8 @@
 
 namespace chillerlan\QRCode\Detector;
 
-use chillerlan\QRCode\Decoder\{Binarizer, LuminanceSourceInterface};
-use chillerlan\QRCode\Common\Version;
+use chillerlan\QRCode\Decoder\Binarizer;
+use chillerlan\QRCode\Common\{LuminanceSourceInterface, Version};
 use chillerlan\QRCode\Decoder\BitMatrix;
 use function abs, intdiv, is_nan, max, min, round;
 use const NAN;

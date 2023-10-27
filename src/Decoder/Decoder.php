@@ -11,7 +11,7 @@
 
 namespace chillerlan\QRCode\Decoder;
 
-use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, Mode, ReedSolomonDecoder, Version};
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, LuminanceSourceInterface, MaskPattern, Mode, Version};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Hanzi, Kanji, Number};
 use chillerlan\QRCode\Detector\Detector;
 use Throwable;

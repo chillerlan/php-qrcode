@@ -12,11 +12,11 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\QRCode\Common\{EccLevel, ECICharset, MaskPattern, Mode, Version};
-use chillerlan\QRCode\Data\{
-	AlphaNum, Byte, ECI, Hanzi, Kanji, Number, QRData, QRDataModeInterface, QRMatrix
+use chillerlan\QRCode\Common\{
+	EccLevel, ECICharset, GDLuminanceSource, IMagickLuminanceSource, LuminanceSourceInterface, MaskPattern, Mode, Version
 };
-use chillerlan\QRCode\Decoder\{Decoder, DecoderResult, GDLuminanceSource, IMagickLuminanceSource, LuminanceSourceInterface};
+use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Hanzi, Kanji, Number, QRData, QRDataModeInterface, QRMatrix};
+use chillerlan\QRCode\Decoder\{Decoder, DecoderResult};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
 use function class_exists, class_implements, in_array, mb_convert_encoding, mb_internal_encoding;
@@ -292,7 +292,8 @@ class QRCode{
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function initOutputInterface(QRMatrix $matrix):QROutputInterface{
-		$outputInterface =( QROutputInterface::MODES[$this->options->outputType] ?? null);
+		// @todo: remove custom invocation in v6
+		$outputInterface = (QROutputInterface::MODES[$this->options->outputType] ?? null);
 
 		if($this->options->outputType === QROutputInterface::CUSTOM){
 			$outputInterface = $this->options->outputInterface;

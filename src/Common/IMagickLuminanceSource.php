@@ -11,7 +11,7 @@
  * @noinspection PhpComposerExtensionStubsInspection
  */
 
-namespace chillerlan\QRCode\Decoder;
+namespace chillerlan\QRCode\Common;
 
 use chillerlan\Settings\SettingsContainerInterface;
 use Imagick;

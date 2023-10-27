@@ -10,8 +10,9 @@
  * @license      Apache-2.0
  */
 
-namespace chillerlan\QRCode\Decoder;
+namespace chillerlan\QRCode\Common;
 
+use chillerlan\QRCode\Decoder\QRCodeDecoderException;
 use chillerlan\QRCode\QROptions;
 use chillerlan\Settings\SettingsContainerInterface;
 use function array_slice, array_splice, file_exists, is_file, is_readable, realpath;

@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCodeTest;
 
-use chillerlan\QRCode\Decoder\GDLuminanceSource;
+use chillerlan\QRCode\Common\GDLuminanceSource;
 
 /**
  * Tests the GD based reader

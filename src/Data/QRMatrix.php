@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, ReedSolomonEncoder, Version};
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, Version};
 use function array_fill, array_map, array_reverse, count, intdiv;
 
 /**

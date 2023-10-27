@@ -9,8 +9,9 @@
  * @license      Apache-2.0
  */
 
-namespace chillerlan\QRCode\Common;
+namespace chillerlan\QRCode\Decoder;
 
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, GenericGFPoly, GF256, Version};
 use chillerlan\QRCode\QRCodeException;
 use function array_fill, array_reverse, count;
 

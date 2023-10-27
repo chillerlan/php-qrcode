@@ -8,7 +8,7 @@
  * @license      MIT
  */
 
-namespace chillerlan\QRCode\Decoder;
+namespace chillerlan\QRCode\Common;
 
 /**
  */

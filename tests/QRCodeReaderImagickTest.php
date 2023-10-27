@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCodeTest;
 
-use chillerlan\QRCode\Decoder\IMagickLuminanceSource;
+use chillerlan\QRCode\Common\IMagickLuminanceSource;
 use chillerlan\QRCode\QRCode;
 use function extension_loaded;
 use const PHP_OS_FAMILY, PHP_VERSION_ID;

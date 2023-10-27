@@ -11,8 +11,9 @@
  * @noinspection PhpComposerExtensionStubsInspection
  */
 
-namespace chillerlan\QRCode\Decoder;
+namespace chillerlan\QRCode\Common;
 
+use chillerlan\QRCode\Decoder\QRCodeDecoderException;
 use chillerlan\Settings\SettingsContainerInterface;
 use function file_get_contents, get_resource_type, imagecolorat, imagecolorsforindex,
 	imagecreatefromstring, imagefilter, imagesx, imagesy, is_resource;
