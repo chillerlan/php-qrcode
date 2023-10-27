@@ -75,7 +75,7 @@ foreach($generator->dataProvider() as $key => [$version, $eccLevel, $dataModeInt
 		'eccLevel'   => $eccLevel->getLevel(),
 	]);
 
-	$test->run(fn() => (new QRCode($options))->addSegment(new ($dataModeInterface)($data))->render());
+	$test->run(fn() => (new QRCode($options))->addSegment(new $dataModeInterface($data))->render());
 
 	printf("%s: %01.3fms\n", $key, $test->getResult());
 	$json[$dataModeName][(string)$eccLevel][$version] = $test->getResult();

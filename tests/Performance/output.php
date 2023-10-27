@@ -72,7 +72,7 @@ foreach($generator->dataProvider() as $key => [$version, $outputType, $FQN, $dat
 	$qrcode->addByteSegment($data);
 	$matrix = $qrcode->getQRMatrix();
 
-	$test->run(fn() => (new ($FQN)($options, $matrix))->dump());
+	$test->run(fn() => (new $FQN($options, $matrix))->dump());
 
 	printf("%s: %8.3fms\n", $key, $test->getResult());
 	$json[$name][$version] = $test->getResult();
