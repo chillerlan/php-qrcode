@@ -83,9 +83,10 @@ The markdown sources for the [Read the Docs online manual](https://php-qrcode.re
 
 ### Appendix
 
-- [How to contribute](./Appendix/Contribute.md)
 - [Terminology](./Appendix/Terminology.md)
 - [Popular content and URI schemes](./Appendix/URI-Content.md)
+- [Performance considerations](./Appendix/Performance-considerations.md)
+- [How to contribute](./Appendix/Contribute.md)
 - [License](./Appendix/License.rst)
 
 

@@ -17,9 +17,6 @@ $options = new QROptions;
 
 $options->outputType   = QROutputInterface::MARKUP_HTML;
 $options->cssClass     = 'qrcode';
-// default values for unassigned module types
-$options->markupDark   = '#555';
-$options->markupLight  = '#CCC';
 $options->moduleValues = [
 	// finder
 	QRMatrix::M_FINDER_DARK    => '#A71111', // dark (true)
@@ -88,8 +85,6 @@ header('Content-type: text/html');
 |----------------|----------|
 | `$cssClass`    | `string` |
 | `$eol`         | `string` |
-| `$markupDark`  | `string` |
-| `$markupLight` | `string` |
 
 
 ### Options that have no effect

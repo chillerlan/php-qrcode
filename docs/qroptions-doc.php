@@ -24,9 +24,9 @@ foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED) as $re
 	$docblock = $reflectionProperty->getDocComment();
 
 	// don't document deprecated settings
-	if(str_contains($docblock, '@deprecated')){
-		continue;
-	}
+#	if(str_contains($docblock, '@deprecated')){
+#		continue;
+#	}
 
 	$content[] = sprintf("## %s\n", $reflectionProperty->getName());
 
@@ -44,6 +44,10 @@ foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED) as $re
 			continue;
 		}
 
+		if(str_contains($line, '@deprecated')){
+			$line = str_replace('@deprecated', '**Deprecated:**', $line);
+		}
+
 		// collect links for "see also"
 		if(str_starts_with($line, '@see')){
 			$see[] = $line;
@@ -56,7 +60,7 @@ foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED) as $re
 
 	// add a "see also" section
 	if(!empty($see)){
-		$content[] = "**See also:**\n";
+		$content[] = "\n**See also:**\n";
 
 		foreach($see as $line){
 			$line = substr($line, 5); // cut off the "@see "

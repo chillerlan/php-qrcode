@@ -45,8 +45,9 @@ This work is licensed under the Creative Commons Attribution 4.0 International (
    :maxdepth: 3
    :caption: Appendix
 
-   Appendix/Contribute.md
    Appendix/Terminology.md
    Appendix/URI-Content.md
+   Appendix/Performance-considerations.md
+   Appendix/Contribute.md
    Appendix/License.md
 

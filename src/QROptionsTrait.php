@@ -119,9 +119,9 @@ trait QROptionsTrait{
 	 * @see \chillerlan\QRCode\Output\QRMarkupHTML
 	 * @see \chillerlan\QRCode\Output\QRMarkupSVG
 	 * @see \chillerlan\QRCode\Output\QRString
+	 * @see https://github.com/chillerlan/php-qrcode/issues/223
 	 *
-	 * @deprecated 5.0.0 use `QROptions::$outputInterface` instead
-	 * @see        https://github.com/chillerlan/php-qrcode/issues/223
+	 * @deprecated 5.0.0 see issue #223
 	 */
 	protected string $outputType = QROutputInterface::MARKUP_SVG;
 
