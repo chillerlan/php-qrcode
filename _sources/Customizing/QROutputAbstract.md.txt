@@ -26,8 +26,8 @@ The finalized map of `$M_TYPE` to value for the current output. This map is gene
 ### Copies of `QROptions` values
 
 Some values from the `QROptions` instance are copied to properties to avoid calling the magic getters in long loops for a significant performance increase, e.g. in the module collector.
-Currently, the following values are copied via `copyVars()` during invocation:
-`$connectPaths`, `$excludeFromConnect`, `$eol`, `$drawLightModules`, `$drawCircularModules`, `$keepAsSquare`, `$circleRadius`.
+Currently, the following values are copied via `copyVars()` during invocation: `$connectPaths`, `$excludeFromConnect`, `$eol`,
+`$drawLightModules`, `$drawCircularModules`, `$keepAsSquare`, `$circleRadius` (and additionally `$circleDiameter`).
 
 
 ## Methods

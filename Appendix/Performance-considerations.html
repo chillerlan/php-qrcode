@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to contribute &mdash; PHP-QRCode main
+  <title>Performance considerations &mdash; PHP-QRCode main
  Manual</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
@@ -20,8 +20,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="License" href="License.html" />
-    <link rel="prev" title="Performance considerations" href="Performance-considerations.html" /> 
+    <link rel="next" title="How to contribute" href="Contribute.html" />
+    <link rel="prev" title="Popular content and URI schemes" href="URI-Content.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -313,19 +313,19 @@
 <li class="toctree-l2"><a class="reference internal" href="URI-Content.html#see-also">See also</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Performance-considerations.html">Performance considerations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Performance-considerations.html#version">Version</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Performance-considerations.html#ecc-level">Ecc level</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Performance-considerations.html#data-mode">Data mode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Performance-considerations.html#mask-pattern">Mask pattern</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Performance-considerations.html#output">Output</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Performance considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#version">Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ecc-level">Ecc level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-mode">Data mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mask-pattern">Mask pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#output">Output</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">How to contribute</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#questions-and-issues">Questions and issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#bug-reports">Bug reports</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pull-requests-and-bug-fixes">Pull requests and bug fixes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#documentation">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Contribute.html#questions-and-issues">Questions and issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Contribute.html#bug-reports">Bug reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Contribute.html#pull-requests-and-bug-fixes">Pull requests and bug fixes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Contribute.html#documentation">Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="License.html">License</a></li>
@@ -345,9 +345,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">How to contribute</li>
+      <li class="breadcrumb-item active">Performance considerations</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/chillerlan/php-qrcode/blob/main/docs/Appendix/Contribute.md" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/chillerlan/php-qrcode/blob/main/docs/Appendix/Performance-considerations.md" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -355,61 +355,253 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="how-to-contribute">
-<h1>How to contribute<a class="headerlink" href="#how-to-contribute" title="Link to this heading"></a></h1>
-<section id="questions-and-issues">
-<h2>Questions and issues<a class="headerlink" href="#questions-and-issues" title="Link to this heading"></a></h2>
-<p>If you have a question about or a general issue while using this library,
-head over to the <a class="reference external" href="https://github.com/chillerlan/php-qrcode/discussions">discussions section</a>,
-create a new post and describe your issue as precise as possible, ideally add a code example (if applicable).
-Please don’t just write “headline says all” because the reply will likely be similarly concise - help me (and others) help you!
-(just to clarify: the “general” does not mean general PHP support, in which case you’re better off on
-<a class="reference external" href="https://stackoverflow.com/questions/tagged/php">StackOverflow</a> or <a class="reference external" href="https://www.reddit.com/r/PHPhelp/">/r/PHPhelp</a>)</p>
+  <section id="performance-considerations">
+<h1>Performance considerations<a class="headerlink" href="#performance-considerations" title="Link to this heading"></a></h1>
+<p>Generating a QR Code is not a trivial task - it is a combination of countless complex mathematical operations.</p>
+<p>This library seeks not to be the fastest QR Code generator, but instead to provide flexibility and user friendlyness,
+which in turn comes with a slight performance cost.</p>
+<section id="version">
+<h2>Version<a class="headerlink" href="#version" title="Link to this heading"></a></h2>
+<p>The <a class="reference internal" href="Terminology.html#version"><span class="std std-ref">version of the QR symbol</span></a> is one of the major performance factors as it
+determines the size of the symbol and therefore the amount of data that can be stored. Iterating over the internal
+representation of the matrix takes more time with increasing size and the internals iterate over the matrix a LOT.</p>
+<p>Because of that you want of course to select the smallest possible version for the given data, which the encoder does by default.
+However, sometimes the possibly varying size of the symbol may not be desired and you want to choose a fixed size, in which case
+you should determine the maximum size of the input data and choose a version that fits.</p>
 </section>
-<section id="bug-reports">
-<h2>Bug reports<a class="headerlink" href="#bug-reports" title="Link to this heading"></a></h2>
-<p>So you found a bug or the library code is somehow misbehaving? That’s great (well, not that great tho). In that case,
-please <a class="reference external" href="https://github.com/chillerlan/php-qrcode/issues/new?assignees=&amp;amp;labels=bug&amp;amp;projects=&amp;amp;template=bug_report.md&amp;amp;title=%5BBUG%5D">open a bug report and FILL OUT THE ISSUE TEMPLATE</a>
-(i have to write that in all caps because nobody actually does it which usually leads to several avoidable follow-up questions that cost both of us precious time).
-Below an example of the bug report template (it’s not that hard):</p>
-<p><strong>Describe the bug</strong></p>
-<p>A clear and concise description of what the bug is.</p>
-<p><strong>Steps to reproduce the behavior</strong></p>
-<ul class="simple">
-<li><p>When i do …</p></li>
-<li><p>The code below …</p></li>
-<li><p>Error message: …</p></li>
-</ul>
-<p><strong>Code sample</strong></p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// your code here</span>
-</pre></div>
-</div>
-<p><strong>Expected behavior</strong></p>
-<p>A clear and concise description of what you expected to happen.</p>
-<p><strong>Screenshots</strong></p>
-<p>If applicable, add screenshots to help explain your problem.</p>
-<p><strong>Environment (please complete the following information):</strong></p>
-<ul class="simple">
-<li><p>PHP version/OS: [e.g. 7.4.12, Ubuntu 20.04]</p></li>
-<li><p>Library version: [e.g. 4.3.4]</p></li>
-</ul>
-<p><strong>Additional context</strong></p>
-<p>Add any other useful context about the problem.</p>
+<section id="ecc-level">
+<h2>Ecc level<a class="headerlink" href="#ecc-level" title="Link to this heading"></a></h2>
+<p>Another factor is the <a class="reference internal" href="Terminology.html#ecc-error-correction-coding"><span class="std std-ref">ECC level</span></a> that determines the error correction capacity. The default setting is the lowest capacity (L, 7%)
+which allows the highest amount of data to be stored and which is good enough for e.g. on-screen display or poster prints.
+ECC level H on the other hand allows for up to 30% error correction capacity, which is great for “high risk” applications such as prints on mail.
+With increasing error correction capacity, the maximum amount of data a symbol can hold decreases, and a higher version number may be necessary.</p>
 </section>
-<section id="pull-requests-and-bug-fixes">
-<h2>Pull requests and bug fixes<a class="headerlink" href="#pull-requests-and-bug-fixes" title="Link to this heading"></a></h2>
-<p>You want to contribute code to fix something or add a feature? Hey that’s cool! However, there’s a few things to keep in mind:</p>
-<ul class="simple">
-<li><p>Please add a description of what the PR does or fixes and why it should be merged. If you’re unsure, <a class="reference external" href="https://github.com/chillerlan/php-qrcode/issues/new?assignees=&amp;amp;labels=enhancement&amp;amp;projects=&amp;amp;template=feature_request.md&amp;amp;title=%5BENHANCEMENT%5D">open an issue</a> before to gather feedback.</p></li>
-<li><p>Make sure your branch is up-to-date/even with the upstream branch you’re submitting your PR to.</p></li>
-<li><p>Please try to adhere to the <a class="reference external" href="https://github.com/chillerlan/php-qrcode/discussions/60"><em>loosely outlined</em> coding standards</a>, or, in case you’re using <a class="reference external" href="https://www.jetbrains.com/phpstorm/">PHPStorm</a>, make sure you’re using <a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/main/.idea">the supplied IDE profile</a>.</p></li>
-</ul>
+<section id="data-mode">
+<h2>Data mode<a class="headerlink" href="#data-mode" title="Link to this heading"></a></h2>
+<p>By default, the encoder auto-detects the best <a class="reference internal" href="Terminology.html#mode"><span class="std std-ref">mode for data encoding</span></a> (numeric, alphanumeric, kanji, hanzi or 8-bit binary)
+and depending on the length of the given data, the detection costs an increasing amount of time. To circumvent this,
+you can call one of the “add segment” methods on the <code class="docutils literal notranslate"><span class="pre">QRCode</span></code> instance, for example: <code class="docutils literal notranslate"><span class="pre">$qrcode-&gt;addByteSegment($data)</span></code>.</p>
+<p>Generally, using 8-bit binary mode (or just “byte mode”) is the fast and fail-safe mode for any kind of data, and with
+<a class="reference external" href="https://en.wikipedia.org/wiki/Extended_Channel_Interpretation">ECI</a> it even offers support for character sets other than UTF-8.
+So, unless you want to fit a large amount of japanese or chinese characters into a QR symbol of a certain version,
+encoding those characters as 3 or 4 byte UTF-8 may still be faster in 8-bit byte than in the “compressed” 13-bit double byte modes.</p>
 </section>
-<section id="documentation">
-<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading"></a></h2>
-<p>The documentation is a work in progress - any suggestion and contribution is very welcome!</p>
-<p>The API documentation is auto generated with <a class="reference external" href="https://www.phpdoc.org/">phpDocumentor</a> from the docblocks <a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/main/src">in the PHP sources</a>.
-The markdown sources for the <a class="reference external" href="https://php-qrcode.readthedocs.io">Read the Docs online manual</a> are located in the <a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/main/docs">/docs directory</a></p>
+<section id="mask-pattern">
+<h2>Mask pattern<a class="headerlink" href="#mask-pattern" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="Terminology.html#data-masking"><span class="std std-ref">Evaluating the QR symbol</span></a> in order to pick the right <a class="reference internal" href="Terminology.html#mask-pattern"><span class="std std-ref">mask pattern</span></a>
+is a complex and costly operation that is necessary to ensure the symbol is readable. Although <a class="reference internal" href="../Usage/Configuration-settings.html#maskpattern"><span class="std std-ref">there is an option</span></a>
+to override the evaluation and manually set a mask pattern, this is not recommended unless you know exactly what you’re doing
+as it can render a QR symbol unreadable.</p>
+<p>The table below shows the performance impact (in miliseconds) of the mask pattern evaluation for each version, the times may vary between systems.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>version</p></th>
+<th class="head text-right"><p>1</p></th>
+<th class="head text-right"><p>2</p></th>
+<th class="head text-right"><p>3</p></th>
+<th class="head text-right"><p>4</p></th>
+<th class="head text-right"><p>5</p></th>
+<th class="head text-right"><p>6</p></th>
+<th class="head text-right"><p>7</p></th>
+<th class="head text-right"><p>8</p></th>
+<th class="head text-right"><p>9</p></th>
+<th class="head text-right"><p>10</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>1-10</strong></p></td>
+<td class="text-right"><p>4.414</p></td>
+<td class="text-right"><p>5.697</p></td>
+<td class="text-right"><p>7.986</p></td>
+<td class="text-right"><p>9.221</p></td>
+<td class="text-right"><p>10.877</p></td>
+<td class="text-right"><p>11.293</p></td>
+<td class="text-right"><p>13.901</p></td>
+<td class="text-right"><p>15.563</p></td>
+<td class="text-right"><p>18.142</p></td>
+<td class="text-right"><p>20.501</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>11-20</strong></p></td>
+<td class="text-right"><p>22.662</p></td>
+<td class="text-right"><p>27.779</p></td>
+<td class="text-right"><p>29.622</p></td>
+<td class="text-right"><p>33.017</p></td>
+<td class="text-right"><p>36.358</p></td>
+<td class="text-right"><p>39.712</p></td>
+<td class="text-right"><p>43.685</p></td>
+<td class="text-right"><p>47.121</p></td>
+<td class="text-right"><p>51.389</p></td>
+<td class="text-right"><p>57.865</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>21-30</strong></p></td>
+<td class="text-right"><p>59.753</p></td>
+<td class="text-right"><p>68.502</p></td>
+<td class="text-right"><p>68.523</p></td>
+<td class="text-right"><p>72.866</p></td>
+<td class="text-right"><p>78.245</p></td>
+<td class="text-right"><p>83.593</p></td>
+<td class="text-right"><p>88.327</p></td>
+<td class="text-right"><p>94.921</p></td>
+<td class="text-right"><p>103.394</p></td>
+<td class="text-right"><p>106.358</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>31-40</strong></p></td>
+<td class="text-right"><p>113.311</p></td>
+<td class="text-right"><p>120.484</p></td>
+<td class="text-right"><p>126.215</p></td>
+<td class="text-right"><p>132.931</p></td>
+<td class="text-right"><p>139.783</p></td>
+<td class="text-right"><p>145.617</p></td>
+<td class="text-right"><p>170.576</p></td>
+<td class="text-right"><p>165.996</p></td>
+<td class="text-right"><p>167.365</p></td>
+<td class="text-right"><p>175.821</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="output">
+<h2>Output<a class="headerlink" href="#output" title="Link to this heading"></a></h2>
+<p>Output rendering depends heavily on the size of the QR matrix, the desired type and the underlying libraries and/or PHP extensions.
+Especially the rendering of raster images through GD or ImagMagick can be very slow, depending on <a class="reference internal" href="../Usage/Configuration-settings.html#scale"><span class="std std-ref">the scale setting</span></a>,
+filters and image type.</p>
+<p>Below a comparison of the performance for the several built-in output classes (times in miliseconds, scale = 5):</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head text-right"><p>v5</p></th>
+<th class="head text-right"><p>v10</p></th>
+<th class="head text-right"><p>v15</p></th>
+<th class="head text-right"><p>v20</p></th>
+<th class="head text-right"><p>v25</p></th>
+<th class="head text-right"><p>v30</p></th>
+<th class="head text-right"><p>v35</p></th>
+<th class="head text-right"><p>v40</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>QRMarkupSVG</strong></p></td>
+<td class="text-right"><p>3.732</p></td>
+<td class="text-right"><p>8.645</p></td>
+<td class="text-right"><p>13.846</p></td>
+<td class="text-right"><p>21.127</p></td>
+<td class="text-right"><p>32.842</p></td>
+<td class="text-right"><p>43.753</p></td>
+<td class="text-right"><p>56.584</p></td>
+<td class="text-right"><p>73.885</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>QRMarkupHTML</strong></p></td>
+<td class="text-right"><p>0.522</p></td>
+<td class="text-right"><p>1.308</p></td>
+<td class="text-right"><p>2.062</p></td>
+<td class="text-right"><p>2.761</p></td>
+<td class="text-right"><p>3.907</p></td>
+<td class="text-right"><p>5.201</p></td>
+<td class="text-right"><p>7.931</p></td>
+<td class="text-right"><p>9.572</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>QRGdImageBMP</strong></p></td>
+<td class="text-right"><p>5.998</p></td>
+<td class="text-right"><p>12.541</p></td>
+<td class="text-right"><p>20.728</p></td>
+<td class="text-right"><p>32.336</p></td>
+<td class="text-right"><p>46.345</p></td>
+<td class="text-right"><p>62.842</p></td>
+<td class="text-right"><p>81.555</p></td>
+<td class="text-right"><p>106.482</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>QRGdImageGIF</strong></p></td>
+<td class="text-right"><p>3.427</p></td>
+<td class="text-right"><p>6.817</p></td>
+<td class="text-right"><p>12.226</p></td>
+<td class="text-right"><p>17.925</p></td>
+<td class="text-right"><p>25.453</p></td>
+<td class="text-right"><p>35.136</p></td>
+<td class="text-right"><p>44.706</p></td>
+<td class="text-right"><p>57.477</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>QRGdImageJPEG</strong></p></td>
+<td class="text-right"><p>2.284</p></td>
+<td class="text-right"><p>4.882</p></td>
+<td class="text-right"><p>8.161</p></td>
+<td class="text-right"><p>12.097</p></td>
+<td class="text-right"><p>17.333</p></td>
+<td class="text-right"><p>23.862</p></td>
+<td class="text-right"><p>30.327</p></td>
+<td class="text-right"><p>40.226</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>QRGdImagePNG</strong></p></td>
+<td class="text-right"><p>4.523</p></td>
+<td class="text-right"><p>9.377</p></td>
+<td class="text-right"><p>16.581</p></td>
+<td class="text-right"><p>26.207</p></td>
+<td class="text-right"><p>36.516</p></td>
+<td class="text-right"><p>49.066</p></td>
+<td class="text-right"><p>63.765</p></td>
+<td class="text-right"><p>82.074</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>QRGdImageWEBP</strong></p></td>
+<td class="text-right"><p>8.211</p></td>
+<td class="text-right"><p>17.367</p></td>
+<td class="text-right"><p>30.079</p></td>
+<td class="text-right"><p>47.095</p></td>
+<td class="text-right"><p>69.668</p></td>
+<td class="text-right"><p>91.378</p></td>
+<td class="text-right"><p>119.869</p></td>
+<td class="text-right"><p>150.288</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>QRStringJSON</strong></p></td>
+<td class="text-right"><p>0.043</p></td>
+<td class="text-right"><p>0.066</p></td>
+<td class="text-right"><p>0.107</p></td>
+<td class="text-right"><p>0.158</p></td>
+<td class="text-right"><p>0.215</p></td>
+<td class="text-right"><p>0.301</p></td>
+<td class="text-right"><p>0.369</p></td>
+<td class="text-right"><p>0.492</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>QRStringText</strong></p></td>
+<td class="text-right"><p>0.229</p></td>
+<td class="text-right"><p>0.387</p></td>
+<td class="text-right"><p>0.628</p></td>
+<td class="text-right"><p>0.952</p></td>
+<td class="text-right"><p>1.312</p></td>
+<td class="text-right"><p>1.759</p></td>
+<td class="text-right"><p>2.329</p></td>
+<td class="text-right"><p>3.045</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>QRImagick</strong></p></td>
+<td class="text-right"><p>37.694</p></td>
+<td class="text-right"><p>68.808</p></td>
+<td class="text-right"><p>114.415</p></td>
+<td class="text-right"><p>172.962</p></td>
+<td class="text-right"><p>242.338</p></td>
+<td class="text-right"><p>325.085</p></td>
+<td class="text-right"><p>419.999</p></td>
+<td class="text-right"><p>529.897</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>QRFpdf</strong></p></td>
+<td class="text-right"><p>6.578</p></td>
+<td class="text-right"><p>12.466</p></td>
+<td class="text-right"><p>21.169</p></td>
+<td class="text-right"><p>33.021</p></td>
+<td class="text-right"><p>45.469</p></td>
+<td class="text-right"><p>61.198</p></td>
+<td class="text-right"><p>80.092</p></td>
+<td class="text-right"><p>100.059</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>QREps</strong></p></td>
+<td class="text-right"><p>1.269</p></td>
+<td class="text-right"><p>2.694</p></td>
+<td class="text-right"><p>4.515</p></td>
+<td class="text-right"><p>6.933</p></td>
+<td class="text-right"><p>11.049</p></td>
+<td class="text-right"><p>14.181</p></td>
+<td class="text-right"><p>20.799</p></td>
+<td class="text-right"><p>25.886</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 
@@ -417,8 +609,8 @@ The markdown sources for the <a class="reference external" href="https://php-qrc
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Performance-considerations.html" class="btn btn-neutral float-left" title="Performance considerations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="License.html" class="btn btn-neutral float-right" title="License" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="URI-Content.html" class="btn btn-neutral float-left" title="Popular content and URI schemes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Contribute.html" class="btn btn-neutral float-right" title="How to contribute" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

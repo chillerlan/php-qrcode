@@ -96,8 +96,6 @@ echo $imagick->getImageBlob();
 | `$imageTransparent`    | `bool`   |
 | `$imagickFormat`       | `string` |
 | `$keepAsSquare`        | `array`  |
-| `$markupDark`          | `string` |
-| `$markupLight`         | `string` |
 | `$outputBase64`        | `bool`   |
 | `$quality`             | `int`    |
 | `$returnResource`      | `bool`   |

@@ -21,7 +21,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Popular content and URI schemes" href="URI-Content.html" />
-    <link rel="prev" title="How to contribute" href="Contribute.html" /> 
+    <link rel="prev" title="QRString" href="../Built-In-Output/QRString.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -109,6 +109,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#maskpattern">maskPattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#addquietzone">addQuietzone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#quietzonesize">quietzoneSize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputtype">outputType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputinterface">outputInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#returnresource">returnResource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#cachefile">cachefile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputbase64">outputBase64</a></li>
@@ -146,6 +148,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readergrayscale">readerGrayscale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readerinvertcolors">readerInvertColors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readerincreasecontrast">readerIncreaseContrast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagebase64">imageBase64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#jpegquality">jpegQuality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#pngcompression">pngCompression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagetransparencybg">imageTransparencyBG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagickbg">imagickBG</a></li>
 </ul>
 </li>
 </ul>
@@ -253,13 +260,6 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Contribute.html">How to contribute</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Contribute.html#questions-and-issues">Questions and issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Contribute.html#bug-reports">Bug reports</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Contribute.html#pull-requests-and-bug-fixes">Pull requests and bug fixes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Contribute.html#documentation">Documentation</a></li>
-</ul>
-</li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Terminology</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#qr-code">QR Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#matrix">Matrix</a><ul>
@@ -313,6 +313,21 @@
 <li class="toctree-l2"><a class="reference internal" href="URI-Content.html#see-also">See also</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="Performance-considerations.html">Performance considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Performance-considerations.html#version">Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Performance-considerations.html#ecc-level">Ecc level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Performance-considerations.html#data-mode">Data mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Performance-considerations.html#mask-pattern">Mask pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Performance-considerations.html#output">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Contribute.html#questions-and-issues">Questions and issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Contribute.html#bug-reports">Bug reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Contribute.html#pull-requests-and-bug-fixes">Pull requests and bug fixes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Contribute.html#documentation">Documentation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="License.html">License</a></li>
 </ul>
 
@@ -358,14 +373,14 @@ where <code class="docutils literal notranslate"><span class="pre">x</span></cod
 the module is located, with counting commencing at 0. Module <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">0)</span></code> is therefore located in the upper left corner of the symbol.</p>
 <section id="module">
 <h3>Module<a class="headerlink" href="#module" title="Link to this heading"></a></h3>
-<p>A <em>module</em> represents a single square “pixel” (not to confuse with pixels in a raster image or screen) in the matrix.
-A dark module is a binary one and a light module is a binary zero.</p>
+<p>A <em>module</em> represents a single square “pixel” in the matrix (not to confuse with pixels in a raster image or screen).
+A dark module represents a binary one and a light module represents a binary zero.</p>
 </section>
 <section id="version">
 <h3>Version<a class="headerlink" href="#version" title="Link to this heading"></a></h3>
 <p>The <em>version</em> of a QR symbol determines the side length of the matrix (and therefore the maximum capacity of code words),
-ranging from 21×21 modules at version 1 to 177×177 modules at version 40; the module count increases in steps of 4 and can
-be calculated by <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">*</span> <span class="pre">version</span> <span class="pre">+</span> <span class="pre">17</span></code>.</p>
+ranging from 21×21 modules (441 total) at version 1 to 177×177 modules (31329 total) at version 40.
+The module count increases in steps of 4 and can be calculated by <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">*</span> <span class="pre">version</span> <span class="pre">+</span> <span class="pre">17</span></code>.</p>
 <p>The maximum capacity for each version, mode and ECC level can be found in <a class="reference external" href="https://www.qrcode.com/en/about/version.html">this table (qrcode.com)</a>.</p>
 </section>
 </section>
@@ -798,7 +813,7 @@ reflectance reversal therefore means a light image on dark background (example o
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="Contribute.html" class="btn btn-neutral float-left" title="How to contribute" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Built-In-Output/QRString.html" class="btn btn-neutral float-left" title="QRString" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="URI-Content.html" class="btn btn-neutral float-right" title="Popular content and URI schemes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

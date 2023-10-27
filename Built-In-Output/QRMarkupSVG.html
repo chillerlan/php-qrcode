@@ -109,6 +109,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#maskpattern">maskPattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#addquietzone">addQuietzone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#quietzonesize">quietzoneSize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputtype">outputType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputinterface">outputInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#returnresource">returnResource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#cachefile">cachefile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputbase64">outputBase64</a></li>
@@ -146,6 +148,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readergrayscale">readerGrayscale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readerinvertcolors">readerInvertColors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readerincreasecontrast">readerIncreaseContrast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagebase64">imageBase64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#jpegquality">jpegQuality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#pngcompression">pngCompression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagetransparencybg">imageTransparencyBG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagickbg">imagickBG</a></li>
 </ul>
 </li>
 </ul>
@@ -253,13 +260,6 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../Appendix/Contribute.html">How to contribute</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#questions-and-issues">Questions and issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#bug-reports">Bug reports</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#pull-requests-and-bug-fixes">Pull requests and bug fixes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#documentation">Documentation</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/Terminology.html">Terminology</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#qr-code">QR Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#matrix">Matrix</a><ul>
@@ -313,6 +313,21 @@
 <li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#see-also">See also</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/Performance-considerations.html">Performance considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#version">Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#ecc-level">Ecc level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#data-mode">Data mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#mask-pattern">Mask pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#output">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/Contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#questions-and-issues">Questions and issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#bug-reports">Bug reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#pull-requests-and-bug-fixes">Pull requests and bug fixes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#documentation">Documentation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/License.html">License</a></li>
 </ul>
 
@@ -349,21 +364,19 @@
 <p>Set the options:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QROptions</span><span class="p">;</span>
 
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">version</span>             <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">outputType</span>          <span class="o">=</span> <span class="nx">QROutputInterface</span><span class="o">::</span><span class="na">MARKUP_SVG</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">version</span>              <span class="o">=</span> <span class="mi">7</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">outputType</span>           <span class="o">=</span> <span class="nx">QROutputInterface</span><span class="o">::</span><span class="na">MARKUP_SVG</span><span class="p">;</span>
 <span class="c1">// if set to false, the light modules won&#39;t be rendered</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">drawLightModules</span>    <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
-<span class="c1">// empty the default value to remove the fill* and opacity* attributes from the &lt;path&gt; elements</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">markupDark</span>          <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">markupLight</span>         <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">drawLightModules</span>     <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">svgUseFillAttributes</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
 <span class="c1">// draw the modules as circles isntead of squares</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">drawCircularModules</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">circleRadius</span>        <span class="o">=</span> <span class="mf">0.4</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">drawCircularModules</span>  <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">circleRadius</span>         <span class="o">=</span> <span class="mf">0.4</span><span class="p">;</span>
 <span class="c1">// connect paths to avoid render glitches</span>
 <span class="c1">// @see https://github.com/chillerlan/php-qrcode/issues/57</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">connectPaths</span>        <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">connectPaths</span>         <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
 <span class="c1">// keep modules of these types as square</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">keepAsSquare</span>        <span class="o">=</span> <span class="p">[</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">keepAsSquare</span>         <span class="o">=</span> <span class="p">[</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DARK</span><span class="p">,</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DOT</span><span class="p">,</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_ALIGNMENT_DARK</span><span class="p">,</span>
@@ -460,12 +473,6 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$keepAsSquare</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">array</span></code></p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$markupDark</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$markupLight</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
-</tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$outputBase64</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 </tr>
@@ -483,6 +490,9 @@
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$svgViewBoxSize</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">int|null</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$svgUseFillAttributes</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">bool</span></code></p></td>
 </tr>
 </tbody>
 </table>

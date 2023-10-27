@@ -20,15 +20,15 @@ the module is located, with counting commencing at 0. Module `(0, 0)` is therefo
 
 ### Module
 
-A *module* represents a single square "pixel" (not to confuse with pixels in a raster image or screen) in the matrix.
-A dark module is a binary one and a light module is a binary zero.
+A *module* represents a single square "pixel" in the matrix (not to confuse with pixels in a raster image or screen).
+A dark module represents a binary one and a light module represents a binary zero.
 
 
 ### Version
 
 The *version* of a QR symbol determines the side length of the matrix (and therefore the maximum capacity of code words),
-ranging from 21×21 modules at version 1 to 177×177 modules at version 40; the module count increases in steps of 4 and can
-be calculated by `4 * version + 17`.
+ranging from 21×21 modules (441 total) at version 1 to 177×177 modules (31329 total) at version 40.
+The module count increases in steps of 4 and can be calculated by `4 * version + 17`.
 
 The maximum capacity for each version, mode and ECC level can be found in [this table (qrcode.com)](https://www.qrcode.com/en/about/version.html).
 

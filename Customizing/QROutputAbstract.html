@@ -109,6 +109,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#maskpattern">maskPattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#addquietzone">addQuietzone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#quietzonesize">quietzoneSize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputtype">outputType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputinterface">outputInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#returnresource">returnResource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#cachefile">cachefile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputbase64">outputBase64</a></li>
@@ -146,6 +148,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readergrayscale">readerGrayscale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readerinvertcolors">readerInvertColors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readerincreasecontrast">readerIncreaseContrast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagebase64">imageBase64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#jpegquality">jpegQuality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#pngcompression">pngCompression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagetransparencybg">imageTransparencyBG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagickbg">imagickBG</a></li>
 </ul>
 </li>
 </ul>
@@ -253,13 +260,6 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../Appendix/Contribute.html">How to contribute</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#questions-and-issues">Questions and issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#bug-reports">Bug reports</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#pull-requests-and-bug-fixes">Pull requests and bug fixes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#documentation">Documentation</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/Terminology.html">Terminology</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#qr-code">QR Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#matrix">Matrix</a><ul>
@@ -313,6 +313,21 @@
 <li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#see-also">See also</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/Performance-considerations.html">Performance considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#version">Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#ecc-level">Ecc level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#data-mode">Data mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#mask-pattern">Mask pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#output">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/Contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#questions-and-issues">Questions and issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#bug-reports">Bug reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#pull-requests-and-bug-fixes">Pull requests and bug fixes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#documentation">Documentation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/License.html">License</a></li>
 </ul>
 
@@ -363,8 +378,8 @@ The method <code class="docutils literal notranslate"><span class="pre">setMatri
 <section id="copies-of-qroptions-values">
 <h3>Copies of <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> values<a class="headerlink" href="#copies-of-qroptions-values" title="Link to this heading"></a></h3>
 <p>Some values from the <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> instance are copied to properties to avoid calling the magic getters in long loops for a significant performance increase, e.g. in the module collector.
-Currently, the following values are copied via <code class="docutils literal notranslate"><span class="pre">copyVars()</span></code> during invocation:
-<code class="docutils literal notranslate"><span class="pre">$connectPaths</span></code>, <code class="docutils literal notranslate"><span class="pre">$excludeFromConnect</span></code>, <code class="docutils literal notranslate"><span class="pre">$eol</span></code>, <code class="docutils literal notranslate"><span class="pre">$drawLightModules</span></code>, <code class="docutils literal notranslate"><span class="pre">$drawCircularModules</span></code>, <code class="docutils literal notranslate"><span class="pre">$keepAsSquare</span></code>, <code class="docutils literal notranslate"><span class="pre">$circleRadius</span></code>.</p>
+Currently, the following values are copied via <code class="docutils literal notranslate"><span class="pre">copyVars()</span></code> during invocation: <code class="docutils literal notranslate"><span class="pre">$connectPaths</span></code>, <code class="docutils literal notranslate"><span class="pre">$excludeFromConnect</span></code>, <code class="docutils literal notranslate"><span class="pre">$eol</span></code>,
+<code class="docutils literal notranslate"><span class="pre">$drawLightModules</span></code>, <code class="docutils literal notranslate"><span class="pre">$drawCircularModules</span></code>, <code class="docutils literal notranslate"><span class="pre">$keepAsSquare</span></code>, <code class="docutils literal notranslate"><span class="pre">$circleRadius</span></code> (and additionally <code class="docutils literal notranslate"><span class="pre">$circleDiameter</span></code>).</p>
 </section>
 </section>
 <section id="methods">

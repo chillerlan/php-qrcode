@@ -109,6 +109,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#maskpattern">maskPattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#addquietzone">addQuietzone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#quietzonesize">quietzoneSize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#outputtype">outputType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#outputinterface">outputInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#returnresource">returnResource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cachefile">cachefile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#outputbase64">outputBase64</a></li>
@@ -146,6 +148,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#readergrayscale">readerGrayscale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#readerinvertcolors">readerInvertColors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#readerincreasecontrast">readerIncreaseContrast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#imagebase64">imageBase64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jpegquality">jpegQuality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pngcompression">pngCompression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#imagetransparencybg">imageTransparencyBG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#imagickbg">imagickBG</a></li>
 </ul>
 </li>
 </ul>
@@ -253,13 +260,6 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../Appendix/Contribute.html">How to contribute</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#questions-and-issues">Questions and issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#bug-reports">Bug reports</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#pull-requests-and-bug-fixes">Pull requests and bug fixes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#documentation">Documentation</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/Terminology.html">Terminology</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#qr-code">QR Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#matrix">Matrix</a><ul>
@@ -311,6 +311,21 @@
 <li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#contact-information-vcard">Contact information: vCard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#calendar-events-vcalendar-and-icalendar">Calendar Events: vCalendar and iCalendar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#see-also">See also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/Performance-considerations.html">Performance considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#version">Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#ecc-level">Ecc level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#data-mode">Data mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#mask-pattern">Mask pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#output">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/Contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#questions-and-issues">Questions and issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#bug-reports">Bug reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#pull-requests-and-bug-fixes">Pull requests and bug fixes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#documentation">Documentation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/License.html">License</a></li>
@@ -399,6 +414,44 @@
 <h2>quietzoneSize<a class="headerlink" href="#quietzonesize" title="Link to this heading"></a></h2>
 <p>Size of the quiet zone</p>
 <p>internally clamped to <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">...</span> <span class="pre">$moduleCount</span> <span class="pre">/</span> <span class="pre">2</span></code> (default: 4)</p>
+</section>
+<section id="outputtype">
+<h2>outputType<a class="headerlink" href="#outputtype" title="Link to this heading"></a></h2>
+<p>The built-in output type</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::MARKUP_SVG</span></code> (default)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::MARKUP_HTML</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::GDIMAGE_BMP</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::GDIMAGE_GIF</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::GDIMAGE_JPG</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::GDIMAGE_PNG</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::GDIMAGE_WEBP</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::STRING_TEXT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::STRING_JSON</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::IMAGICK</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::EPS</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::FPDF</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::CUSTOM</span></code></p></li>
+</ul>
+<p><strong>Deprecated:</strong> 5.0.0 see issue #223</p>
+<p><strong>See also:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QREps</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QRFpdf</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QRGdImage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QRImagick</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QRMarkupHTML</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QRMarkupSVG</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QRString</span></code></p></li>
+<li><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/issues/223">github.com/chillerlan/php-qrcode/issues/223</a></p></li>
+</ul>
+</section>
+<section id="outputinterface">
+<h2>outputInterface<a class="headerlink" href="#outputinterface" title="Link to this heading"></a></h2>
+<p>The FQCN of the custom <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code></p>
+<p>if <code class="docutils literal notranslate"><span class="pre">QROptions::$outputType</span></code> is set to <code class="docutils literal notranslate"><span class="pre">QROutputInterface::CUSTOM</span></code> (default: <code class="docutils literal notranslate"><span class="pre">null</span></code>)</p>
+<p><strong>Deprecated:</strong> 5.0.0 the nullable type will be removed in future versions
+and the default value will be set to <code class="docutils literal notranslate"><span class="pre">QRMarkupSVG::class</span></code></p>
 </section>
 <section id="returnresource">
 <h2>returnResource<a class="headerlink" href="#returnresource" title="Link to this heading"></a></h2>
@@ -682,6 +735,46 @@ When set to <code class="docutils literal notranslate"><span class="pre">false</
 <h2>readerIncreaseContrast<a class="headerlink" href="#readerincreasecontrast" title="Link to this heading"></a></h2>
 <p>Increase the contrast before reading</p>
 <p>note that applying contrast works different in GD and Imagick, so mileage may vary</p>
+</section>
+<section id="imagebase64">
+<h2>imageBase64<a class="headerlink" href="#imagebase64" title="Link to this heading"></a></h2>
+<p><strong>Deprecated:</strong> 5.0.0 use QROptions::$outputBase64 instead</p>
+<p><strong>See also:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\chillerlan\QRCode\QROptions::$outputBase64</span></code></p></li>
+</ul>
+</section>
+<section id="jpegquality">
+<h2>jpegQuality<a class="headerlink" href="#jpegquality" title="Link to this heading"></a></h2>
+<p><strong>Deprecated:</strong> 5.0.0 use QROptions::$quality instead</p>
+<p><strong>See also:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\chillerlan\QRCode\QROptions::$quality</span></code></p></li>
+</ul>
+</section>
+<section id="pngcompression">
+<h2>pngCompression<a class="headerlink" href="#pngcompression" title="Link to this heading"></a></h2>
+<p><strong>Deprecated:</strong> 5.0.0 use QROptions::$quality instead</p>
+<p><strong>See also:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\chillerlan\QRCode\QROptions::$quality</span></code></p></li>
+</ul>
+</section>
+<section id="imagetransparencybg">
+<h2>imageTransparencyBG<a class="headerlink" href="#imagetransparencybg" title="Link to this heading"></a></h2>
+<p><strong>Deprecated:</strong> 5.0.0 use QROptions::$transparencyColor instead</p>
+<p><strong>See also:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\chillerlan\QRCode\QROptions::$transparencyColor</span></code></p></li>
+</ul>
+</section>
+<section id="imagickbg">
+<h2>imagickBG<a class="headerlink" href="#imagickbg" title="Link to this heading"></a></h2>
+<p><strong>Deprecated:</strong> 5.0.0 use QROptions::$bgColor instead</p>
+<p><strong>See also:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\chillerlan\QRCode\QROptions::$bgColor</span></code></p></li>
+</ul>
 </section>
 </section>
 

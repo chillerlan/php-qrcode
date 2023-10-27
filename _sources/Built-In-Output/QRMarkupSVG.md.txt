@@ -11,21 +11,19 @@ Set the options:
 ```php
 $options = new QROptions;
 
-$options->version             = 7;
-$options->outputType          = QROutputInterface::MARKUP_SVG;
+$options->version              = 7;
+$options->outputType           = QROutputInterface::MARKUP_SVG;
 // if set to false, the light modules won't be rendered
-$options->drawLightModules    = true;
-// empty the default value to remove the fill* and opacity* attributes from the <path> elements
-$options->markupDark          = '';
-$options->markupLight         = '';
+$options->drawLightModules     = true;
+$options->svgUseFillAttributes = true;
 // draw the modules as circles isntead of squares
-$options->drawCircularModules = true;
-$options->circleRadius        = 0.4;
+$options->drawCircularModules  = true;
+$options->circleRadius         = 0.4;
 // connect paths to avoid render glitches
 // @see https://github.com/chillerlan/php-qrcode/issues/57
-$options->connectPaths        = true;
+$options->connectPaths         = true;
 // keep modules of these types as square
-$options->keepAsSquare        = [
+$options->keepAsSquare         = [
 	QRMatrix::M_FINDER_DARK,
 	QRMatrix::M_FINDER_DOT,
 	QRMatrix::M_ALIGNMENT_DARK,
@@ -72,24 +70,23 @@ printf('<img alt="%s" src="%s" />', $alt, $out);
 
 ## Options that affect this module
 
-| property                  | type           |
-|---------------------------|----------------|
-| `$circleRadius`           | `float`        |
-| `$connectPaths`           | `bool`         |
-| `$cssClass`               | `string`       |
-| `$drawCircularModules`    | `bool`         |
-| `$drawLightModules`       | `bool`         |
-| `$eol`                    | `string`       |
-| `$excludeFromConnect`     | `array`        |
-| `$keepAsSquare`           | `array`        |
-| `$markupDark`             | `string`       |
-| `$markupLight`            | `string`       |
-| `$outputBase64`           | `bool`         |
-| `$svgAddXmlHeader`        | `bool`         |
-| `$svgDefs`                | `string`       |
-| `$svgOpacity`             | `float`        |
-| `$svgPreserveAspectRatio` | `string`       |
-| `$svgViewBoxSize`         | `int\|null`    |
+| property                  | type        |
+|---------------------------|-------------|
+| `$circleRadius`           | `float`     |
+| `$connectPaths`           | `bool`      |
+| `$cssClass`               | `string`    |
+| `$drawCircularModules`    | `bool`      |
+| `$drawLightModules`       | `bool`      |
+| `$eol`                    | `string`    |
+| `$excludeFromConnect`     | `array`     |
+| `$keepAsSquare`           | `array`     |
+| `$outputBase64`           | `bool`      |
+| `$svgAddXmlHeader`        | `bool`      |
+| `$svgDefs`                | `string`    |
+| `$svgOpacity`             | `float`     |
+| `$svgPreserveAspectRatio` | `string`    |
+| `$svgViewBoxSize`         | `int\|null` |
+| `$svgUseFillAttributes`   | `bool`      |
 
 
 ### Options that have no effect

@@ -109,6 +109,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#maskpattern">maskPattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#addquietzone">addQuietzone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#quietzonesize">quietzoneSize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputtype">outputType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputinterface">outputInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#returnresource">returnResource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#cachefile">cachefile</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#outputbase64">outputBase64</a></li>
@@ -146,6 +148,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readergrayscale">readerGrayscale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readerinvertcolors">readerInvertColors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readerincreasecontrast">readerIncreaseContrast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagebase64">imageBase64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#jpegquality">jpegQuality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#pngcompression">pngCompression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagetransparencybg">imageTransparencyBG</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#imagickbg">imagickBG</a></li>
 </ul>
 </li>
 </ul>
@@ -253,13 +260,6 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Appendix</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../Appendix/Contribute.html">How to contribute</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#questions-and-issues">Questions and issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#bug-reports">Bug reports</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#pull-requests-and-bug-fixes">Pull requests and bug fixes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#documentation">Documentation</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/Terminology.html">Terminology</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#qr-code">QR Code</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Appendix/Terminology.html#matrix">Matrix</a><ul>
@@ -313,6 +313,21 @@
 <li class="toctree-l2"><a class="reference internal" href="../Appendix/URI-Content.html#see-also">See also</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/Performance-considerations.html">Performance considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#version">Version</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#ecc-level">Ecc level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#data-mode">Data mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#mask-pattern">Mask pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Performance-considerations.html#output">Output</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Appendix/Contribute.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#questions-and-issues">Questions and issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#bug-reports">Bug reports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#pull-requests-and-bug-fixes">Pull requests and bug fixes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Appendix/Contribute.html#documentation">Documentation</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../Appendix/License.html">License</a></li>
 </ul>
 
@@ -353,9 +368,6 @@ As a general rule: if you plan to display the QR Code in a web browser, you shou
 
 <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">outputType</span>   <span class="o">=</span> <span class="nx">QROutputInterface</span><span class="o">::</span><span class="na">MARKUP_HTML</span><span class="p">;</span>
 <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">cssClass</span>     <span class="o">=</span> <span class="s1">&#39;qrcode&#39;</span><span class="p">;</span>
-<span class="c1">// default values for unassigned module types</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">markupDark</span>   <span class="o">=</span> <span class="s1">&#39;#555&#39;</span><span class="p">;</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">markupLight</span>  <span class="o">=</span> <span class="s1">&#39;#CCC&#39;</span><span class="p">;</span>
 <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">moduleValues</span> <span class="o">=</span> <span class="p">[</span>
 	<span class="c1">// finder</span>
 	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DARK</span>    <span class="o">=&gt;</span> <span class="s1">&#39;#A71111&#39;</span><span class="p">,</span> <span class="c1">// dark (true)</span>
@@ -442,12 +454,6 @@ As a general rule: if you plan to display the QR Code in a web browser, you shou
 <td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$eol</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">$markupDark</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">$markupLight</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
 </tr>
 </tbody>
