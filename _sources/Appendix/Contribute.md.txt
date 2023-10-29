@@ -60,6 +60,7 @@ You want to contribute code to fix something or add a feature? Hey that's cool! 
 ## Documentation
 
 The documentation is a work in progress - any suggestion and contribution is very welcome!
+If you have an addition or correction, feel fre to open a [documentation issue](https://github.com/chillerlan/php-qrcode/issues/new?assignees=&labels=docs&projects=&template=documentation.md&title=%5BDOCS%5D).
 
 
 The API documentation is auto generated with [phpDocumentor](https://www.phpdoc.org/) from the docblocks [in the PHP sources](https://github.com/chillerlan/php-qrcode/tree/main/src).
