@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: "You have a question or an issue that is not a bug?"
+    about: "Please use the Q&A section under discussions. Thanks!"
+    url: https://github.com/chillerlan/php-qrcode/discussions
