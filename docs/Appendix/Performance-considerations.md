@@ -1,6 +1,6 @@
 # Performance considerations
 
-Generating a QR Code is not a trivial task - it is a combination of countless complex mathematical operations.
+Generating a QR Code is not a trivial task - it is a combination of countless complex mathematical operations on top of rendering the output.
 
 This library seeks not to be the fastest QR Code generator, but instead to provide flexibility and user friendlyness,
 which in turn comes with a slight performance cost.
@@ -12,7 +12,7 @@ The [version of the QR symbol](./Terminology.md#version) is one of the major per
 determines the size of the symbol and therefore the amount of data that can be stored. Iterating over the internal
 representation of the matrix takes more time with increasing size and the internals iterate over the matrix a LOT.
 
-Because of that you want of course to select the smallest possible version for the given data, which the encoder does by default.
+Because of that, you want to select the smallest possible version for the given data of course, which the encoder does by default.
 However, sometimes the possibly varying size of the symbol may not be desired and you want to choose a fixed size, in which case
 you should determine the maximum size of the input data and choose a version that fits.
 
