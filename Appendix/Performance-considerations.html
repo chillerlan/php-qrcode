@@ -357,7 +357,7 @@
              
   <section id="performance-considerations">
 <h1>Performance considerations<a class="headerlink" href="#performance-considerations" title="Link to this heading"></a></h1>
-<p>Generating a QR Code is not a trivial task - it is a combination of countless complex mathematical operations.</p>
+<p>Generating a QR Code is not a trivial task - it is a combination of countless complex mathematical operations on top of rendering the output.</p>
 <p>This library seeks not to be the fastest QR Code generator, but instead to provide flexibility and user friendlyness,
 which in turn comes with a slight performance cost.</p>
 <section id="version">
@@ -365,7 +365,7 @@ which in turn comes with a slight performance cost.</p>
 <p>The <a class="reference internal" href="Terminology.html#version"><span class="std std-ref">version of the QR symbol</span></a> is one of the major performance factors as it
 determines the size of the symbol and therefore the amount of data that can be stored. Iterating over the internal
 representation of the matrix takes more time with increasing size and the internals iterate over the matrix a LOT.</p>
-<p>Because of that you want of course to select the smallest possible version for the given data, which the encoder does by default.
+<p>Because of that, you want to select the smallest possible version for the given data of course, which the encoder does by default.
 However, sometimes the possibly varying size of the symbol may not be desired and you want to choose a fixed size, in which case
 you should determine the maximum size of the input data and choose a version that fits.</p>
 </section>
