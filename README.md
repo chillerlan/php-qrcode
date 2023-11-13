@@ -75,7 +75,7 @@ For the QRCode reader, either `ext-gd` or `ext-imagick` is required!
 
 ## Installation with [composer](https://getcomposer.org)
 
-See [the installation guide](https://php-qrcode.readthedocs.io/en/main/Usage-Installation.html) for more info!
+See [the installation guide](https://php-qrcode.readthedocs.io/en/main/Usage/Installation.html) for more info!
 
 
 ### Terminal
@@ -110,7 +110,7 @@ $data = 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net';
 echo '<img src="'.(new QRCode)->render($data).'" alt="QR Code" />';
 ```
 
-Wait, what was that? Please again, slower! See [Advanced usage](https://php-qrcode.readthedocs.io/en/main/Usage-Advanced-usage.html) in the manual.
+Wait, what was that? Please again, slower! See [Advanced usage](https://php-qrcode.readthedocs.io/en/main/Usage/Advanced-usage.html) in the manual.
 Also, have a look [in the examples folder](https://github.com/chillerlan/php-qrcode/tree/main/examples) for some more usage examples.
 
 <p align="center">
