@@ -3,8 +3,6 @@
 A PHP QR Code generator based on the [implementation by Kazuhiko Arase](https://github.com/kazuhikoarase/qrcode-generator), namespaced, cleaned up, improved and other stuff. <br>
 It also features a QR Code reader based on a [PHP port](https://github.com/khanamiryan/php-qrcode-detector-decoder) of the [ZXing library](https://github.com/zxing/zxing).
 
-**Hi! Please check out the [v5.0-beta release](https://github.com/chillerlan/php-qrcode/releases/tag/5.0-beta) and leave your feedback in [this discussion thread](https://github.com/chillerlan/php-qrcode/discussions/188). Thanks!**
-
 **Attention:** there is now also a javascript port: [chillerlan/js-qrcode](https://github.com/chillerlan/js-qrcode).
 
 [![PHP Version Support][php-badge]][php]
@@ -110,7 +108,7 @@ $data = 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net';
 echo '<img src="'.(new QRCode)->render($data).'" alt="QR Code" />';
 ```
 
-Wait, what was that? Please again, slower! See [Advanced usage](https://php-qrcode.readthedocs.io/en/main/Usage-Advanced-usage.html) in the manual.
+Wait, what was that? Please again, slower! See [Advanced usage](https://php-qrcode.readthedocs.io/en/main/Usage/Advanced-usage.html) in the manual.
 Also, have a look [in the examples folder](https://github.com/chillerlan/php-qrcode/tree/main/examples) for some more usage examples.
 
 <p align="center">
