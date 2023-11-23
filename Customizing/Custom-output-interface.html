@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module values &mdash; PHP-QRCode main
+  <title>Custom QROutputInterface &mdash; PHP-QRCode main
  Manual</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
@@ -20,8 +20,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="QROutputAbstract" href="QROutputAbstract.html" />
-    <link rel="prev" title="Configuration settings" href="../Usage/Configuration-settings.html" /> 
+    <link rel="next" title="QREps" href="../Built-In-Output/QREps.html" />
+    <link rel="prev" title="QROutputAbstract" href="QROutputAbstract.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -158,12 +158,12 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Customizing output</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Module values</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#basics">Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#assigning-values">Assigning values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#handling-in-your-own-qroutputinterface">Handling in your own <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#setting-module-values">Setting module values</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-the-module-values">Using the module values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module-Values.html">Module values</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Module-Values.html#basics">Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Module-Values.html#assigning-values">Assigning values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Module-Values.html#handling-in-your-own-qroutputinterface">Handling in your own <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Module-Values.html#setting-module-values">Setting module values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Module-Values.html#using-the-module-values">Using the module values</a></li>
 </ul>
 </li>
 </ul>
@@ -190,12 +190,12 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="Custom-output-interface.html">Custom <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Custom-output-interface.html#class-skeleton">Class skeleton</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Custom-output-interface.html#module-values">Module values</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Custom-output-interface.html#transform-the-output">Transform the output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Custom-output-interface.html#run-the-custom-output">Run the custom output</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Custom-output-interface.html#summary">Summary</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Custom <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#class-skeleton">Class skeleton</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-values">Module values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transform-the-output">Transform the output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-the-custom-output">Run the custom output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#summary">Summary</a></li>
 </ul>
 </li>
 </ul>
@@ -353,9 +353,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Module values</li>
+      <li class="breadcrumb-item active">Custom <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code></li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/chillerlan/php-qrcode/blob/main/docs/Customizing/Module-Values.md" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/chillerlan/php-qrcode/blob/main/docs/Customizing/Custom-output-interface.md" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -363,204 +363,217 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-values">
-<h1>Module values<a class="headerlink" href="#module-values" title="Link to this heading"></a></h1>
-<section id="basics">
-<h2>Basics<a class="headerlink" href="#basics" title="Link to this heading"></a></h2>
-<p>The QR Code matrix is a 2-dimensional array of numerical values that hold a bitmask for
-each QR pixel (“module” as per specification), the so-called “module type” or <code class="docutils literal notranslate"><span class="pre">$M_TYPE</span></code>, which is represented by
-<a class="reference external" href="https://chillerlan.github.io/php-qrcode/classes/chillerlan-QRCode-Data-QRMatrix.html#toc-constants">the <code class="docutils literal notranslate"><span class="pre">QRMatrix::M_*</span></code> constants</a>.
-The bitmask is 12 bits wide; the first 11 bits stand for the pattern type, the highest bit designates whether the module is dark or light.
-You can assign different values for the several <a class="reference internal" href="../Appendix/Terminology.html#function-patterns"><span class="std std-ref">function patterns</span></a> to colorize them or even draw pixel-art.</p>
-</section>
-<section id="assigning-values">
-<h2>Assigning values<a class="headerlink" href="#assigning-values" title="Link to this heading"></a></h2>
-<p>To map the values and properly render the modules for the given <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code>, it may be necessary to overwrite the
-<a class="reference external" href="https://chillerlan.github.io/php-qrcode/classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_DEFAULT_MODULE_VALUES">default values</a>,
-that are replaced by the user defined values in <code class="docutils literal notranslate"><span class="pre">QROptions::$moduleValues</span></code> during the render process.</p>
-<p>The map of <code class="docutils literal notranslate"><span class="pre">QRMatrix::M_*</span></code> constants =&gt; default values looks similar to the following
-(values with “_DARK” and “_LIGHT” suffix are for convenience):</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">moduleValues</span> <span class="o">=</span> <span class="p">[</span>
-	<span class="c1">// light</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_NULL</span>             <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span> <span class="c1">// special value - always 0</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DARKMODULE_LIGHT</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span> <span class="c1">// key equivalent to (QRMatrix::M_DARKMODULE &amp; ~QRMatrix::IS_DARK)</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA</span>             <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER</span>           <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_SEPARATOR</span>        <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_ALIGNMENT</span>        <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_TIMING</span>           <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FORMAT</span>           <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_VERSION</span>          <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_QUIETZONE</span>        <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_LOGO</span>             <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DOT_LIGHT</span> <span class="o">=&gt;</span> <span class="k">false</span><span class="p">,</span>
-	<span class="c1">// dark</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DARKMODULE</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA_DARK</span>        <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span> <span class="c1">// key equivalent to (QRMatrix::M_DATA | QRMatrix::IS_DARK)</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DARK</span>      <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_SEPARATOR_DARK</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_ALIGNMENT_DARK</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_TIMING_DARK</span>      <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FORMAT_DARK</span>      <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_VERSION_DARK</span>     <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_QUIETZONE_DARK</span>   <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_LOGO_DARK</span>        <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DOT</span>       <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
-<span class="p">];</span>
-</pre></div>
-</div>
-<p>Not all the module values need to be specified - missing values will be filled with the internal default values
-for <code class="docutils literal notranslate"><span class="pre">true</span></code> (dark) and <code class="docutils literal notranslate"><span class="pre">false</span></code> (light) respectively. The <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code> inheritors implement a <code class="docutils literal notranslate"><span class="pre">moduleValueIsValid()</span></code>
-method that checks if the given value is valid for that particular class:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// set an initial value that acts as default</span>
-<span class="nv">$dark</span> <span class="o">=</span> <span class="s1">&#39;rgba(0, 0, 0, 0.5)&#39;</span><span class="p">;</span>
+  <section id="custom-qroutputinterface">
+<h1>Custom <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code><a class="headerlink" href="#custom-qroutputinterface" title="Link to this heading"></a></h1>
+<p>Let’s suppose that you want to create your own output interface because there’s no built-in output class that supports the format you need for your application.
+In this example we’ll create a string output class that outputs the coordinates for each module, separated by module type.</p>
+<section id="class-skeleton">
+<h2>Class skeleton<a class="headerlink" href="#class-skeleton" title="Link to this heading"></a></h2>
+<p>We’ll start with a skeleton that extends  <code class="docutils literal notranslate"><span class="pre">QROutputAbstract</span></code> and implements the methods that are required by <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyCustomOutput</span> <span class="k">extends</span> <span class="nx">QROutputAbstract</span><span class="p">{</span>
 
-<span class="c1">// try to receive user input</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">QRMarkupSVG</span><span class="o">::</span><span class="na">moduleValueIsValid</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;qr_dark&#39;</span><span class="p">])){</span>
-	<span class="c1">// module values for HTML, SVG and other markup may need special treatment,</span>
-	<span class="c1">// e.g. only accept hexadecimal values from user input</span>
-	<span class="c1">// as moduleValueIsValid() just checks for the general syntax</span>
-	<span class="nv">$dark</span> <span class="o">=</span> <span class="nx">sanitize_user_input</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;qr_dark&#39;</span><span class="p">]);</span>
-<span class="p">}</span>
+	<span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">moduleValueIsValid</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span><span class="o">:</span><span class="nx">bool</span><span class="p">{}</span>
 
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">moduleValues</span> <span class="o">=</span> <span class="p">[</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA_DARK</span>      <span class="o">=&gt;</span> <span class="nv">$dark</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DARK</span>    <span class="o">=&gt;</span> <span class="nv">$dark</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_ALIGNMENT_DARK</span> <span class="o">=&gt;</span> <span class="nv">$dark</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DOT</span>     <span class="o">=&gt;</span> <span class="nv">$dark</span><span class="p">,</span>
-<span class="p">];</span>
-</pre></div>
-</div>
-<p>The several output classes may need different substitute values (you can find examples <a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/main/tests/Output">in the test <code class="docutils literal notranslate"><span class="pre">moduleValueProvider()</span></code> for each output class</a>):</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// for HTML, SVG and ImageMagick</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">moduleValues</span> <span class="o">=</span> <span class="p">[</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA</span>      <span class="o">=&gt;</span> <span class="s1">&#39;#ffffff&#39;</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA_DARK</span> <span class="o">=&gt;</span> <span class="s1">&#39;#000000&#39;</span><span class="p">,</span>
-	<span class="c1">// ...</span>
-<span class="p">];</span>
+	<span class="k">protected</span> <span class="k">function</span> <span class="nf">prepareModuleValue</span><span class="p">(</span><span class="nv">$value</span><span class="p">){}</span>
 
-<span class="c1">// for the GdImage, EPS and FPDF output types</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">moduleValues</span> <span class="o">=</span> <span class="p">[</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA</span>      <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA_DARK</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-	<span class="c1">// ...</span>
-<span class="p">];</span>
+	<span class="k">protected</span> <span class="k">function</span> <span class="nf">getDefaultModuleValue</span><span class="p">(</span><span class="nx">bool</span> <span class="nv">$isDark</span><span class="p">){}</span>
 
-<span class="c1">// for string/text output</span>
-<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">moduleValues</span> <span class="o">=</span> <span class="p">[</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA</span>      <span class="o">=&gt;</span> <span class="s1">&#39;░░&#39;</span><span class="p">,</span>
-	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA_DARK</span> <span class="o">=&gt;</span> <span class="s1">&#39;██&#39;</span><span class="p">,</span>
-	<span class="c1">// ...</span>
-<span class="p">];</span>
-</pre></div>
-</div>
-</section>
-<section id="handling-in-your-own-qroutputinterface">
-<h2>Handling in your own <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code><a class="headerlink" href="#handling-in-your-own-qroutputinterface" title="Link to this heading"></a></h2>
-<section id="setting-module-values">
-<h3>Setting module values<a class="headerlink" href="#setting-module-values" title="Link to this heading"></a></h3>
-<p><a class="reference external" href="https://chillerlan.github.io/php-qrcode/classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_setModuleValues"><code class="docutils literal notranslate"><span class="pre">QROutputAbstract::setModuleValues()</span></code></a>
-calls the 3 abstract methods <code class="docutils literal notranslate"><span class="pre">moduleValueIsValid()</span></code>, <code class="docutils literal notranslate"><span class="pre">getModuleValue()</span></code> and <code class="docutils literal notranslate"><span class="pre">getDefaultModuleValue()</span></code> to fill the internal
-module value map with the values given via <code class="docutils literal notranslate"><span class="pre">QROptions::$moduleValues</span></code>:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">protected</span> <span class="k">function</span> <span class="nf">setModuleValues</span><span class="p">()</span><span class="o">:</span><span class="nx">void</span><span class="p">{</span>
-
-	<span class="k">foreach</span><span class="p">(</span><span class="nv">$this</span><span class="o">::</span><span class="na">DEFAULT_MODULE_VALUES</span> <span class="k">as</span> <span class="nv">$M_TYPE</span> <span class="o">=&gt;</span> <span class="nv">$defaultValue</span><span class="p">){</span>
-		<span class="nv">$value</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span><span class="o">-&gt;</span><span class="na">moduleValues</span><span class="p">[</span><span class="nv">$M_TYPE</span><span class="p">]</span> <span class="o">??</span> <span class="k">null</span><span class="p">);</span>
-
-		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">moduleValues</span><span class="p">[</span><span class="nv">$M_TYPE</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">moduleValueIsValid</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span>
-			<span class="o">?</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getModuleValue</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span>
-			<span class="o">:</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getDefaultModuleValue</span><span class="p">(</span><span class="nv">$defaultValue</span><span class="p">);</span>
-	<span class="p">}</span>
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">dump</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$file</span> <span class="o">=</span> <span class="k">null</span><span class="p">){}</span>
 
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In the following example we’ll create these methods for the <code class="docutils literal notranslate"><span class="pre">GdImage</span></code> output.
-Since <a class="reference external" href="https://www.php.net/manual/function.imagecolorallocate"><code class="docutils literal notranslate"><span class="pre">imagecolorallocate()</span></code></a> and other GD functions accept 3 values
-for RGB color (or 4 in case of RGBA), we’ll supply these as a array where each value is an integer between 0 and 255 (<code class="docutils literal notranslate"><span class="pre">[RRR,</span> <span class="pre">GGG,</span> <span class="pre">BBB,</span> <span class="pre">(,</span> <span class="pre">AAA)]</span></code>).</p>
-<p>First we need to validate the input:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">protected</span> <span class="k">function</span> <span class="nf">moduleValueIsValid</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span><span class="o">:</span><span class="nx">bool</span><span class="p">{</span>
-
-	<span class="c1">// nowhere near valid</span>
-	<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">is_array</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="o">||</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="o">!==</span> <span class="mi">3</span><span class="p">){</span>
-		<span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+</section>
+<section id="module-values">
+<h2>Module values<a class="headerlink" href="#module-values" title="Link to this heading"></a></h2>
+<p>The validator should check whether the given input value and range is valid for the output class and if it can be given to the <code class="docutils literal notranslate"><span class="pre">QROutputAbstract::prepareModuleValue()</span></code> method.
+For example in the built-in GD output it would check if the value is an array that has a minimum of 3 elements (for RGB), each of which is numeric.</p>
+<p>In this example we’ll accept string values, the characters <code class="docutils literal notranslate"><span class="pre">a-z</span></code> (case-insensitive) and a hyphen <code class="docutils literal notranslate"><span class="pre">-</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span>	<span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">moduleValueIsValid</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span><span class="o">:</span><span class="nx">bool</span><span class="p">{</span>
+		<span class="k">return</span> <span class="nb">is_string</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s1">&#39;/^[a-z-]+$/i&#39;</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span> <span class="o">===</span> <span class="mi">1</span><span class="p">;</span>
 	<span class="p">}</span>
+</pre></div>
+</div>
+<p>To prepare the final module substitute, you should transform the given (validated) input value in a way so that it can be accessed without any further calls or transformation.
+In the built-in output for example this means it would return an <code class="docutils literal notranslate"><span class="pre">ImagickPixel</span></code> instance or the integer value returned by <code class="docutils literal notranslate"><span class="pre">imagecolorallocate()</span></code> on the current <code class="docutils literal notranslate"><span class="pre">GdImage</span></code> instance.</p>
+<p>For our example, we’ll lowercase the validated string:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span>	<span class="k">protected</span> <span class="k">function</span> <span class="nf">prepareModuleValue</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span><span class="p">{</span>
+		<span class="k">return</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
+	<span class="p">}</span>
+</pre></div>
+</div>
+<p>Finally, we need to provide a default value for dark and light, you can call <code class="docutils literal notranslate"><span class="pre">prepareModuleValue()</span></code> here if necessary.
+We’ll return an empty string <code class="docutils literal notranslate"><span class="pre">''</span></code> here as we’re going to use the <code class="docutils literal notranslate"><span class="pre">QROutputInterface::LAYERNAMES</span></code> constant for non-existing values
+(returning <code class="docutils literal notranslate"><span class="pre">null</span></code> would run into an exception in <code class="docutils literal notranslate"><span class="pre">QROutputAbstract::getModuleValue()</span></code>).</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span>	<span class="k">protected</span> <span class="k">function</span> <span class="nf">getDefaultModuleValue</span><span class="p">(</span><span class="nx">bool</span> <span class="nv">$isDark</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span><span class="p">{</span>
+		<span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+	<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="transform-the-output">
+<h2>Transform the output<a class="headerlink" href="#transform-the-output" title="Link to this heading"></a></h2>
+<p>In our example, we want to collect the modules by type and have the collections listed under a header for each type.
+In order to do so, we need to collect the modules per <code class="docutils literal notranslate"><span class="pre">$M_TYPE</span></code> before we can render the final output.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span>	<span class="k">public</span> <span class="k">function</span> <span class="nf">dump</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$file</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span><span class="p">{</span>
+		<span class="nv">$collections</span> <span class="o">=</span> <span class="p">[];</span>
 
-	<span class="c1">// now iterate over the values</span>
-	<span class="k">foreach</span><span class="p">(</span><span class="nv">$value</span> <span class="k">as</span> <span class="nv">$color</span><span class="p">){</span>
-
-		<span class="c1">// non-integers won&#39;t work</span>
-		<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nb">is_int</span><span class="p">(</span><span class="nv">$color</span><span class="p">)){</span>
-			<span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+		<span class="c1">// loop over the matrix and collect the modules per layer</span>
+		<span class="k">foreach</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matrix</span><span class="o">-&gt;</span><span class="na">getMatrix</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$y</span> <span class="o">=&gt;</span> <span class="nv">$row</span><span class="p">){</span>
+			<span class="k">foreach</span><span class="p">(</span><span class="nv">$row</span> <span class="k">as</span> <span class="nv">$x</span> <span class="o">=&gt;</span> <span class="nv">$M_TYPE</span><span class="p">){</span>
+				<span class="nv">$collections</span><span class="p">[</span><span class="nv">$M_TYPE</span><span class="p">][]</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">module</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">,</span> <span class="nv">$M_TYPE</span><span class="p">);</span>
+			<span class="p">}</span>
 		<span class="p">}</span>
 
-		<span class="c1">// a strict check - we could also just ignore outliers and clamp the values instead</span>
-		<span class="k">if</span><span class="p">(</span><span class="nv">$color</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="nv">$color</span> <span class="o">&gt;</span> <span class="mi">255</span><span class="p">){</span>
-			<span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+		<span class="c1">// build the final output</span>
+		<span class="nv">$out</span> <span class="o">=</span> <span class="p">[];</span>
+
+		<span class="k">foreach</span><span class="p">(</span><span class="nv">$collections</span> <span class="k">as</span> <span class="nv">$M_TYPE</span> <span class="o">=&gt;</span> <span class="nv">$collection</span><span class="p">){</span>
+			<span class="nv">$name</span>  <span class="o">=</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getModuleValue</span><span class="p">(</span><span class="nv">$M_TYPE</span><span class="p">)</span> <span class="o">?:</span> <span class="nv">$this</span><span class="o">::</span><span class="na">LAYERNAMES</span><span class="p">[</span><span class="nv">$M_TYPE</span><span class="p">]);</span>
+			<span class="c1">// the section header</span>
+			<span class="nv">$out</span><span class="p">[]</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s2">&quot;%s (%012b)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$M_TYPE</span><span class="p">);</span>
+			<span class="c1">// the list of modules</span>
+			<span class="nv">$out</span><span class="p">[]</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s2">&quot;%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$collection</span><span class="p">));</span>
 		<span class="p">}</span>
-	<span class="p">}</span>
 
-	<span class="k">return</span> <span class="k">true</span><span class="p">;</span> <span class="c1">// yay!</span>
-<span class="p">}</span>
+		<span class="k">return</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$out</span><span class="p">);</span>
+	<span class="p">}</span>
 </pre></div>
 </div>
-<p>Now we can prepare the value:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">protected</span> <span class="k">function</span> <span class="nf">getModuleValue</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span><span class="o">:</span><span class="k">array</span><span class="p">{</span>
-	<span class="c1">// we call array_values() so we don&#39;t run into string-key related issues</span>
-	<span class="k">return</span> <span class="nb">array_map</span><span class="p">(</span><span class="nx">fn</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$val</span><span class="p">)</span><span class="o">:</span><span class="nx">int</span> <span class="o">=&gt;</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="nv">$val</span><span class="p">)),</span> <span class="nb">array_values</span><span class="p">(</span><span class="nv">$value</span><span class="p">));</span>
-<span class="p">}</span>
+<p>We’ve introduced another method that handles the module rendering, which incooperates handling of the <code class="docutils literal notranslate"><span class="pre">QROptions::$drawLightModules</span></code> setting:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span>	<span class="k">protected</span> <span class="k">function</span> <span class="nf">module</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$x</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$y</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$M_TYPE</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span><span class="p">{</span>
+
+		<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">drawLightModules</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matrix</span><span class="o">-&gt;</span><span class="na">isDark</span><span class="p">(</span><span class="nv">$M_TYPE</span><span class="p">)){</span>
+			<span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+		<span class="p">}</span>
+
+		<span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;x: %s, y: %s&#39;</span><span class="p">,</span> <span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">);</span>
+	<span class="p">}</span>
 </pre></div>
 </div>
-<p>And finally we need to provide default values:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">protected</span> <span class="k">function</span> <span class="nf">getDefaultModuleValue</span><span class="p">(</span><span class="nx">bool</span> <span class="nv">$isDark</span><span class="p">)</span><span class="o">:</span><span class="k">array</span><span class="p">{</span>
-	<span class="k">return</span> <span class="nv">$isDark</span> <span class="o">?</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">];</span>
-<span class="p">}</span>
+<p>Speaking of option settings, there’s also <code class="docutils literal notranslate"><span class="pre">QROptions::$connectPaths</span></code> which we haven’t taken care of yet - the good news is that we don’t need to as it is already implemented!
+We’ll modify the above <code class="docutils literal notranslate"><span class="pre">dump()</span></code> method to use <code class="docutils literal notranslate"><span class="pre">QROutputAbstract::collectModules()</span></code> instead.</p>
+<p>The module collector accepts a closure as its only parameter, the closure is called with 4 parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">$x</span></code>           : current column</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$y</span></code>           : current row</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$M_TYPE</span></code>      : field value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">$M_TYPE_LAYER</span></code>: (possibly modified) field value that acts as layer id</p></li>
+</ul>
+<p>We’ll only need the first 3 parameters, so our closure would look as follows:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$closure</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$x</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$y</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$M_TYPE</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">module</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">,</span> <span class="nv">$M_TYPE</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>Now that everything is ready and set, we can use the values in our GD functions:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$color</span> <span class="o">=</span> <span class="nb">imagecolorallocate</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">,</span> <span class="o">...</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">moduleValues</span><span class="p">[</span><span class="nv">$M_TYPE</span><span class="p">]);</span>
+<p>As of PHP 8.1+ we can narrow this down with the <a class="reference external" href="https://www.php.net/manual/en/functions.first_class_callable_syntax.php">first class callable syntax</a>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$closure</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">module</span><span class="p">(</span><span class="o">...</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This is our final output method then:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span>	<span class="k">public</span> <span class="k">function</span> <span class="nf">dump</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$file</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span><span class="p">{</span>
+		<span class="nv">$collections</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">collectModules</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">module</span><span class="p">(</span><span class="o">...</span><span class="p">));</span>
+
+		<span class="c1">// build the final output</span>
+		<span class="nv">$out</span> <span class="o">=</span> <span class="p">[];</span>
+
+		<span class="k">foreach</span><span class="p">(</span><span class="nv">$collections</span> <span class="k">as</span> <span class="nv">$M_TYPE</span> <span class="o">=&gt;</span> <span class="nv">$collection</span><span class="p">){</span>
+			<span class="nv">$name</span>  <span class="o">=</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getModuleValue</span><span class="p">(</span><span class="nv">$M_TYPE</span><span class="p">)</span> <span class="o">?:</span> <span class="nv">$this</span><span class="o">::</span><span class="na">LAYERNAMES</span><span class="p">[</span><span class="nv">$M_TYPE</span><span class="p">]);</span>
+			<span class="c1">// the section header</span>
+			<span class="nv">$out</span><span class="p">[]</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s2">&quot;%s (%012b)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$M_TYPE</span><span class="p">);</span>
+			<span class="c1">// the list of modules</span>
+			<span class="nv">$out</span><span class="p">[]</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s2">&quot;%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$collection</span><span class="p">));</span>
+		<span class="p">}</span>
+
+		<span class="k">return</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$out</span><span class="p">);</span>
+	<span class="p">}</span>
 </pre></div>
 </div>
 </section>
-<section id="using-the-module-values">
-<h3>Using the module values<a class="headerlink" href="#using-the-module-values" title="Link to this heading"></a></h3>
-<p>The state of the <code class="docutils literal notranslate"><span class="pre">$M_TYPE</span></code> is set with the <code class="docutils literal notranslate"><span class="pre">QRMatrix::IS_DARK</span></code> constant:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// set to dark (true) with bitwise OR:</span>
-<span class="nv">$M_TYPE</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$M_TYPE</span> <span class="o">|</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">IS_DARK</span><span class="p">);</span>
+<section id="run-the-custom-output">
+<h2>Run the custom output<a class="headerlink" href="#run-the-custom-output" title="Link to this heading"></a></h2>
+<p>To run the output we just need to set the <code class="docutils literal notranslate"><span class="pre">QROptions::$outputInterface</span></code> to our custom class:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QROptions</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">outputType</span>       <span class="o">=</span> <span class="nx">QROutputInterface</span><span class="o">::</span><span class="na">CUSTOM</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">outputInterface</span>  <span class="o">=</span> <span class="nx">MyCustomOutput</span><span class="o">::</span><span class="na">class</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">connectPaths</span>     <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">drawLightModules</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
 
-<span class="c1">// set to light (false) with bitwise AND NOT</span>
-<span class="nv">$M_TYPE</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$M_TYPE</span> <span class="o">&amp;</span> <span class="o">~</span><span class="nx">QRMatrix</span><span class="o">::</span><span class="na">IS_DARK</span><span class="p">);</span>
+<span class="c1">// our custom module values</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">moduleValues</span>    <span class="o">=</span> <span class="p">[</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA</span>      <span class="o">=&gt;</span> <span class="s1">&#39;these-modules-are-light&#39;</span><span class="p">,</span>
+	<span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA_DARK</span> <span class="o">=&gt;</span> <span class="s1">&#39;here-is-a-dark-module&#39;</span><span class="p">,</span>
+<span class="p">];</span>
 
-<span class="c1">// toggle the opposite state with bitwise XOR</span>
-<span class="nv">$M_TYPE</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$M_TYPE</span> <span class="o">^</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">IS_DARK</span><span class="p">);</span>
+<span class="nv">$qrcode</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">);</span>
+<span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">addByteSegment</span><span class="p">(</span><span class="s1">&#39;test&#39;</span><span class="p">);</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$qrcode</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">());</span>
 </pre></div>
 </div>
-<p>You can manually check whether the module is dark:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="nv">$value</span> <span class="o">&amp;</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">IS_DARK</span><span class="p">)</span> <span class="o">===</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">IS_DARK</span><span class="p">;</span>
+<p>The output looks similar to the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>these-modules-are-light (000000000010)
+
+x: 0, y: 0
+x: 1, y: 0
+x: 2, y: 0
+...
+
+here-is-a-dark-module (100000000010)
+
+x: 4, y: 4
+x: 5, y: 4
+x: 6, y: 4
+...
 </pre></div>
 </div>
-<p>However it is much more convenient to use the <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> methods for that:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="p">(</span><span class="nv">$y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$y</span> <span class="o">&lt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">moduleCount</span><span class="p">;</span> <span class="nv">$y</span><span class="o">++</span><span class="p">){</span> <span class="c1">// rows</span>
-	<span class="k">for</span><span class="p">(</span><span class="nv">$x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$x</span> <span class="o">&lt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">moduleCount</span><span class="p">;</span> <span class="nv">$x</span><span class="o">++</span><span class="p">){</span> <span class="c1">// columns</span>
-		<span class="c1">// sets current module as dark (true) with the M_DATA type</span>
-		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matrix</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA</span><span class="p">);</span>
+<p>Profit!</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<p>We’ve learned how to create a custom output class for a string based format similar to several of the built-in formats such as SVG or EPS.</p>
+<p>The full code of our custom class below:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyCustomOutput</span> <span class="k">extends</span> <span class="nx">QROutputAbstract</span><span class="p">{</span>
 
-		<span class="c1">// -&gt; true (shortcut for checkType($x, $y, QRMatrix::IS_DARK))</span>
-		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matrix</span><span class="o">-&gt;</span><span class="na">check</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">);</span>
-
-		<span class="c1">// -&gt; true (current module is of type M_DATA)</span>
-		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matrix</span><span class="o">-&gt;</span><span class="na">checkType</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">,</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_DATA</span><span class="p">);</span>
-
-		<span class="c1">// -&gt; true (current module is of type IS_DARK)</span>
-		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matrix</span><span class="o">-&gt;</span><span class="na">checkType</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">,</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">IS_DARK</span><span class="p">);</span>
-
-		<span class="c1">// -&gt; false, type is M_DATA</span>
-		<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matrix</span><span class="o">-&gt;</span><span class="na">checkTypeIn</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">,</span> <span class="p">[</span><span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_FINDER_DARK</span><span class="p">,</span> <span class="nx">QRMatrix</span><span class="o">::</span><span class="na">M_ALIGNMENT</span><span class="p">]);</span>
+	<span class="k">protected</span> <span class="k">function</span> <span class="nf">prepareModuleValue</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span><span class="p">{</span>
+		<span class="k">return</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
 	<span class="p">}</span>
+
+	<span class="k">protected</span> <span class="k">function</span> <span class="nf">getDefaultModuleValue</span><span class="p">(</span><span class="nx">bool</span> <span class="nv">$isDark</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span><span class="p">{</span>
+		<span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">moduleValueIsValid</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span><span class="o">:</span><span class="nx">bool</span><span class="p">{</span>
+		<span class="k">return</span> <span class="nb">is_string</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nb">preg_match</span><span class="p">(</span><span class="s1">&#39;/^[a-z-]+$/i&#39;</span><span class="p">,</span> <span class="nv">$value</span><span class="p">)</span> <span class="o">===</span> <span class="mi">1</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">public</span> <span class="k">function</span> <span class="nf">dump</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$file</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span><span class="p">{</span>
+		<span class="nv">$collections</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">collectModules</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">module</span><span class="p">(</span><span class="o">...</span><span class="p">));</span>
+
+		<span class="c1">// build the final output</span>
+		<span class="nv">$out</span> <span class="o">=</span> <span class="p">[];</span>
+
+		<span class="k">foreach</span><span class="p">(</span><span class="nv">$collections</span> <span class="k">as</span> <span class="nv">$M_TYPE</span> <span class="o">=&gt;</span> <span class="nv">$collection</span><span class="p">){</span>
+			<span class="nv">$name</span>  <span class="o">=</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getModuleValue</span><span class="p">(</span><span class="nv">$M_TYPE</span><span class="p">)</span> <span class="o">?:</span> <span class="nv">$this</span><span class="o">::</span><span class="na">LAYERNAMES</span><span class="p">[</span><span class="nv">$M_TYPE</span><span class="p">]);</span>
+			<span class="c1">// the section header</span>
+			<span class="nv">$out</span><span class="p">[]</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s2">&quot;%s (%012b)</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$M_TYPE</span><span class="p">);</span>
+			<span class="c1">// the list of modules</span>
+			<span class="nv">$out</span><span class="p">[]</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s2">&quot;%s</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$collection</span><span class="p">));</span>
+		<span class="p">}</span>
+
+		<span class="k">return</span> <span class="nb">implode</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nv">$out</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">protected</span> <span class="k">function</span> <span class="nf">module</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$x</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$y</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$M_TYPE</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span><span class="p">{</span>
+
+		<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">drawLightModules</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">matrix</span><span class="o">-&gt;</span><span class="na">isDark</span><span class="p">(</span><span class="nv">$M_TYPE</span><span class="p">)){</span>
+			<span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+		<span class="p">}</span>
+
+		<span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;x: %s, y: %s&#39;</span><span class="p">,</span> <span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">);</span>
+	<span class="p">}</span>
+
 <span class="p">}</span>
 </pre></div>
 </div>
-</section>
 </section>
 </section>
 
@@ -568,8 +581,8 @@ for RGB color (or 4 in case of RGBA), we’ll supply these as a array where each
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../Usage/Configuration-settings.html" class="btn btn-neutral float-left" title="Configuration settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="QROutputAbstract.html" class="btn btn-neutral float-right" title="QROutputAbstract" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="QROutputAbstract.html" class="btn btn-neutral float-left" title="QROutputAbstract" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Built-In-Output/QREps.html" class="btn btn-neutral float-right" title="QREps" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
