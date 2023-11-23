@@ -60,6 +60,7 @@ For the QR Code reader, either `ext-gd` or `ext-imagick` is required!
   - [twill](https://github.com/area17/twill)
   - [Elefant CMS](https://github.com/jbroadway/elefant)
   - [OSIRIS](https://github.com/JKoblitz/osiris)
+  - [EspoCRM](https://github.com/espocrm/espocrm)
 - Articles:
   - [Twilio: How to Create a QR Code in PHP](https://www.twilio.com/blog/create-qr-code-in-php) (featuring v4.3.x)
 
