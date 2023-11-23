@@ -17,6 +17,7 @@ namespace chillerlan\QRCodeTest\Output;
 
 use Imagick;
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QROutputInterface, QRImagick};
 
 /**
@@ -65,8 +66,8 @@ class QRImagickTest extends QROutputTestAbstract{
 
 		$this->options->moduleValues = [
 			// data
-			1024 => '#4A6000',
-			4    => '#ECF9BE',
+			QRMatrix::M_DATA_DARK => '#4A6000',
+			QRMatrix::M_DATA      => '#ECF9BE',
 		];
 
 		$this->outputInterface = $this->getOutputInterface($this->options);

@@ -20,7 +20,7 @@ $options = new QROptions([
 	'outputType'     => QRCode::OUTPUT_MARKUP_SVG,
 	'imageBase64'    => false,
 	'eccLevel'       => QRCode::ECC_L,
-	'svgViewBoxSize' => 530,
+#	'svgViewBoxSize' => 530,
 	'addQuietzone'   => true,
 	'svgOpacity'     => 1.0,
 	'svgDefs'        => '
@@ -35,30 +35,30 @@ $options = new QROptions([
 		<style>rect{shape-rendering:crispEdges}</style>',
 	'moduleValues'   => [
 		// finder
-		(QRMatrix::M_FINDER << 8)     => 'url(#g1)', // dark (true)
-		(QRMatrix::M_FINDER_DOT << 8) => 'url(#g1)',
-		QRMatrix::M_FINDER            => '#fff',     // light (false)
+		QRMatrix::M_FINDER_DARK    => 'url(#g1)', // dark (true)
+		QRMatrix::M_FINDER_DOT     => 'url(#g1)',
+		QRMatrix::M_FINDER         => '#fff',     // light (false)
 		// alignment
-		(QRMatrix::M_ALIGNMENT << 8)  => 'url(#g1)',
-		QRMatrix::M_ALIGNMENT         => '#fff',
+		QRMatrix::M_ALIGNMENT_DARK => 'url(#g1)',
+		QRMatrix::M_ALIGNMENT      => '#fff',
 		// timing
-		(QRMatrix::M_TIMING << 8)     => 'url(#g1)',
-		QRMatrix::M_TIMING            => '#fff',
+		QRMatrix::M_TIMING_DARK    => 'url(#g1)',
+		QRMatrix::M_TIMING         => '#fff',
 		// format
-		(QRMatrix::M_FORMAT << 8)     => 'url(#g1)',
-		QRMatrix::M_FORMAT            => '#fff',
+		QRMatrix::M_FORMAT_DARK    => 'url(#g1)',
+		QRMatrix::M_FORMAT         => '#fff',
 		// version
-		(QRMatrix::M_VERSION << 8)    => 'url(#g1)',
-		QRMatrix::M_VERSION           => '#fff',
+		QRMatrix::M_VERSION_DARK   => 'url(#g1)',
+		QRMatrix::M_VERSION        => '#fff',
 		// data
-		(QRMatrix::M_DATA << 8)       => 'url(#g2)',
-		QRMatrix::M_DATA              => '#fff',
+		QRMatrix::M_DATA_DARK      => 'url(#g2)',
+		QRMatrix::M_DATA           => '#fff',
 		// darkmodule
-		(QRMatrix::M_DARKMODULE << 8) => 'url(#g1)',
+		QRMatrix::M_DARKMODULE     => 'url(#g1)',
 		// separator
-		QRMatrix::M_SEPARATOR         => '#fff',
+		QRMatrix::M_SEPARATOR      => '#fff',
 		// quietzone
-		QRMatrix::M_QUIETZONE         => '#fff',
+		QRMatrix::M_QUIETZONE      => '#fff',
 	],
 ]);
 

@@ -18,30 +18,30 @@ $options = new QROptions([
 	'eccLevel'     => QRCode::ECC_L,
 	'moduleValues' => [
 		// finder
-		(QRMatrix::M_FINDER << 8)     => '#A71111', // dark (true)
-		(QRMatrix::M_FINDER_DOT << 8) => '#A71111',
-		QRMatrix::M_FINDER            => '#FFBFBF', // light (false)
+		QRMatrix::M_FINDER_DARK    => '#A71111', // dark (true)
+		QRMatrix::M_FINDER_DOT     => '#A71111',
+		QRMatrix::M_FINDER         => '#FFBFBF', // light (false)
 		// alignment
-		(QRMatrix::M_ALIGNMENT << 8)  => '#A70364',
-		QRMatrix::M_ALIGNMENT         => '#FFC9C9',
+		QRMatrix::M_ALIGNMENT_DARK => '#A70364',
+		QRMatrix::M_ALIGNMENT      => '#FFC9C9',
 		// timing
-		(QRMatrix::M_TIMING << 8)     => '#98005D',
-		QRMatrix::M_TIMING            => '#FFB8E9',
+		QRMatrix::M_TIMING_DARK    => '#98005D',
+		QRMatrix::M_TIMING         => '#FFB8E9',
 		// format
-		(QRMatrix::M_FORMAT << 8)     => '#003804',
-		QRMatrix::M_FORMAT            => '#00FB12',
+		QRMatrix::M_FORMAT_DARK    => '#003804',
+		QRMatrix::M_FORMAT         => '#00FB12',
 		// version
-		(QRMatrix::M_VERSION << 8)    => '#650098',
-		QRMatrix::M_VERSION           => '#E0B8FF',
+		QRMatrix::M_VERSION_DARK   => '#650098',
+		QRMatrix::M_VERSION        => '#E0B8FF',
 		// data
-		(QRMatrix::M_DATA << 8)       => '#4A6000',
-		QRMatrix::M_DATA              => '#ECF9BE',
+		QRMatrix::M_DATA_DARK      => '#4A6000',
+		QRMatrix::M_DATA           => '#ECF9BE',
 		// darkmodule
-		(QRMatrix::M_DARKMODULE << 8) => '#080063',
+		QRMatrix::M_DARKMODULE     => '#080063',
 		// separator
-		QRMatrix::M_SEPARATOR         => '#AFBFBF',
+		QRMatrix::M_SEPARATOR      => '#AFBFBF',
 		// quietzone
-		QRMatrix::M_QUIETZONE         => '#FFFFFF',
+		QRMatrix::M_QUIETZONE      => '#FFFFFF',
 	],
 ]);
 

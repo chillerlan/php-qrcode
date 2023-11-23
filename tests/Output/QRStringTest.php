@@ -13,6 +13,7 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QROutputInterface, QRString};
 
 /**
@@ -46,8 +47,8 @@ class QRStringTest extends QROutputTestAbstract{
 
 		$this->options->moduleValues = [
 			// data
-			1024 => 'A',
-			4    => 'B',
+			QRMatrix::M_DATA_DARK => 'A',
+			QRMatrix::M_DATA      => 'B',
 		];
 
 		$this->outputInterface = $this->getOutputInterface($this->options);
