@@ -19,7 +19,7 @@ namespaced, cleaned up, improved and other stuff.
 [coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode/v4.3.x?logo=codecov
 [coverage]: https://app.codecov.io/gh/chillerlan/php-qrcode/tree/v4.3.x
 [codacy-badge]: https://img.shields.io/codacy/grade/edccfc4fe5a34b74b1c53ee03f097b8d/v4.3.x?logo=codacy
-[codacy]: https://www.codacy.com/gh/chillerlan/php-qrcode/dashboard?branch=v4.3.x
+[codacy]: https://app.codacy.com/gh/chillerlan/php-qrcode/dashboard?branch=v4.3.x
 [downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode?logo=packagist
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 [gh-action-badge]: https://img.shields.io/github/actions/workflow/status/chillerlan/php-qrcode/tests.yml?branch=v4.3.x&logo=github
