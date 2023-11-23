@@ -20,7 +20,7 @@ namespaced, cleaned up, improved and other stuff.
 [coverage]: https://app.codecov.io/gh/chillerlan/php-qrcode/tree/v4.3.x
 [codacy-badge]: https://img.shields.io/codacy/grade/edccfc4fe5a34b74b1c53ee03f097b8d/v4.3.x?logo=codacy
 [codacy]: https://www.codacy.com/gh/chillerlan/php-qrcode/dashboard?branch=v4.3.x
-[downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode.svg?logo=packagist
+[downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode?logo=packagist
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
 [gh-action-badge]: https://img.shields.io/github/actions/workflow/status/chillerlan/php-qrcode/tests.yml?branch=v4.3.x&logo=github
 [gh-action]: https://github.com/chillerlan/php-qrcode/actions/workflows/tests.yml?query=branch%3Av4.3.x
@@ -249,41 +249,41 @@ $options = new QROptions;
 // for HTML, SVG and ImageMagick
 $options->moduleValues = [
 	// finder
-	(QRMatrix::M_FINDER << 8)     => '#A71111', // dark (true)
-	(QRMatrix::M_FINDER_DOT << 8) => '#A71111', // dark (true)
-	QRMatrix::M_FINDER            => '#FFBFBF', // light (false)
+	QRMatrix::M_FINDER_DARK     => '#A71111', // dark (true)
+	QRMatrix::M_FINDER_DOT_DARK => '#A71111', // dark (true)
+	QRMatrix::M_FINDER          => '#FFBFBF', // light (false)
 	// alignment
-	(QRMatrix::M_ALIGNMENT << 8)  => '#A70364',
-	QRMatrix::M_ALIGNMENT         => '#FFC9C9',
+	QRMatrix::M_ALIGNMENT_DARK  => '#A70364',
+	QRMatrix::M_ALIGNMENT       => '#FFC9C9',
 	// timing
-	(QRMatrix::M_TIMING << 8)     => '#98005D',
-	QRMatrix::M_TIMING            => '#FFB8E9',
+	QRMatrix::M_TIMING_DARK     => '#98005D',
+	QRMatrix::M_TIMING          => '#FFB8E9',
 	// format
-	(QRMatrix::M_FORMAT << 8)     => '#003804',
-	QRMatrix::M_FORMAT            => '#00FB12',
+	QRMatrix::M_FORMAT_DARK     => '#003804',
+	QRMatrix::M_FORMAT          => '#00FB12',
 	// version
-	(QRMatrix::M_VERSION << 8)    => '#650098',
-	QRMatrix::M_VERSION           => '#E0B8FF',
+	QRMatrix::M_VERSION_DARK    => '#650098',
+	QRMatrix::M_VERSION         => '#E0B8FF',
 	// data
-	(QRMatrix::M_DATA << 8)       => '#4A6000',
-	QRMatrix::M_DATA              => '#ECF9BE',
+	QRMatrix::M_DATA_DARK       => '#4A6000',
+	QRMatrix::M_DATA            => '#ECF9BE',
 	// darkmodule
-	(QRMatrix::M_DARKMODULE << 8) => '#080063',
+	QRMatrix::M_DARKMODULE_DARK => '#080063',
 	// separator
-	QRMatrix::M_SEPARATOR         => '#AFBFBF',
+	QRMatrix::M_SEPARATOR       => '#AFBFBF',
 	// quietzone
-	QRMatrix::M_QUIETZONE         => '#FFFFFF',
+	QRMatrix::M_QUIETZONE       => '#FFFFFF',
 ];
 
 // for the image output types
 $options->moduleValues = [
-	(QRMatrix::M_DATA << 8) => [0, 0, 0],
+	QRMatrix::M_DATA_DARK => [0, 0, 0],
 	// ...
 ];
 
 // for string/text output
 $options->moduleValues = [
-	(QRMatrix::M_DATA << 8) => '#',
+	QRMatrix::M_DATA_DARK => '#',
 	// ...
 ];
 ```
@@ -335,20 +335,31 @@ $options->moduleValues = [
 | `check(int $x, int $y)`                         | bool       | checks whether a module is true (dark) or false (light)                                               |
 
 #### Constants
-| name           | light (false) | dark (true) | description                                                   |
-|----------------|---------------|-------------|---------------------------------------------------------------|
-| `M_NULL`       | 0             | -           | module not set (should never appear. if so, there's an error) |
-| `M_DARKMODULE` | -             | 512         | once per matrix at `$xy = [8, 4 * $version + 9]`              |
-| `M_DATA`       | 4             | 1024        | the actual encoded data                                       |
-| `M_FINDER`     | 6             | 1536        | the 7x7 finder patterns                                       |
-| `M_SEPARATOR`  | 8             | -           | separator lines around the finder patterns                    |
-| `M_ALIGNMENT`  | 10            | 2560        | the 5x5 alignment patterns                                    |
-| `M_TIMING`     | 12            | 3072        | the timing pattern lines                                      |
-| `M_FORMAT`     | 14            | 3584        | format information pattern                                    |
-| `M_VERSION`    | 16            | 4096        | version information pattern                                   |
-| `M_QUIETZONE`  | 18            | -           | margin around the QR Code                                     |
-| `M_LOGO`       | 20            | -           | space for a logo image (not used yet)                         |
-| `M_TEST`       | 255           | 65280       | test value                                                    |
+| name                 | description                                                   |
+|----------------------|---------------------------------------------------------------|
+| `M_NULL`             | module not set (should never appear. if so, there's an error) |
+| `M_DARKMODULE`       | once per matrix at `$xy = [8, 4 * $version + 9]`              |
+| `M_DARKMODULE_LIGHT` | (reserved for reflectance reversal)                           |
+| `M_DATA`             | the actual encoded data                                       |
+| `M_DATA_DARK`        |                                                               |
+| `M_FINDER`           | the 7x7 finder patterns                                       |
+| `M_FINDER_DARK`      |                                                               |
+| `M_FINDER_DOT`       | the 3x3 dot inside the finder patterns                        |
+| `M_FINDER_DOT_LIGHT` | (reserved for reflectance reversal)                           |
+| `M_SEPARATOR`        | separator lines around the finder patterns                    |
+| `M_SEPARATOR_DARK`   | (reserved for reflectance reversal)                           |
+| `M_ALIGNMENT`        | the 5x5 alignment patterns                                    |
+| `M_ALIGNMENT_DARK`   |                                                               |
+| `M_TIMING`           | the timing pattern lines                                      |
+| `M_TIMING_DARK`      |                                                               |
+| `M_FORMAT`           | format information pattern                                    |
+| `M_FORMAT_DARK`      |                                                               |
+| `M_VERSION`          | version information pattern                                   |
+| `M_VERSION_DARK`     |                                                               |
+| `M_QUIETZONE`        | margin around the QR Code                                     |
+| `M_QUIETZONE_DARK`   | (reserved for reflectance reversal)                           |
+| `M_LOGO`             | space for a logo image                                        |
+| `M_LOGO_DARK`        | (reserved for reflectance reversal)                           |
 
 ### `QROptions` API
 
@@ -372,8 +383,8 @@ $options->moduleValues = [
 | `$svgOpacity`          | float  | 1.0                         | 0...1                                 |                                                                                                                                     |
 | `$svgDefs`             | string | *                           | *                                     | anything between [`<defs>`](https://developer.mozilla.org/docs/Web/SVG/Element/defs)                                                |
 | `$svgViewBoxSize`      | int    | `null`                      | *                                     | a positive integer which defines width/height of the [viewBox attribute](https://css-tricks.com/scale-svg/#article-header-id-3)     |
-| `$textDark`            | string | '🔴'                        | *                                     | string substitute for dark                                                                                                          |
-| `$textLight`           | string | '⭕'                         | *                                     | string substitute for light                                                                                                         |
+| `$textDark`            | string | '██'                        | *                                     | string substitute for dark                                                                                                          |
+| `$textLight`           | string | '░░'                        | *                                     | string substitute for light                                                                                                         |
 | `$markupDark`          | string | '#000'                      | *                                     | markup substitute for dark (CSS value)                                                                                              |
 | `$markupLight`         | string | '#fff'                      | *                                     | markup substitute for light (CSS value)                                                                                             |
 | `$imageBase64`         | bool   | `true`                      | -                                     | whether to return the image data as base64 or raw like from `file_get_contents()`                                                   |
