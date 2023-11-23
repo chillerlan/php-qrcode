@@ -15,7 +15,6 @@ jobs:
 
   static-code-analysis:
     name: "Static Code Analysis"
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -26,6 +25,7 @@ jobs:
           - "8.0"
           - "8.1"
           - "8.2"
+          - "8.3"
 
     env:
       PHAN_ALLOW_XDEBUG: 0
@@ -49,11 +49,10 @@ jobs:
       - name: "Run phan"
         run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
 
+
   tests:
     name: "Unit Tests"
-
     needs: static-code-analysis
-
     runs-on: ${{ matrix.os }}
 
     strategy:
@@ -67,6 +66,7 @@ jobs:
           - "8.0"
           - "8.1"
           - "8.2"
+          - "8.3"
 
     steps:
       - name: "Checkout"
@@ -84,10 +84,12 @@ jobs:
         uses: ramsey/composer-install@v2
 
       - name: "Run tests with phpunit"
-        run: php vendor/bin/phpunit --configuration=phpunit.xml.dist
+        run: php vendor/bin/phpunit --colors=always --configuration=phpunit.xml.dist
 
       - name: "Send code coverage report to Codecov.io"
         uses: codecov/codecov-action@v3
+        with:
+         files: .build/coverage/clover.xml
 
       - name: "Send code coverage report to Codacy"
         uses: codacy/codacy-coverage-reporter-action@v1
