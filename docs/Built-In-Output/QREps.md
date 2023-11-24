@@ -1,11 +1,11 @@
 # QREps
 
-[Class `QREps`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QREps.php): [Encapsulated Postscript](https://en.wikipedia.org/wiki/Encapsulated_PostScript) (EPS) output.
+[Class `QREps`](https://github.com/chillerlan/php-qrcode/blob/v5.0.x/src/Output/QREps.php): [Encapsulated Postscript](https://en.wikipedia.org/wiki/Encapsulated_PostScript) (EPS) output.
 
 
 ## Example
 
-See: [EPS example](https://github.com/chillerlan/php-qrcode/blob/main/examples/eps.php)
+See: [EPS example](https://github.com/chillerlan/php-qrcode/blob/v5.0.x/examples/eps.php)
 
 Set the options:
 

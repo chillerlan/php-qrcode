@@ -1,6 +1,6 @@
 # QRImagick
 
-[Class `QRImagick`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRImagick.php): [ImageMagick](https://www.php.net/manual/book.imagick) output, [multiple supported image formats](https://imagemagick.org/script/formats.php)
+[Class `QRImagick`](https://github.com/chillerlan/php-qrcode/blob/v5.0.x/src/Output/QRImagick.php): [ImageMagick](https://www.php.net/manual/book.imagick) output, [multiple supported image formats](https://imagemagick.org/script/formats.php)
 
 Please follow the installation guides for your operating system:
 
@@ -11,7 +11,7 @@ Please follow the installation guides for your operating system:
 
 ## Example
 
-See: [ImageMagick example](https://github.com/chillerlan/php-qrcode/blob/main/examples/imagick.php)
+See: [ImageMagick example](https://github.com/chillerlan/php-qrcode/blob/v5.0.x/examples/imagick.php)
 
 Set the options:
 ```php

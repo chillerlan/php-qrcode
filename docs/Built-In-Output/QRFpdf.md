@@ -1,11 +1,11 @@
 # QRFpdf
 
-[Class `QRFpdf`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRFpdf.php): [Portable Document Format](https://en.wikipedia.org/wiki/PDF) (PDF) output via [FPDF](https://github.com/setasign/fpdf)
+[Class `QRFpdf`](https://github.com/chillerlan/php-qrcode/blob/v5.0.x/src/Output/QRFpdf.php): [Portable Document Format](https://en.wikipedia.org/wiki/PDF) (PDF) output via [FPDF](https://github.com/setasign/fpdf)
 
 
 ## Example
 
-See: [FPDF example](https://github.com/chillerlan/php-qrcode/blob/main/examples/fpdf.php)
+See: [FPDF example](https://github.com/chillerlan/php-qrcode/blob/v5.0.x/examples/fpdf.php)
 
 Set the options:
 

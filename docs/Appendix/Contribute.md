@@ -54,7 +54,7 @@ You want to contribute code to fix something or add a feature? Hey that's cool! 
 
 - Please add a description of what the PR does or fixes and why it should be merged. If you're unsure, [open an issue](https://github.com/chillerlan/php-qrcode/issues/new?assignees=&labels=enhancement&projects=&template=feature_request.md&title=%5BENHANCEMENT%5D) before to gather feedback.
 - Make sure your branch is up-to-date/even with the upstream branch you're submitting your PR to.
-- Please try to adhere to the [*loosely outlined* coding standards](https://github.com/chillerlan/php-qrcode/discussions/60), or, in case you're using [PHPStorm](https://www.jetbrains.com/phpstorm/), make sure you're using [the supplied IDE profile](https://github.com/chillerlan/php-qrcode/tree/main/.idea).
+- Please try to adhere to the [*loosely outlined* coding standards](https://github.com/chillerlan/php-qrcode/discussions/60), or, in case you're using [PHPStorm](https://www.jetbrains.com/phpstorm/), make sure you're using [the supplied IDE profile](https://github.com/chillerlan/php-qrcode/tree/v5.0.x/.idea).
 
 
 ## Documentation
@@ -63,5 +63,5 @@ The documentation is a work in progress - any suggestion and contribution is ver
 If you have an addition or correction, feel fre to open a [documentation issue](https://github.com/chillerlan/php-qrcode/issues/new?assignees=&labels=docs&projects=&template=documentation.md&title=%5BDOCS%5D).
 
 
-The API documentation is auto generated with [phpDocumentor](https://www.phpdoc.org/) from the docblocks [in the PHP sources](https://github.com/chillerlan/php-qrcode/tree/main/src).
-The markdown sources for the [Read the Docs online manual](https://php-qrcode.readthedocs.io) are located in the [/docs directory](https://github.com/chillerlan/php-qrcode/tree/main/docs)
+The API documentation is auto generated with [phpDocumentor](https://www.phpdoc.org/) from the docblocks [in the PHP sources](https://github.com/chillerlan/php-qrcode/tree/v5.0.x/src).
+The markdown sources for the [Read the Docs online manual](https://php-qrcode.readthedocs.io) are located in the [/docs directory](https://github.com/chillerlan/php-qrcode/tree/v5.0.x/docs)

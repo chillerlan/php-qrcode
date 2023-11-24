@@ -38,7 +38,7 @@ echo (new QRCode($options))->render($data);
 
 See [Advanced usage](../Usage/Advanced-usage.md) for a more in-depth usage guide
 and [configuration settings](../Usage/Configuration-settings.md) for a list of available options.
-Also, have a look [in the examples folder](https://github.com/chillerlan/php-qrcode/tree/main/examples) for some more usage examples.
+Also, have a look [in the examples folder](https://github.com/chillerlan/php-qrcode/tree/v5.0.x/examples) for some more usage examples.
 
 
 ## Reading QR Codes

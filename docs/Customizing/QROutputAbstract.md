@@ -224,7 +224,7 @@ class MyOutput extends QROutputAbstract{
 }
 ```
 
-Sometimes it can be necessary to override `collectModules()` in order to apply special effects such as random colors - you can find some implementations in [the SVG examples](https://github.com/chillerlan/php-qrcode/tree/main/examples).
+Sometimes it can be necessary to override `collectModules()` in order to apply special effects such as random colors - you can find some implementations in [the SVG examples](https://github.com/chillerlan/php-qrcode/tree/v5.0.x/examples).
 
 
 ### `saveToFile()` and `toBase64DataURI()`

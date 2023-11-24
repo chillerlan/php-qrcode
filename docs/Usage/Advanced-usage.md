@@ -2,7 +2,7 @@
 
 ## Configuration via `QROptions`
 
-The [`QROptions`](https://github.com/chillerlan/php-qrcode/blob/main/src/QROptions.php) class is a container based on [chillerlan/php-settings-container](https://github.com/chillerlan/php-settings-container) that behaves similar to a [`\stdClass`](https://www.php.net/manual/class.stdclass) object, but with fixed properties.
+The [`QROptions`](https://github.com/chillerlan/php-qrcode/blob/v5.0.x/src/QROptions.php) class is a container based on [chillerlan/php-settings-container](https://github.com/chillerlan/php-settings-container) that behaves similar to a [`\stdClass`](https://www.php.net/manual/class.stdclass) object, but with fixed properties.
 A list with all available `QROptions` can be found under [configuration settings](../Usage/Configuration-settings.md).
 
 ```php
@@ -124,7 +124,7 @@ $qrcode->setOptions($options);
 
 ### Render a `QRMatrix` instance
 
-You can render a [`QRMatrix`](https://github.com/chillerlan/php-qrcode/blob/main/src/Data/QRMatrix.php) instance directly:
+You can render a [`QRMatrix`](https://github.com/chillerlan/php-qrcode/blob/v5.0.x/src/Data/QRMatrix.php) instance directly:
 
 ```php
 // a matrix from the current data segments
@@ -167,7 +167,7 @@ $output = $qrcode->render();
 $qrcode->render(null, '/path/to/qrcode.svg');
 ```
 
-The [`QRDataModeInterface`](https://github.com/chillerlan/php-qrcode/blob/main/src/Data/QRDataModeInterface.php) offers the `validateString()` method (implemended for `AlphaNum`, `Byte`, `Hanzi`, `Kanji` and `Number`).
+The [`QRDataModeInterface`](https://github.com/chillerlan/php-qrcode/blob/v5.0.x/src/Data/QRDataModeInterface.php) offers the `validateString()` method (implemended for `AlphaNum`, `Byte`, `Hanzi`, `Kanji` and `Number`).
 This method is used internally when a data mode is invoked, but it can come in handy if you need to check input data beforehand.
 
 ```php
@@ -194,7 +194,7 @@ $result = $qrcode->readFromFile('path/to/qrcode.png');
 $result = $qrcode->readFromBlob($imagedata);
 ```
 
-The `QRMatrix` object from the [`DecoderResult`](https://github.com/chillerlan/php-qrcode/blob/main/src/Decoder/DecoderResult.php) can be reused:
+The `QRMatrix` object from the [`DecoderResult`](https://github.com/chillerlan/php-qrcode/blob/v5.0.x/src/Decoder/DecoderResult.php) can be reused:
 
 ```php
 $matrix = $result->getQRMatrix();

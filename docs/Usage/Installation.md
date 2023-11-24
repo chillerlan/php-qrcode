@@ -13,13 +13,13 @@ Installation via [`composer.json`](https://getcomposer.org/doc/04-schema.md):
 {
 	"require": {
 		"php": "^7.4",
-		"chillerlan/php-qrcode": "dev-main"
+		"chillerlan/php-qrcode": "v5.0.x-dev"
 	}
 }
 ```
 
-Note: replace `dev-main` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^4.3` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions.
-In case you want to keep using `dev-main`, specify the hash of a commit to avoid running into unforseen issues, like so: `dev-main#cb69751c3bc090a7fdd2f2601bbe10f28d225f10`
+Note: replace `v5.0.x-dev` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^4.3` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions.
+In case you want to keep using `v5.0.x-dev`, specify the hash of a commit to avoid running into unforseen issues, like so: `v5.0.x-dev#cb69751c3bc090a7fdd2f2601bbe10f28d225f10`
 
 
 #### Version switch
@@ -50,13 +50,13 @@ If you want to install the package from a specific tag or commit, do as follows:
 
 ```shell
 composer require chillerlan/php-qrcode:4.3.4
-composer require chillerlan/php-qrcode:dev-main#f15b0afe9d4128bf734c3bf1bcffae72bf7b3e53
+composer require chillerlan/php-qrcode:v5.0.x-dev#f15b0afe9d4128bf734c3bf1bcffae72bf7b3e53
 ```
 
 
 ## Manual installation
 
-Download the desired version of the package from [main](https://github.com/chillerlan/php-qrcode/archive/refs/heads/main.zip) or
+Download the desired version of the package from [v5.0.x](https://github.com/chillerlan/php-qrcode/archive/refs/heads/v5.0.x.zip) or
 [release](https://github.com/chillerlan/php-qrcode/releases) and extract the contents to your project folder.
 After that, run `composer install` in the package root directory to install the required dependencies and generate `./vendor/autoload.php`.
 

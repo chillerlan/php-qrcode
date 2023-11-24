@@ -1,6 +1,6 @@
 # QRString
 
-[Class `QRString`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRString.php): String output: plain text, [JSON](https://developer.mozilla.org/en-US/docs/Glossary/JSON)
+[Class `QRString`](https://github.com/chillerlan/php-qrcode/blob/v5.0.x/src/Output/QRString.php): String output: plain text, [JSON](https://developer.mozilla.org/en-US/docs/Glossary/JSON)
 
 ## Plain text
 

@@ -72,7 +72,7 @@ $options->moduleValues = [
 ];
 ```
 
-The several output classes may need different substitute values (you can find examples [in the test `moduleValueProvider()` for each output class](https://github.com/chillerlan/php-qrcode/tree/main/tests/Output)):
+The several output classes may need different substitute values (you can find examples [in the test `moduleValueProvider()` for each output class](https://github.com/chillerlan/php-qrcode/tree/v5.0.x/tests/Output)):
 
 ```php
 // for HTML, SVG and ImageMagick

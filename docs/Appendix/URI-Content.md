@@ -147,7 +147,7 @@ The parameters `algorithm`, `digits` and `period` may not be supported by some d
 - [RFC 6238 - Time-Based One-Time Password Algorithm](https://datatracker.ietf.org/doc/html/rfc6238)
 - [Google Authenticator (Wikipedia)](https://en.wikipedia.org/wiki/Google_Authenticator)
 - [google-authenticator: Key Uri Format (GitHub)](https://github.com/google/google-authenticator/wiki/Key-Uri-Format)
-- [php-qrcode: Authenticator example (GitHub)](https://github.com/chillerlan/php-qrcode/blob/main/examples/authenticator.php)
+- [php-qrcode: Authenticator example (GitHub)](https://github.com/chillerlan/php-qrcode/blob/v5.0.x/examples/authenticator.php)
 
 
 ## Wireless Network configuration

@@ -4,10 +4,10 @@
 
 ### User manual via Sphinx
 
-[![Documentation Status](https://readthedocs.org/projects/php-qrcode/badge/?version=main)](https://php-qrcode.readthedocs.io/en/main/?badge=main)
+[![Documentation Status](https://readthedocs.org/projects/php-qrcode/badge/?version=v5.0.x)](https://php-qrcode.readthedocs.io/en/v5.0.x/)
 
 The user manual can be auto generated with [Sphinx](https://www.sphinx-doc.org) from the markdown sources contained in this directory, in order to upload it to [Read the Docs](https://readthedocs.org).
-The online documentation can be found at [php-qrcode.readthedocs.io](https://php-qrcode.readthedocs.io/en/main/) ([project page](https://readthedocs.org/projects/php-qrcode/)), a local copy is built during CI and stored in the [`readthedocs` branch](https://github.com/chillerlan/php-qrcode/tree/readthedocs).
+The online documentation can be found at [php-qrcode.readthedocs.io](https://php-qrcode.readthedocs.io/en/v5.0.x/) ([project page](https://readthedocs.org/projects/php-qrcode/)), a local copy is built during CI and stored in the [`readthedocs` branch](https://github.com/chillerlan/php-qrcode/tree/readthedocs).
 
 
 #### Run Sphinx locally
