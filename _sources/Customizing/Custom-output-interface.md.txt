@@ -1,6 +1,6 @@
 # Custom `QROutputInterface`
 
-Let's suppose that you want to create your own output interface because there's no built-in output class that supports the format you need for your application.
+Let's suppose that we want to create our own output interface because there's no built-in output class that supports the format we need for our application.
 In this example we'll create a string output class that outputs the coordinates for each module, separated by module type.
 
 
@@ -36,7 +36,7 @@ In this example we'll accept string values, the characters `a-z` (case-insensiti
 	}
 ```
 
-To prepare the final module substitute, you should transform the given (validated) input value in a way so that it can be accessed without any further calls or transformation.
+To prepare the final module substitute, we should transform the given (validated) input value in a way so that it can be accessed without any further calls or transformation.
 In the built-in output for example this means it would return an `ImagickPixel` instance or the integer value returned by `imagecolorallocate()` on the current `GdImage` instance.
 
 For our example, we'll lowercase the validated string:
@@ -47,8 +47,8 @@ For our example, we'll lowercase the validated string:
 	}
 ```
 
-Finally, we need to provide a default value for dark and light, you can call `prepareModuleValue()` here if necessary.
-We'll return an empty string `''` here as we're going to use the `QROutputInterface::LAYERNAMES` constant for non-existing values
+Finally, we need to provide a default value for dark and light, we can call `prepareModuleValue()` here if necessary.
+We'll return an empty string `''` as we're going to use the `QROutputInterface::LAYERNAMES` constant for non-existing values
 (returning `null` would run into an exception in `QROutputAbstract::getModuleValue()`).
 
 ```php
@@ -105,14 +105,14 @@ We've introduced another method that handles the module rendering, which incoope
 Speaking of option settings, there's also `QROptions::$connectPaths` which we haven't taken care of yet - the good news is that we don't need to as it is already implemented!
 We'll modify the above `dump()` method to use `QROutputAbstract::collectModules()` instead.
 
-The module collector accepts a closure as its only parameter, the closure is called with 4 parameters:
+The module collector accepts a `Closure` as its only parameter, which is called with 4 parameters:
 
 - `$x`           : current column
 - `$y`           : current row
 - `$M_TYPE`      : field value
 - `$M_TYPE_LAYER`: (possibly modified) field value that acts as layer id
 
-We'll only need the first 3 parameters, so our closure would look as follows:
+We only need the first 3 parameters, so our closure would look as follows:
 
 ```php
 $closure = fn(int $x, int $y, int $M_TYPE):string => $this->module($x, $y, $M_TYPE);

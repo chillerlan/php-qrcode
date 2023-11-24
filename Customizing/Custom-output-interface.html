@@ -365,7 +365,7 @@
              
   <section id="custom-qroutputinterface">
 <h1>Custom <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code><a class="headerlink" href="#custom-qroutputinterface" title="Link to this heading"></a></h1>
-<p>Let’s suppose that you want to create your own output interface because there’s no built-in output class that supports the format you need for your application.
+<p>Let’s suppose that we want to create our own output interface because there’s no built-in output class that supports the format we need for our application.
 In this example we’ll create a string output class that outputs the coordinates for each module, separated by module type.</p>
 <section id="class-skeleton">
 <h2>Class skeleton<a class="headerlink" href="#class-skeleton" title="Link to this heading"></a></h2>
@@ -394,7 +394,7 @@ For example in the built-in GD output it would check if the value is an array th
 	<span class="p">}</span>
 </pre></div>
 </div>
-<p>To prepare the final module substitute, you should transform the given (validated) input value in a way so that it can be accessed without any further calls or transformation.
+<p>To prepare the final module substitute, we should transform the given (validated) input value in a way so that it can be accessed without any further calls or transformation.
 In the built-in output for example this means it would return an <code class="docutils literal notranslate"><span class="pre">ImagickPixel</span></code> instance or the integer value returned by <code class="docutils literal notranslate"><span class="pre">imagecolorallocate()</span></code> on the current <code class="docutils literal notranslate"><span class="pre">GdImage</span></code> instance.</p>
 <p>For our example, we’ll lowercase the validated string:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span>	<span class="k">protected</span> <span class="k">function</span> <span class="nf">prepareModuleValue</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span><span class="p">{</span>
@@ -402,8 +402,8 @@ In the built-in output for example this means it would return an <code class="do
 	<span class="p">}</span>
 </pre></div>
 </div>
-<p>Finally, we need to provide a default value for dark and light, you can call <code class="docutils literal notranslate"><span class="pre">prepareModuleValue()</span></code> here if necessary.
-We’ll return an empty string <code class="docutils literal notranslate"><span class="pre">''</span></code> here as we’re going to use the <code class="docutils literal notranslate"><span class="pre">QROutputInterface::LAYERNAMES</span></code> constant for non-existing values
+<p>Finally, we need to provide a default value for dark and light, we can call <code class="docutils literal notranslate"><span class="pre">prepareModuleValue()</span></code> here if necessary.
+We’ll return an empty string <code class="docutils literal notranslate"><span class="pre">''</span></code> as we’re going to use the <code class="docutils literal notranslate"><span class="pre">QROutputInterface::LAYERNAMES</span></code> constant for non-existing values
 (returning <code class="docutils literal notranslate"><span class="pre">null</span></code> would run into an exception in <code class="docutils literal notranslate"><span class="pre">QROutputAbstract::getModuleValue()</span></code>).</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span>	<span class="k">protected</span> <span class="k">function</span> <span class="nf">getDefaultModuleValue</span><span class="p">(</span><span class="nx">bool</span> <span class="nv">$isDark</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span><span class="p">{</span>
 		<span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
@@ -453,14 +453,14 @@ In order to do so, we need to collect the modules per <code class="docutils lite
 </div>
 <p>Speaking of option settings, there’s also <code class="docutils literal notranslate"><span class="pre">QROptions::$connectPaths</span></code> which we haven’t taken care of yet - the good news is that we don’t need to as it is already implemented!
 We’ll modify the above <code class="docutils literal notranslate"><span class="pre">dump()</span></code> method to use <code class="docutils literal notranslate"><span class="pre">QROutputAbstract::collectModules()</span></code> instead.</p>
-<p>The module collector accepts a closure as its only parameter, the closure is called with 4 parameters:</p>
+<p>The module collector accepts a <code class="docutils literal notranslate"><span class="pre">Closure</span></code> as its only parameter, which is called with 4 parameters:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">$x</span></code>           : current column</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$y</span></code>           : current row</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$M_TYPE</span></code>      : field value</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">$M_TYPE_LAYER</span></code>: (possibly modified) field value that acts as layer id</p></li>
 </ul>
-<p>We’ll only need the first 3 parameters, so our closure would look as follows:</p>
+<p>We only need the first 3 parameters, so our closure would look as follows:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$closure</span> <span class="o">=</span> <span class="nx">fn</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$x</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$y</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$M_TYPE</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">module</span><span class="p">(</span><span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">,</span> <span class="nv">$M_TYPE</span><span class="p">);</span>
 </pre></div>
 </div>
