@@ -11,6 +11,7 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, Mode, Version};
+use chillerlan\QRCode\QROptions;
 use chillerlan\Settings\SettingsContainerInterface;
 
 use function count;
@@ -23,10 +24,8 @@ final class QRData{
 
 	/**
 	 * the options instance
-	 *
-	 * @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions
 	 */
-	private SettingsContainerInterface $options;
+	private SettingsContainerInterface|QROptions $options;
 
 	/**
 	 * a BitBuffer instance
@@ -58,7 +57,7 @@ final class QRData{
 	/**
 	 * QRData constructor.
 	 */
-	public function __construct(SettingsContainerInterface $options, array $dataSegments = []){
+	public function __construct(SettingsContainerInterface|QROptions $options, array $dataSegments = []){
 		$this->options       = $options;
 		$this->bitBuffer     = new BitBuffer;
 		$this->eccLevel      = new EccLevel($this->options->eccLevel);

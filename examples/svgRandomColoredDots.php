@@ -15,7 +15,7 @@
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\{QROutputInterface, QRMarkupSVG};
+use chillerlan\QRCode\Output\QRMarkupSVG;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -126,7 +126,6 @@ $options->svgDefs = '
 	]]></style>';
 
 // set the custom output interface
-$options->outputType          = QROutputInterface::CUSTOM;
 $options->outputInterface     = RandomDotsSVGOutput::class;
 
 // common qrcode options

@@ -11,14 +11,12 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Output\QRGdImageWEBP;
-use chillerlan\QRCode\Output\QROutputInterface;
 
 /**
  *
  */
 final class QRGdImageWEBPTest extends QRGdImageTestAbstract{
 
-	protected string $type = QROutputInterface::GDIMAGE_WEBP;
-	protected string $FQN  = QRGdImageWEBP::class;
+	protected string $FQN = QRGdImageWEBP::class;
 
 }

@@ -11,7 +11,7 @@
 namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCode\{QROptions, QRCode};
-use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
+use chillerlan\QRCode\Output\QRCodeOutputException;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 use function file_get_contents;
@@ -34,25 +34,13 @@ final class QRCodeTest extends TestCase{
 	}
 
 	/**
-	 * tests if an exception is thrown when an invalid (built-in) output type is specified
-	 */
-	public function testInitOutputInterfaceException():void{
-		$this->expectException(QRCodeOutputException::class);
-		$this->expectExceptionMessage('invalid output module');
-
-		$this->options->outputType = 'foo';
-
-		$this->qrcode->setOptions($this->options)->render('test');
-	}
-
-	/**
 	 * tests if an exception is thrown if the given output class does not exist
 	 */
 	public function testInitCustomOutputInterfaceNotExistsException():void{
 		$this->expectException(QRCodeOutputException::class);
 		$this->expectExceptionMessage('invalid output module');
 
-		$this->options->outputType = QROutputInterface::CUSTOM;
+		$this->options->outputInterface = 'foo';
 
 		$this->qrcode->setOptions($this->options)->render('test');
 	}
@@ -64,7 +52,6 @@ final class QRCodeTest extends TestCase{
 		$this->expectException(QRCodeOutputException::class);
 		$this->expectExceptionMessage('output module does not implement QROutputInterface');
 
-		$this->options->outputType      = QROutputInterface::CUSTOM;
 		$this->options->outputInterface = stdClass::class;
 
 		$this->qrcode->setOptions($this->options)->render('test');

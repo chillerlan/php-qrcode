@@ -12,7 +12,7 @@ namespace chillerlan\QRCodeTest\Performance;
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\{EccLevel, Mode, Version};
-use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\QRStringJSON;
 use chillerlan\QRCodeTest\QRMaxLengthTrait;
 use Generator;
 use function file_put_contents;
@@ -70,9 +70,9 @@ $json = [];
 foreach($generator->dataProvider() as $key => [$version, $eccLevel, $dataModeInterface, $dataModeName, $data]){
 
 	$options = new QROptions([
-		'outputType' => QROutputInterface::STRING_JSON,
-		'version'    => $version,
-		'eccLevel'   => $eccLevel->getLevel(),
+		'outputInterface' => QRStringJSON::class,
+		'version'         => $version,
+		'eccLevel'        => $eccLevel->getLevel(),
 	]);
 
 	$test->run(fn() => (new QRCode($options))->addSegment(new $dataModeInterface($data))->render());

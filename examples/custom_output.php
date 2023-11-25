@@ -11,8 +11,7 @@
  */
 
 use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Common\EccLevel;
-use chillerlan\QRCode\Output\{QROutputAbstract, QROutputInterface};
+use chillerlan\QRCode\Output\QROutputAbstract;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -25,7 +24,7 @@ class MyCustomOutput extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	public static function moduleValueIsValid($value):bool{
+	public static function moduleValueIsValid(mixed $value):bool{
 		// TODO: Implement moduleValueIsValid() method. (interface)
 		return false;
 	}
@@ -33,7 +32,7 @@ class MyCustomOutput extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function prepareModuleValue($value){
+	protected function prepareModuleValue(mixed $value):mixed{
 		// TODO: Implement prepareModuleValue() method. (abstract)
 		return null;
 	}
@@ -73,7 +72,7 @@ class MyCustomOutput extends QROutputAbstract{
 $options = new QROptions;
 
 $options->version  = 5;
-$options->eccLevel = EccLevel::L;
+$options->eccLevel = 'L';
 
 $data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
 
@@ -89,7 +88,6 @@ $qrOutputInterface = new MyCustomOutput($options, $qrcode->getQRMatrix());
 var_dump($qrOutputInterface->dump());
 
 // or just via the options
-$options->outputType      = QROutputInterface::CUSTOM;
 $options->outputInterface = MyCustomOutput::class;
 
 var_dump((new QRCode($options))->render($data));

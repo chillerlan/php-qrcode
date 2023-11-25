@@ -10,18 +10,18 @@
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\{QROutputInterface, QRStringText};
+use chillerlan\QRCode\Output\QRStringText;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
 $options = new QROptions;
 
-$options->version       = 3;
-$options->quietzoneSize = 2;
-$options->outputType    = QROutputInterface::STRING_TEXT;
-$options->eol           = "\n";
-$options->textLineStart = str_repeat(' ', 6);
-$options->moduleValues  = [
+$options->version         = 3;
+$options->quietzoneSize   = 2;
+$options->outputInterface = QRStringText::class;
+$options->eol             = "\n";
+$options->textLineStart   = str_repeat(' ', 6);
+$options->moduleValues    = [
 	QRMatrix::M_FINDER_DARK    => QRStringText::ansi8('██', 124),
 	QRMatrix::M_FINDER         => QRStringText::ansi8('░░', 124),
 	QRMatrix::M_FINDER_DOT     => QRStringText::ansi8('██', 124),

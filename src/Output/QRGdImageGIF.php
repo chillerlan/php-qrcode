@@ -21,7 +21,7 @@ use function imagegif;
  */
 class QRGdImageGIF extends QRGdImage{
 
-	public const MIME_TYPE = 'image/gif';
+	final public const MIME_TYPE = 'image/gif';
 
 	/**
 	 * @inheritDoc

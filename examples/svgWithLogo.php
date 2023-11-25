@@ -13,7 +13,7 @@
 use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\{QROutputInterface, QRMarkupSVG};
+use chillerlan\QRCode\Output\QRMarkupSVG;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -113,7 +113,6 @@ $options->svgLogoScale        = 0.25;
 $options->svgLogoCssClass     = 'dark';
 // QROptions
 $options->version             = 5;
-$options->outputType          = QROutputInterface::CUSTOM;
 $options->outputInterface     = QRSvgWithLogo::class;
 $options->outputBase64        = false;
 $options->eccLevel            = EccLevel::H; // ECC level H is necessary when using logos

@@ -25,7 +25,7 @@ trait QRMaxLengthTrait{
 	 *
 	 * @var int[][][]
 	 */
-	private static array $MAX_LENGTH =[
+	protected const MAX_LENGTH =[
 	//	v  => [NUMERIC => [L, M, Q, H ], ALPHANUM => [L, M, Q, H], BINARY => [L, M, Q, H  ], KANJI => [L, M, Q, H   ]]
 		1  => [[  41,   34,   27,   17], [  25,   20,   16,   10], [  17,   14,   11,    7], [  10,    8,    7,    4]],
 		2  => [[  77,   63,   48,   34], [  47,   38,   29,   20], [  32,   26,   20,   14], [  20,   16,   12,    8]],
@@ -73,8 +73,6 @@ trait QRMaxLengthTrait{
 	/**
 	 * the maximum character count for the given $mode and $eccLevel
 	 *
-	 * @todo: this methood is only used in unit tests (incl. MAX_LENGTH table)
-	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 * @codeCoverageIgnore
 	 */
@@ -95,16 +93,16 @@ trait QRMaxLengthTrait{
 		$ver = $version->getVersionNumber();
 		$ecc = $eccLevel->getOrdinal();
 
-		if(!isset(static::$MAX_LENGTH[$ver])){
+		if(!isset(static::MAX_LENGTH[$ver])){
 			throw new QRCodeException('invalid $version');
 		}
 
-		if(!isset(static::$MAX_LENGTH[$ver][$dataMode][$ecc])){
+		if(!isset(static::MAX_LENGTH[$ver][$dataMode][$ecc])){
 			throw new QRCodeException('invalid $ecc');
 		}
 
 		/** @SuppressWarnings(PHPMD.UndefinedVariable) */
-		$maxlength = static::$MAX_LENGTH[$ver][$dataMode][$ecc];
+		$maxlength = static::MAX_LENGTH[$ver][$dataMode][$ecc];
 
 		// Hanzi mode sets an additional 4 bit long subset identifier
 		if($mode === Mode::HANZI){

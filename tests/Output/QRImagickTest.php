@@ -14,7 +14,7 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\{QRImagick, QROutputInterface};
+use chillerlan\QRCode\Output\QRImagick;
 use Imagick;
 
 /**
@@ -22,8 +22,7 @@ use Imagick;
  */
 final class QRImagickTest extends QROutputTestAbstract{
 
-	protected string $FQN  = QRImagick::class;
-	protected string $type = QROutputInterface::IMAGICK;
+	protected string $FQN = QRImagick::class;
 
 	/**
 	 * @inheritDoc

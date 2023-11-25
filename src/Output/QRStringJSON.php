@@ -19,7 +19,7 @@ use function json_encode;
  */
 class QRStringJSON extends QROutputAbstract{
 
-	public const MIME_TYPE = 'application/json';
+	final public const MIME_TYPE = 'application/json';
 
 	/**
 	 * @inheritDoc
@@ -39,7 +39,7 @@ class QRStringJSON extends QROutputAbstract{
 	 *
 	 * @inheritDoc
 	 */
-	protected function prepareModuleValue($value):string{
+	protected function prepareModuleValue(mixed $value):string{
 		return '';
 	}
 
@@ -57,7 +57,7 @@ class QRStringJSON extends QROutputAbstract{
 	 *
 	 * @inheritDoc
 	 */
-	public static function moduleValueIsValid($value):bool{
+	public static function moduleValueIsValid(mixed $value):bool{
 		return true;
 	}
 

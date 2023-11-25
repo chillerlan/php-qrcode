@@ -26,7 +26,7 @@ abstract class QRMarkup extends QROutputAbstract{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
 	 * @inheritDoc
 	 */
-	public static function moduleValueIsValid($value):bool{
+	public static function moduleValueIsValid(mixed $value):bool{
 
 		if(!is_string($value)){
 			return false;
@@ -57,7 +57,7 @@ abstract class QRMarkup extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function prepareModuleValue($value):string{
+	protected function prepareModuleValue(mixed $value):string{
 		return trim(strip_tags($value), " '\"\r\n\t");
 	}
 

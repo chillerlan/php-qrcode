@@ -18,7 +18,6 @@
 
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\QRMarkupSVG;
-use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 
@@ -85,7 +84,6 @@ class SVGConvert extends QRMarkupSVG{
 $options = new QROptions;
 
 $options->version              = 7;
-$options->outputType           = QROutputInterface::CUSTOM;
 $options->outputInterface      = SVGConvert::class;
 $options->imagickFormat        = 'png32';
 $options->scale                = 20;

@@ -25,8 +25,7 @@ use function array_slice, array_splice, file_exists, is_file, is_readable, realp
  */
 abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 
-	/** @var \chillerlan\QRCode\QROptions|\chillerlan\Settings\SettingsContainerInterface */
-	protected SettingsContainerInterface $options;
+	protected SettingsContainerInterface|QROptions $options;
 	protected array $luminances;
 	protected int   $width;
 	protected int   $height;
@@ -34,7 +33,7 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 	/**
 	 *
 	 */
-	public function __construct(int $width, int $height, SettingsContainerInterface $options = null){
+	public function __construct(int $width, int $height, SettingsContainerInterface|QROptions $options = null){
 		$this->width   = $width;
 		$this->height  = $height;
 		$this->options = ($options ?? new QROptions);

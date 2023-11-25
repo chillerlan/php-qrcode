@@ -12,12 +12,10 @@ namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\QREps;
-use chillerlan\QRCode\Output\QROutputInterface;
 
 class QREpsTest extends QROutputTestAbstract{
 
-	protected string $FQN  = QREps::class;
-	protected string $type = QROutputInterface::EPS;
+	protected string $FQN = QREps::class;
 
 	public static function moduleValueProvider():array{
 		return [

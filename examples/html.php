@@ -10,16 +10,16 @@
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\QRMarkupHTML;
 
 require_once '../vendor/autoload.php';
 
 $options = new QROptions;
 
-$options->version      = 5;
-$options->outputType   = QROutputInterface::MARKUP_HTML;
-$options->cssClass     = 'qrcode';
-$options->moduleValues = [
+$options->version         = 5;
+$options->outputInterface = QRMarkupHTML::class;
+$options->cssClass        = 'qrcode';
+$options->moduleValues    = [
 	// finder
 	QRMatrix::M_FINDER_DARK    => '#A71111', // dark (true)
 	QRMatrix::M_FINDER_DOT     => '#A71111', // finder dot, dark (true)

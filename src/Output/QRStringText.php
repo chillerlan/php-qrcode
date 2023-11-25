@@ -22,19 +22,19 @@ use function sprintf;
  */
 class QRStringText extends QROutputAbstract{
 
-	public const MIME_TYPE = 'text/plain';
+	final public const MIME_TYPE = 'text/plain';
 
 	/**
 	 * @inheritDoc
 	 */
-	public static function moduleValueIsValid($value):bool{
+	public static function moduleValueIsValid(mixed $value):bool{
 		return is_string($value);
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	protected function prepareModuleValue($value):string{
+	protected function prepareModuleValue(mixed $value):string{
 		return $value;
 	}
 
@@ -53,7 +53,7 @@ class QRStringText extends QROutputAbstract{
 		$linestart = $this->options->textLineStart;
 
 		foreach($this->matrix->getMatrix() as $row){
-			$lines[] = $linestart.implode('', array_map([$this, 'getModuleValue'], $row));
+			$lines[] = $linestart.implode('', array_map($this->getModuleValue(...), $row));
 		}
 
 		$data = implode($this->eol, $lines);

@@ -13,7 +13,7 @@
 use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\{QRImagick, QROutputInterface};
+use chillerlan\QRCode\Output\QRImagick;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -98,7 +98,6 @@ $options = new ImagickWithLogoOptions;
 
 $options->pngLogo             = __DIR__.'/octocat.png'; // setting from the augmented options
 $options->version             = 5;
-$options->outputType          = QROutputInterface::CUSTOM;
 $options->outputInterface     = QRImagickWithLogo::class; // use the custom output class
 $options->eccLevel            = EccLevel::H;
 $options->outputBase64        = false;

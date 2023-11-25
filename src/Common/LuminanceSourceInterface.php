@@ -51,11 +51,11 @@ interface LuminanceSourceInterface{
 	/**
 	 * Creates a LuminanceSource instance from the given file
 	 */
-	public static function fromFile(string $path):self;
+	public static function fromFile(string $path):static;
 
 	/**
 	 * Creates a LuminanceSource instance from the given data blob
 	 */
-	public static function fromBlob(string $blob):self;
+	public static function fromBlob(string $blob):static;
 
 }

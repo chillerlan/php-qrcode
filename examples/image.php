@@ -10,14 +10,14 @@
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\QRGdImagePNG;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
 $options = new QROptions;
 
 $options->version             = 7;
-$options->outputType          = QROutputInterface::GDIMAGE_PNG;
+$options->outputInterface     = QRGdImagePNG::class;
 $options->scale               = 20;
 $options->outputBase64        = false;
 $options->bgColor             = [200, 150, 200];

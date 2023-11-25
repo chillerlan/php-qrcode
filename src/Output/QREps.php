@@ -22,12 +22,12 @@ use function array_values, count, date, implode, is_array, is_numeric, max, min,
  */
 class QREps extends QROutputAbstract{
 
-	public const MIME_TYPE = 'application/postscript';
+	final public const MIME_TYPE = 'application/postscript';
 
 	/**
 	 * @inheritDoc
 	 */
-	public static function moduleValueIsValid($value):bool{
+	public static function moduleValueIsValid(mixed $value):bool{
 
 		if(!is_array($value) || count($value) < 3){
 			return false;
@@ -50,11 +50,9 @@ class QREps extends QROutputAbstract{
 	}
 
 	/**
-	 * @param array $value
-	 *
 	 * @inheritDoc
 	 */
-	protected function prepareModuleValue($value):string{
+	protected function prepareModuleValue(mixed $value):string{
 		$values = [];
 
 		foreach(array_values($value) as $i => $val){
@@ -130,7 +128,7 @@ class QREps extends QROutputAbstract{
 		}
 
 		// create the path elements
-		$paths = $this->collectModules(fn(int $x, int $y, int $M_TYPE):string => $this->module($x, $y, $M_TYPE));
+		$paths = $this->collectModules($this->module(...));
 
 		foreach($paths as $M_TYPE => $path){
 

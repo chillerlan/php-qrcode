@@ -17,7 +17,7 @@ use function implode, sprintf;
  */
 class QRMarkupHTML extends QRMarkup{
 
-	public const MIME_TYPE = 'text/html';
+	final public const MIME_TYPE = 'text/html';
 
 	/**
 	 * @inheritDoc

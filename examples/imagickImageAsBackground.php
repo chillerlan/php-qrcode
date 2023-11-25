@@ -10,7 +10,6 @@
 
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Output\QRImagick;
-use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QRCodeException;
 use chillerlan\QRCode\QROptions;
@@ -91,7 +90,6 @@ $options = new ImageAsBackgroundOptions;
 
 $options->background           = __DIR__.'/background.jpg'; // setting from the augmented options
 $options->version              = 5;
-$options->outputType           = QROutputInterface::CUSTOM;
 $options->outputInterface      = QRImagickImageAsBackground::class; // use the custom output class
 $options->eccLevel             = EccLevel::H;
 $options->outputBase64         = false;

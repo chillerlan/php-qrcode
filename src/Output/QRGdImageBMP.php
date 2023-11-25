@@ -21,7 +21,7 @@ use function imagebmp;
  */
 class QRGdImageBMP extends QRGdImage{
 
-	public const MIME_TYPE = 'image/bmp';
+	final public const MIME_TYPE = 'image/bmp';
 
 	/**
 	 * @inheritDoc

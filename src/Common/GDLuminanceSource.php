@@ -13,41 +13,27 @@
 
 namespace chillerlan\QRCode\Common;
 
-use chillerlan\QRCode\Decoder\QRCodeDecoderException;
+use chillerlan\QRCode\QROptions;
 use chillerlan\Settings\SettingsContainerInterface;
-use function file_get_contents, get_resource_type, imagecolorat, imagecolorsforindex,
-	imagecreatefromstring, imagefilter, imagesx, imagesy, is_resource;
-use const IMG_FILTER_BRIGHTNESS, IMG_FILTER_CONTRAST, IMG_FILTER_GRAYSCALE, IMG_FILTER_NEGATE, PHP_MAJOR_VERSION;
+use GdImage;
+use function file_get_contents, imagecolorat, imagecolorsforindex,
+	imagecreatefromstring, imagefilter, imagesx, imagesy;
+use const IMG_FILTER_BRIGHTNESS, IMG_FILTER_CONTRAST, IMG_FILTER_GRAYSCALE, IMG_FILTER_NEGATE;
 
 /**
  * This class is used to help decode images from files which arrive as GD Resource
  * It does not support rotation.
  */
-class GDLuminanceSource extends LuminanceSourceAbstract{
+final class GDLuminanceSource extends LuminanceSourceAbstract{
 
-	/**
-	 * @var resource|\GdImage
-	 */
-	protected $gdImage;
+	private GdImage $gdImage;
 
 	/**
 	 * GDLuminanceSource constructor.
 	 *
-	 * @param resource|\GdImage                                    $gdImage
-	 * @param \chillerlan\Settings\SettingsContainerInterface|null $options
-	 *
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
-	public function __construct($gdImage, SettingsContainerInterface $options = null){
-
-		/** @noinspection PhpFullyQualifiedNameUsageInspection */
-		if(
-			(PHP_MAJOR_VERSION >= 8 && !$gdImage instanceof \GdImage) // @todo: remove version check in v6
-			|| (PHP_MAJOR_VERSION < 8 && (!is_resource($gdImage) || get_resource_type($gdImage) !== 'gd'))
-		){
-			throw new QRCodeDecoderException('Invalid GD image source.'); // @codeCoverageIgnore
-		}
-
+	public function __construct(GdImage $gdImage, SettingsContainerInterface|QROptions $options = null){
 		parent::__construct(imagesx($gdImage), imagesy($gdImage), $options);
 
 		$this->gdImage = $gdImage;
@@ -71,7 +57,7 @@ class GDLuminanceSource extends LuminanceSourceAbstract{
 	/**
 	 *
 	 */
-	protected function setLuminancePixels():void{
+	private function setLuminancePixels():void{
 
 		for($j = 0; $j < $this->height; $j++){
 			for($i = 0; $i < $this->width; $i++){
@@ -85,12 +71,12 @@ class GDLuminanceSource extends LuminanceSourceAbstract{
 	}
 
 	/** @inheritDoc */
-	public static function fromFile(string $path, SettingsContainerInterface $options = null):self{
+	public static function fromFile(string $path, SettingsContainerInterface $options = null):static{
 		return new self(imagecreatefromstring(file_get_contents(self::checkFile($path))), $options);
 	}
 
 	/** @inheritDoc */
-	public static function fromBlob(string $blob, SettingsContainerInterface $options = null):self{
+	public static function fromBlob(string $blob, SettingsContainerInterface $options = null):static{
 		return new self(imagecreatefromstring($blob), $options);
 	}
 

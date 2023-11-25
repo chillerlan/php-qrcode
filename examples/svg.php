@@ -12,14 +12,14 @@
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\QRMarkupSVG;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
 $options = new QROptions;
 
 $options->version              = 7;
-$options->outputType           = QROutputInterface::MARKUP_SVG;
+$options->outputInterface      = QRMarkupSVG::class;
 $options->outputBase64         = false;
 // if set to false, the light modules won't be rendered
 $options->drawLightModules     = true;

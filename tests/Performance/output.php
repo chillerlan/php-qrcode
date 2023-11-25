@@ -37,12 +37,11 @@ $generator = new class () {
 
 		for($v = 5; $v <= 40; $v += 5){
 			$version  = new Version($v);
-			foreach(QROutputInterface::MODES as $outputType => $FQN){
+			foreach(QROutputInterface::MODES as $FQN){
 				$name = str_replace('chillerlan\\QRCode\\Output\\', '', $FQN);
 
 				yield sprintf('version %2s: %-14s', $version, $name) => [
 					$version->getVersionNumber(),
-					$outputType,
 					$FQN,
 					substr($str, 0, self::getMaxLengthForMode(Mode::BYTE, $version, $eccLevel)),
 					$name,
@@ -57,11 +56,11 @@ $generator = new class () {
 $test = new PerformanceTest(100);
 $json = [];
 
-foreach($generator->dataProvider() as $key => [$version, $outputType, $FQN, $data, $name]){
+foreach($generator->dataProvider() as $key => [$version, $FQN, $data, $name]){
 
 	$options = new QROptions([
 		'version'             => $version,
-		'outputType'          => $outputType,
+		'outputInterface'     => $FQN,
 		'connectPaths'        => true,
 		'drawLightModules'    => true,
 		'drawCircularModules' => true,

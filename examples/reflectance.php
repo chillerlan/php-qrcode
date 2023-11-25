@@ -10,7 +10,7 @@
 
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\QRMarkupSVG;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 
@@ -18,7 +18,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 $options = new QROptions;
 
-$options->outputType          = QROutputInterface::MARKUP_SVG;
+$options->outputInterface     = QRMarkupSVG::class;
 $options->outputBase64        = false;
 $options->svgAddXmlHeader     = false;
 $options->connectPaths        = true;

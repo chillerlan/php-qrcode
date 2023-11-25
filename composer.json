@@ -1,6 +1,6 @@
 {
 	"name": "chillerlan/php-qrcode",
-	"description": "A QR code generator and reader with a user friendly API. PHP 7.4+",
+	"description": "A QR code generator and reader with a user friendly API. PHP 8.2+",
 	"homepage": "https://github.com/chillerlan/php-qrcode",
 	"license": [
 		"MIT", "Apache-2.0"
@@ -40,15 +40,15 @@
 	"minimum-stability": "stable",
 	"prefer-stable": true,
 	"require": {
-		"php": "^7.4 || ^8.0",
+		"php": "^8.2",
 		"ext-mbstring": "*",
-		"chillerlan/php-settings-container": "^2.1.4 || ^3.1"
+		"chillerlan/php-settings-container": "^3.1"
 	},
 	"require-dev": {
-		"chillerlan/php-authenticator": "^4.0 || ^5.0",
+		"chillerlan/php-authenticator": "^5.0",
 		"phan/phan": "^5.4",
 		"phpunit/phpunit": "^9.6",
-		"phpmd/phpmd": "^2.13",
+		"phpmd/phpmd": "^2.14",
 		"setasign/fpdf": "^1.8.2",
 		"squizlabs/php_codesniffer": "^3.7"
 	},

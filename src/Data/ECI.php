@@ -67,7 +67,7 @@ final class ECI extends QRDataModeAbstract{
 	 * @inheritDoc
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function write(BitBuffer $bitBuffer, int $versionNumber):QRDataModeInterface{
+	public function write(BitBuffer $bitBuffer, int $versionNumber):static{
 		$bitBuffer->put(self::DATAMODE, 4);
 
 		if($this->encoding < 128){

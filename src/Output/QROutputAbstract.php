@@ -11,6 +11,7 @@
 namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\QROptions;
 use chillerlan\Settings\SettingsContainerInterface;
 use Closure;
 use function base64_encode, dirname, file_put_contents, is_writable, ksort, sprintf;
@@ -43,9 +44,9 @@ abstract class QROutputAbstract implements QROutputInterface{
 	protected QRMatrix $matrix;
 
 	/**
-	 * @var \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions
+	 * the options instance
 	 */
-	protected SettingsContainerInterface $options;
+	protected SettingsContainerInterface|QROptions $options;
 
 	/** @see \chillerlan\QRCode\QROptions::$scale */
 	protected int $scale;
@@ -68,7 +69,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	/**
 	 * QROutputAbstract constructor.
 	 */
-	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
+	public function __construct(SettingsContainerInterface|QROptions $options, QRMatrix $matrix){
 		$this->options = $options;
 		$this->matrix  = $matrix;
 
@@ -148,10 +149,9 @@ abstract class QROutputAbstract implements QROutputInterface{
 	/**
 	 * Returns the prepared value for the given $M_TYPE
 	 *
-	 * @return mixed return value depends on the output class
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException if $moduleValues[$M_TYPE] doesn't exist
 	 */
-	protected function getModuleValue(int $M_TYPE){
+	protected function getModuleValue(int $M_TYPE):mixed{
 
 		if(!isset($this->moduleValues[$M_TYPE])){
 			throw new QRCodeOutputException(sprintf('$M_TYPE %012b not found in module values map', $M_TYPE));
@@ -162,34 +162,26 @@ abstract class QROutputAbstract implements QROutputInterface{
 
 	/**
 	 * Returns the prepared module value at the given coordinate [$x, $y] (convenience)
-	 *
-	 * @return mixed|null
 	 */
-	protected function getModuleValueAt(int $x, int $y){
+	protected function getModuleValueAt(int $x, int $y):mixed{
 		return $this->getModuleValue($this->matrix->get($x, $y));
 	}
 
 	/**
-	 * Prepares the value for the given input ()
-	 *
-	 * @param mixed $value
-	 *
-	 * @return mixed|null return value depends on the output class
+	 * Prepares the value for the given input (return value depends on the output class)
 	 */
-	abstract protected function prepareModuleValue($value);
+	abstract protected function prepareModuleValue(mixed $value):mixed;
 
 	/**
-	 * Returns a default value for either dark or light modules
-	 *
-	 * @return mixed|null return value depends on the output class
+	 * Returns a default value for either dark or light modules (return value depends on the output class)
 	 */
-	abstract protected function getDefaultModuleValue(bool $isDark);
+	abstract protected function getDefaultModuleValue(bool $isDark):mixed;
 
 	/**
 	 * Returns a base64 data URI for the given string and mime type
 	 */
 	protected function toBase64DataURI(string $data, string $mime = null):string{
-		return sprintf('data:%s;base64,%s', ($mime ?? $this::MIME_TYPE), base64_encode($data));
+		return sprintf('data:%s;base64,%s', ($mime ?? static::MIME_TYPE), base64_encode($data));
 	}
 
 	/**

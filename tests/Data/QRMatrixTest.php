@@ -13,7 +13,7 @@ namespace chillerlan\QRCodeTest\Data;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
-use chillerlan\QRCode\Output\{QROutputInterface, QRString};
+use chillerlan\QRCode\Output\QRStringText;
 use PHPUnit\Framework\TestCase;
 use Generator;
 use function defined;
@@ -47,41 +47,40 @@ final class QRMatrixTest extends TestCase{
 		}
 
 		$opt = new QROptions;
-		$opt->outputType  = QROutputInterface::STRING_TEXT;
-		$opt->eol         = "\n";
+		$opt->eol          = "\n";
 		$opt->moduleValues = [
 			// finder
-			QRMatrix::M_FINDER_DARK    => QRString::ansi8('██', 124), // dark (true)
-			QRMatrix::M_FINDER         => QRString::ansi8('░░', 124), // light (false)
-			QRMatrix::M_FINDER_DOT     => QRString::ansi8('██', 124), // finder dot, dark (true)
+			QRMatrix::M_FINDER_DARK    => QRStringText::ansi8('██', 124), // dark (true)
+			QRMatrix::M_FINDER         => QRStringText::ansi8('░░', 124), // light (false)
+			QRMatrix::M_FINDER_DOT     => QRStringText::ansi8('██', 124), // finder dot, dark (true)
 			// alignment
-			QRMatrix::M_ALIGNMENT_DARK => QRString::ansi8('██', 2),
-			QRMatrix::M_ALIGNMENT      => QRString::ansi8('░░', 2),
+			QRMatrix::M_ALIGNMENT_DARK => QRStringText::ansi8('██', 2),
+			QRMatrix::M_ALIGNMENT      => QRStringText::ansi8('░░', 2),
 			// timing
-			QRMatrix::M_TIMING_DARK    => QRString::ansi8('██', 184),
-			QRMatrix::M_TIMING         => QRString::ansi8('░░', 184),
+			QRMatrix::M_TIMING_DARK    => QRStringText::ansi8('██', 184),
+			QRMatrix::M_TIMING         => QRStringText::ansi8('░░', 184),
 			// format
-			QRMatrix::M_FORMAT_DARK    => QRString::ansi8('██', 200),
-			QRMatrix::M_FORMAT         => QRString::ansi8('░░', 200),
+			QRMatrix::M_FORMAT_DARK    => QRStringText::ansi8('██', 200),
+			QRMatrix::M_FORMAT         => QRStringText::ansi8('░░', 200),
 			// version
-			QRMatrix::M_VERSION_DARK   => QRString::ansi8('██', 21),
-			QRMatrix::M_VERSION        => QRString::ansi8('░░', 21),
+			QRMatrix::M_VERSION_DARK   => QRStringText::ansi8('██', 21),
+			QRMatrix::M_VERSION        => QRStringText::ansi8('░░', 21),
 			// data
-			QRMatrix::M_DATA_DARK      => QRString::ansi8('██', 166),
-			QRMatrix::M_DATA           => QRString::ansi8('░░', 166),
+			QRMatrix::M_DATA_DARK      => QRStringText::ansi8('██', 166),
+			QRMatrix::M_DATA           => QRStringText::ansi8('░░', 166),
 			// dark module
-			QRMatrix::M_DARKMODULE     => QRString::ansi8('██', 53),
+			QRMatrix::M_DARKMODULE     => QRStringText::ansi8('██', 53),
 			// separator
-			QRMatrix::M_SEPARATOR      => QRString::ansi8('░░', 219),
+			QRMatrix::M_SEPARATOR      => QRStringText::ansi8('░░', 219),
 			// quiet zone
-			QRMatrix::M_QUIETZONE      => QRString::ansi8('░░', 195),
+			QRMatrix::M_QUIETZONE      => QRStringText::ansi8('░░', 195),
 			// logo space
-			QRMatrix::M_LOGO           => QRString::ansi8('░░', 105),
+			QRMatrix::M_LOGO           => QRStringText::ansi8('░░', 105),
 			// empty
-			QRMatrix::M_NULL           => QRString::ansi8('░░', 231),
+			QRMatrix::M_NULL           => QRStringText::ansi8('░░', 231),
 		];
 
-		$out = (new QRString($opt, $matrix))->dump();
+		$out = (new QRStringText($opt, $matrix))->dump();
 
 		echo "\n\n".$out."\n\n";
 	}

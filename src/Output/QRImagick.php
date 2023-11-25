@@ -13,6 +13,7 @@
 namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\QROptions;
 use chillerlan\Settings\SettingsContainerInterface;
 use finfo, Imagick, ImagickDraw, ImagickPixel;
 use function extension_loaded, in_array, is_string, max, min, preg_match, strlen;
@@ -46,7 +47,7 @@ class QRImagick extends QROutputAbstract{
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
+	public function __construct(SettingsContainerInterface|QROptions $options, QRMatrix $matrix){
 
 		if(!extension_loaded('imagick')){
 			throw new QRCodeOutputException('ext-imagick not loaded'); // @codeCoverageIgnore
@@ -65,7 +66,7 @@ class QRImagick extends QROutputAbstract{
 	 * @see https://www.php.net/manual/imagickpixel.construct.php
 	 * @inheritDoc
 	 */
-	public static function moduleValueIsValid($value):bool{
+	public static function moduleValueIsValid(mixed $value):bool{
 
 		if(!is_string($value)){
 			return false;
@@ -98,7 +99,7 @@ class QRImagick extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function prepareModuleValue($value):ImagickPixel{
+	protected function prepareModuleValue(mixed $value):ImagickPixel{
 		return new ImagickPixel($value);
 	}
 
@@ -111,10 +112,8 @@ class QRImagick extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
-	 *
-	 * @return string|\Imagick
 	 */
-	public function dump(string $file = null){
+	public function dump(string $file = null):string|Imagick{
 		$this->setBgColor();
 
 		$this->imagick = $this->createImage();

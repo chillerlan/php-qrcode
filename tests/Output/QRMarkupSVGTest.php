@@ -10,15 +10,14 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\Output\{QRMarkupSVG, QROutputInterface};
+use chillerlan\QRCode\Output\QRMarkupSVG;
 
 /**
  *
  */
 final class QRMarkupSVGTest extends QRMarkupTestAbstract{
 
-	protected string $FQN  = QRMarkupSVG::class;
-	protected string $type = QROutputInterface::MARKUP_SVG;
+	protected string $FQN = QRMarkupSVG::class;
 
 	public static function moduleValueProvider():array{
 		return [

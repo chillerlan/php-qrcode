@@ -11,7 +11,6 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\QRCode\Output\QRStringText;
 
 /**
@@ -19,8 +18,7 @@ use chillerlan\QRCode\Output\QRStringText;
  */
 final class QRStringTEXTTest extends QROutputTestAbstract{
 
-	protected string $type = QROutputInterface::STRING_TEXT;
-	protected string $FQN  = QRStringText::class;
+	protected string $FQN = QRStringText::class;
 
 	public static function moduleValueProvider():array{
 		return [

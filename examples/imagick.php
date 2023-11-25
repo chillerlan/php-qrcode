@@ -10,14 +10,14 @@
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\QRImagick;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
 $options = new QROptions;
 
 $options->version             = 7;
-$options->outputType          = QROutputInterface::IMAGICK;
+$options->outputInterface     = QRImagick::class;
 $options->imagickFormat       = 'webp';
 $options->quality             = 90;
 $options->scale               = 20;

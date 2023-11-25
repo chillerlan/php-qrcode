@@ -16,7 +16,6 @@
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\QRGdImagePNG;
-use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 use chillerlan\Settings\SettingsContainerInterface;
@@ -30,7 +29,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 class QRGdRounded extends QRGdImagePNG{
 
 	/** @inheritDoc */
-	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
+	public function __construct(SettingsContainerInterface|QROptions $options, QRMatrix $matrix){
 		// enable the internal scaling for better rounding results at scale < 20
 		$options->drawCircularModules = true;
 
@@ -137,7 +136,6 @@ class QRGdRounded extends QRGdImagePNG{
 $options = new QROptions([
     'version'         => 7,
     'eccLevel'        => EccLevel::H,
-    'outputType'      => QROutputInterface::CUSTOM,
     'outputInterface' => QRGdRounded::class,
     'outputBase64'    => false,
     'scale'           => 30,

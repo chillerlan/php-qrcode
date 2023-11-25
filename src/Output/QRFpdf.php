@@ -12,6 +12,7 @@
 namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\QROptions;
 use chillerlan\Settings\SettingsContainerInterface;
 use FPDF;
 
@@ -25,7 +26,7 @@ use function array_values, class_exists, count, intval, is_array, is_numeric, ma
  */
 class QRFpdf extends QROutputAbstract{
 
-	public const MIME_TYPE = 'application/pdf';
+	final public const MIME_TYPE = 'application/pdf';
 
 	protected FPDF   $fpdf;
 	protected ?array $prevColor = null;
@@ -35,7 +36,7 @@ class QRFpdf extends QROutputAbstract{
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	public function __construct(SettingsContainerInterface $options, QRMatrix $matrix){
+	public function __construct(SettingsContainerInterface|QROptions $options, QRMatrix $matrix){
 
 		if(!class_exists(FPDF::class)){
 			// @codeCoverageIgnoreStart
@@ -52,7 +53,7 @@ class QRFpdf extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	public static function moduleValueIsValid($value):bool{
+	public static function moduleValueIsValid(mixed $value):bool{
 
 		if(!is_array($value) || count($value) < 3){
 			return false;
@@ -75,12 +76,10 @@ class QRFpdf extends QROutputAbstract{
 	}
 
 	/**
-	 * @param array $value
-	 *
 	 * @inheritDoc
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function prepareModuleValue($value):array{
+	protected function prepareModuleValue(mixed $value):array{
 		$values = [];
 
 		foreach(array_values($value) as $i => $val){
@@ -115,10 +114,8 @@ class QRFpdf extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
-	 *
-	 * @return string|\FPDF
 	 */
-	public function dump(string $file = null){
+	public function dump(string $file = null):string|FPDF{
 		$this->fpdf = $this->initFPDF();
 		$this->fpdf->AddPage();
 

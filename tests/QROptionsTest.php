@@ -12,6 +12,8 @@
 
 namespace chillerlan\QRCodeTest;
 
+use chillerlan\QRCode\Common\EccLevel;
+use chillerlan\QRCode\QRCodeException;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Common\Version;
 use PHPUnit\Framework\TestCase;
@@ -66,6 +68,39 @@ final class QROptionsTest extends TestCase{
 
 		$this::assertSame($expectedMin, $o->versionMin);
 		$this::assertSame($expectedMax, $o->versionMax);
+	}
+
+	/**
+	 * Tests setting the ECC level from string or int
+	 */
+	public function testSetEccLevel():void{
+		$o = new QROptions(['eccLevel' => EccLevel::H]);
+
+		$this::assertSame(EccLevel::H, $o->eccLevel);
+
+		$o->eccLevel = 'q';
+
+		$this::assertSame(EccLevel::Q, $o->eccLevel);
+	}
+
+	/**
+	 * Tests if an exception is thrown when attempting to set an invalid ECC level integer
+	 */
+	public function testSetEccLevelFromIntException():void{
+		$this->expectException(QRCodeException::class);
+		$this->expectExceptionMessage('Invalid ECC level: "42"');
+		/** @phan-suppress-next-line PhanNoopNew */
+		new QROptions(['eccLevel' => 42]);
+	}
+
+	/**
+	 * Tests if an exception is thrown when attempting to set an invalid ECC level string
+	 */
+	public function testSetEccLevelFromStringException():void{
+		$this->expectException(QRCodeException::class);
+		$this->expectExceptionMessage('Invalid ECC level: "FOO"');
+		/** @phan-suppress-next-line PhanNoopNew */
+		new QROptions(['eccLevel' => 'foo']);
 	}
 
 	/**

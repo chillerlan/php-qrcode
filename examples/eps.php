@@ -10,14 +10,14 @@
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\QREps;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
 $options = new QROptions;
 
 $options->version          = 7;
-$options->outputType       = QROutputInterface::EPS;
+$options->outputInterface  = QREps::class;
 $options->scale            = 5;
 $options->drawLightModules = false;
 // colors can be specified either as [R, G, B] or [C, M, Y, K] (0-255)

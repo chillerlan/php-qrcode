@@ -14,7 +14,7 @@
 
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\{QROutputInterface, QRMarkupSVG};
+use chillerlan\QRCode\Output\QRMarkupSVG;
 use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
 
 require_once __DIR__.'/../vendor/autoload.php';
@@ -326,7 +326,6 @@ $options->version             = 7;
 $options->eccLevel            = EccLevel::H;
 $options->addQuietzone        = false; // we're not adding a quiet zone, this is done internally in our own module
 $options->outputBase64        = false; // avoid base64 URI output for the example
-$options->outputType          = QROutputInterface::CUSTOM;
 $options->outputInterface     = RoundQuietzoneSVGoutput::class; // load our own output class
 $options->drawLightModules    = false; // set to true to add the light modules
 // common SVG options

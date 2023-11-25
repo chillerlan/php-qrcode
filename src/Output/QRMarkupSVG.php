@@ -22,7 +22,7 @@ use function array_chunk, implode, is_string, preg_match, sprintf, trim;
  */
 class QRMarkupSVG extends QRMarkup{
 
-	public const MIME_TYPE = 'image/svg+xml';
+	final public const MIME_TYPE = 'image/svg+xml';
 
 	/**
 	 * @todo: XSS proof
@@ -30,7 +30,7 @@ class QRMarkupSVG extends QRMarkup{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill
 	 * @inheritDoc
 	 */
-	public static function moduleValueIsValid($value):bool{
+	public static function moduleValueIsValid(mixed $value):bool{
 
 		if(!is_string($value)){
 			return false;
@@ -115,7 +115,7 @@ class QRMarkupSVG extends QRMarkup{
 	 * returns one or more SVG <path> elements
 	 */
 	protected function paths():string{
-		$paths = $this->collectModules(fn(int $x, int $y, int $M_TYPE):string => $this->module($x, $y, $M_TYPE));
+		$paths = $this->collectModules($this->module(...));
 		$svg   = [];
 
 		// create the path elements

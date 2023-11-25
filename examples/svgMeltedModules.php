@@ -13,7 +13,7 @@
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\{QROutputInterface, QRMarkupSVG};
+use chillerlan\QRCode\Output\QRMarkupSVG;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -256,7 +256,6 @@ $options->inverseMelt        = true;
 $options->meltRadius         = 0.4;
 
 $options->version            = 7;
-$options->outputType         = QROutputInterface::CUSTOM;
 $options->outputInterface    = MeltedSVGQRCodeOutput::class;
 $options->outputBase64       = false;
 $options->addQuietzone       = true;

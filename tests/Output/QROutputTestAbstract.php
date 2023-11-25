@@ -17,6 +17,7 @@ use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use PHPUnit\Framework\TestCase;
 
 use function file_exists, mkdir;
+use function str_replace;
 
 /**
  * Test abstract for the several (built-in) output modules,
@@ -30,7 +31,6 @@ abstract class QROutputTestAbstract extends TestCase{
 	protected QRMatrix          $matrix;
 	protected string            $builddir = __DIR__.'/../../.build/output_test';
 	protected string            $FQN;
-	protected string            $type;
 
 	/**
 	 * Attempts to create a directory under /.build and instances several required objects
@@ -42,7 +42,7 @@ abstract class QROutputTestAbstract extends TestCase{
 		}
 
 		$this->options             = new QROptions;
-		$this->options->outputType = $this->type;
+		$this->options->outputInterface = $this->FQN;
 		$this->matrix              = (new QRCode($this->options))->addByteSegment('testdata')->getQRMatrix();
 		$this->outputInterface     = new $this->FQN($this->options, $this->matrix);
 	}
@@ -94,7 +94,7 @@ abstract class QROutputTestAbstract extends TestCase{
 		$this->options->outputBase64 = false;
 		$this->outputInterface       = new $this->FQN($this->options, $this->matrix);
 		// create the cache file
-		$file = $this->builddir.'/test.output.'.$this->type;
+		$file = $this->builddir.'/test.output.'.str_replace('chillerlan\\QRCode\\Output\\', '', $this->FQN);
 		$data = $this->outputInterface->dump($file);
 
 		$this::assertSame($data, file_get_contents($file));
