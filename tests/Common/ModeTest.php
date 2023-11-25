@@ -12,6 +12,7 @@ namespace chillerlan\QRCodeTest\Common;
 
 use chillerlan\QRCode\Common\Mode;
 use chillerlan\QRCode\QRCodeException;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -33,9 +34,7 @@ final class ModeTest extends TestCase{
 		];
 	}
 
-	/**
-	 * @dataProvider versionProvider
-	 */
+	#[DataProvider('versionProvider')]
 	public function testGetLengthBitsForVersionBreakpoints(int $version, int $expected):void{
 		$this::assertSame($expected, Mode::getLengthBitsForVersion(Mode::NUMBER, $version));
 	}

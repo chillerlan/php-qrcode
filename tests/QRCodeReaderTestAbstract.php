@@ -13,6 +13,8 @@
 namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCodeTest\Data\QRMatrixTest;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\{EccLevel, Mode, Version};
 use chillerlan\QRCode\Output\QRGdImagePNG;
@@ -76,10 +78,8 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		];
 	}
 
-	/**
-	 * @group slow
-	 * @dataProvider qrCodeProvider
-	 */
+	#[Group('slow')]
+	#[DataProvider('qrCodeProvider')]
 	public function testReader(string $img, string $expected, bool $grayscale):void{
 
 		if($grayscale){
@@ -140,10 +140,8 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 
 	}
 
-	/**
-	 * @group slow
-	 * @dataProvider dataTestProvider
-	 */
+	#[Group('slow')]
+	#[DataProvider('dataTestProvider')]
 	public function testReadData(Version $version, EccLevel $ecc, string $expected):void{
 		$this->options->outputInterface  = QRGdImagePNG::class;
 		$this->options->imageTransparent = false;

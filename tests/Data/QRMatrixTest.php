@@ -10,6 +10,7 @@
 
 namespace chillerlan\QRCodeTest\Data;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
@@ -176,9 +177,8 @@ final class QRMatrixTest extends TestCase{
 
 	/**
 	 * Tests setting the dark module and verifies its position
-	 *
-	 * @dataProvider matrixProvider
 	 */
+	#[DataProvider('matrixProvider')]
 	public function testSetDarkModule(QRMatrix $matrix):void{
 		$matrix->setDarkModule();
 
@@ -189,9 +189,8 @@ final class QRMatrixTest extends TestCase{
 
 	/**
 	 * Tests setting the finder patterns and verifies their positions
-	 *
-	 * @dataProvider matrixProvider
 	 */
+	#[DataProvider('matrixProvider')]
 	public function testSetFinderPattern(QRMatrix $matrix):void{
 		$matrix->setFinderPattern();
 
@@ -204,9 +203,8 @@ final class QRMatrixTest extends TestCase{
 
 	/**
 	 * Tests the separator patterns and verifies their positions
-	 *
-	 * @dataProvider matrixProvider
 	 */
+	#[DataProvider('matrixProvider')]
 	public function testSetSeparators(QRMatrix $matrix):void{
 		$matrix->setSeparators();
 
@@ -220,14 +218,12 @@ final class QRMatrixTest extends TestCase{
 
 	/**
 	 * Tests the alignment patterns and verifies their positions - version 1 (no pattern) skipped
-	 *
-	 * @dataProvider matrixProvider
 	 */
+	#[DataProvider('matrixProvider')]
 	public function testSetAlignmentPattern(QRMatrix $matrix):void{
 		$version = $matrix->getVersion();
 
 		if($version->getVersionNumber() === 1){
-			/** @noinspection PhpUnitTestFailedLineInspection */
 			$this::markTestSkipped('N/A (Version 1 has no alignment pattern)');
 		}
 
@@ -253,9 +249,8 @@ final class QRMatrixTest extends TestCase{
 
 	/**
 	 * Tests the timing patterns and verifies their positions
-	 *
-	 * @dataProvider matrixProvider
 	 */
+	#[DataProvider('matrixProvider')]
 	public function testSetTimingPattern(QRMatrix $matrix):void{
 
 		$matrix
@@ -282,13 +277,11 @@ final class QRMatrixTest extends TestCase{
 
 	/**
 	 * Tests the version patterns and verifies their positions - version < 7 skipped
-	 *
-	 * @dataProvider matrixProvider
 	 */
+	#[DataProvider('matrixProvider')]
 	public function testSetVersionNumber(QRMatrix $matrix):void{
 
 		if($matrix->getVersion()->getVersionNumber() < 7){
-			/** @noinspection PhpUnitTestFailedLineInspection */
 			$this::markTestSkipped('N/A (Version < 7)');
 		}
 
@@ -304,9 +297,8 @@ final class QRMatrixTest extends TestCase{
 
 	/**
 	 * Tests the format patterns and verifies their positions
-	 *
-	 * @dataProvider matrixProvider
 	 */
+	#[DataProvider('matrixProvider')]
 	public function testSetFormatInfo(QRMatrix $matrix):void{
 		$matrix->setFormatInfo(new MaskPattern(MaskPattern::PATTERN_000));
 
@@ -320,9 +312,8 @@ final class QRMatrixTest extends TestCase{
 
 	/**
 	 * Tests the quiet zone pattern and verifies its position
-	 *
-	 * @dataProvider matrixProvider
 	 */
+	#[DataProvider('matrixProvider')]
 	public function testSetQuietZone(QRMatrix $matrix):void{
 		$size          = $matrix->getSize();
 		$quietZoneSize = 5;
@@ -362,9 +353,8 @@ final class QRMatrixTest extends TestCase{
 
 	/**
 	 * Tests rotating the matrix by 90 degrees CW
-	 *
-	 * @dataProvider matrixProvider
 	 */
+	#[DataProvider('matrixProvider')]
 	public function testRotate90(QRMatrix $matrix):void{
 		$matrix->initFunctionalPatterns();
 

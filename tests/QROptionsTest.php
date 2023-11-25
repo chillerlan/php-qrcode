@@ -16,6 +16,7 @@ use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\QRCodeException;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Common\Version;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -37,9 +38,8 @@ final class QROptionsTest extends TestCase{
 
 	/**
 	 * Tests the $version clamping
-	 *
-	 * @dataProvider VersionProvider
 	 */
+	#[DataProvider('VersionProvider')]
 	public function testVersionClamp(int $version, int $expected):void{
 		$o = new QROptions(['version' => $version]);
 
@@ -60,9 +60,8 @@ final class QROptionsTest extends TestCase{
 
 	/**
 	 * Tests the $versionMin/$versionMax clamping
-	 *
-	 * @dataProvider VersionMinMaxProvider
 	 */
+	#[DataProvider('VersionMinMaxProvider')]
 	public function testVersionMinMaxClamp(int $versionMin, int $versionMax, int $expectedMin, int $expectedMax):void{
 		$o = new QROptions(['versionMin' => $versionMin, 'versionMax' => $versionMax]);
 
@@ -129,9 +128,8 @@ final class QROptionsTest extends TestCase{
 
 	/**
 	 * Tests the clamping (between 0 and 177) of the logo space values
-	 *
-	 * @dataProvider logoSpaceValueProvider
 	 */
+	#[DataProvider('logoSpaceValueProvider')]
 	public function testClampLogoSpaceValue(int $value, int $expected):void{
 		$o = new QROptions;
 
@@ -174,9 +172,8 @@ final class QROptionsTest extends TestCase{
 
 	/**
 	 * Tests clamping of the circle radius
-	 *
-	 * @dataProvider circleRadiusProvider
 	 */
+	#[DataProvider('circleRadiusProvider')]
 	public function testClampCircleRadius(float $value, float $expected):void{
 		$o = new QROptions(['circleRadius' => $value]);
 

@@ -13,6 +13,8 @@ namespace chillerlan\QRCodeTest\Output;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\Settings\SettingsContainerInterface;
+use PHPUnit\Framework\Attributes\DataProvider;
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use PHPUnit\Framework\TestCase;
 
@@ -25,12 +27,11 @@ use function str_replace;
  */
 abstract class QROutputTestAbstract extends TestCase{
 
-	/** @var \chillerlan\QRCode\QROptions|\chillerlan\Settings\SettingsContainerInterface */
-	protected QROptions         $options;
-	protected QROutputInterface $outputInterface;
-	protected QRMatrix          $matrix;
-	protected string            $builddir = __DIR__.'/../../.build/output_test';
-	protected string            $FQN;
+	protected SettingsContainerInterface|QROptions $options;
+	protected QROutputInterface                    $outputInterface;
+	protected QRMatrix                             $matrix;
+	protected string                               $builddir = __DIR__.'/../../.build/output-test';
+	protected string                               $FQN;
 
 	/**
 	 * Attempts to create a directory under /.build and instances several required objects
@@ -41,10 +42,10 @@ abstract class QROutputTestAbstract extends TestCase{
 			mkdir($this->builddir, 0777, true);
 		}
 
-		$this->options             = new QROptions;
+		$this->options                  = new QROptions;
 		$this->options->outputInterface = $this->FQN;
-		$this->matrix              = (new QRCode($this->options))->addByteSegment('testdata')->getQRMatrix();
-		$this->outputInterface     = new $this->FQN($this->options, $this->matrix);
+		$this->matrix                   = (new QRCode($this->options))->addByteSegment('testdata')->getQRMatrix();
+		$this->outputInterface          = new $this->FQN($this->options, $this->matrix);
 	}
 
 	/**
@@ -67,13 +68,8 @@ abstract class QROutputTestAbstract extends TestCase{
 
 	abstract public static function moduleValueProvider():array;
 
-	/**
-	 * @param mixed $value
-	 * @param bool  $expected
-	 *
-	 * @dataProvider moduleValueProvider
-	 */
-	public function testValidateModuleValues($value, bool $expected):void{
+	#[DataProvider('moduleValueProvider')]
+	public function testValidateModuleValues(mixed $value, bool $expected):void{
 		/** @noinspection PhpUndefinedMethodInspection */
 		$this::assertSame($expected, $this->FQN::moduleValueIsValid($value));
 	}

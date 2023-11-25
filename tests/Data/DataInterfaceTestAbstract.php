@@ -11,6 +11,7 @@
 namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Mode, Version};
+use PHPUnit\Framework\Attributes\DataProvider;
 use chillerlan\QRCode\Data\{QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCodeTest\QRMaxLengthTrait;
@@ -64,9 +65,8 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 	/**
 	 * Tests initializing the data matrix
-	 *
-	 * @dataProvider maskPatternProvider
 	 */
+	#[DataProvider('maskPatternProvider')]
 	public function testInitMatrix(int $pattern):void{
 		$maskPattern = new MaskPattern($pattern);
 
@@ -82,9 +82,8 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 	/**
 	 * Tests if a string is properly validated for the respective data mode
-	 *
-	 * @dataProvider stringValidateProvider
 	 */
+	#[DataProvider('stringValidateProvider')]
 	public function testValidateString(string $string, bool $expected):void{
 		/** @noinspection PhpUndefinedMethodInspection */
 		$this::assertSame($expected, static::$FQN::validateString($string));
@@ -109,9 +108,8 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 	/**
 	 * Tests decoding a data segment from a given BitBuffer
-	 *
-	 * @dataProvider versionBreakpointProvider
 	 */
+	#[DataProvider('versionBreakpointProvider')]
 	public function testDecodeSegment(int $version):void{
 		$options          = new QROptions;
 		$options->version = $version;
@@ -168,9 +166,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 	}
 
-	/**
-	 * @dataProvider maxLengthProvider
-	 */
+	#[DataProvider('maxLengthProvider')]
 	public function testMaxLength(Version $version, EccLevel $eccLevel, string $str):void{
 		$options           = new QROptions;
 		$options->version  = $version->getVersionNumber();
@@ -185,9 +181,8 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 	/**
 	 * Tests getting the minimum QR version for the given data
-	 *
-	 * @dataProvider maxLengthProvider
 	 */
+	#[DataProvider('maxLengthProvider')]
 	public function testGetMinimumVersion(Version $version, EccLevel $eccLevel, string $str):void{
 		$options           = new QROptions;
 		$options->version  = Version::AUTO;
@@ -208,9 +203,8 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 	/**
 	 * Tests if an exception is thrown on data overflow
-	 *
-	 * @dataProvider maxLengthProvider
 	 */
+	#[DataProvider('maxLengthProvider')]
 	public function testMaxLengthOverflowException(Version $version, EccLevel $eccLevel, string $str, string $str1):void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('code length overflow');

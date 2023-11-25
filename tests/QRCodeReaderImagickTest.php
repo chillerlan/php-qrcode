@@ -12,6 +12,7 @@ namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCode\Common\IMagickLuminanceSource;
 use chillerlan\QRCode\QRCode;
+use PHPUnit\Framework\Attributes\DataProvider;
 use function extension_loaded;
 use const PHP_OS_FAMILY, PHP_VERSION_ID;
 
@@ -43,9 +44,7 @@ final class QRCodeReaderImagickTest extends QRCodeReaderTestAbstract{
 		];
 	}
 
-	/**
-	 * @dataProvider vectorQRCodeProvider
-	 */
+	#[DataProvider('vectorQRCodeProvider')]
 	public function testReadVectorFormats(string $img, string $expected):void{
 
 		if(PHP_OS_FAMILY === 'Linux'){

@@ -7,7 +7,6 @@
  * @copyright    2018 smiley
  * @license      MIT
  *
- * @noinspection PhpUndefinedClassInspection
  * @noinspection PhpComposerExtensionStubsInspection
  */
 

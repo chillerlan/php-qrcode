@@ -6,12 +6,14 @@
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT
+ *
+ * @noinspection PhpComposerExtensionStubsInspection
  */
 
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
-use const PHP_MAJOR_VERSION;
+use GdImage;
 
 /**
  * Tests the QRGdImage output module
@@ -58,19 +60,11 @@ abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
 		$this::assertTrue(true); // tricking the code coverage
 	}
 
-	/**
-	 * @todo: remove php version check in v6
-	 */
 	public function testOutputGetResource():void{
 		$this->options->returnResource = true;
 		$this->outputInterface         = new $this->FQN($this->options, $this->matrix);
 
-		$actual = $this->outputInterface->dump();
-
-		/** @noinspection PhpFullyQualifiedNameUsageInspection */
-		PHP_MAJOR_VERSION >= 8
-			? $this::assertInstanceOf(\GdImage::class, $actual)
-			: $this::assertIsResource($actual);
+		$this::assertInstanceOf(GdImage::class, $this->outputInterface->dump());
 	}
 
 	public function testBase64MimeType():void{

@@ -13,6 +13,7 @@ namespace chillerlan\QRCodeTest\Data;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Common\{BitBuffer, ECICharset, Mode};
 use chillerlan\QRCode\Data\{Byte, ECI, Number, QRCodeDataException, QRData, QRDataModeInterface};
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -51,8 +52,8 @@ final class ECITest extends TestCase{
 
 	/**
 	 * @inheritDoc
-	 * @dataProvider versionBreakpointProvider
 	 */
+	#[DataProvider('versionBreakpointProvider')]
 	public function testDecodeSegment(int $version):void{
 		$options = new QROptions;
 		$options->version = $version;
@@ -102,9 +103,7 @@ final class ECITest extends TestCase{
 		];
 	}
 
-	/**
-	 * @dataProvider eciCharsetIdProvider
-	 */
+	#[DataProvider('eciCharsetIdProvider')]
 	public function testReadWrite(int $id, int $lengthInBits):void{
 		$bitBuffer = new BitBuffer;
 		$eci       = (new ECI($id))->write($bitBuffer, 1);
@@ -133,7 +132,7 @@ final class ECITest extends TestCase{
 		ECI::decodeSegment($bitBuffer, $options->version);
 	}
 
-	public function unknownEncodingDataProvider():array{
+	public static function unknownEncodingDataProvider():array{
 		return [
 			'CP437'              => [0, "\x41\x42\x43"],
 			'ISO_IEC_8859_1_GLI' => [1, "\x41\x42\x43"],
@@ -142,9 +141,8 @@ final class ECITest extends TestCase{
 
 	/**
 	 * Tests detection of an unknown character set
-	 *
-	 * @dataProvider unknownEncodingDataProvider
 	 */
+	#[DataProvider('unknownEncodingDataProvider')]
 	public function testConvertUnknownEncoding(int $id, string $data):void{
 		$options          = new QROptions;
 		$options->version = 5;

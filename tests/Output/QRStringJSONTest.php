@@ -11,6 +11,7 @@
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Output\QRStringJSON;
+use PHPUnit\Framework\Attributes\DataProvider;
 use function extension_loaded;
 
 /**
@@ -33,11 +34,15 @@ final class QRStringJSONTest extends QROutputTestAbstract{
 	}
 
 	public static function moduleValueProvider():array{
-		return [];
+		return [[null, false]];
+	}
+
+	#[DataProvider('moduleValueProvider')]
+	public function testValidateModuleValues(mixed $value, bool $expected):void{
+		$this::markTestSkipped('N/A (JSON test)');
 	}
 
 	public function testSetModuleValues():void{
-		/** @noinspection PhpUnitTestFailedLineInspection */
 		$this::markTestSkipped('N/A (JSON test)');
 	}
 

@@ -23,7 +23,7 @@ final class QRCodeTest extends TestCase{
 
 	private QRCode    $qrcode;
 	private QROptions $options;
-	private string    $builddir = __DIR__.'/../.build/output_test';
+	private string    $builddir = __DIR__.'/../.build/output-test';
 
 	/**
 	 * invoke test instances

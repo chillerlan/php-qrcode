@@ -12,6 +12,7 @@ namespace chillerlan\QRCodeTest\Common;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
 use chillerlan\QRCode\QRCodeException;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -34,9 +35,7 @@ final class BitBufferTest extends TestCase{
 		];
 	}
 
-	/**
-	 * @dataProvider bitProvider
-	 */
+	#[DataProvider('bitProvider')]
 	public function testPut(int $data, int $value):void{
 		$this->bitBuffer->put($data, 4);
 		$this::assertSame($value, $this->bitBuffer->getBuffer()[0]);

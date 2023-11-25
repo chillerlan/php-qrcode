@@ -16,6 +16,7 @@ namespace chillerlan\QRCodeTest\Common;
 use chillerlan\QRCode\Common\MaskPattern;
 use chillerlan\QRCode\QRCodeException;
 use Closure;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -95,9 +96,8 @@ final class MaskPatternTest extends TestCase{
 
 	/**
 	 * Tests if the mask function generates the correct pattern
-	 *
-	 * @dataProvider maskPatternProvider
 	 */
+	#[DataProvider('maskPatternProvider')]
 	public function testMask(int $pattern, array $expected):void{
 		$maskPattern = new MaskPattern($pattern);
 
