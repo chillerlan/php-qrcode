@@ -14,6 +14,7 @@ namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
 use GdImage;
+use function extension_loaded;
 
 /**
  * Tests the QRGdImage output module
@@ -54,7 +55,7 @@ abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
 			QRMatrix::M_DATA      => [255, 255, 255],
 		];
 
-		$this->outputInterface = new $this->FQN($this->options, $this->matrix);
+		$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
 		$this->outputInterface->dump();
 
 		$this::assertTrue(true); // tricking the code coverage
@@ -62,14 +63,14 @@ abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
 
 	public function testOutputGetResource():void{
 		$this->options->returnResource = true;
-		$this->outputInterface         = new $this->FQN($this->options, $this->matrix);
+		$this->outputInterface         = $this->getOutputInterface($this->options, $this->matrix);
 
 		$this::assertInstanceOf(GdImage::class, $this->outputInterface->dump());
 	}
 
 	public function testBase64MimeType():void{
 		$this->options->outputBase64 = true;
-		$this->outputInterface       = new $this->FQN($this->options, $this->matrix);
+		$this->outputInterface       = $this->getOutputInterface($this->options, $this->matrix);
 
 		$this::assertStringContainsString($this->outputInterface::MIME_TYPE, $this->outputInterface->dump());
 	}

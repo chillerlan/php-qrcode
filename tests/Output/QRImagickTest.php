@@ -12,16 +12,17 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
+use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QRImagick;
+use chillerlan\QRCode\Output\{QRImagick, QROutputInterface};
+use chillerlan\Settings\SettingsContainerInterface;
 use Imagick;
+use function extension_loaded;
 
 /**
  * Tests the QRImagick output module
  */
 final class QRImagickTest extends QROutputTestAbstract{
-
-	protected string $FQN = QRImagick::class;
 
 	/**
 	 * @inheritDoc
@@ -33,6 +34,13 @@ final class QRImagickTest extends QROutputTestAbstract{
 		}
 
 		parent::setUp();
+	}
+
+	protected function getOutputInterface(
+		SettingsContainerInterface|QROptions $options,
+		QRMatrix                             $matrix
+	):QROutputInterface{
+		return new QRImagick($options, $matrix);
 	}
 
 	public static function moduleValueProvider():array{
@@ -72,7 +80,7 @@ final class QRImagickTest extends QROutputTestAbstract{
 			QRMatrix::M_DATA      => '#ECF9BE',
 		];
 
-		$this->outputInterface = new $this->FQN($this->options, $this->matrix);
+		$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
 		$this->outputInterface->dump();
 
 		$this::assertTrue(true); // tricking the code coverage
@@ -80,7 +88,7 @@ final class QRImagickTest extends QROutputTestAbstract{
 
 	public function testOutputGetResource():void{
 		$this->options->returnResource = true;
-		$this->outputInterface         = new $this->FQN($this->options, $this->matrix);
+		$this->outputInterface         = $this->getOutputInterface($this->options, $this->matrix);
 
 		$this::assertInstanceOf(Imagick::class, $this->outputInterface->dump());
 	}

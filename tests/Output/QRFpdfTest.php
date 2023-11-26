@@ -10,18 +10,17 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use FPDF;
+use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QRFpdf;
-
+use chillerlan\QRCode\Output\{QRFpdf, QROutputInterface};
+use chillerlan\Settings\SettingsContainerInterface;
+use FPDF;
 use function class_exists;
 
 /**
  * Tests the QRFpdf output module
  */
 final class QRFpdfTest extends QROutputTestAbstract{
-
-	protected string $FQN = QRFpdf::class;
 
 	/**
 	 * @inheritDoc
@@ -33,6 +32,13 @@ final class QRFpdfTest extends QROutputTestAbstract{
 		}
 
 		parent::setUp();
+	}
+
+	protected function getOutputInterface(
+		SettingsContainerInterface|QROptions $options,
+		QRMatrix                             $matrix
+	):QROutputInterface{
+		return new QRFpdf($options, $matrix);
 	}
 
 	public static function moduleValueProvider():array{
@@ -57,7 +63,7 @@ final class QRFpdfTest extends QROutputTestAbstract{
 			QRMatrix::M_DATA      => [255, 255, 255],
 		];
 
-		$this->outputInterface = new $this->FQN($this->options, $this->matrix);
+		$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
 		$this->outputInterface->dump();
 
 		$this::assertTrue(true); // tricking the code coverage
@@ -65,7 +71,7 @@ final class QRFpdfTest extends QROutputTestAbstract{
 
 	public function testOutputGetResource():void{
 		$this->options->returnResource = true;
-		$this->outputInterface         = new $this->FQN($this->options, $this->matrix);
+		$this->outputInterface         = $this->getOutputInterface($this->options, $this->matrix);
 
 		$this::assertInstanceOf(FPDF::class, $this->outputInterface->dump());
 	}

@@ -16,12 +16,14 @@ use chillerlan\QRCode\Data\QRData;
 use chillerlan\QRCode\Output\QRGdImagePNG;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
+use chillerlan\QRCodeTest\QRMatrixDebugTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
  *
  */
 final class QRDataTest extends TestCase{
+	use QRMatrixDebugTrait;
 
 	/**
 	 * tests setting the BitBuffer object directly
@@ -56,7 +58,7 @@ final class QRDataTest extends TestCase{
 		$output       = new QRGdImagePNG($options, $matrix);
 		$decodeResult = (new QRCode($options))->readFromBlob($output->dump());
 
-		QRMatrixTest::debugMatrix($matrix);
+		$this->debugMatrix($matrix);
 
 		$this::assertSame($decodeResult->data, 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s');
 	}

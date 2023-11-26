@@ -10,13 +10,20 @@
 
 namespace chillerlan\QRCodeTest;
 
-use chillerlan\QRCode\Common\GDLuminanceSource;
+use chillerlan\QRCode\Common\{GDLuminanceSource, LuminanceSourceInterface};
+use chillerlan\QRCode\QROptions;
+use chillerlan\Settings\SettingsContainerInterface;
 
 /**
  * Tests the GD based reader
  */
 final class QRCodeReaderGDTest extends QRCodeReaderTestAbstract{
 
-	protected string $FQN = GDLuminanceSource::class;
+	protected function getLuminanceSourceFromFile(
+		string                               $file,
+		SettingsContainerInterface|QROptions $options
+	):LuminanceSourceInterface{
+		return GDLuminanceSource::fromFile($file, $options);
+	}
 
 }

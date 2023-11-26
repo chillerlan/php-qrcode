@@ -10,13 +10,21 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\Output\QRMarkupHTML;
+use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\Output\{QRMarkupHTML, QROutputInterface};
+use chillerlan\Settings\SettingsContainerInterface;
 
 /**
  *
  */
 final class QRMarkupHTMLTest extends QRMarkupTestAbstract{
 
-	protected string $FQN = QRMarkupHTML::class;
+	protected function getOutputInterface(
+		SettingsContainerInterface|QROptions $options,
+		QRMatrix                             $matrix
+	):QROutputInterface{
+		return new QRMarkupHTML($options, $matrix);
+	}
 
 }

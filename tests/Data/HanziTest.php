@@ -11,9 +11,10 @@
 namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\Data\Hanzi;
-use Generator, Throwable;
+use chillerlan\QRCode\Data\QRDataModeInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
+use Generator, Throwable;
 use function bin2hex, chr, defined, sprintf;
 
 /**
@@ -21,8 +22,11 @@ use function bin2hex, chr, defined, sprintf;
  */
 final class HanziTest extends DataInterfaceTestAbstract{
 
-	protected static string $FQN      = Hanzi::class;
-	protected static string $testdata = '无可奈何燃花作香';
+	protected const testData = '无可奈何燃花作香';
+
+	protected static function getDataModeInterface(string $data):QRDataModeInterface{
+		return new Hanzi($data);
+	}
 
 	/**
 	 * isGB2312() should pass on Hanzi/GB2312 characters and fail on everything else
@@ -50,9 +54,13 @@ final class HanziTest extends DataInterfaceTestAbstract{
 			}
 
 			for($byte2 = 0xa1; $byte2 < 0xff; $byte2++){
-				yield sprintf('0x%X', ($byte1 << 8 | $byte2)) => [
-					mb_convert_encoding(chr($byte1).chr($byte2), 'UTF-8', Hanzi::ENCODING),
-				];
+				$chr = mb_convert_encoding(chr($byte1).chr($byte2), 'UTF-8', Hanzi::ENCODING);
+
+				if($chr === '?'){ // skip unknown glyphs
+					continue;
+				}
+
+				yield sprintf('0x%X', (($byte1 << 8) | $byte2)) => [$chr];
 			}
 
 		}

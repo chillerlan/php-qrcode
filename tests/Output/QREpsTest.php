@@ -10,12 +10,12 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
+use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QREps;
+use chillerlan\QRCode\Output\{QREps, QROutputInterface};
+use chillerlan\Settings\SettingsContainerInterface;
 
 class QREpsTest extends QROutputTestAbstract{
-
-	protected string $FQN = QREps::class;
 
 	public static function moduleValueProvider():array{
 		return [
@@ -29,6 +29,13 @@ class QREpsTest extends QROutputTestAbstract{
 		];
 	}
 
+	protected function getOutputInterface(
+		SettingsContainerInterface|QROptions $options,
+		QRMatrix                             $matrix
+	):QROutputInterface{
+		return new QREps($options, $matrix);
+	}
+
 	/**
 	 * @inheritDoc
 	 */
@@ -40,7 +47,7 @@ class QREpsTest extends QROutputTestAbstract{
 			QRMatrix::M_DATA      => [255, 255, 255],
 		];
 
-		$this->outputInterface = new $this->FQN($this->options, $this->matrix);
+		$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
 		$this->outputInterface->dump();
 
 		$this::assertTrue(true); // tricking the code coverage

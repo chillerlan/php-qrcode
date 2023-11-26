@@ -37,5 +37,7 @@
 		<const name="TEST_IS_CI" value="true"/>
 		<!-- limit the maximum version for the reader test to speed up things -->
 		<const name="READER_TEST_MAX_VERSION" value="40"/>
+		<!-- the QR version to display the matrix in when called from the shortcut method in QRMatrixDebugTrait -->
+		<const name="MATRIX_DEBUG_VERSION" value="7"/>
 	</php>
 </phpunit>

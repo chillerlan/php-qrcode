@@ -13,11 +13,11 @@
 
 namespace chillerlan\QRCodeTest\Common;
 
-use chillerlan\QRCode\Common\MaskPattern;
 use chillerlan\QRCode\QRCodeException;
-use Closure;
+use chillerlan\QRCode\Common\MaskPattern;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use Closure;
 
 /**
  * @see https://github.com/zxing/zxing/blob/f4f3c2971dc794346d8b6e14752200008cb90716/core/src/test/java/com/google/zxing/qrcode/encoder/MaskUtilTestCase.java

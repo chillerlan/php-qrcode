@@ -11,6 +11,7 @@
 namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\Data\Kanji;
+use chillerlan\QRCode\Data\QRDataModeInterface;
 use Generator, Throwable;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
@@ -21,8 +22,11 @@ use function bin2hex, chr, defined, sprintf;
  */
 final class KanjiTest extends DataInterfaceTestAbstract{
 
-	protected static string $FQN      = Kanji::class;
-	protected static string $testdata = '漂う花の香り';
+	protected const testData = '漂う花の香り';
+
+	protected static function getDataModeInterface(string $data):QRDataModeInterface{
+		return new Kanji($data);
+	}
 
 	/**
 	 * isKanji() should pass on Kanji/SJIS characters and fail on everything else
@@ -42,7 +46,7 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 	 * lists the valid SJIS kanji
 	 */
 	public static function kanjiProvider():Generator{
-		$key = fn(int $byte1, int $byte2):string => sprintf('0x%X', ($byte1 << 8 | $byte2));
+		$key = fn(int $byte1, int $byte2):string => sprintf('0x%X', (($byte1 << 8) | $byte2));
 		$val = fn(int $byte1, int $byte2):string => mb_convert_encoding(chr($byte1).chr($byte2), 'UTF-8', Kanji::ENCODING);
 
 		for($byte1 = 0x81; $byte1 < 0xeb; $byte1++){
@@ -61,7 +65,13 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 						continue;
 					}
 
-					yield $key($byte1, $byte2) => [$val($byte1, $byte2)];
+					$chr = $val($byte1, $byte2);
+
+					if($chr === '?'){ // skip unknown glyphs
+						continue;
+					}
+
+					yield $key($byte1, $byte2) => [$chr];
 				}
 
 			}
@@ -69,7 +79,13 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 			else{
 
 				for($byte2 = 0x9f; $byte2 < 0xfd; $byte2++){
-					yield $key($byte1, $byte2) => [$val($byte1, $byte2)];
+					$chr = $val($byte1, $byte2);
+
+					if($chr === '?'){
+						continue;
+					}
+
+					yield $key($byte1, $byte2) => [$chr];
 				}
 
 			}

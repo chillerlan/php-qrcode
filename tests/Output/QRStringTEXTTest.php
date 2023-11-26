@@ -10,15 +10,22 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
+use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QRStringText;
+use chillerlan\QRCode\Output\{QROutputInterface, QRStringText};
+use chillerlan\Settings\SettingsContainerInterface;
 
 /**
  *
  */
 final class QRStringTEXTTest extends QROutputTestAbstract{
 
-	protected string $FQN = QRStringText::class;
+	protected function getOutputInterface(
+		SettingsContainerInterface|QROptions $options,
+		QRMatrix                             $matrix
+	):QROutputInterface{
+		return new QRStringText($options, $matrix);
+	}
 
 	public static function moduleValueProvider():array{
 		return [
@@ -40,7 +47,7 @@ final class QRStringTEXTTest extends QROutputTestAbstract{
 			QRMatrix::M_DATA      => 'B',
 		];
 
-		$this->outputInterface = new $this->FQN($this->options, $this->matrix);
+		$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
 		$data                  = $this->outputInterface->dump();
 
 		$this::assertStringContainsString('A', $data);

@@ -11,14 +11,18 @@
 namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\Data\Byte;
+use chillerlan\QRCode\Data\QRDataModeInterface;
 
 /**
  * Tests the Byte class
  */
 final class ByteTest extends DataInterfaceTestAbstract{
 
-	protected static string $FQN      = Byte::class;
-	protected static string $testdata = '[¯\_(ツ)_/¯]';
+	protected const testData = '[¯\_(ツ)_/¯]';
+
+	protected static function getDataModeInterface(string $data):QRDataModeInterface{
+		return new Byte($data);
+	}
 
 	/**
 	 * isByte() passses any binary string and only fails on empty strings

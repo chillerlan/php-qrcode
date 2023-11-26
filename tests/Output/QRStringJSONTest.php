@@ -10,7 +10,10 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\Output\QRStringJSON;
+use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\Output\{QROutputInterface, QRStringJSON};
+use chillerlan\Settings\SettingsContainerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use function extension_loaded;
 
@@ -18,8 +21,6 @@ use function extension_loaded;
  *
  */
 final class QRStringJSONTest extends QROutputTestAbstract{
-
-	protected string $FQN = QRStringJSON::class;
 
 	/**
 	 * @inheritDoc
@@ -31,6 +32,13 @@ final class QRStringJSONTest extends QROutputTestAbstract{
 		}
 
 		parent::setUp();
+	}
+
+	protected function getOutputInterface(
+		SettingsContainerInterface|QROptions $options,
+		QRMatrix                             $matrix
+	):QROutputInterface{
+		return new QRStringJSON($options, $matrix);
 	}
 
 	public static function moduleValueProvider():array{

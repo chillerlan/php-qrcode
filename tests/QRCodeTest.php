@@ -23,7 +23,8 @@ final class QRCodeTest extends TestCase{
 
 	private QRCode    $qrcode;
 	private QROptions $options;
-	private string    $builddir = __DIR__.'/../.build/output-test';
+
+	private const buildDir = __DIR__.'/../.build/output-test/';
 
 	/**
 	 * invoke test instances
@@ -73,7 +74,7 @@ final class QRCodeTest extends TestCase{
 	 * Tests if a cache file is properly saved in the given path
 	 */
 	public function testRenderToCacheFile():void{
-		$this->options->cachefile    = $this->builddir.'/test.cache.svg';
+		$this->options->cachefile    = $this::buildDir.'test.cache.svg';
 		$this->options->outputBase64 = false;
 		// create the cache file
 		$data = $this->qrcode->setOptions($this->options)->render('test');

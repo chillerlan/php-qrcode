@@ -10,18 +10,18 @@
 
 namespace chillerlan\QRCodeTest;
 
-use chillerlan\QRCode\Common\IMagickLuminanceSource;
-use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Common\{IMagickLuminanceSource, LuminanceSourceInterface};
+use chillerlan\QRCode\Decoder\Decoder;
+use chillerlan\Settings\SettingsContainerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use function extension_loaded;
-use const PHP_OS_FAMILY, PHP_VERSION_ID;
+use const PHP_OS_FAMILY;
 
 /**
  * Tests the Imagick based reader
  */
 final class QRCodeReaderImagickTest extends QRCodeReaderTestAbstract{
-
-	protected string $FQN = IMagickLuminanceSource::class;
 
 	protected function setUp():void{
 
@@ -32,6 +32,13 @@ final class QRCodeReaderImagickTest extends QRCodeReaderTestAbstract{
 		parent::setUp();
 
 		$this->options->readerUseImagickIfAvailable = true;
+	}
+
+	protected function getLuminanceSourceFromFile(
+		string                               $file,
+		SettingsContainerInterface|QROptions $options
+	):LuminanceSourceInterface{
+		return IMagickLuminanceSource::fromFile($file, $options);
 	}
 
 	public static function vectorQRCodeProvider():array{
@@ -51,12 +58,9 @@ final class QRCodeReaderImagickTest extends QRCodeReaderTestAbstract{
 			$this::markTestSkipped('avoid imagick conversion errors (ha ha)');
 		}
 
-		if(PHP_OS_FAMILY === 'Windows' && PHP_VERSION_ID < 80100){
-			$this::markTestSkipped('This test fails on Windows and PHP < 8.1 for whatever reason');
-		}
+		$luminanceSource = $this->getLuminanceSourceFromFile($this::samplesDir.$img, $this->options);
 
-		$this::assertSame($expected, (string)(new QRCode)
-			->readFromSource(IMagickLuminanceSource::fromFile(__DIR__.'/samples/'.$img, $this->options)));
+		$this::assertSame($expected, (string)(new Decoder)->decode($luminanceSource));
 	}
 
 }

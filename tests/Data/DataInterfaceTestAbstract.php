@@ -11,21 +11,13 @@
 namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Mode, Version};
-use PHPUnit\Framework\Attributes\DataProvider;
 use chillerlan\QRCode\Data\{QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCodeTest\QRMaxLengthTrait;
-use Exception,  Generator;
+use Exception, Generator;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-
-use function array_map;
-use function hex2bin;
-use function mb_strlen;
-use function mb_substr;
-use function sprintf;
-use function str_repeat;
-use function strlen;
-use function substr;
+use function array_map, hex2bin, mb_strlen, mb_substr, sprintf, str_repeat, strlen, substr;
 
 /**
  * The data interface test abstract
@@ -35,26 +27,15 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 	protected QRData              $QRData;
 	protected QRDataModeInterface $dataMode;
-	protected static string       $FQN;
-	protected static string       $testdata;
+
+	protected const testData = '';
 
 	protected function setUp():void{
-		$this->QRData = new QRData(new QROptions);
+		$this->QRData   = new QRData(new QROptions);
+		$this->dataMode = static::getDataModeInterface(static::testData);
 	}
 
-	/**
-	 * Verifies the QRData instance
-	 */
-	public function testInstance():void{
-		$this::assertInstanceOf(QRData::class, $this->QRData);
-	}
-
-	/**
-	 * Verifies the QRDataModeInterface instance
-	 */
-	public function testDataModeInstance():void{
-		$this::assertInstanceOf(QRDataModeInterface::class, new static::$FQN(static::$testdata));
-	}
+	abstract protected static function getDataModeInterface(string $data):QRDataModeInterface;
 
 	/**
 	 * @return int[][]
@@ -70,7 +51,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	public function testInitMatrix(int $pattern):void{
 		$maskPattern = new MaskPattern($pattern);
 
-		$this->QRData->setData([new static::$FQN(static::$testdata)]);
+		$this->QRData->setData([$this->dataMode]);
 
 		$matrix = $this->QRData->writeMatrix()->setFormatInfo($maskPattern)->mask($maskPattern);
 
@@ -85,18 +66,16 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	 */
 	#[DataProvider('stringValidateProvider')]
 	public function testValidateString(string $string, bool $expected):void{
-		/** @noinspection PhpUndefinedMethodInspection */
-		$this::assertSame($expected, static::$FQN::validateString($string));
+		$this::assertSame($expected, $this->dataMode::validateString($string));
 	}
 
 	/**
-	 * Tests if a binary string is properly validated as false
+	 * Tests if a random binary string is properly validated as false
 	 *
 	 * @see https://github.com/chillerlan/php-qrcode/issues/182
 	 */
 	public function testBinaryStringInvalid():void{
-		/** @noinspection PhpUndefinedMethodInspection */
-		$this::assertFalse(static::$FQN::validateString(hex2bin('01015989f47dff8e852122117e04c90b9f15defc1c36477b1fe1')));
+		$this::assertFalse($this->dataMode::validateString(hex2bin('01015989f47dff8e852122117e04c90b9f15defc1c36477b1fe1')));
 	}
 
 	/**
@@ -114,8 +93,6 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$options          = new QROptions;
 		$options->version = $version;
 
-		// invoke a datamode interface
-		$this->dataMode = new static::$FQN(static::$testdata);
 		// invoke a QRData instance and write data
 		$this->QRData = new QRData($options, [$this->dataMode]);
 		// get the filled bitbuffer
@@ -123,7 +100,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		// read the first 4 bits
 		$this::assertSame($this->dataMode::DATAMODE, $bitBuffer->read(4));
 		// decode the data
-		$this::assertSame(static::$testdata, $this->dataMode::decodeSegment($bitBuffer, $options->version));
+		$this::assertSame(static::testData, $this->dataMode::decodeSegment($bitBuffer, $options->version));
 	}
 
 	/**
@@ -139,15 +116,17 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	 */
 	public static function maxLengthProvider():Generator{
 		$eccLevels = array_map(fn(int $ecc):EccLevel => new EccLevel($ecc), [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H]);
-		$str       = str_repeat(static::$testdata, 1000);
-		$mb        = (static::$FQN::DATAMODE === Mode::KANJI || static::$FQN::DATAMODE === Mode::HANZI);
+		$str       = str_repeat(static::testData, 1000);
+		/** @phan-suppress-next-line PhanAbstractStaticMethodCallInStatic */
+		$dataMode  = static::getDataModeInterface(static::testData)::DATAMODE;
+		$mb        = ($dataMode === Mode::KANJI || $dataMode === Mode::HANZI);
 
 		for($v = 1; $v <= 40; $v++){
 			$version = new Version($v);
 
 			foreach($eccLevels as $eccLevel){
 				// maximum characters per ecc/mode
-				$len  = static::getMaxLengthForMode(static::$FQN::DATAMODE, $version, $eccLevel);
+				$len  = static::getMaxLengthForMode($dataMode, $version, $eccLevel);
 				// a string that contains the maximum amount of characters for the given mode
 				$val  = ($mb) ? mb_substr($str, 0, $len) : substr($str, 0, $len);
 				// same as above but character count exceeds
@@ -171,8 +150,10 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$options           = new QROptions;
 		$options->version  = $version->getVersionNumber();
 		$options->eccLevel = $eccLevel->getLevel();
-		$this->dataMode    = new static::$FQN($str);
+
+		$this->dataMode    = static::getDataModeInterface($str);
 		$this->QRData      = new QRData($options, [$this->dataMode]);
+
 		$bitBuffer         = $this->QRData->getBitBuffer();
 
 		$this::assertSame($this->dataMode::DATAMODE, $bitBuffer->read(4));
@@ -187,8 +168,10 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$options           = new QROptions;
 		$options->version  = Version::AUTO;
 		$options->eccLevel = $eccLevel->getLevel();
-		$this->dataMode    = new static::$FQN($str);
+
+		$this->dataMode    = static::getDataModeInterface($str);
 		$this->QRData      = new QRData($options, [$this->dataMode]);
+
 		$bitBuffer         = $this->QRData->getBitBuffer();
 
 		$this::assertLessThanOrEqual($eccLevel->getMaxBitsForVersion($version), $this->QRData->estimateTotalBitLength());
@@ -214,7 +197,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$options->eccLevel = $eccLevel->getLevel();
 
 		/** @phan-suppress-next-line PhanNoopNew */
-		new QRData($options, [new static::$FQN($str1)]);
+		new QRData($options, [static::getDataModeInterface($str1)]);
 	}
 
 	/**
@@ -224,7 +207,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('data exceeds');
 
-		$this->QRData->setData([new static::$FQN(str_repeat(static::$testdata, 1337))]);
+		$this->QRData->setData([static::getDataModeInterface(str_repeat(static::testData, 1337))]);
 	}
 
 	/**
@@ -234,8 +217,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid data');
 
-		/** @phan-suppress-next-line PhanNoopNew */
-		new static::$FQN('##');
+		static::getDataModeInterface('##');
 	}
 
 	/**
@@ -245,8 +227,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid data');
 
-		/** @phan-suppress-next-line PhanNoopNew */
-		new static::$FQN('');
+		static::getDataModeInterface('');
 	}
 
 }

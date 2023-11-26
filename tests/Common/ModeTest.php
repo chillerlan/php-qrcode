@@ -10,8 +10,8 @@
 
 namespace chillerlan\QRCodeTest\Common;
 
-use chillerlan\QRCode\Common\Mode;
 use chillerlan\QRCode\QRCodeException;
+use chillerlan\QRCode\Common\Mode;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
