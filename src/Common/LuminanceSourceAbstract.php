@@ -12,8 +12,8 @@
 
 namespace chillerlan\QRCode\Common;
 
-use chillerlan\QRCode\Decoder\QRCodeDecoderException;
 use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Decoder\QRCodeDecoderException;
 use chillerlan\Settings\SettingsContainerInterface;
 use function array_slice, array_splice, file_exists, is_file, is_readable, realpath;
 
@@ -33,10 +33,10 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 	/**
 	 *
 	 */
-	public function __construct(int $width, int $height, SettingsContainerInterface|QROptions $options = null){
+	public function __construct(int $width, int $height, SettingsContainerInterface|QROptions $options = new QROptions){
 		$this->width   = $width;
 		$this->height  = $height;
-		$this->options = ($options ?? new QROptions);
+		$this->options = $options;
 
 		$this->luminances = [];
 	}

@@ -12,8 +12,8 @@
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use ErrorException, GdImage, Throwable;
 use function array_values, count, extension_loaded, gd_info, imagecolorallocate, imagecolortransparent,
@@ -90,7 +90,7 @@ abstract class QRGdImage extends QROutputAbstract{
 			QRGdImageWEBP::class => 'WebP Support',
 		];
 
-		// likely using default or custom output
+		// likely using custom output
 		if(!isset($modes[$this->options->outputInterface])){
 			return;
 		}
@@ -217,10 +217,8 @@ abstract class QRGdImage extends QROutputAbstract{
 	 * we're scaling the image up in order to draw crisp round circles, otherwise they appear square-y on small scales
 	 *
 	 * @see https://github.com/chillerlan/php-qrcode/issues/23
-	 *
-	 * @return \GdImage|resource
 	 */
-	protected function createImage(){
+	protected function createImage():GdImage{
 
 		if($this->drawCircularModules && $this->options->gdImageUseUpscale && $this->options->scale < 20){
 			// increase the initial image size by 10

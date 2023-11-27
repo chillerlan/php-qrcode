@@ -8,11 +8,9 @@
  * @license      MIT
  */
 
-
+use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\QRMarkupSVG;
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
 
 require_once __DIR__.'/../vendor/autoload.php';
 

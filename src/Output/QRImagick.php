@@ -12,11 +12,11 @@
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use finfo, Imagick, ImagickDraw, ImagickPixel;
-use function extension_loaded, in_array, is_string, max, min, preg_match, strlen;
+use function extension_loaded, in_array, is_string, max, min, preg_match, sprintf, strlen;
 use const FILEINFO_MIME_TYPE;
 
 /**
@@ -49,12 +49,10 @@ class QRImagick extends QROutputAbstract{
 	 */
 	public function __construct(SettingsContainerInterface|QROptions $options, QRMatrix $matrix){
 
-		if(!extension_loaded('imagick')){
-			throw new QRCodeOutputException('ext-imagick not loaded'); // @codeCoverageIgnore
-		}
-
-		if(!extension_loaded('fileinfo')){
-			throw new QRCodeOutputException('ext-fileinfo not loaded'); // @codeCoverageIgnore
+		foreach(['fileinfo', 'imagick'] as $ext){
+			if(!extension_loaded($ext)){
+				throw new QRCodeOutputException(sprintf('ext-%s not loaded', $ext)); // @codeCoverageIgnore
+			}
 		}
 
 		parent::__construct($options, $matrix);

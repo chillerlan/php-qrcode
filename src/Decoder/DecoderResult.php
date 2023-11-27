@@ -11,8 +11,8 @@
 
 namespace chillerlan\QRCode\Decoder;
 
-use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, Version};
+use chillerlan\QRCode\Data\QRMatrix;
 use function property_exists;
 
 /**
@@ -85,7 +85,7 @@ final class DecoderResult{
 	}
 
 	/**
-	 * Returns a QRMatrix instance with thesettings and data of the reader result
+	 * Returns a QRMatrix instance with the settings and data of the reader result
 	 */
 	public function getQRMatrix():QRMatrix{
 		return (new QRMatrix($this->version, $this->eccLevel))

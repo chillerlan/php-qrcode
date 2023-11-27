@@ -8,9 +8,8 @@
  * @noinspection PhpComposerExtensionStubsInspection
  */
 
+use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
 
 require_once '../vendor/autoload.php';
 

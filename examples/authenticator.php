@@ -10,9 +10,10 @@
 
 use chillerlan\Authenticator\{Authenticator, AuthenticatorOptionsTrait};
 use chillerlan\Authenticator\Authenticators\AuthenticatorInterface;
-use chillerlan\Settings\SettingsContainerAbstract;
 use chillerlan\QRCode\{QRCode, QROptionsTrait};
 use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\Output\QRMarkupSVG;
+use chillerlan\Settings\SettingsContainerAbstract;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
@@ -35,6 +36,7 @@ $options->algorithm            = AuthenticatorInterface::ALGO_SHA512;
  */
 $options->version              = 7;
 $options->addQuietzone         = false;
+$options->outputInterface      = QRMarkupSVG::class;
 $options->outputBase64         = false;
 $options->svgAddXmlHeader      = false;
 $options->cssClass             = 'my-qrcode';

@@ -23,8 +23,8 @@ final class ReedSolomonEncoder{
 	private Version  $version;
 	private EccLevel $eccLevel;
 
-	private array $interleavedData;
-	private int   $interleavedDataIndex;
+	private array    $interleavedData;
+	private int      $interleavedDataIndex;
 
 	/**
 	 * ReedSolomonDecoder constructor
@@ -35,7 +35,7 @@ final class ReedSolomonEncoder{
 	}
 
 	/**
-	 * ECC interleaving
+	 * ECC encoding and interleaving
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */

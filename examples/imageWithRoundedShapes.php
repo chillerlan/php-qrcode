@@ -13,11 +13,10 @@
  * @noinspection PhpComposerExtensionStubsInspection
  */
 
+use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\QRGdImagePNG;
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
 use chillerlan\Settings\SettingsContainerInterface;
 
 require_once __DIR__ . '/../vendor/autoload.php';

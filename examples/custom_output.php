@@ -40,7 +40,7 @@ class MyCustomOutput extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	protected function getDefaultModuleValue(bool $isDark){
+	protected function getDefaultModuleValue(bool $isDark):mixed{
 		// TODO: Implement getDefaultModuleValue() method. (abstract)
 		return null;
 	}

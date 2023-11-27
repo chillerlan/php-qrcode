@@ -97,7 +97,6 @@ final class BitMatrix extends QRMatrix{
 		// mirror vertically
 		$this->matrix = array_reverse($this->matrix);
 		// rotate by 90 degrees clockwise
-		/** @phan-suppress-next-line PhanTypeMismatchReturnSuperType */
 		return $this->rotate90();
 	}
 

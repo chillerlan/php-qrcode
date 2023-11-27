@@ -105,9 +105,10 @@ interface QROutputInterface{
 	];
 
 	/**
-	 * @var      string
-	 * @see      \chillerlan\QRCode\Output\QROutputAbstract::toBase64DataURI()
-	 * @internal do not call this constant from the interface, but rather from one of the child classes
+	 * Note: do not call this constant from the interface, but rather from one of the child classes
+	 *
+	 * @var string
+	 * @see \chillerlan\QRCode\Output\QROutputAbstract::toBase64DataURI()
 	 */
 	public const MIME_TYPE = '';
 

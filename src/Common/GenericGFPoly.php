@@ -12,7 +12,6 @@
 namespace chillerlan\QRCode\Common;
 
 use chillerlan\QRCode\QRCodeException;
-
 use function array_fill, array_slice, array_splice, count;
 
 /**

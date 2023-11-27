@@ -14,8 +14,8 @@
 
 namespace chillerlan\QRCode;
 
-use chillerlan\QRCode\Output\QRMarkupSVG;
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
+use chillerlan\QRCode\Output\QRMarkupSVG;
 use function constant, extension_loaded, in_array, is_string, max, min, sprintf, strtolower, strtoupper, trim;
 use const JSON_THROW_ON_ERROR, PHP_EOL;
 
@@ -54,12 +54,14 @@ trait QROptionsTrait{
 	/**
 	 * Error correct level
 	 *
-	 * `EccLevel::X` where `X` is:
+	 * the constant `EccLevel::X` where `X` is:
 	 *
 	 * - `L` =>  7% (default)
 	 * - `M` => 15%
 	 * - `Q` => 25%
 	 * - `H` => 30%
+	 *
+	 * alternatively you can just pass the letters L/M/Q/H (case-insensitive) to the magic setter
 	 *
 	 * @see \chillerlan\QRCode\Common\EccLevel
 	 * @see https://github.com/chillerlan/php-qrcode/discussions/160

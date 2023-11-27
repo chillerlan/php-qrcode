@@ -54,8 +54,8 @@ class QRCode{
 	 *
 	 * PHP8: accept iterable
 	 */
-	public function __construct(SettingsContainerInterface|QROptions $options = null){
-		$this->setOptions(($options ?? new QROptions));
+	public function __construct(SettingsContainerInterface|QROptions $options = new QROptions){
+		$this->setOptions($options);
 	}
 
 	/**
@@ -292,7 +292,7 @@ class QRCode{
 	 * Reads a QR Code from the given luminance source
 	 */
 	public function readFromSource(LuminanceSourceInterface $source):DecoderResult{
-		return (new Decoder)->decode($source);
+		return (new Decoder($this->options))->decode($source);
 	}
 
 }

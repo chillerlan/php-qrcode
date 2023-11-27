@@ -11,9 +11,11 @@
 
 namespace chillerlan\QRCode\Decoder;
 
+use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, LuminanceSourceInterface, MaskPattern, Mode, Version};
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Hanzi, Kanji, Number};
 use chillerlan\QRCode\Detector\Detector;
+use chillerlan\Settings\SettingsContainerInterface;
 use Throwable;
 use function chr, str_replace;
 
@@ -25,10 +27,18 @@ use function chr, str_replace;
  */
 final class Decoder{
 
-	private ?Version     $version = null;
-	private ?EccLevel    $eccLevel = null;
-	private ?MaskPattern $maskPattern = null;
-	private BitBuffer    $bitBuffer;
+	/**
+	 * @var \chillerlan\QRCode\QROptions|\chillerlan\Settings\SettingsContainerInterface
+	 */
+	private SettingsContainerInterface|QROptions   $options;
+	private ?Version                               $version     = null;
+	private ?EccLevel                              $eccLevel    = null;
+	private ?MaskPattern                           $maskPattern = null;
+	private BitBuffer                              $bitBuffer;
+
+	public function __construct(SettingsContainerInterface|QROptions $options = new QROptions){
+		$this->options = $options;
+	}
 
 	/**
 	 * Decodes a QR Code represented as a BitMatrix.
@@ -56,7 +66,7 @@ final class Decoder{
 				 */
 				return $this->decodeMatrix($matrix->resetVersionInfo()->mirrorDiagonal());
 			}
-			catch(Throwable $f){
+			catch(Throwable){
 				// Throw the exception from the original reading
 				throw $e;
 			}

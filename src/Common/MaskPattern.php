@@ -11,8 +11,8 @@
 
 namespace chillerlan\QRCode\Common;
 
-use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\QRCodeException;
+use chillerlan\QRCode\Data\QRMatrix;
 use Closure;
 use function abs, array_column, array_search, intdiv, min;
 

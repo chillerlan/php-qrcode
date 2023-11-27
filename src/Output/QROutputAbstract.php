@@ -10,8 +10,8 @@
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use Closure;
 use function base64_encode, dirname, file_put_contents, is_writable, ksort, sprintf;

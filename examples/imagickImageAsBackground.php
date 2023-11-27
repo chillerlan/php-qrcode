@@ -8,11 +8,9 @@
  * @license      MIT
  */
 
+use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Output\QRImagick;
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QRCodeException;
-use chillerlan\QRCode\QROptions;
 
 require_once __DIR__.'/../vendor/autoload.php';
 

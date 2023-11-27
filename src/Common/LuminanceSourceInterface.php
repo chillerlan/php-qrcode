@@ -10,6 +10,9 @@
 
 namespace chillerlan\QRCode\Common;
 
+use chillerlan\QRCode\QROptions;
+use chillerlan\Settings\SettingsContainerInterface;
+
 /**
  */
 interface LuminanceSourceInterface{
@@ -51,11 +54,11 @@ interface LuminanceSourceInterface{
 	/**
 	 * Creates a LuminanceSource instance from the given file
 	 */
-	public static function fromFile(string $path):static;
+	public static function fromFile(string $path, SettingsContainerInterface|QROptions $options = new QROptions):static;
 
 	/**
 	 * Creates a LuminanceSource instance from the given data blob
 	 */
-	public static function fromBlob(string $blob):static;
+	public static function fromBlob(string $blob, SettingsContainerInterface|QROptions $options = new QROptions):static;
 
 }

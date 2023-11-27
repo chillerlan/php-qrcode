@@ -12,10 +12,10 @@
  * @noinspection PhpIllegalPsrClassPathInspection
  */
 
+use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\QRMarkupSVG;
-use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
 
 require_once __DIR__.'/../vendor/autoload.php';
 

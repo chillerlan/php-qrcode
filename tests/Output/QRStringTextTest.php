@@ -1,6 +1,6 @@
 <?php
 /**
- * Class QRStringTEXTTest
+ * Class QRStringTextTest
  *
  * @created      11.12.2021
  * @author       smiley <smiley@chillerlan.net>
@@ -18,7 +18,7 @@ use chillerlan\Settings\SettingsContainerInterface;
 /**
  *
  */
-final class QRStringTEXTTest extends QROutputTestAbstract{
+final class QRStringTextTest extends QROutputTestAbstract{
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,

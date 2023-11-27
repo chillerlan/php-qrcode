@@ -11,8 +11,8 @@
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use FPDF;
 

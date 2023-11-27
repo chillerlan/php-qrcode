@@ -29,7 +29,7 @@ final class IMagickLuminanceSource extends LuminanceSourceAbstract{
 	/**
 	 * IMagickLuminanceSource constructor.
 	 */
-	public function __construct(Imagick $imagick, SettingsContainerInterface|QROptions $options = null){
+	public function __construct(Imagick $imagick, SettingsContainerInterface|QROptions $options = new QROptions){
 		parent::__construct($imagick->getImageWidth(), $imagick->getImageHeight(), $options);
 
 		$this->imagick = $imagick;
@@ -64,12 +64,12 @@ final class IMagickLuminanceSource extends LuminanceSourceAbstract{
 	}
 
 	/** @inheritDoc */
-	public static function fromFile(string $path, SettingsContainerInterface $options = null):static{
+	public static function fromFile(string $path, SettingsContainerInterface|QROptions $options = new QROptions):static{
 		return new self(new Imagick(self::checkFile($path)), $options);
 	}
 
 	/** @inheritDoc */
-	public static function fromBlob(string $blob, SettingsContainerInterface $options = null):static{
+	public static function fromBlob(string $blob, SettingsContainerInterface|QROptions $options = new QROptions):static{
 		$im = new Imagick;
 		$im->readImageBlob($blob);
 

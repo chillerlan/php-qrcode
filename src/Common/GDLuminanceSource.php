@@ -33,7 +33,7 @@ final class GDLuminanceSource extends LuminanceSourceAbstract{
 	 *
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
-	public function __construct(GdImage $gdImage, SettingsContainerInterface|QROptions $options = null){
+	public function __construct(GdImage $gdImage, SettingsContainerInterface|QROptions $options = new QROptions){
 		parent::__construct(imagesx($gdImage), imagesy($gdImage), $options);
 
 		$this->gdImage = $gdImage;
@@ -71,12 +71,12 @@ final class GDLuminanceSource extends LuminanceSourceAbstract{
 	}
 
 	/** @inheritDoc */
-	public static function fromFile(string $path, SettingsContainerInterface $options = null):static{
+	public static function fromFile(string $path, SettingsContainerInterface|QROptions $options = new QROptions):static{
 		return new self(imagecreatefromstring(file_get_contents(self::checkFile($path))), $options);
 	}
 
 	/** @inheritDoc */
-	public static function fromBlob(string $blob, SettingsContainerInterface $options = null):static{
+	public static function fromBlob(string $blob, SettingsContainerInterface|QROptions $options = new QROptions):static{
 		return new self(imagecreatefromstring($blob), $options);
 	}
 
