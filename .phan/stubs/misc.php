@@ -7,5 +7,3 @@
  * @copyright    2021 smiley
  * @license      MIT
  */
-
-class GdImage{}
