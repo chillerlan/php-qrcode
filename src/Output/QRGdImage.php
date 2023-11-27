@@ -83,6 +83,7 @@ abstract class QRGdImage extends QROutputAbstract{
 		}
 
 		$modes = [
+			QRGdImageAVIF::class => 'AVIF Support',
 			QRGdImageBMP::class  => 'BMP Support',
 			QRGdImageGIF::class  => 'GIF Create Support',
 			QRGdImageJPEG::class => 'JPEG Support',
@@ -90,7 +91,7 @@ abstract class QRGdImage extends QROutputAbstract{
 			QRGdImageWEBP::class => 'WebP Support',
 		];
 
-		// likely using custom output
+		// likely using custom output/manual invocation
 		if(!isset($modes[$this->options->outputInterface])){
 			return;
 		}

@@ -40,9 +40,9 @@ abstract class QROutputTestAbstract extends TestCase{
 			mkdir($this::buildDir, 0777, true);
 		}
 
-		$this->options                  = new QROptions;
-		$this->matrix                   = (new QRCode($this->options))->addByteSegment('testdata')->getQRMatrix();
-		$this->outputInterface          = $this->getOutputInterface($this->options, $this->matrix);
+		$this->options         = new QROptions;
+		$this->matrix          = (new QRCode($this->options))->addByteSegment('testdata')->getQRMatrix();
+		$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
 	}
 
 	abstract protected function getOutputInterface(

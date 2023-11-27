@@ -24,18 +24,19 @@ interface QROutputInterface{
 	 * @see https://github.com/chillerlan/php-qrcode/issues/223
 	 */
 	public const MODES = [
-		QRMarkupSVG::class,
-		QRMarkupHTML::class,
+		QREps::class,
+		QRFpdf::class,
+		QRGdImageAVIF::class,
 		QRGdImageBMP::class,
 		QRGdImageGIF::class,
 		QRGdImageJPEG::class,
 		QRGdImagePNG::class,
 		QRGdImageWEBP::class,
+		QRImagick::class,
+		QRMarkupHTML::class,
+		QRMarkupSVG::class,
 		QRStringJSON::class,
 		QRStringText::class,
-		QRImagick::class,
-		QRFpdf::class,
-		QREps::class,
 	];
 
 	/**
