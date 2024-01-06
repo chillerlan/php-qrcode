@@ -1,0 +1,17 @@
+/.build            export-ignore
+/.github           export-ignore
+/.phan             export-ignore
+/.phpdoc           export-ignore
+/docs              export-ignore
+/examples          export-ignore
+/tests             export-ignore
+/.editorconfig     export-ignore
+/.gitattributes    export-ignore
+/.gitignore        export-ignore
+/.readthedocs.yml  export-ignore
+/phpcs.xml.dist    export-ignore
+/phpdoc.xml.dist   export-ignore
+/phpmd.xml.dist    export-ignore
+/phpunit.xml.dist  export-ignore
+
+*.php diff=php
