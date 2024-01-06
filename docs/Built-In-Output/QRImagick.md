@@ -14,10 +14,11 @@ Please follow the installation guides for your operating system:
 See: [ImageMagick example](https://github.com/chillerlan/php-qrcode/blob/main/examples/imagick.php)
 
 Set the options:
+
 ```php
 $options = new QROptions;
 
-$options->outputType          = QROutputInterface::IMAGICK;
+$options->outputInterface     = QRImagick::class;
 $options->imagickFormat       = 'webp'; // e.g. png32, jpeg, webp
 $options->quality             = 90;
 $options->scale               = 20;

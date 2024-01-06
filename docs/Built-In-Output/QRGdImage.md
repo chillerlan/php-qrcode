@@ -8,11 +8,12 @@
 See: [GdImage example](https://github.com/chillerlan/php-qrcode/blob/main/examples/image.php)
 
 Set the options:
+
 ```php
 $options = new QROptions;
 
-// $outputType can be one of: GDIMAGE_BMP, GDIMAGE_GIF, GDIMAGE_JPG, GDIMAGE_PNG, GDIMAGE_WEBP
-$options->outputType          = QROutputInterface::GDIMAGE_WEBP;
+// $outputInterface can be one of the classes listed in `QROutputInterface::MODES`
+$options->outputInterface     = QRGdImageWEBP::class;
 $options->quality             = 90;
 // the size of one qr module in pixels
 $options->scale               = 20;

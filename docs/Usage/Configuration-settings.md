@@ -30,12 +30,14 @@ if `QROptions::$version` is set to `Version::AUTO` (default: 40)
 
 Error correct level
 
-`EccLevel::X` where `X` is:
+the constant `EccLevel::X` where `X` is:
 
 - `L` =>  7% (default)
 - `M` => 15%
 - `Q` => 25%
 - `H` => 30%
+
+alternatively you can just pass the letters L/M/Q/H (case-insensitive) to the magic setter
 
 
 **See also:**
@@ -73,47 +75,9 @@ Size of the quiet zone
 internally clamped to `0 ... $moduleCount / 2` (default: 4)
 
 
-## outputType
-
-The built-in output type
-
-- `QROutputInterface::MARKUP_SVG` (default)
-- `QROutputInterface::MARKUP_HTML`
-- `QROutputInterface::GDIMAGE_BMP`
-- `QROutputInterface::GDIMAGE_GIF`
-- `QROutputInterface::GDIMAGE_JPG`
-- `QROutputInterface::GDIMAGE_PNG`
-- `QROutputInterface::GDIMAGE_WEBP`
-- `QROutputInterface::STRING_TEXT`
-- `QROutputInterface::STRING_JSON`
-- `QROutputInterface::IMAGICK`
-- `QROutputInterface::EPS`
-- `QROutputInterface::FPDF`
-- `QROutputInterface::CUSTOM`
-
-
-**Deprecated:** 5.0.0 see issue #223
-
-**See also:**
-
-- `\chillerlan\QRCode\Output\QREps`
-- `\chillerlan\QRCode\Output\QRFpdf`
-- `\chillerlan\QRCode\Output\QRGdImage`
-- `\chillerlan\QRCode\Output\QRImagick`
-- `\chillerlan\QRCode\Output\QRMarkupHTML`
-- `\chillerlan\QRCode\Output\QRMarkupSVG`
-- `\chillerlan\QRCode\Output\QRString`
-- [github.com/chillerlan/php-qrcode/issues/223](https://github.com/chillerlan/php-qrcode/issues/223)
-
-
 ## outputInterface
 
-The FQCN of the custom `QROutputInterface`
-
-if `QROptions::$outputType` is set to `QROutputInterface::CUSTOM` (default: `null`)
-
-**Deprecated:** 5.0.0 the nullable type will be removed in future versions
-and the default value will be set to `QRMarkupSVG::class`
+The FQCN of the `QROutputInterface` to use
 
 
 ## returnResource
@@ -175,7 +139,6 @@ Sets the image background color (if applicable)
 - `QRFpdf`: defaults to blank internally (white page)
 
 
-
 ## invertMatrix
 
 Whether to invert the matrix (reflectance reversal)
@@ -232,15 +195,29 @@ Specifies which module types to exclude when `QROptions::$drawCircularModules` i
 
 Whether to connect the paths for the several module types to avoid weird glitches when using gradients etc.
 
+This option is exclusive to output classes that use the module collector `QROutputAbstract::collectModules()`,
+which converts the `$M_TYPE` of all modules to `QRMatrix::M_DATA` and `QRMatrix::M_DATA_DARK` respectively.
+
+Module types that should not be added to the connected path can be excluded via `QROptions::$excludeFromConnect`.
+
+Currentty used in `QREps` and `QRMarkupSVG`.
+
 
 **See also:**
 
+- `\chillerlan\QRCode\Output\QROutputAbstract::collectModules()`
+- `\chillerlan\QRCode\QROptionsTrait::$excludeFromConnect`
 - [github.com/chillerlan/php-qrcode/issues/57](https://github.com/chillerlan/php-qrcode/issues/57)
 
 
 ## excludeFromConnect
 
 Specify which paths/patterns to exclude from connecting if `QROptions::$connectPaths` is set to `true`
+
+
+**See also:**
+
+- `\chillerlan\QRCode\QROptionsTrait::$connectPaths`
 
 
 ## moduleValues
@@ -466,49 +443,4 @@ Invert the colors of the image
 Increase the contrast before reading
 
 note that applying contrast works different in GD and Imagick, so mileage may vary
-
-
-## imageBase64
-
-**Deprecated:** 5.0.0 use QROptions::$outputBase64 instead
-
-**See also:**
-
-- `       \chillerlan\QRCode\QROptions::$outputBase64`
-
-
-## jpegQuality
-
-**Deprecated:** 5.0.0 use QROptions::$quality instead
-
-**See also:**
-
-- `       \chillerlan\QRCode\QROptions::$quality`
-
-
-## pngCompression
-
-**Deprecated:** 5.0.0 use QROptions::$quality instead
-
-**See also:**
-
-- `       \chillerlan\QRCode\QROptions::$quality`
-
-
-## imageTransparencyBG
-
-**Deprecated:** 5.0.0 use QROptions::$transparencyColor instead
-
-**See also:**
-
-- `       \chillerlan\QRCode\QROptions::$transparencyColor`
-
-
-## imagickBG
-
-**Deprecated:** 5.0.0 use QROptions::$bgColor instead
-
-**See also:**
-
-- `       \chillerlan\QRCode\QROptions::$bgColor`
 

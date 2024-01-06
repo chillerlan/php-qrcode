@@ -38,12 +38,13 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
   - numeric
   - alphanumeric
   - 8-bit binary
+    - [ECI support](https://en.wikipedia.org/wiki/Extended_Channel_Interpretation)
   - 13-bit double-byte:
     - kanji (Japanese, Shift-JIS)
     - hanzi (simplified Chinese, GB2312/GB18030) as [defined in GBT18284-2000](https://www.chinesestandard.net/PDF/English.aspx/GBT18284-2000)
 - Flexible, easily extensible output modules, built-in support for the following output formats:
-  - [GdImage](https://www.php.net/manual/book.image)
-  - [ImageMagick](https://www.php.net/manual/book.imagick)
+  - [GdImage](https://www.php.net/manual/book.image) (raster graphics: avif, bmp, gif, jpeg, png, webp)
+  - [ImageMagick](https://www.php.net/manual/book.imagick) ([multiple supported image formats](https://imagemagick.org/script/formats.php))
   - Markup types: SVG, HTML, etc.
   - String types: JSON, plain text, etc.
   - Encapsulated Postscript (EPS)
@@ -53,7 +54,7 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
 
 ### Requirements
 
-- PHP 7.4+
+- PHP 8.2+
   - [`ext-mbstring`](https://www.php.net/manual/book.mbstring.php)
   - optional:
     - [`ext-gd`](https://www.php.net/manual/book.image)
@@ -88,13 +89,13 @@ composer require chillerlan/php-qrcode
 ```json
 {
 	"require": {
-		"php": "^7.4 || ^8.0",
+		"php": "^^8.2",
 		"chillerlan/php-qrcode": "dev-main#<commit_hash>"
 	}
 }
 ```
 
-Note: replace `dev-main` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^4.3` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions.
+Note: replace `dev-main` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^5.0` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions.
 
 
 ## Quickstart
