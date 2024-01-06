@@ -38,37 +38,30 @@ final class QRMatrixTest extends TestCase{
 	}
 
 	/**
-	 * Validates the QRMatrix instance
-	 */
-	public function testInstance():void{
-		$this::assertInstanceOf(QRMatrix::class, $this->matrix);
-	}
-
-	/**
 	 * Tests if size() returns the actual matrix size/count
 	 */
-	public function testSize():void{
+	public function testGetSize():void{
 		$this::assertCount($this->matrix->getSize(), $this->matrix->getMatrix(true));
 	}
 
 	/**
 	 * Tests if version() returns the current (given) version
 	 */
-	public function testVersion():void{
+	public function testGetVersion():void{
 		$this::assertSame($this::version, $this->matrix->getVersion()->getVersionNumber());
 	}
 
 	/**
 	 * Tests if eccLevel() returns the current (given) ECC level
 	 */
-	public function testECC():void{
+	public function testGetECC():void{
 		$this::assertSame(EccLevel::L, $this->matrix->getEccLevel()->getLevel());
 	}
 
 	/**
 	 * Tests if maskPattern() returns the current (or default) mask pattern
 	 */
-	public function testMaskPattern():void{
+	public function testGetMaskPattern():void{
 		// set via matrix evaluation
 		$matrix = (new QRCode)->addByteSegment('testdata')->getQRMatrix();
 
@@ -326,7 +319,7 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests if the logo space is drawn square if one of the dimensions is omitted
 	 */
-	public function testSetLogoSpaceOmitHeight():void{
+	public function testSetLogoSpaceOmitDimension():void{
 		$o = new QROptions;
 		$o->version         = 2;
 		$o->eccLevel        = EccLevel::H;
@@ -336,7 +329,7 @@ final class QRMatrixTest extends TestCase{
 
 		$matrix = (new QRCode($o))->addByteSegment('testdata')->getQRMatrix();
 
-		$this::debugMatrix($matrix);
+		$this->debugMatrix($matrix);
 
 		$this::assertFalse($matrix->checkType(9, 9, QRMatrix::M_LOGO));
 		$this::assertTrue($matrix->checkType(10, 10, QRMatrix::M_LOGO));
@@ -358,7 +351,7 @@ final class QRMatrixTest extends TestCase{
 		// also testing size adjustment to uneven numbers
 		$matrix->setLogoSpace(20, 14);
 
-		$this::debugMatrix($matrix);
+		$this->debugMatrix($matrix);
 
 		// NW corner
 		$this::assertFalse($matrix->checkType(17, 20, QRMatrix::M_LOGO));
@@ -382,7 +375,7 @@ final class QRMatrixTest extends TestCase{
 		$matrix = (new QRCode($o))->addByteSegment('testdata')->getQRMatrix();
 
 		$matrix->setLogoSpace(21, 21, -10, -10);
-		$this::debugMatrix($matrix);
+		$this->debugMatrix($matrix);
 		$this::assertSame(QRMatrix::M_QUIETZONE, $matrix->get(9, 9));
 		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(10, 10));
 		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(20, 20));
@@ -391,7 +384,7 @@ final class QRMatrixTest extends TestCase{
 		// I just realized that setLogoSpace() could be called multiple times
 		// on the same instance, and I'm not going to do anything about it :P
 		$matrix->setLogoSpace(21, 21, 45, 45);
-		$this::debugMatrix($matrix);
+		$this->debugMatrix($matrix);
 		$this::assertNotSame(QRMatrix::M_LOGO, $matrix->get(54, 54));
 		$this::assertSame(QRMatrix::M_LOGO, $matrix->get(55, 55));
 		$this::assertSame(QRMatrix::M_QUIETZONE, $matrix->get(67, 67));
