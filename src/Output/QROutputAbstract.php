@@ -147,6 +147,16 @@ abstract class QROutputAbstract implements QROutputInterface{
 	}
 
 	/**
+	 * Prepares the value for the given input (return value depends on the output class)
+	 */
+	abstract protected function prepareModuleValue(mixed $value):mixed;
+
+	/**
+	 * Returns a default value for either dark or light modules (return value depends on the output class)
+	 */
+	abstract protected function getDefaultModuleValue(bool $isDark):mixed;
+
+	/**
 	 * Returns the prepared value for the given $M_TYPE
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException if $moduleValues[$M_TYPE] doesn't exist
@@ -166,16 +176,6 @@ abstract class QROutputAbstract implements QROutputInterface{
 	protected function getModuleValueAt(int $x, int $y):mixed{
 		return $this->getModuleValue($this->matrix->get($x, $y));
 	}
-
-	/**
-	 * Prepares the value for the given input (return value depends on the output class)
-	 */
-	abstract protected function prepareModuleValue(mixed $value):mixed;
-
-	/**
-	 * Returns a default value for either dark or light modules (return value depends on the output class)
-	 */
-	abstract protected function getDefaultModuleValue(bool $isDark):mixed;
 
 	/**
 	 * Returns a base64 data URI for the given string and mime type

@@ -39,7 +39,7 @@ final class QRCodeTest extends TestCase{
 	 */
 	public function testInitCustomOutputInterfaceNotExistsException():void{
 		$this->expectException(QRCodeOutputException::class);
-		$this->expectExceptionMessage('invalid output module');
+		$this->expectExceptionMessage('invalid output class');
 
 		$this->options->outputInterface = 'foo';
 
@@ -51,7 +51,7 @@ final class QRCodeTest extends TestCase{
 	 */
 	public function testInitCustomOutputInterfaceNotImplementsException():void{
 		$this->expectException(QRCodeOutputException::class);
-		$this->expectExceptionMessage('output module does not implement QROutputInterface');
+		$this->expectExceptionMessage('output class does not implement QROutputInterface');
 
 		$this->options->outputInterface = stdClass::class;
 

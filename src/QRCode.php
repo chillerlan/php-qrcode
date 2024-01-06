@@ -100,8 +100,6 @@ class QRCode{
 
 	/**
 	 * Returns a QRMatrix object for the given $data and current QROptions
-	 *
-	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public function getQRMatrix():QRMatrix{
 		$matrix = (new QRData($this->options, $this->dataSegments))->writeMatrix();
@@ -149,11 +147,11 @@ class QRCode{
 		$outputInterface = $this->options->outputInterface;
 
 		if(empty($outputInterface) || !class_exists($outputInterface)){
-			throw new QRCodeOutputException('invalid output module');
+			throw new QRCodeOutputException('invalid output class');
 		}
 
 		if(!in_array(QROutputInterface::class, class_implements($outputInterface))){
-			throw new QRCodeOutputException('output module does not implement QROutputInterface');
+			throw new QRCodeOutputException('output class does not implement QROutputInterface');
 		}
 
 		return new $outputInterface($this->options, $matrix);
