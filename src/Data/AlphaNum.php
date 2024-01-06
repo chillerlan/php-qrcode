@@ -11,7 +11,6 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
-
 use function array_flip, ceil, intdiv, str_split;
 
 /**

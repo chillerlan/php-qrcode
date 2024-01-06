@@ -38,6 +38,7 @@ class QRStringJSON extends QROutputAbstract{
 	 * unused - required by interface
 	 *
 	 * @inheritDoc
+	 * @codeCoverageIgnore
 	 */
 	protected function prepareModuleValue($value):string{
 		return '';
@@ -47,6 +48,7 @@ class QRStringJSON extends QROutputAbstract{
 	 * unused - required by interface
 	 *
 	 * @inheritDoc
+	 * @codeCoverageIgnore
 	 */
 	protected function getDefaultModuleValue(bool $isDark):string{
 		return '';
@@ -56,6 +58,7 @@ class QRStringJSON extends QROutputAbstract{
 	 * unused - required by interface
 	 *
 	 * @inheritDoc
+	 * @codeCoverageIgnore
 	 */
 	public static function moduleValueIsValid($value):bool{
 		return true;

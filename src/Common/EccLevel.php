@@ -11,7 +11,6 @@
 namespace chillerlan\QRCode\Common;
 
 use chillerlan\QRCode\QRCodeException;
-
 use function array_column;
 
 /**

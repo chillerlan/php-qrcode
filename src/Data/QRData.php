@@ -12,9 +12,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, Mode, Version};
 use chillerlan\Settings\SettingsContainerInterface;
-
-use function count;
-use function sprintf;
+use function count, sprintf;
 
 /**
  * Processes the binary data and maps it on a QRMatrix which is then being returned

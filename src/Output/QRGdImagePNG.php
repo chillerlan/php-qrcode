@@ -12,9 +12,7 @@
 
 namespace chillerlan\QRCode\Output;
 
-use function imagepng;
-use function max;
-use function min;
+use function imagepng, max, min;
 
 /**
  * GdImage png output

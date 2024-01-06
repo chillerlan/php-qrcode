@@ -240,12 +240,23 @@ trait QROptionsTrait{
 	/**
 	 * Whether to connect the paths for the several module types to avoid weird glitches when using gradients etc.
 	 *
+	 * This option is exclusive to output classes that use the module collector `QROutputAbstract::collectModules()`,
+	 * which converts the `$M_TYPE` of all modules to `QRMatrix::M_DATA` and `QRMatrix::M_DATA_DARK` respectively.
+	 *
+	 * Module types that should not be added to the connected path can be excluded via `QROptions::$excludeFromConnect`.
+	 *
+	 * Currentty used in `QREps` and `QRMarkupSVG`.
+	 *
+	 * @see \chillerlan\QRCode\Output\QROutputAbstract::collectModules()
+	 * @see \chillerlan\QRCode\QROptionsTrait::$excludeFromConnect
 	 * @see https://github.com/chillerlan/php-qrcode/issues/57
 	 */
 	protected bool $connectPaths = false;
 
 	/**
 	 * Specify which paths/patterns to exclude from connecting if `QROptions::$connectPaths` is set to `true`
+	 *
+	 * @see \chillerlan\QRCode\QROptionsTrait::$connectPaths
 	 */
 	protected array $excludeFromConnect = [];
 

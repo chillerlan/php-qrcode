@@ -12,9 +12,7 @@
 
 namespace chillerlan\QRCode\Output;
 
-use function imagewebp;
-use function max;
-use function min;
+use function imagewebp, max, min;
 
 /**
  * GdImage webp output

@@ -10,8 +10,8 @@
 
 namespace chillerlan\QRCodeTest\Common;
 
-use chillerlan\QRCode\Common\ECICharset;
 use chillerlan\QRCode\QRCodeException;
+use chillerlan\QRCode\Common\ECICharset;
 use PHPUnit\Framework\TestCase;
 
 final class ECICharsetTest extends TestCase{

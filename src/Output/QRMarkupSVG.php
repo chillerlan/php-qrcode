@@ -18,7 +18,10 @@ use function array_chunk, implode, is_string, preg_match, sprintf, trim;
  * @see https://github.com/codemasher/php-qrcode/pull/5
  * @see https://developer.mozilla.org/en-US/docs/Web/SVG
  * @see https://www.sarasoueidan.com/demos/interactive-svg-coordinate-system/
- * @see http://apex.infogridpacific.com/SVG/svg-tutorial-contents.html
+ * @see https://lea.verou.me/blog/2019/05/utility-convert-svg-path-to-all-relative-or-all-absolute-commands/
+ * @see https://codepen.io/leaverou/full/RmwzKv
+ * @see https://jakearchibald.github.io/svgomg/
+ * @see https://web.archive.org/web/20200220211445/http://apex.infogridpacific.com/SVG/svg-tutorial-contents.html
  */
 class QRMarkupSVG extends QRMarkup{
 
@@ -52,6 +55,17 @@ class QRMarkupSVG extends QRMarkup{
 	 */
 	protected function getOutputDimensions():array{
 		return [$this->moduleCount, $this->moduleCount];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getCssClass(int $M_TYPE = 0):string{
+		return implode(' ', [
+			'qr-'.($this::LAYERNAMES[$M_TYPE] ?? $M_TYPE),
+			$this->matrix->isDark($M_TYPE) ? 'dark' : 'light',
+			$this->options->cssClass,
+		]);
 	}
 
 	/**
@@ -157,17 +171,6 @@ class QRMarkupSVG extends QRMarkup{
 		}
 
 		return sprintf('<path class="%s" d="%s"/>', $this->getCssClass($M_TYPE), $path);
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function getCssClass(int $M_TYPE = 0):string{
-		return implode(' ', [
-			'qr-'.($this::LAYERNAMES[$M_TYPE] ?? $M_TYPE),
-			$this->matrix->isDark($M_TYPE) ? 'dark' : 'light',
-			$this->options->cssClass,
-		]);
 	}
 
 	/**
