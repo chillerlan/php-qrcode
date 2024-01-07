@@ -85,6 +85,10 @@
             </li>
             </ul>
 
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/output.html" class="">Output</a>
+</h4>
+
                         </section>
                 <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
@@ -135,13 +139,15 @@
 
 <div class="phpdocumentor-label-line">
 
+    <div class="phpdocumentor-label phpdocumentor-label--success"><span>Final</span><span>Yes</span></div>
+
 
 </div>
 
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/GDLuminanceSource.php"><a href="files/src-common-gdluminancesource.html"><abbr title="src/Common/GDLuminanceSource.php">GDLuminanceSource.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 
     </aside>
 
@@ -174,12 +180,6 @@ It does not support rotation.</p>
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html#property_gdImage">$gdImage</a>
-    <span>
-                        &nbsp;: resource|<abbr title="\GdImage">GdImage</abbr>            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-Common-LuminanceSourceAbstract.html#property_height">$height</a>
     <span>
                         &nbsp;: int            </span>
@@ -194,13 +194,19 @@ It does not support rotation.</p>
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-Common-LuminanceSourceAbstract.html#property_options">$options</a>
     <span>
-                        &nbsp;: <a href="classes/chillerlan-QRCode-QROptions.html"><abbr title="\chillerlan\QRCode\QROptions">QROptions</abbr></a>|<abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>            </span>
+                        &nbsp;: <abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>|<a href="classes/chillerlan-QRCode-QROptions.html"><abbr title="\chillerlan\QRCode\QROptions">QROptions</abbr></a>            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-Common-LuminanceSourceAbstract.html#property_width">$width</a>
     <span>
                         &nbsp;: int            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html#property_gdImage">$gdImage</a>
+    <span>
+                        &nbsp;: <abbr title="\GdImage">GdImage</abbr>            </span>
 </dt>
 
     </dl>
@@ -221,13 +227,13 @@ It does not support rotation.</p>
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html#method_fromBlob">fromBlob()</a>
     <span>
-                                &nbsp;: self    </span>
+                                &nbsp;: static    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html#method_fromFile">fromFile()</a>
     <span>
-                                &nbsp;: self    </span>
+                                &nbsp;: static    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
@@ -273,7 +279,7 @@ getLuminances() may never be called.</dd>
                                 &nbsp;: void    </span>
 </dt>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html#method_setLuminancePixels">setLuminancePixels()</a>
     <span>
                                 &nbsp;: void    </span>
@@ -300,39 +306,6 @@ getLuminances() may never be called.</dd>
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_gdImage">
-        $gdImage
-        <a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html#property_gdImage" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/GDLuminanceSource.php"><a href="files/src-common-gdluminancesource.html"><abbr title="src/Common/GDLuminanceSource.php">GDLuminanceSource.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">31</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">resource|<abbr title="\GdImage">GdImage</abbr></span>
-    <span class="phpdocumentor-signature__name">$gdImage</span>
-    </code>
-
-    
-    
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="property_height">
         $height
         <a href="classes/chillerlan-QRCode-Common-LuminanceSourceAbstract.html#property_height" class="headerlink"><i class="fas fa-link"></i></a>
@@ -343,7 +316,7 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceAbstract.php"><a href="files/src-common-luminancesourceabstract.html"><abbr title="src/Common/LuminanceSourceAbstract.php">LuminanceSourceAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 
     </aside>
 
@@ -376,7 +349,7 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceAbstract.php"><a href="files/src-common-luminancesourceabstract.html"><abbr title="src/Common/LuminanceSourceAbstract.php">LuminanceSourceAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">30</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
@@ -409,14 +382,14 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceAbstract.php"><a href="files/src-common-luminancesourceabstract.html"><abbr title="src/Common/LuminanceSourceAbstract.php">LuminanceSourceAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">29</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type"><a href="classes/chillerlan-QRCode-QROptions.html"><abbr title="\chillerlan\QRCode\QROptions">QROptions</abbr></a>|<abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr></span>
+        <span class="phpdocumentor-signature__type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>|<a href="classes/chillerlan-QRCode-QROptions.html"><abbr title="\chillerlan\QRCode\QROptions">QROptions</abbr></a></span>
     <span class="phpdocumentor-signature__name">$options</span>
     </code>
 
@@ -442,7 +415,7 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceAbstract.php"><a href="files/src-common-luminancesourceabstract.html"><abbr title="src/Common/LuminanceSourceAbstract.php">LuminanceSourceAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">31</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
@@ -451,6 +424,39 @@ getLuminances() may never be called.</dd>
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">$width</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_gdImage">
+        $gdImage
+        <a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html#property_gdImage" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/GDLuminanceSource.php"><a href="files/src-common-gdluminancesource.html"><abbr title="src/Common/GDLuminanceSource.php">GDLuminanceSource.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">29</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type"><abbr title="\GdImage">GdImage</abbr></span>
+    <span class="phpdocumentor-signature__name">$gdImage</span>
     </code>
 
     
@@ -480,7 +486,7 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/GDLuminanceSource.php"><a href="files/src-common-gdluminancesource.html"><abbr title="src/Common/GDLuminanceSource.php">GDLuminanceSource.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">41</span>
+    <span class="phpdocumentor-element-found-in__line">36</span>
 
     </aside>
 
@@ -488,7 +494,7 @@ getLuminances() may never be called.</dd>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">resource|<abbr title="\GdImage">GdImage</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$gdImage</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\GdImage">GdImage</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$gdImage</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>|<a href="classes/chillerlan-QRCode-QROptions.html"><abbr title="\chillerlan\QRCode\QROptions">QROptions</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">new QROptions()</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -497,15 +503,15 @@ getLuminances() may never be called.</dd>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$gdImage</span>
-                : <span class="phpdocumentor-signature__argument__return-type">resource|<abbr title="\GdImage">GdImage</abbr></span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\GdImage">GdImage</abbr></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$options</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>|null</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>|<a href="classes/chillerlan-QRCode-QROptions.html"><abbr title="\chillerlan\QRCode\QROptions">QROptions</abbr></a></span>
+                 = <span class="phpdocumentor-signature__argument__default-value">new QROptions()</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
@@ -544,14 +550,14 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/GDLuminanceSource.php"><a href="files/src-common-gdluminancesource.html"><abbr title="src/Common/GDLuminanceSource.php">GDLuminanceSource.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">93</span>
+    <span class="phpdocumentor-element-found-in__line">79</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromBlob</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$blob</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromBlob</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$blob</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>|<a href="classes/chillerlan-QRCode-QROptions.html"><abbr title="\chillerlan\QRCode\QROptions">QROptions</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">new QROptions()</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -567,8 +573,8 @@ getLuminances() may never be called.</dd>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$options</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr></span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>|<a href="classes/chillerlan-QRCode-QROptions.html"><abbr title="\chillerlan\QRCode\QROptions">QROptions</abbr></a></span>
+                 = <span class="phpdocumentor-signature__argument__default-value">new QROptions()</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
@@ -592,7 +598,7 @@ getLuminances() may never be called.</dd>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">self</span>
+        <span class="phpdocumentor-signature__response_type">static</span>
             </section>
 
 </article>
@@ -610,14 +616,14 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/GDLuminanceSource.php"><a href="files/src-common-gdluminancesource.html"><abbr title="src/Common/GDLuminanceSource.php">GDLuminanceSource.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">88</span>
+    <span class="phpdocumentor-element-found-in__line">74</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromFile</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$path</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">self</span></code>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromFile</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$path</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>|<a href="classes/chillerlan-QRCode-QROptions.html"><abbr title="\chillerlan\QRCode\QROptions">QROptions</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">new QROptions()</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -633,8 +639,8 @@ getLuminances() may never be called.</dd>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$options</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr></span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>|<a href="classes/chillerlan-QRCode-QROptions.html"><abbr title="\chillerlan\QRCode\QROptions">QROptions</abbr></a></span>
+                 = <span class="phpdocumentor-signature__argument__default-value">new QROptions()</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
@@ -658,7 +664,7 @@ getLuminances() may never be called.</dd>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">self</span>
+        <span class="phpdocumentor-signature__response_type">static</span>
             </section>
 
 </article>
@@ -676,7 +682,7 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceAbstract.php"><a href="files/src-common-luminancesourceabstract.html"><abbr title="src/Common/LuminanceSourceAbstract.php">LuminanceSourceAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">56</span>
+    <span class="phpdocumentor-element-found-in__line">55</span>
 
     </aside>
 
@@ -729,7 +735,7 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceAbstract.php"><a href="files/src-common-luminancesourceabstract.html"><abbr title="src/Common/LuminanceSourceAbstract.php">LuminanceSourceAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">46</span>
+    <span class="phpdocumentor-element-found-in__line">45</span>
 
     </aside>
 
@@ -786,7 +792,7 @@ of the result.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceAbstract.php"><a href="files/src-common-luminancesourceabstract.html"><abbr title="src/Common/LuminanceSourceAbstract.php">LuminanceSourceAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">61</span>
+    <span class="phpdocumentor-element-found-in__line">60</span>
 
     </aside>
 
@@ -856,7 +862,7 @@ getLuminances() may never be called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceAbstract.php"><a href="files/src-common-luminancesourceabstract.html"><abbr title="src/Common/LuminanceSourceAbstract.php">LuminanceSourceAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">51</span>
+    <span class="phpdocumentor-element-found-in__line">50</span>
 
     </aside>
 
@@ -909,7 +915,7 @@ getLuminances() may never be called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceAbstract.php"><a href="files/src-common-luminancesourceabstract.html"><abbr title="src/Common/LuminanceSourceAbstract.php">LuminanceSourceAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">88</span>
+    <span class="phpdocumentor-element-found-in__line">87</span>
 
     </aside>
 
@@ -969,7 +975,7 @@ getLuminances() may never be called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceAbstract.php"><a href="files/src-common-luminancesourceabstract.html"><abbr title="src/Common/LuminanceSourceAbstract.php">LuminanceSourceAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">77</span>
+    <span class="phpdocumentor-element-found-in__line">76</span>
 
     </aside>
 
@@ -1013,7 +1019,7 @@ getLuminances() may never be called.</p>
                     <article
         class="phpdocumentor-element
             -method
-            -protected
+            -private
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="method_setLuminancePixels">
@@ -1024,13 +1030,13 @@ getLuminances() may never be called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/GDLuminanceSource.php"><a href="files/src-common-gdluminancesource.html"><abbr title="src/Common/GDLuminanceSource.php">GDLuminanceSource.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">74</span>
+    <span class="phpdocumentor-element-found-in__line">60</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
+    <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">setLuminancePixels</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
@@ -1154,11 +1160,11 @@ getLuminances() may never be called.</p>
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li><a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html#property_gdImage">$gdImage<a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-Common-LuminanceSourceAbstract.html#property_height">$height<a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-Common-LuminanceSourceAbstract.html#property_luminances">$luminances<a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-Common-LuminanceSourceAbstract.html#property_options">$options<a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-Common-LuminanceSourceAbstract.html#property_width">$width<a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html#property_gdImage">$gdImage<a href="classes/chillerlan-QRCode-Common-GDLuminanceSource.html"></li>
                                             </ul>
                 </li>
             

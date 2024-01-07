@@ -85,6 +85,10 @@
             </li>
             </ul>
 
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/output.html" class="">Output</a>
+</h4>
+
                         </section>
                 <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
@@ -191,7 +195,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_bgColor">$bgColor</a>
     <span>
-                        &nbsp;: mixed|null            </span>
+                        &nbsp;: mixed            </span>
 </dt>
 <dd>Sets the image background color (if applicable)</dd>
 
@@ -274,29 +278,11 @@
 `QROptions::$scale` is less than 20</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageBase64">$imageBase64</a>
-    <span>
-                        &nbsp;: bool            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparencyBG">$imageTransparencyBG</a>
-    <span>
-                        &nbsp;: array&lt;string|int, mixed&gt;            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparent">$imageTransparent</a>
     <span>
                         &nbsp;: bool            </span>
 </dt>
 <dd>Toggle transparency</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickBG">$imagickBG</a>
-    <span>
-                        &nbsp;: string            </span>
-</dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickFormat">$imagickFormat</a>
@@ -311,12 +297,6 @@
                         &nbsp;: bool            </span>
 </dt>
 <dd>Whether to invert the matrix (reflectance reversal)</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_jpegQuality">$jpegQuality</a>
-    <span>
-                        &nbsp;: int            </span>
-</dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_jsonAsBooleans">$jsonAsBooleans</a>
@@ -391,22 +371,9 @@
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_outputInterface">$outputInterface</a>
     <span>
-                        &nbsp;: string|null            </span>
-</dt>
-<dd>The FQCN of the custom `QROutputInterface`</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_outputType">$outputType</a>
-    <span>
                         &nbsp;: string            </span>
 </dt>
-<dd>The built-in output type</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_pngCompression">$pngCompression</a>
-    <span>
-                        &nbsp;: int            </span>
-</dt>
+<dd>The FQCN of the `QROutputInterface` to use</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_quality">$quality</a>
@@ -543,37 +510,6 @@
 <dd>clamp the logo space values between 0 and maximum length (177 modules at version 40)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imageBase64">get_imageBase64()</a>
-    <span>
-                                &nbsp;: bool    </span>
-</dt>
-<dd>redirect call to the new variable</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imageTransparencyBG">get_imageTransparencyBG()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;|null    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imagickBG">get_imagickBG()</a>
-    <span>
-                                &nbsp;: string|null    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_jpegQuality">get_jpegQuality()</a>
-    <span>
-                                &nbsp;: int    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_pngCompression">get_pngCompression()</a>
-    <span>
-                                &nbsp;: int    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_circleRadius">set_circleRadius()</a>
     <span>
                                 &nbsp;: void    </span>
@@ -581,36 +517,18 @@
 <dd>clamp/set SVG circle radius</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_eccLevel">set_eccLevel()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>sets the ECC level</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_fpdfMeasureUnit">set_fpdfMeasureUnit()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>sets the FPDF measurement unit</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imageBase64">set_imageBase64()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-<dd>redirect call to the new variable</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imageTransparencyBG">set_imageTransparencyBG()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imagickBG">set_imagickBG()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_jpegQuality">set_jpegQuality()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_logoSpaceHeight">set_logoSpaceHeight()</a>
@@ -639,12 +557,6 @@
                                 &nbsp;: void    </span>
 </dt>
 <dd>clamp/set logo space width</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_pngCompression">set_pngCompression()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_quietzoneSize">set_quietzoneSize()</a>
@@ -719,7 +631,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">269</span>
+    <span class="phpdocumentor-element-found-in__line">244</span>
 
     </aside>
 
@@ -776,7 +688,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">84</span>
+    <span class="phpdocumentor-element-found-in__line">85</span>
 
     </aside>
 
@@ -825,7 +737,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">192</span>
+    <span class="phpdocumentor-element-found-in__line">156</span>
 
     </aside>
 
@@ -833,7 +745,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">mixed|null</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">$bgColor</span>
      = <span class="phpdocumentor-signature__default-value">null</span></code>
 
@@ -870,7 +782,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">161</span>
+    <span class="phpdocumentor-element-found-in__line">127</span>
 
     </aside>
 
@@ -930,7 +842,7 @@ takes precedence over the <code class="prettyprint">QROptions::$cachefile</code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">231</span>
+    <span class="phpdocumentor-element-found-in__line">195</span>
 
     </aside>
 
@@ -966,7 +878,7 @@ takes precedence over the <code class="prettyprint">QROptions::$cachefile</code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">245</span>
+    <span class="phpdocumentor-element-found-in__line">218</span>
 
     </aside>
 
@@ -978,7 +890,12 @@ takes precedence over the <code class="prettyprint">QROptions::$cachefile</code>
     <span class="phpdocumentor-signature__name">$connectPaths</span>
      = <span class="phpdocumentor-signature__default-value">false</span></code>
 
-    
+        <section class="phpdocumentor-description"><p>This option is exclusive to output classes that use the module collector <code class="prettyprint">QROutputAbstract::collectModules()</code>,
+which converts the <code class="prettyprint">$M_TYPE</code> of all modules to <code class="prettyprint">QRMatrix::M_DATA</code> and <code class="prettyprint">QRMatrix::M_DATA_DARK</code> respectively.</p>
+<p>Module types that should not be added to the connected path can be excluded via <code class="prettyprint">QROptions::$excludeFromConnect</code>.</p>
+<p>Currentty used in <code class="prettyprint">QREps</code> and <code class="prettyprint">QRMarkupSVG</code>.</p>
+</section>
+
     
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -988,6 +905,22 @@ takes precedence over the <code class="prettyprint">QROptions::$cachefile</code>
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_collectModules"><abbr title="\chillerlan\QRCode\Output\QROutputAbstract::collectModules()">QROutputAbstract::collectModules()</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_excludeFromConnect"><abbr title="\chillerlan\QRCode\QROptionsTrait::$excludeFromConnect">QROptionsTrait::$excludeFromConnect</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1015,7 +948,7 @@ takes precedence over the <code class="prettyprint">QROptions::$cachefile</code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">381</span>
+    <span class="phpdocumentor-element-found-in__line">356</span>
 
     </aside>
 
@@ -1049,7 +982,7 @@ takes precedence over the <code class="prettyprint">QROptions::$cachefile</code>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">224</span>
+    <span class="phpdocumentor-element-found-in__line">188</span>
 
     </aside>
 
@@ -1119,7 +1052,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">208</span>
+    <span class="phpdocumentor-element-found-in__line">172</span>
 
     </aside>
 
@@ -1155,7 +1088,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">68</span>
+    <span class="phpdocumentor-element-found-in__line">69</span>
 
     </aside>
 
@@ -1167,7 +1100,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <span class="phpdocumentor-signature__name">$eccLevel</span>
      = <span class="phpdocumentor-signature__default-value">\chillerlan\QRCode\Common\EccLevel::L</span></code>
 
-        <section class="phpdocumentor-description"><p><code class="prettyprint">EccLevel::X</code> where <code class="prettyprint">X</code> is:</p>
+        <section class="phpdocumentor-description"><p>the constant <code class="prettyprint">EccLevel::X</code> where <code class="prettyprint">X</code> is:</p>
 <ul>
 <li>
 <code class="prettyprint">L</code> =&gt;  7% (default)</li>
@@ -1178,6 +1111,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
 <li>
 <code class="prettyprint">H</code> =&gt; 30%</li>
 </ul>
+<p>alternatively you can just pass the letters L/M/Q/H (case-insensitive) to the magic setter</p>
 </section>
 
     
@@ -1189,15 +1123,6 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">todo:</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>accept string values (PHP8+)</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1233,7 +1158,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">177</span>
+    <span class="phpdocumentor-element-found-in__line">143</span>
 
     </aside>
 
@@ -1269,7 +1194,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">250</span>
+    <span class="phpdocumentor-element-found-in__line">225</span>
 
     </aside>
 
@@ -1284,6 +1209,21 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_excludeFromConnect#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_connectPaths"><abbr title="\chillerlan\QRCode\QROptionsTrait::$connectPaths">QROptionsTrait::$connectPaths</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                                            </dl>
 
 </article>
                     <article
@@ -1303,7 +1243,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">452</span>
+    <span class="phpdocumentor-element-found-in__line">427</span>
 
     </aside>
 
@@ -1352,7 +1292,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">359</span>
+    <span class="phpdocumentor-element-found-in__line">334</span>
 
     </aside>
 
@@ -1398,122 +1338,6 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
             phpdocumentor-element
             -property
             -protected
-                        -deprecated                                "
->
-    <h4 class="phpdocumentor-element__name" id="property_imageBase64">
-        $imageBase64
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageBase64" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">598</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">bool</span>
-    <span class="phpdocumentor-signature__name">$imageBase64</span>
-    </code>
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageBase64#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$outputBase64 instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$outputBase64">QROptions::$outputBase64</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                        -deprecated                                "
->
-    <h4 class="phpdocumentor-element__name" id="property_imageTransparencyBG">
-        $imageTransparencyBG
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparencyBG" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">674</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
-    <span class="phpdocumentor-signature__name">$imageTransparencyBG</span>
-    </code>
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparencyBG#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$transparencyColor instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$transparencyColor">QROptions::$transparencyColor</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="property_imageTransparent">
@@ -1526,7 +1350,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">312</span>
+    <span class="phpdocumentor-element-found-in__line">287</span>
 
     </aside>
 
@@ -1568,64 +1392,6 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
             phpdocumentor-element
             -property
             -protected
-                        -deprecated                                "
->
-    <h4 class="phpdocumentor-element__name" id="property_imagickBG">
-        $imagickBG
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickBG" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">698</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$imagickBG</span>
-    </code>
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickBG#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$bgColor instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$bgColor">QROptions::$bgColor</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="property_imagickFormat">
@@ -1638,7 +1404,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">371</span>
+    <span class="phpdocumentor-element-found-in__line">346</span>
 
     </aside>
 
@@ -1695,7 +1461,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">201</span>
+    <span class="phpdocumentor-element-found-in__line">165</span>
 
     </aside>
 
@@ -1734,64 +1500,6 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
             phpdocumentor-element
             -property
             -protected
-                        -deprecated                                "
->
-    <h4 class="phpdocumentor-element__name" id="property_jpegQuality">
-        $jpegQuality
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_jpegQuality" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">626</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$jpegQuality</span>
-    </code>
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_jpegQuality#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$quality instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$quality">QROptions::$quality</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="property_jsonAsBooleans">
@@ -1804,7 +1512,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">441</span>
+    <span class="phpdocumentor-element-found-in__line">416</span>
 
     </aside>
 
@@ -1838,7 +1546,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">436</span>
+    <span class="phpdocumentor-element-found-in__line">411</span>
 
     </aside>
 
@@ -1887,7 +1595,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">238</span>
+    <span class="phpdocumentor-element-found-in__line">202</span>
 
     </aside>
 
@@ -1923,7 +1631,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">283</span>
+    <span class="phpdocumentor-element-found-in__line">258</span>
 
     </aside>
 
@@ -1959,7 +1667,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">288</span>
+    <span class="phpdocumentor-element-found-in__line">263</span>
 
     </aside>
 
@@ -1993,7 +1701,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">293</span>
+    <span class="phpdocumentor-element-found-in__line">268</span>
 
     </aside>
 
@@ -2027,7 +1735,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">276</span>
+    <span class="phpdocumentor-element-found-in__line">251</span>
 
     </aside>
 
@@ -2063,7 +1771,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">77</span>
+    <span class="phpdocumentor-element-found-in__line">78</span>
 
     </aside>
 
@@ -2114,7 +1822,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">261</span>
+    <span class="phpdocumentor-element-found-in__line">236</span>
 
     </aside>
 
@@ -2172,7 +1880,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">170</span>
+    <span class="phpdocumentor-element-found-in__line">136</span>
 
     </aside>
 
@@ -2211,7 +1919,7 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
             phpdocumentor-element
             -property
             -protected
-                        -deprecated                                "
+                                                        "
 >
     <h4 class="phpdocumentor-element__name" id="property_outputInterface">
         $outputInterface
@@ -2223,255 +1931,21 @@ using <code class="prettyprint">imagefilledellipse()</code> and then scaled back
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">136</span>
+    <span class="phpdocumentor-element-found-in__line">102</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">The FQCN of the custom `QROutputInterface`</p>
+        <p class="phpdocumentor-summary">The FQCN of the `QROutputInterface` to use</p>
 
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">string|null</span>
-    <span class="phpdocumentor-signature__name">$outputInterface</span>
-     = <span class="phpdocumentor-signature__default-value">null</span></code>
-
-        <section class="phpdocumentor-description"><p>if <code class="prettyprint">QROptions::$outputType</code> is set to <code class="prettyprint">QROutputInterface::CUSTOM</code> (default: <code class="prettyprint">null</code>)</p>
-</section>
-
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_outputInterface#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>the nullable type will be removed in future versions
-and the default value will be set to <code class="prettyprint">QRMarkupSVG::class</code></p>
-</section>
-
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                        -deprecated                                "
->
-    <h4 class="phpdocumentor-element__name" id="property_outputType">
-        $outputType
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_outputType" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">126</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">The built-in output type</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
+    <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$outputType</span>
-     = <span class="phpdocumentor-signature__default-value">\chillerlan\QRCode\Output\QROutputInterface::MARKUP_SVG</span></code>
-
-        <section class="phpdocumentor-description"><ul>
-<li>
-<code class="prettyprint">QROutputInterface::MARKUP_SVG</code> (default)</li>
-<li>
-<code class="prettyprint">QROutputInterface::MARKUP_HTML</code>
-</li>
-<li>
-<code class="prettyprint">QROutputInterface::GDIMAGE_BMP</code>
-</li>
-<li>
-<code class="prettyprint">QROutputInterface::GDIMAGE_GIF</code>
-</li>
-<li>
-<code class="prettyprint">QROutputInterface::GDIMAGE_JPG</code>
-</li>
-<li>
-<code class="prettyprint">QROutputInterface::GDIMAGE_PNG</code>
-</li>
-<li>
-<code class="prettyprint">QROutputInterface::GDIMAGE_WEBP</code>
-</li>
-<li>
-<code class="prettyprint">QROutputInterface::STRING_TEXT</code>
-</li>
-<li>
-<code class="prettyprint">QROutputInterface::STRING_JSON</code>
-</li>
-<li>
-<code class="prettyprint">QROutputInterface::IMAGICK</code>
-</li>
-<li>
-<code class="prettyprint">QROutputInterface::EPS</code>
-</li>
-<li>
-<code class="prettyprint">QROutputInterface::FPDF</code>
-</li>
-<li>
-<code class="prettyprint">QROutputInterface::CUSTOM</code>
-</li>
-</ul>
-</section>
-
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_outputType#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QREps.html"><abbr title="\chillerlan\QRCode\Output\QREps">QREps</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QRFpdf.html"><abbr title="\chillerlan\QRCode\Output\QRFpdf">QRFpdf</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QRGdImage.html"><abbr title="\chillerlan\QRCode\Output\QRGdImage">QRGdImage</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QRImagick.html"><abbr title="\chillerlan\QRCode\Output\QRImagick">QRImagick</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QRMarkupHTML.html"><abbr title="\chillerlan\QRCode\Output\QRMarkupHTML">QRMarkupHTML</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QRMarkupSVG.html"><abbr title="\chillerlan\QRCode\Output\QRMarkupSVG">QRMarkupSVG</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QRString.html"><abbr title="\chillerlan\QRCode\Output\QRString">QRString</abbr></a></span>
-                                        
-                                             
-                                    </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
-                                        
-                                             
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>see issue #223</p>
-</section>
-
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -protected
-                        -deprecated                                "
->
-    <h4 class="phpdocumentor-element__name" id="property_pngCompression">
-        $pngCompression
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_pngCompression" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">650</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-        <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$pngCompression</span>
-    </code>
+    <span class="phpdocumentor-signature__name">$outputInterface</span>
+     = <span class="phpdocumentor-signature__default-value">\chillerlan\QRCode\Output\QRMarkupSVG::class</span></code>
 
     
     
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_pngCompression#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$quality instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$quality">QROptions::$quality</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
 
 </article>
                     <article
@@ -2491,7 +1965,7 @@ and the default value will be set to <code class="prettyprint">QRMarkupSVG::clas
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">346</span>
+    <span class="phpdocumentor-element-found-in__line">321</span>
 
     </aside>
 
@@ -2591,7 +2065,7 @@ and the default value will be set to <code class="prettyprint">QRMarkupSVG::clas
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">91</span>
+    <span class="phpdocumentor-element-found-in__line">92</span>
 
     </aside>
 
@@ -2627,7 +2101,7 @@ and the default value will be set to <code class="prettyprint">QRMarkupSVG::clas
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">467</span>
+    <span class="phpdocumentor-element-found-in__line">442</span>
 
     </aside>
 
@@ -2661,7 +2135,7 @@ and the default value will be set to <code class="prettyprint">QRMarkupSVG::clas
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">479</span>
+    <span class="phpdocumentor-element-found-in__line">454</span>
 
     </aside>
 
@@ -2697,7 +2171,7 @@ and the default value will be set to <code class="prettyprint">QRMarkupSVG::clas
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">472</span>
+    <span class="phpdocumentor-element-found-in__line">447</span>
 
     </aside>
 
@@ -2731,7 +2205,7 @@ and the default value will be set to <code class="prettyprint">QRMarkupSVG::clas
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">462</span>
+    <span class="phpdocumentor-element-found-in__line">437</span>
 
     </aside>
 
@@ -2765,7 +2239,7 @@ and the default value will be set to <code class="prettyprint">QRMarkupSVG::clas
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">150</span>
+    <span class="phpdocumentor-element-found-in__line">116</span>
 
     </aside>
 
@@ -2828,7 +2302,7 @@ and <code class="prettyprint">QROptions::$outputBase64</code>. (default: <code c
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">303</span>
+    <span class="phpdocumentor-element-found-in__line">278</span>
 
     </aside>
 
@@ -2862,7 +2336,7 @@ and <code class="prettyprint">QROptions::$outputBase64</code>. (default: <code c
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">392</span>
+    <span class="phpdocumentor-element-found-in__line">367</span>
 
     </aside>
 
@@ -2898,7 +2372,7 @@ and <code class="prettyprint">QROptions::$outputBase64</code>. (default: <code c
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">399</span>
+    <span class="phpdocumentor-element-found-in__line">374</span>
 
     </aside>
 
@@ -2947,7 +2421,7 @@ and <code class="prettyprint">QROptions::$outputBase64</code>. (default: <code c
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">406</span>
+    <span class="phpdocumentor-element-found-in__line">381</span>
 
     </aside>
 
@@ -2996,7 +2470,7 @@ and <code class="prettyprint">QROptions::$outputBase64</code>. (default: <code c
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">416</span>
+    <span class="phpdocumentor-element-found-in__line">391</span>
 
     </aside>
 
@@ -3048,7 +2522,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">425</span>
+    <span class="phpdocumentor-element-found-in__line">400</span>
 
     </aside>
 
@@ -3082,7 +2556,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">327</span>
+    <span class="phpdocumentor-element-found-in__line">302</span>
 
     </aside>
 
@@ -3277,7 +2751,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">546</span>
+    <span class="phpdocumentor-element-found-in__line">547</span>
 
     </aside>
 
@@ -3313,342 +2787,6 @@ When set to <code class="prettyprint">false</code>, the module values map will b
         class="phpdocumentor-element
             -method
             -protected
-            -deprecated                                            "
->
-    <h4 class="phpdocumentor-element__name" id="method_get_imageBase64">
-        get_imageBase64()
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imageBase64" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">618</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">redirect call to the new variable</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_imageBase64</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imageBase64#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$outputBase64 instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$outputBase64">QROptions::$outputBase64</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">bool</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-            -deprecated                                            "
->
-    <h4 class="phpdocumentor-element__name" id="method_get_imageTransparencyBG">
-        get_imageTransparencyBG()
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imageTransparencyBG" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">690</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_imageTransparencyBG</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imageTransparencyBG#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$transparencyColor instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$transparencyColor">QROptions::$transparencyColor</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;|null</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-            -deprecated                                            "
->
-    <h4 class="phpdocumentor-element__name" id="method_get_imagickBG">
-        get_imagickBG()
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imagickBG" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">714</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_imagickBG</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|null</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imagickBG#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$bgColor instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$bgColor">QROptions::$bgColor</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string|null</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-            -deprecated                                            "
->
-    <h4 class="phpdocumentor-element__name" id="method_get_jpegQuality">
-        get_jpegQuality()
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_jpegQuality" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">642</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_jpegQuality</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_jpegQuality#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$quality instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$quality">QROptions::$quality</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-            -deprecated                                            "
->
-    <h4 class="phpdocumentor-element__name" id="method_get_pngCompression">
-        get_pngCompression()
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_pngCompression" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">666</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">get_pngCompression</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_pngCompression#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$quality instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$quality">QROptions::$quality</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="method_set_circleRadius">
@@ -3659,7 +2797,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">586</span>
+    <span class="phpdocumentor-element-found-in__line">587</span>
 
     </aside>
 
@@ -3693,6 +2831,63 @@ When set to <code class="prettyprint">false</code>, the module values map will b
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_set_eccLevel">
+        set_eccLevel()
+        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_eccLevel" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">494</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">sets the ECC level</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">set_eccLevel</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$eccLevel</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$eccLevel</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int|string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_eccLevel#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-QRCodeException.html"><abbr title="\chillerlan\QRCode\QRCodeException">QRCodeException</abbr></a></span>
+                                                            
+                                             
+                                    </dd>
+                                            </dl>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_set_fpdfMeasureUnit">
         set_fpdfMeasureUnit()
         <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_fpdfMeasureUnit" class="headerlink"><i class="fas fa-link"></i></a>
@@ -3701,7 +2896,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">526</span>
+    <span class="phpdocumentor-element-found-in__line">527</span>
 
     </aside>
 
@@ -3747,299 +2942,6 @@ When set to <code class="prettyprint">false</code>, the module values map will b
         class="phpdocumentor-element
             -method
             -protected
-            -deprecated                                            "
->
-    <h4 class="phpdocumentor-element__name" id="method_set_imageBase64">
-        set_imageBase64()
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imageBase64" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">607</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">redirect call to the new variable</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">set_imageBase64</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$imageBase64</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$imageBase64</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imageBase64#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$outputBase64 instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$outputBase64">QROptions::$outputBase64</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-            -deprecated                                            "
->
-    <h4 class="phpdocumentor-element__name" id="method_set_imageTransparencyBG">
-        set_imageTransparencyBG()
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imageTransparencyBG" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">681</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">set_imageTransparencyBG</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$imageTransparencyBG</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$imageTransparencyBG</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|null</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imageTransparencyBG#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$transparencyColor instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$transparencyColor">QROptions::$transparencyColor</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-            -deprecated                                            "
->
-    <h4 class="phpdocumentor-element__name" id="method_set_imagickBG">
-        set_imagickBG()
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imagickBG" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">705</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">set_imagickBG</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$imagickBG</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$imagickBG</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string|null</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imagickBG#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$bgColor instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$bgColor">QROptions::$bgColor</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-            -deprecated                                            "
->
-    <h4 class="phpdocumentor-element__name" id="method_set_jpegQuality">
-        set_jpegQuality()
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_jpegQuality" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">633</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">set_jpegQuality</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$jpegQuality</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$jpegQuality</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_jpegQuality#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$quality instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$quality">QROptions::$quality</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="method_set_logoSpaceHeight">
@@ -4050,7 +2952,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">565</span>
+    <span class="phpdocumentor-element-found-in__line">566</span>
 
     </aside>
 
@@ -4092,7 +2994,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">572</span>
+    <span class="phpdocumentor-element-found-in__line">573</span>
 
     </aside>
 
@@ -4134,7 +3036,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">579</span>
+    <span class="phpdocumentor-element-found-in__line">580</span>
 
     </aside>
 
@@ -4176,7 +3078,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">558</span>
+    <span class="phpdocumentor-element-found-in__line">559</span>
 
     </aside>
 
@@ -4208,79 +3110,6 @@ When set to <code class="prettyprint">false</code>, the module values map will b
         class="phpdocumentor-element
             -method
             -protected
-            -deprecated                                            "
->
-    <h4 class="phpdocumentor-element__name" id="method_set_pngCompression">
-        set_pngCompression()
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_pngCompression" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">657</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature -deprecated">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">set_pngCompression</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$pngCompression</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$pngCompression</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_pngCompression#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>use QROptions::$quality instead</p>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCode\QROptions::$quality">QROptions::$quality</abbr></span>
-                                        
-                                             
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">codeCoverageIgnore</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                             
-                                    </dd>
-                                            </dl>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
                                                         "
 >
     <h4 class="phpdocumentor-element__name" id="method_set_quietzoneSize">
@@ -4291,7 +3120,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">517</span>
+    <span class="phpdocumentor-element-found-in__line">518</span>
 
     </aside>
 
@@ -4333,7 +3162,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">539</span>
+    <span class="phpdocumentor-element-found-in__line">540</span>
 
     </aside>
 
@@ -4375,7 +3204,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">510</span>
+    <span class="phpdocumentor-element-found-in__line">485</span>
 
     </aside>
 
@@ -4417,7 +3246,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">503</span>
+    <span class="phpdocumentor-element-found-in__line">478</span>
 
     </aside>
 
@@ -4459,7 +3288,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">496</span>
+    <span class="phpdocumentor-element-found-in__line">471</span>
 
     </aside>
 
@@ -4501,7 +3330,7 @@ When set to <code class="prettyprint">false</code>, the module values map will b
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/QROptionsTrait.php"><a href="files/src-qroptionstrait.html"><abbr title="src/QROptionsTrait.php">QROptionsTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">485</span>
+    <span class="phpdocumentor-element-found-in__line">460</span>
 
     </aside>
 
@@ -4663,13 +3492,9 @@ When set to <code class="prettyprint">false</code>, the module values map will b
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_excludeFromConnect">$excludeFromConnect<a href="classes/chillerlan-QRCode-QROptions.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_fpdfMeasureUnit">$fpdfMeasureUnit<a href="classes/chillerlan-QRCode-QROptions.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_gdImageUseUpscale">$gdImageUseUpscale<a href="classes/chillerlan-QRCode-QROptions.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageBase64">$imageBase64<a href="classes/chillerlan-QRCode-QROptions.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparencyBG">$imageTransparencyBG<a href="classes/chillerlan-QRCode-QROptions.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imageTransparent">$imageTransparent<a href="classes/chillerlan-QRCode-QROptions.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickBG">$imagickBG<a href="classes/chillerlan-QRCode-QROptions.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_imagickFormat">$imagickFormat<a href="classes/chillerlan-QRCode-QROptions.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_invertMatrix">$invertMatrix<a href="classes/chillerlan-QRCode-QROptions.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_jpegQuality">$jpegQuality<a href="classes/chillerlan-QRCode-QROptions.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_jsonAsBooleans">$jsonAsBooleans<a href="classes/chillerlan-QRCode-QROptions.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_jsonFlags">$jsonFlags<a href="classes/chillerlan-QRCode-QROptions.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_keepAsSquare">$keepAsSquare<a href="classes/chillerlan-QRCode-QROptions.html"></li>
@@ -4681,8 +3506,6 @@ When set to <code class="prettyprint">false</code>, the module values map will b
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_moduleValues">$moduleValues<a href="classes/chillerlan-QRCode-QROptions.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_outputBase64">$outputBase64<a href="classes/chillerlan-QRCode-QROptions.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_outputInterface">$outputInterface<a href="classes/chillerlan-QRCode-QROptions.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_outputType">$outputType<a href="classes/chillerlan-QRCode-QROptions.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_pngCompression">$pngCompression<a href="classes/chillerlan-QRCode-QROptions.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_quality">$quality<a href="classes/chillerlan-QRCode-QROptions.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_quietzoneSize">$quietzoneSize<a href="classes/chillerlan-QRCode-QROptions.html"></li>
                                                     <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#property_readerGrayscale">$readerGrayscale<a href="classes/chillerlan-QRCode-QROptions.html"></li>
@@ -4707,22 +3530,13 @@ When set to <code class="prettyprint">false</code>, the module values map will b
             <li>
                 <ul class="phpdocumentor-list -clean">
                                             <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_clampLogoSpaceValue">clampLogoSpaceValue()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imageBase64">get_imageBase64()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imageTransparencyBG">get_imageTransparencyBG()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_imagickBG">get_imagickBG()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_jpegQuality">get_jpegQuality()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_get_pngCompression">get_pngCompression()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_circleRadius">set_circleRadius()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_eccLevel">set_eccLevel()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_fpdfMeasureUnit">set_fpdfMeasureUnit()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imageBase64">set_imageBase64()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imageTransparencyBG">set_imageTransparencyBG()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_imagickBG">set_imagickBG()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_jpegQuality">set_jpegQuality()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_logoSpaceHeight">set_logoSpaceHeight()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_logoSpaceStartX">set_logoSpaceStartX()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_logoSpaceStartY">set_logoSpaceStartY()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_logoSpaceWidth">set_logoSpaceWidth()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_pngCompression">set_pngCompression()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_quietzoneSize">set_quietzoneSize()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_readerUseImagickIfAvailable">set_readerUseImagickIfAvailable()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-QROptionsTrait.html#method_set_version">set_version()</a></li>

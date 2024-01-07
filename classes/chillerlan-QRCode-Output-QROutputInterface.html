@@ -85,6 +85,10 @@
             </li>
             </ul>
 
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/output.html" class="">Output</a>
+</h4>
+
                         </section>
                 <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
@@ -159,12 +163,6 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_CUSTOM">CUSTOM</a>
-    <span>
-        &nbsp;= &#039;custom&#039;                            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_DEFAULT_MODULE_VALUES">DEFAULT_MODULE_VALUES</a>
     <span>
         &nbsp;= [
@@ -196,54 +194,6 @@
 ]                            </span>
 </dt>
 <dd>Map of module type =&gt; default value</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_EPS">EPS</a>
-    <span>
-        &nbsp;= &#039;eps&#039;                            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_FPDF">FPDF</a>
-    <span>
-        &nbsp;= &#039;fpdf&#039;                            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_BMP">GDIMAGE_BMP</a>
-    <span>
-        &nbsp;= &#039;bmp&#039;                            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_GIF">GDIMAGE_GIF</a>
-    <span>
-        &nbsp;= &#039;gif&#039;                            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_JPG">GDIMAGE_JPG</a>
-    <span>
-        &nbsp;= &#039;jpg&#039;                            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_PNG">GDIMAGE_PNG</a>
-    <span>
-        &nbsp;= &#039;png&#039;                            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_WEBP">GDIMAGE_WEBP</a>
-    <span>
-        &nbsp;= &#039;webp&#039;                            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_IMAGICK">IMAGICK</a>
-    <span>
-        &nbsp;= &#039;imagick&#039;                            </span>
-</dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_LAYERNAMES">LAYERNAMES</a>
@@ -279,35 +229,18 @@
 <dd>Map of module type =&gt; readable name (for CSS etc.)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MARKUP_HTML">MARKUP_HTML</a>
+    <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MIME_TYPE">MIME_TYPE</a>
     <span>
-        &nbsp;= &#039;html&#039;                            </span>
+        &nbsp;= &#039;&#039;                            </span>
 </dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MARKUP_SVG">MARKUP_SVG</a>
-    <span>
-        &nbsp;= &#039;svg&#039;                            </span>
-</dt>
+<dd>Note: do not call this constant from the interface, but rather from one of the child classes</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MODES">MODES</a>
     <span>
-        &nbsp;= [self::MARKUP_SVG =&gt; \chillerlan\QRCode\Output\QRMarkupSVG::class, self::MARKUP_HTML =&gt; \chillerlan\QRCode\Output\QRMarkupHTML::class, self::GDIMAGE_BMP =&gt; \chillerlan\QRCode\Output\QRGdImageBMP::class, self::GDIMAGE_GIF =&gt; \chillerlan\QRCode\Output\QRGdImageGIF::class, self::GDIMAGE_JPG =&gt; \chillerlan\QRCode\Output\QRGdImageJPEG::class, self::GDIMAGE_PNG =&gt; \chillerlan\QRCode\Output\QRGdImagePNG::class, self::GDIMAGE_WEBP =&gt; \chillerlan\QRCode\Output\QRGdImageWEBP::class, self::STRING_JSON =&gt; \chillerlan\QRCode\Output\QRStringJSON::class, self::STRING_TEXT =&gt; \chillerlan\QRCode\Output\QRStringText::class, self::IMAGICK =&gt; \chillerlan\QRCode\Output\QRImagick::class, self::FPDF =&gt; \chillerlan\QRCode\Output\QRFpdf::class, self::EPS =&gt; \chillerlan\QRCode\Output\QREps::class]                            </span>
+        &nbsp;= [\chillerlan\QRCode\Output\QREps::class, \chillerlan\QRCode\Output\QRFpdf::class, \chillerlan\QRCode\Output\QRGdImageAVIF::class, \chillerlan\QRCode\Output\QRGdImageBMP::class, \chillerlan\QRCode\Output\QRGdImageGIF::class, \chillerlan\QRCode\Output\QRGdImageJPEG::class, \chillerlan\QRCode\Output\QRGdImagePNG::class, \chillerlan\QRCode\Output\QRGdImageWEBP::class, \chillerlan\QRCode\Output\QRImagick::class, \chillerlan\QRCode\Output\QRMarkupHTML::class, \chillerlan\QRCode\Output\QRMarkupSVG::class, \chillerlan\QRCode\Output\QRStringJSON::class, \chillerlan\QRCode\Output\QRStringText::class]                            </span>
 </dt>
-<dd>Map of built-in output modes =&gt; class FQN</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_STRING_JSON">STRING_JSON</a>
-    <span>
-        &nbsp;= &#039;json&#039;                            </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_STRING_TEXT">STRING_TEXT</a>
-    <span>
-        &nbsp;= &#039;text&#039;                            </span>
-</dt>
+<dd>Map of built-in output class FQN</dd>
 
     </dl>
 
@@ -345,59 +278,6 @@
             <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
-                    <article class="phpdocumentor-element -constant -public -deprecated">
-    <h4 class="phpdocumentor-element__name" id="constant_CUSTOM">
-        CUSTOM
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_CUSTOM" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">109</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code -deprecated">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">CUSTOM</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;custom&#039;</span>
-</code>
-
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_CUSTOM#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><no replacement>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
                     <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_DEFAULT_MODULE_VALUES">
         DEFAULT_MODULE_VALUES
@@ -408,7 +288,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">138</span>
+    <span class="phpdocumentor-element-found-in__line">47</span>
 
     </aside>
 
@@ -453,430 +333,6 @@
     
 
 </article>
-                    <article class="phpdocumentor-element -constant -public -deprecated">
-    <h4 class="phpdocumentor-element__name" id="constant_EPS">
-        EPS
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_EPS" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">102</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code -deprecated">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">EPS</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;eps&#039;</span>
-</code>
-
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_EPS#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><no replacement>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article class="phpdocumentor-element -constant -public -deprecated">
-    <h4 class="phpdocumentor-element__name" id="constant_FPDF">
-        FPDF
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_FPDF" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">95</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code -deprecated">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">FPDF</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;fpdf&#039;</span>
-</code>
-
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_FPDF#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><no replacement>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article class="phpdocumentor-element -constant -public -deprecated">
-    <h4 class="phpdocumentor-element__name" id="constant_GDIMAGE_BMP">
-        GDIMAGE_BMP
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_BMP" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">39</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code -deprecated">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">GDIMAGE_BMP</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;bmp&#039;</span>
-</code>
-
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_BMP#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><no replacement>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article class="phpdocumentor-element -constant -public -deprecated">
-    <h4 class="phpdocumentor-element__name" id="constant_GDIMAGE_GIF">
-        GDIMAGE_GIF
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_GIF" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">46</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code -deprecated">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">GDIMAGE_GIF</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;gif&#039;</span>
-</code>
-
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_GIF#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><no replacement>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article class="phpdocumentor-element -constant -public -deprecated">
-    <h4 class="phpdocumentor-element__name" id="constant_GDIMAGE_JPG">
-        GDIMAGE_JPG
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_JPG" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">53</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code -deprecated">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">GDIMAGE_JPG</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;jpg&#039;</span>
-</code>
-
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_JPG#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><no replacement>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article class="phpdocumentor-element -constant -public -deprecated">
-    <h4 class="phpdocumentor-element__name" id="constant_GDIMAGE_PNG">
-        GDIMAGE_PNG
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_PNG" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">60</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code -deprecated">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">GDIMAGE_PNG</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;png&#039;</span>
-</code>
-
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_PNG#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><no replacement>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article class="phpdocumentor-element -constant -public -deprecated">
-    <h4 class="phpdocumentor-element__name" id="constant_GDIMAGE_WEBP">
-        GDIMAGE_WEBP
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_WEBP" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">67</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code -deprecated">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">GDIMAGE_WEBP</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;webp&#039;</span>
-</code>
-
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_WEBP#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><no replacement>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article class="phpdocumentor-element -constant -public -deprecated">
-    <h4 class="phpdocumentor-element__name" id="constant_IMAGICK">
-        IMAGICK
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_IMAGICK" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">88</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code -deprecated">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">IMAGICK</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;imagick&#039;</span>
-</code>
-
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_IMAGICK#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><no replacement>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
                     <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_LAYERNAMES">
         LAYERNAMES
@@ -887,7 +343,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">171</span>
+    <span class="phpdocumentor-element-found-in__line">80</span>
 
     </aside>
 
@@ -932,26 +388,27 @@
     
 
 </article>
-                    <article class="phpdocumentor-element -constant -public -deprecated">
-    <h4 class="phpdocumentor-element__name" id="constant_MARKUP_HTML">
-        MARKUP_HTML
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MARKUP_HTML" class="headerlink"><i class="fas fa-link"></i></a>
+                    <article class="phpdocumentor-element -constant -public ">
+    <h4 class="phpdocumentor-element__name" id="constant_MIME_TYPE">
+        MIME_TYPE
+        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MIME_TYPE" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">114</span>
 
     </aside>
 
-    
-    <code class="phpdocumentor-signature phpdocumentor-code -deprecated">
+        <p class="phpdocumentor-summary">Note: do not call this constant from the interface, but rather from one of the child classes</p>
+
+    <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">MARKUP_HTML</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;html&#039;</span>
+    <span class="phpdocumentor-signature__name">MIME_TYPE</span>
+    = <span class="phpdocumentor-signature__default-value">&#039;&#039;</span>
 </code>
 
 
@@ -960,85 +417,22 @@
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MARKUP_HTML#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MIME_TYPE#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><no replacement>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_toBase64DataURI"><abbr title="\chillerlan\QRCode\Output\QROutputAbstract::toBase64DataURI()">QROutputAbstract::toBase64DataURI()</abbr></a></span>
                                         
                                              
                                     </dd>
                                             </dl>
 
 </article>
-                    <article class="phpdocumentor-element -constant -public -deprecated">
-    <h4 class="phpdocumentor-element__name" id="constant_MARKUP_SVG">
-        MARKUP_SVG
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MARKUP_SVG" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">32</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code -deprecated">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">MARKUP_SVG</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;svg&#039;</span>
-</code>
-
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MARKUP_SVG#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><no replacement>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article class="phpdocumentor-element -constant -public -deprecated">
+                    <article class="phpdocumentor-element -constant -public ">
     <h4 class="phpdocumentor-element__name" id="constant_MODES">
         MODES
         <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MODES" class="headerlink"><i class="fas fa-link"></i></a>
@@ -1048,17 +442,17 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">118</span>
+    <span class="phpdocumentor-element-found-in__line">26</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Map of built-in output modes =&gt; class FQN</p>
+        <p class="phpdocumentor-summary">Map of built-in output class FQN</p>
 
-    <code class="phpdocumentor-signature phpdocumentor-code -deprecated">
+    <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
         <span class="phpdocumentor-signature__type">array&lt;string|int, string&gt;</span>
     <span class="phpdocumentor-signature__name">MODES</span>
-    = <span class="phpdocumentor-signature__default-value">[self::MARKUP_SVG =&gt; \chillerlan\QRCode\Output\QRMarkupSVG::class, self::MARKUP_HTML =&gt; \chillerlan\QRCode\Output\QRMarkupHTML::class, self::GDIMAGE_BMP =&gt; \chillerlan\QRCode\Output\QRGdImageBMP::class, self::GDIMAGE_GIF =&gt; \chillerlan\QRCode\Output\QRGdImageGIF::class, self::GDIMAGE_JPG =&gt; \chillerlan\QRCode\Output\QRGdImageJPEG::class, self::GDIMAGE_PNG =&gt; \chillerlan\QRCode\Output\QRGdImagePNG::class, self::GDIMAGE_WEBP =&gt; \chillerlan\QRCode\Output\QRGdImageWEBP::class, self::STRING_JSON =&gt; \chillerlan\QRCode\Output\QRStringJSON::class, self::STRING_TEXT =&gt; \chillerlan\QRCode\Output\QRStringText::class, self::IMAGICK =&gt; \chillerlan\QRCode\Output\QRImagick::class, self::FPDF =&gt; \chillerlan\QRCode\Output\QRFpdf::class, self::EPS =&gt; \chillerlan\QRCode\Output\QREps::class]</span>
+    = <span class="phpdocumentor-signature__default-value">[\chillerlan\QRCode\Output\QREps::class, \chillerlan\QRCode\Output\QRFpdf::class, \chillerlan\QRCode\Output\QRGdImageAVIF::class, \chillerlan\QRCode\Output\QRGdImageBMP::class, \chillerlan\QRCode\Output\QRGdImageGIF::class, \chillerlan\QRCode\Output\QRGdImageJPEG::class, \chillerlan\QRCode\Output\QRGdImagePNG::class, \chillerlan\QRCode\Output\QRGdImageWEBP::class, \chillerlan\QRCode\Output\QRImagick::class, \chillerlan\QRCode\Output\QRMarkupHTML::class, \chillerlan\QRCode\Output\QRMarkupSVG::class, \chillerlan\QRCode\Output\QRStringJSON::class, \chillerlan\QRCode\Output\QRStringText::class]</span>
 </code>
 
 
@@ -1072,122 +466,6 @@
     </h5>
     <dl class="phpdocumentor-tag-list">
                                     <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><no replacement>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article class="phpdocumentor-element -constant -public -deprecated">
-    <h4 class="phpdocumentor-element__name" id="constant_STRING_JSON">
-        STRING_JSON
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_STRING_JSON" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">74</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code -deprecated">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">STRING_JSON</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;json&#039;</span>
-</code>
-
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_STRING_JSON#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><no replacement>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/chillerlan/php-qrcode/issues/223">https://github.com/chillerlan/php-qrcode/issues/223</a></span>
-                                        
-                                             
-                                    </dd>
-                                            </dl>
-
-</article>
-                    <article class="phpdocumentor-element -constant -public -deprecated">
-    <h4 class="phpdocumentor-element__name" id="constant_STRING_TEXT">
-        STRING_TEXT
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_STRING_TEXT" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">81</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-signature phpdocumentor-code -deprecated">
-    <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">STRING_TEXT</span>
-    = <span class="phpdocumentor-signature__default-value">&#039;text&#039;</span>
-</code>
-
-
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_STRING_TEXT#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">deprecated</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                            <span class="phpdocumentor-tag-link">5.0.0</span>
-                                                                                
-                                                 <section class="phpdocumentor-description"><no replacement>
-</section>
-
-                                    </dd>
-                                                <dt class="phpdocumentor-tag-list__entry">
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
@@ -1220,7 +498,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">224</span>
+    <span class="phpdocumentor-element-found-in__line">130</span>
 
     </aside>
 
@@ -1281,7 +559,7 @@ you need to supply the $file parameter here in that case (or handle the option v
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputInterface.php"><a href="files/src-output-qroutputinterface.html"><abbr title="src/Output/QROutputInterface.php">QROutputInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">211</span>
+    <span class="phpdocumentor-element-found-in__line">119</span>
 
     </aside>
 
@@ -1433,22 +711,10 @@ you need to supply the $file parameter here in that case (or handle the option v
                             <li class="phpdocumentor-on-this-page-section__title">Constants</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_CUSTOM">CUSTOM</a></li>
                                                     <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_DEFAULT_MODULE_VALUES">DEFAULT_MODULE_VALUES</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_EPS">EPS</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_FPDF">FPDF</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_BMP">GDIMAGE_BMP</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_GIF">GDIMAGE_GIF</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_JPG">GDIMAGE_JPG</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_PNG">GDIMAGE_PNG</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_GDIMAGE_WEBP">GDIMAGE_WEBP</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_IMAGICK">IMAGICK</a></li>
                                                     <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_LAYERNAMES">LAYERNAMES</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MARKUP_HTML">MARKUP_HTML</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MARKUP_SVG">MARKUP_SVG</a></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MIME_TYPE">MIME_TYPE</a></li>
                                                     <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_MODES">MODES</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_STRING_JSON">STRING_JSON</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html#constant_STRING_TEXT">STRING_TEXT</a></li>
                                             </ul>
                 </li>
                     </ul>

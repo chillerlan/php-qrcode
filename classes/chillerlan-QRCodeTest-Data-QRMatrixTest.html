@@ -85,6 +85,10 @@
             </li>
             </ul>
 
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/output.html" class="">Output</a>
+</h4>
+
                         </section>
                 <section class="phpdocumentor-sidebar__category">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
@@ -131,6 +135,9 @@
         </div>
     
     
+            <span class="phpdocumentor-element__extends">
+            Uses
+                            <a href="classes/chillerlan-QRCodeTest-QRMatrixDebugTrait.html"><abbr title="\chillerlan\QRCodeTest\QRMatrixDebugTrait">QRMatrixDebugTrait</abbr></a>                    </span>
     </h2>
 
 <div class="phpdocumentor-label-line">
@@ -202,13 +209,6 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_debugMatrix">debugMatrix()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-<dd>Matrix debugging console output</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_matrixProvider">matrixProvider()</a>
     <span>
                                 &nbsp;: <abbr title="\Generator">Generator</abbr>    </span>
@@ -230,18 +230,25 @@
 <dd>Tests checking whether the M_TYPE of a module is not one of an array of M_TYPES</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testECC">testECC()</a>
+    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testFlip">testFlip()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Tests flipping the value of a module</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetECC">testGetECC()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Tests if eccLevel() returns the current (given) ECC level</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testFlip">testFlip()</a>
+    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetMaskPattern">testGetMaskPattern()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Tests flipping the value of a module</dd>
+<dd>Tests if maskPattern() returns the current (or default) mask pattern</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetSetCheck">testGetSetCheck()</a>
@@ -251,18 +258,18 @@
 <dd>Tests the set(), get() and check() methods</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testInstance">testInstance()</a>
+    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetSize">testGetSize()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Validates the QRMatrix instance</dd>
+<dd>Tests if size() returns the actual matrix size/count</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testMaskPattern">testMaskPattern()</a>
+    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetVersion">testGetVersion()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Tests if maskPattern() returns the current (or default) mask pattern</dd>
+<dd>Tests if version() returns the current (given) version</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testRotate90">testRotate90()</a>
@@ -321,7 +328,7 @@
 <dd>Tests whether an exception is thrown when the logo space size exceeds the maximum ECC capacity</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetLogoSpaceOmitHeight">testSetLogoSpaceOmitHeight()</a>
+    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetLogoSpaceOmitDimension">testSetLogoSpaceOmitDimension()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
@@ -376,22 +383,15 @@
 </dt>
 <dd>Tests the version patterns and verifies their positions - version &lt; 7 skipped</dd>
 
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSize">testSize()</a>
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/chillerlan-QRCodeTest-QRMatrixDebugTrait.html#method_debugMatrix">debugMatrix()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-<dd>Tests if size() returns the actual matrix size/count</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testVersion">testVersion()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-<dd>Tests if version() returns the current (given) version</dd>
+<dd>Matrix debugging console output</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_dm">dm()</a>
+    <a href="classes/chillerlan-QRCodeTest-QRMatrixDebugTrait.html#method_dm">dm()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
@@ -426,7 +426,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 
     </aside>
 
@@ -470,7 +470,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
@@ -500,48 +500,6 @@
             -public
                                     -static                    "
 >
-    <h4 class="phpdocumentor-element__name" id="method_debugMatrix">
-        debugMatrix()
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_debugMatrix" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">42</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Matrix debugging console output</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">debugMatrix</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$matrix</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                    -static                    "
->
     <h4 class="phpdocumentor-element__name" id="method_matrixProvider">
         matrixProvider()
         <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_matrixProvider" class="headerlink"><i class="fas fa-link"></i></a>
@@ -550,7 +508,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">170</span>
+    <span class="phpdocumentor-element-found-in__line">99</span>
 
     </aside>
 
@@ -586,7 +544,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">546</span>
+    <span class="phpdocumentor-element-found-in__line">464</span>
 
     </aside>
 
@@ -618,7 +576,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">536</span>
+    <span class="phpdocumentor-element-found-in__line">454</span>
 
     </aside>
 
@@ -642,38 +600,6 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testECC">
-        testECC()
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testECC" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">128</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Tests if eccLevel() returns the current (given) ECC level</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testECC</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_testFlip">
         testFlip()
         <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testFlip" class="headerlink"><i class="fas fa-link"></i></a>
@@ -682,7 +608,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">516</span>
+    <span class="phpdocumentor-element-found-in__line">434</span>
 
     </aside>
 
@@ -706,6 +632,70 @@
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_testGetECC">
+        testGetECC()
+        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetECC" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">57</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Tests if eccLevel() returns the current (given) ECC level</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">testGetECC</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_testGetMaskPattern">
+        testGetMaskPattern()
+        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetMaskPattern" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">64</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Tests if maskPattern() returns the current (or default) mask pattern</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">testGetMaskPattern</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_testGetSetCheck">
         testGetSetCheck()
         <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetSetCheck" class="headerlink"><i class="fas fa-link"></i></a>
@@ -714,7 +704,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">146</span>
+    <span class="phpdocumentor-element-found-in__line">75</span>
 
     </aside>
 
@@ -738,23 +728,23 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testInstance">
-        testInstance()
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testInstance" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_testGetSize">
+        testGetSize()
+        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetSize" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">107</span>
+    <span class="phpdocumentor-element-found-in__line">43</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Validates the QRMatrix instance</p>
+        <p class="phpdocumentor-summary">Tests if size() returns the actual matrix size/count</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testInstance</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">testGetSize</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -770,23 +760,23 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testMaskPattern">
-        testMaskPattern()
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testMaskPattern" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_testGetVersion">
+        testGetVersion()
+        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetVersion" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">135</span>
+    <span class="phpdocumentor-element-found-in__line">50</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Tests if maskPattern() returns the current (or default) mask pattern</p>
+        <p class="phpdocumentor-summary">Tests if version() returns the current (given) version</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testMaskPattern</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">testGetVersion</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -810,7 +800,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">369</span>
+    <span class="phpdocumentor-element-found-in__line">286</span>
 
     </aside>
 
@@ -835,22 +825,6 @@
             </dl>
 
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testRotate90#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">dataProvider</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
-</section>
-
-                                    </dd>
-                                            </dl>
 
     
 </article>
@@ -868,7 +842,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">227</span>
+    <span class="phpdocumentor-element-found-in__line">151</span>
 
     </aside>
 
@@ -893,22 +867,6 @@
             </dl>
 
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetAlignmentPattern#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">dataProvider</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
-</section>
-
-                                    </dd>
-                                            </dl>
 
     
 </article>
@@ -926,7 +884,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">183</span>
+    <span class="phpdocumentor-element-found-in__line">110</span>
 
     </aside>
 
@@ -951,22 +909,6 @@
             </dl>
 
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetDarkModule#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">dataProvider</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
-</section>
-
-                                    </dd>
-                                            </dl>
 
     
 </article>
@@ -984,7 +926,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">196</span>
+    <span class="phpdocumentor-element-found-in__line">122</span>
 
     </aside>
 
@@ -1009,22 +951,6 @@
             </dl>
 
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetFinderPattern#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">dataProvider</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
-</section>
-
-                                    </dd>
-                                            </dl>
 
     
 </article>
@@ -1042,7 +968,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">311</span>
+    <span class="phpdocumentor-element-found-in__line">230</span>
 
     </aside>
 
@@ -1067,22 +993,6 @@
             </dl>
 
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetFormatInfo#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">dataProvider</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
-</section>
-
-                                    </dd>
-                                            </dl>
 
     
 </article>
@@ -1100,7 +1010,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">488</span>
+    <span class="phpdocumentor-element-found-in__line">406</span>
 
     </aside>
 
@@ -1132,7 +1042,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">478</span>
+    <span class="phpdocumentor-element-found-in__line">396</span>
 
     </aside>
 
@@ -1164,7 +1074,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">502</span>
+    <span class="phpdocumentor-element-found-in__line">420</span>
 
     </aside>
 
@@ -1188,15 +1098,15 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testSetLogoSpaceOmitHeight">
-        testSetLogoSpaceOmitHeight()
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetLogoSpaceOmitHeight" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_testSetLogoSpaceOmitDimension">
+        testSetLogoSpaceOmitDimension()
+        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetLogoSpaceOmitDimension" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">404</span>
+    <span class="phpdocumentor-element-found-in__line">322</span>
 
     </aside>
 
@@ -1204,7 +1114,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testSetLogoSpaceOmitHeight</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">testSetLogoSpaceOmitDimension</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1228,7 +1138,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">426</span>
+    <span class="phpdocumentor-element-found-in__line">344</span>
 
     </aside>
 
@@ -1260,7 +1170,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">450</span>
+    <span class="phpdocumentor-element-found-in__line">368</span>
 
     </aside>
 
@@ -1292,7 +1202,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">327</span>
+    <span class="phpdocumentor-element-found-in__line">245</span>
 
     </aside>
 
@@ -1317,22 +1227,6 @@
             </dl>
 
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetQuietZone#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">dataProvider</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
-</section>
-
-                                    </dd>
-                                            </dl>
 
     
 </article>
@@ -1350,7 +1244,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">357</span>
+    <span class="phpdocumentor-element-found-in__line">276</span>
 
     </aside>
 
@@ -1382,7 +1276,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">211</span>
+    <span class="phpdocumentor-element-found-in__line">136</span>
 
     </aside>
 
@@ -1407,22 +1301,6 @@
             </dl>
 
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetSeparators#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">dataProvider</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
-</section>
-
-                                    </dd>
-                                            </dl>
 
     
 </article>
@@ -1440,7 +1318,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">260</span>
+    <span class="phpdocumentor-element-found-in__line">182</span>
 
     </aside>
 
@@ -1465,22 +1343,6 @@
             </dl>
 
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetTimingPattern#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">dataProvider</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
-</section>
-
-                                    </dd>
-                                            </dl>
 
     
 </article>
@@ -1498,7 +1360,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">289</span>
+    <span class="phpdocumentor-element-found-in__line">210</span>
 
     </aside>
 
@@ -1523,85 +1385,47 @@
             </dl>
 
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetVersionNumber#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">dataProvider</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>matrixProvider</p>
-</section>
-
-                                    </dd>
-                                            </dl>
 
     
 </article>
                     <article
         class="phpdocumentor-element
             -method
-            -public
+            -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testSize">
-        testSize()
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSize" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_debugMatrix">
+        debugMatrix()
+        <a href="classes/chillerlan-QRCodeTest-QRMatrixDebugTrait.html#method_debugMatrix" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/QRMatrixDebugTrait.php"><a href="files/tests-qrmatrixdebugtrait.html"><abbr title="tests/QRMatrixDebugTrait.php">QRMatrixDebugTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">114</span>
+    <span class="phpdocumentor-element-found-in__line">26</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Tests if size() returns the actual matrix size/count</p>
+        <p class="phpdocumentor-summary">Matrix debugging console output</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testSize</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">debugMatrix</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$matrix</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
-    
-    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$matrix</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Data-QRMatrix.html"><abbr title="\chillerlan\QRCode\Data\QRMatrix">QRMatrix</abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
 
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_testVersion">
-        testVersion()
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testVersion" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">121</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Tests if version() returns the current (given) version</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testVersion</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
     
 
     
@@ -1614,13 +1438,13 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_dm">
         dm()
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_dm" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCodeTest-QRMatrixDebugTrait.html#method_dm" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/QRMatrixDebugTrait.php"><a href="files/tests-qrmatrixdebugtrait.html"><abbr title="tests/QRMatrixDebugTrait.php">QRMatrixDebugTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">94</span>
+    <span class="phpdocumentor-element-found-in__line">83</span>
 
     </aside>
 
@@ -1647,7 +1471,7 @@
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_dm#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCodeTest-QRMatrixDebugTrait.html#method_dm#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -1655,7 +1479,7 @@
                     <span class="phpdocumentor-tag__name">see</span>
                 </dt>
                 <dd class="phpdocumentor-tag-list__definition">
-                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_matrixProvider"><abbr title="\chillerlan\QRCodeTest\Data\QRMatrixTest::matrixProvider()">QRMatrixTest::matrixProvider()</abbr></a></span>
+                                                                                    <span class="phpdocumentor-tag-link"><abbr title="\chillerlan\QRCodeTest\QRMatrixTest::matrixProvider()">QRMatrixTest::matrixProvider()</abbr></span>
                                         
                                              
                                     </dd>
@@ -1677,7 +1501,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/QRMatrixTest.php"><a href="files/tests-data-qrmatrixtest.html"><abbr title="tests/Data/QRMatrixTest.php">QRMatrixTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">33</span>
 
     </aside>
 
@@ -1822,15 +1646,15 @@
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_debugMatrix">debugMatrix()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_matrixProvider">matrixProvider()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testCheckNeighbours">testCheckNeighbours()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testCheckTypeIn">testCheckTypeIn()</a></li>
-                                            <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testECC">testECC()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testFlip">testFlip()</a></li>
+                                            <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetECC">testGetECC()</a></li>
+                                            <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetMaskPattern">testGetMaskPattern()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetSetCheck">testGetSetCheck()</a></li>
-                                            <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testInstance">testInstance()</a></li>
-                                            <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testMaskPattern">testMaskPattern()</a></li>
+                                            <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetSize">testGetSize()</a></li>
+                                            <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testGetVersion">testGetVersion()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testRotate90">testRotate90()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetAlignmentPattern">testSetAlignmentPattern()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetDarkModule">testSetDarkModule()</a></li>
@@ -1839,7 +1663,7 @@
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetLogoSpaceExceedsException">testSetLogoSpaceExceedsException()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetLogoSpaceInvalidEccException">testSetLogoSpaceInvalidEccException()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetLogoSpaceMaxSizeException">testSetLogoSpaceMaxSizeException()</a></li>
-                                            <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetLogoSpaceOmitHeight">testSetLogoSpaceOmitHeight()</a></li>
+                                            <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetLogoSpaceOmitDimension">testSetLogoSpaceOmitDimension()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetLogoSpaceOrientation">testSetLogoSpaceOrientation()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetLogoSpacePosition">testSetLogoSpacePosition()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetQuietZone">testSetQuietZone()</a></li>
@@ -1847,9 +1671,8 @@
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetSeparators">testSetSeparators()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetTimingPattern">testSetTimingPattern()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSetVersionNumber">testSetVersionNumber()</a></li>
-                                            <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testSize">testSize()</a></li>
-                                            <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_testVersion">testVersion()</a></li>
-                                            <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_dm">dm()</a></li>
+                                            <li><a href="classes/chillerlan-QRCodeTest-QRMatrixDebugTrait.html#method_debugMatrix">debugMatrix()</a></li>
+                                            <li><a href="classes/chillerlan-QRCodeTest-QRMatrixDebugTrait.html#method_dm">dm()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Data-QRMatrixTest.html#method_setUp">setUp()</a></li>
                                     </ul>
             </li>
