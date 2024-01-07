@@ -24,7 +24,7 @@ trait BuildDirTrait{
 	 * returns the full raw path to the build dir
 	 */
 	protected function getBuildPath(string $subPath):string{
-		return $this::$buildDir.trim($subPath, '\\/');
+		return static::$buildDir.trim($subPath, '\\/');
 	}
 
 	/**
