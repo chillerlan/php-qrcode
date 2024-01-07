@@ -14,21 +14,24 @@ use chillerlan\QRCode\{QROptions, QRCode};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use PHPUnit\Framework\TestCase;
 use stdClass;
-use function file_get_contents;
 
 /**
  * Tests basic functions of the QRCode class
  */
 final class QRCodeTest extends TestCase{
+	use BuildDirTrait;
 
 	private QRCode    $qrcode;
 	private QROptions $options;
-	private string    $builddir = __DIR__.'/../.build/output_test';
+
+	private const buildDir = 'output-test';
 
 	/**
 	 * invoke test instances
 	 */
 	protected function setUp():void{
+		$this->createBuildDir($this::buildDir);
+
 		$this->qrcode  = new QRCode;
 		$this->options = new QROptions;
 	}
@@ -86,12 +89,14 @@ final class QRCodeTest extends TestCase{
 	 * Tests if a cache file is properly saved in the given path
 	 */
 	public function testRenderToCacheFile():void{
-		$this->options->cachefile    = $this->builddir.'/test.cache.svg';
+		$fileSubPath = $this::buildDir.'/test.cache.svg';
+
+		$this->options->cachefile    = $this->getBuildPath($fileSubPath);
 		$this->options->outputBase64 = false;
 		// create the cache file
 		$data = $this->qrcode->setOptions($this->options)->render('test');
 
-		$this::assertSame($data, file_get_contents($this->options->cachefile));
+		$this::assertSame($data, $this->getBuildFileContent($fileSubPath));
 	}
 
 }
