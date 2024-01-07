@@ -43,10 +43,10 @@ final class BitBuffer{
 	/**
 	 * BitBuffer constructor.
 	 *
-	 * @param int[]|null $bytes
+	 * @param int[] $bytes
 	 */
-	public function __construct(array $bytes = null){
-		$this->buffer = ($bytes ?? []);
+	public function __construct(array $bytes = []){
+		$this->buffer = $bytes;
 		$this->length = count($this->buffer);
 	}
 

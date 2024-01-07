@@ -299,7 +299,7 @@ final class MaskPattern{
 		}
 
 		for($y = $from; $y < $to; $y++){
-			if($matrix[$y][$x]){
+			if($matrix[$y][$x] === true){
 				return false;
 			}
 		}
@@ -317,7 +317,7 @@ final class MaskPattern{
 
 		foreach($matrix as $row){
 			foreach($row as $val){
-				if($val){
+				if($val === true){
 					$darkCells++;
 				}
 			}
