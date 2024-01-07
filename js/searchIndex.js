@@ -3511,6 +3511,36 @@ Search.appendIndex(
             "summary": "Increase\u0020the\u0020contrast\u0020before\u0020reading",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_readerIncreaseContrast"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\BuildDirTrait",
+            "name": "BuildDirTrait",
+            "summary": "Trait\u0020BuildDirTrait",
+            "url": "classes/chillerlan-QRCodeTest-BuildDirTrait.html"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\BuildDirTrait\u003A\u003AgetBuildPath\u0028\u0029",
+            "name": "getBuildPath",
+            "summary": "returns\u0020the\u0020full\u0020raw\u0020path\u0020to\u0020the\u0020build\u0020dir",
+            "url": "classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildPath"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\BuildDirTrait\u003A\u003AcreateBuildDir\u0028\u0029",
+            "name": "createBuildDir",
+            "summary": "attempts\u0020to\u0020create\u0020the\u0020build\u0020dir",
+            "url": "classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_createBuildDir"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\BuildDirTrait\u003A\u003AgetBuildDir\u0028\u0029",
+            "name": "getBuildDir",
+            "summary": "returns\u0020the\u0020full\u0020\u0028real\u0029\u0020path\u0020to\u0020the\u0020given\u0020build\u0020path",
+            "url": "classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildDir"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\BuildDirTrait\u003A\u003AgetBuildFilePath\u0028\u0029",
+            "name": "getBuildFilePath",
+            "summary": "returns\u0020the\u0020full\u0020\u0028real\u0029\u0020path\u0020to\u0020the\u0020given\u0020build\u0020file",
+            "url": "classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildFilePath"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\BuildDirTrait\u003A\u003AgetBuildFileContent\u0028\u0029",
+            "name": "getBuildFileContent",
+            "summary": "returns\u0020the\u0020contents\u0020of\u0020the\u0020given\u0020build\u0020file",
+            "url": "classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildFileContent"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Common\\BitBufferTest",
             "name": "BitBufferTest",
             "summary": "BitBuffer\u0020coverage\u0020test",
@@ -4811,6 +4841,11 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/chillerlan.html"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest",
+            "name": "QRCodeTest",
+            "summary": "",
+            "url": "namespaces/chillerlan-qrcodetest.html"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Common",
             "name": "Common",
             "summary": "",
@@ -4835,10 +4870,5 @@ Search.appendIndex(
             "name": "Performance",
             "summary": "",
             "url": "namespaces/chillerlan-qrcodetest-performance.html"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest",
-            "name": "QRCodeTest",
-            "summary": "",
-            "url": "namespaces/chillerlan-qrcodetest.html"
         }            ]
 );
