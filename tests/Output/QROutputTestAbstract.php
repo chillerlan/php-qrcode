@@ -10,6 +10,7 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
+use chillerlan\QRCodeTest\BuildDirTrait;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
@@ -17,28 +18,25 @@ use chillerlan\Settings\SettingsContainerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
-use function file_exists, file_get_contents, mkdir, realpath;
 
 /**
  * Test abstract for the several (built-in) output modules,
  * should also be used to test custom output modules
  */
 abstract class QROutputTestAbstract extends TestCase{
+	use BuildDirTrait;
 
 	protected SettingsContainerInterface|QROptions $options;
 	protected QROutputInterface                    $outputInterface;
 	protected QRMatrix                             $matrix;
 
-	protected const buildDir = __DIR__.'/../../.build/output-test/';
+	protected const buildDir = 'output-test';
 
 	/**
 	 * Attempts to create a directory under /.build and instances several required objects
 	 */
 	protected function setUp():void{
-
-		if(!file_exists($this::buildDir)){
-			mkdir($this::buildDir, 0777, true);
-		}
+		$this->createBuildDir($this::buildDir);
 
 		$this->options         = new QROptions;
 		$this->matrix          = (new QRCode($this->options))->addByteSegment('testdata')->getQRMatrix();
@@ -83,11 +81,11 @@ abstract class QROutputTestAbstract extends TestCase{
 		$this->options->outputBase64 = false;
 		$this->outputInterface       = $this->getOutputInterface($this->options, $this->matrix);
 		// create the cache file
-		$name = (new ReflectionClass($this->outputInterface))->getShortName();
-		$file = realpath($this::buildDir).'test.output.'.$name;
-		$data = $this->outputInterface->dump($file);
+		$name        = (new ReflectionClass($this->outputInterface))->getShortName();
+		$fileSubPath = $this::buildDir.'/test.output.'.$name;
+		$data        = $this->outputInterface->dump($this->getBuildPath($fileSubPath));
 
-		$this::assertSame($data, file_get_contents($file));
+		$this::assertSame($data, $this->getBuildFileContent($fileSubPath));
 	}
 
 }
