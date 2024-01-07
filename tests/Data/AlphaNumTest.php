@@ -11,14 +11,18 @@
 namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\Data\AlphaNum;
+use chillerlan\QRCode\Data\QRDataModeInterface;
 
 /**
  * Tests the AlphaNum class
  */
 final class AlphaNumTest extends DataInterfaceTestAbstract{
 
-	protected static string $FQN      = AlphaNum::class;
-	protected static string $testdata = '0 $%*+-./:';
+	protected const testData = '0 $%*+-./:';
+
+	protected static function getDataModeInterface(string $data):QRDataModeInterface{
+		return new AlphaNum($data);
+	}
 
 	/**
 	 * isAlphaNum() should pass on the 45 defined characters and fail on anything else (e.g. lowercase)

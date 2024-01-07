@@ -6,11 +6,14 @@
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2017 Smiley
  * @license      MIT
+ *
+ * @noinspection PhpComposerExtensionStubsInspection
  */
 
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
+use function extension_loaded;
 use const PHP_MAJOR_VERSION;
 
 /**
@@ -52,7 +55,7 @@ abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
 			QRMatrix::M_DATA      => [255, 255, 255],
 		];
 
-		$this->outputInterface = new $this->FQN($this->options, $this->matrix);
+		$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
 		$this->outputInterface->dump();
 
 		$this::assertTrue(true); // tricking the code coverage
@@ -63,7 +66,7 @@ abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
 	 */
 	public function testOutputGetResource():void{
 		$this->options->returnResource = true;
-		$this->outputInterface         = new $this->FQN($this->options, $this->matrix);
+		$this->outputInterface         = $this->getOutputInterface($this->options, $this->matrix);
 
 		$actual = $this->outputInterface->dump();
 
@@ -75,8 +78,8 @@ abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
 
 	public function testBase64MimeType():void{
 		$this->options->outputBase64 = true;
-		$this->outputInterface       = new $this->FQN($this->options, $this->matrix);
-
+		$this->outputInterface       = $this->getOutputInterface($this->options, $this->matrix);
+		/** @phan-suppress-next-line PhanAccessClassConstantInternal */
 		$this::assertStringContainsString($this->outputInterface::MIME_TYPE, $this->outputInterface->dump());
 	}
 

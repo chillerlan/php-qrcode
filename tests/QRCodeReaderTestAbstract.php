@@ -12,22 +12,21 @@
 
 namespace chillerlan\QRCodeTest;
 
-use chillerlan\QRCodeTest\Data\QRMatrixTest;
 use chillerlan\QRCode\{QRCode, QROptions};
-use chillerlan\QRCode\Common\{EccLevel, Mode, Version};
+use chillerlan\QRCode\Common\{EccLevel, LuminanceSourceInterface, Mode, Version};
+use chillerlan\QRCode\Decoder\Decoder;
 use chillerlan\QRCode\Output\QROutputInterface;
-use chillerlan\Settings\SettingsContainerInterface;
 use PHPUnit\Framework\TestCase;
 use Exception, Generator;
-use function array_map, defined, sprintf, str_repeat, substr;
+use function array_map, defined, realpath, sprintf, str_repeat, substr;
 
 /**
  * Tests the QR Code reader
  */
 abstract class QRCodeReaderTestAbstract extends TestCase{
-	use QRMaxLengthTrait;
+	use QRMaxLengthTrait, QRMatrixDebugTrait;
 
-	// https://www.bobrosslipsum.com/
+	/** @see https://www.bobrosslipsum.com/ */
 	protected const loremipsum = 'Just let this happen. We just let this flow right out of our minds. '
 		.'Anyone can paint. We touch the canvas, the canvas takes what it wants. From all of us here, '
 		.'I want to wish you happy painting and God bless, my friends. A tree cannot be straight if it has a crooked trunk. '
@@ -36,8 +35,9 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		.'They say everything looks better with odd numbers of things. But sometimes I put even numbers—just '
 		.'to upset the critics. We\'ll lay all these little funky little things in there. ';
 
-	protected SettingsContainerInterface $options;
-	protected string                     $FQN;
+	protected const samplesDir = __DIR__.'/samples/';
+
+	protected QROptions $options;
 
 	protected function setUp():void{
 
@@ -76,6 +76,8 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		];
 	}
 
+	abstract protected function getLuminanceSourceFromFile(string $file, QROptions $options):LuminanceSourceInterface;
+
 	/**
 	 * @group slow
 	 * @dataProvider qrCodeProvider
@@ -87,10 +89,10 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 			$this->options->readerIncreaseContrast = true;
 		}
 
-		/** @noinspection PhpUndefinedMethodInspection */
-		$result = (new QRCode)->readFromSource($this->FQN::fromFile(__DIR__.'/samples/'.$img, $this->options));
+		$luminanceSource = $this->getLuminanceSourceFromFile(realpath($this::samplesDir.$img), $this->options);
+		$result          = (new Decoder)->decode($luminanceSource);
 
-		QRMatrixTest::debugMatrix($result->getQRMatrix());
+		$this->debugMatrix($result->getQRMatrix());
 
 		$this::assertSame($expected, (string)$result);
 	}

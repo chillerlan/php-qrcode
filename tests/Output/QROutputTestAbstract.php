@@ -10,13 +10,12 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use PHPUnit\Framework\TestCase;
-
-use function file_exists, mkdir;
+use ReflectionClass;
+use function file_exists, file_get_contents, mkdir, realpath;
 
 /**
  * Test abstract for the several (built-in) output modules,
@@ -28,31 +27,26 @@ abstract class QROutputTestAbstract extends TestCase{
 	protected QROptions         $options;
 	protected QROutputInterface $outputInterface;
 	protected QRMatrix          $matrix;
-	protected string            $builddir = __DIR__.'/../../.build/output_test';
-	protected string            $FQN;
+
 	protected string            $type;
+	protected const buildDir = __DIR__.'/../../.build/output-test/';
 
 	/**
 	 * Attempts to create a directory under /.build and instances several required objects
 	 */
 	protected function setUp():void{
 
-		if(!file_exists($this->builddir)){
-			mkdir($this->builddir, 0777, true);
+		if(!file_exists($this::buildDir)){
+			mkdir($this::buildDir, 0777, true);
 		}
 
 		$this->options             = new QROptions;
 		$this->options->outputType = $this->type;
 		$this->matrix              = (new QRCode($this->options))->addByteSegment('testdata')->getQRMatrix();
-		$this->outputInterface     = new $this->FQN($this->options, $this->matrix);
+		$this->outputInterface     = $this->getOutputInterface($this->options, $this->matrix);
 	}
 
-	/**
-	 * Validate the instance of the interface
-	 */
-	public function testInstance():void{
-		$this::assertInstanceOf(QROutputInterface::class, $this->outputInterface);
-	}
+	abstract protected function getOutputInterface(QROptions $options, QRMatrix $matrix):QROutputInterface;
 
 	/**
 	 * Tests if an exception is thrown when trying to write a cache file to an invalid destination
@@ -61,7 +55,6 @@ abstract class QROutputTestAbstract extends TestCase{
 		$this->expectException(QRCodeOutputException::class);
 		$this->expectExceptionMessage('Cannot write data to cache file: /foo/bar.test');
 
-		$this->outputInterface = new $this->FQN($this->options, $this->matrix);
 		$this->outputInterface->dump('/foo/bar.test');
 	}
 
@@ -74,8 +67,7 @@ abstract class QROutputTestAbstract extends TestCase{
 	 * @dataProvider moduleValueProvider
 	 */
 	public function testValidateModuleValues($value, bool $expected):void{
-		/** @noinspection PhpUndefinedMethodInspection */
-		$this::assertSame($expected, $this->FQN::moduleValueIsValid($value));
+		$this::assertSame($expected, $this->outputInterface::moduleValueIsValid($value));
 	}
 
 	/*
@@ -92,9 +84,10 @@ abstract class QROutputTestAbstract extends TestCase{
 	 */
 	public function testRenderToCacheFile():void{
 		$this->options->outputBase64 = false;
-		$this->outputInterface       = new $this->FQN($this->options, $this->matrix);
+		$this->outputInterface       = $this->getOutputInterface($this->options, $this->matrix);
 		// create the cache file
-		$file = $this->builddir.'/test.output.'.$this->type;
+		$name = (new ReflectionClass($this->outputInterface))->getShortName();
+		$file = realpath($this::buildDir).'test.output.'.$name;
 		$data = $this->outputInterface->dump($file);
 
 		$this::assertSame($data, file_get_contents($file));

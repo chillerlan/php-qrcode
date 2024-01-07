@@ -11,14 +11,18 @@
 namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\Data\Number;
+use chillerlan\QRCode\Data\QRDataModeInterface;
 
 /**
  * Tests the Number class
  */
 final class NumberTest extends DataInterfaceTestAbstract{
 
-	protected static string $FQN      = Number::class;
-	protected static string $testdata = '0123456789';
+	protected const testData = '0123456789';
+
+	protected static function getDataModeInterface(string $data):QRDataModeInterface{
+		return new Number($data);
+	}
 
 	/**
 	 * isNumber() should pass on any number and fail on anything else

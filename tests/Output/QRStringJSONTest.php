@@ -10,8 +10,9 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\Output\QROutputInterface;
-use chillerlan\QRCode\Output\QRStringJSON;
+use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\Output\{QROutputInterface, QRStringJSON};
 use function extension_loaded;
 
 /**
@@ -20,7 +21,6 @@ use function extension_loaded;
 final class QRStringJSONTest extends QROutputTestAbstract{
 
 	protected string $type = QROutputInterface::STRING_JSON;
-	protected string $FQN  = QRStringJSON::class;
 
 	/**
 	 * @inheritDoc
@@ -34,8 +34,22 @@ final class QRStringJSONTest extends QROutputTestAbstract{
 		parent::setUp();
 	}
 
+	protected function getOutputInterface(QROptions $options, QRMatrix $matrix):QROutputInterface{
+		return new QRStringJSON($options, $matrix);
+	}
+
 	public static function moduleValueProvider():array{
-		return [];
+		return [[null, false]];
+	}
+
+	/**
+	 * @param mixed $value
+	 * @param bool  $expected
+	 *
+	 * @dataProvider moduleValueProvider
+	 */
+	public function testValidateModuleValues($value, bool $expected):void{
+		$this::markTestSkipped('N/A (JSON test)');
 	}
 
 	public function testSetModuleValues():void{

@@ -51,7 +51,7 @@ abstract class QRMarkupTestAbstract extends QROutputTestAbstract{
 			QRMatrix::M_DATA      => '#ECF9BE',
 		];
 
-		$this->outputInterface = new $this->FQN($this->options, $this->matrix);
+		$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
 		$data = $this->outputInterface->dump();
 		$this::assertStringContainsString('#4A6000', $data);
 		$this::assertStringContainsString('#ECF9BE', $data);

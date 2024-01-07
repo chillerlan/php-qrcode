@@ -10,8 +10,9 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\Output\QRGdImagePNG;
-use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\Output\{QRGdImagePNG, QROutputInterface};
 
 /**
  *
@@ -19,6 +20,9 @@ use chillerlan\QRCode\Output\QROutputInterface;
 final class QRGdImagePNGTest extends QRGdImageTestAbstract{
 
 	protected string $type = QROutputInterface::GDIMAGE_PNG;
-	protected string $FQN  = QRGdImagePNG::class;
+
+	protected function getOutputInterface(QROptions $options, QRMatrix $matrix):QROutputInterface{
+		return new QRGdImagePNG($options, $matrix);
+	}
 
 }

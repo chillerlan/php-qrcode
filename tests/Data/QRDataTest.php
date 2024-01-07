@@ -13,16 +13,17 @@ namespace chillerlan\QRCodeTest\Data;
 use chillerlan\QRCode\Common\BitBuffer;
 use chillerlan\QRCode\Common\MaskPattern;
 use chillerlan\QRCode\Data\QRData;
-use chillerlan\QRCode\Output\QRGdImage;
-use chillerlan\QRCode\Output\QROutputInterface;
+use chillerlan\QRCode\Output\QRGdImagePNG;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
+use chillerlan\QRCodeTest\QRMatrixDebugTrait;
 use PHPUnit\Framework\TestCase;
 
 /**
  *
  */
 final class QRDataTest extends TestCase{
+	use QRMatrixDebugTrait;
 
 	/**
 	 * tests setting the BitBuffer object directly
@@ -51,14 +52,13 @@ final class QRDataTest extends TestCase{
 		$this::assertSame(3, $matrix->getVersion()->getVersionNumber());
 
 		// attempt to read
-		$options->outputType                  = QROutputInterface::GDIMAGE_PNG;
 		$options->outputBase64                = false;
 		$options->readerUseImagickIfAvailable = false;
 
-		$output       = new QRGdImage($options, $matrix);
+		$output       = new QRGdImagePNG($options, $matrix);
 		$decodeResult = (new QRCode($options))->readFromBlob($output->dump());
 
-		QRMatrixTest::debugMatrix($matrix);
+		$this->debugMatrix($matrix);
 
 		$this::assertSame($decodeResult->data, 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s');
 	}

@@ -10,6 +10,8 @@
 
 namespace chillerlan\QRCodeTest\Output;
 
+use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRMarkupSVG, QROutputInterface};
 
 /**
@@ -17,8 +19,11 @@ use chillerlan\QRCode\Output\{QRMarkupSVG, QROutputInterface};
  */
 final class QRMarkupSVGTest extends QRMarkupTestAbstract{
 
-	protected string $FQN  = QRMarkupSVG::class;
 	protected string $type = QROutputInterface::MARKUP_SVG;
+
+	protected function getOutputInterface(QROptions $options, QRMatrix $matrix):QROutputInterface{
+		return new QRMarkupSVG($options, $matrix);
+	}
 
 	public static function moduleValueProvider():array{
 		return [
