@@ -16,10 +16,11 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use ErrorException;
 use Throwable;
-use function array_values, count, extension_loaded, gd_info, imagebmp, imagecolorallocate, imagecolortransparent,
+use function array_values, count, extension_loaded, imagebmp, imagecolorallocate, imagecolortransparent,
 	imagecreatetruecolor, imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng,
-	imagescale, imagewebp, intdiv, intval, is_array, is_numeric, max, min, ob_end_clean, ob_get_contents, ob_start,
+	imagescale, imagetypes, imagewebp, intdiv, intval, is_array, is_numeric, max, min, ob_end_clean, ob_get_contents, ob_start,
 	restore_error_handler, set_error_handler, sprintf;
+use const IMG_BMP, IMG_GIF, IMG_JPG, IMG_PNG, IMG_WEBP;
 
 /**
  * Converts the matrix into GD images, raw or base64 output (requires ext-gd)
@@ -90,11 +91,11 @@ class QRGdImage extends QROutputAbstract{
 		}
 
 		$modes = [
-			self::GDIMAGE_BMP  => 'BMP Support',
-			self::GDIMAGE_GIF  => 'GIF Create Support',
-			self::GDIMAGE_JPG  => 'JPEG Support',
-			self::GDIMAGE_PNG  => 'PNG Support',
-			self::GDIMAGE_WEBP => 'WebP Support',
+			self::GDIMAGE_BMP  => IMG_BMP,
+			self::GDIMAGE_GIF  => IMG_GIF,
+			self::GDIMAGE_JPG  => IMG_JPG,
+			self::GDIMAGE_PNG  => IMG_PNG,
+			self::GDIMAGE_WEBP => IMG_WEBP,
 		];
 
 		// likely using default or custom output
@@ -102,10 +103,9 @@ class QRGdImage extends QROutputAbstract{
 			return;
 		}
 
-		$info = gd_info();
 		$mode = $modes[$this->options->outputType];
 
-		if(!isset($info[$mode]) || $info[$mode] !== true){
+		if((imagetypes() & $mode) !== $mode){
 			throw new QRCodeOutputException(sprintf('output mode "%s" not supported', $this->options->outputType));
 		}
 
