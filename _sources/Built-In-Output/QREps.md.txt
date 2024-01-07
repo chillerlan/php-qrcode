@@ -12,7 +12,7 @@ Set the options:
 ```php
 $options = new QROptions;
 
-$options->outputType       = QROutputInterface::EPS;
+$options->outputInterface  = QREps::class;
 $options->scale            = 5;
 $options->drawLightModules = false;
 // colors can be specified either as [R, G, B] or [C, M, Y, K] (0-255)

@@ -12,7 +12,7 @@ Set the options:
 ```php
 $options = new QROptions;
 
-$options->outputType       = QROutputInterface::FPDF;
+$options->outputInterface  = QRFpdf::class;
 $options->scale            = 5;
 $options->fpdfMeasureUnit  = 'mm'; // pt, mm, cm, in
 $options->bgColor          = [222, 222, 222]; // [R, G, B]

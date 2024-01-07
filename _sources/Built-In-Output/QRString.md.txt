@@ -17,21 +17,21 @@ function ansi8(string $str, int $color, bool $background = false):string{
 
 $options = new QROptions;
 
-$options->outputType     = QROutputInterface::STRING_TEXT;
-$options->eol            = "\n";
+$options->outputInterface = QRStringText::class;
+$options->eol             = "\n";
 // add some space on the line start
-$options->textLineStart  = str_repeat(' ', 6);
+$options->textLineStart   = str_repeat(' ', 6);
 // default values for unassigned module types
-$options->textDark       = QRString::ansi8('██', 253);
-$options->textLight      = QRString::ansi8('░░', 253);
-$options->moduleValues   = [
-	QRMatrix::M_FINDER_DARK    => QRString::ansi8('██', 124),
-	QRMatrix::M_FINDER         => QRString::ansi8('░░', 124),
-	QRMatrix::M_FINDER_DOT     => QRString::ansi8('██', 124),
-	QRMatrix::M_ALIGNMENT_DARK => QRString::ansi8('██', 2),
-	QRMatrix::M_ALIGNMENT      => QRString::ansi8('░░', 2),
-	QRMatrix::M_VERSION_DARK   => QRString::ansi8('██', 21),
-	QRMatrix::M_VERSION        => QRString::ansi8('░░', 21),
+$options->textDark        = QRStringText::ansi8('██', 253);
+$options->textLight       = QRStringText::ansi8('░░', 253);
+$options->moduleValues    = [
+	QRMatrix::M_FINDER_DARK    => QRStringText::ansi8('██', 124),
+	QRMatrix::M_FINDER         => QRStringText::ansi8('░░', 124),
+	QRMatrix::M_FINDER_DOT     => QRStringText::ansi8('██', 124),
+	QRMatrix::M_ALIGNMENT_DARK => QRStringText::ansi8('██', 2),
+	QRMatrix::M_ALIGNMENT      => QRStringText::ansi8('░░', 2),
+	QRMatrix::M_VERSION_DARK   => QRStringText::ansi8('██', 21),
+	QRMatrix::M_VERSION        => QRStringText::ansi8('░░', 21),
 ];
 ```
 

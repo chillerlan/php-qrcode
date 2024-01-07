@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Configuration settings &mdash; PHP-QRCode main
  Manual</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -109,7 +111,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#maskpattern">maskPattern</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#addquietzone">addQuietzone</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#quietzonesize">quietzoneSize</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#outputtype">outputType</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#outputinterface">outputInterface</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#returnresource">returnResource</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cachefile">cachefile</a></li>
@@ -148,11 +149,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#readergrayscale">readerGrayscale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#readerinvertcolors">readerInvertColors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#readerincreasecontrast">readerIncreaseContrast</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#imagebase64">imageBase64</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#jpegquality">jpegQuality</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#pngcompression">pngCompression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#imagetransparencybg">imageTransparencyBG</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#imagickbg">imagickBG</a></li>
 </ul>
 </li>
 </ul>
@@ -388,13 +384,14 @@
 <section id="ecclevel">
 <h2>eccLevel<a class="headerlink" href="#ecclevel" title="Link to this heading"></a></h2>
 <p>Error correct level</p>
-<p><code class="docutils literal notranslate"><span class="pre">EccLevel::X</span></code> where <code class="docutils literal notranslate"><span class="pre">X</span></code> is:</p>
+<p>the constant <code class="docutils literal notranslate"><span class="pre">EccLevel::X</span></code> where <code class="docutils literal notranslate"><span class="pre">X</span></code> is:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">L</span></code> =&gt;  7% (default)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">M</span></code> =&gt; 15%</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Q</span></code> =&gt; 25%</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">H</span></code> =&gt; 30%</p></li>
 </ul>
+<p>alternatively you can just pass the letters L/M/Q/H (case-insensitive) to the magic setter</p>
 <p><strong>See also:</strong></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Common\EccLevel</span></code></p></li>
@@ -423,43 +420,9 @@
 <p>Size of the quiet zone</p>
 <p>internally clamped to <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">...</span> <span class="pre">$moduleCount</span> <span class="pre">/</span> <span class="pre">2</span></code> (default: 4)</p>
 </section>
-<section id="outputtype">
-<h2>outputType<a class="headerlink" href="#outputtype" title="Link to this heading"></a></h2>
-<p>The built-in output type</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::MARKUP_SVG</span></code> (default)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::MARKUP_HTML</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::GDIMAGE_BMP</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::GDIMAGE_GIF</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::GDIMAGE_JPG</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::GDIMAGE_PNG</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::GDIMAGE_WEBP</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::STRING_TEXT</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::STRING_JSON</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::IMAGICK</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::EPS</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::FPDF</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">QROutputInterface::CUSTOM</span></code></p></li>
-</ul>
-<p><strong>Deprecated:</strong> 5.0.0 see issue #223</p>
-<p><strong>See also:</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QREps</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QRFpdf</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QRGdImage</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QRImagick</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QRMarkupHTML</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QRMarkupSVG</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QRString</span></code></p></li>
-<li><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/issues/223">github.com/chillerlan/php-qrcode/issues/223</a></p></li>
-</ul>
-</section>
 <section id="outputinterface">
 <h2>outputInterface<a class="headerlink" href="#outputinterface" title="Link to this heading"></a></h2>
-<p>The FQCN of the custom <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code></p>
-<p>if <code class="docutils literal notranslate"><span class="pre">QROptions::$outputType</span></code> is set to <code class="docutils literal notranslate"><span class="pre">QROutputInterface::CUSTOM</span></code> (default: <code class="docutils literal notranslate"><span class="pre">null</span></code>)</p>
-<p><strong>Deprecated:</strong> 5.0.0 the nullable type will be removed in future versions
-and the default value will be set to <code class="docutils literal notranslate"><span class="pre">QRMarkupSVG::class</span></code></p>
+<p>The FQCN of the <code class="docutils literal notranslate"><span class="pre">QROutputInterface</span></code> to use</p>
 </section>
 <section id="returnresource">
 <h2>returnResource<a class="headerlink" href="#returnresource" title="Link to this heading"></a></h2>
@@ -551,14 +514,24 @@ using <code class="docutils literal notranslate"><span class="pre">imagefilledel
 <section id="connectpaths">
 <h2>connectPaths<a class="headerlink" href="#connectpaths" title="Link to this heading"></a></h2>
 <p>Whether to connect the paths for the several module types to avoid weird glitches when using gradients etc.</p>
+<p>This option is exclusive to output classes that use the module collector <code class="docutils literal notranslate"><span class="pre">QROutputAbstract::collectModules()</span></code>,
+which converts the <code class="docutils literal notranslate"><span class="pre">$M_TYPE</span></code> of all modules to <code class="docutils literal notranslate"><span class="pre">QRMatrix::M_DATA</span></code> and <code class="docutils literal notranslate"><span class="pre">QRMatrix::M_DATA_DARK</span></code> respectively.</p>
+<p>Module types that should not be added to the connected path can be excluded via <code class="docutils literal notranslate"><span class="pre">QROptions::$excludeFromConnect</span></code>.</p>
+<p>Currentty used in <code class="docutils literal notranslate"><span class="pre">QREps</span></code> and <code class="docutils literal notranslate"><span class="pre">QRMarkupSVG</span></code>.</p>
 <p><strong>See also:</strong></p>
 <ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\Output\QROutputAbstract::collectModules()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\QROptionsTrait::$excludeFromConnect</span></code></p></li>
 <li><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/issues/57">github.com/chillerlan/php-qrcode/issues/57</a></p></li>
 </ul>
 </section>
 <section id="excludefromconnect">
 <h2>excludeFromConnect<a class="headerlink" href="#excludefromconnect" title="Link to this heading"></a></h2>
 <p>Specify which paths/patterns to exclude from connecting if <code class="docutils literal notranslate"><span class="pre">QROptions::$connectPaths</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code></p>
+<p><strong>See also:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">\chillerlan\QRCode\QROptionsTrait::$connectPaths</span></code></p></li>
+</ul>
 </section>
 <section id="modulevalues">
 <h2>moduleValues<a class="headerlink" href="#modulevalues" title="Link to this heading"></a></h2>
@@ -743,46 +716,6 @@ When set to <code class="docutils literal notranslate"><span class="pre">false</
 <h2>readerIncreaseContrast<a class="headerlink" href="#readerincreasecontrast" title="Link to this heading"></a></h2>
 <p>Increase the contrast before reading</p>
 <p>note that applying contrast works different in GD and Imagick, so mileage may vary</p>
-</section>
-<section id="imagebase64">
-<h2>imageBase64<a class="headerlink" href="#imagebase64" title="Link to this heading"></a></h2>
-<p><strong>Deprecated:</strong> 5.0.0 use QROptions::$outputBase64 instead</p>
-<p><strong>See also:</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\chillerlan\QRCode\QROptions::$outputBase64</span></code></p></li>
-</ul>
-</section>
-<section id="jpegquality">
-<h2>jpegQuality<a class="headerlink" href="#jpegquality" title="Link to this heading"></a></h2>
-<p><strong>Deprecated:</strong> 5.0.0 use QROptions::$quality instead</p>
-<p><strong>See also:</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\chillerlan\QRCode\QROptions::$quality</span></code></p></li>
-</ul>
-</section>
-<section id="pngcompression">
-<h2>pngCompression<a class="headerlink" href="#pngcompression" title="Link to this heading"></a></h2>
-<p><strong>Deprecated:</strong> 5.0.0 use QROptions::$quality instead</p>
-<p><strong>See also:</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\chillerlan\QRCode\QROptions::$quality</span></code></p></li>
-</ul>
-</section>
-<section id="imagetransparencybg">
-<h2>imageTransparencyBG<a class="headerlink" href="#imagetransparencybg" title="Link to this heading"></a></h2>
-<p><strong>Deprecated:</strong> 5.0.0 use QROptions::$transparencyColor instead</p>
-<p><strong>See also:</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\chillerlan\QRCode\QROptions::$transparencyColor</span></code></p></li>
-</ul>
-</section>
-<section id="imagickbg">
-<h2>imagickBG<a class="headerlink" href="#imagickbg" title="Link to this heading"></a></h2>
-<p><strong>Deprecated:</strong> 5.0.0 use QROptions::$bgColor instead</p>
-<p><strong>See also:</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">\chillerlan\QRCode\QROptions::$bgColor</span></code></p></li>
-</ul>
 </section>
 </section>
 

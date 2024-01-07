@@ -15,9 +15,9 @@ Set the options:
 ```php
 $options = new QROptions;
 
-$options->outputType   = QROutputInterface::MARKUP_HTML;
-$options->cssClass     = 'qrcode';
-$options->moduleValues = [
+$options->outputInterface = QRMarkupHTML::class;
+$options->cssClass        = 'qrcode';
+$options->moduleValues    = [
 	// finder
 	QRMatrix::M_FINDER_DARK    => '#A71111', // dark (true)
 	QRMatrix::M_FINDER_DOT     => '#A71111', // finder dot, dark (true)
