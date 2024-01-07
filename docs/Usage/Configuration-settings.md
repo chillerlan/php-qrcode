@@ -232,15 +232,29 @@ Specifies which module types to exclude when `QROptions::$drawCircularModules` i
 
 Whether to connect the paths for the several module types to avoid weird glitches when using gradients etc.
 
+This option is exclusive to output classes that use the module collector `QROutputAbstract::collectModules()`,
+which converts the `$M_TYPE` of all modules to `QRMatrix::M_DATA` and `QRMatrix::M_DATA_DARK` respectively.
+
+Module types that should not be added to the connected path can be excluded via `QROptions::$excludeFromConnect`.
+
+Currentty used in `QREps` and `QRMarkupSVG`.
+
 
 **See also:**
 
+- `\chillerlan\QRCode\Output\QROutputAbstract::collectModules()`
+- `\chillerlan\QRCode\QROptionsTrait::$excludeFromConnect`
 - [github.com/chillerlan/php-qrcode/issues/57](https://github.com/chillerlan/php-qrcode/issues/57)
 
 
 ## excludeFromConnect
 
 Specify which paths/patterns to exclude from connecting if `QROptions::$connectPaths` is set to `true`
+
+
+**See also:**
+
+- `\chillerlan\QRCode\QROptionsTrait::$connectPaths`
 
 
 ## moduleValues
