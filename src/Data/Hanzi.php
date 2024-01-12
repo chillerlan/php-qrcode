@@ -12,8 +12,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
 use Throwable;
-use function chr, implode, intdiv, is_string, mb_convert_encoding, mb_detect_encoding,
-	mb_detect_order, mb_internal_encoding, mb_strlen, ord, sprintf, strlen;
+use function chr, implode, intdiv, ord, sprintf, strlen;
 
 /**
  * Hanzi (simplified Chinese) mode, GBT18284-2000: 13-bit double-byte characters from the GB2312/GB18030 character set
@@ -52,7 +51,7 @@ final class Hanzi extends QRDataModeAbstract{
 	 * @inheritDoc
 	 */
 	protected function getCharCount():int{
-		return mb_strlen($this->data, self::ENCODING);
+		return self::$encodingHandler::getCharCount($this->data, self::ENCODING);
 	}
 
 	/**
@@ -66,25 +65,9 @@ final class Hanzi extends QRDataModeAbstract{
 	 * @inheritDoc
 	 */
 	public static function convertEncoding(string $string):string{
-		mb_detect_order([mb_internal_encoding(), 'UTF-8', 'GB2312', 'GB18030', 'CP936', 'EUC-CN', 'HZ']);
+		$encodings = [self::$encodingHandler::getInternalEncoding(), 'UTF-8', 'GB2312', 'GB18030', 'CP936', 'EUC-CN', 'HZ'];
 
-		$detected = mb_detect_encoding($string, null, true);
-
-		if($detected === false){
-			throw new QRCodeDataException('mb_detect_encoding error');
-		}
-
-		if($detected === self::ENCODING){
-			return $string;
-		}
-
-		$string = mb_convert_encoding($string, self::ENCODING, $detected);
-
-		if(!is_string($string)){
-			throw new QRCodeDataException('mb_convert_encoding error');
-		}
-
-		return $string;
+		return self::$encodingHandler::convertEncoding($string, self::ENCODING, $encodings);
 	}
 
 	/**
@@ -199,7 +182,9 @@ final class Hanzi extends QRDataModeAbstract{
 			$length--;
 		}
 
-		return mb_convert_encoding(implode($buffer), mb_internal_encoding(), self::ENCODING);
+		$to_encoding = self::$encodingHandler::getInternalEncoding();
+
+		return self::$encodingHandler::convertEncoding(implode($buffer), $to_encoding, self::ENCODING);
 	}
 
 }

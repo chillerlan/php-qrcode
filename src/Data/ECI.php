@@ -10,8 +10,8 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\Common\{BitBuffer, ECICharset, Mode};
-use function mb_convert_encoding, mb_detect_encoding, mb_internal_encoding, sprintf;
+use chillerlan\QRCode\Common\{BitBuffer, ECICharset, EncodingHandlerTrait, Mode};
+use function sprintf;
 
 /**
  * Adds an ECI Designator
@@ -21,6 +21,7 @@ use function mb_convert_encoding, mb_detect_encoding, mb_internal_encoding, spri
  * Please note that you have to take care for the correct data encoding when adding with QRCode::add*Segment()
  */
 final class ECI extends QRDataModeAbstract{
+	use EncodingHandlerTrait;
 
 	/**
 	 * @inheritDoc
@@ -43,6 +44,8 @@ final class ECI extends QRDataModeAbstract{
 		}
 
 		$this->encoding = $encoding;
+
+		$this->setEncodingHandler();
 	}
 
 	/**
@@ -142,14 +145,12 @@ final class ECI extends QRDataModeAbstract{
 			// upon decoding. I have seen ISO-8859-1 used as well as
 			// Shift_JIS -- without anything like an ECI designator to
 			// give a hint.
-			$encoding = mb_detect_encoding($data, ['ISO-8859-1', 'Windows-1252', 'SJIS', 'UTF-8'], true);
-
-			if($encoding === false){
-				throw new QRCodeDataException('could not determine encoding in ECI mode'); // @codeCoverageIgnore
-			}
+			$encoding = ['ISO-8859-1', 'Windows-1252', 'SJIS', 'UTF-8'];
 		}
 
-		return mb_convert_encoding($data, mb_internal_encoding(), $encoding);
+		$to_encoding = self::$encodingHandler::getInternalEncoding();
+
+		return self::$encodingHandler::convertEncoding($data, $to_encoding, $encoding);
 	}
 
 }

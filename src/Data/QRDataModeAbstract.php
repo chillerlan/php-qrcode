@@ -10,12 +10,13 @@
 
 namespace chillerlan\QRCode\Data;
 
-use chillerlan\QRCode\Common\Mode;
+use chillerlan\QRCode\Common\{EncodingHandlerTrait, Mode};
 
 /**
  * abstract methods for the several data modes
  */
 abstract class QRDataModeAbstract implements QRDataModeInterface{
+	use EncodingHandlerTrait;
 
 	/**
 	 * The data to write
@@ -35,6 +36,8 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 		}
 
 		$this->data = $data;
+
+		$this->setEncodingHandler();
 	}
 
 	/**

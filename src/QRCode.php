@@ -13,13 +13,14 @@
 namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Common\{
-	ECICharset, GDLuminanceSource, IMagickLuminanceSource, LuminanceSourceInterface, MaskPattern, Mode
+	EncodingHandlerTrait, ECICharset, GDLuminanceSource,
+	IMagickLuminanceSource, LuminanceSourceInterface, MaskPattern, Mode
 };
 use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Hanzi, Kanji, Number, QRData, QRDataModeInterface, QRMatrix};
 use chillerlan\QRCode\Decoder\{Decoder, DecoderResult};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
-use function class_exists, class_implements, in_array, mb_convert_encoding, mb_internal_encoding;
+use function class_exists, class_implements, in_array;
 
 /**
  * Turns a text string into a Model 2 QR Code
@@ -31,6 +32,7 @@ use function class_exists, class_implements, in_array, mb_convert_encoding, mb_i
  * @see https://www.thonky.com/qr-code-tutorial/
  */
 class QRCode{
+	use EncodingHandlerTrait;
 
 	/**
 	 * The settings container
@@ -56,6 +58,7 @@ class QRCode{
 	 */
 	public function __construct(SettingsContainerInterface|QROptions $options = new QROptions){
 		$this->setOptions($options);
+		$this->setEncodingHandler();
 	}
 
 	/**
@@ -239,7 +242,7 @@ class QRCode{
 	/**
 	 * Adds an ECI data segment (including designator)
 	 *
-	 * The given string will be encoded from mb_internal_encoding() to the given ECI character set
+	 * The given string will be encoded from internal_encoding to the given ECI character set
 	 *
 	 * I hate this somehow, but I'll leave it for now
 	 *
@@ -252,7 +255,7 @@ class QRCode{
 		$eciCharsetName = $eciCharset->getName();
 		// convert the string to the given charset
 		if($eciCharsetName !== null){
-			$data = mb_convert_encoding($data, $eciCharsetName, mb_internal_encoding());
+			$data = static::$encodingHandler::convertEncoding($data, $eciCharsetName);
 
 			return $this
 				->addEciDesignator($eciCharset->getID())

@@ -41,10 +41,11 @@
 	"prefer-stable": true,
 	"require": {
 		"php": "^8.2",
-		"ext-mbstring": "*",
 		"chillerlan/php-settings-container": "^3.1"
 	},
 	"require-dev": {
+		"ext-iconv": "*",
+		"ext-mbstring": "*",
 		"chillerlan/php-authenticator": "^5.1",
 		"phan/phan": "^5.4",
 		"phpunit/phpunit": "^10.5",
@@ -55,7 +56,8 @@
 	"suggest": {
 		"chillerlan/php-authenticator": "Yet another Google authenticator! Also creates URIs for mobile apps.",
 		"setasign/fpdf": "Required to use the QR FPDF output.",
-		"simple-icons/simple-icons": "SVG icons that you can use to embed as logos in the QR Code"
+		"simple-icons/simple-icons": "SVG icons that you can use to embed as logos in the QR Code",
+		"symfony/polyfill-mbstring": "^1.24"
 	},
 	"autoload": {
 		"psr-4": {
