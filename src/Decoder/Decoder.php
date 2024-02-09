@@ -35,6 +35,10 @@ final class Decoder{
 	private ?EccLevel                              $eccLevel    = null;
 	private ?MaskPattern                           $maskPattern = null;
 	private BitBuffer                              $bitBuffer;
+	private int $topRightX;
+	private int $topRightY;
+	private int $bottomLeftX;
+	private int $bottomLeftY;
 
 	public function __construct(SettingsContainerInterface|QROptions $options = new QROptions){
 		$this->options = $options;
@@ -47,7 +51,12 @@ final class Decoder{
 	 * @throws \Throwable|\chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	public function decode(LuminanceSourceInterface $source):DecoderResult{
-		$matrix = (new Detector($source))->detect();
+		$detector = new Detector($source);
+		$matrix = $detector->detect();
+		$this->topRightX = $detector->topRightX;
+		$this->topRightY = $detector->topRightY;
+		$this->bottomLeftX = $detector->bottomLeftX;
+		$this->bottomLeftY = $detector->bottomLeftY;
 
 		try{
 			// clone the BitMatrix to avoid errors in case we run into mirroring
@@ -161,6 +170,10 @@ final class Decoder{
 			'maskPattern'              => $this->maskPattern,
 			'structuredAppendParity'   => $parityData,
 			'structuredAppendSequence' => $symbolSequence,
+			'topRightX'                => $this->topRightX,
+			'topRightY'                => $this->topRightY,
+			'bottomLeftX'              => $this->bottomLeftX,
+			'bottomLeftY'              => $this->bottomLeftY,
 		]);
 	}
 

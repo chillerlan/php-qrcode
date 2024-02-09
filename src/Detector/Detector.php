@@ -25,6 +25,10 @@ use const NAN;
 final class Detector{
 
 	private BitMatrix $matrix;
+	public int $topRightX;
+	public int $topRightY;
+	public int $bottomLeftX;
+	public int $bottomLeftY;
 
 	/**
 	 * Detector constructor.
@@ -38,6 +42,11 @@ final class Detector{
 	 */
 	public function detect():BitMatrix{
 		[$bottomLeft, $topLeft, $topRight] = (new FinderPatternFinder($this->matrix))->find();
+
+		$this->topRightX = (int)ceil($topRight->getX());
+		$this->topRightY = (int)floor($topRight->getY());
+		$this->bottomLeftX = (int)floor($bottomLeft->getX());
+		$this->bottomLeftY = (int)ceil($bottomLeft->getY());
 
 		$moduleSize         = $this->calculateModuleSize($topLeft, $topRight, $bottomLeft);
 		$dimension          = $this->computeDimension($topLeft, $topRight, $bottomLeft, $moduleSize);
