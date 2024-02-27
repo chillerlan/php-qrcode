@@ -4076,6 +4076,11 @@ Search.appendIndex(
             "summary": "tests\u0020setting\u0020the\u0020BitBuffer\u0020object\u0020directly",
             "url": "classes/chillerlan-QRCodeTest-Data-QRDataTest.html#method_testSetBitBuffer"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRDataTest\u003A\u003AtestEstimateTotalBitLength\u0028\u0029",
+            "name": "testEstimateTotalBitLength",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Data-QRDataTest.html#method_testEstimateTotalBitLength"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Data\\QRMatrixTest",
             "name": "QRMatrixTest",
             "summary": "Tests\u0020the\u0020QRMatrix\u0020class",
