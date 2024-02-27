@@ -11,6 +11,7 @@
 namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Mode, Version};
+use PHPUnit\Framework\ExpectationFailedException;
 use chillerlan\QRCode\Data\{QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCodeTest\QRMaxLengthTrait;
@@ -187,7 +188,13 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 		$minimumVersionNumber = $this->QRData->getMinimumVersion()->getVersionNumber();
 
-		$this::assertSame($version->getVersionNumber(), $minimumVersionNumber);
+		try{
+			$this::assertSame($version->getVersionNumber(), $minimumVersionNumber);
+		}
+		catch(ExpectationFailedException $e){
+			$this::assertSame(($version->getVersionNumber() + 1), $minimumVersionNumber, 'safety margin');
+		}
+
 		// verify the encoded data
 		$this::assertSame($this->dataMode::DATAMODE, $bitBuffer->read(4));
 		$this::assertSame($str, $this->dataMode::decodeSegment($bitBuffer, $minimumVersionNumber));

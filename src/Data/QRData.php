@@ -165,9 +165,9 @@ final class QRData{
 
 			// it seems that in some cases the estimated total length is not 100% accurate,
 			// so we substract 4 bits from the total when not in mixed mode
-#			if(count($this->dataSegments) <= 1){
-#				$length -= 4;
-#			}
+			if(count($this->dataSegments) <= 1){
+				$length -= 4;
+			}
 
 			// we've got a match!
 			// or let's see if there's a higher version number available
@@ -195,7 +195,7 @@ final class QRData{
 
 		// guess the version number within the given range
 		for($version = $this->options->versionMin; $version <= $this->options->versionMax; $version++){
-			if($total <= $this->maxBitsForEcc[$version]){
+			if($total <= ($this->maxBitsForEcc[$version] - 4)){
 				return new Version($version);
 			}
 		}
