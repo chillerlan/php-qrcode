@@ -35,7 +35,9 @@ final class Decoder{
 	private ?EccLevel                              $eccLevel    = null;
 	private ?MaskPattern                           $maskPattern = null;
 	private BitBuffer                              $bitBuffer;
-	private int $topRightX;
+	private int $topLeftX;
+	private int $topLeftX;
+	private int $topRightY;
 	private int $topRightY;
 	private int $bottomLeftX;
 	private int $bottomLeftY;
@@ -53,6 +55,8 @@ final class Decoder{
 	public function decode(LuminanceSourceInterface $source):DecoderResult{
 		$detector = new Detector($source);
 		$matrix = $detector->detect();
+		$this->topLeftX = $detector->topLeftX;
+		$this->topLeftY = $detector->topLeftY;
 		$this->topRightX = $detector->topRightX;
 		$this->topRightY = $detector->topRightY;
 		$this->bottomLeftX = $detector->bottomLeftX;
@@ -170,6 +174,8 @@ final class Decoder{
 			'maskPattern'              => $this->maskPattern,
 			'structuredAppendParity'   => $parityData,
 			'structuredAppendSequence' => $symbolSequence,
+			'topLeftX'                 => $this->topLeftX,
+			'topLeftY'                 => $this->topLeftY,
 			'topRightX'                => $this->topRightX,
 			'topRightY'                => $this->topRightY,
 			'bottomLeftX'              => $this->bottomLeftX,
