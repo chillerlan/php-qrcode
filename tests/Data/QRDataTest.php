@@ -11,7 +11,9 @@
 namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\Common\BitBuffer;
+use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Common\MaskPattern;
+use chillerlan\QRCode\Data\Byte;
 use chillerlan\QRCode\Data\QRData;
 use chillerlan\QRCode\Output\QRGdImagePNG;
 use chillerlan\QRCode\QRCode;
@@ -61,6 +63,30 @@ final class QRDataTest extends TestCase{
 		$this->debugMatrix($matrix);
 
 		$this::assertSame($decodeResult->data, 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s');
+	}
+
+	public function testEstimateTotalBitLength():void{
+
+		$options = new QROptions([
+			'versionMin'          => 10,
+			'quietzoneSize'       => 2,
+			'eccLevel'            => EccLevel::H,
+#			'outputType'          => QROutputInterface::CUSTOM,
+#			'outputInterface'     => PmaQrCodeSVG::class,
+			'outputBase64'        => false,
+			'cssClass'            => 'pma-2fa-qrcode',
+			'drawCircularModules' => true,
+		]);
+
+		// version 10H has a maximum of 976 bits, which is the exact length of the string below
+		// QRData::estimateTotalBitLength() used to substract 4 bits for a hypothetical data mode indicator
+		// we're now going the safe route and do not do that anymore...
+		$str = 'otpauth://totp/user?secret=P2SXMJFJ7DJGHLVEQYBNH2EYM4FH66CR'.
+		       '&issuer=phpMyAdmin%20%28%29&digits=6&algorithm=SHA1&period=30';
+
+		$qrData = new QRData($options, [new Byte($str)]);
+
+		$this::assertSame(980, $qrData->estimateTotalBitLength());
 	}
 
 }
