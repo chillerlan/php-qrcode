@@ -86,7 +86,8 @@ final class QRDataTest extends TestCase{
 
 		$qrData = new QRData($options, [new Byte($str)]);
 
-		$this::assertSame(980, $qrData->estimateTotalBitLength());
+		$this::assertSame(976, $qrData->estimateTotalBitLength());
+		$this::assertSame(11, $qrData->getMinimumVersion()->getVersionNumber()); // version adjusted to 11
 	}
 
 }
