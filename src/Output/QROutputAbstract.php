@@ -146,18 +146,18 @@ abstract class QROutputAbstract implements QROutputInterface{
 	}
 
 	/**
-	 * Prepares the value for the given input ()
+	 * Prepares the value for the given input (return value depends on the output class)
 	 *
 	 * @param mixed $value
 	 *
-	 * @return mixed|null return value depends on the output class
+	 * @return mixed|null
 	 */
 	abstract protected function prepareModuleValue($value);
 
 	/**
-	 * Returns a default value for either dark or light modules
+	 * Returns a default value for either dark or light modules (return value depends on the output class)
 	 *
-	 * @return mixed|null return value depends on the output class
+	 * @return mixed|null
 	 */
 	abstract protected function getDefaultModuleValue(bool $isDark);
 

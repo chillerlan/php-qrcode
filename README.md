@@ -74,7 +74,7 @@ For the QRCode reader, either `ext-gd` or `ext-imagick` is required!
 
 ## Installation with [composer](https://getcomposer.org)
 
-See [the installation guide](https://php-qrcode.readthedocs.io/en/v5.0.x/Usage-Installation.html) for more info!
+See [the installation guide](https://php-qrcode.readthedocs.io/en/v5.0.x/Usage/Installation.html) for more info!
 
 
 ### Terminal
