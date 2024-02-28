@@ -36,8 +36,8 @@ final class Decoder{
 	private ?MaskPattern                           $maskPattern = null;
 	private BitBuffer                              $bitBuffer;
 	private int $topLeftX;
-	private int $topLeftX;
-	private int $topRightY;
+	private int $topLeftY;
+	private int $topRightX;
 	private int $topRightY;
 	private int $bottomLeftX;
 	private int $bottomLeftY;
