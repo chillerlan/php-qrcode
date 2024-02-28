@@ -37,6 +37,12 @@ final class DecoderResult{
 	private string      $data = '';
 	private int         $structuredAppendParity = -1;
 	private int         $structuredAppendSequence = -1;
+	private int			$topLeftX;
+	private int			$topLeftY;
+	private int			$topRightX;
+	private int			$topRightY;
+	private int			$bottomLeftX;
+	private int			$bottomLeftY;
 
 	/**
 	 * DecoderResult constructor.
