@@ -13,7 +13,7 @@ namespace chillerlan\QRCode\Data;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, Mode, Version};
 use chillerlan\Settings\SettingsContainerInterface;
-use function count, sprintf;
+use function sprintf;
 
 /**
  * Processes the binary data and maps it on a QRMatrix which is then being returned
@@ -194,7 +194,7 @@ final class QRData{
 
 		// guess the version number within the given range
 		for($version = $this->options->versionMin; $version <= $this->options->versionMax; $version++){
-			if($total <= $this->maxBitsForEcc[$version]){
+			if($total <= ($this->maxBitsForEcc[$version] - 4)){
 				return new Version($version);
 			}
 		}

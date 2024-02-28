@@ -16,6 +16,7 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\QRCodeTest\QRMaxLengthTrait;
 use Exception, Generator;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
 use function array_map, hex2bin, mb_strlen, mb_substr, sprintf, str_repeat, strlen, substr;
 
@@ -178,7 +179,13 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 		$minimumVersionNumber = $this->QRData->getMinimumVersion()->getVersionNumber();
 
-		$this::assertSame($version->getVersionNumber(), $minimumVersionNumber);
+		try{
+			$this::assertSame($version->getVersionNumber(), $minimumVersionNumber);
+		}
+		catch(ExpectationFailedException $e){
+			$this::assertSame(($version->getVersionNumber() + 1), $minimumVersionNumber, 'safety margin');
+		}
+
 		// verify the encoded data
 		$this::assertSame($this->dataMode::DATAMODE, $bitBuffer->read(4));
 		$this::assertSame($str, $this->dataMode::decodeSegment($bitBuffer, $minimumVersionNumber));
