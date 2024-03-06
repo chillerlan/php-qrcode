@@ -64,7 +64,7 @@ A phone number should be prefixed with the `tel:` scheme so that a device's dial
 tel:+999-123-456-7890
 ```
 
-Generally, the most complete version of a telephone number possible sould be used, e.g. `+<country code><area code><number>`, spaces or hyphens may be used to separate blocks.
+Generally, the most complete version of a telephone number possible should be used, e.g. `+<country code><area code><number>`, spaces or hyphens may be used to separate blocks.
 Some devices may also support the `sms` and `fax` schemes, which are deprecated in favor of `tel`.
 
 **See also:**
@@ -249,6 +249,12 @@ END:VCALENDAR
 - [iCalendar (Wikipedia)](https://en.wikipedia.org/wiki/ICalendar)
 - [vobject library for PHP (GitHub)](https://github.com/sabre-io/vobject)
 - [iCalendar generator for PHP (GitHub)](https://github.com/spatie/icalendar-generator)
+
+
+## SEPA Credit Transfer
+
+- [Guidelines to Enable the Data Capture for the Initiation of a SEPA Credit Transfer](https://www.europeanpaymentscouncil.eu/document-library/guidance-documents/quick-response-code-guidelines-enable-data-capture-initiation)
+- [sepa-qr-data library for PHP (GitHub)](https://github.com/smhg/sepa-qr-data-php)
 
 
 ## See also
