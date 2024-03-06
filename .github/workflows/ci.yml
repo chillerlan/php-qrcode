@@ -41,7 +41,7 @@ jobs:
           extensions: ast, fileinfo, gd, imagick, json, mbstring
 
       - name: "Update dependencies with composer"
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v3
 
       - name: "Run phan"
         run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
@@ -75,7 +75,7 @@ jobs:
           extensions: fileinfo, gd, imagick, json, mbstring
 
       - name: "Install dependencies with composer"
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v3
 
       - name: "Run tests with phpunit"
         run: php vendor/bin/phpunit --colors=always --configuration=phpunit.xml.dist
@@ -140,7 +140,7 @@ jobs:
         run: pip install sphinx myst-parser sphinx-rtd-theme
 
       - name: "Install dependencies with composer"
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v3
 
       - name: "Build QROptions doc"
         run: php docs/qroptions-doc.php
