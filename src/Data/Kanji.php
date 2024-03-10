@@ -12,8 +12,7 @@ namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
 use Throwable;
-use function chr, implode, intdiv, is_string, mb_convert_encoding, mb_detect_encoding,
-	mb_detect_order, mb_internal_encoding, mb_strlen, ord, sprintf, strlen;
+use function chr, implode, intdiv, ord, sprintf, strlen;
 
 /**
  * Kanji mode: 13-bit double-byte characters from the Shift-JIS character set
@@ -45,7 +44,7 @@ final class Kanji extends QRDataModeAbstract{
 	 * @inheritDoc
 	 */
 	protected function getCharCount():int{
-		return mb_strlen($this->data, self::ENCODING);
+		return self::$encodingHandler::getCharCount($this->data, self::ENCODING);
 	}
 
 	/**
@@ -59,25 +58,9 @@ final class Kanji extends QRDataModeAbstract{
 	 * @inheritDoc
 	 */
 	public static function convertEncoding(string $string):string{
-		mb_detect_order([mb_internal_encoding(), 'UTF-8', 'SJIS', 'SJIS-2004']);
+		$encodings = [self::$encodingHandler::getInternalEncoding(), 'UTF-8', 'SJIS', 'SJIS-2004'];
 
-		$detected = mb_detect_encoding($string, null, true);
-
-		if($detected === false){
-			throw new QRCodeDataException('mb_detect_encoding error');
-		}
-
-		if($detected === self::ENCODING){
-			return $string;
-		}
-
-		$string = mb_convert_encoding($string, self::ENCODING, $detected);
-
-		if(!is_string($string)){
-			throw new QRCodeDataException(sprintf('invalid encoding: %s', $detected));
-		}
-
-		return $string;
+		return self::$encodingHandler::convertEncoding($string, self::ENCODING, $encodings);
 	}
 
 	/**
@@ -185,7 +168,9 @@ final class Kanji extends QRDataModeAbstract{
 			$length--;
 		}
 
-		return mb_convert_encoding(implode($buffer), mb_internal_encoding(), self::ENCODING);
+		$to_encoding = self::$encodingHandler::getInternalEncoding();
+
+		return self::$encodingHandler::convertEncoding(implode($buffer), $to_encoding, self::ENCODING);
 	}
 
 }
