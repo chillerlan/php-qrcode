@@ -94,7 +94,7 @@ composer require chillerlan/php-qrcode
 ```json
 {
 	"require": {
-		"php": "^^8.2",
+		"php": "^8.2",
 		"chillerlan/php-qrcode": "dev-main#<commit_hash>"
 	}
 }
