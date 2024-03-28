@@ -45,7 +45,7 @@ abstract class QROutputTestAbstract extends TestCase{
 
 	abstract protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
-		QRMatrix                             $matrix
+		QRMatrix                             $matrix,
 	):QROutputInterface;
 
 	/**

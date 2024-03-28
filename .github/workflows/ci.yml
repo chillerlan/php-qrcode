@@ -1,5 +1,5 @@
-# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
-# https://github.com/sebastianbergmann/phpunit/blob/master/.github/workflows/ci.yml
+# https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
+# https://github.com/sebastianbergmann/phpunit/blob/main/.github/workflows/ci.yaml
 
 on:
   push:
@@ -10,6 +10,10 @@ on:
       - main
 
 name: "Continuous Integration"
+
+env:
+  PHP_EXTENSIONS: ast, fileinfo, gd, imagick, json, mbstring
+  PHP_INI_VALUES: memory_limit=-1, error_reporting=-1, display_errors=On
 
 jobs:
 
@@ -36,12 +40,13 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: none
           tools: pecl
-          extensions: ast, fileinfo, gd, imagick, json, mbstring
 
-      - name: "Update dependencies with composer"
-        uses: ramsey/composer-install@v2
+      - name: "Install dependencies with composer"
+        uses: ramsey/composer-install@v3
 
       - name: "Run phan"
         run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
@@ -70,14 +75,15 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: pcov
           tools: pecl
-          extensions: fileinfo, gd, imagick, json, mbstring
 
       - name: "Install dependencies with composer"
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v3
 
-      - name: "Run tests with phpunit"
+      - name: "Run tests with PHPUnit"
         run: php vendor/bin/phpunit --colors=always --configuration=phpunit.xml.dist
 
       - name: "Send code coverage report to Codecov.io"
@@ -105,10 +111,11 @@ jobs:
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.2"
+          php-version: "8.3"
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: none
           tools: phpDocumentor
-          extensions: fileinfo, gd, imagick, json, mbstring
 
       - name: "Build API docs"
         run: phpdoc --config=phpdoc.xml.dist
@@ -133,14 +140,16 @@ jobs:
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.2"
+          php-version: "8.3"
+          extensions: ${{ env.PHP_EXTENSIONS }}
+          ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: none
 
       - name: "Install Sphinx"
         run: pip install sphinx myst-parser sphinx-rtd-theme
 
       - name: "Install dependencies with composer"
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v3
 
       - name: "Build QROptions doc"
         run: php docs/qroptions-doc.php
