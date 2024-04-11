@@ -41,6 +41,8 @@ For the QR Code reader, either `ext-gd` or `ext-imagick` is required!
 
 ## Framework Integration
 
+- CakePHP:
+  - [QrCode plugin](https://github.com/dereuromark/cakephp-qrcode)
 - Drupal:
   - [Two-factor Authentication `tfa`](https://www.drupal.org/project/tfa) (Drupal 8+)
   - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login) (deprecated, Drupal 7)
