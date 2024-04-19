@@ -8,17 +8,17 @@
  * @license      MIT
  */
 
-use chillerlan\QRCode\QROptionsTrait;
+use chillerlan\QRCode\QROptions;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
 $file    = 'Usage/Configuration-settings.md';
 $content = [
 	'# Configuration settings',
-	'<!-- This file is auto generated from the source of QROptionsTrait.php -->',
+	'<!-- This file is auto generated from the source of QROptions.php -->',
 ];
 
-$reflectionClass = new ReflectionClass(QROptionsTrait::class);
+$reflectionClass = new ReflectionClass(QROptions::class);
 
 foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED) as $reflectionProperty){
 	$docblock = $reflectionProperty->getDocComment();
@@ -71,7 +71,7 @@ foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED) as $re
 			}
 			// php.net documentation
 			elseif(str_starts_with($line, '\\') && !str_contains($line, 'chillerlan')){
-				$path = str_replace(['\\', '::', '()'], ['', '.', ''], strtolower($line));
+				$path = str_replace(['\\', '::', '()', '_'], ['', '.', '', '-'], strtolower($line));
 
 				if(!str_contains($line, '::')){
 					$path = 'function.'.$path;
@@ -93,6 +93,6 @@ foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED) as $re
 
 file_put_contents(__DIR__.'/'.$file, implode("\n", $content));
 
-printf('Built "%s" from "%s"', $file, QROptionsTrait::class);
+printf('Built "%s" from "%s"', $file, QROptions::class);
 
 exit(0);

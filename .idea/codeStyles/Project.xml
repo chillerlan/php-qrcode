@@ -295,8 +295,14 @@
       <option name="ALIGN_PHPDOC_PARAM_NAMES" value="true" />
       <option name="ALIGN_PHPDOC_COMMENTS" value="true" />
       <option name="ALIGN_ASSIGNMENTS" value="true" />
+      <option name="ALIGN_NAMED_ARGUMENTS" value="true" />
+      <option name="ALIGN_MATCH_ARM_BODIES" value="true" />
       <option name="CONCAT_SPACES" value="false" />
       <option name="COMMA_AFTER_LAST_ARRAY_ELEMENT" value="true" />
+      <option name="COMMA_AFTER_LAST_PARAMETER" value="true" />
+      <option name="COMMA_AFTER_LAST_CLOSURE_USE_VAR" value="true" />
+      <option name="COMMA_AFTER_LAST_ARGUMENT" value="true" />
+      <option name="COMMA_AFTER_LAST_MATCH_ARM" value="true" />
       <option name="PHPDOC_BLANK_LINE_BEFORE_TAGS" value="true" />
       <option name="PHPDOC_BLANK_LINES_AROUND_PARAMETERS" value="true" />
       <option name="PHPDOC_WRAP_LONG_LINES" value="true" />
