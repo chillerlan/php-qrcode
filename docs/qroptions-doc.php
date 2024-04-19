@@ -71,7 +71,7 @@ foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED) as $re
 			}
 			// php.net documentation
 			elseif(str_starts_with($line, '\\') && !str_contains($line, 'chillerlan')){
-				$path = str_replace(['\\', '::', '()'], ['', '.', ''], strtolower($line));
+				$path = str_replace(['\\', '::', '()', '_'], ['', '.', '', '-'], strtolower($line));
 
 				if(!str_contains($line, '::')){
 					$path = 'function.'.$path;
