@@ -11,6 +11,7 @@
 namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Mode, Version};
+use PHPUnit\Framework\ExpectationFailedException;
 use chillerlan\QRCode\Data\{QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCodeTest\QRMaxLengthTrait;

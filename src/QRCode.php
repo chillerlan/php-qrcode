@@ -202,6 +202,11 @@ class QRCode{
 	/**
 	 * Renders a QR Code for the given $data and QROptions, saves $file optionally
 	 *
+	 * Note: it is possible to add several data segments before calling this method with a valid $data string
+	 *       which will result in a mixed-mode QR Code with the given parameter as last element.
+	 *
+	 * @see https://github.com/chillerlan/php-qrcode/issues/246
+	 *
 	 * @return mixed
 	 */
 	public function render(string $data = null, string $file = null){

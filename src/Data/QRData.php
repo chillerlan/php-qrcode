@@ -195,7 +195,7 @@ final class QRData{
 
 		// guess the version number within the given range
 		for($version = $this->options->versionMin; $version <= $this->options->versionMax; $version++){
-			if($total <= $this->maxBitsForEcc[$version] - 4){
+			if($total <= ($this->maxBitsForEcc[$version] - 4)){
 				return new Version($version);
 			}
 		}
