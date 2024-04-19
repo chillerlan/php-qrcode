@@ -109,15 +109,17 @@ class QRFpdf extends QROutputAbstract{
 	 * Initializes an FPDF instance
 	 */
 	protected function initFPDF():FPDF{
-		return new FPDF('P', $this->options->fpdfMeasureUnit, $this->getOutputDimensions());
+		$fpdf =  new FPDF('P', $this->options->fpdfMeasureUnit, $this->getOutputDimensions());
+		$fpdf->AddPage();
+
+		return $fpdf;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function dump(string $file = null):string|FPDF{
-		$this->fpdf = $this->initFPDF();
-		$this->fpdf->AddPage();
+	public function dump(string $file = null, FPDF $fpdf = null):string|FPDF{
+		$this->fpdf = ($fpdf ?? $this->initFPDF());
 
 		if($this::moduleValueIsValid($this->options->bgColor)){
 			$bgColor          = $this->prepareModuleValue($this->options->bgColor);
