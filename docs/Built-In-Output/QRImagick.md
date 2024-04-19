@@ -14,6 +14,7 @@ Please follow the installation guides for your operating system:
 See: [ImageMagick example](https://github.com/chillerlan/php-qrcode/blob/v5.0.x/examples/imagick.php)
 
 Set the options:
+
 ```php
 $options = new QROptions;
 

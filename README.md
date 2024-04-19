@@ -13,24 +13,24 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
 [![Packagist downloads][downloads-badge]][downloads]
 [![Documentation][readthedocs-badge]][readthedocs]
 
-[php-badge]: https://img.shields.io/packagist/php-v/chillerlan/php-qrcode?logo=php&color=8892BF
+[php-badge]: https://img.shields.io/packagist/php-v/chillerlan/php-qrcode?logo=php&color=8892BF&logoColor=fff
 [php]: https://www.php.net/supported-versions.php
-[packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?logo=packagist
+[packagist-badge]: https://img.shields.io/packagist/v/chillerlan/php-qrcode.svg?logo=packagist&logoColor=fff
 [packagist]: https://packagist.org/packages/chillerlan/php-qrcode
-[gh-action-badge]: https://img.shields.io/github/actions/workflow/status/chillerlan/php-qrcode/ci.yml?branch=v5.0.x&logo=github
+[gh-action-badge]: https://img.shields.io/github/actions/workflow/status/chillerlan/php-qrcode/ci.yml?branch=v5.0.x&logo=github&logoColor=fff
 [gh-action]: https://github.com/chillerlan/php-qrcode/actions/workflows/ci.yml?query=branch%3Amain
-[coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode/v5.0.x?logo=codecov
+[coverage-badge]: https://img.shields.io/codecov/c/github/chillerlan/php-qrcode/v5.0.x?logo=codecov&logoColor=fff
 [coverage]: https://app.codecov.io/gh/chillerlan/php-qrcode/tree/v5.0.x
-[codacy-badge]: https://img.shields.io/codacy/grade/edccfc4fe5a34b74b1c53ee03f097b8d/v5.0.x?logo=codacy
+[codacy-badge]: https://img.shields.io/codacy/grade/edccfc4fe5a34b74b1c53ee03f097b8d/v5.0.x?logo=codacy&logoColor=fff
 [codacy]: https://app.codacy.com/gh/chillerlan/php-qrcode/dashboard?branch=v5.0.x
-[downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode?logo=packagist
+[downloads-badge]: https://img.shields.io/packagist/dt/chillerlan/php-qrcode?logo=packagist&logoColor=fff
 [downloads]: https://packagist.org/packages/chillerlan/php-qrcode/stats
-[readthedocs-badge]: https://img.shields.io/readthedocs/php-qrcode/v5.0.x?logo=readthedocs
+[readthedocs-badge]: https://img.shields.io/readthedocs/php-qrcode/v5.0.x?logo=readthedocs&logoColor=fff
 [readthedocs]: https://php-qrcode.readthedocs.io/en/v5.0.x/
 
-## Overview
+# Overview
 
-### Features
+## Features
 
 - Creation of [Model 2 QR Codes](https://www.qrcode.com/en/codes/model12.html), [Version 1 to 40](https://www.qrcode.com/en/about/version.html)
 - [ECC Levels](https://www.qrcode.com/en/about/error_correction.html) L/M/Q/H supported
@@ -52,7 +52,7 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
 - QR Code reader (via GD and ImageMagick)
 
 
-### Requirements
+## Requirements
 
 - PHP 7.4+
   - [`ext-mbstring`](https://www.php.net/manual/book.mbstring.php)
@@ -65,12 +65,17 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
 For the QRCode reader, either `ext-gd` or `ext-imagick` is required!
 
 
-## Documentation
+# Documentation
 
 - The user manual is at https://php-qrcode.readthedocs.io/ ([sources](https://github.com/chillerlan/php-qrcode/tree/v5.0.x/docs))
 - An API documentation created with [phpDocumentor](https://www.phpdoc.org/) can be found at https://chillerlan.github.io/php-qrcode/
 - The documentation for the `QROptions` container can be found here: [chillerlan/php-settings-container](https://github.com/chillerlan/php-settings-container#readme)
 
+**Important: Please use the examples from the branch that matches your installed php-qrcode version (
+[v4.x](https://github.com/chillerlan/php-qrcode/tree/v4.3.x/examples),
+[v5.x](https://github.com/chillerlan/php-qrcode/tree/v5.0.x/examples),
+[dev-main](https://github.com/chillerlan/php-qrcode/tree/main/examples)
+)!**
 
 ## Installation with [composer](https://getcomposer.org)
 
@@ -117,7 +122,7 @@ Also, have a look [in the examples folder](https://github.com/chillerlan/php-qrc
 </p>
 
 
-### Reading QR Codes
+## Reading QR Codes
 
 Using the built-in QR Code reader is pretty straight-forward:
 
@@ -139,30 +144,30 @@ catch(Throwable $e){
 ```
 
 
-## Shameless advertising
+# Shameless advertising
 
 Hi, please check out some of my other projects that are way cooler than qrcodes!
 
 - [js-qrcode](https://github.com/chillerlan/js-qrcode) - a javascript port of this library
 - [php-authenticator](https://github.com/chillerlan/php-authenticator) - a Google Authenticator implementation (see [authenticator example](https://github.com/chillerlan/php-qrcode/blob/v5.0.x/examples/authenticator.php))
 - [php-httpinterface](https://github.com/chillerlan/php-httpinterface) - a PSR-7/15/17/18 implemetation
-- [php-oauth-core](https://github.com/chillerlan/php-oauth-core) - an OAuth 1/2 client library along with a bunch of [providers](https://github.com/chillerlan/php-oauth-providers)
+- [php-oauth](https://github.com/chillerlan/php-oauth) - an OAuth 1/2 client library, fully PSR-7/PSR-17/PSR-18 compatible
 - [php-database](https://github.com/chillerlan/php-database) - a database client & querybuilder for MySQL, Postgres, SQLite, MSSQL, Firebird
 - [php-tootbot](https://github.com/php-tootbot/tootbot-template) - a Mastodon bot library (see [@dwil](https://github.com/php-tootbot/dwil))
 
 
-## Disclaimer!
+# Disclaimer!
 
 I don't take responsibility for molten CPUs, misled applications, failed log-ins etc.. Use at your own risk!
 
 
-### License notice
+## License notice
 
 - Parts of this code are [ported to PHP](https://github.com/codemasher/php-qrcode-decoder) from the [ZXing project](https://github.com/zxing/zxing) and licensed under the [Apache License, Version 2.0](./NOTICE).
 - [The documentation](https://github.com/chillerlan/php-qrcode/tree/v5.0.x/docs) is licensed under the [Creative Commons Attribution 4.0 International (CC BY 4.0) License](https://creativecommons.org/licenses/by/4.0/).
 
 
-### Trademark Notice
+## Trademark Notice
 
 The word "QR Code" is a registered trademark of *DENSO WAVE INCORPORATED*<br>
 https://www.qrcode.com/en/faq.html#patentH2Title
