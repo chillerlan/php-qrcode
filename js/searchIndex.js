@@ -3206,6 +3206,36 @@ Search.appendIndex(
             "summary": "An\u0020exception\u0020container",
             "url": "classes/chillerlan-QRCode-QRCodeException.html"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QRCodeReaderOptionsTrait",
+            "name": "QRCodeReaderOptionsTrait",
+            "summary": "Trait\u0020QRCodeReaderOptionsTrait",
+            "url": "classes/chillerlan-QRCode-QRCodeReaderOptionsTrait.html"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QRCodeReaderOptionsTrait\u003A\u003Aset_readerUseImagickIfAvailable\u0028\u0029",
+            "name": "set_readerUseImagickIfAvailable",
+            "summary": "enables\u0020Imagick\u0020for\u0020the\u0020QR\u0020Code\u0020reader\u0020if\u0020the\u0020extension\u0020is\u0020available",
+            "url": "classes/chillerlan-QRCode-QRCodeReaderOptionsTrait.html#method_set_readerUseImagickIfAvailable"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QRCodeReaderOptionsTrait\u003A\u003A\u0024readerUseImagickIfAvailable",
+            "name": "readerUseImagickIfAvailable",
+            "summary": "Use\u0020Imagick\u0020\u0028if\u0020available\u0029\u0020when\u0020reading\u0020QR\u0020Codes",
+            "url": "classes/chillerlan-QRCode-QRCodeReaderOptionsTrait.html#property_readerUseImagickIfAvailable"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QRCodeReaderOptionsTrait\u003A\u003A\u0024readerGrayscale",
+            "name": "readerGrayscale",
+            "summary": "Grayscale\u0020the\u0020image\u0020before\u0020reading",
+            "url": "classes/chillerlan-QRCode-QRCodeReaderOptionsTrait.html#property_readerGrayscale"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QRCodeReaderOptionsTrait\u003A\u003A\u0024readerInvertColors",
+            "name": "readerInvertColors",
+            "summary": "Invert\u0020the\u0020colors\u0020of\u0020the\u0020image",
+            "url": "classes/chillerlan-QRCode-QRCodeReaderOptionsTrait.html#property_readerInvertColors"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\QRCodeReaderOptionsTrait\u003A\u003A\u0024readerIncreaseContrast",
+            "name": "readerIncreaseContrast",
+            "summary": "Increase\u0020the\u0020contrast\u0020before\u0020reading",
+            "url": "classes/chillerlan-QRCode-QRCodeReaderOptionsTrait.html#property_readerIncreaseContrast"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptions",
             "name": "QROptions",
             "summary": "The\u0020QRCode\u0020settings\u0020container",
@@ -3250,11 +3280,6 @@ Search.appendIndex(
             "name": "set_fpdfMeasureUnit",
             "summary": "sets\u0020the\u0020FPDF\u0020measurement\u0020unit",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_fpdfMeasureUnit"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_readerUseImagickIfAvailable\u0028\u0029",
-            "name": "set_readerUseImagickIfAvailable",
-            "summary": "enables\u0020Imagick\u0020for\u0020the\u0020QR\u0020Code\u0020reader\u0020if\u0020the\u0020extension\u0020is\u0020available",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_readerUseImagickIfAvailable"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003AclampLogoSpaceValue\u0028\u0029",
             "name": "clampLogoSpaceValue",
@@ -3490,26 +3515,6 @@ Search.appendIndex(
             "name": "fpdfMeasureUnit",
             "summary": "Measurement\u0020unit\u0020for\u0020\u0060FPDF\u0060\u0020output\u003A\u0020\u0060pt\u0060,\u0020\u0060mm\u0060,\u0020\u0060cm\u0060,\u0020\u0060in\u0060\u0020\u0028default\u003A\u0020\u0060pt\u0060\u0029",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_fpdfMeasureUnit"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024readerUseImagickIfAvailable",
-            "name": "readerUseImagickIfAvailable",
-            "summary": "Use\u0020Imagick\u0020\u0028if\u0020available\u0029\u0020when\u0020reading\u0020QR\u0020Codes",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_readerUseImagickIfAvailable"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024readerGrayscale",
-            "name": "readerGrayscale",
-            "summary": "Grayscale\u0020the\u0020image\u0020before\u0020reading",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_readerGrayscale"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024readerInvertColors",
-            "name": "readerInvertColors",
-            "summary": "Invert\u0020the\u0020colors\u0020of\u0020the\u0020image",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_readerInvertColors"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024readerIncreaseContrast",
-            "name": "readerIncreaseContrast",
-            "summary": "Increase\u0020the\u0020contrast\u0020before\u0020reading",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#property_readerIncreaseContrast"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\BuildDirTrait",
             "name": "BuildDirTrait",
