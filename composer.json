@@ -32,6 +32,12 @@
 			"homepage":"https://github.com/chillerlan/php-qrcode/graphs/contributors"
 		}
 	],
+	"funding": [
+		{
+			"type": "Ko-Fi",
+			"url": "https://ko-fi.com/codemasher"
+		}
+	],
 	"support": {
 		"docs": "https://php-qrcode.readthedocs.io",
 		"issues": "https://github.com/chillerlan/php-qrcode/issues",
