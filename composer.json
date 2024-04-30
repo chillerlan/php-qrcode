@@ -52,6 +52,7 @@
 	},
 	"require-dev": {
 		"chillerlan/php-authenticator": "^5.1",
+		"phpbench/phpbench": "^1.2.15",
 		"phan/phan": "^5.4",
 		"phpunit/phpunit": "^11.0",
 		"phpmd/phpmd": "^2.15",
@@ -70,10 +71,15 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
+			"chillerlan\\QRCodeBenchmark\\": "benchmark/",
 			"chillerlan\\QRCodeTest\\": "tests/"
 		}
 	},
 	"scripts": {
+		"phpbench":[
+			"Composer\\Config::disableProcessTimeout",
+			"@php vendor/bin/phpbench run"
+		],
 		"phpunit": "@php vendor/bin/phpunit",
 		"phan": "@php vendor/bin/phan"
 	},

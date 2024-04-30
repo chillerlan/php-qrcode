@@ -1,0 +1,19 @@
+{
+	"$schema": "vendor/phpbench/phpbench/phpbench.schema.json",
+	"core.extensions": [
+		"PhpBench\\Extensions\\XDebug\\XDebugExtension"
+	],
+	"xdebug.command_handler_output_dir": ".build/phpbench/xdebug-profile",
+	"runner.bootstrap": "vendor/autoload.php",
+	"runner.path": "benchmark",
+	"runner.file_pattern": "*Benchmark.php",
+	"console.ansi": true,
+	"report.outputs": {
+		"csv": {
+			"extends": "delimited",
+			"delimiter": "|",
+			"file": ".build/phpbench/benchmark.csv",
+			"header": true
+		}
+	}
+}
