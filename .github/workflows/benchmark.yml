@@ -33,24 +33,22 @@ jobs:
 
       - name: "Install dependencies with composer"
         uses: ramsey/composer-install@v3
-        with:
-          working-directory: main
 
       - name: "Run PHPBench"
-        run: php main/vendor/bin/phpbench run --progress=plain --report=bare --output=csv
+        run: php vendor/bin/phpbench run --progress=plain --report=bare --output=csv
 
       - name: "Parse benchmark results"
-        run: php main/benchmark/parse-result.php
+        run: php benchmark/parse-result.php
 
       - name: "Generate HTML report"
-        run: php main/benchmark/generate-html.php
+        run: php benchmark/generate-html.php
 
       - name: "Generate Markdown report"
-        run: php main/benchmark/generate-markdown.php
+        run: php benchmark/generate-markdown.php
 
       - name: "Publish results to branch benchmark"
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: benchmark
-          folder: main/.build/phpbench
+          folder: .build/phpbench
           clean: true
