@@ -1,0 +1,56 @@
+# we're running the benchmarks in a job separate from CI as it may take some time to finish
+
+on:
+  push:
+    branches:
+      - benchmark-runner
+
+name: "Benchmark"
+
+env:
+  PHP_EXTENSIONS: fileinfo, gd, imagick, json, mbstring
+  PHP_INI_VALUES: memory_limit=-1, error_reporting=-1, display_errors=On
+
+jobs:
+
+  benchmark:
+    name: "Run Benchmark suite"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout sources"
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: "Install PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          extensions: opcache, ${{ env.PHP_EXTENSIONS }}
+          ini-values: ${{ env.PHP_INI_VALUES }}
+          coverage: none
+
+      - name: "Install dependencies with composer"
+        uses: ramsey/composer-install@v3
+        with:
+          working-directory: main
+
+      - name: "Run PHPBench"
+        run: php main/vendor/bin/phpbench run --progress=plain --report=bare --output=csv
+
+      - name: "Parse benchmark results"
+        run: php main/benchmark/parse-result.php
+
+      - name: "Generate HTML report"
+        run: php main/benchmark/generate-html.php
+
+      - name: "Generate Markdown report"
+        run: php main/benchmark/generate-markdown.php
+
+      - name: "Publish results to branch benchmark"
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: benchmark
+          folder: main/.build/phpbench
+          clean: true
