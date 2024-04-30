@@ -4551,36 +4551,6 @@ Search.appendIndex(
             "summary": "covers\u0020the\u0020module\u0020values\u0020settings",
             "url": "classes/chillerlan-QRCodeTest-Output-QRStringTextTest.html#method_testSetModuleValues"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Performance\\PerformanceTest",
-            "name": "PerformanceTest",
-            "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Performance-PerformanceTest.html"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Performance\\PerformanceTest\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Performance-PerformanceTest.html#method___construct"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Performance\\PerformanceTest\u003A\u003Arun\u0028\u0029",
-            "name": "run",
-            "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Performance-PerformanceTest.html#method_run"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Performance\\PerformanceTest\u003A\u003AgetResult\u0028\u0029",
-            "name": "getResult",
-            "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Performance-PerformanceTest.html#method_getResult"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Performance\\PerformanceTest\u003A\u003A\u0024runs",
-            "name": "runs",
-            "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Performance-PerformanceTest.html#property_runs"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Performance\\PerformanceTest\u003A\u003A\u0024total",
-            "name": "total",
-            "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Performance-PerformanceTest.html#property_total"
-        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderGDTest",
             "name": "QRCodeReaderGDTest",
             "summary": "Tests\u0020the\u0020GD\u0020based\u0020reader",
@@ -4875,10 +4845,5 @@ Search.appendIndex(
             "name": "Output",
             "summary": "",
             "url": "namespaces/output.html"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Performance",
-            "name": "Performance",
-            "summary": "",
-            "url": "namespaces/chillerlan-qrcodetest-performance.html"
         }            ]
 );
