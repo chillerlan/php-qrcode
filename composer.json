@@ -76,12 +76,13 @@
 		}
 	},
 	"scripts": {
+		"phan": "@php vendor/bin/phan",
+		"phpcs": "@php vendor/bin/phpcs",
 		"phpbench":[
 			"Composer\\Config::disableProcessTimeout",
 			"@php vendor/bin/phpbench run"
 		],
-		"phpunit": "@php vendor/bin/phpunit",
-		"phan": "@php vendor/bin/phan"
+		"phpunit": "@php vendor/bin/phpunit"
 	},
 	"config": {
 		"lock": false,

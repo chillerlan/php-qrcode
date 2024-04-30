@@ -7,8 +7,8 @@
 >
 	<testsuites>
 		<testsuite name="php-qrcode test suite">
-			<directory>./tests/</directory>
-			<exclude>./tests/Performance</exclude>
+			<directory>tests</directory>
+			<exclude>tests/Performance</exclude>
 		</testsuite>
 	</testsuites>
 	<source>
