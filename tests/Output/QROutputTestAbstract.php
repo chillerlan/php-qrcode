@@ -17,7 +17,7 @@ use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use ReflectionClass;
+use ReflectionObject;
 
 /**
  * Test abstract for the several (built-in) output modules,
@@ -81,7 +81,7 @@ abstract class QROutputTestAbstract extends TestCase{
 		$this->options->outputBase64 = false;
 		$this->outputInterface       = $this->getOutputInterface($this->options, $this->matrix);
 		// create the cache file
-		$name        = (new ReflectionClass($this->outputInterface))->getShortName();
+		$name        = (new ReflectionObject($this->outputInterface))->getShortName();
 		$fileSubPath = $this::buildDir.'/test.output.'.$name;
 		$data        = $this->outputInterface->dump($this->getBuildPath($fileSubPath));
 
