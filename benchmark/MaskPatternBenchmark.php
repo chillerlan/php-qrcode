@@ -15,7 +15,6 @@ use chillerlan\QRCode\Common\{MaskPattern, Mode, Version};
 use chillerlan\QRCode\Data\Byte;
 use PhpBench\Attributes\{BeforeMethods, Subject};
 use Generator;
-use function range;
 
 /**
  * Tests the performance of the mask pattern penalty testing
