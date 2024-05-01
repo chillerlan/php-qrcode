@@ -18,6 +18,7 @@ use function array_keys;
 use function file_exists;
 use function file_get_contents;
 use function file_put_contents;
+use function htmlspecialchars;
 use function implode;
 use function is_bool;
 use function is_dir;
@@ -46,7 +47,7 @@ $markdown['Readme'][] = '| Name | Value |';
 $markdown['Readme'][] = '|------|-------|';
 $markdown['Readme'][] = sprintf('| date | %s %s |', $suite['date'], $suite['time']);
 $markdown['Readme'][] = sprintf('| environment | %s %s, %s |', $env['uname_os'], $env['uname_version'], $env['uname_machine']);
-$markdown['Readme'][] = sprintf('| tag | %s |', $suite['tag']);
+$markdown['Readme'][] = sprintf('| tag | %s |', htmlspecialchars($suite['tag']));
 
 
 foreach(['php_version', 'php_ini', 'php_extensions', 'php_xdebug', 'opcache_extension_loaded', 'opcache_enabled'] as $field){

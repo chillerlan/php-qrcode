@@ -11,10 +11,10 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCodeBenchmark;
 
-use chillerlan\QRCode\Common\{EccLevel, Mode};
+use chillerlan\QRCode\Common\Mode;
 use chillerlan\QRCode\Data\Byte;
 use chillerlan\QRCode\Output\{
-	QREps, QRFpdf, QRGdImageJPEG, QRGdImagePNG, QRGdImageWEBP, QRImagick, QRMarkupSVG, QRStringJSON
+	QREps, QRFpdf, QRGdImageAVIF, QRGdImageJPEG, QRGdImagePNG, QRGdImageWEBP, QRImagick, QRMarkupSVG, QRStringJSON
 };
 use PhpBench\Attributes\{BeforeMethods, Subject};
 
@@ -24,8 +24,7 @@ use PhpBench\Attributes\{BeforeMethods, Subject};
 #[BeforeMethods(['assignParams', 'generateTestData', 'initOptions', 'initMatrix'])]
 final class OutputBenchmark extends BenchmarkAbstract{
 
-	protected const ECC_LEVELS  = [EccLevel::H];
-	protected const DATAMODES   = [Mode::BYTE => Byte::class];
+	protected const DATAMODES = [Mode::BYTE => Byte::class];
 
 	public function initOptions():void{
 
@@ -54,10 +53,10 @@ final class OutputBenchmark extends BenchmarkAbstract{
 	/**
 	 * for some reason imageavif() is extremely slow, ~50x slower than imagepng()
 	 */
-#	#[Subject]
-#	public function QRGdImageAVIF():void{
-#		(new QRGdImageAVIF($this->options, $this->matrix))->dump();
-#	}
+	#[Subject]
+	public function QRGdImageAVIF():void{
+		(new QRGdImageAVIF($this->options, $this->matrix))->dump();
+	}
 
 	#[Subject]
 	public function QRGdImageJPEG():void{

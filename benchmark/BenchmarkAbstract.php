@@ -122,10 +122,13 @@ abstract class BenchmarkAbstract{
 	}
 
 	public function versionProvider():Generator{
-		for($v = 1; $v <= 40; $v++){
-			$version = new Version($v);
-
-			yield (string)$version => ['version' => $version];
+		// run all versions between 1 and 10 as they're the most commonly used
+		for($v = 1; $v <= 10; $v++){
+			yield (string)$v => ['version' => new Version($v)];
+		}
+		// 15-40 in steps of 5
+		for($v = 15; $v <= 40; $v += 5){
+			yield (string)$v => ['version' => new Version($v)];
 		}
 	}
 

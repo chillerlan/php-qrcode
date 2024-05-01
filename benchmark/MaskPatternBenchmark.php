@@ -11,9 +11,11 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCodeBenchmark;
 
-use chillerlan\QRCode\Common\{MaskPattern, Mode};
+use chillerlan\QRCode\Common\{MaskPattern, Mode, Version};
 use chillerlan\QRCode\Data\Byte;
 use PhpBench\Attributes\{BeforeMethods, Subject};
+use Generator;
+use function range;
 
 /**
  * Tests the performance of the mask pattern penalty testing
@@ -21,6 +23,12 @@ use PhpBench\Attributes\{BeforeMethods, Subject};
 final class MaskPatternBenchmark extends BenchmarkAbstract{
 
 	protected const DATAMODES = [Mode::BYTE => Byte::class];
+
+	public function versionProvider():Generator{
+		for($v = 1; $v <= 40; $v++){
+			yield (string)$v => ['version' => new Version($v)];
+		}
+	}
 
 	public function initOptions():void{
 
