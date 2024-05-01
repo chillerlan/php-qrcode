@@ -131,7 +131,7 @@ if(!is_dir(BUILDDIR.'/html/')){
 	mkdir(BUILDDIR.'/html/');
 }
 
-copy('./benchmark.css', BUILDDIR.'/html/benchmark.css');
+copy(__DIR__.'/benchmark.css', BUILDDIR.'/html/benchmark.css');
 
 foreach($html as $file => $content){
 	file_put_contents(BUILDDIR.'/html/'.$file.'.html', implode("\n", $content));
