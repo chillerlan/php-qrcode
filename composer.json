@@ -1,6 +1,6 @@
 {
 	"name": "chillerlan/php-qrcode",
-	"description": "A QR code generator and reader with a user friendly API. PHP 8.2+",
+	"description": "A QR Code generator and reader with a user-friendly API. PHP 8.2+",
 	"homepage": "https://github.com/chillerlan/php-qrcode",
 	"license": [
 		"MIT", "Apache-2.0"
@@ -32,6 +32,12 @@
 			"homepage":"https://github.com/chillerlan/php-qrcode/graphs/contributors"
 		}
 	],
+	"funding": [
+		{
+			"type": "Ko-Fi",
+			"url": "https://ko-fi.com/codemasher"
+		}
+	],
 	"support": {
 		"docs": "https://php-qrcode.readthedocs.io",
 		"issues": "https://github.com/chillerlan/php-qrcode/issues",
@@ -42,12 +48,13 @@
 	"require": {
 		"php": "^8.2",
 		"ext-mbstring": "*",
-		"chillerlan/php-settings-container": "^3.1"
+		"chillerlan/php-settings-container": "^3.2"
 	},
 	"require-dev": {
 		"chillerlan/php-authenticator": "^5.1",
+		"phpbench/phpbench": "^1.2.15",
 		"phan/phan": "^5.4",
-		"phpunit/phpunit": "^10.5",
+		"phpunit/phpunit": "^11.0",
 		"phpmd/phpmd": "^2.15",
 		"setasign/fpdf": "^1.8.2",
 		"squizlabs/php_codesniffer": "^3.9"
@@ -64,12 +71,18 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
+			"chillerlan\\QRCodeBenchmark\\": "benchmark/",
 			"chillerlan\\QRCodeTest\\": "tests/"
 		}
 	},
 	"scripts": {
-		"phpunit": "@php vendor/bin/phpunit",
-		"phan": "@php vendor/bin/phan"
+		"phan": "@php vendor/bin/phan",
+		"phpcs": "@php vendor/bin/phpcs",
+		"phpbench":[
+			"Composer\\Config::disableProcessTimeout",
+			"@php vendor/bin/phpbench run"
+		],
+		"phpunit": "@php vendor/bin/phpunit"
 	},
 	"config": {
 		"lock": false,

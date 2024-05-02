@@ -16,7 +16,7 @@ namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\Output\QRMarkupSVG;
-use function constant, extension_loaded, in_array, is_string, max, min, sprintf, strtolower, strtoupper, trim;
+use function constant, in_array, is_string, max, min, sprintf, strtolower, strtoupper, trim;
 use const JSON_THROW_ON_ERROR, PHP_EOL;
 
 /**
@@ -427,33 +427,6 @@ trait QROptionsTrait{
 	protected string $fpdfMeasureUnit = 'pt';
 
 
-	/*
-	 * QR Code reader settings
-	 */
-
-	/**
-	 * Use Imagick (if available) when reading QR Codes
-	 */
-	protected bool $readerUseImagickIfAvailable = false;
-
-	/**
-	 * Grayscale the image before reading
-	 */
-	protected bool $readerGrayscale = false;
-
-	/**
-	 * Invert the colors of the image
-	 */
-	protected bool $readerInvertColors = false;
-
-	/**
-	 * Increase the contrast before reading
-	 *
-	 * note that applying contrast works different in GD and Imagick, so mileage may vary
-	 */
-	protected bool $readerIncreaseContrast = false;
-
-
 	/**
 	 * clamp min/max version number
 	 */
@@ -532,13 +505,6 @@ trait QROptionsTrait{
 		}
 
 		// @todo throw or ignore silently?
-	}
-
-	/**
-	 * enables Imagick for the QR Code reader if the extension is available
-	 */
-	protected function set_readerUseImagickIfAvailable(bool $useImagickIfAvailable):void{
-		$this->readerUseImagickIfAvailable = ($useImagickIfAvailable && extension_loaded('imagick'));
 	}
 
 	/**

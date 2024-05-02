@@ -16,5 +16,5 @@ use chillerlan\Settings\SettingsContainerAbstract;
  * The QRCode settings container
  */
 class QROptions extends SettingsContainerAbstract{
-	use QROptionsTrait;
+	use QROptionsTrait, QRCodeReaderOptionsTrait;
 }

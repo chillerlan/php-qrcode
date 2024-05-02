@@ -1,0 +1,64 @@
+body {
+	font-size: 16px;
+	line-height: 1.25em;
+	font-family: "Verdana", sans-serif;
+	color: #000;
+}
+
+code{
+	font-family: "Consolas", monospace;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td{
+	padding: 0.25em 0.5em;
+}
+
+thead > tr:nth-child(1) > th:nth-child(1n+2),
+thead > tr:nth-child(even) > th:nth-child(4n+2),
+tbody > tr > td:nth-child(4n+2) {
+	border-left: 2px solid #999;
+}
+
+tr:nth-child(odd),
+thead > tr > th:nth-child(even),
+thead > tr:nth-child(2) > th:first-child {
+	background: rgba(0, 0, 0, 0.1);
+}
+
+tbody > tr > td:first-child {
+	background: rgba(0, 0, 0, 0.1);
+	font-weight: bold;
+}
+
+tbody > tr > td:nth-child(1n+2) {
+	text-align: right;
+}
+
+thead > tr:nth-child(2) > th:nth-child(4n+2),
+tbody > tr > td:nth-child(4n+2) {
+	background: rgba(0, 255, 0, 0.1);
+}
+
+thead > tr:nth-child(2) > th:nth-child(4n+3),
+tbody > tr > td:nth-child(4n+3) {
+	background: rgba(255, 255, 0, 0.1);
+}
+
+thead > tr:nth-child(2) > th:nth-child(4n+4),
+tbody > tr > td:nth-child(4n+4) {
+	background: rgba(0, 0, 255, 0.1);
+}
+
+thead > tr:nth-child(2) > th:nth-child(4n+5),
+tbody > tr > td:nth-child(4n+5) {
+	background: rgba(255, 0, 0, 0.1);
+}
+
+a.return{
+	display: block;
+	margin: 1em 0;
+}

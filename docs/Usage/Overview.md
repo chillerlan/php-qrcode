@@ -41,6 +41,8 @@ For the QR Code reader, either `ext-gd` or `ext-imagick` is required!
 
 ## Framework Integration
 
+- CakePHP:
+  - [QrCode plugin](https://github.com/dereuromark/cakephp-qrcode)
 - Drupal:
   - [Two-factor Authentication `tfa`](https://www.drupal.org/project/tfa) (Drupal 8+)
   - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login) (deprecated, Drupal 7)
@@ -62,6 +64,11 @@ For the QR Code reader, either `ext-gd` or `ext-imagick` is required!
   - [Elefant CMS](https://github.com/jbroadway/elefant)
   - [OSIRIS](https://github.com/JKoblitz/osiris)
   - [EspoCRM](https://github.com/espocrm/espocrm)
+  - [FusionCMS](https://github.com/FusionWowCMS/FusionCMS)
+  - [HortusFox](https://github.com/danielbrendel/hortusfox-web)
+  - [Pelican Panel](https://github.com/pelican-dev/panel)
+  - [Laravel Boleto](https://github.com/eduardokum/laravel-boleto)
+  - [OpenBoleto](https://github.com/openboleto/openboleto)
 - Articles:
   - [Twilio: How to Create a QR Code in PHP](https://www.twilio.com/blog/create-qr-code-in-php) (featuring v4.3.x)
 
@@ -73,6 +80,6 @@ Hi, please check out some of my other projects that are way cooler than qrcodes!
 - [js-qrcode](https://github.com/chillerlan/js-qrcode) - a javascript port of this library
 - [php-authenticator](https://github.com/chillerlan/php-authenticator) - a Google Authenticator implementation (see [authenticator example](https://github.com/chillerlan/php-qrcode/blob/main/examples/authenticator.php))
 - [php-httpinterface](https://github.com/chillerlan/php-httpinterface) - a PSR-7/15/17/18 implemetation
-- [php-oauth-core](https://github.com/chillerlan/php-oauth-core) - an OAuth 1/2 client library along with a bunch of [providers](https://github.com/chillerlan/php-oauth-providers)
+- [php-oauth](https://github.com/chillerlan/php-oauth) - an OAuth 1/2 client library, fully PSR-7/PSR-17/PSR-18 compatible
 - [php-database](https://github.com/chillerlan/php-database) - a database client & querybuilder for MySQL, Postgres, SQLite, MSSQL, Firebird
 - [php-tootbot](https://github.com/php-tootbot/tootbot-template) - a Mastodon bot library

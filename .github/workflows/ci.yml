@@ -12,7 +12,7 @@ on:
 name: "Continuous Integration"
 
 env:
-  PHP_EXTENSIONS: ast, fileinfo, gd, imagick, json, mbstring
+  PHP_EXTENSIONS: fileinfo, gd, imagick, json, mbstring
   PHP_INI_VALUES: memory_limit=-1, error_reporting=-1, display_errors=On
 
 jobs:
@@ -40,10 +40,9 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
+          extensions: ast, ${{ env.PHP_EXTENSIONS }}
           ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: none
-          tools: pecl
 
       - name: "Install dependencies with composer"
         uses: ramsey/composer-install@v3

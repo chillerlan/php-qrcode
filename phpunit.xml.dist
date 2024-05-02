@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
+         xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
          cacheDirectory=".build/phpunit-cache"
          colors="true"
 >
 	<testsuites>
 		<testsuite name="php-qrcode test suite">
-			<directory>./tests/</directory>
-			<exclude>./tests/Performance</exclude>
+			<directory>tests</directory>
+			<exclude>tests/Performance</exclude>
 		</testsuite>
 	</testsuites>
 	<source>
