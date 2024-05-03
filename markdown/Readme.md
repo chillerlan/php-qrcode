@@ -4,7 +4,7 @@
 
 | Name | Value |
 |------|-------|
-| date | 2024-05-01 09:55:31 |
+| date | 2024-05-03 17:54:55 |
 | environment | Linux #19~22.04.2-Ubuntu SMP Thu Mar 21 16:45:46 UTC 2024, x86_64 |
 | tag | &lt;current&gt; |
 | php_version | 8.3.6 |
@@ -30,10 +30,10 @@
 - [OutputBenchmark](./OutputBenchmark.md)
   - [QREps](./OutputBenchmark.md#qreps)
   - [QRFpdf](./OutputBenchmark.md#qrfpdf)
-  - [QRGdImageAVIF](./OutputBenchmark.md#qrgdimageavif)
   - [QRGdImageJPEG](./OutputBenchmark.md#qrgdimagejpeg)
   - [QRGdImagePNG](./OutputBenchmark.md#qrgdimagepng)
   - [QRGdImageWEBP](./OutputBenchmark.md#qrgdimagewebp)
   - [QRImagick](./OutputBenchmark.md#qrimagick)
   - [QRMarkupSVG](./OutputBenchmark.md#qrmarkupsvg)
+  - [QRMarkupXML](./OutputBenchmark.md#qrmarkupxml)
   - [QRStringJSON](./OutputBenchmark.md#qrstringjson)
