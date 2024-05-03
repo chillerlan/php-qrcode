@@ -423,6 +423,16 @@ Measurement unit for `FPDF` output: `pt`, `mm`, `cm`, `in` (default: `pt`)
 - `FPDF::__construct()`
 
 
+## xmlStylesheet
+
+Sets an optional XSLT stylesheet in the XML output
+
+
+**See also:**
+
+- [developer.mozilla.org/en-US/docs/Web/XSLT](https://developer.mozilla.org/en-US/docs/Web/XSLT)
+
+
 ## readerUseImagickIfAvailable
 
 Use Imagick (if available) when reading QR Codes
