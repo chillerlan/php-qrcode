@@ -35,6 +35,7 @@ interface QROutputInterface{
 		QRImagick::class,
 		QRMarkupHTML::class,
 		QRMarkupSVG::class,
+		QRMarkupXML::class,
 		QRStringJSON::class,
 		QRStringText::class,
 	];

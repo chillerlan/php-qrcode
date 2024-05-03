@@ -426,6 +426,17 @@ trait QROptionsTrait{
 	 */
 	protected string $fpdfMeasureUnit = 'pt';
 
+	/*
+	 * QRMarkupXML settings
+	 */
+
+	/**
+	 * Sets an optional XSLT stylesheet in the XML output
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/XSLT
+	 */
+	protected ?string $xmlStylesheet = null;
+
 
 	/**
 	 * clamp min/max version number
