@@ -53,7 +53,7 @@ final class OutputBenchmark extends BenchmarkAbstract{
 	/**
 	 * for some reason imageavif() is extremely slow, ~50x slower than imagepng()
 	 */
-	#[Subject]
+#	#[Subject]
 #	public function QRGdImageAVIF():void{
 #		(new \chillerlan\QRCode\Output\QRGdImageAVIF($this->options, $this->matrix))->dump();
 #	}
