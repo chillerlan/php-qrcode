@@ -59,7 +59,6 @@ class QRInterventionImage extends QROutputAbstract{
 		}
 
 		try{
-
 			$this->driver = match(true){
 				extension_loaded('gd')      => new GdDriver,
 				extension_loaded('imagick') => new ImagickDriver,

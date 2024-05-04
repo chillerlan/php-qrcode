@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCodeBenchmark;
 
-use chillerlan\QRCode\Output\QRStringJSON;
 use chillerlan\QRCode\QRCode;
 use PhpBench\Attributes\{BeforeMethods, Subject};
 
@@ -23,9 +22,8 @@ final class QRCodeBenchmark extends BenchmarkAbstract{
 	public function initOptions():void{
 
 		$options = [
-			'outputInterface' => QRStringJSON::class,
-			'version'         => $this->version->getVersionNumber(),
-			'eccLevel'        => $this->eccLevel->getLevel(),
+			'version'  => $this->version->getVersionNumber(),
+			'eccLevel' => $this->eccLevel->getLevel(),
 		];
 
 		$this->initQROptions($options);

@@ -33,6 +33,7 @@ interface QROutputInterface{
 		QRGdImagePNG::class,
 		QRGdImageWEBP::class,
 		QRImagick::class,
+		QRInterventionImage::class,
 		QRMarkupHTML::class,
 		QRMarkupSVG::class,
 		QRMarkupXML::class,

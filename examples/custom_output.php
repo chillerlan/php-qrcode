@@ -74,7 +74,7 @@ $options = new QROptions;
 $options->version  = 5;
 $options->eccLevel = 'L';
 
-$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
+$data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 
 // invoke the QROutputInterface manually
 // please note that an QROutputInterface invoked this way might become unusable after calling dump().
