@@ -36,7 +36,7 @@
 	</xs:element>
 	<xs:element name="matrix">
 		<xs:annotation>
-			<xs:documentation>The matrix holds the encoded data in a 2-dimensional array of modules</xs:documentation>
+			<xs:documentation>The matrix holds the encoded data in a 2-dimensional array of modules.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>
@@ -64,7 +64,7 @@
 			</xs:attribute>
 			<xs:attribute name="quietzoneSize" use="required" type="xs:nonNegativeInteger">
 				<xs:annotation>
-					<xs:documentation>The size of the quiet zone (margin around the QR symbol)</xs:documentation>
+					<xs:documentation>The size of the quiet zone (margin around the QR symbol).</xs:documentation>
 				</xs:annotation>
 			</xs:attribute>
 			<xs:attribute name="size" use="required">
@@ -92,7 +92,7 @@
 	</xs:element>
 	<xs:element name="row">
 		<xs:annotation>
-			<xs:documentation>A row holds an array of modules</xs:documentation>
+			<xs:documentation>A row holds an array of modules.</xs:documentation>
 		</xs:annotation>
 		<xs:complexType>
 			<xs:sequence>

@@ -22,8 +22,8 @@ use function sprintf;
  */
 class QRMarkupXML extends QRMarkup{
 
-	final public const MIME_TYPE  = 'application/xml';
-	protected const    XML_SCHEMA = 'https://raw.githubusercontent.com/chillerlan/php-qrcode/main/src/Output/qrcode.schema.xsd';
+	final public const MIME_TYPE = 'application/xml';
+	final public const SCHEMA    = 'https://raw.githubusercontent.com/chillerlan/php-qrcode/main/src/Output/qrcode.schema.xsd';
 
 	protected DOMDocument $dom;
 
@@ -52,7 +52,7 @@ class QRMarkupXML extends QRMarkup{
 		$root = $this->dom->createElement('qrcode');
 
 		$root->setAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
-		$root->setAttribute('xsi:noNamespaceSchemaLocation', $this::XML_SCHEMA);
+		$root->setAttribute('xsi:noNamespaceSchemaLocation', $this::SCHEMA);
 		$root->setAttribute('version', $this->matrix->getVersion());
 		$root->setAttribute('eccLevel', $this->matrix->getEccLevel());
 		$root->appendChild($this->createMatrix());
@@ -120,7 +120,7 @@ class QRMarkupXML extends QRMarkup{
 	}
 
 	/**
-	 * Creates a DOM element for single module
+	 * Creates a DOM element for a single module
 	 */
 	protected function module(int $x, int $y, int $M_TYPE):DOMElement|null{
 		$isDark = $this->matrix->isDark($M_TYPE);
