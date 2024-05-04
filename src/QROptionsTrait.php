@@ -17,7 +17,8 @@ namespace chillerlan\QRCode;
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\Output\QRMarkupSVG;
 use function constant, in_array, is_string, max, min, sprintf, strtolower, strtoupper, trim;
-use const JSON_THROW_ON_ERROR, PHP_EOL;
+use const JSON_THROW_ON_ERROR, JSON_UNESCAPED_SLASHES, PHP_EOL;
+
 
 /**
  * The QRCode plug-in settings & setter functionality
@@ -408,12 +409,7 @@ trait QROptionsTrait{
 	 *
 	 * @see https://www.php.net/manual/json.constants.php
 	 */
-	protected int $jsonFlags = JSON_THROW_ON_ERROR;
-
-	/**
-	 * Whether to return matrix values in JSON as booleans or `$M_TYPE` integers
-	 */
-	protected bool $jsonAsBooleans = false;
+	protected int $jsonFlags = JSON_THROW_ON_ERROR|JSON_UNESCAPED_SLASHES;
 
 	/*
 	 * QRFpdf settings

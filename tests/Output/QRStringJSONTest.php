@@ -14,25 +14,12 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QROutputInterface, QRStringJSON};
 use chillerlan\Settings\SettingsContainerInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
-use function extension_loaded;
 
 /**
  *
  */
 final class QRStringJSONTest extends QROutputTestAbstract{
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function setUp():void{
-		// just in case someone's running this on some weird distro that's been compiled without ext-json
-		if(!extension_loaded('json')){
-			$this::markTestSkipped('ext-json not loaded');
-		}
-
-		parent::setUp();
-	}
+	use CssColorModuleValueProviderTrait;
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
@@ -41,17 +28,22 @@ final class QRStringJSONTest extends QROutputTestAbstract{
 		return new QRStringJSON($options, $matrix);
 	}
 
-	public static function moduleValueProvider():array{
-		return [[null, false]];
-	}
-
-	#[DataProvider('moduleValueProvider')]
-	public function testValidateModuleValues(mixed $value, bool $expected):void{
-		$this::markTestSkipped('N/A (JSON test)');
-	}
-
+	/**
+	 * @inheritDoc
+	 */
 	public function testSetModuleValues():void{
-		$this::markTestSkipped('N/A (JSON test)');
+
+		$this->options->moduleValues = [
+			// data
+			QRMatrix::M_DATA_DARK => '#AAA',
+			QRMatrix::M_DATA      => '#BBB',
+		];
+
+		$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
+		$data                  = $this->outputInterface->dump();
+
+		$this::assertStringContainsString('"layer":"data-dark","value":"#AAA"', $data);
+		$this::assertStringContainsString('"layer":"data","value":"#BBB"', $data);
 	}
 
 }
