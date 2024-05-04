@@ -52,6 +52,7 @@
 	},
 	"require-dev": {
 		"chillerlan/php-authenticator": "^5.1",
+		"intervention/image": "^3.5",
 		"phpbench/phpbench": "^1.2.15",
 		"phan/phan": "^5.4",
 		"phpunit/phpunit": "^11.0",
@@ -61,6 +62,7 @@
 	},
 	"suggest": {
 		"chillerlan/php-authenticator": "Yet another Google authenticator! Also creates URIs for mobile apps.",
+		"intervention/image": "More advanced GD and ImageMagick output.",
 		"setasign/fpdf": "Required to use the QR FPDF output.",
 		"simple-icons/simple-icons": "SVG icons that you can use to embed as logos in the QR Code"
 	},
