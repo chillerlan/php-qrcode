@@ -121,7 +121,7 @@
 
     <article class="phpdocumentor-element -class">
         <h2 class="phpdocumentor-content__title">
-    QRMarkup
+    QRInterventionImage
 
         <span class="phpdocumentor-element__extends">
         extends <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html"><abbr title="\chillerlan\QRCode\Output\QROutputAbstract">QROutputAbstract</abbr></a>
@@ -143,27 +143,51 @@
 <div class="phpdocumentor-label-line">
 
 
-    <div class="phpdocumentor-label phpdocumentor-label--success"><span>Abstract</span><span>Yes</span></div>
-
 </div>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRInterventionImage.php"><a href="files/src-output-qrinterventionimage.html"><abbr title="src/Output/QRInterventionImage.php">QRInterventionImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 
     </aside>
 
-            <p class="phpdocumentor-summary">Abstract for markup types: HTML, SVG, ... XML anyone?</p>
+            <p class="phpdocumentor-summary">intervention/image (GD/ImageMagick) output</p>
+
+    <section class="phpdocumentor-description"><p>note: this output class works very slow compared to the native GD/Imagick output classes for obvious reasons.
+use only if you must.</p>
+</section>
 
 
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="https://github.com/Intervention/image">https://github.com/Intervention/image</a></span>
+                                        
+                                             
+                                    </dd>
+                            <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="https://image.intervention.io/">https://image.intervention.io/</a></span>
+                                        
+                                             
+                                    </dd>
+                                            </dl>
 
 
 
 <h3 id="toc">
     Table of Contents
-    <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h3>
 
@@ -177,7 +201,7 @@
 
 <h4 id="toc-properties">
     Properties
-    <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#toc-properties" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
@@ -212,6 +236,12 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#property_driver">$driver</a>
+    <span>
+                        &nbsp;: <abbr title="\Intervention\Image\Interfaces\DriverInterface">DriverInterface</abbr>            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_eol">$eol</a>
     <span>
                         &nbsp;: string            </span>
@@ -221,6 +251,12 @@
     <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_excludeFromConnect">$excludeFromConnect</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#property_image">$image</a>
+    <span>
+                        &nbsp;: <abbr title="\Intervention\Image\Interfaces\ImageInterface">ImageInterface</abbr>            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
@@ -235,6 +271,12 @@
                         &nbsp;: int            </span>
 </dt>
 <dd>the side length of the QR image (modules * scale)</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#property_manager">$manager</a>
+    <span>
+                        &nbsp;: <abbr title="\Intervention\Image\Interfaces\ImageManagerInterface">ImageManagerInterface</abbr>            </span>
+</dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_matrix">$matrix</a>
@@ -274,21 +316,21 @@
 
 <h4 id="toc-methods">
     Methods
-    <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
+    <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#toc-methods" class="headerlink"><i class="fas fa-link"></i></a>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method___construct">__construct()</a>
+    <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#method___construct">__construct()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
-<dd>QROutputAbstract constructor.</dd>
+<dd>QRInterventionImage constructor.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_dump">dump()</a>
+    <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#method_dump">dump()</a>
     <span>
-                                &nbsp;: string    </span>
+                                &nbsp;: string|<abbr title="\Intervention\Image\Interfaces\ImageInterface">ImageInterface</abbr>    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
@@ -298,6 +340,13 @@
 </dt>
 <dd>note: we&#039;re not necessarily validating the several values, just checking the general syntax
 note: css4 colors are not included</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#method_setDriver">setDriver()</a>
+    <span>
+                                &nbsp;: static    </span>
+</dt>
+<dd>Sets a DriverInterface</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_collectModules">collectModules()</a>
@@ -314,20 +363,6 @@ returns an array with the transformed modules</dd>
 </dt>
 <dd>Creates copies of several QROptions values to avoid calling the magic getters
 in long loops for a significant performance increase.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_createMarkup">createMarkup()</a>
-    <span>
-                                &nbsp;: string    </span>
-</dt>
-<dd>returns the fully parsed and rendered markup string for the given input</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_getCssClass">getCssClass()</a>
-    <span>
-                                &nbsp;: string    </span>
-</dt>
-<dd>returns a string with all css classes for the current element</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getDefaultModuleValue">getDefaultModuleValue()</a>
@@ -356,6 +391,13 @@ in long loops for a significant performance increase.</dd>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
 <dd>Returns a 2 element array with the current output width and height</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#method_module">module()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>draws a single pixel at the given position</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_prepareModuleValue">prepareModuleValue()</a>
@@ -403,7 +445,7 @@ in long loops for a significant performance increase.</dd>
     <section class="phpdocumentor-properties">
         <h3 class="phpdocumentor-elements__header" id="properties">
             Properties
-            <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -638,6 +680,39 @@ in long loops for a significant performance increase.</dd>
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="property_driver">
+        $driver
+        <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#property_driver" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRInterventionImage.php"><a href="files/src-output-qrinterventionimage.html"><abbr title="src/Output/QRInterventionImage.php">QRInterventionImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">41</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type"><abbr title="\Intervention\Image\Interfaces\DriverInterface">DriverInterface</abbr></span>
+    <span class="phpdocumentor-signature__name">$driver</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="property_eol">
         $eol
         <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_eol" class="headerlink"><i class="fas fa-link"></i></a>
@@ -734,6 +809,39 @@ in long loops for a significant performance increase.</dd>
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="property_image">
+        $image
+        <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#property_image" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRInterventionImage.php"><a href="files/src-output-qrinterventionimage.html"><abbr title="src/Output/QRInterventionImage.php">QRInterventionImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">43</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type"><abbr title="\Intervention\Image\Interfaces\ImageInterface">ImageInterface</abbr></span>
+    <span class="phpdocumentor-signature__name">$image</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="property_keepAsSquare">
         $keepAsSquare
         <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_keepAsSquare" class="headerlink"><i class="fas fa-link"></i></a>
@@ -802,6 +910,39 @@ in long loops for a significant performance increase.</dd>
     <span class="phpdocumentor-signature__visibility">protected</span>
         <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">$length</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_manager">
+        $manager
+        <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#property_manager" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRInterventionImage.php"><a href="files/src-output-qrinterventionimage.html"><abbr title="src/Output/QRInterventionImage.php">QRInterventionImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">42</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type"><abbr title="\Intervention\Image\Interfaces\ImageManagerInterface">ImageManagerInterface</abbr></span>
+    <span class="phpdocumentor-signature__name">$manager</span>
     </code>
 
     
@@ -1013,7 +1154,7 @@ in long loops for a significant performance increase.</dd>
             <section class="phpdocumentor-methods">
         <h3 class="phpdocumentor-elements__header" id="methods">
             Methods
-            <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+            <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
                     <article
@@ -1024,17 +1165,17 @@ in long loops for a significant performance increase.</dd>
 >
     <h4 class="phpdocumentor-element__name" id="method___construct">
         __construct()
-        <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputAbstract.php"><a href="files/src-output-qroutputabstract.html"><abbr title="src/Output/QROutputAbstract.php">QROutputAbstract.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRInterventionImage.php"><a href="files/src-output-qrinterventionimage.html"><abbr title="src/Output/QRInterventionImage.php">QRInterventionImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">72</span>
+    <span class="phpdocumentor-element-found-in__line">50</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">QROutputAbstract constructor.</p>
+        <p class="phpdocumentor-summary">QRInterventionImage constructor.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
@@ -1062,6 +1203,21 @@ in long loops for a significant performance increase.</dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#method___construct#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QRCodeOutputException.html"><abbr title="\chillerlan\QRCode\Output\QRCodeOutputException">QRCodeOutputException</abbr></a></span>
+                                                            
+                                             
+                                    </dd>
+                                            </dl>
 
     
 </article>
@@ -1073,20 +1229,20 @@ in long loops for a significant performance increase.</dd>
 >
     <h4 class="phpdocumentor-element__name" id="method_dump">
         dump()
-        <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_dump" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#method_dump" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRInterventionImage.php"><a href="files/src-output-qrinterventionimage.html"><abbr title="src/Output/QRInterventionImage.php">QRInterventionImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">89</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">dump</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">dump</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$file</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|<abbr title="\Intervention\Image\Interfaces\ImageInterface">ImageInterface</abbr></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1105,7 +1261,7 @@ in long loops for a significant performance increase.</dd>
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_dump#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#method_dump#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -1120,7 +1276,7 @@ in long loops for a significant performance increase.</dd>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
+        <span class="phpdocumentor-signature__response_type">string|<abbr title="\Intervention\Image\Interfaces\ImageInterface">ImageInterface</abbr></span>
             </section>
 
 </article>
@@ -1214,6 +1370,52 @@ note: css4 colors are not included</p>
                     <article
         class="phpdocumentor-element
             -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setDriver">
+        setDriver()
+        <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#method_setDriver" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRInterventionImage.php"><a href="files/src-output-qrinterventionimage.html"><abbr title="src/Output/QRInterventionImage.php">QRInterventionImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">80</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Sets a DriverInterface</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">setDriver</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Intervention\Image\Interfaces\DriverInterface">DriverInterface</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$driver</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$driver</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Intervention\Image\Interfaces\DriverInterface">DriverInterface</abbr></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">static</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
             -protected
                                                         "
 >
@@ -1298,98 +1500,6 @@ in long loops for a significant performance increase.</p>
     
 
     
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                        -abstract                                "
->
-    <h4 class="phpdocumentor-element__name" id="method_createMarkup">
-        createMarkup()
-        <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_createMarkup" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">40</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">returns the fully parsed and rendered markup string for the given input</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-    <span class="phpdocumentor-signature__abstract">abstract</span>                <span class="phpdocumentor-signature__name">createMarkup</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$saveToFile</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$saveToFile</span>
-                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -protected
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getCssClass">
-        getCssClass()
-        <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_getCssClass" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRMarkup.php"><a href="files/src-output-qrmarkup.html"><abbr title="src/Output/QRMarkup.php">QRMarkup.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">33</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">returns a string with all css classes for the current element</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">getCssClass</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$M_TYPE</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">0</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$M_TYPE</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">0</span>            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
-            </section>
-
 </article>
                     <article
         class="phpdocumentor-element
@@ -1578,6 +1688,62 @@ in long loops for a significant performance increase.</p>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
             </section>
 
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_module">
+        module()
+        <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#method_module" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRInterventionImage.php"><a href="files/src-output-qrinterventionimage.html"><abbr title="src/Output/QRInterventionImage.php">QRInterventionImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">130</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">draws a single pixel at the given position</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">module</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$x</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$y</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$M_TYPE</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$x</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$y</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$M_TYPE</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
 </article>
                     <article
         class="phpdocumentor-element
@@ -1826,7 +1992,7 @@ in long loops for a significant performance increase.</p>
     <div class="phpdocumentor-modal-bg" data-exit-button></div>
     <div class="phpdocumentor-modal-container">
         <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Output/QRMarkup.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Output/QRInterventionImage.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
         </div>
         <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
     </div>
@@ -1925,45 +2091,48 @@ in long loops for a significant performance increase.</p>
             <li class="phpdocumentor-on-this-page-section__title">Table Of Contents</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                                            <li><a href="classes/chillerlan-QRCode-Output-QRMarkup.html#toc-properties">Properties</a></li>
-                                                            <li><a href="classes/chillerlan-QRCode-Output-QRMarkup.html#toc-methods">Methods</a></li>
+                                                            <li><a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#toc-properties">Properties</a></li>
+                                                            <li><a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#toc-methods">Methods</a></li>
                                     </ul>
             </li>
             
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_circleDiameter">$circleDiameter<a href="classes/chillerlan-QRCode-Output-QRMarkup.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_circleRadius">$circleRadius<a href="classes/chillerlan-QRCode-Output-QRMarkup.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_connectPaths">$connectPaths<a href="classes/chillerlan-QRCode-Output-QRMarkup.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_drawCircularModules">$drawCircularModules<a href="classes/chillerlan-QRCode-Output-QRMarkup.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_drawLightModules">$drawLightModules<a href="classes/chillerlan-QRCode-Output-QRMarkup.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_eol">$eol<a href="classes/chillerlan-QRCode-Output-QRMarkup.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_excludeFromConnect">$excludeFromConnect<a href="classes/chillerlan-QRCode-Output-QRMarkup.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_keepAsSquare">$keepAsSquare<a href="classes/chillerlan-QRCode-Output-QRMarkup.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_length">$length<a href="classes/chillerlan-QRCode-Output-QRMarkup.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_matrix">$matrix<a href="classes/chillerlan-QRCode-Output-QRMarkup.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_moduleCount">$moduleCount<a href="classes/chillerlan-QRCode-Output-QRMarkup.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_moduleValues">$moduleValues<a href="classes/chillerlan-QRCode-Output-QRMarkup.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_options">$options<a href="classes/chillerlan-QRCode-Output-QRMarkup.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_scale">$scale<a href="classes/chillerlan-QRCode-Output-QRMarkup.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_circleDiameter">$circleDiameter<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_circleRadius">$circleRadius<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_connectPaths">$connectPaths<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_drawCircularModules">$drawCircularModules<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_drawLightModules">$drawLightModules<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#property_driver">$driver<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_eol">$eol<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_excludeFromConnect">$excludeFromConnect<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#property_image">$image<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_keepAsSquare">$keepAsSquare<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_length">$length<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#property_manager">$manager<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_matrix">$matrix<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_moduleCount">$moduleCount<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_moduleValues">$moduleValues<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_options">$options<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
+                                                    <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#property_scale">$scale<a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html"></li>
                                             </ul>
                 </li>
             
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method___construct">__construct()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_dump">dump()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#method___construct">__construct()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#method_dump">dump()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-CssColorModuleValueTrait.html#method_moduleValueIsValid">moduleValueIsValid()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#method_setDriver">setDriver()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_collectModules">collectModules()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_copyVars">copyVars()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_createMarkup">createMarkup()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-Output-QRMarkup.html#method_getCssClass">getCssClass()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getDefaultModuleValue">getDefaultModuleValue()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getModuleValue">getModuleValue()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getModuleValueAt">getModuleValueAt()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getOutputDimensions">getOutputDimensions()</a></li>
+                                            <li><a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#method_module">module()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_prepareModuleValue">prepareModuleValue()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_saveToFile">saveToFile()</a></li>
                                             <li><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_setMatrixDimensions">setMatrixDimensions()</a></li>
@@ -1988,7 +2157,7 @@ in long loops for a significant performance increase.</p>
     </section>
 </section>
         </div>
-        <a href="classes/chillerlan-QRCode-Output-QRMarkup.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+        <a href="classes/chillerlan-QRCode-Output-QRInterventionImage.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
 
     </main>
 
