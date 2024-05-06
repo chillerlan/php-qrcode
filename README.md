@@ -61,8 +61,9 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
     - [`ext-imagick`](https://github.com/Imagick/imagick) with [ImageMagick](https://imagemagick.org) installed
       - [`ext-fileinfo`](https://www.php.net/manual/book.fileinfo.php) (required by `QRImagick` output)
     - [`setasign/fpdf`](https://github.com/setasign/fpdf) for the PDF output module
+    - [`intervention/image`](https://github.com/Intervention/image) for alternative GD/ImageMagick output
 
-For the QRCode reader, either `ext-gd` or `ext-imagick` is required!
+For the QR Code reader, either `ext-gd` or `ext-imagick` is required!
 
 
 # Documentation

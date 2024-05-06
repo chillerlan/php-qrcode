@@ -1,6 +1,7 @@
 # QRFpdf
 
-[Class `QRFpdf`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRFpdf.php): [Portable Document Format](https://en.wikipedia.org/wiki/PDF) (PDF) output via [FPDF](https://github.com/setasign/fpdf)
+[Class `QRFpdf`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRFpdf.php):
+[Portable Document Format](https://en.wikipedia.org/wiki/PDF) (PDF) output via [FPDF](https://github.com/setasign/fpdf).
 
 
 ## Example
@@ -74,15 +75,3 @@ echo $fpdf->Output('S');
 | `$outputBase64`     | `bool`   |
 | `$returnResource`   | `bool`   |
 | `$scale`            | `ìnt`    |
-
-
-### Options that have no effect
-
-| property               | reason |
-|------------------------|--------|
-| `$circleRadius`        | N/A    |
-| `$connectPaths`        | N/A    |
-| `$drawCircularModules` | N/A    |
-| `$excludeFromConnect`  | N/A    |
-| `$imageTransparent`    | N/A    |
-| `$keepAsSquare`        | N/A    |
