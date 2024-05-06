@@ -20,6 +20,7 @@ use function extension_loaded;
  * Tests the QRGdImage output module
  */
 abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
+	use RGBArrayModuleValueProviderTrait;
 
 	/**
 	 * @inheritDoc
@@ -31,17 +32,6 @@ abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
 		}
 
 		parent::setUp();
-	}
-
-	public static function moduleValueProvider():array{
-		return [
-			'valid: int'                     => [[123, 123, 123], true],
-			'valid: w/invalid extra element' => [[123, 123, 123, 'abc'], true],
-			'valid: numeric string'          => [['123', '123', '123'], true],
-			'invalid: wrong type'            => ['foo', false],
-			'invalid: array too short'       => [[1, 2], false],
-			'invalid: contains non-number'   => [[1, 'b', 3], false],
-		];
 	}
 
 	/**

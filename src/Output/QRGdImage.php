@@ -16,9 +16,9 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use ErrorException, GdImage, Throwable;
-use function array_values, count, extension_loaded, imagecolorallocate, imagecolortransparent,
+use function extension_loaded, imagecolorallocate, imagecolortransparent,
 	imagecreatetruecolor, imagedestroy, imagefilledellipse, imagefilledrectangle,
-	imagescale, imagetypes, intdiv, intval, is_array, is_numeric, max, min, ob_end_clean, ob_get_contents, ob_start,
+	imagescale, imagetypes, intdiv, intval, max, min, ob_end_clean, ob_get_contents, ob_start,
 	restore_error_handler, set_error_handler, sprintf;
 use const IMG_AVIF, IMG_BMP, IMG_GIF, IMG_JPG, IMG_PNG, IMG_WEBP;
 
@@ -29,6 +29,7 @@ use const IMG_AVIF, IMG_BMP, IMG_GIF, IMG_JPG, IMG_PNG, IMG_WEBP;
  * @see https://github.com/chillerlan/php-qrcode/issues/223
  */
 abstract class QRGdImage extends QROutputAbstract{
+	use RGBArrayModuleValueTrait;
 
 	/**
 	 * The GD image resource
@@ -103,31 +104,6 @@ abstract class QRGdImage extends QROutputAbstract{
 			throw new QRCodeOutputException(sprintf('output mode "%s" not supported', $this->options->outputInterface));
 		}
 
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public static function moduleValueIsValid(mixed $value):bool{
-
-		if(!is_array($value) || count($value) < 3){
-			return false;
-		}
-
-		// check the first 3 values of the array
-		foreach(array_values($value) as $i => $val){
-
-			if($i > 2){
-				break;
-			}
-
-			if(!is_numeric($val)){
-				return false;
-			}
-
-		}
-
-		return true;
 	}
 
 	/**
