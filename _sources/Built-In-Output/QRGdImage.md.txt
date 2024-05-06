@@ -1,6 +1,7 @@
 # QRGdImage
 
-[Class `QRGdImage`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRGdImage.php): [GdImage](https://www.php.net/manual/book.image) raster graphic output (GIF, JPG, PNG)
+[Class `QRGdImage`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRGdImage.php):
+[GdImage](https://www.php.net/manual/book.image) raster graphic output (GIF, JPG, PNG, ...)
 
 
 ## Example
@@ -51,12 +52,12 @@ printf('<img alt="%s" src="%s" />', $alt, $out);
 ```
 
 
-Return the `GdImage` instance/resource (will ignore other output options):
+Return the `GdImage` instance (will ignore other output options):
 
 ```php
 $options->returnResource = true;
 
-/** @var \GdImage|resource $gdImage */
+/** @var \GdImage $gdImage */
 $gdImage = (new QRCode($options))->render($data);
 
 // do stuff with the GdImage instance...
@@ -73,13 +74,14 @@ imagedestroy($gdImage);
 
 ## Additional methods
 
-| method                                            | return   | description                                                       |
-|---------------------------------------------------|----------|-------------------------------------------------------------------|
-| (protected) `drawImage()`                         | `void`   | Draws the QR image                                                |
-| (protected) `dumpImage()`                         | `string` | Creates the final image by calling the desired GD output function |
-| (protected) `module(int $x, int $y, int $M_TYPE)` | `void`   | Renders a single module                                           |
-| (protected) `setBgColor()`                        | `void`   | Sets the background color                                         |
-| (protected) `setTransparencyColor()`              | `void`   | Sets the transparency color                                       |
+| method                                            | return   | description                                                                                      |
+|---------------------------------------------------|----------|--------------------------------------------------------------------------------------------------|
+| (protected) `drawImage()`                         | `void`   | Draws the QR image                                                                               |
+| (protected) `dumpImage()`                         | `string` | Creates the final image by calling the desired GD output function                                |
+| (protected) `module(int $x, int $y, int $M_TYPE)` | `void`   | Renders a single module                                                                          |
+| (protected) `setBgColor()`                        | `void`   | Sets the background color                                                                        |
+| (protected) `setTransparencyColor()`              | `void`   | Sets the transparency color                                                                      |
+| (abstract protected) `renderImage()`              | `void`   | Renders the image with the gdimage function for the desired output, implemented by child classes |
 
 
 ## Options that affect this module
@@ -97,11 +99,3 @@ imagedestroy($gdImage);
 | `$returnResource`      | `bool`         |
 | `$scale`               | `int`          |
 | `$transparencyColor`   | `mixed`        |
-
-
-### Options that have no effect
-
-| property              | reason |
-|-----------------------|--------|
-| `$connectPaths`       | N/A    |
-| `$excludeFromConnect` | N/A    |

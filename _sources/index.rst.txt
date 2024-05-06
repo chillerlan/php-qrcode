@@ -38,9 +38,12 @@ This work is licensed under the Creative Commons Attribution 4.0 International (
    Built-In-Output/QRFpdf.md
    Built-In-Output/QRGdImage.md
    Built-In-Output/QRImagick.md
+   Built-In-Output/QRInterventionImage.md
    Built-In-Output/QRMarkupHTML.md
    Built-In-Output/QRMarkupSVG.md
-   Built-In-Output/QRString.md
+   Built-In-Output/QRMarkupXML.md
+   Built-In-Output/QRStringJSON.md
+   Built-In-Output/QRStringText.md
 
 .. toctree::
    :maxdepth: 3

@@ -1,10 +1,12 @@
 # QRMarkupSVG
 
-[Class `QRMarkupSVG`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRMarkupSVG.php): [Scalable Vector Graphics](https://developer.mozilla.org/en-US/docs/Glossary/SVG) (SVG) output
+[Class `QRMarkupSVG`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRMarkupSVG.php):
+[Scalable Vector Graphics](https://developer.mozilla.org/en-US/docs/Glossary/SVG) (SVG) output.
+
 
 ## Example
 
-See: [ImageMagick example](https://github.com/chillerlan/php-qrcode/blob/main/examples/imagick.php)
+See: [SVG example](https://github.com/chillerlan/php-qrcode/blob/main/examples/svg.php)
 
 Set the options:
 
@@ -62,13 +64,14 @@ printf('<img alt="%s" src="%s" />', $alt, $out);
 | method                                            | return   | description                                                   |
 |---------------------------------------------------|----------|---------------------------------------------------------------|
 | (protected) `getCssClass(int $M_TYPE = 0)`        | `string` | returns a string with all css classes for the current element |
+| (protected) `getViewBox()`                        | `string` | returns the value for the SVG viewBox attribute               |
 | (protected) `header()`                            | `string` | returns the `<svg>` header with the given options parsed      |
-| (protected) `module(int $x, int $y, int $M_TYPE)` | `string` | returns a path segment for a single module                    |
 | (protected) `path(string $path, int $M_TYPE)`     | `string` | renders and returns a single `<path>` element                 |
 | (protected) `paths()`                             | `string` | returns one or more SVG `<path>` elements                     |
+| (protected) `module(int $x, int $y, int $M_TYPE)` | `string` | returns a path segment for a single module                    |
 
 
-## Options that affect this module
+## Options that affect this class
 
 | property                  | type        |
 |---------------------------|-------------|
@@ -87,13 +90,3 @@ printf('<img alt="%s" src="%s" />', $alt, $out);
 | `$svgPreserveAspectRatio` | `string`    |
 | `$svgViewBoxSize`         | `int\|null` |
 | `$svgUseFillAttributes`   | `bool`      |
-
-
-### Options that have no effect
-
-| property            | reason                                                                                                                                                                                                            |
-|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `$bgColor`          | background color can be achieved via CSS, attributes or the `<defs>` element, see also [php-qrcode/discussions/199 (comment)](https://github.com/chillerlan/php-qrcode/discussions/199#discussioncomment-5747471) |
-| `$imageTransparent` | SVG is - similar to a HTML element - transparent by default                                                                                                                                                       |
-| `$returnResource`   | N/A                                                                                                                                                                                                               |
-| `$scale`            | `$scale` (pixel size of a qr module) is intended for raster image types, use `$svgViewBoxSize` instead                                                                                                            |
