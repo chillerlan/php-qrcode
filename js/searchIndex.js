@@ -2471,21 +2471,6 @@ Search.appendIndex(
             "summary": "QRFpdf\u0020constructor.",
             "url": "classes/chillerlan-QRCode-Output-QRFpdf.html#method___construct"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QRFpdf\u003A\u003AmoduleValueIsValid\u0028\u0029",
-            "name": "moduleValueIsValid",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-Output-QRFpdf.html#method_moduleValueIsValid"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QRFpdf\u003A\u003AprepareModuleValue\u0028\u0029",
-            "name": "prepareModuleValue",
-            "summary": "Prepares\u0020the\u0020value\u0020for\u0020the\u0020given\u0020input\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020class\u0029",
-            "url": "classes/chillerlan-QRCode-Output-QRFpdf.html#method_prepareModuleValue"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QRFpdf\u003A\u003AgetDefaultModuleValue\u0028\u0029",
-            "name": "getDefaultModuleValue",
-            "summary": "Returns\u0020a\u0020default\u0020value\u0020for\u0020either\u0020dark\u0020or\u0020light\u0020modules\u0020\u0028return\u0020value\u0020depends\u0020on\u0020the\u0020output\u0020class\u0029",
-            "url": "classes/chillerlan-QRCode-Output-QRFpdf.html#method_getDefaultModuleValue"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRFpdf\u003A\u003AinitFPDF\u0028\u0029",
             "name": "initFPDF",
             "summary": "Initializes\u0020an\u0020FPDF\u0020instance",
@@ -2530,11 +2515,6 @@ Search.appendIndex(
             "name": "checkGD",
             "summary": "Checks\u0020whether\u0020GD\u0020is\u0020installed\u0020and\u0020if\u0020the\u0020given\u0020mode\u0020is\u0020supported",
             "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_checkGD"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AmoduleValueIsValid\u0028\u0029",
-            "name": "moduleValueIsValid",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_moduleValueIsValid"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AprepareModuleValue\u0028\u0029",
             "name": "prepareModuleValue",
@@ -3180,6 +3160,26 @@ Search.appendIndex(
             "name": "MIME_TYPE",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QRStringText.html#constant_MIME_TYPE"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\RGBArrayModuleValueTrait",
+            "name": "RGBArrayModuleValueTrait",
+            "summary": "Module\u0020value\u0020checks\u0020for\u0020output\u0020classes\u0020that\u0020use\u0020RGB\u0020color\u0020arrays",
+            "url": "classes/chillerlan-QRCode-Output-RGBArrayModuleValueTrait.html"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\RGBArrayModuleValueTrait\u003A\u003AmoduleValueIsValid\u0028\u0029",
+            "name": "moduleValueIsValid",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-RGBArrayModuleValueTrait.html#method_moduleValueIsValid"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\RGBArrayModuleValueTrait\u003A\u003AprepareModuleValue\u0028\u0029",
+            "name": "prepareModuleValue",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-RGBArrayModuleValueTrait.html#method_prepareModuleValue"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\RGBArrayModuleValueTrait\u003A\u003AgetDefaultModuleValue\u0028\u0029",
+            "name": "getDefaultModuleValue",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-RGBArrayModuleValueTrait.html#method_getDefaultModuleValue"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCode",
             "name": "QRCode",
@@ -4371,11 +4371,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCodeTest-Output-QRFpdfTest.html#method_getOutputInterface"
         },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Output\\QRFpdfTest\u003A\u003AmoduleValueProvider\u0028\u0029",
-            "name": "moduleValueProvider",
-            "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Output-QRFpdfTest.html#method_moduleValueProvider"
-        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Output\\QRFpdfTest\u003A\u003AtestSetModuleValues\u0028\u0029",
             "name": "testSetModuleValues",
             "summary": "covers\u0020the\u0020module\u0020values\u0020settings",
@@ -4445,11 +4440,6 @@ Search.appendIndex(
             "name": "setUp",
             "summary": "Attempts\u0020to\u0020create\u0020a\u0020directory\u0020under\u0020\/.build\u0020and\u0020instances\u0020several\u0020required\u0020objects",
             "url": "classes/chillerlan-QRCodeTest-Output-QRGdImageTestAbstract.html#method_setUp"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\Output\\QRGdImageTestAbstract\u003A\u003AmoduleValueProvider\u0028\u0029",
-            "name": "moduleValueProvider",
-            "summary": "",
-            "url": "classes/chillerlan-QRCodeTest-Output-QRGdImageTestAbstract.html#method_moduleValueProvider"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Output\\QRGdImageTestAbstract\u003A\u003AtestSetModuleValues\u0028\u0029",
             "name": "testSetModuleValues",
@@ -4670,6 +4660,16 @@ Search.appendIndex(
             "name": "testSetModuleValues",
             "summary": "covers\u0020the\u0020module\u0020values\u0020settings",
             "url": "classes/chillerlan-QRCodeTest-Output-QRStringTextTest.html#method_testSetModuleValues"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Output\\RGBArrayModuleValueProviderTrait",
+            "name": "RGBArrayModuleValueProviderTrait",
+            "summary": "A\u0020data\u0020provider\u0020for\u0020use\u0020in\u0020tests\u0020that\u0020include\u0020RGBArrayModuleValueTrait",
+            "url": "classes/chillerlan-QRCodeTest-Output-RGBArrayModuleValueProviderTrait.html"
+        },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Output\\RGBArrayModuleValueProviderTrait\u003A\u003AmoduleValueProvider\u0028\u0029",
+            "name": "moduleValueProvider",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-Output-RGBArrayModuleValueProviderTrait.html#method_moduleValueProvider"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QRCodeReaderGDTest",
             "name": "QRCodeReaderGDTest",
