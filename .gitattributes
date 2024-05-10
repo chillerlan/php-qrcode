@@ -3,6 +3,7 @@
 /.idea             export-ignore
 /.phan             export-ignore
 /.phpdoc           export-ignore
+/benchmark         export-ignore
 /docs              export-ignore
 /examples          export-ignore
 /tests             export-ignore
@@ -10,6 +11,7 @@
 /.gitattributes    export-ignore
 /.gitignore        export-ignore
 /.readthedocs.yml  export-ignore
+/phpbench.json     export-ignore
 /phpcs.xml.dist    export-ignore
 /phpdoc.xml.dist   export-ignore
 /phpmd.xml.dist    export-ignore
