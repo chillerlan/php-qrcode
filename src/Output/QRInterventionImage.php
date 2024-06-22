@@ -93,7 +93,11 @@ class QRInterventionImage extends QROutputAbstract{
 		$this->image->fill($this->getDefaultModuleValue(false));
 
 		if($this->options->imageTransparent && $this::moduleValueIsValid($this->options->transparencyColor)){
-			$this->image->setBlendingColor($this->prepareModuleValue($this->options->transparencyColor));
+			$this->manager
+				->driver()
+				->config()
+				->setOptions(blendingColor: $this->prepareModuleValue($this->options->transparencyColor))
+			;
 		}
 
 		if($this::moduleValueIsValid($this->options->bgColor)){
