@@ -431,7 +431,9 @@
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$data</span> <span class="o">=</span> <span class="s1">&#39;https://www.youtube.com/watch?v=dQw4w9WgXcQ&#39;</span><span class="p">;</span>
 <span class="nv">$out</span>  <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span> <span class="c1">// -&gt; XML, rendered as SVG</span>
 
-<span class="nb">printf</span><span class="p">(</span><span class="s1">&#39;&lt;img alt=&quot;%s&quot; src=&quot;%s&quot; /&gt;&#39;</span><span class="p">,</span> <span class="nv">$alt</span><span class="p">,</span> <span class="nv">$out</span><span class="p">);</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Content-type: application/xml&#39;</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$out</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The associated <a class="reference external" href="https://www.w3.org/XML/Schema">XML schema</a> can be found over at GitHub: <a class="reference external" href="https://github.com/chillerlan/php-qrcode/blob/main/src/Output/qrcode.schema.xsd"><code class="docutils literal notranslate"><span class="pre">qrcode.schema.xsd</span></code></a></p>

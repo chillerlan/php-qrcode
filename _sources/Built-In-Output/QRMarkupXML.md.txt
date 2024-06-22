@@ -80,7 +80,9 @@ Render the output:
 $data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 $out  = (new QRCode($options))->render($data); // -> XML, rendered as SVG
 
-printf('<img alt="%s" src="%s" />', $alt, $out);
+header('Content-type: application/xml');
+
+echo $out;
 ```
 
 The associated [XML schema](https://www.w3.org/XML/Schema) can be found over at GitHub: [`qrcode.schema.xsd`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/qrcode.schema.xsd)
