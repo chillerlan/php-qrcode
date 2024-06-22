@@ -22,7 +22,7 @@
 			"properties": {
 				"version": {
 					"description": "The QR Code version: [1...40]",
-					"type": "number",
+					"type": "integer",
 					"minimum": 1,
 					"maximum": 40
 				},
@@ -53,29 +53,29 @@
 			"properties": {
 				"size": {
 					"description": "The side length of the QR symbol, excluding the quiet zone (version * 4 + 17). [21...177]",
-					"type": "number",
+					"type": "integer",
 					"minimum": 21,
 					"maximum": 177
 				},
 				"quietzoneSize": {
 					"description": "The size of the quiet zone (margin around the QR symbol).",
-					"type": "number",
+					"type": "integer",
 					"minimum": 0
 				},
 				"maskPattern": {
 					"description": "The detected mask pattern that was used to mask this matrix. [0...7].",
-					"type": "number",
+					"type": "integer",
 					"minimum": 0,
 					"maximum": 7
 				},
 				"width": {
 					"description": "The total width of the matrix, including the quiet zone.",
-					"type": "number",
+					"type": "integer",
 					"minimum": 21
 				},
 				"height": {
 					"description": "The total height of the matrix, including the quiet zone.",
-					"type": "number",
+					"type": "integer",
 					"minimum": 21
 				},
 				"rows": {
@@ -97,7 +97,7 @@
 			"properties": {
 				"y": {
 					"description": "The 'y' (vertical) coordinate of this row.",
-					"type": "number",
+					"type": "integer",
 					"minimum": 0
 				},
 				"modules": {
