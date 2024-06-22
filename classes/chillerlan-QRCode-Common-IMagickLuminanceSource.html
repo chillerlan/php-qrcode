@@ -69,7 +69,7 @@
     Menu
 </label>
 <aside class="phpdocumentor-column -three phpdocumentor-sidebar">
-                    <section class="phpdocumentor-sidebar__category">
+                    <section class="phpdocumentor-sidebar__category -namespaces">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="namespaces/chillerlan.html" class="">chillerlan</a>
@@ -90,7 +90,7 @@
 </h4>
 
                         </section>
-                <section class="phpdocumentor-sidebar__category">
+                <section class="phpdocumentor-sidebar__category -packages">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="packages/Application.html" class="">Application</a>
@@ -98,14 +98,14 @@
 
                         </section>
             
-    <section class="phpdocumentor-sidebar__category">
+    <section class="phpdocumentor-sidebar__category -reports">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
                 <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/errors.html">Errors</a></h3>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
     </section>
 
-    <section class="phpdocumentor-sidebar__category">
+    <section class="phpdocumentor-sidebar__category -indices">
         <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
     </section>
@@ -153,6 +153,8 @@
 
             <p class="phpdocumentor-summary">This class is used to help decode images from files which arrive as Imagick Resource
 It does not support rotation.</p>
+
+
 
 
 
@@ -229,12 +231,14 @@ It does not support rotation.</p>
     <span>
                                 &nbsp;: static    </span>
 </dt>
+<dd>Creates a LuminanceSource instance from the given data blob</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Common-IMagickLuminanceSource.html#method_fromFile">fromFile()</a>
     <span>
                                 &nbsp;: static    </span>
 </dt>
+<dd>Creates a LuminanceSource instance from the given file</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Common-LuminanceSourceAbstract.html#method_getHeight">getHeight()</a>
@@ -289,7 +293,6 @@ getLuminances() may never be called.</dd>
 
 
 
-
         
 
         
@@ -331,6 +334,8 @@ getLuminances() may never be called.</dd>
     
     
 
+    
+
 </article>
                     <article
         class="
@@ -362,6 +367,8 @@ getLuminances() may never be called.</dd>
 
     
     
+    
+
     
 
 </article>
@@ -397,6 +404,8 @@ getLuminances() may never be called.</dd>
     
     
 
+    
+
 </article>
                     <article
         class="
@@ -430,6 +439,8 @@ getLuminances() may never be called.</dd>
     
     
 
+    
+
 </article>
                     <article
         class="
@@ -461,6 +472,8 @@ getLuminances() may never be called.</dd>
 
     
     
+    
+
     
 
 </article>
@@ -520,6 +533,8 @@ getLuminances() may never be called.</dd>
     
 
     
+
+    
 </article>
                     <article
         class="phpdocumentor-element
@@ -539,7 +554,8 @@ getLuminances() may never be called.</dd>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Creates a LuminanceSource instance from the given data blob</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
             <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromBlob</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$blob</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>|<a href="classes/chillerlan-QRCode-QROptions.html"><abbr title="\chillerlan\QRCode\QROptions">QROptions</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">new QROptions()</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
@@ -581,6 +597,8 @@ getLuminances() may never be called.</dd>
                                     </dd>
                                             </dl>
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">static</span>
@@ -605,7 +623,8 @@ getLuminances() may never be called.</dd>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Creates a LuminanceSource instance from the given file</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
             <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">fromFile</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$path</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type"><abbr title="\chillerlan\Settings\SettingsContainerInterface">SettingsContainerInterface</abbr>|<a href="classes/chillerlan-QRCode-QROptions.html"><abbr title="\chillerlan\QRCode\QROptions">QROptions</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$options</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">new QROptions()</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
@@ -646,6 +665,8 @@ getLuminances() may never be called.</dd>
                                              
                                     </dd>
                                             </dl>
+
+    
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -695,6 +716,8 @@ getLuminances() may never be called.</dd>
                                              
                                     </dd>
                                             </dl>
+
+    
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -750,6 +773,8 @@ getLuminances() may never be called.</dd>
                                              
                                     </dd>
                                             </dl>
+
+    
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -823,6 +848,8 @@ getLuminances() may never be called.</p>
                                     </dd>
                                             </dl>
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
@@ -875,6 +902,8 @@ getLuminances() may never be called.</p>
                                              
                                     </dd>
                                             </dl>
+
+    
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -940,6 +969,8 @@ getLuminances() may never be called.</p>
                                     </dd>
                                             </dl>
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
@@ -1000,6 +1031,8 @@ getLuminances() may never be called.</p>
     
 
     
+
+    
 </article>
                     <article
         class="phpdocumentor-element
@@ -1028,6 +1061,8 @@ getLuminances() may never be called.</p>
         </div>
     
     
+    
+
     
 
     

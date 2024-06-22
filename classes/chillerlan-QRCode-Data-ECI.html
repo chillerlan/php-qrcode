@@ -69,7 +69,7 @@
     Menu
 </label>
 <aside class="phpdocumentor-column -three phpdocumentor-sidebar">
-                    <section class="phpdocumentor-sidebar__category">
+                    <section class="phpdocumentor-sidebar__category -namespaces">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="namespaces/chillerlan.html" class="">chillerlan</a>
@@ -90,7 +90,7 @@
 </h4>
 
                         </section>
-                <section class="phpdocumentor-sidebar__category">
+                <section class="phpdocumentor-sidebar__category -packages">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="packages/Application.html" class="">Application</a>
@@ -98,14 +98,14 @@
 
                         </section>
             
-    <section class="phpdocumentor-sidebar__category">
+    <section class="phpdocumentor-sidebar__category -reports">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
                 <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/errors.html">Errors</a></h3>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
     </section>
 
-    <section class="phpdocumentor-sidebar__category">
+    <section class="phpdocumentor-sidebar__category -indices">
         <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
     </section>
@@ -156,6 +156,8 @@
     <section class="phpdocumentor-description"><p>ISO/IEC 18004:2000 8.4.1.1</p>
 <p>Please note that you have to take care for the correct data encoding when adding with QRCode::add*Segment()</p>
 </section>
+
+
 
 
 
@@ -242,6 +244,7 @@
     <span>
                                 &nbsp;: int    </span>
 </dt>
+<dd>retruns the length in bits of the data string</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-ECI.html#method_parseValue">parseValue()</a>
@@ -255,6 +258,7 @@
     <span>
                                 &nbsp;: bool    </span>
 </dt>
+<dd>checks if the given string qualifies for the encoder module</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-ECI.html#method_write">write()</a>
@@ -278,7 +282,6 @@
 <dd>shortcut</dd>
 
     </dl>
-
 
 
 
@@ -328,7 +331,9 @@
                                                                                 
                                              
                                     </dd>
-                                            </dl>
+                                                                </dl>
+
+    
 
 </article>
             </section>
@@ -373,6 +378,8 @@
     
     
 
+    
+
 </article>
                     <article
         class="
@@ -405,6 +412,8 @@
 
     
     
+    
+
     
 
 </article>
@@ -480,6 +489,8 @@
                                             </dl>
 
     
+
+    
 </article>
                     <article
         class="phpdocumentor-element
@@ -534,6 +545,8 @@
                                              
                                     </dd>
                                             </dl>
+
+    
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -603,6 +616,8 @@
                                     </dd>
                                             </dl>
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
@@ -627,7 +642,8 @@
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">retruns the length in bits of the data string</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getLengthInBits</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
@@ -651,6 +667,8 @@
                                              
                                     </dd>
                                             </dl>
+
+    
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -713,6 +731,8 @@
                                     </dd>
                                             </dl>
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Common-ECICharset.html"><abbr title="\chillerlan\QRCode\Common\ECICharset">ECICharset</abbr></a></span>
@@ -737,7 +757,8 @@
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">checks if the given string qualifies for the encoder module</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
             <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">validateString</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$string</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
@@ -773,6 +794,8 @@
 
                                     </dd>
                                             </dl>
+
+    
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -849,6 +872,8 @@
                                     </dd>
                                             </dl>
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">static</span>
@@ -883,6 +908,8 @@
         </div>
     
     
+    
+
     
 
             <section>
@@ -928,6 +955,8 @@
                 
             </dd>
             </dl>
+
+    
 
     
 

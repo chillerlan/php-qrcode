@@ -69,7 +69,7 @@
     Menu
 </label>
 <aside class="phpdocumentor-column -three phpdocumentor-sidebar">
-                    <section class="phpdocumentor-sidebar__category">
+                    <section class="phpdocumentor-sidebar__category -namespaces">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="namespaces/chillerlan.html" class="">chillerlan</a>
@@ -90,7 +90,7 @@
 </h4>
 
                         </section>
-                <section class="phpdocumentor-sidebar__category">
+                <section class="phpdocumentor-sidebar__category -packages">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="packages/Application.html" class="">Application</a>
@@ -98,14 +98,14 @@
 
                         </section>
             
-    <section class="phpdocumentor-sidebar__category">
+    <section class="phpdocumentor-sidebar__category -reports">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
                 <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/errors.html">Errors</a></h3>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
     </section>
 
-    <section class="phpdocumentor-sidebar__category">
+    <section class="phpdocumentor-sidebar__category -indices">
         <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
     </section>
@@ -152,6 +152,8 @@
     </aside>
 
             <p class="phpdocumentor-summary">Tests the QRGdImage output module</p>
+
+
 
 
 
@@ -218,7 +220,7 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCodeTest-Output-QROutputTestAbstract.html#method_moduleValueProvider">moduleValueProvider()</a>
+    <a href="classes/chillerlan-QRCodeTest-Output-RGBArrayModuleValueProviderTrait.html#method_moduleValueProvider">moduleValueProvider()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
@@ -250,7 +252,7 @@
 <dd>Tests if an exception is thrown when trying to write a cache file to an invalid destination</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCodeTest-Output-QROutputTestAbstract.html#method_testSetModuleValues">testSetModuleValues()</a>
+    <a href="classes/chillerlan-QRCodeTest-Output-QRGdImageTestAbstract.html#method_testSetModuleValues">testSetModuleValues()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
@@ -304,14 +306,13 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/chillerlan-QRCodeTest-Output-QROutputTestAbstract.html#method_setUp">setUp()</a>
+    <a href="classes/chillerlan-QRCodeTest-Output-QRGdImageTestAbstract.html#method_setUp">setUp()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Attempts to create a directory under /.build and instances several required objects</dd>
 
     </dl>
-
 
 
 
@@ -347,6 +348,8 @@
 
     
     
+    
+
     
 
 </article>
@@ -391,6 +394,8 @@
     
     
 
+    
+
 </article>
                     <article
         class="
@@ -422,6 +427,8 @@
 
     
     
+    
+
     
 
 </article>
@@ -457,6 +464,8 @@
     
     
 
+    
+
 </article>
             </section>
 
@@ -470,29 +479,31 @@
         class="phpdocumentor-element
             -method
             -public
-                        -abstract            -static                    "
+                                    -static                    "
 >
     <h4 class="phpdocumentor-element__name" id="method_moduleValueProvider">
         moduleValueProvider()
-        <a href="classes/chillerlan-QRCodeTest-Output-QROutputTestAbstract.html#method_moduleValueProvider" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCodeTest-Output-RGBArrayModuleValueProviderTrait.html#method_moduleValueProvider" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/Output/QROutputTestAbstract.php"><a href="files/tests-output-qroutputtestabstract.html"><abbr title="tests/Output/QROutputTestAbstract.php">QROutputTestAbstract.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Output/RGBArrayModuleValueProviderTrait.php"><a href="files/tests-output-rgbarraymodulevalueprovidertrait.html"><abbr title="tests/Output/RGBArrayModuleValueProviderTrait.php">RGBArrayModuleValueProviderTrait.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">61</span>
+    <span class="phpdocumentor-element-found-in__line">20</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__abstract">abstract</span>        <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">moduleValueProvider</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">moduleValueProvider</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
     
+    
+
     
 
             <section>
@@ -531,6 +542,8 @@
     
 
     
+
+    
 </article>
                     <article
         class="phpdocumentor-element
@@ -559,6 +572,8 @@
         </div>
     
     
+    
+
     
 
     
@@ -594,6 +609,8 @@
     
 
     
+
+    
 </article>
                     <article
         class="phpdocumentor-element
@@ -626,22 +643,24 @@
     
 
     
+
+    
 </article>
                     <article
         class="phpdocumentor-element
             -method
             -public
-                        -abstract                                "
+                                                        "
 >
     <h4 class="phpdocumentor-element__name" id="method_testSetModuleValues">
         testSetModuleValues()
-        <a href="classes/chillerlan-QRCodeTest-Output-QROutputTestAbstract.html#method_testSetModuleValues" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCodeTest-Output-QRGdImageTestAbstract.html#method_testSetModuleValues" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/Output/QROutputTestAbstract.php"><a href="files/tests-output-qroutputtestabstract.html"><abbr title="tests/Output/QROutputTestAbstract.php">QROutputTestAbstract.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Output/QRGdImageTestAbstract.php"><a href="files/tests-output-qrgdimagetestabstract.html"><abbr title="tests/Output/QRGdImageTestAbstract.php">QRGdImageTestAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">75</span>
+    <span class="phpdocumentor-element-found-in__line">40</span>
 
     </aside>
 
@@ -649,12 +668,28 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__abstract">abstract</span>                <span class="phpdocumentor-signature__name">testSetModuleValues</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">testSetModuleValues</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
     
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/chillerlan-QRCodeTest-Output-QRGdImageTestAbstract.html#method_testSetModuleValues#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
     
 
     
@@ -704,6 +739,22 @@
             </dl>
 
     
+
+    
+    <section class="phpdocumentor-attributes">
+        <h5 class="phpdocumentor-elements__header" id="attributes">
+            Attributes <a href="classes/chillerlan-QRCodeTest-Output-QROutputTestAbstract.html#method_testValidateModuleValues#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h5>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\DataProvider">DataProvider</abbr>]
+    </dt>
+        <dd class="phpdocumentor-argument-list__entry">
+        &#039;moduleValueProvider&#039;
+    </dd>
+    </dl>
+            </section>
 
     
 </article>
@@ -763,6 +814,8 @@
                                             </dl>
 
     
+
+    
 </article>
                     <article
         class="phpdocumentor-element
@@ -819,6 +872,8 @@
                                     </dd>
                                             </dl>
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
@@ -862,6 +917,8 @@
                 
             </dd>
             </dl>
+
+    
 
     
 
@@ -926,6 +983,8 @@
                                     </dd>
                                             </dl>
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
@@ -969,6 +1028,8 @@
                 
             </dd>
             </dl>
+
+    
 
     
 
@@ -1024,6 +1085,8 @@
 
     
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type"><a href="classes/chillerlan-QRCode-Output-QROutputInterface.html"><abbr title="\chillerlan\QRCode\Output\QROutputInterface">QROutputInterface</abbr></a></span>
@@ -1038,13 +1101,13 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_setUp">
         setUp()
-        <a href="classes/chillerlan-QRCodeTest-Output-QROutputTestAbstract.html#method_setUp" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCodeTest-Output-QRGdImageTestAbstract.html#method_setUp" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/Output/QROutputTestAbstract.php"><a href="files/tests-output-qroutputtestabstract.html"><abbr title="tests/Output/QROutputTestAbstract.php">QROutputTestAbstract.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Output/QRGdImageTestAbstract.php"><a href="files/tests-output-qrgdimagetestabstract.html"><abbr title="tests/Output/QRGdImageTestAbstract.php">QRGdImageTestAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">38</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
@@ -1058,6 +1121,22 @@
         </div>
     
     
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/chillerlan-QRCodeTest-Output-QRGdImageTestAbstract.html#method_setUp#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">inheritDoc</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                             
+                                    </dd>
+                                            </dl>
+
     
 
     
@@ -1191,12 +1270,12 @@
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li><a href="classes/chillerlan-QRCodeTest-Output-QROutputTestAbstract.html#method_moduleValueProvider">moduleValueProvider()</a></li>
+                                            <li><a href="classes/chillerlan-QRCodeTest-Output-RGBArrayModuleValueProviderTrait.html#method_moduleValueProvider">moduleValueProvider()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Output-QRGdImageTestAbstract.html#method_testBase64MimeType">testBase64MimeType()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Output-QRGdImageTestAbstract.html#method_testOutputGetResource">testOutputGetResource()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Output-QROutputTestAbstract.html#method_testRenderToCacheFile">testRenderToCacheFile()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Output-QROutputTestAbstract.html#method_testSaveException">testSaveException()</a></li>
-                                            <li><a href="classes/chillerlan-QRCodeTest-Output-QROutputTestAbstract.html#method_testSetModuleValues">testSetModuleValues()</a></li>
+                                            <li><a href="classes/chillerlan-QRCodeTest-Output-QRGdImageTestAbstract.html#method_testSetModuleValues">testSetModuleValues()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Output-QROutputTestAbstract.html#method_testValidateModuleValues">testValidateModuleValues()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_createBuildDir">createBuildDir()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildDir">getBuildDir()</a></li>
@@ -1204,7 +1283,7 @@
                                             <li><a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildFilePath">getBuildFilePath()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildPath">getBuildPath()</a></li>
                                             <li><a href="classes/chillerlan-QRCodeTest-Output-QRGdImagePNGTest.html#method_getOutputInterface">getOutputInterface()</a></li>
-                                            <li><a href="classes/chillerlan-QRCodeTest-Output-QROutputTestAbstract.html#method_setUp">setUp()</a></li>
+                                            <li><a href="classes/chillerlan-QRCodeTest-Output-QRGdImageTestAbstract.html#method_setUp">setUp()</a></li>
                                     </ul>
             </li>
                     </ul>

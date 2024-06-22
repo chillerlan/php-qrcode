@@ -69,7 +69,7 @@
     Menu
 </label>
 <aside class="phpdocumentor-column -three phpdocumentor-sidebar">
-                    <section class="phpdocumentor-sidebar__category">
+                    <section class="phpdocumentor-sidebar__category -namespaces">
             <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="namespaces/chillerlan.html" class="">chillerlan</a>
@@ -90,7 +90,7 @@
 </h4>
 
                         </section>
-                <section class="phpdocumentor-sidebar__category">
+                <section class="phpdocumentor-sidebar__category -packages">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
                                     <h4 class="phpdocumentor-sidebar__root-namespace">
     <a href="packages/Application.html" class="">Application</a>
@@ -98,14 +98,14 @@
 
                         </section>
             
-    <section class="phpdocumentor-sidebar__category">
+    <section class="phpdocumentor-sidebar__category -reports">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
                 <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/errors.html">Errors</a></h3>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
     </section>
 
-    <section class="phpdocumentor-sidebar__category">
+    <section class="phpdocumentor-sidebar__category -indices">
         <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
         <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
     </section>
@@ -192,6 +192,8 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
 
 
 
+
+
 <h3 id="toc">
     Table of Contents
     <a href="classes/chillerlan-QRCode-Data-Kanji.html#toc" class="headerlink"><i class="fas fa-link"></i></a>
@@ -266,12 +268,14 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
     <span>
                                 &nbsp;: string    </span>
 </dt>
+<dd>reads a segment from the BitBuffer and decodes in the current data mode</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-Kanji.html#method_getLengthInBits">getLengthInBits()</a>
     <span>
                                 &nbsp;: int    </span>
 </dt>
+<dd>retruns the length in bits of the data string</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/chillerlan-QRCode-Data-Kanji.html#method_validateString">validateString()</a>
@@ -285,6 +289,7 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
     <span>
                                 &nbsp;: static    </span>
 </dt>
+<dd>writes the actual data string to the BitBuffer, uses the given version to determine the length bits</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a href="classes/chillerlan-QRCode-Data-Kanji.html#method_getCharCount">getCharCount()</a>
@@ -301,7 +306,6 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
 <dd>shortcut</dd>
 
     </dl>
-
 
 
 
@@ -351,7 +355,9 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
                                                                                 
                                              
                                     </dd>
-                                            </dl>
+                                                                </dl>
+
+    
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
@@ -382,6 +388,8 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
 </section>
 
     
+    
+
     
 
 </article>
@@ -425,6 +433,8 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
 
     
     
+    
+
     
 
 </article>
@@ -492,6 +502,8 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
                                             </dl>
 
     
+
+    
 </article>
                     <article
         class="phpdocumentor-element
@@ -547,6 +559,8 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
                                     </dd>
                                             </dl>
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
@@ -571,7 +585,8 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">reads a segment from the BitBuffer and decodes in the current data mode</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
             <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">decodeSegment</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-BitBuffer.html"><abbr title="\chillerlan\QRCode\Common\BitBuffer">BitBuffer</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bitBuffer</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$versionNumber</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
@@ -621,6 +636,8 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
                                     </dd>
                                             </dl>
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">string</span>
@@ -645,7 +662,8 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">retruns the length in bits of the data string</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">getLengthInBits</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
@@ -669,6 +687,8 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
                                              
                                     </dd>
                                             </dl>
+
+    
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
@@ -716,6 +736,8 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
 
     
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">bool</span>
@@ -740,7 +762,8 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">writes the actual data string to the BitBuffer, uses the given version to determine the length bits</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
                     <span class="phpdocumentor-signature__name">write</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/chillerlan-QRCode-Common-BitBuffer.html"><abbr title="\chillerlan\QRCode\Common\BitBuffer">BitBuffer</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$bitBuffer</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$versionNumber</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">static</span></code>
@@ -792,6 +815,8 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
                                     </dd>
                                             </dl>
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">static</span>
@@ -842,6 +867,8 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
                                     </dd>
                                             </dl>
 
+    
+
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">int</span>
@@ -885,6 +912,8 @@ ISO/IEC 18004:2000 Section 8.4.5</p>
                 
             </dd>
             </dl>
+
+    
 
     
 
