@@ -1,5 +1,11 @@
 # php-qrcode examples
 
+**Important: Please use the examples from the branch that matches your installed php-qrcode version (
+[v4.x](https://github.com/chillerlan/php-qrcode/tree/v4.3.x/examples),
+[v5.x](https://github.com/chillerlan/php-qrcode/tree/v5.0.x/examples),
+[dev-main](https://github.com/chillerlan/php-qrcode/tree/main/examples)
+)!**
+
 ## Simple examples that demonstrate the different output types
 
 - [image](./image.php): Raster images via the [GD extension](https://www.php.net/manual/de/book.image.php)
