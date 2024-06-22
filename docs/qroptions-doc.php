@@ -35,7 +35,8 @@ foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED) as $re
 	array_shift($lines);
 	array_pop($lines);
 
-	$see = [];
+	$see  = [];
+	$link = [];
 
 	foreach($lines as $line){
 
@@ -50,7 +51,14 @@ foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED) as $re
 
 		// collect links for "see also"
 		if(str_starts_with($line, '@see')){
-			$see[] = $line;
+			$see[] = substr($line, 5); // cut off the "@see "
+
+			continue;
+		}
+
+		// collect links for "links"
+		if(str_starts_with($line, '@link')){
+			$link[] = substr($line, 6); // cut off the "@link "
 
 			continue;
 		}
@@ -63,7 +71,6 @@ foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED) as $re
 		$content[] = "\n**See also:**\n";
 
 		foreach($see as $line){
-			$line = substr($line, 5); // cut off the "@see "
 
 			// normal links
 			if(str_starts_with($line, 'http')){
@@ -83,6 +90,28 @@ foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED) as $re
 			else{
 				$content[] = sprintf('- `%s`', $line);
 			}
+
+		}
+
+	}
+
+	// add "Links" section
+	if(!empty($link)){
+		$content[] = "\n**Links:**\n";
+
+		foreach($link as $line){
+
+			// skip non-url
+			if(!str_starts_with($line, 'http')){
+				continue;
+			}
+
+			$url = explode(' ', $line, 2);
+
+			$content[] = match(count($url)){
+				1 => sprintf('- [%s](%s)', explode('://', $url[0])[1], $url[0]),
+				2 => sprintf('- [%s](%s)', trim($url[1]), $url[0]),
+			};
 
 		}
 
