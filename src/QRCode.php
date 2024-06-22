@@ -19,7 +19,7 @@ use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Hanzi, Kanji, Number, QRData, Q
 use chillerlan\QRCode\Decoder\{Decoder, DecoderResult};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
-use function class_exists, class_implements, in_array, mb_convert_encoding, mb_internal_encoding;
+use function class_exists, class_implements, in_array, is_iterable, mb_convert_encoding, mb_internal_encoding;
 
 /**
  * Turns a text string into a Model 2 QR Code
@@ -51,17 +51,20 @@ class QRCode{
 
 	/**
 	 * QRCode constructor.
-	 *
-	 * PHP8: accept iterable
 	 */
-	public function __construct(SettingsContainerInterface|QROptions $options = new QROptions){
+	public function __construct(SettingsContainerInterface|QROptions|iterable $options = new QROptions){
 		$this->setOptions($options);
 	}
 
 	/**
 	 * Sets an options instance
 	 */
-	public function setOptions(SettingsContainerInterface|QROptions $options):static{
+	public function setOptions(SettingsContainerInterface|QROptions|iterable $options):static{
+
+		if(is_iterable($options)){
+			$options = new QROptions($options);
+		}
+
 		$this->options = $options;
 
 		if($this->options->readerUseImagickIfAvailable){
@@ -265,8 +268,6 @@ class QRCode{
 
 	/**
 	 * Reads a QR Code from a given file
-	 *
-	 * @noinspection PhpUndefinedMethodInspection
 	 */
 	public function readFromFile(string $path):DecoderResult{
 		return $this->readFromSource($this->luminanceSourceFQN::fromFile($path, $this->options));
@@ -274,8 +275,6 @@ class QRCode{
 
 	/**
 	 * Reads a QR Code from the given data blob
-	 *
-	 *  @noinspection PhpUndefinedMethodInspection
 	 */
 	public function readFromBlob(string $blob):DecoderResult{
 		return $this->readFromSource($this->luminanceSourceFQN::fromBlob($blob, $this->options));
