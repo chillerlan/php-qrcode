@@ -3,7 +3,7 @@
 A PHP QR Code generator based on the [implementation by Kazuhiko Arase](https://github.com/kazuhikoarase/qrcode-generator), namespaced, cleaned up, improved and other stuff. <br>
 It also features a QR Code reader based on a [PHP port](https://github.com/khanamiryan/php-qrcode-detector-decoder) of the [ZXing library](https://github.com/zxing/zxing).
 
-**Attention:** there is now also a javascript port: [chillerlan/js-qrcode](https://github.com/chillerlan/js-qrcode).
+**Attention:** there is now also a javascript port: [@chillerlan/js-qrcode](https://github.com/chillerlan/js-qrcode/pkgs/npm/qrcode).
 
 [![PHP Version Support][php-badge]][php]
 [![Packagist version][packagist-badge]][packagist]
