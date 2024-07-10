@@ -161,6 +161,7 @@ GlobalHistogramBinarizer, is fairly efficient for what it does. It is designed f
 high frequency images of barcodes with black data on white backgrounds. For this application,
 it does a much better job than a global blackpoint with severe shadows and gradients.</p>
 
+
     <section class="phpdocumentor-description"><p>However, it tends to produce artifacts on lower frequency images and is therefore not
 a good general purpose binarizer for uses outside ZXing.</p>
 <p>This class extends GlobalHistogramBinarizer, using the older histogram approach for 1D readers,
@@ -211,43 +212,43 @@ but for now it was not a win to use local blocks for 1D.</p>
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE">BLOCK_SIZE</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE">BLOCK_SIZE</a>
     <span>
         &nbsp;= 8                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE_MASK">BLOCK_SIZE_MASK</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE_MASK">BLOCK_SIZE_MASK</a>
     <span>
         &nbsp;= 7                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE_POWER">BLOCK_SIZE_POWER</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE_POWER">BLOCK_SIZE_POWER</a>
     <span>
         &nbsp;= 3                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_LUMINANCE_BUCKETS">LUMINANCE_BUCKETS</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_LUMINANCE_BUCKETS">LUMINANCE_BUCKETS</a>
     <span>
         &nbsp;= 32                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_LUMINANCE_SHIFT">LUMINANCE_SHIFT</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_LUMINANCE_SHIFT">LUMINANCE_SHIFT</a>
     <span>
         &nbsp;= 3                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_MIN_DYNAMIC_RANGE">MIN_DYNAMIC_RANGE</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_MIN_DYNAMIC_RANGE">MIN_DYNAMIC_RANGE</a>
     <span>
         &nbsp;= 24                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_MINIMUM_DIMENSION">MINIMUM_DIMENSION</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_MINIMUM_DIMENSION">MINIMUM_DIMENSION</a>
     <span>
         &nbsp;= 40                            </span>
 </dt>
@@ -262,13 +263,13 @@ but for now it was not a win to use local blocks for 1D.</p>
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#property_luminances">$luminances</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#property_luminances">$luminances</a>
     <span>
                         &nbsp;: array&lt;string|int, mixed&gt;            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#property_source">$source</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#property_source">$source</a>
     <span>
                         &nbsp;: <a href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html"><abbr title="\chillerlan\QRCode\Common\LuminanceSourceInterface">LuminanceSourceInterface</abbr></a>            </span>
 </dt>
@@ -282,13 +283,13 @@ but for now it was not a win to use local blocks for 1D.</p>
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method___construct">__construct()</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method___construct">__construct()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getBlackMatrix">getBlackMatrix()</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getBlackMatrix">getBlackMatrix()</a>
     <span>
                                 &nbsp;: <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a>    </span>
 </dt>
@@ -297,14 +298,14 @@ constructor instead, but there are some advantages to doing it lazily, such as m
 profiling easier, and not doing heavy lifting when callers don&#039;t expect it.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_calculateBlackPoints">calculateBlackPoints()</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_calculateBlackPoints">calculateBlackPoints()</a>
     <span>
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
 <dd>Calculates a single black point for each block of pixels and saves it away.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_calculateThresholdForBlock">calculateThresholdForBlock()</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_calculateThresholdForBlock">calculateThresholdForBlock()</a>
     <span>
                                 &nbsp;: <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a>    </span>
 </dt>
@@ -313,19 +314,19 @@ of the surrounding blocks. Also handles the corner cases (fractional blocks are 
 on the last pixels in the row/column which are also used in the previous block).</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_cap">cap()</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_cap">cap()</a>
     <span>
                                 &nbsp;: int    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_estimateBlackPoint">estimateBlackPoint()</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_estimateBlackPoint">estimateBlackPoint()</a>
     <span>
                                 &nbsp;: int    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getHistogramBlackMatrix">getHistogramBlackMatrix()</a>
+    <a class="" href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getHistogramBlackMatrix">getHistogramBlackMatrix()</a>
     <span>
                                 &nbsp;: <a href="classes/chillerlan-QRCode-Decoder-BitMatrix.html"><abbr title="\chillerlan\QRCode\Decoder\BitMatrix">BitMatrix</abbr></a>    </span>
 </dt>
@@ -355,6 +356,7 @@ on the last pixels in the row/column which are also used in the previous block).
 
     </aside>
 
+    
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -386,6 +388,7 @@ on the last pixels in the row/column which are also used in the previous block).
     </aside>
 
     
+    
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">mixed</span>
@@ -415,6 +418,7 @@ on the last pixels in the row/column which are also used in the previous block).
 
     </aside>
 
+    
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -446,6 +450,7 @@ on the last pixels in the row/column which are also used in the previous block).
     </aside>
 
     
+    
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">mixed</span>
@@ -475,6 +480,7 @@ on the last pixels in the row/column which are also used in the previous block).
 
     </aside>
 
+    
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -506,6 +512,7 @@ on the last pixels in the row/column which are also used in the previous block).
     </aside>
 
     
+    
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">mixed</span>
@@ -535,6 +542,7 @@ on the last pixels in the row/column which are also used in the previous block).
 
     </aside>
 
+    
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -582,6 +590,7 @@ on the last pixels in the row/column which are also used in the previous block).
     </aside>
 
     
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
@@ -616,6 +625,7 @@ on the last pixels in the row/column which are also used in the previous block).
 
     </aside>
 
+    
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
@@ -664,6 +674,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <div class="phpdocumentor-label-line">
         </div>
     
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -709,6 +720,7 @@ profiling easier, and not doing heavy lifting when callers don&#039;t expect it.
 
     <div class="phpdocumentor-label-line">
         </div>
+    
         <section class="phpdocumentor-description"><p>Converts a 2D array of luminance data to 1 bit data. As above, assume this method is expensive
 and do not call it repeatedly. This method is intended for decoding 2D barcodes and may or
 may not apply sharpening. Therefore, a row from this matrix may not be identical to one
@@ -756,6 +768,7 @@ fetched using getBlackRow(), so don't mix and match between them.</p>
 
     <div class="phpdocumentor-label-line">
         </div>
+    
         <section class="phpdocumentor-description"><p>See the following thread for a discussion of this algorithm:</p>
 </section>
 
@@ -845,6 +858,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <div class="phpdocumentor-label-line">
         </div>
     
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -912,6 +926,7 @@ on the last pixels in the row/column which are also used in the previous block).
 
     <div class="phpdocumentor-label-line">
         </div>
+    
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -990,6 +1005,7 @@ on the last pixels in the row/column which are also used in the previous block).
     <div class="phpdocumentor-label-line">
         </div>
     
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -1051,6 +1067,7 @@ on the last pixels in the row/column which are also used in the previous block).
 
     <div class="phpdocumentor-label-line">
         </div>
+    
     
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
@@ -1193,34 +1210,34 @@ on the last pixels in the row/column which are also used in the previous block).
                             <li class="phpdocumentor-on-this-page-section__title">Constants</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE">BLOCK_SIZE</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE_MASK">BLOCK_SIZE_MASK</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE_POWER">BLOCK_SIZE_POWER</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_LUMINANCE_BUCKETS">LUMINANCE_BUCKETS</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_LUMINANCE_SHIFT">LUMINANCE_SHIFT</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_MIN_DYNAMIC_RANGE">MIN_DYNAMIC_RANGE</a></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_MINIMUM_DIMENSION">MINIMUM_DIMENSION</a></li>
+                                                    <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE">BLOCK_SIZE</a></li>
+                                                    <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE_MASK">BLOCK_SIZE_MASK</a></li>
+                                                    <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_BLOCK_SIZE_POWER">BLOCK_SIZE_POWER</a></li>
+                                                    <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_LUMINANCE_BUCKETS">LUMINANCE_BUCKETS</a></li>
+                                                    <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_LUMINANCE_SHIFT">LUMINANCE_SHIFT</a></li>
+                                                    <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_MIN_DYNAMIC_RANGE">MIN_DYNAMIC_RANGE</a></li>
+                                                    <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#constant_MINIMUM_DIMENSION">MINIMUM_DIMENSION</a></li>
                                             </ul>
                 </li>
             
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#property_luminances">$luminances<a href="classes/chillerlan-QRCode-Decoder-Binarizer.html"></li>
-                                                    <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#property_source">$source<a href="classes/chillerlan-QRCode-Decoder-Binarizer.html"></li>
+                                                    <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#property_luminances">$luminances</li>
+                                                    <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#property_source">$source</li>
                                             </ul>
                 </li>
             
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method___construct">__construct()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getBlackMatrix">getBlackMatrix()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_calculateBlackPoints">calculateBlackPoints()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_calculateThresholdForBlock">calculateThresholdForBlock()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_cap">cap()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_estimateBlackPoint">estimateBlackPoint()</a></li>
-                                            <li><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getHistogramBlackMatrix">getHistogramBlackMatrix()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method___construct">__construct()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getBlackMatrix">getBlackMatrix()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_calculateBlackPoints">calculateBlackPoints()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_calculateThresholdForBlock">calculateThresholdForBlock()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_cap">cap()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_estimateBlackPoint">estimateBlackPoint()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCode-Decoder-Binarizer.html#method_getHistogramBlackMatrix">getHistogramBlackMatrix()</a></li>
                                     </ul>
             </li>
                     </ul>
