@@ -110,12 +110,12 @@ class QRMatrix{
 	/**
 	 * the matrix version - always set in QRMatrix, may be null in BitMatrix
 	 */
-	protected ?Version $version = null;
+	protected Version|null $version = null;
 
 	/**
 	 * the current ECC level - always set in QRMatrix, may be null in BitMatrix
 	 */
-	protected ?EccLevel $eccLevel = null;
+	protected EccLevel|null $eccLevel = null;
 
 	/**
 	 * the mask pattern that was used in the most recent operation, set via:
@@ -124,7 +124,7 @@ class QRMatrix{
 	 * - QRMatrix::mask()
 	 * - BitMatrix::readFormatInformation()
 	 */
-	protected ?MaskPattern $maskPattern = null;
+	protected MaskPattern|null $maskPattern = null;
 
 	/**
 	 * the size (side length) of the matrix, including quiet zone (if created)
@@ -175,7 +175,7 @@ class QRMatrix{
 	 *
 	 * @return int[][]|bool[][]
 	 */
-	public function getMatrix(bool $boolean = null):array{
+	public function getMatrix(bool|null $boolean = null):array{
 
 		if($boolean !== true){
 			return $this->matrix;
@@ -193,21 +193,21 @@ class QRMatrix{
 	/**
 	 * Returns the current version number
 	 */
-	public function getVersion():?Version{
+	public function getVersion():Version|null{
 		return $this->version;
 	}
 
 	/**
 	 * Returns the current ECC level
 	 */
-	public function getEccLevel():?EccLevel{
+	public function getEccLevel():EccLevel|null{
 		return $this->eccLevel;
 	}
 
 	/**
 	 * Returns the current mask pattern
 	 */
-	public function getMaskPattern():?MaskPattern{
+	public function getMaskPattern():MaskPattern|null{
 		return $this->maskPattern;
 	}
 
@@ -342,7 +342,7 @@ class QRMatrix{
 	 *   7 # 3
 	 *   6 5 4
 	 */
-	public function checkNeighbours(int $x, int $y, int $M_TYPE = null):int{
+	public function checkNeighbours(int $x, int $y, int|null $M_TYPE = null):int{
 		$bits = 0;
 
 		foreach($this::neighbours as $bit => [$ix, $iy]){
@@ -507,7 +507,7 @@ class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 8.9
 	 */
-	public function setFormatInfo(MaskPattern $maskPattern = null):static{
+	public function setFormatInfo(MaskPattern|null $maskPattern = null):static{
 		$this->maskPattern = $maskPattern;
 		$bits              = 0; // sets all format fields to false (test mode)
 
@@ -633,7 +633,7 @@ class QRMatrix{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function setLogoSpace(int $width, int $height = null, int $startX = null, int $startY = null):static{
+	public function setLogoSpace(int $width, int|null $height = null, int|null $startX = null, int|null $startY = null):static{
 		$height ??= $width;
 
 		// if width and height happen to be negative or 0 (default value), just return - nothing to do

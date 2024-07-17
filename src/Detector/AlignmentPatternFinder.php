@@ -58,7 +58,7 @@ final class AlignmentPatternFinder{
 	 *
 	 * @return \chillerlan\QRCode\Detector\AlignmentPattern|null
 	 */
-	public function find(int $startX, int $startY, int $width, int $height):?AlignmentPattern{
+	public function find(int $startX, int $startY, int $width, int $height):AlignmentPattern|null{
 		$maxJ       = ($startX + $width);
 		$middleI    = ($startY + ($height / 2));
 		$stateCount = [];
@@ -173,7 +173,7 @@ final class AlignmentPatternFinder{
 	 *
 	 * @return \chillerlan\QRCode\Detector\AlignmentPattern|null if we have found the same pattern twice, or null if not
 	 */
-	private function handlePossibleCenter(array $stateCount, int $i, int $j):?AlignmentPattern{
+	private function handlePossibleCenter(array $stateCount, int $i, int $j):AlignmentPattern|null{
 		$stateCountTotal = ($stateCount[0] + $stateCount[1] + $stateCount[2]);
 		$centerJ         = $this->centerFromEnd($stateCount, $j);
 		$centerI         = $this->crossCheckVertical($i, (int)$centerJ, (2 * $stateCount[1]), $stateCountTotal);
@@ -222,7 +222,7 @@ final class AlignmentPatternFinder{
 	 *
 	 * @return float|null vertical center of alignment pattern, or null if not found
 	 */
-	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):?float{
+	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):float|null{
 		$maxI          = $this->matrix->getSize();
 		$stateCount    = [];
 		$stateCount[0] = 0;

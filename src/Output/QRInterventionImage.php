@@ -85,7 +85,7 @@ class QRInterventionImage extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	public function dump(string $file = null):string|ImageInterface{
+	public function dump(string|null $file = null):string|ImageInterface{
 		[$width, $height] = $this->getOutputDimensions();
 
 		$this->image = $this->manager->create($width, $height);

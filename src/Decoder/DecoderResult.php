@@ -41,7 +41,7 @@ final class DecoderResult{
 	/**
 	 * DecoderResult constructor.
 	 */
-	public function __construct(iterable $properties = null){
+	public function __construct(iterable|null $properties = null){
 
 		if(!empty($properties)){
 

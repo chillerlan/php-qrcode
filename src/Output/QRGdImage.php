@@ -144,7 +144,7 @@ abstract class QRGdImage extends QROutputAbstract{
 	 *
 	 * @throws \ErrorException
 	 */
-	public function dump(string $file = null):string|GdImage{
+	public function dump(string|null $file = null):string|GdImage{
 
 		set_error_handler(function(int $errno, string $errstr):bool{
 			throw new ErrorException($errstr, $errno);

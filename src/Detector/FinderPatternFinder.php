@@ -330,7 +330,7 @@ final class FinderPatternFinder{
 	 * @return float|null vertical center of finder pattern, or null if not found
 	 * @noinspection DuplicatedCode
 	 */
-	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):?float{
+	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):float|null{
 		$maxI       = $this->matrix->getSize();
 		$stateCount = $this->getCrossCheckStateCount();
 
@@ -414,7 +414,7 @@ final class FinderPatternFinder{
 	 * check a vertical cross-check and locate the real center of the alignment pattern.
 	 * @noinspection DuplicatedCode
 	 */
-	private function crossCheckHorizontal(int $startJ, int $centerI, int $maxCount, int $originalStateCountTotal):?float{
+	private function crossCheckHorizontal(int $startJ, int $centerI, int $maxCount, int $originalStateCountTotal):float|null{
 		$maxJ       = $this->matrix->getSize();
 		$stateCount = $this->getCrossCheckStateCount();
 

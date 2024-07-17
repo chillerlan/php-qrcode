@@ -29,8 +29,8 @@ class QRFpdf extends QROutputAbstract{
 
 	final public const MIME_TYPE = 'application/pdf';
 
-	protected FPDF   $fpdf;
-	protected ?array $prevColor = null;
+	protected FPDF       $fpdf;
+	protected array|null $prevColor = null;
 
 	/**
 	 * QRFpdf constructor.
@@ -64,7 +64,7 @@ class QRFpdf extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	public function dump(string $file = null, FPDF $fpdf = null):string|FPDF{
+	public function dump(string|null $file = null, FPDF|null $fpdf = null):string|FPDF{
 		$this->fpdf = ($fpdf ?? $this->initFPDF());
 
 		if($this::moduleValueIsValid($this->options->bgColor)){

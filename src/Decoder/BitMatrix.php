@@ -251,7 +251,7 @@ final class BitMatrix extends QRMatrix{
 	/**
 	 * Returns information about the format it specifies, or null if it doesn't seem to match any known pattern
 	 */
-	private function doDecodeFormatInformation(int $maskedFormatInfo1, int $maskedFormatInfo2):?int{
+	private function doDecodeFormatInformation(int $maskedFormatInfo1, int $maskedFormatInfo2):int|null{
 		$bestDifference = PHP_INT_MAX;
 		$bestFormatInfo = 0;
 
@@ -347,7 +347,7 @@ final class BitMatrix extends QRMatrix{
 	/**
 	 * Decodes the version information from the given bit sequence, returns null if no valid match is found.
 	 */
-	private function decodeVersionInformation(int $versionBits):?Version{
+	private function decodeVersionInformation(int $versionBits):Version|null{
 		$bestDifference = PHP_INT_MAX;
 		$bestVersion    = 0;
 
@@ -414,7 +414,7 @@ final class BitMatrix extends QRMatrix{
 	 * @codeCoverageIgnore
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function setQuietZone(int $quietZoneSize = null):static{
+	public function setQuietZone(int|null $quietZoneSize = null):static{
 		throw new QRCodeDataException('not supported');
 	}
 
@@ -422,7 +422,7 @@ final class BitMatrix extends QRMatrix{
 	 * @codeCoverageIgnore
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function setLogoSpace(int $width, int $height = null, int $startX = null, int $startY = null):static{
+	public function setLogoSpace(int $width, int|null $height = null, int|null $startX = null, int|null $startY = null):static{
 		throw new QRCodeDataException('not supported');
 	}
 

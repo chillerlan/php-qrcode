@@ -47,7 +47,7 @@ class SVGConvert extends QRMarkupSVG{
 	}
 
 	/** @inheritDoc */
-	public function dump(string $file = null):string{
+	public function dump(string|null $file = null):string{
 		$base64 = $this->options->outputBase64;
 		// we don't want the SVG in base64
 		$this->options->outputBase64 = false;

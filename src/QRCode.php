@@ -77,7 +77,7 @@ class QRCode{
 	/**
 	 * Renders a QR Code for the given $data and QROptions, saves $file optionally
 	 */
-	public function render(string $data = null, string $file = null):mixed{
+	public function render(string|null $data = null, string|null $file = null):mixed{
 
 		if($data !== null){
 			/** @var \chillerlan\QRCode\Data\QRDataModeInterface $dataInterface */
@@ -97,7 +97,7 @@ class QRCode{
 	/**
 	 * Renders a QR Code for the given QRMatrix and QROptions, saves $file optionally
 	 */
-	public function renderMatrix(QRMatrix $matrix, string $file = null):mixed{
+	public function renderMatrix(QRMatrix $matrix, string|null $file = null):mixed{
 		return $this->initOutputInterface($matrix)->dump($file ?? $this->options->cachefile);
 	}
 

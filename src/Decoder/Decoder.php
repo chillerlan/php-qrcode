@@ -31,9 +31,9 @@ final class Decoder{
 	 * @var \chillerlan\QRCode\QROptions|\chillerlan\Settings\SettingsContainerInterface
 	 */
 	private SettingsContainerInterface|QROptions   $options;
-	private ?Version                               $version     = null;
-	private ?EccLevel                              $eccLevel    = null;
-	private ?MaskPattern                           $maskPattern = null;
+	private Version|null                           $version     = null;
+	private EccLevel|null                          $eccLevel    = null;
+	private MaskPattern|null                       $maskPattern = null;
 	private BitBuffer                              $bitBuffer;
 
 	public function __construct(SettingsContainerInterface|QROptions $options = new QROptions){

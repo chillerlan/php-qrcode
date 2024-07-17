@@ -257,7 +257,7 @@ final class Version{
 	/**
 	 * the version pattern for the given version
 	 */
-	public function getVersionPattern():?int{
+	public function getVersionPattern():int|null{
 		return (self::VERSION_PATTERN[$this->version] ?? null);
 	}
 

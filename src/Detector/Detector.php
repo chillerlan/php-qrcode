@@ -275,7 +275,7 @@ final class Detector{
 		int $estAlignmentX,
 		int $estAlignmentY,
 		float $allowanceFactor
-	):?AlignmentPattern{
+	):AlignmentPattern|null{
 		// Look for an alignment pattern (3 modules in size) around where it should be
 		$dimension           = $this->matrix->getSize();
 		$allowance           = (int)($allowanceFactor * $overallEstModuleSize);
@@ -305,11 +305,11 @@ final class Detector{
 	 *
 	 */
 	private function createTransform(
-		FinderPattern    $nw,
-		FinderPattern    $ne,
-		FinderPattern    $sw,
-		int              $size,
-		AlignmentPattern $ap = null
+		FinderPattern         $nw,
+		FinderPattern         $ne,
+		FinderPattern         $sw,
+		int                   $size,
+		AlignmentPattern|null $ap = null
 	):PerspectiveTransform{
 		$dimMinusThree = ($size - 3.5);
 

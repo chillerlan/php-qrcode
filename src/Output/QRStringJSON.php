@@ -34,7 +34,7 @@ class QRStringJSON extends QROutputAbstract{
 	 * @inheritDoc
 	 * @throws \JsonException
 	 */
-	public function dump(string $file = null):string{
+	public function dump(string|null $file = null):string{
 		[$width, $height] = $this->getOutputDimensions();
 		$version   = $this->matrix->getVersion();
 		$dimension = $version->getDimension();

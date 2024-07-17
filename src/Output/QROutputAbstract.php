@@ -180,7 +180,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	/**
 	 * Returns a base64 data URI for the given string and mime type
 	 */
-	protected function toBase64DataURI(string $data, string $mime = null):string{
+	protected function toBase64DataURI(string $data, string|null $mime = null):string{
 		return sprintf('data:%s;base64,%s', ($mime ?? static::MIME_TYPE), base64_encode($data));
 	}
 
@@ -192,7 +192,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function saveToFile(string $data, string $file = null):void{
+	protected function saveToFile(string $data, string|null $file = null):void{
 
 		if($file === null){
 			return;

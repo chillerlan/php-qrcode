@@ -129,6 +129,6 @@ interface QROutputInterface{
 	 *
 	 * @see \chillerlan\QRCode\QRCode::renderMatrix()
 	 */
-	public function dump(string $file = null):mixed;
+	public function dump(string|null $file = null):mixed;
 
 }

@@ -125,7 +125,7 @@ trait QROptionsTrait{
 	 * @see \chillerlan\QRCode\QRCode::render()
 	 * @see \chillerlan\QRCode\QRCode::renderMatrix()
 	 */
-	protected ?string $cachefile = null;
+	protected string|null $cachefile = null;
 
 	/**
 	 * Toggle base64 data URI or raw data output (if applicable)
@@ -249,24 +249,24 @@ trait QROptionsTrait{
 	 *
 	 * if only `QROptions::$logoSpaceWidth` is given, the logo space is assumed a square of that size
 	 */
-	protected ?int $logoSpaceWidth = null;
+	protected int|null $logoSpaceWidth = null;
 
 	/**
 	 * Height of the logo space
 	 *
 	 * if only `QROptions::$logoSpaceHeight` is given, the logo space is assumed a square of that size
 	 */
-	protected ?int $logoSpaceHeight = null;
+	protected int|null $logoSpaceHeight = null;
 
 	/**
 	 * Optional horizontal start position of the logo space (top left corner)
 	 */
-	protected ?int $logoSpaceStartX = null;
+	protected int|null $logoSpaceStartX = null;
 
 	/**
 	 * Optional vertical start position of the logo space (top left corner)
 	 */
-	protected ?int $logoSpaceStartY = null;
+	protected int|null $logoSpaceStartY = null;
 
 
 	/*
@@ -431,7 +431,7 @@ trait QROptionsTrait{
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/XSLT
 	 */
-	protected ?string $xmlStylesheet = null;
+	protected string|null $xmlStylesheet = null;
 
 
 	/**
@@ -517,7 +517,7 @@ trait QROptionsTrait{
 	/**
 	 * clamp the logo space values between 0 and maximum length (177 modules at version 40)
 	 */
-	protected function clampLogoSpaceValue(?int $value):?int{
+	protected function clampLogoSpaceValue(int|null $value):int|null{
 
 		if($value === null){
 			return null;
@@ -529,28 +529,28 @@ trait QROptionsTrait{
 	/**
 	 * clamp/set logo space width
 	 */
-	protected function set_logoSpaceWidth(?int $value):void{
+	protected function set_logoSpaceWidth(int|null $value):void{
 		$this->logoSpaceWidth = $this->clampLogoSpaceValue($value);
 	}
 
 	/**
 	 * clamp/set logo space height
 	 */
-	protected function set_logoSpaceHeight(?int $value):void{
+	protected function set_logoSpaceHeight(int|null $value):void{
 		$this->logoSpaceHeight = $this->clampLogoSpaceValue($value);
 	}
 
 	/**
 	 * clamp/set horizontal logo space start
 	 */
-	protected function set_logoSpaceStartX(?int $value):void{
+	protected function set_logoSpaceStartX(int|null $value):void{
 		$this->logoSpaceStartX = $this->clampLogoSpaceValue($value);
 	}
 
 	/**
 	 * clamp/set vertical logo space start
 	 */
-	protected function set_logoSpaceStartY(?int $value):void{
+	protected function set_logoSpaceStartY(int|null $value):void{
 		$this->logoSpaceStartY = $this->clampLogoSpaceValue($value);
 	}
 

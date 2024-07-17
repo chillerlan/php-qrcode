@@ -30,7 +30,7 @@ class QRImageWithLogo extends QRGdImagePNG{
 	 * @return string
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	public function dump(string $file = null, string $logo = null):string{
+	public function dump(string|null $file = null, string|null $logo = null):string{
 		// set returnResource to true to skip further processing for now
 		$this->options->returnResource = true;
 

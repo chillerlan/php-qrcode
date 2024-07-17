@@ -118,7 +118,7 @@ final class ECICharset{
 	 * @see \mb_convert_encoding()
 	 * @see \iconv()
 	 */
-	public function getName():?string{
+	public function getName():string|null{
 		return (self::MB_ENCODINGS[$this->charsetID] ?? null);
 	}
 
