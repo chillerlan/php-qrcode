@@ -20,9 +20,15 @@ abstract class QRMarkup extends QROutputAbstract{
 	 * @inheritDoc
 	 */
 	public function dump(string $file = null):string{
-		$data = $this->createMarkup($file !== null);
+		$saveToFile = $file !== null;
+		$data       = $this->createMarkup($saveToFile);
 
 		$this->saveToFile($data, $file);
+
+		// transform to data URI only when not saving to file
+		if(!$saveToFile && $this->options->outputBase64){
+			return $this->toBase64DataURI($data);
+		}
 
 		return $data;
 	}

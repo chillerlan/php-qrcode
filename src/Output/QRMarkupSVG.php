@@ -83,11 +83,6 @@ class QRMarkupSVG extends QRMarkup{
 		// close svg
 		$svg .= sprintf('%1$s</svg>%1$s', $this->eol);
 
-		// transform to data URI only when not saving to file
-		if(!$saveToFile && $this->options->outputBase64){
-			return $this->toBase64DataURI($svg);
-		}
-
 		return $svg;
 	}
 

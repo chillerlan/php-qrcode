@@ -61,11 +61,6 @@ class QRMarkupXML extends QRMarkup{
 
 		$xml = $this->dom->saveXML();
 
-		// transform to data URI only when not saving to file
-		if(!$saveToFile && $this->options->outputBase64){
-			return $this->toBase64DataURI($xml);
-		}
-
 		return $xml;
 	}
 
