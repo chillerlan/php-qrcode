@@ -19,7 +19,7 @@ require_once __DIR__.'/../vendor/autoload.php';
  *
  * @codeCoverageIgnore
  */
-function ansi8(string $str, int $color, bool $background = null):string{
+function ansi8(string $str, int $color, ?bool $background = null):string{
 	$color      = max(0, min($color, 255));
 	$background = ($background === true) ? 48 : 38;
 

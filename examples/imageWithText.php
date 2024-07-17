@@ -24,7 +24,7 @@ class QRImageWithText extends QRImage{
 	 *
 	 * @return string
 	 */
-	public function dump(string $file = null, string $text = null):string{
+	public function dump(?string $file = null, ?string $text = null):string{
 		// set returnResource to true to skip further processing for now
 		$this->options->returnResource = true;
 

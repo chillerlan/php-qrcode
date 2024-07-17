@@ -70,7 +70,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	/**
 	 * QRDataInterface constructor.
 	 */
-	public function __construct(SettingsContainerInterface $options, string $data = null){
+	public function __construct(SettingsContainerInterface $options, ?string $data = null){
 		$this->options = $options;
 
 		if($data !== null){
@@ -100,7 +100,7 @@ abstract class QRDataAbstract implements QRDataInterface{
 	/**
 	 * @inheritDoc
 	 */
-	public function initMatrix(int $maskPattern, bool $test = null):QRMatrix{
+	public function initMatrix(int $maskPattern, ?bool $test = null):QRMatrix{
 		return (new QRMatrix($this->version, $this->options->eccLevel))
 			->init($maskPattern, $test)
 			->mapData($this->maskECC(), $maskPattern)

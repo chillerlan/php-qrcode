@@ -167,7 +167,7 @@ class QRCode{
 	 *
 	 * Sets the options instance, determines the current mb-encoding and sets it to UTF-8
 	 */
-	public function __construct(SettingsContainerInterface $options = null){
+	public function __construct(?SettingsContainerInterface $options = null){
 		$this->options = $options ?? new QROptions;
 	}
 
@@ -176,7 +176,7 @@ class QRCode{
 	 *
 	 * @return mixed
 	 */
-	public function render(string $data, string $file = null){
+	public function render(string $data, ?string $file = null){
 		return $this->initOutputInterface($data)->dump($file);
 	}
 

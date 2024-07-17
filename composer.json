@@ -26,14 +26,14 @@
 	"require": {
 		"php": "^7.4 || ^8.0",
 		"ext-mbstring": "*",
-		"chillerlan/php-settings-container": "^2.1.4 || ^3.1"
+		"chillerlan/php-settings-container": "^2.1.6 || ^3.2.1"
 	},
 	"require-dev": {
 		"phan/phan": "^5.4",
 		"phpmd/phpmd": "^2.15",
 		"phpunit/phpunit": "^9.6",
 		"setasign/fpdf": "^1.8.2",
-		"squizlabs/php_codesniffer": "^3.8"
+		"squizlabs/php_codesniffer": "^3.10"
 	},
 	"suggest": {
 		"chillerlan/php-authenticator": "Yet another Google authenticator! Also creates URIs for mobile apps.",

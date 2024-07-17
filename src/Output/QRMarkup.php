@@ -53,7 +53,7 @@ class QRMarkup extends QROutputAbstract{
 	/**
 	 * HTML output
 	 */
-	protected function html(string $file = null):string{
+	protected function html(?string $file = null):string{
 
 		$html = empty($this->options->cssClass)
 			? '<div>'
@@ -89,7 +89,7 @@ class QRMarkup extends QROutputAbstract{
 	 *
 	 * @see https://github.com/codemasher/php-qrcode/pull/5
 	 */
-	protected function svg(string $file = null):string{
+	protected function svg(?string $file = null):string{
 		$matrix = $this->matrix->matrix();
 
 		$svg = sprintf($this->svgHeader, $this->options->cssClass, $this->options->svgViewBoxSize ?? $this->moduleCount)

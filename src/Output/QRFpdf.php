@@ -68,7 +68,7 @@ class QRFpdf extends QROutputAbstract{
 	 *
 	 * @return string|\FPDF
 	 */
-	public function dump(string $file = null){
+	public function dump(?string $file = null){
 		$file ??= $this->options->cachefile;
 
 		$fpdf = new FPDF('P', $this->options->fpdfMeasureUnit, [$this->length, $this->length]);

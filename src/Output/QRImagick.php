@@ -67,7 +67,7 @@ class QRImagick extends QROutputAbstract{
 	 *
 	 * @return string|\Imagick
 	 */
-	public function dump(string $file = null){
+	public function dump(?string $file = null){
 		$file ??= $this->options->cachefile;
 		$this->imagick = new Imagick;
 

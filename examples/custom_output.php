@@ -19,7 +19,7 @@ class MyCustomOutput extends QROutputAbstract{
 		// TODO: Implement setModuleValues() method.
 	}
 
-	public function dump(string $file = null){
+	public function dump(?string $file = null){
 
 		$output = '';
 

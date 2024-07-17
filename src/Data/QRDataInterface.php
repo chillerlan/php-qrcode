@@ -195,6 +195,6 @@ interface QRDataInterface{
 	/**
 	 * returns a fresh matrix object with the data written for the given $maskPattern
 	 */
-	public function initMatrix(int $maskPattern, bool $test = null):QRMatrix;
+	public function initMatrix(int $maskPattern, ?bool $test = null):QRMatrix;
 
 }

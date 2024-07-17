@@ -94,7 +94,7 @@ class QRImage extends QROutputAbstract{
 	 *
 	 * @phan-suppress PhanUndeclaredTypeReturnType, PhanTypeMismatchReturn
 	 */
-	public function dump(string $file = null){
+	public function dump(?string $file = null){
 		$file ??= $this->options->cachefile;
 
 		$this->image = imagecreatetruecolor($this->length, $this->length);
