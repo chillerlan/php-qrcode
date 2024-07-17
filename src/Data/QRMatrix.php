@@ -349,7 +349,7 @@ class QRMatrix{
 			$ix += $x;
 			$iy += $y;
 
-			// $M_TYPE is given, skip if the field is not the same type
+			// check if the field is the same type
 			if($M_TYPE !== null && !$this->checkType($ix, $iy, $M_TYPE)){
 				continue;
 			}

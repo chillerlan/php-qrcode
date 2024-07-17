@@ -77,7 +77,7 @@ final class MaskPattern{
 	 */
 	public function __construct(int $maskPattern){
 
-		if((0b111 & $maskPattern) !== $maskPattern){
+		if(($maskPattern & 0b111) !== $maskPattern){
 			throw new QRCodeException('invalid mask pattern');
 		}
 
