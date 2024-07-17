@@ -27,7 +27,7 @@ final class FinderPattern extends ResultPoint{
 	/**
 	 *
 	 */
-	public function __construct(float $posX, float $posY, float $estimatedModuleSize, int $count = null){
+	public function __construct(float $posX, float $posY, float $estimatedModuleSize, ?int $count = null){
 		parent::__construct($posX, $posY, $estimatedModuleSize);
 
 		$this->count = ($count ?? 1);

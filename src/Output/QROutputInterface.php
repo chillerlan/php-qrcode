@@ -221,6 +221,6 @@ interface QROutputInterface{
 	 *
 	 * @return mixed
 	 */
-	public function dump(string $file = null);
+	public function dump(?string $file = null);
 
 }

@@ -43,7 +43,7 @@ final class ECICharsetTest extends TestCase{
 	/**
 	 * @dataProvider encodingProvider
 	 */
-	public function testGetName(int $id, string $name = null):void{
+	public function testGetName(int $id, ?string $name = null):void{
 		$eciCharset = new ECICharset($id);
 
 		$this::assertSame($id, $eciCharset->getID());

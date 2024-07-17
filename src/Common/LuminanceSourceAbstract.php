@@ -34,7 +34,7 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 	/**
 	 *
 	 */
-	public function __construct(int $width, int $height, SettingsContainerInterface $options = null){
+	public function __construct(int $width, int $height, ?SettingsContainerInterface $options = null){
 		$this->width   = $width;
 		$this->height  = $height;
 		$this->options = ($options ?? new QROptions);

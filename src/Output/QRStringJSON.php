@@ -25,7 +25,7 @@ class QRStringJSON extends QROutputAbstract{
 	 * @inheritDoc
 	 * @throws \JsonException
 	 */
-	public function dump(string $file = null):string{
+	public function dump(?string $file = null):string{
 		$matrix = $this->matrix->getMatrix($this->options->jsonAsBooleans);
 		$data   = json_encode($matrix, $this->options->jsonFlags);;
 

@@ -112,7 +112,7 @@ class QRImagick extends QROutputAbstract{
 	 *
 	 * @return string|\Imagick
 	 */
-	public function dump(string $file = null){
+	public function dump(?string $file = null){
 		$this->setBgColor();
 
 		$this->imagick = $this->createImage();

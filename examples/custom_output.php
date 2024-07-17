@@ -49,7 +49,7 @@ class MyCustomOutput extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	public function dump(string $file = null):string{
+	public function dump(?string $file = null):string{
 		$output = '';
 
 		for($y = 0; $y < $this->moduleCount; $y++){

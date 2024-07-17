@@ -28,7 +28,7 @@ class IMagickLuminanceSource extends LuminanceSourceAbstract{
 	/**
 	 * IMagickLuminanceSource constructor.
 	 */
-	public function __construct(Imagick $imagick, SettingsContainerInterface $options = null){
+	public function __construct(Imagick $imagick, ?SettingsContainerInterface $options = null){
 		parent::__construct($imagick->getImageWidth(), $imagick->getImageHeight(), $options);
 
 		$this->imagick = $imagick;
@@ -63,12 +63,12 @@ class IMagickLuminanceSource extends LuminanceSourceAbstract{
 	}
 
 	/** @inheritDoc */
-	public static function fromFile(string $path, SettingsContainerInterface $options = null):self{
+	public static function fromFile(string $path, ?SettingsContainerInterface $options = null):self{
 		return new self(new Imagick(self::checkFile($path)), $options);
 	}
 
 	/** @inheritDoc */
-	public static function fromBlob(string $blob, SettingsContainerInterface $options = null):self{
+	public static function fromBlob(string $blob, ?SettingsContainerInterface $options = null):self{
 		$im = new Imagick;
 		$im->readImageBlob($blob);
 

@@ -43,7 +43,7 @@ class QRStringText extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	public function dump(string $file = null):string{
+	public function dump(?string $file = null):string{
 		$lines     = [];
 		$linestart = $this->options->textLineStart;
 
@@ -66,7 +66,7 @@ class QRStringText extends QROutputAbstract{
 	 *
 	 * @codeCoverageIgnore
 	 */
-	public static function ansi8(string $str, int $color, bool $background = null):string{
+	public static function ansi8(string $str, int $color, ?bool $background = null):string{
 		$color      = max(0, min($color, 255));
 		$background = ($background === true) ? 48 : 38;
 

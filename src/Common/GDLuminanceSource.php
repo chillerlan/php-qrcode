@@ -38,7 +38,7 @@ class GDLuminanceSource extends LuminanceSourceAbstract{
 	 *
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
-	public function __construct($gdImage, SettingsContainerInterface $options = null){
+	public function __construct($gdImage, ?SettingsContainerInterface $options = null){
 
 		/** @noinspection PhpFullyQualifiedNameUsageInspection */
 		if(
@@ -85,12 +85,12 @@ class GDLuminanceSource extends LuminanceSourceAbstract{
 	}
 
 	/** @inheritDoc */
-	public static function fromFile(string $path, SettingsContainerInterface $options = null):self{
+	public static function fromFile(string $path, ?SettingsContainerInterface $options = null):self{
 		return new self(imagecreatefromstring(file_get_contents(self::checkFile($path))), $options);
 	}
 
 	/** @inheritDoc */
-	public static function fromBlob(string $blob, SettingsContainerInterface $options = null):self{
+	public static function fromBlob(string $blob, ?SettingsContainerInterface $options = null):self{
 		return new self(imagecreatefromstring($blob), $options);
 	}
 

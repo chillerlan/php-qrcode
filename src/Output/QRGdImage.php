@@ -179,7 +179,7 @@ class QRGdImage extends QROutputAbstract{
 	 * @phan-suppress PhanUndeclaredTypeReturnType, PhanTypeMismatchReturn
 	 * @throws \ErrorException
 	 */
-	public function dump(string $file = null){
+	public function dump(?string $file = null){
 
 		set_error_handler(function(int $errno, string $errstr):bool{
 			throw new ErrorException($errstr, $errno);

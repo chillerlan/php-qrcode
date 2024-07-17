@@ -182,7 +182,7 @@ class QRCode{
 	 *
 	 * PHP8: accept iterable
 	 */
-	public function __construct(SettingsContainerInterface $options = null){
+	public function __construct(?SettingsContainerInterface $options = null){
 		$this->setOptions(($options ?? new QROptions));
 	}
 
@@ -209,7 +209,7 @@ class QRCode{
 	 *
 	 * @return mixed
 	 */
-	public function render(string $data = null, string $file = null){
+	public function render(?string $data = null, ?string $file = null){
 
 		if($data !== null){
 			/** @var \chillerlan\QRCode\Data\QRDataModeInterface $dataInterface */
@@ -231,7 +231,7 @@ class QRCode{
 	 *
 	 * @return mixed
 	 */
-	public function renderMatrix(QRMatrix $matrix, string $file = null){
+	public function renderMatrix(QRMatrix $matrix, ?string $file = null){
 		return $this->initOutputInterface($matrix)->dump($file ?? $this->options->cachefile);
 	}
 

@@ -152,7 +152,7 @@ final class PerspectiveTransform{
 	/**
 	 * @return array[] [$xValues, $yValues]
 	 */
-	public function transformPoints(array $xValues, array $yValues = null):array{
+	public function transformPoints(array $xValues, ?array $yValues = null):array{
 		$max = count($xValues);
 
 		if($yValues !== null){ // unused

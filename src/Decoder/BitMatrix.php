@@ -415,7 +415,7 @@ final class BitMatrix extends QRMatrix{
 	 * @codeCoverageIgnore
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function setQuietZone(int $quietZoneSize = null):self{
+	public function setQuietZone(?int $quietZoneSize = null):self{
 		throw new QRCodeDataException('not supported');
 	}
 
@@ -423,7 +423,7 @@ final class BitMatrix extends QRMatrix{
 	 * @codeCoverageIgnore
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function setLogoSpace(int $width, int $height = null, int $startX = null, int $startY = null):self{
+	public function setLogoSpace(int $width, ?int $height = null, ?int $startX = null, ?int $startY = null):self{
 		throw new QRCodeDataException('not supported');
 	}
 

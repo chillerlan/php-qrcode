@@ -35,7 +35,7 @@ final class GenericGFPoly{
 	 * @throws \chillerlan\QRCode\QRCodeException if argument is null or empty, or if leading coefficient is 0 and this
 	 *                                            is not a constant polynomial (that is, it is not the monomial "0")
 	 */
-	public function __construct(array $coefficients, int $degree = null){
+	public function __construct(array $coefficients, ?int $degree = null){
 		$degree ??= 0;
 
 		if(empty($coefficients)){

@@ -305,11 +305,11 @@ final class Detector{
 	 *
 	 */
 	private function createTransform(
-		FinderPattern    $nw,
-		FinderPattern    $ne,
-		FinderPattern    $sw,
-		int              $size,
-		AlignmentPattern $ap = null
+		FinderPattern     $nw,
+		FinderPattern     $ne,
+		FinderPattern     $sw,
+		int               $size,
+		?AlignmentPattern $ap = null
 	):PerspectiveTransform{
 		$dimMinusThree = ($size - 3.5);
 

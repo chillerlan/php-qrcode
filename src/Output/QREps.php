@@ -103,7 +103,7 @@ class QREps extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 */
-	public function dump(string $file = null):string{
+	public function dump(?string $file = null):string{
 		[$width, $height] = $this->getOutputDimensions();
 
 		$eps = [

@@ -121,7 +121,7 @@ class QRFpdf extends QROutputAbstract{
 	 *
 	 * @return string|\FPDF
 	 */
-	public function dump(string $file = null, FPDF $fpdf = null){
+	public function dump(?string $file = null, ?FPDF $fpdf = null){
 		$this->fpdf = ($fpdf ?? $this->initFPDF());
 
 		if($this::moduleValueIsValid($this->options->bgColor)){
