@@ -163,6 +163,8 @@ abstract class QRGdImage extends QROutputAbstract{
 			// scale down to the expected size
 			$this->image    = imagescale($this->image, ($this->length / 10), ($this->length / 10));
 			$this->upscaled = false;
+			// Reset scaled and length values after rescaling image to prevent issues with subclasses that use the output from dump()
+			$this->setMatrixDimensions();
 		}
 
 		// set transparency after scaling, otherwise it would be undone
