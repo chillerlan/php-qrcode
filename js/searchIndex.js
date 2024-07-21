@@ -2461,6 +2461,11 @@ Search.appendIndex(
             "summary": "Generates\u0020the\u0020output,\u0020optionally\u0020dumps\u0020it\u0020to\u0020a\u0020file,\u0020and\u0020returns\u0020it",
             "url": "classes/chillerlan-QRCode-Output-QREps.html#method_dump"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QREps\u003A\u003Aheader\u0028\u0029",
+            "name": "header",
+            "summary": "Returns\u0020the\u0020main\u0020header\u0020for\u0020the\u0020EPS\u0020file,\u0020including\u0020function\u0020definitions\u0020and\u0020background",
+            "url": "classes/chillerlan-QRCode-Output-QREps.html#method_header"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QREps\u003A\u003Amodule\u0028\u0029",
             "name": "module",
             "summary": "Returns\u0020a\u0020path\u0020segment\u0020for\u0020a\u0020single\u0020module",
