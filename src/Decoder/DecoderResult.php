@@ -40,6 +40,8 @@ final class DecoderResult{
 
 	/**
 	 * DecoderResult constructor.
+	 *
+	 * @phpstan-param array<string, mixed> $properties
 	 */
 	public function __construct(iterable|null $properties = null){
 

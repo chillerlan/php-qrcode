@@ -26,6 +26,8 @@ final class NumberTest extends DataInterfaceTestAbstract{
 
 	/**
 	 * isNumber() should pass on any number and fail on anything else
+	 *
+	 * @phpstan-return array<int, array{0: string, 1: bool}>
 	 */
 	public static function stringValidateProvider():array{
 		return [

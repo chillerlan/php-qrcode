@@ -22,7 +22,7 @@ final class ReedSolomonEncoder{
 
 	private Version  $version;
 	private EccLevel $eccLevel;
-
+	/** @var int[] */
 	private array    $interleavedData;
 	private int      $interleavedDataIndex;
 
@@ -37,6 +37,7 @@ final class ReedSolomonEncoder{
 	/**
 	 * ECC encoding and interleaving
 	 *
+	 * @return int[]
 	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	public function interleaveEcBytes(BitBuffer $bitBuffer):array{
@@ -80,7 +81,8 @@ final class ReedSolomonEncoder{
 	}
 
 	/**
-	 *
+	 * @param  int[] $dataBytes
+	 * @return int[]
 	 */
 	private function encode(array $dataBytes, int $ecByteCount):array{
 		$rsPoly = new GenericGFPoly([1]);
@@ -112,7 +114,7 @@ final class ReedSolomonEncoder{
 	}
 
 	/**
-	 *
+	 * @param int[][] $byteArray
 	 */
 	private function interleave(array $byteArray, int $maxBytes, int $numRsBlocks):void{
 		for($x = 0; $x < $maxBytes; $x++){

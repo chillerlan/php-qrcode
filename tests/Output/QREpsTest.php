@@ -50,6 +50,7 @@ class QREpsTest extends QROutputTestAbstract{
 		$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
 		$this->outputInterface->dump();
 
+		/** @phpstan-ignore-next-line */
 		$this::assertTrue(true); // tricking the code coverage
 	}
 

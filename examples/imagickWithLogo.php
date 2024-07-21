@@ -65,6 +65,8 @@ class QRImagickWithLogo extends QRImagick{
 
 /**
  * augment the QROptions class
+ *
+ * @property string $pngLogo
  */
 class ImagickWithLogoOptions extends QROptions{
 

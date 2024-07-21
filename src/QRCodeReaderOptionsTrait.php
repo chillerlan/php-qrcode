@@ -14,6 +14,11 @@ use function extension_loaded;
 
 /**
  * Trait QRCodeReaderOptionsTrait
+ *
+ * @property bool $readerUseImagickIfAvailable
+ * @property bool $readerGrayscale
+ * @property bool $readerInvertColors
+ * @property bool $readerIncreaseContrast
  */
 trait QRCodeReaderOptionsTrait{
 

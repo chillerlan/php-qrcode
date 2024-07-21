@@ -56,6 +56,8 @@ class QRImagickImageAsBackground extends QRImagick{
 
 /**
  * augment the QROptions class
+ *
+ * @property string $background
  */
 class ImageAsBackgroundOptions extends QROptions{
 

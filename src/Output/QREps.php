@@ -81,6 +81,8 @@ class QREps extends QROutputAbstract{
 	 * 4 values in the color array will be interpreted as CMYK, 3 as RGB
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 *
+	 * @param float[] $values
 	 */
 	protected function formatColor(array $values):string{
 		$count = count($values);

@@ -8,7 +8,6 @@
  * @license      MIT
  *
  * @noinspection PhpComposerExtensionStubsInspection
- * @phan-file-suppress PhanTypeMismatchArgumentInternal
  */
 
 namespace chillerlan\QRCode\Output;
@@ -29,6 +28,8 @@ class QRMarkupXML extends QRMarkup{
 
 	/**
 	 * @inheritDoc
+	 *
+	 * @return int[]
 	 */
 	protected function getOutputDimensions():array{
 		return [$this->moduleCount, $this->moduleCount];
@@ -53,8 +54,8 @@ class QRMarkupXML extends QRMarkup{
 
 		$root->setAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
 		$root->setAttribute('xsi:noNamespaceSchemaLocation', $this::SCHEMA);
-		$root->setAttribute('version', $this->matrix->getVersion());
-		$root->setAttribute('eccLevel', $this->matrix->getEccLevel());
+		$root->setAttribute('version', (string)$this->matrix->getVersion());
+		$root->setAttribute('eccLevel', (string)$this->matrix->getEccLevel());
 		$root->appendChild($this->createMatrix());
 
 		$this->dom->appendChild($root);
@@ -72,11 +73,11 @@ class QRMarkupXML extends QRMarkup{
 		$matrix           = $this->dom->createElement('matrix');
 		$dimension        = $this->matrix->getVersion()->getDimension();
 
-		$matrix->setAttribute('size', $dimension);
-		$matrix->setAttribute('quietzoneSize', (int)(($this->moduleCount - $dimension) / 2));
-		$matrix->setAttribute('maskPattern', $this->matrix->getMaskPattern()->getPattern());
-		$matrix->setAttribute('width', $width);
-		$matrix->setAttribute('height', $height);
+		$matrix->setAttribute('size', (string)$dimension);
+		$matrix->setAttribute('quietzoneSize', (string)(int)(($this->moduleCount - $dimension) / 2));
+		$matrix->setAttribute('maskPattern', (string)$this->matrix->getMaskPattern()->getPattern());
+		$matrix->setAttribute('width', (string)$width);
+		$matrix->setAttribute('height', (string)$height);
 
 		foreach($this->matrix->getMatrix() as $y => $row){
 			$matrixRow = $this->row($y, $row);
@@ -91,11 +92,13 @@ class QRMarkupXML extends QRMarkup{
 
 	/**
 	 * Creates a DOM element for a matrix row
+	 *
+	 * @param int[] $row
 	 */
 	protected function row(int $y, array $row):DOMElement|null{
 		$matrixRow = $this->dom->createElement('row');
 
-		$matrixRow->setAttribute('y', $y);
+		$matrixRow->setAttribute('y', (string)$y);
 
 		foreach($row as $x => $M_TYPE){
 			$module = $this->module($x, $y, $M_TYPE);
@@ -128,8 +131,9 @@ class QRMarkupXML extends QRMarkup{
 
 		$module->setAttribute('x', $x);
 		$module->setAttribute('dark', ($isDark ? 'true' : 'false'));
+		$module->setAttribute('x', (string)$x);
 		$module->setAttribute('layer', ($this::LAYERNAMES[$M_TYPE] ?? ''));
-		$module->setAttribute('value', $this->getModuleValue($M_TYPE));
+		$module->setAttribute('value', (string)$this->getModuleValue($M_TYPE));
 
 		return $module;
 	}

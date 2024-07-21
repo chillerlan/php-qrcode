@@ -30,6 +30,8 @@ class QRFpdf extends QROutputAbstract{
 	final public const MIME_TYPE = 'application/pdf';
 
 	protected FPDF       $fpdf;
+
+	/** @var int[]  */
 	protected array|null $prevColor = null;
 
 	/**
@@ -71,7 +73,6 @@ class QRFpdf extends QROutputAbstract{
 			$bgColor          = $this->prepareModuleValue($this->options->bgColor);
 			[$width, $height] = $this->getOutputDimensions();
 
-			/** @phan-suppress-next-line PhanParamTooFewUnpack */
 			$this->fpdf->SetFillColor(...$bgColor);
 			$this->fpdf->Rect(0, 0, $width, $height, 'F');
 		}
@@ -111,7 +112,6 @@ class QRFpdf extends QROutputAbstract{
 		$color = $this->getModuleValue($M_TYPE);
 
 		if($color !== null && $color !== $this->prevColor){
-			/** @phan-suppress-next-line PhanParamTooFewUnpack */
 			$this->fpdf->SetFillColor(...$color);
 			$this->prevColor = $color;
 		}

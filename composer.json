@@ -55,9 +55,10 @@
 		"chillerlan/php-authenticator": "^5.2.1",
 		"intervention/image": "^3.7",
 		"phpbench/phpbench": "^1.2.15",
-		"phan/phan": "^5.4",
 		"phpunit/phpunit": "^11.2",
 		"phpmd/phpmd": "^2.15",
+		"phpstan/phpstan": "^1.11",
+		"phpstan/phpstan-deprecation-rules": "^1.2",
 		"setasign/fpdf": "^1.8.2",
 		"squizlabs/php_codesniffer": "^3.10"
 	},
@@ -79,13 +80,14 @@
 		}
 	},
 	"scripts": {
-		"phan": "@php vendor/bin/phan",
 		"phpcs": "@php vendor/bin/phpcs",
 		"phpbench":[
 			"Composer\\Config::disableProcessTimeout",
 			"@php vendor/bin/phpbench run"
 		],
-		"phpunit": "@php vendor/bin/phpunit"
+		"phpunit": "@php vendor/bin/phpunit",
+		"phpstan": "@php vendor/bin/phpstan",
+		"phpstan-baseline": "@php vendor/bin/phpstan --generate-baseline"
 	},
 	"config": {
 		"lock": false,

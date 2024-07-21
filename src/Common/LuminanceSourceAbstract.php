@@ -26,6 +26,7 @@ use function array_slice, array_splice, file_exists, is_file, is_readable, realp
 abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 
 	protected SettingsContainerInterface|QROptions $options;
+	/** @var int[] */
 	protected array $luminances;
 	protected int   $width;
 	protected int   $height;

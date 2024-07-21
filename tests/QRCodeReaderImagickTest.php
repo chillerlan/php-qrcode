@@ -41,6 +41,9 @@ final class QRCodeReaderImagickTest extends QRCodeReaderTestAbstract{
 		return IMagickLuminanceSource::fromFile($file, $options);
 	}
 
+	/**
+	 * @phpstan-return array<string, array{0: string, 1: string}>
+	 */
 	public static function vectorQRCodeProvider():array{
 		return [
 			// SVG convert only works on windows (Warning: Option --export-png= is deprecated)

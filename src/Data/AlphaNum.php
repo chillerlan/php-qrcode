@@ -11,7 +11,7 @@
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
-use function array_flip, ceil, intdiv, str_split;
+use function ceil, intdiv, str_split;
 
 /**
  * Alphanumeric mode: 0 to 9, A to Z, space, $ % * + - . / :
@@ -33,6 +33,18 @@ final class AlphaNum extends QRDataModeAbstract{
 		'O' => 24, 'P' => 25, 'Q' => 26, 'R' => 27, 'S' => 28, 'T' => 29, 'U' => 30, 'V' => 31,
 		'W' => 32, 'X' => 33, 'Y' => 34, 'Z' => 35, ' ' => 36, '$' => 37, '%' => 38, '*' => 39,
 		'+' => 40, '-' => 41, '.' => 42, '/' => 43, ':' => 44,
+	];
+
+	/**
+	 * @var string[]
+	 */
+	private const ORD_TO_CHAR = [
+		'0', '1', '2', '3', '4', '5', '6', '7',
+		'8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+		'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+		'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
+		'W', 'X', 'Y', 'Z', ' ', '$', '%', '*',
+		'+', '-', '.', '/', ':',
 	];
 
 	/**
@@ -78,7 +90,10 @@ final class AlphaNum extends QRDataModeAbstract{
 
 		// encode 2 characters in 11 bits
 		for($i = 0; ($i + 1) < $len; $i += 2){
-			$bitBuffer->put((self::CHAR_TO_ORD[$this->data[$i]] * 45 + self::CHAR_TO_ORD[$this->data[($i + 1)]]), 11);
+			$bitBuffer->put(
+				(self::CHAR_TO_ORD[$this->data[$i]] * 45 + self::CHAR_TO_ORD[$this->data[($i + 1)]]),
+				11,
+			);
 		}
 
 		// encode a remaining character in 6 bits
@@ -95,19 +110,7 @@ final class AlphaNum extends QRDataModeAbstract{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
-		$length  = $bitBuffer->read(self::getLengthBits($versionNumber));
-		$charmap = array_flip(self::CHAR_TO_ORD);
-
-		// @todo
-		$toAlphaNumericChar = function(int $ord) use ($charmap):string{
-
-			if(isset($charmap[$ord])){
-				return $charmap[$ord];
-			}
-
-			throw new QRCodeDataException('invalid character value: '.$ord);
-		};
-
+		$length = $bitBuffer->read(self::getLengthBits($versionNumber));
 		$result = '';
 		// Read two characters at a time
 		while($length > 1){
@@ -116,9 +119,9 @@ final class AlphaNum extends QRDataModeAbstract{
 				throw new QRCodeDataException('not enough bits available'); // @codeCoverageIgnore
 			}
 
-			$nextTwoCharsBits = $bitBuffer->read(11);
-			$result           .= $toAlphaNumericChar(intdiv($nextTwoCharsBits, 45));
-			$result           .= $toAlphaNumericChar($nextTwoCharsBits % 45);
+			$nextTwoCharsBits  = $bitBuffer->read(11);
+			$result           .= self::ORD_TO_CHAR[intdiv($nextTwoCharsBits, 45)];
+			$result           .= self::ORD_TO_CHAR[($nextTwoCharsBits % 45)];
 			$length           -= 2;
 		}
 
@@ -128,7 +131,7 @@ final class AlphaNum extends QRDataModeAbstract{
 				throw new QRCodeDataException('not enough bits available'); // @codeCoverageIgnore
 			}
 
-			$result .= $toAlphaNumericChar($bitBuffer->read(6));
+			$result .= self::ORD_TO_CHAR[$bitBuffer->read(6)];
 		}
 
 		return $result;

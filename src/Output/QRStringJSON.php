@@ -15,7 +15,9 @@ namespace chillerlan\QRCode\Output;
 use function json_encode;
 
 /**
+ * @method string getModuleValue(int $M_TYPE)
  *
+ * @phpstan-type Module array{x: int, dark: bool, layer: string, value: string}
  */
 class QRStringJSON extends QROutputAbstract{
 	use CssColorModuleValueTrait;
@@ -25,6 +27,8 @@ class QRStringJSON extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
+	 *
+	 * @return int[]
 	 */
 	protected function getOutputDimensions():array{
 		return [$this->moduleCount, $this->moduleCount];
@@ -72,6 +76,9 @@ class QRStringJSON extends QROutputAbstract{
 
 	/**
 	 * Creates an array element for a matrix row
+	 *
+	 * @param  int[] $row
+	 * @phpstan-return array{y: int, modules: array<int, Module>}
 	 */
 	protected function row(int $y, array $row):array|null{
 		$matrixRow = ['y' => $y, 'modules' => []];
@@ -94,6 +101,8 @@ class QRStringJSON extends QROutputAbstract{
 
 	/**
 	 * Creates an array element for a single module
+	 *
+	 * @phpstan-return Module
 	 */
 	protected function module(int $x, int $y, int $M_TYPE):array|null{
 		$isDark = $this->matrix->isDark($M_TYPE);

@@ -81,13 +81,19 @@ class RandomDotsSVGOutput extends QRMarkupSVG{
 
 }
 
-// the extended options with the $dotColors option
+
+/**
+ * the extended options with the $dotColors option
+ *
+ * @property array<int, string> $dotColors
+ */
 class RandomDotsOptions extends QROptions{
 
 	/**
 	 * a map of $M_TYPE_LAYER => color
 	 *
 	 * @see \array_rand()
+	 * @var array<int, string>
 	 */
 	protected array $dotColors = [];
 

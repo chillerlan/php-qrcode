@@ -26,6 +26,9 @@ final class BitBufferTest extends TestCase{
 		$this->bitBuffer = new BitBuffer;
 	}
 
+	/**
+	 * @phpstan-return array<string, array{0: int, 1: int}>
+	 */
 	public static function bitProvider():array{
 		return [
 			'number'   => [Mode::NUMBER, 16],

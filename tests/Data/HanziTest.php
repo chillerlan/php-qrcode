@@ -30,6 +30,8 @@ final class HanziTest extends DataInterfaceTestAbstract{
 
 	/**
 	 * isGB2312() should pass on Hanzi/GB2312 characters and fail on everything else
+	 *
+	 * @phpstan-return array<int, array{0: string, 1: bool}>
 	 */
 	public static function stringValidateProvider():array{
 		return [

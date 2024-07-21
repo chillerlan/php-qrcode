@@ -27,6 +27,9 @@ final class QRStringTextTest extends QROutputTestAbstract{
 		return new QRStringText($options, $matrix);
 	}
 
+	/**
+	 * @phpstan-return array<string, array{0: mixed, 1: bool}>
+	 */
 	public static function moduleValueProvider():array{
 		return [
 			'invalid: wrong type'       => [[], false],

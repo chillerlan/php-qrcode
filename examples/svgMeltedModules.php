@@ -217,6 +217,10 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 
 /**
  * the augmented options class
+ *
+ * @property bool  $melt
+ * @property bool  $inverseMelt
+ * @property float $meltRadius
  */
 class MeltedOutputOptions extends QROptions{
 

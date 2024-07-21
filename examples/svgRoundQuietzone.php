@@ -210,6 +210,12 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 
 /**
  * the augmented options class
+ *
+ * @property int $additionalModules
+ * @property array<int, string> $dotColors
+ * @property string $svgLogo
+ * @property float  $svgLogoScale
+ * @property string $svgLogoCssClass
  */
 class RoundQuietzoneOptions extends QROptions{
 
@@ -231,6 +237,7 @@ class RoundQuietzoneOptions extends QROptions{
 	 * a map of $M_TYPE_LAYER => color
 	 *
 	 * @see \array_rand()
+	 * @var array<int, string>
 	 */
 	protected array $dotColors = [];
 

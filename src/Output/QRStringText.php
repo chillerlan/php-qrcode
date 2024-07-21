@@ -21,6 +21,8 @@ class QRStringText extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
+	 *
+	 * @param string $value
 	 */
 	public static function moduleValueIsValid(mixed $value):bool{
 		return is_string($value);
@@ -28,6 +30,8 @@ class QRStringText extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
+	 *
+	 * @param string $value
 	 */
 	protected function prepareModuleValue(mixed $value):string{
 		return $value;

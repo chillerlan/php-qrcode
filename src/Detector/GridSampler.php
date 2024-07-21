@@ -30,6 +30,7 @@ use function array_fill, count, intdiv, sprintf;
  */
 final class GridSampler{
 
+	/** @var float[] */
 	private array $points;
 
 	/**

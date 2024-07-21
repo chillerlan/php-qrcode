@@ -74,7 +74,7 @@ final class QROptionsTest extends TestCase{
 		$o = new QROptions(['eccLevel' => EccLevel::H]);
 
 		$this::assertSame(EccLevel::H, $o->eccLevel);
-
+		/** @phpstan-ignore-next-line */
 		$o->eccLevel = 'q';
 
 		$this::assertSame(EccLevel::Q, $o->eccLevel);
@@ -86,7 +86,7 @@ final class QROptionsTest extends TestCase{
 	public function testSetEccLevelFromIntException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('Invalid ECC level: "42"');
-		/** @phan-suppress-next-line PhanNoopNew */
+
 		new QROptions(['eccLevel' => 42]);
 	}
 
@@ -96,7 +96,7 @@ final class QROptionsTest extends TestCase{
 	public function testSetEccLevelFromStringException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('Invalid ECC level: "FOO"');
-		/** @phan-suppress-next-line PhanNoopNew */
+
 		new QROptions(['eccLevel' => 'foo']);
 	}
 

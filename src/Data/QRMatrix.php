@@ -94,7 +94,7 @@ class QRMatrix{
 	 *
 	 * @see \chillerlan\QRCode\Data\QRMatrix::checkNeighbours()
 	 *
-	 * @var array
+	 * @var int[][]
 	 */
 	protected const neighbours = [
 		0b00000001 => [-1, -1],
@@ -150,6 +150,8 @@ class QRMatrix{
 
 	/**
 	 * Creates a 2-dimensional array (square) of the given $size
+	 *
+	 * @return int[][]
 	 */
 	protected function createMatrix(int $size, int $value):array{
 		return array_fill(0, $size, array_fill(0, $size, $value));
@@ -173,7 +175,7 @@ class QRMatrix{
 	/**
 	 * Returns the data matrix, returns a pure boolean representation if $boolean is set to true
 	 *
-	 * @return int[][]|bool[][]
+	 * @return int[][]
 	 */
 	public function getMatrix(bool|null $boolean = null):array{
 
@@ -299,6 +301,8 @@ class QRMatrix{
 	/**
 	 * Checks whether the module at ($x, $y) is in the given array of $M_TYPES,
 	 * returns true if a match is found, otherwise false.
+	 *
+	 * @param int[] $M_TYPES
 	 */
 	public function checkTypeIn(int $x, int $y, array $M_TYPES):bool{
 
@@ -583,7 +587,6 @@ class QRMatrix{
 	 * Rotates the matrix by 90 degrees clock wise
 	 */
 	public function rotate90():static{
-		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
 		$this->matrix = array_map((fn(int ...$a):array => array_reverse($a)), ...$this->matrix);
 
 		return $this;

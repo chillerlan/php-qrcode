@@ -17,6 +17,9 @@ use PHPUnit\Framework\TestCase;
 
 final class ECICharsetTest extends TestCase{
 
+	/**
+	 * @phpstan-return array<int, array{0: int}>
+	 */
 	public static function invalidIdProvider():array{
 		return [[-1], [1000000]];
 	}
@@ -25,10 +28,13 @@ final class ECICharsetTest extends TestCase{
 	public function testInvalidDataException(int $id):void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('invalid charset id:');
-		/** @phan-suppress-next-line PhanNoopNew */
+
 		new ECICharset($id);
 	}
 
+	/**
+	 * @phpstan-return array<int, array{0: int, 1: (string|null)}>
+	 */
 	public static function encodingProvider():array{
 		$params = [];
 

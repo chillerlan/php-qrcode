@@ -58,6 +58,9 @@ abstract class QROutputTestAbstract extends TestCase{
 		$this->outputInterface->dump('/foo/bar.test');
 	}
 
+	/**
+	 * @phpstan-return array<string, array{0: mixed, 1: bool}>
+	 */
 	abstract public static function moduleValueProvider():array;
 
 	#[DataProvider('moduleValueProvider')]

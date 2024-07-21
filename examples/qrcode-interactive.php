@@ -13,6 +13,15 @@ use chillerlan\QRCode\Data\QRMatrix;
 
 require_once '../vendor/autoload.php';
 
+/**
+ * @param array<string, mixed> $response
+ */
+function sendResponse(array $response):never{
+	header('Content-type: application/json;charset=utf-8;');
+	echo json_encode($response);
+	exit;
+}
+
 try{
 
 	$moduleValues = [
@@ -88,15 +97,4 @@ try{
 catch(Throwable $e){
 	header('HTTP/1.1 500 Internal Server Error');
 	sendResponse(['error' => $e->getMessage()]);
-}
-
-exit;
-
-/**
- * @param array $response
- */
-function sendResponse(array $response){
-	header('Content-type: application/json;charset=utf-8;');
-	echo json_encode($response);
-	exit;
 }

@@ -18,8 +18,9 @@ use function array_values, count, intval, is_array, is_numeric, max, min;
 trait RGBArrayModuleValueTrait{
 
 	/**
-	 * @implements \chillerlan\QRCode\Output\QROutputInterface::moduleValueIsValid()
-	 * @inheritDoc
+	 * implements \chillerlan\QRCode\Output\QROutputInterface::moduleValueIsValid()
+	 *
+	 * @param int[] $value
 	 */
 	public static function moduleValueIsValid(mixed $value):bool{
 
@@ -44,8 +45,11 @@ trait RGBArrayModuleValueTrait{
 	}
 
 	/**
-	 * @implements \chillerlan\QRCode\Output\QROutputAbstract::prepareModuleValue()
-	 * @inheritDoc
+	 * implements \chillerlan\QRCode\Output\QROutputAbstract::prepareModuleValue()
+	 *
+	 * @param  int[] $value
+	 * @return int[]
+	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function prepareModuleValue(mixed $value):array{
@@ -68,8 +72,9 @@ trait RGBArrayModuleValueTrait{
 	}
 
 	/**
-	 * @implements \chillerlan\QRCode\Output\QROutputAbstract::getDefaultModuleValue()
-	 * @inheritDoc
+	 * implements \chillerlan\QRCode\Output\QROutputAbstract::getDefaultModuleValue()
+	 *
+	 * @return int[]
 	 */
 	protected function getDefaultModuleValue(bool $isDark):array{
 		return ($isDark) ? [0, 0, 0] : [255, 255, 255];

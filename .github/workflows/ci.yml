@@ -40,7 +40,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          extensions: ast, ${{ env.PHP_EXTENSIONS }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
           ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: none
 
@@ -49,6 +49,8 @@ jobs:
 
       - name: "Run phan"
         run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
+      - name: "Run PHPStan"
+        run: php vendor/bin/phpstan
 
 
   tests:

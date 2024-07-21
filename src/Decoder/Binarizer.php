@@ -47,6 +47,7 @@ final class Binarizer{
 	private const LUMINANCE_BUCKETS = 32;
 
 	private LuminanceSourceInterface $source;
+	/** @var int[] */
 	private array                    $luminances;
 
 	/**
@@ -58,6 +59,7 @@ final class Binarizer{
 	}
 
 	/**
+	 * @param int[] $buckets
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	private function estimateBlackPoint(array $buckets):int{
@@ -204,6 +206,8 @@ final class Binarizer{
 	 * See the following thread for a discussion of this algorithm:
 	 *
 	 * @see http://groups.google.com/group/zxing/browse_thread/thread/d06efa2c35a7ddc0
+	 *
+	 * @return float[][]
 	 */
 	private function calculateBlackPoints(int $subWidth, int $subHeight, int $width, int $height):array{
 		$blackPoints = array_fill(0, $subHeight, array_fill(0, $subWidth, 0));

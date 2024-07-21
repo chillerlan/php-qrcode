@@ -60,6 +60,9 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$this::assertSame($pattern, $matrix->getMaskPattern()->getPattern());
 	}
 
+	/**
+	 * @phpstan-return array<int, array{0: string, 1: bool}>
+	 */
 	abstract public static function stringValidateProvider():array;
 
 	/**
@@ -81,6 +84,8 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 	/**
 	 * returns versions within the version breakpoints 1-9, 10-26 and 27-40
+	 *
+	 * @phpstan-return array<string, array{0: int}>
 	 */
 	public static function versionBreakpointProvider():array{
 		return ['1-9' => [7], '10-26' => [15], '27-40' => [30]];
@@ -118,7 +123,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	public static function maxLengthProvider():Generator{
 		$eccLevels = array_map(fn(int $ecc):EccLevel => new EccLevel($ecc), [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H]);
 		$str       = str_repeat(static::testData, 1000);
-		/** @phan-suppress-next-line PhanAbstractStaticMethodCallInStatic */
+
 		$dataMode  = static::getDataModeInterface(static::testData)::DATAMODE;
 		$mb        = ($dataMode === Mode::KANJI || $dataMode === Mode::HANZI);
 
@@ -203,7 +208,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$options->version  = $version->getVersionNumber();
 		$options->eccLevel = $eccLevel->getLevel();
 
-		/** @phan-suppress-next-line PhanNoopNew */
+
 		new QRData($options, [static::getDataModeInterface($str1)]);
 	}
 

@@ -17,9 +17,6 @@ namespace chillerlan\QRCodeTest\Output;
  */
 trait CssColorModuleValueProviderTrait{
 
-	/**
-	 * @implements \chillerlan\QRCodeTest\Output\QROutputTestAbstract::moduleValueProvider()
-	 */
 	public static function moduleValueProvider():array{
 		return [
 			'invalid: wrong type'            => [[], false],

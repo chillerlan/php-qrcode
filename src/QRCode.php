@@ -51,6 +51,8 @@ class QRCode{
 
 	/**
 	 * QRCode constructor.
+	 *
+	 * @phpstan-param array<string, mixed> $options
 	 */
 	public function __construct(SettingsContainerInterface|QROptions|iterable $options = new QROptions){
 		$this->setOptions($options);
@@ -58,6 +60,8 @@ class QRCode{
 
 	/**
 	 * Sets an options instance
+	 *
+	 * @phpstan-param array<string, mixed> $options
 	 */
 	public function setOptions(SettingsContainerInterface|QROptions|iterable $options):static{
 
@@ -80,7 +84,6 @@ class QRCode{
 	public function render(string|null $data = null, string|null $file = null):mixed{
 
 		if($data !== null){
-			/** @var \chillerlan\QRCode\Data\QRDataModeInterface $dataInterface */
 			foreach(Mode::INTERFACES as $dataInterface){
 
 				if($dataInterface::validateString($data)){
@@ -157,7 +160,10 @@ class QRCode{
 			throw new QRCodeOutputException('output class does not implement QROutputInterface');
 		}
 
-		return new $outputInterface($this->options, $matrix);
+		/** @var \chillerlan\QRCode\Output\QROutputInterface $instance */
+		$instance = new $outputInterface($this->options, $matrix);
+
+		return $instance;
 	}
 
 	/**

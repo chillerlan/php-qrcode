@@ -25,10 +25,11 @@ use function array_fill, array_slice, array_splice, count;
  */
 final class GenericGFPoly{
 
+	/** @var int[] */
 	private array $coefficients;
 
 	/**
-	 * @param array      $coefficients array coefficients as ints representing elements of GF(size), arranged
+	 * @param int[]      $coefficients array coefficients as ints representing elements of GF(size), arranged
 	 *                                 from most significant (highest-power term) coefficient to the least significant
 	 * @param int|null   $degree
 	 *

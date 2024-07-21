@@ -35,6 +35,8 @@ abstract class QROutputAbstract implements QROutputInterface{
 
 	/**
 	 * an (optional) array of color values for the several QR matrix parts
+	 *
+	 * @phpstan-var array<int, mixed>
 	 */
 	protected array $moduleValues;
 
@@ -48,20 +50,26 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 */
 	protected SettingsContainerInterface|QROptions $options;
 
+	/**
+	 * @see \chillerlan\QRCode\QROptions::$excludeFromConnect
+	 * @var int[]
+	 */
+	protected array $excludeFromConnect;
+	/**
+	 * @see \chillerlan\QRCode\QROptions::$keepAsSquare
+	 * @var int[]
+	 */
+	protected array $keepAsSquare;
 	/** @see \chillerlan\QRCode\QROptions::$scale */
 	protected int $scale;
 	/** @see \chillerlan\QRCode\QROptions::$connectPaths */
 	protected bool $connectPaths;
-	/** @see \chillerlan\QRCode\QROptions::$excludeFromConnect */
-	protected array $excludeFromConnect;
 	/** @see \chillerlan\QRCode\QROptions::$eol */
 	protected string $eol;
 	/** @see \chillerlan\QRCode\QROptions::$drawLightModules */
 	protected bool $drawLightModules;
 	/** @see \chillerlan\QRCode\QROptions::$drawCircularModules */
 	protected bool $drawCircularModules;
-	/** @see \chillerlan\QRCode\QROptions::$keepAsSquare */
-	protected array $keepAsSquare;
 	/** @see \chillerlan\QRCode\QROptions::$circleRadius */
 	protected float $circleRadius;
 	protected float $circleDiameter;
@@ -122,6 +130,8 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 * Returns a 2 element array with the current output width and height
 	 *
 	 * The type and units of the values depend on the output class. The default value is the current module count * scale.
+	 *
+	 * @return int[]
 	 */
 	protected function getOutputDimensions():array{
 		return [$this->length, $this->length];
@@ -138,6 +148,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 		}
 
 		// now loop over the options values to replace defaults and add extra values
+		/** @var int $M_TYPE */
 		foreach($this->options->moduleValues as $M_TYPE => $value){
 			if($this::moduleValueIsValid($value)){
 				$this->moduleValues[$M_TYPE] = $this->prepareModuleValue($value);
@@ -217,6 +228,8 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 *   $y            - current row
 	 *   $M_TYPE       - field value
 	 *   $M_TYPE_LAYER - (possibly modified) field value that acts as layer id
+	 *
+	 * @return array<int, mixed>
 	 */
 	protected function collectModules(Closure $transform):array{
 		$paths = [];

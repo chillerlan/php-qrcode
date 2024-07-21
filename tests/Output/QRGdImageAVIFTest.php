@@ -8,11 +8,10 @@
  * @license      MIT
  */
 
-namespace Output;
+namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCodeTest\Output\QRGdImageTestAbstract;
 use chillerlan\QRCode\Output\{QRGdImageAVIF, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
 

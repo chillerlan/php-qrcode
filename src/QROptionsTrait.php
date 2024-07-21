@@ -22,6 +22,48 @@ use const JSON_THROW_ON_ERROR, JSON_UNESCAPED_SLASHES, PHP_EOL;
 
 /**
  * The QRCode plug-in settings & setter functionality
+ *
+ * @property int         $version
+ * @property int         $versionMin
+ * @property int         $versionMax
+ * @property int         $eccLevel
+ * @property int         $maskPattern
+ * @property bool        $addQuietzone
+ * @property int         $quietzoneSize
+ * @property string      $outputInterface
+ * @property bool        $returnResource
+ * @property string|null $cachefile
+ * @property bool        $outputBase64
+ * @property string      $eol
+ * @property mixed       $bgColor
+ * @property bool        $invertMatrix
+ * @property bool        $drawLightModules
+ * @property bool        $drawCircularModules
+ * @property float       $circleRadius
+ * @property array       $keepAsSquare
+ * @property bool        $connectPaths
+ * @property array       $excludeFromConnect
+ * @property array       $moduleValues
+ * @property bool        $addLogoSpace
+ * @property int|null    $logoSpaceWidth
+ * @property int|null    $logoSpaceHeight
+ * @property int|null    $logoSpaceStartX
+ * @property int|null    $logoSpaceStartY
+ * @property int         $scale
+ * @property bool        $imageTransparent
+ * @property mixed       $transparencyColor
+ * @property int         $quality
+ * @property bool        $gdImageUseUpscale
+ * @property string      $imagickFormat
+ * @property string      $cssClass
+ * @property bool        $svgAddXmlHeader
+ * @property string      $svgDefs
+ * @property string      $svgPreserveAspectRatio
+ * @property bool        $svgUseFillAttributes
+ * @property string      $textLineStart
+ * @property int         $jsonFlags
+ * @property string      $fpdfMeasureUnit
+ * @property string|null $xmlStylesheet
  */
 trait QROptionsTrait{
 
@@ -143,6 +185,7 @@ trait QROptionsTrait{
 	 */
 	protected string $eol = PHP_EOL;
 
+
 	/*
 	 * Common visual modifications
 	 */
@@ -199,6 +242,8 @@ trait QROptionsTrait{
 	 * Specifies which module types to exclude when `QROptions::$drawCircularModules` is set to `true`
 	 *
 	 * (default: `[]`)
+	 *
+	 * @var int[]
 	 */
 	protected array $keepAsSquare = [];
 
@@ -222,6 +267,8 @@ trait QROptionsTrait{
 	 * Specify which paths/patterns to exclude from connecting if `QROptions::$connectPaths` is set to `true`
 	 *
 	 * @see \chillerlan\QRCode\QROptionsTrait::$connectPaths
+	 *
+	 * @var int[]
 	 */
 	protected array $excludeFromConnect = [];
 
@@ -233,6 +280,8 @@ trait QROptionsTrait{
 	 * - `QREps`: `[C, M, Y, K]` // 0-255
 	 *
 	 * @see \chillerlan\QRCode\Output\QROutputAbstract::setModuleValues()
+	 *
+	 * @var array<int, mixed>
 	 */
 	protected array $moduleValues = [];
 
@@ -321,6 +370,7 @@ trait QROptionsTrait{
 	 */
 	protected int $quality = -1;
 
+
 	/*
 	 * QRGdImage settings
 	 */
@@ -333,6 +383,7 @@ trait QROptionsTrait{
 	 * @see https://github.com/chillerlan/php-qrcode/issues/23
 	 */
 	protected bool $gdImageUseUpscale = true;
+
 
 	/*
 	 * QRImagick settings
@@ -355,6 +406,7 @@ trait QROptionsTrait{
 	 * A common css class
 	 */
 	protected string $cssClass = 'qrcode';
+
 
 	/*
 	 * QRMarkupSVG settings
@@ -391,6 +443,7 @@ trait QROptionsTrait{
 	 */
 	protected bool $svgUseFillAttributes = true;
 
+
 	/*
 	 * QRStringText settings
 	 */
@@ -399,6 +452,7 @@ trait QROptionsTrait{
 	 * An optional line prefix, e.g. empty space to align the QR Code in a console
 	 */
 	protected string $textLineStart = '';
+
 
 	/*
 	 * QRStringJSON settings
@@ -411,6 +465,7 @@ trait QROptionsTrait{
 	 */
 	protected int $jsonFlags = JSON_THROW_ON_ERROR|JSON_UNESCAPED_SLASHES;
 
+
 	/*
 	 * QRFpdf settings
 	 */
@@ -421,6 +476,7 @@ trait QROptionsTrait{
 	 * @see FPDF::__construct()
 	 */
 	protected string $fpdfMeasureUnit = 'pt';
+
 
 	/*
 	 * QRMarkupXML settings
@@ -485,6 +541,7 @@ trait QROptionsTrait{
 			$eccLevel = constant(EccLevel::class.'::'.$ecc);
 		}
 
+		/** @var int $eccLevel */
 		if((0b11 & $eccLevel) !== $eccLevel){
 			throw new QRCodeException(sprintf('Invalid ECC level: "%s"', $eccLevel));
 		}

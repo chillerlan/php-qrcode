@@ -26,6 +26,8 @@ final class ByteTest extends DataInterfaceTestAbstract{
 
 	/**
 	 * isByte() passses any binary string and only fails on empty strings
+	 *
+	 * @phpstan-return array<int, array{0: string, 1: bool}>
 	 */
 	public static function stringValidateProvider():array{
 		return [

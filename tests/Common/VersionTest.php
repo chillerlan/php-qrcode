@@ -58,7 +58,7 @@ final class VersionTest extends TestCase{
 	public function testConstructInvalidVersion():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('invalid version given');
-		/** @phan-suppress-next-line PhanNoopNew */
+
 		new Version(69);
 	}
 

@@ -21,7 +21,7 @@ interface LuminanceSourceInterface{
 	 * Fetches luminance data for the underlying bitmap. Values should be fetched using:
 	 * `int luminance = array[y * width + x] & 0xff`
 	 *
-	 * @return array A row-major 2D array of luminance values. Do not use result $length as it may be
+	 * @return int[] A row-major 2D array of luminance values. Do not use result $length as it may be
 	 *         larger than $width * $height bytes on some platforms. Do not modify the contents
 	 *         of the result.
 	 */
@@ -46,7 +46,7 @@ interface LuminanceSourceInterface{
 	 *
 	 * @param int $y  The row to fetch, which must be in [0,getHeight())
 	 *
-	 * @return array An array containing the luminance data.
+	 * @return int[] An array containing the luminance data.
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	public function getRow(int $y):array;

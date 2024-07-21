@@ -61,6 +61,7 @@ final class AlignmentPatternFinder{
 	public function find(int $startX, int $startY, int $width, int $height):AlignmentPattern|null{
 		$maxJ       = ($startX + $width);
 		$middleI    = ($startY + ($height / 2));
+		/** @var int[] $stateCount */
 		$stateCount = [];
 
 		// We are looking for black/white/black modules in 1:1:1 ratio;

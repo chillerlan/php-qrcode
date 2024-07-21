@@ -51,6 +51,9 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		$this->options->readerUseImagickIfAvailable = false;
 	}
 
+	/**
+	 * @phpstan-return array<string, array{0: string, 1: string, 2: bool}>
+	 */
 	public static function qrCodeProvider():array{
 		return [
 			'helloworld' => ['hello_world.png', 'Hello world!', false],
@@ -129,7 +132,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 
 		/**
 		 * @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist
-		 * @phan-suppress-next-next-line PhanUndeclaredConstant
+		 * @phpstan-ignore-next-line
 		 */
 		for($v = 1; $v <= READER_TEST_MAX_VERSION; $v++){
 			$version = new Version($v);

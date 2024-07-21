@@ -7,8 +7,6 @@
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2021 Smiley
  * @license      Apache-2.0
- *
- * @phan-file-suppress PhanTypePossiblyInvalidDimOffset
  */
 
 namespace chillerlan\QRCode\Detector;

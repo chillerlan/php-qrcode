@@ -30,6 +30,8 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 
 	/**
 	 * isKanji() should pass on Kanji/SJIS characters and fail on everything else
+	 *
+	 * @phpstan-return array<int, array{0: string, 1: bool}>
 	 */
 	public static function stringValidateProvider():array{
 		return [

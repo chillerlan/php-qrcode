@@ -130,6 +130,10 @@ class QRSvgWithLogoAndCustomShapes extends QRMarkupSVG{
 
 /**
  * augment the QROptions class
+ *
+ * @property string $svgLogo
+ * @property float $svgLogoScale
+ * @property string $svgLogoCssClass
  */
 class SVGWithLogoAndCustomShapesOptions extends QROptions{
 	// path to svg logo

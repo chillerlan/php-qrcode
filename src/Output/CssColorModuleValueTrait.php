@@ -21,11 +21,13 @@ trait CssColorModuleValueTrait{
 	 * note: we're not necessarily validating the several values, just checking the general syntax
 	 * note: css4 colors are not included
 	 *
+	 * implements \chillerlan\QRCode\Output\QROutputInterface::moduleValueIsValid()
+	 *
 	 * @todo: XSS proof
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value
-	 * @implements \chillerlan\QRCode\Output\QROutputInterface::moduleValueIsValid()
-	 * @inheritDoc
+	 *
+	 * @param string $value
 	 */
 	public static function moduleValueIsValid(mixed $value):bool{
 
@@ -56,16 +58,16 @@ trait CssColorModuleValueTrait{
 	}
 
 	/**
-	 * @implements \chillerlan\QRCode\Output\QROutputAbstract::prepareModuleValue()
-	 * @inheritDoc
+	 * implements \chillerlan\QRCode\Output\QROutputAbstract::prepareModuleValue()
+	 *
+	 * @param string $value
 	 */
 	protected function prepareModuleValue(mixed $value):string{
 		return trim(strip_tags($value), " '\"\r\n\t");
 	}
 
 	/**
-	 * @implements \chillerlan\QRCode\Output\QROutputAbstract::getDefaultModuleValue()
-	 * @inheritDoc
+	 * implements \chillerlan\QRCode\Output\QROutputAbstract::getDefaultModuleValue()
 	 */
 	protected function getDefaultModuleValue(bool $isDark):string{
 		return ($isDark) ? '#000' : '#fff';

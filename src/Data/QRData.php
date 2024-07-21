@@ -54,6 +54,8 @@ final class QRData{
 
 	/**
 	 * QRData constructor.
+	 *
+	 * @param \chillerlan\QRCode\Data\QRDataModeInterface[] $dataSegments
 	 */
 	public function __construct(SettingsContainerInterface|QROptions $options, array $dataSegments = []){
 		$this->options       = $options;
@@ -146,7 +148,7 @@ final class QRData{
 		}
 
 		$provisionalVersion = null;
-
+		/** @var int $version */
 		foreach($this->maxBitsForEcc as $version => $maxBits){
 
 			if($length <= $maxBits){

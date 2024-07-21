@@ -105,6 +105,7 @@ final class BitMatrix extends QRMatrix{
 	 * correct order in order to reconstruct the codewords bytes contained within the
 	 * QR Code. Throws if the exact number of bytes expected is not read.
 	 *
+	 * @return int[]
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	public function readCodewords():array{
@@ -362,7 +363,6 @@ final class BitMatrix extends QRMatrix{
 
 			// Otherwise see if this is the closest to a real version info bit string
 			// we have seen so far
-			/** @phan-suppress-next-line PhanTypeMismatchArgumentNullable ($targetVersionPattern is never null here) */
 			$bitsDifference = $this->numBitsDiffering($versionBits, $targetVersionPattern);
 
 			if($bitsDifference < $bestDifference){
