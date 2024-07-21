@@ -93,10 +93,6 @@
             </li>
             </ul>
 
-                                    <h4 class="phpdocumentor-sidebar__root-namespace">
-    <a href="namespaces/output.html" class="">Output</a>
-</h4>
-
                         </section>
                 <section class="phpdocumentor-sidebar__category -packages">
             <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
@@ -141,11 +137,12 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceInterface.php"><a href="files/src-common-luminancesourceinterface.html"><abbr title="src/Common/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">18</span>
+    <span class="phpdocumentor-element-found-in__line">20</span>
 
     </aside>
 
-        
+            <p class="phpdocumentor-summary">Interface for the luminance sources</p>
+
 
 
 
@@ -198,7 +195,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_getLuminances">getLuminances()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: array&lt;string|int, int&gt;    </span>
 </dt>
 <dd>Fetches luminance data for the underlying bitmap. Values should be fetched using:
 `int luminance = array[y * width + x] &amp; 0xff`</dd>
@@ -206,7 +203,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_getRow">getRow()</a>
     <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: array&lt;string|int, int&gt;    </span>
 </dt>
 <dd>Fetches one row of luminance data from the underlying platform&#039;s bitmap. Values range from
 0 (black) to 255 (white). Because Java does not have an unsigned byte type, callers will have
@@ -247,7 +244,7 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceInterface.php"><a href="files/src-common-luminancesourceinterface.html"><abbr title="src/Common/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">62</span>
+    <span class="phpdocumentor-element-found-in__line">64</span>
 
     </aside>
 
@@ -303,7 +300,7 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceInterface.php"><a href="files/src-common-luminancesourceinterface.html"><abbr title="src/Common/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">59</span>
 
     </aside>
 
@@ -359,7 +356,7 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceInterface.php"><a href="files/src-common-luminancesourceinterface.html"><abbr title="src/Common/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">38</span>
+    <span class="phpdocumentor-element-found-in__line">40</span>
 
     </aside>
 
@@ -401,7 +398,7 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceInterface.php"><a href="files/src-common-luminancesourceinterface.html"><abbr title="src/Common/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
@@ -410,7 +407,7 @@ getLuminances() may never be called.</dd>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getLuminances</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">getLuminances</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -423,7 +420,7 @@ getLuminances() may never be called.</dd>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>A row-major 2D array of luminance values. Do not use result $length as it may be
 larger than $width * $height bytes on some platforms. Do not modify the contents
@@ -447,7 +444,7 @@ of the result.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceInterface.php"><a href="files/src-common-luminancesourceinterface.html"><abbr title="src/Common/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">52</span>
+    <span class="phpdocumentor-element-found-in__line">54</span>
 
     </aside>
 
@@ -459,7 +456,7 @@ getLuminances() may never be called.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getRow</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$y</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">getRow</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$y</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -499,7 +496,7 @@ getLuminances() may never be called.</p>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        <span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>An array containing the luminance data.</p>
 </section>
@@ -521,7 +518,7 @@ getLuminances() may never be called.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceInterface.php"><a href="files/src-common-luminancesourceinterface.html"><abbr title="src/Common/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">35</span>
 
     </aside>
 
