@@ -93,30 +93,7 @@ class QREps extends QROutputAbstract{
 	}
 
 	public function dump(string|null $file = null):string{
-		[$width, $height] = $this->getOutputDimensions();
-
-		$eps = [
-			// main header
-			'%!PS-Adobe-3.0 EPSF-3.0',
-			'%%Creator: php-qrcode (https://github.com/chillerlan/php-qrcode)',
-			'%%Title: QR Code',
-			sprintf('%%%%CreationDate: %1$s', date('c')),
-			'%%DocumentData: Clean7Bit',
-			'%%LanguageLevel: 3',
-			sprintf('%%%%BoundingBox: 0 0 %s %s', $width, $height),
-			'%%EndComments',
-			// function definitions
-			'%%BeginProlog',
-			'/F { rectfill } def',
-			'/R { setrgbcolor } def',
-			'/C { setcmykcolor } def',
-			'%%EndProlog',
-		];
-
-		if($this::moduleValueIsValid($this->options->bgColor)){
-			$eps[] = $this->prepareModuleValue($this->options->bgColor);
-			$eps[] = sprintf('0 0 %s %s F', $width, $height);
-		}
+		$eps = $this->header();
 
 		// create the path elements
 		$paths = $this->collectModules($this->module(...));
@@ -139,6 +116,40 @@ class QREps extends QROutputAbstract{
 		$this->saveToFile($data, $file);
 
 		return $data;
+	}
+
+	/**
+	 * Returns the main header for the EPS file, including function definitions and background
+	 *
+	 * @return array<int, string>
+	 */
+	protected function header():array{
+		[$width, $height] = $this->getOutputDimensions();
+
+		$header = [
+			// main header
+			'%!PS-Adobe-3.0 EPSF-3.0',
+			'%%Creator: php-qrcode (https://github.com/chillerlan/php-qrcode)',
+			'%%Title: QR Code',
+			sprintf('%%%%CreationDate: %1$s', date('c')),
+			'%%DocumentData: Clean7Bit',
+			'%%LanguageLevel: 3',
+			sprintf('%%%%BoundingBox: 0 0 %s %s', $width, $height),
+			'%%EndComments',
+			// function definitions
+			'%%BeginProlog',
+			'/F { rectfill } def',
+			'/R { setrgbcolor } def',
+			'/C { setcmykcolor } def',
+			'%%EndProlog',
+		];
+
+		if($this::moduleValueIsValid($this->options->bgColor)){
+			$header[] = $this->prepareModuleValue($this->options->bgColor);
+			$header[] = sprintf('0 0 %s %s F', $width, $height);
+		}
+
+		return $header;
 	}
 
 	/**
