@@ -191,6 +191,7 @@ Specifies which module types to exclude when `QROptions::$drawCircularModules` i
 (default: `[]`)
 
 
+
 ## connectPaths
 
 Whether to connect the paths for the several module types to avoid weird glitches when using gradients etc.
@@ -215,6 +216,7 @@ Currentty used in `QREps` and `QRMarkupSVG`.
 Specify which paths/patterns to exclude from connecting if `QROptions::$connectPaths` is set to `true`
 
 
+
 **See also:**
 
 - `\chillerlan\QRCode\QROptionsTrait::$connectPaths`
@@ -227,6 +229,7 @@ Module values map
 - `QRImagick`, `QRMarkupHTML`, `QRMarkupSVG`: #ABCDEF, cssname, rgb(), rgba()...
 - `QREps`, `QRFpdf`, `QRGdImage`: `[R, G, B]` // 0-255
 - `QREps`: `[C, M, Y, K]` // 0-255
+
 
 
 **See also:**
@@ -294,7 +297,6 @@ Defaults to `QROptions::$bgColor`.
 
 - `QRGdImage`: `[R, G, B]`, this color is set as transparent in `imagecolortransparent()`
 - `QRImagick`: `"color_str"`, this color is set in `Imagick::transparentPaintImage()`
-
 
 
 **See also:**
