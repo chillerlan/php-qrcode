@@ -2716,11 +2716,6 @@ Search.appendIndex(
             "summary": "Generates\u0020the\u0020output,\u0020optionally\u0020dumps\u0020it\u0020to\u0020a\u0020file,\u0020and\u0020returns\u0020it",
             "url": "classes/chillerlan-QRCode-Output-QRImagick.html#method_dump"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003AguessMimeType\u0028\u0029",
-            "name": "guessMimeType",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-Output-QRImagick.html#method_guessMimeType"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRImagick\u003A\u003AsetBgColor\u0028\u0029",
             "name": "setBgColor",
             "summary": "Sets\u0020the\u0020background\u0020color",
@@ -2990,6 +2985,11 @@ Search.appendIndex(
             "name": "toBase64DataURI",
             "summary": "Returns\u0020a\u0020base64\u0020data\u0020URI\u0020for\u0020the\u0020given\u0020string\u0020and\u0020mime\u0020type",
             "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_toBase64DataURI"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AguessMimeType\u0028\u0029",
+            "name": "guessMimeType",
+            "summary": "Guesses\u0020the\u0020mime\u0020type\u0020from\u0020the\u0020given\u0020\u0024imageData",
+            "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_guessMimeType"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AsaveToFile\u0028\u0029",
             "name": "saveToFile",
