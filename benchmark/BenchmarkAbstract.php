@@ -33,6 +33,7 @@ abstract class BenchmarkAbstract{
 	protected const ECC_LEVELS  = [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H];
 	protected const DATAMODES   = Mode::INTERFACES;
 
+	/** @var array<int, string> */
 	protected array     $dataModeData;
 	protected string    $testData;
 	protected QROptions $options;
@@ -45,7 +46,7 @@ abstract class BenchmarkAbstract{
 	protected string    $modeFQCN;
 
 	/**
-	 *
+	 * @throws \RuntimeException
 	 */
 	public function __construct(){
 
@@ -64,6 +65,8 @@ abstract class BenchmarkAbstract{
 
 	/**
 	 * Generates test data strings for each mode
+	 *
+	 * @return array<int, string>
 	 */
 	protected function generateDataModeData():array{
 		return [
@@ -90,6 +93,8 @@ abstract class BenchmarkAbstract{
 
 	/**
 	 * Initializes a QROptions instance and assigns it to its temp property
+	 *
+	 * @param array<string, mixed> $options
 	 */
 	protected function initQROptions(array $options):void{
 		$this->options = new QROptions($options);
@@ -114,6 +119,8 @@ abstract class BenchmarkAbstract{
 
 	/**
 	 * Assigns the parameter array from the providers to properties and enforces the types
+	 *
+	 * @param array<string, mixed> $params
 	 */
 	public function assignParams(array $params):void{
 		foreach($params as $k => $v){

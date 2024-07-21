@@ -25,6 +25,9 @@ use const SORT_NUMERIC;
 const BUILDDIR = __DIR__.'/../.build/phpbench';
 const FILE     = BUILDDIR.'/benchmark'; // without extension
 
+/**
+ * @param array<int, array<int, mixed>> $variants
+ */
 function parseVariants(array $variants):string{
 	$data = [];
 
@@ -65,6 +68,11 @@ function parseVariants(array $variants):string{
 	return implode("\n", $table);
 }
 
+/**
+ * @param array<int, array<int, mixed>> $results
+ *
+ * @return array{0: float, 1: int}
+ */
 function parseVariantResults(array $results):array{
 	$iterations = count($results);
 	$mem_peak   = array_column($results, 'mem_peak');

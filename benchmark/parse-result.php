@@ -29,6 +29,17 @@ use const JSON_PRETTY_PRINT;
 require_once __DIR__.'/parse-common.php';
 
 const SEPARATOR = '|';
+const BOOLEANS  = ['has_baseline', 'env_php_xdebug', 'env_opcache_extension_loaded', 'env_opcache_enabled'];
+const INTEGERS  = [
+	'variant_index', 'variant_revs', 'variant_iterations', 'iteration_index', 'result_time_net',
+	'result_time_revs', 'result_mem_peak', 'result_mem_real', 'result_mem_final',
+];
+const FLOATS    = [
+	'env_sampler_nothing', 'env_sampler_md5', 'env_sampler_file_rw', 'result_time_avg',
+	'result_comp_z_value', 'result_comp_deviation',
+];
+const ARRAYS = ['subject_groups', 'variant_params'];
+
 
 function parseLine(string $line):array{
 	return array_map(fn(string $str):string => trim($str, "\ \n\r\t\v\0\""), explode(SEPARATOR, $line));
@@ -42,22 +53,22 @@ $json   = ['env' => [], 'suite' => [], 'benchmark' => []];
 foreach($parsed as $i => $result){
 
 	// booleans
-	foreach(['has_baseline', 'env_php_xdebug', 'env_opcache_extension_loaded', 'env_opcache_enabled'] as $bool){
+	foreach(BOOLEANS as $bool){
 		$result[$bool] = (bool)$result[$bool];
 	}
 
 	// integers
-	foreach(['variant_index', 'variant_revs', 'variant_iterations', 'iteration_index', 'result_time_net', 'result_time_revs', 'result_mem_peak', 'result_mem_real', 'result_mem_final'] as $int){
+	foreach(INTEGERS as $int){
 		$result[$int] = intval($result[$int]);
 	}
 
 	// floats
-	foreach(['env_sampler_nothing', 'env_sampler_md5', 'env_sampler_file_rw', 'result_time_avg', 'result_comp_z_value', 'result_comp_deviation'] as $float){
+	foreach(FLOATS as $float){
 		$result[$float] = floatval($result[$float]);
 	}
 
 	// arrays
-	foreach(['subject_groups', 'variant_params'] as $array){
+	foreach(ARRAYS as $array){
 		$val = trim($result[$array], '"[]');
 
 		if($val === ''){
@@ -111,16 +122,19 @@ foreach($parsed as $i => $result){
 				continue;
 			}
 
+			// phpcs:ignore
 			$json['benchmark'][$result['benchmark_name']]['subjects'][$result['subject_name']][str_replace('subject_', '', $k)] = $v;
 		}
 
 		// add variants
 		if(str_starts_with($k, 'variant_')){
+			// phpcs:ignore
 			$json['benchmark'][$result['benchmark_name']]['subjects'][$result['subject_name']]['variants'][$result['variant_index']][str_replace('variant_', '', $k)] = $v;
 		}
 
 		// add benchmark results per variant
 		if(str_starts_with($k, 'result_')){
+			// phpcs:ignore
 			$json['benchmark'][$result['benchmark_name']]['subjects'][$result['subject_name']]['variants'][$result['variant_index']]['results'][$result['result_index']][str_replace('result_', '', $k)] = $v;
 		}
 
@@ -128,4 +142,4 @@ foreach($parsed as $i => $result){
 
 }
 
-file_put_contents(FILE.'.json', json_encode($json, (JSON_PRESERVE_ZERO_FRACTION|JSON_PRETTY_PRINT)));
+file_put_contents(FILE.'.json', json_encode($json, (JSON_PRESERVE_ZERO_FRACTION | JSON_PRETTY_PRINT)));

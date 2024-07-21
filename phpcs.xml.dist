@@ -4,6 +4,7 @@
          xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
 	<description>php-qrcode rules for phpcs</description>
 
+	<file>benchmark</file>
 	<file>examples</file>
 	<file>src</file>
 	<file>tests</file>
@@ -209,6 +210,7 @@
 
 	<rule ref="PSR1.Files.SideEffects">
 		<exclude-pattern>examples</exclude-pattern>
+		<exclude-pattern>benchmark</exclude-pattern>
 	</rule>
 
 
