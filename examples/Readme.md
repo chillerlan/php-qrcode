@@ -17,6 +17,7 @@
 - [String](./text.php): String output
 - [XML](./xml.php): XML output (rendered as SVG via an [XSLT style](./qrcode.style.xsl))
 - [intervention/image](./intervention-image.php): alternative GD/ImageMagick output, see https://image.intervention.io/
+- [Custom output](./custom_output.php): a simple example that demonstrates the usage of custom output classes
 - [Multi mode](./multimode.php): a demostration of multi mode usage
 - [Reflectance](./reflectance.php): demonstrates reflectance reversal
 - [QRCode reader](./reader.php): a simple reader example
@@ -24,7 +25,6 @@
 
 ## Advanced output examples
 
-- [Custom output](./custom_output.php): a simple example that demonstrates the usage of custom output classes
 - [GD Image with logo](./imageWithLogo.php): a logo on top of the QR Code
 - [GD image with text](./imageWithText.php): description text under the QR Code ([#35](https://github.com/chillerlan/php-qrcode/issues/35))
 - [GD Image with rounded modules](./imageWithRoundedShapes.php): similar to the SVG "melted" modules example ([#215](https://github.com/chillerlan/php-qrcode/pull/215))
