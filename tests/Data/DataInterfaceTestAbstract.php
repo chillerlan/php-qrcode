@@ -187,7 +187,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		try{
 			$this::assertSame($version->getVersionNumber(), $minimumVersionNumber);
 		}
-		catch(ExpectationFailedException $e){
+		catch(ExpectationFailedException){
 			$this::assertSame(($version->getVersionNumber() + 1), $minimumVersionNumber, 'safety margin');
 		}
 

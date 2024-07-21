@@ -23,9 +23,6 @@ class QRGdImageWEBP extends QRGdImage{
 
 	final public const MIME_TYPE = 'image/webp';
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function renderImage():void{
 		imagewebp($this->image, null, max(-1, min(100, $this->options->quality)));
 	}

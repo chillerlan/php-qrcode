@@ -23,16 +23,10 @@ class QRGdImageJPEG extends QRGdImage{
 
 	final public const MIME_TYPE = 'image/jpg';
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function setTransparencyColor():void{
 		// noop - transparency is not supported
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function renderImage():void{
 		imagejpeg($this->image, null, max(-1, min(100, $this->options->quality)));
 	}

@@ -133,7 +133,7 @@ class QRCode{
 				$logoSpaceWidth,
 				$logoSpaceHeight,
 				$this->options->logoSpaceStartX,
-				$this->options->logoSpaceStartY
+				$this->options->logoSpaceStartY,
 			);
 		}
 
@@ -156,7 +156,7 @@ class QRCode{
 			throw new QRCodeOutputException('invalid output class');
 		}
 
-		if(!in_array(QROutputInterface::class, class_implements($outputInterface))){
+		if(!in_array(QROutputInterface::class, class_implements($outputInterface), true)){
 			throw new QRCodeOutputException('output class does not implement QROutputInterface');
 		}
 

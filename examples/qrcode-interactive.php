@@ -56,7 +56,7 @@ try{
 
 	$moduleValues = array_map(function($v){
 		if(preg_match('/[a-f\d]{6}/i', $v) === 1){
-			return in_array($_POST['output_type'], ['png', 'jpg', 'gif'])
+			return in_array($_POST['output_type'], ['png', 'jpg', 'gif'], true)
 				? array_map('hexdec', str_split($v, 2))
 				: '#'.$v ;
 		}
@@ -81,7 +81,7 @@ try{
 
 	$qrcode = (new QRCode($options))->render($_POST['inputstring']);
 
-	if(in_array($_POST['output_type'], ['png', 'jpg', 'gif', 'svg'])){
+	if(in_array($_POST['output_type'], ['png', 'jpg', 'gif', 'svg'], true)){
 		$qrcode = '<img alt="qrcode" src="'.$qrcode.'" />';
 	}
 	elseif($_POST['output_type'] === 'text'){

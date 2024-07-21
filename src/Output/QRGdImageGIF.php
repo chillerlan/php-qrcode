@@ -23,9 +23,6 @@ class QRGdImageGIF extends QRGdImage{
 
 	final public const MIME_TYPE = 'image/gif';
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function renderImage():void{
 		imagegif($this->image);
 	}

@@ -23,9 +23,6 @@ class QRGdImageBMP extends QRGdImage{
 
 	final public const MIME_TYPE = 'image/bmp';
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function renderImage():void{
 		imagebmp($this->image, null, ($this->options->quality > 0));
 	}

@@ -51,9 +51,6 @@ final class IMagickLuminanceSource extends LuminanceSourceAbstract{
 		$this->setLuminancePixels();
 	}
 
-	/**
-	 *
-	 */
 	private function setLuminancePixels():void{
 		$pixels = $this->imagick->exportImagePixels(1, 1, $this->width, $this->height, 'RGB', Imagick::PIXEL_CHAR);
 		$count  = count($pixels);
@@ -63,12 +60,10 @@ final class IMagickLuminanceSource extends LuminanceSourceAbstract{
 		}
 	}
 
-	/** @inheritDoc */
 	public static function fromFile(string $path, SettingsContainerInterface|QROptions $options = new QROptions):static{
 		return new self(new Imagick(self::checkFile($path)), $options);
 	}
 
-	/** @inheritDoc */
 	public static function fromBlob(string $blob, SettingsContainerInterface|QROptions $options = new QROptions):static{
 		$im = new Imagick;
 		$im->readImageBlob($blob);

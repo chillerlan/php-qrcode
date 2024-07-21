@@ -13,7 +13,7 @@ namespace chillerlan\QRCode\Output;
 use function array_map, implode, is_string, max, min, sprintf;
 
 /**
- *
+ * String/plaintext output (for CLI etc.)
  */
 class QRStringText extends QROutputAbstract{
 
@@ -37,16 +37,10 @@ class QRStringText extends QROutputAbstract{
 		return $value;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function getDefaultModuleValue(bool $isDark):string{
 		return ($isDark) ? '██' : '░░';
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function dump(string|null $file = null):string{
 		$lines     = [];
 		$linestart = $this->options->textLineStart;

@@ -103,7 +103,7 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 		try{
 			$this::assertTrue(Kanji::validateString($chr));
 		}
-		catch(Throwable $e){
+		catch(Throwable){
 			/** @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist */
 			if(defined('TEST_IS_CI') && TEST_IS_CI === true){
 				$this::markTestSkipped();
@@ -112,7 +112,7 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 			$this::markTestSkipped(sprintf(
 				'invalid glyph: %s => %s',
 				bin2hex(mb_convert_encoding($chr, Kanji::ENCODING, 'UTF-8')),
-				$chr
+				$chr,
 			));
 		}
 	}

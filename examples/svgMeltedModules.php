@@ -26,17 +26,11 @@ require_once __DIR__.'/../vendor/autoload.php';
  */
 class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function path(string $path, int $M_TYPE):string{
 		// omit the "fill" and "opacity" attributes on the path element
 		return sprintf('<path class="%s" d="%s"/>', $this->getCssClass($M_TYPE), $path);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function collectModules(Closure $transform):array{
 		$paths = [];
 		$melt  = $this->options->melt; // avoid magic getter in long loops
@@ -76,9 +70,6 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 		return $paths;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function module(int $x, int $y, int $M_TYPE):string{
 		$bits     = $this->matrix->checkNeighbours($x, $y, null);
 		$check    = fn(int $all, int $any = 0):bool => ($bits & ($all | (~$any & 0xff))) === $all;
@@ -289,7 +280,7 @@ $options->svgDefs            = '
 $out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 
-if(php_sapi_name() !== 'cli'){
+if(PHP_SAPI !== 'cli'){
 	header('Content-type: image/svg+xml');
 
 	if(extension_loaded('zlib')){

@@ -15,14 +15,11 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QROutputInterface, QRStringText};
 use chillerlan\Settings\SettingsContainerInterface;
 
-/**
- *
- */
 final class QRStringTextTest extends QROutputTestAbstract{
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
-		QRMatrix                             $matrix
+		QRMatrix                             $matrix,
 	):QROutputInterface{
 		return new QRStringText($options, $matrix);
 	}
@@ -39,9 +36,6 @@ final class QRStringTextTest extends QROutputTestAbstract{
 		];
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [

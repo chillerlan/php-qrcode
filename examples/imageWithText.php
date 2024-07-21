@@ -23,9 +23,6 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 class QRImageWithText extends QRGdImagePNG{
 
-	/**
-	 * @inheritDoc
-	 */
 	public function dump(string|null $file = null, string|null $text = null):string{
 		// set returnResource to true to skip further processing for now
 		$this->options->returnResource = true;

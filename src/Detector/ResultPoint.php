@@ -25,32 +25,20 @@ abstract class ResultPoint{
 	protected float $y;
 	protected float $estimatedModuleSize;
 
-	/**
-	 *
-	 */
 	public function __construct(float $x, float $y, float $estimatedModuleSize){
 		$this->x                   = $x;
 		$this->y                   = $y;
 		$this->estimatedModuleSize = $estimatedModuleSize;
 	}
 
-	/**
-	 *
-	 */
 	public function getX():float{
 		return $this->x;
 	}
 
-	/**
-	 *
-	 */
 	public function getY():float{
 		return $this->y;
 	}
 
-	/**
-	 *
-	 */
 	public function getEstimatedModuleSize():float{
 		return $this->estimatedModuleSize;
 	}

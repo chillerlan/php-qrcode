@@ -19,7 +19,6 @@ use chillerlan\QRCode\Output\QRMarkupSVG;
 use function constant, in_array, is_string, max, min, sprintf, strtolower, strtoupper, trim;
 use const JSON_THROW_ON_ERROR, JSON_UNESCAPED_SLASHES, PHP_EOL;
 
-
 /**
  * The QRCode plug-in settings & setter functionality
  *
@@ -346,8 +345,6 @@ trait QROptionsTrait{
 	 *
 	 * @see \imagecolortransparent()
 	 * @see \Imagick::transparentPaintImage()
-	 *
-	 * @var mixed|null
 	 */
 	protected mixed $transparencyColor = null;
 
@@ -463,7 +460,7 @@ trait QROptionsTrait{
 	 *
 	 * @see https://www.php.net/manual/json.constants.php
 	 */
-	protected int $jsonFlags = JSON_THROW_ON_ERROR|JSON_UNESCAPED_SLASHES;
+	protected int $jsonFlags = (JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES);
 
 
 	/*
@@ -532,7 +529,7 @@ trait QROptionsTrait{
 		if(is_string($eccLevel)){
 			$ecc = strtoupper(trim($eccLevel));
 
-			if(!in_array($ecc, ['L', 'M', 'Q', 'H'])){
+			if(!in_array($ecc, ['L', 'M', 'Q', 'H'], true)){
 				throw new QRCodeException(sprintf('Invalid ECC level: "%s"', $ecc));
 			}
 

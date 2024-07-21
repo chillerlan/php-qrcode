@@ -55,7 +55,7 @@ class QRImagickWithLogo extends QRImagick{
 		$this->saveToFile($imageData, $file);
 
 		if($this->options->outputBase64){
-			$imageData = $this->toBase64DataURI($imageData, (new finfo(FILEINFO_MIME_TYPE))->buffer($imageData));
+			$imageData = $this->toBase64DataURI($imageData, $this->guessMimeType($imageData));
 		}
 
 		return $imageData;
@@ -77,6 +77,8 @@ class ImagickWithLogoOptions extends QROptions{
 	 *
 	 * of course, we could accept other formats too.
 	 * we're not checking for the file type either for simplicity reasons (assuming PNG)
+	 *
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function set_pngLogo(string $pngLogo):void{
 

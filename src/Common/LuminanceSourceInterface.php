@@ -14,6 +14,7 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\Settings\SettingsContainerInterface;
 
 /**
+ * Interface for the luminance sources
  */
 interface LuminanceSourceInterface{
 

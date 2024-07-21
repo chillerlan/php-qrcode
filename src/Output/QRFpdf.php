@@ -29,10 +29,9 @@ class QRFpdf extends QROutputAbstract{
 
 	final public const MIME_TYPE = 'application/pdf';
 
-	protected FPDF       $fpdf;
-
 	/** @var int[]  */
 	protected array|null $prevColor = null;
+	protected FPDF       $fpdf;
 
 	/**
 	 * QRFpdf constructor.
@@ -45,6 +44,7 @@ class QRFpdf extends QROutputAbstract{
 			// @codeCoverageIgnoreStart
 			throw new QRCodeOutputException(
 				'The QRFpdf output requires FPDF (https://github.com/Setasign/FPDF)'.
+				// phpcs:ignore
 				' as dependency but the class "\\FPDF" could not be found.'
 			);
 			// @codeCoverageIgnoreEnd
@@ -57,15 +57,12 @@ class QRFpdf extends QROutputAbstract{
 	 * Initializes an FPDF instance
 	 */
 	protected function initFPDF():FPDF{
-		$fpdf =  new FPDF('P', $this->options->fpdfMeasureUnit, $this->getOutputDimensions());
+		$fpdf = new FPDF('P', $this->options->fpdfMeasureUnit, $this->getOutputDimensions());
 		$fpdf->AddPage();
 
 		return $fpdf;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function dump(string|null $file = null, FPDF|null $fpdf = null):string|FPDF{
 		$this->fpdf = ($fpdf ?? $this->initFPDF());
 

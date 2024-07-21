@@ -44,9 +44,6 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 		return strlen($this->data);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public static function convertEncoding(string $string):string{
 		return $string;
 	}

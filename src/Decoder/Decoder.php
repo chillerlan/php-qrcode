@@ -27,9 +27,6 @@ use function chr, str_replace;
  */
 final class Decoder{
 
-	/**
-	 * @var \chillerlan\QRCode\QROptions|\chillerlan\Settings\SettingsContainerInterface
-	 */
 	private SettingsContainerInterface|QROptions   $options;
 	private Version|null                           $version     = null;
 	private EccLevel|null                          $eccLevel    = null;
@@ -164,9 +161,6 @@ final class Decoder{
 		]);
 	}
 
-	/**
-	 *
-	 */
 	private function decodeAlphanumSegment(int $versionNumber, bool $fc1InEffect):string{
 		$str = AlphaNum::decodeSegment($this->bitBuffer, $versionNumber);
 

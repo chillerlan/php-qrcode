@@ -94,23 +94,14 @@ class QRImagick extends QROutputAbstract{
 		return false;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function prepareModuleValue(mixed $value):ImagickPixel{
 		return new ImagickPixel($value);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function getDefaultModuleValue(bool $isDark):ImagickPixel{
 		return $this->prepareModuleValue(($isDark) ? '#000' : '#fff');
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function dump(string|null $file = null):string|Imagick{
 		$this->setBgColor();
 
@@ -131,10 +122,26 @@ class QRImagick extends QROutputAbstract{
 		$this->saveToFile($imageData, $file);
 
 		if($this->options->outputBase64){
-			$imageData = $this->toBase64DataURI($imageData, (new finfo(FILEINFO_MIME_TYPE))->buffer($imageData));
+
+			$imageData = $this->toBase64DataURI($imageData, $this->guessMimeType($imageData));
 		}
 
 		return $imageData;
+	}
+
+	/**
+	 * @todo: move to QROutputAbstract
+	 *
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
+	protected function guessMimeType(string $imageData):string{
+		$mime = (new finfo(FILEINFO_MIME_TYPE))->buffer($imageData);
+
+		if($mime === false){
+			throw new QRCodeOutputException('unable to detect mime type');
+		}
+
+		return $mime;
 	}
 
 	/**
@@ -217,7 +224,7 @@ class QRImagick extends QROutputAbstract{
 				(($x + 0.5) * $this->scale),
 				(($y + 0.5) * $this->scale),
 				(($x + 0.5 + $this->circleRadius) * $this->scale),
-				(($y + 0.5) * $this->scale)
+				(($y + 0.5) * $this->scale),
 			);
 
 			return;
@@ -227,7 +234,7 @@ class QRImagick extends QROutputAbstract{
 			($x * $this->scale),
 			($y * $this->scale),
 			((($x + 1) * $this->scale) - 1),
-			((($y + 1) * $this->scale) - 1)
+			((($y + 1) * $this->scale) - 1),
 		);
 	}
 

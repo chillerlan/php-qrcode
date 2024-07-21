@@ -16,9 +16,6 @@ namespace chillerlan\QRCode\Output;
 abstract class QRMarkup extends QROutputAbstract{
 	use CssColorModuleValueTrait;
 
-	/**
-	 * @inheritDoc
-	 */
 	public function dump(string|null $file = null):string{
 		$saveToFile = $file !== null;
 		$data       = $this->createMarkup($saveToFile);

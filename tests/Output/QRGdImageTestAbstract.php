@@ -22,9 +22,6 @@ use function extension_loaded;
 abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
 	use RGBArrayModuleValueProviderTrait;
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function setUp():void{
 
 		if(!extension_loaded('gd')){
@@ -34,9 +31,6 @@ abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
 		parent::setUp();
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [

@@ -28,7 +28,6 @@ class QRMarkupXML extends QRMarkup{
 
 	/**
 	 * @inheritDoc
-	 *
 	 * @return int[]
 	 */
 	protected function getOutputDimensions():array{
@@ -37,6 +36,7 @@ class QRMarkupXML extends QRMarkup{
 
 	/**
 	 * @inheritDoc
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function createMarkup(bool $saveToFile):string{
 		/** @noinspection PhpComposerExtensionStubsInspection */
@@ -61,6 +61,10 @@ class QRMarkupXML extends QRMarkup{
 		$this->dom->appendChild($root);
 
 		$xml = $this->dom->saveXML();
+
+		if($xml === false){
+			throw new QRCodeOutputException('XML error');
+		}
 
 		return $xml;
 	}
@@ -129,9 +133,8 @@ class QRMarkupXML extends QRMarkup{
 
 		$module = $this->dom->createElement('module');
 
-		$module->setAttribute('x', $x);
-		$module->setAttribute('dark', ($isDark ? 'true' : 'false'));
 		$module->setAttribute('x', (string)$x);
+		$module->setAttribute('dark', (($isDark) ? 'true' : 'false'));
 		$module->setAttribute('layer', ($this::LAYERNAMES[$M_TYPE] ?? ''));
 		$module->setAttribute('value', (string)$this->getModuleValue($M_TYPE));
 

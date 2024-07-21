@@ -15,22 +15,16 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QROutputInterface, QRStringJSON};
 use chillerlan\Settings\SettingsContainerInterface;
 
-/**
- *
- */
 final class QRStringJSONTest extends QROutputTestAbstract{
 	use CssColorModuleValueProviderTrait;
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
-		QRMatrix                             $matrix
+		QRMatrix                             $matrix,
 	):QROutputInterface{
 		return new QRStringJSON($options, $matrix);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [

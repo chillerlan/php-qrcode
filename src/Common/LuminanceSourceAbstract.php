@@ -31,9 +31,6 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 	protected int   $width;
 	protected int   $height;
 
-	/**
-	 *
-	 */
 	public function __construct(int $width, int $height, SettingsContainerInterface|QROptions $options = new QROptions){
 		$this->width   = $width;
 		$this->height  = $height;
@@ -42,22 +39,18 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 		$this->luminances = [];
 	}
 
-	/** @inheritDoc */
 	public function getLuminances():array{
 		return $this->luminances;
 	}
 
-	/** @inheritDoc */
 	public function getWidth():int{
 		return $this->width;
 	}
 
-	/** @inheritDoc */
 	public function getHeight():int{
 		return $this->height;
 	}
 
-	/** @inheritDoc */
 	public function getRow(int $y):array{
 
 		if($y < 0 || $y >= $this->getHeight()){
@@ -71,9 +64,6 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 		return $arr;
 	}
 
-	/**
-	 *
-	 */
 	protected function setLuminancePixel(int $r, int $g, int $b):void{
 		$this->luminances[] = ($r === $g && $g === $b)
 			// Image is already greyscale, so pick any channel.

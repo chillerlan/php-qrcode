@@ -19,9 +19,6 @@ class QRMarkupHTML extends QRMarkup{
 
 	final public const MIME_TYPE = 'text/html';
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function createMarkup(bool $saveToFile):string{
 		$rows     = [];
 		$cssClass = $this->getCssClass();
@@ -41,7 +38,7 @@ class QRMarkupHTML extends QRMarkup{
 				'<!DOCTYPE html><html lang="none">%2$s<head>%2$s<meta charset="UTF-8">%2$s'.
 					'<title>QR Code</title></head>%2$s<body>%1$s</body>%2$s</html>',
 				$html,
-				$this->eol
+				$this->eol,
 			);
 		}
 

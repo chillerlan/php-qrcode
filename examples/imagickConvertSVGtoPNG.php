@@ -14,17 +14,18 @@
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2023 smiley
  * @license      MIT
+ *
+ * @noinspection PhpComposerExtensionStubsInspection
  */
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QRMarkupSVG;
+use chillerlan\QRCode\Output\{QRCodeOutputException, QRMarkupSVG};
 
 require_once __DIR__.'/../vendor/autoload.php';
 
 class SVGConvert extends QRMarkupSVG{
 
-	/** @inheritDoc */
 	protected function header():string{
 		[$width, $height] = $this->getOutputDimensions();
 
@@ -36,7 +37,7 @@ class SVGConvert extends QRMarkupSVG{
 			$this->options->svgPreserveAspectRatio,
 			$this->options->eol,
 			($width * $this->scale), // use the scale option to modify the size
-			($height * $this->scale)
+			($height * $this->scale),
 		);
 
 		if($this->options->svgAddXmlHeader){
@@ -46,7 +47,6 @@ class SVGConvert extends QRMarkupSVG{
 		return $header;
 	}
 
-	/** @inheritDoc */
 	public function dump(string|null $file = null):string{
 		$base64 = $this->options->outputBase64;
 		// we don't want the SVG in base64
@@ -70,7 +70,13 @@ class SVGConvert extends QRMarkupSVG{
 
 		if($base64){
 			// use finfo to guess the mime type
-			$imageData = $this->toBase64DataURI($imageData, (new finfo(FILEINFO_MIME_TYPE))->buffer($imageData));
+			$mime = (new finfo(FILEINFO_MIME_TYPE))->buffer($imageData);
+
+			if($mime === false){
+				throw new QRCodeOutputException('unable to detect mime type');
+			}
+
+			$imageData = $this->toBase64DataURI($imageData);
 		}
 
 		return $imageData;

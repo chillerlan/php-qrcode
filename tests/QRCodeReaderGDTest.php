@@ -21,7 +21,7 @@ final class QRCodeReaderGDTest extends QRCodeReaderTestAbstract{
 
 	protected function getLuminanceSourceFromFile(
 		string                               $file,
-		SettingsContainerInterface|QROptions $options
+		SettingsContainerInterface|QROptions $options,
 	):LuminanceSourceInterface{
 		return GDLuminanceSource::fromFile($file, $options);
 	}

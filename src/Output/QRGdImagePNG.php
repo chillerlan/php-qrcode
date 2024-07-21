@@ -23,9 +23,6 @@ class QRGdImagePNG extends QRGdImage{
 
 	final public const MIME_TYPE = 'image/png';
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function renderImage():void{
 		imagepng($this->image, null, max(-1, min(9, $this->options->quality)));
 	}

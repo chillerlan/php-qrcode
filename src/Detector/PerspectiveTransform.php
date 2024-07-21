@@ -32,13 +32,10 @@ final class PerspectiveTransform{
 	private float $a32;
 	private float $a33;
 
-	/**
-	 *
-	 */
 	private function set(
 		float $a11, float $a21, float $a31,
 		float $a12, float $a22, float $a32,
-		float $a13, float $a23, float $a33
+		float $a13, float $a23, float $a33,
 	):self{
 		$this->a11 = $a11;
 		$this->a12 = $a12;
@@ -58,19 +55,16 @@ final class PerspectiveTransform{
 	 */
 	public function quadrilateralToQuadrilateral(
 		float $x0, float $y0, float $x1, float $y1, float $x2, float $y2, float $x3, float $y3,
-		float $x0p, float $y0p, float $x1p, float $y1p, float $x2p, float $y2p, float $x3p, float $y3p
+		float $x0p, float $y0p, float $x1p, float $y1p, float $x2p, float $y2p, float $x3p, float $y3p,
 	):self{
 		return (new self)
 			->squareToQuadrilateral($x0p, $y0p, $x1p, $y1p, $x2p, $y2p, $x3p, $y3p)
 			->times($this->quadrilateralToSquare($x0, $y0, $x1, $y1, $x2, $y2, $x3, $y3));
 	}
 
-	/**
-	 *
-	 */
 	private function quadrilateralToSquare(
 		float $x0, float $y0, float $x1, float $y1,
-		float $x2, float $y2, float $x3, float $y3
+		float $x2, float $y2, float $x3, float $y3,
 	):self{
 		// Here, the adjoint serves as the inverse:
 		return $this
@@ -78,9 +72,6 @@ final class PerspectiveTransform{
 			->buildAdjoint();
 	}
 
-	/**
-	 *
-	 */
 	private function buildAdjoint():self{
 		// Adjoint is the transpose of the cofactor matrix:
 		return $this->set(
@@ -92,16 +83,13 @@ final class PerspectiveTransform{
 			($this->a12 * $this->a31 - $this->a11 * $this->a32),
 			($this->a12 * $this->a23 - $this->a13 * $this->a22),
 			($this->a13 * $this->a21 - $this->a11 * $this->a23),
-			($this->a11 * $this->a22 - $this->a12 * $this->a21)
+			($this->a11 * $this->a22 - $this->a12 * $this->a21),
 		);
 	}
 
-	/**
-	 *
-	 */
 	private function squareToQuadrilateral(
 		float $x0, float $y0, float $x1, float $y1,
-		float $x2, float $y2, float $x3, float $y3
+		float $x2, float $y2, float $x3, float $y3,
 	):self{
 		$dx3 = ($x0 - $x1 + $x2 - $x3);
 		$dy3 = ($y0 - $y1 + $y2 - $y3);
@@ -128,13 +116,10 @@ final class PerspectiveTransform{
 			$y0,
 			$a13,
 			$a23,
-			1.0
+			1.0,
 		);
 	}
 
-	/**
-	 *
-	 */
 	private function times(PerspectiveTransform $other):self{
 		return $this->set(
 			($this->a11 * $other->a11 + $this->a21 * $other->a12 + $this->a31 * $other->a13),
@@ -145,7 +130,7 @@ final class PerspectiveTransform{
 			($this->a12 * $other->a31 + $this->a22 * $other->a32 + $this->a32 * $other->a33),
 			($this->a13 * $other->a11 + $this->a23 * $other->a12 + $this->a33 * $other->a13),
 			($this->a13 * $other->a21 + $this->a23 * $other->a22 + $this->a33 * $other->a23),
-			($this->a13 * $other->a31 + $this->a23 * $other->a32 + $this->a33 * $other->a33)
+			($this->a13 * $other->a31 + $this->a23 * $other->a32 + $this->a33 * $other->a33),
 		);
 	}
 

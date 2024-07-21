@@ -15,14 +15,11 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRGdImageBMP, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
 
-/**
- *
- */
 final class QRGdImageBMPTest extends QRGdImageTestAbstract{
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
-		QRMatrix                             $matrix
+		QRMatrix                             $matrix,
 	):QROutputInterface{
 		return new QRGdImageBMP($options, $matrix);
 	}

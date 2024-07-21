@@ -24,9 +24,6 @@ use function extension_loaded;
  */
 final class QRImagickTest extends QROutputTestAbstract{
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function setUp():void{
 
 		if(!extension_loaded('imagick')){
@@ -38,7 +35,7 @@ final class QRImagickTest extends QROutputTestAbstract{
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
-		QRMatrix                             $matrix
+		QRMatrix                             $matrix,
 	):QROutputInterface{
 		return new QRImagick($options, $matrix);
 	}
@@ -69,9 +66,6 @@ final class QRImagickTest extends QROutputTestAbstract{
 		];
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [

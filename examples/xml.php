@@ -8,7 +8,8 @@
  * @license      MIT
  */
 
-use chillerlan\QRCode\{Data\QRMatrix, QRCode, QROptions};
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Output\QRMarkupXML;
 
 require_once __DIR__.'/../vendor/autoload.php';
@@ -61,7 +62,7 @@ catch(Throwable $e){
 }
 
 
-if(php_sapi_name() !== 'cli'){
+if(PHP_SAPI !== 'cli'){
 	header('Content-type: '.QRMarkupXML::MIME_TYPE);
 }
 

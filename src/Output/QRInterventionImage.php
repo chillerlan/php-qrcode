@@ -82,9 +82,6 @@ class QRInterventionImage extends QROutputAbstract{
 		return $this;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function dump(string|null $file = null):string|ImageInterface{
 		[$width, $height] = $this->getOutputDimensions();
 
@@ -126,7 +123,6 @@ class QRInterventionImage extends QROutputAbstract{
 		return $imageData;
 	}
 
-
 	/**
 	 * draws a single pixel at the given position
 	 */
@@ -146,7 +142,7 @@ class QRInterventionImage extends QROutputAbstract{
 				function(CircleFactory $circle) use ($color):void{
 					$circle->radius((int)($this->circleRadius * $this->scale));
 					$circle->background($color);
-				}
+				},
 			);
 
 			return;
@@ -158,7 +154,7 @@ class QRInterventionImage extends QROutputAbstract{
 			function(RectangleFactory $rectangle) use ($color):void{
 				$rectangle->size($this->scale, $this->scale);
 				$rectangle->background($color);
-			}
+			},
 		);
 	}
 

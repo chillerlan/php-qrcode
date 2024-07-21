@@ -35,21 +35,12 @@ final class Number extends QRDataModeAbstract{
 		'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
 	];
 
-	/**
-	 * @inheritDoc
-	 */
 	public const DATAMODE = Mode::NUMBER;
 
-	/**
-	 * @inheritDoc
-	 */
 	public function getLengthInBits():int{
 		return (int)ceil($this->getCharCount() * (10 / 3));
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public static function validateString(string $string):bool{
 
 		if($string === ''){
@@ -65,9 +56,6 @@ final class Number extends QRDataModeAbstract{
 		return true;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function write(BitBuffer $bitBuffer, int $versionNumber):static{
 		$len = $this->getCharCount();
 
@@ -102,12 +90,20 @@ final class Number extends QRDataModeAbstract{
 
 	/**
 	 * get the code for the given numeric string
+	 *
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	private function parseInt(string $string):int{
 		$num = 0;
 
-		foreach(unpack('C*', $string) as $chr){
-			$num = ($num * 10 + $chr - 48);
+		$ords = unpack('C*', $string);
+
+		if($ords === false){
+			throw new QRCodeDataException('unpack() error');
+		}
+
+		foreach($ords as $ord){
+			$num = ($num * 10 + $ord - 48);
 		}
 
 		return $num;

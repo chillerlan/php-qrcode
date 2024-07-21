@@ -76,7 +76,7 @@ final class HanziTest extends DataInterfaceTestAbstract{
 		try{
 			$this::assertTrue(Hanzi::validateString($chr));
 		}
-		catch(Throwable $e){
+		catch(Throwable){
 			/** @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist */
 			if(defined('TEST_IS_CI') && TEST_IS_CI === true){
 				$this::markTestSkipped();
@@ -85,7 +85,7 @@ final class HanziTest extends DataInterfaceTestAbstract{
 			$this::markTestSkipped(sprintf(
 				'invalid glyph: %s => %s',
 				bin2hex(mb_convert_encoding($chr, Hanzi::ENCODING, 'UTF-8')),
-				$chr
+				$chr,
 			));
 		}
 	}

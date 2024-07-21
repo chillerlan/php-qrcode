@@ -22,9 +22,6 @@ use function mb_convert_encoding, mb_detect_encoding, mb_internal_encoding, spri
  */
 final class ECI extends QRDataModeAbstract{
 
-	/**
-	 * @inheritDoc
-	 */
 	public const DATAMODE = Mode::ECI;
 
 	/**
@@ -34,6 +31,7 @@ final class ECI extends QRDataModeAbstract{
 
 	/**
 	 * @inheritDoc
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 * @noinspection PhpMissingParentConstructorInspection
 	 */
 	public function __construct(int $encoding){
@@ -45,9 +43,6 @@ final class ECI extends QRDataModeAbstract{
 		$this->encoding = $encoding;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function getLengthInBits():int{
 
 		if($this->encoding < 128){
@@ -107,7 +102,7 @@ final class ECI extends QRDataModeAbstract{
 			$id = ((($firstByte & 0b00011111) << 16) | $bitBuffer->read(16));
 		}
 		else{
-			throw new QRCodeDataException(sprintf('error decoding ECI value first byte: %08b', $firstByte)); // @codeCoverageIgnore
+			throw new QRCodeDataException(sprintf('error decoding ECI value first byte: %08b', $firstByte));// @codeCoverageIgnore
 		}
 
 		return new ECICharset($id);

@@ -97,7 +97,7 @@ final class ReedSolomonDecoder{
 		while($longerBlocksStartAt >= 0){
 			$numCodewords = count($result[$longerBlocksStartAt][1]);
 
-			if($numCodewords == $shorterBlocksTotalCodewords){
+			if($numCodewords === $shorterBlocksTotalCodewords){
 				break;
 			}
 
@@ -193,7 +193,7 @@ final class ReedSolomonDecoder{
 		[$sigma, $omega] = $this->runEuclideanAlgorithm(
 			GF256::buildMonomial($numEccCodewords, 1),
 			new GenericGFPoly(array_reverse($syndromeCoefficients)),
-			$numEccCodewords
+			$numEccCodewords,
 		);
 
 		$errorLocations      = $this->findErrorLocations($sigma);

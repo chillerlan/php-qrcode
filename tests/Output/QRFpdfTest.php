@@ -23,9 +23,6 @@ use function class_exists;
 final class QRFpdfTest extends QROutputTestAbstract{
 	use RGBArrayModuleValueProviderTrait;
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function setUp():void{
 
 		if(!class_exists(FPDF::class)){
@@ -37,14 +34,11 @@ final class QRFpdfTest extends QROutputTestAbstract{
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
-		QRMatrix                             $matrix
+		QRMatrix                             $matrix,
 	):QROutputInterface{
 		return new QRFpdf($options, $matrix);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [

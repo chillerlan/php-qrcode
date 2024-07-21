@@ -47,9 +47,10 @@ jobs:
       - name: "Install dependencies with composer"
         uses: ramsey/composer-install@v3
 
-      - name: "Run phan"
-        run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
       - name: "Run PHPStan"
+        run: php vendor/bin/phpstan
+
+      - name: "Run PHP_CodeSniffer"
         run: php vendor/bin/phpstan
 
 

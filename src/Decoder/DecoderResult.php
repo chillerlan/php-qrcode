@@ -60,10 +60,7 @@ final class DecoderResult{
 
 	}
 
-	/**
-	 * @return mixed|null
-	 */
-	public function __get(string $property){
+	public function __get(string $property):mixed{
 
 		if(property_exists($this, $property)){
 			return $this->{$property};
@@ -72,16 +69,10 @@ final class DecoderResult{
 		return null;
 	}
 
-	/**
-	 *
-	 */
 	public function __toString():string{
 		return $this->data;
 	}
 
-	/**
-	 *
-	 */
 	public function hasStructuredAppend():bool{
 		return $this->structuredAppendParity >= 0 && $this->structuredAppendSequence >= 0;
 	}

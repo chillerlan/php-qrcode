@@ -21,28 +21,16 @@ use function chr, ord;
  */
 final class Byte extends QRDataModeAbstract{
 
-	/**
-	 * @inheritDoc
-	 */
 	public const DATAMODE = Mode::BYTE;
 
-	/**
-	 * @inheritDoc
-	 */
 	public function getLengthInBits():int{
 		return ($this->getCharCount() * 8);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public static function validateString(string $string):bool{
 		return $string !== '';
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function write(BitBuffer $bitBuffer, int $versionNumber):static{
 		$len = $this->getCharCount();
 

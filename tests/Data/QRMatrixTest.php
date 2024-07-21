@@ -33,7 +33,7 @@ final class QRMatrixTest extends TestCase{
 	protected function setUp():void{
 		$this->matrix = new QRMatrix(
 			new Version($this::version),
-			new EccLevel(EccLevel::L)
+			new EccLevel(EccLevel::L),
 		);
 	}
 

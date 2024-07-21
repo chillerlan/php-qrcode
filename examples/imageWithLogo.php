@@ -24,13 +24,11 @@ require_once __DIR__.'/../vendor/autoload.php';
 class QRImageWithLogo extends QRGdImagePNG{
 
 	/**
-	 * @param string|null $file
-	 * @param string|null $logo
-	 *
-	 * @return string
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function dump(string|null $file = null, string|null $logo = null):string{
+		$logo ??= '';
+
 		// set returnResource to true to skip further processing for now
 		$this->options->returnResource = true;
 
@@ -44,6 +42,10 @@ class QRImageWithLogo extends QRGdImagePNG{
 		parent::dump($file);
 
 		$im = imagecreatefrompng($logo);
+
+		if($im === false){
+			throw new QRCodeOutputException('imagecreatefrompng() error');
+		}
 
 		// get logo image size
 		$w = imagesx($im);

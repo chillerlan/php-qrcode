@@ -12,9 +12,12 @@
 
 namespace chillerlan\QRCode\Output;
 
+use JsonException;
 use function json_encode;
 
 /**
+ * JSON Output
+ *
  * @method string getModuleValue(int $M_TYPE)
  *
  * @phpstan-type Module array{x: int, dark: bool, layer: string, value: string}
@@ -40,12 +43,12 @@ class QRStringJSON extends QROutputAbstract{
 	 */
 	public function dump(string|null $file = null):string{
 		[$width, $height] = $this->getOutputDimensions();
-		$version   = $this->matrix->getVersion();
-		$dimension = $version->getDimension();
+		$version          = $this->matrix->getVersion();
+		$dimension        = $version->getDimension();
 
 		$json = [
 			'$schema' => $this::SCHEMA,
-			'qrcode' => [
+			'qrcode'  => [
 				'version'  => $version->getVersionNumber(),
 				'eccLevel' => (string)$this->matrix->getEccLevel(),
 				'matrix'   => [
@@ -67,7 +70,11 @@ class QRStringJSON extends QROutputAbstract{
 			}
 		}
 
-		$data = json_encode($json, $this->options->jsonFlags);;
+		$data = json_encode($json, $this->options->jsonFlags);
+
+		if($data === false){
+			throw new JsonException('error while encoding JSON');
+		}
 
 		$this->saveToFile($data, $file);
 

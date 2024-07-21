@@ -16,17 +16,11 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 class QRImagickImageAsBackground extends QRImagick{
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function getDefaultModuleValue(bool $isDark):ImagickPixel{
 		// RGBA, adjust opacity to increase contrast
 		return $this->prepareModuleValue(($isDark) ? '#00000040' : '#ffffffa0');
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function createImage():Imagick{
 		$imagick = new Imagick($this->options->background);
 		$width   = $imagick->getImageWidth();

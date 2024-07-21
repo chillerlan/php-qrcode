@@ -72,7 +72,7 @@ trait QRMatrixDebugTrait{
 
 		$out = (new QRStringText($options, $matrix))->dump();
 
-		printf("\n\n%s\n\n", $out) ;
+		printf("\n\n%s\n\n", $out);
 	}
 
 	/**

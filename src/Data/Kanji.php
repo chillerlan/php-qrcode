@@ -36,28 +36,16 @@ final class Kanji extends QRDataModeAbstract{
 	 */
 	public const ENCODING = 'SJIS';
 
-	/**
-	 * @inheritDoc
-	 */
 	public const DATAMODE = Mode::KANJI;
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function getCharCount():int{
 		return mb_strlen($this->data, self::ENCODING);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function getLengthInBits():int{
 		return ($this->getCharCount() * 13);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public static function convertEncoding(string $string):string{
 		mb_detect_order([mb_internal_encoding(), 'UTF-8', 'SJIS', 'SJIS-2004']);
 

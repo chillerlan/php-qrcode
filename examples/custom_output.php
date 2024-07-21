@@ -21,33 +21,21 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 class MyCustomOutput extends QROutputAbstract{
 
-	/**
-	 * @inheritDoc
-	 */
 	public static function moduleValueIsValid(mixed $value):bool{
 		// TODO: Implement moduleValueIsValid() method. (interface)
 		return false;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function prepareModuleValue(mixed $value):mixed{
 		// TODO: Implement prepareModuleValue() method. (abstract)
 		return null;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function getDefaultModuleValue(bool $isDark):mixed{
 		// TODO: Implement getDefaultModuleValue() method. (abstract)
 		return null;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function dump(string|null $file = null):string{
 		$output = '';
 

@@ -20,6 +20,7 @@ use chillerlan\Settings\SettingsContainerInterface;
 use PHPUnit\Framework\Attributes\{DataProvider, Group};
 use PHPUnit\Framework\TestCase;
 use Exception, Generator;
+use RuntimeException;
 use function array_map, defined, realpath, sprintf, str_repeat, substr;
 
 /**
@@ -83,7 +84,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 
 	abstract protected function getLuminanceSourceFromFile(
 		string                               $file,
-		SettingsContainerInterface|QROptions $options
+		SettingsContainerInterface|QROptions $options,
 	):LuminanceSourceInterface;
 
 	#[Group('slow')]
@@ -95,7 +96,13 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 			$this->options->readerIncreaseContrast = true;
 		}
 
-		$luminanceSource = $this->getLuminanceSourceFromFile(realpath($this::samplesDir.$img), $this->options);
+		$file = realpath($this::samplesDir.$img);
+
+		if($file === false){
+			throw new RuntimeException(sprintf('invalid file given: "%s" in samples directory "%s"', $img, $this::samplesDir));
+		}
+
+		$luminanceSource = $this->getLuminanceSourceFromFile($file, $this->options);
 		$result          = (new Decoder)->decode($luminanceSource);
 
 		$this->debugMatrix($result->getQRMatrix());
@@ -141,7 +148,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 				yield 'version: '.$version.$eccLevel => [
 					$version,
 					$eccLevel,
-					substr($str, 0, (self::getMaxLengthForMode(Mode::BYTE, $version, $eccLevel) ?? '')),
+					substr($str, 0, self::getMaxLengthForMode(Mode::BYTE, $version, $eccLevel)),
 				];
 			}
 		}

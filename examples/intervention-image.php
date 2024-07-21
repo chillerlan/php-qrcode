@@ -75,6 +75,3 @@ header('Content-type: image/png');
 echo $out;
 
 exit;
-
-
-

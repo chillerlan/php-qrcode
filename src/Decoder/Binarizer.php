@@ -50,9 +50,6 @@ final class Binarizer{
 	/** @var int[] */
 	private array                    $luminances;
 
-	/**
-	 *
-	 */
 	public function __construct(LuminanceSourceInterface $source){
 		$this->source     = $source;
 		$this->luminances = $this->source->getLuminances();
@@ -162,9 +159,6 @@ final class Binarizer{
 		return $this->getHistogramBlackMatrix($width, $height);
 	}
 
-	/**
-	 *
-	 */
 	private function getHistogramBlackMatrix(int $width, int $height):BitMatrix{
 
 		// Quickly calculates the histogram by sampling four rows from the image. This proved to be

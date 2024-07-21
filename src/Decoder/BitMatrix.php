@@ -221,7 +221,7 @@ final class BitMatrix extends QRMatrix{
 			// Try again by actually masking the pattern first.
 			$formatInfo = $this->doDecodeFormatInformation(
 				($formatInfoBits1 ^ $this::FORMAT_INFO_MASK_QR),
-				($formatInfoBits2 ^ $this::FORMAT_INFO_MASK_QR)
+				($formatInfoBits2 ^ $this::FORMAT_INFO_MASK_QR),
 			);
 
 			// still nothing???
@@ -237,9 +237,6 @@ final class BitMatrix extends QRMatrix{
 		return $this;
 	}
 
-	/**
-	 *
-	 */
 	private function copyVersionBit(int $i, int $j, int $versionBits):int{
 
 		$bit = $this->mirror
@@ -380,9 +377,6 @@ final class BitMatrix extends QRMatrix{
 		return null;
 	}
 
-	/**
-	 *
-	 */
 	private function uRShift(int $a, int $b):int{
 
 		if($b === 0){
@@ -392,9 +386,6 @@ final class BitMatrix extends QRMatrix{
 		return (($a >> $b) & ~((1 << (8 * PHP_INT_SIZE - 1)) >> ($b - 1)));
 	}
 
-	/**
-	 *
-	 */
 	private function numBitsDiffering(int $a, int $b):int{
 		// a now has a 1 bit exactly where its bit differs with b's
 		$a ^= $b;

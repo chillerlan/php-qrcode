@@ -15,9 +15,6 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRMarkupXML, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
 
-/**
- *
- */
 class QRMarkupXMLTest extends QRMarkupTestAbstract{
 
 	protected function getOutputInterface(

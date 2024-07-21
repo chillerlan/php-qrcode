@@ -24,9 +24,6 @@ class QREps extends QROutputAbstract{
 
 	final public const MIME_TYPE = 'application/postscript';
 
-	/**
-	 * @inheritDoc
-	 */
 	public static function moduleValueIsValid(mixed $value):bool{
 
 		if(!is_array($value) || count($value) < 3){
@@ -49,9 +46,6 @@ class QREps extends QROutputAbstract{
 		return true;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function prepareModuleValue(mixed $value):string{
 		$values = [];
 
@@ -68,9 +62,6 @@ class QREps extends QROutputAbstract{
 		return $this->formatColor($values);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function getDefaultModuleValue(bool $isDark):string{
 		return $this->formatColor(($isDark) ? [0.0, 0.0, 0.0] : [1.0, 1.0, 1.0]);
 	}
@@ -95,14 +86,11 @@ class QREps extends QROutputAbstract{
 			// CMYK
 			? '%f %f %f %f C'
 			// RGB
-			:'%f %f %f R';
+			: '%f %f %f R';
 
 		return sprintf($format, ...$values);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function dump(string|null $file = null):string{
 		[$width, $height] = $this->getOutputDimensions();
 

@@ -18,9 +18,6 @@ use chillerlan\QRCode\Data\QRMatrix;
 abstract class QRMarkupTestAbstract extends QROutputTestAbstract{
 	use CssColorModuleValueProviderTrait;
 
-	/**
-	 * @inheritDoc
-	 */
 	public function testSetModuleValues():void{
 		$this->options->outputBase64     = false;
 		$this->options->drawLightModules = true;

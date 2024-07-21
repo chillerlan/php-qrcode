@@ -15,14 +15,11 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRMarkupHTML, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
 
-/**
- *
- */
 final class QRMarkupHTMLTest extends QRMarkupTestAbstract{
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
-		QRMatrix                             $matrix
+		QRMatrix                             $matrix,
 	):QROutputInterface{
 		return new QRMarkupHTML($options, $matrix);
 	}

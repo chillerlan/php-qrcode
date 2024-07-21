@@ -25,7 +25,7 @@ trait QRMaxLengthTrait{
 	 *
 	 * @var int[][][]
 	 */
-	protected const MAX_LENGTH =[
+	protected const MAX_LENGTH = [
 	//	v  => [NUMERIC => [L, M, Q, H ], ALPHANUM => [L, M, Q, H], BINARY => [L, M, Q, H  ], KANJI => [L, M, Q, H   ]]
 		1  => [[  41,   34,   27,   17], [  25,   20,   16,   10], [  17,   14,   11,    7], [  10,    8,    7,    4]],
 		2  => [[  77,   63,   48,   34], [  47,   38,   29,   20], [  32,   26,   20,   14], [  20,   16,   12,    8]],

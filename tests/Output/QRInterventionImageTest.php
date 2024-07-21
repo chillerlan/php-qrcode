@@ -24,9 +24,6 @@ use function extension_loaded;
 class QRInterventionImageTest extends QROutputTestAbstract{
 	use CssColorModuleValueProviderTrait;
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function setUp():void{
 
 		if(!extension_loaded('gd')){
@@ -38,14 +35,11 @@ class QRInterventionImageTest extends QROutputTestAbstract{
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
-		QRMatrix                             $matrix
+		QRMatrix                             $matrix,
 	):QROutputInterface{
 		return new QRInterventionImage($options, $matrix);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [

@@ -53,8 +53,6 @@ abstract class QRGdImage extends QROutputAbstract{
 	protected bool $upscaled = false;
 
 	/**
-	 * @inheritDoc
-	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 * @noinspection PhpMissingParentConstructorInspection
 	 */
@@ -131,9 +129,6 @@ abstract class QRGdImage extends QROutputAbstract{
 		return $color;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function getDefaultModuleValue(bool $isDark):int{
 		return $this->prepareModuleValue(($isDark) ? [0, 0, 0] : [255, 255, 255]);
 	}
@@ -141,7 +136,7 @@ abstract class QRGdImage extends QROutputAbstract{
 	/**
 	 * @inheritDoc
 	 *
-	 * @throws \ErrorException
+	 * @throws \ErrorException|\chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function dump(string|null $file = null):string|GdImage{
 
@@ -160,7 +155,13 @@ abstract class QRGdImage extends QROutputAbstract{
 
 		if($this->upscaled){
 			// scale down to the expected size
-			$this->image    = imagescale($this->image, ($this->length / 10), ($this->length / 10));
+			$scaled = imagescale($this->image, ($this->length / 10), ($this->length / 10));
+
+			if($scaled === false){
+				throw new QRCodeOutputException('imagescale() error');
+			}
+
+			$this->image    = $scaled;
 			$this->upscaled = false;
 			// Reset scaled and length values after rescaling image to prevent issues with subclasses that use the output from dump()
 			$this->setMatrixDimensions();
@@ -273,7 +274,7 @@ abstract class QRGdImage extends QROutputAbstract{
 				(($y * $this->scale) + intdiv($this->scale, 2)),
 				(int)($this->circleDiameter * $this->scale),
 				(int)($this->circleDiameter * $this->scale),
-				$color
+				$color,
 			);
 
 			return;
@@ -285,7 +286,7 @@ abstract class QRGdImage extends QROutputAbstract{
 			($y * $this->scale),
 			(($x + 1) * $this->scale),
 			(($y + 1) * $this->scale),
-			$color
+			$color,
 		);
 	}
 
@@ -311,6 +312,11 @@ abstract class QRGdImage extends QROutputAbstract{
 			$this->renderImage();
 
 			$imageData = ob_get_contents();
+
+			if($imageData === false){
+				throw new QRCodeOutputException('ob_get_contents() error');
+			}
+
 			imagedestroy($this->image);
 		}
 		// not going to cover edge cases

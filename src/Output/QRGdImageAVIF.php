@@ -23,9 +23,6 @@ class QRGdImageAVIF extends QRGdImage{
 
 	final public const MIME_TYPE = 'image/avif';
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function renderImage():void{
 		imageavif($this->image, null, max(-1, min(100, $this->options->quality)));
 	}

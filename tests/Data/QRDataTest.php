@@ -21,9 +21,6 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\QRCodeTest\QRMatrixDebugTrait;
 use PHPUnit\Framework\TestCase;
 
-/**
- *
- */
 final class QRDataTest extends TestCase{
 	use QRMatrixDebugTrait;
 
