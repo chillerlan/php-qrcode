@@ -51,7 +51,7 @@ jobs:
         run: php vendor/bin/phpstan
 
       - name: "Run PHP_CodeSniffer"
-        run: php vendor/bin/phpstan
+        run: php vendor/bin/phpcs
 
 
   tests:
