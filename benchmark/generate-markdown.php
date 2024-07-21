@@ -6,8 +6,6 @@
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2024 smiley
  * @license      MIT
- *
- * @phan-file-suppress PhanTypeArraySuspiciousNullable
  */
 declare(strict_types=1);
 
@@ -30,10 +28,16 @@ use function strtolower;
 require_once __DIR__.'/parse-common.php';
 
 if(!file_exists(FILE.'.json')){
-	throw new RuntimeException('invalid benchmark report');
+	throw new RuntimeException('invalid benchmark report [file_exists()]');
 }
 
-$json     = json_decode(file_get_contents(FILE.'.json'), true);
+$data = file_get_contents(FILE.'.json');
+
+if($data === false){
+	throw new RuntimeException('invalid benchmark report [file_get_contents()]');
+}
+
+$json     = json_decode($data, true);
 $markdown = [];
 
 // General information/overview

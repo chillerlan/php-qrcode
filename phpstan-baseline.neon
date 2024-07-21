@@ -1,6 +1,51 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Property chillerlan\\\\QRCodeBenchmark\\\\DecoderBenchmark\\:\\:\\$imageBlob \\(string\\) does not accept GdImage\\|string\\.$#"
+			count: 1
+			path: benchmark/DecoderBenchmark.php
+
+		-
+			message: "#^Parameter \\#1 \\$segment of method chillerlan\\\\QRCode\\\\QRCode\\:\\:addSegment\\(\\) expects chillerlan\\\\QRCode\\\\Data\\\\QRDataModeInterface, object given\\.$#"
+			count: 1
+			path: benchmark/QRCodeBenchmark.php
+
+		-
+			message: "#^Parameter \\#2 \\$dataSegments of class chillerlan\\\\QRCode\\\\Data\\\\QRData constructor expects array\\<chillerlan\\\\QRCode\\\\Data\\\\QRDataModeInterface\\>, array\\<int, object\\> given\\.$#"
+			count: 2
+			path: benchmark/QRDataBenchmark.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strtolower expects string, int\\|string given\\.$#"
+			count: 1
+			path: benchmark/generate-markdown.php
+
+		-
+			message: "#^Offset 'name' does not exist on array\\<int, mixed\\>\\.$#"
+			count: 1
+			path: benchmark/parse-common.php
+
+		-
+			message: "#^Offset 'results' does not exist on array\\<int, mixed\\>\\.$#"
+			count: 1
+			path: benchmark/parse-common.php
+
+		-
+			message: "#^Offset 0 does not exist on array\\{\\}\\.$#"
+			count: 1
+			path: benchmark/parse-common.php
+
+		-
+			message: "#^Function chillerlan\\\\QRCodeBenchmark\\\\parseLine\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: benchmark/parse-result.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|false given\\.$#"
+			count: 1
+			path: benchmark/parse-result.php
+
+		-
 			message: "#^Property chillerlan\\\\QRCode\\\\QROptions\\:\\:\\$eccLevel \\(int\\) does not accept string\\.$#"
 			count: 1
 			path: examples/custom_output.php

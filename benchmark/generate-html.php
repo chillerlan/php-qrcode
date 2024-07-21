@@ -6,8 +6,6 @@
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2024 smiley
  * @license      MIT
- *
- * @phan-file-suppress PhanTypeArraySuspiciousNullable
  */
 declare(strict_types=1);
 

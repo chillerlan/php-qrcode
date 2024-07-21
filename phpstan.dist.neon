@@ -4,6 +4,7 @@ parameters:
 	level: 8
 	tmpDir: .build/phpstan-cache
 	paths:
+		- benchmark
 		- examples
 		- src
 		- tests
