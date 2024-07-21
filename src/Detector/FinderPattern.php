@@ -41,14 +41,14 @@ final class FinderPattern extends ResultPoint{
 	 * @return float distance between two points
 	 */
 	public function getDistance(FinderPattern $b):float{
-		return $this->distance($this->x, $this->y, $b->x, $b->y);
+		return self::distance($this->x, $this->y, $b->x, $b->y);
 	}
 
 	/**
 	 * Get square of distance between a and b.
 	 */
 	public function getSquaredDistance(FinderPattern $b):float{
-		return $this->squaredDistance($this->x, $this->y, $b->x, $b->y);
+		return self::squaredDistance($this->x, $this->y, $b->x, $b->y);
 	}
 
 	/**
@@ -67,15 +67,15 @@ final class FinderPattern extends ResultPoint{
 		);
 	}
 
-	private function squaredDistance(float $aX, float $aY, float $bX, float $bY):float{
+	private static function squaredDistance(float $aX, float $aY, float $bX, float $bY):float{
 		$xDiff = ($aX - $bX);
 		$yDiff = ($aY - $bY);
 
 		return ($xDiff * $xDiff + $yDiff * $yDiff);
 	}
 
-	public function distance(float $aX, float $aY, float $bX, float $bY):float{
-		return sqrt($this->squaredDistance($aX, $aY, $bX, $bY));
+	public static function distance(float $aX, float $aY, float $bX, float $bY):float{
+		return sqrt(self::squaredDistance($aX, $aY, $bX, $bY));
 	}
 
 }
