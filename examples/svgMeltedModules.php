@@ -9,6 +9,7 @@
  * @see https://github.com/chillerlan/php-qrcode/issues/127
  * @see ./shapes.svg
  */
+declare(strict_types=1);
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\EccLevel;

@@ -8,6 +8,7 @@
  * @copyright    2021 smiley
  * @license      Apache-2.0
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Common;
 

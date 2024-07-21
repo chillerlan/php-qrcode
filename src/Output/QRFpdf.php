@@ -8,6 +8,7 @@
  *
  * @see https://github.com/chillerlan/php-qrcode/pull/49
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Output;
 

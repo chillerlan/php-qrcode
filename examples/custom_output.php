@@ -9,6 +9,7 @@
  *
  * @noinspection PhpIllegalPsrClassPathInspection
  */
+declare(strict_types=1);
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Output\QROutputAbstract;

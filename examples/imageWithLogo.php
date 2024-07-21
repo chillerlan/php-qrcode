@@ -9,6 +9,7 @@
  *
  * @noinspection PhpComposerExtensionStubsInspection, PhpIllegalPsrClassPathInspection
  */
+declare(strict_types=1);
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\EccLevel;

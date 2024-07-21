@@ -7,6 +7,7 @@
  * @copyright    2024 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\{QRCode, QROptions};

@@ -9,6 +9,7 @@
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode;
 

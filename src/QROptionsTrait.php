@@ -11,6 +11,7 @@
  *
  * @noinspection PhpUnused, PhpComposerExtensionStubsInspection
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode;
 

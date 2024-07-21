@@ -7,6 +7,7 @@
  * @copyright    2016 Smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Output;
 
