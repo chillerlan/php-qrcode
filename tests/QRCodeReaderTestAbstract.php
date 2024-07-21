@@ -44,11 +44,6 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 	protected SettingsContainerInterface|QROptions $options;
 
 	protected function setUp():void{
-
-		if(!defined('READER_TEST_MAX_VERSION')){
-			$this::markTestSkipped('READER_TEST_MAX_VERSION not defined (see phpunit.xml.dist)');
-		}
-
 		$this->options = new QROptions;
 		$this->options->readerUseImagickIfAvailable = false;
 	}
@@ -135,13 +130,15 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 	}
 
 	public static function dataTestProvider():Generator{
+
+		if(!defined('READER_TEST_MAX_VERSION')){
+			self::markTestSkipped('READER_TEST_MAX_VERSION not defined (see phpunit.xml.dist)');
+		}
+
 		$str       = str_repeat(self::loremipsum, 5);
 		$eccLevels = array_map(fn(int $ecc):EccLevel => new EccLevel($ecc), [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H]);
 
-		/**
-		 * @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist
-		 * @phpstan-ignore-next-line
-		 */
+		/** @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist */
 		for($v = 1; $v <= READER_TEST_MAX_VERSION; $v++){
 			$version = new Version($v);
 
