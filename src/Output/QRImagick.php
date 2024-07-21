@@ -16,9 +16,8 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
-use finfo, Imagick, ImagickDraw, ImagickPixel;
+use Imagick, ImagickDraw, ImagickPixel;
 use function extension_loaded, in_array, is_string, max, min, preg_match, sprintf, strlen;
-use const FILEINFO_MIME_TYPE;
 
 /**
  * ImageMagick output module (requires ext-imagick)
@@ -123,26 +122,10 @@ class QRImagick extends QROutputAbstract{
 		$this->saveToFile($imageData, $file);
 
 		if($this->options->outputBase64){
-
-			$imageData = $this->toBase64DataURI($imageData, $this->guessMimeType($imageData));
+			$imageData = $this->toBase64DataURI($imageData);
 		}
 
 		return $imageData;
-	}
-
-	/**
-	 * @todo: move to QROutputAbstract
-	 *
-	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
-	 */
-	protected function guessMimeType(string $imageData):string{
-		$mime = (new finfo(FILEINFO_MIME_TYPE))->buffer($imageData);
-
-		if($mime === false){
-			throw new QRCodeOutputException('unable to detect mime type');
-		}
-
-		return $mime;
 	}
 
 	/**

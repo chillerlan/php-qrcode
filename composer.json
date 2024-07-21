@@ -52,6 +52,7 @@
 		"chillerlan/php-settings-container": "^3.2.1"
 	},
 	"require-dev": {
+		"ext-fileinfo": "*",
 		"chillerlan/php-authenticator": "^5.2.1",
 		"intervention/image": "^3.7",
 		"phpbench/phpbench": "^1.2.15",

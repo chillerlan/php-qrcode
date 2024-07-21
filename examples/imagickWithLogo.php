@@ -56,7 +56,7 @@ class QRImagickWithLogo extends QRImagick{
 		$this->saveToFile($imageData, $file);
 
 		if($this->options->outputBase64){
-			$imageData = $this->toBase64DataURI($imageData, $this->guessMimeType($imageData));
+			$imageData = $this->toBase64DataURI($imageData);
 		}
 
 		return $imageData;

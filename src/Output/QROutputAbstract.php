@@ -6,6 +6,8 @@
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
+ *
+ * @noinspection PhpComposerExtensionStubsInspection
  */
 declare(strict_types=1);
 
@@ -14,8 +16,9 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
-use Closure;
-use function base64_encode, dirname, file_put_contents, is_writable, ksort, sprintf;
+use Closure, finfo;
+use function base64_encode, dirname, extension_loaded, file_put_contents, is_writable, ksort, sprintf;
+use const FILEINFO_MIME_TYPE;
 
 /**
  * common output abstract
@@ -191,9 +194,38 @@ abstract class QROutputAbstract implements QROutputInterface{
 
 	/**
 	 * Returns a base64 data URI for the given string and mime type
+	 *
+	 * The mime type can be set via class constant MIME_TYPE in child classes,
+	 * or given via $mime, otherwise it is guessed from the image $data.
 	 */
 	protected function toBase64DataURI(string $data, string|null $mime = null):string{
-		return sprintf('data:%s;base64,%s', ($mime ?? static::MIME_TYPE), base64_encode($data));
+		$mime ??= static::MIME_TYPE;
+
+		if($mime === ''){
+			$mime = $this->guessMimeType($data);
+		}
+
+		return sprintf('data:%s;base64,%s', $mime, base64_encode($data));
+	}
+
+	/**
+	 * Guesses the mime type from the given $imageData
+	 *
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
+	protected function guessMimeType(string $imageData):string{
+
+		if(!extension_loaded('fileinfo')){
+			throw new QRCodeOutputException('ext-fileinfo not loaded, cannot guess mime type');
+		}
+
+		$mime = (new finfo(FILEINFO_MIME_TYPE))->buffer($imageData);
+
+		if($mime === false){
+			throw new QRCodeOutputException('unable to detect mime type');
+		}
+
+		return $mime;
 	}
 
 	/**
