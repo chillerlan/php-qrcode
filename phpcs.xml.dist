@@ -9,6 +9,12 @@
 	<file>src</file>
 	<file>tests</file>
 
+	<config name="installed_paths" value="../../slevomat/coding-standard"/>
+
+	<arg value="ps"/>
+	<arg name="parallel" value="8"/>
+	<!--<arg name="cache" value=".build/phpcs.cache"/>-->
+
 	<arg name="basepath" value="."/>
 	<arg name="extensions" value="php"/>
 	<arg name="tab-width" value="4"/>
@@ -21,7 +27,6 @@
 		Slevomat https://github.com/slevomat/coding-standard
 	-->
 
-	<config name="installed_paths" value="../../slevomat/coding-standard"/>
 	<rule ref="SlevomatCodingStandard.Arrays.TrailingArrayComma"/>
 	<rule ref="SlevomatCodingStandard.Arrays.DisallowImplicitArrayCreation"/>
 	<rule ref="SlevomatCodingStandard.Arrays.DisallowPartiallyKeyed"/>
