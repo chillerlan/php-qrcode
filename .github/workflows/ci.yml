@@ -53,6 +53,9 @@ jobs:
       - name: "Run phan"
         run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
 
+      - name: "Run PHP_CodeSniffer"
+        run: php vendor/bin/phpcs
+
 
   tests:
     name: "Unit Tests"
@@ -71,6 +74,7 @@ jobs:
           - "8.1"
           - "8.2"
           - "8.3"
+          - "8.4"
 
     steps:
       - name: "Checkout"
