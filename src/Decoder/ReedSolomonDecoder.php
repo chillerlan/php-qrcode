@@ -94,7 +94,7 @@ final class ReedSolomonDecoder{
 		while($longerBlocksStartAt >= 0){
 			$numCodewords = count($result[$longerBlocksStartAt][1]);
 
-			if($numCodewords == $shorterBlocksTotalCodewords){
+			if($numCodewords === $shorterBlocksTotalCodewords){
 				break;
 			}
 

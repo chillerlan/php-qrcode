@@ -108,7 +108,7 @@ final class ECI extends QRDataModeAbstract{
 			$id = ((($firstByte & 0b00011111) << 16) | $bitBuffer->read(16));
 		}
 		else{
-			throw new QRCodeDataException(sprintf('error decoding ECI value first byte: %08b', $firstByte)); // @codeCoverageIgnore
+			throw new QRCodeDataException(sprintf('error decoding ECI value first byte: %08b', $firstByte));// @codeCoverageIgnore
 		}
 
 		return new ECICharset($id);

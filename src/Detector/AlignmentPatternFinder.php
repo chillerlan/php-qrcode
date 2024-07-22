@@ -256,7 +256,7 @@ final class AlignmentPatternFinder{
 			$i++;
 		}
 
-		if($i == $maxI || $stateCount[1] > $maxCount){
+		if($i === $maxI || $stateCount[1] > $maxCount){
 			return null;
 		}
 
@@ -269,6 +269,7 @@ final class AlignmentPatternFinder{
 			return null;
 		}
 
+		// phpcs:ignore
 		if((5 * abs(($stateCount[0] + $stateCount[1] + $stateCount[2]) - $originalStateCountTotal)) >= (2 * $originalStateCountTotal)){
 			return null;
 		}

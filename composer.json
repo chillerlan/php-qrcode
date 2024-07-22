@@ -50,6 +50,7 @@
 		"phpunit/phpunit": "^9.6",
 		"phpmd/phpmd": "^2.15",
 		"setasign/fpdf": "^1.8.2",
+		"slevomat/coding-standard": "^8.15",
 		"squizlabs/php_codesniffer": "^3.10"
 	},
 	"suggest": {
@@ -75,6 +76,9 @@
 	"config": {
 		"lock": false,
 		"sort-packages": true,
-		"platform-check": true
+		"platform-check": true,
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
 	}
 }

@@ -303,7 +303,7 @@ class QRCode{
 			throw new QRCodeOutputException('invalid output module');
 		}
 
-		if(!in_array(QROutputInterface::class, class_implements($outputInterface))){
+		if(!in_array(QROutputInterface::class, class_implements($outputInterface), true)){
 			throw new QRCodeOutputException('output module does not implement QROutputInterface');
 		}
 
