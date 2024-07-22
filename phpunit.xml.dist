@@ -8,13 +8,13 @@
 >
 	<testsuites>
 		<testsuite name="php-qrcode test suite">
-			<directory>./tests/</directory>
-			<exclude>./tests/Performance</exclude>
+			<directory>tests</directory>
+			<exclude>tests/Performance</exclude>
 		</testsuite>
 	</testsuites>
 	<coverage processUncoveredFiles="true">
 		<include>
-			<directory>./src</directory>
+			<directory>src</directory>
 		</include>
 		<report>
 			<clover outputFile=".build/coverage/clover.xml"/>

@@ -32,6 +32,12 @@
 			"homepage":"https://github.com/chillerlan/php-qrcode/graphs/contributors"
 		}
 	],
+	"funding": [
+		{
+			"type": "Ko-Fi",
+			"url": "https://ko-fi.com/codemasher"
+		}
+	],
 	"support": {
 		"docs": "https://php-qrcode.readthedocs.io",
 		"issues": "https://github.com/chillerlan/php-qrcode/issues",
@@ -45,6 +51,7 @@
 		"chillerlan/php-settings-container": "^2.1.6 || ^3.2.1"
 	},
 	"require-dev": {
+		"ext-fileinfo": "*",
 		"chillerlan/php-authenticator": "^4.3.1 || ^5.2.1",
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
 		"phan/phan": "^5.4",
@@ -62,12 +69,12 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"chillerlan\\QRCode\\": "src/"
+			"chillerlan\\QRCode\\": "src"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"chillerlan\\QRCodeTest\\": "tests/"
+			"chillerlan\\QRCodeTest\\": "tests"
 		}
 	},
 	"scripts": {
