@@ -50,6 +50,8 @@ jobs:
       - name: "Install dependencies with composer"
         uses: ramsey/composer-install@v3
 
+      - run: mkdir .build
+
       - name: "Run phan"
         run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
 
