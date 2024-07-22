@@ -60,7 +60,6 @@ $generator = new class () {
 		}
 
 	}
-
 };
 
 $test = new PerformanceTest(100);
@@ -68,12 +67,14 @@ $json = [];
 
 foreach($generator->dataProvider() as $key => [$version, $eccLevel, $dataModeInterface, $dataModeName, $data]){
 	// invovcation tests the performance of QRData::writeBitBuffer()
+	// phpcs:ignore
 	$test->run(fn() => new QRData(new QROptions(['version' => $version, 'eccLevel' => $eccLevel->getLevel()]), [new $dataModeInterface($data)]));
 
 	printf('%s encode: % 6.3fms', $key, $test->getResult());
 	$json[$dataModeName][(string)$eccLevel]['encode'][$version] = $test->getResult();
 
 	// writeMatrix includes QRMatrix::writeCodewords() and the ReedSolomonEncoder
+	// phpcs:ignore
 	$qrdata = new QRData(new QROptions(['version' => $version, 'eccLevel' => $eccLevel->getLevel()]), [new $dataModeInterface($data)]);
 	$test->run(fn() => $qrdata->writeMatrix());
 

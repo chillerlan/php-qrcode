@@ -34,6 +34,7 @@ final class ECI extends QRDataModeAbstract{
 
 	/**
 	 * @inheritDoc
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 * @noinspection PhpMissingParentConstructorInspection
 	 */
 	public function __construct(int $encoding){

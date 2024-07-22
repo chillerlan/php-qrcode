@@ -57,6 +57,7 @@ final class Kanji extends QRDataModeAbstract{
 
 	/**
 	 * @inheritDoc
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public static function convertEncoding(string $string):string{
 		mb_detect_order([mb_internal_encoding(), 'UTF-8', 'SJIS', 'SJIS-2004']);

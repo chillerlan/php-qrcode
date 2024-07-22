@@ -152,15 +152,15 @@ final class GridSampler{
 
 			// no need to try/catch as QRMatrix::set() will silently discard out of bounds values
 #			try{
-				for($x = 0; $x < $max; $x += 2){
-					// Black(-ish) pixel
-					$bits->set(
-						intdiv($x, 2),
-						$y,
-						$matrix->check((int)$this->points[$x], (int)$this->points[($x + 1)]),
-						QRMatrix::M_DATA
-					);
-				}
+			for($x = 0; $x < $max; $x += 2){
+				// Black(-ish) pixel
+				$bits->set(
+					intdiv($x, 2),
+					$y,
+					$matrix->check((int)$this->points[$x], (int)$this->points[($x + 1)]),
+					QRMatrix::M_DATA
+				);
+			}
 #			}
 #			catch(\Throwable $aioobe){//ArrayIndexOutOfBoundsException
 				// This feels wrong, but, sometimes if the finder patterns are misidentified, the resulting

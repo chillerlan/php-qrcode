@@ -27,7 +27,7 @@ class QRStringJSON extends QROutputAbstract{
 	 */
 	public function dump(?string $file = null):string{
 		$matrix = $this->matrix->getMatrix($this->options->jsonAsBooleans);
-		$data   = json_encode($matrix, $this->options->jsonFlags);;
+		$data   = json_encode($matrix, $this->options->jsonFlags);
 
 		$this->saveToFile($data, $file);
 

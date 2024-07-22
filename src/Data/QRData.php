@@ -207,7 +207,7 @@ final class QRData{
 	/**
 	 * creates a BitBuffer and writes the string data to it
 	 *
-	 * @throws \chillerlan\QRCode\QRCodeException on data overflow
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException on data overflow
 	 */
 	private function writeBitBuffer():void{
 		$MAX_BITS = $this->eccLevel->getMaxBitsForVersion($this->version);

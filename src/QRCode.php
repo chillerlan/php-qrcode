@@ -462,8 +462,6 @@ class QRCode{
 
 	/**
 	 * Reads a QR Code from a given file
-	 *
-	 * @noinspection PhpUndefinedMethodInspection
 	 */
 	public function readFromFile(string $path):DecoderResult{
 		return $this->readFromSource($this->luminanceSourceFQN::fromFile($path, $this->options));
@@ -471,8 +469,6 @@ class QRCode{
 
 	/**
 	 * Reads a QR Code from the given data blob
-	 *
-	 *  @noinspection PhpUndefinedMethodInspection
 	 */
 	public function readFromBlob(string $blob):DecoderResult{
 		return $this->readFromSource($this->luminanceSourceFQN::fromBlob($blob, $this->options));

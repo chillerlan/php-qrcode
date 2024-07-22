@@ -75,6 +75,8 @@ class ImagickWithLogoOptions extends QROptions{
 	 *
 	 * of course, we could accept other formats too.
 	 * we're not checking for the file type either for simplicity reasons (assuming PNG)
+	 *
+	 * @throws \chillerlan\QRCode\QRCodeException
 	 */
 	protected function set_pngLogo(string $pngLogo):void{
 

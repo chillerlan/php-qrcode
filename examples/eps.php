@@ -55,7 +55,7 @@ $options->moduleValues     = [
 
 $out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ', __DIR__.'/qrcode.eps');
 
-if(php_sapi_name() !== 'cli'){
+if(PHP_SAPI !== 'cli'){
 	// if viewed in the browser, we should push it as file download as EPS isn't usually supported
 	header('Content-type: application/postscript');
 	header('Content-Disposition: filename="qrcode.eps"');

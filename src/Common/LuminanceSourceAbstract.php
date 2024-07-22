@@ -57,7 +57,10 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 		return $this->height;
 	}
 
-	/** @inheritDoc */
+	/**
+	 * @inheritDoc
+	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
+	 */
 	public function getRow(int $y):array{
 
 		if($y < 0 || $y >= $this->getHeight()){

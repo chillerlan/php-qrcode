@@ -196,7 +196,7 @@ $options->svgDefs         = '
 $out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 
-if(php_sapi_name() !== 'cli'){
+if(PHP_SAPI !== 'cli'){
 	header('Content-type: image/svg+xml');
 
 	if(extension_loaded('zlib')){

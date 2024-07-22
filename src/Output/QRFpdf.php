@@ -110,7 +110,7 @@ class QRFpdf extends QROutputAbstract{
 	 * Initializes an FPDF instance
 	 */
 	protected function initFPDF():FPDF{
-		$fpdf =  new FPDF('P', $this->options->fpdfMeasureUnit, $this->getOutputDimensions());
+		$fpdf = new FPDF('P', $this->options->fpdfMeasureUnit, $this->getOutputDimensions());
 		$fpdf->AddPage();
 
 		return $fpdf;

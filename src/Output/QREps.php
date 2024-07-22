@@ -95,7 +95,7 @@ class QREps extends QROutputAbstract{
 			// CMYK
 			? '%f %f %f %f C'
 			// RGB
-			:'%f %f %f R';
+			: '%f %f %f R';
 
 		return sprintf($format, ...$values);
 	}

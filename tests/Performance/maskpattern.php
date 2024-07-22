@@ -42,7 +42,6 @@ $generator = new class () {
 			];
 		}
 	}
-
 };
 
 $test = new PerformanceTest(100);
