@@ -16,11 +16,11 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
-use ErrorException, GdImage, Throwable;
+use GdImage;
 use function extension_loaded, imagecolorallocate, imagecolortransparent,
 	imagecreatetruecolor, imagedestroy, imagefilledellipse, imagefilledrectangle,
 	imagescale, imagetypes, intdiv, intval, max, min, ob_end_clean, ob_get_contents, ob_start,
-	restore_error_handler, set_error_handler, sprintf;
+	sprintf;
 use const IMG_AVIF, IMG_BMP, IMG_GIF, IMG_JPG, IMG_PNG, IMG_WEBP;
 
 /**
@@ -140,17 +140,14 @@ abstract class QRGdImage extends QROutputAbstract{
 	 * @throws \ErrorException|\chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	public function dump(string|null $file = null):string|GdImage{
-
-		set_error_handler(function(int $errno, string $errstr):bool{
-			throw new ErrorException($errstr, $errno);
-		});
-
 		$this->image = $this->createImage();
 		// set module values after image creation because we need the GdImage instance
 		$this->setModuleValues();
 		$this->setBgColor();
 
-		imagefilledrectangle($this->image, 0, 0, $this->length, $this->length, $this->background);
+		if(imagefilledrectangle($this->image, 0, 0, $this->length, $this->length, $this->background) === false){
+			throw new QRCodeOutputException('imagefilledrectangle() error');
+		}
 
 		$this->drawImage();
 
@@ -173,8 +170,6 @@ abstract class QRGdImage extends QROutputAbstract{
 		$this->setTransparencyColor();
 
 		if($this->options->returnResource){
-			restore_error_handler();
-
 			return $this->image;
 		}
 
@@ -186,8 +181,6 @@ abstract class QRGdImage extends QROutputAbstract{
 			$imageData = $this->toBase64DataURI($imageData);
 		}
 
-		restore_error_handler();
-
 		return $imageData;
 	}
 
@@ -197,6 +190,8 @@ abstract class QRGdImage extends QROutputAbstract{
 	 * we're scaling the image up in order to draw crisp round circles, otherwise they appear square-y on small scales
 	 *
 	 * @see https://github.com/chillerlan/php-qrcode/issues/23
+	 *
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function createImage():GdImage{
 
@@ -207,7 +202,13 @@ abstract class QRGdImage extends QROutputAbstract{
 			$this->upscaled  = true;
 		}
 
-		return imagecreatetruecolor($this->length, $this->length);
+		$im = imagecreatetruecolor($this->length, $this->length);
+
+		if($im === false){
+			throw new QRCodeOutputException('imagecreatetruecolor() error');
+		}
+
+		return $im;
 	}
 
 	/**
@@ -229,12 +230,12 @@ abstract class QRGdImage extends QROutputAbstract{
 	}
 
 	/**
-	 * Sets the transparency color
+	 * Sets the transparency color, returns the identifier of the new transparent color
 	 */
-	protected function setTransparencyColor():void{
+	protected function setTransparencyColor():int{
 
 		if(!$this->options->imageTransparent){
-			return;
+			return -1;
 		}
 
 		$transparencyColor = $this->background;
@@ -243,7 +244,14 @@ abstract class QRGdImage extends QROutputAbstract{
 			$transparencyColor = $this->prepareModuleValue($this->options->transparencyColor);
 		}
 
-		imagecolortransparent($this->image, $transparencyColor);
+		return imagecolortransparent($this->image, $transparencyColor);
+	}
+
+	/**
+	 * Returns the image quality value for the current GdImage output child class (defaults to -1 ... 100)
+	 */
+	protected function getQuality():int{
+		return max(-1, min(100, $this->options->quality));
 	}
 
 	/**
@@ -304,37 +312,20 @@ abstract class QRGdImage extends QROutputAbstract{
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function dumpImage():string{
-		$exception = null;
-		$imageData = null;
-
 		ob_start();
 
-		try{
-			$this->renderImage();
+		$this->renderImage();
 
-			$imageData = ob_get_contents();
+		$imageData = ob_get_contents();
 
-			if($imageData === false){
-				throw new QRCodeOutputException('ob_get_contents() error');
-			}
-
-			imagedestroy($this->image);
+		if($imageData === false){
+			throw new QRCodeOutputException('ob_get_contents() error');
 		}
-		// not going to cover edge cases
-		// @codeCoverageIgnoreStart
-		catch(Throwable $e){
-			$exception = $e;
-		}
-		// @codeCoverageIgnoreEnd
+
+		imagedestroy($this->image);
 
 		ob_end_clean();
 
-		// throw here in case an exception happened within the output buffer
-		if($exception instanceof Throwable){
-			throw new QRCodeOutputException($exception->getMessage());
-		}
-
-		/** @var string $imageData */
 		return $imageData;
 	}
 

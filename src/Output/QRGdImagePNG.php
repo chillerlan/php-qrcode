@@ -24,8 +24,17 @@ class QRGdImagePNG extends QRGdImage{
 
 	final public const MIME_TYPE = 'image/png';
 
+	protected function getQuality():int{
+		return max(-1, min(9, $this->options->quality));
+	}
+
+	/**
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
 	protected function renderImage():void{
-		imagepng($this->image, null, max(-1, min(9, $this->options->quality)));
+		if(imagepng(image: $this->image, quality: $this->getQuality()) === false){
+			throw new QRCodeOutputException('imagepng() error');
+		}
 	}
 
 }

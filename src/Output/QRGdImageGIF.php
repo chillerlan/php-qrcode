@@ -24,8 +24,13 @@ class QRGdImageGIF extends QRGdImage{
 
 	final public const MIME_TYPE = 'image/gif';
 
+	/**
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
 	protected function renderImage():void{
-		imagegif($this->image);
+		if(imagegif(image: $this->image) === false){
+			throw new QRCodeOutputException('imagegif() error');
+		}
 	}
 
 }

@@ -24,12 +24,18 @@ class QRGdImageJPEG extends QRGdImage{
 
 	final public const MIME_TYPE = 'image/jpg';
 
-	protected function setTransparencyColor():void{
+	protected function setTransparencyColor():int{
 		// noop - transparency is not supported
+		return -1;
 	}
 
+	/**
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
 	protected function renderImage():void{
-		imagejpeg($this->image, null, max(-1, min(100, $this->options->quality)));
+		if(imagejpeg(image: $this->image, quality: $this->getQuality()) === false){
+			throw new QRCodeOutputException('imagejpeg() error');
+		}
 	}
 
 }

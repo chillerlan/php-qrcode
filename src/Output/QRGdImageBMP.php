@@ -24,8 +24,14 @@ class QRGdImageBMP extends QRGdImage{
 
 	final public const MIME_TYPE = 'image/bmp';
 
+	/**
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
 	protected function renderImage():void{
-		imagebmp($this->image, null, ($this->options->quality > 0));
+		// the $compressed parameter is boolean here
+		if(imagebmp(image: $this->image, compressed: ($this->options->quality > 0)) === false){
+			throw new QRCodeOutputException('imagebmp() error');
+		}
 	}
 
 }
