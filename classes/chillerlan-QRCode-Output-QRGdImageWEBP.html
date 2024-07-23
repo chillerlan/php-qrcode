@@ -423,6 +423,13 @@ in long loops for a significant performance increase.</dd>
 <dd>Returns a 2 element array with the current output width and height</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_getQuality">getQuality()</a>
+    <span>
+                                &nbsp;: int    </span>
+</dt>
+<dd>Returns the image quality value for the current GdImage output child class (defaults to -1 ... 100)</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_guessMimeType">guessMimeType()</a>
     <span>
                                 &nbsp;: string    </span>
@@ -481,9 +488,9 @@ in long loops for a significant performance increase.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_setTransparencyColor">setTransparencyColor()</a>
     <span>
-                                &nbsp;: void    </span>
+                                &nbsp;: int    </span>
 </dt>
-<dd>Sets the transparency color</dd>
+<dd>Sets the transparency color, returns the identifier of the new transparent color</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_toBase64DataURI">toBase64DataURI()</a>
@@ -1728,7 +1735,7 @@ in long loops for a significant performance increase.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">201</span>
+    <span class="phpdocumentor-element-found-in__line">196</span>
 
     </aside>
 
@@ -1760,6 +1767,14 @@ in long loops for a significant performance increase.</p>
                                         
                                              
                                     </dd>
+                                                <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QRCodeOutputException.html"><abbr title="\chillerlan\QRCode\Output\QRCodeOutputException">QRCodeOutputException</abbr></a></span>
+                                                            
+                                             
+                                    </dd>
                                             </dl>
 
     
@@ -1784,7 +1799,7 @@ in long loops for a significant performance increase.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">252</span>
+    <span class="phpdocumentor-element-found-in__line">260</span>
 
     </aside>
 
@@ -1819,7 +1834,7 @@ in long loops for a significant performance increase.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">306</span>
+    <span class="phpdocumentor-element-found-in__line">314</span>
 
     </aside>
 
@@ -2069,6 +2084,45 @@ in long loops for a significant performance increase.</p>
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_getQuality">
+        getQuality()
+        <a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_getQuality" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">253</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Returns the image quality value for the current GdImage output child class (defaults to -1 ... 100)</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">getQuality</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_guessMimeType">
         guessMimeType()
         <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_guessMimeType" class="headerlink"><i class="fas fa-link"></i></a>
@@ -2141,7 +2195,7 @@ in long loops for a significant performance increase.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">263</span>
+    <span class="phpdocumentor-element-found-in__line">271</span>
 
     </aside>
 
@@ -2271,7 +2325,7 @@ in long loops for a significant performance increase.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImageWEBP.php"><a href="files/src-output-qrgdimagewebp.html"><abbr title="src/Output/QRGdImageWEBP.php">QRGdImageWEBP.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">30</span>
 
     </aside>
 
@@ -2287,6 +2341,21 @@ in long loops for a significant performance increase.</p>
     
     
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/chillerlan-QRCode-Output-QRGdImageWEBP.html#method_renderImage#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">throws</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QRCodeOutputException.html"><abbr title="\chillerlan\QRCode\Output\QRCodeOutputException">QRCodeOutputException</abbr></a></span>
+                                                            
+                                             
+                                    </dd>
+                                            </dl>
 
     
 
@@ -2389,7 +2458,7 @@ in long loops for a significant performance increase.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">216</span>
+    <span class="phpdocumentor-element-found-in__line">217</span>
 
     </aside>
 
@@ -2496,15 +2565,15 @@ in long loops for a significant performance increase.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QRGdImage.php"><a href="files/src-output-qrgdimage.html"><abbr title="src/Output/QRGdImage.php">QRGdImage.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">234</span>
+    <span class="phpdocumentor-element-found-in__line">235</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Sets the transparency color</p>
+        <p class="phpdocumentor-summary">Sets the transparency color, returns the identifier of the new transparent color</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">setTransparencyColor</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">setTransparencyColor</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -2515,7 +2584,11 @@ in long loops for a significant performance increase.</p>
 
     
 
-    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -2732,6 +2805,7 @@ or given via $mime, otherwise it is guessed from the image $data.</p>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getModuleValue">getModuleValue()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getModuleValueAt">getModuleValueAt()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_getOutputDimensions">getOutputDimensions()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_getQuality">getQuality()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_guessMimeType">guessMimeType()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_module">module()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_prepareModuleValue">prepareModuleValue()</a></li>

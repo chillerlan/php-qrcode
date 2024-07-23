@@ -2558,8 +2558,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AsetTransparencyColor\u0028\u0029",
             "name": "setTransparencyColor",
-            "summary": "Sets\u0020the\u0020transparency\u0020color",
+            "summary": "Sets\u0020the\u0020transparency\u0020color,\u0020returns\u0020the\u0020identifier\u0020of\u0020the\u0020new\u0020transparent\u0020color",
             "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_setTransparencyColor"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AgetQuality\u0028\u0029",
+            "name": "getQuality",
+            "summary": "Returns\u0020the\u0020image\u0020quality\u0020value\u0020for\u0020the\u0020current\u0020GdImage\u0020output\u0020child\u0020class\u0020\u0028defaults\u0020to\u0020\u002D1\u0020...\u0020100\u0029",
+            "url": "classes/chillerlan-QRCode-Output-QRGdImage.html#method_getQuality"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImage\u003A\u003AdrawImage\u0028\u0029",
             "name": "drawImage",
@@ -2648,7 +2653,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImageJPEG\u003A\u003AsetTransparencyColor\u0028\u0029",
             "name": "setTransparencyColor",
-            "summary": "Sets\u0020the\u0020transparency\u0020color",
+            "summary": "Sets\u0020the\u0020transparency\u0020color,\u0020returns\u0020the\u0020identifier\u0020of\u0020the\u0020new\u0020transparent\u0020color",
             "url": "classes/chillerlan-QRCode-Output-QRGdImageJPEG.html#method_setTransparencyColor"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImageJPEG\u003A\u003ArenderImage\u0028\u0029",
@@ -2665,6 +2670,11 @@ Search.appendIndex(
             "name": "QRGdImagePNG",
             "summary": "GdImage\u0020png\u0020output",
             "url": "classes/chillerlan-QRCode-Output-QRGdImagePNG.html"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImagePNG\u003A\u003AgetQuality\u0028\u0029",
+            "name": "getQuality",
+            "summary": "Returns\u0020the\u0020image\u0020quality\u0020value\u0020for\u0020the\u0020current\u0020GdImage\u0020output\u0020child\u0020class\u0020\u0028defaults\u0020to\u0020\u002D1\u0020...\u0020100\u0029",
+            "url": "classes/chillerlan-QRCode-Output-QRGdImagePNG.html#method_getQuality"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRGdImagePNG\u003A\u003ArenderImage\u0028\u0029",
             "name": "renderImage",
