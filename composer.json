@@ -82,14 +82,14 @@
 		}
 	},
 	"scripts": {
-		"phpcs": "@php vendor/bin/phpcs",
 		"phpbench":[
 			"Composer\\Config::disableProcessTimeout",
 			"@php vendor/bin/phpbench run"
 		],
-		"phpunit": "@php vendor/bin/phpunit",
+		"phpcs": "@php vendor/bin/phpcs",
 		"phpstan": "@php vendor/bin/phpstan",
-		"phpstan-baseline": "@php vendor/bin/phpstan --generate-baseline"
+		"phpstan-baseline": "@php vendor/bin/phpstan --generate-baseline",
+		"phpunit": "@php vendor/bin/phpunit"
 	},
 	"config": {
 		"lock": false,
