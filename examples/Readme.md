@@ -35,7 +35,7 @@
 - [SVG with randomly colored modules](./svgRandomColoredDots.php): a visual effect using multiple colors for the matrix modules ([#136](https://github.com/chillerlan/php-qrcode/discussions/136))
 - [SVG with a round shape and randomly filled quiet zone](./svgRoundQuietzone.php): example similar to the QR Codes of a certain vendor ([#137](https://github.com/chillerlan/php-qrcode/discussions/137))
 - [SVG with logo, custom module shapes and custom finder patterns](./svgWithLogoAndCustomShapes.php): module- and finder pattern customization ([#150](https://github.com/chillerlan/php-qrcode/discussions/150))
-
+- [SVG with "jittering" modules](./svgModuleJitter.php): square modules randomly tilted to a certain degree to create a mosaic effect
 
 ## Other examples
 
