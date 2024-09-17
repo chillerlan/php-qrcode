@@ -51,7 +51,17 @@ parameters:
 			path: examples/custom_output.php
 
 		-
+			message: "#^Parameter \\#1 \\$width of function imagecreatetruecolor expects int\\<1, max\\>, int given\\.$#"
+			count: 1
+			path: examples/imageWithText.php
+
+		-
 			message: "#^Parameter \\#2 \\$color of function imagecolortransparent expects int\\|null, int\\<0, max\\>\\|false given\\.$#"
+			count: 1
+			path: examples/imageWithText.php
+
+		-
+			message: "#^Parameter \\#2 \\$height of function imagecreatetruecolor expects int\\<1, max\\>, int given\\.$#"
 			count: 1
 			path: examples/imageWithText.php
 
@@ -154,6 +164,16 @@ parameters:
 			message: "#^Method chillerlan\\\\QRCode\\\\Decoder\\\\ReedSolomonDecoder\\:\\:deinterleaveRawBytes\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Decoder/ReedSolomonDecoder.php
+
+		-
+			message: "#^Parameter \\#1 \\$width of function imagecreatetruecolor expects int\\<1, max\\>, int given\\.$#"
+			count: 1
+			path: src/Output/QRGdImage.php
+
+		-
+			message: "#^Parameter \\#2 \\$height of function imagecreatetruecolor expects int\\<1, max\\>, int given\\.$#"
+			count: 1
+			path: src/Output/QRGdImage.php
 
 		-
 			message: "#^Method chillerlan\\\\QRCodeTest\\\\Common\\\\MaskPatternTest\\:\\:assertMask\\(\\) has parameter \\$expected with no value type specified in iterable type array\\.$#"
