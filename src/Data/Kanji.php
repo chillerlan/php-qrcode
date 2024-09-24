@@ -174,7 +174,7 @@ final class Kanji extends QRDataModeAbstract{
 			$length--;
 		}
 
-		return mb_convert_encoding(implode($buffer), mb_internal_encoding(), self::ENCODING);
+		return mb_convert_encoding(implode('', $buffer), mb_internal_encoding(), self::ENCODING);
 	}
 
 }
