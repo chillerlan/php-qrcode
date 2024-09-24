@@ -896,15 +896,20 @@ Search.appendIndex(
             "summary": "reads\u0020a\u0020segment\u0020from\u0020the\u0020BitBuffer\u0020and\u0020decodes\u0020in\u0020the\u0020current\u0020data\u0020mode",
             "url": "classes/chillerlan-QRCode-Data-AlphaNum.html#method_decodeSegment"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\AlphaNum\u003A\u003ACHAR_TO_ORD",
-            "name": "CHAR_TO_ORD",
-            "summary": "ISO\/IEC\u002018004\u003A2000\u0020Table\u00205",
-            "url": "classes/chillerlan-QRCode-Data-AlphaNum.html#constant_CHAR_TO_ORD"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\AlphaNum\u003A\u003AORD_TO_CHAR",
-            "name": "ORD_TO_CHAR",
+            "fqsen": "\\chillerlan\\QRCode\\Data\\AlphaNum\u003A\u003Aord\u0028\u0029",
+            "name": "ord",
             "summary": "",
-            "url": "classes/chillerlan-QRCode-Data-AlphaNum.html#constant_ORD_TO_CHAR"
+            "url": "classes/chillerlan-QRCode-Data-AlphaNum.html#method_ord"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\AlphaNum\u003A\u003Achr\u0028\u0029",
+            "name": "chr",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Data-AlphaNum.html#method_chr"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\AlphaNum\u003A\u003ACHAR_MAP",
+            "name": "CHAR_MAP",
+            "summary": "ISO\/IEC\u002018004\u003A2000\u0020Table\u00205",
+            "url": "classes/chillerlan-QRCode-Data-AlphaNum.html#constant_CHAR_MAP"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\AlphaNum\u003A\u003ADATAMODE",
             "name": "DATAMODE",
@@ -1110,16 +1115,6 @@ Search.appendIndex(
             "name": "decodeSegment",
             "summary": "reads\u0020a\u0020segment\u0020from\u0020the\u0020BitBuffer\u0020and\u0020decodes\u0020in\u0020the\u0020current\u0020data\u0020mode",
             "url": "classes/chillerlan-QRCode-Data-Number.html#method_decodeSegment"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\Number\u003A\u003ANUMBER_TO_ORD",
-            "name": "NUMBER_TO_ORD",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-Data-Number.html#constant_NUMBER_TO_ORD"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\Data\\Number\u003A\u003AORD_TO_NUMBER",
-            "name": "ORD_TO_NUMBER",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-Data-Number.html#constant_ORD_TO_NUMBER"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Number\u003A\u003ADATAMODE",
             "name": "DATAMODE",
