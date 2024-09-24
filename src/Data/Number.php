@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
-use function ceil, intdiv, str_split, substr, unpack;
+use function ceil, intdiv, preg_match, substr, unpack;
 
 /**
  * Numeric mode: decimal digits 0 to 9
@@ -22,20 +22,6 @@ use function ceil, intdiv, str_split, substr, unpack;
  */
 final class Number extends QRDataModeAbstract{
 
-	/**
-	 * @var int[]
-	 */
-	private const NUMBER_TO_ORD = [
-		'0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9,
-	];
-
-	/**
-	 * @var string[]
-	 */
-	private const ORD_TO_NUMBER = [
-		'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-	];
-
 	public const DATAMODE = Mode::NUMBER;
 
 	public function getLengthInBits():int{
@@ -43,18 +29,7 @@ final class Number extends QRDataModeAbstract{
 	}
 
 	public static function validateString(string $string):bool{
-
-		if($string === ''){
-			return false;
-		}
-
-		foreach(str_split($string) as $chr){
-			if(!isset(self::NUMBER_TO_ORD[$chr])){
-				return false;
-			}
-		}
-
-		return true;
+		return (bool)preg_match('/^\d+$/', $string);
 	}
 
 	public function write(BitBuffer $bitBuffer, int $versionNumber):static{
@@ -131,9 +106,9 @@ final class Number extends QRDataModeAbstract{
 				throw new QRCodeDataException('error decoding numeric value');
 			}
 
-			$result .= self::ORD_TO_NUMBER[intdiv($threeDigitsBits, 100)];
-			$result .= self::ORD_TO_NUMBER[(intdiv($threeDigitsBits, 10) % 10)];
-			$result .= self::ORD_TO_NUMBER[($threeDigitsBits % 10)];
+			$result .= intdiv($threeDigitsBits, 100);
+			$result .= (($threeDigitsBits / 10) % 10);
+			$result .= ($threeDigitsBits % 10);
 
 			$length -= 3;
 		}
@@ -150,8 +125,8 @@ final class Number extends QRDataModeAbstract{
 				throw new QRCodeDataException('error decoding numeric value');
 			}
 
-			$result .= self::ORD_TO_NUMBER[intdiv($twoDigitsBits, 10)];
-			$result .= self::ORD_TO_NUMBER[($twoDigitsBits % 10)];
+			$result .= intdiv($twoDigitsBits, 10);
+			$result .= ($twoDigitsBits % 10);
 		}
 		elseif($length === 1){
 			// One digit left over to read
@@ -165,7 +140,7 @@ final class Number extends QRDataModeAbstract{
 				throw new QRCodeDataException('error decoding numeric value');
 			}
 
-			$result .= self::ORD_TO_NUMBER[$digitBits];
+			$result .= $digitBits;
 		}
 
 		return $result;
