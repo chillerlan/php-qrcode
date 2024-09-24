@@ -54,7 +54,7 @@
 		"ext-fileinfo": "*",
 		"chillerlan/php-authenticator": "^4.3.1 || ^5.2.1",
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-		"phan/phan": "^5.4",
+		"phan/phan": "^5.4.5",
 		"phpcompatibility/php-compatibility": "10.x-dev",
 		"phpunit/phpunit": "^9.6",
 		"phpmd/phpmd": "^2.15",
