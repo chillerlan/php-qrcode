@@ -70,10 +70,14 @@ abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
 
 		$actual = $this->outputInterface->dump();
 
-		/** @noinspection PhpFullyQualifiedNameUsageInspection */
-		PHP_MAJOR_VERSION >= 8
-			? $this::assertInstanceOf(\GdImage::class, $actual)
-			: $this::assertIsResource($actual);
+		if(PHP_MAJOR_VERSION >= 8){
+			/** @noinspection PhpFullyQualifiedNameUsageInspection */
+			$this::assertInstanceOf(\GdImage::class, $actual); // phpcs:ignore
+
+			return;
+		}
+
+		$this::assertIsResource($actual);
 	}
 
 	public function testBase64MimeType():void{

@@ -58,5 +58,6 @@ return [
 		'PhanAccessOverridesFinalConstant',
 		'PhanDeprecatedClass',
 		'PhanDeprecatedClassConstant',
+		'PhanParamTooFewInternal', // calls to "exit" in PHP 8.4???
 	],
 ];
