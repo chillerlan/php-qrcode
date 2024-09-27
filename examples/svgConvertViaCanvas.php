@@ -7,6 +7,7 @@
  * @copyright    2023 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
@@ -80,9 +81,9 @@ header('Content-type: text/html');
 <script type="module">
 	import SVGConvert from './SVGConvert.js';
 
-    // SVG DOM element
-    SVGConvert.toDataURI(document.querySelector('svg.qr-svg'), document.getElementById('qr-svg-dest'), 300, 300, 'image/jpeg');
-    // base64 data URI in image element
-    SVGConvert.toDataURI(document.getElementById('qr-svg-base64'), document.getElementById('qr-svg-base64-dest'), 300, 300);
+	// SVG DOM element
+	SVGConvert.toDataURI(document.querySelector('svg.qr-svg'), document.getElementById('qr-svg-dest'), 300, 300, 'image/jpeg');
+	// base64 data URI in image element
+	SVGConvert.toDataURI(document.getElementById('qr-svg-base64'), document.getElementById('qr-svg-base64-dest'), 300, 300);
 </script>
 </html>

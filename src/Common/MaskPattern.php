@@ -8,6 +8,7 @@
  * @copyright    2021 Smiley
  * @license      Apache-2.0
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Common;
 
@@ -77,7 +78,7 @@ final class MaskPattern{
 	 */
 	public function __construct(int $maskPattern){
 
-		if((0b111 & $maskPattern) !== $maskPattern){
+		if(($maskPattern & 0b111) !== $maskPattern){
 			throw new QRCodeException('invalid mask pattern');
 		}
 
@@ -139,6 +140,8 @@ final class MaskPattern{
 	/**
 	 * Apply mask penalty rule 1 and return the penalty. Find repetitive cells with the same color and
 	 * give penalty to them. Example: 00000 or 11111.
+	 *
+	 * @param bool[][] $matrix
 	 */
 	public static function testRule1(array $matrix, int $height, int $width):int{
 		$penalty = 0;
@@ -157,7 +160,7 @@ final class MaskPattern{
 	}
 
 	/**
-	 *
+	 * @param bool[] $rc
 	 */
 	private static function applyRule1(array $rc):int{
 		$penalty         = 0;
@@ -191,6 +194,8 @@ final class MaskPattern{
 	 * Apply mask penalty rule 2 and return the penalty. Find 2x2 blocks with the same color and give
 	 * penalty to them. This is actually equivalent to the spec's rule, which is to find MxN blocks and give a
 	 * penalty proportional to (M-1)x(N-1), because this is the number of 2x2 blocks inside such a block.
+	 *
+	 * @param bool[][] $matrix
 	 */
 	public static function testRule2(array $matrix, int $height, int $width):int{
 		$penalty = 0;
@@ -224,6 +229,8 @@ final class MaskPattern{
 	 * Apply mask penalty rule 3 and return the penalty. Find consecutive runs of 1:1:3:1:1:4
 	 * starting with black, or 4:1:1:3:1:1 starting with white, and give penalty to them.  If we
 	 * find patterns like 000010111010000, we give penalty once.
+	 *
+	 * @param bool[][] $matrix
 	 */
 	public static function testRule3(array $matrix, int $height, int $width):int{
 		$penalties = 0;
@@ -272,7 +279,7 @@ final class MaskPattern{
 	}
 
 	/**
-	 *
+	 * @param bool[] $row
 	 */
 	private static function isWhiteHorizontal(array $row, int $width, int $from, int $to):bool{
 
@@ -290,7 +297,7 @@ final class MaskPattern{
 	}
 
 	/**
-	 *
+	 * @param bool[][] $matrix
 	 */
 	private static function isWhiteVertical(array $matrix, int $height, int $x, int $from, int $to):bool{
 
@@ -310,6 +317,8 @@ final class MaskPattern{
 	/**
 	 * Apply mask penalty rule 4 and return the penalty. Calculate the ratio of dark cells and give
 	 * penalty if the ratio is far from 50%. It gives 10 penalty for 5% distance.
+	 *
+	 * @param bool[][] $matrix
 	 */
 	public static function testRule4(array $matrix, int $height, int $width):int{
 		$darkCells  = 0;

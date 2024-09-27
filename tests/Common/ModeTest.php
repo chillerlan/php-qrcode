@@ -7,6 +7,7 @@
  * @copyright    2022 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Common;
 
@@ -22,6 +23,8 @@ final class ModeTest extends TestCase{
 
 	/**
 	 * version breakpoints for numeric mode
+	 *
+	 * @phpstan-return array<int, array{0: int, 1: int}>
 	 */
 	public static function versionProvider():array{
 		return [
@@ -42,14 +45,14 @@ final class ModeTest extends TestCase{
 	public function testGetLengthBitsForVersionInvalidModeException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('invalid mode given');
-		/** @phan-suppress-next-line PhanNoopNew */
+
 		Mode::getLengthBitsForVersion(42, 69);
 	}
 
 	public function testGetLengthBitsForVersionInvalidVersionException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('invalid version number');
-		/** @phan-suppress-next-line PhanNoopNew */
+
 		Mode::getLengthBitsForVersion(Mode::BYTE, 69);
 	}
 

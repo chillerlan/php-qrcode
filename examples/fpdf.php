@@ -6,12 +6,13 @@
  * @author       Maximilian Kresse
  * @license      MIT
  */
+declare(strict_types=1);
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\QRFpdf;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
 $options = new QROptions;
 
@@ -53,7 +54,7 @@ $options->moduleValues     = [
 
 $out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
-if(php_sapi_name() !== 'cli'){
+if(PHP_SAPI !== 'cli'){
 	header('Content-type: application/pdf');
 }
 

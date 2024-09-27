@@ -7,6 +7,7 @@
  * @copyright    2022 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Common;
 
@@ -22,7 +23,7 @@ final class EccLevelTest extends TestCase{
 	public function testConstructInvalidEccException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('invalid ECC level');
-		/** @phan-suppress-next-line PhanNoopNew */
+
 		new EccLevel(69);
 	}
 

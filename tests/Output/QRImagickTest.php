@@ -9,6 +9,7 @@
  *
  * @noinspection PhpComposerExtensionStubsInspection
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Output;
 
@@ -24,9 +25,6 @@ use function extension_loaded;
  */
 final class QRImagickTest extends QROutputTestAbstract{
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function setUp():void{
 
 		if(!extension_loaded('imagick')){
@@ -38,7 +36,7 @@ final class QRImagickTest extends QROutputTestAbstract{
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
-		QRMatrix                             $matrix
+		QRMatrix                             $matrix,
 	):QROutputInterface{
 		return new QRImagick($options, $matrix);
 	}
@@ -69,9 +67,6 @@ final class QRImagickTest extends QROutputTestAbstract{
 		];
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [
@@ -83,6 +78,7 @@ final class QRImagickTest extends QROutputTestAbstract{
 		$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
 		$this->outputInterface->dump();
 
+		/** @phpstan-ignore-next-line */
 		$this::assertTrue(true); // tricking the code coverage
 	}
 

@@ -9,6 +9,7 @@
  *
  * @noinspection PhpComposerExtensionStubsInspection
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest;
 
@@ -20,6 +21,7 @@ use chillerlan\Settings\SettingsContainerInterface;
 use PHPUnit\Framework\Attributes\{DataProvider, Group};
 use PHPUnit\Framework\TestCase;
 use Exception, Generator;
+use RuntimeException;
 use function array_map, defined, realpath, sprintf, str_repeat, substr;
 
 /**
@@ -42,15 +44,13 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 	protected SettingsContainerInterface|QROptions $options;
 
 	protected function setUp():void{
-
-		if(!defined('READER_TEST_MAX_VERSION')){
-			$this::markTestSkipped('READER_TEST_MAX_VERSION not defined (see phpunit.xml.dist)');
-		}
-
 		$this->options = new QROptions;
 		$this->options->readerUseImagickIfAvailable = false;
 	}
 
+	/**
+	 * @phpstan-return array<string, array{0: string, 1: string, 2: bool}>
+	 */
 	public static function qrCodeProvider():array{
 		return [
 			'helloworld' => ['hello_world.png', 'Hello world!', false],
@@ -80,7 +80,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 
 	abstract protected function getLuminanceSourceFromFile(
 		string                               $file,
-		SettingsContainerInterface|QROptions $options
+		SettingsContainerInterface|QROptions $options,
 	):LuminanceSourceInterface;
 
 	#[Group('slow')]
@@ -92,7 +92,13 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 			$this->options->readerIncreaseContrast = true;
 		}
 
-		$luminanceSource = $this->getLuminanceSourceFromFile(realpath($this::samplesDir.$img), $this->options);
+		$file = realpath($this::samplesDir.$img);
+
+		if($file === false){
+			throw new RuntimeException(sprintf('invalid file given: "%s" in samples directory "%s"', $img, $this::samplesDir));
+		}
+
+		$luminanceSource = $this->getLuminanceSourceFromFile($file, $this->options);
 		$result          = (new Decoder)->decode($luminanceSource);
 
 		$this->debugMatrix($result->getQRMatrix());
@@ -124,13 +130,15 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 	}
 
 	public static function dataTestProvider():Generator{
+
+		if(!defined('READER_TEST_MAX_VERSION')){
+			self::markTestSkipped('READER_TEST_MAX_VERSION not defined (see phpunit.xml.dist)');
+		}
+
 		$str       = str_repeat(self::loremipsum, 5);
 		$eccLevels = array_map(fn(int $ecc):EccLevel => new EccLevel($ecc), [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H]);
 
-		/**
-		 * @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist
-		 * @phan-suppress-next-next-line PhanUndeclaredConstant
-		 */
+		/** @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist */
 		for($v = 1; $v <= READER_TEST_MAX_VERSION; $v++){
 			$version = new Version($v);
 
@@ -138,7 +146,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 				yield 'version: '.$version.$eccLevel => [
 					$version,
 					$eccLevel,
-					substr($str, 0, (self::getMaxLengthForMode(Mode::BYTE, $version, $eccLevel) ?? '')),
+					substr($str, 0, self::getMaxLengthForMode(Mode::BYTE, $version, $eccLevel)),
 				];
 			}
 		}

@@ -8,6 +8,7 @@
  * @copyright    2021 Smiley
  * @license      Apache-2.0
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Decoder;
 
@@ -27,13 +28,10 @@ use function chr, str_replace;
  */
 final class Decoder{
 
-	/**
-	 * @var \chillerlan\QRCode\QROptions|\chillerlan\Settings\SettingsContainerInterface
-	 */
 	private SettingsContainerInterface|QROptions   $options;
-	private ?Version                               $version     = null;
-	private ?EccLevel                              $eccLevel    = null;
-	private ?MaskPattern                           $maskPattern = null;
+	private Version|null                           $version     = null;
+	private EccLevel|null                          $eccLevel    = null;
+	private MaskPattern|null                       $maskPattern = null;
 	private BitBuffer                              $bitBuffer;
 	private int $topLeftX;
 	private int $topLeftY;
@@ -183,9 +181,6 @@ final class Decoder{
 		]);
 	}
 
-	/**
-	 *
-	 */
 	private function decodeAlphanumSegment(int $versionNumber, bool $fc1InEffect):string{
 		$str = AlphaNum::decodeSegment($this->bitBuffer, $versionNumber);
 

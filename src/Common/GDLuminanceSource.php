@@ -10,6 +10,7 @@
  *
  * @noinspection PhpComposerExtensionStubsInspection
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Common;
 
@@ -54,9 +55,6 @@ final class GDLuminanceSource extends LuminanceSourceAbstract{
 		$this->setLuminancePixels();
 	}
 
-	/**
-	 *
-	 */
 	private function setLuminancePixels():void{
 
 		for($j = 0; $j < $this->height; $j++){
@@ -70,12 +68,10 @@ final class GDLuminanceSource extends LuminanceSourceAbstract{
 
 	}
 
-	/** @inheritDoc */
 	public static function fromFile(string $path, SettingsContainerInterface|QROptions $options = new QROptions):static{
 		return new self(imagecreatefromstring(file_get_contents(self::checkFile($path))), $options);
 	}
 
-	/** @inheritDoc */
 	public static function fromBlob(string $blob, SettingsContainerInterface|QROptions $options = new QROptions):static{
 		return new self(imagecreatefromstring($blob), $options);
 	}

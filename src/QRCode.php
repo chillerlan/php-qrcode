@@ -9,6 +9,7 @@
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode;
 
@@ -19,7 +20,7 @@ use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Hanzi, Kanji, Number, QRData, Q
 use chillerlan\QRCode\Decoder\{Decoder, DecoderResult};
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
-use function class_exists, class_implements, in_array, mb_convert_encoding, mb_internal_encoding;
+use function class_exists, class_implements, in_array, is_iterable, mb_convert_encoding, mb_internal_encoding;
 
 /**
  * Turns a text string into a Model 2 QR Code
@@ -52,16 +53,23 @@ class QRCode{
 	/**
 	 * QRCode constructor.
 	 *
-	 * PHP8: accept iterable
+	 * @phpstan-param array<string, mixed> $options
 	 */
-	public function __construct(SettingsContainerInterface|QROptions $options = new QROptions){
+	public function __construct(SettingsContainerInterface|QROptions|iterable $options = new QROptions){
 		$this->setOptions($options);
 	}
 
 	/**
 	 * Sets an options instance
+	 *
+	 * @phpstan-param array<string, mixed> $options
 	 */
-	public function setOptions(SettingsContainerInterface|QROptions $options):static{
+	public function setOptions(SettingsContainerInterface|QROptions|iterable $options):static{
+
+		if(is_iterable($options)){
+			$options = new QROptions($options);
+		}
+
 		$this->options = $options;
 
 		if($this->options->readerUseImagickIfAvailable){
@@ -74,10 +82,9 @@ class QRCode{
 	/**
 	 * Renders a QR Code for the given $data and QROptions, saves $file optionally
 	 */
-	public function render(string $data = null, string $file = null):mixed{
+	public function render(string|null $data = null, string|null $file = null):mixed{
 
 		if($data !== null){
-			/** @var \chillerlan\QRCode\Data\QRDataModeInterface $dataInterface */
 			foreach(Mode::INTERFACES as $dataInterface){
 
 				if($dataInterface::validateString($data)){
@@ -94,7 +101,7 @@ class QRCode{
 	/**
 	 * Renders a QR Code for the given QRMatrix and QROptions, saves $file optionally
 	 */
-	public function renderMatrix(QRMatrix $matrix, string $file = null):mixed{
+	public function renderMatrix(QRMatrix $matrix, string|null $file = null):mixed{
 		return $this->initOutputInterface($matrix)->dump($file ?? $this->options->cachefile);
 	}
 
@@ -127,7 +134,7 @@ class QRCode{
 				$logoSpaceWidth,
 				$logoSpaceHeight,
 				$this->options->logoSpaceStartX,
-				$this->options->logoSpaceStartY
+				$this->options->logoSpaceStartY,
 			);
 		}
 
@@ -150,11 +157,14 @@ class QRCode{
 			throw new QRCodeOutputException('invalid output class');
 		}
 
-		if(!in_array(QROutputInterface::class, class_implements($outputInterface))){
+		if(!in_array(QROutputInterface::class, class_implements($outputInterface), true)){
 			throw new QRCodeOutputException('output class does not implement QROutputInterface');
 		}
 
-		return new $outputInterface($this->options, $matrix);
+		/** @var \chillerlan\QRCode\Output\QROutputInterface $instance */
+		$instance = new $outputInterface($this->options, $matrix);
+
+		return $instance;
 	}
 
 	/**
@@ -265,8 +275,6 @@ class QRCode{
 
 	/**
 	 * Reads a QR Code from a given file
-	 *
-	 * @noinspection PhpUndefinedMethodInspection
 	 */
 	public function readFromFile(string $path):DecoderResult{
 		return $this->readFromSource($this->luminanceSourceFQN::fromFile($path, $this->options));
@@ -274,8 +282,6 @@ class QRCode{
 
 	/**
 	 * Reads a QR Code from the given data blob
-	 *
-	 *  @noinspection PhpUndefinedMethodInspection
 	 */
 	public function readFromBlob(string $blob):DecoderResult{
 		return $this->readFromSource($this->luminanceSourceFQN::fromBlob($blob, $this->options));

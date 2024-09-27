@@ -7,6 +7,7 @@
  * @copyright    2023 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Output;
 
@@ -31,14 +32,11 @@ class QREpsTest extends QROutputTestAbstract{
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
-		QRMatrix                             $matrix
+		QRMatrix                             $matrix,
 	):QROutputInterface{
 		return new QREps($options, $matrix);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [
@@ -50,6 +48,7 @@ class QREpsTest extends QROutputTestAbstract{
 		$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
 		$this->outputInterface->dump();
 
+		/** @phpstan-ignore-next-line */
 		$this::assertTrue(true); // tricking the code coverage
 	}
 

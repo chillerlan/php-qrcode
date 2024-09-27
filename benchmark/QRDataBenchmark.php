@@ -48,7 +48,6 @@ final class QRDataBenchmark extends BenchmarkAbstract{
 	#[Subject]
 	#[BeforeMethods(['assignParams', 'generateTestData', 'initOptions'])]
 	public function invocation():void{
-		/** @phan-suppress-next-line PhanNoopNew */
 		new QRData($this->options, [new $this->modeFQCN($this->testData)]);
 	}
 

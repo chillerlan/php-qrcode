@@ -1,4 +1,5 @@
 {
+	"$schema": "https://getcomposer.org/schema.json",
 	"name": "chillerlan/php-qrcode",
 	"description": "A QR Code generator and reader with a user-friendly API. PHP 8.2+",
 	"homepage": "https://github.com/chillerlan/php-qrcode",
@@ -48,45 +49,54 @@
 	"require": {
 		"php": "^8.2",
 		"ext-mbstring": "*",
-		"chillerlan/php-settings-container": "^3.2"
+		"chillerlan/php-settings-container": "^3.2.1"
 	},
 	"require-dev": {
-		"chillerlan/php-authenticator": "^5.1",
-		"phpbench/phpbench": "^1.2.15",
-		"phan/phan": "^5.4",
-		"phpunit/phpunit": "^11.0",
+		"ext-fileinfo": "*",
+		"chillerlan/php-authenticator": "^5.2.1",
+		"intervention/image": "^3.8",
+		"phpbench/phpbench": "^1.3",
+		"phpunit/phpunit": "^11.3",
 		"phpmd/phpmd": "^2.15",
+		"phpstan/phpstan": "^1.12",
+		"phpstan/phpstan-deprecation-rules": "^1.2",
 		"setasign/fpdf": "^1.8.2",
-		"squizlabs/php_codesniffer": "^3.9"
+		"slevomat/coding-standard": "^8.15",
+		"squizlabs/php_codesniffer": "^3.10"
 	},
 	"suggest": {
 		"chillerlan/php-authenticator": "Yet another Google authenticator! Also creates URIs for mobile apps.",
+		"intervention/image": "More advanced GD and ImageMagick output.",
 		"setasign/fpdf": "Required to use the QR FPDF output.",
 		"simple-icons/simple-icons": "SVG icons that you can use to embed as logos in the QR Code"
 	},
 	"autoload": {
 		"psr-4": {
-			"chillerlan\\QRCode\\": "src/"
+			"chillerlan\\QRCode\\": "src"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"chillerlan\\QRCodeBenchmark\\": "benchmark/",
-			"chillerlan\\QRCodeTest\\": "tests/"
+			"chillerlan\\QRCodeBenchmark\\": "benchmark",
+			"chillerlan\\QRCodeTest\\": "tests"
 		}
 	},
 	"scripts": {
-		"phan": "@php vendor/bin/phan",
-		"phpcs": "@php vendor/bin/phpcs",
 		"phpbench":[
 			"Composer\\Config::disableProcessTimeout",
 			"@php vendor/bin/phpbench run"
 		],
+		"phpcs": "@php vendor/bin/phpcs",
+		"phpstan": "@php vendor/bin/phpstan",
+		"phpstan-baseline": "@php vendor/bin/phpstan --generate-baseline",
 		"phpunit": "@php vendor/bin/phpunit"
 	},
 	"config": {
 		"lock": false,
 		"sort-packages": true,
-		"platform-check": true
+		"platform-check": true,
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
 	}
 }

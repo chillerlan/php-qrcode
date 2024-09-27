@@ -11,16 +11,59 @@
  *
  * @noinspection PhpUnused, PhpComposerExtensionStubsInspection
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode;
 
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\Output\QRMarkupSVG;
 use function constant, in_array, is_string, max, min, sprintf, strtolower, strtoupper, trim;
-use const JSON_THROW_ON_ERROR, PHP_EOL;
+use const JSON_THROW_ON_ERROR, JSON_UNESCAPED_SLASHES, PHP_EOL;
 
 /**
  * The QRCode plug-in settings & setter functionality
+ *
+ * @property int               $version
+ * @property int               $versionMin
+ * @property int               $versionMax
+ * @property int               $eccLevel
+ * @property int               $maskPattern
+ * @property bool              $addQuietzone
+ * @property int               $quietzoneSize
+ * @property string            $outputInterface
+ * @property bool              $returnResource
+ * @property string|null       $cachefile
+ * @property bool              $outputBase64
+ * @property string            $eol
+ * @property mixed             $bgColor
+ * @property bool              $invertMatrix
+ * @property bool              $drawLightModules
+ * @property bool              $drawCircularModules
+ * @property float             $circleRadius
+ * @property int[]             $keepAsSquare
+ * @property bool              $connectPaths
+ * @property int[]             $excludeFromConnect
+ * @property array<int, mixed> $moduleValues
+ * @property bool              $addLogoSpace
+ * @property int|null          $logoSpaceWidth
+ * @property int|null          $logoSpaceHeight
+ * @property int|null          $logoSpaceStartX
+ * @property int|null          $logoSpaceStartY
+ * @property int               $scale
+ * @property bool              $imageTransparent
+ * @property mixed             $transparencyColor
+ * @property int               $quality
+ * @property bool              $gdImageUseUpscale
+ * @property string            $imagickFormat
+ * @property string            $cssClass
+ * @property bool              $svgAddXmlHeader
+ * @property string            $svgDefs
+ * @property string            $svgPreserveAspectRatio
+ * @property bool              $svgUseFillAttributes
+ * @property string            $textLineStart
+ * @property int               $jsonFlags
+ * @property string            $fpdfMeasureUnit
+ * @property string|null       $xmlStylesheet
  */
 trait QROptionsTrait{
 
@@ -124,7 +167,7 @@ trait QROptionsTrait{
 	 * @see \chillerlan\QRCode\QRCode::render()
 	 * @see \chillerlan\QRCode\QRCode::renderMatrix()
 	 */
-	protected ?string $cachefile = null;
+	protected string|null $cachefile = null;
 
 	/**
 	 * Toggle base64 data URI or raw data output (if applicable)
@@ -141,6 +184,7 @@ trait QROptionsTrait{
 	 * (default: `PHP_EOL`)
 	 */
 	protected string $eol = PHP_EOL;
+
 
 	/*
 	 * Common visual modifications
@@ -198,6 +242,8 @@ trait QROptionsTrait{
 	 * Specifies which module types to exclude when `QROptions::$drawCircularModules` is set to `true`
 	 *
 	 * (default: `[]`)
+	 *
+	 * @var int[]
 	 */
 	protected array $keepAsSquare = [];
 
@@ -221,6 +267,8 @@ trait QROptionsTrait{
 	 * Specify which paths/patterns to exclude from connecting if `QROptions::$connectPaths` is set to `true`
 	 *
 	 * @see \chillerlan\QRCode\QROptionsTrait::$connectPaths
+	 *
+	 * @var int[]
 	 */
 	protected array $excludeFromConnect = [];
 
@@ -232,6 +280,8 @@ trait QROptionsTrait{
 	 * - `QREps`: `[C, M, Y, K]` // 0-255
 	 *
 	 * @see \chillerlan\QRCode\Output\QROutputAbstract::setModuleValues()
+	 *
+	 * @var array<int, mixed>
 	 */
 	protected array $moduleValues = [];
 
@@ -248,24 +298,24 @@ trait QROptionsTrait{
 	 *
 	 * if only `QROptions::$logoSpaceWidth` is given, the logo space is assumed a square of that size
 	 */
-	protected ?int $logoSpaceWidth = null;
+	protected int|null $logoSpaceWidth = null;
 
 	/**
 	 * Height of the logo space
 	 *
 	 * if only `QROptions::$logoSpaceHeight` is given, the logo space is assumed a square of that size
 	 */
-	protected ?int $logoSpaceHeight = null;
+	protected int|null $logoSpaceHeight = null;
 
 	/**
 	 * Optional horizontal start position of the logo space (top left corner)
 	 */
-	protected ?int $logoSpaceStartX = null;
+	protected int|null $logoSpaceStartX = null;
 
 	/**
 	 * Optional vertical start position of the logo space (top left corner)
 	 */
-	protected ?int $logoSpaceStartY = null;
+	protected int|null $logoSpaceStartY = null;
 
 
 	/*
@@ -296,8 +346,6 @@ trait QROptionsTrait{
 	 *
 	 * @see \imagecolortransparent()
 	 * @see \Imagick::transparentPaintImage()
-	 *
-	 * @var mixed|null
 	 */
 	protected mixed $transparencyColor = null;
 
@@ -320,6 +368,7 @@ trait QROptionsTrait{
 	 */
 	protected int $quality = -1;
 
+
 	/*
 	 * QRGdImage settings
 	 */
@@ -332,6 +381,7 @@ trait QROptionsTrait{
 	 * @see https://github.com/chillerlan/php-qrcode/issues/23
 	 */
 	protected bool $gdImageUseUpscale = true;
+
 
 	/*
 	 * QRImagick settings
@@ -354,6 +404,7 @@ trait QROptionsTrait{
 	 * A common css class
 	 */
 	protected string $cssClass = 'qrcode';
+
 
 	/*
 	 * QRMarkupSVG settings
@@ -390,6 +441,7 @@ trait QROptionsTrait{
 	 */
 	protected bool $svgUseFillAttributes = true;
 
+
 	/*
 	 * QRStringText settings
 	 */
@@ -398,6 +450,7 @@ trait QROptionsTrait{
 	 * An optional line prefix, e.g. empty space to align the QR Code in a console
 	 */
 	protected string $textLineStart = '';
+
 
 	/*
 	 * QRStringJSON settings
@@ -408,12 +461,8 @@ trait QROptionsTrait{
 	 *
 	 * @see https://www.php.net/manual/json.constants.php
 	 */
-	protected int $jsonFlags = JSON_THROW_ON_ERROR;
+	protected int $jsonFlags = (JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES);
 
-	/**
-	 * Whether to return matrix values in JSON as booleans or `$M_TYPE` integers
-	 */
-	protected bool $jsonAsBooleans = false;
 
 	/*
 	 * QRFpdf settings
@@ -425,6 +474,18 @@ trait QROptionsTrait{
 	 * @see FPDF::__construct()
 	 */
 	protected string $fpdfMeasureUnit = 'pt';
+
+
+	/*
+	 * QRMarkupXML settings
+	 */
+
+	/**
+	 * Sets an optional XSLT stylesheet in the XML output
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/XSLT
+	 */
+	protected string|null $xmlStylesheet = null;
 
 
 	/**
@@ -469,7 +530,7 @@ trait QROptionsTrait{
 		if(is_string($eccLevel)){
 			$ecc = strtoupper(trim($eccLevel));
 
-			if(!in_array($ecc, ['L', 'M', 'Q', 'H'])){
+			if(!in_array($ecc, ['L', 'M', 'Q', 'H'], true)){
 				throw new QRCodeException(sprintf('Invalid ECC level: "%s"', $ecc));
 			}
 
@@ -478,6 +539,7 @@ trait QROptionsTrait{
 			$eccLevel = constant(EccLevel::class.'::'.$ecc);
 		}
 
+		/** @var int $eccLevel */
 		if((0b11 & $eccLevel) !== $eccLevel){
 			throw new QRCodeException(sprintf('Invalid ECC level: "%s"', $eccLevel));
 		}
@@ -510,7 +572,7 @@ trait QROptionsTrait{
 	/**
 	 * clamp the logo space values between 0 and maximum length (177 modules at version 40)
 	 */
-	protected function clampLogoSpaceValue(?int $value):?int{
+	protected function clampLogoSpaceValue(int|null $value):int|null{
 
 		if($value === null){
 			return null;
@@ -522,28 +584,28 @@ trait QROptionsTrait{
 	/**
 	 * clamp/set logo space width
 	 */
-	protected function set_logoSpaceWidth(?int $value):void{
+	protected function set_logoSpaceWidth(int|null $value):void{
 		$this->logoSpaceWidth = $this->clampLogoSpaceValue($value);
 	}
 
 	/**
 	 * clamp/set logo space height
 	 */
-	protected function set_logoSpaceHeight(?int $value):void{
+	protected function set_logoSpaceHeight(int|null $value):void{
 		$this->logoSpaceHeight = $this->clampLogoSpaceValue($value);
 	}
 
 	/**
 	 * clamp/set horizontal logo space start
 	 */
-	protected function set_logoSpaceStartX(?int $value):void{
+	protected function set_logoSpaceStartX(int|null $value):void{
 		$this->logoSpaceStartX = $this->clampLogoSpaceValue($value);
 	}
 
 	/**
 	 * clamp/set vertical logo space start
 	 */
-	protected function set_logoSpaceStartY(?int $value):void{
+	protected function set_logoSpaceStartY(int|null $value):void{
 		$this->logoSpaceStartY = $this->clampLogoSpaceValue($value);
 	}
 

@@ -10,6 +10,7 @@
  *
  * @codingStandardsIgnoreFile Squiz.Arrays.ArrayDeclaration.NoCommaAfterLast
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Common;
 
@@ -123,7 +124,7 @@ final class MaskPatternTest extends TestCase{
 	public function testInvalidMaskPatternException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('invalid mask pattern');
-		/** @phan-suppress-next-line PhanNoopNew */
+
 		new MaskPattern(42);
 	}
 

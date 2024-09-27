@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="qrcode">
+		<xs:annotation>
+			<xs:documentation>QR Code root element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="matrix"/>
+			</xs:sequence>
+			<xs:attribute name="eccLevel" use="required">
+				<xs:annotation>
+					<xs:documentation>The ECC level: [L, M, Q, H]</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="H"/>
+						<xs:enumeration value="L"/>
+						<xs:enumeration value="M"/>
+						<xs:enumeration value="Q"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="version" use="required">
+				<xs:annotation>
+					<xs:documentation>The QR Code version: [1...40]</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="1"/>
+						<xs:maxInclusive value="40"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="matrix">
+		<xs:annotation>
+			<xs:documentation>The matrix holds the encoded data in a 2-dimensional array of modules.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="row"/>
+			</xs:sequence>
+			<xs:attribute name="height" use="required">
+				<xs:annotation>
+					<xs:documentation>The total height of the matrix, including the quiet zone.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="21"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="maskPattern" use="required">
+				<xs:annotation>
+					<xs:documentation>The detected mask pattern that was used to mask this matrix. [0...7]</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:nonNegativeInteger">
+						<xs:maxInclusive value="7"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="quietzoneSize" use="required" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>The size of the quiet zone (margin around the QR symbol).</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="size" use="required">
+				<xs:annotation>
+					<xs:documentation>The side length of the QR symbol, excluding the quiet zone (version * 4 + 17). [21...177]</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="21"/>
+						<xs:maxInclusive value="177"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="width" use="required">
+				<xs:annotation>
+					<xs:documentation>The total width of the matrix, including the quiet zone.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:nonNegativeInteger">
+						<xs:minInclusive value="21"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="row">
+		<xs:annotation>
+			<xs:documentation>A row holds an array of modules.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element minOccurs="0" maxOccurs="unbounded" ref="module"/>
+			</xs:sequence>
+			<xs:attribute name="y" use="required" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>The "y" (vertical) coordinate of this row.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="module">
+		<xs:annotation>
+			<xs:documentation>Represents a single module (pixel) of a QR symbol.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="dark" use="required" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Indicates whether this module is dark.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="layer" use="required" type="xs:normalizedString">
+				<xs:annotation>
+					<xs:documentation>The layer (functional pattern) this module belongs to.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" use="required" type="xs:normalizedString">
+				<xs:annotation>
+					<xs:documentation>The value for this module (CSS color).</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="x" use="required" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>The "x" (horizontal) coordinate of this module.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

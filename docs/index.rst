@@ -1,9 +1,9 @@
 .. php-qrcode documentation master file, created by sphinx-quickstart on Sun Jul  9 21:45:56 2023.
    markdown-rst converter: https://pandoc.org/try/
 
-=================
-PHP-QRCode Manual
-=================
+============================
+chillerlan PHP-QRCode Manual
+============================
 
 User manual for `chillerlan/php-qrcode <https://github.com/chillerlan/php-qrcode/>`__  [|version|]. Updated on |today|.
 
@@ -38,9 +38,12 @@ This work is licensed under the Creative Commons Attribution 4.0 International (
    Built-In-Output/QRFpdf.md
    Built-In-Output/QRGdImage.md
    Built-In-Output/QRImagick.md
+   Built-In-Output/QRInterventionImage.md
    Built-In-Output/QRMarkupHTML.md
    Built-In-Output/QRMarkupSVG.md
-   Built-In-Output/QRString.md
+   Built-In-Output/QRMarkupXML.md
+   Built-In-Output/QRStringJSON.md
+   Built-In-Output/QRStringText.md
 
 .. toctree::
    :maxdepth: 3

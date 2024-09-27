@@ -1,6 +1,7 @@
 # QREps
 
-[Class `QREps`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QREps.php): [Encapsulated Postscript](https://en.wikipedia.org/wiki/Encapsulated_PostScript) (EPS) output.
+[Class `QREps`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QREps.php):
+[Encapsulated Postscript](https://en.wikipedia.org/wiki/Encapsulated_PostScript) (EPS) output.
 
 
 ## Example
@@ -50,6 +51,7 @@ echo (new QRCode($options))->render($data);
 exit;
 ```
 
+
 ## Additional methods
 
 | method                                            | return   | description                                |
@@ -67,15 +69,3 @@ exit;
 | `$drawLightModules`   | `bool`  |
 | `$excludeFromConnect` | `array` |
 | `$scale`              | `int`   |
-
-
-### Options that have no effect
-
-| property               | reason          |
-|------------------------|-----------------|
-| `$circleRadius`        | not implemented |
-| `$drawCircularModules` | not implemented |
-| `$outputBase64`        | N/A             |
-| `$imageTransparent`    | N/A             |
-| `$keepAsSquare`        | not implemented |
-| `$returnResource`      | N/A             |

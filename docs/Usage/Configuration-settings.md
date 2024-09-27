@@ -408,11 +408,6 @@ Sets the flags to use for the `json_encode()` call
 - [www.php.net/manual/json.constants.php](https://www.php.net/manual/json.constants.php)
 
 
-## jsonAsBooleans
-
-Whether to return matrix values in JSON as booleans or `$M_TYPE` integers
-
-
 ## fpdfMeasureUnit
 
 Measurement unit for `FPDF` output: `pt`, `mm`, `cm`, `in` (default: `pt`)
@@ -421,6 +416,16 @@ Measurement unit for `FPDF` output: `pt`, `mm`, `cm`, `in` (default: `pt`)
 **See also:**
 
 - `FPDF::__construct()`
+
+
+## xmlStylesheet
+
+Sets an optional XSLT stylesheet in the XML output
+
+
+**See also:**
+
+- [developer.mozilla.org/en-US/docs/Web/XSLT](https://developer.mozilla.org/en-US/docs/Web/XSLT)
 
 
 ## readerUseImagickIfAvailable

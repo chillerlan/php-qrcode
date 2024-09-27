@@ -7,6 +7,7 @@
  * @copyright    2023 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Data;
 
@@ -30,10 +31,12 @@ final class ECITest extends TestCase{
 		$this->QRData = new QRData(new QROptions);
 	}
 
+	/**
+	 * @phpstan-return array{0: ECI, 1: Byte}
+	 */
 	private function getDataSegments():array{
 		return [
 			new ECI($this->testCharset),
-			/** @phan-suppress-next-line PhanParamSuspiciousOrder */
 			new Byte(mb_convert_encoding(self::testData, ECICharset::MB_ENCODINGS[$this->testCharset], mb_internal_encoding())),
 		];
 	}
@@ -46,6 +49,8 @@ final class ECITest extends TestCase{
 
 	/**
 	 * returns versions within the version breakpoints 1-9, 10-26 and 27-40
+	 *
+	 * @phpstan-return array<string, array{0: int}>
 	 */
 	public static function versionBreakpointProvider():array{
 		return ['1-9' => [7], '10-26' => [15], '27-40' => [30]];
@@ -72,7 +77,7 @@ final class ECITest extends TestCase{
 	public function testInvalidDataException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid encoding id:');
-		/** @phan-suppress-next-line PhanNoopNew */
+
 		new ECI(-1);
 	}
 
@@ -83,10 +88,13 @@ final class ECITest extends TestCase{
 	public function testInvalidDataOnEmptyException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid encoding id:');
-		/** @phan-suppress-next-line PhanNoopNew */
+
 		new ECI(1000000);
 	}
 
+	/**
+	 * @phpstan-return array<int, array{0: int, 1: int}>
+	 */
 	public static function eciCharsetIdProvider():array{
 		return [
 			[     0,  8],
@@ -129,6 +137,9 @@ final class ECITest extends TestCase{
 		ECI::decodeSegment($bitBuffer, $options->version);
 	}
 
+	/**
+	 * @phpstan-return array<string, array{0: int, 1: string}>
+	 */
 	public static function unknownEncodingDataProvider():array{
 		return [
 			'CP437'              => [0, "\x41\x42\x43"],

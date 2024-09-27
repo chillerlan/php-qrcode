@@ -7,9 +7,8 @@
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2021 Smiley
  * @license      Apache-2.0
- *
- * @phan-file-suppress PhanTypePossiblyInvalidDimOffset
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Detector;
 
@@ -290,11 +289,13 @@ final class FinderPatternFinder{
 
 		// Now also count down, right from center
 		$i = 1;
+		// phpcs:ignore
 		while(($centerI + $i) < $dimension && ($centerJ + $i) < $dimension && $this->matrix->check(($centerJ + $i), ($centerI + $i))){
 			$stateCount[2]++;
 			$i++;
 		}
 
+		// phpcs:ignore
 		while(($centerI + $i) < $dimension && ($centerJ + $i) < $dimension && !$this->matrix->check(($centerJ + $i), ($centerI + $i))){
 			$stateCount[3]++;
 			$i++;
@@ -304,6 +305,7 @@ final class FinderPatternFinder{
 			return false;
 		}
 
+		// phpcs:ignore
 		while(($centerI + $i) < $dimension && ($centerJ + $i) < $dimension && $this->matrix->check(($centerJ + $i), ($centerI + $i))){
 			$stateCount[4]++;
 			$i++;
@@ -321,16 +323,17 @@ final class FinderPatternFinder{
 	 * "cross-checks" by scanning down vertically through the center of the possible
 	 * finder pattern to see if the same proportion is detected.
 	 *
-	 * @param int $startI   row where a finder pattern was detected
-	 * @param int $centerJ  center of the section that appears to cross a finder pattern
-	 * @param int $maxCount maximum reasonable number of modules that should be
-	 *                      observed in any reading state, based on the results of the horizontal scan
-	 * @param int $originalStateCountTotal
+	 * $startI   row where a finder pattern was detected
+	 * $centerJ  center of the section that appears to cross a finder pattern
+	 * $maxCount maximum reasonable number of modules that should be
+	 *           observed in any reading state, based on the results of the horizontal scan
+	 * $originalStateCountTotal
 	 *
-	 * @return float|null vertical center of finder pattern, or null if not found
+	 * returns vertical center of finder pattern, or null if not found
+	 *
 	 * @noinspection DuplicatedCode
 	 */
-	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):?float{
+	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):float|null{
 		$maxI       = $this->matrix->getSize();
 		$stateCount = $this->getCrossCheckStateCount();
 
@@ -414,7 +417,7 @@ final class FinderPatternFinder{
 	 * check a vertical cross-check and locate the real center of the alignment pattern.
 	 * @noinspection DuplicatedCode
 	 */
-	private function crossCheckHorizontal(int $startJ, int $centerI, int $maxCount, int $originalStateCountTotal):?float{
+	private function crossCheckHorizontal(int $startJ, int $centerI, int $maxCount, int $originalStateCountTotal):float|null{
 		$maxJ       = $this->matrix->getSize();
 		$stateCount = $this->getCrossCheckStateCount();
 
@@ -632,7 +635,7 @@ final class FinderPatternFinder{
 
 		usort(
 			$this->possibleCenters,
-			fn(FinderPattern $a, FinderPattern $b) => ($a->getEstimatedModuleSize() <=> $b->getEstimatedModuleSize())
+			fn(FinderPattern $a, FinderPattern $b) => ($a->getEstimatedModuleSize() <=> $b->getEstimatedModuleSize()),
 		);
 
 		$distortion   = PHP_FLOAT_MAX;

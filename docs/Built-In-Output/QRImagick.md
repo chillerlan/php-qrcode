@@ -102,11 +102,3 @@ echo $imagick->getImageBlob();
 | `$returnResource`      | `bool`   |
 | `$scale`               | `int`    |
 | `$transparencyColor`   | `mixed`  |
-
-
-### Options that have no effect
-
-| property              | reason |
-|-----------------------|--------|
-| `$connectPaths`       | N/A    |
-| `$excludeFromConnect` | N/A    |

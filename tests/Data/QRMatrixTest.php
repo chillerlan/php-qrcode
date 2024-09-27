@@ -7,6 +7,7 @@
  * @copyright    2017 Smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Data;
 
@@ -33,7 +34,7 @@ final class QRMatrixTest extends TestCase{
 	protected function setUp():void{
 		$this->matrix = new QRMatrix(
 			new Version($this::version),
-			new EccLevel(EccLevel::L)
+			new EccLevel(EccLevel::L),
 		);
 	}
 

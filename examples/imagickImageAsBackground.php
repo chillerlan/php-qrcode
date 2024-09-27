@@ -7,6 +7,7 @@
  * @copyright    2023 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
@@ -16,17 +17,11 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 class QRImagickImageAsBackground extends QRImagick{
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function getDefaultModuleValue(bool $isDark):ImagickPixel{
 		// RGBA, adjust opacity to increase contrast
 		return $this->prepareModuleValue(($isDark) ? '#00000040' : '#ffffffa0');
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function createImage():Imagick{
 		$imagick = new Imagick($this->options->background);
 		$width   = $imagick->getImageWidth();
@@ -56,6 +51,8 @@ class QRImagickImageAsBackground extends QRImagick{
 
 /**
  * augment the QROptions class
+ *
+ * @property string $background
  */
 class ImageAsBackgroundOptions extends QROptions{
 

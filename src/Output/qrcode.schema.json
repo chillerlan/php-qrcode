@@ -1,0 +1,142 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "chillerlan php-qrcode schema",
+	"type": "object",
+	"required": [
+		"qrcode"
+	],
+	"properties": {
+		"qrcode": {
+			"$ref": "#/$defs/qrcode"
+		}
+	},
+	"$defs": {
+		"qrcode": {
+			"description": "QR Code root element",
+			"type": "object",
+			"required": [
+				"eccLevel",
+				"matrix",
+				"version"
+			],
+			"properties": {
+				"version": {
+					"description": "The QR Code version: [1...40]",
+					"type": "integer",
+					"minimum": 1,
+					"maximum": 40
+				},
+				"eccLevel": {
+					"description": "The ECC level: [L, M, Q, H]",
+					"enum": [
+						"L",
+						"M",
+						"Q",
+						"H"
+					]
+				},
+				"matrix": {
+					"$ref": "#/$defs/matrix"
+				}
+			}
+		},
+		"matrix": {
+			"description": "The matrix holds the encoded data in a 2-dimensional array of modules.",
+			"type": "object",
+			"required": [
+				"size",
+				"quietzoneSize",
+				"maskPattern",
+				"width",
+				"height"
+			],
+			"properties": {
+				"size": {
+					"description": "The side length of the QR symbol, excluding the quiet zone (version * 4 + 17). [21...177]",
+					"type": "integer",
+					"minimum": 21,
+					"maximum": 177
+				},
+				"quietzoneSize": {
+					"description": "The size of the quiet zone (margin around the QR symbol).",
+					"type": "integer",
+					"minimum": 0
+				},
+				"maskPattern": {
+					"description": "The detected mask pattern that was used to mask this matrix. [0...7].",
+					"type": "integer",
+					"minimum": 0,
+					"maximum": 7
+				},
+				"width": {
+					"description": "The total width of the matrix, including the quiet zone.",
+					"type": "integer",
+					"minimum": 21
+				},
+				"height": {
+					"description": "The total height of the matrix, including the quiet zone.",
+					"type": "integer",
+					"minimum": 21
+				},
+				"rows": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/row"
+					},
+					"minItems": 0
+				}
+			}
+		},
+		"row": {
+			"description": "A row holds an array of modules",
+			"type": "object",
+			"required": [
+				"y",
+				"modules"
+			],
+			"properties": {
+				"y": {
+					"description": "The 'y' (vertical) coordinate of this row.",
+					"type": "integer",
+					"minimum": 0
+				},
+				"modules": {
+					"type": "array",
+					"items": {
+						"$ref": "#/$defs/module"
+					},
+					"minItems": 0
+				}
+			}
+		},
+		"module": {
+			"description": "Represents a single module (pixel) of a QR symbol.",
+			"type": "object",
+			"required": [
+				"dark",
+				"layer",
+				"value",
+				"x"
+			],
+			"properties": {
+				"dark": {
+					"description": "Indicates whether this module is dark.",
+					"type": "boolean"
+				},
+				"layer": {
+					"description": "The layer (functional pattern) this module belongs to.",
+					"type": "string"
+				},
+				"value": {
+					"description": "The value for this module.",
+					"type": "string"
+				},
+				"x": {
+					"description": "The 'x' (horizontal) coordinate of this module.",
+					"type": "integer",
+					"minimum": 0
+				}
+			}
+		}
+	}
+}

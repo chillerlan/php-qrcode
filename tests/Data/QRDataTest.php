@@ -7,6 +7,7 @@
  * @copyright    2022 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Data;
 
@@ -21,9 +22,6 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\QRCodeTest\QRMatrixDebugTrait;
 use PHPUnit\Framework\TestCase;
 
-/**
- *
- */
 final class QRDataTest extends TestCase{
 	use QRMatrixDebugTrait;
 

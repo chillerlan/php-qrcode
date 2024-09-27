@@ -7,6 +7,7 @@
  * @copyright    2017 Smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Data;
 
@@ -94,7 +95,7 @@ class QRMatrix{
 	 *
 	 * @see \chillerlan\QRCode\Data\QRMatrix::checkNeighbours()
 	 *
-	 * @var array
+	 * @var int[][]
 	 */
 	protected const neighbours = [
 		0b00000001 => [-1, -1],
@@ -110,12 +111,12 @@ class QRMatrix{
 	/**
 	 * the matrix version - always set in QRMatrix, may be null in BitMatrix
 	 */
-	protected ?Version $version = null;
+	protected Version|null $version = null;
 
 	/**
 	 * the current ECC level - always set in QRMatrix, may be null in BitMatrix
 	 */
-	protected ?EccLevel $eccLevel = null;
+	protected EccLevel|null $eccLevel = null;
 
 	/**
 	 * the mask pattern that was used in the most recent operation, set via:
@@ -124,7 +125,7 @@ class QRMatrix{
 	 * - QRMatrix::mask()
 	 * - BitMatrix::readFormatInformation()
 	 */
-	protected ?MaskPattern $maskPattern = null;
+	protected MaskPattern|null $maskPattern = null;
 
 	/**
 	 * the size (side length) of the matrix, including quiet zone (if created)
@@ -150,6 +151,8 @@ class QRMatrix{
 
 	/**
 	 * Creates a 2-dimensional array (square) of the given $size
+	 *
+	 * @return int[][]
 	 */
 	protected function createMatrix(int $size, int $value):array{
 		return array_fill(0, $size, array_fill(0, $size, $value));
@@ -173,9 +176,9 @@ class QRMatrix{
 	/**
 	 * Returns the data matrix, returns a pure boolean representation if $boolean is set to true
 	 *
-	 * @return int[][]|bool[][]
+	 * @return int[][]
 	 */
-	public function getMatrix(bool $boolean = null):array{
+	public function getMatrix(bool|null $boolean = null):array{
 
 		if($boolean !== true){
 			return $this->matrix;
@@ -193,21 +196,21 @@ class QRMatrix{
 	/**
 	 * Returns the current version number
 	 */
-	public function getVersion():?Version{
+	public function getVersion():Version|null{
 		return $this->version;
 	}
 
 	/**
 	 * Returns the current ECC level
 	 */
-	public function getEccLevel():?EccLevel{
+	public function getEccLevel():EccLevel|null{
 		return $this->eccLevel;
 	}
 
 	/**
 	 * Returns the current mask pattern
 	 */
-	public function getMaskPattern():?MaskPattern{
+	public function getMaskPattern():MaskPattern|null{
 		return $this->maskPattern;
 	}
 
@@ -299,6 +302,8 @@ class QRMatrix{
 	/**
 	 * Checks whether the module at ($x, $y) is in the given array of $M_TYPES,
 	 * returns true if a match is found, otherwise false.
+	 *
+	 * @param int[] $M_TYPES
 	 */
 	public function checkTypeIn(int $x, int $y, array $M_TYPES):bool{
 
@@ -342,14 +347,14 @@ class QRMatrix{
 	 *   7 # 3
 	 *   6 5 4
 	 */
-	public function checkNeighbours(int $x, int $y, int $M_TYPE = null):int{
+	public function checkNeighbours(int $x, int $y, int|null $M_TYPE = null):int{
 		$bits = 0;
 
 		foreach($this::neighbours as $bit => [$ix, $iy]){
 			$ix += $x;
 			$iy += $y;
 
-			// $M_TYPE is given, skip if the field is not the same type
+			// check if the field is the same type
 			if($M_TYPE !== null && !$this->checkType($ix, $iy, $M_TYPE)){
 				continue;
 			}
@@ -388,6 +393,7 @@ class QRMatrix{
 
 		foreach($pos as $c){
 			$this
+				// phpcs:ignore
 				->setArea( $c[0]     ,  $c[1]     , 7, 7, true, $this::M_FINDER)
 				->setArea(($c[0] + 1), ($c[1] + 1), 5, 5, false, $this::M_FINDER)
 				->setArea(($c[0] + 2), ($c[1] + 2), 3, 3, true, $this::M_FINDER_DOT)
@@ -418,6 +424,7 @@ class QRMatrix{
 
 		for($c = 0; $c < 3; $c++){
 			for($i = 0; $i < 8; $i++){
+				// phpcs:ignore
 				$this->set( $h[$c][0]      , ($h[$c][1] + $i), false, $this::M_SEPARATOR);
 				$this->set(($v[$c][0] - $i),  $v[$c][1]      , false, $this::M_SEPARATOR);
 			}
@@ -507,7 +514,7 @@ class QRMatrix{
 	 *
 	 * ISO/IEC 18004:2000 Section 8.9
 	 */
-	public function setFormatInfo(MaskPattern $maskPattern = null):static{
+	public function setFormatInfo(MaskPattern|null $maskPattern = null):static{
 		$this->maskPattern = $maskPattern;
 		$bits              = 0; // sets all format fields to false (test mode)
 
@@ -583,7 +590,6 @@ class QRMatrix{
 	 * Rotates the matrix by 90 degrees clock wise
 	 */
 	public function rotate90():static{
-		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
 		$this->matrix = array_map((fn(int ...$a):array => array_reverse($a)), ...$this->matrix);
 
 		return $this;
@@ -633,7 +639,7 @@ class QRMatrix{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function setLogoSpace(int $width, int $height = null, int $startX = null, int $startY = null):static{
+	public function setLogoSpace(int $width, int|null $height = null, int|null $startX = null, int|null $startY = null):static{
 		$height ??= $width;
 
 		// if width and height happen to be negative or 0 (default value), just return - nothing to do

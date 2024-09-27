@@ -8,6 +8,7 @@
  * @copyright    2021 Smiley
  * @license      Apache-2.0
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Decoder;
 
@@ -105,6 +106,7 @@ final class BitMatrix extends QRMatrix{
 	 * correct order in order to reconstruct the codewords bytes contained within the
 	 * QR Code. Throws if the exact number of bytes expected is not read.
 	 *
+	 * @return int[]
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	public function readCodewords():array{
@@ -220,7 +222,7 @@ final class BitMatrix extends QRMatrix{
 			// Try again by actually masking the pattern first.
 			$formatInfo = $this->doDecodeFormatInformation(
 				($formatInfoBits1 ^ $this::FORMAT_INFO_MASK_QR),
-				($formatInfoBits2 ^ $this::FORMAT_INFO_MASK_QR)
+				($formatInfoBits2 ^ $this::FORMAT_INFO_MASK_QR),
 			);
 
 			// still nothing???
@@ -236,9 +238,6 @@ final class BitMatrix extends QRMatrix{
 		return $this;
 	}
 
-	/**
-	 *
-	 */
 	private function copyVersionBit(int $i, int $j, int $versionBits):int{
 
 		$bit = $this->mirror
@@ -251,7 +250,7 @@ final class BitMatrix extends QRMatrix{
 	/**
 	 * Returns information about the format it specifies, or null if it doesn't seem to match any known pattern
 	 */
-	private function doDecodeFormatInformation(int $maskedFormatInfo1, int $maskedFormatInfo2):?int{
+	private function doDecodeFormatInformation(int $maskedFormatInfo1, int $maskedFormatInfo2):int|null{
 		$bestDifference = PHP_INT_MAX;
 		$bestFormatInfo = 0;
 
@@ -347,7 +346,7 @@ final class BitMatrix extends QRMatrix{
 	/**
 	 * Decodes the version information from the given bit sequence, returns null if no valid match is found.
 	 */
-	private function decodeVersionInformation(int $versionBits):?Version{
+	private function decodeVersionInformation(int $versionBits):Version|null{
 		$bestDifference = PHP_INT_MAX;
 		$bestVersion    = 0;
 
@@ -362,7 +361,6 @@ final class BitMatrix extends QRMatrix{
 
 			// Otherwise see if this is the closest to a real version info bit string
 			// we have seen so far
-			/** @phan-suppress-next-line PhanTypeMismatchArgumentNullable ($targetVersionPattern is never null here) */
 			$bitsDifference = $this->numBitsDiffering($versionBits, $targetVersionPattern);
 
 			if($bitsDifference < $bestDifference){
@@ -380,9 +378,6 @@ final class BitMatrix extends QRMatrix{
 		return null;
 	}
 
-	/**
-	 *
-	 */
 	private function uRShift(int $a, int $b):int{
 
 		if($b === 0){
@@ -392,9 +387,6 @@ final class BitMatrix extends QRMatrix{
 		return (($a >> $b) & ~((1 << (8 * PHP_INT_SIZE - 1)) >> ($b - 1)));
 	}
 
-	/**
-	 *
-	 */
 	private function numBitsDiffering(int $a, int $b):int{
 		// a now has a 1 bit exactly where its bit differs with b's
 		$a ^= $b;
@@ -414,7 +406,7 @@ final class BitMatrix extends QRMatrix{
 	 * @codeCoverageIgnore
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function setQuietZone(int $quietZoneSize = null):static{
+	public function setQuietZone(int|null $quietZoneSize = null):static{
 		throw new QRCodeDataException('not supported');
 	}
 
@@ -422,7 +414,7 @@ final class BitMatrix extends QRMatrix{
 	 * @codeCoverageIgnore
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public function setLogoSpace(int $width, int $height = null, int $startX = null, int $startY = null):static{
+	public function setLogoSpace(int $width, int|null $height = null, int|null $startX = null, int|null $startY = null):static{
 		throw new QRCodeDataException('not supported');
 	}
 

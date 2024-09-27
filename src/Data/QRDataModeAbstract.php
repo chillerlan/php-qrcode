@@ -7,6 +7,7 @@
  * @copyright    2020 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Data;
 
@@ -44,9 +45,6 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 		return strlen($this->data);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public static function convertEncoding(string $string):string{
 		return $string;
 	}

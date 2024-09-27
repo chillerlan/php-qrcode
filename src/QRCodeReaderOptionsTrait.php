@@ -7,6 +7,7 @@
  * @copyright    2024 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode;
 
@@ -14,6 +15,11 @@ use function extension_loaded;
 
 /**
  * Trait QRCodeReaderOptionsTrait
+ *
+ * @property bool $readerUseImagickIfAvailable
+ * @property bool $readerGrayscale
+ * @property bool $readerInvertColors
+ * @property bool $readerIncreaseContrast
  */
 trait QRCodeReaderOptionsTrait{
 

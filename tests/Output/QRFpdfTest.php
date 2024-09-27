@@ -7,6 +7,7 @@
  * @copyright    2020 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Output;
 
@@ -21,10 +22,8 @@ use function class_exists;
  * Tests the QRFpdf output module
  */
 final class QRFpdfTest extends QROutputTestAbstract{
+	use RGBArrayModuleValueProviderTrait;
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function setUp():void{
 
 		if(!class_exists(FPDF::class)){
@@ -36,25 +35,11 @@ final class QRFpdfTest extends QROutputTestAbstract{
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
-		QRMatrix                             $matrix
+		QRMatrix                             $matrix,
 	):QROutputInterface{
 		return new QRFpdf($options, $matrix);
 	}
 
-	public static function moduleValueProvider():array{
-		return [
-			'valid: int'                     => [[123, 123, 123], true],
-			'valid: w/invalid extra element' => [[123, 123, 123, 'abc'], true],
-			'valid: numeric string'          => [['123', '123', '123'], true],
-			'invalid: wrong type'            => ['foo', false],
-			'invalid: array too short'       => [[1, 2], false],
-			'invalid: contains non-number'   => [[1, 'b', 3], false],
-		];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [
@@ -66,6 +51,7 @@ final class QRFpdfTest extends QROutputTestAbstract{
 		$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
 		$this->outputInterface->dump();
 
+		/** @phpstan-ignore-next-line */
 		$this::assertTrue(true); // tricking the code coverage
 	}
 

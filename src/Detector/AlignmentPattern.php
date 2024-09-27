@@ -8,6 +8,7 @@
  * @copyright    2021 Smiley
  * @license      Apache-2.0
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Detector;
 
@@ -27,7 +28,7 @@ final class AlignmentPattern extends ResultPoint{
 		return new self(
 			(($this->x + $j) / 2.0),
 			(($this->y + $i) / 2.0),
-			(($this->estimatedModuleSize + $newModuleSize) / 2.0)
+			(($this->estimatedModuleSize + $newModuleSize) / 2.0),
 		);
 	}
 

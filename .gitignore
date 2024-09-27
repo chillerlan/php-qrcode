@@ -18,4 +18,5 @@ phpcs.xml
 phpdoc.xml
 phpmd.xml
 phpunit.xml
+phpstan.neon
 tests/Performance/*.json

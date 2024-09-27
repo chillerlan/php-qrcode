@@ -7,6 +7,7 @@
  * @copyright    2021 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest;
 
@@ -36,11 +37,14 @@ final class QRCodeReaderImagickTest extends QRCodeReaderTestAbstract{
 
 	protected function getLuminanceSourceFromFile(
 		string                               $file,
-		SettingsContainerInterface|QROptions $options
+		SettingsContainerInterface|QROptions $options,
 	):LuminanceSourceInterface{
 		return IMagickLuminanceSource::fromFile($file, $options);
 	}
 
+	/**
+	 * @phpstan-return array<string, array{0: string, 1: string}>
+	 */
 	public static function vectorQRCodeProvider():array{
 		return [
 			// SVG convert only works on windows (Warning: Option --export-png= is deprecated)

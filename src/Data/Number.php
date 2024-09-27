@@ -7,11 +7,12 @@
  * @copyright    2015 Smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
-use function array_flip, ceil, intdiv, str_split, substr, unpack;
+use function ceil, intdiv, preg_match, substr, unpack;
 
 /**
  * Numeric mode: decimal digits 0 to 9
@@ -21,46 +22,16 @@ use function array_flip, ceil, intdiv, str_split, substr, unpack;
  */
 final class Number extends QRDataModeAbstract{
 
-	/**
-	 * @var int[]
-	 */
-	private const NUMBER_TO_ORD = [
-		'0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5, '6' => 6, '7' => 7, '8' => 8, '9' => 9,
-	];
-
-	/**
-	 * @inheritDoc
-	 */
 	public const DATAMODE = Mode::NUMBER;
 
-	/**
-	 * @inheritDoc
-	 */
 	public function getLengthInBits():int{
 		return (int)ceil($this->getCharCount() * (10 / 3));
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public static function validateString(string $string):bool{
-
-		if($string === ''){
-			return false;
-		}
-
-		foreach(str_split($string) as $chr){
-			if(!isset(self::NUMBER_TO_ORD[$chr])){
-				return false;
-			}
-		}
-
-		return true;
+		return (bool)preg_match('/^\d+$/', $string);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function write(BitBuffer $bitBuffer, int $versionNumber):static{
 		$len = $this->getCharCount();
 
@@ -95,12 +66,20 @@ final class Number extends QRDataModeAbstract{
 
 	/**
 	 * get the code for the given numeric string
+	 *
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	private function parseInt(string $string):int{
 		$num = 0;
 
-		foreach(unpack('C*', $string) as $chr){
-			$num = ($num * 10 + $chr - 48);
+		$ords = unpack('C*', $string);
+
+		if($ords === false){
+			throw new QRCodeDataException('unpack() error');
+		}
+
+		foreach($ords as $ord){
+			$num = ($num * 10 + $ord - 48);
 		}
 
 		return $num;
@@ -112,19 +91,7 @@ final class Number extends QRDataModeAbstract{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
-		$length  = $bitBuffer->read(self::getLengthBits($versionNumber));
-		$charmap = array_flip(self::NUMBER_TO_ORD);
-
-		// @todo
-		$toNumericChar = function(int $ord) use ($charmap):string{
-
-			if(isset($charmap[$ord])){
-				return $charmap[$ord];
-			}
-
-			throw new QRCodeDataException('invalid character value: '.$ord);
-		};
-
+		$length = $bitBuffer->read(self::getLengthBits($versionNumber));
 		$result = '';
 		// Read three digits at a time
 		while($length >= 3){
@@ -139,9 +106,9 @@ final class Number extends QRDataModeAbstract{
 				throw new QRCodeDataException('error decoding numeric value');
 			}
 
-			$result .= $toNumericChar(intdiv($threeDigitsBits, 100));
-			$result .= $toNumericChar(intdiv($threeDigitsBits, 10) % 10);
-			$result .= $toNumericChar($threeDigitsBits % 10);
+			$result .= intdiv($threeDigitsBits, 100);
+			$result .= (($threeDigitsBits / 10) % 10);
+			$result .= ($threeDigitsBits % 10);
 
 			$length -= 3;
 		}
@@ -158,8 +125,8 @@ final class Number extends QRDataModeAbstract{
 				throw new QRCodeDataException('error decoding numeric value');
 			}
 
-			$result .= $toNumericChar(intdiv($twoDigitsBits, 10));
-			$result .= $toNumericChar($twoDigitsBits % 10);
+			$result .= intdiv($twoDigitsBits, 10);
+			$result .= ($twoDigitsBits % 10);
 		}
 		elseif($length === 1){
 			// One digit left over to read
@@ -173,7 +140,7 @@ final class Number extends QRDataModeAbstract{
 				throw new QRCodeDataException('error decoding numeric value');
 			}
 
-			$result .= $toNumericChar($digitBits);
+			$result .= $digitBits;
 		}
 
 		return $result;

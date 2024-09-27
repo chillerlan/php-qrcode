@@ -8,6 +8,7 @@
  * @copyright    2021 Smiley
  * @license      Apache-2.0
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Decoder;
 
@@ -46,8 +47,10 @@ final class DecoderResult{
 
 	/**
 	 * DecoderResult constructor.
+	 *
+	 * @phpstan-param array<string, mixed> $properties
 	 */
-	public function __construct(iterable $properties = null){
+	public function __construct(iterable|null $properties = null){
 
 		if(!empty($properties)){
 
@@ -64,10 +67,7 @@ final class DecoderResult{
 
 	}
 
-	/**
-	 * @return mixed|null
-	 */
-	public function __get(string $property){
+	public function __get(string $property):mixed{
 
 		if(property_exists($this, $property)){
 			return $this->{$property};
@@ -76,16 +76,10 @@ final class DecoderResult{
 		return null;
 	}
 
-	/**
-	 *
-	 */
 	public function __toString():string{
 		return $this->data;
 	}
 
-	/**
-	 *
-	 */
 	public function hasStructuredAppend():bool{
 		return $this->structuredAppendParity >= 0 && $this->structuredAppendSequence >= 0;
 	}

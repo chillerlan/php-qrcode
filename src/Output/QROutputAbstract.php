@@ -6,15 +6,19 @@
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
+ *
+ * @noinspection PhpComposerExtensionStubsInspection
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
-use Closure;
-use function base64_encode, dirname, file_put_contents, is_writable, ksort, sprintf;
+use Closure, finfo;
+use function base64_encode, dirname, extension_loaded, file_put_contents, is_writable, ksort, sprintf;
+use const FILEINFO_MIME_TYPE;
 
 /**
  * common output abstract
@@ -35,6 +39,8 @@ abstract class QROutputAbstract implements QROutputInterface{
 
 	/**
 	 * an (optional) array of color values for the several QR matrix parts
+	 *
+	 * @phpstan-var array<int, mixed>
 	 */
 	protected array $moduleValues;
 
@@ -48,20 +54,26 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 */
 	protected SettingsContainerInterface|QROptions $options;
 
+	/**
+	 * @see \chillerlan\QRCode\QROptions::$excludeFromConnect
+	 * @var int[]
+	 */
+	protected array $excludeFromConnect;
+	/**
+	 * @see \chillerlan\QRCode\QROptions::$keepAsSquare
+	 * @var int[]
+	 */
+	protected array $keepAsSquare;
 	/** @see \chillerlan\QRCode\QROptions::$scale */
 	protected int $scale;
 	/** @see \chillerlan\QRCode\QROptions::$connectPaths */
 	protected bool $connectPaths;
-	/** @see \chillerlan\QRCode\QROptions::$excludeFromConnect */
-	protected array $excludeFromConnect;
 	/** @see \chillerlan\QRCode\QROptions::$eol */
 	protected string $eol;
 	/** @see \chillerlan\QRCode\QROptions::$drawLightModules */
 	protected bool $drawLightModules;
 	/** @see \chillerlan\QRCode\QROptions::$drawCircularModules */
 	protected bool $drawCircularModules;
-	/** @see \chillerlan\QRCode\QROptions::$keepAsSquare */
-	protected array $keepAsSquare;
 	/** @see \chillerlan\QRCode\QROptions::$circleRadius */
 	protected float $circleRadius;
 	protected float $circleDiameter;
@@ -122,6 +134,8 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 * Returns a 2 element array with the current output width and height
 	 *
 	 * The type and units of the values depend on the output class. The default value is the current module count * scale.
+	 *
+	 * @return int[]
 	 */
 	protected function getOutputDimensions():array{
 		return [$this->length, $this->length];
@@ -138,6 +152,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 		}
 
 		// now loop over the options values to replace defaults and add extra values
+		/** @var int $M_TYPE */
 		foreach($this->options->moduleValues as $M_TYPE => $value){
 			if($this::moduleValueIsValid($value)){
 				$this->moduleValues[$M_TYPE] = $this->prepareModuleValue($value);
@@ -179,9 +194,38 @@ abstract class QROutputAbstract implements QROutputInterface{
 
 	/**
 	 * Returns a base64 data URI for the given string and mime type
+	 *
+	 * The mime type can be set via class constant MIME_TYPE in child classes,
+	 * or given via $mime, otherwise it is guessed from the image $data.
 	 */
-	protected function toBase64DataURI(string $data, string $mime = null):string{
-		return sprintf('data:%s;base64,%s', ($mime ?? static::MIME_TYPE), base64_encode($data));
+	protected function toBase64DataURI(string $data, string|null $mime = null):string{
+		$mime ??= static::MIME_TYPE;
+
+		if($mime === ''){
+			$mime = $this->guessMimeType($data);
+		}
+
+		return sprintf('data:%s;base64,%s', $mime, base64_encode($data));
+	}
+
+	/**
+	 * Guesses the mime type from the given $imageData
+	 *
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 */
+	protected function guessMimeType(string $imageData):string{
+
+		if(!extension_loaded('fileinfo')){
+			throw new QRCodeOutputException('ext-fileinfo not loaded, cannot guess mime type');
+		}
+
+		$mime = (new finfo(FILEINFO_MIME_TYPE))->buffer($imageData);
+
+		if($mime === false){
+			throw new QRCodeOutputException('unable to detect mime type');
+		}
+
+		return $mime;
 	}
 
 	/**
@@ -192,7 +236,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	protected function saveToFile(string $data, string $file = null):void{
+	protected function saveToFile(string $data, string|null $file = null):void{
 
 		if($file === null){
 			return;
@@ -217,6 +261,8 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 *   $y            - current row
 	 *   $M_TYPE       - field value
 	 *   $M_TYPE_LAYER - (possibly modified) field value that acts as layer id
+	 *
+	 * @return array<int, mixed>
 	 */
 	protected function collectModules(Closure $transform):array{
 		$paths = [];

@@ -7,6 +7,7 @@
  * @copyright    2022 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Output;
 
@@ -50,16 +51,10 @@ class QRMarkupSVG extends QRMarkup{
 		return parent::moduleValueIsValid($value);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function getOutputDimensions():array{
 		return [$this->moduleCount, $this->moduleCount];
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function getCssClass(int $M_TYPE = 0):string{
 		return implode(' ', [
 			'qr-'.($this::LAYERNAMES[$M_TYPE] ?? $M_TYPE),
@@ -68,9 +63,6 @@ class QRMarkupSVG extends QRMarkup{
 		]);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function createMarkup(bool $saveToFile):string{
 		$svg = $this->header();
 
@@ -82,11 +74,6 @@ class QRMarkupSVG extends QRMarkup{
 
 		// close svg
 		$svg .= sprintf('%1$s</svg>%1$s', $this->eol);
-
-		// transform to data URI only when not saving to file
-		if(!$saveToFile && $this->options->outputBase64){
-			$svg = $this->toBase64DataURI($svg);
-		}
 
 		return $svg;
 	}
@@ -115,7 +102,7 @@ class QRMarkupSVG extends QRMarkup{
 			$this->options->cssClass,
 			$this->getViewBox(),
 			$this->options->svgPreserveAspectRatio,
-			$this->eol
+			$this->eol,
 		);
 
 		if($this->options->svgAddXmlHeader){
@@ -166,7 +153,7 @@ class QRMarkupSVG extends QRMarkup{
 				'<path class="%s" fill="%s" d="%s"/>',
 				$this->getCssClass($M_TYPE),
 				$this->getModuleValue($M_TYPE),
-				$path
+				$path,
 			);
 		}
 

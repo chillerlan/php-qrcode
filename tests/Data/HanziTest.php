@@ -7,6 +7,7 @@
  * @copyright    2021 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Data;
 
@@ -30,6 +31,8 @@ final class HanziTest extends DataInterfaceTestAbstract{
 
 	/**
 	 * isGB2312() should pass on Hanzi/GB2312 characters and fail on everything else
+	 *
+	 * @phpstan-return array<int, array{0: string, 1: bool}>
 	 */
 	public static function stringValidateProvider():array{
 		return [
@@ -74,7 +77,7 @@ final class HanziTest extends DataInterfaceTestAbstract{
 		try{
 			$this::assertTrue(Hanzi::validateString($chr));
 		}
-		catch(Throwable $e){
+		catch(Throwable){
 			/** @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist */
 			if(defined('TEST_IS_CI') && TEST_IS_CI === true){
 				$this::markTestSkipped();
@@ -83,7 +86,7 @@ final class HanziTest extends DataInterfaceTestAbstract{
 			$this::markTestSkipped(sprintf(
 				'invalid glyph: %s => %s',
 				bin2hex(mb_convert_encoding($chr, Hanzi::ENCODING, 'UTF-8')),
-				$chr
+				$chr,
 			));
 		}
 	}

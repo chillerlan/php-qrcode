@@ -8,6 +8,7 @@
  * @copyright    2021 smiley
  * @license      Apache-2.0
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Common;
 
@@ -118,7 +119,7 @@ final class ECICharset{
 	 * @see \mb_convert_encoding()
 	 * @see \iconv()
 	 */
-	public function getName():?string{
+	public function getName():string|null{
 		return (self::MB_ENCODINGS[$this->charsetID] ?? null);
 	}
 

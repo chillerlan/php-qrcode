@@ -7,6 +7,7 @@
  * @copyright    2020 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Data;
 
@@ -43,28 +44,16 @@ final class Hanzi extends QRDataModeAbstract{
 	 */
 	public const GB2312_SUBSET = 0b0001;
 
-	/**
-	 * @inheritDoc
-	 */
 	public const DATAMODE = Mode::HANZI;
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function getCharCount():int{
 		return mb_strlen($this->data, self::ENCODING);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function getLengthInBits():int{
 		return ($this->getCharCount() * 13);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public static function convertEncoding(string $string):string{
 		mb_detect_order([mb_internal_encoding(), 'UTF-8', 'GB2312', 'GB18030', 'CP936', 'EUC-CN', 'HZ']);
 
@@ -199,7 +188,7 @@ final class Hanzi extends QRDataModeAbstract{
 			$length--;
 		}
 
-		return mb_convert_encoding(implode($buffer), mb_internal_encoding(), self::ENCODING);
+		return mb_convert_encoding(implode('', $buffer), mb_internal_encoding(), self::ENCODING);
 	}
 
 }

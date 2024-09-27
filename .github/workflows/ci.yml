@@ -28,10 +28,6 @@ jobs:
           - "8.2"
           - "8.3"
 
-    env:
-      PHAN_ALLOW_XDEBUG: 0
-      PHAN_DISABLE_XDEBUG_WARN: 1
-
     steps:
       - name: "Checkout"
         uses: actions/checkout@v4
@@ -40,15 +36,18 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          extensions: ast, ${{ env.PHP_EXTENSIONS }}
+          extensions: ${{ env.PHP_EXTENSIONS }}
           ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: none
 
       - name: "Install dependencies with composer"
         uses: ramsey/composer-install@v3
 
-      - name: "Run phan"
-        run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
+      - name: "Run PHPStan"
+        run: php vendor/bin/phpstan
+
+      - name: "Run PHP_CodeSniffer"
+        run: php vendor/bin/phpcs
 
 
   tests:
@@ -65,6 +64,7 @@ jobs:
         php-version:
           - "8.2"
           - "8.3"
+          - "8.4"
 
     steps:
       - name: "Checkout"

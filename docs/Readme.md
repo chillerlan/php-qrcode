@@ -77,9 +77,12 @@ The markdown sources for the [Read the Docs online manual](https://php-qrcode.re
 - [QRFpdf](./Built-In-Output/QRFpdf.md)
 - [QRGdImage](./Built-In-Output/QRGdImage.md)
 - [QRImagick](./Built-In-Output/QRImagick.md)
+- [QRInterventionImage](./Built-In-Output/QRInterventionImage.md)
 - [QRMarkupHTML](./Built-In-Output/QRMarkupHTML.md)
 - [QRMarkupSVG](./Built-In-Output/QRMarkupSVG.md)
-- [QRString](./Built-In-Output/QRString.md)
+- [QRMarkupXML](./Built-In-Output/QRMarkupXML.md)
+- [QRStringText](./Built-In-Output/QRStringText.md)
+- [QRStringJSON](./Built-In-Output/QRStringJSON.md)
 
 
 ### Appendix

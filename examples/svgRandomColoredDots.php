@@ -11,6 +11,7 @@
  *
  * @noinspection PhpIllegalPsrClassPathInspection
  */
+declare(strict_types=1);
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
@@ -26,9 +27,6 @@ require_once __DIR__.'/../vendor/autoload.php';
 // the extended SVG output module
 class RandomDotsSVGOutput extends QRMarkupSVG{
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function path(string $path, int $M_TYPE):string{
 		// omit the "fill" and "opacity" attributes on the path element
 		return sprintf('<path class="%s" d="%s"/>', $this->getCssClass($M_TYPE), $path);
@@ -81,13 +79,19 @@ class RandomDotsSVGOutput extends QRMarkupSVG{
 
 }
 
-// the extended options with the $dotColors option
+
+/**
+ * the extended options with the $dotColors option
+ *
+ * @property array<int, string> $dotColors
+ */
 class RandomDotsOptions extends QROptions{
 
 	/**
 	 * a map of $M_TYPE_LAYER => color
 	 *
 	 * @see \array_rand()
+	 * @var array<int, string>
 	 */
 	protected array $dotColors = [];
 
@@ -154,7 +158,7 @@ $out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgX
 
 
 // dump the output
-if(php_sapi_name() !== 'cli'){
+if(PHP_SAPI !== 'cli'){
 	header('content-type: image/svg+xml');
 }
 

@@ -7,11 +7,21 @@
  *
  * @noinspection PhpComposerExtensionStubsInspection
  */
+declare(strict_types=1);
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
 
 require_once '../vendor/autoload.php';
+
+/**
+ * @param array<string, mixed> $response
+ */
+function sendResponse(array $response):never{
+	header('Content-type: application/json;charset=utf-8;');
+	echo json_encode($response);
+	exit;
+}
 
 try{
 
@@ -47,7 +57,7 @@ try{
 
 	$moduleValues = array_map(function($v){
 		if(preg_match('/[a-f\d]{6}/i', $v) === 1){
-			return in_array($_POST['output_type'], ['png', 'jpg', 'gif'])
+			return in_array($_POST['output_type'], ['png', 'jpg', 'gif'], true)
 				? array_map('hexdec', str_split($v, 2))
 				: '#'.$v ;
 		}
@@ -72,7 +82,7 @@ try{
 
 	$qrcode = (new QRCode($options))->render($_POST['inputstring']);
 
-	if(in_array($_POST['output_type'], ['png', 'jpg', 'gif', 'svg'])){
+	if(in_array($_POST['output_type'], ['png', 'jpg', 'gif', 'svg'], true)){
 		$qrcode = '<img alt="qrcode" src="'.$qrcode.'" />';
 	}
 	elseif($_POST['output_type'] === 'text'){
@@ -88,15 +98,4 @@ try{
 catch(Throwable $e){
 	header('HTTP/1.1 500 Internal Server Error');
 	sendResponse(['error' => $e->getMessage()]);
-}
-
-exit;
-
-/**
- * @param array $response
- */
-function sendResponse(array $response){
-	header('Content-type: application/json;charset=utf-8;');
-	echo json_encode($response);
-	exit;
 }

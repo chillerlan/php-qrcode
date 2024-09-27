@@ -9,6 +9,7 @@
  *
  * @noinspection PhpIllegalPsrClassPathInspection
  */
+declare(strict_types=1);
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Output\QROutputAbstract;
@@ -21,34 +22,22 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 class MyCustomOutput extends QROutputAbstract{
 
-	/**
-	 * @inheritDoc
-	 */
 	public static function moduleValueIsValid(mixed $value):bool{
 		// TODO: Implement moduleValueIsValid() method. (interface)
 		return false;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function prepareModuleValue(mixed $value):mixed{
 		// TODO: Implement prepareModuleValue() method. (abstract)
 		return null;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function getDefaultModuleValue(bool $isDark):mixed{
 		// TODO: Implement getDefaultModuleValue() method. (abstract)
 		return null;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
-	public function dump(string $file = null):string{
+	public function dump(string|null $file = null):string{
 		$output = '';
 
 		for($y = 0; $y < $this->moduleCount; $y++){
@@ -74,7 +63,7 @@ $options = new QROptions;
 $options->version  = 5;
 $options->eccLevel = 'L';
 
-$data = 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s';
+$data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 
 // invoke the QROutputInterface manually
 // please note that an QROutputInterface invoked this way might become unusable after calling dump().

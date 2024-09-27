@@ -6,8 +6,6 @@
  * @author       smiley <smiley@chillerlan.net>
  * @copyright    2024 smiley
  * @license      MIT
- *
- * @phan-file-suppress PhanTypeArraySuspiciousNullable
  */
 declare(strict_types=1);
 
@@ -30,10 +28,16 @@ use function sprintf;
 require_once __DIR__.'/parse-common.php';
 
 if(!file_exists(FILE.'.json')){
-	throw new RuntimeException('invalid benchmark report');
+	throw new RuntimeException('invalid benchmark report [file_exists()]');
 }
 
-$json = json_decode(file_get_contents(FILE.'.json'), true);
+$data = file_get_contents(FILE.'.json');
+
+if($data === false){
+	throw new RuntimeException('invalid benchmark report [file_get_contents()]');
+}
+
+$json = json_decode($data, true);
 
 $htmlHead = '<!DOCTYPE html>
 <html lang="en">
@@ -63,7 +67,12 @@ $html['index'][] = '<tr><th>Name</th><th>Value</th></tr>';
 $html['index'][] = '</thead><tbody>';
 
 $html['index'][] = sprintf('<tr><td>date</td><td style="text-align: left;">%s %s</td></tr>', $suite['date'], $suite['time']);
-$html['index'][] = sprintf('<tr><td>environment</td><td style="text-align: left;">%s %s, %s</td></tr>', $env['uname_os'], $env['uname_version'], $env['uname_machine']);
+$html['index'][] = sprintf(
+	'<tr><td>environment</td><td style="text-align: left;">%s %s, %s</td></tr>',
+	$env['uname_os'],
+	$env['uname_version'],
+	$env['uname_machine'],
+);
 $html['index'][] = sprintf('<tr><td>tag</td><td style="text-align: left;">%s</td></tr>', htmlspecialchars($suite['tag']));
 
 foreach(['php_version', 'php_ini', 'php_extensions', 'php_xdebug', 'opcache_extension_loaded', 'opcache_enabled'] as $field){

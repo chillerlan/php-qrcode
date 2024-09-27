@@ -7,6 +7,7 @@
  * @copyright    2017 Smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Data;
 
@@ -26,6 +27,8 @@ final class ByteTest extends DataInterfaceTestAbstract{
 
 	/**
 	 * isByte() passses any binary string and only fails on empty strings
+	 *
+	 * @phpstan-return array<int, array{0: string, 1: bool}>
 	 */
 	public static function stringValidateProvider():array{
 		return [
@@ -36,16 +39,10 @@ final class ByteTest extends DataInterfaceTestAbstract{
 		];
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function testInvalidDataException():void{
 		$this::markTestSkipped('N/A (binary mode)');
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function testBinaryStringInvalid():void{
 		$this::markTestSkipped('N/A (binary mode)');
 	}

@@ -7,6 +7,7 @@
  * @copyright    2022 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Output;
 
@@ -24,9 +25,6 @@ class QREps extends QROutputAbstract{
 
 	final public const MIME_TYPE = 'application/postscript';
 
-	/**
-	 * @inheritDoc
-	 */
 	public static function moduleValueIsValid(mixed $value):bool{
 
 		if(!is_array($value) || count($value) < 3){
@@ -49,9 +47,6 @@ class QREps extends QROutputAbstract{
 		return true;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function prepareModuleValue(mixed $value):string{
 		$values = [];
 
@@ -68,9 +63,6 @@ class QREps extends QROutputAbstract{
 		return $this->formatColor($values);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function getDefaultModuleValue(bool $isDark):string{
 		return $this->formatColor(($isDark) ? [0.0, 0.0, 0.0] : [1.0, 1.0, 1.0]);
 	}
@@ -81,6 +73,8 @@ class QREps extends QROutputAbstract{
 	 * 4 values in the color array will be interpreted as CMYK, 3 as RGB
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
+	 *
+	 * @param float[] $values
 	 */
 	protected function formatColor(array $values):string{
 		$count = count($values);
@@ -93,39 +87,13 @@ class QREps extends QROutputAbstract{
 			// CMYK
 			? '%f %f %f %f C'
 			// RGB
-			:'%f %f %f R';
+			: '%f %f %f R';
 
 		return sprintf($format, ...$values);
 	}
 
-	/**
-	 * @inheritDoc
-	 */
-	public function dump(string $file = null):string{
-		[$width, $height] = $this->getOutputDimensions();
-
-		$eps = [
-			// main header
-			'%!PS-Adobe-3.0 EPSF-3.0',
-			'%%Creator: php-qrcode (https://github.com/chillerlan/php-qrcode)',
-			'%%Title: QR Code',
-			sprintf('%%%%CreationDate: %1$s', date('c')),
-			'%%DocumentData: Clean7Bit',
-			'%%LanguageLevel: 3',
-			sprintf('%%%%BoundingBox: 0 0 %s %s', $width, $height),
-			'%%EndComments',
-			// function definitions
-			'%%BeginProlog',
-			'/F { rectfill } def',
-			'/R { setrgbcolor } def',
-			'/C { setcmykcolor } def',
-			'%%EndProlog',
-		];
-
-		if($this::moduleValueIsValid($this->options->bgColor)){
-			$eps[] = $this->prepareModuleValue($this->options->bgColor);
-			$eps[] = sprintf('0 0 %s %s F', $width, $height);
-		}
+	public function dump(string|null $file = null):string{
+		$eps = $this->header();
 
 		// create the path elements
 		$paths = $this->collectModules($this->module(...));
@@ -148,6 +116,40 @@ class QREps extends QROutputAbstract{
 		$this->saveToFile($data, $file);
 
 		return $data;
+	}
+
+	/**
+	 * Returns the main header for the EPS file, including function definitions and background
+	 *
+	 * @return array<int, string>
+	 */
+	protected function header():array{
+		[$width, $height] = $this->getOutputDimensions();
+
+		$header = [
+			// main header
+			'%!PS-Adobe-3.0 EPSF-3.0',
+			'%%Creator: php-qrcode (https://github.com/chillerlan/php-qrcode)',
+			'%%Title: QR Code',
+			sprintf('%%%%CreationDate: %1$s', date('c')),
+			'%%DocumentData: Clean7Bit',
+			'%%LanguageLevel: 3',
+			sprintf('%%%%BoundingBox: 0 0 %s %s', $width, $height),
+			'%%EndComments',
+			// function definitions
+			'%%BeginProlog',
+			'/F { rectfill } def',
+			'/R { setrgbcolor } def',
+			'/C { setcmykcolor } def',
+			'%%EndProlog',
+		];
+
+		if($this::moduleValueIsValid($this->options->bgColor)){
+			$header[] = $this->prepareModuleValue($this->options->bgColor);
+			$header[] = sprintf('0 0 %s %s F', $width, $height);
+		}
+
+		return $header;
 	}
 
 	/**

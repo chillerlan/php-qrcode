@@ -7,6 +7,7 @@
  * @copyright    2024 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest;
 
@@ -81,9 +82,17 @@ trait BuildDirTrait{
 
 	/**
 	 * returns the contents of the given build file
+	 *
+	 * @throws \RuntimeException
 	 */
 	protected function getBuildFileContent(string $fileSubPath):string{
-		return file_get_contents($this->getBuildFilePath($fileSubPath));
+		$content = file_get_contents($this->getBuildFilePath($fileSubPath));
+
+		if($content === false){
+			throw new RuntimeException('file_get_contents() error while reading build file');
+		}
+
+		return $content;
 	}
 
 }

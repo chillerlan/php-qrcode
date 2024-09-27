@@ -3,7 +3,7 @@
 A PHP QR Code generator based on the [implementation by Kazuhiko Arase](https://github.com/kazuhikoarase/qrcode-generator), namespaced, cleaned up, improved and other stuff. <br>
 It also features a QR Code reader based on a [PHP port](https://github.com/khanamiryan/php-qrcode-detector-decoder) of the [ZXing library](https://github.com/zxing/zxing).
 
-**Attention:** there is now also a javascript port: [chillerlan/js-qrcode](https://github.com/chillerlan/js-qrcode).
+**Attention:** there is now also a javascript port on NPM: [@chillerlan/qrcode](https://www.npmjs.com/package/@chillerlan/qrcode).
 
 [![PHP Version Support][php-badge]][php]
 [![Packagist version][packagist-badge]][packagist]
@@ -57,12 +57,13 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
 - PHP 8.2+
   - [`ext-mbstring`](https://www.php.net/manual/book.mbstring.php)
   - optional:
-    - [`ext-gd`](https://www.php.net/manual/book.image)
+    - [`ext-gd`](https://www.php.net/manual/book.image) for `QRGdImage` based output
     - [`ext-imagick`](https://github.com/Imagick/imagick) with [ImageMagick](https://imagemagick.org) installed
-      - [`ext-fileinfo`](https://www.php.net/manual/book.fileinfo.php) (required by `QRImagick` output)
+    - [`ext-fileinfo`](https://www.php.net/manual/book.fileinfo.php) required by `QRImagick` output
     - [`setasign/fpdf`](https://github.com/setasign/fpdf) for the PDF output module
+    - [`intervention/image`](https://github.com/Intervention/image) for alternative GD/ImageMagick output
 
-For the QRCode reader, either `ext-gd` or `ext-imagick` is required!
+For the QR Code reader, either `ext-gd` or `ext-imagick` is required!
 
 
 # Documentation

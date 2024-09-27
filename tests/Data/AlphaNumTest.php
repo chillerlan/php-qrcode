@@ -7,6 +7,7 @@
  * @copyright    2017 Smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Data;
 
@@ -26,6 +27,8 @@ final class AlphaNumTest extends DataInterfaceTestAbstract{
 
 	/**
 	 * isAlphaNum() should pass on the 45 defined characters and fail on anything else (e.g. lowercase)
+	 *
+	 * @phpstan-return array<int, array{0: string, 1: bool}>
 	 */
 	public static function stringValidateProvider():array{
 		return [

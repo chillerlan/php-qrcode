@@ -9,6 +9,7 @@
  *
  * @noinspection PhpComposerExtensionStubsInspection
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Output;
 
@@ -24,10 +25,12 @@ class QRGdImageAVIF extends QRGdImage{
 	final public const MIME_TYPE = 'image/avif';
 
 	/**
-	 * @inheritDoc
+	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
 	protected function renderImage():void{
-		imageavif($this->image, null, max(-1, min(100, $this->options->quality)));
+		if(imageavif(image: $this->image, quality: $this->getQuality()) === false){
+			throw new QRCodeOutputException('imageavif() error');
+		}
 	}
 
 }

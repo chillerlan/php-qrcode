@@ -12,6 +12,7 @@
  *
  * @noinspection PhpComposerExtensionStubsInspection
  */
+declare(strict_types=1);
 
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
@@ -19,7 +20,7 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\QRGdImagePNG;
 use chillerlan\Settings\SettingsContainerInterface;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
 // --------------------
 // Class definition
@@ -27,7 +28,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 class QRGdRounded extends QRGdImagePNG{
 
-	/** @inheritDoc */
 	public function __construct(SettingsContainerInterface|QROptions $options, QRMatrix $matrix){
 		// enable the internal scaling for better rounding results at scale < 20
 		$options->drawCircularModules = true;
@@ -35,7 +35,6 @@ class QRGdRounded extends QRGdImagePNG{
 		parent::__construct($options, $matrix);
 	}
 
-	/** @inheritDoc */
 	protected function module(int $x, int $y, int $M_TYPE):void{
 
 		/**
@@ -121,7 +120,7 @@ class QRGdRounded extends QRGdImagePNG{
 			(int)($y * $this->scale + $this->scale / 2),
 			($this->scale - 1),
 			($this->scale - 1),
-			$light
+			$light,
 		);
 	}
 
@@ -133,14 +132,14 @@ class QRGdRounded extends QRGdImagePNG{
 // --------------------
 
 $options = new QROptions([
-    'version'         => 7,
-    'eccLevel'        => EccLevel::H,
-    'outputInterface' => QRGdRounded::class,
-    'outputBase64'    => false,
-    'scale'           => 30,
-    'addLogoSpace'    => true,
-    'logoSpaceWidth'  => 13,
-    'logoSpaceHeight' => 13,
+	'version'         => 7,
+	'eccLevel'        => EccLevel::H,
+	'outputInterface' => QRGdRounded::class,
+	'outputBase64'    => false,
+	'scale'           => 30,
+	'addLogoSpace'    => true,
+	'logoSpaceWidth'  => 13,
+	'logoSpaceHeight' => 13,
 ]);
 
 

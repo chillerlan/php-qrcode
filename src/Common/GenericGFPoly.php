@@ -8,6 +8,7 @@
  * @copyright    2021 Smiley
  * @license      Apache-2.0
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Common;
 
@@ -25,17 +26,17 @@ use function array_fill, array_slice, array_splice, count;
  */
 final class GenericGFPoly{
 
+	/** @var int[] */
 	private array $coefficients;
 
 	/**
-	 * @param array      $coefficients array coefficients as ints representing elements of GF(size), arranged
+	 * @param int[]      $coefficients array coefficients as ints representing elements of GF(size), arranged
 	 *                                 from most significant (highest-power term) coefficient to the least significant
-	 * @param int|null   $degree
 	 *
 	 * @throws \chillerlan\QRCode\QRCodeException if argument is null or empty, or if leading coefficient is 0 and this
 	 *                                            is not a constant polynomial (that is, it is not the monomial "0")
 	 */
-	public function __construct(array $coefficients, int $degree = null){
+	public function __construct(array $coefficients, int|null $degree = null){
 		$degree ??= 0;
 
 		if(empty($coefficients)){
@@ -115,9 +116,6 @@ final class GenericGFPoly{
 		return $result;
 	}
 
-	/**
-	 *
-	 */
 	public function multiply(GenericGFPoly $other):self{
 
 		if($this->isZero() || $other->isZero()){
@@ -162,9 +160,6 @@ final class GenericGFPoly{
 
 	}
 
-	/**
-	 *
-	 */
 	public function multiplyInt(int $scalar):self{
 
 		if($scalar === 0){
@@ -206,9 +201,6 @@ final class GenericGFPoly{
 		return new self($product);
 	}
 
-	/**
-	 *
-	 */
 	public function mod(GenericGFPoly $other):self{
 
 		if((count($this->coefficients) - count($other->coefficients)) < 0){
@@ -224,9 +216,6 @@ final class GenericGFPoly{
 		return (new self($this->coefficients))->mod($other);
 	}
 
-	/**
-	 *
-	 */
 	public function addOrSubtract(GenericGFPoly $other):self{
 
 		if($this->isZero()){

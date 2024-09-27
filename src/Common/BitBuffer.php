@@ -7,6 +7,7 @@
  * @copyright    2015 Smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Common;
 
@@ -42,6 +43,8 @@ final class BitBuffer{
 
 	/**
 	 * BitBuffer constructor.
+	 *
+	 * @param int[] $bytes
 	 */
 	public function __construct(array $bytes = []){
 		$this->buffer = $bytes;
@@ -89,14 +92,16 @@ final class BitBuffer{
 	/**
 	 * returns the buffer content
 	 *
-	 * to debug: array_map(fn($v) => sprintf('%08b', $v), $bitBuffer->getBuffer())
+	 * to debug: `array_map(fn($v) => sprintf('%08b', $v), $bitBuffer->getBuffer())`
+	 *
+	 * @return int[]
 	 */
 	public function getBuffer():array{
 		return $this->buffer;
 	}
 
 	/**
-	 * @return int number of bits that can be read successfully
+	 * Returns the number of bits that can be read successfully
 	 */
 	public function available():int{
 		return ((8 * ($this->length - $this->bytesRead)) - $this->bitsRead);

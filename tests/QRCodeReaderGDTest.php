@@ -7,6 +7,7 @@
  * @copyright    2021 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest;
 
@@ -21,7 +22,7 @@ final class QRCodeReaderGDTest extends QRCodeReaderTestAbstract{
 
 	protected function getLuminanceSourceFromFile(
 		string                               $file,
-		SettingsContainerInterface|QROptions $options
+		SettingsContainerInterface|QROptions $options,
 	):LuminanceSourceInterface{
 		return GDLuminanceSource::fromFile($file, $options);
 	}

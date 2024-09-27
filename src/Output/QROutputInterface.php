@@ -7,6 +7,7 @@
  * @copyright    2015 Smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Output;
 
@@ -33,8 +34,10 @@ interface QROutputInterface{
 		QRGdImagePNG::class,
 		QRGdImageWEBP::class,
 		QRImagick::class,
+		QRInterventionImage::class,
 		QRMarkupHTML::class,
 		QRMarkupSVG::class,
+		QRMarkupXML::class,
 		QRStringJSON::class,
 		QRStringText::class,
 	];
@@ -127,6 +130,6 @@ interface QROutputInterface{
 	 *
 	 * @see \chillerlan\QRCode\QRCode::renderMatrix()
 	 */
-	public function dump(string $file = null):mixed;
+	public function dump(string|null $file = null):mixed;
 
 }

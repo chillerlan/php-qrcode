@@ -8,6 +8,7 @@
  * @copyright    2021 Smiley
  * @license      Apache-2.0
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Decoder;
 
@@ -47,6 +48,8 @@ final class ReedSolomonDecoder{
 
 	/**
 	 * Error-correct and copy data blocks together into a stream of bytes
+	 *
+	 * @param int[] $rawCodewords
 	 */
 	public function decode(array $rawCodewords):BitBuffer{
 		$dataBlocks  = $this->deinterleaveRawBytes($rawCodewords);
@@ -69,6 +72,8 @@ final class ReedSolomonDecoder{
 	 * method will separate the data into original blocks.
 	 *
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
+	 *
+	 * @param int[] $rawCodewords
 	 */
 	private function deinterleaveRawBytes(array $rawCodewords):array{
 		// Figure out the number and size of data blocks used by this version and
@@ -87,14 +92,13 @@ final class ReedSolomonDecoder{
 
 		// All blocks have the same amount of data, except that the last n
 		// (where n may be 0) have 1 more byte. Figure out where these start.
-		/** @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset */
 		$shorterBlocksTotalCodewords = count($result[0][1]);
 		$longerBlocksStartAt         = (count($result) - 1);
 
 		while($longerBlocksStartAt >= 0){
 			$numCodewords = count($result[$longerBlocksStartAt][1]);
 
-			if($numCodewords == $shorterBlocksTotalCodewords){
+			if($numCodewords === $shorterBlocksTotalCodewords){
 				break;
 			}
 
@@ -120,7 +124,6 @@ final class ReedSolomonDecoder{
 		}
 
 		// Now add in error correction blocks
-		/** @phan-suppress-next-line PhanTypePossiblyInvalidDimOffset */
 		$max = count($result[0][1]);
 
 		for($i = $shorterBlocksNumDataCodewords; $i < $max; $i++){
@@ -137,6 +140,9 @@ final class ReedSolomonDecoder{
 	/**
 	 * Given data and error-correction codewords received, possibly corrupted by errors, attempts to
 	 * correct the errors in-place using Reed-Solomon error correction.
+	 *
+	 * @param  int[] $codewordBytes
+	 * @return int[]
 	 */
 	private function correctErrors(array $codewordBytes, int $numDataCodewords):array{
 		// First read into an array of ints
@@ -162,7 +168,7 @@ final class ReedSolomonDecoder{
 	 * codewords. Really, this means it uses Reed-Solomon to detect and correct errors, in-place,
 	 * in the input.
 	 *
-	 * @param array $received        data and error-correction codewords
+	 * @param int[] $received        data and error-correction codewords
 	 * @param int   $numEccCodewords number of error-correction codewords available
 	 *
 	 * @return int[]
@@ -188,7 +194,7 @@ final class ReedSolomonDecoder{
 		[$sigma, $omega] = $this->runEuclideanAlgorithm(
 			GF256::buildMonomial($numEccCodewords, 1),
 			new GenericGFPoly(array_reverse($syndromeCoefficients)),
-			$numEccCodewords
+			$numEccCodewords,
 		);
 
 		$errorLocations      = $this->findErrorLocations($sigma);
@@ -255,6 +261,7 @@ final class ReedSolomonDecoder{
 	}
 
 	/**
+	 * @return int[]
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	private function findErrorLocations(GenericGFPoly $errorLocator):array{
@@ -283,7 +290,8 @@ final class ReedSolomonDecoder{
 	}
 
 	/**
-	 *
+	 * @param  int[] $errorLocations
+	 * @return int[]
 	 */
 	private function findErrorMagnitudes(GenericGFPoly $errorEvaluator, array $errorLocations):array{
 		// This is directly applying Forney's Formula

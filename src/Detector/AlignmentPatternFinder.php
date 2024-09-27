@@ -8,6 +8,7 @@
  * @copyright    2021 Smiley
  * @license      Apache-2.0
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Detector;
 
@@ -58,9 +59,10 @@ final class AlignmentPatternFinder{
 	 *
 	 * @return \chillerlan\QRCode\Detector\AlignmentPattern|null
 	 */
-	public function find(int $startX, int $startY, int $width, int $height):?AlignmentPattern{
+	public function find(int $startX, int $startY, int $width, int $height):AlignmentPattern|null{
 		$maxJ       = ($startX + $width);
 		$middleI    = ($startY + ($height / 2));
+		/** @var int[] $stateCount */
 		$stateCount = [];
 
 		// We are looking for black/white/black modules in 1:1:1 ratio;
@@ -173,7 +175,7 @@ final class AlignmentPatternFinder{
 	 *
 	 * @return \chillerlan\QRCode\Detector\AlignmentPattern|null if we have found the same pattern twice, or null if not
 	 */
-	private function handlePossibleCenter(array $stateCount, int $i, int $j):?AlignmentPattern{
+	private function handlePossibleCenter(array $stateCount, int $i, int $j):AlignmentPattern|null{
 		$stateCountTotal = ($stateCount[0] + $stateCount[1] + $stateCount[2]);
 		$centerJ         = $this->centerFromEnd($stateCount, $j);
 		$centerI         = $this->crossCheckVertical($i, (int)$centerJ, (2 * $stateCount[1]), $stateCountTotal);
@@ -201,9 +203,6 @@ final class AlignmentPatternFinder{
 	 * figures the location of the center of this black/white/black run.
 	 *
 	 * @param int[] $stateCount
-	 * @param int   $end
-	 *
-	 * @return float
 	 */
 	private function centerFromEnd(array $stateCount, int $end):float{
 		return (float)(($end - $stateCount[2]) - $stateCount[1] / 2);
@@ -214,15 +213,14 @@ final class AlignmentPatternFinder{
 	 * "cross-checks" by scanning down vertically through the center of the possible
 	 * alignment pattern to see if the same proportion is detected.
 	 *
-	 * @param int $startI   row where an alignment pattern was detected
-	 * @param int $centerJ  center of the section that appears to cross an alignment pattern
-	 * @param int $maxCount maximum reasonable number of modules that should be
-	 *                      observed in any reading state, based on the results of the horizontal scan
-	 * @param int $originalStateCountTotal
+	 * $startI   row where an alignment pattern was detected
+	 * $centerJ  center of the section that appears to cross an alignment pattern
+	 * $maxCount maximum reasonable number of modules that should be
+	 *           observed in any reading state, based on the results of the horizontal scan
 	 *
-	 * @return float|null vertical center of alignment pattern, or null if not found
+	 * returns vertical center of alignment pattern, or null if not found
 	 */
-	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):?float{
+	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):float|null{
 		$maxI          = $this->matrix->getSize();
 		$stateCount    = [];
 		$stateCount[0] = 0;
@@ -256,7 +254,7 @@ final class AlignmentPatternFinder{
 			$i++;
 		}
 
-		if($i == $maxI || $stateCount[1] > $maxCount){
+		if($i === $maxI || $stateCount[1] > $maxCount){
 			return null;
 		}
 
@@ -269,6 +267,7 @@ final class AlignmentPatternFinder{
 			return null;
 		}
 
+		// phpcs:ignore
 		if((5 * abs(($stateCount[0] + $stateCount[1] + $stateCount[2]) - $originalStateCountTotal)) >= (2 * $originalStateCountTotal)){
 			return null;
 		}

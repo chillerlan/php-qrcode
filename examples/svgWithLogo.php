@@ -9,6 +9,7 @@
  *
  * @noinspection PhpComposerExtensionStubsInspection
  */
+declare(strict_types=1);
 
 use chillerlan\QRCode\{QRCode, QRCodeException, QROptions};
 use chillerlan\QRCode\Common\EccLevel;
@@ -26,9 +27,6 @@ require_once __DIR__.'/../vendor/autoload.php';
  */
 class QRSvgWithLogo extends QRMarkupSVG{
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function paths():string{
 		$size = (int)ceil($this->moduleCount * $this->options->svgLogoScale);
 
@@ -41,9 +39,6 @@ class QRSvgWithLogo extends QRMarkupSVG{
 		return $svg;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function path(string $path, int $M_TYPE):string{
 		// omit the "fill" and "opacity" attributes on the path element
 		return sprintf('<path class="%s" d="%s"/>', $this->getCssClass($M_TYPE), $path);
@@ -63,7 +58,7 @@ class QRSvgWithLogo extends QRMarkupSVG{
 			$this->options->svgLogoScale,
 			$this->options->svgLogoCssClass,
 			file_get_contents($this->options->svgLogo),
-			$this->options->eol
+			$this->options->eol,
 		);
 	}
 
@@ -72,6 +67,10 @@ class QRSvgWithLogo extends QRMarkupSVG{
 
 /**
  * augment the QROptions class
+ *
+ * @property string $svgLogo
+ * @property float  $svgLogoScale
+ * @property string $svgLogoCssClass
  */
 class SVGWithLogoOptions extends QROptions{
 	// path to svg logo
@@ -142,7 +141,7 @@ $options->svgDefs = '
 $out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 
-if(php_sapi_name() !== 'cli'){
+if(PHP_SAPI !== 'cli'){
 	header('Content-type: image/svg+xml');
 
 	if(extension_loaded('zlib')){

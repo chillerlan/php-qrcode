@@ -7,6 +7,7 @@
  * @copyright    2021 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Output;
 
@@ -15,18 +16,18 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QROutputInterface, QRStringText};
 use chillerlan\Settings\SettingsContainerInterface;
 
-/**
- *
- */
 final class QRStringTextTest extends QROutputTestAbstract{
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
-		QRMatrix                             $matrix
+		QRMatrix                             $matrix,
 	):QROutputInterface{
 		return new QRStringText($options, $matrix);
 	}
 
+	/**
+	 * @phpstan-return array<string, array{0: mixed, 1: bool}>
+	 */
 	public static function moduleValueProvider():array{
 		return [
 			'invalid: wrong type'       => [[], false],
@@ -36,9 +37,6 @@ final class QRStringTextTest extends QROutputTestAbstract{
 		];
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	public function testSetModuleValues():void{
 
 		$this->options->moduleValues = [

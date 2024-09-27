@@ -1,0 +1,25 @@
+# https://phpstan.org/config-reference
+
+parameters:
+	level: 8
+	tmpDir: .build/phpstan-cache
+	paths:
+		- benchmark
+		- examples
+		- src
+		- tests
+
+	treatPhpDocTypesAsCertain: false
+
+	ignoreErrors:
+		# the only place where these instances *may* be null is in the Decoder\BitMatrix class
+		- message: "#^Cannot call method [\\w]+\\(\\) on chillerlan\\\\QRCode\\\\Common\\\\EccLevel\\|null\\.$#"
+		- message: "#^Cannot call method [\\w]+\\(\\) on chillerlan\\\\QRCode\\\\Common\\\\MaskPattern\\|null\\.$#"
+		- message: "#^Cannot call method [\\w]+\\(\\) on chillerlan\\\\QRCode\\\\Common\\\\Version\\|null\\.$#"
+
+
+includes:
+	- phpstan-baseline.neon
+	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
+	- vendor/phpstan/phpstan-deprecation-rules/rules.neon
+	- vendor/chillerlan/php-settings-container/rules-magic-access.neon

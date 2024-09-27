@@ -1,0 +1,206 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Property chillerlan\\\\QRCodeBenchmark\\\\DecoderBenchmark\\:\\:\\$imageBlob \\(string\\) does not accept GdImage\\|string\\.$#"
+			count: 1
+			path: benchmark/DecoderBenchmark.php
+
+		-
+			message: "#^Parameter \\#1 \\$segment of method chillerlan\\\\QRCode\\\\QRCode\\:\\:addSegment\\(\\) expects chillerlan\\\\QRCode\\\\Data\\\\QRDataModeInterface, object given\\.$#"
+			count: 1
+			path: benchmark/QRCodeBenchmark.php
+
+		-
+			message: "#^Parameter \\#2 \\$dataSegments of class chillerlan\\\\QRCode\\\\Data\\\\QRData constructor expects array\\<chillerlan\\\\QRCode\\\\Data\\\\QRDataModeInterface\\>, array\\<int, object\\> given\\.$#"
+			count: 2
+			path: benchmark/QRDataBenchmark.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function strtolower expects string, int\\|string given\\.$#"
+			count: 1
+			path: benchmark/generate-markdown.php
+
+		-
+			message: "#^Offset 'name' does not exist on array\\<int, mixed\\>\\.$#"
+			count: 1
+			path: benchmark/parse-common.php
+
+		-
+			message: "#^Offset 'results' does not exist on array\\<int, mixed\\>\\.$#"
+			count: 1
+			path: benchmark/parse-common.php
+
+		-
+			message: "#^Offset 0 does not exist on array\\{\\}\\.$#"
+			count: 1
+			path: benchmark/parse-common.php
+
+		-
+			message: "#^Function chillerlan\\\\QRCodeBenchmark\\\\parseLine\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: benchmark/parse-result.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of function trim expects string, string\\|false given\\.$#"
+			count: 1
+			path: benchmark/parse-result.php
+
+		-
+			message: "#^Property chillerlan\\\\QRCode\\\\QROptions\\:\\:\\$eccLevel \\(int\\) does not accept string\\.$#"
+			count: 1
+			path: examples/custom_output.php
+
+		-
+			message: "#^Parameter \\#1 \\$width of function imagecreatetruecolor expects int\\<1, max\\>, int given\\.$#"
+			count: 1
+			path: examples/imageWithText.php
+
+		-
+			message: "#^Parameter \\#2 \\$color of function imagecolortransparent expects int\\|null, int\\<0, max\\>\\|false given\\.$#"
+			count: 1
+			path: examples/imageWithText.php
+
+		-
+			message: "#^Parameter \\#2 \\$height of function imagecreatetruecolor expects int\\<1, max\\>, int given\\.$#"
+			count: 1
+			path: examples/imageWithText.php
+
+		-
+			message: "#^Parameter \\#6 \\$color of function imagechar expects int, int\\<0, max\\>\\|false given\\.$#"
+			count: 1
+			path: examples/imageWithText.php
+
+		-
+			message: "#^Parameter \\#6 \\$color of function imagefilledrectangle expects int, int\\<0, max\\>\\|false given\\.$#"
+			count: 1
+			path: examples/imageWithText.php
+
+		-
+			message: "#^Parameter \\#1 \\(Intervention\\\\Image\\\\Interfaces\\\\ImageInterface\\|string\\) of echo cannot be converted to string\\.$#"
+			count: 1
+			path: examples/intervention-image.php
+
+		-
+			message: "#^Method RandomDotsSVGOutput\\:\\:collectModules\\(\\) should return array\\<int, mixed\\> but returns array\\<int\\|string, array\\<int, mixed\\>\\>\\.$#"
+			count: 1
+			path: examples/svgRandomColoredDots.php
+
+		-
+			message: "#^Method RoundQuietzoneSVGoutput\\:\\:collectModules\\(\\) should return array\\<int, mixed\\> but returns array\\<int\\|string, array\\<int, mixed\\>\\>\\.$#"
+			count: 1
+			path: examples/svgRoundQuietzone.php
+
+		-
+			message: "#^Parameter \\#1 \\$data of function imagecreatefromstring expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/Common/GDLuminanceSource.php
+
+		-
+			message: "#^Parameter \\#1 \\$gdImage of class chillerlan\\\\QRCode\\\\Common\\\\GDLuminanceSource constructor expects GdImage, GdImage\\|false given\\.$#"
+			count: 2
+			path: src/Common/GDLuminanceSource.php
+
+		-
+			message: "#^Parameter \\#2 \\$color of function imagecolorsforindex expects int, int\\<0, max\\>\\|false given\\.$#"
+			count: 1
+			path: src/Common/GDLuminanceSource.php
+
+		-
+			message: "#^Parameter \\#1 \\$maskPattern of class chillerlan\\\\QRCode\\\\Common\\\\MaskPattern constructor expects int, int\\|false given\\.$#"
+			count: 1
+			path: src/Common/MaskPattern.php
+
+		-
+			message: "#^Method chillerlan\\\\QRCode\\\\Common\\\\Version\\:\\:getRSBlocks\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Common/Version.php
+
+		-
+			message: "#^Parameter \\#1 \\$encoding of function mb_detect_order expects non\\-empty\\-list\\<non\\-falsy\\-string\\>\\|non\\-falsy\\-string\\|null, array\\{string, 'UTF\\-8', 'GB2312', 'GB18030', 'CP936', 'EUC\\-CN', 'HZ'\\} given\\.$#"
+			count: 1
+			path: src/Data/Hanzi.php
+
+		-
+			message: "#^Parameter \\#1 \\$encoding of function mb_detect_order expects non\\-empty\\-list\\<non\\-falsy\\-string\\>\\|non\\-falsy\\-string\\|null, array\\{string, 'UTF\\-8', 'SJIS', 'SJIS\\-2004'\\} given\\.$#"
+			count: 1
+			path: src/Data/Kanji.php
+
+		-
+			message: "#^Parameter \\#1 \\$version of class chillerlan\\\\QRCode\\\\Data\\\\ReedSolomonEncoder constructor expects chillerlan\\\\QRCode\\\\Common\\\\Version, chillerlan\\\\QRCode\\\\Common\\\\Version\\|null given\\.$#"
+			count: 1
+			path: src/Data/QRMatrix.php
+
+		-
+			message: "#^Parameter \\#2 \\$eccLevel of class chillerlan\\\\QRCode\\\\Data\\\\ReedSolomonEncoder constructor expects chillerlan\\\\QRCode\\\\Common\\\\EccLevel, chillerlan\\\\QRCode\\\\Common\\\\EccLevel\\|null given\\.$#"
+			count: 1
+			path: src/Data/QRMatrix.php
+
+		-
+			message: "#^Parameter \\#1 \\$maskPattern of method chillerlan\\\\QRCode\\\\Data\\\\QRMatrix\\:\\:mask\\(\\) expects chillerlan\\\\QRCode\\\\Common\\\\MaskPattern, chillerlan\\\\QRCode\\\\Common\\\\MaskPattern\\|null given\\.$#"
+			count: 1
+			path: src/Decoder/BitMatrix.php
+
+		-
+			message: "#^Parameter \\#1 \\$version of class chillerlan\\\\QRCode\\\\Data\\\\QRMatrix constructor expects chillerlan\\\\QRCode\\\\Common\\\\Version, chillerlan\\\\QRCode\\\\Common\\\\Version\\|null given\\.$#"
+			count: 1
+			path: src/Decoder/BitMatrix.php
+
+		-
+			message: "#^Parameter \\#2 \\$b of method chillerlan\\\\QRCode\\\\Decoder\\\\BitMatrix\\:\\:numBitsDiffering\\(\\) expects int, int\\|null given\\.$#"
+			count: 1
+			path: src/Decoder/BitMatrix.php
+
+		-
+			message: "#^Parameter \\#2 \\$eccLevel of class chillerlan\\\\QRCode\\\\Data\\\\QRMatrix constructor expects chillerlan\\\\QRCode\\\\Common\\\\EccLevel, chillerlan\\\\QRCode\\\\Common\\\\EccLevel\\|null given\\.$#"
+			count: 1
+			path: src/Decoder/BitMatrix.php
+
+		-
+			message: "#^Property chillerlan\\\\QRCode\\\\Decoder\\\\Decoder\\:\\:\\$options is never read, only written\\.$#"
+			count: 1
+			path: src/Decoder/Decoder.php
+
+		-
+			message: "#^Method chillerlan\\\\QRCode\\\\Decoder\\\\ReedSolomonDecoder\\:\\:deinterleaveRawBytes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Decoder/ReedSolomonDecoder.php
+
+		-
+			message: "#^Parameter \\#1 \\$width of function imagecreatetruecolor expects int\\<1, max\\>, int given\\.$#"
+			count: 1
+			path: src/Output/QRGdImage.php
+
+		-
+			message: "#^Parameter \\#2 \\$height of function imagecreatetruecolor expects int\\<1, max\\>, int given\\.$#"
+			count: 1
+			path: src/Output/QRGdImage.php
+
+		-
+			message: "#^Method chillerlan\\\\QRCodeTest\\\\Common\\\\MaskPatternTest\\:\\:assertMask\\(\\) has parameter \\$expected with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Common/MaskPatternTest.php
+
+		-
+			message: "#^Method chillerlan\\\\QRCodeTest\\\\Common\\\\MaskPatternTest\\:\\:maskPatternProvider\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Common/MaskPatternTest.php
+
+		-
+			message: "#^Method chillerlan\\\\QRCodeTest\\\\Common\\\\MaskPatternTest\\:\\:testMask\\(\\) has parameter \\$expected with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Common/MaskPatternTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$string of static method chillerlan\\\\QRCode\\\\Data\\\\QRDataModeInterface\\:\\:validateString\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: tests/Data/DataInterfaceTestAbstract.php
+
+		-
+			message: "#^Parameter \\#2 \\$to_encoding of function mb_convert_encoding expects string, string\\|null given\\.$#"
+			count: 1
+			path: tests/Data/ECITest.php
+
+		-
+			message: "#^Parameter \\#1 \\$blob of method chillerlan\\\\QRCode\\\\QRCode\\:\\:readFromBlob\\(\\) expects string, GdImage\\|string given\\.$#"
+			count: 1
+			path: tests/Data/QRDataTest.php

@@ -7,13 +7,14 @@
  * @copyright    2023 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Output;
 
 use function array_map, implode, is_string, max, min, sprintf;
 
 /**
- *
+ * String/plaintext output (for CLI etc.)
  */
 class QRStringText extends QROutputAbstract{
 
@@ -21,6 +22,8 @@ class QRStringText extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
+	 *
+	 * @param string $value
 	 */
 	public static function moduleValueIsValid(mixed $value):bool{
 		return is_string($value);
@@ -28,22 +31,18 @@ class QRStringText extends QROutputAbstract{
 
 	/**
 	 * @inheritDoc
+	 *
+	 * @param string $value
 	 */
 	protected function prepareModuleValue(mixed $value):string{
 		return $value;
 	}
 
-	/**
-	 * @inheritDoc
-	 */
 	protected function getDefaultModuleValue(bool $isDark):string{
 		return ($isDark) ? '██' : '░░';
 	}
 
-	/**
-	 * @inheritDoc
-	 */
-	public function dump(string $file = null):string{
+	public function dump(string|null $file = null):string{
 		$lines     = [];
 		$linestart = $this->options->textLineStart;
 
@@ -66,7 +65,7 @@ class QRStringText extends QROutputAbstract{
 	 *
 	 * @codeCoverageIgnore
 	 */
-	public static function ansi8(string $str, int $color, bool $background = null):string{
+	public static function ansi8(string $str, int $color, bool|null $background = null):string{
 		$color      = max(0, min($color, 255));
 		$background = ($background === true) ? 48 : 38;
 

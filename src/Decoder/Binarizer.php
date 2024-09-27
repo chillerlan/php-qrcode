@@ -8,6 +8,7 @@
  * @copyright    2021 Smiley
  * @license      Apache-2.0
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCode\Decoder;
 
@@ -47,17 +48,16 @@ final class Binarizer{
 	private const LUMINANCE_BUCKETS = 32;
 
 	private LuminanceSourceInterface $source;
+	/** @var int[] */
 	private array                    $luminances;
 
-	/**
-	 *
-	 */
 	public function __construct(LuminanceSourceInterface $source){
 		$this->source     = $source;
 		$this->luminances = $this->source->getLuminances();
 	}
 
 	/**
+	 * @param int[] $buckets
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	private function estimateBlackPoint(array $buckets):int{
@@ -160,9 +160,6 @@ final class Binarizer{
 		return $this->getHistogramBlackMatrix($width, $height);
 	}
 
-	/**
-	 *
-	 */
 	private function getHistogramBlackMatrix(int $width, int $height):BitMatrix{
 
 		// Quickly calculates the histogram by sampling four rows from the image. This proved to be
@@ -204,6 +201,8 @@ final class Binarizer{
 	 * See the following thread for a discussion of this algorithm:
 	 *
 	 * @see http://groups.google.com/group/zxing/browse_thread/thread/d06efa2c35a7ddc0
+	 *
+	 * @return float[][]
 	 */
 	private function calculateBlackPoints(int $subWidth, int $subHeight, int $width, int $height):array{
 		$blackPoints = array_fill(0, $subHeight, array_fill(0, $subWidth, 0));

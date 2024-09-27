@@ -7,6 +7,7 @@
  * @copyright    2023 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest;
 
@@ -72,7 +73,7 @@ trait QRMatrixDebugTrait{
 
 		$out = (new QRStringText($options, $matrix))->dump();
 
-		printf("\n\n%s\n\n", $out) ;
+		printf("\n\n%s\n\n", $out);
 	}
 
 	/**

@@ -7,6 +7,7 @@
  * @copyright    2022 smiley
  * @license      MIT
  */
+declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Common;
 
@@ -58,7 +59,7 @@ final class VersionTest extends TestCase{
 	public function testConstructInvalidVersion():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('invalid version given');
-		/** @phan-suppress-next-line PhanNoopNew */
+
 		new Version(69);
 	}
 
