@@ -36,7 +36,7 @@ final class AlphaNum extends QRDataModeAbstract{
 	}
 
 	public static function validateString(string $string):bool{
-		return (bool)preg_match('#^['.self::CHAR_MAP.']+$#', $string);
+		return (bool)preg_match('/^[A-Z\d %$*+-.:\/]+$/', $string);
 	}
 
 	public function write(BitBuffer $bitBuffer, int $versionNumber):static{
