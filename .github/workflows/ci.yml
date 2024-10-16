@@ -145,11 +145,11 @@ jobs:
           ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: none
 
-      - name: "Install Sphinx"
-        run: pip install sphinx myst-parser sphinx-rtd-theme  --break-system-packages
-
       - name: "Install dependencies with composer"
         uses: ramsey/composer-install@v3
+
+      - name: "Install Sphinx"
+        run: pip install sphinx myst-parser sphinx-rtd-theme
 
       - name: "Build QROptions doc"
         run: php docs/qroptions-doc.php
