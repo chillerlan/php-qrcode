@@ -19,6 +19,7 @@ use function dirname, file_exists, file_get_contents, is_file, mkdir, realpath, 
  */
 trait BuildDirTrait{
 
+	/** @var string */
 	private const _buildDir = __DIR__.'/../.build/';
 
 	/**
