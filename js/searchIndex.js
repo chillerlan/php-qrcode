@@ -3666,6 +3666,11 @@ Search.appendIndex(
             "summary": "returns\u0020the\u0020contents\u0020of\u0020the\u0020given\u0020build\u0020file",
             "url": "classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildFileContent"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\BuildDirTrait\u003A\u003A\u0024_buildDir",
+            "name": "_buildDir",
+            "summary": "",
+            "url": "classes/chillerlan-QRCodeTest-BuildDirTrait.html#property__buildDir"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Common\\BitBufferTest",
             "name": "BitBufferTest",
             "summary": "BitBuffer\u0020coverage\u0020test",
