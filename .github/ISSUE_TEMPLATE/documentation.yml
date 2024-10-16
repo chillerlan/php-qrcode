@@ -1,0 +1,40 @@
+# https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-issue-forms
+# https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/syntax-for-githubs-form-schema
+
+name: "Documentation"
+description: "There's a documentation issue?"
+title: "[DOCS] "
+labels: ["docs"]
+
+body:
+
+  - type: markdown
+    attributes:
+      value: "There's an issue with the documentation or you have a proposal for an addition?\nPlease help us to improve this project and fill out the following form.\nIf you have a question or an issue that has nothing to do with the documentation, please go to [the discussions section](../discussions) instead. Thanks!"
+
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: "Description"
+      description: "Please describe the documentation issue or addition."
+      placeholder: "A clear and concise description of the issue or addition"
+
+  - type: textarea
+    validations:
+      required: false
+    attributes:
+      label: "Proposed change/addition"
+      description: "If applicable, please add the proposed change here."
+      placeholder: "The new or changed documentation text"
+
+  - type: textarea
+    validations:
+      required: false
+    attributes:
+      label: "Additional context"
+      description: "Add any other context here, for example a link to the current documentation or an issue/discussion for reference."
+
+  - type: markdown
+    attributes:
+      value: "Thanks for taking the time to fill out this issue report!"
