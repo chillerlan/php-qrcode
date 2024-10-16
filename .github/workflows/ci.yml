@@ -146,7 +146,8 @@ jobs:
 
       - name: "Install Sphinx"
         run: |
-          apt install pipx
+          sudo apt-get update
+          sudo apt-get install pipx
           pipx install sphinx myst-parser sphinx-rtd-theme
 
       - name: "Install dependencies with composer"
