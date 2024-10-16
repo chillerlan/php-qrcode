@@ -132,9 +132,6 @@ jobs:
     if: github.ref_name == 'main'
     runs-on: ubuntu-latest
 
-    env:
-      SPHINXBUILD: ci-venv/bin/sphinx-build
-
     steps:
       - name: "Checkout sources"
         uses: actions/checkout@v4
@@ -148,9 +145,7 @@ jobs:
           coverage: none
 
       - name: "Install Sphinx"
-        run: |
-          python -m venv ci-venv
-          ci-venv/bin/pip install sphinx myst-parser sphinx-rtd-theme
+        run: pip install sphinx myst-parser sphinx-rtd-theme  --break-system-packages
 
       - name: "Install dependencies with composer"
         uses: ramsey/composer-install@v3
