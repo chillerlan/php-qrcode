@@ -19,14 +19,13 @@ use function dirname, file_exists, file_get_contents, is_file, mkdir, realpath, 
  */
 trait BuildDirTrait{
 
-	/** @var string */
-	private const _buildDir = __DIR__.'/../.build/';
+	private string $_buildDir = __DIR__.'/../.build/';
 
 	/**
 	 * returns the full raw path to the build dir
 	 */
 	protected function getBuildPath(string $subPath):string{
-		return self::_buildDir.trim($subPath, '\\/');
+		return $this->_buildDir.trim($subPath, '\\/');
 	}
 
 	/**
