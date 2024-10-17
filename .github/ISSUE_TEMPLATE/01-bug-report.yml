@@ -10,7 +10,7 @@ body:
 
   - type: markdown
     attributes:
-      value: "You've found a bug? Does the library not behave as expected?\nPlease help us to improve this project and fill out the following form.\nIf you have a question or an issue that is not a bug, please go to [the discussions section](../discussions) instead. Thanks!"
+      value: "You've found a bug? Does the library not behave as expected?\nPlease help us to improve this project and fill out the following form.\nIf you are unsure whether it is a bug, or you have a question or an issue that is not a bug, please go to [the discussions section](../discussions) instead. Thanks!"
 
   - type: textarea
     validations:
