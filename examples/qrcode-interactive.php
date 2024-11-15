@@ -93,5 +93,6 @@ catch(Exception $e){
 function sendResponse(array $response){
 	header('Content-type: application/json;charset=utf-8;');
 	echo json_encode($response);
+	/** @phan-suppress-next-line  */
 	exit;
 }
