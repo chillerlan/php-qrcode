@@ -12,7 +12,7 @@ namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Common\{BitBuffer, ECICharset, Mode};
-use chillerlan\QRCode\Data\{Byte, ECI, Number, QRCodeDataException, QRData, QRDataModeInterface};
+use chillerlan\QRCode\Data\{Byte, ECI, Hanzi, QRCodeDataException, QRData, QRDataModeInterface};
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -125,7 +125,7 @@ final class ECITest extends TestCase{
 		/** @var \chillerlan\QRCode\Data\QRDataModeInterface[] $segments */
 		$segments    = $this->getDataSegments();
 		// follow the ECI segment by a non-8bit-byte segment
-		$segments[1] = new Number('1');
+		$segments[1] = new Hanzi(self::testData);
 		$bitBuffer   = (new QRData($options, $segments))->getBitBuffer();
 		// verify the ECI mode indicator
 		$this::assertSame(Mode::ECI, $bitBuffer->read(4));

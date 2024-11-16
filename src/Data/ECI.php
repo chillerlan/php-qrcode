@@ -129,17 +129,12 @@ final class ECI extends QRDataModeAbstract{
 	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
 		$eciCharset = self::parseValue($bitBuffer);
 		$nextMode   = $bitBuffer->read(4);
-
-		if($nextMode !== Mode::BYTE){
-			throw new QRCodeDataException(sprintf('ECI designator followed by invalid mode: "%04b"', $nextMode));
-		}
-
-		$data     = Byte::decodeSegment($bitBuffer, $versionNumber);
-		$encoding = $eciCharset->getName();
+		$data       = self::decodeModeSegment($nextMode, $bitBuffer, $versionNumber);
+		$encoding   = $eciCharset->getName();
 
 		if($encoding === null){
 			// The spec isn't clear on this mode; see
-			// section 6.4.5: t does not say which encoding to assuming
+			// section 6.4.5: it does not say which encoding to assuming
 			// upon decoding. I have seen ISO-8859-1 used as well as
 			// Shift_JIS -- without anything like an ECI designator to
 			// give a hint.
@@ -151,6 +146,20 @@ final class ECI extends QRDataModeAbstract{
 		}
 
 		return mb_convert_encoding($data, mb_internal_encoding(), $encoding);
+	}
+
+	/**
+	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
+	 */
+	private static function decodeModeSegment(int $mode, BitBuffer $bitBuffer, int $versionNumber):string{
+
+		switch(true){
+			case $mode === Mode::NUMBER:   return Number::decodeSegment($bitBuffer, $versionNumber);
+			case $mode === Mode::ALPHANUM: return AlphaNum::decodeSegment($bitBuffer, $versionNumber);
+			case $mode === Mode::BYTE:     return Byte::decodeSegment($bitBuffer, $versionNumber);
+		}
+
+		throw new QRCodeDataException(sprintf('ECI designator followed by invalid mode: "%04b"', $mode));
 	}
 
 }
