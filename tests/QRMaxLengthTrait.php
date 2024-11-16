@@ -102,7 +102,6 @@ trait QRMaxLengthTrait{
 			throw new QRCodeException('invalid $ecc');
 		}
 
-		/** @SuppressWarnings(PHPMD.UndefinedVariable) */
 		$maxlength = static::MAX_LENGTH[$ver][$dataMode][$ecc];
 
 		// Hanzi mode sets an additional 4 bit long subset identifier

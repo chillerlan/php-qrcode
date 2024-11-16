@@ -6,8 +6,6 @@
  * @author       Smiley <smiley@chillerlan.net>
  * @copyright    2015 Smiley
  * @license      MIT
- *
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 declare(strict_types=1);
 

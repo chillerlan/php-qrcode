@@ -51,9 +51,6 @@ final class PerspectiveTransform{
 		return $this;
 	}
 
-	/**
-	 * @SuppressWarnings(PHPMD.ExcessiveParameterList)
-	 */
 	public function quadrilateralToQuadrilateral(
 		float $x0, float $y0, float $x1, float $y1, float $x2, float $y2, float $x3, float $y3,
 		float $x0p, float $y0p, float $x1p, float $y1p, float $x2p, float $y2p, float $x3p, float $y3p,
