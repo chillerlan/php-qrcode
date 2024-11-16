@@ -25,7 +25,7 @@ try{
 	var_dump($result);
 }
 catch(Throwable $e){
-	echo $e->getMessage();
+	printf("%s(%s): %s\n%s", $e->getFile(), $e->getLine(), $e->getMessage(), $e->getTraceAsString());
 }
 
 exit;

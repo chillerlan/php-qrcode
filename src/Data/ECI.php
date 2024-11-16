@@ -124,17 +124,23 @@ final class ECI extends QRDataModeAbstract{
 	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
 		$eciCharset = self::parseValue($bitBuffer);
 		$nextMode   = $bitBuffer->read(4);
+		$encoding   = $eciCharset->getName();
 
-		if($nextMode !== Mode::BYTE){
-			throw new QRCodeDataException(sprintf('ECI designator followed by invalid mode: "%04b"', $nextMode));
-		}
-
-		$data     = Byte::decodeSegment($bitBuffer, $versionNumber);
-		$encoding = $eciCharset->getName();
+		// this is definitely weird, but there are QR Codes out in the wild
+		// that have ECI followed by numeric and alphanum segments
+		// @see https://github.com/chillerlan/php-qrcode/discussions/289
+		$data = match($nextMode){
+			Mode::NUMBER   => Number::decodeSegment($bitBuffer, $versionNumber),
+			Mode::ALPHANUM => AlphaNum::decodeSegment($bitBuffer, $versionNumber),
+			Mode::BYTE     => Byte::decodeSegment($bitBuffer, $versionNumber),
+			default        => throw new QRCodeDataException(
+				sprintf('ECI designator followed by invalid mode: "%04b"', $nextMode),
+			),
+		};
 
 		if($encoding === null){
 			// The spec isn't clear on this mode; see
-			// section 6.4.5: t does not say which encoding to assuming
+			// section 6.4.5: it does not say which encoding to assuming
 			// upon decoding. I have seen ISO-8859-1 used as well as
 			// Shift_JIS -- without anything like an ECI designator to
 			// give a hint.
