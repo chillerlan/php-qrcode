@@ -87,6 +87,7 @@
 			"@php vendor/bin/phpbench run"
 		],
 		"phpcs": "@php vendor/bin/phpcs",
+		"phpmd": "@php vendor/bin/phpmd src text ./phpmd.xml.dist",
 		"phpstan": "@php vendor/bin/phpstan",
 		"phpstan-baseline": "@php vendor/bin/phpstan --generate-baseline",
 		"phpunit": "@php vendor/bin/phpunit"
