@@ -463,6 +463,7 @@ class QRMatrix{
 
 		for($c = 0; $c < 3; $c++){
 			for($i = 0; $i < 8; $i++){
+				// phpcs:ignore
 				$this->set( $h[$c][0]      , ($h[$c][1] + $i), false, $this::M_SEPARATOR);
 				$this->set(($v[$c][0] - $i),  $v[$c][1]      , false, $this::M_SEPARATOR);
 			}
