@@ -31,8 +31,12 @@
 		<exclude name="CamelCaseVariableName"/>
 	</rule>
 	<rule ref="rulesets/design.xml">
+		<exclude name="CouplingBetweenObjects"/>
+		<exclude name="ExcessiveMethodLength"/>
+		<exclude name="ExcessiveParameterList"/>
 		<!-- exits are only used in examples -->
 		<exclude name="ExitExpression"/>
+		<exclude name="TooManyPublicMethods"/>
 	</rule>
 	<rule ref="rulesets/naming.xml">
 		<exclude name="LongVariable"/>

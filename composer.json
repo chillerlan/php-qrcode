@@ -1,4 +1,5 @@
 {
+	"$schema": "https://getcomposer.org/schema.json",
 	"name": "chillerlan/php-qrcode",
 	"description": "A QR Code generator and reader with a user-friendly API. PHP 7.4+",
 	"homepage": "https://github.com/chillerlan/php-qrcode",
@@ -79,6 +80,7 @@
 	"scripts": {
 		"phan": "@php vendor/bin/phan",
 		"phpcs": "@php vendor/bin/phpcs",
+		"phpmd": "@php vendor/bin/phpmd src text ./phpmd.xml.dist",
 		"phpunit": "@php vendor/bin/phpunit"
 	},
 	"config": {
