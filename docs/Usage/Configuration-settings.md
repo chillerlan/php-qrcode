@@ -1,5 +1,5 @@
 # Configuration settings
-<!-- This file is auto generated from the source of QROptionsTrait.php -->
+<!-- This file is auto generated from the source of QROptions.php -->
 ## version
 
 QR Code version number

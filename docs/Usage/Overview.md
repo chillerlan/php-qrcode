@@ -31,9 +31,9 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
 - PHP 7.4+
   - [`ext-mbstring`](https://www.php.net/manual/book.mbstring.php)
   - optional:
-    - [`ext-fileinfo`](https://www.php.net/manual/book.fileinfo.php) (required by `QRImagick` output)
     - [`ext-gd`](https://www.php.net/manual/book.image)
     - [`ext-imagick`](https://github.com/Imagick/imagick) with [ImageMagick](https://imagemagick.org) installed
+      - [`ext-fileinfo`](https://www.php.net/manual/book.fileinfo.php) (required by `QRImagick` output)
     - [`setasign/fpdf`](https://github.com/setasign/fpdf) for the PDF output module
 
 For the QR Code reader, either `ext-gd` or `ext-imagick` is required!
@@ -54,6 +54,7 @@ For the QR Code reader, either `ext-gd` or `ext-imagick` is required!
   - [floating-share-button](https://github.com/qriouslad/floating-share-button)
 - WoltLab Suite
   - [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)
+  - [[Developer] PHP QR Code](https://www.woltlab.com/pluginstore/file/7995-entwickler-php-qr-code/)
 - other uses:
   - [dependents](https://github.com/chillerlan/php-qrcode/network/dependents) / [packages](https://github.com/chillerlan/php-qrcode/network/dependents?dependent_type=PACKAGE)
   - [Appwrite](https://github.com/appwrite/appwrite)
