@@ -107,7 +107,7 @@ final class Number extends QRDataModeAbstract{
 			}
 
 			$result .= intdiv($threeDigitsBits, 100);
-			$result .= (($threeDigitsBits / 10) % 10);
+			$result .= (intdiv($threeDigitsBits, 10) % 10);
 			$result .= ($threeDigitsBits % 10);
 
 			$length -= 3;

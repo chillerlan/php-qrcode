@@ -66,7 +66,7 @@ class SVGConvert extends QRMarkupSVG{
 
 		$imageData = $im->getImageBlob();
 
-		$im->destroy();
+		$im->clear();
 		$this->saveToFile($imageData, $file);
 
 		if($base64){
@@ -77,7 +77,7 @@ class SVGConvert extends QRMarkupSVG{
 				throw new QRCodeOutputException('unable to detect mime type');
 			}
 
-			$imageData = $this->toBase64DataURI($imageData);
+			$imageData = $this->toBase64DataURI($imageData, $mime);
 		}
 
 		return $imageData;
