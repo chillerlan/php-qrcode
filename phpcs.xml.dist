@@ -110,9 +110,8 @@
 		<exclude-pattern>examples</exclude-pattern>
 	</rule>
 
-	<rule ref="SlevomatCodingStandard.TypeHints.UnionTypeHintFormat">
+	<rule ref="SlevomatCodingStandard.TypeHints.DNFTypeHintFormat">
 		<properties>
-			<property name="withSpaces" value="no"/>
 			<property name="shortNullable" value="no"/>
 			<property name="nullPosition" value="last"/>
 		</properties>
