@@ -174,22 +174,26 @@ class QRMatrix{
 	}
 
 	/**
-	 * Returns the data matrix, returns a pure boolean representation if $boolean is set to true
+	 * Returns the data matrix
 	 *
 	 * @return int[][]
 	 */
-	public function getMatrix(bool|null $boolean = null):array{
+	public function getMatrix():array{
+		return $this->matrix;
+	}
 
-		if($boolean !== true){
-			return $this->matrix;
-		}
-
+	/**
+	 * Returns a boolean representation of the data matrix
+	 *
+	 * @return bool[][]
+	 */
+	public function getBooleanMatrix():array{
 		$matrix = $this->matrix;
 
 		foreach($matrix as &$row){
 			$row = array_map($this->isDark(...), $row);
 		}
-
+		/** @var bool[][] $matrix (phpstan hates this otherwise) */
 		return $matrix;
 	}
 

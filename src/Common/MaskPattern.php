@@ -124,7 +124,7 @@ final class MaskPattern{
 
 		foreach(self::PATTERNS as $pattern){
 			$mp      = new self($pattern);
-			$matrix  = (clone $QRMatrix)->setFormatInfo($mp)->mask($mp)->getMatrix(true);
+			$matrix  = (clone $QRMatrix)->setFormatInfo($mp)->mask($mp)->getBooleanMatrix();
 			$penalty = 0;
 
 			for($level = 1; $level <= 4; $level++){
