@@ -77,7 +77,8 @@ For the QR Code reader, either `ext-gd` or `ext-imagick` is required!
 [v4.x](https://github.com/chillerlan/php-qrcode/tree/v4.3.x/examples),
 [v5.x](https://github.com/chillerlan/php-qrcode/tree/v5.0.x/examples),
 [dev-main](https://github.com/chillerlan/php-qrcode/tree/main/examples)
-)!**
+)!**<br/>
+The `main` (default) branch is the active development for future major versions, and it is most likely incompatible with the latest release versions.
 
 ## Installation with [composer](https://getcomposer.org)
 
