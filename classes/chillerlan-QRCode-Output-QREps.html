@@ -414,7 +414,7 @@ in long loops for a significant performance increase.</dd>
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/chillerlan-QRCode-Output-QREps.html#method_header">header()</a>
     <span>
-                                &nbsp;: array&lt;int, string&gt;    </span>
+                                &nbsp;: string    </span>
 </dt>
 <dd>Returns the main header for the EPS file, including function definitions and background</dd>
 
@@ -424,6 +424,13 @@ in long loops for a significant performance increase.</dd>
                                 &nbsp;: string    </span>
 </dt>
 <dd>Returns a path segment for a single module</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/chillerlan-QRCode-Output-QREps.html#method_paths">paths()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>returns one or more EPS path blocks</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/chillerlan-QRCode-Output-QREps.html#method_prepareModuleValue">prepareModuleValue()</a>
@@ -1245,7 +1252,7 @@ in long loops for a significant performance increase.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QREps.php"><a href="files/src-output-qreps.html"><abbr title="src/Output/QREps.php">QREps.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">95</span>
+    <span class="phpdocumentor-element-found-in__line">94</span>
 
     </aside>
 
@@ -1775,7 +1782,7 @@ in long loops for a significant performance increase.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QREps.php"><a href="files/src-output-qreps.html"><abbr title="src/Output/QREps.php">QREps.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">126</span>
+    <span class="phpdocumentor-element-found-in__line">113</span>
 
     </aside>
 
@@ -1783,7 +1790,7 @@ in long loops for a significant performance increase.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">header</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;int, string&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">header</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1796,7 +1803,7 @@ in long loops for a significant performance increase.</p>
 
             <section>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;int, string&gt;</span>
+        <span class="phpdocumentor-signature__response_type">string</span>
             </section>
 
 </article>
@@ -1814,7 +1821,7 @@ in long loops for a significant performance increase.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QREps.php"><a href="files/src-output-qreps.html"><abbr title="src/Output/QREps.php">QREps.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">158</span>
+    <span class="phpdocumentor-element-found-in__line">165</span>
 
     </aside>
 
@@ -1853,6 +1860,45 @@ in long loops for a significant performance increase.</p>
             </dd>
             </dl>
 
+    
+
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_paths">
+        paths()
+        <a href="classes/chillerlan-QRCode-Output-QREps.html#method_paths" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QREps.php"><a href="files/src-output-qreps.html"><abbr title="src/Output/QREps.php">QREps.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">145</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">returns one or more EPS path blocks</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">paths</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
     
 
     
@@ -2279,6 +2325,7 @@ or given via $mime, otherwise it is guessed from the image $data.</p>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_guessMimeType">guessMimeType()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QREps.html#method_header">header()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QREps.html#method_module">module()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCode-Output-QREps.html#method_paths">paths()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QREps.html#method_prepareModuleValue">prepareModuleValue()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_saveToFile">saveToFile()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_setMatrixDimensions">setMatrixDimensions()</a></li>

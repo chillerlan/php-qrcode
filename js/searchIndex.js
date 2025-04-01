@@ -1288,8 +1288,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AgetMatrix\u0028\u0029",
             "name": "getMatrix",
-            "summary": "Returns\u0020the\u0020data\u0020matrix,\u0020returns\u0020a\u0020pure\u0020boolean\u0020representation\u0020if\u0020\u0024boolean\u0020is\u0020set\u0020to\u0020true",
+            "summary": "Returns\u0020the\u0020data\u0020matrix",
             "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_getMatrix"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AgetBooleanMatrix\u0028\u0029",
+            "name": "getBooleanMatrix",
+            "summary": "Returns\u0020a\u0020boolean\u0020representation\u0020of\u0020the\u0020data\u0020matrix",
+            "url": "classes/chillerlan-QRCode-Data-QRMatrix.html#method_getBooleanMatrix"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\QRMatrix\u003A\u003AgetVersion\u0028\u0029",
             "name": "getVersion",
@@ -2460,6 +2465,11 @@ Search.appendIndex(
             "name": "header",
             "summary": "Returns\u0020the\u0020main\u0020header\u0020for\u0020the\u0020EPS\u0020file,\u0020including\u0020function\u0020definitions\u0020and\u0020background",
             "url": "classes/chillerlan-QRCode-Output-QREps.html#method_header"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QREps\u003A\u003Apaths\u0028\u0029",
+            "name": "paths",
+            "summary": "returns\u0020one\u0020or\u0020more\u0020EPS\u0020path\u0020blocks",
+            "url": "classes/chillerlan-QRCode-Output-QREps.html#method_paths"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QREps\u003A\u003Amodule\u0028\u0029",
             "name": "module",
