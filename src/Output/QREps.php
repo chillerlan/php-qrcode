@@ -99,7 +99,7 @@ class QREps extends QROutputAbstract{
 			// create the path elements
 			$this->paths(),
 			// end file
-			'%%EOF'
+			'%%EOF',
 		]);
 
 		$this->saveToFile($eps, $file);
