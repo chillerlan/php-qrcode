@@ -83,47 +83,34 @@ class QREps extends QROutputAbstract{
 			throw new QRCodeOutputException('invalid color value');
 		}
 
+		// the EPS functions "C" and "R" are defined in the header below
 		$format = ($count === 4)
-			// CMYK
-			? '%f %f %f %f C'
-			// RGB
-			: '%f %f %f R';
+			? '%f %f %f %f C' // CMYK
+			: '%f %f %f R'; // RGB
 
 		return sprintf($format, ...$values);
 	}
 
 	public function dump(string|null $file = null):string{
-		$eps = $this->header();
 
-		// create the path elements
-		$paths = $this->collectModules($this->module(...));
+		$eps = implode("\n", [
+			// initialize header
+			$this->header(),
+			// create the path elements
+			$this->paths(),
+			// end file
+			'%%EOF'
+		]);
 
-		foreach($paths as $M_TYPE => $path){
+		$this->saveToFile($eps, $file);
 
-			if(empty($path)){
-				continue;
-			}
-
-			$eps[] = $this->getModuleValue($M_TYPE);
-			$eps[] = implode("\n", $path);
-		}
-
-		// end file
-		$eps[] = '%%EOF';
-
-		$data = implode("\n", $eps);
-
-		$this->saveToFile($data, $file);
-
-		return $data;
+		return $eps;
 	}
 
 	/**
 	 * Returns the main header for the EPS file, including function definitions and background
-	 *
-	 * @return array<int, string>
 	 */
-	protected function header():array{
+	protected function header():string{
 		[$width, $height] = $this->getOutputDimensions();
 
 		$header = [
@@ -149,7 +136,27 @@ class QREps extends QROutputAbstract{
 			$header[] = sprintf('0 0 %s %s F', $width, $height);
 		}
 
-		return $header;
+		return implode("\n", $header);
+	}
+
+	/**
+	 * returns one or more EPS path blocks
+	 */
+	protected function paths():string{
+		$paths = $this->collectModules($this->module(...));
+		$eps   = [];
+
+		foreach($paths as $M_TYPE => $path){
+
+			if(empty($path)){
+				continue;
+			}
+
+			$eps[] = $this->getModuleValue($M_TYPE);
+			$eps[] = implode("\n", $path);
+		}
+
+		return implode("\n", $eps);
 	}
 
 	/**
