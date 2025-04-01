@@ -10,7 +10,7 @@ body:
 
   - type: markdown
     attributes:
-      value: "### Please read before posting an issue!\nYou've found a bug? Does the library not behave as expected?\nPlease help us to improve this project and fill out the following form.\nIf you are unsure whether it is a bug, or you have a question or an issue that is not a bug, please go to [the discussions section](../discussions) instead.\n**Also, please check first if a similar issue/discussion already exists (usual suspects are [\"Output module X does not work\"](https://github.com/chillerlan/php-qrcode/discussions/241#discussioncomment-8461662)). Thanks!**"
+      value: "### Please read before posting an issue!\nYou've found a bug? Does the library not behave as expected?\nPlease help us to improve this project and fill out the following form.\nIf you are unsure whether it is a bug, or you have a question or an issue that is not a bug, please go to [the discussions section](../discussions) instead.\n**Also, please check first if a similar issue/discussion already exists\n(usual suspects are [\"Output module X does not work\"](https://github.com/chillerlan/php-qrcode/discussions/241#discussioncomment-8461662), which is documented [in the README](https://github.com/chillerlan/php-qrcode?tab=readme-ov-file#documentation)).** Thanks!"
 
   - type: textarea
     validations:
