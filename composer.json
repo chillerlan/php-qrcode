@@ -58,11 +58,11 @@
 		"phpbench/phpbench": "^1.4",
 		"phpunit/phpunit": "^11.5",
 		"phpmd/phpmd": "^2.15",
-		"phpstan/phpstan": "^2.1",
+		"phpstan/phpstan": "^2.1.13",
 		"phpstan/phpstan-deprecation-rules": "^2.0",
 		"setasign/fpdf": "^1.8.6",
 		"slevomat/coding-standard": "^8.15",
-		"squizlabs/php_codesniffer": "^3.11"
+		"squizlabs/php_codesniffer": "^3.12"
 	},
 	"suggest": {
 		"chillerlan/php-authenticator": "Yet another Google authenticator! Also creates URIs for mobile apps.",

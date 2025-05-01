@@ -229,6 +229,12 @@ parameters:
 			path: tests/Common/MaskPatternTest.php
 
 		-
+			message: '#^Catching internal class PHPUnit\\Framework\\ExpectationFailedException\.$#'
+			identifier: catch.internalClass
+			count: 1
+			path: tests/Data/DataInterfaceTestAbstract.php
+
+		-
 			message: '#^Parameter \#1 \$string of static method chillerlan\\QRCode\\Data\\QRDataModeInterface\:\:validateString\(\) expects string, string\|false given\.$#'
 			identifier: argument.type
 			count: 1
