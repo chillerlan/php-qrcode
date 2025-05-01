@@ -252,8 +252,8 @@ echo $qrcode->render($data);
 In some cases you might want to modify the QR image after creation (without crating a custom output class), in which case you want the internal image resource rather than the final output.
 
 ```php
-$options->outputType     = QROutputInterface::IMAGICK;
-$options->returnResource = true;
+$options->outputInterface = QRImagick::class;
+$options->returnResource  = true;
 
 /** @var Imagick $imagick */
 $imagick = $qrcode->render($data);
