@@ -1846,6 +1846,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Decoder-Decoder.html#property_bitBuffer"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Decoder\\Decoder\u003A\u003A\u0024detector",
+            "name": "detector",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Decoder-Decoder.html#property_detector"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\DecoderResult",
             "name": "DecoderResult",
             "summary": "Encapsulates\u0020the\u0020result\u0020of\u0020decoding\u0020a\u0020matrix\u0020of\u0020bits.\u0020This\u0020typically\napplies\u0020to\u00202D\u0020barcode\u0020formats.\u0020For\u0020now,\u0020it\u0020contains\u0020the\u0020raw\u0020bytes\u0020obtained\nas\u0020well\u0020as\u0020a\u0020String\u0020interpretation\u0020of\u0020those\u0020bytes,\u0020if\u0020applicable.",
@@ -1910,6 +1915,11 @@ Search.appendIndex(
             "name": "structuredAppendSequence",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_structuredAppendSequence"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Decoder\\DecoderResult\u003A\u003A\u0024finderPatterns",
+            "name": "finderPatterns",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Decoder-DecoderResult.html#property_finderPatterns"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Decoder\\QRCodeDecoderException",
             "name": "QRCodeDecoderException",
@@ -2041,6 +2051,11 @@ Search.appendIndex(
             "summary": "Detector\u0020constructor.",
             "url": "classes/chillerlan-QRCode-Detector-Detector.html#method___construct"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Detector\\Detector\u003A\u003AgetFinderPatterns\u0028\u0029",
+            "name": "getFinderPatterns",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Detector-Detector.html#method_getFinderPatterns"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\Detector\u003A\u003Adetect\u0028\u0029",
             "name": "detect",
             "summary": "Detects\u0020a\u0020QR\u0020Code\u0020in\u0020an\u0020image.",
@@ -2085,6 +2100,11 @@ Search.appendIndex(
             "name": "matrix",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Detector-Detector.html#property_matrix"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Detector\\Detector\u003A\u003A\u0024finderPatterns",
+            "name": "finderPatterns",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Detector-Detector.html#property_finderPatterns"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPattern",
             "name": "FinderPattern",
