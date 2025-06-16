@@ -29,6 +29,7 @@ final class Decoder{
 	private ?EccLevel    $eccLevel = null;
 	private ?MaskPattern $maskPattern = null;
 	private BitBuffer    $bitBuffer;
+	private Detector     $detector;
 
 	/**
 	 * Decodes a QR Code represented as a BitMatrix.
@@ -37,7 +38,8 @@ final class Decoder{
 	 * @throws \Throwable|\chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	public function decode(LuminanceSourceInterface $source):DecoderResult{
-		$matrix = (new Detector($source))->detect();
+		$this->detector = new Detector($source);
+		$matrix         = $this->detector->detect();
 
 		try{
 			// clone the BitMatrix to avoid errors in case we run into mirroring
@@ -148,6 +150,7 @@ final class Decoder{
 			'data'                     => $result,
 			'version'                  => $this->version,
 			'eccLevel'                 => $this->eccLevel,
+			'finderPatterns'           => $this->detector->getFinderPatterns(),
 			'maskPattern'              => $this->maskPattern,
 			'structuredAppendParity'   => $parityData,
 			'structuredAppendSequence' => $symbolSequence,

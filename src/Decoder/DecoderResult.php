@@ -20,13 +20,14 @@ use function property_exists;
  * applies to 2D barcode formats. For now, it contains the raw bytes obtained
  * as well as a String interpretation of those bytes, if applicable.
  *
- * @property \chillerlan\QRCode\Common\BitBuffer   $rawBytes
- * @property string                                $data
- * @property \chillerlan\QRCode\Common\Version     $version
- * @property \chillerlan\QRCode\Common\EccLevel    $eccLevel
- * @property \chillerlan\QRCode\Common\MaskPattern $maskPattern
- * @property int                                   $structuredAppendParity
- * @property int                                   $structuredAppendSequence
+ * @property \chillerlan\QRCode\Common\BitBuffer         $rawBytes
+ * @property string                                      $data
+ * @property \chillerlan\QRCode\Common\Version           $version
+ * @property \chillerlan\QRCode\Common\EccLevel          $eccLevel
+ * @property \chillerlan\QRCode\Common\MaskPattern       $maskPattern
+ * @property int                                         $structuredAppendParity
+ * @property int                                         $structuredAppendSequence
+ * @property \chillerlan\QRCode\Detector\FinderPattern[] $finderPatterns
  */
 final class DecoderResult{
 
@@ -37,6 +38,8 @@ final class DecoderResult{
 	private string      $data = '';
 	private int         $structuredAppendParity = -1;
 	private int         $structuredAppendSequence = -1;
+	/** @var \chillerlan\QRCode\Detector\FinderPattern[] */
+	private array       $finderPatterns = [];
 
 	/**
 	 * DecoderResult constructor.

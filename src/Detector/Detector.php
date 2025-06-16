@@ -25,6 +25,8 @@ use const NAN;
 final class Detector{
 
 	private BitMatrix $matrix;
+	/** @var \chillerlan\QRCode\Detector\FinderPattern[] */
+	private array     $finderPatterns = [];
 
 	/**
 	 * Detector constructor.
@@ -34,10 +36,19 @@ final class Detector{
 	}
 
 	/**
+	 * @return \chillerlan\QRCode\Detector\FinderPattern[]
+	 */
+	public function getFinderPatterns():array{
+		return $this->finderPatterns;
+	}
+
+	/**
 	 * Detects a QR Code in an image.
 	 */
 	public function detect():BitMatrix{
-		[$bottomLeft, $topLeft, $topRight] = (new FinderPatternFinder($this->matrix))->find();
+		$this->finderPatterns = (new FinderPatternFinder($this->matrix))->find();
+
+		[$bottomLeft, $topLeft, $topRight] = $this->finderPatterns;
 
 		$moduleSize         = $this->calculateModuleSize($topLeft, $topRight, $bottomLeft);
 		$dimension          = $this->computeDimension($topLeft, $topRight, $bottomLeft, $moduleSize);
