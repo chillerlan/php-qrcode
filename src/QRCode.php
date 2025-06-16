@@ -262,6 +262,10 @@ class QRCode{
 		if($eciCharsetName !== null){
 			$data = mb_convert_encoding($data, $eciCharsetName, mb_internal_encoding());
 
+			if($data === false){
+				throw new QRCodeException('mb_convert_encoding() error'); // @codeCoverageIgnore
+			}
+
 			return $this
 				->addEciDesignator($eciCharset->getID())
 				->addByteSegment($data)

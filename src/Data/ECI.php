@@ -151,7 +151,13 @@ final class ECI extends QRDataModeAbstract{
 			}
 		}
 
-		return mb_convert_encoding($data, mb_internal_encoding(), $encoding);
+		$encoded = mb_convert_encoding($data, mb_internal_encoding(), $encoding);
+
+		if($encoded === false){
+			throw new QRCodeDataException('mb_convert_encoding() error'); // @codeCoverageIgnore
+		}
+
+		return $encoded;
 	}
 
 }

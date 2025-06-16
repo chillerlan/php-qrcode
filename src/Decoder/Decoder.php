@@ -33,6 +33,12 @@ final class Decoder{
 	private EccLevel|null                          $eccLevel    = null;
 	private MaskPattern|null                       $maskPattern = null;
 	private BitBuffer                              $bitBuffer;
+	/** @noinspection PhpPropertyOnlyWrittenInspection (currently unused) */
+	private SettingsContainerInterface|QROptions $options;
+	private Version|null                         $version     = null;
+	private EccLevel|null                        $eccLevel    = null;
+	private MaskPattern|null                     $maskPattern = null;
+	private BitBuffer                            $bitBuffer;
 
 	public function __construct(SettingsContainerInterface|QROptions $options = new QROptions){
 		$this->options = $options;

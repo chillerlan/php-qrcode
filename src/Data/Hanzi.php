@@ -188,7 +188,13 @@ final class Hanzi extends QRDataModeAbstract{
 			$length--;
 		}
 
-		return mb_convert_encoding(implode('', $buffer), mb_internal_encoding(), self::ENCODING);
+		$encoded = mb_convert_encoding(implode('', $buffer), mb_internal_encoding(), self::ENCODING);
+
+		if($encoded === false){
+			throw new QRCodeDataException('mb_convert_encoding() error'); // @codeCoverageIgnore
+		}
+
+		return $encoded;
 	}
 
 }

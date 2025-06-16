@@ -241,10 +241,34 @@ parameters:
 			path: tests/Data/DataInterfaceTestAbstract.php
 
 		-
+			message: '#^Parameter \#1 \$data of class chillerlan\\QRCode\\Data\\Byte constructor expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Data/ECITest.php
+
+		-
 			message: '#^Parameter \#2 \$to_encoding of function mb_convert_encoding expects string, string\|null given\.$#'
 			identifier: argument.type
 			count: 1
 			path: tests/Data/ECITest.php
+
+		-
+			message: '#^Parameter \#1 \$string of function bin2hex expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Data/HanziTest.php
+
+		-
+			message: '#^Anonymous function should return string but returns string\|false\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Data/KanjiTest.php
+
+		-
+			message: '#^Parameter \#1 \$string of function bin2hex expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Data/KanjiTest.php
 
 		-
 			message: '#^Parameter \#1 \$blob of method chillerlan\\QRCode\\QRCode\:\:readFromBlob\(\) expects string, GdImage\|string given\.$#'
