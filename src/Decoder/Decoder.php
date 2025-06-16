@@ -28,17 +28,13 @@ use function chr, str_replace;
  */
 final class Decoder{
 
-	private SettingsContainerInterface|QROptions   $options;
-	private Version|null                           $version     = null;
-	private EccLevel|null                          $eccLevel    = null;
-	private MaskPattern|null                       $maskPattern = null;
-	private BitBuffer                              $bitBuffer;
 	/** @noinspection PhpPropertyOnlyWrittenInspection (currently unused) */
 	private SettingsContainerInterface|QROptions $options;
 	private Version|null                         $version     = null;
 	private EccLevel|null                        $eccLevel    = null;
 	private MaskPattern|null                     $maskPattern = null;
 	private BitBuffer                            $bitBuffer;
+	private Detector                             $detector;
 
 	public function __construct(SettingsContainerInterface|QROptions $options = new QROptions){
 		$this->options = $options;
@@ -51,7 +47,8 @@ final class Decoder{
 	 * @throws \Throwable|\chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
 	public function decode(LuminanceSourceInterface $source):DecoderResult{
-		$matrix = (new Detector($source))->detect();
+		$this->detector = new Detector($source);
+		$matrix         = $this->detector->detect();
 
 		try{
 			// clone the BitMatrix to avoid errors in case we run into mirroring
@@ -162,6 +159,7 @@ final class Decoder{
 			'data'                     => $result,
 			'version'                  => $this->version,
 			'eccLevel'                 => $this->eccLevel,
+			'finderPatterns'           => $this->detector->getFinderPatterns(),
 			'maskPattern'              => $this->maskPattern,
 			'structuredAppendParity'   => $parityData,
 			'structuredAppendSequence' => $symbolSequence,
