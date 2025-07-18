@@ -4446,6 +4446,11 @@ Search.appendIndex(
             "summary": "Tests\u0020the\u0020QRGdImage\u0020output\u0020module",
             "url": "classes/chillerlan-QRCodeTest-Output-QRGdImageAVIFTest.html"
         },                {
+            "fqsen": "\\chillerlan\\QRCodeTest\\Output\\QRGdImageAVIFTest\u003A\u003AsetUp\u0028\u0029",
+            "name": "setUp",
+            "summary": "Attempts\u0020to\u0020create\u0020a\u0020directory\u0020under\u0020\/.build\u0020and\u0020instances\u0020several\u0020required\u0020objects",
+            "url": "classes/chillerlan-QRCodeTest-Output-QRGdImageAVIFTest.html#method_setUp"
+        },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\Output\\QRGdImageAVIFTest\u003A\u003AgetOutputInterface\u0028\u0029",
             "name": "getOutputInterface",
             "summary": "",
