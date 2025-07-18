@@ -15,8 +15,18 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRGdImageAVIF, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
+use function function_exists;
 
 final class QRGdImageAVIFTest extends QRGdImageTestAbstract{
+
+	protected function setUp():void{
+		parent::setUp();
+
+		if(!function_exists('imageavif')){
+			$this::markTestSkipped('no AVIF support');
+		}
+
+	}
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
