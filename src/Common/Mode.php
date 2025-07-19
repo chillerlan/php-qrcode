@@ -59,7 +59,7 @@ final class Mode{
 	/**
 	 * Map of data mode => interface (detection order)
 	 *
-	 * @var array<int, (\chillerlan\QRCode\Data\QRDataModeInterface|string)>
+	 * @var array<int, string>
 	 */
 	public const INTERFACES = [
 		self::NUMBER   => Number::class,

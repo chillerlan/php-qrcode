@@ -8,6 +8,7 @@
  * @license      MIT
  *
  * @noinspection PhpComposerExtensionStubsInspection
+ * @phan-file-suppress PhanUndeclaredConstant
  */
 declare(strict_types=1);
 

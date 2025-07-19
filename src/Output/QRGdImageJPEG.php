@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCode\Output;
 
-use function imagejpeg, max, min;
+use function imagejpeg;
 
 /**
  * GdImage jpeg output

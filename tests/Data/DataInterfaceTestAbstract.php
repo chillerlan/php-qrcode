@@ -124,7 +124,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	public static function maxLengthProvider():Generator{
 		$eccLevels = array_map(fn(int $ecc):EccLevel => new EccLevel($ecc), [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H]);
 		$str       = str_repeat(static::testData, 1000);
-
+		/** @phan-suppress-next-line PhanAbstractStaticMethodCallInStatic */
 		$dataMode  = static::getDataModeInterface(static::testData)::DATAMODE;
 		$mb        = ($dataMode === Mode::KANJI || $dataMode === Mode::HANZI);
 

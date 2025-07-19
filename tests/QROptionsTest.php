@@ -70,6 +70,8 @@ final class QROptionsTest extends TestCase{
 
 	/**
 	 * Tests setting the ECC level from string or int
+	 *
+	 * @phan-suppress PhanTypeMismatchPropertyProbablyReal
 	 */
 	public function testSetEccLevel():void{
 		$o = new QROptions(['eccLevel' => EccLevel::H]);

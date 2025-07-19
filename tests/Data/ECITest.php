@@ -37,6 +37,7 @@ final class ECITest extends TestCase{
 	private function getDataSegments():array{
 		return [
 			new ECI($this->testCharset),
+			/** @phan-suppress-next-line PhanParamSuspiciousOrder */
 			new Byte(mb_convert_encoding(self::testData, ECICharset::MB_ENCODINGS[$this->testCharset], mb_internal_encoding())),
 		];
 	}

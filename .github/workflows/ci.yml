@@ -21,6 +21,10 @@ jobs:
     name: "Static Code Analysis"
     runs-on: ubuntu-latest
 
+    env:
+      PHAN_ALLOW_XDEBUG: 0
+      PHAN_DISABLE_XDEBUG_WARN: 1
+
     strategy:
       fail-fast: true
       matrix:
@@ -37,18 +41,21 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-version }}
-          extensions: ${{ env.PHP_EXTENSIONS }}
+          extensions: ast, ${{ env.PHP_EXTENSIONS }}
           ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: none
 
       - name: "Install dependencies with composer"
         uses: ramsey/composer-install@v3
 
-      - name: "Run PHPStan"
-        run: php vendor/bin/phpstan
+      - name: "Run phan"
+        run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
 
       - name: "Run PHP_CodeSniffer"
         run: php vendor/bin/phpcs
+
+#      - name: "Run PHPStan"
+#        run: php vendor/bin/phpstan
 
 
   tests:

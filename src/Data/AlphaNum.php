@@ -100,6 +100,7 @@ final class AlphaNum extends QRDataModeAbstract{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	private function ord(string $chr):int{
+		/** @phan-suppress-next-line PhanParamSuspiciousOrder */
 		$ord = strpos(self::CHAR_MAP, $chr);
 
 		if($ord === false){

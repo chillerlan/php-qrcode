@@ -121,6 +121,7 @@ abstract class QRGdImage extends QROutputAbstract{
 			$values[] = max(0, min(255, intval($val)));
 		}
 
+		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
 		$color = imagecolorallocate($this->image, ...$values);
 
 		if($color === false){

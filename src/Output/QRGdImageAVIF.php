@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCode\Output;
 
-use function imageavif, max, min;
+use function imageavif;
 
 /**
  * GDImage avif output

@@ -186,6 +186,7 @@ class QRMatrix{
 	 * Returns a boolean representation of the data matrix
 	 *
 	 * @return bool[][]
+	 * @phan-suppress PhanTypeMismatchReturn
 	 */
 	public function getBooleanMatrix():array{
 		$matrix = $this->matrix;
@@ -594,6 +595,7 @@ class QRMatrix{
 	 * Rotates the matrix by 90 degrees clock wise
 	 */
 	public function rotate90():static{
+		/** @phan-suppress-next-line PhanParamTooFewInternalUnpack */
 		$this->matrix = array_map((fn(int ...$a):array => array_reverse($a)), ...$this->matrix);
 
 		return $this;
