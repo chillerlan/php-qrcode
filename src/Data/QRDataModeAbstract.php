@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\Mode;
+use function str_split;
 
 /**
  * abstract methods for the several data modes
@@ -43,6 +44,16 @@ abstract class QRDataModeAbstract implements QRDataModeInterface{
 	 */
 	protected function getCharCount():int{
 		return strlen($this->data);
+	}
+
+	public function getParity():int{
+		$parity = 0;
+
+		foreach(str_split($this->data) as $chr){
+			$parity ^= ord($chr);
+		}
+
+		return $parity;
 	}
 
 	public static function convertEncoding(string $string):string{

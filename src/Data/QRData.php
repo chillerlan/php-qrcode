@@ -206,6 +206,21 @@ final class QRData{
 		throw new QRCodeDataException('failed to guess minimum version'); // @codeCoverageIgnore
 	}
 
+	public function getPariity():int{
+		$parity = 0;
+
+		foreach($this->dataSegments as $segment){
+
+			if($segment instanceof ECI){
+				continue;
+			}
+
+			$parity ^= $segment->getParity();
+		}
+
+		return $parity;
+	}
+
 	/**
 	 * creates a BitBuffer and writes the string data to it
 	 *

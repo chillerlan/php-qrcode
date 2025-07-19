@@ -33,6 +33,8 @@ interface QRDataModeInterface{
 	 */
 	public function getLengthInBits():int;
 
+	public function getParity():int;
+
 	/**
 	 * encoding conversion helper
 	 *

@@ -15,6 +15,8 @@ use chillerlan\QRCode\Common\BitBuffer;
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\Common\MaskPattern;
 use chillerlan\QRCode\Data\Byte;
+use chillerlan\QRCode\Data\Kanji;
+use chillerlan\QRCode\Data\Number;
 use chillerlan\QRCode\Data\QRData;
 use chillerlan\QRCode\Output\QRGdImagePNG;
 use chillerlan\QRCode\QRCode;
@@ -86,6 +88,13 @@ final class QRDataTest extends TestCase{
 
 		$this::assertSame(976, $qrData->estimateTotalBitLength());
 		$this::assertSame(11, $qrData->getMinimumVersion()->getVersionNumber()); // version adjusted to 11
+	}
+
+	public function testGetParity():void{
+		$qrData = new QRData(new QROptions, [new Number('0123'), new Number('4567'), new Number('89'), new Kanji('日本')]);
+
+		// ISO/IEC 18004:2000 - 9.3 Parity Data
+		$this::assertSame(133, $qrData->getPariity()); // 85 hex
 	}
 
 }

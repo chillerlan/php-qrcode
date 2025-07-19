@@ -44,6 +44,11 @@ final class ECI extends QRDataModeAbstract{
 		$this->encoding = $encoding;
 	}
 
+	public function getParity():int{
+		throw new QRCodeDataException('not implemented');
+	}
+
+
 	public function getLengthInBits():int{
 
 		if($this->encoding < 128){
