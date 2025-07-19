@@ -52,7 +52,7 @@ jobs:
         run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
 
       - name: "Run PHP_CodeSniffer"
-        run: php vendor/bin/phpcs
+        run: php vendor/bin/phpcs --standard=phpcs.xml.dist
 
 #      - name: "Run PHPStan"
 #        run: php vendor/bin/phpstan
