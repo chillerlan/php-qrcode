@@ -83,6 +83,7 @@ class QRCode{
 	public function render(string|null $data = null, string|null $file = null):mixed{
 
 		if($data !== null){
+			/** @var \chillerlan\QRCode\Data\QRDataModeInterface $dataInterface */
 			foreach(Mode::INTERFACES as $dataInterface){
 
 				if($dataInterface::validateString($data)){
