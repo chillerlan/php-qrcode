@@ -312,7 +312,11 @@
 <li class="toctree-l2"><a class="reference internal" href="#wireless-network-configuration">Wireless Network configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#contact-information-vcard">Contact information: vCard</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#calendar-events-vcalendar-and-icalendar">Calendar Events: vCalendar and iCalendar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sepa-credit-transfer">SEPA Credit Transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#credit-transfer">Credit Transfer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sepa">SEPA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pix">Pix</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#see-also">See also</a></li>
 </ul>
 </li>
@@ -498,7 +502,7 @@ The <code class="docutils literal notranslate"><span class="pre">LABEL</span></c
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">secret</span></code></p></td>
-<td><p>Secret key (required), a cryptographically random string, encoded in Base32<br/>according to <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc3548">RFC 3548</a> (without padding).<br/>Some authenticators may support Base64 and hexadecimal values as well.</p></td>
+<td><p>Secret key (required), a cryptographically secure random string, encoded in Base32<br/>according to <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc3548">RFC 3548</a> (without padding).<br/>Some authenticators may support Base64 and hexadecimal values as well.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">issuer</span></code></p></td>
 <td><p>A string value indicating the provider or service this account is associated with.</p></td>
@@ -659,12 +663,22 @@ END:VCALENDAR
 <li><p><a class="reference external" href="https://github.com/spatie/icalendar-generator">iCalendar generator for PHP (GitHub)</a></p></li>
 </ul>
 </section>
-<section id="sepa-credit-transfer">
-<h2>SEPA Credit Transfer<a class="headerlink" href="#sepa-credit-transfer" title="Link to this heading"></a></h2>
+<section id="credit-transfer">
+<h2>Credit Transfer<a class="headerlink" href="#credit-transfer" title="Link to this heading"></a></h2>
+<section id="sepa">
+<h3>SEPA<a class="headerlink" href="#sepa" title="Link to this heading"></a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.europeanpaymentscouncil.eu/document-library/guidance-documents/quick-response-code-guidelines-enable-data-capture-initiation">Guidelines to Enable the Data Capture for the Initiation of a SEPA Credit Transfer</a></p></li>
 <li><p><a class="reference external" href="https://github.com/smhg/sepa-qr-data-php">sepa-qr-data library for PHP (GitHub)</a></p></li>
 </ul>
+</section>
+<section id="pix">
+<h3>Pix<a class="headerlink" href="#pix" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf">Manual de Padrões para Iniciação do Pix (PDF)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/openboleto/openboleto">OpenBoleto (GitHub)</a></p></li>
+</ul>
+</section>
 </section>
 <section id="see-also">
 <h2>See also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
