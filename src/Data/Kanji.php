@@ -13,7 +13,7 @@ namespace chillerlan\QRCode\Data;
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
 use Throwable;
 use function chr, implode, intdiv, is_string, mb_convert_encoding, mb_detect_encoding,
-	mb_detect_order, mb_internal_encoding, mb_strlen, ord, sprintf, strlen;
+	mb_internal_encoding, mb_strlen, ord, sprintf, strlen;
 
 /**
  * Kanji mode: 13-bit double-byte characters from the Shift-JIS character set
@@ -60,9 +60,7 @@ final class Kanji extends QRDataModeAbstract{
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
 	public static function convertEncoding(string $string):string{
-		mb_detect_order([mb_internal_encoding(), 'UTF-8', 'SJIS', 'SJIS-2004']);
-
-		$detected = mb_detect_encoding($string, null, true);
+		$detected = mb_detect_encoding($string, [mb_internal_encoding(), 'UTF-8', 'SJIS', 'SJIS-2004'], true);
 
 		if($detected === false){
 			throw new QRCodeDataException('mb_detect_encoding error');
