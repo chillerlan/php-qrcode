@@ -10,7 +10,7 @@
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Mode, Version};
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, Mode, Version};
 use chillerlan\QRCode\Data\{QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCodeTest\QRMaxLengthTrait;
@@ -68,6 +68,24 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	 */
 	public function testValidateString(string $string, bool $expected):void{
 		$this::assertSame($expected, $this->dataMode::validateString($string));
+
+		// back out on potentially invalid strings
+		if($expected === false){
+			return;
+		}
+
+		$dataModeInterface = static::getDataModeInterface($string);
+		$bitBuffer         = new BitBuffer;
+		// check if the validated string encodes without error
+		// https://github.com/chillerlan/php-qrcode/pull/313
+		$dataModeInterface->write($bitBuffer, 40);
+		$bitBuffer->rewind();
+		// read 4 bits (data mode indicator)
+		$bitBuffer->read(4);
+		// decode and check against the given string
+		$decoded = $dataModeInterface::decodeSegment($bitBuffer, 40);
+
+		$this::assertSame($string, $decoded);
 	}
 
 	/**
