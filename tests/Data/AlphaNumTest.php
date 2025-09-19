@@ -31,6 +31,15 @@ final class AlphaNumTest extends DataInterfaceTestAbstract{
 		return [
 			['ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:', true],
 			['abc', false],
+			['ÄÖÜ', false],
+			[',', false],
+			['-', true],
+			['+', true],
+			['.', true],
+			['*', true],
+			[':', true],
+			['/', true],
+			['\\', false],
 		];
 	}
 
