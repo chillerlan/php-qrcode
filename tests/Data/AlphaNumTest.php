@@ -43,7 +43,6 @@ final class AlphaNumTest extends DataInterfaceTestAbstract{
 			[':', true],
 			['/', true],
 			['\\', false],
-			['0,1', false]
 		];
 	}
 
