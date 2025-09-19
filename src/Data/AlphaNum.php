@@ -44,7 +44,7 @@ final class AlphaNum extends QRDataModeAbstract{
 	 * @inheritDoc
 	 */
 	public static function validateString(string $string):bool{
-		return (bool)preg_match('/^[A-Z\d %$*+-.:\/]+$/', $string);
+		return (bool)preg_match('/^[A-Z\d %$*+\-.:\/]+$/', $string);
 	}
 
 	/**
