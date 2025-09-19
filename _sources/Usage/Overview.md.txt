@@ -47,13 +47,15 @@ For the QR Code reader, either `ext-gd` or `ext-imagick` is required!
 - Drupal:
   - [Two-factor Authentication `tfa`](https://www.drupal.org/project/tfa) (Drupal 8+)
   - [Google Authenticator Login `ga_login`](https://www.drupal.org/project/ga_login) (deprecated, Drupal 7)
-- Symfony
+- Laravel:
+  - [Filament](https://github.com/filamentphp/filament)
+- Symfony:
   - [phpqrcode-bundle](https://github.com/jonasarts/phpqrcode-bundle)
 - WordPress:
   - [wp-two-factor-auth](https://github.com/sjinks/wp-two-factor-auth)
   - [simple-2fa](https://wordpress.org/plugins/simple-2fa/)
   - [floating-share-button](https://github.com/qriouslad/floating-share-button)
-- WoltLab Suite
+- WoltLab Suite:
   - [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)
   - [[Developer] PHP QR Code](https://www.woltlab.com/pluginstore/file/7995-entwickler-php-qr-code/)
 - other uses:
