@@ -97,6 +97,8 @@ final class MaskPatternTest extends TestCase{
 
 	/**
 	 * Tests if the mask function generates the correct pattern
+	 *
+	 * @param int[][] $expected
 	 */
 	#[DataProvider('maskPatternProvider')]
 	public function testMask(int $pattern, array $expected):void{
@@ -105,6 +107,9 @@ final class MaskPatternTest extends TestCase{
 		$this::assertTrue($this->assertMask($maskPattern->getMask(), $expected));
 	}
 
+	/**
+	 * @param int[][] $expected
+	 */
 	private function assertMask(Closure $mask, array $expected):bool{
 
 		for($x = 0; $x < 6; $x++){
@@ -143,17 +148,17 @@ final class MaskPatternTest extends TestCase{
 		$this::assertSame(0, MaskPattern::testRule2([[false]], 1, 1));
 		$this::assertSame(0, MaskPattern::testRule2([[false, false], [false, true]], 2, 2));
 		$this::assertSame(3, MaskPattern::testRule2([[false, false], [false, false]], 2, 2));
-		$this::assertSame(12, MaskPattern::testRule2([[false, false, false], [false, false, false], [false, false, false]], 3, 3));
+		$this::assertSame(12, MaskPattern::testRule2([[false, false, false], [false, false, false], [false, false, false]], 3, 3)); // phpcs:ignore
 	}
 
 	public function testPenaltyRule3():void{
 		// horizontal
-		$this::assertSame(40, MaskPattern::testRule3([[false, false, false, false, true, false, true, true, true, false, true]], 1, 11));
-		$this::assertSame(40, MaskPattern::testRule3([[true, false, true, true, true, false, true, false, false, false, false]], 1, 11));
+		$this::assertSame(40, MaskPattern::testRule3([[false, false, false, false, true, false, true, true, true, false, true]], 1, 11)); // phpcs:ignore
+		$this::assertSame(40, MaskPattern::testRule3([[true, false, true, true, true, false, true, false, false, false, false]], 1, 11)); // phpcs:ignore
 		$this::assertSame(0, MaskPattern::testRule3([[true, false, true, true, true, false, true]], 1, 7));
 		// vertical
-		$this::assertSame(40, MaskPattern::testRule3([[false], [false], [false], [false], [true], [false], [true], [true], [true], [false], [true]], 11, 1));
-		$this::assertSame(40, MaskPattern::testRule3([[true], [false], [true], [true], [true], [false], [true], [false], [false], [false], [false]], 11, 1));
+		$this::assertSame(40, MaskPattern::testRule3([[false], [false], [false], [false], [true], [false], [true], [true], [true], [false], [true]], 11, 1)); // phpcs:ignore
+		$this::assertSame(40, MaskPattern::testRule3([[true], [false], [true], [true], [true], [false], [true], [false], [false], [false], [false]], 11, 1)); // phpcs:ignore
 		$this::assertSame(0, MaskPattern::testRule3([[true], [false], [true], [true], [true], [false], [true]], 7, 1));
 	}
 
