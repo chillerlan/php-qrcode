@@ -211,7 +211,7 @@ class MyOutput extends QROutputAbstract{
 		// loop over the paths
 		foreach($paths as $M_TYPE_LAYER => &$path){
 
-			if(empty($path)){
+			if($path === []){
 				continue;
 			}
 

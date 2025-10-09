@@ -550,7 +550,7 @@ The <code class="docutils literal notranslate"><span class="pre">$M_TYPE_LAYER</
 		<span class="c1">// loop over the paths</span>
 		<span class="k">foreach</span><span class="p">(</span><span class="nv">$paths</span> <span class="k">as</span> <span class="nv">$M_TYPE_LAYER</span> <span class="o">=&gt;</span> <span class="o">&amp;</span><span class="nv">$path</span><span class="p">){</span>
 
-			<span class="k">if</span><span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$path</span><span class="p">)){</span>
+			<span class="k">if</span><span class="p">(</span><span class="nv">$path</span> <span class="o">===</span> <span class="p">[]){</span>
 				<span class="k">continue</span><span class="p">;</span>
 			<span class="p">}</span>
 
