@@ -2491,10 +2491,10 @@ Search.appendIndex(
             "summary": "returns\u0020one\u0020or\u0020more\u0020EPS\u0020path\u0020blocks",
             "url": "classes/chillerlan-QRCode-Output-QREps.html#method_paths"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QREps\u003A\u003Amodule\u0028\u0029",
-            "name": "module",
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QREps\u003A\u003AmoduleTransform\u0028\u0029",
+            "name": "moduleTransform",
             "summary": "Returns\u0020a\u0020path\u0020segment\u0020for\u0020a\u0020single\u0020module",
-            "url": "classes/chillerlan-QRCode-Output-QREps.html#method_module"
+            "url": "classes/chillerlan-QRCode-Output-QREps.html#method_moduleTransform"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QREps\u003A\u003AMIME_TYPE",
             "name": "MIME_TYPE",
@@ -2916,10 +2916,10 @@ Search.appendIndex(
             "summary": "renders\u0020and\u0020returns\u0020a\u0020single\u0020\u003Cpath\u003E\u0020element",
             "url": "classes/chillerlan-QRCode-Output-QRMarkupSVG.html#method_path"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG\u003A\u003Amodule\u0028\u0029",
-            "name": "module",
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG\u003A\u003AmoduleTransform\u0028\u0029",
+            "name": "moduleTransform",
             "summary": "returns\u0020a\u0020path\u0020segment\u0020for\u0020a\u0020single\u0020module",
-            "url": "classes/chillerlan-QRCode-Output-QRMarkupSVG.html#method_module"
+            "url": "classes/chillerlan-QRCode-Output-QRMarkupSVG.html#method_moduleTransform"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG\u003A\u003AMIME_TYPE",
             "name": "MIME_TYPE",
@@ -3038,8 +3038,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AcollectModules\u0028\u0029",
             "name": "collectModules",
-            "summary": "collects\u0020the\u0020modules\u0020per\u0020QRMatrix\u003A\u003AM_\u002A\u0020type\u0020and\u0020runs\u0020a\u0020\u0024transform\u0020function\u0020on\u0020each\u0020module\u0020and\nreturns\u0020an\u0020array\u0020with\u0020the\u0020transformed\u0020modules",
+            "summary": "collects\u0020the\u0020modules\u0020per\u0020QRMatrix\u003A\u003AM_\u002A\u0020type,\u0020runs\u0020a\u0020transform\u0020method\u0020on\u0020each\u0020module\u0020and\nreturns\u0020an\u0020array\u0020with\u0020the\u0020transformed\u0020modules.",
             "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_collectModules"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AmoduleTransform\u0028\u0029",
+            "name": "moduleTransform",
+            "summary": "The\u0020transform\u0020callback\u0020for\u0020the\u0020module\u0020collector",
+            "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_moduleTransform"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003A\u0024moduleCount",
             "name": "moduleCount",

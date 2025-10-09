@@ -362,8 +362,8 @@
     <span>
                                 &nbsp;: array&lt;int, mixed&gt;    </span>
 </dt>
-<dd>collects the modules per QRMatrix::M_* type and runs a $transform function on each module and
-returns an array with the transformed modules</dd>
+<dd>collects the modules per QRMatrix::M_* type, runs a transform method on each module and
+returns an array with the transformed modules.</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_copyVars">copyVars()</a>
@@ -442,6 +442,13 @@ in long loops for a significant performance increase.</dd>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Creates a single QR pixel with the given settings</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a class="" href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_moduleTransform">moduleTransform()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+<dd>The transform callback for the module collector</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
     <a class="" href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_prepareModuleValue">prepareModuleValue()</a>
@@ -1675,39 +1682,38 @@ in long loops for a significant performance increase.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputAbstract.php"><a href="files/src-output-qroutputabstract.html"><abbr title="src/Output/QROutputAbstract.php">QROutputAbstract.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">267</span>
+    <span class="phpdocumentor-element-found-in__line">262</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">collects the modules per QRMatrix::M_* type and runs a $transform function on each module and
-returns an array with the transformed modules</p>
+        <p class="phpdocumentor-summary">collects the modules per QRMatrix::M_* type, runs a transform method on each module and
+returns an array with the transformed modules.</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">collectModules</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><abbr title="\Closure">Closure</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$transform</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">collectModules</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;int, mixed&gt;</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
-        <section class="phpdocumentor-description"><p>The transform callback is called with the following parameters:</p>
-<p>$x            - current column
-$y            - current row
-$M_TYPE       - field value
-$M_TYPE_LAYER - (possibly modified) field value that acts as layer id</p>
-</section>
-
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$transform</span>
-                : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Closure">Closure</abbr></span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
     
+    
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_collectModules#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_moduleTransform"><abbr title="\chillerlan\QRCode\Output\QROutputAbstract::moduleTransform()">QROutputAbstract::moduleTransform()</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                                            </dl>
 
     
 
@@ -2269,6 +2275,94 @@ in long loops for a significant performance increase.</p>
             </dl>
 
     
+
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_moduleTransform">
+        moduleTransform()
+        <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_moduleTransform" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Output/QROutputAbstract.php"><a href="files/src-output-qroutputabstract.html"><abbr title="src/Output/QROutputAbstract.php">QROutputAbstract.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">307</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">The transform callback for the module collector</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">moduleTransform</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$x</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$y</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$M_TYPE</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$M_TYPE_LAYER</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <section class="phpdocumentor-description"><p>$x            - current column
+$y            - current row
+$M_TYPE       - field value
+$M_TYPE_LAYER - (possibly modified) field value that acts as layer id ($paths array key)</p>
+<p>This method should return a value suitable for the current output class.
+It must return <code class="prettyprint">null</code> for an empty value.</p>
+</section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$x</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$y</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$M_TYPE</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$M_TYPE_LAYER</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_moduleTransform#tags" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">see</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                    <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_collectModules"><abbr title="\chillerlan\QRCode\Output\QROutputAbstract::collectModules()">QROutputAbstract::collectModules()</abbr></a></span>
+                                        
+                                             
+                                    </dd>
+                                            </dl>
 
     
 
@@ -2844,6 +2938,7 @@ or given via $mime, otherwise it is guessed from the image $data.</p>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_getQuality">getQuality()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_guessMimeType">guessMimeType()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_module">module()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_moduleTransform">moduleTransform()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QRGdImage.html#method_prepareModuleValue">prepareModuleValue()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QRGdImageWEBP.html#method_renderImage">renderImage()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_saveToFile">saveToFile()</a></li>
