@@ -38,7 +38,7 @@ final class GenericGFPoly{
 	public function __construct(array $coefficients, ?int $degree = null){
 		$degree ??= 0;
 
-		if(empty($coefficients)){
+		if($coefficients === []){
 			throw new QRCodeException('arg $coefficients is empty');
 		}
 

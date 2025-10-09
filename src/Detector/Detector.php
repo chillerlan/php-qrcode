@@ -56,7 +56,7 @@ final class Detector{
 		$alignmentPattern   = null;
 
 		// Anything above version 1 has an alignment pattern
-		if(!empty($provisionalVersion->getAlignmentPattern())){
+		if($provisionalVersion->getAlignmentPattern() !== []){
 			// Guess where a "bottom right" finder pattern would have been
 			$bottomRightX = ($topRight->getX() - $topLeft->getX() + $bottomLeft->getX());
 			$bottomRightY = ($topRight->getY() - $topLeft->getY() + $bottomLeft->getY());

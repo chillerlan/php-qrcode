@@ -134,7 +134,7 @@ class QREps extends QROutputAbstract{
 
 		foreach($paths as $M_TYPE => $path){
 
-			if(empty($path)){
+			if($path === []){
 				continue;
 			}
 

@@ -74,7 +74,7 @@ class QRMarkupSVG extends QRMarkup{
 	protected function createMarkup(bool $saveToFile):string{
 		$svg = $this->header();
 
-		if(!empty($this->options->svgDefs)){
+		if($this->options->svgDefs !== ''){
 			$svg .= sprintf('<defs>%1$s%2$s</defs>%2$s', $this->options->svgDefs, $this->eol);
 		}
 
@@ -144,7 +144,7 @@ class QRMarkupSVG extends QRMarkup{
 
 			$path = implode($this->eol, $chonks);
 
-			if(empty($path)){
+			if($path === ''){
 				continue;
 			}
 
