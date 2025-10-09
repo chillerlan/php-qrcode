@@ -16,7 +16,7 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
-use Closure, finfo;
+use finfo;
 use function base64_encode, dirname, extension_loaded, file_put_contents, is_writable, ksort, sprintf;
 use const FILEINFO_MIME_TYPE;
 
