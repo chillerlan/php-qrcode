@@ -56,7 +56,7 @@ class QRSvgWithLogoAndCustomShapes extends QRMarkupSVG{
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d
 	 */
-	protected function module(int $x, int $y, int $M_TYPE):string{
+	protected function moduleTransform(int $x, int $y, int $M_TYPE, int $M_TYPE_LAYER):string|null{
 
 		if(
 			!$this->matrix->isDark($M_TYPE)
@@ -64,7 +64,7 @@ class QRSvgWithLogoAndCustomShapes extends QRMarkupSVG{
 			|| $this->matrix->checkType($x, $y, QRMatrix::M_FINDER)
 			|| $this->matrix->checkType($x, $y, QRMatrix::M_FINDER_DOT)
 		){
-			return '';
+			return null;
 		}
 
 		// return a heart shape (or any custom shape for that matter)

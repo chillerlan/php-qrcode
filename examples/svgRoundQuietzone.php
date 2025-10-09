@@ -158,7 +158,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 		);
 	}
 
-	protected function collectModules(Closure $transform):array{
+	protected function collectModules():array{
 		$paths     = [];
 		$dotColors = $this->options->dotColors; // avoid magic getter in long loops
 
@@ -184,7 +184,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 				}
 
 				// collect the modules per $M_TYPE
-				$module = $transform($x, $y, $M_TYPE, $M_TYPE_LAYER);
+				$module = $this->moduleTransform($x, $y, $M_TYPE, $M_TYPE_LAYER);
 
 				if(!empty($module)){
 					$paths[$M_TYPE_LAYER][] = $module;

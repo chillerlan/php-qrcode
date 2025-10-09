@@ -252,19 +252,14 @@ abstract class QROutputAbstract implements QROutputInterface{
 	}
 
 	/**
-	 * collects the modules per QRMatrix::M_* type and runs a $transform function on each module and
-	 * returns an array with the transformed modules
+	 * collects the modules per QRMatrix::M_* type, runs a transform method on each module and
+	 * returns an array with the transformed modules.
 	 *
-	 * The transform callback is called with the following parameters:
-	 *
-	 *   $x            - current column
-	 *   $y            - current row
-	 *   $M_TYPE       - field value
-	 *   $M_TYPE_LAYER - (possibly modified) field value that acts as layer id
+	 * @see \chillerlan\QRCode\Output\QROutputAbstract::moduleTransform()
 	 *
 	 * @return array<int, mixed>
 	 */
-	protected function collectModules(Closure $transform):array{
+	protected function collectModules():array{
 		$paths = [];
 
 		// collect the modules for each type
@@ -282,9 +277,9 @@ abstract class QROutputAbstract implements QROutputInterface{
 				}
 
 				// collect the modules per $M_TYPE
-				$module = $transform($x, $y, $M_TYPE, $M_TYPE_LAYER);
+				$module = $this->moduleTransform($x, $y, $M_TYPE, $M_TYPE_LAYER);
 
-				if(!empty($module)){
+				if($module !== null){
 					$paths[$M_TYPE_LAYER][] = $module;
 				}
 			}
@@ -294,6 +289,23 @@ abstract class QROutputAbstract implements QROutputInterface{
 		ksort($paths);
 
 		return $paths;
+	}
+
+	/**
+	 * The transform callback for the module collector
+	 *
+	 *   $x            - current column
+	 *   $y            - current row
+	 *   $M_TYPE       - field value
+	 *   $M_TYPE_LAYER - (possibly modified) field value that acts as layer id ($paths array key)
+	 *
+	 * This method should return a value suitable for the current output class.
+	 * It must return `null` for an empty value.
+	 *
+	 * @see \chillerlan\QRCode\Output\QROutputAbstract::collectModules()
+	 */
+	protected function moduleTransform(int $x, int $y, int $M_TYPE, int $M_TYPE_LAYER):mixed{
+		return null;
 	}
 
 }

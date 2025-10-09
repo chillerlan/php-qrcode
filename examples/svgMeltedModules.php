@@ -32,7 +32,7 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 		return sprintf('<path class="%s" d="%s"/>', $this->getCssClass($M_TYPE), $path);
 	}
 
-	protected function collectModules(Closure $transform):array{
+	protected function collectModules():array{
 		$paths = [];
 		$melt  = $this->options->melt; // avoid magic getter in long loops
 
@@ -57,7 +57,7 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 				}
 
 				// collect the modules per $M_TYPE
-				$module = $transform($x, $y, $M_TYPE, $M_TYPE_LAYER);
+				$module = $this->moduleTransform($x, $y, $M_TYPE, $M_TYPE_LAYER);
 
 				if(!empty($module)){
 					$paths[$M_TYPE_LAYER][] = $module;
@@ -71,7 +71,7 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 		return $paths;
 	}
 
-	protected function module(int $x, int $y, int $M_TYPE):string{
+	protected function moduleTransform(int $x, int $y, int $M_TYPE, int $M_TYPE_LAYER):string{
 		$bits     = $this->matrix->checkNeighbours($x, $y, null);
 		$check    = fn(int $all, int $any = 0):bool => ($bits & ($all | (~$any & 0xff))) === $all;
 

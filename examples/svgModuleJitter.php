@@ -42,11 +42,11 @@ class ModuleJitterSVGoutput extends QRMarkupSVG{
 		return (random_int(0, PHP_INT_MAX) / PHP_INT_MAX);
 	}
 
-	protected function module(int $x, int $y, int $M_TYPE):string{
+	protected function moduleTransform(int $x, int $y, int $M_TYPE, int $M_TYPE_LAYER):string|null{
 
 		// skip light modules
 		if((!$this->options->drawLightModules && !$this->matrix->check($x, $y))){
-			return '';
+			return null;
 		}
 
 		// early exit on pure square modules
