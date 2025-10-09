@@ -99,7 +99,7 @@ class QRStringJSON extends QROutputAbstract{
 			}
 		}
 
-		if(!empty($matrixRow['modules'])){
+		if($matrixRow['modules'] !== []){
 			return $matrixRow;
 		}
 

@@ -152,7 +152,7 @@ class QRCode{
 	protected function initOutputInterface(QRMatrix $matrix):QROutputInterface{
 		$outputInterface = $this->options->outputInterface;
 
-		if(empty($outputInterface) || !class_exists($outputInterface)){
+		if(!class_exists($outputInterface)){
 			throw new QRCodeOutputException('invalid output class');
 		}
 

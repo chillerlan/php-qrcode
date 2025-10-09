@@ -49,7 +49,7 @@ final class DecoderResult{
 	 */
 	public function __construct(iterable|null $properties = null){
 
-		if(!empty($properties)){
+		if($properties !== null){
 
 			foreach($properties as $property => $value){
 
