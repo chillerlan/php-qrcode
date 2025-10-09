@@ -67,7 +67,7 @@ foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED) as $re
 	}
 
 	// add a "see also" section
-	if(!empty($see)){
+	if($see !== []){
 		$content[] = "\n**See also:**\n";
 
 		foreach($see as $line){
@@ -96,7 +96,7 @@ foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED) as $re
 	}
 
 	// add "Links" section
-	if(!empty($link)){
+	if($link !== []){
 		$content[] = "\n**Links:**\n";
 
 		foreach($link as $line){
