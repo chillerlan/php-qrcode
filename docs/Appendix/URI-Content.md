@@ -123,14 +123,14 @@ The `LABEL`, as well as the `issuer` values shall be URL-encoded according to [R
 | `LABEL`      | The label is used to identify which account a key is associated with.<br/>It may be prefixed with the issuer name, separated by a colon: `<issuer>:<account>` |
 
 
-| Query parameter | Description                                                                                                                                                                                                                                          |
-|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `secret`        | Secret key (required), a cryptographically random string, encoded in Base32<br/>according to [RFC 3548](https://datatracker.ietf.org/doc/html/rfc3548) (without padding).<br/>Some authenticators may support Base64 and hexadecimal values as well. |
-| `issuer`        | A string value indicating the provider or service this account is associated with.                                                                                                                                                                   |
-| `algorithm`     | Hash algorithm, may be one of `SHA1` (default), `SHA256` or `SHA512`                                                                                                                                                                                 |
-| `digits`        | Length of the OTP code: `6` or `8`                                                                                                                                                                                                                   |
-| `counter`       | (`hotp` only, required) The initial counter value                                                                                                                                                                                                    |
-| `period`        | (`totp` only) The period of time in seconds a code will be valid for (default: 30)                                                                                                                                                                   |
+| Query parameter | Description                                                                                                                                                                                                                                                 |
+|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `secret`        | Secret key (required), a cryptographically secure random string, encoded in Base32<br/>according to [RFC 3548](https://datatracker.ietf.org/doc/html/rfc3548) (without padding).<br/>Some authenticators may support Base64 and hexadecimal values as well. |
+| `issuer`        | A string value indicating the provider or service this account is associated with.                                                                                                                                                                          |
+| `algorithm`     | Hash algorithm, may be one of `SHA1` (default), `SHA256` or `SHA512`                                                                                                                                                                                        |
+| `digits`        | Length of the OTP code: `6` or `8`                                                                                                                                                                                                                          |
+| `counter`       | (`hotp` only, required) The initial counter value                                                                                                                                                                                                           |
+| `period`        | (`totp` only) The period of time in seconds a code will be valid for (default: 30)                                                                                                                                                                          |
 
 The parameters `algorithm`, `digits` and `period` may not be supported by some devices/apps.
 
@@ -251,10 +251,15 @@ END:VCALENDAR
 - [iCalendar generator for PHP (GitHub)](https://github.com/spatie/icalendar-generator)
 
 
-## SEPA Credit Transfer
+## Credit Transfer
 
+### SEPA
 - [Guidelines to Enable the Data Capture for the Initiation of a SEPA Credit Transfer](https://www.europeanpaymentscouncil.eu/document-library/guidance-documents/quick-response-code-guidelines-enable-data-capture-initiation)
 - [sepa-qr-data library for PHP (GitHub)](https://github.com/smhg/sepa-qr-data-php)
+
+### Pix
+- [Manual de Padrões para Iniciação do Pix (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf)
+- [OpenBoleto (GitHub)](https://github.com/openboleto/openboleto)
 
 
 ## See also

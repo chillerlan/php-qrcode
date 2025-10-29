@@ -63,7 +63,7 @@ After that, run `composer install` in the package root directory to install the 
 Profit!
 
 
-### Can i use this library without using composer?
+### Can I use this library without using composer?
 
 You can, but it's absolutely not recommended, nor supported.
 
@@ -82,8 +82,9 @@ The PHP built-in extensions [GdImage](https://www.php.net/manual/book.image.php)
 
 | version | branch/tag                                                           | PHP              | supported | required extensions | optional extensions                                                                | info                      |
 |---------|----------------------------------------------------------------------|------------------|-----------|---------------------|------------------------------------------------------------------------------------|---------------------------|
-| **v5**  | [`dev-main`](https://github.com/chillerlan/php-qrcode/tree/main)     | `^7.4 \|\| ^8.0` | yes       | `mbstring`          | `gd` or `imagick` required for reading QR Codes, `fileinfo` is used in `QRImagick` |                           |
-| **v4**  | [`4.3.4`](https://github.com/chillerlan/php-qrcode/tree/v4.3.x)      | `^7.4 \|\| ^8.0` | yes       | `gd`, `mbstring`    | `imagick`                                                                          |                           |
+| **v6**  | [`dev-main`](https://github.com/chillerlan/php-qrcode/tree/main)     | `^8.2`           | yes       | `mbstring`          | `gd` or `imagick` required for reading QR Codes, `fileinfo` is used in `QRImagick` |                           |
+| **v5**  | [`5.0.5`](https://github.com/chillerlan/php-qrcode/tree/v5.0.x)      | `^7.4 \|\| ^8.0` | yes       | `mbstring`          | `gd` or `imagick` required for reading QR Codes, `fileinfo` is used in `QRImagick` |                           |
+| **v4**  | [`4.3.4`](https://github.com/chillerlan/php-qrcode/tree/v4.3.x)      | `^7.4 \|\| ^8.0` | no        | `gd`, `mbstring`    | `imagick`                                                                          |                           |
 | **v3**  | [`3.4.1`](https://github.com/chillerlan/php-qrcode/tree/v3.2.x)      | `^7.2`           | no        | `gd`, `mbstring`    | `imagick`                                                                          | v3.4.1 also supports PHP8 |
 | **v2**  | [`2.0.8`](https://github.com/chillerlan/php-qrcode/tree/v2.0.x)      | `>=7.0.3`        | no        | `gd`, `mbstring`    |                                                                                    |                           |
 | **v1**  | [`1.0.9`](https://github.com/chillerlan/php-qrcode/tree/v2.0.x-php5) | `>=5.6`          | no        | `gd`, `mbstring`    |                                                                                    | please let PHP 5 die!     |
