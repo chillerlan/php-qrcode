@@ -59,7 +59,7 @@ class MeltedSVGQRCodeOutput extends QRMarkupSVG{
 				// collect the modules per $M_TYPE
 				$module = $this->moduleTransform($x, $y, $M_TYPE, $M_TYPE_LAYER);
 
-				if(!empty($module)){
+				if($module !== null){
 					$paths[$M_TYPE_LAYER][] = $module;
 				}
 			}

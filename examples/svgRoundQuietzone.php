@@ -53,7 +53,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 		// start SVG output
 		$svg = $this->header();
 
-		if(!empty($this->options->svgDefs)){
+		if($this->options->svgDefs !== ''){
 			$svg .= sprintf('<defs>%1$s%2$s</defs>%2$s', $this->options->svgDefs, $this->options->eol);
 		}
 
@@ -186,7 +186,7 @@ class RoundQuietzoneSVGoutput extends QRMarkupSVG{
 				// collect the modules per $M_TYPE
 				$module = $this->moduleTransform($x, $y, $M_TYPE, $M_TYPE_LAYER);
 
-				if(!empty($module)){
+				if($module !== null){
 					$paths[$M_TYPE_LAYER][] = $module;
 				}
 			}

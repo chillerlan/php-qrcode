@@ -56,7 +56,7 @@ class GroupShapeSVGQRCodeOutput extends QRMarkupSVG{
 				// collect the modules per $M_TYPE
 				$module = $this->moduleTransform($x, $y, $M_TYPE, $M_TYPE_LAYER);
 
-				if(!empty($module)){
+				if($module !== null){
 					$paths[$M_TYPE_LAYER][] = $module;
 				}
 			}
@@ -68,13 +68,17 @@ class GroupShapeSVGQRCodeOutput extends QRMarkupSVG{
 		return $paths;
 	}
 
-	protected function moduleTransform(int $x, int $y, int $M_TYPE, int $M_TYPE_LAYER):string{
+	protected function moduleTransform(int $x, int $y, int $M_TYPE, int $M_TYPE_LAYER):string|null{
 		$bits     = $this->matrix->checkNeighbours($x, $y, null);
 		$check    = fn(int $all, int $any = 0):bool => ($bits & ($all | (~$any & 0xff))) === $all;
 
 		$template = ($M_TYPE & QRMatrix::IS_DARK) === QRMatrix::IS_DARK
 			? $this->darkModule($check, $this->options->inverseMelt)
 			: $this->lightModule($check, $this->options->inverseMelt);
+
+		if($template === ''){
+			return null;
+		}
 
 		$r = $this->options->meltRadius;
 

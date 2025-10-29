@@ -73,7 +73,6 @@ class QRImageWithText extends QRGdImagePNG{
 
 		// copy over the qrcode
 		imagecopymerge($this->image, $qrcode, 0, 0, 0, 0, $this->length, $this->length, 100);
-		imagedestroy($qrcode);
 
 		$fontColor = imagecolorallocate($this->image, ...$textColor);
 		$w         = imagefontwidth($textSize);
