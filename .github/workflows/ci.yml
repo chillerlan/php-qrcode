@@ -31,6 +31,7 @@ jobs:
           - "8.2"
           - "8.3"
           - "8.4"
+#          - "8.5"
 
     env:
       PHAN_ALLOW_XDEBUG: 0
@@ -38,7 +39,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
@@ -57,7 +58,7 @@ jobs:
         run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
 
       - name: "Run PHP_CodeSniffer"
-        run: php vendor/bin/phpcs
+        run: php vendor/bin/phpcs -v
 
 
   tests:
@@ -78,10 +79,11 @@ jobs:
           - "8.2"
           - "8.3"
           - "8.4"
+          - "8.5"
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: "Install PHP with extensions"
         uses: shivammathur/setup-php@v2
