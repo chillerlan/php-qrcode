@@ -17,7 +17,7 @@ use chillerlan\Settings\SettingsContainerInterface;
 use ErrorException;
 use Throwable;
 use function array_values, count, extension_loaded, imagebmp, imagecolorallocate, imagecolortransparent,
-	imagecreatetruecolor, imagedestroy, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng,
+	imagecreatetruecolor, imagefilledellipse, imagefilledrectangle, imagegif, imagejpeg, imagepng,
 	imagescale, imagetypes, imagewebp, intdiv, intval, is_array, is_numeric, max, min, ob_end_clean, ob_get_contents, ob_start,
 	restore_error_handler, set_error_handler, sprintf;
 use const IMG_BMP, IMG_GIF, IMG_JPG, IMG_PNG, IMG_WEBP;
@@ -378,7 +378,6 @@ class QRGdImage extends QROutputAbstract{
 			$this->renderImage();
 
 			$imageData = ob_get_contents();
-			imagedestroy($this->image);
 		}
 		// not going to cover edge cases
 		// @codeCoverageIgnoreStart
