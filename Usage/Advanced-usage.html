@@ -62,7 +62,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Installation.html#manual-installation">Manual installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Installation.html#can-i-use-this-library-without-using-composer">Can i use this library without using composer?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Installation.html#can-i-use-this-library-without-using-composer">Can I use this library without using composer?</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Installation.html#supported-php-versions-extension-requirements">Supported PHP versions &amp; extension requirements</a></li>
@@ -393,6 +393,10 @@ A list with all available <code class="docutils literal notranslate"><span class
 </div>
 <p>You can also set an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of options on an existing QROptions instance:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$options</span><span class="o">-&gt;</span><span class="na">fromIterable</span><span class="p">(</span><span class="nv">$myOptions</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In addition to that, you can also supply the <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of option values directly to the <code class="docutils literal notranslate"><span class="pre">QRCode</span></code> constructor (v6+):</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$qrCode</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$myOptions</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>

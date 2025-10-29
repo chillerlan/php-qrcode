@@ -62,7 +62,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#manual-installation">Manual installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#can-i-use-this-library-without-using-composer">Can i use this library without using composer?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#can-i-use-this-library-without-using-composer">Can I use this library without using composer?</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#supported-php-versions-extension-requirements">Supported PHP versions &amp; extension requirements</a></li>
@@ -372,7 +372,7 @@
 <p>Installation via <a class="reference external" href="https://getcomposer.org/doc/04-schema.md"><code class="docutils literal notranslate"><span class="pre">composer.json</span></code></a>:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">	</span><span class="nt">&quot;require&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">		</span><span class="nt">&quot;php&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^7.4&quot;</span><span class="p">,</span>
+<span class="w">		</span><span class="nt">&quot;php&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^8.2&quot;</span><span class="p">,</span>
 <span class="w">		</span><span class="nt">&quot;chillerlan/php-qrcode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dev-main&quot;</span>
 <span class="w">	</span><span class="p">}</span>
 <span class="p">}</span>
@@ -414,7 +414,7 @@ composer<span class="w"> </span>require<span class="w"> </span>chillerlan/php-qr
 After that, run <code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">install</span></code> in the package root directory to install the required dependencies and generate <code class="docutils literal notranslate"><span class="pre">./vendor/autoload.php</span></code>.</p>
 <p>Profit!</p>
 <section id="can-i-use-this-library-without-using-composer">
-<h3>Can i use this library without using composer?<a class="headerlink" href="#can-i-use-this-library-without-using-composer" title="Link to this heading"></a></h3>
+<h3>Can I use this library without using composer?<a class="headerlink" href="#can-i-use-this-library-without-using-composer" title="Link to this heading"></a></h3>
 <p>You can, but it’s absolutely not recommended, nor supported.</p>
 <p>With that said, I’ll leave you with this info:</p>
 <ul class="simple">
@@ -440,23 +440,31 @@ After that, run <code class="docutils literal notranslate"><span class="pre">com
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>v5</strong></p></td>
+<tr class="row-even"><td><p><strong>v6</strong></p></td>
 <td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/main"><code class="docutils literal notranslate"><span class="pre">dev-main</span></code></a></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">^8.2</span></code></p></td>
+<td><p>yes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code> or <code class="docutils literal notranslate"><span class="pre">imagick</span></code> required for reading QR Codes, <code class="docutils literal notranslate"><span class="pre">fileinfo</span></code> is used in <code class="docutils literal notranslate"><span class="pre">QRImagick</span></code></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>v5</strong></p></td>
+<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v5.0.x"><code class="docutils literal notranslate"><span class="pre">5.0.5</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">^7.4 || ^8.0</span></code></p></td>
 <td><p>yes</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code> or <code class="docutils literal notranslate"><span class="pre">imagick</span></code> required for reading QR Codes, <code class="docutils literal notranslate"><span class="pre">fileinfo</span></code> is used in <code class="docutils literal notranslate"><span class="pre">QRImagick</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>v4</strong></p></td>
+<tr class="row-even"><td><p><strong>v4</strong></p></td>
 <td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v4.3.x"><code class="docutils literal notranslate"><span class="pre">4.3.4</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">^7.4 || ^8.0</span></code></p></td>
-<td><p>yes</p></td>
+<td><p>no</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code>, <code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">imagick</span></code></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>v3</strong></p></td>
+<tr class="row-odd"><td><p><strong>v3</strong></p></td>
 <td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v3.2.x"><code class="docutils literal notranslate"><span class="pre">3.4.1</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">^7.2</span></code></p></td>
 <td><p>no</p></td>
@@ -464,7 +472,7 @@ After that, run <code class="docutils literal notranslate"><span class="pre">com
 <td><p><code class="docutils literal notranslate"><span class="pre">imagick</span></code></p></td>
 <td><p>v3.4.1 also supports PHP8</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>v2</strong></p></td>
+<tr class="row-even"><td><p><strong>v2</strong></p></td>
 <td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v2.0.x"><code class="docutils literal notranslate"><span class="pre">2.0.8</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&gt;=7.0.3</span></code></p></td>
 <td><p>no</p></td>
@@ -472,7 +480,7 @@ After that, run <code class="docutils literal notranslate"><span class="pre">com
 <td><p></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><strong>v1</strong></p></td>
+<tr class="row-odd"><td><p><strong>v1</strong></p></td>
 <td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v2.0.x-php5"><code class="docutils literal notranslate"><span class="pre">1.0.9</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&gt;=5.6</span></code></p></td>
 <td><p>no</p></td>

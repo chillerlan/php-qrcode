@@ -62,7 +62,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Installation.html#manual-installation">Manual installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../Usage/Installation.html#can-i-use-this-library-without-using-composer">Can i use this library without using composer?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Usage/Installation.html#can-i-use-this-library-without-using-composer">Can I use this library without using composer?</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Installation.html#supported-php-versions-extension-requirements">Supported PHP versions &amp; extension requirements</a></li>
@@ -538,14 +538,15 @@ It returns a 2-element array that contains the values in a format that can be us
 <section id="collectmodules">
 <h3><code class="docutils literal notranslate"><span class="pre">collectModules()</span></code><a class="headerlink" href="#collectmodules" title="Link to this heading"></a></h3>
 <p>The module collector is particularly useful for plain text based file formats, for example the various markup languages like SVG and HTML or other structured file formats such as EPS.
-This method takes a <code class="docutils literal notranslate"><span class="pre">Closure</span></code> as a parameter, which is called with 4 parameters: the module coordinates <code class="docutils literal notranslate"><span class="pre">$x</span></code> and <code class="docutils literal notranslate"><span class="pre">$y</span></code>, the <code class="docutils literal notranslate"><span class="pre">$M_TYPE</span></code> and <code class="docutils literal notranslate"><span class="pre">$M_TYPE_LAYER</span></code>.
+This method calls a method <code class="docutils literal notranslate"><span class="pre">moduleTransform()</span></code> internally with 4 parameters: the module coordinates <code class="docutils literal notranslate"><span class="pre">$x</span></code> and <code class="docutils literal notranslate"><span class="pre">$y</span></code>, the <code class="docutils literal notranslate"><span class="pre">$M_TYPE</span></code> and <code class="docutils literal notranslate"><span class="pre">$M_TYPE_LAYER</span></code>.
+The transform method should return a value that is valid for a single module of the QR matrix, or <code class="docutils literal notranslate"><span class="pre">null</span></code> if no transform was performed for the current module.
 The <code class="docutils literal notranslate"><span class="pre">$M_TYPE_LAYER</span></code> is a copy of the <code class="docutils literal notranslate"><span class="pre">$M_TYPE</span></code> that represents the array key of the returned array and that may have been reassigned in the collector to another path layer, e.g. through <code class="docutils literal notranslate"><span class="pre">QROptions::$connectPaths</span></code>.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyOutput</span> <span class="k">extends</span> <span class="nx">QROutputAbstract</span><span class="p">{</span>
 
 	<span class="k">public</span> <span class="k">function</span> <span class="nf">dump</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$file</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span><span class="p">{</span>
 
 		<span class="c1">// collect the modules for the path elements</span>
-		<span class="nv">$paths</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">collectModules</span><span class="p">(</span><span class="nx">fn</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$x</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$y</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$M_TYPE</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span> <span class="o">=&gt;</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;%d %d %012b&#39;</span><span class="p">,</span> <span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">,</span> <span class="nv">$M_TYPE</span><span class="p">));</span>
+		<span class="nv">$paths</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">collectModules</span><span class="p">();</span>
 
 		<span class="c1">// loop over the paths</span>
 		<span class="k">foreach</span><span class="p">(</span><span class="nv">$paths</span> <span class="k">as</span> <span class="nv">$M_TYPE_LAYER</span> <span class="o">=&gt;</span> <span class="o">&amp;</span><span class="nv">$path</span><span class="p">){</span>
@@ -558,6 +559,10 @@ The <code class="docutils literal notranslate"><span class="pre">$M_TYPE_LAYER</
 		<span class="p">}</span>
 
 		<span class="k">return</span> <span class="nb">implode</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">options</span><span class="o">-&gt;</span><span class="na">eol</span><span class="p">,</span> <span class="nv">$paths</span><span class="p">);</span>
+	<span class="p">}</span>
+
+	<span class="k">protected</span> <span class="k">function</span> <span class="nf">moduleTransform</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$x</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$y</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$M_TYPE</span><span class="p">,</span> <span class="nx">int</span> <span class="nv">$M_TYPE_LAYER</span><span class="p">)</span><span class="o">:</span><span class="nx">string</span><span class="p">{</span>
+		<span class="k">return</span> <span class="nb">sprintf</span><span class="p">(</span><span class="s1">&#39;%d %d %012b&#39;</span><span class="p">,</span> <span class="nv">$x</span><span class="p">,</span> <span class="nv">$y</span><span class="p">,</span> <span class="nv">$M_TYPE</span><span class="p">);</span>
 	<span class="p">}</span>
 
 <span class="p">}</span>

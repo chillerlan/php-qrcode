@@ -197,7 +197,8 @@ class MyOutput extends QROutputAbstract{
 ### `collectModules()`
 
 The module collector is particularly useful for plain text based file formats, for example the various markup languages like SVG and HTML or other structured file formats such as EPS.
-This method takes a `Closure` as a parameter, which is called with 4 parameters: the module coordinates `$x` and `$y`, the `$M_TYPE` and `$M_TYPE_LAYER`.
+This method calls a method `moduleTransform()` internally with 4 parameters: the module coordinates `$x` and `$y`, the `$M_TYPE` and `$M_TYPE_LAYER`.
+The transform method should return a value that is valid for a single module of the QR matrix, or `null` if no transform was performed for the current module.
 The `$M_TYPE_LAYER` is a copy of the `$M_TYPE` that represents the array key of the returned array and that may have been reassigned in the collector to another path layer, e.g. through `QROptions::$connectPaths`.
 
 ```php
@@ -206,7 +207,7 @@ class MyOutput extends QROutputAbstract{
 	public function dump(string $file = null):string{
 
 		// collect the modules for the path elements
-		$paths = $this->collectModules(fn(int $x, int $y, int $M_TYPE):string => sprintf('%d %d %012b', $x, $y, $M_TYPE));
+		$paths = $this->collectModules();
 
 		// loop over the paths
 		foreach($paths as $M_TYPE_LAYER => &$path){
@@ -219,6 +220,10 @@ class MyOutput extends QROutputAbstract{
 		}
 
 		return implode($this->options->eol, $paths);
+	}
+
+	protected function moduleTransform(int $x, int $y, int $M_TYPE, int $M_TYPE_LAYER):string{
+		return sprintf('%d %d %012b', $x, $y, $M_TYPE);
 	}
 
 }
