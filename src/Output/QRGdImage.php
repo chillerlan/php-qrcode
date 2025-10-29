@@ -18,7 +18,7 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use GdImage;
 use function extension_loaded, imagecolorallocate, imagecolortransparent,
-	imagecreatetruecolor, imagedestroy, imagefilledellipse, imagefilledrectangle,
+	imagecreatetruecolor, imagefilledellipse, imagefilledrectangle,
 	imagescale, imagetypes, intdiv, intval, max, min, ob_end_clean, ob_get_contents, ob_start,
 	sprintf;
 use const IMG_AVIF, IMG_BMP, IMG_GIF, IMG_JPG, IMG_PNG, IMG_WEBP;
