@@ -130,6 +130,7 @@ class QREps extends QROutputAbstract{
 		}
 
 		// create the path elements
+		/** @phan-suppress-next-line PhanDeprecatedFunction */
 		$paths = $this->collectModules(fn(int $x, int $y, int $M_TYPE):string => $this->module($x, $y, $M_TYPE));
 
 		foreach($paths as $M_TYPE => $path){

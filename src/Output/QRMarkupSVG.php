@@ -129,6 +129,7 @@ class QRMarkupSVG extends QRMarkup{
 	 * returns one or more SVG <path> elements
 	 */
 	protected function paths():string{
+		/** @phan-suppress-next-line PhanDeprecatedFunction */
 		$paths = $this->collectModules(fn(int $x, int $y, int $M_TYPE):string => $this->module($x, $y, $M_TYPE));
 		$svg   = [];
 
