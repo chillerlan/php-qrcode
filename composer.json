@@ -79,7 +79,7 @@
 	},
 	"scripts": {
 		"phan": "@php vendor/bin/phan",
-		"phpcs": "@php vendor/bin/phpcs",
+		"phpcs": "@php vendor/bin/phpcs -v",
 		"phpmd": "@php vendor/bin/phpmd src text ./phpmd.xml.dist",
 		"phpunit": "@php vendor/bin/phpunit"
 	},
