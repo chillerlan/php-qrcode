@@ -38,6 +38,12 @@ You can also set an `iterable` of options on an existing QROptions instance:
 $options->fromIterable($myOptions);
 ```
 
+In addition to that, you can also supply the `iterable` of option values directly to the `QRCode` constructor (v6+):
+
+```php
+$qrCode = new QRCode($myOptions);
+```
+
 
 ### Load and save options from/to JSON
 
