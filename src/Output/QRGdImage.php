@@ -323,8 +323,6 @@ abstract class QRGdImage extends QROutputAbstract{
 			throw new QRCodeOutputException('ob_get_contents() error');
 		}
 
-		imagedestroy($this->image);
-
 		ob_end_clean();
 
 		return $imageData;
