@@ -259,25 +259,28 @@ class QRCode{
 		$eciCharset = new ECICharset($encoding);
 		// get charset name
 		$eciCharsetName = $eciCharset->getName();
-		// convert the string to the given charset
-		if($eciCharsetName !== null){
-			$data = mb_convert_encoding($data, $eciCharsetName, mb_internal_encoding());
 
-			if($data === false){
-				throw new QRCodeException('mb_convert_encoding() error'); // @codeCoverageIgnore
-			}
-
-			return $this
-				->addEciDesignator($eciCharset->getID())
-				->addByteSegment($data)
-			;
+		if($eciCharsetName === null){
+			throw new QRCodeException('unable to add ECI segment');
 		}
 
-		throw new QRCodeException('unable to add ECI segment');
+		// convert the string to the given charset
+		$data = mb_convert_encoding($data, $eciCharsetName, mb_internal_encoding());
+
+		if($data === false){
+			throw new QRCodeException('mb_convert_encoding() error'); // @codeCoverageIgnore
+		}
+
+		return $this
+			->addEciDesignator($eciCharset->getID())
+			->addByteSegment($data)
+		;
 	}
 
 	/**
 	 * Reads a QR Code from a given file
+	 *
+	 * @codeCoverageIgnore
 	 */
 	public function readFromFile(string $path):DecoderResult{
 		return $this->readFromSource($this->luminanceSourceFQN::fromFile($path, $this->options));
