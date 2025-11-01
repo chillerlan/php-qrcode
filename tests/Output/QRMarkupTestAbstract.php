@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCodeTest\Traits\CssColorModuleValueProviderTrait;
 
 /**
  * Tests the QRMarkup output module

@@ -9,7 +9,7 @@
  */
 declare(strict_types=1);
 
-namespace chillerlan\QRCodeTest;
+namespace chillerlan\QRCodeTest\Traits;
 
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;

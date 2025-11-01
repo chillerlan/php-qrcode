@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCodeTest\Traits\RGBArrayModuleValueProviderTrait;
 use GdImage;
 use function extension_loaded;
 

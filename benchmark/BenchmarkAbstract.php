@@ -14,7 +14,7 @@ namespace chillerlan\QRCodeBenchmark;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\{EccLevel, Mode, Version};
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCodeTest\QRMaxLengthTrait;
+use chillerlan\QRCodeTest\Traits\QRMaxLengthTrait;
 use PhpBench\Attributes\{Iterations, ParamProviders, Revs, Warmup};
 use Generator, RuntimeException;
 use function extension_loaded, is_dir, mb_substr, mkdir, sprintf, str_repeat, str_replace;

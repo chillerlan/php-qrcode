@@ -18,11 +18,11 @@ use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\{EccLevel, LuminanceSourceInterface, Mode, Version};
 use chillerlan\QRCode\Decoder\Decoder;
 use chillerlan\QRCode\Output\QRGdImagePNG;
+use chillerlan\QRCodeTest\Traits\{QRMatrixDebugTrait, QRMaxLengthTrait};
 use chillerlan\Settings\SettingsContainerInterface;
 use PHPUnit\Framework\Attributes\{DataProvider, Group};
 use PHPUnit\Framework\TestCase;
-use Exception, Generator;
-use RuntimeException;
+use Exception, Generator, RuntimeException;
 use function array_map, defined, realpath, sprintf, str_repeat, substr;
 
 /**

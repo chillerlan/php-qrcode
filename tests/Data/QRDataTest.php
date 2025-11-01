@@ -19,7 +19,7 @@ use chillerlan\QRCode\Data\QRData;
 use chillerlan\QRCode\Output\QRGdImagePNG;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
-use chillerlan\QRCodeTest\QRMatrixDebugTrait;
+use chillerlan\QRCodeTest\Traits\QRMatrixDebugTrait;
 use PHPUnit\Framework\TestCase;
 
 final class QRDataTest extends TestCase{

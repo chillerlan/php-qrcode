@@ -14,6 +14,7 @@ namespace chillerlan\QRCodeTest\Output;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRFpdf, QROutputInterface};
+use chillerlan\QRCodeTest\Traits\RGBArrayModuleValueProviderTrait;
 use chillerlan\Settings\SettingsContainerInterface;
 use FPDF;
 use function class_exists;

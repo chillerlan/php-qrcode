@@ -14,6 +14,7 @@ namespace chillerlan\QRCodeTest\Output;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QROutputInterface, QRStringJSON};
+use chillerlan\QRCodeTest\Traits\CssColorModuleValueProviderTrait;
 use chillerlan\Settings\SettingsContainerInterface;
 
 final class QRStringJSONTest extends QROutputTestAbstract{

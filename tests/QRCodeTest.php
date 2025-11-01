@@ -13,6 +13,7 @@ namespace chillerlan\QRCodeTest;
 
 use chillerlan\QRCode\{QROptions, QRCode};
 use chillerlan\QRCode\Output\QRCodeOutputException;
+use chillerlan\QRCodeTest\Traits\BuildDirTrait;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 

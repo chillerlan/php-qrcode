@@ -9,7 +9,7 @@
  */
 declare(strict_types=1);
 
-namespace chillerlan\QRCodeTest\Output;
+namespace chillerlan\QRCodeTest\Traits;
 
 /**
  * A data provider for use in tests that include RGBArrayModuleValueTrait

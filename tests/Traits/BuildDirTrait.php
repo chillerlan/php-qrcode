@@ -9,7 +9,7 @@
  */
 declare(strict_types=1);
 
-namespace chillerlan\QRCodeTest;
+namespace chillerlan\QRCodeTest\Traits;
 
 use RuntimeException;
 use function dirname, file_exists, file_get_contents, is_file, mkdir, realpath, sprintf, trim;
@@ -19,13 +19,13 @@ use function dirname, file_exists, file_get_contents, is_file, mkdir, realpath, 
  */
 trait BuildDirTrait{
 
-	private string $_buildDir = __DIR__.'/../.build/';
+	protected const _buildDir = __DIR__.'/../../.build/';
 
 	/**
 	 * returns the full raw path to the build dir
 	 */
 	protected function getBuildPath(string $subPath):string{
-		return $this->_buildDir.trim($subPath, '\\/');
+		return $this::_buildDir.trim($subPath, '\\/');
 	}
 
 	/**

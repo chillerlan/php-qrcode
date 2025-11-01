@@ -14,7 +14,7 @@ namespace chillerlan\QRCodeTest\Data;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
-use chillerlan\QRCodeTest\QRMatrixDebugTrait;
+use chillerlan\QRCodeTest\Traits\QRMatrixDebugTrait;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Generator;

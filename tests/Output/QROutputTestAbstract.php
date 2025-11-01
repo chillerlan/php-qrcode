@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCodeTest\BuildDirTrait;
+use chillerlan\QRCodeTest\Traits\BuildDirTrait;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};

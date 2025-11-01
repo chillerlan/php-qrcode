@@ -9,7 +9,7 @@
  */
 declare(strict_types=1);
 
-namespace chillerlan\QRCodeTest;
+namespace chillerlan\QRCodeTest\Traits;
 
 use chillerlan\QRCode\Common\{EccLevel, Mode, Version};
 use chillerlan\QRCode\QRCodeException;

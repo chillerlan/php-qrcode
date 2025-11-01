@@ -8,7 +8,8 @@
 	<testsuites>
 		<testsuite name="php-qrcode test suite">
 			<directory>tests</directory>
-			<exclude>tests/Performance</exclude>
+			<exclude>tests/samples</exclude>
+			<exclude>tests/Traits</exclude>
 		</testsuite>
 	</testsuites>
 	<source>

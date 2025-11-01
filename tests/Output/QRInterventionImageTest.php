@@ -15,6 +15,7 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\QRInterventionImage;
 use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\QRCode\QROptions;
+use chillerlan\QRCodeTest\Traits\CssColorModuleValueProviderTrait;
 use chillerlan\Settings\SettingsContainerInterface;
 use Intervention\Image\Interfaces\ImageInterface;
 use function extension_loaded;
