@@ -17,22 +17,14 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRImagick, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
+use PHPUnit\Framework\Attributes\{RequiresPhpExtension, Test};
 use Imagick;
-use function extension_loaded;
 
 /**
- * Tests the QRImagick output module
+ * Tests the QRImagick output class
  */
+#[RequiresPhpExtension('imagick')]
 final class QRImagickTest extends QROutputTestAbstract{
-
-	protected function setUp():void{
-
-		if(!extension_loaded('imagick')){
-			$this::markTestSkipped('ext-imagick not loaded');
-		}
-
-		parent::setUp();
-	}
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
@@ -67,7 +59,8 @@ final class QRImagickTest extends QROutputTestAbstract{
 		];
 	}
 
-	public function testSetModuleValues():void{
+	#[Test]
+	public function setModuleValues():void{
 
 		$this->options->moduleValues = [
 			// data
@@ -82,7 +75,8 @@ final class QRImagickTest extends QROutputTestAbstract{
 		$this::assertTrue(true); // tricking the code coverage
 	}
 
-	public function testOutputGetResource():void{
+	#[Test]
+	public function outputGetResource():void{
 		$this->options->returnResource = true;
 		$this->outputInterface         = $this->getOutputInterface($this->options, $this->matrix);
 

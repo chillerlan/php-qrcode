@@ -16,23 +16,14 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRFpdf, QROutputInterface};
 use chillerlan\QRCodeTest\Traits\RGBArrayModuleValueProviderTrait;
 use chillerlan\Settings\SettingsContainerInterface;
+use PHPUnit\Framework\Attributes\Test;
 use FPDF;
-use function class_exists;
 
 /**
- * Tests the QRFpdf output module
+ * Tests the QRFpdf output class
  */
 final class QRFpdfTest extends QROutputTestAbstract{
 	use RGBArrayModuleValueProviderTrait;
-
-	protected function setUp():void{
-
-		if(!class_exists(FPDF::class)){
-			$this::markTestSkipped('FPDF not available');
-		}
-
-		parent::setUp();
-	}
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
@@ -41,7 +32,8 @@ final class QRFpdfTest extends QROutputTestAbstract{
 		return new QRFpdf($options, $matrix);
 	}
 
-	public function testSetModuleValues():void{
+	#[Test]
+	public function setModuleValues():void{
 
 		$this->options->moduleValues = [
 			// data

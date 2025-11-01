@@ -15,25 +15,18 @@ namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCodeTest\Traits\RGBArrayModuleValueProviderTrait;
+use PHPUnit\Framework\Attributes\{RequiresPhpExtension, Test};
 use GdImage;
-use function extension_loaded;
 
 /**
- * Tests the QRGdImage output module
+ * Tests the QRGdImage output classes
  */
+#[RequiresPhpExtension('gd')]
 abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
 	use RGBArrayModuleValueProviderTrait;
 
-	protected function setUp():void{
-
-		if(!extension_loaded('gd')){
-			$this::markTestSkipped('ext-gd not loaded');
-		}
-
-		parent::setUp();
-	}
-
-	public function testSetModuleValues():void{
+	#[Test]
+	public function setModuleValues():void{
 
 		$this->options->moduleValues = [
 			// data
@@ -48,14 +41,16 @@ abstract class QRGdImageTestAbstract extends QROutputTestAbstract{
 		$this::assertTrue(true); // tricking the code coverage
 	}
 
-	public function testOutputGetResource():void{
+	#[Test]
+	public function outputGetResource():void{
 		$this->options->returnResource = true;
 		$this->outputInterface         = $this->getOutputInterface($this->options, $this->matrix);
 
 		$this::assertInstanceOf(GdImage::class, $this->outputInterface->dump());
 	}
 
-	public function testBase64MimeType():void{
+	#[Test]
+	public function base64MimeType():void{
 		$this->options->outputBase64 = true;
 		$this->outputInterface       = $this->getOutputInterface($this->options, $this->matrix);
 

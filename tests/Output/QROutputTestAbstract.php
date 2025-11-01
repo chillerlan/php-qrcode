@@ -11,13 +11,13 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCodeTest\Traits\BuildDirTrait;
 use chillerlan\QRCode\{QRCode, QROptions};
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRCodeOutputException, QROutputInterface};
+use chillerlan\QRCodeTest\Traits\BuildDirTrait;
 use chillerlan\Settings\SettingsContainerInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\{DataProvider, Test};
 use ReflectionObject;
 
 /**
@@ -52,7 +52,8 @@ abstract class QROutputTestAbstract extends TestCase{
 	/**
 	 * Tests if an exception is thrown when trying to write a cache file to an invalid destination
 	 */
-	public function testSaveException():void{
+	#[Test]
+	public function saveException():void{
 		$this->expectException(QRCodeOutputException::class);
 		$this->expectExceptionMessage('Cannot write data to cache file: /foo/bar.test');
 
@@ -64,8 +65,9 @@ abstract class QROutputTestAbstract extends TestCase{
 	 */
 	abstract public static function moduleValueProvider():array;
 
+	#[Test]
 	#[DataProvider('moduleValueProvider')]
-	public function testValidateModuleValues(mixed $value, bool $expected):void{
+	public function validateModuleValues(mixed $value, bool $expected):void{
 		$this::assertSame($expected, $this->outputInterface::moduleValueIsValid($value));
 	}
 
@@ -76,12 +78,14 @@ abstract class QROutputTestAbstract extends TestCase{
 	/**
 	 * covers the module values settings
 	 */
-	abstract public function testSetModuleValues():void;
+	#[Test]
+	abstract public function setModuleValues():void;
 
 	/**
 	 * coverage of the built-in output modules
 	 */
-	public function testRenderToCacheFile():void{
+	#[Test]
+	public function renderToCacheFile():void{
 		$this->options->outputBase64 = false;
 		$this->outputInterface       = $this->getOutputInterface($this->options, $this->matrix);
 		// create the cache file

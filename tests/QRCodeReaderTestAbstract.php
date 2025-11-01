@@ -20,7 +20,7 @@ use chillerlan\QRCode\Decoder\Decoder;
 use chillerlan\QRCode\Output\QRGdImagePNG;
 use chillerlan\QRCodeTest\Traits\{QRMatrixDebugTrait, QRMaxLengthTrait};
 use chillerlan\Settings\SettingsContainerInterface;
-use PHPUnit\Framework\Attributes\{DataProvider, Group};
+use PHPUnit\Framework\Attributes\{DataProvider, Group, Test};
 use PHPUnit\Framework\TestCase;
 use Exception, Generator, RuntimeException;
 use function array_map, defined, realpath, sprintf, str_repeat, substr;
@@ -48,6 +48,11 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		$this->options = new QROptions;
 		$this->options->readerUseImagickIfAvailable = false;
 	}
+
+	abstract protected function getLuminanceSourceFromFile(
+		string                               $file,
+		SettingsContainerInterface|QROptions $options,
+	):LuminanceSourceInterface;
 
 	/**
 	 * @phpstan-return array<string, array{0: string, 1: string, 2: bool}>
@@ -79,14 +84,10 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		];
 	}
 
-	abstract protected function getLuminanceSourceFromFile(
-		string                               $file,
-		SettingsContainerInterface|QROptions $options,
-	):LuminanceSourceInterface;
-
+	#[Test]
 	#[Group('slow')]
 	#[DataProvider('qrCodeProvider')]
-	public function testReader(string $img, string $expected, bool $grayscale):void{
+	public function reader(string $img, string $expected, bool $grayscale):void{
 
 		if($grayscale){
 			$this->options->readerGrayscale        = true;
@@ -107,7 +108,8 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		$this::assertSame($expected, (string)$result);
 	}
 
-	public function testReaderMultiMode():void{
+	#[Test]
+	public function readerMultiMode():void{
 		$this->options->outputInterface = QRGdImagePNG::class;
 		$this->options->outputBase64    = false;
 
@@ -154,9 +156,10 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 
 	}
 
+	#[Test]
 	#[Group('slow')]
 	#[DataProvider('dataTestProvider')]
-	public function testReadData(Version $version, EccLevel $ecc, string $expected):void{
+	public function readData(Version $version, EccLevel $ecc, string $expected):void{
 		$this->options->outputInterface  = QRGdImagePNG::class;
 		$this->options->imageTransparent = false;
 		$this->options->eccLevel         = $ecc->getLevel();

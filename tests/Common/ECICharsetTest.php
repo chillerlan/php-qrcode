@@ -13,20 +13,15 @@ namespace chillerlan\QRCodeTest\Common;
 
 use chillerlan\QRCode\QRCodeException;
 use chillerlan\QRCode\Common\ECICharset;
-use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\{DataProvider, Test, TestWith};
 use PHPUnit\Framework\TestCase;
 
 final class ECICharsetTest extends TestCase{
 
-	/**
-	 * @phpstan-return array<int, array{0: int}>
-	 */
-	public static function invalidIdProvider():array{
-		return [[-1], [1000000]];
-	}
-
-	#[DataProvider('invalidIdProvider')]
-	public function testInvalidDataException(int $id):void{
+	#[Test]
+	#[TestWith([-1])]
+	#[TestWith([1000000])]
+	public function invalidDataException(int $id):void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('invalid charset id:');
 
@@ -46,8 +41,9 @@ final class ECICharsetTest extends TestCase{
 		return $params;
 	}
 
+	#[Test]
 	#[DataProvider('encodingProvider')]
-	public function testGetName(int $id, string|null $name = null):void{
+	public function getName(int $id, string|null $name = null):void{
 		$eciCharset = new ECICharset($id);
 
 		$this::assertSame($id, $eciCharset->getID());

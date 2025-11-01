@@ -11,14 +11,14 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Data;
 
+use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, Mode, Version};
 use chillerlan\QRCode\Data\{QRCodeDataException, QRData, QRDataModeInterface, QRMatrix};
-use chillerlan\QRCode\QROptions;
 use chillerlan\QRCodeTest\Traits\QRMaxLengthTrait;
-use Exception, Generator;
-use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\{DataProvider, Test};
+use PHPUnit\Framework\ExpectationFailedException;
+use Exception, Generator;
 use function array_map, hex2bin, mb_strlen, mb_substr, sprintf, str_repeat, strlen, substr;
 
 /**
@@ -49,8 +49,9 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	/**
 	 * Tests initializing the data matrix
 	 */
+	#[Test]
 	#[DataProvider('maskPatternProvider')]
-	public function testInitMatrix(int $pattern):void{
+	public function initMatrix(int $pattern):void{
 		$maskPattern = new MaskPattern($pattern);
 
 		$this->QRData->setData([$this->dataMode]);
@@ -69,8 +70,9 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	/**
 	 * Tests if a string is properly validated for the respective data mode
 	 */
+	#[Test]
 	#[DataProvider('stringValidateProvider')]
-	public function testValidateString(string $string, bool $expected):void{
+	public function validateString(string $string, bool $expected):void{
 		$this::assertSame($expected, $this->dataMode::validateString($string));
 
 		// back out on potentially invalid strings
@@ -97,7 +99,8 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	 *
 	 * @see https://github.com/chillerlan/php-qrcode/issues/182
 	 */
-	public function testBinaryStringInvalid():void{
+	#[Test]
+	public function binaryStringInvalid():void{
 		$this::assertFalse($this->dataMode::validateString(hex2bin('01015989f47dff8e852122117e04c90b9f15defc1c36477b1fe1')));
 	}
 
@@ -113,8 +116,9 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	/**
 	 * Tests decoding a data segment from a given BitBuffer
 	 */
+	#[Test]
 	#[DataProvider('versionBreakpointProvider')]
-	public function testDecodeSegment(int $version):void{
+	public function decodeSegment(int $version):void{
 		$options          = new QROptions;
 		$options->version = $version;
 
@@ -170,8 +174,9 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 	}
 
+	#[Test]
 	#[DataProvider('maxLengthProvider')]
-	public function testMaxLength(Version $version, EccLevel $eccLevel, string $str):void{
+	public function maxLength(Version $version, EccLevel $eccLevel, string $str):void{
 		$options           = new QROptions;
 		$options->version  = $version->getVersionNumber();
 		$options->eccLevel = $eccLevel->getLevel();
@@ -188,8 +193,9 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	/**
 	 * Tests getting the minimum QR version for the given data
 	 */
+	#[Test]
 	#[DataProvider('maxLengthProvider')]
-	public function testGetMinimumVersion(Version $version, EccLevel $eccLevel, string $str):void{
+	public function getMinimumVersion(Version $version, EccLevel $eccLevel, string $str):void{
 		$options           = new QROptions;
 		$options->version  = Version::AUTO;
 		$options->eccLevel = $eccLevel->getLevel();
@@ -218,8 +224,9 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	/**
 	 * Tests if an exception is thrown on data overflow
 	 */
+	#[Test]
 	#[DataProvider('maxLengthProvider')]
-	public function testMaxLengthOverflowException(Version $version, EccLevel $eccLevel, string $str, string $str1):void{
+	public function maxLengthOverflowException(Version $version, EccLevel $eccLevel, string $str, string $str1):void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('code length overflow');
 
@@ -234,7 +241,8 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	/**
 	 * Tests if an exception is thrown when the data exceeds the maximum version while auto-detecting
 	 */
-	public function testGetMinimumVersionException():void{
+	#[Test]
+	public function getMinimumVersionException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('data exceeds');
 
@@ -244,7 +252,8 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	/**
 	 * Tests if an exception is thrown when an invalid character is encountered
 	 */
-	public function testInvalidDataException():void{
+	#[Test]
+	public function invalidDataException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid data');
 
@@ -254,7 +263,8 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	/**
 	 * Tests if an exception is thrown if the given string is empty
 	 */
-	public function testInvalidDataOnEmptyException():void{
+	#[Test]
+	public function invalidDataOnEmptyException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid data');
 

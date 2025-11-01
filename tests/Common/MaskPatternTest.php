@@ -16,7 +16,7 @@ namespace chillerlan\QRCodeTest\Common;
 
 use chillerlan\QRCode\QRCodeException;
 use chillerlan\QRCode\Common\MaskPattern;
-use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\{DataProvider, Test};
 use PHPUnit\Framework\TestCase;
 use Closure;
 
@@ -100,8 +100,9 @@ final class MaskPatternTest extends TestCase{
 	 *
 	 * @param int[][] $expected
 	 */
+	#[Test]
 	#[DataProvider('maskPatternProvider')]
-	public function testMask(int $pattern, array $expected):void{
+	public function mask(int $pattern, array $expected):void{
 		$maskPattern = new MaskPattern($pattern);
 
 		$this::assertTrue($this->assertMask($maskPattern->getMask(), $expected));
@@ -126,14 +127,16 @@ final class MaskPatternTest extends TestCase{
 	/**
 	 * Tests if an exception is thrown on an incorrect mask pattern
 	 */
-	public function testInvalidMaskPatternException():void{
+	#[Test]
+	public function invalidMaskPatternException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('invalid mask pattern');
 
 		new MaskPattern(42);
 	}
 
-	public function testPenaltyRule1():void{
+	#[Test]
+	public function penaltyRule1():void{
 		// horizontal
 		$this::assertSame(0, MaskPattern::testRule1([[false, false, false, false]], 1, 4));
 		$this::assertSame(3, MaskPattern::testRule1([[false, false, false, false, false, true]], 1, 6));
@@ -144,14 +147,16 @@ final class MaskPatternTest extends TestCase{
 		$this::assertSame(4, MaskPattern::testRule1([[false], [false], [false], [false], [false], [false]], 6, 1));
 	}
 
-	public function testPenaltyRule2():void{
+	#[Test]
+	public function penaltyRule2():void{
 		$this::assertSame(0, MaskPattern::testRule2([[false]], 1, 1));
 		$this::assertSame(0, MaskPattern::testRule2([[false, false], [false, true]], 2, 2));
 		$this::assertSame(3, MaskPattern::testRule2([[false, false], [false, false]], 2, 2));
 		$this::assertSame(12, MaskPattern::testRule2([[false, false, false], [false, false, false], [false, false, false]], 3, 3)); // phpcs:ignore
 	}
 
-	public function testPenaltyRule3():void{
+	#[Test]
+	public function penaltyRule3():void{
 		// horizontal
 		$this::assertSame(40, MaskPattern::testRule3([[false, false, false, false, true, false, true, true, true, false, true]], 1, 11)); // phpcs:ignore
 		$this::assertSame(40, MaskPattern::testRule3([[true, false, true, true, true, false, true, false, false, false, false]], 1, 11)); // phpcs:ignore
@@ -162,7 +167,8 @@ final class MaskPatternTest extends TestCase{
 		$this::assertSame(0, MaskPattern::testRule3([[true], [false], [true], [true], [true], [false], [true]], 7, 1));
 	}
 
-	public function testPenaltyRule4():void{
+	#[Test]
+	public function penaltyRule4():void{
 		$this::assertSame(100, MaskPattern::testRule4([[false]], 1, 1));
 		$this::assertSame(0, MaskPattern::testRule4([[false, true]], 1, 2));
 		$this::assertSame(30, MaskPattern::testRule4([[false, true, true, true, true, false]], 1, 6));

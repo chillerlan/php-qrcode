@@ -16,7 +16,11 @@ use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QROutputInterface, QRStringJSON};
 use chillerlan\QRCodeTest\Traits\CssColorModuleValueProviderTrait;
 use chillerlan\Settings\SettingsContainerInterface;
+use PHPUnit\Framework\Attributes\Test;
 
+/**
+ * Tests the QRStringJSON output class
+ */
 final class QRStringJSONTest extends QROutputTestAbstract{
 	use CssColorModuleValueProviderTrait;
 
@@ -27,7 +31,8 @@ final class QRStringJSONTest extends QROutputTestAbstract{
 		return new QRStringJSON($options, $matrix);
 	}
 
-	public function testSetModuleValues():void{
+	#[Test]
+	public function setModuleValues():void{
 
 		$this->options->moduleValues = [
 			// data

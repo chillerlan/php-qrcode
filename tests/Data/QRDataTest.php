@@ -11,14 +11,11 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\Common\BitBuffer;
-use chillerlan\QRCode\Common\EccLevel;
-use chillerlan\QRCode\Common\MaskPattern;
-use chillerlan\QRCode\Data\Byte;
-use chillerlan\QRCode\Data\QRData;
+use PHPUnit\Framework\Attributes\Test;
+use chillerlan\QRCode\{QRCode, QROptions};
+use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern};
+use chillerlan\QRCode\Data\{Byte, QRData};
 use chillerlan\QRCode\Output\QRGdImagePNG;
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
 use chillerlan\QRCodeTest\Traits\QRMatrixDebugTrait;
 use PHPUnit\Framework\TestCase;
 
@@ -28,7 +25,8 @@ final class QRDataTest extends TestCase{
 	/**
 	 * tests setting the BitBuffer object directly
 	 */
-	public function testSetBitBuffer():void{
+	#[Test]
+	public function setBitBuffer():void{
 		$rawBytes = [
 			67, 22, 135, 71, 71, 7, 51, 162, 242, 247, 119, 119, 114, 231, 150, 247,
 			87, 71, 86, 38, 82, 230, 54, 246, 210, 247, 118, 23, 70, 54, 131, 247,
@@ -60,17 +58,16 @@ final class QRDataTest extends TestCase{
 
 		$this->debugMatrix($matrix);
 
-		$this::assertSame($decodeResult->data, 'https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s');
+		$this::assertSame('https://www.youtube.com/watch?v=DLzxrzFCyOs&t=43s', $decodeResult->data);
 	}
 
-	public function testEstimateTotalBitLength():void{
+	#[Test]
+	public function estimateTotalBitLength():void{
 
 		$options = new QROptions([
 			'versionMin'          => 10,
 			'quietzoneSize'       => 2,
 			'eccLevel'            => EccLevel::H,
-#			'outputType'          => QROutputInterface::CUSTOM,
-#			'outputInterface'     => PmaQrCodeSVG::class,
 			'outputBase64'        => false,
 			'cssClass'            => 'pma-2fa-qrcode',
 			'drawCircularModules' => true,

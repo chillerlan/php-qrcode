@@ -13,9 +13,9 @@ namespace chillerlan\QRCodeTest\Data;
 
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Common\{BitBuffer, ECICharset, Mode};
-use chillerlan\QRCode\Data\{Byte, ECI, Hanzi, QRCodeDataException, QRData, QRDataModeInterface};
-use PHPUnit\Framework\Attributes\DataProvider;
+use chillerlan\QRCode\Data\{Byte, ECI, Hanzi, QRCodeDataException, QRData};
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\{DataProvider, Test};
 
 /**
  * Tests the ECI class
@@ -42,12 +42,6 @@ final class ECITest extends TestCase{
 		];
 	}
 
-	public function testDataModeInstance():void{
-		$datamode = new ECI($this->testCharset);
-
-		$this::assertInstanceOf(QRDataModeInterface::class, $datamode);
-	}
-
 	/**
 	 * returns versions within the version breakpoints 1-9, 10-26 and 27-40
 	 *
@@ -57,8 +51,9 @@ final class ECITest extends TestCase{
 		return ['1-9' => [7], '10-26' => [15], '27-40' => [30]];
 	}
 
+	#[Test]
 	#[DataProvider('versionBreakpointProvider')]
-	public function testDecodeSegment(int $version):void{
+	public function decodeSegment(int $version):void{
 		$options = new QROptions;
 		$options->version = $version;
 
@@ -75,7 +70,8 @@ final class ECITest extends TestCase{
 		$this::assertSame(self::testData, ECI::decodeSegment($bitBuffer, $options->version));
 	}
 
-	public function testInvalidDataException():void{
+	#[Test]
+	public function invalidDataException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid encoding id:');
 
@@ -86,7 +82,8 @@ final class ECITest extends TestCase{
 	 * since the ECI class only accepts integer values,
 	 * we'll use this test to check for the upper end of the accepted input range
 	 */
-	public function testInvalidDataOnEmptyException():void{
+	#[Test]
+	public function invalidDataOnEmptyException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('invalid encoding id:');
 
@@ -107,8 +104,9 @@ final class ECITest extends TestCase{
 		];
 	}
 
+	#[Test]
 	#[DataProvider('eciCharsetIdProvider')]
-	public function testReadWrite(int $id, int $lengthInBits):void{
+	public function readWrite(int $id, int $lengthInBits):void{
 		$bitBuffer = new BitBuffer;
 		$eci       = (new ECI($id))->write($bitBuffer, 1);
 
@@ -120,7 +118,8 @@ final class ECITest extends TestCase{
 	/**
 	 * Tests if and exception is thrown when the ECI segment is followed by a mode that is not 8-bit byte
 	 */
-	public function testDecodeECISegmentFollowedByInvalidModeException():void{
+	#[Test]
+	public function decodeECISegmentFollowedByInvalidModeException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('ECI designator followed by invalid mode:');
 
@@ -151,8 +150,9 @@ final class ECITest extends TestCase{
 	/**
 	 * Tests detection of an unknown character set
 	 */
+	#[Test]
 	#[DataProvider('unknownEncodingDataProvider')]
-	public function testConvertUnknownEncoding(int $id, string $data):void{
+	public function convertUnknownEncoding(int $id, string $data):void{
 		$options          = new QROptions;
 		$options->version = 5;
 

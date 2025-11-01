@@ -11,10 +11,8 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\Data\Hanzi;
-use chillerlan\QRCode\Data\QRDataModeInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\Attributes\Group;
+use chillerlan\QRCode\Data\{Hanzi, QRDataModeInterface};
+use PHPUnit\Framework\Attributes\{DataProvider, Group, Test};
 use Generator, Throwable;
 use function bin2hex, chr, defined, sprintf;
 
@@ -70,9 +68,10 @@ final class HanziTest extends DataInterfaceTestAbstract{
 
 	}
 
+	#[Test]
 	#[Group('slow')]
 	#[DataProvider('hanziProvider')]
-	public function testValidateGB2312(string $chr):void{
+	public function validateGB2312(string $chr):void{
 		// we may run into several issues due to encoding detection failures
 		try{
 			$this::assertTrue(Hanzi::validateString($chr));

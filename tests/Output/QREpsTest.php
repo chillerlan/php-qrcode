@@ -15,7 +15,11 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QREps, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
+use PHPUnit\Framework\Attributes\Test;
 
+/**
+ * Tests the QREps output class
+ */
 class QREpsTest extends QROutputTestAbstract{
 
 	public static function moduleValueProvider():array{
@@ -37,7 +41,8 @@ class QREpsTest extends QROutputTestAbstract{
 		return new QREps($options, $matrix);
 	}
 
-	public function testSetModuleValues():void{
+	#[Test]
+	public function setModuleValues():void{
 
 		$this->options->moduleValues = [
 			// data

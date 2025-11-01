@@ -103,6 +103,12 @@ parameters:
 			path: examples/intervention-image.php
 
 		-
+			rawMessage: 'Function parseHexValue() return type has no value type specified in iterable type array.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: examples/qrcode-interactive.php
+
+		-
 			rawMessage: 'Method RandomDotsSVGOutput::collectModules() should return array<int, mixed> but returns array<int|string, list<string>>.'
 			identifier: return.type
 			count: 1
@@ -235,19 +241,7 @@ parameters:
 			path: src/QRCode.php
 
 		-
-			rawMessage: 'Method chillerlan\QRCodeTest\Common\MaskPatternTest::assertMask() has parameter $expected with no value type specified in iterable type array.'
-			identifier: missingType.iterableValue
-			count: 1
-			path: tests/Common/MaskPatternTest.php
-
-		-
 			rawMessage: 'Method chillerlan\QRCodeTest\Common\MaskPatternTest::maskPatternProvider() return type has no value type specified in iterable type array.'
-			identifier: missingType.iterableValue
-			count: 1
-			path: tests/Common/MaskPatternTest.php
-
-		-
-			rawMessage: 'Method chillerlan\QRCodeTest\Common\MaskPatternTest::testMask() has parameter $expected with no value type specified in iterable type array.'
 			identifier: missingType.iterableValue
 			count: 1
 			path: tests/Common/MaskPatternTest.php

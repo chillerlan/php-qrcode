@@ -13,6 +13,7 @@ namespace chillerlan\QRCodeTest\Common;
 
 use chillerlan\QRCode\QRCodeException;
 use chillerlan\QRCode\Common\{EccLevel, Version};
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -26,37 +27,45 @@ final class VersionTest extends TestCase{
 		$this->version = new Version(7);
 	}
 
-	public function testToString():void{
+	#[Test]
+	public function versionToString():void{
 		$this::assertSame('7', (string)$this->version);
 	}
 
-	public function testGetVersionNumber():void{
+	#[Test]
+	public function getVersionNumber():void{
 		$this::assertSame(7, $this->version->getVersionNumber());
 	}
 
-	public function testGetDimension():void{
+	#[Test]
+	public function getDimension():void{
 		$this::assertSame(45, $this->version->getDimension());
 	}
 
-	public function testGetVersionPattern():void{
+	#[Test]
+	public function getVersionPattern():void{
 		$this::assertSame(0b000111110010010100, $this->version->getVersionPattern());
 		// no pattern for version < 7
 		$this::assertNull((new Version(6))->getVersionPattern());
 	}
 
-	public function testGetAlignmentPattern():void{
+	#[Test]
+	public function getAlignmentPattern():void{
 		$this::assertSame([6, 22, 38], $this->version->getAlignmentPattern());
 	}
 
-	public function testGetRSBlocks():void{
+	#[Test]
+	public function getRSBlocks():void{
 		$this::assertSame([18, [[2, 14], [4, 15]]], $this->version->getRSBlocks(new EccLevel(EccLevel::Q)));
 	}
 
-	public function testGetTotalCodewords():void{
+	#[Test]
+	public function getTotalCodewords():void{
 		$this::assertSame(196, $this->version->getTotalCodewords());
 	}
 
-	public function testConstructInvalidVersion():void{
+	#[Test]
+	public function constructInvalidVersion():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('invalid version given');
 

@@ -14,10 +14,12 @@ namespace chillerlan\QRCodeTest;
 use chillerlan\QRCode\Common\{GDLuminanceSource, LuminanceSourceInterface};
 use chillerlan\QRCode\QROptions;
 use chillerlan\Settings\SettingsContainerInterface;
+use PHPUnit\Framework\Attributes\RequiresPhpExtension;
 
 /**
  * Tests the GD based reader
  */
+#[RequiresPhpExtension('gd')]
 final class QRCodeReaderGDTest extends QRCodeReaderTestAbstract{
 
 	protected function getLuminanceSourceFromFile(

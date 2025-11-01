@@ -11,11 +11,9 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\Data\Kanji;
-use chillerlan\QRCode\Data\QRDataModeInterface;
+use chillerlan\QRCode\Data\{Kanji, QRDataModeInterface};
+use PHPUnit\Framework\Attributes\{DataProvider, Group, Test};
 use Generator, Throwable;
-use PHPUnit\Framework\Attributes\DataProvider;
-use PHPUnit\Framework\Attributes\Group;
 use function bin2hex, chr, defined, sprintf;
 
 /**
@@ -97,9 +95,10 @@ final class KanjiTest extends DataInterfaceTestAbstract{
 
 	}
 
+	#[Test]
 	#[Group('slow')]
 	#[DataProvider('kanjiProvider')]
-	public function testValidateSJIS(string $chr):void{
+	public function validateSJIS(string $chr):void{
 		// we may run into several issues due to encoding detection failures
 		try{
 			$this::assertTrue(Kanji::validateString($chr));

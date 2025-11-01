@@ -11,8 +11,7 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\Data\AlphaNum;
-use chillerlan\QRCode\Data\QRDataModeInterface;
+use chillerlan\QRCode\Data\{AlphaNum, QRDataModeInterface};
 
 /**
  * Tests the AlphaNum class

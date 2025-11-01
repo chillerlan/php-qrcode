@@ -16,7 +16,7 @@ use chillerlan\QRCode\Common\{EccLevel, MaskPattern, Version};
 use chillerlan\QRCode\Data\{QRCodeDataException, QRMatrix};
 use chillerlan\QRCodeTest\Traits\QRMatrixDebugTrait;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\{DataProvider, Test};
 use Generator;
 
 /**
@@ -41,28 +41,32 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests if size() returns the actual matrix size/count
 	 */
-	public function testGetSize():void{
+	#[Test]
+	public function getSize():void{
 		$this::assertCount($this->matrix->getSize(), $this->matrix->getBooleanMatrix());
 	}
 
 	/**
 	 * Tests if version() returns the current (given) version
 	 */
-	public function testGetVersion():void{
+	#[Test]
+	public function getVersion():void{
 		$this::assertSame($this::version, $this->matrix->getVersion()->getVersionNumber());
 	}
 
 	/**
 	 * Tests if eccLevel() returns the current (given) ECC level
 	 */
-	public function testGetECC():void{
+	#[Test]
+	public function getECC():void{
 		$this::assertSame(EccLevel::L, $this->matrix->getEccLevel()->getLevel());
 	}
 
 	/**
 	 * Tests if maskPattern() returns the current (or default) mask pattern
 	 */
-	public function testGetMaskPattern():void{
+	#[Test]
+	public function getMaskPattern():void{
 		// set via matrix evaluation
 		$matrix = (new QRCode)->addByteSegment('testdata')->getQRMatrix();
 
@@ -73,7 +77,8 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests the set(), get() and check() methods
 	 */
-	public function testGetSetCheck():void{
+	#[Test]
+	public function getSetCheck():void{
 		$this->matrix->set(10, 10, true, QRMatrix::M_LOGO);
 		$this::assertSame(QRMatrix::M_LOGO_DARK, $this->matrix->get(10, 10));
 		$this::assertTrue($this->matrix->check(10, 10));
@@ -108,8 +113,9 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests setting the dark module and verifies its position
 	 */
+	#[Test]
 	#[DataProvider('matrixProvider')]
-	public function testSetDarkModule(QRMatrix $matrix):void{
+	public function setDarkModule(QRMatrix $matrix):void{
 		$matrix->setDarkModule();
 
 		$this->dm($matrix);
@@ -120,8 +126,9 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests setting the finder patterns and verifies their positions
 	 */
+	#[Test]
 	#[DataProvider('matrixProvider')]
-	public function testSetFinderPattern(QRMatrix $matrix):void{
+	public function setFinderPattern(QRMatrix $matrix):void{
 		$matrix->setFinderPattern();
 
 		$this->dm($matrix);
@@ -134,8 +141,9 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests the separator patterns and verifies their positions
 	 */
+	#[Test]
 	#[DataProvider('matrixProvider')]
-	public function testSetSeparators(QRMatrix $matrix):void{
+	public function setSeparators(QRMatrix $matrix):void{
 		$matrix->setSeparators();
 
 		$this->dm($matrix);
@@ -149,8 +157,9 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests the alignment patterns and verifies their positions - version 1 (no pattern) skipped
 	 */
+	#[Test]
 	#[DataProvider('matrixProvider')]
-	public function testSetAlignmentPattern(QRMatrix $matrix):void{
+	public function setAlignmentPattern(QRMatrix $matrix):void{
 		$version = $matrix->getVersion();
 
 		if($version->getVersionNumber() === 1){
@@ -180,8 +189,9 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests the timing patterns and verifies their positions
 	 */
+	#[Test]
 	#[DataProvider('matrixProvider')]
-	public function testSetTimingPattern(QRMatrix $matrix):void{
+	public function setTimingPattern(QRMatrix $matrix):void{
 
 		$matrix
 			->setFinderPattern()
@@ -208,8 +218,9 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests the version patterns and verifies their positions - version < 7 skipped
 	 */
+	#[Test]
 	#[DataProvider('matrixProvider')]
-	public function testSetVersionNumber(QRMatrix $matrix):void{
+	public function setVersionNumber(QRMatrix $matrix):void{
 
 		if($matrix->getVersion()->getVersionNumber() < 7){
 			$this::markTestSkipped('N/A (Version < 7)');
@@ -228,8 +239,9 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests the format patterns and verifies their positions
 	 */
+	#[Test]
 	#[DataProvider('matrixProvider')]
-	public function testSetFormatInfo(QRMatrix $matrix):void{
+	public function setFormatInfo(QRMatrix $matrix):void{
 		$matrix->setFormatInfo(new MaskPattern(MaskPattern::PATTERN_000));
 
 		$this->dm($matrix);
@@ -243,8 +255,9 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests the quiet zone pattern and verifies its position
 	 */
+	#[Test]
 	#[DataProvider('matrixProvider')]
-	public function testSetQuietZone(QRMatrix $matrix):void{
+	public function setQuietZone(QRMatrix $matrix):void{
 		$size          = $matrix->getSize();
 		$quietZoneSize = 5;
 
@@ -274,7 +287,8 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests if an exception is thrown in an attempt to create the quiet zone before data was written
 	 */
-	public function testSetQuietZoneException():void{
+	#[Test]
+	public function setQuietZoneException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('use only after writing data');
 
@@ -284,8 +298,9 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests rotating the matrix by 90 degrees CW
 	 */
+	#[Test]
 	#[DataProvider('matrixProvider')]
-	public function testRotate90(QRMatrix $matrix):void{
+	public function rotate90(QRMatrix $matrix):void{
 		$matrix->initFunctionalPatterns();
 
 		// matrix size
@@ -320,7 +335,8 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests if the logo space is drawn square if one of the dimensions is omitted
 	 */
-	public function testSetLogoSpaceOmitDimension():void{
+	#[Test]
+	public function setLogoSpaceOmitDimension():void{
 		$o = new QROptions;
 		$o->version         = 2;
 		$o->eccLevel        = EccLevel::H;
@@ -342,7 +358,8 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests the auto orientation of the logo space
 	 */
-	public function testSetLogoSpaceOrientation():void{
+	#[Test]
+	public function setLogoSpaceOrientation():void{
 		$o = new QROptions;
 		$o->version      = 10;
 		$o->eccLevel     = EccLevel::H;
@@ -366,7 +383,8 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests the manual positioning of the logo space
 	 */
-	public function testSetLogoSpacePosition():void{
+	#[Test]
+	public function setLogoSpacePosition():void{
 		$o = new QROptions;
 		$o->version       = 10;
 		$o->eccLevel      = EccLevel::H;
@@ -394,7 +412,8 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests whether an exception is thrown when an ECC level other than "H" is set when attempting to add logo space
 	 */
-	public function testSetLogoSpaceInvalidEccException():void{
+	#[Test]
+	public function setLogoSpaceInvalidEccException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('ECC level "H" required to add logo space');
 
@@ -404,7 +423,8 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests whether an exception is thrown when width or height exceed the matrix size
 	 */
-	public function testSetLogoSpaceExceedsException():void{
+	#[Test]
+	public function setLogoSpaceExceedsException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('logo dimensions exceed matrix size');
 
@@ -418,7 +438,8 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests whether an exception is thrown when the logo space size exceeds the maximum ECC capacity
 	 */
-	public function testSetLogoSpaceMaxSizeException():void{
+	#[Test]
+	public function setLogoSpaceMaxSizeException():void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('logo space exceeds the maximum error correction capacity');
 
@@ -432,7 +453,8 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests flipping the value of a module
 	 */
-	public function testFlip():void{
+	#[Test]
+	public function flip():void{
 		$this->matrix->set(20, 20, true, QRMatrix::M_LOGO);
 
 		// cover checkType()
@@ -452,7 +474,8 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests checking whether the M_TYPE of a module is not one of an array of M_TYPES
 	 */
-	public function testCheckTypeIn():void{
+	#[Test]
+	public function checkTypeIn():void{
 		$this->matrix->set(10, 10, true, QRMatrix::M_QUIETZONE);
 
 		$this::assertFalse($this->matrix->checkTypeIn(10, 10, [QRMatrix::M_DATA, QRMatrix::M_FINDER]));
@@ -462,7 +485,8 @@ final class QRMatrixTest extends TestCase{
 	/**
 	 * Tests checking the adjacent modules
 	 */
-	public function testCheckNeighbours():void{
+	#[Test]
+	public function checkNeighbours():void{
 
 		$this->matrix
 			->setFinderPattern()

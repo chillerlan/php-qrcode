@@ -11,29 +11,20 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Output;
 
-use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\QRInterventionImage;
-use chillerlan\QRCode\Output\QROutputInterface;
 use chillerlan\QRCode\QROptions;
+use chillerlan\QRCode\Data\QRMatrix;
+use chillerlan\QRCode\Output\{QRInterventionImage, QROutputInterface};
 use chillerlan\QRCodeTest\Traits\CssColorModuleValueProviderTrait;
 use chillerlan\Settings\SettingsContainerInterface;
 use Intervention\Image\Interfaces\ImageInterface;
-use function extension_loaded;
+use PHPUnit\Framework\Attributes\{RequiresPhpExtension, Test};
 
 /**
- * Tests the QRInterventionImage output module
+ * Tests the QRInterventionImage output class
  */
+#[RequiresPhpExtension('gd')]
 class QRInterventionImageTest extends QROutputTestAbstract{
 	use CssColorModuleValueProviderTrait;
-
-	protected function setUp():void{
-
-		if(!extension_loaded('gd')){
-			$this::markTestSkipped('ext-gd not loaded');
-		}
-
-		parent::setUp();
-	}
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
@@ -42,7 +33,8 @@ class QRInterventionImageTest extends QROutputTestAbstract{
 		return new QRInterventionImage($options, $matrix);
 	}
 
-	public function testSetModuleValues():void{
+	#[Test]
+	public function setModuleValues():void{
 
 		$this->options->moduleValues = [
 			// data
@@ -57,7 +49,8 @@ class QRInterventionImageTest extends QROutputTestAbstract{
 		$this::assertTrue(true); // tricking the code coverage
 	}
 
-	public function testOutputGetResource():void{
+	#[Test]
+	public function outputGetResource():void{
 		$this->options->returnResource = true;
 		$this->outputInterface         = $this->getOutputInterface($this->options, $this->matrix);
 

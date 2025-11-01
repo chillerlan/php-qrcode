@@ -15,7 +15,11 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QROutputInterface, QRStringText};
 use chillerlan\Settings\SettingsContainerInterface;
+use PHPUnit\Framework\Attributes\Test;
 
+/**
+ * Tests the QRStringText output class
+ */
 final class QRStringTextTest extends QROutputTestAbstract{
 
 	protected function getOutputInterface(
@@ -37,7 +41,8 @@ final class QRStringTextTest extends QROutputTestAbstract{
 		];
 	}
 
-	public function testSetModuleValues():void{
+	#[Test]
+	public function setModuleValues():void{
 
 		$this->options->moduleValues = [
 			// data

@@ -11,8 +11,7 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\Data\Number;
-use chillerlan\QRCode\Data\QRDataModeInterface;
+use chillerlan\QRCode\Data\{Number, QRDataModeInterface};
 
 /**
  * Tests the Number class

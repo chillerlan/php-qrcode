@@ -15,21 +15,16 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Common\{IMagickLuminanceSource, LuminanceSourceInterface};
 use chillerlan\QRCode\Decoder\Decoder;
 use chillerlan\Settings\SettingsContainerInterface;
-use PHPUnit\Framework\Attributes\DataProvider;
-use function extension_loaded;
+use PHPUnit\Framework\Attributes\{DataProvider, RequiresPhpExtension, Test};
 use const PHP_OS_FAMILY;
 
 /**
  * Tests the Imagick based reader
  */
+#[RequiresPhpExtension('imagick')]
 final class QRCodeReaderImagickTest extends QRCodeReaderTestAbstract{
 
 	protected function setUp():void{
-
-		if(!extension_loaded('imagick')){
-			$this::markTestSkipped('imagick not installed');
-		}
-
 		parent::setUp();
 
 		$this->options->readerUseImagickIfAvailable = true;
@@ -55,8 +50,9 @@ final class QRCodeReaderImagickTest extends QRCodeReaderTestAbstract{
 		];
 	}
 
+	#[Test]
 	#[DataProvider('vectorQRCodeProvider')]
-	public function testReadVectorFormats(string $img, string $expected):void{
+	public function readVectorFormats(string $img, string $expected):void{
 
 		if(PHP_OS_FAMILY === 'Linux'){
 			$this::markTestSkipped('avoid imagick conversion errors (ha ha)');

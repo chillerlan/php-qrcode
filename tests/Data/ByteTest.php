@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCodeTest\Data;
 
-use chillerlan\QRCode\Data\Byte;
-use chillerlan\QRCode\Data\QRDataModeInterface;
+use chillerlan\QRCode\Data\{Byte, QRDataModeInterface};
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * Tests the Byte class
@@ -39,11 +39,13 @@ final class ByteTest extends DataInterfaceTestAbstract{
 		];
 	}
 
-	public function testInvalidDataException():void{
+	#[Test]
+	public function binaryStringInvalid():void{
 		$this::markTestSkipped('N/A (binary mode)');
 	}
 
-	public function testBinaryStringInvalid():void{
+	#[Test]
+	public function invalidDataException():void{
 		$this::markTestSkipped('N/A (binary mode)');
 	}
 

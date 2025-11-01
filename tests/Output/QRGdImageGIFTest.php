@@ -15,7 +15,9 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\QRCode\Output\{QRGdImageGIF, QROutputInterface};
 use chillerlan\Settings\SettingsContainerInterface;
+use PHPUnit\Framework\Attributes\RequiresPhpExtension;
 
+#[RequiresPhpExtension('gd')]
 final class QRGdImageGIFTest extends QRGdImageTestAbstract{
 
 	protected function getOutputInterface(

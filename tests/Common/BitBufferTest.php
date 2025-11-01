@@ -13,7 +13,7 @@ namespace chillerlan\QRCodeTest\Common;
 
 use chillerlan\QRCode\QRCodeException;
 use chillerlan\QRCode\Common\{BitBuffer, Mode};
-use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\{Test, TestWith};
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -27,28 +27,21 @@ final class BitBufferTest extends TestCase{
 		$this->bitBuffer = new BitBuffer;
 	}
 
-	/**
-	 * @phpstan-return array<string, array{0: int, 1: int}>
-	 */
-	public static function bitProvider():array{
-		return [
-			'number'   => [Mode::NUMBER, 16],
-			'alphanum' => [Mode::ALPHANUM, 32],
-			'byte'     => [Mode::BYTE, 64],
-			'kanji'    => [Mode::KANJI, 128],
-			'hanzi'    => [Mode::HANZI, 208],
-		];
-	}
-
-	#[DataProvider('bitProvider')]
-	public function testPut(int $data, int $expected):void{
+	#[Test]
+	#[TestWith([Mode::NUMBER, 16], 'number')]
+	#[TestWith([Mode::ALPHANUM, 32], 'alphanum')]
+	#[TestWith([Mode::BYTE, 64], 'byte')]
+	#[TestWith([Mode::KANJI, 128], 'kanji')]
+	#[TestWith([Mode::HANZI, 208], 'hanzi')]
+	public function put(int $data, int $expected):void{
 		$this->bitBuffer->put($data, 4);
 
 		$this::assertSame($expected, $this->bitBuffer->getBuffer()[0]);
 		$this::assertSame(4, $this->bitBuffer->getLength());
 	}
 
-	public function testReadException():void{
+	#[Test]
+	public function readException():void{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('invalid $numBits');
 
