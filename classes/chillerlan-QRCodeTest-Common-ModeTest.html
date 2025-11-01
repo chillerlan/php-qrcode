@@ -187,29 +187,23 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_testGetLengthBitsForVersionBreakpoints">testGetLengthBitsForVersionBreakpoints()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_getLengthBitsForVersionBreakpoints">getLengthBitsForVersionBreakpoints()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Tests the version breakpoints for numeric mode</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_getLengthBitsForVersionInvalidModeException">getLengthBitsForVersionInvalidModeException()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_testGetLengthBitsForVersionInvalidModeException">testGetLengthBitsForVersionInvalidModeException()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_getLengthBitsForVersionInvalidVersionException">getLengthBitsForVersionInvalidVersionException()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_testGetLengthBitsForVersionInvalidVersionException">testGetLengthBitsForVersionInvalidVersionException()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_versionProvider">versionProvider()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
-</dt>
-<dd>version breakpoints for numeric mode</dd>
 
     </dl>
 
@@ -231,22 +225,23 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testGetLengthBitsForVersionBreakpoints">
-        testGetLengthBitsForVersionBreakpoints()
-        <a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_testGetLengthBitsForVersionBreakpoints" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getLengthBitsForVersionBreakpoints">
+        getLengthBitsForVersionBreakpoints()
+        <a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_getLengthBitsForVersionBreakpoints" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Common/ModeTest.php"><a href="files/tests-common-modetest.html"><abbr title="tests/Common/ModeTest.php">ModeTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">40</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Tests the version breakpoints for numeric mode</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testGetLengthBitsForVersionBreakpoints</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$expected</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">getLengthBitsForVersionBreakpoints</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$expected</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -275,15 +270,78 @@
     
     <section class="phpdocumentor-attributes">
         <h5 class="phpdocumentor-elements__header" id="attributes">
-            Attributes <a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_testGetLengthBitsForVersionBreakpoints#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+            Attributes <a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_getLengthBitsForVersionBreakpoints#attributes" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h5>
                     <dl class="phpdocumentor-argument-list">
     <dt class="phpdocumentor-argument-list__entry">
-        #[<abbr title="\PHPUnit\Framework\Attributes\DataProvider">DataProvider</abbr>]
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
+    </dt>
+    </dl>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\TestWith">TestWith</abbr>]
     </dt>
         <dd class="phpdocumentor-argument-list__entry">
-        &#039;versionProvider&#039;
+        [1, 10]
+    </dd>
+        <dd class="phpdocumentor-argument-list__entry">
+        &#039;10 low&#039;
+    </dd>
+    </dl>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\TestWith">TestWith</abbr>]
+    </dt>
+        <dd class="phpdocumentor-argument-list__entry">
+        [9, 10]
+    </dd>
+        <dd class="phpdocumentor-argument-list__entry">
+        &#039;10 high&#039;
+    </dd>
+    </dl>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\TestWith">TestWith</abbr>]
+    </dt>
+        <dd class="phpdocumentor-argument-list__entry">
+        [10, 12]
+    </dd>
+        <dd class="phpdocumentor-argument-list__entry">
+        &#039;12 low&#039;
+    </dd>
+    </dl>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\TestWith">TestWith</abbr>]
+    </dt>
+        <dd class="phpdocumentor-argument-list__entry">
+        [26, 12]
+    </dd>
+        <dd class="phpdocumentor-argument-list__entry">
+        &#039;12 high&#039;
+    </dd>
+    </dl>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\TestWith">TestWith</abbr>]
+    </dt>
+        <dd class="phpdocumentor-argument-list__entry">
+        [27, 14]
+    </dd>
+        <dd class="phpdocumentor-argument-list__entry">
+        &#039;14 low&#039;
+    </dd>
+    </dl>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\TestWith">TestWith</abbr>]
+    </dt>
+        <dd class="phpdocumentor-argument-list__entry">
+        [40, 14]
+    </dd>
+        <dd class="phpdocumentor-argument-list__entry">
+        &#039;14 high&#039;
     </dd>
     </dl>
             </section>
@@ -296,22 +354,22 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testGetLengthBitsForVersionInvalidModeException">
-        testGetLengthBitsForVersionInvalidModeException()
-        <a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_testGetLengthBitsForVersionInvalidModeException" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getLengthBitsForVersionInvalidModeException">
+        getLengthBitsForVersionInvalidModeException()
+        <a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_getLengthBitsForVersionInvalidModeException" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Common/ModeTest.php"><a href="files/tests-common-modetest.html"><abbr title="tests/Common/ModeTest.php">ModeTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">45</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testGetLengthBitsForVersionInvalidModeException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">getLengthBitsForVersionInvalidModeException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -321,6 +379,17 @@
     
 
     
+    <section class="phpdocumentor-attributes">
+        <h5 class="phpdocumentor-elements__header" id="attributes">
+            Attributes <a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_getLengthBitsForVersionInvalidModeException#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h5>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
+    </dt>
+    </dl>
+            </section>
 
     
 </article>
@@ -330,22 +399,22 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testGetLengthBitsForVersionInvalidVersionException">
-        testGetLengthBitsForVersionInvalidVersionException()
-        <a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_testGetLengthBitsForVersionInvalidVersionException" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getLengthBitsForVersionInvalidVersionException">
+        getLengthBitsForVersionInvalidVersionException()
+        <a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_getLengthBitsForVersionInvalidVersionException" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Common/ModeTest.php"><a href="files/tests-common-modetest.html"><abbr title="tests/Common/ModeTest.php">ModeTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">52</span>
+    <span class="phpdocumentor-element-found-in__line">46</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testGetLengthBitsForVersionInvalidVersionException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">getLengthBitsForVersionInvalidVersionException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -355,63 +424,19 @@
     
 
     
+    <section class="phpdocumentor-attributes">
+        <h5 class="phpdocumentor-elements__header" id="attributes">
+            Attributes <a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_getLengthBitsForVersionInvalidVersionException#attributes" class="headerlink"><i class="fas fa-link"></i></a>
 
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                    -static                    "
->
-    <h4 class="phpdocumentor-element__name" id="method_versionProvider">
-        versionProvider()
-        <a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_versionProvider" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/Common/ModeTest.php"><a href="files/tests-common-modetest.html"><abbr title="tests/Common/ModeTest.php">ModeTest.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">29</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">version breakpoints for numeric mode</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">versionProvider</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
-        Tags
-        <a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_versionProvider#tags" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h5>
-    <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">phpstan-return</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
-                                                                                
-                                                 <section class="phpdocumentor-description"><p>array&lt;int, array{0: int, 1: int}&gt;</p>
-</section>
-
-                                    </dd>
-                                            </dl>
-
-    
-
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+        </h5>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
+    </dt>
+    </dl>
             </section>
 
+    
 </article>
             </section>
 
@@ -528,10 +553,9 @@
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_testGetLengthBitsForVersionBreakpoints">testGetLengthBitsForVersionBreakpoints()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_testGetLengthBitsForVersionInvalidModeException">testGetLengthBitsForVersionInvalidModeException()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_testGetLengthBitsForVersionInvalidVersionException">testGetLengthBitsForVersionInvalidVersionException()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_versionProvider">versionProvider()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_getLengthBitsForVersionBreakpoints">getLengthBitsForVersionBreakpoints()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_getLengthBitsForVersionInvalidModeException">getLengthBitsForVersionInvalidModeException()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Common-ModeTest.html#method_getLengthBitsForVersionInvalidVersionException">getLengthBitsForVersionInvalidVersionException()</a></li>
                                     </ul>
             </li>
                     </ul>

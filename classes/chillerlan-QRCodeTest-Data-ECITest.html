@@ -219,45 +219,39 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_eciCharsetIdProvider">eciCharsetIdProvider()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testConvertUnknownEncoding">testConvertUnknownEncoding()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_convertUnknownEncoding">convertUnknownEncoding()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Tests detection of an unknown character set</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testDataModeInstance">testDataModeInstance()</a>
-    <span>
-                                &nbsp;: void    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testDecodeECISegmentFollowedByInvalidModeException">testDecodeECISegmentFollowedByInvalidModeException()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_decodeECISegmentFollowedByInvalidModeException">decodeECISegmentFollowedByInvalidModeException()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Tests if and exception is thrown when the ECI segment is followed by a mode that is not 8-bit byte</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testDecodeSegment">testDecodeSegment()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_decodeSegment">decodeSegment()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testInvalidDataException">testInvalidDataException()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_eciCharsetIdProvider">eciCharsetIdProvider()</a>
+    <span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_invalidDataException">invalidDataException()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testInvalidDataOnEmptyException">testInvalidDataOnEmptyException()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_invalidDataOnEmptyException">invalidDataOnEmptyException()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
@@ -265,7 +259,7 @@
 we&#039;ll use this test to check for the upper end of the accepted input range</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testReadWrite">testReadWrite()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_readWrite">readWrite()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
@@ -434,6 +428,186 @@ we&#039;ll use this test to check for the upper end of the accepted input range<
         class="phpdocumentor-element
             -method
             -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_convertUnknownEncoding">
+        convertUnknownEncoding()
+        <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_convertUnknownEncoding" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/ECITest.php"><a href="files/tests-data-ecitest.html"><abbr title="tests/Data/ECITest.php">ECITest.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">153</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Tests detection of an unknown character set</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">convertUnknownEncoding</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$id</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$data</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+    <section class="phpdocumentor-attributes">
+        <h5 class="phpdocumentor-elements__header" id="attributes">
+            Attributes <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_convertUnknownEncoding#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h5>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\DataProvider">DataProvider</abbr>]
+    </dt>
+        <dd class="phpdocumentor-argument-list__entry">
+        &#039;unknownEncodingDataProvider&#039;
+    </dd>
+    </dl>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
+    </dt>
+    </dl>
+            </section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_decodeECISegmentFollowedByInvalidModeException">
+        decodeECISegmentFollowedByInvalidModeException()
+        <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_decodeECISegmentFollowedByInvalidModeException" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/ECITest.php"><a href="files/tests-data-ecitest.html"><abbr title="tests/Data/ECITest.php">ECITest.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">121</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Tests if and exception is thrown when the ECI segment is followed by a mode that is not 8-bit byte</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">decodeECISegmentFollowedByInvalidModeException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+    
+    <section class="phpdocumentor-attributes">
+        <h5 class="phpdocumentor-elements__header" id="attributes">
+            Attributes <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_decodeECISegmentFollowedByInvalidModeException#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h5>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
+    </dt>
+    </dl>
+            </section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_decodeSegment">
+        decodeSegment()
+        <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_decodeSegment" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/ECITest.php"><a href="files/tests-data-ecitest.html"><abbr title="tests/Data/ECITest.php">ECITest.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">54</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">decodeSegment</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$version</span>
+                : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+    <section class="phpdocumentor-attributes">
+        <h5 class="phpdocumentor-elements__header" id="attributes">
+            Attributes <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_decodeSegment#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h5>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\DataProvider">DataProvider</abbr>]
+    </dt>
+        <dd class="phpdocumentor-argument-list__entry">
+        &#039;versionBreakpointProvider&#039;
+    </dd>
+    </dl>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
+    </dt>
+    </dl>
+            </section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
                                     -static                    "
 >
     <h4 class="phpdocumentor-element__name" id="method_eciCharsetIdProvider">
@@ -444,7 +618,7 @@ we&#039;ll use this test to check for the upper end of the accepted input range<
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/ECITest.php"><a href="files/tests-data-ecitest.html"><abbr title="tests/Data/ECITest.php">ECITest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">99</span>
+    <span class="phpdocumentor-element-found-in__line">96</span>
 
     </aside>
 
@@ -490,61 +664,40 @@ we&#039;ll use this test to check for the upper end of the accepted input range<
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testConvertUnknownEncoding">
-        testConvertUnknownEncoding()
-        <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testConvertUnknownEncoding" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_invalidDataException">
+        invalidDataException()
+        <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_invalidDataException" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/ECITest.php"><a href="files/tests-data-ecitest.html"><abbr title="tests/Data/ECITest.php">ECITest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">154</span>
+    <span class="phpdocumentor-element-found-in__line">73</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Tests detection of an unknown character set</p>
-
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testConvertUnknownEncoding</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$data</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">invalidDataException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
     
     
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$id</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$data</span>
-                : <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
+    
     
 
     
     <section class="phpdocumentor-attributes">
         <h5 class="phpdocumentor-elements__header" id="attributes">
-            Attributes <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testConvertUnknownEncoding#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+            Attributes <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_invalidDataException#attributes" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h5>
                     <dl class="phpdocumentor-argument-list">
     <dt class="phpdocumentor-argument-list__entry">
-        #[<abbr title="\PHPUnit\Framework\Attributes\DataProvider">DataProvider</abbr>]
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
     </dt>
-        <dd class="phpdocumentor-argument-list__entry">
-        &#039;unknownEncodingDataProvider&#039;
-    </dd>
     </dl>
             </section>
 
@@ -556,176 +709,15 @@ we&#039;ll use this test to check for the upper end of the accepted input range<
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testDataModeInstance">
-        testDataModeInstance()
-        <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testDataModeInstance" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_invalidDataOnEmptyException">
+        invalidDataOnEmptyException()
+        <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_invalidDataOnEmptyException" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/ECITest.php"><a href="files/tests-data-ecitest.html"><abbr title="tests/Data/ECITest.php">ECITest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">45</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testDataModeInstance</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    
-
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_testDecodeECISegmentFollowedByInvalidModeException">
-        testDecodeECISegmentFollowedByInvalidModeException()
-        <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testDecodeECISegmentFollowedByInvalidModeException" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/ECITest.php"><a href="files/tests-data-ecitest.html"><abbr title="tests/Data/ECITest.php">ECITest.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">123</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Tests if and exception is thrown when the ECI segment is followed by a mode that is not 8-bit byte</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testDecodeECISegmentFollowedByInvalidModeException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    
-
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_testDecodeSegment">
-        testDecodeSegment()
-        <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testDecodeSegment" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/ECITest.php"><a href="files/tests-data-ecitest.html"><abbr title="tests/Data/ECITest.php">ECITest.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">60</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testDecodeSegment</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$version</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-    <dl class="phpdocumentor-argument-list">
-                    <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$version</span>
-                : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </dt>
-            <dd class="phpdocumentor-argument-list__definition">
-                
-            </dd>
-            </dl>
-
-    
-
-    
-    <section class="phpdocumentor-attributes">
-        <h5 class="phpdocumentor-elements__header" id="attributes">
-            Attributes <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testDecodeSegment#attributes" class="headerlink"><i class="fas fa-link"></i></a>
-
-        </h5>
-                    <dl class="phpdocumentor-argument-list">
-    <dt class="phpdocumentor-argument-list__entry">
-        #[<abbr title="\PHPUnit\Framework\Attributes\DataProvider">DataProvider</abbr>]
-    </dt>
-        <dd class="phpdocumentor-argument-list__entry">
-        &#039;versionBreakpointProvider&#039;
-    </dd>
-    </dl>
-            </section>
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_testInvalidDataException">
-        testInvalidDataException()
-        <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testInvalidDataException" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/ECITest.php"><a href="files/tests-data-ecitest.html"><abbr title="tests/Data/ECITest.php">ECITest.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">78</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testInvalidDataException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    
-
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_testInvalidDataOnEmptyException">
-        testInvalidDataOnEmptyException()
-        <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testInvalidDataOnEmptyException" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/ECITest.php"><a href="files/tests-data-ecitest.html"><abbr title="tests/Data/ECITest.php">ECITest.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">89</span>
+    <span class="phpdocumentor-element-found-in__line">85</span>
 
     </aside>
 
@@ -734,7 +726,7 @@ we&#039;ll use this test to check for the upper end of the accepted input range<
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testInvalidDataOnEmptyException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">invalidDataOnEmptyException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -744,6 +736,17 @@ we&#039;ll use this test to check for the upper end of the accepted input range<
     
 
     
+    <section class="phpdocumentor-attributes">
+        <h5 class="phpdocumentor-elements__header" id="attributes">
+            Attributes <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_invalidDataOnEmptyException#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h5>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
+    </dt>
+    </dl>
+            </section>
 
     
 </article>
@@ -753,22 +756,22 @@ we&#039;ll use this test to check for the upper end of the accepted input range<
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testReadWrite">
-        testReadWrite()
-        <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testReadWrite" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_readWrite">
+        readWrite()
+        <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_readWrite" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/ECITest.php"><a href="files/tests-data-ecitest.html"><abbr title="tests/Data/ECITest.php">ECITest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">110</span>
+    <span class="phpdocumentor-element-found-in__line">107</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testReadWrite</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$lengthInBits</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">readWrite</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$id</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$lengthInBits</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -797,7 +800,7 @@ we&#039;ll use this test to check for the upper end of the accepted input range<
     
     <section class="phpdocumentor-attributes">
         <h5 class="phpdocumentor-elements__header" id="attributes">
-            Attributes <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testReadWrite#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+            Attributes <a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_readWrite#attributes" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h5>
                     <dl class="phpdocumentor-argument-list">
@@ -807,6 +810,11 @@ we&#039;ll use this test to check for the upper end of the accepted input range<
         <dd class="phpdocumentor-argument-list__entry">
         &#039;eciCharsetIdProvider&#039;
     </dd>
+    </dl>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
+    </dt>
     </dl>
             </section>
 
@@ -826,7 +834,7 @@ we&#039;ll use this test to check for the upper end of the accepted input range<
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/ECITest.php"><a href="files/tests-data-ecitest.html"><abbr title="tests/Data/ECITest.php">ECITest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">144</span>
+    <span class="phpdocumentor-element-found-in__line">143</span>
 
     </aside>
 
@@ -880,7 +888,7 @@ we&#039;ll use this test to check for the upper end of the accepted input range<
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/Data/ECITest.php"><a href="files/tests-data-ecitest.html"><abbr title="tests/Data/ECITest.php">ECITest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">56</span>
+    <span class="phpdocumentor-element-found-in__line">50</span>
 
     </aside>
 
@@ -1139,14 +1147,13 @@ we&#039;ll use this test to check for the upper end of the accepted input range<
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_convertUnknownEncoding">convertUnknownEncoding()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_decodeECISegmentFollowedByInvalidModeException">decodeECISegmentFollowedByInvalidModeException()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_decodeSegment">decodeSegment()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_eciCharsetIdProvider">eciCharsetIdProvider()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testConvertUnknownEncoding">testConvertUnknownEncoding()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testDataModeInstance">testDataModeInstance()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testDecodeECISegmentFollowedByInvalidModeException">testDecodeECISegmentFollowedByInvalidModeException()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testDecodeSegment">testDecodeSegment()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testInvalidDataException">testInvalidDataException()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testInvalidDataOnEmptyException">testInvalidDataOnEmptyException()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_testReadWrite">testReadWrite()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_invalidDataException">invalidDataException()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_invalidDataOnEmptyException">invalidDataOnEmptyException()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_readWrite">readWrite()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_unknownEncodingDataProvider">unknownEncodingDataProvider()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_versionBreakpointProvider">versionBreakpointProvider()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCodeTest-Data-ECITest.html#method_setUp">setUp()</a></li>

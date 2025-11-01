@@ -140,7 +140,7 @@
     
             <span class="phpdocumentor-element__extends">
             uses
-                            <a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html"><abbr title="\chillerlan\QRCodeTest\BuildDirTrait">BuildDirTrait</abbr></a>                    </span>
+                            <a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html"><abbr title="\chillerlan\QRCodeTest\Traits\BuildDirTrait">BuildDirTrait</abbr></a>                    </span>
     </h2>
 
 <div class="phpdocumentor-label-line">
@@ -153,7 +153,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/QRCodeTest.php"><a href="files/tests-qrcodetest.html"><abbr title="tests/QRCodeTest.php">QRCodeTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">25</span>
 
     </aside>
 
@@ -185,6 +185,12 @@
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -constant -protected">
+    <a class="" href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#constant__buildDir">_buildDir</a>
+    <span>
+        &nbsp;= __DIR__ . &#039;/../../.build/&#039;                            </span>
+</dt>
+
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
     <a class="" href="classes/chillerlan-QRCodeTest-QRCodeTest.html#constant_buildDir">buildDir</a>
     <span>
@@ -200,12 +206,6 @@
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a class="" href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#property__buildDir">$_buildDir</a>
-    <span>
-                        &nbsp;: string            </span>
-</dt>
-
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a class="" href="classes/chillerlan-QRCodeTest-QRCodeTest.html#property_options">$options</a>
     <span>
@@ -227,63 +227,76 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testInitCustomOutputInterfaceNotExistsException">testInitCustomOutputInterfaceNotExistsException()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_addEciSegment">addEciSegment()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Tests adding and decoding an ECI sequence</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_addEciSegmentInvalidCharsetException">addEciSegmentInvalidCharsetException()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a class="" href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_initCustomOutputInterfaceNotExistsException">initCustomOutputInterfaceNotExistsException()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>tests if an exception is thrown if the given output class does not exist</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testInitCustomOutputInterfaceNotImplementsException">testInitCustomOutputInterfaceNotImplementsException()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_initCustomOutputInterfaceNotImplementsException">initCustomOutputInterfaceNotImplementsException()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>tests if an exception is thrown if the given output class does not implement QROutputInterface</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testRenderToCacheFile">testRenderToCacheFile()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_renderToCacheFile">renderToCacheFile()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Tests if a cache file is properly saved in the given path</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testSaveException">testSaveException()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_saveException">saveException()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>Tests if an exception is thrown when trying to write a cache file to an invalid destination</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a class="" href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_createBuildDir">createBuildDir()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_createBuildDir">createBuildDir()</a>
     <span>
                                 &nbsp;: void    </span>
 </dt>
 <dd>attempts to create the build dir</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a class="" href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildDir">getBuildDir()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildDir">getBuildDir()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
 <dd>returns the full (real) path to the given build path</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a class="" href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildFileContent">getBuildFileContent()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildFileContent">getBuildFileContent()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
 <dd>returns the contents of the given build file</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a class="" href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildFilePath">getBuildFilePath()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildFilePath">getBuildFilePath()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
 <dd>returns the full (real) path to the given build file</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a class="" href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildPath">getBuildPath()</a>
+    <a class="" href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildPath">getBuildPath()</a>
     <span>
                                 &nbsp;: string    </span>
 </dt>
@@ -307,6 +320,37 @@
             <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
 
         </h3>
+                    <article class="phpdocumentor-element -constant -protected ">
+    <h4 class="phpdocumentor-element__name" id="constant__buildDir">
+        _buildDir
+        <a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#constant__buildDir" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Traits/BuildDirTrait.php"><a href="files/tests-traits-builddirtrait.html"><abbr title="tests/Traits/BuildDirTrait.php">BuildDirTrait.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">22</span>
+
+    </aside>
+
+    
+    
+    <code class="phpdocumentor-signature phpdocumentor-code ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">_buildDir</span>
+    = <span class="phpdocumentor-signature__default-value">__DIR__ . &#039;/../../.build/&#039;</span>
+</code>
+
+
+    
+    
+    
+
+    
+
+</article>
                     <article class="phpdocumentor-element -constant -private ">
     <h4 class="phpdocumentor-element__name" id="constant_buildDir">
         buildDir
@@ -317,7 +361,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/QRCodeTest.php"><a href="files/tests-qrcodetest.html"><abbr title="tests/QRCodeTest.php">QRCodeTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 
     </aside>
 
@@ -354,44 +398,6 @@
             -private
                                                                     "
 >
-    <h4 class="phpdocumentor-element__name" id="property__buildDir">
-        $_buildDir
-        <a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#property__buildDir" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                            </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/BuildDirTrait.php"><a href="files/tests-builddirtrait.html"><abbr title="tests/BuildDirTrait.php">BuildDirTrait.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">22</span>
-
-    </aside>
-
-    
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-        <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__type">string</span>
-    <span class="phpdocumentor-signature__name">$_buildDir</span>
-     = <span class="phpdocumentor-signature__default-value">__DIR__ . &#039;/../.build/&#039;</span></code>
-
-    
-    
-    
-
-    
-
-    
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -private
-                                                                    "
->
     <h4 class="phpdocumentor-element__name" id="property_options">
         $options
         <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#property_options" class="headerlink"><i class="fas fa-link"></i></a>
@@ -402,7 +408,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/QRCodeTest.php"><a href="files/tests-qrcodetest.html"><abbr title="tests/QRCodeTest.php">QRCodeTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
@@ -440,7 +446,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/QRCodeTest.php"><a href="files/tests-qrcodetest.html"><abbr title="tests/QRCodeTest.php">QRCodeTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">28</span>
 
     </aside>
 
@@ -475,15 +481,106 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testInitCustomOutputInterfaceNotExistsException">
-        testInitCustomOutputInterfaceNotExistsException()
-        <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testInitCustomOutputInterfaceNotExistsException" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_addEciSegment">
+        addEciSegment()
+        <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_addEciSegment" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/QRCodeTest.php"><a href="files/tests-qrcodetest.html"><abbr title="tests/QRCodeTest.php">QRCodeTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">43</span>
+    <span class="phpdocumentor-element-found-in__line">100</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Tests adding and decoding an ECI sequence</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addEciSegment</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+    
+    <section class="phpdocumentor-attributes">
+        <h5 class="phpdocumentor-elements__header" id="attributes">
+            Attributes <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_addEciSegment#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h5>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
+    </dt>
+    </dl>
+            </section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_addEciSegmentInvalidCharsetException">
+        addEciSegmentInvalidCharsetException()
+        <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_addEciSegmentInvalidCharsetException" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/QRCodeTest.php"><a href="files/tests-qrcodetest.html"><abbr title="tests/QRCodeTest.php">QRCodeTest.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">116</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">addEciSegmentInvalidCharsetException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+    
+
+    
+    <section class="phpdocumentor-attributes">
+        <h5 class="phpdocumentor-elements__header" id="attributes">
+            Attributes <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_addEciSegmentInvalidCharsetException#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h5>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
+    </dt>
+    </dl>
+            </section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_initCustomOutputInterfaceNotExistsException">
+        initCustomOutputInterfaceNotExistsException()
+        <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_initCustomOutputInterfaceNotExistsException" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/QRCodeTest.php"><a href="files/tests-qrcodetest.html"><abbr title="tests/QRCodeTest.php">QRCodeTest.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">46</span>
 
     </aside>
 
@@ -491,7 +588,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testInitCustomOutputInterfaceNotExistsException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">initCustomOutputInterfaceNotExistsException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -501,6 +598,17 @@
     
 
     
+    <section class="phpdocumentor-attributes">
+        <h5 class="phpdocumentor-elements__header" id="attributes">
+            Attributes <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_initCustomOutputInterfaceNotExistsException#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h5>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
+    </dt>
+    </dl>
+            </section>
 
     
 </article>
@@ -510,15 +618,15 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testInitCustomOutputInterfaceNotImplementsException">
-        testInitCustomOutputInterfaceNotImplementsException()
-        <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testInitCustomOutputInterfaceNotImplementsException" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_initCustomOutputInterfaceNotImplementsException">
+        initCustomOutputInterfaceNotImplementsException()
+        <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_initCustomOutputInterfaceNotImplementsException" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/QRCodeTest.php"><a href="files/tests-qrcodetest.html"><abbr title="tests/QRCodeTest.php">QRCodeTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">55</span>
+    <span class="phpdocumentor-element-found-in__line">59</span>
 
     </aside>
 
@@ -526,7 +634,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testInitCustomOutputInterfaceNotImplementsException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">initCustomOutputInterfaceNotImplementsException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -536,6 +644,17 @@
     
 
     
+    <section class="phpdocumentor-attributes">
+        <h5 class="phpdocumentor-elements__header" id="attributes">
+            Attributes <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_initCustomOutputInterfaceNotImplementsException#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h5>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
+    </dt>
+    </dl>
+            </section>
 
     
 </article>
@@ -545,15 +664,15 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testRenderToCacheFile">
-        testRenderToCacheFile()
-        <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testRenderToCacheFile" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_renderToCacheFile">
+        renderToCacheFile()
+        <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_renderToCacheFile" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/QRCodeTest.php"><a href="files/tests-qrcodetest.html"><abbr title="tests/QRCodeTest.php">QRCodeTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">79</span>
+    <span class="phpdocumentor-element-found-in__line">85</span>
 
     </aside>
 
@@ -561,7 +680,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testRenderToCacheFile</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">renderToCacheFile</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -571,6 +690,17 @@
     
 
     
+    <section class="phpdocumentor-attributes">
+        <h5 class="phpdocumentor-elements__header" id="attributes">
+            Attributes <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_renderToCacheFile#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h5>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
+    </dt>
+    </dl>
+            </section>
 
     
 </article>
@@ -580,15 +710,15 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_testSaveException">
-        testSaveException()
-        <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testSaveException" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_saveException">
+        saveException()
+        <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_saveException" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/QRCodeTest.php"><a href="files/tests-qrcodetest.html"><abbr title="tests/QRCodeTest.php">QRCodeTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">67</span>
+    <span class="phpdocumentor-element-found-in__line">72</span>
 
     </aside>
 
@@ -596,7 +726,7 @@
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">testSaveException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+                    <span class="phpdocumentor-signature__name">saveException</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -606,6 +736,17 @@
     
 
     
+    <section class="phpdocumentor-attributes">
+        <h5 class="phpdocumentor-elements__header" id="attributes">
+            Attributes <a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_saveException#attributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+        </h5>
+                    <dl class="phpdocumentor-argument-list">
+    <dt class="phpdocumentor-argument-list__entry">
+        #[<abbr title="\PHPUnit\Framework\Attributes\Test">Test</abbr>]
+    </dt>
+    </dl>
+            </section>
 
     
 </article>
@@ -617,11 +758,11 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_createBuildDir">
         createBuildDir()
-        <a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_createBuildDir" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_createBuildDir" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/BuildDirTrait.php"><a href="files/tests-builddirtrait.html"><abbr title="tests/BuildDirTrait.php">BuildDirTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Traits/BuildDirTrait.php"><a href="files/tests-traits-builddirtrait.html"><abbr title="tests/Traits/BuildDirTrait.php">BuildDirTrait.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">36</span>
 
@@ -651,7 +792,7 @@
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_createBuildDir#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_createBuildDir#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -677,11 +818,11 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_getBuildDir">
         getBuildDir()
-        <a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildDir" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildDir" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/BuildDirTrait.php"><a href="files/tests-builddirtrait.html"><abbr title="tests/BuildDirTrait.php">BuildDirTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Traits/BuildDirTrait.php"><a href="files/tests-traits-builddirtrait.html"><abbr title="tests/Traits/BuildDirTrait.php">BuildDirTrait.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">54</span>
 
@@ -711,7 +852,7 @@
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildDir#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildDir#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -741,11 +882,11 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_getBuildFileContent">
         getBuildFileContent()
-        <a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildFileContent" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildFileContent" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/BuildDirTrait.php"><a href="files/tests-builddirtrait.html"><abbr title="tests/BuildDirTrait.php">BuildDirTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Traits/BuildDirTrait.php"><a href="files/tests-traits-builddirtrait.html"><abbr title="tests/Traits/BuildDirTrait.php">BuildDirTrait.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">88</span>
 
@@ -775,7 +916,7 @@
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildFileContent#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildFileContent#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -805,11 +946,11 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_getBuildFilePath">
         getBuildFilePath()
-        <a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildFilePath" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildFilePath" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/BuildDirTrait.php"><a href="files/tests-builddirtrait.html"><abbr title="tests/BuildDirTrait.php">BuildDirTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Traits/BuildDirTrait.php"><a href="files/tests-traits-builddirtrait.html"><abbr title="tests/Traits/BuildDirTrait.php">BuildDirTrait.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">69</span>
 
@@ -839,7 +980,7 @@
     
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
         Tags
-        <a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildFilePath#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildFilePath#tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
@@ -869,11 +1010,11 @@
 >
     <h4 class="phpdocumentor-element__name" id="method_getBuildPath">
         getBuildPath()
-        <a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildPath" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildPath" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="tests/BuildDirTrait.php"><a href="files/tests-builddirtrait.html"><abbr title="tests/BuildDirTrait.php">BuildDirTrait.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="tests/Traits/BuildDirTrait.php"><a href="files/tests-traits-builddirtrait.html"><abbr title="tests/Traits/BuildDirTrait.php">BuildDirTrait.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">27</span>
 
@@ -924,7 +1065,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="tests/QRCodeTest.php"><a href="files/tests-qrcodetest.html"><abbr title="tests/QRCodeTest.php">QRCodeTest.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">36</span>
 
     </aside>
 
@@ -1060,6 +1201,7 @@
                             <li class="phpdocumentor-on-this-page-section__title">Constants</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
+                                                    <li class=""><a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#constant__buildDir">_buildDir</a></li>
                                                     <li class=""><a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#constant_buildDir">buildDir</a></li>
                                             </ul>
                 </li>
@@ -1067,7 +1209,6 @@
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#property__buildDir">$_buildDir</a></li>
                                                     <li class=""><a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#property_options">$options</a></li>
                                                     <li class=""><a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#property_qrcode">$qrcode</a></li>
                                             </ul>
@@ -1076,15 +1217,17 @@
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testInitCustomOutputInterfaceNotExistsException">testInitCustomOutputInterfaceNotExistsException()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testInitCustomOutputInterfaceNotImplementsException">testInitCustomOutputInterfaceNotImplementsException()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testRenderToCacheFile">testRenderToCacheFile()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_testSaveException">testSaveException()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_createBuildDir">createBuildDir()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildDir">getBuildDir()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildFileContent">getBuildFileContent()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildFilePath">getBuildFilePath()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCodeTest-BuildDirTrait.html#method_getBuildPath">getBuildPath()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_addEciSegment">addEciSegment()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_addEciSegmentInvalidCharsetException">addEciSegmentInvalidCharsetException()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_initCustomOutputInterfaceNotExistsException">initCustomOutputInterfaceNotExistsException()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_initCustomOutputInterfaceNotImplementsException">initCustomOutputInterfaceNotImplementsException()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_renderToCacheFile">renderToCacheFile()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_saveException">saveException()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_createBuildDir">createBuildDir()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildDir">getBuildDir()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildFileContent">getBuildFileContent()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildFilePath">getBuildFilePath()</a></li>
+                                            <li class=""><a href="classes/chillerlan-QRCodeTest-Traits-BuildDirTrait.html#method_getBuildPath">getBuildPath()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCodeTest-QRCodeTest.html#method_setUp">setUp()</a></li>
                                     </ul>
             </li>
