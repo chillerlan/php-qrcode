@@ -14,7 +14,7 @@ Please don't just write "headline says all" because the reply will likely be sim
 
 So you found a bug or the library code is somehow misbehaving? That's great (well, not that great tho). In that case,
 please [open a bug report and FILL OUT THE ISSUE TEMPLATE](https://github.com/chillerlan/php-qrcode/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBUG%5D)
-(i have to write that in all caps because nobody actually does it which usually leads to several avoidable follow-up questions that cost both of us precious time).
+(I have to write that in all caps because nobody actually does it which usually leads to several avoidable follow-up questions that cost both of us precious time).
 Below an example of the bug report template (it's not that hard):
 
 **Describe the bug**

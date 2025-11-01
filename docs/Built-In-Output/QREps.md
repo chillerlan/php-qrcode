@@ -60,7 +60,7 @@ exit;
 | (protected) `module(int $x, int $y, int $M_TYPE)` | `string` | Returns a path segment for a single module |
 
 
-## Options that affect this module
+## Options that affect this class
 
 | property              | type    |
 |-----------------------|---------|

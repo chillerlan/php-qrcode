@@ -51,28 +51,29 @@ For the QR Code reader, either `ext-gd` or `ext-imagick` is required!
   - [Filament](https://github.com/filamentphp/filament)
 - Symfony:
   - [phpqrcode-bundle](https://github.com/jonasarts/phpqrcode-bundle)
+- WoltLab Suite:
+  - [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)
+  - [[Developer] PHP QR Code](https://www.woltlab.com/pluginstore/file/7995-entwickler-php-qr-code/)
 - WordPress:
   - [wp-two-factor-auth](https://github.com/sjinks/wp-two-factor-auth)
   - [simple-2fa](https://wordpress.org/plugins/simple-2fa/)
   - [floating-share-button](https://github.com/qriouslad/floating-share-button)
-- WoltLab Suite:
-  - [two-step-verification](http://pluginstore.woltlab.com/file/3007-two-step-verification/)
-  - [[Developer] PHP QR Code](https://www.woltlab.com/pluginstore/file/7995-entwickler-php-qr-code/)
 - other uses:
   - [dependents](https://github.com/chillerlan/php-qrcode/network/dependents) / [packages](https://github.com/chillerlan/php-qrcode/network/dependents?dependent_type=PACKAGE)
   - [Appwrite](https://github.com/appwrite/appwrite)
   - [Cachet](https://github.com/CachetHQ/Cachet)
   - [GÉANT CAT](https://github.com/GEANT/CAT)
-  - [openITCOCKPIT](https://github.com/it-novum/openITCOCKPIT)
-  - [twill](https://github.com/area17/twill)
   - [Elefant CMS](https://github.com/jbroadway/elefant)
-  - [OSIRIS](https://github.com/JKoblitz/osiris)
   - [EspoCRM](https://github.com/espocrm/espocrm)
   - [FusionCMS](https://github.com/FusionWowCMS/FusionCMS)
   - [HortusFox](https://github.com/danielbrendel/hortusfox-web)
-  - [Pelican Panel](https://github.com/pelican-dev/panel)
   - [Laravel Boleto](https://github.com/eduardokum/laravel-boleto)
+  - [LORIS](https://github.com/aces/Loris)
   - [OpenBoleto](https://github.com/openboleto/openboleto)
+  - [openITCOCKPIT](https://github.com/it-novum/openITCOCKPIT)
+  - [OSIRIS](https://github.com/JKoblitz/osiris)
+  - [Pelican Panel](https://github.com/pelican-dev/panel)
+  - [twill](https://github.com/area17/twill)
 - Articles:
   - [Twilio: How to Create a QR Code in PHP](https://www.twilio.com/blog/create-qr-code-in-php) (featuring v4.3.x)
 

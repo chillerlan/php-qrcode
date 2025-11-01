@@ -84,7 +84,7 @@ imagedestroy($gdImage);
 | (abstract protected) `renderImage()`              | `void`   | Renders the image with the gdimage function for the desired output, implemented by child classes |
 
 
-## Options that affect this module
+## Options that affect this class
 
 | property               | type           |
 |------------------------|----------------|

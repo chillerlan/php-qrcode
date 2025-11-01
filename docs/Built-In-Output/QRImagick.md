@@ -86,7 +86,7 @@ echo $imagick->getImageBlob();
 | (protected) `setTransparencyColor()` | `void` | Sets the transparency color                |
 
 
-## Options that affect this module
+## Options that affect this class
 
 | property               | type     |
 |------------------------|----------|
