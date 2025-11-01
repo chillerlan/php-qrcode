@@ -55,7 +55,7 @@
 		"ext-fileinfo": "*",
 		"chillerlan/php-authenticator": "^5.2.1",
 		"intervention/image": "^3.11",
-		"phan/phan": "^5.5.2",
+		"phan/phan": "v6.x-dev",
 		"phpbench/phpbench": "^1.4",
 		"phpunit/phpunit": "^11.5",
 		"phpmd/phpmd": "^2.15",

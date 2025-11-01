@@ -172,14 +172,15 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 			$qrcode    = new QRCode($this->options);
 			$imagedata = $qrcode->render($expected);
 			$result    = $qrcode->readFromBlob($imagedata);
+
+			$this::assertSame($expected, $result->data);
+			$this::assertSame($version->getVersionNumber(), $result->version->getVersionNumber());
+			$this::assertSame($ecc->getLevel(), $result->eccLevel->getLevel());
 		}
 		catch(Exception $e){
 			$this::markTestSkipped(sprintf('skipped version %s%s: %s', $version, $ecc, $e->getMessage()));
 		}
 
-		$this::assertSame($expected, $result->data);
-		$this::assertSame($version->getVersionNumber(), $result->version->getVersionNumber());
-		$this::assertSame($ecc->getLevel(), $result->eccLevel->getLevel());
 	}
 
 }

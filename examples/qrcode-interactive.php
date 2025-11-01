@@ -23,6 +23,15 @@ function sendResponse(array $response):never{
 	exit;
 }
 
+function parseHexValue(string $v):array|string|null{
+	if(preg_match('/[a-f\d]{6}/i', $v) === 1){
+		return in_array($_POST['output_type'], ['png', 'jpg', 'gif'], true)
+			? array_map('hexdec', str_split($v, 2))
+			: '#'.$v ;
+	}
+	return null;
+}
+
 try{
 
 	$moduleValues = [
@@ -55,16 +64,6 @@ try{
 		QRMatrix::M_LOGO           => $_POST['m_logo_light'],
 	];
 
-	$moduleValues = array_map(function($v){
-		if(preg_match('/[a-f\d]{6}/i', $v) === 1){
-			return in_array($_POST['output_type'], ['png', 'jpg', 'gif'], true)
-				? array_map('hexdec', str_split($v, 2))
-				: '#'.$v ;
-		}
-		return null;
-	}, $moduleValues);
-
-
 	$ecc = in_array($_POST['ecc'], ['L', 'M', 'Q', 'H'], true) ? $_POST['ecc'] : 'L';
 
 	$options = new QROptions([
@@ -73,7 +72,8 @@ try{
 		'maskPattern'      => (int)$_POST['maskpattern'],
 		'addQuietzone'     => isset($_POST['quietzone']),
 		'quietzoneSize'    => (int)$_POST['quietzonesize'],
-		'moduleValues'     => $moduleValues,
+		/** @phan-suppress-next-line PhanTypeMismatchArgument (false positive) */
+		'moduleValues'     => array_map(parseHexValue(...), $moduleValues),
 		'outputType'       => $_POST['output_type'],
 		'scale'            => (int)$_POST['scale'],
 		'outputBase64'     => true,
