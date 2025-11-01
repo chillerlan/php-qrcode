@@ -79,26 +79,9 @@ header('Content-type: text/html');
 | (protected) `getCssClass(int $M_TYPE = 0)`   | `string` | Returns a string with all css classes for the current element           |
 
 
-## Options that affect this module
+## Options that affect this class
 
 | property       | type     |
 |----------------|----------|
 | `$cssClass`    | `string` |
 | `$eol`         | `string` |
-
-
-### Options that have no effect
-
-| property               | reason  |
-|------------------------|---------|
-| `$bgColor`             | via CSS |
-| `$circleRadius`        | N/A     |
-| `$connectPaths`        | N/A     |
-| `$drawCircularModules` | N/A     |
-| `$drawLightModules`    | N/A     |
-| `$excludeFromConnect`  | N/A     |
-| `$imageTransparent`    | N/A     |
-| `$keepAsSquare`        | N/A     |
-| `$outputBase64`        | N/A     |
-| `$returnResource`      | N/A     |
-| `$scale`               | via CSS |

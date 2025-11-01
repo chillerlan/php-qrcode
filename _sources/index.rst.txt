@@ -32,7 +32,7 @@ This work is licensed under the Creative Commons Attribution 4.0 International (
 
 .. toctree::
    :maxdepth: 3
-   :caption: Built-In Output Modules
+   :caption: Built-In Output Classes
 
    Built-In-Output/QREps.md
    Built-In-Output/QRFpdf.md

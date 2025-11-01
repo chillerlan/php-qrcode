@@ -65,7 +65,7 @@ echo $fpdf->Output('S');
 | (protected) `module(int $x, int $y, int $M_TYPE)` | `void` | Renders a single module      |
 
 
-## Options that affect this module
+## Options that affect this class
 
 | property            | type     |
 |---------------------|----------|

@@ -117,7 +117,6 @@ class MyOutput extends QROutputAbstract{
 
 Both methods return a module value, the main difference is that `getModuleValueAt()` is a convenience method
 that makes an extra call to retrieve the `$M_TYPE` from the given matrix coordinate to return the value via `getModuleValue()`.
-
 A `foreach` loop over the matrix gives you the key (coordinate) *and* value of an array element:
 
 ```php
@@ -222,6 +221,7 @@ class MyOutput extends QROutputAbstract{
 		return implode($this->options->eol, $paths);
 	}
 
+	// this method must be implemented/overridden if your output class uses the module collector
 	protected function moduleTransform(int $x, int $y, int $M_TYPE, int $M_TYPE_LAYER):string{
 		return sprintf('%d %d %012b', $x, $y, $M_TYPE);
 	}
@@ -235,10 +235,7 @@ Sometimes it can be necessary to override `collectModules()` in order to apply s
 ### `saveToFile()` and `toBase64DataURI()`
 
 The void method `saveToFile()` takes a data blob and the `$file` given in `QROutputInterface::dump()` and save to the path if it is not `null` - the file path itself is not checked except for writability.
-
 The final output can be transformed to a [base64 data URI](https://en.wikipedia.org/wiki/Data_URI_scheme) with `toBase64DataURI()`, where the data blob and a valid mime type as parameters - the mime type is not checked.
-
-
 
 ```php
 class MyOutput extends QROutputAbstract{

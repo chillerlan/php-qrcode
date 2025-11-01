@@ -89,10 +89,20 @@ In order to do so, we need to collect the modules per `$M_TYPE` before we can re
 	}
 ```
 
-We've introduced another method that handles the module rendering, which incooperates handling of the `QROptions::$drawLightModules` setting:
+Speaking of option settings, there's also `QROptions::$connectPaths` which we haven't taken care of yet - the good news is that we don't need to as it is already implemented!
+We'll modify the above `dump()` method to use `QROutputAbstract::collectModules()` instead.
+
+The module collector calls a method `moduleTransform()` internally, which is called with 4 parameters:
+
+- `$x`           : current column
+- `$y`           : current row
+- `$M_TYPE`      : field value
+- `$M_TYPE_LAYER`: (possibly modified) field value that acts as layer id
+
+We'## introduce another method that handles the module rendering, which incooperates handling of the `QROptions::$drawLightModules` setting:
 
 ```php
-	protected function module(int $x, int $y, int $M_TYPE):string{
+	protected function moduleTransform(int $x, int $y, int $M_TYPE, int $M_TYPE_LAYER):string{
 
 		if(!$this->drawLightModules && !$this->matrix->isDark($M_TYPE)){
 			return '';
@@ -102,33 +112,12 @@ We've introduced another method that handles the module rendering, which incoope
 	}
 ```
 
-Speaking of option settings, there's also `QROptions::$connectPaths` which we haven't taken care of yet - the good news is that we don't need to as it is already implemented!
-We'll modify the above `dump()` method to use `QROutputAbstract::collectModules()` instead.
-
-The module collector accepts a `Closure` as its only parameter, which is called with 4 parameters:
-
-- `$x`           : current column
-- `$y`           : current row
-- `$M_TYPE`      : field value
-- `$M_TYPE_LAYER`: (possibly modified) field value that acts as layer id
-
-We only need the first 3 parameters, so our closure would look as follows:
-
-```php
-$closure = fn(int $x, int $y, int $M_TYPE):string => $this->module($x, $y, $M_TYPE);
-```
-
-As of PHP 8.1+ we can narrow this down with the [first class callable syntax](https://www.php.net/manual/en/functions.first_class_callable_syntax.php):
-
-```php
-$closure = $this->module(...);
-```
 
 This is our final output method then:
 
 ```php
 	public function dump(string $file = null):string{
-		$collections = $this->collectModules($this->module(...));
+		$collections = $this->collectModules();
 
 		// build the final output
 		$out = [];
@@ -151,8 +140,7 @@ This is our final output method then:
 To run the output we just need to set the `QROptions::$outputInterface` to our custom class:
 
 ```php
-$options = new QROptions;
-$options->outputType       = QROutputInterface::CUSTOM;
+$options                   = new QROptions;
 $options->outputInterface  = MyCustomOutput::class;
 $options->connectPaths     = true;
 $options->drawLightModules = true;
@@ -169,7 +157,20 @@ $qrcode->addByteSegment('test');
 var_dump($qrcode->render());
 ```
 
+Alternatively, you can invoke the `QROutputInterface` manually:
+
+```php
+$qrcode            = new QRCode($options);
+$qrOutputInterface = new MyCustomOutput($options, $qrcode->getMatrix($data));
+
+//dump the output, which is equivalent to QRCode::render()
+$qrOutputInterface->dump();
+// render to file
+$qrOutputInterface->dump('/path/to/qrcode.svg');
+```
+
 The output looks similar to the following:
+
 ```
 these-modules-are-light (000000000010)
 
@@ -227,7 +228,7 @@ class MyCustomOutput extends QROutputAbstract{
 		return implode("\n", $out);
 	}
 
-	protected function module(int $x, int $y, int $M_TYPE):string{
+	protected function moduleTransform(int $x, int $y, int $M_TYPE, int $M_TYPE_LAYER):string{
 
 		if(!$this->drawLightModules && !$this->matrix->isDark($M_TYPE)){
 			return '';

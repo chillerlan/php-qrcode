@@ -86,7 +86,7 @@ $out = $qrOutputInterface->dump();
 | (protected) `module()`               | `void`   | Draws a single pixel at the given position                                                                           |
 
 
-## Options that affect this module
+## Options that affect this class
 
 | property               | type     |
 |------------------------|----------|

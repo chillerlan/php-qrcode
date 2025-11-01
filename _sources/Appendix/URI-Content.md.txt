@@ -253,11 +253,11 @@ END:VCALENDAR
 
 ## Credit Transfer
 
-### SEPA
+### SEPA (European Payments Council)
 - [Guidelines to Enable the Data Capture for the Initiation of a SEPA Credit Transfer](https://www.europeanpaymentscouncil.eu/document-library/guidance-documents/quick-response-code-guidelines-enable-data-capture-initiation)
 - [sepa-qr-data library for PHP (GitHub)](https://github.com/smhg/sepa-qr-data-php)
 
-### Pix
+### Pix (Banco Central do Brasil)
 - [Manual de Padrões para Iniciação do Pix (PDF)](https://www.bcb.gov.br/content/estabilidadefinanceira/pix/Regulamento_Pix/II_ManualdePadroesparaIniciacaodoPix.pdf)
 - [OpenBoleto (GitHub)](https://github.com/openboleto/openboleto)
 
