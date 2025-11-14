@@ -67,7 +67,7 @@ final class ECITest extends TestCase{
 		// read the first 4 bits
 		$this::assertSame($segments[0]::DATAMODE, $bitBuffer->read(4));
 		// decode the data
-		$this::assertSame(self::testData, ECI::decodeSegment($bitBuffer, $options->version));
+		$this::assertSame(self::testData, (new ECI)->decodeSegment($bitBuffer, $options->version));
 	}
 
 	#[Test]
@@ -112,7 +112,7 @@ final class ECITest extends TestCase{
 
 		$this::assertSame($lengthInBits, $eci->getLengthInBits());
 		$this::assertSame(Mode::ECI, $bitBuffer->read(4));
-		$this::assertSame($id, ECI::parseValue($bitBuffer)->getID());
+		$this::assertSame($id, $eci->parseValue($bitBuffer)->getID());
 	}
 
 	/**
@@ -134,7 +134,7 @@ final class ECITest extends TestCase{
 		// verify the ECI mode indicator
 		$this::assertSame(Mode::ECI, $bitBuffer->read(4));
 		// throw
-		ECI::decodeSegment($bitBuffer, $options->version);
+		(new ECI)->decodeSegment($bitBuffer, $options->version);
 	}
 
 	/**
@@ -159,7 +159,7 @@ final class ECITest extends TestCase{
 		$segments  = [new ECI($id), new Byte($data)];
 		$bitBuffer = (new QRData($options, $segments))->getBitBuffer();
 		$this::assertSame(Mode::ECI, $bitBuffer->read(4));
-		$this::assertSame($data, ECI::decodeSegment($bitBuffer, $options->version));
+		$this::assertSame($data,(new ECI)->decodeSegment($bitBuffer, $options->version));
 	}
 
 }

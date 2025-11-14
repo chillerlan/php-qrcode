@@ -89,7 +89,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		// read 4 bits (data mode indicator)
 		$bitBuffer->read(4);
 		// decode and check against the given string
-		$decoded = $dataModeInterface::decodeSegment($bitBuffer, 40);
+		$decoded = $dataModeInterface->decodeSegment($bitBuffer, 40);
 
 		$this::assertSame($string, $decoded);
 	}
@@ -129,7 +129,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		// read the first 4 bits
 		$this::assertSame($this->dataMode::DATAMODE, $bitBuffer->read(4));
 		// decode the data
-		$this::assertSame(static::testData, $this->dataMode::decodeSegment($bitBuffer, $options->version));
+		$this::assertSame(static::testData, $this->dataMode->decodeSegment($bitBuffer, $options->version));
 	}
 
 	/**
@@ -187,7 +187,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$bitBuffer         = $this->QRData->getBitBuffer();
 
 		$this::assertSame($this->dataMode::DATAMODE, $bitBuffer->read(4));
-		$this::assertSame($str, $this->dataMode::decodeSegment($bitBuffer, $options->version));
+		$this::assertSame($str, $this->dataMode->decodeSegment($bitBuffer, $options->version));
 	}
 
 	/**
@@ -218,7 +218,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 		// verify the encoded data
 		$this::assertSame($this->dataMode::DATAMODE, $bitBuffer->read(4));
-		$this::assertSame($str, $this->dataMode::decodeSegment($bitBuffer, $minimumVersionNumber));
+		$this::assertSame($str, $this->dataMode->decodeSegment($bitBuffer, $minimumVersionNumber));
 	}
 
 	/**

@@ -253,7 +253,7 @@ parameters:
 			path: tests/Data/DataInterfaceTestAbstract.php
 
 		-
-			rawMessage: 'Parameter #1 $data of class chillerlan\QRCode\Data\Byte constructor expects string, string|false given.'
+			rawMessage: 'Parameter #1 $data of class chillerlan\QRCode\Data\Byte constructor expects string|null, string|false given.'
 			identifier: argument.type
 			count: 1
 			path: tests/Data/ECITest.php

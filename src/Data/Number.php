@@ -37,7 +37,7 @@ final class Number extends QRDataModeAbstract{
 
 		$bitBuffer
 			->put(self::DATAMODE, 4)
-			->put($len, $this::getLengthBits($versionNumber))
+			->put($len, $this->getLengthBits($versionNumber))
 		;
 
 		$i = 0;
@@ -90,8 +90,8 @@ final class Number extends QRDataModeAbstract{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
-		$length = $bitBuffer->read(self::getLengthBits($versionNumber));
+	public function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
+		$length = $bitBuffer->read($this->getLengthBits($versionNumber));
 		$result = '';
 		// Read three digits at a time
 		while($length >= 3){

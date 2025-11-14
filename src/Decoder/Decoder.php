@@ -117,16 +117,16 @@ final class Decoder{
 				break;
 			}
 			elseif($datamode === Mode::NUMBER){
-				$result .= Number::decodeSegment($this->bitBuffer, $versionNumber);
+				$result .= (new Number)->decodeSegment($this->bitBuffer, $versionNumber);
 			}
 			elseif($datamode === Mode::ALPHANUM){
 				$result .= $this->decodeAlphanumSegment($versionNumber, $fc1InEffect);
 			}
 			elseif($datamode === Mode::BYTE){
-				$result .= Byte::decodeSegment($this->bitBuffer, $versionNumber);
+				$result .= (new Byte)->decodeSegment($this->bitBuffer, $versionNumber);
 			}
 			elseif($datamode === Mode::KANJI){
-				$result .= Kanji::decodeSegment($this->bitBuffer, $versionNumber);
+				$result .= (new Kanji)->decodeSegment($this->bitBuffer, $versionNumber);
 			}
 			elseif($datamode === Mode::STRCTURED_APPEND){
 
@@ -143,10 +143,10 @@ final class Decoder{
 				$fc1InEffect = true;
 			}
 			elseif($datamode === Mode::ECI){
-				$result .= ECI::decodeSegment($this->bitBuffer, $versionNumber);
+				$result .= (new ECI)->decodeSegment($this->bitBuffer, $versionNumber);
 			}
 			elseif($datamode === Mode::HANZI){
-				$result .= Hanzi::decodeSegment($this->bitBuffer, $versionNumber);
+				$result .= (new Hanzi)->decodeSegment($this->bitBuffer, $versionNumber);
 			}
 			else{
 				throw new QRCodeDecoderException('invalid data mode');
@@ -167,7 +167,7 @@ final class Decoder{
 	}
 
 	private function decodeAlphanumSegment(int $versionNumber, bool $fc1InEffect):string{
-		$str = AlphaNum::decodeSegment($this->bitBuffer, $versionNumber);
+		$str = (new AlphaNum)->decodeSegment($this->bitBuffer, $versionNumber);
 
 		// See section 6.4.8.1, 6.4.8.2
 		if($fc1InEffect){ // ???

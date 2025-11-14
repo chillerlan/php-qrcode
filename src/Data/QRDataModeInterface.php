@@ -55,6 +55,6 @@ interface QRDataModeInterface{
 	/**
 	 * reads a segment from the BitBuffer and decodes in the current data mode
 	 */
-	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string;
+	public function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string;
 
 }

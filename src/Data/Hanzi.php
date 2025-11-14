@@ -125,8 +125,8 @@ final class Hanzi extends QRDataModeAbstract{
 
 		$bitBuffer
 			->put(self::DATAMODE, 4)
-			->put($this::GB2312_SUBSET, 4)
-			->put($this->getCharCount(), $this::getLengthBits($versionNumber))
+			->put(self::GB2312_SUBSET, 4)
+			->put($this->getCharCount(), $this->getLengthBits($versionNumber))
 		;
 
 		$len = strlen($this->data);
@@ -159,14 +159,14 @@ final class Hanzi extends QRDataModeAbstract{
 	 *
 	 * @throws \chillerlan\QRCode\Data\QRCodeDataException
 	 */
-	public static function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
+	public function decodeSegment(BitBuffer $bitBuffer, int $versionNumber):string{
 
 		// Hanzi mode contains a subset indicator right after mode indicator
 		if($bitBuffer->read(4) !== self::GB2312_SUBSET){
 			throw new QRCodeDataException('ecpected subset indicator for Hanzi mode');
 		}
 
-		$length = $bitBuffer->read(self::getLengthBits($versionNumber));
+		$length = $bitBuffer->read($this->getLengthBits($versionNumber));
 
 		if($bitBuffer->available() < ($length * 13)){
 			throw new QRCodeDataException('not enough bits available');
