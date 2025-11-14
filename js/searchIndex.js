@@ -988,7 +988,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\ECI\u003A\u003A\u0024encoding",
             "name": "encoding",
-            "summary": "The\u0020current\u0020ECI\u0020encoding\u0020id",
+            "summary": "The\u0020current\u0020ECI\u0020encoding\u0020id\u0020\u0028default\u0020to\u0020UTF\u002D8\u0029",
             "url": "classes/chillerlan-QRCode-Data-ECI.html#property_encoding"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Data\\Hanzi",
