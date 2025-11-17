@@ -81,7 +81,7 @@ final class BitMatrix extends QRMatrix{
 	/**
 	 * Resets the current version info in order to attempt another reading
 	 */
-	public function resetVersionInfo():static{
+	public function resetVersionInfo():self{
 		$this->version     = null;
 		$this->eccLevel    = null;
 		$this->maskPattern = null;
@@ -92,7 +92,7 @@ final class BitMatrix extends QRMatrix{
 	/**
 	 * Mirror the bit matrix diagonally in order to attempt a second reading.
 	 */
-	public function mirrorDiagonal():static{
+	public function mirrorDiagonal():self{
 		$this->mirror = !$this->mirror;
 
 		// mirror vertically
@@ -180,7 +180,7 @@ final class BitMatrix extends QRMatrix{
 	 *
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 */
-	private function readFormatInformation():static{
+	private function readFormatInformation():self{
 
 		if($this->eccLevel !== null && $this->maskPattern !== null){
 			return $this;
@@ -294,7 +294,7 @@ final class BitMatrix extends QRMatrix{
 	 * @throws \chillerlan\QRCode\Decoder\QRCodeDecoderException
 	 * @noinspection DuplicatedCode
 	 */
-	private function readVersion():static{
+	private function readVersion():self{
 
 		if($this->version !== null){
 			return $this;
