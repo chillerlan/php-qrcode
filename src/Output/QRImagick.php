@@ -47,7 +47,7 @@ class QRImagick extends QROutputAbstract{
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	public function __construct(SettingsContainerInterface|QROptions $options, QRMatrix $matrix){
+	public function __construct(SettingsContainerInterface|QROptions|iterable $options, QRMatrix $matrix){
 
 		foreach(['fileinfo', 'imagick'] as $ext){
 			if(!extension_loaded($ext)){

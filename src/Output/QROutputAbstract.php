@@ -17,7 +17,7 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use finfo;
-use function base64_encode, dirname, extension_loaded, file_put_contents, is_writable, ksort, sprintf;
+use function base64_encode, dirname, extension_loaded, file_put_contents, is_iterable, is_writable, ksort, sprintf;
 use const FILEINFO_MIME_TYPE;
 
 /**
@@ -81,7 +81,12 @@ abstract class QROutputAbstract implements QROutputInterface{
 	/**
 	 * QROutputAbstract constructor.
 	 */
-	public function __construct(SettingsContainerInterface|QROptions $options, QRMatrix $matrix){
+	public function __construct(SettingsContainerInterface|QROptions|iterable $options, QRMatrix $matrix){
+
+		if(is_iterable($options)){
+			$options = new QROptions($options);
+		}
+
 		$this->options = $options;
 		$this->matrix  = $matrix;
 
@@ -95,7 +100,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	}
 
 	/**
-	 * Creates copies of several QROptions values to avoid calling the magic getters
+	 * Creates copies of several QROptions values to avoid calling the magic getters/property hooks
 	 * in long loops for a significant performance increase.
 	 *
 	 * These variables are usually used in the "module" methods and are called up to 31329 times (at version 40).

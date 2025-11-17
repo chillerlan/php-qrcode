@@ -28,8 +28,15 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 class QRGdRounded extends QRGdImagePNG{
 
-	public function __construct(SettingsContainerInterface|QROptions $options, QRMatrix $matrix){
+	public function __construct(SettingsContainerInterface|QROptions|iterable $options, QRMatrix $matrix){
+
+		if(is_iterable($options)){
+			$options = new QROptions($options);
+		}
+
 		// enable the internal scaling for better rounding results at scale < 20
+		// we need to do this before calling the parent constructor as these values are used there
+		$options->gdImageUseUpscale   = true;
 		$options->drawCircularModules = true;
 
 		parent::__construct($options, $matrix);

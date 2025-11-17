@@ -17,10 +17,9 @@ use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
 use chillerlan\Settings\SettingsContainerInterface;
 use GdImage;
-use function extension_loaded, imagecolorallocate, imagecolortransparent,
-	imagecreatetruecolor, imagefilledellipse, imagefilledrectangle,
-	imagescale, imagetypes, intdiv, intval, max, min, ob_end_clean, ob_get_contents, ob_start,
-	sprintf;
+use function extension_loaded, imagecolorallocate, imagecolortransparent, imagecreatetruecolor,
+	imagefilledellipse, imagefilledrectangle, imagescale, imagetypes, intdiv, intval, is_iterable,
+	max, min, ob_end_clean, ob_get_contents, ob_start, sprintf;
 use const IMG_AVIF, IMG_BMP, IMG_GIF, IMG_JPG, IMG_PNG, IMG_WEBP;
 
 /**
@@ -57,7 +56,12 @@ abstract class QRGdImage extends QROutputAbstract{
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 * @noinspection PhpMissingParentConstructorInspection
 	 */
-	public function __construct(SettingsContainerInterface|QROptions $options, QRMatrix $matrix){
+	public function __construct(SettingsContainerInterface|QROptions|iterable $options, QRMatrix $matrix){
+
+		if(is_iterable($options)){
+			$options = new QROptions($options);
+		}
+
 		$this->options = $options;
 		$this->matrix  = $matrix;
 

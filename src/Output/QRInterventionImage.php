@@ -48,7 +48,7 @@ class QRInterventionImage extends QROutputAbstract{
 	 *
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException
 	 */
-	public function __construct(SettingsContainerInterface|QROptions $options, QRMatrix $matrix){
+	public function __construct(SettingsContainerInterface|QROptions|iterable $options, QRMatrix $matrix){
 
 		if(!class_exists(ImageManager::class)){
 			// @codeCoverageIgnoreStart

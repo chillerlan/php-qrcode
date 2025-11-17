@@ -18,7 +18,7 @@ use chillerlan\QRCode\Data\{AlphaNum, Byte, ECI, Hanzi, Kanji, Number};
 use chillerlan\QRCode\Detector\Detector;
 use chillerlan\Settings\SettingsContainerInterface;
 use Throwable;
-use function chr, str_replace;
+use function chr, is_iterable, str_replace;
 
 /**
  * The main class which implements QR Code decoding -- as opposed to locating and extracting
@@ -36,7 +36,12 @@ final class Decoder{
 	private BitBuffer                            $bitBuffer;
 	private Detector                             $detector;
 
-	public function __construct(SettingsContainerInterface|QROptions $options = new QROptions){
+	public function __construct(SettingsContainerInterface|QROptions|iterable $options = new QROptions){
+
+		if(is_iterable($options)){
+			$options = new QROptions($options);
+		}
+
 		$this->options = $options;
 	}
 
