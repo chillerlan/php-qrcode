@@ -160,14 +160,14 @@ final class Decoder{
 		}
 
 		return new DecoderResult([
-			'rawBytes'                 => $this->bitBuffer,
 			'data'                     => $result,
-			'version'                  => $this->version,
 			'eccLevel'                 => $this->eccLevel,
 			'finderPatterns'           => $this->detector->getFinderPatterns(),
 			'maskPattern'              => $this->maskPattern,
+			'rawBytes'                 => $this->bitBuffer,
 			'structuredAppendParity'   => $parityData,
 			'structuredAppendSequence' => $symbolSequence,
+			'version'                  => $this->version,
 		]);
 	}
 
