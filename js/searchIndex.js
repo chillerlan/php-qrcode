@@ -2983,7 +2983,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AcopyVars\u0028\u0029",
             "name": "copyVars",
-            "summary": "Creates\u0020copies\u0020of\u0020several\u0020QROptions\u0020values\u0020to\u0020avoid\u0020calling\u0020the\u0020magic\u0020getters\nin\u0020long\u0020loops\u0020for\u0020a\u0020significant\u0020performance\u0020increase.",
+            "summary": "Creates\u0020copies\u0020of\u0020several\u0020QROptions\u0020values\u0020to\u0020avoid\u0020calling\u0020the\u0020magic\u0020getters\/property\u0020hooks\nin\u0020long\u0020loops\u0020for\u0020a\u0020significant\u0020performance\u0020increase.",
             "url": "classes/chillerlan-QRCode-Output-QROutputAbstract.html#method_copyVars"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QROutputAbstract\u003A\u003AsetMatrixDimensions\u0028\u0029",
