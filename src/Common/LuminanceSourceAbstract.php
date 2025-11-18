@@ -16,7 +16,7 @@ namespace chillerlan\QRCode\Common;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Decoder\QRCodeDecoderException;
 use chillerlan\Settings\SettingsContainerInterface;
-use function array_slice, array_splice, file_exists, is_file, is_readable, realpath;
+use function array_slice, file_exists, is_file, is_readable, realpath;
 
 /**
  * The purpose of this class hierarchy is to abstract different bitmap implementations across
@@ -28,7 +28,7 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 
 	protected SettingsContainerInterface|QROptions $options;
 	/** @var int[] */
-	protected array $luminances;
+	protected array $luminances = [];
 	protected int   $width;
 	protected int   $height;
 
@@ -36,8 +36,6 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 		$this->width   = $width;
 		$this->height  = $height;
 		$this->options = $options;
-
-		$this->luminances = [];
 	}
 
 	public function getLuminances():array{
@@ -54,15 +52,11 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 
 	public function getRow(int $y):array{
 
-		if($y < 0 || $y >= $this->getHeight()){
+		if($y < 0 || $y >= $this->height){
 			throw new QRCodeDecoderException('Requested row is outside the image: '.$y);
 		}
 
-		$arr = [];
-
-		array_splice($arr, 0, $this->width, array_slice($this->luminances, ($y * $this->width), $this->width));
-
-		return $arr;
+		return array_slice($this->luminances, ($y * $this->width), $this->width);
 	}
 
 	protected function setLuminancePixel(int $r, int $g, int $b):void{
