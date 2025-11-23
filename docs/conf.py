@@ -44,7 +44,7 @@ lexers['php-annotations'] = PhpLexer(startinline=True)
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = u'PHP-QRCode'
-copyright = u'2023, smiley'
+copyright = u'2025, smiley'
 author = u'smiley'
 epub_author = u'smiley'
 

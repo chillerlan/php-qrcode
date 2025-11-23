@@ -44,35 +44,37 @@ is a complex and costly operation that is necessary to ensure the symbol is read
 to override the evaluation and manually set a mask pattern, this is not recommended unless you know exactly what you're doing
 as it can render a QR symbol unreadable.
 
-The table below shows the performance impact (in miliseconds) of the mask pattern evaluation for each version, the times may vary between systems.
+The table below shows the performance impact (in miliseconds) of the mask pattern evaluation for select versions, the times may vary between systems.
 
-| version   |       1 |       2 |       3 |       4 |       5 |       6 |       7 |       8 |       9 |      10 |
-|-----------|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|
-| **1-10**  |   4.414 |   5.697 |   7.986 |   9.221 |  10.877 |  11.293 |  13.901 |  15.563 |  18.142 |  20.501 |
-| **11-20** |  22.662 |  27.779 |  29.622 |  33.017 |  36.358 |  39.712 |  43.685 |  47.121 |  51.389 |  57.865 |
-| **21-30** |  59.753 |  68.502 |  68.523 |  72.866 |  78.245 |  83.593 |  88.327 |  94.921 | 103.394 | 106.358 |
-| **31-40** | 113.311 | 120.484 | 126.215 | 132.931 | 139.783 | 145.617 | 170.576 | 165.996 | 167.365 | 175.821 |
+| version | time (ms) |
+|---------|----------:|
+| **1**   |     2.285 |
+| **5**   |     5.867 |
+| **10**  |    12.737 |
+| **20**  |    34.045 |
+| **30**  |    64.914 |
+| **40**  |   107.027 |
 
 
 ## Output
 
 Output rendering depends heavily on the size of the QR matrix, the desired type and the underlying libraries and/or PHP extensions.
-Especially the rendering of raster images through GD or ImagMagick can be very slow, depending on [the scale setting](../Usage/Configuration-settings.md#scale),
+Especially the rendering of raster images through GD or ImageMagick can be very slow, depending on [the scale setting](../Usage/Configuration-settings.md#scale),
 filters and image type.
 
 Below a comparison of the performance for the several built-in output classes (times in miliseconds, scale = 5):
 
-|                   |     v5 |    v10 |     v15 |     v20 |     v25 |     v30 |     v35 |     v40 |
-|-------------------|-------:|-------:|--------:|--------:|--------:|--------:|--------:|--------:|
-| **QRMarkupSVG**   |  3.732 |  8.645 |  13.846 |  21.127 |  32.842 |  43.753 |  56.584 |  73.885 |
-| **QRMarkupHTML**  |  0.522 |  1.308 |   2.062 |   2.761 |   3.907 |   5.201 |   7.931 |   9.572 |
-| **QRGdImageBMP**  |  5.998 | 12.541 |  20.728 |  32.336 |  46.345 |  62.842 |  81.555 | 106.482 |
-| **QRGdImageGIF**  |  3.427 |  6.817 |  12.226 |  17.925 |  25.453 |  35.136 |  44.706 |  57.477 |
-| **QRGdImageJPEG** |  2.284 |  4.882 |   8.161 |  12.097 |  17.333 |  23.862 |  30.327 |  40.226 |
-| **QRGdImagePNG**  |  4.523 |  9.377 |  16.581 |  26.207 |  36.516 |  49.066 |  63.765 |  82.074 |
-| **QRGdImageWEBP** |  8.211 | 17.367 |  30.079 |  47.095 |  69.668 |  91.378 | 119.869 | 150.288 |
-| **QRStringJSON**  |  0.043 |  0.066 |   0.107 |   0.158 |   0.215 |   0.301 |   0.369 |   0.492 |
-| **QRStringText**  |  0.229 |  0.387 |   0.628 |   0.952 |   1.312 |   1.759 |   2.329 |   3.045 |
-| **QRImagick**     | 37.694 | 68.808 | 114.415 | 172.962 | 242.338 | 325.085 | 419.999 | 529.897 |
-| **QRFpdf**        |  6.578 | 12.466 |  21.169 |  33.021 |  45.469 |  61.198 |  80.092 | 100.059 |
-| **QREps**         |  1.269 |  2.694 |   4.515 |   6.933 |  11.049 |  14.181 |  20.799 |  25.886 |
+|                   |     v5 |    v10 |     v20 |     v30 |     v40 |
+|-------------------|-------:|-------:|--------:|--------:|--------:|
+| **QRMarkupSVG**   |  3.732 |  8.645 |  21.127 |  43.753 |  73.885 |
+| **QRMarkupHTML**  |  0.522 |  1.308 |   2.761 |   5.201 |   9.572 |
+| **QRGdImageBMP**  |  5.998 | 12.541 |  32.336 |  62.842 | 106.482 |
+| **QRGdImageGIF**  |  3.427 |  6.817 |  17.925 |  35.136 |  57.477 |
+| **QRGdImageJPEG** |  2.284 |  4.882 |  12.097 |  23.862 |  40.226 |
+| **QRGdImagePNG**  |  4.523 |  9.377 |  26.207 |  49.066 |  82.074 |
+| **QRGdImageWEBP** |  8.211 | 17.367 |  47.095 |  91.378 | 150.288 |
+| **QRStringJSON**  |  0.043 |  0.066 |   0.158 |   0.301 |   0.492 |
+| **QRStringText**  |  0.229 |  0.387 |   0.952 |   1.759 |   3.045 |
+| **QRImagick**     | 37.694 | 68.808 | 172.962 | 325.085 | 529.897 |
+| **QRFpdf**        |  6.578 | 12.466 |  33.021 |  61.198 | 100.059 |
+| **QREps**         |  1.269 |  2.694 |   6.933 |  14.181 |  25.886 |

@@ -2,7 +2,7 @@
 
 ## QR Code
 
-A [*QR code*](https://en.wikipedia.org/wiki/QR_code) (quick-response code) is a type of two-dimensional matrix barcode, invented
+A [*QR code*](https://en.wikipedia.org/wiki/QR_code) (quick-response code), sometimes referred to as  *QR symbol* or simply just *symbol*, is a type of two-dimensional matrix barcode, invented
 in 1994 by Japanese company [Denso Wave](https://www.qrcode.com/en/faq.html#patentH2Title) for labelling automobile parts.
 The QR labelling system was applied beyond the automobile industry due to its fast readability and greater storage capacity
 compared to standard UPC barcodes.

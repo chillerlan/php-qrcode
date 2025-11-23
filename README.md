@@ -125,40 +125,6 @@ Also, have a look [in the examples folder](https://github.com/chillerlan/php-qrc
 </p>
 
 
-## Reading QR Codes
-
-Using the built-in QR Code reader is pretty straight-forward:
-
-```php
-// it's generally a good idea to wrap the reader in a try/catch block because it WILL throw eventually
-try{
-	$result = (new QRCode)->readFromFile('path/to/file.png'); // -> DecoderResult
-
-	// you can now use the result instance...
-	$content = $result->data;
-	$matrix  = $result->getMatrix(); // -> QRMatrix
-
-	// ...or simply cast it to string to get the content:
-	$content = (string)$result;
-}
-catch(Throwable $e){
-	// oopsies!
-}
-```
-
-
-# Shameless advertising
-
-Hi, please check out some of my other projects that are way cooler than qrcodes!
-
-- [js-qrcode](https://github.com/chillerlan/js-qrcode) - a javascript port of this library
-- [php-authenticator](https://github.com/chillerlan/php-authenticator) - a Google Authenticator implementation (see [authenticator example](https://github.com/chillerlan/php-qrcode/blob/main/examples/authenticator.php))
-- [php-httpinterface](https://github.com/chillerlan/php-httpinterface) - a PSR-7/15/17/18 implemetation
-- [php-oauth](https://github.com/chillerlan/php-oauth) - an OAuth 1/2 client library, fully PSR-7/PSR-17/PSR-18 compatible
-- [php-database](https://github.com/chillerlan/php-database) - a database client & querybuilder for MySQL, Postgres, SQLite, MSSQL, Firebird
-- [php-tootbot](https://github.com/php-tootbot/tootbot-template) - a Mastodon bot library (see [@dwil](https://github.com/php-tootbot/dwil))
-
-
 # Disclaimer!
 
 I don't take responsibility for molten CPUs, misled applications, failed log-ins etc.. Use at your own risk!

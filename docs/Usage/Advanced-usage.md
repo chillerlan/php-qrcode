@@ -173,7 +173,7 @@ $output = $qrcode->render();
 $qrcode->render(null, '/path/to/qrcode.svg');
 ```
 
-The [`QRDataModeInterface`](https://github.com/chillerlan/php-qrcode/blob/main/src/Data/QRDataModeInterface.php) offers the `validateString()` method (implemended for `AlphaNum`, `Byte`, `Hanzi`, `Kanji` and `Number`).
+The [`QRDataModeInterface`](https://github.com/chillerlan/php-qrcode/blob/main/src/Data/QRDataModeInterface.php) offers the `validateString()` method (implemented for `AlphaNum`, `Byte`, `Hanzi`, `Kanji` and `Number`).
 This method is used internally when a data mode is invoked, but it can come in handy if you need to check input data beforehand.
 
 ```php
@@ -184,33 +184,6 @@ if(!Hanzi::validateString($data)){
 $qrcode->addHanziSegment($data);
 ```
 
-
-### QR Code reader
-
-In some cases it might be necessary to increase the contrast of a QR Code image:
-
-```php
-$options->readerUseImagickIfAvailable = true;
-$options->readerIncreaseContrast      = true;
-$options->readerGrayscale             = true;
-
-$qrcode = new QRCode($options);
-
-$result = $qrcode->readFromFile('path/to/qrcode.png');
-$result = $qrcode->readFromBlob($imagedata);
-```
-
-The `QRMatrix` object from the [`DecoderResult`](https://github.com/chillerlan/php-qrcode/blob/main/src/Decoder/DecoderResult.php) can be reused:
-
-```php
-$matrix = $result->getQRMatrix();
-
-// ...matrix modification...
-
-$output = (new QRCode($options))->renderMatrix($matrix);
-
-// ...output
-```
 
 ## Common output options
 
@@ -265,17 +238,4 @@ $options->returnResource  = true;
 $imagick = $qrcode->render($data);
 
 echo $imagick->getImageBlob();
-```
-
-
-### Add a logo space
-
-
-```php
-$options->addLogoSpace    = true;
-$options->logoSpaceWidth  = 9;
-$options->logoSpaceHeight = 9;
-$options->logoSpaceStartX = 10;
-$options->logoSpaceStartY = 10;
-
 ```

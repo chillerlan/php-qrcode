@@ -41,26 +41,6 @@ and [configuration settings](../Usage/Configuration-settings.md) for a list of a
 Also, have a look [in the examples folder](https://github.com/chillerlan/php-qrcode/tree/main/examples) for some more usage examples.
 
 
-## Reading QR Codes
-
-Using the built-in QR Code reader is pretty straight-forward:
-```php
-try{
-	$result = (new QRCode)->readFromFile('path/to/file.png'); // -> DecoderResult
-
-	// you can now use the result instance...
-	$content = $result->data;
-
-	// ...or simply cast the result instance to string to get the content
-	$content = (string)$result;
-}
-catch(Throwable $exception){
-	// handle exception...
-}
-```
-It's generally a good idea to wrap the reading in a try/catch block to handle any errors that may occur in the process.
-
-
 ## Notes
 The QR encoder, especially the subroutines for mask pattern testing, can cause high CPU load on increased matrix size.
 You can avoid a part of this load by choosing a fast output module, like SVG.

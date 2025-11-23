@@ -62,6 +62,8 @@ The markdown sources for the [Read the Docs online manual](https://php-qrcode.re
 - [Quickstart](./Usage/Quickstart.md)
 - [Advanced usage](./Usage/Advanced-usage.md)
 - [Configuration settings](./Usage/Configuration-settings.md)
+- [Reading QR Codes](./Usage/Reading-QRCodes.md)
+- [Logos and logo space](./Usage/Logos.md)
 
 
 ### Customizing output
