@@ -21,6 +21,8 @@ This work is licensed under the Creative Commons Attribution 4.0 International (
    Usage/Quickstart.md
    Usage/Advanced-usage.md
    Usage/Configuration-settings.md
+   Usage/Reading-QRCodes.md
+   Usage/Logos.md
 
 .. toctree::
    :maxdepth: 3

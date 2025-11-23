@@ -75,7 +75,6 @@
 <li class="toctree-l3"><a class="reference internal" href="../Usage/Quickstart.html#configuration">Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../Usage/Quickstart.html#reading-qr-codes">Reading QR Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Quickstart.html#notes">Notes</a></li>
 </ul>
 </li>
@@ -89,14 +88,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Advanced-usage.html#qrcode-methods"><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#render-a-qrmatrix-instance">Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#mixed-mode">Mixed mode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#qr-code-reader">QR Code reader</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Advanced-usage.html#common-output-options">Common output options</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#save-to-file">Save to file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#base64-uri-output">Base64 URI output</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#return-the-image-resource">Return the image resource</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Usage/Advanced-usage.html#add-a-logo-space">Add a logo space</a></li>
 </ul>
 </li>
 </ul>
@@ -147,6 +144,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readergrayscale">readerGrayscale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readerinvertcolors">readerInvertColors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../Usage/Configuration-settings.html#readerincreasecontrast">readerIncreaseContrast</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Usage/Reading-QRCodes.html">Reading QR Codes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Reading-QRCodes.html#basic-usage">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Reading-QRCodes.html#the-luminancesourceinterface">The <code class="docutils literal notranslate"><span class="pre">LuminanceSourceInterface</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Reading-QRCodes.html#the-decoder">The <code class="docutils literal notranslate"><span class="pre">Decoder</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Reading-QRCodes.html#general-considerations">General considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Usage/Logos.html">Logos and logo space</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Logos.html#info">Info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Usage/Logos.html#adding-a-logo-space">Adding a logo space</a></li>
 </ul>
 </li>
 </ul>
@@ -396,70 +405,31 @@ encoding those characters as 3 or 4 byte UTF-8 may still be faster in 8-bit byte
 is a complex and costly operation that is necessary to ensure the symbol is readable. Although <a class="reference internal" href="../Usage/Configuration-settings.html#maskpattern"><span class="std std-ref">there is an option</span></a>
 to override the evaluation and manually set a mask pattern, this is not recommended unless you know exactly what you’re doing
 as it can render a QR symbol unreadable.</p>
-<p>The table below shows the performance impact (in miliseconds) of the mask pattern evaluation for each version, the times may vary between systems.</p>
+<p>The table below shows the performance impact (in miliseconds) of the mask pattern evaluation for select versions, the times may vary between systems.</p>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>version</p></th>
-<th class="head text-right"><p>1</p></th>
-<th class="head text-right"><p>2</p></th>
-<th class="head text-right"><p>3</p></th>
-<th class="head text-right"><p>4</p></th>
-<th class="head text-right"><p>5</p></th>
-<th class="head text-right"><p>6</p></th>
-<th class="head text-right"><p>7</p></th>
-<th class="head text-right"><p>8</p></th>
-<th class="head text-right"><p>9</p></th>
-<th class="head text-right"><p>10</p></th>
+<th class="head text-right"><p>time (ms)</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><strong>1-10</strong></p></td>
-<td class="text-right"><p>4.414</p></td>
-<td class="text-right"><p>5.697</p></td>
-<td class="text-right"><p>7.986</p></td>
-<td class="text-right"><p>9.221</p></td>
-<td class="text-right"><p>10.877</p></td>
-<td class="text-right"><p>11.293</p></td>
-<td class="text-right"><p>13.901</p></td>
-<td class="text-right"><p>15.563</p></td>
-<td class="text-right"><p>18.142</p></td>
-<td class="text-right"><p>20.501</p></td>
+<tr class="row-even"><td><p><strong>1</strong></p></td>
+<td class="text-right"><p>2.285</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>11-20</strong></p></td>
-<td class="text-right"><p>22.662</p></td>
-<td class="text-right"><p>27.779</p></td>
-<td class="text-right"><p>29.622</p></td>
-<td class="text-right"><p>33.017</p></td>
-<td class="text-right"><p>36.358</p></td>
-<td class="text-right"><p>39.712</p></td>
-<td class="text-right"><p>43.685</p></td>
-<td class="text-right"><p>47.121</p></td>
-<td class="text-right"><p>51.389</p></td>
-<td class="text-right"><p>57.865</p></td>
+<tr class="row-odd"><td><p><strong>5</strong></p></td>
+<td class="text-right"><p>5.867</p></td>
 </tr>
-<tr class="row-even"><td><p><strong>21-30</strong></p></td>
-<td class="text-right"><p>59.753</p></td>
-<td class="text-right"><p>68.502</p></td>
-<td class="text-right"><p>68.523</p></td>
-<td class="text-right"><p>72.866</p></td>
-<td class="text-right"><p>78.245</p></td>
-<td class="text-right"><p>83.593</p></td>
-<td class="text-right"><p>88.327</p></td>
-<td class="text-right"><p>94.921</p></td>
-<td class="text-right"><p>103.394</p></td>
-<td class="text-right"><p>106.358</p></td>
+<tr class="row-even"><td><p><strong>10</strong></p></td>
+<td class="text-right"><p>12.737</p></td>
 </tr>
-<tr class="row-odd"><td><p><strong>31-40</strong></p></td>
-<td class="text-right"><p>113.311</p></td>
-<td class="text-right"><p>120.484</p></td>
-<td class="text-right"><p>126.215</p></td>
-<td class="text-right"><p>132.931</p></td>
-<td class="text-right"><p>139.783</p></td>
-<td class="text-right"><p>145.617</p></td>
-<td class="text-right"><p>170.576</p></td>
-<td class="text-right"><p>165.996</p></td>
-<td class="text-right"><p>167.365</p></td>
-<td class="text-right"><p>175.821</p></td>
+<tr class="row-odd"><td><p><strong>20</strong></p></td>
+<td class="text-right"><p>34.045</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>30</strong></p></td>
+<td class="text-right"><p>64.914</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>40</strong></p></td>
+<td class="text-right"><p>107.027</p></td>
 </tr>
 </tbody>
 </table>
@@ -467,7 +437,7 @@ as it can render a QR symbol unreadable.</p>
 <section id="output">
 <h2>Output<a class="headerlink" href="#output" title="Link to this heading"></a></h2>
 <p>Output rendering depends heavily on the size of the QR matrix, the desired type and the underlying libraries and/or PHP extensions.
-Especially the rendering of raster images through GD or ImagMagick can be very slow, depending on <a class="reference internal" href="../Usage/Configuration-settings.html#scale"><span class="std std-ref">the scale setting</span></a>,
+Especially the rendering of raster images through GD or ImageMagick can be very slow, depending on <a class="reference internal" href="../Usage/Configuration-settings.html#scale"><span class="std std-ref">the scale setting</span></a>,
 filters and image type.</p>
 <p>Below a comparison of the performance for the several built-in output classes (times in miliseconds, scale = 5):</p>
 <table class="docutils align-default">
@@ -475,11 +445,8 @@ filters and image type.</p>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head text-right"><p>v5</p></th>
 <th class="head text-right"><p>v10</p></th>
-<th class="head text-right"><p>v15</p></th>
 <th class="head text-right"><p>v20</p></th>
-<th class="head text-right"><p>v25</p></th>
 <th class="head text-right"><p>v30</p></th>
-<th class="head text-right"><p>v35</p></th>
 <th class="head text-right"><p>v40</p></th>
 </tr>
 </thead>
@@ -487,121 +454,85 @@ filters and image type.</p>
 <tr class="row-even"><td><p><strong>QRMarkupSVG</strong></p></td>
 <td class="text-right"><p>3.732</p></td>
 <td class="text-right"><p>8.645</p></td>
-<td class="text-right"><p>13.846</p></td>
 <td class="text-right"><p>21.127</p></td>
-<td class="text-right"><p>32.842</p></td>
 <td class="text-right"><p>43.753</p></td>
-<td class="text-right"><p>56.584</p></td>
 <td class="text-right"><p>73.885</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>QRMarkupHTML</strong></p></td>
 <td class="text-right"><p>0.522</p></td>
 <td class="text-right"><p>1.308</p></td>
-<td class="text-right"><p>2.062</p></td>
 <td class="text-right"><p>2.761</p></td>
-<td class="text-right"><p>3.907</p></td>
 <td class="text-right"><p>5.201</p></td>
-<td class="text-right"><p>7.931</p></td>
 <td class="text-right"><p>9.572</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>QRGdImageBMP</strong></p></td>
 <td class="text-right"><p>5.998</p></td>
 <td class="text-right"><p>12.541</p></td>
-<td class="text-right"><p>20.728</p></td>
 <td class="text-right"><p>32.336</p></td>
-<td class="text-right"><p>46.345</p></td>
 <td class="text-right"><p>62.842</p></td>
-<td class="text-right"><p>81.555</p></td>
 <td class="text-right"><p>106.482</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>QRGdImageGIF</strong></p></td>
 <td class="text-right"><p>3.427</p></td>
 <td class="text-right"><p>6.817</p></td>
-<td class="text-right"><p>12.226</p></td>
 <td class="text-right"><p>17.925</p></td>
-<td class="text-right"><p>25.453</p></td>
 <td class="text-right"><p>35.136</p></td>
-<td class="text-right"><p>44.706</p></td>
 <td class="text-right"><p>57.477</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>QRGdImageJPEG</strong></p></td>
 <td class="text-right"><p>2.284</p></td>
 <td class="text-right"><p>4.882</p></td>
-<td class="text-right"><p>8.161</p></td>
 <td class="text-right"><p>12.097</p></td>
-<td class="text-right"><p>17.333</p></td>
 <td class="text-right"><p>23.862</p></td>
-<td class="text-right"><p>30.327</p></td>
 <td class="text-right"><p>40.226</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>QRGdImagePNG</strong></p></td>
 <td class="text-right"><p>4.523</p></td>
 <td class="text-right"><p>9.377</p></td>
-<td class="text-right"><p>16.581</p></td>
 <td class="text-right"><p>26.207</p></td>
-<td class="text-right"><p>36.516</p></td>
 <td class="text-right"><p>49.066</p></td>
-<td class="text-right"><p>63.765</p></td>
 <td class="text-right"><p>82.074</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>QRGdImageWEBP</strong></p></td>
 <td class="text-right"><p>8.211</p></td>
 <td class="text-right"><p>17.367</p></td>
-<td class="text-right"><p>30.079</p></td>
 <td class="text-right"><p>47.095</p></td>
-<td class="text-right"><p>69.668</p></td>
 <td class="text-right"><p>91.378</p></td>
-<td class="text-right"><p>119.869</p></td>
 <td class="text-right"><p>150.288</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>QRStringJSON</strong></p></td>
 <td class="text-right"><p>0.043</p></td>
 <td class="text-right"><p>0.066</p></td>
-<td class="text-right"><p>0.107</p></td>
 <td class="text-right"><p>0.158</p></td>
-<td class="text-right"><p>0.215</p></td>
 <td class="text-right"><p>0.301</p></td>
-<td class="text-right"><p>0.369</p></td>
 <td class="text-right"><p>0.492</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>QRStringText</strong></p></td>
 <td class="text-right"><p>0.229</p></td>
 <td class="text-right"><p>0.387</p></td>
-<td class="text-right"><p>0.628</p></td>
 <td class="text-right"><p>0.952</p></td>
-<td class="text-right"><p>1.312</p></td>
 <td class="text-right"><p>1.759</p></td>
-<td class="text-right"><p>2.329</p></td>
 <td class="text-right"><p>3.045</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>QRImagick</strong></p></td>
 <td class="text-right"><p>37.694</p></td>
 <td class="text-right"><p>68.808</p></td>
-<td class="text-right"><p>114.415</p></td>
 <td class="text-right"><p>172.962</p></td>
-<td class="text-right"><p>242.338</p></td>
 <td class="text-right"><p>325.085</p></td>
-<td class="text-right"><p>419.999</p></td>
 <td class="text-right"><p>529.897</p></td>
 </tr>
 <tr class="row-even"><td><p><strong>QRFpdf</strong></p></td>
 <td class="text-right"><p>6.578</p></td>
 <td class="text-right"><p>12.466</p></td>
-<td class="text-right"><p>21.169</p></td>
 <td class="text-right"><p>33.021</p></td>
-<td class="text-right"><p>45.469</p></td>
 <td class="text-right"><p>61.198</p></td>
-<td class="text-right"><p>80.092</p></td>
 <td class="text-right"><p>100.059</p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>QREps</strong></p></td>
 <td class="text-right"><p>1.269</p></td>
 <td class="text-right"><p>2.694</p></td>
-<td class="text-right"><p>4.515</p></td>
 <td class="text-right"><p>6.933</p></td>
-<td class="text-right"><p>11.049</p></td>
 <td class="text-right"><p>14.181</p></td>
-<td class="text-right"><p>20.799</p></td>
 <td class="text-right"><p>25.886</p></td>
 </tr>
 </tbody>
@@ -620,7 +551,7 @@ filters and image type.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, smiley.</p>
+    <p>&#169; Copyright 2025, smiley.</p>
   </div>
 
    

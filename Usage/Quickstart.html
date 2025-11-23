@@ -75,7 +75,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#reading-qr-codes">Reading QR Codes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
 </ul>
 </li>
@@ -89,14 +88,12 @@
 <li class="toctree-l2"><a class="reference internal" href="Advanced-usage.html#qrcode-methods"><code class="docutils literal notranslate"><span class="pre">QRCode</span></code> methods</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#render-a-qrmatrix-instance">Render a <code class="docutils literal notranslate"><span class="pre">QRMatrix</span></code> instance</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#mixed-mode">Mixed mode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#qr-code-reader">QR Code reader</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Advanced-usage.html#common-output-options">Common output options</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#save-to-file">Save to file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#base64-uri-output">Base64 URI output</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#return-the-image-resource">Return the image resource</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Advanced-usage.html#add-a-logo-space">Add a logo space</a></li>
 </ul>
 </li>
 </ul>
@@ -147,6 +144,18 @@
 <li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#readergrayscale">readerGrayscale</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#readerinvertcolors">readerInvertColors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#readerincreasecontrast">readerIncreaseContrast</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Reading-QRCodes.html">Reading QR Codes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Reading-QRCodes.html#basic-usage">Basic usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading-QRCodes.html#the-luminancesourceinterface">The <code class="docutils literal notranslate"><span class="pre">LuminanceSourceInterface</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading-QRCodes.html#the-decoder">The <code class="docutils literal notranslate"><span class="pre">Decoder</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="Reading-QRCodes.html#general-considerations">General considerations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Logos.html">Logos and logo space</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Logos.html#info">Info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logos.html#adding-a-logo-space">Adding a logo space</a></li>
 </ul>
 </li>
 </ul>
@@ -397,25 +406,6 @@ and <a class="reference internal" href="Configuration-settings.html"><span class
 Also, have a look <a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/main/examples">in the examples folder</a> for some more usage examples.</p>
 </section>
 </section>
-<section id="reading-qr-codes">
-<h2>Reading QR Codes<a class="headerlink" href="#reading-qr-codes" title="Link to this heading"></a></h2>
-<p>Using the built-in QR Code reader is pretty straight-forward:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">{</span>
-	<span class="nv">$result</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">readFromFile</span><span class="p">(</span><span class="s1">&#39;path/to/file.png&#39;</span><span class="p">);</span> <span class="c1">// -&gt; DecoderResult</span>
-
-	<span class="c1">// you can now use the result instance...</span>
-	<span class="nv">$content</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">data</span><span class="p">;</span>
-
-	<span class="c1">// ...or simply cast the result instance to string to get the content</span>
-	<span class="nv">$content</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span><span class="nv">$result</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="k">catch</span><span class="p">(</span><span class="nx">Throwable</span> <span class="nv">$exception</span><span class="p">){</span>
-	<span class="c1">// handle exception...</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>It’s generally a good idea to wrap the reading in a try/catch block to handle any errors that may occur in the process.</p>
-</section>
 <section id="notes">
 <h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
 <p>The QR encoder, especially the subroutines for mask pattern testing, can cause high CPU load on increased matrix size.
@@ -435,7 +425,7 @@ Oh hey and don’t forget to sanitize any user input!</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, smiley.</p>
+    <p>&#169; Copyright 2025, smiley.</p>
   </div>
 
    
