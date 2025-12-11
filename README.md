@@ -49,6 +49,7 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
   - String types: JSON, plain text, etc.
   - Encapsulated Postscript (EPS)
   - PDF via [FPDF](https://github.com/setasign/fpdf)
+  - Portable Bitmap ([PBM](https://en.wikipedia.org/wiki/Netpbm))
 - QR Code reader (via GD and ImageMagick)
 
 
