@@ -13,7 +13,7 @@ namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\{QROutputInterface, QRStringText};
+use chillerlan\QRCode\Output\{QROutputInterface, QRPbm};
 use chillerlan\Settings\SettingsContainerInterface;
 use PHPUnit\Framework\Attributes\Test;
 
@@ -26,7 +26,7 @@ final class QRPbmTest extends QROutputTestAbstract{
 		SettingsContainerInterface|QROptions $options,
 		QRMatrix                             $matrix,
 	):QROutputInterface{
-		return new QRStringText($options, $matrix);
+		return new QRPbm($options, $matrix);
 	}
 
 	/**
@@ -34,10 +34,11 @@ final class QRPbmTest extends QROutputTestAbstract{
 	 */
 	public static function moduleValueProvider():array{
 		return [
-			'invalid: wrong type'       => [[], false],
-			'valid: string'             => ['abc', true],
-			'valid: zero length string' => ['', true],
-			'valid: empty string'       => [' ', true],
+			'invalid: wrong type' => [[], false],
+			'invalid: Not 0 or 1' => ['abc', false],
+			'invalid: empty string' => ['', false],
+			'invalid: space string' => [' ', false],
+                        'valid: zero' => ['0', true],
 		];
 	}
 

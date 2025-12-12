@@ -14,29 +14,37 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\Output\QROutputAbstract;
 
 class QRPbm extends QROutputAbstract {
+
 	private const LIGHT_DARK = [ '0', '1' ];
-	protected function prepareModuleValue(mixed $value):mixed{
+
+	protected function prepareModuleValue( mixed $value ): mixed {
 		return $value;
 	}
-	protected function getDefaultModuleValue(bool $isDark):mixed{
+
+	protected function getDefaultModuleValue( bool $isDark ): mixed {
 		return $isDark ? self::LIGHT_DARK[1] : self::LIGHT_DARK[0];
 	}
-	public static function moduleValueIsValid(mixed $value):bool{
-		return is_string($value) && in_array( $value, self::LIGHT_DARK, true );
+
+	public static function moduleValueIsValid( mixed $value): bool {
+		return is_string( $value ) && in_array( $value, self::LIGHT_DARK, true );
 	}
-	public function dump(string|null $file = null):mixed {
+
+	public function dump( string|null $file = null ): mixed {
 		$size = $this->matrix->getSize();
-		$result = "P1\n"
+		$qrString = "P1\n"
                     .$size.' '.$size."\n";
 		foreach($this->matrix->getBooleanMatrix() as $row) {
 			foreach ($row as $isDark) {
-				$result .= $this->getDefaultModuleValue( $isDark );
+				$qrString .= $this->getDefaultModuleValue( $isDark );
 			}
-			$result .= "\n";
+			$qrString .= "\n";
 		}
 		if ( is_string($file) ) {
-			file_put_contents($file,$result);
+			$writeResult = file_put_contents($file,$qrString);
+			if ( $writeResult === false ) {
+				throw new QRCodeOutputException('Cannot write data to cache file: '.$file);
+			}
 		}
-		return $result;
+		return $qrString;
 	}
 }
