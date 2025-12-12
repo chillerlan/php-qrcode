@@ -38,17 +38,17 @@ final class QRPbmTest extends QROutputTestAbstract{
 			'invalid: Not 0 or 1' => ['abc', false],
 			'invalid: empty string' => ['', false],
 			'invalid: space string' => [' ', false],
-                        'valid: zero' => ['0', true],
+			'valid: zero' => ['0', true],
 		];
 	}
 
-        #[Test]
+	#[Test]
 	public function setModuleValues():void{
 
 			$this->options->moduleValues = [
-					// data
-					QRMatrix::M_DATA_DARK => '1',
-					QRMatrix::M_DATA      => '0',
+				// data
+				QRMatrix::M_DATA_DARK => '1',
+				QRMatrix::M_DATA      => '0',
 			];
 
 			$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
