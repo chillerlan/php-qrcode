@@ -54,7 +54,7 @@ final class QRPbmTest extends QROutputTestAbstract{
 			$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
 			$data                  = $this->outputInterface->dump();
 
-			$this::assertStringContainsString('1', $data);
-			$this::assertStringContainsString('0', $data);
+			$this->assertStringContainsString('1', $data);
+			$this->assertStringContainsString('0', $data);
 	}
 }
