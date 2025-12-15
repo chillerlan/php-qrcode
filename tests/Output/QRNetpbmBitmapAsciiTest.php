@@ -13,20 +13,20 @@ namespace chillerlan\QRCodeTest\Output;
 
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Data\QRMatrix;
-use chillerlan\QRCode\Output\{QROutputInterface, QRPbm};
+use chillerlan\QRCode\Output\{QROutputInterface, QRNetpbmBitmapAscii};
 use chillerlan\Settings\SettingsContainerInterface;
 use PHPUnit\Framework\Attributes\Test;
 
 /**
- * Tests the QRPbm output class
+ * Tests the QRNetpbmBitmapAscii output class
  */
-final class QRPbmTest extends QROutputTestAbstract{
+final class QRNetpbmBitmapAsciiTest extends QROutputTestAbstract {
 
 	protected function getOutputInterface(
 		SettingsContainerInterface|QROptions $options,
 		QRMatrix                             $matrix,
 	):QROutputInterface{
-		return new QRPbm($options, $matrix);
+		return new QRNetpbmBitmapAscii($options, $matrix);
 	}
 
 	/**
@@ -35,26 +35,24 @@ final class QRPbmTest extends QROutputTestAbstract{
 	public static function moduleValueProvider():array{
 		return [
 			'invalid: wrong type' => [[], false],
-			'invalid: Not 0 or 1' => ['abc', false],
-			'invalid: empty string' => ['', false],
-			'invalid: space string' => [' ', false],
-			'valid: zero' => ['0', true],
+			'invalid: wrong type' => ['abc', false],
+			'valid: true' => [true, true],
+			'valid: false' => [false, true],
 		];
 	}
 
 	#[Test]
 	public function setModuleValues():void{
-
 			$this->options->moduleValues = [
 				// data
-				QRMatrix::M_DATA_DARK => '1',
-				QRMatrix::M_DATA      => '0',
+				QRMatrix::M_DATA_DARK => true,
+				QRMatrix::M_DATA      => false,
 			];
 
 			$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
-			$data                  = $this->outputInterface->dump();
+			$data = $this->outputInterface->dump();
 
-			$this->assertStringContainsString('1', $data);
-			$this->assertStringContainsString('0', $data);
+			$this::assertStringContainsString('1', $data);
+			$this::assertStringContainsString('0', $data);
 	}
 }
