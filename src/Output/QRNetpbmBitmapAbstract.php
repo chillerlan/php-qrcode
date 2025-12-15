@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace chillerlan\QRCode\Output;
 
 use chillerlan\QRCode\Output\QROutputAbstract;
+use UnexpectedValueException;
 
 abstract class QRNetpbmBitmapAbstract extends QROutputAbstract {
 
