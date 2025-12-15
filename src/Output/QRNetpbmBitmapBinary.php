@@ -21,7 +21,7 @@ class QRNetpbmBitmapBinary extends QRNetpbmBitmapAbstract {
 	protected function getBody(): string {
 		$asciiBody = parent::getBody();
 		$body = '';
-		foreach ( explode("\n", $asciiBody) as $row ) {
+		foreach (explode("\n", $asciiBody) as $row) {
 			$body .= $this->asciiBinToBinary( $row );
 		}
 		return $body;
@@ -29,9 +29,9 @@ class QRNetpbmBitmapBinary extends QRNetpbmBitmapAbstract {
 
 	private function asciiBinToBinary( string $asciiBin ): string {
 		$binaryString = '';
-		foreach( str_split( $asciiBin, 8 ) as $currentChunk ) {
+		foreach(str_split( $asciiBin, 8 ) as $currentChunk) {
 			$currentChunk = str_pad( $currentChunk, 8, '0' );
-			$binaryString .= pack( "C", bindec( $currentChunk ) );
+			$binaryString .= pack( 'C', bindec( $currentChunk ) );
 		}
 		return $binaryString;
 	}

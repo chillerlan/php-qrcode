@@ -18,7 +18,7 @@ abstract class QRNetpbmBitmapAbstract extends QROutputAbstract {
 
 	protected function prepareModuleValue( mixed $value ): mixed {
 		if ( !is_bool( $value ) ) {
-			throw new UnexpectedValueException( "Expected boolean module value" );
+			throw new UnexpectedValueException( 'Expected boolean module value' );
 		}
 		return $value;
 	}
@@ -35,7 +35,7 @@ abstract class QRNetpbmBitmapAbstract extends QROutputAbstract {
 
 	protected function getBody(): string {
 		$body = '';
-		foreach ( $this->matrix->getBooleanMatrix() as $row ) {
+		foreach ($this->matrix->getBooleanMatrix() as $row) {
 			$line = '';
 			foreach ($row as $isDark) {
 				$line .= str_repeat( $isDark ? '1' : '0', $this->scale );
@@ -47,7 +47,7 @@ abstract class QRNetpbmBitmapAbstract extends QROutputAbstract {
 	}
 
 	public function dump( string|null $file = null ): mixed {
-		$qrString = $this->getHeader() . "\n"
+		$qrString = $this->getHeader()."\n"
                     .$this->length.' '.$this->length."\n".$this->getBody();
 		$this->saveToFile( $qrString, $file );
 
