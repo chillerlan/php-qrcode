@@ -34,8 +34,8 @@ final class QRNetpbmBitmapAsciiTest extends QROutputTestAbstract {
 	 */
 	public static function moduleValueProvider():array{
 		return [
-			'invalid: wrong type' => [[], false],
-			'invalid: wrong type' => ['abc', false],
+			'invalid: wrong type: array' => [[], false],
+			'invalid: wrong type: string' => ['abc', false],
 			'valid: true' => [true, true],
 			'valid: false' => [false, true],
 		];
