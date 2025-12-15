@@ -15,6 +15,7 @@ use chillerlan\QRCode\Output\QROutputAbstract;
 use UnexpectedValueException;
 
 abstract class QRNetpbmBitmapAbstract extends QROutputAbstract {
+	public const MIME_TYPE = 'image/x-portable-bitmap';
 
 	protected function prepareModuleValue( mixed $value ): mixed {
 		if ( !is_bool( $value ) ) {
@@ -49,7 +50,12 @@ abstract class QRNetpbmBitmapAbstract extends QROutputAbstract {
 	public function dump( string|null $file = null ): mixed {
 		$qrString = $this->getHeader()."\n"
                     .$this->length.' '.$this->length."\n".$this->getBody();
+
 		$this->saveToFile( $qrString, $file );
+
+		if ( $this->options->outputBase64 ) {
+			$qrString = $this->toBase64DataURI( $qrString );
+		}
 
 		return $qrString;
 	}
