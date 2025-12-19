@@ -14,10 +14,6 @@ namespace chillerlan\QRCode\Output;
 use chillerlan\QRCode\Output\QROutputAbstract;
 use UnexpectedValueException;
 use function sprintf;
-use function str_split;
-use function pack;
-use function bindec;
-use function str_repeat;
 
 abstract class QRNetpbmAbstract extends QROutputAbstract{
 
@@ -31,14 +27,21 @@ abstract class QRNetpbmAbstract extends QROutputAbstract{
 	protected function getHeader():string{
 		$comment = 'created by https://github.com/chillerlan/php-qrcode';
 
-		return sprintf("%s\n# %s\n%s %s\n%s", $this->getMagicNumber(), $comment, $this->length, $this->length, $this->getMaxValueHeaderString());
+		return sprintf(
+			"%s\n# %s\n%s %s\n%s",
+			$this->getMagicNumber(),
+			$comment,
+			$this->length,
+			$this->length,
+			$this->getMaxValueHeaderString(),
+		);
 	}
 
 	protected function getMaxValueHeaderString():string {
 		if ( $this->options->netpbmMaxValue >= 65536 || $this->options->netpbmMaxValue <= 0 ) {
-			throw new UnexpectedValueException( "NetpbmMaxValue should be between 0 and 65536" );
+			throw new UnexpectedValueException( 'NetpbmMaxValue should be between 0 and 65536' );
 		}
-		return $this->options->netpbmMaxValue . "\n";
+		return $this->options->netpbmMaxValue."\n";
 	}
 
 	abstract protected function getBodyASCII():string;

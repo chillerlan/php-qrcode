@@ -11,13 +11,7 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\Output\QROutputAbstract;
-use UnexpectedValueException;
-use function is_bool;
-use function str_pad;
-use function str_split;
 use function pack;
-use function bindec;
 use function str_repeat;
 
 class QRNetpbmGraymap extends QRNetpbmAbstract{
@@ -29,11 +23,13 @@ class QRNetpbmGraymap extends QRNetpbmAbstract{
 
 	protected function prepareModuleValue(mixed $value):mixed{
 		$value = intval( $value );
-		if ( $value < 0 )
+		if ( $value < 0 ) {
 			return 0;
-		if ( $value > $this->options->netpbmMaxValue )
+        }
+		if ( $value > $this->options->netpbmMaxValue ) {
 			return $this->options->netpbmMaxValue;
-		return $value; 
+        }
+		return $value;
 	}
 
 	protected function getDefaultModuleValue(bool $isDark):mixed{
@@ -42,29 +38,29 @@ class QRNetpbmGraymap extends QRNetpbmAbstract{
 
 	public static function moduleValueIsValid(mixed $value):bool{
 		// Since this is called statically, we cannot know what $this->options->netpbmMaxValue will be.
-		return is_int($value) && 0<$value && $value<65536;
+		return is_int($value) && 0 < $value && $value < 65536;
 	}
 
 	protected function getBodyASCII():string{
 		$body = '';
-		$maxLength = 70 - strlen(' ' . (string)$this->options->netpbmMaxValue) + 1;
+		$maxLength = (70 - strlen(' '.(string)$this->options->netpbmMaxValue) + 1);
 
-                foreach($this->matrix->getMatrix() as $row){
+		foreach($this->matrix->getMatrix() as $row){
 			$line = '';
 			$rowString = '';
 			foreach ($row as $module) {
-				for ($i=0;$i<$this->scale;$i++) {
+				for ($i = 0; $i < $this->scale; $i++) {
 					$line .= $this->getModuleValue($module);
 					if (strlen($line) >= $maxLength) {
-						$rowString .= $line . "\n";
+						$rowString .= $line."\n";
 						$line = '';
 					} else {
 						$line .= ' ';
 					}
 				}
 			}
-                        $body .= str_repeat(trim($rowString . $line)."\n", $this->scale);
-                }
+				$body .= str_repeat(trim($rowString.$line)."\n", $this->scale);
+		}
 
 		return $body;
 	}

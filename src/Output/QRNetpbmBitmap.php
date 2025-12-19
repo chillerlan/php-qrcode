@@ -11,13 +11,10 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCode\Output;
 
-use chillerlan\QRCode\Output\QROutputAbstract;
 use UnexpectedValueException;
 use function is_bool;
-use function str_pad;
 use function str_split;
 use function pack;
-use function bindec;
 use function str_repeat;
 
 class QRNetpbmBitmap extends QRNetpbmAbstract{
@@ -29,7 +26,7 @@ class QRNetpbmBitmap extends QRNetpbmAbstract{
 
 	protected function prepareModuleValue(mixed $value):mixed{
 		if ( !is_bool( $value ) ) {
-			throw new UnexpectedValueException( "Bitmap expected bool modules" );
+			throw new UnexpectedValueException( 'Bitmap expected bool modules' );
 		}
 		return $value;
 	}
