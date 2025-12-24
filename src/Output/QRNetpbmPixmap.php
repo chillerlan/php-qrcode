@@ -25,7 +25,8 @@ class QRNetpbmPixmap extends QRNetpbmAbstract{
 		if (!is_array($value) || count($value) !== 3){
 			throw new UnexpectedValueException( 'Module value should be array of length 3 for NetpbmPixmap' );
 		}
-		foreach($value as &$rgbValue) {
+		$newValue = [];
+		foreach($value as $rgbValue) {
 			$rgbValue = intval( $rgbValue );
 			if ( $rgbValue < 0 ) {
 				$rgbValue = 0;
@@ -33,8 +34,9 @@ class QRNetpbmPixmap extends QRNetpbmAbstract{
 			if ( $rgbValue > $this->options->netpbmMaxValue ) {
 				$rgbValue = $this->options->netpbmMaxValue;
 			}
+			$newValue []= $rgbValue;
 		}
-		return $value;
+		return $newValue;
 	}
 
 	protected function getDefaultModuleValue(bool $isDark):mixed{
@@ -46,8 +48,7 @@ class QRNetpbmPixmap extends QRNetpbmAbstract{
 			return false;
 		}
 		foreach ($value as $rgbVal) {
-			// Since this is called statically, we cannot know what $this->options->netpbmMaxValue will be.
-			if (!is_int($value) || 0 >= $value || $value >= 65536) {
+			if (!is_int($rgbVal) || $rgbVal < 0 || $rgbVal >= 65536) {
 				return false;
 			}
 		}
@@ -81,20 +82,20 @@ class QRNetpbmPixmap extends QRNetpbmAbstract{
 	}
 
 	protected function getBodyBinary():string{
+		$format = $this->options->netpbmMaxValue > 255 ? 'n*' : 'C*';
 		$body = '';
 		foreach ($this->matrix->getMatrix() as $row) {
 			$line = '';
 			foreach($row as $module) {
-				$line .= str_repeat($this->pack($this->getModuleValue($module)), $this->scale);
+				$m = $this->getModuleValue($module);
+				$f = pack($format, ...$m);
+				$line .= str_repeat(
+					$f,
+					$this->scale
+				);
 			}
 			$body .= str_repeat($line, $this->scale);
 		}
 		return $body;
-	}
-	protected function pack( array $moduleValue ) {
-		if ( $this->options->netpbmMaxValue > 255 ) {
-			return pack('n*', ...$moduleValue);
-		}
-		return pack('C*', ...$moduleValue);
 	}
 }

@@ -37,8 +37,7 @@ class QRNetpbmGraymap extends QRNetpbmAbstract{
 	}
 
 	public static function moduleValueIsValid(mixed $value):bool{
-		// Since this is called statically, we cannot know what $this->options->netpbmMaxValue will be.
-		return is_int($value) && 0 < $value && $value < 65536;
+		return is_int($value) && $value >= 0 && $value < 65536;
 	}
 
 	protected function getBodyASCII():string{
@@ -59,27 +58,26 @@ class QRNetpbmGraymap extends QRNetpbmAbstract{
 					}
 				}
 			}
-				$body .= str_repeat(trim($rowString.$line)."\n", $this->scale);
+			$body .= str_repeat(trim($rowString.$line)."\n", $this->scale);
 		}
 
 		return $body;
 	}
 
 	protected function getBodyBinary():string{
+		$format = $this->options->netpbmMaxValue > 255 ? 'n' : 'C';
+
 		$body = '';
 		foreach ($this->matrix->getMatrix() as $row) {
 			$line = '';
 			foreach($row as $module) {
-				$line .= str_repeat($this->pack($this->getModuleValue($module)), $this->scale);
+				$line .= str_repeat(
+					pack($format,$this->getModuleValue($module)),
+					$this->scale
+				);
 			}
 			$body .= str_repeat($line, $this->scale);
 		}
 		return $body;
-	}
-	protected function pack( int $moduleValue ) {
-		if ( $this->options->netpbmMaxValue > 255 ) {
-			return pack('n', $moduleValue);
-		}
-		return pack('C', $moduleValue);
 	}
 }

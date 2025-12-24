@@ -395,6 +395,7 @@ trait QROptionsTrait{
 	 */
 	protected string $imagickFormat = 'png32';
 
+
 	/*
 	 * QRNetpbm settings
 	 */
@@ -634,6 +635,10 @@ trait QROptionsTrait{
 	 */
 	protected function set_circleRadius(float $circleRadius):void{
 		$this->circleRadius = max(0.1, min(0.75, $circleRadius));
+	}
+
+	protected function set_netpbmMaxValue(int $netpbmMaxValue):void{
+		$this->netpbmMaxValue = min(65535,max(1,$netpbmMaxValue));
 	}
 
 }
