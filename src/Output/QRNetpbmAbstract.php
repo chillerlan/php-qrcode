@@ -38,9 +38,6 @@ abstract class QRNetpbmAbstract extends QROutputAbstract{
 	}
 
 	protected function getMaxValueHeaderString():string {
-		if ( $this->options->netpbmMaxValue >= 65536 || $this->options->netpbmMaxValue <= 0 ) {
-			throw new UnexpectedValueException( 'NetpbmMaxValue should be between 0 and 65536' );
-		}
 		return $this->options->netpbmMaxValue."\n";
 	}
 
