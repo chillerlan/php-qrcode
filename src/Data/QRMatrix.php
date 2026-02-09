@@ -389,11 +389,12 @@ class QRMatrix{
 	 * ISO/IEC 18004:2000 Section 7.3.2
 	 */
 	public function setFinderPattern():static{
+		$moduleCountSub = $this->moduleCount - 7;
 
 		$pos = [
 			[0, 0], // top left
-			[($this->moduleCount - 7), 0], // top right
-			[0, ($this->moduleCount - 7)], // bottom left
+			[$moduleCountSub, 0], // top right
+			[0, $moduleCountSub], // bottom left
 		];
 
 		foreach($pos as $c){
@@ -414,17 +415,18 @@ class QRMatrix{
 	 * ISO/IEC 18004:2000 Section 7.3.3
 	 */
 	public function setSeparators():static{
+		$moduleCountSub = $this->moduleCount - 8;
 
 		$h = [
 			[7, 0],
-			[($this->moduleCount - 8), 0],
-			[7, ($this->moduleCount - 8)],
+			[$moduleCountSub, 0],
+			[7, $moduleCountSub],
 		];
 
 		$v = [
 			[7, 7],
 			[($this->moduleCount - 1), 7],
-			[7, ($this->moduleCount - 8)],
+			[7, $moduleCountSub],
 		];
 
 		for($c = 0; $c < 3; $c++){
@@ -499,10 +501,11 @@ class QRMatrix{
 		$bits = $this->version->getVersionPattern();
 
 		if($bits !== null){
+			$moduleCountSub = $this->moduleCount - 8 - 3;
 
 			for($i = 0; $i < 18; $i++){
 				$a = intdiv($i, 3);
-				$b = (($i % 3) + ($this->moduleCount - 8 - 3));
+				$b = (($i % 3) + $moduleCountSub);
 				$v = (($bits >> $i) & 1) === 1;
 
 				$this->set($b, $a, $v, $this::M_VERSION); // ne
@@ -569,7 +572,9 @@ class QRMatrix{
 			return $this;
 		}
 
-		if($this->matrix[($this->moduleCount - 1)][($this->moduleCount - 1)] === $this::M_NULL){
+		$moduleCountSub = $this->moduleCount - 1;
+
+		if($this->matrix[$moduleCountSub][$moduleCountSub] === $this::M_NULL){
 			throw new QRCodeDataException('use only after writing data');
 		}
 
@@ -714,7 +719,9 @@ class QRMatrix{
 		$iBit      = 7;
 		$direction = true;
 
-		for($i = ($this->moduleCount - 1); $i > 0; $i -= 2){
+		$moduleCountSub = $this->moduleCount - 1;
+
+		for($i = $moduleCountSub; $i > 0; $i -= 2){
 
 			// skip vertical alignment pattern
 			if($i === 6){
@@ -725,7 +732,7 @@ class QRMatrix{
 				$y = $count;
 
 				if($direction){
-					$y = ($this->moduleCount - 1 - $count);
+					$y = ($moduleCountSub - $count);
 				}
 
 				for($col = 0; $col < 2; $col++){
