@@ -65,6 +65,7 @@ $qrcode        = new QRCode($options);
 
 // create a secret and URI, generate the QR Code
 $secret = $authenticator->createSecret(24);
+/** @phan-suppress-next-line PhanDeprecatedFunction */
 $uri    = $authenticator->getUri('your authenticator', 'this website');
 $svg    = $qrcode->render($uri);
 
