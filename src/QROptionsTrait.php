@@ -548,6 +548,13 @@ trait QROptionsTrait{
 	}
 
 	/**
+	 * clamps the module scale at a minimum of 1 and a maximum of 50
+	 */
+	protected function set_scale(int $scale):void{
+		$this->scale = max(1, min($scale, 50));
+	}
+
+	/**
 	 * sets/clamps the quiet zone size
 	 */
 	protected function set_quietzoneSize(int $quietzoneSize):void{
