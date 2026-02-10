@@ -3426,6 +3426,11 @@ Search.appendIndex(
             "summary": "sets\u0020the\u0020ECC\u0020level",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_eccLevel"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_scale\u0028\u0029",
+            "name": "set_scale",
+            "summary": "clamps\u0020the\u0020module\u0020scale\u0020at\u0020a\u0020minimum\u0020of\u00201\u0020and\u0020a\u0020maximum\u0020of\u002050",
+            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_scale"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_quietzoneSize\u0028\u0029",
             "name": "set_quietzoneSize",
             "summary": "sets\/clamps\u0020the\u0020quiet\u0020zone\u0020size",
