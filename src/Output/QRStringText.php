@@ -20,20 +20,10 @@ class QRStringText extends QROutputAbstract{
 
 	final public const MIME_TYPE = 'text/plain';
 
-	/**
-	 * @inheritDoc
-	 *
-	 * @param string|mixed $value
-	 */
 	public static function moduleValueIsValid(mixed $value):bool{
 		return is_string($value);
 	}
 
-	/**
-	 * @inheritDoc
-	 *
-	 * @param string|mixed $value
-	 */
 	protected function prepareModuleValue(mixed $value):string{
 		return $value;
 	}
