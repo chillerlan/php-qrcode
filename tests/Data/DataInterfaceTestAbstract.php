@@ -176,7 +176,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 	#[Test]
 	#[DataProvider('maxLengthProvider')]
-	public function maxLength(Version $version, EccLevel $eccLevel, string $str):void{
+	public function maxLength(Version $version, EccLevel $eccLevel, string $str, string $str1, int $len):void{
 		$options           = new QROptions;
 		$options->version  = $version->getVersionNumber();
 		$options->eccLevel = $eccLevel->getLevel();
@@ -195,7 +195,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	 */
 	#[Test]
 	#[DataProvider('maxLengthProvider')]
-	public function getMinimumVersion(Version $version, EccLevel $eccLevel, string $str):void{
+	public function getMinimumVersion(Version $version, EccLevel $eccLevel, string $str, string $str1, int $len):void{
 		$options           = new QROptions;
 		$options->version  = Version::AUTO;
 		$options->eccLevel = $eccLevel->getLevel();
@@ -226,7 +226,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	 */
 	#[Test]
 	#[DataProvider('maxLengthProvider')]
-	public function maxLengthOverflowException(Version $version, EccLevel $eccLevel, string $str, string $str1):void{
+	public function maxLengthOverflowException(Version $version, EccLevel $eccLevel, string $str, string $str1, int $len):void{
 		$this->expectException(QRCodeDataException::class);
 		$this->expectExceptionMessage('code length overflow');
 
