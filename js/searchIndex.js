@@ -2166,11 +2166,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_find"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPatternFinder\u003A\u003AgetCrossCheckStateCount\u0028\u0029",
-            "name": "getCrossCheckStateCount",
-            "summary": "",
-            "url": "classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#method_getCrossCheckStateCount"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPatternFinder\u003A\u003AdoShiftCounts2\u0028\u0029",
             "name": "doShiftCounts2",
             "summary": "",
@@ -2255,6 +2250,11 @@ Search.appendIndex(
             "name": "CENTER_QUORUM",
             "summary": "",
             "url": "classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#constant_CENTER_QUORUM"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPatternFinder\u003A\u003AcrossCheckStateCount",
+            "name": "crossCheckStateCount",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Detector-FinderPatternFinder.html#constant_crossCheckStateCount"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\Detector\\FinderPatternFinder\u003A\u003A\u0024matrix",
             "name": "matrix",
