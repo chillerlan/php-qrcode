@@ -29,6 +29,8 @@ final class FinderPatternFinder{
 	private const MIN_SKIP      = 2;
 	private const MAX_MODULES   = 177; // 1 pixel/module times 3 modules/center
 	private const CENTER_QUORUM = 2; // support up to version 10 for mobile clients
+	/** @var int[] */
+	private const crossCheckStateCount = [0, 0, 0, 0, 0];
 	private BitMatrix $matrix;
 	/** @var \chillerlan\QRCode\Detector\FinderPattern[] */
 	private array $possibleCenters;
@@ -65,7 +67,7 @@ final class FinderPatternFinder{
 
 		for($i = ($iSkip - 1); ($i < $dimension) && !$done; $i += $iSkip){
 			// Get a row of black/white values
-			$stateCount   = $this->getCrossCheckStateCount();
+			$stateCount   = self::crossCheckStateCount;
 			$currentState = 0;
 
 			for($j = 0; $j < $dimension; $j++){
@@ -122,7 +124,7 @@ final class FinderPatternFinder{
 								}
 								// Clear state to start looking again
 								$currentState = 0;
-								$stateCount   = $this->getCrossCheckStateCount();
+								$stateCount   = self::crossCheckStateCount;
 							}
 							// No, shift counts back by two
 							else{
@@ -156,13 +158,6 @@ final class FinderPatternFinder{
 		}
 
 		return $this->orderBestPatterns($this->selectBestPatterns());
-	}
-
-	/**
-	 * @return int[]
-	 */
-	private function getCrossCheckStateCount():array{
-		return [0, 0, 0, 0, 0];
 	}
 
 	/**
@@ -251,7 +246,7 @@ final class FinderPatternFinder{
 	 * @return bool true if proportions are withing expected limits
 	 */
 	private function crossCheckDiagonal(int $centerI, int $centerJ):bool{
-		$stateCount = $this->getCrossCheckStateCount();
+		$stateCount = self::crossCheckStateCount;
 
 		// Start counting up, left from center finding black center mass
 		$i = 0;
@@ -335,7 +330,7 @@ final class FinderPatternFinder{
 	 */
 	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):float|null{
 		$maxI       = $this->matrix->getSize();
-		$stateCount = $this->getCrossCheckStateCount();
+		$stateCount = self::crossCheckStateCount;
 
 		// Start counting up from center
 		$i = $startI;
@@ -419,7 +414,7 @@ final class FinderPatternFinder{
 	 */
 	private function crossCheckHorizontal(int $startJ, int $centerI, int $maxCount, int $originalStateCountTotal):float|null{
 		$maxJ       = $this->matrix->getSize();
-		$stateCount = $this->getCrossCheckStateCount();
+		$stateCount = self::crossCheckStateCount;
 
 		$j = $startJ;
 		while($j >= 0 && $this->matrix->check($j, $centerI)){
