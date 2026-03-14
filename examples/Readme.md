@@ -3,6 +3,7 @@
 **Important: Please use the examples from the branch that matches your installed php-qrcode version (
 [v4.x](https://github.com/chillerlan/php-qrcode/tree/v4.3.x/examples),
 [v5.x](https://github.com/chillerlan/php-qrcode/tree/v5.0.x/examples),
+[v6.x](https://github.com/chillerlan/php-qrcode/tree/v6.0.x/examples),
 [dev-main](https://github.com/chillerlan/php-qrcode/tree/main/examples)
 )!**
 
