@@ -1,6 +1,6 @@
 # QRStringJSON
 
-[Class `QRStringJSON`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRStringJSON.php):
+[Class `QRStringJSON`](https://github.com/chillerlan/php-qrcode/blob/v6.0.x/src/Output/QRStringJSON.php):
 [JSON](https://developer.mozilla.org/en-US/docs/Glossary/JSON) output.
 
 
@@ -19,7 +19,7 @@ $data   = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 echo (new QRCode($options))->render($data); // -> JSON string
 ```
 
-The associated [JSON schema](https://json-schema.org/specification) can be found over at GitHub: [`qrcode.schema.json`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/qrcode.schema.json)
+The associated [JSON schema](https://json-schema.org/specification) can be found over at GitHub: [`qrcode.schema.json`](https://github.com/chillerlan/php-qrcode/blob/v6.0.x/src/Output/qrcode.schema.json)
 
 
 ## Previous functionality

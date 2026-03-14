@@ -1,12 +1,12 @@
 # QRMarkupSVG
 
-[Class `QRMarkupSVG`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRMarkupSVG.php):
+[Class `QRMarkupSVG`](https://github.com/chillerlan/php-qrcode/blob/v6.0.x/src/Output/QRMarkupSVG.php):
 [Scalable Vector Graphics](https://developer.mozilla.org/en-US/docs/Glossary/SVG) (SVG) output.
 
 
 ## Example
 
-See: [SVG example](https://github.com/chillerlan/php-qrcode/blob/main/examples/svg.php)
+See: [SVG example](https://github.com/chillerlan/php-qrcode/blob/v6.0.x/examples/svg.php)
 
 Set the options:
 

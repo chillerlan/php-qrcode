@@ -1,11 +1,11 @@
 # QRMarkupXML
 
-[Class `QRMarkupXML`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRMarkupXML.php): [eXtensible Markup Language](https://developer.mozilla.org/en-US/docs/Glossary/XML) (XML) output
+[Class `QRMarkupXML`](https://github.com/chillerlan/php-qrcode/blob/v6.0.x/src/Output/QRMarkupXML.php): [eXtensible Markup Language](https://developer.mozilla.org/en-US/docs/Glossary/XML) (XML) output
 
 
 ## Example
 
-See: [XML example](https://github.com/chillerlan/php-qrcode/blob/main/examples/xml.php)
+See: [XML example](https://github.com/chillerlan/php-qrcode/blob/v6.0.x/examples/xml.php)
 
 Set the options:
 
@@ -85,7 +85,7 @@ header('Content-type: application/xml');
 echo $out;
 ```
 
-The associated [XML schema](https://www.w3.org/XML/Schema) can be found over at GitHub: [`qrcode.schema.xsd`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/qrcode.schema.xsd)
+The associated [XML schema](https://www.w3.org/XML/Schema) can be found over at GitHub: [`qrcode.schema.xsd`](https://github.com/chillerlan/php-qrcode/blob/v6.0.x/src/Output/qrcode.schema.xsd)
 
 
 ## Additional methods

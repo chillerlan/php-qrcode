@@ -1,12 +1,12 @@
 # QRGdImage
 
-[Class `QRGdImage`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRGdImage.php):
+[Class `QRGdImage`](https://github.com/chillerlan/php-qrcode/blob/v6.0.x/src/Output/QRGdImage.php):
 [GdImage](https://www.php.net/manual/book.image) raster graphic output (GIF, JPG, PNG, ...)
 
 
 ## Example
 
-See: [GdImage example](https://github.com/chillerlan/php-qrcode/blob/main/examples/image.php)
+See: [GdImage example](https://github.com/chillerlan/php-qrcode/blob/v6.0.x/examples/image.php)
 
 Set the options:
 

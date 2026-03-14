@@ -83,7 +83,7 @@ For the QR Code reader, either `ext-gd` or `ext-imagick` is required!
 Hi, please check out some of my other projects that are way cooler than qrcodes!
 
 - [js-qrcode](https://github.com/chillerlan/js-qrcode) - a javascript port of this library
-- [php-authenticator](https://github.com/chillerlan/php-authenticator) - a Google Authenticator implementation (see [authenticator example](https://github.com/chillerlan/php-qrcode/blob/main/examples/authenticator.php))
+- [php-authenticator](https://github.com/chillerlan/php-authenticator) - a Google Authenticator implementation (see [authenticator example](https://github.com/chillerlan/php-qrcode/blob/v6.0.x/examples/authenticator.php))
 - [php-httpinterface](https://github.com/chillerlan/php-httpinterface) - a PSR-7/15/17/18 implemetation
 - [php-oauth](https://github.com/chillerlan/php-oauth) - an OAuth 1/2 client library, fully PSR-7/PSR-17/PSR-18 compatible
 - [php-database](https://github.com/chillerlan/php-database) - a database client & querybuilder for MySQL, Postgres, SQLite, MSSQL, Firebird

@@ -1,12 +1,12 @@
 # QRStringText
 
-[Class `QRStringText`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRStringText.php):
+[Class `QRStringText`](https://github.com/chillerlan/php-qrcode/blob/v6.0.x/src/Output/QRStringText.php):
 render in a CLI console, using [ANSI colors](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors) and [block elements](https://en.wikipedia.org/wiki/Block_Elements).
 
 
 ## Example
 
-See: [plaintext example](https://github.com/chillerlan/php-qrcode/blob/main/examples/text.php)
+See: [plaintext example](https://github.com/chillerlan/php-qrcode/blob/v6.0.x/examples/text.php)
 
 ```php
 $options = new QROptions;

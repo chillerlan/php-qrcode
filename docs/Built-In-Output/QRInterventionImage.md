@@ -1,6 +1,6 @@
 # QRInterventionImage
 
-[Class `QRInterventionImage`](https://github.com/chillerlan/php-qrcode/blob/main/src/Output/QRInterventionImage.php):
+[Class `QRInterventionImage`](https://github.com/chillerlan/php-qrcode/blob/v6.0.x/src/Output/QRInterventionImage.php):
 [intervention/image](https://image.intervention.io/) alternative GD/ImageMagick output.
 
 ***Note:** this output class works significantly slower than the native GD/Imagick output classes due to the several underlying abstraction layers. Use only if you must.*
@@ -8,7 +8,7 @@
 
 ## Example
 
-See: [intervention/image example](https://github.com/chillerlan/php-qrcode/blob/main/examples/intervention-image.php)
+See: [intervention/image example](https://github.com/chillerlan/php-qrcode/blob/v6.0.x/examples/intervention-image.php)
 
 Set the options:
 
