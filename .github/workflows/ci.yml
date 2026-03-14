@@ -29,8 +29,6 @@ jobs:
       fail-fast: true
       matrix:
         php-version:
-          - "8.2"
-          - "8.3"
           - "8.4"
           - "8.5"
 
@@ -74,8 +72,6 @@ jobs:
           - ubuntu-latest
           - windows-latest
         php-version:
-          - "8.2"
-          - "8.3"
           - "8.4"
           - "8.5"
 
@@ -123,7 +119,7 @@ jobs:
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.4"
+          php-version: "8.5"
           extensions: ${{ env.PHP_EXTENSIONS }}
           ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: none
@@ -152,7 +148,7 @@ jobs:
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
         with:
-          php-version: "8.4"
+          php-version: "8.5"
           extensions: ${{ env.PHP_EXTENSIONS }}
           ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: none
