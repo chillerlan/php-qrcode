@@ -46,14 +46,17 @@ jobs:
           ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: none
 
+      - name: "Validate composer.json"
+        run: composer validate --no-interaction --ansi --verbose --with-dependencies
+
       - name: "Install dependencies with composer"
         uses: ramsey/composer-install@v3
 
-      - name: "Run phan"
-        run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
-
       - name: "Run PHP_CodeSniffer"
         run: php vendor/bin/phpcs -v
+
+      - name: "Run phan"
+        run: php vendor/bin/phan --target-php-version=${{ matrix.php-version }}
 
 #      - name: "Run PHPStan"
 #        run: php vendor/bin/phpstan
