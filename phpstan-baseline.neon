@@ -1,10 +1,34 @@
 parameters:
 	ignoreErrors:
 		-
+			rawMessage: 'Method chillerlan\QRCodeBenchmark\BenchmarkAbstract::dataModeProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
+			identifier: missingType.generics
+			count: 1
+			path: benchmark/BenchmarkAbstract.php
+
+		-
+			rawMessage: 'Method chillerlan\QRCodeBenchmark\BenchmarkAbstract::eccLevelProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
+			identifier: missingType.generics
+			count: 1
+			path: benchmark/BenchmarkAbstract.php
+
+		-
+			rawMessage: 'Method chillerlan\QRCodeBenchmark\BenchmarkAbstract::versionProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
+			identifier: missingType.generics
+			count: 1
+			path: benchmark/BenchmarkAbstract.php
+
+		-
 			rawMessage: 'Property chillerlan\QRCodeBenchmark\DecoderBenchmark::$imageBlob (string) does not accept GdImage|string.'
 			identifier: assign.propertyType
 			count: 1
 			path: benchmark/DecoderBenchmark.php
+
+		-
+			rawMessage: 'Method chillerlan\QRCodeBenchmark\MaskPatternBenchmark::versionProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
+			identifier: missingType.generics
+			count: 1
+			path: benchmark/MaskPatternBenchmark.php
 
 		-
 			rawMessage: 'Parameter #1 $segment of method chillerlan\QRCode\QRCode::addSegment() expects chillerlan\QRCode\Data\QRDataModeInterface, object given.'
@@ -49,6 +73,12 @@ parameters:
 			path: benchmark/parse-common.php
 
 		-
+			rawMessage: Possibly invalid array key type int|null.
+			identifier: offsetAccess.invalidOffset
+			count: 1
+			path: benchmark/parse-common.php
+
+		-
 			rawMessage: 'Function chillerlan\QRCodeBenchmark\parseLine() return type has no value type specified in iterable type array.'
 			identifier: missingType.iterableValue
 			count: 1
@@ -61,10 +91,32 @@ parameters:
 			path: benchmark/parse-result.php
 
 		-
+			rawMessage: '''
+				Call to deprecated method getUri() of class chillerlan\Authenticator\Authenticator:
+				5.3.0 The parameter `$omitSettings` will be removed in favor of `AuthenticatorOptions::$omitUriSettings`
+				                  in the next major version (6.x)
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: examples/authenticator.php
+
+		-
 			rawMessage: 'Property chillerlan\QRCode\QROptions::$eccLevel (int) does not accept string.'
 			identifier: assign.propertyType
 			count: 1
 			path: examples/custom_output.php
+
+		-
+			rawMessage: 'Method QRGdRounded::__construct() has parameter $options with no value type specified in iterable type iterable.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: examples/imageWithRoundedShapes.php
+
+		-
+			rawMessage: 'Parameter #1 $properties of class chillerlan\QRCode\QROptions constructor expects array<string, mixed>|null, iterable given.'
+			identifier: argument.type
+			count: 1
+			path: examples/imageWithRoundedShapes.php
 
 		-
 			rawMessage: 'Parameter #1 $width of function imagecreatetruecolor expects int<1, max>, int given.'
@@ -169,6 +221,12 @@ parameters:
 			path: src/Common/Version.php
 
 		-
+			rawMessage: 'Parameter #1 $codepoint of function chr expects int<0, 255>, int given.'
+			identifier: argument.type
+			count: 1
+			path: src/Data/Byte.php
+
+		-
 			rawMessage: 'Parameter #1 $version of class chillerlan\QRCode\Data\ReedSolomonEncoder constructor expects chillerlan\QRCode\Common\Version, chillerlan\QRCode\Common\Version|null given.'
 			identifier: argument.type
 			count: 1
@@ -205,6 +263,18 @@ parameters:
 			path: src/Decoder/BitMatrix.php
 
 		-
+			rawMessage: 'Method chillerlan\QRCode\Decoder\Decoder::__construct() has parameter $options with no value type specified in iterable type iterable.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Decoder/Decoder.php
+
+		-
+			rawMessage: 'Parameter #1 $properties of class chillerlan\QRCode\QROptions constructor expects array<string, mixed>|null, iterable given.'
+			identifier: argument.type
+			count: 1
+			path: src/Decoder/Decoder.php
+
+		-
 			rawMessage: 'Property chillerlan\QRCode\Decoder\Decoder::$options is never read, only written.'
 			identifier: property.onlyWritten
 			count: 1
@@ -217,6 +287,24 @@ parameters:
 			path: src/Decoder/ReedSolomonDecoder.php
 
 		-
+			rawMessage: 'Method chillerlan\QRCode\Output\QRFpdf::__construct() has parameter $options with no value type specified in iterable type iterable.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Output/QRFpdf.php
+
+		-
+			rawMessage: 'Method chillerlan\QRCode\Output\QRGdImage::__construct() has parameter $options with no value type specified in iterable type iterable.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Output/QRGdImage.php
+
+		-
+			rawMessage: 'Parameter #1 $properties of class chillerlan\QRCode\QROptions constructor expects array<string, mixed>|null, iterable given.'
+			identifier: argument.type
+			count: 1
+			path: src/Output/QRGdImage.php
+
+		-
 			rawMessage: 'Parameter #1 $width of function imagecreatetruecolor expects int<1, max>, int given.'
 			identifier: argument.type
 			count: 1
@@ -227,6 +315,36 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: src/Output/QRGdImage.php
+
+		-
+			rawMessage: 'Strict comparison using === between true and false will always evaluate to false.'
+			identifier: identical.alwaysFalse
+			count: 1
+			path: src/Output/QRGdImage.php
+
+		-
+			rawMessage: 'Method chillerlan\QRCode\Output\QRImagick::__construct() has parameter $options with no value type specified in iterable type iterable.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Output/QRImagick.php
+
+		-
+			rawMessage: 'Method chillerlan\QRCode\Output\QRInterventionImage::__construct() has parameter $options with no value type specified in iterable type iterable.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Output/QRInterventionImage.php
+
+		-
+			rawMessage: 'Method chillerlan\QRCode\Output\QROutputAbstract::__construct() has parameter $options with no value type specified in iterable type iterable.'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Output/QROutputAbstract.php
+
+		-
+			rawMessage: 'Parameter #1 $properties of class chillerlan\QRCode\QROptions constructor expects array<string, mixed>|null, iterable given.'
+			identifier: argument.type
+			count: 1
+			path: src/Output/QROutputAbstract.php
 
 		-
 			rawMessage: PHPDoc tag @var with type chillerlan\QRCode\Data\QRDataModeInterface is not subtype of native type 'chillerlan\\QRCode\\Data\\AlphaNum'|'chillerlan\\QRCode\\Data\\Byte'|'chillerlan\\QRCode\\Data\\Hanzi'|'chillerlan\\QRCode\\Data\\Kanji'|'chillerlan\\QRCode\\Data\\Number'.
@@ -247,6 +365,12 @@ parameters:
 			path: tests/Common/MaskPatternTest.php
 
 		-
+			rawMessage: 'Method chillerlan\QRCodeTest\Data\DataInterfaceTestAbstract::maxLengthProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Data/DataInterfaceTestAbstract.php
+
+		-
 			rawMessage: 'Parameter #1 $string of static method chillerlan\QRCode\Data\QRDataModeInterface::validateString() expects string, string|false given.'
 			identifier: argument.type
 			count: 1
@@ -265,7 +389,37 @@ parameters:
 			path: tests/Data/ECITest.php
 
 		-
+			rawMessage: 'Method chillerlan\QRCodeTest\Data\HanziTest::hanziProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Data/HanziTest.php
+
+		-
+			rawMessage: 'Method chillerlan\QRCodeTest\Data\KanjiTest::kanjiProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Data/KanjiTest.php
+
+		-
+			rawMessage: 'Parameter #1 $codepoint of function chr expects int<0, 255>, int given.'
+			identifier: argument.type
+			count: 2
+			path: tests/Data/KanjiTest.php
+
+		-
 			rawMessage: 'Parameter #1 $blob of method chillerlan\QRCode\QRCode::readFromBlob() expects string, GdImage|string given.'
 			identifier: argument.type
 			count: 1
 			path: tests/Data/QRDataTest.php
+
+		-
+			rawMessage: 'Method chillerlan\QRCodeTest\Data\QRMatrixTest::matrixProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
+			identifier: missingType.generics
+			count: 1
+			path: tests/Data/QRMatrixTest.php
+
+		-
+			rawMessage: 'Method chillerlan\QRCodeTest\QRCodeReaderTestAbstract::dataTestProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
+			identifier: missingType.generics
+			count: 1
+			path: tests/QRCodeReaderTestAbstract.php
