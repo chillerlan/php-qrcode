@@ -397,6 +397,27 @@ trait QROptionsTrait{
 
 
 	/*
+	 * QRNetpbm settings
+	 */
+
+	/**
+	 * Use netpbm plain (ascii) output instead of binary output
+	 *
+	 * @see https://netpbm.sourceforge.net/doc/#commonoptions
+	 * @see https://github.com/chillerlan/php-qrcode/pull/323
+	 */
+	protected bool $netpbmPlain = false;
+
+	/**
+	 * Netpbm max value ( For graymap and pixmap output formats )
+	 * Should be between 0 and 65536.
+	 *
+	 * @see https://netpbm.sourceforge.net/doc/pgm.html
+	 * @see https://netpbm.sourceforge.net/doc/ppm.html
+	 */
+	protected int $netpbmMaxValue = 255;
+
+	/*
 	 * Common markup output settings (QRMarkupSVG, QRMarkupHTML)
 	 */
 
@@ -621,6 +642,10 @@ trait QROptionsTrait{
 	 */
 	protected function set_circleRadius(float $circleRadius):void{
 		$this->circleRadius = max(0.1, min(0.75, $circleRadius));
+	}
+
+	protected function set_netpbmMaxValue(int $netpbmMaxValue):void{
+		$this->netpbmMaxValue = min(65535,max(1,$netpbmMaxValue));
 	}
 
 }
