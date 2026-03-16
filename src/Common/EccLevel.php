@@ -21,21 +21,17 @@ final class EccLevel{
 
 	// ISO/IEC 18004:2000 Tables 12, 25
 
-	/** @var int */
-	public const L = 0b01; // 7%.
-	/** @var int */
-	public const M = 0b00; // 15%.
-	/** @var int */
-	public const Q = 0b11; // 25%.
-	/** @var int */
-	public const H = 0b10; // 30%.
+	public const int L = 0b01; // 7%.
+	public const int M = 0b00; // 15%.
+	public const int Q = 0b11; // 25%.
+	public const int H = 0b10; // 30%.
 
 	/**
 	 * ISO/IEC 18004:2000 Tables 7-11 - Number of symbol characters and input data capacity for versions 1 to 40
 	 *
 	 * @var int[][]
 	 */
-	private const MAX_BITS = [
+	private const array MAX_BITS = [
 	//	[    L,     M,     Q,     H]  // v  => modules
 		[    0,     0,     0,     0], // 0  =>  will be ignored, index starts at 1
 		[  152,   128,   104,    72], // 1  =>  21
@@ -87,7 +83,7 @@ final class EccLevel{
 	 *
 	 * @var int[][]
 	 */
-	private const FORMAT_PATTERN = [
+	private const array FORMAT_PATTERN = [
 		[ // L
 		  0b111011111000100,
 		  0b111001011110011,

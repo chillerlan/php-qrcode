@@ -22,7 +22,7 @@ use function chr, ord;
  */
 final class Byte extends QRDataModeAbstract{
 
-	public const DATAMODE = Mode::BYTE;
+	public const int DATAMODE = Mode::BYTE;
 
 	public function getLengthInBits():int{
 		return ($this->getCharCount() * 8);

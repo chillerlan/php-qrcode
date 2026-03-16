@@ -26,7 +26,7 @@ use function array_chunk, implode, is_string, preg_match, sprintf, trim;
  */
 class QRMarkupSVG extends QRMarkup{
 
-	final public const MIME_TYPE = 'image/svg+xml';
+	final public const string MIME_TYPE = 'image/svg+xml';
 
 	/**
 	 * @todo: XSS proof

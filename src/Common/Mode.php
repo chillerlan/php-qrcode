@@ -21,33 +21,23 @@ final class Mode{
 
 	// ISO/IEC 18004:2000 Table 2
 
-	/** @var int */
-	public const TERMINATOR       = 0b0000;
-	/** @var int */
-	public const NUMBER           = 0b0001;
-	/** @var int */
-	public const ALPHANUM         = 0b0010;
-	/** @var int */
-	public const BYTE             = 0b0100;
-	/** @var int */
-	public const KANJI            = 0b1000;
-	/** @var int */
-	public const HANZI            = 0b1101;
-	/** @var int */
-	public const STRCTURED_APPEND = 0b0011;
-	/** @var int */
-	public const FNC1_FIRST       = 0b0101;
-	/** @var int */
-	public const FNC1_SECOND      = 0b1001;
-	/** @var int */
-	public const ECI              = 0b0111;
+	public const int TERMINATOR       = 0b0000;
+	public const int NUMBER           = 0b0001;
+	public const int ALPHANUM         = 0b0010;
+	public const int BYTE             = 0b0100;
+	public const int KANJI            = 0b1000;
+	public const int HANZI            = 0b1101;
+	public const int STRCTURED_APPEND = 0b0011;
+	public const int FNC1_FIRST       = 0b0101;
+	public const int FNC1_SECOND      = 0b1001;
+	public const int ECI              = 0b0111;
 
 	/**
 	 * mode length bits for the version breakpoints 1-9, 10-26 and 27-40
 	 *
 	 * ISO/IEC 18004:2000 Table 3 - Number of bits in Character Count Indicator
 	 */
-	public const LENGTH_BITS = [
+	public const array LENGTH_BITS = [
 		self::NUMBER   => [10, 12, 14],
 		self::ALPHANUM => [ 9, 11, 13],
 		self::BYTE     => [ 8, 16, 16],
@@ -61,7 +51,7 @@ final class Mode{
 	 *
 	 * @var array<int, string>
 	 */
-	public const INTERFACES = [
+	public const array INTERFACES = [
 		self::NUMBER   => Number::class,
 		self::ALPHANUM => AlphaNum::class,
 		self::KANJI    => Kanji::class,

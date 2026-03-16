@@ -25,7 +25,7 @@ use Generator;
 final class QRMatrixTest extends TestCase{
 	use QRMatrixDebugTrait;
 
-	private const version = 40;
+	private const int version = 40;
 	private QRMatrix $matrix;
 
 	/**

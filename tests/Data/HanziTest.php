@@ -21,7 +21,7 @@ use function bin2hex, chr, defined, sprintf;
  */
 final class HanziTest extends DataInterfaceTestAbstract{
 
-	protected const testData = '无可奈何燃花作香';
+	protected const string testData = '无可奈何燃花作香';
 
 	protected static function getDataModeInterface(string $data):QRDataModeInterface{
 		return new Hanzi($data);

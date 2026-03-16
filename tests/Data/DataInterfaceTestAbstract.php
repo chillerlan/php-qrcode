@@ -30,7 +30,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	protected QRData              $QRData;
 	protected QRDataModeInterface $dataMode;
 
-	protected const testData = '';
+	protected const string testData = '';
 
 	protected function setUp():void{
 		$this->QRData   = new QRData(new QROptions);

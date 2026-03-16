@@ -22,7 +22,7 @@ use function imagewebp;
  */
 class QRGdImageWEBP extends QRGdImage{
 
-	final public const MIME_TYPE = 'image/webp';
+	final public const string MIME_TYPE = 'image/webp';
 
 	/**
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException

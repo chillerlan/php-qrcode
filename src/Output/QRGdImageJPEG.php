@@ -22,7 +22,7 @@ use function imagejpeg;
  */
 class QRGdImageJPEG extends QRGdImage{
 
-	final public const MIME_TYPE = 'image/jpg';
+	final public const string MIME_TYPE = 'image/jpg';
 
 	protected function setTransparencyColor():int{
 		// noop - transparency is not supported

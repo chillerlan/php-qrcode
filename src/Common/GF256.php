@@ -35,7 +35,7 @@ final class GF256{
 	 */
 #	private int $primitive = 0x011D;
 
-	private const logTable = [
+	private const array logTable = [
 		  0, // the first value is never returned, index starts at 1
 		       0,   1,  25,   2,  50,  26, 198,   3, 223,  51, 238,  27, 104, 199,  75,
 		  4, 100, 224,  14,  52, 141, 239, 129,  28, 193, 105, 248, 200,   8,  76, 113,
@@ -55,7 +55,7 @@ final class GF256{
 		 79, 174, 213, 233, 230, 231, 173, 232, 116, 214, 244, 234, 168,  80,  88, 175,
 	];
 
-	private const expTable = [
+	private const array expTable = [
 		  1,   2,   4,   8,  16,  32,  64, 128,  29,  58, 116, 232, 205, 135,  19,  38,
 		 76, 152,  45,  90, 180, 117, 234, 201, 143,   3,   6,  12,  24,  48,  96, 192,
 		157,  39,  78, 156,  37,  74, 148,  53, 106, 212, 181, 119, 238, 193, 159,  35,

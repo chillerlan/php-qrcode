@@ -28,24 +28,22 @@ final class MaskPattern{
 
 	/**
 	 * @see \chillerlan\QRCode\QROptionsTrait::$maskPattern
-	 *
-	 * @var int
 	 */
-	public const AUTO = -1;
+	public const int AUTO = -1;
 
-	public const PATTERN_000 = 0b000;
-	public const PATTERN_001 = 0b001;
-	public const PATTERN_010 = 0b010;
-	public const PATTERN_011 = 0b011;
-	public const PATTERN_100 = 0b100;
-	public const PATTERN_101 = 0b101;
-	public const PATTERN_110 = 0b110;
-	public const PATTERN_111 = 0b111;
+	public const int PATTERN_000 = 0b000;
+	public const int PATTERN_001 = 0b001;
+	public const int PATTERN_010 = 0b010;
+	public const int PATTERN_011 = 0b011;
+	public const int PATTERN_100 = 0b100;
+	public const int PATTERN_101 = 0b101;
+	public const int PATTERN_110 = 0b110;
+	public const int PATTERN_111 = 0b111;
 
 	/**
 	 * @var int[]
 	 */
-	public const PATTERNS = [
+	public const array PATTERNS = [
 		self::PATTERN_000,
 		self::PATTERN_001,
 		self::PATTERN_010,
@@ -61,10 +59,10 @@ final class MaskPattern{
 	 *
 	 * ISO/IEC 18004:2000 Section 8.8.1 - Table 24
 	 */
-	private const PENALTY_N1 = 3;
-	private const PENALTY_N2 = 3;
-	private const PENALTY_N3 = 40;
-	private const PENALTY_N4 = 10;
+	private const int PENALTY_N1 = 3;
+	private const int PENALTY_N2 = 3;
+	private const int PENALTY_N3 = 40;
+	private const int PENALTY_N4 = 10;
 
 	/**
 	 * The current mask pattern value (0-7)

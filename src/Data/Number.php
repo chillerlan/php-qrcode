@@ -22,7 +22,7 @@ use function ceil, intdiv, preg_match, substr, unpack;
  */
 final class Number extends QRDataModeAbstract{
 
-	public const DATAMODE = Mode::NUMBER;
+	public const int DATAMODE = Mode::NUMBER;
 
 	public function getLengthInBits():int{
 		return (int)ceil($this->getCharCount() * (10 / 3));

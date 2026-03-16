@@ -24,7 +24,7 @@ interface QROutputInterface{
 	 * @var string[]
 	 * @see https://github.com/chillerlan/php-qrcode/issues/223
 	 */
-	public const MODES = [
+	final public const array MODES = [
 		QREps::class,
 		QRFpdf::class,
 		QRGdImageAVIF::class,
@@ -47,7 +47,7 @@ interface QROutputInterface{
 	 *
 	 * @var bool[]
 	 */
-	public const DEFAULT_MODULE_VALUES = [
+	final public const array DEFAULT_MODULE_VALUES = [
 		// light
 		QRMatrix::M_NULL             => false,
 		QRMatrix::M_DARKMODULE_LIGHT => false,
@@ -80,7 +80,7 @@ interface QROutputInterface{
 	 *
 	 * @var string[]
 	 */
-	public const LAYERNAMES = [
+	final public const array LAYERNAMES = [
 		// light
 		QRMatrix::M_NULL             => 'null',
 		QRMatrix::M_DARKMODULE_LIGHT => 'darkmodule-light',
@@ -114,7 +114,7 @@ interface QROutputInterface{
 	 * @var string
 	 * @see \chillerlan\QRCode\Output\QROutputAbstract::toBase64DataURI()
 	 */
-	public const MIME_TYPE = '';
+	public const string MIME_TYPE = '';
 
 	/**
 	 * Determines whether the given value is valid

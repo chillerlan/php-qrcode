@@ -32,12 +32,10 @@ final class Kanji extends QRDataModeAbstract{
 	 * possible values: SJIS, SJIS-2004
 	 *
 	 * SJIS-2004 may produce errors in PHP < 8
-	 *
-	 * @var string
 	 */
-	public const ENCODING = 'SJIS';
+	public const string ENCODING = 'SJIS';
 
-	public const DATAMODE = Mode::KANJI;
+	public const int DATAMODE = Mode::KANJI;
 
 	protected function getCharCount():int{
 		return mb_strlen($this->data, self::ENCODING);

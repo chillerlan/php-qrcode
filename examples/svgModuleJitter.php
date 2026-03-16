@@ -26,7 +26,7 @@ require_once __DIR__.'/../vendor/autoload.php';
  */
 class ModuleJitterSVGoutput extends QRMarkupSVG{
 
-	protected const ROUND_PRECISION = 5;
+	protected const int ROUND_PRECISION = 5;
 
 	protected readonly float $sideLength;
 

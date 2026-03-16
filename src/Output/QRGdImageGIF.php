@@ -22,7 +22,7 @@ use function imagegif;
  */
 class QRGdImageGIF extends QRGdImage{
 
-	final public const MIME_TYPE = 'image/gif';
+	final public const string MIME_TYPE = 'image/gif';
 
 	/**
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException

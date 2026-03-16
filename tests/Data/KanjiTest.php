@@ -21,7 +21,7 @@ use function bin2hex, chr, defined, sprintf;
  */
 final class KanjiTest extends DataInterfaceTestAbstract{
 
-	protected const testData = '漂う花の香り';
+	protected const string testData = '漂う花の香り';
 
 	protected static function getDataModeInterface(string $data):QRDataModeInterface{
 		return new Kanji($data);

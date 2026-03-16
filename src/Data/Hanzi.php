@@ -32,19 +32,15 @@ final class Hanzi extends QRDataModeAbstract{
 
 	/**
 	 * possible values: GB2312, GB18030
-	 *
-	 * @var string
 	 */
-	public const ENCODING = 'GB18030';
+	public const string ENCODING = 'GB18030';
 
 	/**
 	 * @todo: other subsets???
-	 *
-	 * @var int
 	 */
-	public const GB2312_SUBSET = 0b0001;
+	public const int GB2312_SUBSET = 0b0001;
 
-	public const DATAMODE = Mode::HANZI;
+	public const int DATAMODE = Mode::HANZI;
 
 	protected function getCharCount():int{
 		return mb_strlen($this->data, self::ENCODING);

@@ -26,11 +26,11 @@ use const PHP_FLOAT_MAX;
  */
 final class FinderPatternFinder{
 
-	private const MIN_SKIP      = 2;
-	private const MAX_MODULES   = 177; // 1 pixel/module times 3 modules/center
-	private const CENTER_QUORUM = 2; // support up to version 10 for mobile clients
+	private const int MIN_SKIP      = 2;
+	private const int MAX_MODULES   = 177; // 1 pixel/module times 3 modules/center
+	private const int CENTER_QUORUM = 2; // support up to version 10 for mobile clients
 	/** @var int[] */
-	private const crossCheckStateCount = [0, 0, 0, 0, 0];
+	private const array crossCheckStateCount = [0, 0, 0, 0, 0];
 	private BitMatrix $matrix;
 	/** @var \chillerlan\QRCode\Detector\FinderPattern[] */
 	private array $possibleCenters;

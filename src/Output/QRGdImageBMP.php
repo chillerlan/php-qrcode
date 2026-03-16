@@ -22,7 +22,7 @@ use function imagebmp;
  */
 class QRGdImageBMP extends QRGdImage{
 
-	final public const MIME_TYPE = 'image/bmp';
+	final public const string MIME_TYPE = 'image/bmp';
 
 	/**
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException

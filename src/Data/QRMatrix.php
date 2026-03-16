@@ -22,73 +22,41 @@ use function array_fill, array_map, array_reverse, count, intdiv;
  */
 class QRMatrix{
 
-	/*
-	 * special values
-	 */
+	/* special values */
 
-	/** @var int */
-	public const IS_DARK            = 0b100000000000;
-	/** @var int */
-	public const M_NULL             = 0b000000000000;
-	/** @var int */
-	public const M_LOGO             = 0b001000000000;
-	/** @var int */
-	public const M_LOGO_DARK        = 0b101000000000;
+	final public const int IS_DARK            = 0b100000000000;
+	final public const int M_NULL             = 0b000000000000;
+	final public const int M_LOGO             = 0b001000000000;
+	final public const int M_LOGO_DARK        = 0b101000000000;
 
-	/*
-	 * light values
-	 */
+	/* light values */
 
-	/** @var int */
-	public const M_DATA             = 0b000000000010;
-	/** @var int */
-	public const M_FINDER           = 0b000000000100;
-	/** @var int */
-	public const M_SEPARATOR        = 0b000000001000;
-	/** @var int */
-	public const M_ALIGNMENT        = 0b000000010000;
-	/** @var int */
-	public const M_TIMING           = 0b000000100000;
-	/** @var int */
-	public const M_FORMAT           = 0b000001000000;
-	/** @var int */
-	public const M_VERSION          = 0b000010000000;
-	/** @var int */
-	public const M_QUIETZONE        = 0b000100000000;
+	final public const int M_DATA             = 0b000000000010;
+	final public const int M_FINDER           = 0b000000000100;
+	final public const int M_SEPARATOR        = 0b000000001000;
+	final public const int M_ALIGNMENT        = 0b000000010000;
+	final public const int M_TIMING           = 0b000000100000;
+	final public const int M_FORMAT           = 0b000001000000;
+	final public const int M_VERSION          = 0b000010000000;
+	final public const int M_QUIETZONE        = 0b000100000000;
 
-	/*
-	 * dark values
-	 */
+	/* dark values */
 
-	/** @var int */
-	public const M_DARKMODULE       = 0b100000000001;
-	/** @var int */
-	public const M_DATA_DARK        = 0b100000000010;
-	/** @var int */
-	public const M_FINDER_DARK      = 0b100000000100;
-	/** @var int */
-	public const M_ALIGNMENT_DARK   = 0b100000010000;
-	/** @var int */
-	public const M_TIMING_DARK      = 0b100000100000;
-	/** @var int */
-	public const M_FORMAT_DARK      = 0b100001000000;
-	/** @var int */
-	public const M_VERSION_DARK     = 0b100010000000;
-	/** @var int */
-	public const M_FINDER_DOT       = 0b110000000000;
+	final public const int M_DARKMODULE       = 0b100000000001;
+	final public const int M_DATA_DARK        = 0b100000000010;
+	final public const int M_FINDER_DARK      = 0b100000000100;
+	final public const int M_ALIGNMENT_DARK   = 0b100000010000;
+	final public const int M_TIMING_DARK      = 0b100000100000;
+	final public const int M_FORMAT_DARK      = 0b100001000000;
+	final public const int M_VERSION_DARK     = 0b100010000000;
+	final public const int M_FINDER_DOT       = 0b110000000000;
 
-	/*
-	 * values used for reversed reflectance
-	 */
+	/* values used for reversed reflectance */
 
-	/** @var int */
-	public const M_DARKMODULE_LIGHT = 0b000000000001;
-	/** @var int */
-	public const M_FINDER_DOT_LIGHT = 0b010000000000;
-	/** @var int */
-	public const M_SEPARATOR_DARK   = 0b100000001000;
-	/** @var int */
-	public const M_QUIETZONE_DARK   = 0b100100000000;
+	final public const int M_DARKMODULE_LIGHT = 0b000000000001;
+	final public const int M_FINDER_DOT_LIGHT = 0b010000000000;
+	final public const int M_SEPARATOR_DARK   = 0b100000001000;
+	final public const int M_QUIETZONE_DARK   = 0b100100000000;
 
 	/**
 	 * Map of flag => coord
@@ -97,7 +65,7 @@ class QRMatrix{
 	 *
 	 * @var int[][]
 	 */
-	protected const neighbours = [
+	final protected const array neighbours = [
 		0b00000001 => [-1, -1],
 		0b00000010 => [ 0, -1],
 		0b00000100 => [ 1, -1],

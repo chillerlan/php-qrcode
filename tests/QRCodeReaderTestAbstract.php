@@ -32,7 +32,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 	use QRMaxLengthTrait, QRMatrixDebugTrait;
 
 	/** @see https://www.bobrosslipsum.com/ */
-	protected const loremipsum = 'Just let this happen. We just let this flow right out of our minds. '
+	final protected const string loremipsum = 'Just let this happen. We just let this flow right out of our minds. '
 		.'Anyone can paint. We touch the canvas, the canvas takes what it wants. From all of us here, '
 		.'I want to wish you happy painting and God bless, my friends. A tree cannot be straight if it has a crooked trunk. '
 		.'You have to make almighty decisions when you\'re the creator. I guess that would be considered a UFO. '
@@ -40,7 +40,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		.'They say everything looks better with odd numbers of things. But sometimes I put even numbers—just '
 		.'to upset the critics. We\'ll lay all these little funky little things in there. ';
 
-	protected const samplesDir = __DIR__.'/samples/';
+	protected const string samplesDir = __DIR__.'/samples/';
 
 	protected SettingsContainerInterface|QROptions $options;
 

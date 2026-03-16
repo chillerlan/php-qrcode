@@ -25,7 +25,7 @@ final class ECITest extends TestCase{
 	private QRData $QRData;
 	private int    $testCharset = ECICharset::GB18030;
 
-	private const testData = '无可奈何燃花作香';
+	private const string testData = '无可奈何燃花作香';
 
 	protected function setUp():void{
 		$this->QRData = new QRData(new QROptions);

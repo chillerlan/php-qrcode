@@ -23,7 +23,7 @@ use function array_values, count, date, implode, is_array, is_numeric, max, min,
  */
 class QREps extends QROutputAbstract{
 
-	final public const MIME_TYPE = 'application/postscript';
+	final public const string MIME_TYPE = 'application/postscript';
 
 	public static function moduleValueIsValid(mixed $value):bool{
 

@@ -28,7 +28,7 @@ use function class_exists;
 class QRFpdf extends QROutputAbstract{
 	use RGBArrayModuleValueTrait;
 
-	final public const MIME_TYPE = 'application/pdf';
+	final public const string MIME_TYPE = 'application/pdf';
 
 	/** @var int[]|null  */
 	protected array|null $prevColor = null;

@@ -31,7 +31,7 @@ abstract class QROutputTestAbstract extends TestCase{
 	protected QROutputInterface                    $outputInterface;
 	protected QRMatrix                             $matrix;
 
-	protected const buildDir = 'output-test';
+	protected const string buildDir = 'output-test';
 
 	/**
 	 * Attempts to create a directory under /.build and instances several required objects

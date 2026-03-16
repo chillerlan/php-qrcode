@@ -24,12 +24,10 @@ final class AlphaNum extends QRDataModeAbstract{
 
 	/**
 	 * ISO/IEC 18004:2000 Table 5
-	 *
-	 * @var string
 	 */
-	private const CHAR_MAP = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:';
+	private const string CHAR_MAP = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ $%*+-./:';
 
-	public const DATAMODE = Mode::ALPHANUM;
+	public const int DATAMODE = Mode::ALPHANUM;
 
 	public function getLengthInBits():int{
 		return (int)ceil($this->getCharCount() * (11 / 2));

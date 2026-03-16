@@ -28,7 +28,7 @@ final class QRCodeTest extends TestCase{
 	private QRCode    $qrcode;
 	private QROptions $options;
 
-	private const buildDir = 'output-test';
+	private const string buildDir = 'output-test';
 
 	/**
 	 * invoke test instances

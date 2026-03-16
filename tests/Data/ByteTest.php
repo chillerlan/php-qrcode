@@ -19,7 +19,7 @@ use PHPUnit\Framework\Attributes\Test;
  */
 final class ByteTest extends DataInterfaceTestAbstract{
 
-	protected const testData = '[¯\_(ツ)_/¯]';
+	protected const string testData = '[¯\_(ツ)_/¯]';
 
 	protected static function getDataModeInterface(string $data):QRDataModeInterface{
 		return new Byte($data);

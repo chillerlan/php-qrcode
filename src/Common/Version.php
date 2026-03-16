@@ -22,10 +22,8 @@ final class Version{
 	 * Enable version auto detection
 	 *
 	 * @see \chillerlan\QRCode\QROptionsTrait::$version
-	 *
-	 * @var int
 	 */
-	public const AUTO = -1;
+	public const int AUTO = -1;
 
 	/**
 	 * ISO/IEC 18004:2000 Annex E, Table E.1 - Row/column coordinates of center module of Alignment Patterns
@@ -34,7 +32,7 @@ final class Version{
 	 *
 	 * @var int[][]
 	 */
-	private const ALIGNMENT_PATTERN = [
+	private const array ALIGNMENT_PATTERN = [
 		1  => [],
 		2  => [6, 18],
 		3  => [6, 22],
@@ -84,7 +82,7 @@ final class Version{
 	 *
 	 * @var int[]
 	 */
-	private const VERSION_PATTERN = [
+	private const array VERSION_PATTERN = [
 		7  => 0b000111110010010100,
 		8  => 0b001000010110111100,
 		9  => 0b001001101010011001,
@@ -126,7 +124,7 @@ final class Version{
 	 *
 	 * @see http://www.thonky.com/qr-code-tutorial/error-correction-table
 	 */
-	private const RSBLOCKS = [
+	private const array RSBLOCKS = [
 		1  => [[ 7, [[ 1,  19], [ 0,   0]]], [10, [[ 1, 16], [ 0,  0]]], [13, [[ 1, 13], [ 0,  0]]], [17, [[ 1,  9], [ 0,  0]]]],
 		2  => [[10, [[ 1,  34], [ 0,   0]]], [16, [[ 1, 28], [ 0,  0]]], [22, [[ 1, 22], [ 0,  0]]], [28, [[ 1, 16], [ 0,  0]]]],
 		3  => [[15, [[ 1,  55], [ 0,   0]]], [26, [[ 1, 44], [ 0,  0]]], [18, [[ 2, 17], [ 0,  0]]], [22, [[ 2, 13], [ 0,  0]]]],
@@ -172,7 +170,7 @@ final class Version{
 	/**
 	 * ISO/IEC 18004:2000 Table 1 - Data capacity of all versions of QR Code
 	 */
-	private const TOTAL_CODEWORDS = [
+	private const array TOTAL_CODEWORDS = [
 		1  => 26,
 		2  => 44,
 		3  => 70,

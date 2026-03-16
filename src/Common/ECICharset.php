@@ -20,44 +20,44 @@ use function sprintf;
  */
 final class ECICharset{
 
-	public const CP437                 = 0;  // Code page 437, DOS Latin US
-	public const ISO_IEC_8859_1_GLI    = 1;  // GLI encoding with characters 0 to 127 identical to ISO/IEC 646 and characters 128 to 255 identical to ISO 8859-1
-	public const CP437_WO_GLI          = 2;  // An equivalent code table to CP437, without the return-to-GLI 0 logic
-	public const ISO_IEC_8859_1        = 3;  // Latin-1 (Default)
-	public const ISO_IEC_8859_2        = 4;  // Latin-2
-	public const ISO_IEC_8859_3        = 5;  // Latin-3
-	public const ISO_IEC_8859_4        = 6;  // Latin-4
-	public const ISO_IEC_8859_5        = 7;  // Latin/Cyrillic
-	public const ISO_IEC_8859_6        = 8;  // Latin/Arabic
-	public const ISO_IEC_8859_7        = 9;  // Latin/Greek
-	public const ISO_IEC_8859_8        = 10; // Latin/Hebrew
-	public const ISO_IEC_8859_9        = 11; // Latin-5
-	public const ISO_IEC_8859_10       = 12; // Latin-6
-	public const ISO_IEC_8859_11       = 13; // Latin/Thai
+	public const int CP437                 = 0;  // Code page 437, DOS Latin US
+	public const int ISO_IEC_8859_1_GLI    = 1;  // GLI encoding with characters 0 to 127 identical to ISO/IEC 646 and characters 128 to 255 identical to ISO 8859-1
+	public const int CP437_WO_GLI          = 2;  // An equivalent code table to CP437, without the return-to-GLI 0 logic
+	public const int ISO_IEC_8859_1        = 3;  // Latin-1 (Default)
+	public const int ISO_IEC_8859_2        = 4;  // Latin-2
+	public const int ISO_IEC_8859_3        = 5;  // Latin-3
+	public const int ISO_IEC_8859_4        = 6;  // Latin-4
+	public const int ISO_IEC_8859_5        = 7;  // Latin/Cyrillic
+	public const int ISO_IEC_8859_6        = 8;  // Latin/Arabic
+	public const int ISO_IEC_8859_7        = 9;  // Latin/Greek
+	public const int ISO_IEC_8859_8        = 10; // Latin/Hebrew
+	public const int ISO_IEC_8859_9        = 11; // Latin-5
+	public const int ISO_IEC_8859_10       = 12; // Latin-6
+	public const int ISO_IEC_8859_11       = 13; // Latin/Thai
 	// 14 reserved
-	public const ISO_IEC_8859_13       = 15; // Latin-7 (Baltic Rim)
-	public const ISO_IEC_8859_14       = 16; // Latin-8 (Celtic)
-	public const ISO_IEC_8859_15       = 17; // Latin-9
-	public const ISO_IEC_8859_16       = 18; // Latin-10
+	public const int ISO_IEC_8859_13       = 15; // Latin-7 (Baltic Rim)
+	public const int ISO_IEC_8859_14       = 16; // Latin-8 (Celtic)
+	public const int ISO_IEC_8859_15       = 17; // Latin-9
+	public const int ISO_IEC_8859_16       = 18; // Latin-10
 	// 19 reserved
-	public const SHIFT_JIS             = 20; // JIS X 0208 Annex 1 + JIS X 0201
-	public const WINDOWS_1250_LATIN_2  = 21; // Superset of Latin-2, Central Europe
-	public const WINDOWS_1251_CYRILLIC = 22; // Latin/Cyrillic
-	public const WINDOWS_1252_LATIN_1  = 23; // Superset of Latin-1
-	public const WINDOWS_1256_ARABIC   = 24;
-	public const ISO_IEC_10646_UCS_2   = 25; // High order byte first (UTF-16BE)
-	public const ISO_IEC_10646_UTF_8   = 26; // UTF-8
-	public const ISO_IEC_646_1991      = 27; // International Reference Version of ISO 7-bit coded character set (US-ASCII)
-	public const BIG5                  = 28; // Big 5 (Taiwan) Chinese Character Set
-	public const GB18030               = 29; // GB (PRC) Chinese Character Set
-	public const EUC_KR                = 30; // Korean Character Set
+	public const int SHIFT_JIS             = 20; // JIS X 0208 Annex 1 + JIS X 0201
+	public const int WINDOWS_1250_LATIN_2  = 21; // Superset of Latin-2, Central Europe
+	public const int WINDOWS_1251_CYRILLIC = 22; // Latin/Cyrillic
+	public const int WINDOWS_1252_LATIN_1  = 23; // Superset of Latin-1
+	public const int WINDOWS_1256_ARABIC   = 24;
+	public const int ISO_IEC_10646_UCS_2   = 25; // High order byte first (UTF-16BE)
+	public const int ISO_IEC_10646_UTF_8   = 26; // UTF-8
+	public const int ISO_IEC_646_1991      = 27; // International Reference Version of ISO 7-bit coded character set (US-ASCII)
+	public const int BIG5                  = 28; // Big 5 (Taiwan) Chinese Character Set
+	public const int GB18030               = 29; // GB (PRC) Chinese Character Set
+	public const int EUC_KR                = 30; // Korean Character Set
 
 	/**
 	 * map of charset id -> name
 	 *
 	 * @see \mb_list_encodings()
 	 */
-	public const MB_ENCODINGS = [
+	public const array MB_ENCODINGS = [
 		self::CP437                 => null,
 		self::ISO_IEC_8859_1_GLI    => null,
 		self::CP437_WO_GLI          => null,

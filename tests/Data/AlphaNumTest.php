@@ -18,7 +18,7 @@ use chillerlan\QRCode\Data\{AlphaNum, QRDataModeInterface};
  */
 final class AlphaNumTest extends DataInterfaceTestAbstract{
 
-	protected const testData = '0 $%*+-./:';
+	protected const string testData = '0 $%*+-./:';
 
 	protected static function getDataModeInterface(string $data):QRDataModeInterface{
 		return new AlphaNum($data);

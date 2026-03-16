@@ -23,7 +23,7 @@ use function mb_convert_encoding, mb_detect_encoding, mb_internal_encoding, spri
  */
 final class ECI extends QRDataModeAbstract{
 
-	public const DATAMODE = Mode::ECI;
+	public const int DATAMODE = Mode::ECI;
 
 	/**
 	 * The current ECI encoding id (default to UTF-8)

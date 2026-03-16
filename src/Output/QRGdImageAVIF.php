@@ -22,7 +22,7 @@ use function imageavif;
  */
 class QRGdImageAVIF extends QRGdImage{
 
-	final public const MIME_TYPE = 'image/avif';
+	final public const string MIME_TYPE = 'image/avif';
 
 	/**
 	 * @throws \chillerlan\QRCode\Output\QRCodeOutputException

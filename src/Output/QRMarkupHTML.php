@@ -18,7 +18,7 @@ use function implode, sprintf;
  */
 class QRMarkupHTML extends QRMarkup{
 
-	final public const MIME_TYPE = 'text/html';
+	final public const string MIME_TYPE = 'text/html';
 
 	protected function createMarkup(bool $saveToFile):string{
 		$rows     = [];

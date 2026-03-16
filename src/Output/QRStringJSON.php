@@ -26,8 +26,8 @@ use function json_encode;
 class QRStringJSON extends QROutputAbstract{
 	use CssColorModuleValueTrait;
 
-	final public const MIME_TYPE = 'application/json';
-	final public const SCHEMA    = 'https://raw.githubusercontent.com/chillerlan/php-qrcode/main/src/Output/qrcode.schema.json';
+	final public const string MIME_TYPE = 'application/json';
+	final public const string SCHEMA    = 'https://raw.githubusercontent.com/chillerlan/php-qrcode/main/src/Output/qrcode.schema.json';
 
 	/**
 	 * @inheritDoc

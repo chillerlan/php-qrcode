@@ -18,7 +18,7 @@ use chillerlan\QRCode\Data\{Number, QRDataModeInterface};
  */
 final class NumberTest extends DataInterfaceTestAbstract{
 
-	protected const testData = '0123456789';
+	protected const string testData = '0123456789';
 
 	protected static function getDataModeInterface(string $data):QRDataModeInterface{
 		return new Number($data);

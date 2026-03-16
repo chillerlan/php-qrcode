@@ -27,7 +27,7 @@ final class BitMatrix extends QRMatrix{
 	 *
 	 * [data bits, sequence after masking]
 	 */
-	private const DECODE_LOOKUP = [
+	private const array DECODE_LOOKUP = [
 		0x5412, // 0101010000010010
 		0x5125, // 0101000100100101
 		0x5E7C, // 0101111001111100
@@ -62,7 +62,7 @@ final class BitMatrix extends QRMatrix{
 		0x2BED, // 0010101111101101
 	];
 
-	private const FORMAT_INFO_MASK_QR = 0x5412; // 0101010000010010
+	private const int FORMAT_INFO_MASK_QR = 0x5412; // 0101010000010010
 
 	/**
 	 * This flag has effect only on the copyVersionBit() method.

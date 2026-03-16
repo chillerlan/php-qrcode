@@ -37,15 +37,15 @@ final class Binarizer{
 
 	// This class uses 5x5 blocks to compute local luminance, where each block is 8x8 pixels.
 	// So this is the smallest dimension in each axis we can accept.
-	private const BLOCK_SIZE_POWER  = 3;
-	private const BLOCK_SIZE        = 8;  // ...0100...00
-	private const BLOCK_SIZE_MASK   = 7;  // ...0011...11
-	private const MINIMUM_DIMENSION = 40;
-	private const MIN_DYNAMIC_RANGE = 24;
+	private const int BLOCK_SIZE_POWER  = 3;
+	private const int BLOCK_SIZE        = 8;  // ...0100...00
+	private const int BLOCK_SIZE_MASK   = 7;  // ...0011...11
+	private const int MINIMUM_DIMENSION = 40;
+	private const int MIN_DYNAMIC_RANGE = 24;
 
-#	private const LUMINANCE_BITS    = 5;
-	private const LUMINANCE_SHIFT   = 3;
-	private const LUMINANCE_BUCKETS = 32;
+#	private const int LUMINANCE_BITS    = 5;
+	private const int LUMINANCE_SHIFT   = 3;
+	private const int LUMINANCE_BUCKETS = 32;
 
 	private LuminanceSourceInterface $source;
 	/** @var int[] */

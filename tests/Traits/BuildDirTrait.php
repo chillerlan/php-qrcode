@@ -19,7 +19,7 @@ use function dirname, file_exists, file_get_contents, is_file, mkdir, realpath, 
  */
 trait BuildDirTrait{
 
-	protected const _buildDir = __DIR__.'/../../.build/';
+	protected const string _buildDir = __DIR__.'/../../.build/';
 
 	/**
 	 * returns the full raw path to the build dir

@@ -18,7 +18,7 @@ use function array_map, implode, is_string, max, min, sprintf;
  */
 class QRStringText extends QROutputAbstract{
 
-	final public const MIME_TYPE = 'text/plain';
+	final public const string MIME_TYPE = 'text/plain';
 
 	public static function moduleValueIsValid(mixed $value):bool{
 		return is_string($value);

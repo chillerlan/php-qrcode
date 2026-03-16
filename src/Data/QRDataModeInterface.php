@@ -23,10 +23,9 @@ interface QRDataModeInterface{
 	 *
 	 * Note: do not call this constant from the interface, but rather from one of the child classes
 	 *
-	 * @var int
 	 * @see \chillerlan\QRCode\Common\Mode
 	 */
-	public const DATAMODE = -1;
+	public const int DATAMODE = -1;
 
 	/**
 	 * retruns the length in bits of the data string

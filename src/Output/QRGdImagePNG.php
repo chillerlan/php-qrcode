@@ -22,7 +22,7 @@ use function imagepng, max, min;
  */
 class QRGdImagePNG extends QRGdImage{
 
-	final public const MIME_TYPE = 'image/png';
+	final public const string MIME_TYPE = 'image/png';
 
 	protected function getQuality():int{
 		return max(-1, min(9, $this->options->quality));
