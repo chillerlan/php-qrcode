@@ -3366,14 +3366,9 @@ Search.appendIndex(
             "summary": "Trait\u0020QRCodeReaderOptionsTrait",
             "url": "classes/chillerlan-QRCode-QRCodeReaderOptionsTrait.html"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QRCodeReaderOptionsTrait\u003A\u003Aset_readerUseImagickIfAvailable\u0028\u0029",
-            "name": "set_readerUseImagickIfAvailable",
-            "summary": "enables\u0020Imagick\u0020for\u0020the\u0020QR\u0020Code\u0020reader\u0020if\u0020the\u0020extension\u0020is\u0020available",
-            "url": "classes/chillerlan-QRCode-QRCodeReaderOptionsTrait.html#method_set_readerUseImagickIfAvailable"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCodeReaderOptionsTrait\u003A\u003A\u0024readerUseImagickIfAvailable",
             "name": "readerUseImagickIfAvailable",
-            "summary": "Use\u0020Imagick\u0020\u0028if\u0020available\u0029\u0020when\u0020reading\u0020QR\u0020Codes",
+            "summary": "Use\u0020Imagick\u0020\u0028if\u0020available\u0029\u0020when\u0020reading\u0020QR\u0020Codes,\nenables\u0020Imagick\u0020for\u0020the\u0020QR\u0020Code\u0020reader\u0020if\u0020the\u0020extension\u0020is\u0020available",
             "url": "classes/chillerlan-QRCode-QRCodeReaderOptionsTrait.html#property_readerUseImagickIfAvailable"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCodeReaderOptionsTrait\u003A\u003A\u0024readerGrayscale",
@@ -3416,60 +3411,10 @@ Search.appendIndex(
             "summary": "sets\u0020the\u0020maximum\u0020version\u0020number",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_versionMax"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_version\u0028\u0029",
-            "name": "set_version",
-            "summary": "sets\/clamps\u0020the\u0020version\u0020number",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_version"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_eccLevel\u0028\u0029",
-            "name": "set_eccLevel",
-            "summary": "sets\u0020the\u0020ECC\u0020level",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_eccLevel"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_scale\u0028\u0029",
-            "name": "set_scale",
-            "summary": "clamps\u0020the\u0020module\u0020scale\u0020at\u0020a\u0020minimum\u0020of\u00201\u0020and\u0020a\u0020maximum\u0020of\u002050",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_scale"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_quietzoneSize\u0028\u0029",
-            "name": "set_quietzoneSize",
-            "summary": "sets\/clamps\u0020the\u0020quiet\u0020zone\u0020size",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_quietzoneSize"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_fpdfMeasureUnit\u0028\u0029",
-            "name": "set_fpdfMeasureUnit",
-            "summary": "sets\u0020the\u0020FPDF\u0020measurement\u0020unit",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_fpdfMeasureUnit"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003AclampLogoSpaceValue\u0028\u0029",
             "name": "clampLogoSpaceValue",
             "summary": "clamp\u0020the\u0020logo\u0020space\u0020values\u0020between\u00200\u0020and\u0020maximum\u0020length\u0020\u0028177\u0020modules\u0020at\u0020version\u002040\u0029",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_clampLogoSpaceValue"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_logoSpaceWidth\u0028\u0029",
-            "name": "set_logoSpaceWidth",
-            "summary": "clamp\/set\u0020logo\u0020space\u0020width",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_logoSpaceWidth"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_logoSpaceHeight\u0028\u0029",
-            "name": "set_logoSpaceHeight",
-            "summary": "clamp\/set\u0020logo\u0020space\u0020height",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_logoSpaceHeight"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_logoSpaceStartX\u0028\u0029",
-            "name": "set_logoSpaceStartX",
-            "summary": "clamp\/set\u0020horizontal\u0020logo\u0020space\u0020start",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_logoSpaceStartX"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_logoSpaceStartY\u0028\u0029",
-            "name": "set_logoSpaceStartY",
-            "summary": "clamp\/set\u0020vertical\u0020logo\u0020space\u0020start",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_logoSpaceStartY"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_circleRadius\u0028\u0029",
-            "name": "set_circleRadius",
-            "summary": "clamp\/set\u0020SVG\u0020circle\u0020radius",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_circleRadius"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003A\u0024version",
             "name": "version",
