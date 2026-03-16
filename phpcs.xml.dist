@@ -37,7 +37,7 @@
 
 	<rule ref="SlevomatCodingStandard.Classes.ClassConstantVisibility"/>
 	<rule ref="SlevomatCodingStandard.Classes.DisallowConstructorPropertyPromotion"/>
-	<rule ref="SlevomatCodingStandard.Classes.ForbiddenPublicProperty"/>
+	<!--<rule ref="SlevomatCodingStandard.Classes.ForbiddenPublicProperty"/>-->
 	<rule ref="SlevomatCodingStandard.Classes.ModernClassNameReference"/>
 
 	<rule ref="SlevomatCodingStandard.Commenting.DeprecatedAnnotationDeclaration"/>
@@ -162,7 +162,7 @@
 	<rule ref="Generic.Strings.UnnecessaryStringConcat"/>
 	<!--<rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>-->
 	<rule ref="Generic.WhiteSpace.IncrementDecrementSpacing"/>
-	<rule ref="Generic.WhiteSpace.ScopeIndent"/>
+	<!--<rule ref="Generic.WhiteSpace.ScopeIndent"/>-->
 	<rule ref="Generic.WhiteSpace.SpreadOperatorSpacingAfter"/>
 
 	<rule ref="PSR2.ControlStructures.ElseIfDeclaration"/>
@@ -198,7 +198,7 @@
 	<rule ref="Squiz.PHP.InnerFunctions"/>
 	<rule ref="Squiz.PHP.LowercasePHPFunctions"/>
 	<rule ref="Squiz.PHP.NonExecutableCode"/>
-	<rule ref="Squiz.Scope.MemberVarScope"/>
+	<!--<rule ref="Squiz.Scope.MemberVarScope"/>-->
 	<rule ref="Squiz.Scope.MethodScope"/>
 	<rule ref="Squiz.Scope.StaticThisUsage"/>
 	<rule ref="Squiz.Strings.DoubleQuoteUsage"/>
@@ -270,7 +270,7 @@
 			<property name="ignoreNewlines" value="true" />
 		</properties>
 	</rule>
-
+<!--
 	<rule ref="Generic.WhiteSpace.ScopeIndent">
 		<properties>
 			<property name="tabIndent" value="true" />
@@ -280,7 +280,7 @@
 			</property>
 		</properties>
 	</rule>
-
+-->
 	<rule ref="PSR12.ControlStructures.BooleanOperatorPlacement">
 		<properties>
 			<property name="allowOnly" value="first" />
@@ -304,13 +304,13 @@
 			<property name="ignoreNewlines" value="true" />
 		</properties>
 	</rule>
-
+<!--
 	<rule ref="Squiz.WhiteSpace.OperatorSpacing">
 		<properties>
 			<property name="ignoreNewlines" value="true" />
 		</properties>
 	</rule>
-
+-->
 	<rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
 		<properties>
 			<property name="ignoreBlankLines" value="true" />
