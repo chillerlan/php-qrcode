@@ -61,7 +61,7 @@ class MyCustomOutput extends QROutputAbstract{
 $options = new QROptions;
 
 $options->version  = 5;
-/** @phan-suppress-next-line PhanTypeMismatchPropertyProbablyReal */
+/** @phan-suppress-next-line PhanTypeMismatchPropertyReal */
 $options->eccLevel = 'L'; // can be assigned as string
 
 $data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';

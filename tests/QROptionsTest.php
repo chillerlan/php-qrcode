@@ -55,7 +55,7 @@ final class QROptionsTest extends TestCase{
 	/**
 	 * Tests setting the ECC level from string or int
 	 *
-	 * @phan-suppress PhanTypeMismatchPropertyProbablyReal
+	 * @phan-suppress PhanTypeMismatchPropertyReal
 	 */
 	#[Test]
 	public function setEccLevel():void{
