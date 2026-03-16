@@ -15,41 +15,34 @@ use function extension_loaded;
 
 /**
  * Trait QRCodeReaderOptionsTrait
- *
- * @property bool $readerUseImagickIfAvailable
- * @property bool $readerGrayscale
- * @property bool $readerInvertColors
- * @property bool $readerIncreaseContrast
  */
 trait QRCodeReaderOptionsTrait{
 
 	/**
-	 * Use Imagick (if available) when reading QR Codes
+	 * Use Imagick (if available) when reading QR Codes,
+	 * enables Imagick for the QR Code reader if the extension is available
 	 */
-	protected bool $readerUseImagickIfAvailable = false;
+	public bool $readerUseImagickIfAvailable = false {
+		set{
+			$this->readerUseImagickIfAvailable = ($value && extension_loaded('imagick'));
+		}
+	}
 
 	/**
 	 * Grayscale the image before reading
 	 */
-	protected bool $readerGrayscale = false;
+	public bool $readerGrayscale = false;
 
 	/**
 	 * Invert the colors of the image
 	 */
-	protected bool $readerInvertColors = false;
+	public bool $readerInvertColors = false;
 
 	/**
 	 * Increase the contrast before reading
 	 *
 	 * note that applying contrast works different in GD and Imagick, so mileage may vary
 	 */
-	protected bool $readerIncreaseContrast = false;
-
-	/**
-	 * enables Imagick for the QR Code reader if the extension is available
-	 */
-	protected function set_readerUseImagickIfAvailable(bool $useImagickIfAvailable):void{
-		$this->readerUseImagickIfAvailable = ($useImagickIfAvailable && extension_loaded('imagick'));
-	}
+	public bool $readerIncreaseContrast = false;
 
 }
