@@ -54,7 +54,7 @@ It also features a QR Code reader based on a [PHP port](https://github.com/khana
 
 ## Requirements
 
-- PHP 8.2+
+- PHP 8.4+
   - [`ext-mbstring`](https://www.php.net/manual/book.mbstring.php)
   - optional:
     - [`ext-gd`](https://www.php.net/manual/book.image) for `QRGdImage` based output
@@ -98,13 +98,13 @@ composer require chillerlan/php-qrcode
 ```json
 {
 	"require": {
-		"php": "^8.2",
+		"php": "^8.4",
 		"chillerlan/php-qrcode": "dev-main#<commit_hash>"
 	}
 }
 ```
 
-Note: replace `dev-main` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^5.0` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions.
+Note: replace `dev-main` with a [version constraint](https://getcomposer.org/doc/articles/versions.md#writing-version-constraints), e.g. `^6.0` - see [releases](https://github.com/chillerlan/php-qrcode/releases) for valid versions.
 
 
 ## Quickstart
