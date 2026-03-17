@@ -3396,21 +3396,6 @@ Search.appendIndex(
             "summary": "The\u0020QRCode\u0020plug\u002Din\u0020settings\u0020\u0026\u0020setter\u0020functionality",
             "url": "classes/chillerlan-QRCode-QROptionsTrait.html"
         },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003AsetMinMaxVersion\u0028\u0029",
-            "name": "setMinMaxVersion",
-            "summary": "clamp\u0020min\/max\u0020version\u0020number",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_setMinMaxVersion"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_versionMin\u0028\u0029",
-            "name": "set_versionMin",
-            "summary": "sets\u0020the\u0020minimum\u0020version\u0020number",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_versionMin"
-        },                {
-            "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003Aset_versionMax\u0028\u0029",
-            "name": "set_versionMax",
-            "summary": "sets\u0020the\u0020maximum\u0020version\u0020number",
-            "url": "classes/chillerlan-QRCode-QROptionsTrait.html#method_set_versionMax"
-        },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptionsTrait\u003A\u003AclampLogoSpaceValue\u0028\u0029",
             "name": "clampLogoSpaceValue",
             "summary": "clamp\u0020the\u0020logo\u0020space\u0020values\u0020between\u00200\u0020and\u0020maximum\u0020length\u0020\u0028177\u0020modules\u0020at\u0020version\u002040\u0029",
@@ -4745,11 +4730,6 @@ Search.appendIndex(
             "name": "versionClamp",
             "summary": "Tests\u0020the\u0020\u0024version\u0020clamping",
             "url": "classes/chillerlan-QRCodeTest-QROptionsTest.html#method_versionClamp"
-        },                {
-            "fqsen": "\\chillerlan\\QRCodeTest\\QROptionsTest\u003A\u003AversionMinMaxClamp\u0028\u0029",
-            "name": "versionMinMaxClamp",
-            "summary": "Tests\u0020the\u0020\u0024versionMin\/\u0024versionMax\u0020clamping",
-            "url": "classes/chillerlan-QRCodeTest-QROptionsTest.html#method_versionMinMaxClamp"
         },                {
             "fqsen": "\\chillerlan\\QRCodeTest\\QROptionsTest\u003A\u003AsetEccLevel\u0028\u0029",
             "name": "setEccLevel",
