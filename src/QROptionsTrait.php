@@ -51,14 +51,22 @@ trait QROptionsTrait{
 	 *
 	 * if `QROptions::$version` is set to `Version::AUTO` (default: 1)
 	 */
-	protected int $versionMin = 1;
+	protected int $versionMin = 1 {
+		set{
+			$this->versionMin = max(1, min(40, $value));
+		}
+	}
 
 	/**
 	 * Maximum QR version
 	 *
 	 * if `QROptions::$version` is set to `Version::AUTO` (default: 40)
 	 */
-	protected int $versionMax = 40;
+	protected int $versionMax = 40 {
+		set{
+			$this->versionMax = max(1, min(40, $value));
+		}
+	}
 
 	/**
 	 * Error correct level
@@ -492,11 +500,6 @@ trait QROptionsTrait{
 	 * @see FPDF::__construct()
 	 */
 	public string $fpdfMeasureUnit = 'pt' {
-		/**
-		 * sets the FPDF measurement unit
-		 *
-		 * @codeCoverageIgnore
-		 */
 		set{
 			$value = strtolower($value);
 
@@ -505,7 +508,6 @@ trait QROptionsTrait{
 			}
 
 			// @todo throw or ignore silently?
-
 		}
 	}
 
@@ -520,34 +522,6 @@ trait QROptionsTrait{
 	 * @see https://developer.mozilla.org/en-US/docs/Web/XSLT
 	 */
 	public string|null $xmlStylesheet = null;
-
-
-	/**
-	 * clamp min/max version number
-	 */
-	protected function setMinMaxVersion(int $versionMin, int $versionMax):void{
-		$min = max(1, min(40, $versionMin));
-		$max = max(1, min(40, $versionMax));
-
-		$this->versionMin = min($min, $max);
-		$this->versionMax = max($min, $max);
-	}
-
-	/**
-	 * sets the minimum version number
-	 *
-	 * @todo: for some reason this crashes php when trying to access the other property ($this->versionMax) within the hook
-	 */
-	protected function set_versionMin(int $version):void{
-		$this->setMinMaxVersion($version, $this->versionMax);
-	}
-
-	/**
-	 * sets the maximum version number
-	 */
-	protected function set_versionMax(int $version):void{
-		$this->setMinMaxVersion($this->versionMin, $version);
-	}
 
 	/**
 	 * clamp the logo space values between 0 and maximum length (177 modules at version 40)

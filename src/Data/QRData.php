@@ -14,7 +14,7 @@ namespace chillerlan\QRCode\Data;
 use chillerlan\QRCode\QROptions;
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, Mode, Version};
 use chillerlan\Settings\SettingsContainerInterface;
-use function sprintf;
+use function max, min, sprintf;
 
 /**
  * Processes the binary data and maps it on a QRMatrix which is then being returned
@@ -193,10 +193,14 @@ final class QRData{
 			return new Version($this->options->version);
 		}
 
+		// we don't know whether the min/max versions were set correctly, so we determine here which value is higher
+		$min   = min($this->options->versionMin, $this->options->versionMax);
+		$max   = max($this->options->versionMin, $this->options->versionMax);
+
 		$total = $this->estimateTotalBitLength();
 
 		// guess the version number within the given range
-		for($version = $this->options->versionMin; $version <= $this->options->versionMax; $version++){
+		for($version = $min; $version <= $max; $version++){
 			if($total <= ($this->maxBitsForEcc[$version] - 4)){
 				return new Version($version);
 			}

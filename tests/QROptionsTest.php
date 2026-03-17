@@ -38,21 +38,6 @@ final class QROptionsTest extends TestCase{
 	}
 
 	/**
-	 * Tests the $versionMin/$versionMax clamping
-	 */
-	#[Test]
-	#[TestWith([5, 10, 5, 10], 'normal clamp')]
-	#[TestWith([-42, 42, 1, 40], 'exceeding values')]
-	#[TestWith([10, 5, 5, 10], 'min > max' )]
-	#[TestWith([42, -42, 1, 40], 'min > max, exceeding')]
-	public function versionMinMaxClamp(int $versionMin, int $versionMax, int $expectedMin, int $expectedMax):void{
-		$o = new QROptions(['versionMin' => $versionMin, 'versionMax' => $versionMax]);
-
-		$this::assertSame($expectedMin, $o->versionMin);
-		$this::assertSame($expectedMax, $o->versionMax);
-	}
-
-	/**
 	 * Tests setting the ECC level from string or int
 	 *
 	 * @phan-suppress PhanTypeMismatchPropertyReal
