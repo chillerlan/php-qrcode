@@ -55,7 +55,7 @@ $options->moduleValues    = [
 
 
 try{
-	$out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+	$out = new QRCode($options)->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 }
 catch(Throwable $e){
 	// handle the exception in whatever way you need

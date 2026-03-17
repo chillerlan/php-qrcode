@@ -224,7 +224,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 			throw new QRCodeOutputException('ext-fileinfo not loaded, cannot guess mime type');
 		}
 
-		$mime = (new finfo(FILEINFO_MIME_TYPE))->buffer($imageData);
+		$mime = new finfo(FILEINFO_MIME_TYPE)->buffer($imageData);
 
 		if($mime === false){
 			throw new QRCodeOutputException('unable to detect mime type');

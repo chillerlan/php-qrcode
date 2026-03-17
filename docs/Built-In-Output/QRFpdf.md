@@ -34,7 +34,7 @@ Render the output:
 
 ```php
 $data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-$out  = (new QRCode($options))->render($data); // -> data:application/pdf;base64,...
+$out  = new QRCode($options)->render($data); // -> data:application/pdf;base64,...
 
 echo $out;
 ```
@@ -46,7 +46,7 @@ Return the `FPDF` instance (will ignore other output options):
 $options->returnResource = true;
 
 /** @var \FPDF $fpdf */
-$fpdf = (new QRCode($options))->render($data);
+$fpdf = new QRCode($options)->render($data);
 
 // do stuff with the FPDF instance...
 

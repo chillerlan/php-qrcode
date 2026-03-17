@@ -46,7 +46,7 @@ final class VersionTest extends TestCase{
 	public function getVersionPattern():void{
 		$this::assertSame(0b000111110010010100, $this->version->getVersionPattern());
 		// no pattern for version < 7
-		$this::assertNull((new Version(6))->getVersionPattern());
+		$this::assertNull(new Version(6)->getVersionPattern());
 	}
 
 	#[Test]

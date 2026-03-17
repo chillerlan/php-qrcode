@@ -42,7 +42,7 @@ final class QRDataTest extends TestCase{
 
 		$options     = new QROptions(['version' => 3]);
 		$bitBuffer   = new BitBuffer($rawBytes);
-		$matrix      = (new QRData($options))->setBitBuffer($bitBuffer)->writeMatrix();
+		$matrix      = new QRData($options)->setBitBuffer($bitBuffer)->writeMatrix();
 		$maskPattern = MaskPattern::getBestPattern($matrix);
 
 		$matrix->setFormatInfo($maskPattern)->mask($maskPattern);
@@ -54,7 +54,7 @@ final class QRDataTest extends TestCase{
 		$options->readerUseImagickIfAvailable = false;
 
 		$output       = new QRGdImagePNG($options, $matrix);
-		$decodeResult = (new QRCode($options))->readFromBlob($output->dump());
+		$decodeResult = new QRCode($options)->readFromBlob($output->dump());
 
 		$this->debugMatrix($matrix);
 

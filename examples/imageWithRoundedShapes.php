@@ -150,7 +150,7 @@ $options = new QROptions([
 ]);
 
 
-$img = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+$img = new QRCode($options)->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 header('Content-type: image/png');
 

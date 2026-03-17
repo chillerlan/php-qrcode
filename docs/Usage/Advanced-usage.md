@@ -56,7 +56,7 @@ $json = json_encode($options, JSON_THROW_ON_ERROR);
 // via __toString()
 $json = (string)$options;
 
-$options = (new QROptions)->fromJSON($json);
+$options = new QROptions()->fromJSON($json);
 // on an existing instance - properties will be overwriten
 $options->fromJSON($json);
 ```

@@ -80,6 +80,6 @@ var_dump($qrOutputInterface->dump());
 // or just via the options
 $options->outputInterface = MyCustomOutput::class;
 
-var_dump((new QRCode($options))->render($data));
+var_dump(new QRCode($options)->render($data));
 
 exit;

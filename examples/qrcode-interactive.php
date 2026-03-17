@@ -80,7 +80,7 @@ try{
 		'imageTransparent' => false,
 	]);
 
-	$qrcode = (new QRCode($options))->render($_POST['inputstring']);
+	$qrcode = new QRCode($options)->render($_POST['inputstring']);
 
 	if(in_array($_POST['output_type'], ['png', 'jpg', 'gif', 'svg'], true)){
 		$qrcode = '<img alt="qrcode" src="'.$qrcode.'" />';

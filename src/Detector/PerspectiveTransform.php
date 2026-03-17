@@ -55,7 +55,7 @@ final class PerspectiveTransform{
 		float $x0, float $y0, float $x1, float $y1, float $x2, float $y2, float $x3, float $y3,
 		float $x0p, float $y0p, float $x1p, float $y1p, float $x2p, float $y2p, float $x3p, float $y3p,
 	):self{
-		return (new self)
+		return new self()
 			->squareToQuadrilateral($x0p, $y0p, $x1p, $y1p, $x2p, $y2p, $x3p, $y3p)
 			->times($this->quadrilateralToSquare($x0, $y0, $x1, $y1, $x2, $y2, $x3, $y3));
 	}

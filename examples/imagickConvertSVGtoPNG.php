@@ -71,7 +71,7 @@ class SVGConvert extends QRMarkupSVG{
 
 		if($base64){
 			// use finfo to guess the mime type
-			$mime = (new finfo(FILEINFO_MIME_TYPE))->buffer($imageData);
+			$mime = new finfo(FILEINFO_MIME_TYPE)->buffer($imageData);
 
 			if($mime === false){
 				throw new QRCodeOutputException('unable to detect mime type');
@@ -121,7 +121,7 @@ $options->svgDefs              = '
 
 
 // render the SVG and convert to the desired ImageMagick format
-$image = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+$image = new QRCode($options)->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 header('Content-type: image/png');
 

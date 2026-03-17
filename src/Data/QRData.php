@@ -123,7 +123,7 @@ final class QRData{
 	 * returns a fresh matrix object with the data written and masked with the given $maskPattern
 	 */
 	public function writeMatrix():QRMatrix{
-		return (new QRMatrix($this->version, $this->eccLevel))
+		return new QRMatrix($this->version, $this->eccLevel)
 			->initFunctionalPatterns()
 			->writeCodewords($this->bitBuffer)
 		;

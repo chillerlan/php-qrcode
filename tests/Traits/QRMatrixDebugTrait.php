@@ -71,7 +71,7 @@ trait QRMatrixDebugTrait{
 			QRMatrix::M_NULL             => QRStringText::ansi8('░░', 231),
 		];
 
-		$out = (new QRStringText($options, $matrix))->dump();
+		$out = new QRStringText($options, $matrix)->dump();
 
 		printf("\n\n%s\n\n", $out);
 	}

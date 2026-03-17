@@ -118,7 +118,7 @@ final class BitMatrix extends QRMatrix{
 		;
 
 		// invoke a fresh matrix with only the function & format patterns to compare against
-		$matrix = (new QRMatrix($this->version, $this->eccLevel))
+		$matrix = new QRMatrix($this->version, $this->eccLevel)
 			->initFunctionalPatterns()
 			->setFormatInfo($this->maskPattern)
 		;

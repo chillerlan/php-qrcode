@@ -15,7 +15,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 We want to encode this URI for a mobile authenticator into a QRcode image:
 ```php
 $data   = 'otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&issuer=chillerlan.net';
-$qrcode = (new QRCode)->render($data);
+$qrcode = new QRCode()->render($data);
 
 // default output is a base64 encoded data URI
 printf('<img src="%s" alt="QR Code" />', $qrcode);
@@ -33,7 +33,7 @@ $options->outputBase64 = false; // output raw image instead of base64 data URI
 
 header('Content-type: image/svg+xml'); // the image type is SVG by default
 
-echo (new QRCode($options))->render($data);
+echo new QRCode($options)->render($data);
 ```
 
 See [Advanced usage](../Usage/Advanced-usage.md) for a more in-depth usage guide

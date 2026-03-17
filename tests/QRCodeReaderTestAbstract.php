@@ -101,7 +101,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		}
 
 		$luminanceSource = $this->getLuminanceSourceFromFile($file, $this->options);
-		$result          = (new Decoder)->decode($luminanceSource);
+		$result          = new Decoder()->decode($luminanceSource);
 
 		$this->debugMatrix($result->getQRMatrix());
 
@@ -119,7 +119,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		$hanzi    = '无可奈何燃花作香';
 		$byte     = 'https://smiley.codes/qrcode/';
 
-		$qrcode = (new QRCode($this->options))
+		$qrcode = new QRCode($this->options)
 			->addNumericSegment($numeric)
 			->addAlphaNumSegment($alphanum)
 			->addKanjiSegment($kanji)

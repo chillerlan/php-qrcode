@@ -52,7 +52,7 @@ $source = new GDLuminanceSource($gdimage, $options);
 The `Decoder` takes a `QROptions` instance as parameter, which currently has no use - it is only handed over for possible future uses.
 
 ```php
-$result = (new Decoder($options))->decode($source);
+$result = new Decoder($options)->decode($source);
 ```
 
 That is all! The decoder will either return a `DecoderResult` instance or throw an exception.
@@ -85,7 +85,7 @@ $matrix = $result->getQRMatrix();
 
 // ...matrix modification...
 
-$output = (new QRCode($options))->renderMatrix($matrix);
+$output = new QRCode($options)->renderMatrix($matrix);
 
 // ...dump output
 ```

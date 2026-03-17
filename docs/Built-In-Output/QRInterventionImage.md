@@ -44,7 +44,7 @@ Render the output:
 
 ```php
 $data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-$out  = (new QRCode($options))->render($data); // -> data:image/png;base64,...
+$out  = new QRCode($options)->render($data); // -> data:image/png;base64,...
 
 printf('<img alt="%s" src="%s" />', $alt, $out);
 ```
@@ -56,7 +56,7 @@ Return the `ImageInterface` instance (will ignore other output options):
 $options->returnResource = true;
 
 /** @var \Intervention\Image\Interfaces\ImageInterface $image */
-$image = (new QRCode($options))->render($data);
+$image = new QRCode($options)->render($data);
 
 // do stuff with the ImageInterface instance...
 

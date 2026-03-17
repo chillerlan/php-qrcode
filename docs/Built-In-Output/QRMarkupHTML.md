@@ -34,7 +34,7 @@ Output in a HTML document (via PHP):
 <?php
 
 $data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-$out  = (new QRCode($options))->render($data);
+$out  = new QRCode($options)->render($data);
 
 header('Content-type: text/html');
 

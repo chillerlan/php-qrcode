@@ -108,7 +108,7 @@ class QRCode{
 	 * Returns a QRMatrix object for the given $data and current QROptions
 	 */
 	public function getQRMatrix():QRMatrix{
-		$matrix = (new QRData($this->options, $this->dataSegments))->writeMatrix();
+		$matrix = new QRData($this->options, $this->dataSegments)->writeMatrix();
 
 		$maskPattern = $this->options->maskPattern === MaskPattern::AUTO
 			? MaskPattern::getBestPattern($matrix)
@@ -297,7 +297,7 @@ class QRCode{
 	 * Reads a QR Code from the given luminance source
 	 */
 	public function readFromSource(LuminanceSourceInterface $source):DecoderResult{
-		return (new Decoder($this->options))->decode($source);
+		return new Decoder($this->options)->decode($source);
 	}
 
 }

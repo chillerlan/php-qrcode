@@ -20,7 +20,7 @@ $options->readerGrayscale             = true;
 $options->readerIncreaseContrast      = true;
 
 try{
-	$result = (new QRCode($options))->readFromFile(__DIR__.'/../.github/images/example_image.png');
+	$result = new QRCode($options)->readFromFile(__DIR__.'/../.github/images/example_image.png');
 
 	var_dump($result);
 }

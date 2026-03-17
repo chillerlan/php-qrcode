@@ -154,7 +154,7 @@ $options->keepAsSquare        = [
 
 
 
-$out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+$out = new QRCode($options)->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 
 // dump the output

@@ -33,7 +33,7 @@ final class Detector{
 	 * Detector constructor.
 	 */
 	public function __construct(LuminanceSourceInterface $source){
-		$this->matrix = (new Binarizer($source))->getBlackMatrix();
+		$this->matrix = new Binarizer($source)->getBlackMatrix();
 	}
 
 	/**
@@ -47,7 +47,7 @@ final class Detector{
 	 * Detects a QR Code in an image.
 	 */
 	public function detect():BitMatrix{
-		$this->finderPatterns = (new FinderPatternFinder($this->matrix))->find();
+		$this->finderPatterns = new FinderPatternFinder($this->matrix)->find();
 
 		[$bottomLeft, $topLeft, $topRight] = $this->finderPatterns;
 
@@ -81,7 +81,7 @@ final class Detector{
 
 		$transform = $this->createTransform($topLeft, $topRight, $bottomLeft, $dimension, $alignmentPattern);
 
-		return (new GridSampler)->sampleGrid($this->matrix, $dimension, $transform);
+		return new GridSampler()->sampleGrid($this->matrix, $dimension, $transform);
 	}
 
 	/**
@@ -305,7 +305,7 @@ final class Detector{
 			return null;
 		}
 
-		return (new AlignmentPatternFinder($this->matrix, $overallEstModuleSize))->find(
+		return new AlignmentPatternFinder($this->matrix, $overallEstModuleSize)->find(
 			$alignmentAreaLeftX,
 			$alignmentAreaTopY,
 			($alignmentAreaRightX - $alignmentAreaLeftX),
@@ -336,7 +336,7 @@ final class Detector{
 			$sourceBottomRightY = $dimMinusThree;
 		}
 
-		return (new PerspectiveTransform)->quadrilateralToQuadrilateral(
+		return new PerspectiveTransform()->quadrilateralToQuadrilateral(
 			3.5,
 			3.5,
 			$dimMinusThree,

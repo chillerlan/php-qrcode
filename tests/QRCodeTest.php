@@ -101,10 +101,10 @@ final class QRCodeTest extends TestCase{
 	public function addEciSegment():void{
 		$expected = '无可奈何燃花作香';
 
-		$qrCode = (new QRCode([
+		$qrCode = new QRCode([
 			'outputBase64'    => false,
 			'outputInterface' => QRGdImagePNG::class,
-		]));
+		]);
 
 		$qrCode->addEciSegment(ECICharset::GB18030, $expected);
 
@@ -118,7 +118,7 @@ final class QRCodeTest extends TestCase{
 		$this->expectException(QRCodeException::class);
 		$this->expectExceptionMessage('unable to add ECI segment');
 
-		(new QRCode)->addEciSegment(666, 'nope');
+		new QRCode()->addEciSegment(666, 'nope');
 	}
 
 }

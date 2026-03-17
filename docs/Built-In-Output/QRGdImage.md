@@ -46,7 +46,7 @@ Render the output:
 
 ```php
 $data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-$out  = (new QRCode($options))->render($data); // -> data:image/webp;base64,...
+$out  = new QRCode($options)->render($data); // -> data:image/webp;base64,...
 
 printf('<img alt="%s" src="%s" />', $alt, $out);
 ```
@@ -58,7 +58,7 @@ Return the `GdImage` instance (will ignore other output options):
 $options->returnResource = true;
 
 /** @var \GdImage $gdImage */
-$gdImage = (new QRCode($options))->render($data);
+$gdImage = new QRCode($options)->render($data);
 
 // do stuff with the GdImage instance...
 $size = imagesx($gdImage);

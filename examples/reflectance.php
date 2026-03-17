@@ -63,7 +63,7 @@ $options->moduleValues        = [
 ];
 
 
-$qrcode = (new QRCode($options))->addByteSegment('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+$qrcode = new QRCode($options)->addByteSegment('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 $matrix = $qrcode->getQRMatrix();
 
 $out_normal   = $qrcode->renderMatrix($matrix);

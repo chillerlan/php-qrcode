@@ -40,7 +40,7 @@ abstract class QROutputTestAbstract extends TestCase{
 		$this->createBuildDir($this::buildDir);
 
 		$this->options         = new QROptions;
-		$this->matrix          = (new QRCode($this->options))->addByteSegment('testdata')->getQRMatrix();
+		$this->matrix          = new QRCode($this->options)->addByteSegment('testdata')->getQRMatrix();
 		$this->outputInterface = $this->getOutputInterface($this->options, $this->matrix);
 	}
 
@@ -89,7 +89,7 @@ abstract class QROutputTestAbstract extends TestCase{
 		$this->options->outputBase64 = false;
 		$this->outputInterface       = $this->getOutputInterface($this->options, $this->matrix);
 		// create the cache file
-		$name        = (new ReflectionObject($this->outputInterface))->getShortName();
+		$name        = new ReflectionObject($this->outputInterface)->getShortName();
 		$fileSubPath = $this::buildDir.'/test.output.'.$name;
 		$data        = $this->outputInterface->dump($this->getBuildPath($fileSubPath));
 

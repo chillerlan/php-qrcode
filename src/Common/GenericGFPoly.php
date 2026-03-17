@@ -213,7 +213,7 @@ final class GenericGFPoly{
 			$this->coefficients[$i] ^= GF256::exp(GF256::log($c) + $ratio);
 		}
 
-		return (new self($this->coefficients))->mod($other);
+		return new self($this->coefficients)->mod($other);
 	}
 
 	public function addOrSubtract(GenericGFPoly $other):self{

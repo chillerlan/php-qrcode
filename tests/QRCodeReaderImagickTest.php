@@ -60,7 +60,7 @@ final class QRCodeReaderImagickTest extends QRCodeReaderTestAbstract{
 
 		$luminanceSource = $this->getLuminanceSourceFromFile($this::samplesDir.$img, $this->options);
 
-		$this::assertSame($expected, (string)(new Decoder)->decode($luminanceSource));
+		$this::assertSame($expected, (string)new Decoder()->decode($luminanceSource));
 	}
 
 }

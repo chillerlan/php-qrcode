@@ -282,7 +282,7 @@ $options->svgDefs            = '
 	]]></style>';
 
 
-$out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+$out = new QRCode($options)->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 
 if(PHP_SAPI !== 'cli'){

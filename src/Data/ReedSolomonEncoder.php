@@ -94,7 +94,7 @@ final class ReedSolomonEncoder{
 
 		$rsPolyDegree = $rsPoly->getDegree();
 
-		$modCoefficients = (new GenericGFPoly($dataBytes, $rsPolyDegree))
+		$modCoefficients = new GenericGFPoly($dataBytes, $rsPolyDegree)
 			->mod($rsPoly)
 			->getCoefficients()
 		;

@@ -22,7 +22,7 @@ $options = new QROptions;
 $options->outputBase64 = false;
 $options->connectPaths = true;
 
-$qrcode = (new QRCode($options))
+$qrcode = new QRCode($options)
 	->addNumericSegment('1312')
 	->addByteSegment("\n")
 	->addAlphaNumSegment('ACAB')

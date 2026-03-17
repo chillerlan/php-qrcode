@@ -36,7 +36,7 @@ Render and save to file:
 $data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 $file = __DIR__.'/qrcode.eps';
 
-(new QRCode($options))->render($data, $file);
+new QRCode($options)->render($data, $file);
 ```
 
 
@@ -46,7 +46,7 @@ Push as file download in a browser:
 header('Content-type: application/postscript');
 header('Content-Disposition: filename="qrcode.eps"');
 
-echo (new QRCode($options))->render($data);
+echo new QRCode($options)->render($data);
 
 exit;
 ```

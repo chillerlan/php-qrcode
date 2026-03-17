@@ -85,7 +85,7 @@ final class DecoderResult{
 	 * Returns a QRMatrix instance with the settings and data of the reader result
 	 */
 	public function getQRMatrix():QRMatrix{
-		return (new QRMatrix($this->version, $this->eccLevel))
+		return new QRMatrix($this->version, $this->eccLevel)
 			->initFunctionalPatterns()
 			->writeCodewords($this->rawBytes)
 			->setFormatInfo($this->maskPattern)

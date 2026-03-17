@@ -49,7 +49,7 @@ Render the output:
 
 ```php
 $data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-$out  = (new QRCode($options))->render($data); // -> data:image/webp;base64,...
+$out  = new QRCode($options)->render($data); // -> data:image/webp;base64,...
 
 printf('<img alt="%s" src="%s" />', $alt, $out);
 ```
@@ -61,7 +61,7 @@ Return the `Imagick` instance (will ignore other output options):
 $options->returnResource = true;
 
 /** @var \Imagick $imagick */
-$imagick = (new QRCode($options))->render($data);
+$imagick = new QRCode($options)->render($data);
 
 // do stuff with the Imagick instance...
 $imagick->scaleImage(150, 150, true);

@@ -123,7 +123,7 @@ $options->keepAsSquare        = [
 
 
 // dump the output, with an additional logo
-$out = (new QRCode($options))->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+$out = new QRCode($options)->render('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 
 
 header('Content-type: image/png');

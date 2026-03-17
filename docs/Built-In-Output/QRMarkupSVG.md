@@ -53,7 +53,7 @@ Render the output:
 
 ```php
 $data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-$out  = (new QRCode($options))->render($data); // -> data:image/svg+xml;base64,PD94bWwgdmVyc2...
+$out  = new QRCode($options)->render($data); // -> data:image/svg+xml;base64,PD94bWwgdmVyc2...
 
 printf('<img alt="%s" src="%s" />', $alt, $out);
 ```
