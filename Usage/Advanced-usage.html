@@ -372,7 +372,7 @@ A list with all available <code class="docutils literal notranslate"><span class
 <span class="c1">// via __toString()</span>
 <span class="nv">$json</span> <span class="o">=</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span><span class="nv">$options</span><span class="p">;</span>
 
-<span class="nv">$options</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QROptions</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">fromJSON</span><span class="p">(</span><span class="nv">$json</span><span class="p">);</span>
+<span class="nv">$options</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QROptions</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">fromJSON</span><span class="p">(</span><span class="nv">$json</span><span class="p">);</span>
 <span class="c1">// on an existing instance - properties will be overwriten</span>
 <span class="nv">$options</span><span class="o">-&gt;</span><span class="na">fromJSON</span><span class="p">(</span><span class="nv">$json</span><span class="p">);</span>
 </pre></div>

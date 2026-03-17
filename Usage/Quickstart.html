@@ -340,7 +340,7 @@
 <h2>Create your first QR Code<a class="headerlink" href="#create-your-first-qr-code" title="Link to this heading"></a></h2>
 <p>We want to encode this URI for a mobile authenticator into a QRcode image:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$data</span>   <span class="o">=</span> <span class="s1">&#39;otpauth://totp/test?secret=B3JX4VCVJDVNXNZ5&amp;issuer=chillerlan.net&#39;</span><span class="p">;</span>
-<span class="nv">$qrcode</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+<span class="nv">$qrcode</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QRCode</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
 
 <span class="c1">// default output is a base64 encoded data URI</span>
 <span class="nb">printf</span><span class="p">(</span><span class="s1">&#39;&lt;img src=&quot;%s&quot; alt=&quot;QR Code&quot; /&gt;&#39;</span><span class="p">,</span> <span class="nv">$qrcode</span><span class="p">);</span>
@@ -355,7 +355,7 @@
 
 <span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Content-type: image/svg+xml&#39;</span><span class="p">);</span> <span class="c1">// the image type is SVG by default</span>
 
-<span class="k">echo</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+<span class="k">echo</span> <span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>See <a class="reference internal" href="Advanced-usage.html"><span class="std std-doc">Advanced usage</span></a> for a more in-depth usage guide

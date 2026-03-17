@@ -78,7 +78,7 @@ Render the output:
 
 ```php
 $data = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-$out  = (new QRCode($options))->render($data); // -> XML, rendered as SVG
+$out  = new QRCode($options)->render($data); // -> XML, rendered as SVG
 
 header('Content-type: application/xml');
 

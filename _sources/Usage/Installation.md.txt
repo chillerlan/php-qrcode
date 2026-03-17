@@ -24,7 +24,7 @@ In case you want to keep using `dev-main`, specify the hash of a commit to avoid
 
 #### Version switch
 
-If your application supports older PHP versions and uses the basic `QRCode` syntax `(new QRCode)->render($data)`, then you can add a version switch to your `composer.json` to allow installing a `php-qrcode` version that suits the platform it runs on:
+If your application supports older PHP versions and uses the basic `QRCode` syntax `new QRCode()->render($data)`, then you can add a version switch to your `composer.json` to allow installing a `php-qrcode` version that suits the platform it runs on:
 
 ```json
 {

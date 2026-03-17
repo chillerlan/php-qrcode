@@ -372,7 +372,7 @@ Each <code class="docutils literal notranslate"><span class="pre">LuminanceSourc
 <section id="the-decoder">
 <h2>The <code class="docutils literal notranslate"><span class="pre">Decoder</span></code><a class="headerlink" href="#the-decoder" title="Link to this heading"></a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">Decoder</span></code> takes a <code class="docutils literal notranslate"><span class="pre">QROptions</span></code> instance as parameter, which currently has no use - it is only handed over for possible future uses.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$result</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">Decoder</span><span class="p">(</span><span class="nv">$options</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">decode</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$result</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Decoder</span><span class="p">(</span><span class="nv">$options</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">decode</span><span class="p">(</span><span class="nv">$source</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>That is all! The decoder will either return a <code class="docutils literal notranslate"><span class="pre">DecoderResult</span></code> instance or throw an exception.
@@ -399,7 +399,7 @@ it also offers a method that returns a <code class="docutils literal notranslate
 
 <span class="c1">// ...matrix modification...</span>
 
-<span class="nv">$output</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">renderMatrix</span><span class="p">(</span><span class="nv">$matrix</span><span class="p">);</span>
+<span class="nv">$output</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">renderMatrix</span><span class="p">(</span><span class="nv">$matrix</span><span class="p">);</span>
 
 <span class="c1">// ...dump output</span>
 </pre></div>

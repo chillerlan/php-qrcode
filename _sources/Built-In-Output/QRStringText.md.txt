@@ -34,7 +34,7 @@ Output:
 
 ```php
 $data   = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
-$qrcode = (new QRCode($options))->render($data);
+$qrcode = new QRCode($options)->render($data);
 
 echo "\n\n$qrcode\n\n";
 ```

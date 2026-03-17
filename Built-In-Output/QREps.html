@@ -355,14 +355,14 @@
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$data</span> <span class="o">=</span> <span class="s1">&#39;https://www.youtube.com/watch?v=dQw4w9WgXcQ&#39;</span><span class="p">;</span>
 <span class="nv">$file</span> <span class="o">=</span> <span class="no">__DIR__</span><span class="o">.</span><span class="s1">&#39;/qrcode.eps&#39;</span><span class="p">;</span>
 
-<span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="nv">$file</span><span class="p">);</span>
+<span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="nv">$file</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>Push as file download in a browser:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Content-type: application/postscript&#39;</span><span class="p">);</span>
 <span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Content-Disposition: filename=&quot;qrcode.eps&quot;&#39;</span><span class="p">);</span>
 
-<span class="k">echo</span> <span class="p">(</span><span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+<span class="k">echo</span> <span class="k">new</span> <span class="nx">QRCode</span><span class="p">(</span><span class="nv">$options</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
 
 <span class="k">exit</span><span class="p">;</span>
 </pre></div>
