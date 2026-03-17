@@ -17,7 +17,7 @@ use PhpBench\Attributes\{BeforeMethods, Subject};
 /**
  * Tests the overall performance of the QRCode class
  */
-final class QRCodeBenchmark extends BenchmarkAbstract{
+abstract class QRCodeBenchmark extends BenchmarkAbstract{
 
 	public function initOptions():void{
 
@@ -32,7 +32,7 @@ final class QRCodeBenchmark extends BenchmarkAbstract{
 	#[Subject]
 	#[BeforeMethods(['assignParams', 'generateTestData', 'initOptions'])]
 	public function render():void{
-		(new QRCode($this->options))->addSegment(new $this->modeFQCN($this->testData))->render();
+		new QRCode($this->options)->addSegment(new $this->modeFQCN($this->testData))->render();
 	}
 
 }

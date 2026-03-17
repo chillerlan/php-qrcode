@@ -29,9 +29,9 @@ use function extension_loaded, is_dir, mb_substr, mkdir, sprintf, str_repeat, st
 abstract class BenchmarkAbstract{
 	use QRMaxLengthTrait;
 
-	protected const BUILDDIR    = __DIR__.'/../.build/phpbench/';
-	protected const ECC_LEVELS  = [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H];
-	protected const DATAMODES   = Mode::INTERFACES;
+	protected const string BUILDDIR    = __DIR__.'/../.build/phpbench/';
+	protected const array  ECC_LEVELS  = [EccLevel::L, EccLevel::M, EccLevel::Q, EccLevel::H];
+	protected const array  DATAMODES   = Mode::INTERFACES;
 
 	/** @var array<int, string> */
 	protected array     $dataModeData;
@@ -104,7 +104,7 @@ abstract class BenchmarkAbstract{
 	 * Initializes a QRMatrix instance and assigns it to its temp property
 	 */
 	public function initMatrix():void{
-		$this->matrix = (new QRCode($this->options))
+		$this->matrix = new QRCode($this->options)
 			->addByteSegment($this->testData)
 			->getQRMatrix()
 		;

@@ -24,7 +24,7 @@ use PhpBench\Attributes\{BeforeMethods, Subject};
 #[BeforeMethods(['assignParams', 'generateTestData', 'initOptions', 'initMatrix'])]
 final class OutputBenchmark extends BenchmarkAbstract{
 
-	protected const DATAMODES = [Mode::BYTE => Byte::class];
+	protected const array DATAMODES = [Mode::BYTE => Byte::class];
 
 	public function initOptions():void{
 
@@ -42,12 +42,12 @@ final class OutputBenchmark extends BenchmarkAbstract{
 
 	#[Subject]
 	public function QREps():void{
-		(new QREps($this->options, $this->matrix))->dump();
+		new QREps($this->options, $this->matrix)->dump();
 	}
 
 	#[Subject]
 	public function QRFpdf():void{
-		(new QRFpdf($this->options, $this->matrix))->dump();
+		new QRFpdf($this->options, $this->matrix)->dump();
 	}
 
 	/**
@@ -55,42 +55,42 @@ final class OutputBenchmark extends BenchmarkAbstract{
 	 */
 #	#[Subject]
 #	public function QRGdImageAVIF():void{
-#		(new \chillerlan\QRCode\Output\QRGdImageAVIF($this->options, $this->matrix))->dump();
+#		new \chillerlan\QRCode\Output\QRGdImageAVIF($this->options, $this->matrix)->dump();
 #	}
 
 	#[Subject]
 	public function QRGdImageJPEG():void{
-		(new QRGdImageJPEG($this->options, $this->matrix))->dump();
+		new QRGdImageJPEG($this->options, $this->matrix)->dump();
 	}
 
 	#[Subject]
 	public function QRGdImagePNG():void{
-		(new QRGdImagePNG($this->options, $this->matrix))->dump();
+		new QRGdImagePNG($this->options, $this->matrix)->dump();
 	}
 
 	#[Subject]
 	public function QRGdImageWEBP():void{
-		(new QRGdImageWEBP($this->options, $this->matrix))->dump();
+		new QRGdImageWEBP($this->options, $this->matrix)->dump();
 	}
 
 	#[Subject]
 	public function QRImagick():void{
-		(new QRImagick($this->options, $this->matrix))->dump();
+		new QRImagick($this->options, $this->matrix)->dump();
 	}
 
 	#[Subject]
 	public function QRMarkupSVG():void{
-		(new QRMarkupSVG($this->options, $this->matrix))->dump();
+		new QRMarkupSVG($this->options, $this->matrix)->dump();
 	}
 
 	#[Subject]
 	public function QRMarkupXML():void{
-		(new QRMarkupXML($this->options, $this->matrix))->dump();
+		new QRMarkupXML($this->options, $this->matrix)->dump();
 	}
 
 	#[Subject]
 	public function QRStringJSON():void{
-		(new QRStringJSON($this->options, $this->matrix))->dump();
+		new QRStringJSON($this->options, $this->matrix)->dump();
 	}
 
 }

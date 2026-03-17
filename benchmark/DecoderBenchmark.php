@@ -24,7 +24,7 @@ use RuntimeException;
  */
 final class DecoderBenchmark extends BenchmarkAbstract{
 
-	protected const DATAMODES   = [Mode::BYTE => Byte::class];
+	protected const array DATAMODES   = [Mode::BYTE => Byte::class];
 
 	private string        $imageBlob;
 	private DecoderResult $result;
@@ -43,7 +43,7 @@ final class DecoderBenchmark extends BenchmarkAbstract{
 	}
 
 	public function generateImageBlob():void{
-		$this->imageBlob = (new QRGdImagePNG($this->options, $this->matrix))->dump();
+		$this->imageBlob = new QRGdImagePNG($this->options, $this->matrix)->dump();
 	}
 
 	public function checkReaderResult():void{
@@ -64,7 +64,7 @@ final class DecoderBenchmark extends BenchmarkAbstract{
 		// but we don't want the performance test to yell about it
 		// @see QRCodeReaderTestAbstract::testReadData()
 		try{
-			$this->result = (new Decoder($this->options))
+			$this->result = new Decoder($this->options)
 				->decode(GDLuminanceSource::fromBlob($this->imageBlob, $this->options));
 		}
 		catch(QRCodeException){
@@ -82,7 +82,7 @@ final class DecoderBenchmark extends BenchmarkAbstract{
 		$this->options->readerUseImagickIfAvailable = true;
 
 		try{
-			$this->result = (new Decoder($this->options))
+			$this->result = new Decoder($this->options)
 				->decode(IMagickLuminanceSource::fromBlob($this->imageBlob, $this->options));
 		}
 		catch(QRCodeException){

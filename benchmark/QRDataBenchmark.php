@@ -14,14 +14,16 @@ namespace chillerlan\QRCodeBenchmark;
 use chillerlan\QRCode\Common\BitBuffer;
 use chillerlan\QRCode\Data\QRData;
 use PhpBench\Attributes\{BeforeMethods, Subject};
+use chillerlan\QRCode\Data\QRDataModeInterface;
 
 /**
  * Tests the QRMatrix write performance
  */
 final class QRDataBenchmark extends BenchmarkAbstract{
 
-	private QRData    $qrData;
-	private BitBuffer $bitBuffer;
+	private QRData              $qrData;
+	private BitBuffer           $bitBuffer;
+	private QRDataModeInterface $dataMode;
 
 	public function initOptions():void{
 
@@ -34,7 +36,8 @@ final class QRDataBenchmark extends BenchmarkAbstract{
 	}
 
 	public function initQRData():void{
-		$this->qrData = new QRData($this->options, [new $this->modeFQCN($this->testData)]);
+		$this->dataMode = new $this->modeFQCN($this->testData);
+		$this->qrData   = new QRData($this->options, [$this->dataMode]);
 	}
 
 	public function initBitBuffer():void{
@@ -68,8 +71,7 @@ final class QRDataBenchmark extends BenchmarkAbstract{
 	#[Subject]
 	#[BeforeMethods(['assignParams', 'generateTestData', 'initOptions', 'initQRData', 'initBitBuffer'])]
 	public function decodeSegment():void{
-		/** @noinspection PhpUndefinedMethodInspection */
-		$this->modeFQCN::decodeSegment(clone $this->bitBuffer, $this->version->getVersionNumber());
+		$this->dataMode->decodeSegment(clone $this->bitBuffer, $this->version->getVersionNumber());
 	}
 
 }

@@ -21,7 +21,7 @@ use Generator;
  */
 final class MaskPatternBenchmark extends BenchmarkAbstract{
 
-	protected const DATAMODES = [Mode::BYTE => Byte::class];
+	protected const array DATAMODES = [Mode::BYTE => Byte::class];
 
 	public function versionProvider():Generator{
 		for($v = 1; $v <= 40; $v++){
