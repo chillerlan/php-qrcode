@@ -10,22 +10,22 @@
 <tr><th></th><th colspan="4">Byte</th></tr>
 <tr><th>Version</th><th>L</th><th>M</th><th>Q</th><th>H</th></tr>
 </thead><tbody>
-<tr><td>1</td><td>0.333</td><td>0.332</td><td>0.333</td><td>0.330</td></tr>
-<tr><td>2</td><td>0.421</td><td>0.428</td><td>0.419</td><td>0.424</td></tr>
-<tr><td>3</td><td>0.525</td><td>0.527</td><td>0.526</td><td>0.530</td></tr>
-<tr><td>4</td><td>0.648</td><td>0.649</td><td>0.636</td><td>0.660</td></tr>
-<tr><td>5</td><td>0.776</td><td>0.765</td><td>0.787</td><td>0.775</td></tr>
-<tr><td>6</td><td>0.920</td><td>0.910</td><td>0.914</td><td>0.931</td></tr>
-<tr><td>7</td><td>1.064</td><td>1.072</td><td>1.067</td><td>1.073</td></tr>
-<tr><td>8</td><td>1.224</td><td>1.229</td><td>1.241</td><td>1.224</td></tr>
-<tr><td>9</td><td>1.413</td><td>1.388</td><td>1.400</td><td>1.411</td></tr>
-<tr><td>10</td><td>1.577</td><td>1.584</td><td>1.623</td><td>1.608</td></tr>
-<tr><td>15</td><td>2.720</td><td>2.779</td><td>2.768</td><td>2.725</td></tr>
-<tr><td>20</td><td>4.211</td><td>4.232</td><td>4.192</td><td>4.197</td></tr>
-<tr><td>25</td><td>6.025</td><td>5.962</td><td>5.917</td><td>5.893</td></tr>
-<tr><td>30</td><td>8.000</td><td>8.130</td><td>8.019</td><td>7.977</td></tr>
-<tr><td>35</td><td>10.359</td><td>10.293</td><td>10.409</td><td>10.368</td></tr>
-<tr><td>40</td><td>13.051</td><td>13.047</td><td>13.006</td><td>12.947</td></tr>
+<tr><td>1</td><td>0.327</td><td>0.328</td><td>0.328</td><td>0.330</td></tr>
+<tr><td>2</td><td>0.421</td><td>0.422</td><td>0.424</td><td>0.424</td></tr>
+<tr><td>3</td><td>0.539</td><td>0.528</td><td>0.529</td><td>0.526</td></tr>
+<tr><td>4</td><td>0.649</td><td>0.653</td><td>0.651</td><td>0.641</td></tr>
+<tr><td>5</td><td>0.780</td><td>0.790</td><td>0.788</td><td>0.781</td></tr>
+<tr><td>6</td><td>0.910</td><td>0.916</td><td>0.926</td><td>0.919</td></tr>
+<tr><td>7</td><td>1.066</td><td>1.059</td><td>1.076</td><td>1.093</td></tr>
+<tr><td>8</td><td>1.229</td><td>1.235</td><td>1.265</td><td>1.284</td></tr>
+<tr><td>9</td><td>1.426</td><td>1.403</td><td>1.415</td><td>1.413</td></tr>
+<tr><td>10</td><td>1.612</td><td>1.601</td><td>1.594</td><td>1.624</td></tr>
+<tr><td>15</td><td>2.749</td><td>2.748</td><td>2.728</td><td>2.805</td></tr>
+<tr><td>20</td><td>4.225</td><td>4.150</td><td>4.268</td><td>4.197</td></tr>
+<tr><td>25</td><td>5.953</td><td>5.961</td><td>5.912</td><td>6.025</td></tr>
+<tr><td>30</td><td>7.936</td><td>8.086</td><td>7.886</td><td>8.066</td></tr>
+<tr><td>35</td><td>10.380</td><td>10.433</td><td>10.432</td><td>10.649</td></tr>
+<tr><td>40</td><td>12.900</td><td>12.924</td><td>13.179</td><td>13.454</td></tr>
 </tbody></table>
 
 ## QRFpdf
@@ -36,22 +36,22 @@
 <tr><th></th><th colspan="4">Byte</th></tr>
 <tr><th>Version</th><th>L</th><th>M</th><th>Q</th><th>H</th></tr>
 </thead><tbody>
-<tr><td>1</td><td>1.399</td><td>1.401</td><td>1.398</td><td>1.405</td></tr>
-<tr><td>2</td><td>1.814</td><td>1.825</td><td>1.854</td><td>1.862</td></tr>
-<tr><td>3</td><td>2.374</td><td>2.332</td><td>2.353</td><td>2.341</td></tr>
-<tr><td>4</td><td>2.874</td><td>2.895</td><td>2.888</td><td>2.880</td></tr>
-<tr><td>5</td><td>3.556</td><td>3.540</td><td>3.568</td><td>3.585</td></tr>
-<tr><td>6</td><td>4.289</td><td>4.312</td><td>4.316</td><td>4.277</td></tr>
-<tr><td>7</td><td>5.054</td><td>5.013</td><td>4.974</td><td>4.987</td></tr>
-<tr><td>8</td><td>5.861</td><td>5.922</td><td>5.848</td><td>5.866</td></tr>
-<tr><td>9</td><td>6.809</td><td>6.605</td><td>6.645</td><td>6.749</td></tr>
-<tr><td>10</td><td>7.562</td><td>7.644</td><td>7.701</td><td>7.604</td></tr>
-<tr><td>15</td><td>12.969</td><td>13.707</td><td>12.961</td><td>13.023</td></tr>
-<tr><td>20</td><td>19.473</td><td>19.901</td><td>19.499</td><td>19.482</td></tr>
-<tr><td>25</td><td>27.507</td><td>27.512</td><td>27.434</td><td>27.448</td></tr>
-<tr><td>30</td><td>36.772</td><td>36.677</td><td>36.779</td><td>36.800</td></tr>
-<tr><td>35</td><td>46.754</td><td>46.889</td><td>46.916</td><td>47.000</td></tr>
-<tr><td>40</td><td>61.593</td><td>58.846</td><td>58.691</td><td>58.543</td></tr>
+<tr><td>1</td><td>1.405</td><td>1.407</td><td>1.409</td><td>1.399</td></tr>
+<tr><td>2</td><td>1.832</td><td>1.843</td><td>1.866</td><td>1.857</td></tr>
+<tr><td>3</td><td>2.370</td><td>2.342</td><td>2.369</td><td>2.350</td></tr>
+<tr><td>4</td><td>2.897</td><td>2.908</td><td>2.900</td><td>2.910</td></tr>
+<tr><td>5</td><td>3.652</td><td>3.549</td><td>3.571</td><td>3.590</td></tr>
+<tr><td>6</td><td>4.310</td><td>4.304</td><td>4.307</td><td>4.320</td></tr>
+<tr><td>7</td><td>5.065</td><td>5.119</td><td>5.050</td><td>5.046</td></tr>
+<tr><td>8</td><td>5.911</td><td>5.905</td><td>5.918</td><td>5.867</td></tr>
+<tr><td>9</td><td>6.733</td><td>6.661</td><td>6.743</td><td>6.699</td></tr>
+<tr><td>10</td><td>7.635</td><td>7.668</td><td>7.656</td><td>7.670</td></tr>
+<tr><td>15</td><td>13.153</td><td>13.101</td><td>13.115</td><td>13.056</td></tr>
+<tr><td>20</td><td>19.740</td><td>19.744</td><td>19.861</td><td>19.869</td></tr>
+<tr><td>25</td><td>27.722</td><td>27.737</td><td>27.763</td><td>27.687</td></tr>
+<tr><td>30</td><td>37.055</td><td>37.107</td><td>37.161</td><td>37.129</td></tr>
+<tr><td>35</td><td>47.549</td><td>47.836</td><td>47.815</td><td>47.685</td></tr>
+<tr><td>40</td><td>59.495</td><td>59.252</td><td>60.233</td><td>59.692</td></tr>
 </tbody></table>
 
 ## QRGdImageJPEG
@@ -62,22 +62,22 @@
 <tr><th></th><th colspan="4">Byte</th></tr>
 <tr><th>Version</th><th>L</th><th>M</th><th>Q</th><th>H</th></tr>
 </thead><tbody>
-<tr><td>1</td><td>0.516</td><td>0.515</td><td>0.516</td><td>0.510</td></tr>
-<tr><td>2</td><td>0.662</td><td>0.657</td><td>0.661</td><td>0.658</td></tr>
-<tr><td>3</td><td>0.837</td><td>0.816</td><td>0.823</td><td>0.831</td></tr>
-<tr><td>4</td><td>1.009</td><td>1.000</td><td>1.003</td><td>1.008</td></tr>
-<tr><td>5</td><td>1.222</td><td>1.201</td><td>1.203</td><td>1.206</td></tr>
-<tr><td>6</td><td>1.420</td><td>1.427</td><td>1.427</td><td>1.447</td></tr>
-<tr><td>7</td><td>1.668</td><td>1.664</td><td>1.669</td><td>1.674</td></tr>
-<tr><td>8</td><td>1.942</td><td>1.928</td><td>1.926</td><td>1.939</td></tr>
-<tr><td>9</td><td>2.199</td><td>2.211</td><td>2.205</td><td>2.279</td></tr>
-<tr><td>10</td><td>2.504</td><td>2.516</td><td>2.512</td><td>2.510</td></tr>
-<tr><td>15</td><td>4.248</td><td>4.236</td><td>4.471</td><td>4.265</td></tr>
-<tr><td>20</td><td>6.421</td><td>6.503</td><td>6.479</td><td>6.471</td></tr>
-<tr><td>25</td><td>9.119</td><td>9.179</td><td>9.086</td><td>9.138</td></tr>
-<tr><td>30</td><td>12.326</td><td>12.417</td><td>12.289</td><td>12.331</td></tr>
-<tr><td>35</td><td>15.854</td><td>15.924</td><td>15.825</td><td>15.811</td></tr>
-<tr><td>40</td><td>19.699</td><td>19.817</td><td>19.791</td><td>19.930</td></tr>
+<tr><td>1</td><td>0.526</td><td>0.524</td><td>0.524</td><td>0.526</td></tr>
+<tr><td>2</td><td>0.677</td><td>0.675</td><td>0.677</td><td>0.674</td></tr>
+<tr><td>3</td><td>0.841</td><td>0.843</td><td>0.839</td><td>0.857</td></tr>
+<tr><td>4</td><td>1.033</td><td>1.032</td><td>1.037</td><td>1.030</td></tr>
+<tr><td>5</td><td>1.250</td><td>1.244</td><td>1.277</td><td>1.246</td></tr>
+<tr><td>6</td><td>1.478</td><td>1.821</td><td>1.481</td><td>1.479</td></tr>
+<tr><td>7</td><td>1.734</td><td>1.732</td><td>1.732</td><td>1.755</td></tr>
+<tr><td>8</td><td>2.002</td><td>2.006</td><td>2.003</td><td>1.992</td></tr>
+<tr><td>9</td><td>2.323</td><td>2.296</td><td>2.304</td><td>2.289</td></tr>
+<tr><td>10</td><td>2.596</td><td>2.620</td><td>2.624</td><td>2.599</td></tr>
+<tr><td>15</td><td>4.458</td><td>4.450</td><td>4.465</td><td>4.438</td></tr>
+<tr><td>20</td><td>6.792</td><td>6.832</td><td>6.818</td><td>6.800</td></tr>
+<tr><td>25</td><td>9.624</td><td>9.601</td><td>9.663</td><td>9.625</td></tr>
+<tr><td>30</td><td>13.145</td><td>13.003</td><td>12.960</td><td>12.978</td></tr>
+<tr><td>35</td><td>16.787</td><td>16.813</td><td>16.788</td><td>16.713</td></tr>
+<tr><td>40</td><td>20.946</td><td>20.971</td><td>20.914</td><td>20.872</td></tr>
 </tbody></table>
 
 ## QRGdImagePNG
@@ -88,22 +88,22 @@
 <tr><th></th><th colspan="4">Byte</th></tr>
 <tr><th>Version</th><th>L</th><th>M</th><th>Q</th><th>H</th></tr>
 </thead><tbody>
-<tr><td>1</td><td>1.260</td><td>1.253</td><td>1.249</td><td>1.248</td></tr>
-<tr><td>2</td><td>1.685</td><td>1.705</td><td>1.712</td><td>1.686</td></tr>
-<tr><td>3</td><td>2.170</td><td>2.176</td><td>2.169</td><td>2.164</td></tr>
-<tr><td>4</td><td>2.685</td><td>2.689</td><td>2.710</td><td>2.685</td></tr>
-<tr><td>5</td><td>3.296</td><td>3.327</td><td>3.294</td><td>3.298</td></tr>
-<tr><td>6</td><td>3.927</td><td>3.932</td><td>3.938</td><td>3.915</td></tr>
-<tr><td>7</td><td>4.720</td><td>4.658</td><td>4.639</td><td>4.636</td></tr>
-<tr><td>8</td><td>5.394</td><td>5.387</td><td>5.391</td><td>5.403</td></tr>
-<tr><td>9</td><td>6.230</td><td>6.188</td><td>6.233</td><td>6.277</td></tr>
-<tr><td>10</td><td>7.075</td><td>7.075</td><td>7.071</td><td>7.115</td></tr>
-<tr><td>15</td><td>12.957</td><td>12.881</td><td>12.882</td><td>12.964</td></tr>
-<tr><td>20</td><td>19.867</td><td>19.909</td><td>19.905</td><td>19.843</td></tr>
-<tr><td>25</td><td>28.257</td><td>28.292</td><td>28.309</td><td>28.245</td></tr>
-<tr><td>30</td><td>38.215</td><td>38.536</td><td>38.241</td><td>38.212</td></tr>
-<tr><td>35</td><td>49.791</td><td>49.549</td><td>49.466</td><td>49.533</td></tr>
-<tr><td>40</td><td>62.009</td><td>62.112</td><td>61.940</td><td>61.951</td></tr>
+<tr><td>1</td><td>1.250</td><td>1.241</td><td>1.233</td><td>1.243</td></tr>
+<tr><td>2</td><td>1.671</td><td>1.693</td><td>1.694</td><td>1.678</td></tr>
+<tr><td>3</td><td>2.177</td><td>2.188</td><td>2.174</td><td>2.162</td></tr>
+<tr><td>4</td><td>2.706</td><td>2.701</td><td>2.736</td><td>2.694</td></tr>
+<tr><td>5</td><td>3.285</td><td>3.318</td><td>3.271</td><td>3.281</td></tr>
+<tr><td>6</td><td>3.931</td><td>3.956</td><td>3.938</td><td>3.924</td></tr>
+<tr><td>7</td><td>4.676</td><td>4.690</td><td>4.677</td><td>4.681</td></tr>
+<tr><td>8</td><td>5.483</td><td>5.425</td><td>5.447</td><td>5.425</td></tr>
+<tr><td>9</td><td>6.265</td><td>6.204</td><td>6.251</td><td>6.277</td></tr>
+<tr><td>10</td><td>7.136</td><td>7.113</td><td>7.163</td><td>7.115</td></tr>
+<tr><td>15</td><td>13.216</td><td>13.299</td><td>13.100</td><td>13.240</td></tr>
+<tr><td>20</td><td>20.356</td><td>20.273</td><td>20.362</td><td>20.365</td></tr>
+<tr><td>25</td><td>28.811</td><td>28.542</td><td>28.913</td><td>28.835</td></tr>
+<tr><td>30</td><td>38.965</td><td>38.776</td><td>38.968</td><td>38.907</td></tr>
+<tr><td>35</td><td>50.766</td><td>49.969</td><td>50.457</td><td>50.537</td></tr>
+<tr><td>40</td><td>63.543</td><td>63.200</td><td>63.492</td><td>63.494</td></tr>
 </tbody></table>
 
 ## QRGdImageWEBP
@@ -114,22 +114,22 @@
 <tr><th></th><th colspan="4">Byte</th></tr>
 <tr><th>Version</th><th>L</th><th>M</th><th>Q</th><th>H</th></tr>
 </thead><tbody>
-<tr><td>1</td><td>2.697</td><td>2.688</td><td>2.637</td><td>2.694</td></tr>
-<tr><td>2</td><td>3.554</td><td>3.609</td><td>3.583</td><td>3.554</td></tr>
-<tr><td>3</td><td>4.469</td><td>4.506</td><td>4.493</td><td>4.477</td></tr>
-<tr><td>4</td><td>5.497</td><td>5.478</td><td>5.480</td><td>5.401</td></tr>
-<tr><td>5</td><td>6.902</td><td>6.873</td><td>6.934</td><td>7.006</td></tr>
-<tr><td>6</td><td>8.313</td><td>8.275</td><td>8.275</td><td>8.310</td></tr>
-<tr><td>7</td><td>10.200</td><td>10.236</td><td>10.302</td><td>10.105</td></tr>
-<tr><td>8</td><td>11.966</td><td>11.778</td><td>11.872</td><td>11.822</td></tr>
-<tr><td>9</td><td>13.902</td><td>13.755</td><td>13.852</td><td>13.853</td></tr>
-<tr><td>10</td><td>15.863</td><td>15.992</td><td>15.861</td><td>15.611</td></tr>
-<tr><td>15</td><td>27.288</td><td>27.260</td><td>27.696</td><td>27.334</td></tr>
-<tr><td>20</td><td>42.357</td><td>42.259</td><td>42.938</td><td>41.652</td></tr>
-<tr><td>25</td><td>60.385</td><td>61.267</td><td>60.025</td><td>60.108</td></tr>
-<tr><td>30</td><td>82.488</td><td>83.083</td><td>84.119</td><td>82.935</td></tr>
-<tr><td>35</td><td>107.628</td><td>107.969</td><td>106.805</td><td>107.216</td></tr>
-<tr><td>40</td><td>133.248</td><td>134.245</td><td>134.358</td><td>135.527</td></tr>
+<tr><td>1</td><td>2.701</td><td>2.729</td><td>2.685</td><td>2.671</td></tr>
+<tr><td>2</td><td>3.582</td><td>3.625</td><td>3.603</td><td>3.586</td></tr>
+<tr><td>3</td><td>4.501</td><td>4.546</td><td>4.513</td><td>4.484</td></tr>
+<tr><td>4</td><td>5.542</td><td>5.515</td><td>5.480</td><td>5.459</td></tr>
+<tr><td>5</td><td>6.947</td><td>6.937</td><td>6.915</td><td>6.978</td></tr>
+<tr><td>6</td><td>8.278</td><td>8.300</td><td>8.306</td><td>8.284</td></tr>
+<tr><td>7</td><td>10.357</td><td>10.391</td><td>10.316</td><td>10.236</td></tr>
+<tr><td>8</td><td>12.090</td><td>12.002</td><td>12.139</td><td>11.952</td></tr>
+<tr><td>9</td><td>14.169</td><td>14.055</td><td>14.100</td><td>13.991</td></tr>
+<tr><td>10</td><td>16.050</td><td>16.214</td><td>16.076</td><td>15.826</td></tr>
+<tr><td>15</td><td>28.020</td><td>27.949</td><td>27.407</td><td>27.661</td></tr>
+<tr><td>20</td><td>43.309</td><td>43.308</td><td>42.848</td><td>42.368</td></tr>
+<tr><td>25</td><td>61.617</td><td>61.976</td><td>60.882</td><td>60.923</td></tr>
+<tr><td>30</td><td>84.538</td><td>84.840</td><td>84.022</td><td>83.699</td></tr>
+<tr><td>35</td><td>110.425</td><td>110.132</td><td>107.433</td><td>108.699</td></tr>
+<tr><td>40</td><td>136.436</td><td>136.184</td><td>135.537</td><td>136.162</td></tr>
 </tbody></table>
 
 ## QRImagick
@@ -140,22 +140,22 @@
 <tr><th></th><th colspan="4">Byte</th></tr>
 <tr><th>Version</th><th>L</th><th>M</th><th>Q</th><th>H</th></tr>
 </thead><tbody>
-<tr><td>1</td><td>9.640</td><td>9.759</td><td>9.534</td><td>9.542</td></tr>
-<tr><td>2</td><td>12.381</td><td>12.489</td><td>12.267</td><td>12.241</td></tr>
-<tr><td>3</td><td>15.307</td><td>15.641</td><td>15.322</td><td>15.297</td></tr>
-<tr><td>4</td><td>18.704</td><td>19.036</td><td>18.733</td><td>18.755</td></tr>
-<tr><td>5</td><td>22.532</td><td>22.754</td><td>22.497</td><td>22.488</td></tr>
-<tr><td>6</td><td>26.211</td><td>26.515</td><td>26.098</td><td>26.288</td></tr>
-<tr><td>7</td><td>31.196</td><td>31.682</td><td>31.199</td><td>31.295</td></tr>
-<tr><td>8</td><td>35.906</td><td>36.458</td><td>35.765</td><td>35.795</td></tr>
-<tr><td>9</td><td>41.400</td><td>41.928</td><td>41.419</td><td>41.707</td></tr>
-<tr><td>10</td><td>46.600</td><td>46.939</td><td>46.648</td><td>46.821</td></tr>
-<tr><td>15</td><td>79.808</td><td>80.251</td><td>79.428</td><td>80.074</td></tr>
-<tr><td>20</td><td>122.321</td><td>122.663</td><td>122.012</td><td>122.367</td></tr>
-<tr><td>25</td><td>169.634</td><td>170.288</td><td>169.269</td><td>169.108</td></tr>
-<tr><td>30</td><td>227.864</td><td>227.376</td><td>227.652</td><td>228.066</td></tr>
-<tr><td>35</td><td>302.082</td><td>300.544</td><td>300.440</td><td>301.974</td></tr>
-<tr><td>40</td><td>380.853</td><td>380.787</td><td>380.165</td><td>380.162</td></tr>
+<tr><td>1</td><td>9.695</td><td>9.984</td><td>9.931</td><td>9.699</td></tr>
+<tr><td>2</td><td>12.397</td><td>12.730</td><td>12.708</td><td>12.477</td></tr>
+<tr><td>3</td><td>15.638</td><td>15.927</td><td>15.896</td><td>15.910</td></tr>
+<tr><td>4</td><td>19.390</td><td>19.659</td><td>19.757</td><td>19.349</td></tr>
+<tr><td>5</td><td>23.385</td><td>23.431</td><td>23.483</td><td>23.185</td></tr>
+<tr><td>6</td><td>27.592</td><td>27.846</td><td>27.907</td><td>27.848</td></tr>
+<tr><td>7</td><td>32.670</td><td>32.645</td><td>32.677</td><td>32.571</td></tr>
+<tr><td>8</td><td>37.660</td><td>37.720</td><td>37.682</td><td>37.514</td></tr>
+<tr><td>9</td><td>42.830</td><td>42.997</td><td>42.748</td><td>42.539</td></tr>
+<tr><td>10</td><td>48.175</td><td>48.093</td><td>48.353</td><td>47.952</td></tr>
+<tr><td>15</td><td>82.651</td><td>82.203</td><td>81.981</td><td>82.113</td></tr>
+<tr><td>20</td><td>124.739</td><td>123.611</td><td>123.702</td><td>123.280</td></tr>
+<tr><td>25</td><td>176.948</td><td>177.489</td><td>176.398</td><td>176.830</td></tr>
+<tr><td>30</td><td>238.313</td><td>238.079</td><td>241.781</td><td>237.313</td></tr>
+<tr><td>35</td><td>310.368</td><td>311.231</td><td>309.284</td><td>309.235</td></tr>
+<tr><td>40</td><td>393.184</td><td>393.082</td><td>392.859</td><td>392.521</td></tr>
 </tbody></table>
 
 ## QRMarkupSVG
@@ -166,22 +166,22 @@
 <tr><th></th><th colspan="4">Byte</th></tr>
 <tr><th>Version</th><th>L</th><th>M</th><th>Q</th><th>H</th></tr>
 </thead><tbody>
-<tr><td>1</td><td>0.967</td><td>0.964</td><td>0.955</td><td>0.961</td></tr>
-<tr><td>2</td><td>1.250</td><td>1.255</td><td>1.247</td><td>1.255</td></tr>
-<tr><td>3</td><td>1.581</td><td>1.575</td><td>1.579</td><td>1.575</td></tr>
-<tr><td>4</td><td>1.942</td><td>1.937</td><td>1.938</td><td>1.936</td></tr>
-<tr><td>5</td><td>2.340</td><td>2.349</td><td>2.334</td><td>2.347</td></tr>
-<tr><td>6</td><td>2.959</td><td>2.810</td><td>2.771</td><td>2.761</td></tr>
-<tr><td>7</td><td>3.263</td><td>3.244</td><td>3.267</td><td>3.243</td></tr>
-<tr><td>8</td><td>3.814</td><td>3.803</td><td>3.740</td><td>3.761</td></tr>
-<tr><td>9</td><td>4.534</td><td>4.288</td><td>4.301</td><td>4.279</td></tr>
-<tr><td>10</td><td>4.958</td><td>4.900</td><td>4.889</td><td>4.882</td></tr>
-<tr><td>15</td><td>8.206</td><td>8.245</td><td>8.219</td><td>8.207</td></tr>
-<tr><td>20</td><td>12.513</td><td>12.507</td><td>12.554</td><td>12.595</td></tr>
-<tr><td>25</td><td>18.191</td><td>18.214</td><td>18.434</td><td>18.275</td></tr>
-<tr><td>30</td><td>24.586</td><td>24.476</td><td>24.263</td><td>24.303</td></tr>
-<tr><td>35</td><td>31.597</td><td>31.702</td><td>31.704</td><td>31.632</td></tr>
-<tr><td>40</td><td>40.135</td><td>40.445</td><td>40.351</td><td>40.288</td></tr>
+<tr><td>1</td><td>0.961</td><td>0.958</td><td>0.962</td><td>0.960</td></tr>
+<tr><td>2</td><td>1.264</td><td>1.243</td><td>1.249</td><td>1.251</td></tr>
+<tr><td>3</td><td>1.587</td><td>1.578</td><td>1.573</td><td>1.582</td></tr>
+<tr><td>4</td><td>1.949</td><td>1.941</td><td>1.954</td><td>1.940</td></tr>
+<tr><td>5</td><td>2.345</td><td>2.335</td><td>2.352</td><td>2.359</td></tr>
+<tr><td>6</td><td>2.768</td><td>2.781</td><td>2.774</td><td>2.801</td></tr>
+<tr><td>7</td><td>3.361</td><td>3.295</td><td>3.262</td><td>3.298</td></tr>
+<tr><td>8</td><td>3.796</td><td>3.802</td><td>3.782</td><td>3.794</td></tr>
+<tr><td>9</td><td>4.341</td><td>4.361</td><td>4.321</td><td>4.305</td></tr>
+<tr><td>10</td><td>4.940</td><td>4.945</td><td>4.912</td><td>4.941</td></tr>
+<tr><td>15</td><td>8.283</td><td>8.328</td><td>8.350</td><td>8.587</td></tr>
+<tr><td>20</td><td>12.605</td><td>12.683</td><td>12.960</td><td>12.873</td></tr>
+<tr><td>25</td><td>18.377</td><td>18.632</td><td>19.543</td><td>18.538</td></tr>
+<tr><td>30</td><td>24.431</td><td>25.625</td><td>26.268</td><td>25.325</td></tr>
+<tr><td>35</td><td>31.766</td><td>34.997</td><td>34.502</td><td>33.586</td></tr>
+<tr><td>40</td><td>41.026</td><td>44.738</td><td>44.569</td><td>41.829</td></tr>
 </tbody></table>
 
 ## QRMarkupXML
@@ -192,22 +192,22 @@
 <tr><th></th><th colspan="4">Byte</th></tr>
 <tr><th>Version</th><th>L</th><th>M</th><th>Q</th><th>H</th></tr>
 </thead><tbody>
-<tr><td>1</td><td>1.953</td><td>2.006</td><td>1.957</td><td>1.961</td></tr>
-<tr><td>2</td><td>2.536</td><td>2.544</td><td>2.533</td><td>2.535</td></tr>
-<tr><td>3</td><td>3.196</td><td>3.140</td><td>3.147</td><td>3.184</td></tr>
-<tr><td>4</td><td>3.880</td><td>3.886</td><td>3.865</td><td>3.891</td></tr>
-<tr><td>5</td><td>4.601</td><td>4.688</td><td>4.685</td><td>4.657</td></tr>
-<tr><td>6</td><td>5.510</td><td>5.507</td><td>5.648</td><td>5.527</td></tr>
-<tr><td>7</td><td>6.480</td><td>6.481</td><td>6.494</td><td>6.430</td></tr>
-<tr><td>8</td><td>7.491</td><td>7.489</td><td>7.487</td><td>7.482</td></tr>
-<tr><td>9</td><td>8.510</td><td>8.529</td><td>8.437</td><td>8.529</td></tr>
-<tr><td>10</td><td>9.700</td><td>9.708</td><td>9.580</td><td>9.891</td></tr>
-<tr><td>15</td><td>16.461</td><td>16.281</td><td>16.346</td><td>16.347</td></tr>
-<tr><td>20</td><td>25.720</td><td>26.290</td><td>26.179</td><td>25.765</td></tr>
-<tr><td>25</td><td>39.768</td><td>42.765</td><td>40.420</td><td>40.828</td></tr>
-<tr><td>30</td><td>60.277</td><td>61.581</td><td>63.823</td><td>63.163</td></tr>
-<tr><td>35</td><td>90.266</td><td>89.172</td><td>87.636</td><td>88.596</td></tr>
-<tr><td>40</td><td>124.037</td><td>124.089</td><td>125.335</td><td>123.576</td></tr>
+<tr><td>1</td><td>1.807</td><td>1.846</td><td>1.809</td><td>1.802</td></tr>
+<tr><td>2</td><td>2.336</td><td>2.343</td><td>2.347</td><td>2.362</td></tr>
+<tr><td>3</td><td>2.896</td><td>2.901</td><td>2.917</td><td>2.921</td></tr>
+<tr><td>4</td><td>3.575</td><td>3.585</td><td>3.609</td><td>3.581</td></tr>
+<tr><td>5</td><td>4.237</td><td>4.269</td><td>4.295</td><td>4.304</td></tr>
+<tr><td>6</td><td>5.061</td><td>5.072</td><td>5.131</td><td>5.150</td></tr>
+<tr><td>7</td><td>5.901</td><td>5.931</td><td>5.944</td><td>5.968</td></tr>
+<tr><td>8</td><td>6.953</td><td>6.867</td><td>6.942</td><td>6.946</td></tr>
+<tr><td>9</td><td>7.923</td><td>7.824</td><td>7.874</td><td>7.835</td></tr>
+<tr><td>10</td><td>8.897</td><td>9.032</td><td>8.982</td><td>9.024</td></tr>
+<tr><td>15</td><td>14.873</td><td>14.913</td><td>15.263</td><td>14.960</td></tr>
+<tr><td>20</td><td>23.555</td><td>25.099</td><td>26.030</td><td>26.983</td></tr>
+<tr><td>25</td><td>35.956</td><td>39.420</td><td>42.589</td><td>37.571</td></tr>
+<tr><td>30</td><td>54.411</td><td>54.829</td><td>76.166</td><td>59.983</td></tr>
+<tr><td>35</td><td>81.401</td><td>77.990</td><td>97.313</td><td>85.331</td></tr>
+<tr><td>40</td><td>120.799</td><td>126.224</td><td>127.935</td><td>115.800</td></tr>
 </tbody></table>
 
 ## QRStringJSON
@@ -218,22 +218,22 @@
 <tr><th></th><th colspan="4">Byte</th></tr>
 <tr><th>Version</th><th>L</th><th>M</th><th>Q</th><th>H</th></tr>
 </thead><tbody>
-<tr><td>1</td><td>0.361</td><td>0.359</td><td>0.360</td><td>0.359</td></tr>
-<tr><td>2</td><td>0.463</td><td>0.462</td><td>0.463</td><td>0.465</td></tr>
-<tr><td>3</td><td>0.579</td><td>0.578</td><td>0.583</td><td>0.583</td></tr>
-<tr><td>4</td><td>0.730</td><td>0.706</td><td>0.711</td><td>0.705</td></tr>
-<tr><td>5</td><td>0.843</td><td>0.851</td><td>0.854</td><td>0.848</td></tr>
-<tr><td>6</td><td>0.998</td><td>1.005</td><td>0.996</td><td>1.003</td></tr>
-<tr><td>7</td><td>1.158</td><td>1.172</td><td>1.165</td><td>1.170</td></tr>
-<tr><td>8</td><td>1.352</td><td>1.349</td><td>1.340</td><td>1.341</td></tr>
-<tr><td>9</td><td>1.535</td><td>1.526</td><td>1.545</td><td>1.542</td></tr>
-<tr><td>10</td><td>1.731</td><td>1.737</td><td>1.748</td><td>1.736</td></tr>
-<tr><td>15</td><td>3.249</td><td>2.958</td><td>2.939</td><td>2.938</td></tr>
-<tr><td>20</td><td>4.487</td><td>4.436</td><td>4.486</td><td>4.431</td></tr>
-<tr><td>25</td><td>6.308</td><td>6.350</td><td>6.377</td><td>6.335</td></tr>
-<tr><td>30</td><td>8.508</td><td>8.514</td><td>8.482</td><td>8.373</td></tr>
-<tr><td>35</td><td>10.898</td><td>10.946</td><td>10.928</td><td>10.959</td></tr>
-<tr><td>40</td><td>13.786</td><td>13.947</td><td>13.739</td><td>13.762</td></tr>
+<tr><td>1</td><td>0.342</td><td>0.343</td><td>0.342</td><td>0.346</td></tr>
+<tr><td>2</td><td>0.445</td><td>0.441</td><td>0.444</td><td>0.443</td></tr>
+<tr><td>3</td><td>0.549</td><td>0.554</td><td>0.553</td><td>0.555</td></tr>
+<tr><td>4</td><td>0.676</td><td>0.679</td><td>0.678</td><td>0.679</td></tr>
+<tr><td>5</td><td>0.820</td><td>0.816</td><td>0.836</td><td>0.808</td></tr>
+<tr><td>6</td><td>0.958</td><td>0.959</td><td>0.963</td><td>0.957</td></tr>
+<tr><td>7</td><td>1.121</td><td>1.118</td><td>1.113</td><td>1.143</td></tr>
+<tr><td>8</td><td>1.308</td><td>1.284</td><td>1.290</td><td>1.286</td></tr>
+<tr><td>9</td><td>1.477</td><td>1.467</td><td>1.463</td><td>1.471</td></tr>
+<tr><td>10</td><td>1.679</td><td>1.673</td><td>1.671</td><td>1.691</td></tr>
+<tr><td>15</td><td>2.814</td><td>2.813</td><td>2.855</td><td>2.826</td></tr>
+<tr><td>20</td><td>4.294</td><td>4.301</td><td>4.325</td><td>4.308</td></tr>
+<tr><td>25</td><td>6.070</td><td>6.048</td><td>6.070</td><td>6.091</td></tr>
+<tr><td>30</td><td>8.117</td><td>8.183</td><td>8.227</td><td>8.154</td></tr>
+<tr><td>35</td><td>10.529</td><td>10.498</td><td>10.547</td><td>10.505</td></tr>
+<tr><td>40</td><td>13.289</td><td>13.286</td><td>13.265</td><td>13.170</td></tr>
 </tbody></table>
 
 [back to overview](./Benchmark.md)
