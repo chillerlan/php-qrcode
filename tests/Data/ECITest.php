@@ -112,7 +112,7 @@ final class ECITest extends TestCase{
 
 		$this::assertSame($lengthInBits, $eci->getLengthInBits());
 		$this::assertSame(Mode::ECI, $bitBuffer->read(4));
-		$this::assertSame($id, $eci->parseValue($bitBuffer)->getID());
+		$this::assertSame($id, $eci->parseValue($bitBuffer)->charsetID);
 	}
 
 	/**
