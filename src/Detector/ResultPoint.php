@@ -22,26 +22,14 @@ use function abs;
  */
 abstract class ResultPoint{
 
-	protected float $x;
-	protected float $y;
-	protected float $estimatedModuleSize;
+	protected(set) float $x;
+	protected(set) float $y;
+	protected(set) float $estimatedModuleSize;
 
 	public function __construct(float $x, float $y, float $estimatedModuleSize){
 		$this->x                   = $x;
 		$this->y                   = $y;
 		$this->estimatedModuleSize = $estimatedModuleSize;
-	}
-
-	public function getX():float{
-		return $this->x;
-	}
-
-	public function getY():float{
-		return $this->y;
-	}
-
-	public function getEstimatedModuleSize():float{
-		return $this->estimatedModuleSize;
 	}
 
 	/**

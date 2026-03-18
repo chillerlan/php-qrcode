@@ -572,8 +572,8 @@ final class FinderPatternFinder{
 					// This is the case where you find top left last.
 					$this->hasSkipped = true;
 
-					return (int)((abs($firstConfirmedCenter->getX() - $center->getX()) -
-					              abs($firstConfirmedCenter->getY() - $center->getY())) / 2);
+					return (int)((abs($firstConfirmedCenter->x - $center->x) -
+					              abs($firstConfirmedCenter->y - $center->y)) / 2);
 				}
 			}
 		}
@@ -594,7 +594,7 @@ final class FinderPatternFinder{
 		foreach($this->possibleCenters as $pattern){
 			if($pattern->count >= self::CENTER_QUORUM){
 				$confirmedCount++;
-				$totalModuleSize += $pattern->getEstimatedModuleSize();
+				$totalModuleSize += $pattern->estimatedModuleSize;
 			}
 		}
 
@@ -609,7 +609,7 @@ final class FinderPatternFinder{
 		$totalDeviation = 0.0;
 
 		foreach($this->possibleCenters as $pattern){
-			$totalDeviation += abs($pattern->getEstimatedModuleSize() - $average);
+			$totalDeviation += abs($pattern->estimatedModuleSize - $average);
 		}
 
 		return $totalDeviation <= (0.05 * $totalModuleSize);
@@ -630,7 +630,7 @@ final class FinderPatternFinder{
 
 		usort(
 			$this->possibleCenters,
-			fn(FinderPattern $a, FinderPattern $b) => ($a->getEstimatedModuleSize() <=> $b->getEstimatedModuleSize()),
+			fn(FinderPattern $a, FinderPattern $b) => ($a->estimatedModuleSize <=> $b->estimatedModuleSize),
 		);
 
 		$distortion   = PHP_FLOAT_MAX;
@@ -638,7 +638,7 @@ final class FinderPatternFinder{
 
 		for($i = 0; $i < ($startSize - 2); $i++){
 			$fpi           = $this->possibleCenters[$i];
-			$minModuleSize = $fpi->getEstimatedModuleSize();
+			$minModuleSize = $fpi->estimatedModuleSize;
 
 			for($j = ($i + 1); $j < ($startSize - 1); $j++){
 				$fpj      = $this->possibleCenters[$j];
@@ -646,7 +646,7 @@ final class FinderPatternFinder{
 
 				for($k = ($j + 1); $k < $startSize; $k++){
 					$fpk           = $this->possibleCenters[$k];
-					$maxModuleSize = $fpk->getEstimatedModuleSize();
+					$maxModuleSize = $fpk->estimatedModuleSize;
 
 					// module size is not similar
 					if($maxModuleSize > ($minModuleSize * 1.4)){
@@ -758,11 +758,8 @@ final class FinderPatternFinder{
 	/**
 	 * Returns the z component of the cross product between vectors BC and BA.
 	 */
-	private function crossProductZ(FinderPattern $pointA, FinderPattern $pointB, FinderPattern $pointC):float{
-		$bX = $pointB->getX();
-		$bY = $pointB->getY();
-
-		return ((($pointC->getX() - $bX) * ($pointA->getY() - $bY)) - (($pointC->getY() - $bY) * ($pointA->getX() - $bX)));
+	private function crossProductZ(FinderPattern $a, FinderPattern $b, FinderPattern $c):float{
+		return ((($c->x - $b->x) * ($a->y - $b->y)) - (($c->y - $b->y) * ($a->x - $b->x)));
 	}
 
 }

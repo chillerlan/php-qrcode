@@ -52,14 +52,14 @@ final class Detector{
 		// Anything above version 1 has an alignment pattern
 		if($provisionalVersion->getAlignmentPattern() !== []){
 			// Guess where a "bottom right" finder pattern would have been
-			$bottomRightX = ($topRight->getX() - $topLeft->getX() + $bottomLeft->getX());
-			$bottomRightY = ($topRight->getY() - $topLeft->getY() + $bottomLeft->getY());
+			$bottomRightX = ($topRight->x - $topLeft->x + $bottomLeft->x);
+			$bottomRightY = ($topRight->y - $topLeft->y + $bottomLeft->y);
 
 			// Estimate that alignment pattern is closer by 3 modules
 			// from "bottom right" to known top left location
 			$correctionToTopLeft = (1.0 - 3.0 / (float)($provisionalVersion->getDimension() - 7));
-			$estAlignmentX       = (int)($topLeft->getX() + $correctionToTopLeft * ($bottomRightX - $topLeft->getX()));
-			$estAlignmentY       = (int)($topLeft->getY() + $correctionToTopLeft * ($bottomRightY - $topLeft->getY()));
+			$estAlignmentX       = (int)($topLeft->x + $correctionToTopLeft * ($bottomRightX - $topLeft->x));
+			$estAlignmentY       = (int)($topLeft->y + $correctionToTopLeft * ($bottomRightY - $topLeft->y));
 
 			// Kind of arbitrary -- expand search radius before giving up
 			for($i = 4; $i <= 16; $i <<= 1){//??????????
@@ -104,8 +104,8 @@ final class Detector{
 	 */
 	private function calculateModuleSizeOneWay(FinderPattern $a, FinderPattern $b):float{
 
-		$moduleSizeEst1 = $this->sizeOfBlackWhiteBlackRunBothWays($a->getX(), $a->getY(), $b->getX(), $b->getY());
-		$moduleSizeEst2 = $this->sizeOfBlackWhiteBlackRunBothWays($b->getX(), $b->getY(), $a->getX(), $a->getY());
+		$moduleSizeEst1 = $this->sizeOfBlackWhiteBlackRunBothWays($a->x, $a->y, $b->x, $b->y);
+		$moduleSizeEst2 = $this->sizeOfBlackWhiteBlackRunBothWays($b->x, $b->y, $a->x, $a->y);
 
 		if(is_nan($moduleSizeEst1)){
 			return ($moduleSizeEst2 / 7.0);
@@ -316,15 +316,15 @@ final class Detector{
 		$dimMinusThree = ($size - 3.5);
 
 		if($ap instanceof AlignmentPattern){
-			$bottomRightX       = $ap->getX();
-			$bottomRightY       = $ap->getY();
+			$bottomRightX       = $ap->x;
+			$bottomRightY       = $ap->y;
 			$sourceBottomRightX = ($dimMinusThree - 3.0);
 			$sourceBottomRightY = $sourceBottomRightX;
 		}
 		else{
 			// Don't have an alignment pattern, just make up the bottom-right point
-			$bottomRightX       = ($ne->getX() - $nw->getX() + $sw->getX());
-			$bottomRightY       = ($ne->getY() - $nw->getY() + $sw->getY());
+			$bottomRightX       = ($ne->x - $nw->x + $sw->x);
+			$bottomRightY       = ($ne->y - $nw->y + $sw->y);
 			$sourceBottomRightX = $dimMinusThree;
 			$sourceBottomRightY = $dimMinusThree;
 		}
@@ -338,14 +338,14 @@ final class Detector{
 			$sourceBottomRightY,
 			3.5,
 			$dimMinusThree,
-			$nw->getX(),
-			$nw->getY(),
-			$ne->getX(),
-			$ne->getY(),
+			$nw->x,
+			$nw->y,
+			$ne->x,
+			$ne->y,
 			$bottomRightX,
 			$bottomRightY,
-			$sw->getX(),
-			$sw->getY(),
+			$sw->x,
+			$sw->y,
 		);
 	}
 
