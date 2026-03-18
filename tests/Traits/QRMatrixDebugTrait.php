@@ -85,7 +85,7 @@ trait QRMatrixDebugTrait{
 
 		// limit
 		/** @noinspection PhpUndefinedConstantInspection - see phpunit.xml.dist */
-		if(!defined('MATRIX_DEBUG_VERSION') || $matrix->version->getVersionNumber() !== MATRIX_DEBUG_VERSION){
+		if(!defined('MATRIX_DEBUG_VERSION') || $matrix->version->versionNumber !== MATRIX_DEBUG_VERSION){
 			return;
 		}
 

@@ -47,7 +47,7 @@ final class QRDataTest extends TestCase{
 
 		$matrix->setFormatInfo($maskPattern)->mask($maskPattern);
 
-		$this::assertSame(3, $matrix->version->getVersionNumber());
+		$this::assertSame(3, $matrix->version->versionNumber);
 
 		// attempt to read
 		$options->outputBase64                = false;
@@ -82,7 +82,7 @@ final class QRDataTest extends TestCase{
 		$qrData = new QRData($options, [new Byte($str)]);
 
 		$this::assertSame(976, $qrData->estimateTotalBitLength());
-		$this::assertSame(11, $qrData->getMinimumVersion()->getVersionNumber()); // version adjusted to 11
+		$this::assertSame(11, $qrData->getMinimumVersion()->versionNumber); // version adjusted to 11
 	}
 
 }

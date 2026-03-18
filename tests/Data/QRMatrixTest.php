@@ -51,7 +51,7 @@ final class QRMatrixTest extends TestCase{
 	 */
 	#[Test]
 	public function getVersion():void{
-		$this::assertSame($this::version, $this->matrix->version->getVersionNumber());
+		$this::assertSame($this::version, $this->matrix->version->versionNumber);
 	}
 
 	/**
@@ -162,7 +162,7 @@ final class QRMatrixTest extends TestCase{
 	public function setAlignmentPattern(QRMatrix $matrix):void{
 		$version = $matrix->version;
 
-		if($version->getVersionNumber() === 1){
+		if($version->versionNumber === 1){
 			$this::markTestSkipped('N/A (Version 1 has no alignment pattern)');
 		}
 
@@ -222,7 +222,7 @@ final class QRMatrixTest extends TestCase{
 	#[DataProvider('matrixProvider')]
 	public function setVersionNumber(QRMatrix $matrix):void{
 
-		if($matrix->version->getVersionNumber() < 7){
+		if($matrix->version->versionNumber < 7){
 			$this::markTestSkipped('N/A (Version < 7)');
 		}
 

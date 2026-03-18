@@ -34,7 +34,7 @@ final class VersionTest extends TestCase{
 
 	#[Test]
 	public function getVersionNumber():void{
-		$this::assertSame(7, $this->version->getVersionNumber());
+		$this::assertSame(7, $this->version->versionNumber);
 	}
 
 	#[Test]

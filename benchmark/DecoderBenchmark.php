@@ -32,7 +32,7 @@ final class DecoderBenchmark extends BenchmarkAbstract{
 	public function initOptions():void{
 
 		$options = [
-			'version'          => $this->version->getVersionNumber(),
+			'version'          => $this->version->versionNumber,
 			'eccLevel'         => $this->eccLevel->level,
 			'scale'            => 2,
 			'imageTransparent' => false,

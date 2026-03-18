@@ -91,7 +91,7 @@ trait QRMaxLengthTrait{
 			throw new QRCodeException('invalid $mode');
 		}
 
-		$ver = $version->getVersionNumber();
+		$ver = $version->versionNumber;
 		$ecc = $eccLevel->getOrdinal();
 
 		if(!isset(static::MAX_LENGTH[$ver])){

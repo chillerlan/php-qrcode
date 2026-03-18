@@ -178,7 +178,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	#[DataProvider('maxLengthProvider')]
 	public function maxLength(Version $version, EccLevel $eccLevel, string $str, string $str1, int $len):void{
 		$options           = new QROptions;
-		$options->version  = $version->getVersionNumber();
+		$options->version  = $version->versionNumber;
 		$options->eccLevel = $eccLevel->level;
 
 		$this->dataMode    = static::getDataModeInterface($str);
@@ -207,13 +207,13 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 		$this::assertLessThanOrEqual($eccLevel->getMaxBitsForVersion($version), $this->QRData->estimateTotalBitLength());
 
-		$minimumVersionNumber = $this->QRData->getMinimumVersion()->getVersionNumber();
+		$minimumVersionNumber = $this->QRData->getMinimumVersion()->versionNumber;
 
 		try{
-			$this::assertSame($version->getVersionNumber(), $minimumVersionNumber);
+			$this::assertSame($version->versionNumber, $minimumVersionNumber);
 		}
 		catch(ExpectationFailedException){
-			$this::assertSame(($version->getVersionNumber() + 1), $minimumVersionNumber, 'safety margin');
+			$this::assertSame(($version->versionNumber + 1), $minimumVersionNumber, 'safety margin');
 		}
 
 		// verify the encoded data
@@ -231,7 +231,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$this->expectExceptionMessage('code length overflow');
 
 		$options           = new QROptions;
-		$options->version  = $version->getVersionNumber();
+		$options->version  = $version->versionNumber;
 		$options->eccLevel = $eccLevel->level;
 
 

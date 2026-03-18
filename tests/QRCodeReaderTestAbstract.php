@@ -163,7 +163,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 		$this->options->outputInterface  = QRGdImagePNG::class;
 		$this->options->imageTransparent = false;
 		$this->options->eccLevel         = $ecc->level;
-		$this->options->version          = $version->getVersionNumber();
+		$this->options->version          = $version->versionNumber;
 		$this->options->outputBase64     = false;
 		// what's interesting is that a smaller scale seems to produce fewer reader errors???
 		// usually from version 20 up, independend of the luminance source
@@ -177,7 +177,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 			$result    = $qrcode->readFromBlob($imagedata);
 
 			$this::assertSame($expected, $result->data);
-			$this::assertSame($version->getVersionNumber(), $result->version->getVersionNumber());
+			$this::assertSame($version->versionNumber, $result->version->versionNumber);
 			$this::assertSame($ecc->level, $result->eccLevel->level);
 		}
 		catch(Exception $e){

@@ -107,7 +107,7 @@ final class Decoder{
 	 */
 	private function decodeBitStream(BitBuffer $bitBuffer):DecoderResult{
 		$this->bitBuffer  = $bitBuffer;
-		$versionNumber    = $this->version->getVersionNumber();
+		$versionNumber    = $this->version->versionNumber;
 		$symbolSequence   = -1;
 		$parityData       = -1;
 		$fc1InEffect      = false;

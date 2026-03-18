@@ -28,7 +28,7 @@ final class QRDataBenchmark extends BenchmarkAbstract{
 	public function initOptions():void{
 
 		$options = [
-			'version'  => $this->version->getVersionNumber(),
+			'version'  => $this->version->versionNumber,
 			'eccLevel' => $this->eccLevel->level,
 		];
 
@@ -71,7 +71,7 @@ final class QRDataBenchmark extends BenchmarkAbstract{
 	#[Subject]
 	#[BeforeMethods(['assignParams', 'generateTestData', 'initOptions', 'initQRData', 'initBitBuffer'])]
 	public function decodeSegment():void{
-		$this->dataMode->decodeSegment(clone $this->bitBuffer, $this->version->getVersionNumber());
+		$this->dataMode->decodeSegment(clone $this->bitBuffer, $this->version->versionNumber);
 	}
 
 }

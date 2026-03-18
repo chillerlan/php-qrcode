@@ -210,7 +210,7 @@ final class QRData{
 		$MAX_BITS = $this->eccLevel->getMaxBitsForVersion($this->version);
 
 		foreach($this->dataSegments as $segment){
-			$segment->write($this->bitBuffer, $this->version->getVersionNumber());
+			$segment->write($this->bitBuffer, $this->version->versionNumber);
 		}
 
 		// overflow, likely caused due to invalid version setting

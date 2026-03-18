@@ -50,7 +50,7 @@ class QRStringJSON extends QROutputAbstract{
 		$json = [
 			'$schema' => $this::SCHEMA,
 			'qrcode'  => [
-				'version'  => $version->getVersionNumber(),
+				'version'  => $version->versionNumber,
 				'eccLevel' => (string)$this->matrix->eccLevel,
 				'matrix'   => [
 					'size'          => $dimension,
