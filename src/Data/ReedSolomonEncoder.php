@@ -50,7 +50,7 @@ final class ReedSolomonEncoder{
 			$rsBlocks = array_merge($rsBlocks, array_fill(0, $l2, [($numEccCodewords + $b2), $b2]));
 		}
 
-		$bitBufferData  = $bitBuffer->getBuffer();
+		$bitBufferData  = $bitBuffer->buffer;
 		$dataBytes      = [];
 		$ecBytes        = [];
 		$maxDataBytes   = 0;

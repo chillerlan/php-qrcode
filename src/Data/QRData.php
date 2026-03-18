@@ -99,7 +99,7 @@ final class QRData{
 			throw new QRCodeDataException('version auto detection is not available');
 		}
 
-		if($bitBuffer->getLength() === 0){
+		if($bitBuffer->length === 0){
 			throw new QRCodeDataException('the given BitBuffer is empty');
 		}
 
@@ -214,14 +214,14 @@ final class QRData{
 		}
 
 		// overflow, likely caused due to invalid version setting
-		if($this->bitBuffer->getLength() > $MAX_BITS){
+		if($this->bitBuffer->length > $MAX_BITS){
 			throw new QRCodeDataException(
-				sprintf('code length overflow. (%d > %d bit)', $this->bitBuffer->getLength(), $MAX_BITS),
+				sprintf('code length overflow. (%d > %d bit)', $this->bitBuffer->length, $MAX_BITS),
 			);
 		}
 
 		// add terminator (ISO/IEC 18004:2000 Table 2)
-		if(($this->bitBuffer->getLength() + 4) <= $MAX_BITS){
+		if(($this->bitBuffer->length + 4) <= $MAX_BITS){
 			$this->bitBuffer->put(Mode::TERMINATOR, 4);
 		}
 
@@ -229,9 +229,9 @@ final class QRData{
 
 		// if the final codeword is not exactly 8 bits in length, it shall be made 8 bits long
 		// by the addition of padding bits with binary value 0
-		while(($this->bitBuffer->getLength() % 8) !== 0){
+		while(($this->bitBuffer->length % 8) !== 0){
 
-			if($this->bitBuffer->getLength() === $MAX_BITS){
+			if($this->bitBuffer->length === $MAX_BITS){
 				break;
 			}
 
@@ -243,7 +243,7 @@ final class QRData{
 		// Codewords 11101100 and 00010001 alternately.
 		$alternate = false;
 
-		while(($this->bitBuffer->getLength() + 8) <= $MAX_BITS){
+		while(($this->bitBuffer->length + 8) <= $MAX_BITS){
 			$this->bitBuffer->put(($alternate) ? 0b00010001 : 0b11101100, 8);
 
 			$alternate = !$alternate;
@@ -251,7 +251,7 @@ final class QRData{
 
 		// In certain versions of symbol, it may be necessary to add 3, 4 or 7 Remainder Bits (all zeros)
 		// to the end of the message in order exactly to fill the symbol capacity
-		while($this->bitBuffer->getLength() <= $MAX_BITS){
+		while($this->bitBuffer->length <= $MAX_BITS){
 			$this->bitBuffer->putBit(false);
 		}
 

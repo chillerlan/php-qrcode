@@ -36,8 +36,8 @@ final class BitBufferTest extends TestCase{
 	public function put(int $data, int $expected):void{
 		$this->bitBuffer->put($data, 4);
 
-		$this::assertSame($expected, $this->bitBuffer->getBuffer()[0]);
-		$this::assertSame(4, $this->bitBuffer->getLength());
+		$this::assertSame($expected, $this->bitBuffer->buffer[0]);
+		$this::assertSame(4, $this->bitBuffer->length);
 	}
 
 	#[Test]

@@ -22,14 +22,16 @@ final class BitBuffer{
 	/**
 	 * The buffer content
 	 *
+	 * to debug: `array_map(fn($v) => sprintf('%08b', $v), $bitBuffer->buffer)`
+	 *
 	 * @var int[]
 	 */
-	private array $buffer;
+	private(set) array $buffer;
 
 	/**
 	 * Length of the content (bits)
 	 */
-	private int $length;
+	private(set) int $length;
 
 	/**
 	 * Read count (bytes)
@@ -80,24 +82,6 @@ final class BitBuffer{
 		$this->length++;
 
 		return $this;
-	}
-
-	/**
-	 * returns the current buffer length
-	 */
-	public function getLength():int{
-		return $this->length;
-	}
-
-	/**
-	 * returns the buffer content
-	 *
-	 * to debug: `array_map(fn($v) => sprintf('%08b', $v), $bitBuffer->getBuffer())`
-	 *
-	 * @return int[]
-	 */
-	public function getBuffer():array{
-		return $this->buffer;
 	}
 
 	/**
