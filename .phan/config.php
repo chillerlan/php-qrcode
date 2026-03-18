@@ -56,6 +56,8 @@ return [
 		'PhanAccessOverridesFinalConstant',
 		'PhanDeprecatedClass',
 		'PhanDeprecatedClassConstant',
+		'PhanDeprecatedFunction',
+		'PhanDeprecatedProperty',
 		'PhanNoopNew',
 		'PhanTypePossiblyInvalidDimOffset',
 	],

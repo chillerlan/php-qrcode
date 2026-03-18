@@ -32,14 +32,23 @@ abstract class ResultPoint{
 		$this->estimatedModuleSize = $estimatedModuleSize;
 	}
 
+	/**
+	 * @deprecated 6.0.1 This method will be removed. In v7, use the property "ResultPoint::$x" instead.
+	 */
 	public function getX():float{
 		return $this->x;
 	}
 
+	/**
+	 * @deprecated 6.0.1 This method will be removed. In v7, use the property "ResultPoint::$y" instead.
+	 */
 	public function getY():float{
 		return $this->y;
 	}
 
+	/**
+	 * @deprecated 6.0.1 This method will be removed. In v7, use the property "ResultPoint::$estimatedModuleSize" instead.
+	 */
 	public function getEstimatedModuleSize():float{
 		return $this->estimatedModuleSize;
 	}

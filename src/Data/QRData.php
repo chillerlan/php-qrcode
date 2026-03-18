@@ -87,6 +87,7 @@ final class QRData{
 	/**
 	 * Returns the current BitBuffer instance
 	 *
+	 * @deprecated 6.0.1 This method will be removed. In v7, use the property "QRData::$bitBuffer" instead.
 	 * @codeCoverageIgnore
 	 */
 	public function getBitBuffer():BitBuffer{

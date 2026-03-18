@@ -84,6 +84,8 @@ final class BitBuffer{
 
 	/**
 	 * returns the current buffer length
+	 *
+	 * @deprecated 6.0.1 This method will be removed. In v7, use the property "BitBuffer::$length" instead.
 	 */
 	public function getLength():int{
 		return $this->length;
@@ -95,6 +97,8 @@ final class BitBuffer{
 	 * to debug: `array_map(fn($v) => sprintf('%08b', $v), $bitBuffer->getBuffer())`
 	 *
 	 * @return int[]
+	 *
+	 * @deprecated 6.0.1 This method will be removed in v7, use the property "BitBuffer::$buffer" instead.
 	 */
 	public function getBuffer():array{
 		return $this->buffer;

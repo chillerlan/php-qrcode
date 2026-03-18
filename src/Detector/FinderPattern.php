@@ -31,6 +31,9 @@ final class FinderPattern extends ResultPoint{
 		$this->count = ($count ?? 1);
 	}
 
+	/**
+	 * @deprecated 6.0.1 This method will be removed. In v7, use the property "FinderPattern::$count" instead.
+	 */
 	public function getCount():int{
 		return $this->count;
 	}

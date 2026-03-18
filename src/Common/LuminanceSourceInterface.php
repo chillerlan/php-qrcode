@@ -26,16 +26,22 @@ interface LuminanceSourceInterface{
 	 * @return int[] A row-major 2D array of luminance values. Do not use result $length as it may be
 	 *         larger than $width * $height bytes on some platforms. Do not modify the contents
 	 *         of the result.
+	 *
+	 * @deprecated 6.0.1 This method will be removed. In v7, use the property "LuminanceSourceInterface::$luminances" instead.
 	 */
 	public function getLuminances():array;
 
 	/**
 	 * @return int The width of the bitmap.
+	 *
+	 * @deprecated 6.0.1 This method will be removed. In v7, use the property "LuminanceSourceInterface::$width" instead.
 	 */
 	public function getWidth():int;
 
 	/**
 	 * @return int The height of the bitmap.
+	 *
+	 * @deprecated 6.0.1 This method will be removed. In v7, use the property "LuminanceSourceInterface::$height" instead.
 	 */
 	public function getHeight():int;
 

@@ -77,6 +77,8 @@ final class GenericGFPoly{
 
 	/**
 	 * @return int[]
+	 *
+	 * @deprecated 6.0.1 This method will be removed. In v7, use the property "GenericGFPoly::$coefficients" instead.
 	 */
 	public function getCoefficients():array{
 		return $this->coefficients;

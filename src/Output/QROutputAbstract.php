@@ -38,6 +38,13 @@ abstract class QROutputAbstract implements QROutputInterface{
 	protected int $length;
 
 	/**
+	 * The current module scale value (might have been modified)
+	 *
+	 * @see \chillerlan\QRCode\QROptions::$scale
+	 */
+	protected int $scale;
+
+	/**
 	 * an (optional) array of color values for the several QR matrix parts
 	 *
 	 * @phpstan-var array<int, mixed>
@@ -57,25 +64,50 @@ abstract class QROutputAbstract implements QROutputInterface{
 	/**
 	 * @see \chillerlan\QRCode\QROptions::$excludeFromConnect
 	 * @var int[]
+	 * @deprecated 6.0.1 This property will be removed in v7, use `$this->options->excludeFromConnect` instead.
 	 */
 	protected array $excludeFromConnect;
+
 	/**
 	 * @see \chillerlan\QRCode\QROptions::$keepAsSquare
 	 * @var int[]
+	 * @deprecated 6.0.1 This property will be removed in v7, use `$this->options->keepAsSquare` instead.
 	 */
 	protected array $keepAsSquare;
-	/** @see \chillerlan\QRCode\QROptions::$scale */
-	protected int $scale;
-	/** @see \chillerlan\QRCode\QROptions::$connectPaths */
+
+	/**
+	 * @see \chillerlan\QRCode\QROptions::$connectPaths
+	 * @deprecated 6.0.1 This property will be removed in v7, use `$this->options->connectPaths` instead.
+	 */
 	protected bool $connectPaths;
-	/** @see \chillerlan\QRCode\QROptions::$eol */
+
+	/**
+	 * @see \chillerlan\QRCode\QROptions::$eol
+	 * @deprecated 6.0.1 This property will be removed in v7, use `$this->options->eol` instead.
+	 */
 	protected string $eol;
-	/** @see \chillerlan\QRCode\QROptions::$drawLightModules */
+
+	/**
+	 * @see \chillerlan\QRCode\QROptions::$drawLightModules
+	 * @deprecated 6.0.1 This property will be removed in v7, use `$this->options->drawLightModules` instead.
+	 */
 	protected bool $drawLightModules;
-	/** @see \chillerlan\QRCode\QROptions::$drawCircularModules */
+
+	/**
+	 * @see \chillerlan\QRCode\QROptions::$drawCircularModules
+	 * @deprecated 6.0.1 This property will be removed in v7, use `$this->options->drawCircularModules` instead.
+	 */
 	protected bool $drawCircularModules;
-	/** @see \chillerlan\QRCode\QROptions::$circleRadius */
+
+	/**
+	 * @see \chillerlan\QRCode\QROptions::$circleRadius
+	 * @deprecated 6.0.1 This property will be removed in v7, use `$this->options->circleRadius` instead.
+	 */
 	protected float $circleRadius;
+
+	/**
+	 * @deprecated 6.0.1 This property will be removed in v7, use `$this->options->circleRadius * 2` instead.
+	 */
 	protected float $circleDiameter;
 
 	/**
@@ -104,6 +136,8 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 * in long loops for a significant performance increase.
 	 *
 	 * These variables are usually used in the "module" methods and are called up to 31329 times (at version 40).
+	 *
+	 * @deprecated 6.0.1 This method will be removed in v7 without replacement (unnecessary).
 	 */
 	protected function copyVars():void{
 
@@ -127,7 +161,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	/**
 	 * Sets/updates the matrix dimensions
 	 *
-	 * Call this method if you modify the matrix from within your custom module in case the dimensions have been changed
+	 * Call this method if you modify the matrix from within your custom output class in case the dimensions have been changed
 	 */
 	protected function setMatrixDimensions():void{
 		$this->moduleCount = $this->matrix->getSize();

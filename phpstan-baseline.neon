@@ -1,6 +1,15 @@
 parameters:
 	ignoreErrors:
 		-
+			rawMessage: '''
+				Call to deprecated method getVersionNumber() of class chillerlan\QRCode\Common\Version:
+				6.0.1 This method will be removed. In v7, use the property "Version::$versionNumber" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: benchmark/BenchmarkAbstract.php
+
+		-
 			rawMessage: 'Method chillerlan\QRCodeBenchmark\BenchmarkAbstract::dataModeProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
 			identifier: missingType.generics
 			count: 1
@@ -19,10 +28,46 @@ parameters:
 			path: benchmark/BenchmarkAbstract.php
 
 		-
+			rawMessage: '''
+				Call to deprecated method getLevel() of class chillerlan\QRCode\Common\EccLevel:
+				6.0.1 This method will be removed. In v7, use the property "EccLevel::$level" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: benchmark/DecoderBenchmark.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersionNumber() of class chillerlan\QRCode\Common\Version:
+				6.0.1 This method will be removed. In v7, use the property "Version::$versionNumber" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: benchmark/DecoderBenchmark.php
+
+		-
 			rawMessage: 'Property chillerlan\QRCodeBenchmark\DecoderBenchmark::$imageBlob (string) does not accept GdImage|string.'
 			identifier: assign.propertyType
 			count: 1
 			path: benchmark/DecoderBenchmark.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getLevel() of class chillerlan\QRCode\Common\EccLevel:
+				6.0.1 This method will be removed. In v7, use the property "EccLevel::$level" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: benchmark/MaskPatternBenchmark.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersionNumber() of class chillerlan\QRCode\Common\Version:
+				6.0.1 This method will be removed. In v7, use the property "Version::$versionNumber" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: benchmark/MaskPatternBenchmark.php
 
 		-
 			rawMessage: 'Method chillerlan\QRCodeBenchmark\MaskPatternBenchmark::versionProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
@@ -31,10 +76,73 @@ parameters:
 			path: benchmark/MaskPatternBenchmark.php
 
 		-
+			rawMessage: '''
+				Call to deprecated method getLevel() of class chillerlan\QRCode\Common\EccLevel:
+				6.0.1 This method will be removed. In v7, use the property "EccLevel::$level" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: benchmark/OutputBenchmark.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersionNumber() of class chillerlan\QRCode\Common\Version:
+				6.0.1 This method will be removed. In v7, use the property "Version::$versionNumber" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: benchmark/OutputBenchmark.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getLevel() of class chillerlan\QRCode\Common\EccLevel:
+				6.0.1 This method will be removed. In v7, use the property "EccLevel::$level" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: benchmark/QRCodeBenchmark.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersionNumber() of class chillerlan\QRCode\Common\Version:
+				6.0.1 This method will be removed. In v7, use the property "Version::$versionNumber" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: benchmark/QRCodeBenchmark.php
+
+		-
 			rawMessage: 'Parameter #1 $segment of method chillerlan\QRCode\QRCode::addSegment() expects chillerlan\QRCode\Data\QRDataModeInterface, object given.'
 			identifier: argument.type
 			count: 1
 			path: benchmark/QRCodeBenchmark.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getBitBuffer() of class chillerlan\QRCode\Data\QRData:
+				6.0.1 This method will be removed. In v7, use the property "QRData::$bitBuffer" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: benchmark/QRDataBenchmark.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getLevel() of class chillerlan\QRCode\Common\EccLevel:
+				6.0.1 This method will be removed. In v7, use the property "EccLevel::$level" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: benchmark/QRDataBenchmark.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersionNumber() of class chillerlan\QRCode\Common\Version:
+				6.0.1 This method will be removed. In v7, use the property "Version::$versionNumber" instead.
+			'''
+			identifier: method.deprecated
+			count: 2
+			path: benchmark/QRDataBenchmark.php
 
 		-
 			rawMessage: 'Parameter #2 $dataSegments of class chillerlan\QRCode\Data\QRData constructor expects array<chillerlan\QRCode\Data\QRDataModeInterface>, array<int, object> given.'
@@ -73,12 +181,6 @@ parameters:
 			path: benchmark/parse-common.php
 
 		-
-			rawMessage: Possibly invalid array key type int|null.
-			identifier: offsetAccess.invalidOffset
-			count: 1
-			path: benchmark/parse-common.php
-
-		-
 			rawMessage: 'Function chillerlan\QRCodeBenchmark\parseLine() return type has no value type specified in iterable type array.'
 			identifier: missingType.iterableValue
 			count: 1
@@ -105,6 +207,15 @@ parameters:
 			identifier: assign.propertyType
 			count: 1
 			path: examples/custom_output.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getSize() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$moduleCount" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: examples/imageWithLogo.php
 
 		-
 			rawMessage: 'Method QRGdRounded::__construct() has parameter $options with no value type specified in iterable type iterable.'
@@ -161,6 +272,87 @@ parameters:
 			path: examples/qrcode-interactive.php
 
 		-
+			rawMessage: '''
+				Access to deprecated property $connectPaths of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->connectPaths` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: examples/svgMeltedModules.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $excludeFromConnect of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->excludeFromConnect` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: examples/svgMeltedModules.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMatrix() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: examples/svgMeltedModules.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $connectPaths of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->connectPaths` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: examples/svgModuleGroupShape.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $excludeFromConnect of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->excludeFromConnect` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: examples/svgModuleGroupShape.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMatrix() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: examples/svgModuleGroupShape.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $connectPaths of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->connectPaths` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: examples/svgRandomColoredDots.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $excludeFromConnect of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->excludeFromConnect` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: examples/svgRandomColoredDots.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMatrix() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: examples/svgRandomColoredDots.php
+
+		-
 			rawMessage: 'Method RandomDotsSVGOutput::collectModules() should return array<int, mixed> but returns array<int|string, list<string>>.'
 			identifier: return.type
 			count: 1
@@ -173,6 +365,33 @@ parameters:
 			path: examples/svgRandomColoredDots.php
 
 		-
+			rawMessage: '''
+				Access to deprecated property $connectPaths of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->connectPaths` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: examples/svgRoundQuietzone.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $excludeFromConnect of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->excludeFromConnect` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: examples/svgRoundQuietzone.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMatrix() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: examples/svgRoundQuietzone.php
+
+		-
 			rawMessage: 'Method RoundQuietzoneSVGoutput::collectModules() should return array<int, mixed> but returns array<int|string, list<string>>.'
 			identifier: return.type
 			count: 1
@@ -183,6 +402,24 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: examples/svgRoundQuietzone.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getPattern() of class chillerlan\QRCode\Common\MaskPattern:
+				6.0.1 This method will be removed. In v7, use the property "MaskPattern::$currentPattern" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Common/EccLevel.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersionNumber() of class chillerlan\QRCode\Common\Version:
+				6.0.1 This method will be removed. In v7, use the property "Version::$versionNumber" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Common/EccLevel.php
 
 		-
 			rawMessage: 'Parameter #1 $data of function imagecreatefromstring expects string, string|false given.'
@@ -209,6 +446,15 @@ parameters:
 			path: src/Common/GF256.php
 
 		-
+			rawMessage: '''
+				Call to deprecated method getSize() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$moduleCount" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Common/MaskPattern.php
+
+		-
 			rawMessage: 'Parameter #1 $maskPattern of class chillerlan\QRCode\Common\MaskPattern constructor expects int, int|false given.'
 			identifier: argument.type
 			count: 1
@@ -221,10 +467,22 @@ parameters:
 			path: src/Common/Version.php
 
 		-
-			rawMessage: 'Parameter #1 $codepoint of function chr expects int<0, 255>, int given.'
-			identifier: argument.type
+			rawMessage: '''
+				Call to deprecated method getLength() of class chillerlan\QRCode\Common\BitBuffer:
+				6.0.1 This method will be removed. In v7, use the property "BitBuffer::$length" instead.
+			'''
+			identifier: method.deprecated
+			count: 8
+			path: src/Data/QRData.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersionNumber() of class chillerlan\QRCode\Common\Version:
+				6.0.1 This method will be removed. In v7, use the property "Version::$versionNumber" instead.
+			'''
+			identifier: method.deprecated
 			count: 1
-			path: src/Data/Byte.php
+			path: src/Data/QRData.php
 
 		-
 			rawMessage: 'Parameter #1 $version of class chillerlan\QRCode\Data\ReedSolomonEncoder constructor expects chillerlan\QRCode\Common\Version, chillerlan\QRCode\Common\Version|null given.'
@@ -237,6 +495,51 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: src/Data/QRMatrix.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getBuffer() of class chillerlan\QRCode\Common\BitBuffer:
+				6.0.1 This method will be removed in v7, use the property "BitBuffer::$buffer" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Data/ReedSolomonEncoder.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getCoefficients() of class chillerlan\QRCode\Common\GenericGFPoly:
+				6.0.1 This method will be removed. In v7, use the property "GenericGFPoly::$coefficients" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Data/ReedSolomonEncoder.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getHeight() of interface chillerlan\QRCode\Common\LuminanceSourceInterface:
+				6.0.1 This method will be removed. In v7, use the property "LuminanceSourceInterface::$height" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Decoder/Binarizer.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getLuminances() of interface chillerlan\QRCode\Common\LuminanceSourceInterface:
+				6.0.1 This method will be removed. In v7, use the property "LuminanceSourceInterface::$luminances" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Decoder/Binarizer.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getWidth() of interface chillerlan\QRCode\Common\LuminanceSourceInterface:
+				6.0.1 This method will be removed. In v7, use the property "LuminanceSourceInterface::$width" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Decoder/Binarizer.php
 
 		-
 			rawMessage: 'Parameter #1 $maskPattern of method chillerlan\QRCode\Data\QRMatrix::mask() expects chillerlan\QRCode\Common\MaskPattern, chillerlan\QRCode\Common\MaskPattern|null given.'
@@ -263,6 +566,42 @@ parameters:
 			path: src/Decoder/BitMatrix.php
 
 		-
+			rawMessage: '''
+				Call to deprecated method getEccLevel() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$eccLevel" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Decoder/Decoder.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getFinderPatterns() of class chillerlan\QRCode\Detector\Detector:
+				6.0.1 This method will be removed. In v7, use the property "Detector::$finderPatterns" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Decoder/Decoder.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMaskPattern() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$maskPattern" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Decoder/Decoder.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersion() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$version" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Decoder/Decoder.php
+
+		-
 			rawMessage: 'Method chillerlan\QRCode\Decoder\Decoder::__construct() has parameter $options with no value type specified in iterable type iterable.'
 			identifier: missingType.iterableValue
 			count: 1
@@ -287,10 +626,181 @@ parameters:
 			path: src/Decoder/ReedSolomonDecoder.php
 
 		-
+			rawMessage: '''
+				Call to deprecated method getSize() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$moduleCount" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Detector/AlignmentPatternFinder.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getSize() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$moduleCount" instead.
+			'''
+			identifier: method.deprecated
+			count: 2
+			path: src/Detector/Detector.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getX() of class chillerlan\QRCode\Detector\ResultPoint:
+				6.0.1 This method will be removed. In v7, use the property "ResultPoint::$x" instead.
+			'''
+			identifier: method.deprecated
+			count: 16
+			path: src/Detector/Detector.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getY() of class chillerlan\QRCode\Detector\ResultPoint:
+				6.0.1 This method will be removed. In v7, use the property "ResultPoint::$y" instead.
+			'''
+			identifier: method.deprecated
+			count: 16
+			path: src/Detector/Detector.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getCount() of class chillerlan\QRCode\Detector\FinderPattern:
+				6.0.1 This method will be removed. In v7, use the property "FinderPattern::$count" instead.
+			'''
+			identifier: method.deprecated
+			count: 2
+			path: src/Detector/FinderPatternFinder.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getEstimatedModuleSize() of class chillerlan\QRCode\Detector\ResultPoint:
+				6.0.1 This method will be removed. In v7, use the property "ResultPoint::$estimatedModuleSize" instead.
+			'''
+			identifier: method.deprecated
+			count: 6
+			path: src/Detector/FinderPatternFinder.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getSize() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$moduleCount" instead.
+			'''
+			identifier: method.deprecated
+			count: 4
+			path: src/Detector/FinderPatternFinder.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getX() of class chillerlan\QRCode\Detector\ResultPoint:
+				6.0.1 This method will be removed. In v7, use the property "ResultPoint::$x" instead.
+			'''
+			identifier: method.deprecated
+			count: 5
+			path: src/Detector/FinderPatternFinder.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getY() of class chillerlan\QRCode\Detector\ResultPoint:
+				6.0.1 This method will be removed. In v7, use the property "ResultPoint::$y" instead.
+			'''
+			identifier: method.deprecated
+			count: 5
+			path: src/Detector/FinderPatternFinder.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getSize() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$moduleCount" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Detector/GridSampler.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $drawLightModules of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->drawLightModules` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QREps.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $drawLightModules of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->drawLightModules` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRFpdf.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMatrix() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QRFpdf.php
+
+		-
 			rawMessage: 'Method chillerlan\QRCode\Output\QRFpdf::__construct() has parameter $options with no value type specified in iterable type iterable.'
 			identifier: missingType.iterableValue
 			count: 1
 			path: src/Output/QRFpdf.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $circleDiameter of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->circleRadius * 2` instead.
+			'''
+			identifier: property.deprecated
+			count: 2
+			path: src/Output/QRGdImage.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $drawCircularModules of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->drawCircularModules` instead.
+			'''
+			identifier: property.deprecated
+			count: 2
+			path: src/Output/QRGdImage.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $drawLightModules of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->drawLightModules` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRGdImage.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $keepAsSquare of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->keepAsSquare` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRGdImage.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method copyVars() of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This method will be removed in v7 without replacement (unnecessary).
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QRGdImage.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMatrix() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QRGdImage.php
 
 		-
 			rawMessage: 'Method chillerlan\QRCode\Output\QRGdImage::__construct() has parameter $options with no value type specified in iterable type iterable.'
@@ -317,10 +827,49 @@ parameters:
 			path: src/Output/QRGdImage.php
 
 		-
-			rawMessage: 'Strict comparison using === between true and false will always evaluate to false.'
-			identifier: identical.alwaysFalse
+			rawMessage: '''
+				Access to deprecated property $circleRadius of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->circleRadius` instead.
+			'''
+			identifier: property.deprecated
 			count: 1
-			path: src/Output/QRGdImage.php
+			path: src/Output/QRImagick.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $drawCircularModules of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->drawCircularModules` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRImagick.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $drawLightModules of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->drawLightModules` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRImagick.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $keepAsSquare of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->keepAsSquare` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRImagick.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMatrix() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QRImagick.php
 
 		-
 			rawMessage: 'Method chillerlan\QRCode\Output\QRImagick::__construct() has parameter $options with no value type specified in iterable type iterable.'
@@ -329,10 +878,217 @@ parameters:
 			path: src/Output/QRImagick.php
 
 		-
+			rawMessage: '''
+				Access to deprecated property $circleRadius of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->circleRadius` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRInterventionImage.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $drawCircularModules of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->drawCircularModules` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRInterventionImage.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $drawLightModules of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->drawLightModules` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRInterventionImage.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $keepAsSquare of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->keepAsSquare` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRInterventionImage.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMatrix() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QRInterventionImage.php
+
+		-
 			rawMessage: 'Method chillerlan\QRCode\Output\QRInterventionImage::__construct() has parameter $options with no value type specified in iterable type iterable.'
 			identifier: missingType.iterableValue
 			count: 1
 			path: src/Output/QRInterventionImage.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $eol of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->eol` instead.
+			'''
+			identifier: property.deprecated
+			count: 3
+			path: src/Output/QRMarkupHTML.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMatrix() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QRMarkupHTML.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $circleDiameter of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->circleRadius * 2` instead.
+			'''
+			identifier: property.deprecated
+			count: 2
+			path: src/Output/QRMarkupSVG.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $circleRadius of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->circleRadius` instead.
+			'''
+			identifier: property.deprecated
+			count: 5
+			path: src/Output/QRMarkupSVG.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $drawCircularModules of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->drawCircularModules` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRMarkupSVG.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $drawLightModules of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->drawLightModules` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRMarkupSVG.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $eol of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->eol` instead.
+			'''
+			identifier: property.deprecated
+			count: 6
+			path: src/Output/QRMarkupSVG.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $keepAsSquare of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->keepAsSquare` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRMarkupSVG.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $drawLightModules of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->drawLightModules` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRMarkupXML.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getEccLevel() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$eccLevel" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QRMarkupXML.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMaskPattern() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$maskPattern" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QRMarkupXML.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMatrix() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QRMarkupXML.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersion() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$version" instead.
+			'''
+			identifier: method.deprecated
+			count: 2
+			path: src/Output/QRMarkupXML.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $connectPaths of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->connectPaths` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QROutputAbstract.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $excludeFromConnect of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->excludeFromConnect` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QROutputAbstract.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method copyVars() of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This method will be removed in v7 without replacement (unnecessary).
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QROutputAbstract.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMatrix() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QROutputAbstract.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getSize() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$moduleCount" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QROutputAbstract.php
 
 		-
 			rawMessage: 'Method chillerlan\QRCode\Output\QROutputAbstract::__construct() has parameter $options with no value type specified in iterable type iterable.'
@@ -347,6 +1103,78 @@ parameters:
 			path: src/Output/QROutputAbstract.php
 
 		-
+			rawMessage: '''
+				Access to deprecated property $drawLightModules of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->drawLightModules` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRStringJSON.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getEccLevel() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$eccLevel" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QRStringJSON.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMaskPattern() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$maskPattern" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QRStringJSON.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMatrix() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QRStringJSON.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersion() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$version" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QRStringJSON.php
+
+		-
+			rawMessage: '''
+				Access to deprecated property $eol of class chillerlan\QRCode\Output\QROutputAbstract:
+				6.0.1 This property will be removed in v7, use `$this->options->eol` instead.
+			'''
+			identifier: property.deprecated
+			count: 1
+			path: src/Output/QRStringText.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMatrix() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/Output/QRStringText.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getID() of class chillerlan\QRCode\Common\ECICharset:
+				6.0.1 This method will be removed. In v7, use the property "ECICharset::$charsetID" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: src/QRCode.php
+
+		-
 			rawMessage: PHPDoc tag @var with type chillerlan\QRCode\Data\QRDataModeInterface is not subtype of native type 'chillerlan\\QRCode\\Data\\AlphaNum'|'chillerlan\\QRCode\\Data\\Byte'|'chillerlan\\QRCode\\Data\\Hanzi'|'chillerlan\\QRCode\\Data\\Kanji'|'chillerlan\\QRCode\\Data\\Number'.
 			identifier: varTag.nativeType
 			count: 1
@@ -359,10 +1187,91 @@ parameters:
 			path: src/QRCode.php
 
 		-
+			rawMessage: '''
+				Call to deprecated method getBuffer() of class chillerlan\QRCode\Common\BitBuffer:
+				6.0.1 This method will be removed in v7, use the property "BitBuffer::$buffer" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: tests/Common/BitBufferTest.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getLength() of class chillerlan\QRCode\Common\BitBuffer:
+				6.0.1 This method will be removed. In v7, use the property "BitBuffer::$length" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: tests/Common/BitBufferTest.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getID() of class chillerlan\QRCode\Common\ECICharset:
+				6.0.1 This method will be removed. In v7, use the property "ECICharset::$charsetID" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: tests/Common/ECICharsetTest.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getLevel() of class chillerlan\QRCode\Common\EccLevel:
+				6.0.1 This method will be removed. In v7, use the property "EccLevel::$level" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: tests/Common/EccLevelTest.php
+
+		-
 			rawMessage: 'Method chillerlan\QRCodeTest\Common\MaskPatternTest::maskPatternProvider() return type has no value type specified in iterable type array.'
 			identifier: missingType.iterableValue
 			count: 1
 			path: tests/Common/MaskPatternTest.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersionNumber() of class chillerlan\QRCode\Common\Version:
+				6.0.1 This method will be removed. In v7, use the property "Version::$versionNumber" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: tests/Common/VersionTest.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getBitBuffer() of class chillerlan\QRCode\Data\QRData:
+				6.0.1 This method will be removed. In v7, use the property "QRData::$bitBuffer" instead.
+			'''
+			identifier: method.deprecated
+			count: 3
+			path: tests/Data/DataInterfaceTestAbstract.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getLevel() of class chillerlan\QRCode\Common\EccLevel:
+				6.0.1 This method will be removed. In v7, use the property "EccLevel::$level" instead.
+			'''
+			identifier: method.deprecated
+			count: 3
+			path: tests/Data/DataInterfaceTestAbstract.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMaskPattern() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$maskPattern" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: tests/Data/DataInterfaceTestAbstract.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersionNumber() of class chillerlan\QRCode\Common\Version:
+				6.0.1 This method will be removed. In v7, use the property "Version::$versionNumber" instead.
+			'''
+			identifier: method.deprecated
+			count: 6
+			path: tests/Data/DataInterfaceTestAbstract.php
 
 		-
 			rawMessage: 'Method chillerlan\QRCodeTest\Data\DataInterfaceTestAbstract::maxLengthProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
@@ -375,6 +1284,24 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: tests/Data/DataInterfaceTestAbstract.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getBitBuffer() of class chillerlan\QRCode\Data\QRData:
+				6.0.1 This method will be removed. In v7, use the property "QRData::$bitBuffer" instead.
+			'''
+			identifier: method.deprecated
+			count: 3
+			path: tests/Data/ECITest.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getID() of class chillerlan\QRCode\Common\ECICharset:
+				6.0.1 This method will be removed. In v7, use the property "ECICharset::$charsetID" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: tests/Data/ECITest.php
 
 		-
 			rawMessage: 'Parameter #1 $data of class chillerlan\QRCode\Data\Byte constructor expects string|null, string|false given.'
@@ -401,10 +1328,22 @@ parameters:
 			path: tests/Data/KanjiTest.php
 
 		-
-			rawMessage: 'Parameter #1 $codepoint of function chr expects int<0, 255>, int given.'
-			identifier: argument.type
+			rawMessage: '''
+				Call to deprecated method getVersion() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$version" instead.
+			'''
+			identifier: method.deprecated
 			count: 2
-			path: tests/Data/KanjiTest.php
+			path: tests/Data/QRDataTest.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersionNumber() of class chillerlan\QRCode\Common\Version:
+				6.0.1 This method will be removed. In v7, use the property "Version::$versionNumber" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: tests/Data/QRDataTest.php
 
 		-
 			rawMessage: 'Parameter #1 $blob of method chillerlan\QRCode\QRCode::readFromBlob() expects string, GdImage|string given.'
@@ -413,10 +1352,82 @@ parameters:
 			path: tests/Data/QRDataTest.php
 
 		-
+			rawMessage: '''
+				Call to deprecated method getEccLevel() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$eccLevel" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: tests/Data/QRMatrixTest.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getMaskPattern() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$maskPattern" instead.
+			'''
+			identifier: method.deprecated
+			count: 2
+			path: tests/Data/QRMatrixTest.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getPattern() of class chillerlan\QRCode\Common\MaskPattern:
+				6.0.1 This method will be removed. In v7, use the property "MaskPattern::$currentPattern" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: tests/Data/QRMatrixTest.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getSize() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$moduleCount" instead.
+			'''
+			identifier: method.deprecated
+			count: 16
+			path: tests/Data/QRMatrixTest.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersion() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$version" instead.
+			'''
+			identifier: method.deprecated
+			count: 5
+			path: tests/Data/QRMatrixTest.php
+
+		-
 			rawMessage: 'Method chillerlan\QRCodeTest\Data\QRMatrixTest::matrixProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
 			identifier: missingType.generics
 			count: 1
 			path: tests/Data/QRMatrixTest.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getLevel() of class chillerlan\QRCode\Common\EccLevel:
+				6.0.1 This method will be removed. In v7, use the property "EccLevel::$level" instead.
+			'''
+			identifier: method.deprecated
+			count: 3
+			path: tests/QRCodeReaderTestAbstract.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersion() of class chillerlan\QRCode\Data\QRMatrix:
+				6.0.1 This method will be removed in v7, use the property "QRMatrix::$version" instead.
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: tests/QRCodeReaderTestAbstract.php
+
+		-
+			rawMessage: '''
+				Call to deprecated method getVersionNumber() of class chillerlan\QRCode\Common\Version:
+				6.0.1 This method will be removed. In v7, use the property "Version::$versionNumber" instead.
+			'''
+			identifier: method.deprecated
+			count: 4
+			path: tests/QRCodeReaderTestAbstract.php
 
 		-
 			rawMessage: 'Method chillerlan\QRCodeTest\QRCodeReaderTestAbstract::dataTestProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'

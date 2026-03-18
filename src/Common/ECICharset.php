@@ -108,6 +108,7 @@ final class ECICharset{
 
 	/**
 	 * Returns the current character set ID
+	 * @deprecated 6.0.1 This method will be removed. In v7, use the property "ECICharset::$charsetID" instead.
 	 */
 	public function getID():int{
 		return $this->charsetID;

@@ -69,7 +69,7 @@ final class MaskPattern{
 	/**
 	 * The current mask pattern value (0-7)
 	 */
-	private int $maskPattern;
+	private int $currentPattern;
 
 	/**
 	 * MaskPattern constructor.
@@ -82,14 +82,16 @@ final class MaskPattern{
 			throw new QRCodeException('invalid mask pattern');
 		}
 
-		$this->maskPattern = $maskPattern;
+		$this->currentPattern = $maskPattern;
 	}
 
 	/**
 	 * Returns the current mask pattern
+	 *
+	 * @deprecated 6.0.1 This method will be removed. In v7, use the property "MaskPattern::$currentPattern" instead.
 	 */
 	public function getPattern():int{
-		return $this->maskPattern;
+		return $this->currentPattern;
 	}
 
 	/**
@@ -112,7 +114,7 @@ final class MaskPattern{
 			self::PATTERN_101 => fn(int $x, int $y):bool => (($x * $y) % 6) === 0,
 			self::PATTERN_110 => fn(int $x, int $y):bool => (($x * $y) % 6) < 3,
 			self::PATTERN_111 => fn(int $x, int $y):bool => (($x + $y + (($x * $y) % 3)) % 2) === 0,
-		][$this->maskPattern];
+		][$this->currentPattern];
 	}
 
 	/**

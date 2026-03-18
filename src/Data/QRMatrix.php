@@ -12,13 +12,20 @@ declare(strict_types=1);
 namespace chillerlan\QRCode\Data;
 
 use chillerlan\QRCode\Common\{BitBuffer, EccLevel, MaskPattern, Version};
-use function array_fill, array_map, array_reverse, count, intdiv;
+use chillerlan\QRCode\QRCodeException;
+use function array_fill, array_map, array_reverse, count, intdiv, in_array;
 
 /**
  * Holds an array representation of the final QR Code that contains numerical values for later output modifications;
  * maps the ECC coded binary data and applies the mask pattern
  *
  * @see http://www.thonky.com/qr-code-tutorial/format-version-information
+ *
+ * @property Version|null     $version
+ * @property EccLevel|null    $eccLevel
+ * @property MaskPattern|null $maskPattern
+ * @property int              $moduleCount
+ * @property int[][]          $matrix
  */
 class QRMatrix{
 
@@ -150,6 +157,22 @@ class QRMatrix{
 	}
 
 	/**
+	 * This magic getter serves as an upgrade path for the deprecated property getter methods,
+	 * which will be removed in v7 in favor of asymmetric visibility (PHP 8.4+).
+	 *
+	 * @throws \chillerlan\QRCode\QRCodeException
+	 * @codeCoverageIgnore
+	 */
+	public function __get(string $name):mixed{
+
+		if(in_array($name, ['matrix', 'version', 'eccLevel', 'maskPattern', 'moduleCount'], true)){
+			return $this->{$name};
+		}
+
+		throw new QRCodeException('invalid property access');
+	}
+
+	/**
 	 * Creates a 2-dimensional array (square) of the given $size
 	 *
 	 * @return int[][]
@@ -177,6 +200,8 @@ class QRMatrix{
 	 * Returns the data matrix
 	 *
 	 * @return int[][]
+	 *
+	 * @deprecated 6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
 	 */
 	public function getMatrix():array{
 		return $this->matrix;
@@ -200,6 +225,8 @@ class QRMatrix{
 
 	/**
 	 * Returns the current version number
+	 *
+	 * @deprecated 6.0.1 This method will be removed in v7, use the property "QRMatrix::$version" instead.
 	 */
 	public function getVersion():Version|null{
 		return $this->version;
@@ -207,6 +234,8 @@ class QRMatrix{
 
 	/**
 	 * Returns the current ECC level
+	 *
+	 * @deprecated 6.0.1 This method will be removed in v7, use the property "QRMatrix::$eccLevel" instead.
 	 */
 	public function getEccLevel():EccLevel|null{
 		return $this->eccLevel;
@@ -214,6 +243,8 @@ class QRMatrix{
 
 	/**
 	 * Returns the current mask pattern
+	 *
+	 * @deprecated 6.0.1 This method will be removed in v7, use the property "QRMatrix::$maskPattern" instead.
 	 */
 	public function getMaskPattern():MaskPattern|null{
 		return $this->maskPattern;
@@ -223,6 +254,8 @@ class QRMatrix{
 	 * Returns the absoulute size of the matrix, including quiet zone (after setting it).
 	 *
 	 * size = version * 4 + 17 [ + 2 * quietzone size]
+	 *
+	 * @deprecated 6.0.1 This method will be removed in v7, use the property "QRMatrix::$moduleCount" instead.
 	 */
 	public function getSize():int{
 		return $this->moduleCount;

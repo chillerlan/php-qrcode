@@ -38,6 +38,8 @@ final class Detector{
 
 	/**
 	 * @return \chillerlan\QRCode\Detector\FinderPattern[]
+	 *
+	 * @deprecated 6.0.1 This method will be removed. In v7, use the property "Detector::$finderPatterns" instead.
 	 */
 	public function getFinderPatterns():array{
 		return $this->finderPatterns;

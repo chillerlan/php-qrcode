@@ -218,7 +218,7 @@ final class Version{
 	/**
 	 * QR Code version number
 	 */
-	private int $version;
+	private int $versionNumber;
 
 	/**
 	 * Version constructor.
@@ -231,35 +231,37 @@ final class Version{
 			throw new QRCodeException('invalid version given');
 		}
 
-		$this->version = $version;
+		$this->versionNumber = $version;
 	}
 
 	/**
 	 * returns the current version number as string
 	 */
 	public function __toString():string{
-		return (string)$this->version;
+		return (string)$this->versionNumber;
 	}
 
 	/**
 	 * returns the current version number
+	 *
+	 * @deprecated 6.0.1 This method will be removed. In v7, use the property "Version::$versionNumber" instead.
 	 */
 	public function getVersionNumber():int{
-		return $this->version;
+		return $this->versionNumber;
 	}
 
 	/**
 	 * the matrix size for the given version
 	 */
 	public function getDimension():int{
-		return (($this->version * 4) + 17);
+		return (($this->versionNumber * 4) + 17);
 	}
 
 	/**
 	 * the version pattern for the given version
 	 */
 	public function getVersionPattern():int|null{
-		return (self::VERSION_PATTERN[$this->version] ?? null);
+		return (self::VERSION_PATTERN[$this->versionNumber] ?? null);
 	}
 
 	/**
@@ -268,21 +270,21 @@ final class Version{
 	 * @return int[]
 	 */
 	public function getAlignmentPattern():array{
-		return self::ALIGNMENT_PATTERN[$this->version];
+		return self::ALIGNMENT_PATTERN[$this->versionNumber];
 	}
 
 	/**
 	 * returns ECC block information for the given $version and $eccLevel
 	 */
 	public function getRSBlocks(EccLevel $eccLevel):array{
-		return self::RSBLOCKS[$this->version][$eccLevel->getOrdinal()];
+		return self::RSBLOCKS[$this->versionNumber][$eccLevel->getOrdinal()];
 	}
 
 	/**
 	 * returns the maximum codewords for the current version
 	 */
 	public function getTotalCodewords():int{
-		return self::TOTAL_CODEWORDS[$this->version];
+		return self::TOTAL_CODEWORDS[$this->versionNumber];
 	}
 
 }
