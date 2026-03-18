@@ -578,7 +578,7 @@ class QRMatrix{
 		}
 
 		// for logos, we operate in ECC H (30%) only
-		if($this->eccLevel->getLevel() !== EccLevel::H){
+		if($this->eccLevel->level !== EccLevel::H){
 			throw new QRCodeDataException('ECC level "H" required to add logo space');
 		}
 

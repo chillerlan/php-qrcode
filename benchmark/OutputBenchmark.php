@@ -30,7 +30,7 @@ final class OutputBenchmark extends BenchmarkAbstract{
 
 		$options = [
 			'version'             => $this->version->getVersionNumber(),
-			'eccLevel'            => $this->eccLevel->getLevel(),
+			'eccLevel'            => $this->eccLevel->level,
 			'connectPaths'        => true,
 			'drawLightModules'    => true,
 			'drawCircularModules' => true,

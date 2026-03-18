@@ -59,7 +59,7 @@ final class QRMatrixTest extends TestCase{
 	 */
 	#[Test]
 	public function getECC():void{
-		$this::assertSame(EccLevel::L, $this->matrix->eccLevel->getLevel());
+		$this::assertSame(EccLevel::L, $this->matrix->eccLevel->level);
 	}
 
 	/**

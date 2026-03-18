@@ -134,7 +134,7 @@ final class EccLevel{
 	 * Q: 0b11
 	 * H: 0b10
 	 */
-	private int $eccLevel;
+	private(set) int $level;
 
 	/**
 	 * @param int $eccLevel containing the two bits encoding a QR Code's error correction level
@@ -147,7 +147,7 @@ final class EccLevel{
 			throw new QRCodeException('invalid ECC level');
 		}
 
-		$this->eccLevel = $eccLevel;
+		$this->level = $eccLevel;
 	}
 
 	/**
@@ -159,14 +159,7 @@ final class EccLevel{
 			self::M => 'M',
 			self::Q => 'Q',
 			self::H => 'H',
-		][$this->eccLevel];
-	}
-
-	/**
-	 * returns the current ECC level
-	 */
-	public function getLevel():int{
-		return $this->eccLevel;
+		][$this->level];
 	}
 
 	/**
@@ -184,7 +177,7 @@ final class EccLevel{
 			self::M => 1,
 			self::Q => 2,
 			self::H => 3,
-		][$this->eccLevel];
+		][$this->level];
 	}
 
 	/**

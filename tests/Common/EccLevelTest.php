@@ -40,7 +40,7 @@ final class EccLevelTest extends TestCase{
 	public function getLevel():void{
 		$ecc = new EccLevel(EccLevel::L);
 
-		$this::assertSame(EccLevel::L, $ecc->getLevel());
+		$this::assertSame(EccLevel::L, $ecc->level);
 	}
 
 	#[Test]

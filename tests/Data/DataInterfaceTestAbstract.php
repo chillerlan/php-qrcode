@@ -179,7 +179,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	public function maxLength(Version $version, EccLevel $eccLevel, string $str, string $str1, int $len):void{
 		$options           = new QROptions;
 		$options->version  = $version->getVersionNumber();
-		$options->eccLevel = $eccLevel->getLevel();
+		$options->eccLevel = $eccLevel->level;
 
 		$this->dataMode    = static::getDataModeInterface($str);
 		$this->QRData      = new QRData($options, [$this->dataMode]);
@@ -198,7 +198,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 	public function getMinimumVersion(Version $version, EccLevel $eccLevel, string $str, string $str1, int $len):void{
 		$options           = new QROptions;
 		$options->version  = Version::AUTO;
-		$options->eccLevel = $eccLevel->getLevel();
+		$options->eccLevel = $eccLevel->level;
 
 		$this->dataMode    = static::getDataModeInterface($str);
 		$this->QRData      = new QRData($options, [$this->dataMode]);
@@ -232,7 +232,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 
 		$options           = new QROptions;
 		$options->version  = $version->getVersionNumber();
-		$options->eccLevel = $eccLevel->getLevel();
+		$options->eccLevel = $eccLevel->level;
 
 
 		new QRData($options, [static::getDataModeInterface($str1)]);

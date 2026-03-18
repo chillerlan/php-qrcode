@@ -162,7 +162,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 	public function readData(Version $version, EccLevel $ecc, string $expected):void{
 		$this->options->outputInterface  = QRGdImagePNG::class;
 		$this->options->imageTransparent = false;
-		$this->options->eccLevel         = $ecc->getLevel();
+		$this->options->eccLevel         = $ecc->level;
 		$this->options->version          = $version->getVersionNumber();
 		$this->options->outputBase64     = false;
 		// what's interesting is that a smaller scale seems to produce fewer reader errors???
@@ -178,7 +178,7 @@ abstract class QRCodeReaderTestAbstract extends TestCase{
 
 			$this::assertSame($expected, $result->data);
 			$this::assertSame($version->getVersionNumber(), $result->version->getVersionNumber());
-			$this::assertSame($ecc->getLevel(), $result->eccLevel->getLevel());
+			$this::assertSame($ecc->level, $result->eccLevel->level);
 		}
 		catch(Exception $e){
 			$this::markTestSkipped(sprintf('skipped version %s%s: %s', $version, $ecc, $e->getMessage()));

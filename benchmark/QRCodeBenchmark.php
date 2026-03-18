@@ -23,7 +23,7 @@ abstract class QRCodeBenchmark extends BenchmarkAbstract{
 
 		$options = [
 			'version'  => $this->version->getVersionNumber(),
-			'eccLevel' => $this->eccLevel->getLevel(),
+			'eccLevel' => $this->eccLevel->level,
 		];
 
 		$this->initQROptions($options);
