@@ -55,7 +55,7 @@ class QRStringJSON extends QROutputAbstract{
 				'matrix'   => [
 					'size'          => $dimension,
 					'quietzoneSize' => (int)(($this->moduleCount - $dimension) / 2),
-					'maskPattern'   => $this->matrix->maskPattern->getPattern(),
+					'maskPattern'   => $this->matrix->maskPattern->currentPattern,
 					'width'         => $width,
 					'height'        => $height,
 					'rows'          => [],

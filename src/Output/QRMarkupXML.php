@@ -80,7 +80,7 @@ class QRMarkupXML extends QRMarkup{
 
 		$matrix->setAttribute('size', (string)$dimension);
 		$matrix->setAttribute('quietzoneSize', (string)(int)(($this->moduleCount - $dimension) / 2));
-		$matrix->setAttribute('maskPattern', (string)$this->matrix->maskPattern->getPattern());
+		$matrix->setAttribute('maskPattern', (string)$this->matrix->maskPattern->currentPattern);
 		$matrix->setAttribute('width', (string)$width);
 		$matrix->setAttribute('height', (string)$height);
 

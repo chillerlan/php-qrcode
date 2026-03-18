@@ -184,7 +184,7 @@ final class EccLevel{
 	 * returns the format pattern for the given $eccLevel and $maskPattern
 	 */
 	public function getformatPattern(MaskPattern $maskPattern):int{
-		return self::FORMAT_PATTERN[$this->getOrdinal()][$maskPattern->getPattern()];
+		return self::FORMAT_PATTERN[$this->getOrdinal()][$maskPattern->currentPattern];
 	}
 
 	/**

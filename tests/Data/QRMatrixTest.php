@@ -71,7 +71,7 @@ final class QRMatrixTest extends TestCase{
 		$matrix = new QRCode()->addByteSegment('testdata')->getQRMatrix();
 
 		$this::assertInstanceOf(MaskPattern::class, $matrix->maskPattern);
-		$this::assertSame(MaskPattern::PATTERN_100, $matrix->maskPattern->getPattern());
+		$this::assertSame(MaskPattern::PATTERN_100, $matrix->maskPattern->currentPattern);
 	}
 
 	/**
