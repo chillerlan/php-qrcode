@@ -2811,6 +2811,21 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/chillerlan-QRCode-Output-QRMarkupSVG.html#property_d"
         },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG\u003A\u003A\u0024drawLightModules",
+            "name": "drawLightModules",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QRMarkupSVG.html#property_drawLightModules"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG\u003A\u003A\u0024drawCircularModules",
+            "name": "drawCircularModules",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QRMarkupSVG.html#property_drawCircularModules"
+        },                {
+            "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupSVG\u003A\u003A\u0024keepAsSquare",
+            "name": "keepAsSquare",
+            "summary": "",
+            "url": "classes/chillerlan-QRCode-Output-QRMarkupSVG.html#property_keepAsSquare"
+        },                {
             "fqsen": "\\chillerlan\\QRCode\\Output\\QRMarkupXML",
             "name": "QRMarkupXML",
             "summary": "XML\/XSLT\u0020output",
