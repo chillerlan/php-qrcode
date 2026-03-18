@@ -38,6 +38,13 @@ abstract class QROutputAbstract implements QROutputInterface{
 	protected int $length;
 
 	/**
+	 * The current module scale value (might have been modified)
+	 *
+	 * @see \chillerlan\QRCode\QROptions::$scale
+	 */
+	protected int $scale;
+
+	/**
 	 * an (optional) array of color values for the several QR matrix parts
 	 *
 	 * @phpstan-var array<int, mixed>
@@ -53,13 +60,6 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 * the options instance
 	 */
 	protected SettingsContainerInterface|QROptions $options;
-
-	/**
-	 * The current module scale value (might have been modified)
-	 *
-	 * @see \chillerlan\QRCode\QROptions::$scale
-	 */
-	protected int $scale;
 
 	/**
 	 * QROutputAbstract constructor.
@@ -84,7 +84,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	/**
 	 * Sets/updates the matrix dimensions
 	 *
-	 * Call this method if you modify the matrix from within your custom module in case the dimensions have been changed
+	 * Call this method if you modify the matrix from within your custom output class in case the dimensions have been changed
 	 */
 	protected function setMatrixDimensions():void{
 		$this->moduleCount = $this->matrix->moduleCount;

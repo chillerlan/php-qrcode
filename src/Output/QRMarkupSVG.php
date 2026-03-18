@@ -28,6 +28,10 @@ class QRMarkupSVG extends QRMarkup{
 
 	final public const string MIME_TYPE = 'image/svg+xml';
 
+	// micro optimization for circle radius and diameter values in long loops
+	protected float $r;
+	protected float $d;
+
 	/**
 	 * @todo: XSS proof
 	 *
@@ -116,6 +120,9 @@ class QRMarkupSVG extends QRMarkup{
 	 * returns one or more SVG <path> elements
 	 */
 	protected function paths():string{
+		$this->r = $this->options->circleRadius;
+		$this->d = $this->r * 2;
+
 		$paths = $this->collectModules();
 		$svg   = [];
 
@@ -173,13 +180,11 @@ class QRMarkupSVG extends QRMarkup{
 
 		if($this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)){
 			// string interpolation: ugly and fast
-			$r = $this->options->circleRadius;
-			$d = $r * 2;
-			$ix = ($x + 0.5 - $r);
+			$ix = ($x + 0.5 - $this->r);
 			$iy = ($y + 0.5);
 
 			// phpcs:ignore
-			return "M$ix $iy a$r $r 0 1 0 $d 0 a$r $r 0 1 0 -$d 0Z";
+			return "M$ix $iy a$this->r $this->r 0 1 0 $this->d 0 a$this->r $this->r 0 1 0 -$this->d 0Z";
 		}
 
 		// phpcs:ignore

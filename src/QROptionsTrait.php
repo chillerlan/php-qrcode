@@ -112,7 +112,7 @@ trait QROptionsTrait{
 	}
 
 	/**
-	 * Mask Pattern to use (no value in using, mostly for unit testing purposes)
+	 * Mask Pattern to use (no value in using, mostly for unit testing purposes, will cause unreadable symbols)
 	 *
 	 * `0 ... 7` or `MaskPattern::PATTERN_AUTO` (default)
 	 *
@@ -150,7 +150,7 @@ trait QROptionsTrait{
 	/**
 	 * Return the image resource instead of a render if applicable.
 	 *
-	 * - `QRGdImage`: `resource` (PHP < 8), `GdImage`
+	 * - `QRGdImage`: `GdImage`
 	 * - `QRImagick`: `Imagick`
 	 * - `QRFpdf`:    `FPDF`
 	 *
