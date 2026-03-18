@@ -25,22 +25,15 @@ use const NAN;
  */
 final class Detector{
 
-	private BitMatrix $matrix;
+	private BitMatrix  $matrix;
 	/** @var \chillerlan\QRCode\Detector\FinderPattern[] */
-	private array     $finderPatterns = [];
+	private(set) array $finderPatterns = [];
 
 	/**
 	 * Detector constructor.
 	 */
 	public function __construct(LuminanceSourceInterface $source){
 		$this->matrix = new Binarizer($source)->getBlackMatrix();
-	}
-
-	/**
-	 * @return \chillerlan\QRCode\Detector\FinderPattern[]
-	 */
-	public function getFinderPatterns():array{
-		return $this->finderPatterns;
 	}
 
 	/**

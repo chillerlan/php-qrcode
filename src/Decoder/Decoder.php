@@ -162,7 +162,7 @@ final class Decoder{
 		return new DecoderResult([
 			'data'                     => $result,
 			'eccLevel'                 => $this->eccLevel,
-			'finderPatterns'           => $this->detector->getFinderPatterns(),
+			'finderPatterns'           => $this->detector->finderPatterns,
 			'maskPattern'              => $this->maskPattern,
 			'rawBytes'                 => $this->bitBuffer,
 			'structuredAppendParity'   => $parityData,
