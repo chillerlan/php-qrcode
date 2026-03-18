@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCode\Output;
 
+use chillerlan\QRCode\Data\QRMatrix;
 use DOMDocument;
 use DOMElement;
 use function sprintf;
@@ -126,7 +127,7 @@ class QRMarkupXML extends QRMarkup{
 	 * Creates a DOM element for a single module
 	 */
 	protected function module(int $x, int $y, int $M_TYPE):DOMElement|null{
-		$isDark = $this->matrix->isDark($M_TYPE);
+		$isDark = (($M_TYPE & QRMatrix::IS_DARK) === QRMatrix::IS_DARK);
 
 		if(!$this->options->drawLightModules && !$isDark){
 			return null;

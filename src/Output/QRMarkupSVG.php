@@ -11,7 +11,8 @@ declare(strict_types=1);
 
 namespace chillerlan\QRCode\Output;
 
-use function array_chunk, implode, is_string, preg_match, sprintf, trim;
+use chillerlan\QRCode\Data\QRMatrix;
+use function array_any, array_chunk, implode, is_string, preg_match, sprintf, trim;
 
 /**
  * SVG output
@@ -28,9 +29,13 @@ class QRMarkupSVG extends QRMarkup{
 
 	final public const string MIME_TYPE = 'image/svg+xml';
 
-	// micro optimization for circle radius and diameter values in long loops
+	// micro optimization for QROptions values in long loops
 	protected float $r;
 	protected float $d;
+	protected bool  $drawLightModules;
+	protected bool  $drawCircularModules;
+	protected array $keepAsSquare;
+
 
 	/**
 	 * @todo: XSS proof
@@ -68,6 +73,12 @@ class QRMarkupSVG extends QRMarkup{
 	}
 
 	protected function createMarkup(bool $saveToFile):string{
+		$this->r                   = $this->options->circleRadius;
+		$this->d                   = ($this->r * 2);
+		$this->drawCircularModules = $this->options->drawCircularModules;
+		$this->drawLightModules    = $this->options->drawLightModules;
+		$this->keepAsSquare        = $this->options->keepAsSquare;
+
 		$svg = $this->header();
 
 		if($this->options->svgDefs !== ''){
@@ -120,9 +131,6 @@ class QRMarkupSVG extends QRMarkup{
 	 * returns one or more SVG <path> elements
 	 */
 	protected function paths():string{
-		$this->r = $this->options->circleRadius;
-		$this->d = ($this->r * 2);
-
 		$paths = $this->collectModules();
 		$svg   = [];
 
@@ -174,11 +182,11 @@ class QRMarkupSVG extends QRMarkup{
 	 */
 	protected function moduleTransform(int $x, int $y, int $M_TYPE, int $M_TYPE_LAYER):string|null{
 
-		if(!$this->options->drawLightModules && !$this->matrix->isDark($M_TYPE)){
+		if(!$this->drawLightModules && !(($M_TYPE & QRMatrix::IS_DARK) === QRMatrix::IS_DARK)){
 			return null;
 		}
 
-		if($this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)){
+		if($this->drawCircularModules && !array_any($this->keepAsSquare, fn($type) => ($M_TYPE & $type) === $type)){
 			// string interpolation: ugly and fast
 			$ix = ($x + 0.5 - $this->r);
 			$iy = ($y + 0.5);
