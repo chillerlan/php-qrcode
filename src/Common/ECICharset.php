@@ -92,7 +92,7 @@ final class ECICharset{
 	/**
 	 * The current ECI character set ID
 	 */
-	private int $charsetID;
+	private(set) int $charsetID;
 
 	/**
 	 * @throws \chillerlan\QRCode\QRCodeException
@@ -104,13 +104,6 @@ final class ECICharset{
 		}
 
 		$this->charsetID = $charsetID;
-	}
-
-	/**
-	 * Returns the current character set ID
-	 */
-	public function getID():int{
-		return $this->charsetID;
 	}
 
 	/**

@@ -272,7 +272,7 @@ class QRCode{
 		}
 
 		return $this
-			->addEciDesignator($eciCharset->getID())
+			->addEciDesignator($eciCharset->charsetID)
 			->addByteSegment($data)
 		;
 	}

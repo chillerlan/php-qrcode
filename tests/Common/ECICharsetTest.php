@@ -46,7 +46,7 @@ final class ECICharsetTest extends TestCase{
 	public function getName(int $id, string|null $name = null):void{
 		$eciCharset = new ECICharset($id);
 
-		$this::assertSame($id, $eciCharset->getID());
+		$this::assertSame($id, $eciCharset->charsetID);
 		$this::assertSame($name, $eciCharset->getName());
 	}
 
