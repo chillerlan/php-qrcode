@@ -14,7 +14,8 @@ namespace chillerlan\QRCodeBenchmark;
 use chillerlan\QRCode\Common\Mode;
 use chillerlan\QRCode\Data\Byte;
 use chillerlan\QRCode\Output\{
-	QREps, QRFpdf, QRGdImageJPEG, QRGdImagePNG, QRGdImageWEBP, QRImagick, QRMarkupSVG, QRMarkupXML, QRStringJSON
+	QREps, QRFpdf, QRGdImageJPEG, QRGdImagePNG, QRGdImageWEBP,
+	QRImagick, QRMarkupSVG, QRMarkupXML, QRStringJSON, QRStringText
 };
 use PhpBench\Attributes\{BeforeMethods, Subject};
 
@@ -91,6 +92,11 @@ final class OutputBenchmark extends BenchmarkAbstract{
 	#[Subject]
 	public function QRStringJSON():void{
 		new QRStringJSON($this->options, $this->matrix)->dump();
+	}
+
+	#[Subject]
+	public function QRStringText():void{
+		new QRStringText($this->options, $this->matrix)->dump();
 	}
 
 }
