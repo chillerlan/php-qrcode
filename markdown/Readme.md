@@ -4,7 +4,7 @@
 
 | Name | Value |
 |------|-------|
-| date | 2026-03-17 12:37:08 |
+| date | 2026-03-18 18:29:32 |
 | environment | Linux #17~24.04.1-Ubuntu SMP Mon Dec  1 20:10:50 UTC 2025, x86_64 |
 | tag | &lt;current&gt; |
 | php_version | 8.5.4 |
@@ -31,6 +31,7 @@
   - [QRMarkupSVG](./OutputBenchmark.md#qrmarkupsvg)
   - [QRMarkupXML](./OutputBenchmark.md#qrmarkupxml)
   - [QRStringJSON](./OutputBenchmark.md#qrstringjson)
+  - [QRStringText](./OutputBenchmark.md#qrstringtext)
 - [QRDataBenchmark](./QRDataBenchmark.md)
   - [invocation](./QRDataBenchmark.md#invocation)
   - [writeMatrix](./QRDataBenchmark.md#writematrix)
