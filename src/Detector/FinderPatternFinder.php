@@ -559,7 +559,7 @@ final class FinderPatternFinder{
 
 		foreach($this->possibleCenters as $center){
 
-			if($center->getCount() >= self::CENTER_QUORUM){
+			if($center->count >= self::CENTER_QUORUM){
 
 				if($firstConfirmedCenter === null){
 					$firstConfirmedCenter = $center;
@@ -592,7 +592,7 @@ final class FinderPatternFinder{
 		$max             = count($this->possibleCenters);
 
 		foreach($this->possibleCenters as $pattern){
-			if($pattern->getCount() >= self::CENTER_QUORUM){
+			if($pattern->count >= self::CENTER_QUORUM){
 				$confirmedCount++;
 				$totalModuleSize += $pattern->getEstimatedModuleSize();
 			}

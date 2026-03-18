@@ -23,16 +23,12 @@ use function sqrt;
  */
 final class FinderPattern extends ResultPoint{
 
-	private int $count;
+	private(set) int $count;
 
 	public function __construct(float $posX, float $posY, float $estimatedModuleSize, int|null $count = null){
 		parent::__construct($posX, $posY, $estimatedModuleSize);
 
 		$this->count = ($count ?? 1);
-	}
-
-	public function getCount():int{
-		return $this->count;
 	}
 
 	/**
