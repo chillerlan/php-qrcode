@@ -27,7 +27,7 @@ use function array_fill, array_slice, array_splice, count;
 final class GenericGFPoly{
 
 	/** @var int[] */
-	private array $coefficients;
+	private(set) array $coefficients;
 
 	/**
 	 * @param int[]      $coefficients array coefficients as ints representing elements of GF(size), arranged
@@ -73,13 +73,6 @@ final class GenericGFPoly{
 	 */
 	public function getCoefficient(int $degree):int{
 		return $this->coefficients[(count($this->coefficients) - 1 - $degree)];
-	}
-
-	/**
-	 * @return int[]
-	 */
-	public function getCoefficients():array{
-		return $this->coefficients;
 	}
 
 	/**
