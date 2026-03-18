@@ -63,7 +63,7 @@ final class ECITest extends TestCase{
 		// invoke a QRData instance and write data
 		$this->QRData = new QRData($options, $segments);
 		// get the filled bitbuffer
-		$bitBuffer = $this->QRData->getBitBuffer();
+		$bitBuffer = $this->QRData->bitBuffer;
 		// read the first 4 bits
 		$this::assertSame($segments[0]::DATAMODE, $bitBuffer->read(4));
 		// decode the data
@@ -130,7 +130,7 @@ final class ECITest extends TestCase{
 		$segments    = $this->getDataSegments();
 		// follow the ECI segment by a non-8bit-byte segment
 		$segments[1] = new Hanzi(self::testData);
-		$bitBuffer   = new QRData($options, $segments)->getBitBuffer();
+		$bitBuffer   = new QRData($options, $segments)->bitBuffer;
 		// verify the ECI mode indicator
 		$this::assertSame(Mode::ECI, $bitBuffer->read(4));
 		// throw
@@ -157,7 +157,7 @@ final class ECITest extends TestCase{
 		$options->version = 5;
 
 		$segments  = [new ECI($id), new Byte($data)];
-		$bitBuffer = new QRData($options, $segments)->getBitBuffer();
+		$bitBuffer = new QRData($options, $segments)->bitBuffer;
 		$this::assertSame(Mode::ECI, $bitBuffer->read(4));
 		$this::assertSame($data, new ECI()->decodeSegment($bitBuffer, $options->version));
 	}

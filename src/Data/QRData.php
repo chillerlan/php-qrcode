@@ -29,7 +29,7 @@ final class QRData{
 	/**
 	 * a BitBuffer instance
 	 */
-	private BitBuffer $bitBuffer;
+	private(set) BitBuffer $bitBuffer;
 
 	/**
 	 * an EccLevel instance
@@ -82,15 +82,6 @@ final class QRData{
 		$this->writeBitBuffer();
 
 		return $this;
-	}
-
-	/**
-	 * Returns the current BitBuffer instance
-	 *
-	 * @codeCoverageIgnore
-	 */
-	public function getBitBuffer():BitBuffer{
-		return $this->bitBuffer;
 	}
 
 	/**

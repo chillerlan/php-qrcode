@@ -41,7 +41,7 @@ final class QRDataBenchmark extends BenchmarkAbstract{
 	}
 
 	public function initBitBuffer():void{
-		$this->bitBuffer = $this->qrData->getBitBuffer();
+		$this->bitBuffer = $this->qrData->bitBuffer;
 		$this->bitBuffer->read(4); // read data mode indicator
 	}
 

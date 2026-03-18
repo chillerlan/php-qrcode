@@ -125,7 +125,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		// invoke a QRData instance and write data
 		$this->QRData = new QRData($options, [$this->dataMode]);
 		// get the filled bitbuffer
-		$bitBuffer = $this->QRData->getBitBuffer();
+		$bitBuffer = $this->QRData->bitBuffer;
 		// read the first 4 bits
 		$this::assertSame($this->dataMode::DATAMODE, $bitBuffer->read(4));
 		// decode the data
@@ -184,7 +184,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$this->dataMode    = static::getDataModeInterface($str);
 		$this->QRData      = new QRData($options, [$this->dataMode]);
 
-		$bitBuffer         = $this->QRData->getBitBuffer();
+		$bitBuffer         = $this->QRData->bitBuffer;
 
 		$this::assertSame($this->dataMode::DATAMODE, $bitBuffer->read(4));
 		$this::assertSame($str, $this->dataMode->decodeSegment($bitBuffer, $options->version));
@@ -203,7 +203,7 @@ abstract class DataInterfaceTestAbstract extends TestCase{
 		$this->dataMode    = static::getDataModeInterface($str);
 		$this->QRData      = new QRData($options, [$this->dataMode]);
 
-		$bitBuffer         = $this->QRData->getBitBuffer();
+		$bitBuffer         = $this->QRData->bitBuffer;
 
 		$this::assertLessThanOrEqual($eccLevel->getMaxBitsForVersion($version), $this->QRData->estimateTotalBitLength());
 
