@@ -137,7 +137,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceInterface.php"><a href="files/src-common-luminancesourceinterface.html"><abbr title="src/Common/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 
     </aside>
 
@@ -185,20 +185,6 @@
 <dd>Creates a LuminanceSource instance from the given file</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_getHeight">getHeight()</a>
-    <span>
-                                &nbsp;: int    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_getLuminances">getLuminances()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, int&gt;    </span>
-</dt>
-<dd>Fetches luminance data for the underlying bitmap. Values should be fetched using:
-`int luminance = array[y * width + x] &amp; 0xff`</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_getRow">getRow()</a>
     <span>
                                 &nbsp;: array&lt;string|int, int&gt;    </span>
@@ -208,12 +194,6 @@
 to bitwise and with 0xff for each value. It is preferable for implementations of this method
 to only fetch this row rather than the whole image, since no 2D Readers may be installed and
 getLuminances() may never be called.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_getWidth">getWidth()</a>
-    <span>
-                                &nbsp;: int    </span>
-</dt>
 
     </dl>
 
@@ -242,7 +222,7 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceInterface.php"><a href="files/src-common-luminancesourceinterface.html"><abbr title="src/Common/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">64</span>
+    <span class="phpdocumentor-element-found-in__line">48</span>
 
     </aside>
 
@@ -298,7 +278,7 @@ getLuminances() may never be called.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceInterface.php"><a href="files/src-common-luminancesourceinterface.html"><abbr title="src/Common/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">59</span>
+    <span class="phpdocumentor-element-found-in__line">43</span>
 
     </aside>
 
@@ -346,94 +326,6 @@ getLuminances() may never be called.</dd>
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getHeight">
-        getHeight()
-        <a href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_getHeight" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceInterface.php"><a href="files/src-common-luminancesourceinterface.html"><abbr title="src/Common/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">40</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getHeight</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    
-
-        
-    
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>The height of the bitmap.</p>
-</section>
-
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getLuminances">
-        getLuminances()
-        <a href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_getLuminances" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceInterface.php"><a href="files/src-common-luminancesourceinterface.html"><abbr title="src/Common/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">30</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Fetches luminance data for the underlying bitmap. Values should be fetched using:
-`int luminance = array[y * width + x] &amp; 0xff`</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getLuminances</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    
-
-        
-    
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>A row-major 2D array of luminance values. Do not use result $length as it may be
-larger than $width * $height bytes on some platforms. Do not modify the contents
-of the result.</p>
-</section>
-
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_getRow">
         getRow()
         <a href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_getRow" class="headerlink"><i class="fas fa-link"></i></a>
@@ -442,7 +334,7 @@ of the result.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceInterface.php"><a href="files/src-common-luminancesourceinterface.html"><abbr title="src/Common/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">54</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 
     </aside>
 
@@ -497,48 +389,6 @@ getLuminances() may never be called.</p>
         <span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span>
                     &mdash;
                 <section class="phpdocumentor-description"><p>An array containing the luminance data.</p>
-</section>
-
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getWidth">
-        getWidth()
-        <a href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_getWidth" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/LuminanceSourceInterface.php"><a href="files/src-common-luminancesourceinterface.html"><abbr title="src/Common/LuminanceSourceInterface.php">LuminanceSourceInterface.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">35</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getWidth</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    
-
-        
-    
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
-                    &mdash;
-                <section class="phpdocumentor-description"><p>The width of the bitmap.</p>
 </section>
 
             </section>
@@ -660,10 +510,7 @@ getLuminances() may never be called.</p>
                     <ul class="phpdocumentor-list -clean">
                                                     <li class=""><a href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_fromBlob">fromBlob()</a></li>
                                                     <li class=""><a href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_fromFile">fromFile()</a></li>
-                                                    <li class=""><a href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_getHeight">getHeight()</a></li>
-                                                    <li class=""><a href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_getLuminances">getLuminances()</a></li>
                                                     <li class=""><a href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_getRow">getRow()</a></li>
-                                                    <li class=""><a href="classes/chillerlan-QRCode-Common-LuminanceSourceInterface.html#method_getWidth">getWidth()</a></li>
                                             </ul>
                 </li>
             

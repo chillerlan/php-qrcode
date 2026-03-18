@@ -295,8 +295,8 @@ ISO/IEC 18004:2000 Section 8.8.2 - Evaluation of masking results</p>
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
-            <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a class="" href="classes/chillerlan-QRCode-Common-MaskPattern.html#property_maskPattern">$maskPattern</a>
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a class="" href="classes/chillerlan-QRCode-Common-MaskPattern.html#property_currentPattern">$currentPattern</a>
     <span>
                         &nbsp;: int            </span>
 </dt>
@@ -330,13 +330,6 @@ ISO/IEC 18004:2000 Section 8.8.2 - Evaluation of masking results</p>
                                 &nbsp;: <abbr title="\Closure">Closure</abbr>    </span>
 </dt>
 <dd>Returns a closure that applies the mask for the chosen mask pattern.</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCode-Common-MaskPattern.html#method_getPattern">getPattern()</a>
-    <span>
-                                &nbsp;: int    </span>
-</dt>
-<dd>Returns the current mask pattern</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/chillerlan-QRCode-Common-MaskPattern.html#method_testRule1">testRule1()</a>
@@ -849,12 +842,12 @@ penalty if the ratio is far from 50%. It gives 10 penalty for 5% distance.</dd>
         class="
             phpdocumentor-element
             -property
-            -private
+            -public
                                                                     "
 >
-    <h4 class="phpdocumentor-element__name" id="property_maskPattern">
-        $maskPattern
-        <a href="classes/chillerlan-QRCode-Common-MaskPattern.html#property_maskPattern" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_currentPattern">
+        $currentPattern
+        <a href="classes/chillerlan-QRCode-Common-MaskPattern.html#property_currentPattern" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                             </span>
@@ -870,9 +863,9 @@ penalty if the ratio is far from 50%. It gives 10 penalty for 5% distance.</dd>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
-        <span class="phpdocumentor-signature__visibility">private</span>
+            <span class="phpdocumentor-signature__visibility">public private(set)</span>
             <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$maskPattern</span>
+    <span class="phpdocumentor-signature__name">$currentPattern</span>
     </code>
 
     
@@ -965,7 +958,7 @@ penalty if the ratio is far from 50%. It gives 10 penalty for 5% distance.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">119</span>
+    <span class="phpdocumentor-element-found-in__line">112</span>
 
     </aside>
 
@@ -1014,7 +1007,7 @@ penalty if the ratio is far from 50%. It gives 10 penalty for 5% distance.</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">102</span>
+    <span class="phpdocumentor-element-found-in__line">95</span>
 
     </aside>
 
@@ -1069,45 +1062,6 @@ and $j is row position. In fact, as the text says, $i is row position and $j is 
         class="phpdocumentor-element
             -method
             -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getPattern">
-        getPattern()
-        <a href="classes/chillerlan-QRCode-Common-MaskPattern.html#method_getPattern" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">89</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Returns the current mask pattern</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getPattern</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    
-
-        
-    
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
                                     -static                    "
 >
     <h4 class="phpdocumentor-element__name" id="method_testRule1">
@@ -1118,7 +1072,7 @@ and $j is row position. In fact, as the text says, $i is row position and $j is 
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">144</span>
+    <span class="phpdocumentor-element-found-in__line">137</span>
 
     </aside>
 
@@ -1182,7 +1136,7 @@ give penalty to them. Example: 00000 or 11111.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">198</span>
+    <span class="phpdocumentor-element-found-in__line">191</span>
 
     </aside>
 
@@ -1247,7 +1201,7 @@ penalty proportional to (M-1)x(N-1), because this is the number of 2x2 blocks in
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">233</span>
+    <span class="phpdocumentor-element-found-in__line">226</span>
 
     </aside>
 
@@ -1312,7 +1266,7 @@ find patterns like 000010111010000, we give penalty once.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">321</span>
+    <span class="phpdocumentor-element-found-in__line">314</span>
 
     </aside>
 
@@ -1376,7 +1330,7 @@ penalty if the ratio is far from 50%. It gives 10 penalty for 5% distance.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">163</span>
+    <span class="phpdocumentor-element-found-in__line">156</span>
 
     </aside>
 
@@ -1424,7 +1378,7 @@ penalty if the ratio is far from 50%. It gives 10 penalty for 5% distance.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">282</span>
+    <span class="phpdocumentor-element-found-in__line">275</span>
 
     </aside>
 
@@ -1493,7 +1447,7 @@ penalty if the ratio is far from 50%. It gives 10 penalty for 5% distance.</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/MaskPattern.php"><a href="files/src-common-maskpattern.html"><abbr title="src/Common/MaskPattern.php">MaskPattern.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">300</span>
+    <span class="phpdocumentor-element-found-in__line">293</span>
 
     </aside>
 
@@ -1690,7 +1644,7 @@ penalty if the ratio is far from 50%. It gives 10 penalty for 5% distance.</p>
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="classes/chillerlan-QRCode-Common-MaskPattern.html#property_maskPattern">$maskPattern</a></li>
+                                                    <li class=""><a href="classes/chillerlan-QRCode-Common-MaskPattern.html#property_currentPattern">$currentPattern</a></li>
                                             </ul>
                 </li>
             
@@ -1700,7 +1654,6 @@ penalty if the ratio is far from 50%. It gives 10 penalty for 5% distance.</p>
                                             <li class=""><a href="classes/chillerlan-QRCode-Common-MaskPattern.html#method___construct">__construct()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Common-MaskPattern.html#method_getBestPattern">getBestPattern()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Common-MaskPattern.html#method_getMask">getMask()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCode-Common-MaskPattern.html#method_getPattern">getPattern()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Common-MaskPattern.html#method_testRule1">testRule1()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Common-MaskPattern.html#method_testRule2">testRule2()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Common-MaskPattern.html#method_testRule3">testRule3()</a></li>

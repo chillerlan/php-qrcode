@@ -180,6 +180,20 @@
 
 </h4>
 <dl class="phpdocumentor-table-of-contents">
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a class="" href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_buffer">$buffer</a>
+    <span>
+                        &nbsp;: array&lt;string|int, int&gt;            </span>
+</dt>
+<dd>The buffer content</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a class="" href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_length">$length</a>
+    <span>
+                        &nbsp;: int            </span>
+</dt>
+<dd>Length of the content (bits)</dd>
+
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a class="" href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_bitsRead">$bitsRead</a>
     <span>
@@ -188,25 +202,11 @@
 <dd>Read count (bits)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a class="" href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_buffer">$buffer</a>
-    <span>
-                        &nbsp;: array&lt;string|int, int&gt;            </span>
-</dt>
-<dd>The buffer content</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -private">
     <a class="" href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_bytesRead">$bytesRead</a>
     <span>
                         &nbsp;: int            </span>
 </dt>
 <dd>Read count (bytes)</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a class="" href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_length">$length</a>
-    <span>
-                        &nbsp;: int            </span>
-</dt>
-<dd>Length of the content (bits)</dd>
 
     </dl>
 
@@ -236,20 +236,6 @@
                                 &nbsp;: self    </span>
 </dt>
 <dd>Clears the buffer and resets the stats</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCode-Common-BitBuffer.html#method_getBuffer">getBuffer()</a>
-    <span>
-                                &nbsp;: array&lt;string|int, int&gt;    </span>
-</dt>
-<dd>returns the buffer content</dd>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a class="" href="classes/chillerlan-QRCode-Common-BitBuffer.html#method_getLength">getLength()</a>
-    <span>
-                                &nbsp;: int    </span>
-</dt>
-<dd>returns the current buffer length</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a class="" href="classes/chillerlan-QRCode-Common-BitBuffer.html#method_put">put()</a>
@@ -295,6 +281,84 @@
         class="
             phpdocumentor-element
             -property
+            -public
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_buffer">
+        $buffer
+        <a href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_buffer" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">29</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">The buffer content</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+            <span class="phpdocumentor-signature__visibility">public private(set)</span>
+            <span class="phpdocumentor-signature__type">array&lt;string|int, int&gt;</span>
+    <span class="phpdocumentor-signature__name">$buffer</span>
+    </code>
+
+        <section class="phpdocumentor-description"><p>to debug: <code class="prettyprint">array_map(fn($v) =&gt; sprintf('%08b', $v), $bitBuffer-&gt;buffer)</code></p>
+</section>
+
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                                    "
+>
+    <h4 class="phpdocumentor-element__name" id="property_length">
+        $length
+        <a href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_length" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                            </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">34</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Length of the content (bits)</p>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+            <span class="phpdocumentor-signature__visibility">public private(set)</span>
+            <span class="phpdocumentor-signature__type">int</span>
+    <span class="phpdocumentor-signature__name">$length</span>
+    </code>
+
+    
+    
+    
+
+        
+        
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
             -private
                                                                     "
 >
@@ -308,7 +372,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">42</span>
+    <span class="phpdocumentor-element-found-in__line">44</span>
 
     </aside>
 
@@ -336,44 +400,6 @@
             -private
                                                                     "
 >
-    <h4 class="phpdocumentor-element__name" id="property_buffer">
-        $buffer
-        <a href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_buffer" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                            </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">27</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">The buffer content</p>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-        <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__type">array&lt;string|int, int&gt;</span>
-    <span class="phpdocumentor-signature__name">$buffer</span>
-    </code>
-
-    
-    
-    
-
-        
-        
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -private
-                                                                    "
->
     <h4 class="phpdocumentor-element__name" id="property_bytesRead">
         $bytesRead
         <a href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_bytesRead" class="headerlink"><i class="fas fa-link"></i></a>
@@ -384,7 +410,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">37</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
@@ -396,44 +422,6 @@
             <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">$bytesRead</span>
      = <span class="phpdocumentor-signature__default-value">0</span></code>
-
-    
-    
-    
-
-        
-        
-
-</article>
-                    <article
-        class="
-            phpdocumentor-element
-            -property
-            -private
-                                                                    "
->
-    <h4 class="phpdocumentor-element__name" id="property_length">
-        $length
-        <a href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_length" class="headerlink"><i class="fas fa-link"></i></a>
-
-        <span class="phpdocumentor-element__modifiers">
-                                            </span>
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">32</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">Length of the content (bits)</p>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-        <span class="phpdocumentor-signature__visibility">private</span>
-            <span class="phpdocumentor-signature__type">int</span>
-    <span class="phpdocumentor-signature__name">$length</span>
-    </code>
 
     
     
@@ -465,7 +453,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">49</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
@@ -510,7 +498,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">106</span>
+    <span class="phpdocumentor-element-found-in__line">90</span>
 
     </aside>
 
@@ -549,7 +537,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">166</span>
+    <span class="phpdocumentor-element-found-in__line">150</span>
 
     </aside>
 
@@ -580,86 +568,6 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getBuffer">
-        getBuffer()
-        <a href="classes/chillerlan-QRCode-Common-BitBuffer.html#method_getBuffer" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">99</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">returns the buffer content</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getBuffer</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-        <section class="phpdocumentor-description"><p>to debug: <code class="prettyprint">array_map(fn($v) =&gt; sprintf('%08b', $v), $bitBuffer-&gt;getBuffer())</code></p>
-</section>
-
-    
-    
-
-        
-    
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array&lt;string|int, int&gt;</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_getLength">
-        getLength()
-        <a href="classes/chillerlan-QRCode-Common-BitBuffer.html#method_getLength" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">88</span>
-
-    </aside>
-
-        <p class="phpdocumentor-summary">returns the current buffer length</p>
-
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">getLength</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">int</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-    
-
-        
-    
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">int</span>
-            </section>
-
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -public
-                                                        "
->
     <h4 class="phpdocumentor-element__name" id="method_put">
         put()
         <a href="classes/chillerlan-QRCode-Common-BitBuffer.html#method_put" class="headerlink"><i class="fas fa-link"></i></a>
@@ -668,7 +576,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">57</span>
+    <span class="phpdocumentor-element-found-in__line">59</span>
 
     </aside>
 
@@ -724,7 +632,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">69</span>
+    <span class="phpdocumentor-element-found-in__line">71</span>
 
     </aside>
 
@@ -773,7 +681,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">118</span>
+    <span class="phpdocumentor-element-found-in__line">102</span>
 
     </aside>
 
@@ -853,7 +761,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Common/BitBuffer.php"><a href="files/src-common-bitbuffer.html"><abbr title="src/Common/BitBuffer.php">BitBuffer.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">176</span>
+    <span class="phpdocumentor-element-found-in__line">160</span>
 
     </aside>
 
@@ -993,10 +901,10 @@
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li class=""><a href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_bitsRead">$bitsRead</a></li>
                                                     <li class=""><a href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_buffer">$buffer</a></li>
-                                                    <li class=""><a href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_bytesRead">$bytesRead</a></li>
                                                     <li class=""><a href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_length">$length</a></li>
+                                                    <li class=""><a href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_bitsRead">$bitsRead</a></li>
+                                                    <li class=""><a href="classes/chillerlan-QRCode-Common-BitBuffer.html#property_bytesRead">$bytesRead</a></li>
                                             </ul>
                 </li>
             
@@ -1006,8 +914,6 @@
                                             <li class=""><a href="classes/chillerlan-QRCode-Common-BitBuffer.html#method___construct">__construct()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Common-BitBuffer.html#method_available">available()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Common-BitBuffer.html#method_clear">clear()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCode-Common-BitBuffer.html#method_getBuffer">getBuffer()</a></li>
-                                            <li class=""><a href="classes/chillerlan-QRCode-Common-BitBuffer.html#method_getLength">getLength()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Common-BitBuffer.html#method_put">put()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Common-BitBuffer.html#method_putBit">putBit()</a></li>
                                             <li class=""><a href="classes/chillerlan-QRCode-Common-BitBuffer.html#method_read">read()</a></li>
