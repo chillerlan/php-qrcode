@@ -16,28 +16,12 @@ use chillerlan\Settings\SettingsContainerInterface;
 
 /**
  * Interface for the luminance sources
+ *
+ * @property int[] $luminances
+ * @property int   $width
+ * @property int   $height
  */
 interface LuminanceSourceInterface{
-
-	/**
-	 * Fetches luminance data for the underlying bitmap. Values should be fetched using:
-	 * `int luminance = array[y * width + x] & 0xff`
-	 *
-	 * @return int[] A row-major 2D array of luminance values. Do not use result $length as it may be
-	 *         larger than $width * $height bytes on some platforms. Do not modify the contents
-	 *         of the result.
-	 */
-	public function getLuminances():array;
-
-	/**
-	 * @return int The width of the bitmap.
-	 */
-	public function getWidth():int;
-
-	/**
-	 * @return int The height of the bitmap.
-	 */
-	public function getHeight():int;
 
 	/**
 	 * Fetches one row of luminance data from the underlying platform's bitmap. Values range from

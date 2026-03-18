@@ -27,27 +27,33 @@ use function array_slice, file_exists, is_file, is_readable, realpath;
 abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 
 	protected SettingsContainerInterface|QROptions $options;
-	/** @var int[] */
-	protected array $luminances = [];
-	protected int   $width;
-	protected int   $height;
+
+	/**
+	 * Fetches luminance data for the underlying bitmap. Values should be fetched using:
+	 * `int luminance = array[y * width + x] & 0xff`
+	 *
+	 * @return int[] A row-major 2D array of luminance values. Do not use result $length as it may be
+	 *         larger than $width * $height bytes on some platforms. Do not modify the contents
+	 *         of the result.
+	 *
+	 * @var int[]
+	 */
+	protected(set) array $luminances = [];
+
+	/**
+	 * The width of the bitmap.
+	 */
+	protected(set) int $width;
+
+	/**
+	 * The height of the bitmap.
+	 */
+	protected(set) int $height;
 
 	public function __construct(int $width, int $height, SettingsContainerInterface|QROptions $options = new QROptions){
 		$this->width   = $width;
 		$this->height  = $height;
 		$this->options = $options;
-	}
-
-	public function getLuminances():array{
-		return $this->luminances;
-	}
-
-	public function getWidth():int{
-		return $this->width;
-	}
-
-	public function getHeight():int{
-		return $this->height;
 	}
 
 	public function getRow(int $y):array{

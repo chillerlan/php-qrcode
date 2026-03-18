@@ -53,7 +53,7 @@ final class Binarizer{
 
 	public function __construct(LuminanceSourceInterface $source){
 		$this->source     = $source;
-		$this->luminances = $this->source->getLuminances();
+		$this->luminances = $this->source->luminances;
 	}
 
 	/**
@@ -137,8 +137,8 @@ final class Binarizer{
 	 * @return \chillerlan\QRCode\Decoder\BitMatrix The 2D array of bits for the image (true means black).
 	 */
 	public function getBlackMatrix():BitMatrix{
-		$width  = $this->source->getWidth();
-		$height = $this->source->getHeight();
+		$width  = $this->source->width;
+		$height = $this->source->height;
 
 		if($width >= self::MINIMUM_DIMENSION && $height >= self::MINIMUM_DIMENSION){
 			$subWidth = ($width >> self::BLOCK_SIZE_POWER);
