@@ -34,8 +34,8 @@ class QRMarkupSVG extends QRMarkup{
 	protected float $d;
 	protected bool  $drawLightModules;
 	protected bool  $drawCircularModules;
+	/** @var int[] */
 	protected array $keepAsSquare;
-
 
 	/**
 	 * @todo: XSS proof
