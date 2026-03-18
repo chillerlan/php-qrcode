@@ -115,7 +115,7 @@ class QRStringJSON extends QROutputAbstract{
 	protected function module(int $x, int $y, int $M_TYPE):array|null{
 		$isDark = $this->matrix->isDark($M_TYPE);
 
-		if(!$this->drawLightModules && !$isDark){
+		if(!$this->options->drawLightModules && !$isDark){
 			return null;
 		}
 

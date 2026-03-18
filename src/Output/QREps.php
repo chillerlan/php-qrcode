@@ -164,7 +164,7 @@ class QREps extends QROutputAbstract{
 	 */
 	protected function moduleTransform(int $x, int $y, int $M_TYPE, int $M_TYPE_LAYER):string|null{
 
-		if(!$this->drawLightModules && !$this->matrix->isDark($M_TYPE)){
+		if(!$this->options->drawLightModules && !$this->matrix->isDark($M_TYPE)){
 			return null;
 		}
 

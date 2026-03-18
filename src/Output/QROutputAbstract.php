@@ -55,28 +55,11 @@ abstract class QROutputAbstract implements QROutputInterface{
 	protected SettingsContainerInterface|QROptions $options;
 
 	/**
-	 * @see \chillerlan\QRCode\QROptions::$excludeFromConnect
-	 * @var int[]
+	 * The current module scale value (might have been modified)
+	 *
+	 * @see \chillerlan\QRCode\QROptions::$scale
 	 */
-	protected array $excludeFromConnect;
-	/**
-	 * @see \chillerlan\QRCode\QROptions::$keepAsSquare
-	 * @var int[]
-	 */
-	protected array $keepAsSquare;
-	/** @see \chillerlan\QRCode\QROptions::$scale */
 	protected int $scale;
-	/** @see \chillerlan\QRCode\QROptions::$connectPaths */
-	protected bool $connectPaths;
-	/** @see \chillerlan\QRCode\QROptions::$eol */
-	protected string $eol;
-	/** @see \chillerlan\QRCode\QROptions::$drawLightModules */
-	protected bool $drawLightModules;
-	/** @see \chillerlan\QRCode\QROptions::$drawCircularModules */
-	protected bool $drawCircularModules;
-	/** @see \chillerlan\QRCode\QROptions::$circleRadius */
-	protected float $circleRadius;
-	protected float $circleDiameter;
 
 	/**
 	 * QROutputAbstract constructor.
@@ -94,34 +77,8 @@ abstract class QROutputAbstract implements QROutputInterface{
 			$this->matrix->invert();
 		}
 
-		$this->copyVars();
 		$this->setMatrixDimensions();
 		$this->setModuleValues();
-	}
-
-	/**
-	 * Creates copies of several QROptions values to avoid calling the magic getters/property hooks
-	 * in long loops for a significant performance increase.
-	 *
-	 * These variables are usually used in the "module" methods and are called up to 31329 times (at version 40).
-	 */
-	protected function copyVars():void{
-
-		$vars = [
-			'connectPaths',
-			'excludeFromConnect',
-			'eol',
-			'drawLightModules',
-			'drawCircularModules',
-			'keepAsSquare',
-			'circleRadius',
-		];
-
-		foreach($vars as $property){
-			$this->{$property} = $this->options->{$property};
-		}
-
-		$this->circleDiameter = ($this->circleRadius * 2);
 	}
 
 	/**
@@ -272,7 +229,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 			foreach($row as $x => $M_TYPE){
 				$M_TYPE_LAYER = $M_TYPE;
 
-				if($this->connectPaths && !$this->matrix->checkTypeIn($x, $y, $this->excludeFromConnect)){
+				if($this->options->connectPaths && !$this->matrix->checkTypeIn($x, $y, $this->options->excludeFromConnect)){
 					// to connect paths we'll redeclare the $M_TYPE_LAYER to data only
 					$M_TYPE_LAYER = QRMatrix::M_DATA;
 

@@ -71,7 +71,6 @@ abstract class QRGdImage extends QROutputAbstract{
 			$this->matrix->invert();
 		}
 
-		$this->copyVars();
 		$this->setMatrixDimensions();
 	}
 
@@ -200,7 +199,7 @@ abstract class QRGdImage extends QROutputAbstract{
 	 */
 	protected function createImage():GdImage{
 
-		if($this->drawCircularModules && $this->options->gdImageUseUpscale && $this->options->scale < 20){
+		if($this->options->drawCircularModules && $this->options->gdImageUseUpscale && $this->options->scale < 20){
 			// increase the initial image size by 10
 			$this->length   *= 10;
 			$this->scale    *= 10;
@@ -275,19 +274,19 @@ abstract class QRGdImage extends QROutputAbstract{
 	 */
 	protected function module(int $x, int $y, int $M_TYPE):void{
 
-		if(!$this->drawLightModules && !$this->matrix->isDark($M_TYPE)){
+		if(!$this->options->drawLightModules && !$this->matrix->isDark($M_TYPE)){
 			return;
 		}
 
 		$color = $this->getModuleValue($M_TYPE);
 
-		if($this->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->keepAsSquare)){
+		if($this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)){
 			imagefilledellipse(
 				$this->image,
 				(($x * $this->scale) + intdiv($this->scale, 2)),
 				(($y * $this->scale) + intdiv($this->scale, 2)),
-				(int)($this->circleDiameter * $this->scale),
-				(int)($this->circleDiameter * $this->scale),
+				(int)($this->options->circleRadius * 2 * $this->scale),
+				(int)($this->options->circleRadius * 2 * $this->scale),
 				$color,
 			);
 

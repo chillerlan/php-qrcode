@@ -67,13 +67,13 @@ class QRMarkupSVG extends QRMarkup{
 		$svg = $this->header();
 
 		if($this->options->svgDefs !== ''){
-			$svg .= sprintf('<defs>%1$s%2$s</defs>%2$s', $this->options->svgDefs, $this->eol);
+			$svg .= sprintf('<defs>%1$s%2$s</defs>%2$s', $this->options->svgDefs, $this->options->eol);
 		}
 
 		$svg .= $this->paths();
 
 		// close svg
-		$svg .= sprintf('%1$s</svg>%1$s', $this->eol);
+		$svg .= sprintf('%1$s</svg>%1$s', $this->options->eol);
 
 		return $svg;
 	}
@@ -102,11 +102,11 @@ class QRMarkupSVG extends QRMarkup{
 			$this->options->cssClass,
 			$this->getViewBox(),
 			$this->options->svgPreserveAspectRatio,
-			$this->eol,
+			$this->options->eol,
 		);
 
 		if($this->options->svgAddXmlHeader){
-			$header = sprintf('<?xml version="1.0" encoding="UTF-8"?>%s%s', $this->eol, $header);
+			$header = sprintf('<?xml version="1.0" encoding="UTF-8"?>%s%s', $this->options->eol, $header);
 		}
 
 		return $header;
@@ -129,7 +129,7 @@ class QRMarkupSVG extends QRMarkup{
 				$chonks[] = implode(' ', $chunk);
 			}
 
-			$path = implode($this->eol, $chonks);
+			$path = implode($this->options->eol, $chonks);
 
 			if($path === ''){
 				continue;
@@ -138,7 +138,7 @@ class QRMarkupSVG extends QRMarkup{
 			$svg[] = $this->path($path, $M_TYPE);
 		}
 
-		return implode($this->eol, $svg);
+		return implode($this->options->eol, $svg);
 	}
 
 	/**
@@ -167,17 +167,19 @@ class QRMarkupSVG extends QRMarkup{
 	 */
 	protected function moduleTransform(int $x, int $y, int $M_TYPE, int $M_TYPE_LAYER):string|null{
 
-		if(!$this->drawLightModules && !$this->matrix->isDark($M_TYPE)){
+		if(!$this->options->drawLightModules && !$this->matrix->isDark($M_TYPE)){
 			return null;
 		}
 
-		if($this->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->keepAsSquare)){
+		if($this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)){
 			// string interpolation: ugly and fast
-			$ix = ($x + 0.5 - $this->circleRadius);
+			$r = $this->options->circleRadius;
+			$d = $r * 2;
+			$ix = ($x + 0.5 - $r);
 			$iy = ($y + 0.5);
 
 			// phpcs:ignore
-			return "M$ix $iy a$this->circleRadius $this->circleRadius 0 1 0 $this->circleDiameter 0 a$this->circleRadius $this->circleRadius 0 1 0 -$this->circleDiameter 0Z";
+			return "M$ix $iy a$r $r 0 1 0 $d 0 a$r $r 0 1 0 -$d 0Z";
 		}
 
 		// phpcs:ignore

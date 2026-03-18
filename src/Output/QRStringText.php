@@ -40,7 +40,7 @@ class QRStringText extends QROutputAbstract{
 			$lines[] = $linestart.implode('', array_map($this->getModuleValue(...), $row));
 		}
 
-		$data = implode($this->eol, $lines);
+		$data = implode($this->options->eol, $lines);
 
 		$this->saveToFile($data, $file);
 

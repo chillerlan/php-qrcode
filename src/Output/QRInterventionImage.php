@@ -129,19 +129,19 @@ class QRInterventionImage extends QROutputAbstract{
 	 */
 	protected function module(int $x, int $y, int $M_TYPE):void{
 
-		if(!$this->drawLightModules && !$this->matrix->isDark($M_TYPE)){
+		if(!$this->options->drawLightModules && !$this->matrix->isDark($M_TYPE)){
 			return;
 		}
 
 		$color = $this->getModuleValue($M_TYPE);
 
-		if($this->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->keepAsSquare)){
+		if($this->options->drawCircularModules && !$this->matrix->checkTypeIn($x, $y, $this->options->keepAsSquare)){
 
 			$this->image->drawCircle(
 				(($x * $this->scale) + intdiv($this->scale, 2)),
 				(($y * $this->scale) + intdiv($this->scale, 2)),
 				function(CircleFactory $circle) use ($color):void{
-					$circle->radius((int)($this->circleRadius * $this->scale));
+					$circle->radius((int)($this->options->circleRadius * $this->scale));
 					$circle->background($color);
 				},
 			);
