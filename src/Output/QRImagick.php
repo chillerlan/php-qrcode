@@ -183,7 +183,7 @@ class QRImagick extends QROutputAbstract{
 		$this->imagickDraw = new ImagickDraw;
 		$this->imagickDraw->setStrokeWidth(0);
 
-		foreach($this->matrix->getMatrix() as $y => $row){
+		foreach($this->matrix->matrix as $y => $row){
 			foreach($row as $x => $M_TYPE){
 				$this->module($x, $y, $M_TYPE);
 			}

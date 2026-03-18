@@ -118,7 +118,7 @@ final class MaskPattern{
 	 */
 	public static function getBestPattern(QRMatrix $QRMatrix):self{
 		$penalties = [];
-		$size      = $QRMatrix->getSize();
+		$size      = $QRMatrix->moduleCount;
 
 		foreach(self::PATTERNS as $pattern){
 			$mp      = new self($pattern);

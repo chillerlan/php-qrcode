@@ -44,18 +44,18 @@ class QRStringJSON extends QROutputAbstract{
 	 */
 	public function dump(string|null $file = null):string{
 		[$width, $height] = $this->getOutputDimensions();
-		$version          = $this->matrix->getVersion();
+		$version          = $this->matrix->version;
 		$dimension        = $version->getDimension();
 
 		$json = [
 			'$schema' => $this::SCHEMA,
 			'qrcode'  => [
 				'version'  => $version->getVersionNumber(),
-				'eccLevel' => (string)$this->matrix->getEccLevel(),
+				'eccLevel' => (string)$this->matrix->eccLevel,
 				'matrix'   => [
 					'size'          => $dimension,
 					'quietzoneSize' => (int)(($this->moduleCount - $dimension) / 2),
-					'maskPattern'   => $this->matrix->getMaskPattern()->getPattern(),
+					'maskPattern'   => $this->matrix->maskPattern->getPattern(),
 					'width'         => $width,
 					'height'        => $height,
 					'rows'          => [],
@@ -63,7 +63,7 @@ class QRStringJSON extends QROutputAbstract{
 			],
 		];
 
-		foreach($this->matrix->getMatrix() as $y => $row){
+		foreach($this->matrix->matrix as $y => $row){
 			$matrixRow = $this->row($y, $row);
 
 			if($matrixRow !== null){

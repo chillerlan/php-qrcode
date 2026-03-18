@@ -47,7 +47,7 @@ final class QRDataTest extends TestCase{
 
 		$matrix->setFormatInfo($maskPattern)->mask($maskPattern);
 
-		$this::assertSame(3, $matrix->getVersion()->getVersionNumber());
+		$this::assertSame(3, $matrix->version->getVersionNumber());
 
 		// attempt to read
 		$options->outputBase64                = false;

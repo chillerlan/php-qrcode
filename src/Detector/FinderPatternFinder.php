@@ -50,7 +50,7 @@ final class FinderPatternFinder{
 	 * @return \chillerlan\QRCode\Detector\FinderPattern[]
 	 */
 	public function find():array{
-		$dimension = $this->matrix->getSize();
+		$dimension = $this->matrix->moduleCount;
 
 		// We are looking for black/white/black/white/black modules in
 		// 1:1:3:1:1 ratio; this tracks the number of such modules seen so far
@@ -280,7 +280,7 @@ final class FinderPatternFinder{
 			return false;
 		}
 
-		$dimension = $this->matrix->getSize();
+		$dimension = $this->matrix->moduleCount;
 
 		// Now also count down, right from center
 		$i = 1;
@@ -329,7 +329,7 @@ final class FinderPatternFinder{
 	 * @noinspection DuplicatedCode
 	 */
 	private function crossCheckVertical(int $startI, int $centerJ, int $maxCount, int $originalStateCountTotal):float|null{
-		$maxI       = $this->matrix->getSize();
+		$maxI       = $this->matrix->moduleCount;
 		$stateCount = self::crossCheckStateCount;
 
 		// Start counting up from center
@@ -413,7 +413,7 @@ final class FinderPatternFinder{
 	 * @noinspection DuplicatedCode
 	 */
 	private function crossCheckHorizontal(int $startJ, int $centerI, int $maxCount, int $originalStateCountTotal):float|null{
-		$maxJ       = $this->matrix->getSize();
+		$maxJ       = $this->matrix->moduleCount;
 		$stateCount = self::crossCheckStateCount;
 
 		$j = $startJ;

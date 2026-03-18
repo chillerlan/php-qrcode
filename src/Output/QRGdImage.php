@@ -263,7 +263,7 @@ abstract class QRGdImage extends QROutputAbstract{
 	 * Draws the QR image
 	 */
 	protected function drawImage():void{
-		foreach($this->matrix->getMatrix() as $y => $row){
+		foreach($this->matrix->matrix as $y => $row){
 			foreach($row as $x => $M_TYPE){
 				$this->module($x, $y, $M_TYPE);
 			}

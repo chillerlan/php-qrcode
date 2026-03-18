@@ -24,7 +24,7 @@ class QRMarkupHTML extends QRMarkup{
 		$rows     = [];
 		$cssClass = $this->getCssClass();
 
-		foreach($this->matrix->getMatrix() as $row){
+		foreach($this->matrix->matrix as $row){
 			$element = '<span style="background: %s;"></span>';
 			$modules = array_map(fn(int $M_TYPE):string => sprintf($element, $this->getModuleValue($M_TYPE)), $row);
 

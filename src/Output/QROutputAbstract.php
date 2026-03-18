@@ -28,7 +28,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	/**
 	 * the current size of the QR matrix
 	 *
-	 * @see \chillerlan\QRCode\Data\QRMatrix::getSize()
+	 * @see \chillerlan\QRCode\Data\QRMatrix::$moduleCount
 	 */
 	protected int $moduleCount;
 
@@ -130,7 +130,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 	 * Call this method if you modify the matrix from within your custom module in case the dimensions have been changed
 	 */
 	protected function setMatrixDimensions():void{
-		$this->moduleCount = $this->matrix->getSize();
+		$this->moduleCount = $this->matrix->moduleCount;
 		$this->scale       = $this->options->scale;
 		$this->length      = ($this->moduleCount * $this->scale);
 	}
@@ -268,7 +268,7 @@ abstract class QROutputAbstract implements QROutputInterface{
 		$paths = [];
 
 		// collect the modules for each type
-		foreach($this->matrix->getMatrix() as $y => $row){
+		foreach($this->matrix->matrix as $y => $row){
 			foreach($row as $x => $M_TYPE){
 				$M_TYPE_LAYER = $M_TYPE;
 

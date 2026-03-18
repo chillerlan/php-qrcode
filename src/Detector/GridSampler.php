@@ -150,7 +150,7 @@ final class GridSampler{
 			[$this->points, ] = $transform->transformPoints($this->points);
 			// Quick check to see if points transformed to something inside the image;
 			// sufficient to check the endpoints
-			$this->checkAndNudgePoints($matrix->getSize());
+			$this->checkAndNudgePoints($matrix->moduleCount);
 
 			// no need to try/catch as QRMatrix::set() will silently discard out of bounds values
 #			try{

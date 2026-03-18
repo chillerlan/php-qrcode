@@ -102,7 +102,7 @@ class QRInterventionImage extends QROutputAbstract{
 			$this->image->fill($this->prepareModuleValue($this->options->bgColor));
 		}
 
-		foreach($this->matrix->getMatrix() as $y => $row){
+		foreach($this->matrix->matrix as $y => $row){
 			foreach($row as $x => $M_TYPE){
 				$this->module($x, $y, $M_TYPE);
 			}

@@ -79,12 +79,12 @@ class QRMatrix{
 	/**
 	 * the matrix version - always set in QRMatrix, may be null in BitMatrix
 	 */
-	protected Version|null $version = null;
+	protected(set) Version|null $version = null;
 
 	/**
 	 * the current ECC level - always set in QRMatrix, may be null in BitMatrix
 	 */
-	protected EccLevel|null $eccLevel = null;
+	protected(set) EccLevel|null $eccLevel = null;
 
 	/**
 	 * the mask pattern that was used in the most recent operation, set via:
@@ -93,19 +93,21 @@ class QRMatrix{
 	 * - QRMatrix::mask()
 	 * - BitMatrix::readFormatInformation()
 	 */
-	protected MaskPattern|null $maskPattern = null;
+	protected(set) MaskPattern|null $maskPattern = null;
 
 	/**
 	 * the size (side length) of the matrix, including quiet zone (if created)
+	 *
+	 * size = version * 4 + 17 [ + 2 * quietzone size]
 	 */
-	protected int $moduleCount;
+	protected(set) int $moduleCount;
 
 	/**
 	 * the actual matrix data array
 	 *
 	 * @var int[][]
 	 */
-	protected array $matrix;
+	protected(set) array $matrix;
 
 	/**
 	 * QRMatrix constructor.
@@ -142,15 +144,6 @@ class QRMatrix{
 	}
 
 	/**
-	 * Returns the data matrix
-	 *
-	 * @return int[][]
-	 */
-	public function getMatrix():array{
-		return $this->matrix;
-	}
-
-	/**
 	 * Returns a boolean representation of the data matrix
 	 *
 	 * @return bool[][]
@@ -164,36 +157,6 @@ class QRMatrix{
 		}
 		/** @var bool[][] $matrix (phpstan hates this otherwise) */
 		return $matrix;
-	}
-
-	/**
-	 * Returns the current version number
-	 */
-	public function getVersion():Version|null{
-		return $this->version;
-	}
-
-	/**
-	 * Returns the current ECC level
-	 */
-	public function getEccLevel():EccLevel|null{
-		return $this->eccLevel;
-	}
-
-	/**
-	 * Returns the current mask pattern
-	 */
-	public function getMaskPattern():MaskPattern|null{
-		return $this->maskPattern;
-	}
-
-	/**
-	 * Returns the absoulute size of the matrix, including quiet zone (after setting it).
-	 *
-	 * size = version * 4 + 17 [ + 2 * quietzone size]
-	 */
-	public function getSize():int{
-		return $this->moduleCount;
 	}
 
 	/**

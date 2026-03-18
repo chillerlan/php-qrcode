@@ -55,8 +55,8 @@ class QRMarkupXML extends QRMarkup{
 
 		$root->setAttribute('xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
 		$root->setAttribute('xsi:noNamespaceSchemaLocation', $this::SCHEMA);
-		$root->setAttribute('version', (string)$this->matrix->getVersion());
-		$root->setAttribute('eccLevel', (string)$this->matrix->getEccLevel());
+		$root->setAttribute('version', (string)$this->matrix->version);
+		$root->setAttribute('eccLevel', (string)$this->matrix->eccLevel);
 		$root->appendChild($this->createMatrix());
 
 		$this->dom->appendChild($root);
@@ -76,15 +76,15 @@ class QRMarkupXML extends QRMarkup{
 	protected function createMatrix():DOMElement{
 		[$width, $height] = $this->getOutputDimensions();
 		$matrix           = $this->dom->createElement('matrix');
-		$dimension        = $this->matrix->getVersion()->getDimension();
+		$dimension        = $this->matrix->version->getDimension();
 
 		$matrix->setAttribute('size', (string)$dimension);
 		$matrix->setAttribute('quietzoneSize', (string)(int)(($this->moduleCount - $dimension) / 2));
-		$matrix->setAttribute('maskPattern', (string)$this->matrix->getMaskPattern()->getPattern());
+		$matrix->setAttribute('maskPattern', (string)$this->matrix->maskPattern->getPattern());
 		$matrix->setAttribute('width', (string)$width);
 		$matrix->setAttribute('height', (string)$height);
 
-		foreach($this->matrix->getMatrix() as $y => $row){
+		foreach($this->matrix->matrix as $y => $row){
 			$matrixRow = $this->row($y, $row);
 
 			if($matrixRow !== null){

@@ -36,7 +36,7 @@ class QRStringText extends QROutputAbstract{
 		$lines     = [];
 		$linestart = $this->options->textLineStart;
 
-		foreach($this->matrix->getMatrix() as $row){
+		foreach($this->matrix->matrix as $row){
 			$lines[] = $linestart.implode('', array_map($this->getModuleValue(...), $row));
 		}
 
