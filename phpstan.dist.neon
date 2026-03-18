@@ -14,7 +14,7 @@ parameters:
 	ignoreErrors:
 		# the only place where these instances *may* be null is in the Decoder\BitMatrix class
 		- message: "#^Cannot call method [\\w]+\\(\\) on chillerlan\\\\QRCode\\\\Common\\\\EccLevel\\|null\\.$#"
-		- message: "#^Cannot call method [\\w]+\\(\\) on chillerlan\\\\QRCode\\\\Common\\\\MaskPattern\\|null\\.$#"
+#		- message: "#^Cannot call method [\\w]+\\(\\) on chillerlan\\\\QRCode\\\\Common\\\\MaskPattern\\|null\\.$#"
 		- message: "#^Cannot call method [\\w]+\\(\\) on chillerlan\\\\QRCode\\\\Common\\\\Version\\|null\\.$#"
 
 

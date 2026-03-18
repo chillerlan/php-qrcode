@@ -32,9 +32,9 @@ abstract class LuminanceSourceAbstract implements LuminanceSourceInterface{
 	 * Fetches luminance data for the underlying bitmap. Values should be fetched using:
 	 * `int luminance = array[y * width + x] & 0xff`
 	 *
-	 * @return int[] A row-major 2D array of luminance values. Do not use result $length as it may be
-	 *         larger than $width * $height bytes on some platforms. Do not modify the contents
-	 *         of the result.
+	 * A row-major 2D array of luminance values. Do not use result $length as it may be
+	 * larger than $width * $height bytes on some platforms. Do not modify the contents
+	 * of the result.
 	 *
 	 * @var int[]
 	 */

@@ -39,7 +39,13 @@ parameters:
 		-
 			rawMessage: 'Parameter #2 $dataSegments of class chillerlan\QRCode\Data\QRData constructor expects array<chillerlan\QRCode\Data\QRDataModeInterface>, array<int, object> given.'
 			identifier: argument.type
-			count: 2
+			count: 1
+			path: benchmark/QRDataBenchmark.php
+
+		-
+			rawMessage: 'Property chillerlan\QRCodeBenchmark\QRDataBenchmark::$dataMode (chillerlan\QRCode\Data\QRDataModeInterface) does not accept object.'
+			identifier: assign.propertyType
+			count: 1
 			path: benchmark/QRDataBenchmark.php
 
 		-
@@ -91,20 +97,10 @@ parameters:
 			path: benchmark/parse-result.php
 
 		-
-			rawMessage: '''
-				Call to deprecated method getUri() of class chillerlan\Authenticator\Authenticator:
-				5.3.0 The parameter `$omitSettings` will be removed in favor of `AuthenticatorOptions::$omitUriSettings`
-				                  in the next major version (6.x)
-			'''
-			identifier: method.deprecated
+			rawMessage: Set hook for non-virtual property chillerlan\Settings\SettingsContainerAbstract@anonymous/examples/authenticator.php:22::$fpdfMeasureUnit does not always assign value to it.
+			identifier: propertySetHook.noAssign
 			count: 1
 			path: examples/authenticator.php
-
-		-
-			rawMessage: 'Property chillerlan\QRCode\QROptions::$eccLevel (int) does not accept string.'
-			identifier: assign.propertyType
-			count: 1
-			path: examples/custom_output.php
 
 		-
 			rawMessage: 'Method QRGdRounded::__construct() has parameter $options with no value type specified in iterable type iterable.'
@@ -227,6 +223,12 @@ parameters:
 			path: src/Data/Byte.php
 
 		-
+			rawMessage: Cannot access property $level on chillerlan\QRCode\Common\EccLevel|null.
+			identifier: property.nonObject
+			count: 1
+			path: src/Data/QRMatrix.php
+
+		-
 			rawMessage: 'Parameter #1 $version of class chillerlan\QRCode\Data\ReedSolomonEncoder constructor expects chillerlan\QRCode\Common\Version, chillerlan\QRCode\Common\Version|null given.'
 			identifier: argument.type
 			count: 1
@@ -237,6 +239,24 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: src/Data/QRMatrix.php
+
+		-
+			rawMessage: Access to an undefined property chillerlan\QRCode\Common\LuminanceSourceInterface::$height.
+			identifier: property.notFound
+			count: 1
+			path: src/Decoder/Binarizer.php
+
+		-
+			rawMessage: Access to an undefined property chillerlan\QRCode\Common\LuminanceSourceInterface::$luminances.
+			identifier: property.notFound
+			count: 1
+			path: src/Decoder/Binarizer.php
+
+		-
+			rawMessage: Access to an undefined property chillerlan\QRCode\Common\LuminanceSourceInterface::$width.
+			identifier: property.notFound
+			count: 1
+			path: src/Decoder/Binarizer.php
 
 		-
 			rawMessage: 'Parameter #1 $maskPattern of method chillerlan\QRCode\Data\QRMatrix::mask() expects chillerlan\QRCode\Common\MaskPattern, chillerlan\QRCode\Common\MaskPattern|null given.'
@@ -261,6 +281,12 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: src/Decoder/BitMatrix.php
+
+		-
+			rawMessage: Cannot access property $versionNumber on chillerlan\QRCode\Common\Version|null.
+			identifier: property.nonObject
+			count: 1
+			path: src/Decoder/Decoder.php
 
 		-
 			rawMessage: 'Method chillerlan\QRCode\Decoder\Decoder::__construct() has parameter $options with no value type specified in iterable type iterable.'
@@ -335,6 +361,12 @@ parameters:
 			path: src/Output/QRInterventionImage.php
 
 		-
+			rawMessage: Cannot access property $currentPattern on chillerlan\QRCode\Common\MaskPattern|null.
+			identifier: property.nonObject
+			count: 1
+			path: src/Output/QRMarkupXML.php
+
+		-
 			rawMessage: 'Method chillerlan\QRCode\Output\QROutputAbstract::__construct() has parameter $options with no value type specified in iterable type iterable.'
 			identifier: missingType.iterableValue
 			count: 1
@@ -345,6 +377,18 @@ parameters:
 			identifier: argument.type
 			count: 1
 			path: src/Output/QROutputAbstract.php
+
+		-
+			rawMessage: Cannot access property $currentPattern on chillerlan\QRCode\Common\MaskPattern|null.
+			identifier: property.nonObject
+			count: 1
+			path: src/Output/QRStringJSON.php
+
+		-
+			rawMessage: Cannot access property $versionNumber on chillerlan\QRCode\Common\Version|null.
+			identifier: property.nonObject
+			count: 1
+			path: src/Output/QRStringJSON.php
 
 		-
 			rawMessage: PHPDoc tag @var with type chillerlan\QRCode\Data\QRDataModeInterface is not subtype of native type 'chillerlan\\QRCode\\Data\\AlphaNum'|'chillerlan\\QRCode\\Data\\Byte'|'chillerlan\\QRCode\\Data\\Hanzi'|'chillerlan\\QRCode\\Data\\Kanji'|'chillerlan\\QRCode\\Data\\Number'.
@@ -359,10 +403,22 @@ parameters:
 			path: src/QRCode.php
 
 		-
+			rawMessage: Set hook for non-virtual property chillerlan\QRCode\QROptions::$fpdfMeasureUnit does not always assign value to it.
+			identifier: propertySetHook.noAssign
+			count: 1
+			path: src/QROptions.php
+
+		-
 			rawMessage: 'Method chillerlan\QRCodeTest\Common\MaskPatternTest::maskPatternProvider() return type has no value type specified in iterable type array.'
 			identifier: missingType.iterableValue
 			count: 1
 			path: tests/Common/MaskPatternTest.php
+
+		-
+			rawMessage: Cannot access property $currentPattern on chillerlan\QRCode\Common\MaskPattern|null.
+			identifier: property.nonObject
+			count: 1
+			path: tests/Data/DataInterfaceTestAbstract.php
 
 		-
 			rawMessage: 'Method chillerlan\QRCodeTest\Data\DataInterfaceTestAbstract::maxLengthProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
@@ -407,16 +463,40 @@ parameters:
 			path: tests/Data/KanjiTest.php
 
 		-
+			rawMessage: Cannot access property $versionNumber on chillerlan\QRCode\Common\Version|null.
+			identifier: property.nonObject
+			count: 2
+			path: tests/Data/QRDataTest.php
+
+		-
 			rawMessage: 'Parameter #1 $blob of method chillerlan\QRCode\QRCode::readFromBlob() expects string, GdImage|string given.'
 			identifier: argument.type
 			count: 1
 			path: tests/Data/QRDataTest.php
 
 		-
+			rawMessage: Cannot access property $level on chillerlan\QRCode\Common\EccLevel|null.
+			identifier: property.nonObject
+			count: 1
+			path: tests/Data/QRMatrixTest.php
+
+		-
+			rawMessage: Cannot access property $versionNumber on chillerlan\QRCode\Common\Version|null.
+			identifier: property.nonObject
+			count: 4
+			path: tests/Data/QRMatrixTest.php
+
+		-
 			rawMessage: 'Method chillerlan\QRCodeTest\Data\QRMatrixTest::matrixProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'
 			identifier: missingType.generics
 			count: 1
 			path: tests/Data/QRMatrixTest.php
+
+		-
+			rawMessage: Cannot access property $versionNumber on chillerlan\QRCode\Common\Version|null.
+			identifier: property.nonObject
+			count: 1
+			path: tests/QRCodeReaderTestAbstract.php
 
 		-
 			rawMessage: 'Method chillerlan\QRCodeTest\QRCodeReaderTestAbstract::dataTestProvider() return type with generic class Generator does not specify its types: TKey, TValue, TSend, TReturn'

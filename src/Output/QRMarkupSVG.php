@@ -121,7 +121,7 @@ class QRMarkupSVG extends QRMarkup{
 	 */
 	protected function paths():string{
 		$this->r = $this->options->circleRadius;
-		$this->d = $this->r * 2;
+		$this->d = ($this->r * 2);
 
 		$paths = $this->collectModules();
 		$svg   = [];

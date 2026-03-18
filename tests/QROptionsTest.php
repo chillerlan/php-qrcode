@@ -47,7 +47,6 @@ final class QROptionsTest extends TestCase{
 		$o = new QROptions(['eccLevel' => EccLevel::H]);
 
 		$this::assertSame(EccLevel::H, $o->eccLevel);
-		/** @phpstan-ignore-next-line */
 		$o->eccLevel = 'q';
 
 		$this::assertSame(EccLevel::Q, $o->eccLevel);
