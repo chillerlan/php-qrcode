@@ -53,7 +53,7 @@
 	},
 	"require-dev": {
 		"ext-fileinfo": "*",
-		"chillerlan/php-authenticator": "^5.3",
+		"chillerlan/php-authenticator": "^5.4.1",
 		"intervention/image": "^3.11",
 		"phan/phan": "^6.0.1",
 		"phpbench/phpbench": "^1.4",
@@ -66,7 +66,7 @@
 		"squizlabs/php_codesniffer": "^4.0"
 	},
 	"suggest": {
-		"chillerlan/php-authenticator": "Yet another Google authenticator! Also creates URIs for mobile apps.",
+		"chillerlan/2fa-qrcode-bundle": "An authenticator/qrcode bundle for MFA integration in frameworks and applications.",
 		"intervention/image": "More advanced GD and ImageMagick output.",
 		"setasign/fpdf": "Required to use the QR FPDF output.",
 		"simple-icons/simple-icons": "SVG icons that you can use to embed as logos in the QR Code"
