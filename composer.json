@@ -49,11 +49,11 @@
 	"require": {
 		"php": "^8.4",
 		"ext-mbstring": "*",
-		"chillerlan/php-settings-container": "^3.2.1"
+		"chillerlan/php-settings-container": "^4.0"
 	},
 	"require-dev": {
 		"ext-fileinfo": "*",
-		"chillerlan/php-authenticator": "^5.4.1",
+		"chillerlan/php-authenticator": "^6.0",
 		"intervention/image": "^3.11",
 		"phan/phan": "^6.0.1",
 		"phpbench/phpbench": "^1.4",
