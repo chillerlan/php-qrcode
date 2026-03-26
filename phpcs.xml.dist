@@ -216,7 +216,7 @@
 
 
 	<!--
-		Configurable built-in https://github.com/squizlabs/PHP_CodeSniffer/wiki/Customisable-Sniff-Properties
+		Configurable built-in https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki/Customisable-Sniff-Properties
 	-->
 
 	<rule ref="Generic.ControlStructures.InlineControlStructure">
