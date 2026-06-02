@@ -21,9 +21,9 @@ jobs:
     name: "Static Code Analysis"
     runs-on: ubuntu-latest
 
-    env:
-      PHAN_ALLOW_XDEBUG: 0
-      PHAN_DISABLE_XDEBUG_WARN: 1
+#    env:
+#      PHAN_ALLOW_XDEBUG: 0
+#      PHAN_DISABLE_XDEBUG_WARN: 1
 
     strategy:
       fail-fast: true
@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
@@ -48,7 +48,7 @@ jobs:
         run: composer validate --no-interaction --ansi --verbose --with-dependencies
 
       - name: "Install dependencies with composer"
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@v4
 
       - name: "Run PHP_CodeSniffer"
         run: php vendor/bin/phpcs -v
@@ -77,7 +77,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: "Install PHP with extensions"
         uses: shivammathur/setup-php@v2
@@ -89,13 +89,13 @@ jobs:
           tools: pecl
 
       - name: "Install dependencies with composer"
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@v4
 
       - name: "Run tests with PHPUnit"
         run: php vendor/bin/phpunit --colors=always --configuration=phpunit.xml.dist
 
       - name: "Send code coverage report to Codecov.io"
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v6
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: .build/coverage/clover.xml
@@ -114,7 +114,7 @@ jobs:
 
     steps:
       - name: "Checkout sources"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
@@ -143,7 +143,7 @@ jobs:
 
     steps:
       - name: "Checkout sources"
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
@@ -154,7 +154,7 @@ jobs:
           coverage: none
 
       - name: "Install dependencies with composer"
-        uses: ramsey/composer-install@v3
+        uses: ramsey/composer-install@v4
 
       - name: "Install Sphinx"
         run: pip install sphinx myst-parser sphinx-rtd-theme
