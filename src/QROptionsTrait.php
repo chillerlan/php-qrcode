@@ -10,7 +10,6 @@
  * @license      MIT
  *
  * @noinspection PhpUnused, PhpComposerExtensionStubsInspection
- * @phan-file-suppress PhanUnreferencedUseFunction, PhanPropertyHookWithDefaultValue
  */
 declare(strict_types=1);
 
