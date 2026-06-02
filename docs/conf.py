@@ -44,7 +44,7 @@ lexers['php-annotations'] = PhpLexer(startinline=True)
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = u'PHP-QRCode'
-copyright = u'2025, smiley'
+copyright = u'2026, smiley'
 author = u'smiley'
 epub_author = u'smiley'
 
@@ -68,7 +68,7 @@ release = version
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 # If your documentation needs a minimal Sphinx version, state it here.
-needs_sphinx = '6.0.0'
+needs_sphinx = '9.1.0'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
