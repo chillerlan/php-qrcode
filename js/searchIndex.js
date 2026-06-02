@@ -3223,22 +3223,22 @@ Search.appendIndex(
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCodeReaderOptionsTrait\u003A\u003A\u0024readerUseImagickIfAvailable",
             "name": "readerUseImagickIfAvailable",
-            "summary": "Use\u0020Imagick\u0020\u0028if\u0020available\u0029\u0020when\u0020reading\u0020QR\u0020Codes,\nenables\u0020Imagick\u0020for\u0020the\u0020QR\u0020Code\u0020reader\u0020if\u0020the\u0020extension\u0020is\u0020available",
+            "summary": "Use\u0020Imagick\u0020when\u0020reading\u0020QR\u0020Codes.",
             "url": "classes/chillerlan-QRCode-QRCodeReaderOptionsTrait.html#property_readerUseImagickIfAvailable"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCodeReaderOptionsTrait\u003A\u003A\u0024readerGrayscale",
             "name": "readerGrayscale",
-            "summary": "Grayscale\u0020the\u0020image\u0020before\u0020reading",
+            "summary": "Grayscale\u0020the\u0020image\u0020before\u0020reading.",
             "url": "classes/chillerlan-QRCode-QRCodeReaderOptionsTrait.html#property_readerGrayscale"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCodeReaderOptionsTrait\u003A\u003A\u0024readerInvertColors",
             "name": "readerInvertColors",
-            "summary": "Invert\u0020the\u0020colors\u0020of\u0020the\u0020image",
+            "summary": "Invert\u0020the\u0020colors\u0020of\u0020the\u0020image.",
             "url": "classes/chillerlan-QRCode-QRCodeReaderOptionsTrait.html#property_readerInvertColors"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QRCodeReaderOptionsTrait\u003A\u003A\u0024readerIncreaseContrast",
             "name": "readerIncreaseContrast",
-            "summary": "Increase\u0020the\u0020contrast\u0020before\u0020reading",
+            "summary": "Increase\u0020the\u0020contrast\u0020before\u0020reading.",
             "url": "classes/chillerlan-QRCode-QRCodeReaderOptionsTrait.html#property_readerIncreaseContrast"
         },                {
             "fqsen": "\\chillerlan\\QRCode\\QROptions",

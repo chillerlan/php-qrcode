@@ -6,7 +6,10 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="../">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png"/>
     <link rel="icon" href="images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
             <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -181,161 +184,38 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-EccLevel.html#constant_H">H</a>
     <span>
-        &nbsp;= 0b10                            </span>
+        &nbsp;: int&nbsp;= 0b10                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-EccLevel.html#constant_L">L</a>
     <span>
-        &nbsp;= 0b1                            </span>
+        &nbsp;: int&nbsp;= 0b1                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-EccLevel.html#constant_M">M</a>
     <span>
-        &nbsp;= 0b0                            </span>
+        &nbsp;: int&nbsp;= 0b0                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-EccLevel.html#constant_Q">Q</a>
     <span>
-        &nbsp;= 0b11                            </span>
+        &nbsp;: int&nbsp;= 0b11                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
     <a class="" href="classes/chillerlan-QRCode-Common-EccLevel.html#constant_FORMAT_PATTERN">FORMAT_PATTERN</a>
     <span>
-        &nbsp;= [[
-    // L
-    0b111011111000100,
-    0b111001011110011,
-    0b111110110101010,
-    0b111100010011101,
-    0b110011000101111,
-    0b110001100011000,
-    0b110110001000001,
-    0b110100101110110,
-], [
-    // M
-    0b101010000010010,
-    0b101000100100101,
-    0b101111001111100,
-    0b101101101001011,
-    0b100010111111001,
-    0b100000011001110,
-    0b100111110010111,
-    0b100101010100000,
-], [
-    // Q
-    0b11010101011111,
-    0b11000001101000,
-    0b11111100110001,
-    0b11101000000110,
-    0b10010010110100,
-    0b10000110000011,
-    0b10111011011010,
-    0b10101111101101,
-], [
-    // H
-    0b1011010001001,
-    0b1001110111110,
-    0b1110011100111,
-    0b1100111010000,
-    0b11101100010,
-    0b1001010101,
-    0b110100001100,
-    0b100000111011,
-]]                            </span>
+        &nbsp;: array&lt;string|int, mixed&gt;&nbsp;= [[ // L 0b111011111000100, 0b111001011110011, 0...                            </span>
 </dt>
 <dd>ISO/IEC 18004:2000 Section 8.9 - Format Information</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -private">
     <a class="" href="classes/chillerlan-QRCode-Common-EccLevel.html#constant_MAX_BITS">MAX_BITS</a>
     <span>
-        &nbsp;= [
-    //	[    L,     M,     Q,     H]  // v  =&gt; modules
-    [0, 0, 0, 0],
-    // 0  =&gt;  will be ignored, index starts at 1
-    [152, 128, 104, 72],
-    // 1  =&gt;  21
-    [272, 224, 176, 128],
-    // 2  =&gt;  25
-    [440, 352, 272, 208],
-    // 3  =&gt;  29
-    [640, 512, 384, 288],
-    // 4  =&gt;  33
-    [864, 688, 496, 368],
-    // 5  =&gt;  37
-    [1088, 864, 608, 480],
-    // 6  =&gt;  41
-    [1248, 992, 704, 528],
-    // 7  =&gt;  45
-    [1552, 1232, 880, 688],
-    // 8  =&gt;  49
-    [1856, 1456, 1056, 800],
-    // 9  =&gt;  53
-    [2192, 1728, 1232, 976],
-    // 10 =&gt;  57
-    [2592, 2032, 1440, 1120],
-    // 11 =&gt;  61
-    [2960, 2320, 1648, 1264],
-    // 12 =&gt;  65
-    [3424, 2672, 1952, 1440],
-    // 13 =&gt;  69 NICE!
-    [3688, 2920, 2088, 1576],
-    // 14 =&gt;  73
-    [4184, 3320, 2360, 1784],
-    // 15 =&gt;  77
-    [4712, 3624, 2600, 2024],
-    // 16 =&gt;  81
-    [5176, 4056, 2936, 2264],
-    // 17 =&gt;  85
-    [5768, 4504, 3176, 2504],
-    // 18 =&gt;  89
-    [6360, 5016, 3560, 2728],
-    // 19 =&gt;  93
-    [6888, 5352, 3880, 3080],
-    // 20 =&gt;  97
-    [7456, 5712, 4096, 3248],
-    // 21 =&gt; 101
-    [8048, 6256, 4544, 3536],
-    // 22 =&gt; 105
-    [8752, 6880, 4912, 3712],
-    // 23 =&gt; 109
-    [9392, 7312, 5312, 4112],
-    // 24 =&gt; 113
-    [10208, 8000, 5744, 4304],
-    // 25 =&gt; 117
-    [10960, 8496, 6032, 4768],
-    // 26 =&gt; 121
-    [11744, 9024, 6464, 5024],
-    // 27 =&gt; 125
-    [12248, 9544, 6968, 5288],
-    // 28 =&gt; 129
-    [13048, 10136, 7288, 5608],
-    // 29 =&gt; 133
-    [13880, 10984, 7880, 5960],
-    // 30 =&gt; 137
-    [14744, 11640, 8264, 6344],
-    // 31 =&gt; 141
-    [15640, 12328, 8920, 6760],
-    // 32 =&gt; 145
-    [16568, 13048, 9368, 7208],
-    // 33 =&gt; 149
-    [17528, 13800, 9848, 7688],
-    // 34 =&gt; 153
-    [18448, 14496, 10288, 7888],
-    // 35 =&gt; 157
-    [19472, 15312, 10832, 8432],
-    // 36 =&gt; 161
-    [20528, 15936, 11408, 8768],
-    // 37 =&gt; 165
-    [21616, 16816, 12016, 9136],
-    // 38 =&gt; 169
-    [22496, 17728, 12656, 9776],
-    // 39 =&gt; 173
-    [23648, 18672, 13328, 10208],
-]                            </span>
+        &nbsp;: array&lt;string|int, mixed&gt;&nbsp;= [ // [ L, M, Q, H] // v =&gt; modules [0, 0, 0, 0]...                            </span>
 </dt>
 <dd>ISO/IEC 18004:2000 Tables 7-11 - Number of symbol characters and input data capacity for versions 1 to 40</dd>
 
@@ -433,7 +313,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">H</span>
     = <span class="phpdocumentor-signature__default-value">0b10</span>
 </code>
@@ -463,7 +343,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">L</span>
     = <span class="phpdocumentor-signature__default-value">0b1</span>
 </code>
@@ -493,7 +373,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">M</span>
     = <span class="phpdocumentor-signature__default-value">0b0</span>
 </code>
@@ -523,7 +403,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">Q</span>
     = <span class="phpdocumentor-signature__default-value">0b11</span>
 </code>
@@ -554,7 +434,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">array&lt;string|int, array&lt;string|int, int&gt;&gt;</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">FORMAT_PATTERN</span>
     = <span class="phpdocumentor-signature__default-value">[[
     // L
@@ -627,7 +507,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">private</span>
-        <span class="phpdocumentor-signature__type">array&lt;string|int, array&lt;string|int, int&gt;&gt;</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">MAX_BITS</span>
     = <span class="phpdocumentor-signature__default-value">[
     //	[    L,     M,     Q,     H]  // v  =&gt; modules
@@ -823,21 +703,20 @@ H: 0b10</p>
             </dl>
 
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+    <h5 class="phpdocumentor-tag-list__heading" id="method___construct_tags">
         Tags
-        <a href="classes/chillerlan-QRCode-Common-EccLevel.html#method___construct#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Common-EccLevel.html#method___construct_tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
+                    <dt class="phpdocumentor-tag-list__entry">
+                <span class="phpdocumentor-tag__name">throws</span>
+            </dt>
+                            <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-QRCodeException.html"><abbr title="\chillerlan\QRCode\QRCodeException">QRCodeException</abbr></a></span>
-                                                            
-                                             
+                                                                                    
                                     </dd>
-                                            </dl>
+                        </dl>
 
         
     
@@ -1051,37 +930,28 @@ H: 0b10</p>
 
     
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+    <h5 class="phpdocumentor-tag-list__heading" id="method_getOrdinal_tags">
         Tags
-        <a href="classes/chillerlan-QRCode-Common-EccLevel.html#method_getOrdinal#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Common-EccLevel.html#method_getOrdinal_tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
+                    <dt class="phpdocumentor-tag-list__entry">
+                <span class="phpdocumentor-tag__name">see</span>
+            </dt>
+                            <dd class="phpdocumentor-tag-list__definition">
                                                                                     <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Common-EccLevel.html#constant_MAX_BITS"><abbr title="\chillerlan\QRCode\Common\EccLevel::MAX_BITS">EccLevel::MAX_BITS</abbr></a></span>
-                                        
-                                             
+                                                                
                                     </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
+                            <dd class="phpdocumentor-tag-list__definition">
                                                                                     <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Common-EccLevel.html#constant_FORMAT_PATTERN"><abbr title="\chillerlan\QRCode\Common\EccLevel::FORMAT_PATTERN">EccLevel::FORMAT_PATTERN</abbr></a></span>
-                                        
-                                             
+                                                                
                                     </dd>
-                            <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">see</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
+                            <dd class="phpdocumentor-tag-list__definition">
                                                                                     <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-Common-Version.html#constant_RSBLOCKS"><abbr title="\chillerlan\QRCode\Common\Version::RSBLOCKS">Version::RSBLOCKS</abbr></a></span>
-                                        
-                                             
+                                                                
                                     </dd>
-                                            </dl>
+                        </dl>
 
         
     
@@ -1093,100 +963,7 @@ H: 0b10</p>
 </article>
             </section>
 
-        <div class="phpdocumentor-modal" id="source-view">
-    <div class="phpdocumentor-modal-bg" data-exit-button></div>
-    <div class="phpdocumentor-modal-container">
-        <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Common/EccLevel.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
-        </div>
-        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
-    </div>
-</div>
-
-    <script type="text/javascript">
-        (function () {
-            function loadExternalCodeSnippet(el, url, line) {
-                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
-                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
-                    const language = 'php';
-
-                    const code = document.createElement('code');
-                    code.className = 'language-' + language;
-                    pre.textContent = '';
-                    pre.setAttribute('data-line', line)
-                    code.textContent = 'Loading…';
-                    pre.appendChild(code);
-
-                    var xhr = new XMLHttpRequest();
-
-                    xhr.open('GET', src, true);
-
-                    xhr.onreadystatechange = function () {
-                        if (xhr.readyState !== 4) {
-                            return;
-                        }
-
-                        if (xhr.status < 400 && xhr.responseText) {
-                            code.textContent = xhr.responseText;
-                            Prism.highlightElement(code);
-                            d=document.getElementsByClassName("line-numbers");
-                            d[0].scrollTop = d[0].children[1].offsetTop;
-                            return;
-                        }
-
-                        if (xhr.status === 404) {
-                            code.textContent = '✖ Error: File could not be found';
-                            return;
-                        }
-
-                        if (xhr.status >= 400) {
-                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
-                            return;
-                        }
-
-                        code.textContent = '✖ Error: An unknown error occurred';
-                    };
-
-                    xhr.send(null);
-                });
-            }
-
-            const modalButtons = document.querySelectorAll("[data-modal]");
-            const openedAsLocalFile = window.location.protocol === 'file:';
-            if (modalButtons.length > 0 && openedAsLocalFile) {
-                console.warn(
-                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
-                    'browsers block XHR requests when a page is opened this way'
-                );
-            }
-
-            modalButtons.forEach(function (trigger) {
-                if (openedAsLocalFile) {
-                    trigger.setAttribute("hidden", "hidden");
-                }
-
-                trigger.addEventListener("click", function (event) {
-                    event.preventDefault();
-                    const modal = document.getElementById(trigger.dataset.modal);
-                    if (!modal) {
-                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
-                        return;
-                    }
-                    modal.classList.add("phpdocumentor-modal__open");
-
-                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
-                    const exits = modal.querySelectorAll("[data-exit-button]");
-                    exits.forEach(function (exit) {
-                        exit.addEventListener("click", function (event) {
-                            event.preventDefault();
-                            modal.classList.remove("phpdocumentor-modal__open");
-                        });
-                    });
-                });
-            });
-        })();
-    </script>
-
+        
     </article>
                                 </section>
                 <section class="phpdocumentor-on-this-page__sidebar">

@@ -6,7 +6,10 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="../">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png"/>
     <link rel="icon" href="images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
             <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -181,75 +184,75 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-Mode.html#constant_ALPHANUM">ALPHANUM</a>
     <span>
-        &nbsp;= 0b10                            </span>
+        &nbsp;: int&nbsp;= 0b10                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-Mode.html#constant_BYTE">BYTE</a>
     <span>
-        &nbsp;= 0b100                            </span>
+        &nbsp;: int&nbsp;= 0b100                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-Mode.html#constant_ECI">ECI</a>
     <span>
-        &nbsp;= 0b111                            </span>
+        &nbsp;: int&nbsp;= 0b111                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-Mode.html#constant_FNC1_FIRST">FNC1_FIRST</a>
     <span>
-        &nbsp;= 0b101                            </span>
+        &nbsp;: int&nbsp;= 0b101                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-Mode.html#constant_FNC1_SECOND">FNC1_SECOND</a>
     <span>
-        &nbsp;= 0b1001                            </span>
+        &nbsp;: int&nbsp;= 0b1001                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-Mode.html#constant_HANZI">HANZI</a>
     <span>
-        &nbsp;= 0b1101                            </span>
+        &nbsp;: int&nbsp;= 0b1101                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-Mode.html#constant_INTERFACES">INTERFACES</a>
     <span>
-        &nbsp;= [self::NUMBER =&gt; \chillerlan\QRCode\Data\Number::class, self::ALPHANUM =&gt; \chillerlan\QRCode\Data\AlphaNum::class, self::KANJI =&gt; \chillerlan\QRCode\Data\Kanji::class, self::HANZI =&gt; \chillerlan\QRCode\Data\Hanzi::class, self::BYTE =&gt; \chillerlan\QRCode\Data\Byte::class]                            </span>
+        &nbsp;: array&lt;string|int, mixed&gt;&nbsp;= [self::NUMBER =&gt; \chillerlan\QRCode\Data\Number...                            </span>
 </dt>
 <dd>Map of data mode =&gt; interface (detection order)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-Mode.html#constant_KANJI">KANJI</a>
     <span>
-        &nbsp;= 0b1000                            </span>
+        &nbsp;: int&nbsp;= 0b1000                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-Mode.html#constant_LENGTH_BITS">LENGTH_BITS</a>
     <span>
-        &nbsp;= [self::NUMBER =&gt; [10, 12, 14], self::ALPHANUM =&gt; [9, 11, 13], self::BYTE =&gt; [8, 16, 16], self::KANJI =&gt; [8, 10, 12], self::HANZI =&gt; [8, 10, 12], self::ECI =&gt; [0, 0, 0]]                            </span>
+        &nbsp;: array&lt;string|int, mixed&gt;&nbsp;= [self::NUMBER =&gt; [10, 12, 14], self::ALPHANUM =...                            </span>
 </dt>
 <dd>mode length bits for the version breakpoints 1-9, 10-26 and 27-40</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-Mode.html#constant_NUMBER">NUMBER</a>
     <span>
-        &nbsp;= 0b1                            </span>
+        &nbsp;: int&nbsp;= 0b1                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-Mode.html#constant_STRCTURED_APPEND">STRCTURED_APPEND</a>
     <span>
-        &nbsp;= 0b11                            </span>
+        &nbsp;: int&nbsp;= 0b11                            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a class="" href="classes/chillerlan-QRCode-Common-Mode.html#constant_TERMINATOR">TERMINATOR</a>
     <span>
-        &nbsp;= 0b0                            </span>
+        &nbsp;: int&nbsp;= 0b0                            </span>
 </dt>
 
     </dl>
@@ -298,7 +301,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">ALPHANUM</span>
     = <span class="phpdocumentor-signature__default-value">0b10</span>
 </code>
@@ -328,7 +331,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">BYTE</span>
     = <span class="phpdocumentor-signature__default-value">0b100</span>
 </code>
@@ -358,7 +361,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">ECI</span>
     = <span class="phpdocumentor-signature__default-value">0b111</span>
 </code>
@@ -388,7 +391,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">FNC1_FIRST</span>
     = <span class="phpdocumentor-signature__default-value">0b101</span>
 </code>
@@ -418,7 +421,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">FNC1_SECOND</span>
     = <span class="phpdocumentor-signature__default-value">0b1001</span>
 </code>
@@ -448,7 +451,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">HANZI</span>
     = <span class="phpdocumentor-signature__default-value">0b1101</span>
 </code>
@@ -479,7 +482,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">array&lt;int, string&gt;</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">INTERFACES</span>
     = <span class="phpdocumentor-signature__default-value">[self::NUMBER =&gt; \chillerlan\QRCode\Data\Number::class, self::ALPHANUM =&gt; \chillerlan\QRCode\Data\AlphaNum::class, self::KANJI =&gt; \chillerlan\QRCode\Data\Kanji::class, self::HANZI =&gt; \chillerlan\QRCode\Data\Hanzi::class, self::BYTE =&gt; \chillerlan\QRCode\Data\Byte::class]</span>
 </code>
@@ -509,7 +512,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">KANJI</span>
     = <span class="phpdocumentor-signature__default-value">0b1000</span>
 </code>
@@ -540,7 +543,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">array&lt;string|int, mixed&gt;</span>
     <span class="phpdocumentor-signature__name">LENGTH_BITS</span>
     = <span class="phpdocumentor-signature__default-value">[self::NUMBER =&gt; [10, 12, 14], self::ALPHANUM =&gt; [9, 11, 13], self::BYTE =&gt; [8, 16, 16], self::KANJI =&gt; [8, 10, 12], self::HANZI =&gt; [8, 10, 12], self::ECI =&gt; [0, 0, 0]]</span>
 </code>
@@ -572,7 +575,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">NUMBER</span>
     = <span class="phpdocumentor-signature__default-value">0b1</span>
 </code>
@@ -602,7 +605,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">STRCTURED_APPEND</span>
     = <span class="phpdocumentor-signature__default-value">0b11</span>
 </code>
@@ -632,7 +635,7 @@
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-        <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">int</span>
     <span class="phpdocumentor-signature__name">TERMINATOR</span>
     = <span class="phpdocumentor-signature__default-value">0b0</span>
 </code>
@@ -701,21 +704,20 @@
             </dl>
 
     
-    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+    <h5 class="phpdocumentor-tag-list__heading" id="method_getLengthBitsForVersion_tags">
         Tags
-        <a href="classes/chillerlan-QRCode-Common-Mode.html#method_getLengthBitsForVersion#tags" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/chillerlan-QRCode-Common-Mode.html#method_getLengthBitsForVersion_tags" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h5>
     <dl class="phpdocumentor-tag-list">
-                                    <dt class="phpdocumentor-tag-list__entry">
-                    <span class="phpdocumentor-tag__name">throws</span>
-                </dt>
-                <dd class="phpdocumentor-tag-list__definition">
+                    <dt class="phpdocumentor-tag-list__entry">
+                <span class="phpdocumentor-tag__name">throws</span>
+            </dt>
+                            <dd class="phpdocumentor-tag-list__definition">
                                                                 <span class="phpdocumentor-tag-link"><a href="classes/chillerlan-QRCode-QRCodeException.html"><abbr title="\chillerlan\QRCode\QRCodeException">QRCodeException</abbr></a></span>
-                                                            
-                                             
+                                                                                    
                                     </dd>
-                                            </dl>
+                        </dl>
 
         
     
@@ -727,100 +729,7 @@
 </article>
             </section>
 
-        <div class="phpdocumentor-modal" id="source-view">
-    <div class="phpdocumentor-modal-bg" data-exit-button></div>
-    <div class="phpdocumentor-modal-container">
-        <div class="phpdocumentor-modal-content">
-            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Common/Mode.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
-        </div>
-        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
-    </div>
-</div>
-
-    <script type="text/javascript">
-        (function () {
-            function loadExternalCodeSnippet(el, url, line) {
-                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
-                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
-                    const language = 'php';
-
-                    const code = document.createElement('code');
-                    code.className = 'language-' + language;
-                    pre.textContent = '';
-                    pre.setAttribute('data-line', line)
-                    code.textContent = 'Loading…';
-                    pre.appendChild(code);
-
-                    var xhr = new XMLHttpRequest();
-
-                    xhr.open('GET', src, true);
-
-                    xhr.onreadystatechange = function () {
-                        if (xhr.readyState !== 4) {
-                            return;
-                        }
-
-                        if (xhr.status < 400 && xhr.responseText) {
-                            code.textContent = xhr.responseText;
-                            Prism.highlightElement(code);
-                            d=document.getElementsByClassName("line-numbers");
-                            d[0].scrollTop = d[0].children[1].offsetTop;
-                            return;
-                        }
-
-                        if (xhr.status === 404) {
-                            code.textContent = '✖ Error: File could not be found';
-                            return;
-                        }
-
-                        if (xhr.status >= 400) {
-                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
-                            return;
-                        }
-
-                        code.textContent = '✖ Error: An unknown error occurred';
-                    };
-
-                    xhr.send(null);
-                });
-            }
-
-            const modalButtons = document.querySelectorAll("[data-modal]");
-            const openedAsLocalFile = window.location.protocol === 'file:';
-            if (modalButtons.length > 0 && openedAsLocalFile) {
-                console.warn(
-                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
-                    'browsers block XHR requests when a page is opened this way'
-                );
-            }
-
-            modalButtons.forEach(function (trigger) {
-                if (openedAsLocalFile) {
-                    trigger.setAttribute("hidden", "hidden");
-                }
-
-                trigger.addEventListener("click", function (event) {
-                    event.preventDefault();
-                    const modal = document.getElementById(trigger.dataset.modal);
-                    if (!modal) {
-                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
-                        return;
-                    }
-                    modal.classList.add("phpdocumentor-modal__open");
-
-                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
-                    const exits = modal.querySelectorAll("[data-exit-button]");
-                    exits.forEach(function (exit) {
-                        exit.addEventListener("click", function (event) {
-                            event.preventDefault();
-                            modal.classList.remove("phpdocumentor-modal__open");
-                        });
-                    });
-                });
-            });
-        })();
-    </script>
-
+        
     </article>
                                 </section>
                 <section class="phpdocumentor-on-this-page__sidebar">
