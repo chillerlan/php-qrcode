@@ -36,6 +36,9 @@ final class Decoder{
 	private BitBuffer                            $bitBuffer;
 	private Detector                             $detector;
 
+	/**
+	 * @param \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions|iterable<string, mixed> $options
+	 */
 	public function __construct(SettingsContainerInterface|QROptions|iterable $options = new QROptions){
 
 		if(is_iterable($options)){

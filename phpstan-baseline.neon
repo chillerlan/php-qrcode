@@ -218,13 +218,7 @@ parameters:
 			path: examples/imageWithLogo.php
 
 		-
-			rawMessage: 'Method QRGdRounded::__construct() has parameter $options with no value type specified in iterable type iterable.'
-			identifier: missingType.iterableValue
-			count: 1
-			path: examples/imageWithRoundedShapes.php
-
-		-
-			rawMessage: 'Parameter #1 $properties of class chillerlan\QRCode\QROptions constructor expects array<string, mixed>|null, iterable given.'
+			rawMessage: 'Parameter #1 $properties of class chillerlan\QRCode\QROptions constructor expects array<string, mixed>|null, array<string, mixed>|(chillerlan\Settings\SettingsContainerInterface&iterable) given.'
 			identifier: argument.type
 			count: 1
 			path: examples/imageWithRoundedShapes.php
@@ -602,13 +596,7 @@ parameters:
 			path: src/Decoder/Decoder.php
 
 		-
-			rawMessage: 'Method chillerlan\QRCode\Decoder\Decoder::__construct() has parameter $options with no value type specified in iterable type iterable.'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/Decoder/Decoder.php
-
-		-
-			rawMessage: 'Parameter #1 $properties of class chillerlan\QRCode\QROptions constructor expects array<string, mixed>|null, iterable given.'
+			rawMessage: 'Parameter #1 $properties of class chillerlan\QRCode\QROptions constructor expects array<string, mixed>|null, (chillerlan\Settings\SettingsContainerInterface&iterable)|iterable<string, mixed> given.'
 			identifier: argument.type
 			count: 1
 			path: src/Decoder/Decoder.php
@@ -743,12 +731,6 @@ parameters:
 			path: src/Output/QRFpdf.php
 
 		-
-			rawMessage: 'Method chillerlan\QRCode\Output\QRFpdf::__construct() has parameter $options with no value type specified in iterable type iterable.'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/Output/QRFpdf.php
-
-		-
 			rawMessage: '''
 				Access to deprecated property $circleDiameter of class chillerlan\QRCode\Output\QROutputAbstract:
 				6.0.1 This property will be removed in v7, use `$this->options->circleRadius * 2` instead.
@@ -803,13 +785,7 @@ parameters:
 			path: src/Output/QRGdImage.php
 
 		-
-			rawMessage: 'Method chillerlan\QRCode\Output\QRGdImage::__construct() has parameter $options with no value type specified in iterable type iterable.'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/Output/QRGdImage.php
-
-		-
-			rawMessage: 'Parameter #1 $properties of class chillerlan\QRCode\QROptions constructor expects array<string, mixed>|null, iterable given.'
+			rawMessage: 'Parameter #1 $properties of class chillerlan\QRCode\QROptions constructor expects array<string, mixed>|null, array<string, mixed>|(chillerlan\Settings\SettingsContainerInterface&iterable) given.'
 			identifier: argument.type
 			count: 1
 			path: src/Output/QRGdImage.php
@@ -872,12 +848,6 @@ parameters:
 			path: src/Output/QRImagick.php
 
 		-
-			rawMessage: 'Method chillerlan\QRCode\Output\QRImagick::__construct() has parameter $options with no value type specified in iterable type iterable.'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/Output/QRImagick.php
-
-		-
 			rawMessage: '''
 				Access to deprecated property $circleRadius of class chillerlan\QRCode\Output\QROutputAbstract:
 				6.0.1 This property will be removed in v7, use `$this->options->circleRadius` instead.
@@ -919,12 +889,6 @@ parameters:
 				6.0.1 This method will be removed in v7, use the property "QRMatrix::$matrix" instead.
 			'''
 			identifier: method.deprecated
-			count: 1
-			path: src/Output/QRInterventionImage.php
-
-		-
-			rawMessage: 'Method chillerlan\QRCode\Output\QRInterventionImage::__construct() has parameter $options with no value type specified in iterable type iterable.'
-			identifier: missingType.iterableValue
 			count: 1
 			path: src/Output/QRInterventionImage.php
 
@@ -1091,13 +1055,7 @@ parameters:
 			path: src/Output/QROutputAbstract.php
 
 		-
-			rawMessage: 'Method chillerlan\QRCode\Output\QROutputAbstract::__construct() has parameter $options with no value type specified in iterable type iterable.'
-			identifier: missingType.iterableValue
-			count: 1
-			path: src/Output/QROutputAbstract.php
-
-		-
-			rawMessage: 'Parameter #1 $properties of class chillerlan\QRCode\QROptions constructor expects array<string, mixed>|null, iterable given.'
+			rawMessage: 'Parameter #1 $properties of class chillerlan\QRCode\QROptions constructor expects array<string, mixed>|null, array<string, mixed>|(chillerlan\Settings\SettingsContainerInterface&iterable) given.'
 			identifier: argument.type
 			count: 1
 			path: src/Output/QROutputAbstract.php

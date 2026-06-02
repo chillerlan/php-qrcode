@@ -51,7 +51,7 @@ class QRCode{
 	/**
 	 * QRCode constructor.
 	 *
-	 * @phpstan-param array<string, mixed> $options
+	 * @param \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions|array<string, mixed> $options
 	 */
 	public function __construct(SettingsContainerInterface|QROptions|iterable $options = new QROptions){
 		$this->setOptions($options);
@@ -60,7 +60,7 @@ class QRCode{
 	/**
 	 * Sets an options instance
 	 *
-	 * @phpstan-param array<string, mixed> $options
+	 * @param \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions|array<string, mixed> $options
 	 */
 	public function setOptions(SettingsContainerInterface|QROptions|iterable $options):static{
 

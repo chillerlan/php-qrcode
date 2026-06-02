@@ -112,6 +112,8 @@ abstract class QROutputAbstract implements QROutputInterface{
 
 	/**
 	 * QROutputAbstract constructor.
+	 *
+	 * @param \chillerlan\Settings\SettingsContainerInterface|\chillerlan\QRCode\QROptions|array<string, mixed> $options
 	 */
 	public function __construct(SettingsContainerInterface|QROptions|iterable $options, QRMatrix $matrix){
 
