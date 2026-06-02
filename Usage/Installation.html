@@ -99,8 +99,51 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Configuration-settings.html">Configuration settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#version">version</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#versionmin">versionMin</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#versionmax">versionMax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#ecclevel">eccLevel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#maskpattern">maskPattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#addquietzone">addQuietzone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#quietzonesize">quietzoneSize</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#outputinterface">outputInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#returnresource">returnResource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#cachefile">cachefile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#outputbase64">outputBase64</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#eol">eol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#bgcolor">bgColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#invertmatrix">invertMatrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#drawlightmodules">drawLightModules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#drawcircularmodules">drawCircularModules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#circleradius">circleRadius</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#keepassquare">keepAsSquare</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#connectpaths">connectPaths</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#excludefromconnect">excludeFromConnect</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#modulevalues">moduleValues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#addlogospace">addLogoSpace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#logospacewidth">logoSpaceWidth</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#logospaceheight">logoSpaceHeight</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#logospacestartx">logoSpaceStartX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#logospacestarty">logoSpaceStartY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#scale">scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#imagetransparent">imageTransparent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#transparencycolor">transparencyColor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#quality">quality</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#gdimageuseupscale">gdImageUseUpscale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#imagickformat">imagickFormat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#cssclass">cssClass</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#svgaddxmlheader">svgAddXmlHeader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#svgdefs">svgDefs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#svgpreserveaspectratio">svgPreserveAspectRatio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#svgusefillattributes">svgUseFillAttributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#textlinestart">textLineStart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#jsonflags">jsonFlags</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#fpdfmeasureunit">fpdfMeasureUnit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#xmlstylesheet">xmlStylesheet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#readeruseimagickifavailable">readerUseImagickIfAvailable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#readergrayscale">readerGrayscale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#readerinvertcolors">readerInvertColors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Configuration-settings.html#readerincreasecontrast">readerIncreaseContrast</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Reading-QRCodes.html">Reading QR Codes</a><ul>
@@ -406,13 +449,13 @@ After that, run <code class="docutils literal notranslate"><span class="pre">com
 <tr class="row-even"><td><p><strong>v7</strong></p></td>
 <td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/main"><code class="docutils literal notranslate"><span class="pre">dev-main</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">^8.4</span></code></p></td>
-<td><p>yes</p></td>
+<td><p>-</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code> or <code class="docutils literal notranslate"><span class="pre">imagick</span></code> required for reading QR Codes, <code class="docutils literal notranslate"><span class="pre">fileinfo</span></code> is used in <code class="docutils literal notranslate"><span class="pre">QRImagick</span></code></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>v6</strong></p></td>
-<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v6.0.x"><code class="docutils literal notranslate"><span class="pre">6.0.0</span></code></a></p></td>
+<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v6.0.x"><code class="docutils literal notranslate"><span class="pre">6.x</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">^8.2</span></code></p></td>
 <td><p>yes</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
@@ -420,7 +463,7 @@ After that, run <code class="docutils literal notranslate"><span class="pre">com
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><strong>v5</strong></p></td>
-<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v5.0.x"><code class="docutils literal notranslate"><span class="pre">5.0.5</span></code></a></p></td>
+<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v5.0.x"><code class="docutils literal notranslate"><span class="pre">5.x</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">^7.4 || ^8.0</span></code></p></td>
 <td><p>yes</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
@@ -428,7 +471,7 @@ After that, run <code class="docutils literal notranslate"><span class="pre">com
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><strong>v4</strong></p></td>
-<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v4.3.x"><code class="docutils literal notranslate"><span class="pre">4.3.4</span></code></a></p></td>
+<td><p><a class="reference external" href="https://github.com/chillerlan/php-qrcode/tree/v4.3.x"><code class="docutils literal notranslate"><span class="pre">4.4.2</span></code></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">^7.4 || ^8.0</span></code></p></td>
 <td><p>no</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">gd</span></code>, <code class="docutils literal notranslate"><span class="pre">mbstring</span></code></p></td>
@@ -484,7 +527,7 @@ After that, run <code class="docutils literal notranslate"><span class="pre">com
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2025, smiley.</p>
+    <p>&#169; Copyright 2026, smiley.</p>
   </div>
 
    
