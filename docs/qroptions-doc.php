@@ -20,7 +20,7 @@ $content = [
 
 $reflectionClass = new ReflectionClass(QROptions::class);
 
-foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED) as $reflectionProperty){
+foreach($reflectionClass->getProperties(ReflectionProperty::IS_PROTECTED|ReflectionProperty::IS_PUBLIC) as $reflectionProperty){
 	$docblock = $reflectionProperty->getDocComment();
 
 	// don't document deprecated settings

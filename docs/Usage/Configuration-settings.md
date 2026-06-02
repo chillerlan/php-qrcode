@@ -48,7 +48,7 @@ alternatively you can just pass the letters L/M/Q/H (case-insensitive) to the ma
 
 ## maskPattern
 
-Mask Pattern to use (no value in using, mostly for unit testing purposes)
+Mask Pattern to use (no value in using, mostly for unit testing purposes, will cause unreadable symbols)
 
 `0 ... 7` or `MaskPattern::PATTERN_AUTO` (default)
 
@@ -84,7 +84,7 @@ The FQCN of the `QROutputInterface` to use
 
 Return the image resource instead of a render if applicable.
 
-- `QRGdImage`: `resource` (PHP < 8), `GdImage`
+- `QRGdImage`: `GdImage`
 - `QRImagick`: `Imagick`
 - `QRFpdf`:    `FPDF`
 
@@ -432,22 +432,24 @@ Sets an optional XSLT stylesheet in the XML output
 
 ## readerUseImagickIfAvailable
 
-Use Imagick (if available) when reading QR Codes
+Use Imagick when reading QR Codes.
+
+Enables Imagick for the QR Code reader if the extension is available.
 
 
 ## readerGrayscale
 
-Grayscale the image before reading
+Grayscale the image before reading.
 
 
 ## readerInvertColors
 
-Invert the colors of the image
+Invert the colors of the image.
 
 
 ## readerIncreaseContrast
 
-Increase the contrast before reading
+Increase the contrast before reading.
 
-note that applying contrast works different in GD and Imagick, so mileage may vary
+Note that applying contrast works different in GD and Imagick, so mileage may vary.
 

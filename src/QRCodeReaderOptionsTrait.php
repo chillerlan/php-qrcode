@@ -19,8 +19,9 @@ use function extension_loaded;
 trait QRCodeReaderOptionsTrait{
 
 	/**
-	 * Use Imagick (if available) when reading QR Codes,
-	 * enables Imagick for the QR Code reader if the extension is available
+	 * Use Imagick when reading QR Codes.
+	 *
+	 * Enables Imagick for the QR Code reader if the extension is available.
 	 */
 	public bool $readerUseImagickIfAvailable = false {
 		set{
@@ -29,19 +30,19 @@ trait QRCodeReaderOptionsTrait{
 	}
 
 	/**
-	 * Grayscale the image before reading
+	 * Grayscale the image before reading.
 	 */
 	public bool $readerGrayscale = false;
 
 	/**
-	 * Invert the colors of the image
+	 * Invert the colors of the image.
 	 */
 	public bool $readerInvertColors = false;
 
 	/**
-	 * Increase the contrast before reading
+	 * Increase the contrast before reading.
 	 *
-	 * note that applying contrast works different in GD and Imagick, so mileage may vary
+	 * Note that applying contrast works different in GD and Imagick, so mileage may vary.
 	 */
 	public bool $readerIncreaseContrast = false;
 
