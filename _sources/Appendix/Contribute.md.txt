@@ -65,3 +65,8 @@ If you have an addition or correction, feel fre to open a [documentation issue](
 
 The API documentation is auto generated with [phpDocumentor](https://www.phpdoc.org/) from the docblocks [in the PHP sources](https://github.com/chillerlan/php-qrcode/tree/main/src).
 The markdown sources for the [Read the Docs online manual](https://php-qrcode.readthedocs.io) are located in the [/docs directory](https://github.com/chillerlan/php-qrcode/tree/main/docs)
+
+## Anti clanker clause
+
+If your issue reports and pull requests are LLM generated, keep them. I'll prefer to keep my bugs then.
+I don't want anything to do with the water guzzling, air polluting, brain cooking, confidently lying fascist plagiarism machines.
