@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
@@ -45,7 +45,7 @@ jobs:
           coverage: none
 
       - name: "Validate composer.json"
-        run: composer validate --no-interaction --ansi --verbose --with-dependencies
+        run: composer validate --no-interaction --ansi --strict --verbose --with-dependencies
 
       - name: "Install dependencies with composer"
         uses: ramsey/composer-install@v4
@@ -68,16 +68,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
+        os: [ubuntu-latest, windows-latest]
         php-version:
           - "8.4"
           - "8.5"
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: "Install PHP with extensions"
         uses: shivammathur/setup-php@v2
@@ -87,6 +85,9 @@ jobs:
           ini-values: ${{ env.PHP_INI_VALUES }}
           coverage: pcov
           tools: pecl
+        # https://github.com/shivammathur/setup-php/issues/1096#issuecomment-5026413877
+        env:
+          fail-fast: true
 
       - name: "Install dependencies with composer"
         uses: ramsey/composer-install@v4
@@ -95,7 +96,7 @@ jobs:
         run: php vendor/bin/phpunit --colors=always --configuration=phpunit.xml.dist
 
       - name: "Send code coverage report to Codecov.io"
-        uses: codecov/codecov-action@v6
+        uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: .build/coverage/clover.xml
@@ -114,7 +115,7 @@ jobs:
 
     steps:
       - name: "Checkout sources"
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
@@ -143,7 +144,7 @@ jobs:
 
     steps:
       - name: "Checkout sources"
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: "Install PHP"
         uses: shivammathur/setup-php@v2
