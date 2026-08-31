@@ -145,6 +145,7 @@ final class QRData{
 
 			if($length <= $maxBits){
 				$provisionalVersion = $version;
+				break;
 			}
 
 		}
