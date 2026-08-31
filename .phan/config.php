@@ -59,5 +59,7 @@ return [
 		'PhanDeprecatedClassConstant',
 		'PhanNoopNew',
 		'PhanTypePossiblyInvalidDimOffset',
+		// @todo
+		'PhanDeprecatedFunction',
 	],
 ];
