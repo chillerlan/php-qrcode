@@ -1,7 +1,8 @@
 ## Proposed changes
 
 <!-- Describe your changes here to communicate to the maintainers why you'd like to include this pull request.
-If it fixes a bug or resolves a feature request, be sure to link to that issue. -->
+If it fixes a bug or resolves a feature request, be sure to link to that issue.
+Please do not post the output of your overconfident chatbot, use your human brain and hands instead. -->
 
 
 <!-- You can erase any of the parts below that are not applicable to your Pull Request. -->

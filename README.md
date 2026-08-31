@@ -140,3 +140,9 @@ I don't take responsibility for molten CPUs, misled applications, failed log-ins
 
 The word "QR Code" is a registered trademark of *DENSO WAVE INCORPORATED*<br>
 https://www.qrcode.com/en/faq.html#patentH2Title
+
+## Anti clanker clause
+
+If your issue reports and pull requests are LLM generated, keep them. I'll prefer to keep my bugs then.
+I don't want anything to do with the water guzzling, air polluting, brain cooking, confidently lying fascist plagiarism machines.
+Use your human brain and hands instead.
