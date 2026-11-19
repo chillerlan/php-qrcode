@@ -93,8 +93,6 @@ final class BitMatrix extends QRMatrix{
 	 * Mirror the bit matrix diagonally in order to attempt a second reading.
 	 */
 	public function mirrorDiagonal():self{
-		$this->mirror = !$this->mirror;
-
 		// mirror vertically
 		$this->matrix = array_reverse($this->matrix);
 		// rotate by 90 degrees clockwise
