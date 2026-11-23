@@ -32,6 +32,7 @@ final class NumberTest extends DataInterfaceTestAbstract{
 	public static function stringValidateProvider():array{
 		return [
 			['0123456789', true],
+			['0123456789\n', false],
 			['ABC123', false],
 		];
 	}

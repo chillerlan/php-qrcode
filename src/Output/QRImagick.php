@@ -82,7 +82,7 @@ class QRImagick extends QROutputAbstract{
 		}
 
 		// css (-like) func(...values)
-		if(preg_match('#^(graya?|hs(b|la?)|rgba?)\([\d .,%]+\)$#i', $value)){
+		if(preg_match('#^(graya?|hs(b|la?)|rgba?)\([\d .,%]+\)$#iD', $value)){
 			return true;
 		}
 

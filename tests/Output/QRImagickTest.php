@@ -35,6 +35,7 @@ final class QRImagickTest extends QROutputTestAbstract{
 
 	public static function moduleValueProvider():array{
 		return [
+			// see: https://github.com/chillerlan/php-qrcode/issues/335
 			'invalid: wrong type'            => [[], false],
 			'valid: hex color, numeric (3)'  => ['#123', true],
 			'valid: hex color (3)'           => ['#abc', true],
@@ -43,6 +44,7 @@ final class QRImagickTest extends QROutputTestAbstract{
 			'valid: hex color (8)'           => ['#aabbccdd', true],
 			'valid: hex color, numeric (8)'  => ['#11bb33dd', true],
 			'valid: hex color (32)'          => ['#aaaaaaaabbbbbbbbccccccccdddddddd', true],
+			'invalid: hex color (32) + LF'   => ['#aaaaaaaabbbbbbbbccccccccdddddddd\n', false],
 			'invalid: hex color (non-hex)'   => ['#aabbcxyz', false],
 			'invalid: hex color (too short)' => ['#aa', false],
 			'invalid: hex color (too long)'  => ['#aaaaaaaabbbbbbbbccccccccdddddddd00', false],

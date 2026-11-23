@@ -43,17 +43,17 @@ trait CssColorModuleValueTrait{
 		// hex notation
 		// #rgb(a)
 		// #rrggbb(aa)
-		if(preg_match('/^#([\da-f]{3}){1,2}$|^#([\da-f]{4}){1,2}$/i', $value)){
+		if(preg_match('/^#([\da-f]{3}){1,2}$|^#([\da-f]{4}){1,2}$/iD', $value)){
 			return true;
 		}
 
 		// css: hsla/rgba(...values)
-		if(preg_match('#^(hsla?|rgba?)\([\d .,%/]+\)$#i', $value)){
+		if(preg_match('#^(hsla?|rgba?)\([\d .,%/]+\)$#iD', $value)){
 			return true;
 		}
 
 		// predefined css color
-		if(preg_match('/^[a-z]+$/i', $value)){
+		if(preg_match('/^[a-z]+$/iD', $value)){
 			return true;
 		}
 

@@ -29,7 +29,7 @@ final class Number extends QRDataModeAbstract{
 	}
 
 	public static function validateString(string $string):bool{
-		return (bool)preg_match('/^\d+$/', $string);
+		return (bool)preg_match('/^\d+$/D', $string);
 	}
 
 	public function write(BitBuffer $bitBuffer, int $versionNumber):static{

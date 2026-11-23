@@ -32,6 +32,7 @@ final class AlphaNumTest extends DataInterfaceTestAbstract{
 	public static function stringValidateProvider():array{
 		return [
 			['ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:', true],
+			['ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 $%*+-./:\n', false],
 			['abc', false],
 			['ÄÖÜ', false],
 			[',', false],

@@ -52,7 +52,7 @@ class QRMarkupSVG extends QRMarkup{
 		$value = trim($value);
 
 		// url(...)
-		if(preg_match('~^url\([-/#a-z\d]+\)$~i', $value)){
+		if(preg_match('~^url\([-/#a-z\d]+\)$~iD', $value)){
 			return true;
 		}
 
