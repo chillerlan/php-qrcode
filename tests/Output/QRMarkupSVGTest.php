@@ -46,7 +46,7 @@ final class QRMarkupSVGTest extends QRMarkupTestAbstract{
 			'invalid: rgba(non-numeric)'     => ['rgba(255, 0, whatever, 0, 1.0)', false],
 			'invalid: rgba(extra-char)'      => ['rgba(255, 0, 0, 1.0);', false],
 			'valid: csscolor'                => ['purple', true],
-			'invalid: csscolor + LF'         => ['purple\n', true],
+			'invalid: csscolor + LF'         => ['purple\n', false],
 			'invalid: c5sc0lor'              => ['c5sc0lor', false],
 
 			// SVG
